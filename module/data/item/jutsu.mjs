@@ -93,10 +93,14 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     const sys = actor.system;
     const disc = sys.disciplines?.[this.castingDiscipline];
     let abilityKey = this.ability || disc?.ability;
-    // Hijutsu Flexibility: use the better of the clan's two abilities.
+    // Hijutsu Flexibility: the higher of the clan's two abilities by default; players may pick one
+    // when the world setting allows it (King 2026-11-07).
     const flex = sys.grants?.hijutsuAbilities ?? [];
     if ( this.isHijutsu && !this.ability && flex.length ) {
-      abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
+      const choice = sys.grants?.hijutsuChoice;
+      const allowPick = globalThis.game?.settings?.get?.("n5e", "hijutsuFlexibilityPick") ?? true;
+      if ( allowPick && choice && flex.includes(choice) ) abilityKey = choice;
+      else abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
     }
     const abilityMod = sys.abilities?.[abilityKey]?.mod ?? 0;
     const delta = abilityMod - (disc?.mod ?? 0);

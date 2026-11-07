@@ -179,3 +179,21 @@ test("NPC stat-block overrides and summon template fields", () => {
   assert.equal(n.system.level, 5);
   assert.equal(n.system.prof, 4);
 });
+
+test("Hijutsu Flexibility: higher ability by default, player pick when set", () => {
+  const clan = load("clans", "Uchiha");
+  const hij = load("jutsu", "DynamicEntry");
+  hij.system.keywords = ["hijutsu", "taijutsu"];
+  const abil = { abilities: { str: { value: 10 }, int: { value: 16 }, wis: { value: 12 } } };
+  const auto = makeActor({ system: abil, items: [taiSpec(1), clan, hij] });
+  assert.equal(auto.items[2].system.live.ability, "int");
+  clan.system.hijutsuChoice = "wis";
+  const pick = makeActor({ system: abil, items: [taiSpec(1), clan, hij] });
+  assert.equal(pick.items[2].system.live.ability, "wis");
+});
+
+test("ASI Mastery ranks only count on skills and toolkits", () => {
+  const a = makeActor({ system: { ...baseAbilities, mastery: { sources: [{ target: "save.con", source: "ASI 4" }] } },
+    items: [taiSpec(4)] });
+  assert.equal(a.system.mastery.asiAvailable, 1);
+});

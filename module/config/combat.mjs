@@ -23,8 +23,14 @@ export const damageTypes = {
   psychic: { label: "Psychic", group: "special", genjutsuIgnoresDR: true }
 };
 
-/** KB 03: damage pipeline stage order (Phase 4 implements it). */
-export const damagePipeline = ["crit", "dr", "interception", "resistance", "immunity", "tempPool", "pool"];
+/**
+ * KB 03 damage pipeline (Phase 4 implements it). King 2026-11-07:
+ *  - Interception happens first and changes the target entirely: the interceptor's DR, resistances
+ *    and effects apply, the original target's don't.
+ *  - DR applies once to the whole damage of a roll (not per damage type within a hit).
+ */
+export const damagePipeline = ["crit", "interception", "dr", "resistance", "immunity", "tempPool", "pool"];
+export const drApplication = "perDamageRoll";
 
 /** KB 03: crit range bonus cap (17-20). */
 export const critRangeCap = 3;

@@ -301,6 +301,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           for ( const a of sys.affinities?.chosen ?? [] ) g.affinities.add(a);
           for ( const k of sys.keywords ?? [] ) g.keywordAccess.add(k);
           g.hijutsuAbilities = [...(sys.hijutsuAbilities ?? [])];
+          g.hijutsuChoice = sys.hijutsuChoice || "";
           break;
         case "background":
           g.backgroundItem ??= item;
@@ -372,7 +373,9 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       this.masteryMap[target] = { rank, bonus: masteryBonus(rank), sources: [...sources], uncapped: sources.size };
     }
     // ASI levels each grant one Mastery rank; count those the player has assigned (source "ASI <level>").
-    const asiAssigned = this.mastery.sources.filter(s => /^ASI\b/i.test(s.source ?? "")).length;
+    const asiTargets = globalThis.CONFIG?.N5E?.progression?.asiMasteryTargets ?? ["skill", "tool"];
+    const asiAssigned = this.mastery.sources.filter(s => /^ASI\b/i.test(s.source ?? "")
+      && asiTargets.some(t => String(s.target).startsWith(`${t}.`))).length;
     this.mastery.asiAvailable = Math.max(0, asiCount(this.level) - asiAssigned);
   }
 

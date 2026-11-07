@@ -51,9 +51,9 @@ export const hostileTerrain = {
   A: { dc: 23, damage: "7d6" }, S: { dc: 25, damage: "9d6" }
 };
 export const terrainTypes = {
-  extremeHeat: { label: "Extreme Heat", damageType: "fire", immuneIndirect: "fire" },
-  extremeCold: { label: "Extreme Cold", damageType: "cold", immuneIndirect: "water" },
-  toxic: { label: "Toxic Environment", damageType: "poison", immuneIndirect: "medical" },
+  extremeHeat: { label: "Extreme Heat", damageType: "fire", immuneIndirect: "fire", indirectCheck: "sur" },
+  extremeCold: { label: "Extreme Cold", damageType: "cold", immuneIndirect: "water", indirectCheck: "sur" },
+  toxic: { label: "Toxic Environment", damageType: "poison", immuneIndirect: "medical", indirectCheck: "sur" },
   chakraResistant: { label: "Chakra Resistant", damageType: null }
 };
 
@@ -115,7 +115,7 @@ export const skillActions = {
   readEnemyTai: { skill: "mar", tier: "p", label: "Read The Enemy (Taijutsu/Bukijutsu)", activation: "reaction", vs: "jutsuDC:tai" },
   identifyTaijutsu: { skill: "mar", tier: "p", label: "Identify Taijutsu/Bukijutsu", activation: "action", vs: "jutsuDC+5" },
   administerAid: { skill: "med", tier: "np", label: "Administer Aid", activation: "action", vs: "fixed:15+rank" },
-  stabilize: { skill: "med", tier: "p", label: "Stabilize", activation: "action", vs: "fixed:20" },
+  stabilize: { skill: "med", tier: "p", label: "Stabilize", activation: "action", vs: "fixed:20" }, // Action (King 2026-11-07)
   treatWounds: { skill: "med", tier: "p", label: "Treat Wounds", activation: "long", vs: "tiered" },
   quickAssessment: { skill: "med", tier: "p", label: "Quick Assessment", activation: "bonus", vs: "dc" },
   identifyFloraFauna: { skill: "nat", tier: "np", label: "Identify Flora/Fauna", activation: "action", vs: "dc" },

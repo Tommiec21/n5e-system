@@ -54,7 +54,7 @@ export const toolkits = {
   hackers: { label: "Hacker's Kit" },
   medicine: { label: "Medicine Kit" },
   poison: { label: "Poison Kit" },
-  sealing: { label: "Fuinjutsu Kit" },
+  sealing: { label: "Sealing Kit" },
   security: { label: "Security Kit" },
   smiths: { label: "Smith's Kit" },
   trappers: { label: "Trapper's Kit" }
@@ -77,6 +77,8 @@ export const progression = {
   proficiency: [[1, 3], [4, 4], [7, 5], [10, 6], [13, 7], [16, 8], [19, 9]],
   /** ASI + feat + one Mastery rank (universal rule, King 2026-11-06). */
   asiLevels: [4, 8, 12, 16, 19],
+  /** The ASI Mastery rank goes to a skill or toolkit only (King 2026-11-07); saves/initiative need a feature. */
+  asiMasteryTargets: ["skill", "tool"],
   clanFeatureLevels: [1, 3, 7, 11, 15],
   /** Mastery: max sources counted, level caps, bonus per rank. */
   mastery: {
@@ -135,6 +137,8 @@ export const dcTables = {
   jutsuSaveBase: 8,
   concentration: { base: 15, severeEnvironment: 20 },
   deathSave: 10,
+  /** Jutsu Scrolls exist for Ninjutsu (Ninshou) and Genjutsu (Illusions) only; no Taijutsu/Bukijutsu scrolls. */
+  jutsuScrollSkills: { nin: "nin", gen: "ill" },
   jutsuScroll: {
     E: { identify: 9, save: 12, attack: 4 },
     D: { identify: 12, save: 14, attack: 6 },

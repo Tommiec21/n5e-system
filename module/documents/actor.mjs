@@ -57,14 +57,21 @@ export default class N5eActor extends Actor {
    * Add ranks to a condition (one effect per condition; ranks stack, clamped to max).
    * Phase 4 adds saves, immunity, and duration handling on top of this.
    */
-  async addCondition(key, ranks = 1, { sourceRank = "", origin } = {}) {
+  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
     if ( this.system.traits?.conditionImmune?.has(key) ) return null;
     const existing = this.getCondition(key);
     if ( existing ) {
+      // New ranks reset the condition's duration (King 2026-11-07).
       const max = def.maxRanks ?? 1;
-      return existing.update({ "system.ranks": Math.min(max, existing.system.ranks + ranks) });
+      return existing.update({
+        "system.ranks": Math.min(max, existing.system.ranks + ranks),
+        "duration.startTime": game.time.worldTime,
+        "duration.startRound": game.combat?.round ?? null,
+        "duration.startTurn": game.combat?.turn ?? null,
+        ...(duration ? { "duration.seconds": duration.seconds ?? null, "duration.rounds": duration.rounds ?? null } : {})
+      });
     }
     const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin });
     return CONFIG.ActiveEffect.documentClass.create(data, { parent: this });

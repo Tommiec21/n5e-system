@@ -31,7 +31,8 @@ export const optionalRules = {
   ampLimit: { label: "Amp limit", default: "none", choices: combat.ampLimits },
   freeOutOfCombatUpkeep: { label: "Out of combat: charge only the initial concentration cost", default: false },
   willOfFireVariants: { label: "Will of Fire variants (Kage Guide)", default: false },
-  multiclassing: { label: "Legacy multiclassing", default: false }
+  multiclassing: { label: "Legacy multiclassing", default: false },
+  hijutsuFlexibilityPick: { label: "Players may pick their Hijutsu Flexibility ability", default: true }
 };
 N5E.optionalRules = optionalRules;
 

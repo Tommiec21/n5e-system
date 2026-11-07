@@ -75,6 +75,7 @@ export class ClanData extends TDM() {
       affinities: grantChoice(),
       languages: S.set(),
       hijutsuAbilities: S.set(),                        // Hijutsu Flexibility, e.g. ["int","wis"]
+      hijutsuChoice: S.str(),                           // player's pick; "" = use the higher (default)
       branches: S.set(),                                // e.g. main, side (Hyuga)
       branch: S.str(),
       resourcePools: poolDefinitions(),

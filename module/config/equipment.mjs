@@ -4,6 +4,9 @@
 
 export const currency = { ryo: { label: "Ryo", abbr: "Ryo" } };
 
+/** Ch5 starting wealth (King 2026-11-07: Ch5 is correct over the Kage Guide table). */
+export const startingWealth = { fixed: 500, roll: "5d6 * 30" };
+
 export const weaponCategories = { simple: "Simple", martial: "Martial", exotic: "Exotic" };
 export const weaponGroups = {
   blade: "Blade", flail: "Flail", polearm: "Polearm", power: "Power", ammunition: "Ammunition", thrown: "Thrown"

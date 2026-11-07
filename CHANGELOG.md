@@ -32,3 +32,15 @@
 - Heavy armor ignores Dex entirely.
 - Wearing Heavyweight (X) armor without the Strength score makes you Encumbered.
 - Migrating unlinked tokens and world compendiums: deferred as a nice-to-have.
+- E-Rank counts as rank 0; half-base cost floor rounds down.
+- Hijutsu Flexibility uses the higher ability by default; players may pick one on the clan item
+  (world setting "Hijutsu Flexibility: player's pick").
+- Multiplication/division effects never stack (speed: Encumbered + Slowed = half, not a quarter).
+- The ASI Mastery rank goes to a skill or toolkit only.
+- Jutsu Scrolls exist for Ninjutsu and Genjutsu only.
+- Adding ranks to a condition resets its duration.
+- Damage: interception first (the interceptor's defenses apply instead of the target's), then DR
+  once per damage roll, then resistance and immunity.
+- Stabilize is an Action; hostile-terrain indirect exposure is a Survival check (incl. Extreme Cold).
+- Concentration: base 2, features raise it, no hard cap.
+- "Sealing Kit" is the toolkit name; starting wealth is 500 Ryo or 5d6 × 30 (Ch5).
