@@ -63,7 +63,7 @@ export async function rollD20(actor, type, key, options = {}) {
  * @param {number} [options.dc]          compare against a DC (saves from a card)
  * @param {boolean} [options.fourTier]   report Genjutsu four-tier results
  */
-export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false } = {}) {
+export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null } = {}) {
   const type = spec.type ?? "custom";
   const key = spec.key ?? "";
   const click = clickMode(event);
@@ -81,10 +81,14 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const threshold = critThreshold(actor, spec.scope);
   const result = readD20(roll, threshold);
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
+  let degree = null;
   if ( dc != null ) {
     const d = degreeOfSuccess(roll.total, dc, { natural: result.natural, isSave: spec.kind === "save" });
+    degree = d.degree;
     const labels = ["Critical Failure", "Failure", "Success", "Critical Success"];
-    spec = { ...spec, note: [spec.note, `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`].filter(Boolean).join(" · ") };
+    spec = { ...spec, note: [spec.note, `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`].filter(Boolean).join(" · "),
+      // Buttons that only matter on a failure (apply a condition, etc.).
+      footer: `${spec.footer ?? ""}${degree < 2 && onFail ? onFail : ""}` };
   }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
@@ -94,6 +98,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid } } }
   });
   await awardWillOfFire(actor, result);
+  if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
   return message;
 }
 
@@ -144,6 +149,12 @@ export async function spendWillOfFire(message, how) {
 
 /** Wire chat card buttons (call from the renderChatMessageHTML hook). */
 export function onRenderChatMessage(message, html) {
+  for ( const btn of html.querySelectorAll("[data-n5e-apply], [data-n5e-inflict], [data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave]") ) {
+    btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      import("../workflow/apply-damage.mjs").then(m => m.onApplyClick(message, btn, ev));
+    });
+  }
   for ( const btn of html.querySelectorAll("[data-n5e-act]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();

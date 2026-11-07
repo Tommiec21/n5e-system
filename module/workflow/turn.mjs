@@ -28,6 +28,11 @@ async function onTurnStart(combat) {
   }
   for ( const e of plan.ended ) lines.push(`<span class="warn">${esc(e.name)} ends: couldn't pay ${e.upkeep} CP upkeep</span>`);
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
+  // Death saves at the start of the turn while at 0 HP (characters; not stable or dead).
+  const statuses = actor.statuses ?? new Set();
+  if ( actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {
+    lines.push(`<span class="conc warn">At 0 HP: roll a death save <button type="button" data-n5e-deathsave="${actor.uuid}">Death save</button></span>`);
+  }
   if ( !lines.length ) return;
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   await ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }),

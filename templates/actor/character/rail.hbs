@@ -26,6 +26,14 @@
     <div class="meter-foot"><label>Temp <input type="number" name="system.cp.temp" value="{{vm.cp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
       <span class="{{#if vm.cp.drained}}warn{{/if}}">{{#if vm.cp.drained}}Drained{{else}}Drained at {{vm.cp.drainedAt}}{{/if}}</span></div>
   </div>
+  {{#if vm.deathSaves}}
+    <div class="death-saves {{#if vm.deathSaves.dead}}dead{{/if}}">
+      <span class="lbl">{{#if vm.deathSaves.dead}}Dead{{else if vm.deathSaves.stable}}Stable{{else}}Death saves{{/if}}</span>
+      <span class="ok" data-tooltip="Successes">{{#each vm.deathSaves.success}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+      <span class="bad" data-tooltip="Failures (persist until a short rest)">{{#each vm.deathSaves.failure}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+      {{#unless vm.deathSaves.dead}}{{#unless vm.deathSaves.stable}}{{#if editable}}<button type="button" data-action="deathSave">Roll</button>{{/if}}{{/unless}}{{/unless}}
+    </div>
+  {{/if}}
   <div class="dice-row">
     <span class="die hd" data-tooltip="Hit Dice: {{vm.hitDice.value}} of {{vm.hitDice.max}} {{vm.hitDice.die}} left (spend on a short rest)" data-tooltip-direction="RIGHT">
       <span class="lbl">HD</span> <b>{{vm.hitDice.value}}/{{vm.hitDice.max}}</b> <span class="sub">{{vm.hitDice.die}}</span></span>

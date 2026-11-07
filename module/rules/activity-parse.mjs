@@ -11,6 +11,34 @@
  */
 import { abilities } from "../config/core.mjs";
 import { damageTypes } from "../config/combat.mjs";
+import { conditions as CONDITIONS, states as STATES } from "../config/conditions.mjs";
+
+/** Condition and state names as they appear in text -> {key, kind}. */
+const EFFECT_NAMES = (() => {
+  const out = {};
+  for ( const [k, v] of Object.entries(CONDITIONS) ) out[v.label.replace(/^Compelled:\s*/, "").toLowerCase()] = { key: k, kind: "condition" };
+  for ( const [k, v] of Object.entries(STATES) ) if ( !v.derived && !v.relational ) out[v.label.toLowerCase()] = { key: k, kind: "state" };
+  out.bleeding = out.bleed;
+  return out;
+})();
+const NUM = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+
+/**
+ * Conditions and states a save's text inflicts, in order: "gain 1 rank of Concussed", "fall Prone",
+ * "being Restrained", "gain the Burned condition". Ranks default to 1.
+ */
+export function parseInflicted(text) {
+  const names = Object.keys(EFFECT_NAMES).sort((a, b) => b.length - a.length).map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const re = new RegExp(`(?:(\\d+|one|two|three|four|five) ranks? of )?(?:the )?\\b(${names.join("|")})\\b`, "gi");
+  const out = [];
+  for ( const m of String(text).matchAll(re) ) {
+    const def = EFFECT_NAMES[m[2].toLowerCase()];
+    if ( !def || out.some(o => o.key === def.key) ) continue;
+    const ranks = m[1] ? (Number(m[1]) || NUM[m[1].toLowerCase()] || 1) : 1;
+    out.push({ ...def, ranks, label: m[2][0].toUpperCase() + m[2].slice(1) });
+  }
+  return out;
+}
 
 const strip = html => String(html ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 const ABILITY_BY_NAME = Object.fromEntries(Object.entries(abilities).map(([k, v]) => [v.label.toLowerCase(), k]));
@@ -49,7 +77,9 @@ export function parseActivities(html, { discipline = "" } = {}) {
   const save = text.match(/(?:make|makes) an? (strength|dexterity|constitution|intelligence|wisdom|charisma) saving throw/i);
   if ( save ) {
     const half = /half as much damage on a success|half damage on a success/i.test(text);
-    out.push({ id: next(), type: "save", label: "Save",
+    // What a failed save inflicts: read from the save sentence onward.
+    const inflicts = parseInflicted(text.slice(save.index));
+    out.push({ id: next(), type: "save", label: "Save", inflicts,
       save: { abilities: [ABILITY_BY_NAME[save[1].toLowerCase()]], dc: { source: "discipline" }, onSuccess: half ? "half" : "none",
         fourTier: discipline === "gen" },
       // Save-based damage when there's no attack roll to carry it.

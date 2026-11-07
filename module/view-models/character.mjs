@@ -131,6 +131,9 @@ export function railVM(actor, registry = coreConditions) {
     level: sys.level,
     prof: signed(sys.prof),
     resources: resourcesVM(actor),
+    deathSaves: (sys.hp?.value ?? 1) <= 0 && actor.type === "character" ? {
+      success: pips(sys.deathSaves?.success ?? 0, 3), failure: pips(sys.deathSaves?.failure ?? 0, 3),
+      stable: !!actor.statuses?.has?.("stabilized"), dead: !!actor.statuses?.has?.("dead") } : null,
     hp: { value: sys.hp.value, max: sys.hp.max, temp: sys.hp.temp, pct: pct(sys.hp.value, sys.hp.max),
       bloodiedAt: Math.floor(sys.hp.max / 2), bloodied: !!sys.states?.bloodied, tip: bd(actor, "hp.max", { signedTotal: false }) },
     cp: { value: sys.cp.value, max: sys.cp.max, temp: sys.cp.temp, pct: pct(sys.cp.value, sys.cp.max),

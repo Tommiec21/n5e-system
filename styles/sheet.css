@@ -604,3 +604,18 @@
 .n5e-v2.npc .npc-fields label { display: inline-flex; align-items: center; gap: 4px; }
 .n5e-v2.npc .npc-fields input, .n5e-v2.npc .npc-fields select { height: 22px; width: auto; max-width: 110px; font-size: 11px; }
 .n5e-v2.npc .npc-fields input[type="number"] { width: 54px; }
+
+/* Damage application, death saves */
+.n5e-apply { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
+.n5e-apply button { flex: 1 1 auto; font-size: 11px; height: 24px; line-height: 22px; padding: 0 6px; }
+.n5e-apply-card { font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+.n5e-apply-card .target { padding: 3px 0; border-bottom: 1px solid rgba(0, 0, 0, .1); }
+.n5e-apply-card .steps { color: #6B5F55; font-size: 11px; }
+.n5e-apply-card .warn { color: #B23A26; font-weight: 700; }
+.n5e-apply-card button { font-size: 11px; height: 24px; line-height: 22px; margin-top: 2px; }
+.n5e-v2 .death-saves { display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 6px; background: #FBEDE9; border: 1px solid var(--n5e-hp); }
+.n5e-v2 .death-saves .lbl { flex: 1; font-weight: 700; color: var(--n5e-hp); }
+.n5e-v2 .death-saves .ok .pip.on { background: #3E7A3C; border-color: #3E7A3C; }
+.n5e-v2 .death-saves .bad .pip.on { background: var(--n5e-hp); border-color: var(--n5e-hp); }
+.n5e-v2 .death-saves button { height: 22px; padding: 0 8px; font-size: 11px; width: auto; flex: none; }
+.n5e-v2 .death-saves.dead { background: var(--n5e-ink); }

@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.5.0-alpha.1 — Phase 4: damage and conditions
+
+### Added
+- **Damage cards** roll each damage part separately (so each type keeps its amount) and carry
+  **Apply / Half / ×2 / Heal** buttons that apply to the selected tokens.
+  - **Interception:** select the interceptor and apply to them; the interceptor replaces the target,
+    so their defenses are the ones that count (King's ruling).
+  - **DR:** applied **once** to the whole damage calculation, before resistance, reduced by the
+    attacker's Pierce.
+  - **Psychic:** Genjutsu psychic damage ignores DR.
+  - **Resistance and vulnerability:** resistance halves (round down) and vulnerability doubles; both
+    on one type cancel. Immunity zeroes it.
+  - **Chakra damage** goes to temporary CP, then CP; everything else to temporary HP, then HP.
+- **Apply summary card** per application:
+  - What each target took and the reductions applied.
+  - **Undo** (restores HP, CP, temporary pools and death saves).
+  - A **Concentration check** button for any target concentrating on a non-Stable jutsu:
+    Con (Chakra Control) vs max(15 + ranks of everything concentrated on, half the damage). A
+    failure ends those jutsu.
+- **0 HP:**
+  - Characters fall **Dying** (unconscious).
+  - Damage beyond 0 that's at least max HP is instant death.
+  - Damage while at 0 adds a death save failure (2 on a crit), and NPCs that die at 0 are marked
+    **Dead**.
+  - Healing at 0 ends Dying and resets successes.
+  - **Envenomed** creatures can't regain HP.
+- **Death saves:**
+  - Shown on the rail at 0 HP (success and failure pips, Roll button) and offered on the start-of-turn
+    card.
+  - d20, no bonuses: 10+ succeeds; a natural 1 counts as two failures; a natural 20 brings you back to
+    1 HP and removes two failures.
+  - Three successes = Stabilized; three failures = Dead.
+- **Conditions from failed saves:** the save button lists what the jutsu inflicts (read from its text,
+  e.g. Butterfly Kick: Concussed 1; Flame Whip: Prone, Burned; Snake Constricting Grip: Restrained).
+  A failed save shows **Apply** buttons for each, used by the creature's owner, because some only
+  apply under conditions the text describes.
+
 ## 0.4.0-alpha.3 — Phase 3, release 3: turn flow and the NPC sheet
 
 ### Added

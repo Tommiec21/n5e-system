@@ -16,6 +16,7 @@ import { stepAmmo } from "../../workflow/ammo.mjs";
 import { castJutsu } from "../../workflow/cast.mjs";
 import { attackWithWeapon } from "../../workflow/attack.mjs";
 import { useFeature } from "../../workflow/use-feature.mjs";
+import { rollDeathSave } from "../../workflow/apply-damage.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -49,6 +50,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       useAction: CharacterSheet.#onUseAction,
       roll: CharacterSheet.#onRoll,
       rollInit: CharacterSheet.#onRollInit,
+      deathSave: CharacterSheet.#onDeathSave,
       levelUp: CharacterSheet.#onLevelUp,
       levelDown: CharacterSheet.#onLevelDown,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
@@ -505,6 +507,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onRoll(event, target) {
     event.preventDefault();
     return rollD20(this.actor, target.dataset.roll, target.dataset.key, { event });
+  }
+
+  static async #onDeathSave() {
+    return rollDeathSave(this.actor);
   }
 
   static async #onRollInit(event) {
