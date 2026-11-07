@@ -165,3 +165,26 @@ export const masteryTargets = {
   "attack.tai": "Taijutsu attacks",
   "attack.gen": "Genjutsu attacks"
 };
+
+/**
+ * KB 03 "Actions in combat" (Ch8): the core actions every creature has, for the Combat tab.
+ * requires: "lightWeapon" = shown only with a light weapon equipped.
+ */
+export const coreActions = {
+  attack: { label: "Attack", activation: "action",
+    text: "Make one weapon or unarmed attack (Extra Attack adds more). Grapple, Shove or a Jutsu-Like Attack can replace one attack." },
+  dash: { label: "Dash", activation: "action", text: "Gain extra movement equal to your current speed this turn." },
+  disengage: { label: "Disengage", activation: "action", text: "Your movement doesn't provoke Opportunity Attacks for the rest of the turn." },
+  dodge: { label: "Dodge", activation: "action",
+    text: "Until your next turn, attacks against you have disadvantage if you can see the attacker, and you have advantage on Dex saves. Lost if you're Incapacitated or your speed drops to 0." },
+  help: { label: "Help", activation: "action",
+    text: "Task: an ally has advantage on its next check for it (you must be proficient). Attack: an ally has advantage on its next attack against a creature within 5 ft of you." },
+  hide: { label: "Hide", activation: "action", text: "Make a Stealth check to become Hidden. Needs total cover, heavy obscurement or darkness; not while seen." },
+  ready: { label: "Ready", activation: "action",
+    text: "Pick a trigger and a response; use your Reaction when it happens. A readied jutsu must take 1 Action to cast: its chakra is spent now and held with concentration, and broken concentration dispels it." },
+  useObject: { label: "Use an Object", activation: "action", text: "Interact with a second object this turn (the first interaction each turn is free), or use an item that takes an Action." },
+  opportunityAttack: { label: "Opportunity Attack", activation: "reaction",
+    text: "When a hostile you can see leaves your reach, make one melee attack against it before it leaves. One per movement; not triggered by teleport or forced movement." },
+  offhand: { label: "Off-hand Attack", activation: "bonus", requires: "lightWeapon",
+    text: "After taking the Attack action with a light weapon, attack with a different light weapon in your other hand. No ability modifier to damage unless it's negative." }
+};

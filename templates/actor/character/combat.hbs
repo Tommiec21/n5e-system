@@ -1,0 +1,87 @@
+<section class="tab n5e-tab combat {{tab.cssClass}}" data-tab="combat" data-group="primary">
+  <div class="trackers">
+    <div class="tracker chain">
+      <div class="t-head"><h3>Chain</h3>
+        <span class="boxes">{{#each vm.chain.boxes}}<button type="button" class="box {{#if filled}}on{{/if}}" data-action="setChain" data-value="{{n}}" aria-label="Chain {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span>
+        <b class="big">{{vm.chain.value}}</b></div>
+      {{#if vm.chain.value}}
+        {{#if vm.chain.atRank.length}}
+          <p class="small">Chain {{vm.chain.value}} effects ready:
+            {{#each vm.chain.atRank}}<a class="link n5e-row" data-item-id="{{id}}" data-action="useItem">{{name}}</a>{{#unless @last}}, {{/unless}}{{/each}}</p>
+        {{else}}<p class="small muted">No known jutsu has a Chain {{vm.chain.value}} effect.</p>{{/if}}
+      {{else}}
+        <p class="small muted">Action Chain Bukijutsu raise it (+1, hold, or opt out); Bonus Action and Reaction ones maintain it. Effects need the exact rank. Resets at your turn start if not raised or maintained.</p>
+      {{/if}}
+    </div>
+
+    <div class="tracker conc {{#if vm.concentration.short}}short{{/if}}">
+      <div class="t-head"><h3>Concentration</h3>
+        <span class="slots">{{#each vm.concentration.slots}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+        <b class="big">{{vm.concentration.used}} / {{vm.concentration.max}}</b></div>
+      {{#each vm.concentration.rows}}
+        <div class="conc-row" data-item-id="{{id}}">
+          <span class="rank">{{rank}}</span><a class="nm" data-action="editItem">{{name}}</a>
+          {{#if efficient}}<span class="kw">Efficient</span>{{/if}}{{#if stable}}<span class="kw">Stable</span>{{/if}}
+          <span class="upkeep" data-tooltip="Half of the {{paid}} CP paid when cast">{{upkeep}} CP</span>
+          {{#if @root.editable}}<a class="ctl" data-action="toggleConcentration" aria-label="End concentration on {{name}}" data-tooltip="End (free)"><i class="fa-solid fa-xmark"></i></a>{{/if}}
+        </div>
+      {{else}}
+        <p class="small muted">Not concentrating. Mark a concentration jutsu with its ◯ to track it.</p>
+      {{/each}}
+      <div class="t-foot">
+        <span>Upkeep at turn start <b class="{{#if vm.concentration.short}}warn{{/if}}">{{vm.concentration.upkeep}} CP</b>
+          {{#if vm.concentration.short}}<span class="warn">· not enough chakra</span>{{else}}{{#if vm.concentration.upkeep}}<span class="muted">· {{vm.concentration.cpAfter}} CP left</span>{{/if}}{{/if}}</span>
+        <span data-tooltip="Con (Chakra Control) when you take damage: DC {{vm.concentration.dcBase}} + ranks of all concentrated jutsu, or half the damage if higher">Damage check <b>DC {{vm.concentration.dc}}</b></span>
+      </div>
+    </div>
+
+    <div class="tracker stance">
+      <div class="t-head"><h3>Stance</h3><span class="sub">Switch: Bonus Action</span></div>
+      {{#if vm.stance.active}}
+        <div class="stance-active n5e-row" data-item-id="{{vm.stance.active.id}}" data-tooltip-html="{{vm.stance.active.tip}}">
+          <b>{{vm.stance.active.name}}</b><span class="sub">{{vm.stance.active.categories}}</span>
+          <button type="button" data-action="enterStance" {{#unless editable}}disabled{{/unless}}>Leave</button>
+        </div>
+      {{else}}<p class="small muted">{{#if vm.stance.any}}No stance active.{{else}}No stances known.{{/if}}</p>{{/if}}
+      {{#if vm.stance.others.length}}
+        <div class="pill-row">{{#each vm.stance.others}}
+          <span class="act-pill bonus n5e-row" data-item-id="{{id}}" data-tooltip-html="{{tip}}"><a class="pill-main" data-action="enterStance"><span class="nm">{{name}}</span></a></span>
+        {{/each}}</div>
+      {{/if}}
+    </div>
+
+    <div class="tracker combo {{#if vm.combo.ready}}ready{{/if}}">
+      <div class="t-head"><h3>Combo / Finisher</h3>
+        <button type="button" class="toggle {{#if vm.combo.ready}}on{{/if}}" data-action="toggleCombo" aria-pressed="{{vm.combo.ready}}" {{#unless editable}}disabled{{/unless}}
+          data-tooltip="Mark that a Combo landed this turn">{{#if vm.combo.ready}}Finisher armed{{else}}Combo landed?{{/if}}</button></div>
+      {{#if vm.combo.any}}
+        <div class="combo-flow">
+          <div>{{#each vm.combo.combos}}<a class="link n5e-row" data-item-id="{{id}}" data-action="useItem">{{name}}</a>{{else}}<span class="muted small">No Combo jutsu</span>{{/each}}</div>
+          <i class="fa-solid fa-arrow-right"></i>
+          <div>{{#each vm.combo.finishers}}<a class="link n5e-row" data-item-id="{{id}}" data-action="useItem">{{name}}</a>{{else}}<span class="muted small">No Finisher jutsu</span>{{/each}}</div>
+        </div>
+      {{/if}}
+      <p class="small muted">A Combo lets you target an affected creature with a Finisher at any range, once per turn (Action or Bonus Action). The Finisher effect needs a Combo cast just before it this turn.</p>
+    </div>
+  </div>
+
+  <div class="act-group basic">
+    <div class="section-head"><h2>{{vm.basic.label}}</h2></div>
+    {{#each vm.basic.sections}}
+      <div class="act-row"><span class="row-lbl">{{label}}</span>
+        <div class="pills">{{#each pills}}{{> "systems/n5e/templates/parts/action-pill.hbs"}}{{/each}}</div></div>
+    {{/each}}
+  </div>
+
+  {{#each vm.jutsu}}
+    <div class="act-group {{key}}">
+      <div class="section-head"><h2>{{label}}</h2><span class="sub">{{sub}}</span></div>
+      {{#each rows}}
+        <div class="act-row"><span class="row-lbl">{{label}}</span>
+          <div class="pills">{{#each pills}}{{> "systems/n5e/templates/parts/action-pill.hbs"}}{{/each}}</div></div>
+      {{else}}
+        <p class="small muted">No {{label}} known.</p>
+      {{/each}}
+    </div>
+  {{/each}}
+</section>

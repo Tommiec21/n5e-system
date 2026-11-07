@@ -17,7 +17,7 @@ import { registerHelpers } from "../module/applications/helpers.mjs";
 const ROOT = path.join(import.meta.dirname, "..");
 const hbs = Handlebars.create();
 registerHelpers(hbs);
-for ( const p of ["parts/chips", "parts/item-controls", "parts/field-rows"] ) {
+for ( const p of ["parts/chips", "parts/item-controls", "parts/field-rows", "parts/action-pill"] ) {
   hbs.registerPartial(`systems/n5e/templates/${p}.hbs`, fs.readFileSync(path.join(ROOT, "templates", `${p}.hbs`), "utf8"));
 }
 const render = (name, ctx) => hbs.compile(fs.readFileSync(path.join(ROOT, "templates", name), "utf8"), { strict: false })(ctx);
@@ -69,7 +69,7 @@ for ( const edit of [false, true] ) {
     assert.match(inv, /data-action="setAmmo"/);
     assert.match(inv, /data-action="setCharge"/);
     render("actor/character/tabs.hbs", base(edit));
-    render("actor/character/actions.hbs", base(edit));
+
   });
 }
 

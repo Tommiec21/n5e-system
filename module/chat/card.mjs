@@ -57,3 +57,45 @@ export async function postItemCard(item, options = {}) {
     flags: { n5e: { itemUuid: item.uuid, rank: options.rank ?? null } }
   });
 }
+
+/**
+ * Pure: card data for a core combat action or a skill action (no item behind it).
+ * @param {"core"|"skill"} kind
+ * @param {string} key
+ * @param {object} [actor]
+ */
+export function actionCardData(kind, key, actor) {
+  const N5E = globalThis.CONFIG?.N5E ?? {};
+  const unarmed = key === "unarmed";
+  const def = kind === "skill" ? N5E.skillActions?.[key] : (unarmed ? null : N5E.coreActions?.[key]);
+  if ( !def && !unarmed ) return null;
+  const activation = unarmed ? "action" : def.activation;
+  const g = glyph(activation === "move" ? "free" : activation);
+  const data = { name: unarmed ? "Unarmed Strike" : def.label, img: "icons/svg/combat.svg", type: kind,
+    glyph: g?.svg ?? "", glyphLabel: g?.label ?? "", subtitle: "", chips: [], stats: [], blocks: [], description: "" };
+  if ( unarmed ) {
+    const str = actor?.system?.abilities?.str?.mod ?? 0;
+    data.subtitle = "Attack · always proficient";
+    data.stats.push({ label: "Damage", value: `${actor?.system?.combat?.activeStance ? "1d6" : "1"} ${signed(str)} bludgeoning` });
+  } else if ( kind === "skill" ) {
+    const skill = N5E.skills?.[def.skill]?.label ?? def.skill;
+    data.subtitle = `${skill} · ${N5E.skillActionTiers?.[def.tier]?.label ?? def.tier} skill action`;
+    data.stats.push({ label: "Roll", value: def.roll ?? "" });
+    data.description = `<p>${def.text ?? ""}</p>`;
+  } else {
+    data.subtitle = "Combat action";
+    data.description = `<p>${def.text}</p>`;
+  }
+  if ( g ) data.stats.push({ label: "Time", value: g.label });
+  return data;
+}
+
+/** Post a core or skill action's card to chat. */
+export async function postActionCard(actor, kind, key) {
+  const data = actionCardData(kind, key, actor);
+  if ( !data ) return null;
+  const content = await foundry.applications.handlebars.renderTemplate(CARD_TEMPLATE, data);
+  const ChatMessageCls = CONFIG.ChatMessage.documentClass;
+  return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,
+    flags: { n5e: { action: `${kind}.${key}` } } });
+}

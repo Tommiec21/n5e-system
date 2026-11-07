@@ -334,3 +334,73 @@
 .n5e-card .block b { color: var(--n5e-accent-ink); margin-right: 4px; }
 .n5e-card .block p { display: inline; margin: 0; }
 .n5e-card footer { padding: 6px 8px; font-size: 10px; color: var(--n5e-muted); border-top: 1px solid var(--n5e-line-soft); }
+
+/* -------------------------------------------- */
+/*  Combat tab                                  */
+/* -------------------------------------------- */
+
+.n5e-v2 .combat .trackers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.n5e-v2 .tracker { display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; border-radius: 8px; background: var(--n5e-card); border: 1px solid var(--n5e-line); }
+.n5e-v2 .tracker .t-head { display: flex; align-items: center; gap: 8px; }
+.n5e-v2 .tracker .t-head h3 { flex: 1; }
+.n5e-v2 .tracker .big { font-size: 20px; line-height: 1; font-family: var(--n5e-head); }
+.n5e-v2 .tracker p { margin: 0; }
+.n5e-v2 .tracker .boxes { display: flex; gap: 4px; }
+.n5e-v2 .tracker .box { width: 20px; height: 20px; min-height: 0; padding: 0; border-radius: 4px; border: 2px solid var(--n5e-faint); background: transparent; }
+.n5e-v2 .tracker .box.on { background: var(--n5e-accent); border-color: var(--n5e-accent); }
+.n5e-v2 .tracker .slots { display: flex; gap: 3px; }
+.n5e-v2 .tracker .slots .pip.on { background: var(--n5e-chakra); border-color: var(--n5e-chakra); }
+.n5e-v2 .tracker a.link { font-weight: 600; cursor: pointer; text-decoration: underline; text-decoration-color: var(--n5e-line); }
+.n5e-v2 .tracker .kw { font-size: 9px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 5px; border-radius: 8px; background: var(--n5e-paper-2); color: var(--n5e-muted); }
+.n5e-v2 .conc-row { display: flex; align-items: center; gap: 6px; padding: 3px 0; border-bottom: 1px solid var(--n5e-line-soft); }
+.n5e-v2 .conc-row .rank { font-weight: 700; font-size: 11px; width: 14px; color: var(--n5e-chakra); }
+.n5e-v2 .conc-row .nm { flex: 1; font-weight: 600; cursor: pointer; }
+.n5e-v2 .conc-row .upkeep { font-weight: 700; font-size: 12px; cursor: help; }
+.n5e-v2 .tracker .t-foot { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--n5e-muted); padding-top: 4px; border-top: 1px solid var(--n5e-line); }
+.n5e-v2 .tracker .t-foot b { color: var(--n5e-ink); }
+.n5e-v2 .tracker.conc.short { border-color: var(--n5e-hp); }
+.n5e-v2 .stance-active { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; background: #FBEDE9; border: 1px solid var(--n5e-accent); cursor: help; }
+.n5e-v2 .stance-active b { font-family: var(--n5e-head); font-size: 15px; }
+.n5e-v2 .stance-active .sub { flex: 1; }
+.n5e-v2 .stance-active button { height: 24px; }
+.n5e-v2 .tracker .pill-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.n5e-v2 .tracker.combo .toggle { height: 24px; font-size: 11px; }
+.n5e-v2 .tracker.combo .toggle.on { background: var(--n5e-accent); color: #FFF; border-color: var(--n5e-accent); }
+.n5e-v2 .tracker.combo.ready { border-color: var(--n5e-accent); }
+.n5e-v2 .combo-flow { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+.n5e-v2 .combo-flow > div { display: flex; flex-direction: column; gap: 2px; }
+.n5e-v2 .combo-flow i { color: var(--n5e-accent); }
+
+.n5e-v2 .act-group .section-head { margin-top: 16px; }
+.n5e-v2 .act-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px; align-items: start; padding: 5px 0; border-bottom: 1px solid var(--n5e-line-soft); }
+.n5e-v2 .act-row .row-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--n5e-muted); padding-top: 6px; }
+.n5e-v2 .act-row .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.n5e-v2 .act-pill { display: inline-flex; align-items: center; border-radius: 16px; background: #FFFFFF; border: 1px solid var(--n5e-line); box-shadow: 0 1px 0 rgba(30, 27, 24, .06); }
+.n5e-v2 .act-pill:hover { border-color: var(--n5e-accent); }
+.n5e-v2 .act-pill .pill-main { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 6px; cursor: pointer; text-decoration: none; }
+.n5e-v2 .act-pill .nm { font-weight: 600; white-space: nowrap; }
+.n5e-v2 .act-pill .rank { font-size: 10px; font-weight: 800; color: #FFF; background: var(--n5e-ink); border-radius: 50%; width: 16px; height: 16px; display: grid; place-items: center; }
+.n5e-v2 .act-pill .cost { font-size: 11px; font-weight: 700; color: var(--n5e-chakra); }
+.n5e-v2 .act-pill .sub { font-size: 11px; color: var(--n5e-muted); }
+.n5e-v2 .act-pill .sub.penalty { color: var(--n5e-accent-ink); font-weight: 700; }
+.n5e-v2 .act-pill .kw { font-size: 9px; text-transform: uppercase; letter-spacing: .04em; padding: 1px 5px; border-radius: 8px; background: var(--n5e-paper-2); color: var(--n5e-muted); }
+.n5e-v2 .act-pill .kw.combo { background: #FBE9D0; color: #7A4A0C; }
+.n5e-v2 .act-pill .kw.finisher { background: var(--n5e-accent-soft); color: var(--n5e-accent-ink); }
+.n5e-v2 .act-pill .kw.finisher.on { background: var(--n5e-accent); color: #FFF; }
+.n5e-v2 .act-pill .kw.chain { background: #E8E1F2; color: #4B3A6E; }
+.n5e-v2 .act-pill .kw.conc { background: var(--n5e-chakra-soft); color: var(--n5e-chakra); }
+.n5e-v2 .act-pill .conc-toggle { padding: 0 8px 0 2px; color: var(--n5e-faint); cursor: pointer; }
+.n5e-v2 .act-pill .conc-toggle:hover { color: var(--n5e-chakra); }
+.n5e-v2 .act-pill.concentrating { border-color: var(--n5e-chakra); background: var(--n5e-chakra-soft); }
+.n5e-v2 .act-pill.concentrating .conc-toggle { color: var(--n5e-chakra); }
+.n5e-v2 .act-pill.dim { opacity: .5; }
+.n5e-v2 .act-pill.bonus { border-left: 3px solid var(--n5e-gold); }
+.n5e-v2 .act-pill.reaction { border-left: 3px solid var(--n5e-chakra); }
+.n5e-v2 .act-pill.skill { background: var(--n5e-card); }
+
+/* Pill hover card (Foundry tooltip) */
+#tooltip .n5e-tip { max-width: 360px; text-align: left; font-size: 12px; line-height: 1.4; }
+#tooltip .n5e-tip .tt { display: block; font-size: 14px; }
+#tooltip .n5e-tip .tm { opacity: .8; font-size: 11px; margin: 2px 0 6px; }
+#tooltip .n5e-tip .tb p { margin: 0 0 6px; }
+#tooltip .n5e-tip .tf { opacity: .8; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; border-top: 1px solid rgba(255, 255, 255, .2); padding-top: 4px; }

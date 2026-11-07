@@ -55,14 +55,6 @@
     {{/each}}
   </div>
 
-  <div class="block">
-    <h3>Combat</h3>
-    <div class="line"><span>Chain</span>
-      <span class="boxes">{{#each vm.chain}}<button type="button" class="box {{#if filled}}on{{/if}}" data-action="setChain" data-value="{{n}}" aria-label="Chain {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span></div>
-    <div class="line"><span>Concentration</span><b>{{vm.concentration.used}} / {{vm.concentration.max}}</b></div>
-    <div class="line"><span>Stance</span><b class="{{#unless vm.stance}}muted{{/unless}}">{{#if vm.stance}}{{vm.stance}}{{else}}None{{/if}}</b></div>
-  </div>
-
   <div class="block conditions">
     <div class="line"><h3>Conditions</h3>
       {{#if editable}}

@@ -1,0 +1,15 @@
+<span class="act-pill {{kind}} {{economy}} {{#if dim}}dim{{/if}} {{#if concentrating}}concentrating{{/if}} {{#if id}}n5e-row{{/if}}"
+  {{#if id}}data-item-id="{{id}}"{{/if}} data-tooltip-html="{{tip}}" data-tooltip-direction="UP">
+  <a class="pill-main" data-action="{{#if id}}useItem{{else}}useAction{{/if}}" {{#unless id}}data-kind="{{kind}}" data-key="{{key}}"{{/unless}}>
+    {{{glyph}}}
+    {{#if rank}}<span class="rank">{{rank}}</span>{{/if}}
+    <span class="nm">{{name}}</span>
+    {{#each badges}}<span class="kw {{key}} {{#if on}}on{{/if}}">{{label}}</span>{{/each}}
+    {{#if cost}}<span class="cost">{{cost}}</span>{{/if}}
+    {{#if sub}}<span class="sub {{warn}}">{{sub}}</span>{{/if}}
+  </a>
+  {{#if concentration}}{{#if @root.editable}}
+    <a class="conc-toggle" data-action="toggleConcentration" aria-label="{{#if concentrating}}Stop concentrating on{{else}}Concentrate on{{/if}} {{name}}"
+      data-tooltip="{{#if concentrating}}Stop concentrating{{else}}Mark as concentrating{{/if}}"><i class="fa-solid fa-{{#if concentrating}}circle-dot{{else}}circle{{/if}}"></i></a>
+  {{/if}}{{/if}}
+</span>

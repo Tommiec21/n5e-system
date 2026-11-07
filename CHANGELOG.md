@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.0-alpha.3 — Combat tab
+
+### Added
+- Combat tab (replaces the empty Actions tab), holding everything a character does in a fight:
+  - Trackers: Chain (boxes, plus which known jutsu have an effect at the current exact rank);
+    Concentration (slots, each jutsu's upkeep at half the cost paid, Efficient waived, total upkeep
+    at turn start with a not-enough-chakra warning, damage-check DC = 15 + ranks); Stance (active
+    stance, Leave, switch to another); Combo / Finisher (Combo and Finisher jutsu, "Combo landed"
+    toggle that marks Finishers as armed).
+  - Pill buttons in five groups: Basic Combat (core actions, unarmed and weapon strikes, active
+    features, usable items, and every in-combat skill action with its −3/−5 tier penalty), then
+    Ninjutsu, Genjutsu, Taijutsu and Bukijutsu, each split into Actions / Bonus Actions /
+    Reactions / Free & Special and sorted by rank.
+  - Hover any pill for its full text: jutsu description with Chain, Finisher and Overcharge text,
+    keywords, cost, hit and DC; skill actions show the roll and the outcome from the Ch6 table.
+  - Click a pill to post it to chat; concentration jutsu get a toggle to start or end concentrating.
+
+### Changed
+- Chain, concentration and stance moved off the left rail into the Combat tab.
+
 ## 0.2.0-alpha.2 — Character sheet layout pass (SW5e-inspired)
 
 ### Changed

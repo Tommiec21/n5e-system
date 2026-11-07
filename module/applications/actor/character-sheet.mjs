@@ -7,8 +7,9 @@
 import {
   headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
 } from "../../view-models/character.mjs";
+import { combatVM } from "../../view-models/combat.mjs";
 import { buildRows, coerceListInputs } from "../schema-form.mjs";
-import { postItemCard } from "../../chat/card.mjs";
+import { postItemCard, postActionCard } from "../../chat/card.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -19,7 +20,8 @@ const T = name => `systems/n5e/templates/actor/character/${name}.hbs`;
 export const CHARACTER_TEMPLATE_PATHS = [
   "systems/n5e/templates/parts/field-rows.hbs",
   "systems/n5e/templates/parts/chips.hbs",
-  "systems/n5e/templates/parts/item-controls.hbs"
+  "systems/n5e/templates/parts/item-controls.hbs",
+  "systems/n5e/templates/parts/action-pill.hbs"
 ];
 
 export default class CharacterSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
@@ -36,6 +38,9 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       editItem: CharacterSheet.#onEditItem,
       deleteItem: CharacterSheet.#onDeleteItem,
       useItem: CharacterSheet.#onUseItem,
+      useAction: CharacterSheet.#onUseAction,
+      toggleConcentration: CharacterSheet.#onToggleConcentration,
+      toggleCombo: CharacterSheet.#onToggleCombo,
       toggleEquip: CharacterSheet.#onToggleEquip,
       togglePin: CharacterSheet.#onTogglePin,
       toggleExpand: CharacterSheet.#onToggleExpand,
@@ -60,7 +65,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     tabs: { template: T("tabs") },
     rail: { template: T("rail"), scrollable: [""] },
     main: { template: T("main"), scrollable: [""] },
-    actions: { template: T("actions"), scrollable: [""] },
+    combat: { template: T("combat"), scrollable: [""] },
     jutsu: { template: T("jutsu"), scrollable: [".n5e-jutsu-list"] },
     inventory: { template: T("inventory"), scrollable: [""] },
     features: { template: T("features"), scrollable: [""] },
@@ -72,7 +77,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     primary: {
       tabs: [
         { id: "main", label: "Main" },
-        { id: "actions", label: "Actions" },
+        { id: "combat", label: "Combat" },
         { id: "jutsu", label: "Jutsu" },
         { id: "inventory", label: "Inventory" },
         { id: "features", label: "Features" },
@@ -84,7 +89,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   };
 
   /** Parts that are tabs (the rest are always shown). */
-  static TAB_PARTS = new Set(["main", "actions", "jutsu", "inventory", "features", "effects", "biography"]);
+  static TAB_PARTS = new Set(["main", "combat", "jutsu", "inventory", "features", "effects", "biography"]);
 
   /* -------------------------------------------- */
   /*  Sheet UI state (not stored on the actor)    */
@@ -127,6 +132,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
           .map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
         break;
       case "main": context.vm = mainVM(actor); break;
+      case "combat": context.vm = combatVM(actor); break;
       case "jutsu": context.vm = jutsuVM(actor, this.#jutsu); break;
       case "inventory": context.vm = inventoryVM(actor); break;
       case "features": context.vm = featuresVM(actor); break;
@@ -425,5 +431,35 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const remaining = max - item.system.uses.spent;
     const next = remaining === n ? n - 1 : n;
     await item.update({ "system.uses.spent": Math.max(0, max - next) });
+  }
+
+  /** Post a core combat action or skill action to chat. */
+  static async #onUseAction(event, target) {
+    await postActionCard(this.actor, target.dataset.kind, target.dataset.key);
+  }
+
+  /**
+   * Mark or clear concentration on a jutsu. Upkeep uses the cost paid at casting; until casting
+   * records it (Phase 3), the jutsu's current cost is stored when you mark it.
+   */
+  static async #onToggleConcentration(event, target) {
+    const id = target.closest("[data-item-id]")?.dataset.itemId;
+    const item = this.actor.items.get(id);
+    const current = [...(this.actor.system.combat.concentrating ?? [])];
+    if ( current.includes(id) ) {
+      return this.actor.update({ "system.combat.concentrating": current.filter(x => x !== id),
+        [`flags.n5e.concentrationPaid.-=${id}`]: null });
+    }
+    if ( current.length >= (this.actor.system.concentration?.max ?? 2) ) {
+      ui.notifications.warn(`${this.actor.name} is already concentrating on the maximum number of jutsu. End one first.`);
+      return null;
+    }
+    return this.actor.update({ "system.combat.concentrating": [...current, id],
+      [`flags.n5e.concentrationPaid.${id}`]: item?.system.live?.cost ?? item?.system.cost?.value ?? 0 });
+  }
+
+  /** Combo landed this turn: arms Finishers (cleared at turn start once Phase 3 tracks turns). */
+  static async #onToggleCombo() {
+    return this.actor.setFlag("n5e", "comboReady", !this.actor.getFlag("n5e", "comboReady"));
   }
 }
