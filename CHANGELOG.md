@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.2
+
+### Fixed
+- Releases are published as the latest release (not a GitHub pre-release), so Foundry's update link
+  `releases/latest/download/system.json` resolves.
+
+### Added
+- Gear added to a character equips itself (weapons; armor if none is equipped; containers if none of
+  that type is equipped). Equip toggle on the placeholder sheet's item list.
+
 ## 0.1.0-alpha.1 — Phase 1: data layer
 
 ### Added

@@ -45,6 +45,8 @@ jobs:
           files: |
             dist/system.json
             dist/n5e.zip
-          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
+          # Never a GitHub "pre-release": .../releases/latest/ skips those, which would break
+          # Foundry's update check. Alpha/beta status lives in the version number instead.
+          prerelease: false
           make_latest: true
           generate_release_notes: true
