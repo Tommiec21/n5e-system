@@ -66,17 +66,12 @@ export function headerVM(actor) {
 /*  Left rail                                   */
 /* -------------------------------------------- */
 
-const RECOVERY = { sr: "short rest", lr: "long rest", fr: "full rest", turn: "turn", round: "round", day: "day", encounter: "encounter" };
+/** Terse recovery labels for the rail ("10min/Rest", "SR/LR"). */
+const RECOVERY = { rest10m: "10min/Rest", sr: "SR", lr: "LR", fr: "FR", rest: "SR/LR", turn: "Turn", turnStart: "Turn",
+  round: "Round", encounter: "Encounter", initiative: "Initiative", day: "Day" };
 
-/** "back on a short or long rest" from a pool's recovery rows or a uses.per key. */
 function recoveryNote(keys) {
-  const labels = [...new Set(keys.filter(Boolean).map(k => RECOVERY[k] ?? k))];
-  if ( !labels.length ) return "";
-  if ( labels.length > 1 && labels.every(l => l.endsWith(" rest")) ) {
-    const kinds = labels.map(l => l.replace(/ rest$/, ""));
-    return `back on a ${kinds.slice(0, -1).join(", ")} or ${kinds.at(-1)} rest`;
-  }
-  return `back on a ${labels.length > 1 ? `${labels.slice(0, -1).join(", ")} or ${labels.at(-1)}` : labels[0]}`;
+  return [...new Set(keys.filter(k => k && RECOVERY[k]).map(k => RECOVERY[k]))].join("/");
 }
 
 /** Segments for a click-to-set bar; long pools fall back to a plain fill bar. */
@@ -96,8 +91,7 @@ export function resourcesVM(actor) {
     const max = p.maxValue ?? 0;
     if ( !max ) continue;
     out.push({ kind: "pool", id, label: p.label || id, value: p.value, max, pct: pct(p.value, max),
-      segments: segments(p.value, max), note: [p.max && !/^\d+$/.test(String(p.max)) ? String(p.max).replace(/@/g, "") : "",
-        recoveryNote((p.recovery ?? []).map(r => r.on))].filter(Boolean).join(" · "), action: "setPool" });
+      segments: segments(p.value, max), note: recoveryNote((p.recovery ?? []).map(r => r.on)), action: "setPool" });
   }
   for ( const i of ofType(actor, "feat") ) {
     const max = Number(i.system.uses?.maxValue ?? i.system.uses?.max) || 0;
@@ -142,10 +136,18 @@ export function railVM(actor, registry = coreConditions) {
     cp: { value: sys.cp.value, max: sys.cp.max, temp: sys.cp.temp, pct: pct(sys.cp.value, sys.cp.max),
       drainedAt: Math.floor(sys.cp.max / 2), drained: !!sys.states?.drained, tip: bd(actor, "cp.max", { signedTotal: false }) },
     ac: { value: sys.ac.value, label: AC_FORMULAS[sys.ac.calc]?.label?.split(" (")[0] ?? sys.ac.calc,
-      tip: bd(actor, "ac", { signedTotal: false }) },
+      tip: bd(actor, "ac", { signedTotal: false }).replace("</h4>",
+        ` · ${AC_FORMULAS[sys.ac.calc]?.label?.split(" (")[0] ?? sys.ac.calc}</h4>`) },
     dr: { value: sys.dr, pierce: sys.pierce, tip: bd(actor, "dr", { signedTotal: false }) },
     initiative: { value: signed(sys.initiative.total), tip: bd(actor, "initiative") },
-    speed: { value: sys.speed?.walk ?? 0, halved: !!sys.inventory?.encumbered || !!sys.conditionPenalties?.flags?.speedMultiplier,
+    profTip: breakdownTooltip({ label: "Proficiency Bonus", total: sys.prof,
+      parts: [{ label: `Character level ${sys.level}`, value: sys.prof, base: true }] }),
+    speed: { value: sys.speed?.walk ?? 0,
+      tip: breakdownTooltip({ label: "Speed (ft)", total: sys.speed?.walk ?? 0,
+        parts: Object.entries(sys.speed ?? {}).filter(([, v]) => v)
+          .map(([k, v]) => ({ label: k === "walk" ? "Walk" : `${k[0].toUpperCase()}${k.slice(1)}`, value: v, base: true }))
+          .concat(sys.inventory?.encumbered || sys.conditionPenalties?.flags?.speedMultiplier ? [{ label: "Halved", value: 0, base: true }] : []) },
+      { signedTotal: false }), halved: !!sys.inventory?.encumbered || !!sys.conditionPenalties?.flags?.speedMultiplier,
       other: Object.entries(sys.speed ?? {}).filter(([k, v]) => k !== "walk" && v).map(([k, v]) => `${k} ${v}`).join(", ") },
     hitDice: { value: sys.hitDice.value, max: sys.hitDice.max, die: sys.hitDice.die || "—", pct: pct(sys.hitDice.value, sys.hitDice.max) },
     chakraDice: { value: sys.chakraDice.value, max: sys.chakraDice.max, die: sys.chakraDice.die || "—", pct: pct(sys.chakraDice.value, sys.chakraDice.max) },
@@ -272,10 +274,13 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
           cost: costAt(chosen), costMode: s.cost.mode,
           hit: types.has("attack") ? signed(live.attack ?? 0) : null,
           dc: types.has("save") ? live.dc : null,
-          chips: [
-            ...[...s.keywords].filter(k => !["ninjutsu", "taijutsu", "genjutsu", "bukijutsu"].includes(k)).map(k => keywordChip(k)),
-            ...componentChips(s.components)
-          ],
+          chips: [...s.keywords].filter(k => !["ninjutsu", "taijutsu", "genjutsu", "bukijutsu"].includes(k)).map(k => keywordChip(k)),
+          // Components as one short chip ("HS·CM·CS"); hover lists them in full.
+          components: (() => {
+            const cc = componentChips(s.components);
+            return cc.length ? { label: cc.map(c => c.label).join("·"),
+              tooltip: cc.map(c => c.tooltip).join("") } : null;
+          })(),
           upcastTo: live.upcastRanks?.length ? live.upcastRanks.at(-1) : null,
           missingAccess: live.castable === false,
           unmetRequirement: live.meetsRequirement === false ? `Needs ${abilities[live.ability]?.abbr ?? live.ability} ${live.requirement}` : "",
@@ -338,8 +343,10 @@ function gearRow(i) {
     row.chips = propertyChips(s.properties, "weapon");
     row.seals = { used: s.sealSlots?.used ?? 0, max: s.sealSlots?.max ?? 3 };
     if ( s.ammo?.usesDie ) {
-      row.ammo = (s.ammo.steps ?? []).map((face, idx) => ({ idx, label: face > 1 ? `d${face}` : (face === 1 ? "1" : "0"),
-        current: idx === s.ammo.step }));
+      const steps = s.ammo.steps ?? [];
+      const face = steps[s.ammo.step] ?? 0;
+      row.ammo = { label: face > 1 ? `d${face}` : String(face), atMax: s.ammo.step <= 0,
+        ladder: steps.map(f => (f > 1 ? `d${f}` : String(f))).join(" › ") };
     }
   } else if ( i.type === "armor" ) {
     row.subtitle = `${s.category} armor · +${s.armor.value} AC${s.dexCap != null ? ` · Dex max ${s.dexCap === 0 ? "none" : `+${s.dexCap}`}` : ""}`;
@@ -388,19 +395,54 @@ export function inventoryVM(actor) {
 /*  Features, Effects, Biography                */
 /* -------------------------------------------- */
 
+/** Labels for class option tags (sub-groups on the Features tab and compendium folders). */
+export const OPTION_GROUPS = {
+  "scout-path": "Shinobi\u2019s Path", "scout-generalization": "Generalization",
+  "assault-maneuver": "Assault Maneuvers", "nin-molding": "Moldings"
+};
+const titleCase = s => s.replace(/[-_]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
 export function featuresVM(actor) {
   const sys = actor.system;
   const feats = ofType(actor, "feat");
   const featRow = i => ({ id: i.id, name: i.name, img: i.img, glyph: glyph(i.system.activation)?.svg ?? "",
     level: i.system.requirement?.level || "", passive: i.system.featureType === "passive",
     uses: i.system.uses?.max ? `${Math.max(0, (i.system.uses.maxValue ?? (Number(i.system.uses.max) || 0)) - i.system.uses.spent)} / ${i.system.uses.maxValue ?? i.system.uses.max}` : "" });
-  const byCategory = cats => feats.filter(i => cats.includes(i.system.category)).map(featRow);
   const cls = sys.grants?.classItem;
   const clan = sys.grants?.clanItem;
   const bg = sys.grants?.backgroundItem;
+  const subclass = list(actor.items).find(i => i.type === "subclass") ?? null;
+  const subUuids = new Set(list(subclass?.system.advancement).flatMap(a => list(a.uuids)));
+  const fromSubclass = i => {
+    const origin = i.flags?.n5e?.advancement?.origin;
+    if ( origin ) return subclass && origin === subclass.id;
+    const src = i._stats?.compendiumSource ?? i.flags?.core?.sourceId;
+    return !!src && subUuids.has(src);
+  };
+  const tagsOf = i => [...(i.system.tags ?? [])];
+  const sub = (key, label, rows) => ({ key, label, rows, empty: !rows.length });
+  const byLevel = (a, b) => (Number(a.level) || 0) - (Number(b.level) || 0) || a.name.localeCompare(b.name);
+
+  // Class: core features, subclass features, then one sub-group per option type.
+  const classFeats = feats.filter(i => ["classFeature", "class", "classOption"].includes(i.system.category));
+  const options = classFeats.filter(i => i.system.category === "classOption");
+  const optionTags = [...new Set(options.map(i => tagsOf(i)[0] ?? "option"))];
+  const classSubs = [
+    sub("core", "Core features", classFeats.filter(i => i.system.category !== "classOption" && !fromSubclass(i)).map(featRow).sort(byLevel)),
+    ...(subclass ? [sub("subclass", subclass.name, classFeats.filter(i => i.system.category !== "classOption" && fromSubclass(i)).map(featRow).sort(byLevel))] : []),
+    ...optionTags.map(t => sub(t, OPTION_GROUPS[t] ?? titleCase(t), options.filter(i => (tagsOf(i)[0] ?? "option") === t).map(featRow)
+      .sort((a, b) => a.name.localeCompare(b.name))))
+  ].filter(g => !g.empty || g.key === "core");
+
+  // Feats by category.
+  const general = feats.filter(i => !["classFeature", "class", "classOption", "clanFeature", "clan"].includes(i.system.category));
+  const cats = [...new Set(general.map(i => i.system.category))];
+  const featSubs = cats.map(c => sub(c, featCategories[c] ?? titleCase(c), general.filter(i => i.system.category === c).map(featRow)
+    .sort((a, b) => a.name.localeCompare(b.name))));
+
   return {
     classCard: cls ? { id: cls.id, name: cls.name, levels: cls.system.levels, hitDie: cls.system.hitDie,
-      chakraDie: cls.system.chakraDie, tier: cls.system.jutsuTier } : null,
+      chakraDie: cls.system.chakraDie, tier: cls.system.jutsuTier, subclass: subclass?.name ?? "" } : null,
     clanCard: clan ? { id: clan.id, name: clan.name, affinities: [...(sys.grants?.affinities ?? [])].join(", "),
       hijutsu: [...(clan.system.hijutsuAbilities ?? [])].map(a => ({ value: a, label: abilities[a]?.abbr ?? a,
         selected: clan.system.hijutsuChoice === a })),
@@ -409,10 +451,11 @@ export function featuresVM(actor) {
     stances: ofType(actor, "stance").map(i => ({ id: i.id, name: i.name, active: sys.combat?.activeStance === i.id,
       categories: [...i.system.categories].join(", ") })),
     groups: [
-      { key: "class", label: cls?.name ?? "Class features", rows: byCategory(["classFeature", "class"]) },
-      { key: "clan", label: clan?.name ?? "Clan features", rows: byCategory(["clanFeature", "clan"]) },
-      { key: "feats", label: "Feats", rows: feats.filter(i => !["classFeature", "class", "clanFeature", "clan"].includes(i.system.category)).map(i => ({ ...featRow(i), category: featCategories[i.system.category] ?? i.system.category })) }
-    ].map(g => ({ ...g, empty: g.rows.length === 0 }))
+      { key: "class", label: cls?.name ?? "Class features", subgroups: classSubs },
+      { key: "clan", label: clan?.name ?? "Clan features", clan: true,
+        subgroups: [sub("clan", "Clan features", feats.filter(i => ["clanFeature", "clan"].includes(i.system.category)).map(featRow).sort(byLevel))] },
+      { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] }
+    ]
   };
 }
 

@@ -4,17 +4,12 @@
     <span class="level-badge" data-tooltip="Level">{{vm.level}}</span>
   </div>
 
-  <div class="stat-grid">
-    <div class="stat ac" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT">
-      <span class="lbl">Armor Class</span><b>{{vm.ac.value}}</b><span class="sub">{{vm.ac.label}}</span></div>
-    <div class="stat" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT">
-      <span class="lbl">Initiative</span><b>{{vm.initiative.value}}</b></div>
-    <div class="stat"><span class="lbl">Speed</span><b>{{vm.speed.value}}</b>
-      <span class="sub">{{#if vm.speed.halved}}halved{{else}}ft{{/if}}{{#if vm.speed.other}} · {{vm.speed.other}}{{/if}}</span></div>
-    <div class="stat"><span class="lbl">Proficiency</span><b>{{vm.prof}}</b></div>
-  </div>
-  <div class="dr-line" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT">
-    <span class="lbl">Damage Reduction</span><b>{{vm.dr.value}}</b>{{#if vm.dr.pierce}}<span class="sub">Pierce {{vm.dr.pierce}}</span>{{/if}}
+  <div class="stat-strip">
+    <div class="st" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">AC</span><b>{{vm.ac.value}}</b></div>
+    <div class="st" data-tooltip-html="{{vm.speed.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">SPD</span><b class="{{#if vm.speed.halved}}warn{{/if}}">{{vm.speed.value}}</b></div>
+    <div class="st" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Init</span><b>{{vm.initiative.value}}</b></div>
+    <div class="st" data-tooltip-html="{{vm.profTip}}" data-tooltip-direction="RIGHT"><span class="lbl">Prof</span><b>{{vm.prof}}</b></div>
+    <div class="st" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">DR</span><b>{{vm.dr.value}}</b></div>
   </div>
 
   <div class="meter hp" data-tooltip-html="{{vm.hp.tip}}" data-tooltip-direction="RIGHT">
@@ -31,11 +26,11 @@
     <div class="meter-foot"><label>Temp <input type="number" name="system.cp.temp" value="{{vm.cp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
       <span class="{{#if vm.cp.drained}}warn{{/if}}">{{#if vm.cp.drained}}Drained{{else}}Drained at {{vm.cp.drainedAt}}{{/if}}</span></div>
   </div>
-  <div class="dice">
-    <div class="die hd"><div class="meter-head"><span>Hit Dice <span class="sub">{{vm.hitDice.die}}</span></span><b>{{vm.hitDice.value}} / {{vm.hitDice.max}}</b></div>
-      <div class="track thin"><div class="fill" style="width: {{vm.hitDice.pct}}%"></div></div></div>
-    <div class="die cd"><div class="meter-head"><span>Chakra Dice <span class="sub">{{vm.chakraDice.die}}</span></span><b>{{vm.chakraDice.value}} / {{vm.chakraDice.max}}</b></div>
-      <div class="track thin"><div class="fill" style="width: {{vm.chakraDice.pct}}%"></div></div></div>
+  <div class="dice-row">
+    <span class="die hd" data-tooltip="Hit Dice: {{vm.hitDice.value}} of {{vm.hitDice.max}} {{vm.hitDice.die}} left (spend on a short rest)" data-tooltip-direction="RIGHT">
+      <span class="lbl">HD</span> <b>{{vm.hitDice.value}}/{{vm.hitDice.max}}</b> <span class="sub">{{vm.hitDice.die}}</span></span>
+    <span class="die cd" data-tooltip="Chakra Dice: {{vm.chakraDice.value}} of {{vm.chakraDice.max}} {{vm.chakraDice.die}} left (spend on a short rest)" data-tooltip-direction="RIGHT">
+      <span class="lbl">CD</span> <b>{{vm.chakraDice.value}}/{{vm.chakraDice.max}}</b> <span class="sub">{{vm.chakraDice.die}}</span></span>
   </div>
 
   <div class="block resources">

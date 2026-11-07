@@ -46,7 +46,7 @@ test("rail: resources in one list (Will of Fire, pools, feature uses)", () => {
   assert.equal(wof.segments.filter(p => p.filled).length, 1);
   assert.equal(ocular.max, 6);
   assert.equal(ocular.segments.length, 6);
-  assert.equal(ocular.note, "1 + prof · back on a short or long rest");
+  assert.equal(ocular.note, "SR/LR");
   assert.equal(uses.kind, "uses");
   assert.equal(uses.value, 3);
   assert.equal(uses.max, 5);
@@ -119,8 +119,8 @@ test("inventory: slots meter, sections, ammo ladder, seals", () => {
   const equipped = v.sections.find(s => s.key === "equipped");
   assert.deepEqual(equipped.rows.map(r => r.name), ["Kunai"]);
   const kunai = equipped.rows[0];
-  assert.deepEqual(kunai.ammo.map(s => s.label), ["d8", "d6", "d4", "1", "0"]);
-  assert.ok(kunai.ammo[0].current);
+  assert.equal(kunai.ammo.label, "d8");
+  assert.equal(kunai.ammo.ladder, "d8 › d6 › d4 › 1 › 0");
   assert.ok(kunai.chips.some(c => c.label === "Thrown"));
   assert.match(v.slotsTip, /2 × Str/);
 });
@@ -130,7 +130,8 @@ test("features, effects, biography", () => {
   const f = featuresVM(a);
   assert.equal(f.classCard.name, "Taijutsu Specialist");
   assert.deepEqual(f.clanCard.hijutsu.map(h => h.label), ["Int", "Wis"]);
-  assert.equal(f.groups[0].rows[0].name, "Martial Technique");
+  assert.equal(f.groups[0].subgroups[0].rows[0].name, "Martial Technique");
+  assert.equal(f.groups[0].subgroups[0].label, "Core features");
   const e = effectsVM(a);
   assert.equal(e.groups[0].rows[0].ranks, 2);
   assert.equal(biographyVM(a).fields.length, 7);

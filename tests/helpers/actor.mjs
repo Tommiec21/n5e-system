@@ -13,7 +13,7 @@ const SRC = path.join(import.meta.dirname, "..", "..", "packs", "_source");
 
 export function load(pack, idPart) {
   const dir = path.join(SRC, pack);
-  const file = fs.readdirSync(dir).find(f => f.includes(idPart));
+  const file = fs.readdirSync(dir).find(f => !f.startsWith("_folder-") && f.includes(idPart));
   return JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
 }
 

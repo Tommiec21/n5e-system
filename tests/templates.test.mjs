@@ -66,7 +66,8 @@ for ( const edit of [false, true] ) {
     assert.match(rail, /data-action="setWillOfFire"/);
     assert.match(rail, /class="portrait"/);
     const inv = render("actor/character/inventory.hbs", { ...base(edit), vm: parts.inventory });
-    assert.match(inv, /data-action="setAmmo"/);
+    assert.match(inv, /Ammunition Die/);
+    assert.match(inv, /data-action="ammoDown"/);
     assert.match(inv, /data-action="setCharge"/);
     render("actor/character/tabs.hbs", base(edit));
 

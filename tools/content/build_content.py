@@ -633,14 +633,120 @@ def build_ninjutsu(oro, stance_uuids):
             fire, pyro]
 
 
+
+# --------------------------------------------------------------------------------------------- #
+#  Folders: every pack (generated and hand-made docs) is organized into folders                 #
+# --------------------------------------------------------------------------------------------- #
+
+OPTION_LABELS = {"scout-path": "Shinobi’s Path", "scout-generalization": "Generalizations",
+                 "assault-maneuver": "Assault Maneuvers", "nin-molding": "Moldings"}
+FEAT_LABELS = {"general": "General", "skill": "Skill", "chakra": "Chakra", "ninjutsu": "Ninjutsu",
+               "genjutsu": "Genjutsu", "taijutsu": "Taijutsu", "critical": "Critical", "clan": "Clan",
+               "class": "Class", "archetype": "Archetype", "rare": "Rare"}
+DISC_LABELS = {"nin": "Ninjutsu", "gen": "Genjutsu", "tai": "Taijutsu", "buki": "Bukijutsu"}
+SECTION_LABELS = {v: k for k, v in SECTION_MAP.items()}
+TYPE_LABELS = {"weapon": "Weapons", "armor": "Armor", "consumable": "Consumables & Ninja Tools",
+               "toolkit": "Toolkits", "container": "Storage", "loot": "Loot"}
+
+
+def folder_paths(pack, docs):
+    """{doc _id: [folder, subfolder, ...]} for one pack's docs."""
+    classes = {d["system"].get("identifier"): d["name"] for p, ds in ALL_DOCS.items() for d in ds if d["type"] == "class"}
+    sub_of = {}
+    for ds in ALL_DOCS.values():
+        for d in ds:
+            if d["type"] == "subclass":
+                for a in d["system"].get("advancement", []):
+                    for u in a.get("uuids", []):
+                        sub_of[u.rsplit(".", 1)[-1]] = (classes.get(d["system"].get("classIdentifier"), "Other"), d["name"])
+    out = {}
+    for d in docs:
+        s = d["system"]
+        if pack == "classes":
+            out[d["_id"]] = [d["name"] if d["type"] == "class" else classes.get(s.get("classIdentifier"), "Other")]
+        elif pack == "features":
+            cls = classes.get((s.get("requirement") or {}).get("class"), "")
+            if d["_id"] in sub_of and s.get("category") == "classOption":
+                out[d["_id"]] = [*sub_of[d["_id"]], OPTION_LABELS.get((s.get("tags") or ["Options"])[0], "Options")]
+            elif d["_id"] in sub_of:
+                out[d["_id"]] = list(sub_of[d["_id"]])
+            elif s.get("category") == "classOption":
+                out[d["_id"]] = [cls or "Other", OPTION_LABELS.get((s.get("tags") or ["Options"])[0], "Options")]
+            elif s.get("category") in ("clanFeature", "clan"):
+                out[d["_id"]] = ["Clans", (s.get("requirement") or {}).get("clan") or "Other"]
+            else:
+                out[d["_id"]] = [cls or "Other", "Core features"]
+        elif pack == "stances":
+            out[d["_id"]] = [(s.get("categories") or ["other"])[0].title()]
+        elif pack == "feats":
+            out[d["_id"]] = [FEAT_LABELS.get(s.get("category"), "Other")]
+        elif pack == "jutsu":
+            disc = DISC_LABELS.get(s.get("discipline"), "Other")
+            section = SECTION_LABELS.get(s.get("section"), "Other")
+            out[d["_id"]] = [disc, *([] if section == disc else [section]), f"{s.get('rank', '?')}-Rank"]
+        elif pack == "equipment":
+            out[d["_id"]] = [TYPE_LABELS.get(d["type"], "Other")]
+    return out
+
+
+def apply_folders():
+    """Write folder docs (generated) and set every doc's folder field."""
+    for pack, docs in ALL_DOCS.items():
+        paths = folder_paths(pack, docs)
+        folders = {}
+        for chain in paths.values():
+            for depth in range(1, len(chain) + 1):
+                key = tuple(chain[:depth])
+                if key in folders:
+                    continue
+                _id = make_id(f"folder:{pack}", "/".join(key))
+                parent = folders[key[:-1]]["_id"] if depth > 1 else None
+                folders[key] = {"_id": _id, "name": key[-1], "type": "Item", "folder": parent, "sorting": "a",
+                                "sort": 0, "color": None, "description": "", "flags": {"n5e": {"generated": True}},
+                                "_key": f"!folders!{_id}"}
+        folder_dir = os.path.join(OUT, pack)
+        for f in folders.values():
+            with open(os.path.join(folder_dir, f"_folder-{slug(f['name'])}-{f['_id']}.json"), "w", encoding="utf-8") as fh:
+                json.dump(f, fh, indent=2, ensure_ascii=False)
+                fh.write("\n")
+        for d in docs:
+            chain = paths.get(d["_id"])
+            d["folder"] = folders[tuple(chain)]["_id"] if chain else None
+            with open(d["__file"], "w", encoding="utf-8") as fh:
+                body = {k: v for k, v in d.items() if k != "__file"}
+                json.dump(body, fh, indent=2, ensure_ascii=False)
+                fh.write("\n")
+
+
+ALL_DOCS = {}
+
+
+def load_all():
+    ALL_DOCS.clear()
+    for pack in sorted(os.listdir(OUT)):
+        folder = os.path.join(OUT, pack)
+        if not os.path.isdir(folder):
+            continue
+        ALL_DOCS[pack] = []
+        for fn in sorted(os.listdir(folder)):
+            p = os.path.join(folder, fn)
+            with open(p, encoding="utf-8") as f:
+                d = json.load(f)
+            if str(d.get("_key", "")).startswith("!folders!"):
+                continue
+            d["__file"] = p
+            ALL_DOCS[pack].append(d)
+
 # --------------------------------------------------------------------------------------------- #
 #  Main                                                                                         #
 # --------------------------------------------------------------------------------------------- #
 
 def write(docs):
     owned = {}
-    for pack in ("classes", "features", "stances", "feats", "jutsu"):
+    for pack in sorted(set(os.listdir(OUT)) | {"classes", "features", "stances", "feats", "jutsu"}):
         folder = os.path.join(OUT, pack)
+        if not os.path.isdir(os.path.join(OUT, pack)) and pack not in ("classes", "features", "stances", "feats", "jutsu"):
+            continue
         os.makedirs(folder, exist_ok=True)
         for fn in os.listdir(folder):
             p = os.path.join(folder, fn)
@@ -675,6 +781,8 @@ def main():
     feats, feat_names = build_feats(core)
     docs = [*build_scout(oro, stance_uuids), *build_ninjutsu(oro, stance_uuids), *stances, *feats, *build_jutsu(parsed)]
     n = write(docs)
+    load_all()
+    apply_folders()
     print(f"wrote {n} documents ({len(stances)} stances; feats: {', '.join(feat_names)})")
 
 

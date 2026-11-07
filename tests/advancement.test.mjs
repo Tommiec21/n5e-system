@@ -10,12 +10,14 @@ import path from "node:path";
 import { makeActor, baseAbilities } from "./helpers/actor.mjs";
 import { stepsForLevel, subclassSteps, learnableJutsu, eligibleFeats, masteryTargets, validate } from "../module/advancement/steps.mjs";
 import N5E from "../module/config/index.mjs";
+import { featuresVM } from "../module/view-models/character.mjs";
 
 const SRC = path.join(import.meta.dirname, "..", "packs", "_source");
 const all = {};
 for ( const pack of fs.readdirSync(SRC) ) {
   for ( const f of fs.readdirSync(path.join(SRC, pack)) ) {
     const d = JSON.parse(fs.readFileSync(path.join(SRC, pack, f), "utf8"));
+    if ( d._key.startsWith("!folders!") ) continue;
     all[`Compendium.n5e.${pack}.Item.${d._id}`] = { ...d, uuid: `Compendium.n5e.${pack}.Item.${d._id}` };
   }
 }
@@ -76,8 +78,13 @@ function play(className, upTo, pick = {}) {
     // Apply (same semantics as module/advancement/manager.mjs).
     for ( const st of steps ) {
       const v = sel[st.id];
-      if ( st.type === "feature" ) sources.push(...st.uuids.map(u => clone(all[u])));
-      if ( st.type === "itemChoice" || st.type === "jutsu" ) sources.push(...v.map(u => clone(all[u])));
+      const stamp = d => {
+        const sc = sources.find(x => x.type === "subclass");
+        d.flags = { ...d.flags, n5e: { ...d.flags?.n5e, advancement: { origin: st.origin === "subclass" ? sc?._id : cls._id, level } } };
+        return d;
+      };
+      if ( st.type === "feature" ) sources.push(...st.uuids.map(u => stamp(clone(all[u]))));
+      if ( st.type === "itemChoice" || st.type === "jutsu" ) sources.push(...v.map(u => stamp(clone(all[u]))));
       if ( st.type === "trait" && st.id === "class:skills" ) cls.system.skills.chosen = v;
       if ( st.type === "trait" && st.id === "class:tools" ) cls.system.tools.chosen = v;
       if ( st.type === "option" || st.type === "itemChoice" ) {
@@ -138,6 +145,13 @@ test("Scout-Nin 1-5 with Assault Scout", () => {
   assert.equal(actor.items.filter(i => i.type === "skill" || (i.type === "feat" && ["general", "skill", "ninjutsu", "taijutsu", "genjutsu"].includes(i.system.category))).length, 1, "ASI feat");
   assert.equal([...sys.grants.skills].length, 4);
   assert.equal(actor.items.filter(i => i.type === "jutsu").length, 9, "Jutsu Known 9 at 5th (pool permitting)");
+  const f = featuresVM(actor);
+  const classGroup = f.groups.find(g => g.key === "class");
+  assert.deepEqual(classGroup.subgroups.map(g => g.label),
+    ["Core features", "Assault Scout", "Shinobi\u2019s Path", "Generalization", "Assault Maneuvers"]);
+  assert.ok(classGroup.subgroups[1].rows.some(r => r.name === "Brutish Momentum"));
+  assert.ok(!classGroup.subgroups[0].rows.some(r => r.name === "Brutish Momentum"));
+  assert.ok(f.groups.find(g => g.key === "feats").subgroups.length >= 1);
 });
 
 test("Ninjutsu Specialist 1-5 with Blaze Walker", () => {

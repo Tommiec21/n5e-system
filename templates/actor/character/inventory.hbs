@@ -20,7 +20,10 @@
               <div class="extras">
                 {{#if seals}}<span class="sub" data-tooltip-text="Seal slots used">Seals {{seals.used}} / {{seals.max}}</span>{{/if}}
                 {{#if ammo}}
-                  <span class="ammo" aria-label="Ammunition die">{{#each ammo}}<button type="button" class="{{#if current}}on{{/if}}" data-action="setAmmo" data-idx="{{idx}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>{{/each}}</span>
+                  <span class="ammo"><span class="lbl">Ammunition Die</span>
+                    <button type="button" class="ammo-die" data-action="ammoDown" data-ammo-die {{#unless @root.editable}}disabled{{/unless}}
+                      data-tooltip="Left click: step down after a roll of 1-2 · Right click: step up when you recover ammo ({{ammo.ladder}}). Reaching 0 removes it."
+                      aria-label="Ammunition Die {{ammo.label}}">{{ammo.label}}</button></span>
                 {{/if}}
                 {{#if charges}}
                   <span class="charges" aria-label="Charges">{{#each charges}}<button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setCharge" data-idx="{{idx}}" aria-label="Charge {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span>

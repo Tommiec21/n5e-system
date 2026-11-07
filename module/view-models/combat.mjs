@@ -196,7 +196,9 @@ function concentrationVM(actor) {
   const base = sys.concentration?.dcBase ?? dcTables?.concentration?.base ?? 15;
   const max = sys.concentration?.max ?? 2;
   const cp = sys.cp?.value ?? 0;
+  const knowsAny = ofType(actor, "jutsu").some(i => i.system.duration?.concentration);
   return {
+    show: rows.length > 0 || knowsAny,
     rows, used: rows.length, max, slots: pips(rows.length, max),
     upkeep, short: upkeep > cp, cpAfter: Math.max(0, cp - upkeep),
     dc: base + rankSum, dcBase: base, rankSum
@@ -211,7 +213,8 @@ function chainVM(actor) {
     return kw.has("chain");
   });
   const atRank = value ? chainJutsu.filter(i => i.system.chainEffects?.[value]).map(i => ({ id: i.id, name: i.name })) : [];
-  return { value, boxes: pips(value, 3), atRank, count: chainJutsu.length };
+  // Shown once a Chain jutsu has been cast (or the count was set by hand).
+  return { show: !!sys.combat?.chain?.active || value > 0, value, boxes: pips(value, 3), atRank };
 }
 
 function stanceVM(actor) {
@@ -227,12 +230,12 @@ function stanceVM(actor) {
   };
 }
 
-function comboVM(actor, comboReady) {
-  const tai = ofType(actor, "jutsu");
+function comboVM(actor, combo) {
+  if ( !combo ) return { show: false, finishers: [] };
   const has = (i, k) => (i.system.keywords instanceof Set ? i.system.keywords : new Set(i.system.keywords ?? [])).has(k);
-  const combos = tai.filter(i => has(i, "combo")).map(i => ({ id: i.id, name: i.name }));
-  const finishers = tai.filter(i => has(i, "finisher") || i.system.finisher?.text).map(i => ({ id: i.id, name: i.name }));
-  return { ready: comboReady, combos, finishers, any: combos.length + finishers.length > 0 };
+  const finishers = ofType(actor, "jutsu").filter(i => has(i, "finisher") || i.system.finisher?.text)
+    .map(i => ({ id: i.id, name: i.name }));
+  return { show: true, ready: true, name: combo.name, finishers };
 }
 
 /* -------------------------------------------- */
@@ -240,14 +243,20 @@ function comboVM(actor, comboReady) {
 /* -------------------------------------------- */
 
 export function combatVM(actor) {
-  const comboReady = !!flag(actor, "comboReady");
+  const combo = flag(actor, "combo") ?? null;
+  const comboReady = !!combo;
+  const basic = basicCombat(actor);
+  const skillRows = basic.sections.filter(sec => sec.skill).map(sec => ({ ...sec, label: sec.label.replace(/^Skill /, "") }));
+  basic.sections = basic.sections.filter(sec => !sec.skill);
   return {
     chain: chainVM(actor),
     concentration: concentrationVM(actor),
     stance: stanceVM(actor),
-    combo: comboVM(actor, comboReady),
-    basic: basicCombat(actor),
-    jutsu: jutsuGroups(actor, { comboReady }),
+    combo: comboVM(actor, combo),
+    basic,
+    // Only disciplines the character has jutsu in.
+    jutsu: jutsuGroups(actor, { comboReady }).filter(g => !g.empty),
+    skills: { key: "skills", label: "Skill Actions", rows: skillRows },
     abilities: Object.keys(abilities)
   };
 }

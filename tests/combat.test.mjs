@@ -37,7 +37,7 @@ const make = () => {
     acCalc: "martialTechnique",
     items: [taiSpec(7), load("features", "MartialTech"), load("clans", "Uchiha"), load("jutsu", "DynamicEntry"),
       load("jutsu", "LeafHurrican"), kunai, chainJutsu, comboJutsu, concJutsu, effJutsu, stance, stance2] });
-  a.flags = { n5e: { comboReady: true, concentrationPaid: { conc000000000001: 9 } } };
+  a.flags = { n5e: { combo: { name: "Opening Jab", id: "combo00000000001" }, concentrationPaid: { conc000000000001: 9 } } };
   return a;
 };
 
@@ -53,18 +53,18 @@ test("combat: trackers (chain, concentration upkeep, stance, combo)", () => {
   assert.equal(c.dc, 15 + 2 + 1, "15 + ranks of all concentrated jutsu (E=0, D=1, C=2)");
   assert.equal(v.stance.active.name, "Iron Fist Stance");
   assert.deepEqual(v.stance.others.map(s => s.name), ["Willow Stance"]);
-  assert.ok(v.combo.ready);
-  assert.deepEqual(v.combo.combos.map(j => j.name), ["Opening Jab"]);
+  assert.ok(v.combo.show && v.combo.name === "Opening Jab");
   assert.deepEqual(v.combo.finishers.map(j => j.name), ["Leaf Hurricane"]);
+  assert.ok(v.chain.show, "Chain shows once it has a count");
 });
 
 test("combat: action groups", () => {
   const v = combatVM(make());
   const sec = k => (k === "skills"
-    ? { pills: v.basic.sections.filter(s => s.skill).flatMap(s => s.pills) }
+    ? { pills: v.skills.rows.flatMap(s => s.pills) }
     : v.basic.sections.find(s => s.key === k));
-  assert.deepEqual(v.basic.sections.filter(s => s.skill).map(s => s.label),
-    ["Skill Actions", "Skill Bonus Actions", "Skill Reactions", "Skill Free & Special"]);
+  assert.deepEqual(v.skills.rows.map(s => s.label), ["Actions", "Bonus Actions", "Reactions", "Free & Special"]);
+  assert.ok(!v.basic.sections.some(s => s.skill), "skill actions moved out of Basic Combat");
   assert.ok(sec("core").pills.some(p => p.name === "Dodge"));
   assert.ok(sec("core").pills.some(p => p.name === "Opportunity Attack" && p.economy === "reaction"));
   assert.deepEqual(sec("strikes").pills.map(p => p.name), ["Unarmed Strike", "Kunai"]);
@@ -99,10 +99,27 @@ test("combat: template and action card render", () => {
   assert.match(html, /data-action="useAction" data-kind="core" data-key="dodge"/);
   assert.match(html, /data-action="toggleConcentration"/);
   assert.match(html, /Finisher armed/);
+  assert.ok(html.indexOf("Skill Actions") > html.indexOf(">Bukijutsu<"), "skill actions last");
   assert.match(html, /Upkeep at turn start <b class="">4 CP/);
-  assert.equal((html.match(/class="act-group /g) ?? []).length, 5);
+  assert.equal((html.match(/class="act-group /g) ?? []).length, 6, "basic + 4 disciplines + skills");
   const card = actionCardData("skill", "grapple", make());
   assert.equal(card.name, "Grapple");
   assert.match(card.subtitle, /Athletics/);
   assert.equal(actionCardData("core", "unarmed", make()).stats[0].value, "1d6 +3 bludgeoning");
+});
+
+test("casting updates Chain and Combo", async () => {
+  const { castUpdates } = await import("../module/rules/cast-tracking.mjs");
+  const a = make();
+  const find = n => a.items.find(i => i.name === n);
+  a.system.combat.chain.value = 1;
+  assert.deepEqual(castUpdates(a, { ...find("Chain Slash"), system: { ...find("Chain Slash").system, activation: { type: "action" } } }),
+    { "system.combat.chain.active": true, "system.combat.chain.value": 2, "flags.n5e.combo": null });
+  assert.equal(castUpdates(a, find("Chain Slash"))["system.combat.chain.value"], undefined, "Bonus Action maintains");
+  assert.equal(castUpdates(a, find("Mist Veil"))["system.combat.chain.value"], 0, "non-Chain jutsu resets");
+  assert.deepEqual(castUpdates(a, find("Opening Jab"))["flags.n5e.combo"], { name: "Opening Jab", id: "combo00000000001" });
+  assert.equal(castUpdates(a, find("Leaf Hurricane"))["flags.n5e.combo"], null, "Finisher spends the Combo");
+  const fresh = combatVM(makeActor({ items: [load("jutsu", "DynamicEntry")] }));
+  assert.ok(!fresh.chain.show && !fresh.combo.show && !fresh.concentration.show, "trackers hidden until used");
+  assert.deepEqual(fresh.jutsu.map(g => g.key), ["tai"], "empty disciplines hidden");
 });

@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.3.0-alpha.2 — Sheet cleanup from King's review
+
+### Changed
+- Combat tab
+  - Chain appears once a Chain jutsu is used. An Action Chain jutsu raises it by 1, a Bonus Action or
+    Reaction one maintains it, and any non-Chain jutsu resets it.
+  - Combo/Finisher appears once a Combo is used, listing the Finishers it arms. A Finisher or any
+    other jutsu clears it.
+  - Concentration appears once you know a concentration jutsu; Stance once you know a stance.
+  - Skill Actions moved to the bottom, and disciplines you know no jutsu in are hidden.
+- Jutsu tab: each jutsu is one compact line with the name, keyword chips, components as one short chip
+  (HS·CM·CS), upcast marker, range, cost, hit/DC, and a small Use button.
+- Rail
+  - AC, SPD, Init, Prof and DR sit in one row of small tiles; hover any of them for the full name and
+    the math.
+  - Hit Dice and Chakra Dice share one row (HD 5/5 d8 · CD 5/5 d10).
+  - The rail never scrolls sideways.
+  - Recovery notes are terse ("10min/Rest", "SR/LR").
+- Inventory: the ammo ladder is now one "Ammunition Die" control. Left click steps it down, right
+  click steps it up, and reaching 0 removes the item.
+- Features tab
+  - Class / Clan / Background cards are a compact strip.
+  - The Hijutsu ability picker sits in the Clan section.
+  - Class features are grouped as core features, subclass features, then one group per option type
+    (Shinobi's Path, Generalization, Assault Maneuvers, Moldings).
+  - Feats are grouped by category, and Stances come last.
+- Every compendium is organized into folders:
+  - Classes: one folder per class.
+  - Features: Class > Core / Subclass > options; option types get their own folders.
+  - Fighting Stances: by type.
+  - Feats: by category.
+  - Jutsu: discipline > section > rank.
+  - Equipment: by type.
+
 ## 0.3.0-alpha.1 — Level-up automation and the first class content
 
 ### Added

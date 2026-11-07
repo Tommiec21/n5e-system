@@ -42,6 +42,10 @@ for ( const dir of fs.existsSync(srcRoot) ? fs.readdirSync(srcRoot) : [] ) {
   for ( const file of walk(path.join(srcRoot, dir)) ) {
     const doc = JSON.parse(fs.readFileSync(file, "utf8"));
     for ( const k of ["_id", "_key", "name", "type"] ) if ( !doc[k] ) errors.push(`${path.relative(ROOT, file)}: no ${k}`);
+    if ( String(doc._key ?? "").startsWith("!folders!") ) {
+      if ( doc.type !== "Item" ) errors.push(`${path.relative(ROOT, file)}: folder must be type Item`);
+      continue;
+    }
     if ( doc.type && !itemModels[doc.type] ) errors.push(`${path.relative(ROOT, file)}: unknown type ${doc.type}`);
   }
 }

@@ -23,25 +23,24 @@
         <div class="section-head"><h2>{{label}}</h2>
           <span class="sub">Attack <b data-tooltip-html="{{attackTip}}">{{attack}}</b> · Save DC <b data-tooltip-html="{{dcTip}}">{{dc}}</b> · {{ability}}</span></div>
         {{#each ranks}}
-          <div class="rank-head"><span>{{label}}</span><span>Range</span><span class="r">Cost</span><span class="c">Hit / DC</span><span></span></div>
+          <div class="rank-head"><span>{{label}}</span></div>
           <ol class="rows">
             {{#each rows}}
               <li class="n5e-row jutsu-row draggable {{#if open}}open{{/if}} {{#if missingAccess}}locked{{/if}}" data-item-id="{{id}}" draggable="true">
                 <div class="row-main">
                   <span class="glyph" data-tooltip-text="{{glyphLabel}}">{{{glyph}}}</span>
-                  <div class="name-col">
-                    <a class="name" data-action="toggleExpand">{{name}}</a>
-                    <span class="chips-line">
-                      {{> "systems/n5e/templates/parts/chips.hbs" chips=chips}}
-                      {{#if concentration}}<span class="chip">Concentration</span>{{/if}}
-                      {{#if upcastTo}}<span class="chip upcast">Upcast to {{upcastTo}}</span>{{/if}}
-                      {{#if unmetRequirement}}<span class="chip warn">{{unmetRequirement}}</span>{{/if}}
-                      {{#if missingAccess}}<span class="chip warn">No affinity</span>{{/if}}
-                    </span>
-                  </div>
-                  <span class="range">{{range}}{{#if area}}<br><span class="sub">{{area}}</span>{{/if}}</span>
-                  <span class="cost r">{{#if (n5eEq costMode "none")}}—{{else}}{{cost}} CP{{/if}}</span>
-                  <span class="hit c">{{#if hit}}{{hit}}{{else if dc}}DC {{dc}}{{else}}—{{/if}}</span>
+                  <a class="name" data-action="toggleExpand" data-tooltip="Show details">{{name}}</a>
+                  <span class="tags">
+                    {{#each chips}}<span class="chip {{tone}}" data-tooltip-html="{{tooltip}}">{{label}}</span>{{/each}}
+                    {{#if concentration}}<span class="chip conc" data-tooltip="Concentration">Conc.</span>{{/if}}
+                    {{#if components}}<span class="chip comp" data-tooltip-html="{{components.tooltip}}">{{components.label}}</span>{{/if}}
+                    {{#if upcastTo}}<span class="chip upcast" data-tooltip="Can be cast up to {{upcastTo}}-Rank">↑{{upcastTo}}</span>{{/if}}
+                    {{#if unmetRequirement}}<span class="chip warn">{{unmetRequirement}}</span>{{/if}}
+                    {{#if missingAccess}}<span class="chip warn">No affinity</span>{{/if}}
+                  </span>
+                  <span class="range" data-tooltip="Range{{#if area}} · Area {{area}}{{/if}}">{{range}}{{#if area}} · {{area}}{{/if}}</span>
+                  <span class="cost" data-tooltip="Chakra cost">{{#if (n5eEq costMode "none")}}—{{else}}{{cost}} CP{{/if}}</span>
+                  <span class="hit" data-tooltip="Attack or save DC">{{#if hit}}{{hit}}{{else if dc}}DC {{dc}}{{else}}—{{/if}}</span>
                   <span class="use">
                     <button type="button" data-action="useItem">Use</button>
                     {{> "systems/n5e/templates/parts/item-controls.hbs"}}

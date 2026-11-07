@@ -11,6 +11,7 @@ import { combatVM } from "../../view-models/combat.mjs";
 import { buildRows, coerceListInputs } from "../schema-form.mjs";
 import { postItemCard, postActionCard } from "../../chat/card.mjs";
 import LevelUpDialog from "../level-up.mjs";
+import { castUpdates } from "../../rules/cast-tracking.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -46,12 +47,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       levelDown: CharacterSheet.#onLevelDown,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
       toggleCombo: CharacterSheet.#onToggleCombo,
+      resetChain: CharacterSheet.#onResetChain,
       toggleEquip: CharacterSheet.#onToggleEquip,
       togglePin: CharacterSheet.#onTogglePin,
       toggleExpand: CharacterSheet.#onToggleExpand,
       castRank: CharacterSheet.#onCastRank,
       jutsuFilter: CharacterSheet.#onJutsuFilter,
-      setAmmo: CharacterSheet.#onSetAmmo,
+      ammoDown: CharacterSheet.#onAmmoDown,
       setCharge: CharacterSheet.#onSetCharge,
       setWillOfFire: CharacterSheet.#onSetWillOfFire,
       setChain: CharacterSheet.#onSetChain,
@@ -195,6 +197,17 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
         search.focus();
         search.setSelectionRange(search.value.length, search.value.length);
       }
+    }
+
+    // Ammunition Die: right click steps it up (recovering ammo). Stops the item context menu.
+    for ( const btn of this.element.querySelectorAll("[data-ammo-die]") ) {
+      btn.addEventListener("contextmenu", async ev => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        if ( !this.isEditable ) return;
+        const item = this.actor.items.get(btn.closest("[data-item-id]")?.dataset.itemId);
+        if ( item ) await CharacterSheet.stepAmmo(item, -1);
+      });
     }
 
     // Add-condition picker in the rail.
@@ -355,7 +368,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
   static async #onUseItem(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
-    if ( item ) await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
+    if ( !item ) return;
+    await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
+    const update = castUpdates(this.actor, item);
+    if ( update ) await this.actor.update(update);
   }
 
   static async #onToggleEquip(event, target) {
@@ -389,9 +405,24 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     this.render({ parts: ["jutsu"] });
   }
 
-  static async #onSetAmmo(event, target) {
+  /** Ammunition Die one step down (d8 > d6 > d4 > 1 > 0); at 0 the item is used up and removed. */
+  static async #onAmmoDown(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
-    if ( item ) await item.update({ "system.ammo.step": Number(target.dataset.idx) });
+    if ( item ) await CharacterSheet.stepAmmo(item, 1);
+  }
+
+  /**
+   * Move an Ammunition Die along its ladder. +1 = down a step, -1 = up a step.
+   * @returns {Promise<Item|void>}
+   */
+  static async stepAmmo(item, delta) {
+    const { steps = [], step = 0 } = item.system.ammo ?? {};
+    const next = Math.max(0, Math.min(steps.length - 1, step + delta));
+    if ( (steps[next] ?? 0) <= 0 ) {
+      ui.notifications.info(`${item.name}: Ammunition Die reached 0, removed from inventory.`);
+      return item.delete();
+    }
+    if ( next !== step ) return item.update({ "system.ammo.step": next });
   }
 
   static async #onSetCharge(event, target) {
@@ -486,9 +517,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       [`flags.n5e.concentrationPaid.${id}`]: item?.system.live?.cost ?? item?.system.cost?.value ?? 0 });
   }
 
-  /** Combo landed this turn: arms Finishers (cleared at turn start once Phase 3 tracks turns). */
+  /** Clear the armed Combo (the Finisher window passed). */
   static async #onToggleCombo() {
-    return this.actor.setFlag("n5e", "comboReady", !this.actor.getFlag("n5e", "comboReady"));
+    return this.actor.update({ "flags.n5e.combo": null });
+  }
+
+  /** Reset Chain to 0 and hide the tracker. */
+  static async #onResetChain() {
+    return this.actor.update({ "system.combat.chain.value": 0, "system.combat.chain.active": false });
   }
 
   /** Level Up: the next level of the character's class. */
