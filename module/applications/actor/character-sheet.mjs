@@ -11,8 +11,11 @@ import { combatVM } from "../../view-models/combat.mjs";
 import { buildRows, coerceListInputs } from "../schema-form.mjs";
 import { postItemCard, postActionCard } from "../../chat/card.mjs";
 import LevelUpDialog from "../level-up.mjs";
-import { castUpdates } from "../../rules/cast-tracking.mjs";
 import { rollD20, rollInitiative } from "../../dice/roll.mjs";
+import { stepAmmo } from "../../workflow/ammo.mjs";
+import { castJutsu } from "../../workflow/cast.mjs";
+import { attackWithWeapon } from "../../workflow/attack.mjs";
+import { useFeature } from "../../workflow/use-feature.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -372,9 +375,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onUseItem(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( !item ) return;
+    // Jutsu cast (dialog; Alt+click casts at base rank), weapons attack, features pay their cost.
+    if ( item.type === "jutsu" ) return castJutsu(this.actor, item, { skipDialog: event.altKey });
+    if ( item.type === "weapon" ) return attackWithWeapon(this.actor, item, { event });
+    if ( item.type === "feat" ) return useFeature(this.actor, item);
     await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
-    const update = castUpdates(this.actor, item);
-    if ( update ) await this.actor.update(update);
   }
 
   static async #onToggleEquip(event, target) {
@@ -414,18 +419,9 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( item ) await CharacterSheet.stepAmmo(item, 1);
   }
 
-  /**
-   * Move an Ammunition Die along its ladder. +1 = down a step, -1 = up a step.
-   * @returns {Promise<Item|void>}
-   */
+  /** Ammunition Die step (shared with attacks). */
   static async stepAmmo(item, delta) {
-    const { steps = [], step = 0 } = item.system.ammo ?? {};
-    const next = Math.max(0, Math.min(steps.length - 1, step + delta));
-    if ( (steps[next] ?? 0) <= 0 ) {
-      ui.notifications.info(`${item.name}: Ammunition Die reached 0, removed from inventory.`);
-      return item.delete();
-    }
-    if ( next !== step ) return item.update({ "system.ammo.step": next });
+    return stepAmmo(item, delta);
   }
 
   static async #onSetCharge(event, target) {
@@ -499,6 +495,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onUseAction(event, target) {
     // Skill actions roll their check (with the tier penalty); core actions post their rules card.
     if ( target.dataset.kind === "skill" ) return rollD20(this.actor, "skillAction", target.dataset.key, { event });
+    if ( target.dataset.key === "unarmed" ) return attackWithWeapon(this.actor, null, { event });
     await postActionCard(this.actor, target.dataset.kind, target.dataset.key);
   }
 

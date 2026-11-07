@@ -1,6 +1,7 @@
 /**
- * Item chat cards (dnd5e-style card with PF2e trait chips). Phase 2 posts text and live numbers only;
- * rolls and spending arrive with Phase 3.
+ * Item chat cards (dnd5e-style card with PF2e trait chips). Features and consumables show what was
+ * spent and buttons for their rollable parts (attack, damage, save, healing) read from their text.
+ * Jutsu use the cast card (workflow/cast.mjs); weapons the attack card (workflow/attack.mjs).
  */
 import { glyph, keywordChip, componentChips, propertyChips, signed } from "../view-models/common.mjs";
 
@@ -49,12 +50,19 @@ export function itemCardData(item, { rank } = {}) {
 /** Post an item's card to chat. */
 export async function postItemCard(item, options = {}) {
   const data = itemCardData(item, options);
+  if ( options.spent ) data.stats.unshift({ label: "Spent", value: options.spent });
+  if ( item.actor ) {
+    const { effectiveActivities } = await import("../rules/activity-parse.mjs");
+    const { activityButtons } = await import("../workflow/activity-buttons.mjs");
+    const acts = effectiveActivities(item);
+    data.acts = acts.length ? activityButtons(item.actor, item, acts) : "";
+  }
   const content = await foundry.applications.handlebars.renderTemplate(CARD_TEMPLATE, data);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({
     speaker: ChatMessageCls.getSpeaker({ actor: item.actor }),
     content,
-    flags: { n5e: { itemUuid: item.uuid, rank: options.rank ?? null } }
+    flags: { n5e: { itemUuid: item.uuid, rank: options.rank ?? null, actorUuid: item.actor?.uuid ?? null } }
   });
 }
 

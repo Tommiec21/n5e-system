@@ -62,8 +62,9 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
    * Live cost at a cast rank for an actor (step 10 and at cast time).
    * @param {object} actorSystem
    * @param {string} [castRank]
+   * @param {object} [choices]   the caster's pick when several multipliers/divisors apply (index)
    */
-  computeCost(actorSystem, castRank = this.rank) {
+  computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice } = {}) {
     const pen = actorSystem?.conditionPenalties;
     const mods = actorSystem?.modifiers;
     const ctx = { discipline: this.discipline, keywords: this.keywords, rank: castRank };
@@ -84,7 +85,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       mode: this.cost.mode,
       upcastRanks: Math.max(0, rankValue(castRank) - rankValue(this.rank)),
       costPerRank: this.costPerRank,
-      baseAdds, additions, subtractions, multipliers, divisors
+      baseAdds, additions, subtractions, multipliers, divisors, multiplierChoice, divisorChoice
     });
   }
 

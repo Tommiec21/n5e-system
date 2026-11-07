@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.4.0-alpha.2 — Phase 3, release 2: attacks, damage, casting
+
+### Added
+- **Casting a jutsu**: Use (Jutsu or Combat tab) opens the cast dialog. Alt+click casts at base rank
+  when nothing needs choosing.
+  - Pick the cast rank (upcasting), and a multiplier or divisor when several apply (caster's
+    choice).
+  - Tick Moldings (spend Focus; Ninjutsu only, more than one warns about Crash) and Assault Maneuvers
+    (spend Superiority Dice; one per turn warns).
+  - Pick which concentration to end when at the limit.
+  - The preview shows cost, CP left, extra resources and upkeep, and Cast stays off while anything
+    blocks the cast (not enough chakra or Focus, missing affinity, concentration full).
+  - Casting spends CP and resources, starts concentration with the cost paid recorded (upkeep = half),
+    and updates Chain and Combo/Finisher, all in one update.
+- **Cast card**: what was spent, the rules text (collapsed), and buttons for the jutsu's parts.
+  - **Attack** (rolls the jutsu's attack with the crit range).
+  - **Damage** and **Critical** (dice and ability modifier doubled, nothing else).
+  - **Save** (each controlled token rolls vs the DC; Genjutsu report four-tier results).
+  - **Temporary HP / Healing** (applies to controlled tokens or the caster; temp HP keeps the higher).
+- Jutsu with no authored activities have their parts read from their text: "Make a melee ninjutsu
+  attack", "Dexterity saving throw", "2d10+2 Fire damage", "[Unarmed damage] + 2d6", "half as much
+  damage on a success", "gain 12 Temporary Hit points". All 12 compendium jutsu work this way.
+- **Weapon and unarmed attacks** (Combat tab strikes, inventory Use):
+  - Melee uses Str, ranged uses Dex, finesse/thrown the better of the two; plus proficiency and
+    condition penalties.
+  - Damage and Critical buttons are on the card.
+  - Weapons with an Ammunition Die roll it after each attack; a 1-2 steps it down, and 0 removes
+    the item.
+- **Features spend their cost when used**: Moldings take Focus, Assault Maneuvers take Superiority
+  Dice (the number in their text, e.g. Relentless Retaliation 2), and limited-use features take a
+  use. A feature you can't pay for is refused with the reason. Feature cards show what was spent and
+  their rollable parts.
+
+### Changed
+- Applying damage to tokens (DR, resistance, interception, concentration check on damage) is Phase 4;
+  damage is rolled on the card for now.
+
 ## 0.4.0-alpha.1 — Phase 3, release 1: rolls
 
 ### Added

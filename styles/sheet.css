@@ -557,3 +557,32 @@
 .n5e-roll-card.wof { color: #7A5A0C; }
 .n5e-roll-dialog label { display: flex; align-items: center; gap: 8px; }
 .n5e-effect-config input.n5e-known-key { border-color: #3E7A3C; }
+
+/* -------------------------------------------- */
+/*  Cast card, activity buttons, cast dialog    */
+/* -------------------------------------------- */
+
+.n5e-cast-card { font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+.n5e-cast-card header { display: flex; gap: 8px; align-items: center; }
+.n5e-cast-card header img { border: none; border-radius: 6px; }
+.n5e-cast-card header b { font-size: 14px; display: block; }
+.n5e-cast-card header .sub { color: #6B5F55; font-size: 11px; }
+.n5e-cast-card .spent { font-weight: 700; color: #24578C; }
+.n5e-cast-card details summary { cursor: pointer; color: #6B5F55; font-size: 11px; }
+.n5e-acts { display: flex; flex-direction: column; gap: 3px; margin-top: 2px; }
+.n5e-acts .act-row { display: flex; flex-wrap: wrap; gap: 3px; }
+.n5e-acts button { flex: 1 1 auto; font-size: 11px; line-height: 1.2; min-height: 24px; height: auto; padding: 3px 6px; text-align: left; }
+.n5e-acts button.crit { flex: 0 0 auto; border-color: #3E7A3C; color: #3E7A3C; }
+.n5e-acts button i { margin-right: 3px; }
+.n5e-card .hint, .n5e-cast-card .hint { font-size: 11px; color: #6B5F55; font-style: italic; }
+.n5e-roll-card.damage header b, .n5e-roll-card.heal header b { color: #B23A26; }
+.n5e-roll-card.heal header b { color: #3E7A3C; }
+.n5e-cast { display: flex; flex-direction: column; gap: 8px; }
+.n5e-cast label { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.n5e-cast label.opt { justify-content: flex-start; }
+.n5e-cast select { width: auto; min-width: 140px; }
+.n5e-cast fieldset { display: flex; flex-direction: column; gap: 3px; }
+.n5e-cast .preview { padding: 6px 8px; border-radius: 6px; background: rgba(47, 111, 176, .08); }
+.n5e-cast .preview p { margin: 2px 0; }
+.n5e-cast .preview .warn { color: #8A5A0C; }
+.n5e-cast .preview .problem { color: #B23A26; font-weight: 700; }

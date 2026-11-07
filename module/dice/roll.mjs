@@ -7,6 +7,7 @@
  */
 import { MODES, clickMode, critThreshold, rollSpec, readD20, willOfFireAward } from "./d20.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
+import { degreeOfSuccess } from "../rules/degree.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
 
@@ -33,6 +34,7 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
     ${spec.outcome ? `<div class="outcome">${esc(spec.outcome)}</div>` : ""}
     ${result.crit ? `<div class="flag crit">${spec.kind === "attack" ? "Critical hit" : "Natural 20"}</div>` : ""}
     ${result.fumble ? `<div class="flag fumble">Natural 1${spec.kind === "attack" ? ": miss" : ""}</div>` : ""}
+    ${spec.footer ?? ""}
     ${wof ? `<div class="wof-buttons">
       <button type="button" data-n5e-wof="reroll">Will of Fire: reroll</button>
       <button type="button" data-n5e-wof="advantage">Will of Fire: advantage</button></div>` : ""}
@@ -49,9 +51,21 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
  * @param {string} [options.mode]  force normal | advantage | disadvantage
  * @returns {Promise<ChatMessage|null>}
  */
-export async function rollD20(actor, type, key, { event, mode: forced } = {}) {
+export async function rollD20(actor, type, key, options = {}) {
   const spec = rollSpec(actor, type, key);
   if ( !spec ) return null;
+  return rollWithSpec(actor, spec, options);
+}
+
+/**
+ * Roll any d20 spec ({label, bonus, kind, scope?, breakdown?, note?}).
+ * @param {object} [options]
+ * @param {number} [options.dc]          compare against a DC (saves from a card)
+ * @param {boolean} [options.fourTier]   report Genjutsu four-tier results
+ */
+export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false } = {}) {
+  const type = spec.type ?? "custom";
+  const key = spec.key ?? "";
   const click = clickMode(event);
   const dialog = click.dialog;
   let mode = forced ?? click.mode;
@@ -67,6 +81,11 @@ export async function rollD20(actor, type, key, { event, mode: forced } = {}) {
   const threshold = critThreshold(actor, spec.scope);
   const result = readD20(roll, threshold);
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
+  if ( dc != null ) {
+    const d = degreeOfSuccess(roll.total, dc, { natural: result.natural, isSave: spec.kind === "save" });
+    const labels = ["Critical Failure", "Failure", "Success", "Critical Success"];
+    spec = { ...spec, note: [spec.note, `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`].filter(Boolean).join(" · ") };
+  }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
@@ -125,6 +144,12 @@ export async function spendWillOfFire(message, how) {
 
 /** Wire chat card buttons (call from the renderChatMessageHTML hook). */
 export function onRenderChatMessage(message, html) {
+  for ( const btn of html.querySelectorAll("[data-n5e-act]") ) {
+    btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      import("../workflow/activity-buttons.mjs").then(m => m.onActivityClick(message, btn, ev));
+    });
+  }
   for ( const btn of html.querySelectorAll("[data-n5e-wof]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();
