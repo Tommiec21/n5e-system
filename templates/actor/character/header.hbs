@@ -49,7 +49,7 @@
       {{#each vm.abilities}}
         <div class="ab-tile" data-tooltip="{{label}}">
           <span class="abbr">{{abbr}}</span>
-          <b class="mod">{{mod}}</b>
+          <b class="mod rollable" data-action="roll" data-roll="ability" data-key="{{key}}" data-tooltip="Roll {{label}} check (Shift: options, Alt: advantage, Ctrl: disadvantage)">{{mod}}</b>
           {{#if @root.editMode}}
             <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
           {{else}}

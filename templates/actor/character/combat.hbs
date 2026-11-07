@@ -31,7 +31,7 @@
       <div class="t-foot">
         <span>Upkeep at turn start <b class="{{#if vm.concentration.short}}warn{{/if}}">{{vm.concentration.upkeep}} CP</b>
           {{#if vm.concentration.short}}<span class="warn">· not enough chakra</span>{{else}}{{#if vm.concentration.upkeep}}<span class="muted">· {{vm.concentration.cpAfter}} CP left</span>{{/if}}{{/if}}</span>
-        <span data-tooltip="Con (Chakra Control) when you take damage: DC {{vm.concentration.dcBase}} + ranks of all concentrated jutsu, or half the damage if higher">Damage check <b>DC {{vm.concentration.dc}}</b></span>
+        <span class="rollable" data-action="roll" data-roll="skill" data-key="cha" data-tooltip="Click to roll Chakra Control. Con (Chakra Control) when you take damage: DC {{vm.concentration.dcBase}} + ranks of all concentrated jutsu, or half the damage if higher">Damage check <b>DC {{vm.concentration.dc}}</b></span>
       </div>
     </div>
     {{/if}}

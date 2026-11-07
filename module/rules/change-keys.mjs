@@ -95,3 +95,52 @@ export function scopeApplies(scope, jutsu) {
   if ( scope.startsWith("rank.") ) return jutsu.rank === scope.slice(5);
   return jutsu.discipline === scope;
 }
+
+/* -------------------------------------------- */
+/*  Key catalog (effect editor suggestions)     */
+/* -------------------------------------------- */
+
+/**
+ * Every change key the system understands, with a one-line description, for the effect editor's
+ * key picker. Built from the registries so new skills/toolkits show up automatically.
+ * @param {object} N5E   CONFIG.N5E (or the config module)
+ * @returns {Array<{key: string, label: string, group: string}>}
+ */
+export function changeKeyCatalog(N5E) {
+  const out = [];
+  const add = (group, key, label) => out.push({ group, key, label });
+  const discs = ["nin", "tai", "gen", "buki"];
+  const discLabel = d => N5E.disciplines?.[d]?.label ?? d;
+  add("Defense", "n5e.dr", "Damage Reduction: + number");
+  add("Defense", "n5e.pierce", "DR Pierce: + number");
+  for ( const s of ["all", "weapon", "unarmed", ...discs] ) add("Crits", `n5e.critRange.${s}`, `Crit range (${s}): +1 = 19-20; total capped at +3`);
+  for ( const s of ["all", ...discs] ) {
+    add("Jutsu cost", `n5e.cost.${s}`, `Jutsu cost (${s === "all" ? "all" : discLabel(s)}): number, "*0.5" or "/2"`);
+    add("Jutsu upkeep", `n5e.upkeep.${s}`, `Concentration upkeep (${s === "all" ? "all" : discLabel(s)}): + number`);
+  }
+  for ( const r of Object.keys(N5E.ranks ?? {}) ) add("Jutsu cost", `n5e.cost.rank.${r}`, `Cost of ${r}-Rank jutsu`);
+  for ( const [k, v] of Object.entries(N5E.keywords ?? {}) ) if ( !v.removed ) add("Jutsu cost", `n5e.cost.keyword.${k}`, `Cost of ${v.label} jutsu`);
+  for ( const s of ["all", "nin", "tai", "gen"] ) add("Discipline", `n5e.saveDC.${s}`, `Save DC (${s === "all" ? "all" : discLabel(s)}): + number`);
+  for ( const d of ["nin", "tai", "gen"] ) {
+    add("Discipline", `n5e.attack.${d}`, `${discLabel(d)} attack: + number`);
+    add("Discipline", `n5e.disciplineAbility.${d}`, `${discLabel(d)} ability: value = str|dex|con|int|wis|cha`);
+  }
+  add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
+  add("Rolls", "n5e.saveTier.shift", "Four-tier save results: shift up (+1) or down (−1)");
+  add("Concentration", "n5e.concentration.max", "Max concentration jutsu: + number");
+  for ( const [k, v] of Object.entries(N5E.skills ?? {}) ) add("Mastery", `n5e.mastery.skill.${k}`, `Mastery rank: ${v.label} (value = source label)`);
+  for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Mastery", `n5e.mastery.save.${k}`, `Mastery rank: ${v.label} save`);
+  for ( const [k, v] of Object.entries(N5E.toolkits ?? {}) ) add("Mastery", `n5e.mastery.tool.${k}`, `Mastery rank: ${v.label}`);
+  add("Mastery", "n5e.mastery.initiative", "Mastery rank: Initiative");
+  for ( const d of ["nin", "tai", "gen"] ) add("Mastery", `n5e.mastery.attack.${d}`, `Mastery rank: ${discLabel(d)} attack`);
+  // Core-applied paths (Add / Override modes).
+  for ( const [k, label] of [["ac", "AC"], ["initiative", "Initiative"], ["hpMax", "Max HP"], ["cpMax", "Max CP"],
+    ["hpPerLevel", "HP per level"], ["cpPerLevel", "CP per level"], ["inventorySlots", "Inventory slots"], ["speed", "Speed"],
+    ["save", "All saves"], ["check", "All checks"]] ) add("Bonuses", `system.bonuses.${k}`, `${label}: + number (mode Add)`);
+  for ( const d of ["nin", "tai", "gen"] ) {
+    add("Bonuses", `system.bonuses.attack.${d}`, `${discLabel(d)} attack: + number (mode Add)`);
+    add("Bonuses", `system.bonuses.saveDC.${d}`, `${discLabel(d)} save DC: + number (mode Add)`);
+  }
+  for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Abilities", `system.abilities.${k}.value`, `${v.label} score (Add or Override)`);
+  return out;
+}

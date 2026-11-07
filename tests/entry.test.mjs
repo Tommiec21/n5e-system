@@ -12,6 +12,7 @@ class Doc { static migrateData(s) { return s; } }
 class Sheet {}
 Object.assign(globalThis, {
   Handlebars: { registerHelper: () => {} },
+  CSS: { escape: s => s },
   Hooks: { once: (name, fn) => { hooks[name] = fn; }, on: () => {} },
   Actor: class extends Doc {}, Item: class extends Doc {}, ActiveEffect: class extends Doc {},
   CONFIG: {
@@ -25,9 +26,10 @@ Object.assign(globalThis, {
 });
 foundry.applications = {
   api: { HandlebarsApplicationMixin: C => class extends C {}, DialogV2: {}, ApplicationV2: class {} },
-  sheets: { ActorSheetV2: Sheet, ItemSheetV2: Sheet },
+  sheets: { ActorSheetV2: Sheet, ItemSheetV2: Sheet, ActiveEffectConfig: Sheet },
   handlebars: { loadTemplates: paths => registered.templates.push(...paths) },
-  apps: { FilePicker: { implementation: class {} } }
+  apps: { FilePicker: { implementation: class {} },
+    DocumentSheetConfig: { registerSheet: (doc, ns, cls, o) => registered.sheets.push(["ActiveEffect", ns, o.makeDefault]) } }
 };
 foundry.documents = { collections: {
   Actors: { registerSheet: (ns, cls, o) => registered.sheets.push(["Actor", ns, o.makeDefault]) },
@@ -46,7 +48,7 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 3, "character sheet + NPC placeholder + item placeholder");
+  assert.equal(registered.sheets.length, 4, "character, NPC placeholder, item, effect");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
   assert.ok(registered.templates.length >= 1);

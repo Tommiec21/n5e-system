@@ -534,3 +534,26 @@
 .n5e-v2.n5e-item .effect-row .name { flex: 0 1 auto; font-weight: 600; cursor: pointer; }
 .n5e-v2.n5e-item .effect-row .sub { flex: 1; }
 .n5e-v2.n5e-item .effect-row.off { opacity: .55; }
+
+/* -------------------------------------------- */
+/*  Rolls                                       */
+/* -------------------------------------------- */
+
+.n5e-v2 .rollable { cursor: pointer; }
+.n5e-v2 .rollable:hover { color: var(--n5e-accent); }
+.n5e-v2 .save-row.rollable:hover, .n5e-v2 .skill.rollable:hover { background: #FBEDE9; }
+.n5e-roll-card { font-family: var(--n5e-body, sans-serif); font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
+.n5e-roll-card header { display: flex; align-items: baseline; gap: 6px; }
+.n5e-roll-card header b { font-size: 14px; flex: 1; }
+.n5e-roll-card .mode { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; padding: 0 6px; border-radius: 8px; background: rgba(47, 111, 176, .15); color: #24578C; }
+.n5e-roll-card .bonus { font-weight: 700; cursor: help; }
+.n5e-roll-card .note { color: #6B5F55; }
+.n5e-roll-card .outcome { padding: 3px 6px; border-left: 3px solid #C8412B; background: rgba(200, 65, 43, .06); }
+.n5e-roll-card .flag { font-weight: 800; text-transform: uppercase; letter-spacing: .05em; font-size: 11px; }
+.n5e-roll-card .flag.crit { color: #3E7A3C; }
+.n5e-roll-card .flag.fumble { color: #B23A26; }
+.n5e-roll-card .wof-buttons { display: flex; gap: 4px; }
+.n5e-roll-card .wof-buttons button { flex: 1; font-size: 11px; line-height: 20px; height: 24px; padding: 0 4px; border-color: #C9A227; }
+.n5e-roll-card.wof { color: #7A5A0C; }
+.n5e-roll-dialog label { display: flex; align-items: center; gap: 8px; }
+.n5e-effect-config input.n5e-known-key { border-color: #3E7A3C; }

@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.4.0-alpha.1 — Phase 3, release 1: rolls
+
+### Added
+- **Everything rolls from the character sheet**:
+  - ability checks (click the modifier in the ability strip), saves, skills, toolkits;
+  - initiative (rail);
+  - discipline attacks (Main tab);
+  - the concentration check (Combat tab);
+  - every skill action on the Combat tab, which rolls with its −3/−5 tier penalty and shows the
+    roll and outcome from Ch6.
+- **Roll modifiers:** click rolls; **Shift+click** opens a dialog (advantage/disadvantage plus a
+  situational bonus); **Alt** = advantage; **Ctrl** = disadvantage.
+- **Chat cards:**
+  - Hover the bonus to see its breakdown.
+  - Natural 20 and natural 1 are flagged, and attacks use the actor's crit range (+3 cap).
+  - Condition penalties apply once per roll.
+- **Will of Fire:**
+  - Cards show buttons to spend one for a reroll or for advantage after the fact (a second d20,
+    keep the higher).
+  - The first natural 1 or 20 in an encounter grants one (max 3) with a chat note.
+- **Adaptive Initiative** (Scout-Nin): rolling initiative offers Athletics, Ninshou, Illusions or
+  Insight instead. In a combat, the roll sets the combatant's initiative.
+- **Effect editor:** the Active Effect Key field suggests every N5e key (DR, Pierce, crit range,
+  jutsu cost and upkeep by discipline/rank/keyword, save DC, attack, discipline ability, all dice,
+  save-tier shift, concentration max, Mastery for every skill/save/toolkit) and the system bonus
+  paths. Hover a key to see what it does; known keys turn green.
+- Actors now compute ability check totals (`system.abilities.<key>.check`).
+
 ## 0.3.0-alpha.3 — Item sheets
 
 ### Added

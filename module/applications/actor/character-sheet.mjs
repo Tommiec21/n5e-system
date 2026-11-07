@@ -12,6 +12,7 @@ import { buildRows, coerceListInputs } from "../schema-form.mjs";
 import { postItemCard, postActionCard } from "../../chat/card.mjs";
 import LevelUpDialog from "../level-up.mjs";
 import { castUpdates } from "../../rules/cast-tracking.mjs";
+import { rollD20, rollInitiative } from "../../dice/roll.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -43,6 +44,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       deleteItem: CharacterSheet.#onDeleteItem,
       useItem: CharacterSheet.#onUseItem,
       useAction: CharacterSheet.#onUseAction,
+      roll: CharacterSheet.#onRoll,
+      rollInit: CharacterSheet.#onRollInit,
       levelUp: CharacterSheet.#onLevelUp,
       levelDown: CharacterSheet.#onLevelDown,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
@@ -494,7 +497,19 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
   /** Post a core combat action or skill action to chat. */
   static async #onUseAction(event, target) {
+    // Skill actions roll their check (with the tier penalty); core actions post their rules card.
+    if ( target.dataset.kind === "skill" ) return rollD20(this.actor, "skillAction", target.dataset.key, { event });
     await postActionCard(this.actor, target.dataset.kind, target.dataset.key);
+  }
+
+  /** Roll a d20 from the sheet: data-roll (ability|save|skill|tool|attack), data-key. */
+  static async #onRoll(event, target) {
+    event.preventDefault();
+    return rollD20(this.actor, target.dataset.roll, target.dataset.key, { event });
+  }
+
+  static async #onRollInit(event) {
+    return rollInitiative(this.actor, { event });
   }
 
   /**

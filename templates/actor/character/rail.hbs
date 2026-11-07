@@ -7,7 +7,7 @@
   <div class="stat-strip">
     <div class="st" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">AC</span><b>{{vm.ac.value}}</b></div>
     <div class="st" data-tooltip-html="{{vm.speed.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">SPD</span><b class="{{#if vm.speed.halved}}warn{{/if}}">{{vm.speed.value}}</b></div>
-    <div class="st" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Init</span><b>{{vm.initiative.value}}</b></div>
+    <div class="st rollable" data-action="rollInit" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Init</span><b>{{vm.initiative.value}}</b></div>
     <div class="st" data-tooltip-html="{{vm.profTip}}" data-tooltip-direction="RIGHT"><span class="lbl">Prof</span><b>{{vm.prof}}</b></div>
     <div class="st" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">DR</span><b>{{vm.dr.value}}</b></div>
   </div>

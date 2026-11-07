@@ -204,6 +204,13 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       save.total = b.total;
     }
 
+    // Ability checks: mod + check bonuses + condition penalties (rolled from the ability strip).
+    for ( const key of Object.keys(abilities) ) {
+      const b = B(`check.${key}`, `${abilities[key].label} check`).base(abbr(key), mod(key))
+        .add("Bonuses", this.bonuses.check).addAll(d20Parts(key)).addAll(P("checksAndAttacks"));
+      this.abilities[key].check = b.total;
+    }
+
     // Skills and passives.
     for ( const [key, skill] of Object.entries(this.skills) ) {
       skill.isProficient = skill.proficient || grants.skills.has(key);

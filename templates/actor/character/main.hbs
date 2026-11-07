@@ -19,7 +19,7 @@
       <h3>Saving Throws</h3>
       <div class="save-grid">
         {{#each vm.abilities}}
-          <div class="save-row {{#if saveProficient}}prof{{/if}}" data-tooltip-html="{{saveTip}}">
+          <div class="save-row rollable {{#if saveProficient}}prof{{/if}}" data-tooltip-html="{{saveTip}}" {{#unless @root.editMode}}data-action="roll" data-roll="save" data-key="{{key}}"{{/unless}}>
             {{#if @root.editMode}}
               <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
             {{else}}
@@ -36,7 +36,7 @@
       {{#each vm.disciplines}}
         <div class="discipline {{key}}">
           <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
-          <div class="nums"><b data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
+          <div class="nums"><b class="rollable" data-action="roll" data-roll="attack" data-key="{{key}}" data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
         </div>
       {{/each}}
     </div>
@@ -56,7 +56,7 @@
       {{#each vm.skillColumns}}
         <ul class="skill-list">
           {{#each this}}
-            <li class="skill {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}">
+            <li class="skill rollable {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}" {{#unless @root.editMode}}data-action="roll" data-roll="skill" data-key="{{key}}"{{/unless}}>
               {{#if @root.editMode}}
                 <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">
               {{else}}
@@ -74,7 +74,7 @@
 
   {{#if vm.toolkits.length}}
     <div class="toolkits"><span class="lbl">Toolkits</span>
-      {{#each vm.toolkits}}<span class="chip">● {{label}}{{#if mastery}} ◆{{mastery}}{{/if}}</span>{{/each}}
+      {{#each vm.toolkits}}<span class="chip rollable" data-action="roll" data-roll="tool" data-key="{{key}}">● {{label}}{{#if mastery}} ◆{{mastery}}{{/if}}</span>{{/each}}
     </div>
   {{/if}}
 </section>
