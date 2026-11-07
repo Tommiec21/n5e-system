@@ -229,7 +229,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
 
     // Step 9: inventory and computed states.
     const slots = inventorySlots(mod("str"), grants.containerSlots + this.bonuses.inventorySlots);
-    this.inventory = { slots, used: grants.bulk, encumbered: grants.bulk > slots };
+    // Encumbered: carried Bulk over slots, or armor whose Heavyweight (X) Strength isn't met (King 2026-11-07).
+    const req = grants.armor?.strRequirement;
+    const encumberedBy = [];
+    if ( grants.bulk > slots ) encumberedBy.push("bulk");
+    if ( req && (this.abilities.str?.value ?? 0) < req ) encumberedBy.push("heavyweight");
+    this.inventory = { slots, used: grants.bulk, encumbered: encumberedBy.length > 0, encumberedBy };
     const speedMult = Math.min(1, this.inventory.encumbered ? 0.5 : 1, pen.flags.speedMultiplier ?? 1);
     this.speed = {};
     for ( const [k, v] of Object.entries(this.traits.speed) ) {
@@ -304,7 +309,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           break;
         case "armor":
           if ( sys.equipped ) {
-            g.armor = { bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category, item };
+            g.armor = { bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category,
+              strRequirement: sys.strRequirement || sys.properties?.heavyweight || null, item };
             g.reinforced = Math.max(g.reinforced, sys.properties?.reinforced ?? 0);
           }
           break;

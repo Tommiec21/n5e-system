@@ -29,6 +29,15 @@ export const damagePipeline = ["crit", "dr", "interception", "resistance", "immu
 /** KB 03: crit range bonus cap (17-20). */
 export const critRangeCap = 3;
 
+/**
+ * Critical hits (KB 03 + King 2026-11-07): double the damage dice and the ability modifier;
+ * other flat bonuses do not double.
+ */
+export const critRules = { doubleDice: true, doubleAbilityMod: true, doubleFlatBonuses: false };
+
+/** Exhaustion's "-1 to all dice rolls" applies once per roll, not per die (King 2026-11-07). */
+export const allDicePenaltyMode = "perRoll";
+
 /** KB 04 + 11: activation (casting time) types. */
 export const activationTypes = {
   action: "Action",

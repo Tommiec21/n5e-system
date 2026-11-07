@@ -6,7 +6,9 @@
  *  - Sealed adds to the BASE cost of Ninjutsu and Genjutsu (+4 per rank), so it also raises the floor.
  *  - Floor: never below half the (modified) base cost, rounded down.
  *  - Special costs can't be reduced by anything (including "no cost"); they can be increased.
- *  - Multipliers don't stack: with several, one applies (the most favorable to the caster).
+ *  - Multipliers don't stack: with several, the caster chooses one (King 2026-11-07). Pass
+ *    `multiplierChoice`/`divisorChoice` (index) at cast time; without a choice the preview uses the one
+ *    most favorable to the caster and reports `choices` so the cast dialog can ask.
  *  - Rounding down is the universal default.
  */
 
@@ -22,6 +24,8 @@
  * @property {number[]} [multipliers]
  * @property {number[]} [divisors]
  * @property {boolean} [free]            "costs no chakra" effects (ignored for Special)
+ * @property {number} [multiplierChoice] index into multipliers chosen by the caster
+ * @property {number} [divisorChoice]    index into divisors chosen by the caster
  */
 
 /**
@@ -52,17 +56,27 @@ export function computeJutsuCost(input) {
 
   cost -= sum(input.subtractions);
   steps.afterSub = cost;
-  if ( input.multipliers?.length ) cost = Math.floor(cost * Math.min(...input.multipliers));
+  const pick = (list, choice, best) => (list?.length ? (list[choice] ?? best(...list)) : null);
+  const mult = pick(input.multipliers, input.multiplierChoice, Math.min);
+  if ( mult != null ) cost = Math.floor(cost * mult);
   steps.afterMul = cost;
-  if ( input.divisors?.length ) cost = Math.floor(cost / Math.max(...input.divisors));
+  const div = pick(input.divisors, input.divisorChoice, Math.max);
+  if ( div != null ) cost = Math.floor(cost / div);
   steps.afterDiv = cost;
 
   cost = Math.max(cost, floor, 0);
   steps.final = cost;
-  return { cost, base, floor, special, steps };
+  const choices = {
+    multipliers: (input.multipliers?.length ?? 0) > 1 ? [...input.multipliers] : null,
+    divisors: (input.divisors?.length ?? 0) > 1 ? [...input.divisors] : null
+  };
+  return { cost, base, floor, special, steps, choices };
 }
 
-/** Concentration upkeep: half the jutsu's original cost (round down); Efficient waives it. */
+/**
+ * Concentration upkeep: half the cost you actually paid when casting (round down; King 2026-11-07),
+ * stored on the concentration effect. Efficient waives it.
+ */
 export function upkeepCost(originalCost, { efficient = false } = {}) {
   return efficient ? 0 : Math.floor((Number(originalCost) || 0) / 2);
 }

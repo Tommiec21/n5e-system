@@ -191,3 +191,21 @@ test("formula evaluator", () => {
   assert.equal(stepDie(6, 1), 8);
   assert.equal(stepDie(12, 1), 12);
 });
+
+test("skill action penalties don't stack (Core Ch6 + King 2026-11-07)", async () => {
+  const { skillActionPenalty } = await import("../module/rules/skill-actions.mjs");
+  assert.equal(skillActionPenalty("np", { proficient: false, masteryRank: 0 }), 0);
+  assert.equal(skillActionPenalty("p", { proficient: false, masteryRank: 0 }), -3);
+  assert.equal(skillActionPenalty("p", { proficient: true, masteryRank: 0 }), 0);
+  assert.equal(skillActionPenalty("m", { proficient: false, masteryRank: 0 }), -5, "not -8");
+  assert.equal(skillActionPenalty("m", { proficient: true, masteryRank: 0 }), -5);
+  assert.equal(skillActionPenalty("m", { proficient: false, masteryRank: 1 }), -3);
+  assert.equal(skillActionPenalty("m", { proficient: true, masteryRank: 1 }), 0);
+});
+
+test("caster chooses between cost multipliers", () => {
+  const preview = computeJutsuCost({ base: 20, multipliers: [0.5, 0.75] });
+  assert.equal(preview.cost, 10, "preview uses the best");
+  assert.deepEqual(preview.choices.multipliers, [0.5, 0.75], "dialog is told to ask");
+  assert.equal(computeJutsuCost({ base: 20, multipliers: [0.5, 0.75], multiplierChoice: 1 }).cost, 15);
+});

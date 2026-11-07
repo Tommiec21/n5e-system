@@ -19,7 +19,16 @@
 - Tooling: pack/unpack (fvtt-cli, one JSON per document), lint, tests, consistency check, release
   zip, local install, GitHub Actions release workflow for manifest auto-updates.
 
-### Engine defaults pending a rules call
-- Four-tier saves: a total exactly equal to the DC is a Success (A33).
-- Sealed raises the base cost, so it also raises the half-base cost floor, and applies to jutsu
-  whose cost is None.
+### Rulings applied (King, 2026-11-07)
+- Condition penalties (Shaken, Demoralized, Dazzled, Exhaustion) are folded into displayed totals.
+- Skill actions: Proficient action without proficiency −3; Mastery action without Mastery −5;
+  penalties don't stack (`rules/skill-actions.mjs`).
+- Sealed modifies the base cost (raises the half-base floor) and applies to Cost None jutsu.
+- Several cost multipliers: the caster chooses one (the preview shows the best and flags the choice).
+- Concentration upkeep is half the cost actually paid when casting.
+- Four-tier saves: a total exactly equal to the DC is a Success.
+- Crits double damage dice and the ability modifier only; other flat bonuses don't double.
+- Exhaustion's −1 to all dice rolls applies once per roll.
+- Heavy armor ignores Dex entirely.
+- Wearing Heavyweight (X) armor without the Strength score makes you Encumbered.
+- Migrating unlinked tokens and world compendiums: deferred as a nice-to-have.

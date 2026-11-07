@@ -57,11 +57,15 @@ export const terrainTypes = {
   chakraResistant: { label: "Chakra Resistant", damageType: null }
 };
 
-/** Skill-action tiers (KB 02). Penalties for attempting above your tier. */
+/**
+ * Skill-action tiers (Core Ch6 "Skill Based Actions"). Anyone may attempt any tier:
+ *   Proficient action without proficiency: -3. Mastery action without a Mastery rank: -5.
+ * Penalties don't stack (King 2026-11-07): a Mastery action with neither takes -5, not -8.
+ */
 export const skillActionTiers = {
   np: { label: "Non-Proficient", penalty: 0 },
-  p: { label: "Proficient", untrainedPenalty: -3 },
-  m: { label: "Mastery", untrainedPenalty: -3, noMasteryPenalty: -5 },
+  p: { label: "Proficient", noProficiencyPenalty: -3 },
+  m: { label: "Mastery", noProficiencyPenalty: -3, noMasteryPenalty: -5 },
   kit: { label: "Toolkit", requires: "skill+kit", charges: 1 }
 };
 

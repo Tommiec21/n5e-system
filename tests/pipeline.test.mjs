@@ -152,6 +152,17 @@ test("armor, reinforced DR, containers, encumbrance", () => {
   assert.equal(b.system.speed.walk, 15);
 });
 
+test("Heavyweight armor without the Strength makes you Encumbered", () => {
+  const armor = load("equipment", "ShinobiJacket");
+  armor.system.equipped = true;
+  armor.system.properties = { heavyweight: 15 };
+  const weak = makeActor({ system: { abilities: { str: { value: 12 } } }, items: [taiSpec(1), armor] });
+  assert.deepEqual(weak.system.inventory.encumberedBy, ["heavyweight"]);
+  assert.equal(weak.system.speed.walk, 15);
+  const strong = makeActor({ system: { abilities: { str: { value: 16 } } }, items: [taiSpec(1), armor] });
+  assert.equal(strong.system.inventory.encumbered, false);
+});
+
 test("clan grants: speed, skills, affinity, Hijutsu Flexibility; resource pool formula", () => {
   const clan = load("clans", "Uchiha");
   const a = makeActor({ system: { ...baseAbilities, resources: { ocular: clan.system.resourcePools[0] } },

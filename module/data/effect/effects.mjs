@@ -71,7 +71,7 @@ export class ConcentrationEffectData extends TDM() {
     return {
       jutsuUuid: S.str(),
       rank: S.str({ initial: "D" }),
-      /** Original cost paid; upkeep is half of it (round down) unless Efficient. */
+      /** Cost actually paid at casting (after upcast and reductions); upkeep is half of it, round down. */
       cost: S.int(0, { min: 0 }),
       upkeep: S.int(0, { min: 0 }),
       stable: S.bool(),
