@@ -1,4 +1,12 @@
 <section class="tab n5e-tab combat {{tab.cssClass}}" data-tab="combat" data-group="primary">
+  <div class="economy" aria-label="Action economy this turn">
+    {{#each vm.economy}}
+      <button type="button" class="eco {{key}} {{#if used}}used{{/if}}" data-action="toggleEconomy" data-key="{{key}}" aria-pressed="{{used}}"
+        data-tooltip="{{#if used}}{{label}} used this turn (click to restore){{else}}{{label}} available (click to mark used){{/if}}" {{#unless @root.editable}}disabled{{/unless}}>
+        {{{glyph}}} {{label}}</button>
+    {{/each}}
+    <span class="sub">Resets at the start of your turn</span>
+  </div>
   <div class="trackers">
     {{#if vm.chain.show}}
     <div class="tracker chain">

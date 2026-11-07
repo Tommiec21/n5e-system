@@ -114,7 +114,7 @@ test("casting updates Chain and Combo", async () => {
   const find = n => a.items.find(i => i.name === n);
   a.system.combat.chain.value = 1;
   assert.deepEqual(castUpdates(a, { ...find("Chain Slash"), system: { ...find("Chain Slash").system, activation: { type: "action" } } }),
-    { "system.combat.chain.active": true, "system.combat.chain.value": 2, "flags.n5e.combo": null });
+    { "system.combat.chain.active": true, "flags.n5e.chainTouched": true, "system.combat.chain.value": 2, "flags.n5e.combo": null });
   assert.equal(castUpdates(a, find("Chain Slash"))["system.combat.chain.value"], undefined, "Bonus Action maintains");
   assert.equal(castUpdates(a, find("Mist Veil"))["system.combat.chain.value"], 0, "non-Chain jutsu resets");
   assert.deepEqual(castUpdates(a, find("Opening Jab"))["flags.n5e.combo"], { name: "Opening Jab", id: "combo00000000001" });

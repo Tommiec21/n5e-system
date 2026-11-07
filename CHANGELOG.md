@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.0-alpha.3 — Phase 3, release 3: turn flow and the NPC sheet
+
+### Added
+- **Start of each combatant's turn** (run once by the active GM):
+  - **Concentration upkeep:** half the cost paid at casting (Efficient pays nothing), paid jutsu by
+    jutsu; one that can't be paid ends.
+  - **Chain** resets to 0 unless a Chain jutsu raised or maintained it since the last turn.
+  - **An armed Combo** clears.
+  - **Action economy** resets.
+  - **Recharge abilities** roll their die (Recharge 5-6 = d6, 7-8 = d8, and so on) and come back
+    on a hit.
+  - One short chat card summarises it, with an **End** button for each jutsu still concentrated on.
+- **Action economy tracker** at the top of the Combat tab: Action, Bonus, Reaction, Special,
+  Object.
+  - Casting, attacking and using features mark their slot automatically.
+  - Click any slot to mark or restore it.
+  - The cast dialog warns when the slot is already used.
+- **NPC sheet:** every tab, roll, cast, attack and the Combat tab from the character sheet, with a
+  stat-block header.
+  - Play mode shows a summary (Level · Rank · Role · Type · Template).
+  - Edit mode sets level, rank, role, creature type, template, stat-block HP/CP max (blank = from
+    level) and the Hit/Chakra Die.
+  - The Class/Clan/Background strip is hidden for NPCs.
+- Limited uses can recover on **Recharge** (new "Recharge" range field, e.g. 5-6).
+- The Phase 1 raw-data sheet stays available (not default) under Sheet configuration.
+
 ## 0.4.0-alpha.2 — Phase 3, release 2: attacks, damage, casting
 
 ### Added

@@ -57,6 +57,7 @@ export async function attackWithWeapon(actor, weapon = null, { event } = {}) {
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }], { abilityMod: spec.abilityMod })}</div></div>`;
   const message = await rollWithSpec(actor, spec, { event });
+  if ( message && actor.isOwner ) await actor.update({ "flags.n5e.economy.action": true });
   if ( message && weapon && spec.ammo ) await rollAmmo(weapon);
   return message;
 }

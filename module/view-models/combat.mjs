@@ -248,7 +248,11 @@ export function combatVM(actor) {
   const basic = basicCombat(actor);
   const skillRows = basic.sections.filter(sec => sec.skill).map(sec => ({ ...sec, label: sec.label.replace(/^Skill /, "") }));
   basic.sections = basic.sections.filter(sec => !sec.skill);
+  const used = flag(actor, "economy") ?? {};
+  const economy = [["action", "Action"], ["bonus", "Bonus"], ["reaction", "Reaction"], ["special", "Special"], ["object", "Object"]]
+    .map(([key, label]) => ({ key, label, used: !!used[key], glyph: glyph(key === "object" ? "free" : key)?.svg ?? "" }));
   return {
+    economy,
     chain: chainVM(actor),
     concentration: concentrationVM(actor),
     stance: stanceVM(actor),

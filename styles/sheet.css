@@ -586,3 +586,21 @@
 .n5e-cast .preview p { margin: 2px 0; }
 .n5e-cast .preview .warn { color: #8A5A0C; }
 .n5e-cast .preview .problem { color: #B23A26; font-weight: 700; }
+
+/* Action economy + turn card */
+.n5e-v2 .combat .economy { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-bottom: 10px; }
+.n5e-v2 .combat .economy .eco { display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 10px; border-radius: 13px; font-size: 12px; font-weight: 600; background: #FFF; border: 1px solid var(--n5e-line); width: auto; flex: none; }
+.n5e-v2 .combat .economy .eco svg { width: 12px; height: 12px; }
+.n5e-v2 .combat .economy .eco.used { background: var(--n5e-paper-2); color: var(--n5e-faint); text-decoration: line-through; }
+.n5e-v2 .combat .economy .sub { margin-left: auto; }
+.n5e-turn-card { font-size: 12px; display: flex; flex-direction: column; gap: 2px; }
+.n5e-turn-card .conc { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.n5e-turn-card .conc button { flex: 0 0 auto; width: auto; height: 20px; line-height: 18px; padding: 0 8px; font-size: 11px; }
+.n5e-turn-card .warn { color: #B23A26; }
+
+/* NPC header */
+.n5e-v2.npc .npc-summary { color: #D9CFBF; font-size: 13px; }
+.n5e-v2.npc .npc-fields { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 11px; color: #D9CFBF; }
+.n5e-v2.npc .npc-fields label { display: inline-flex; align-items: center; gap: 4px; }
+.n5e-v2.npc .npc-fields input, .n5e-v2.npc .npc-fields select { height: 22px; width: auto; max-width: 110px; font-size: 11px; }
+.n5e-v2.npc .npc-fields input[type="number"] { width: 54px; }

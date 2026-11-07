@@ -54,6 +54,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       toggleConcentration: CharacterSheet.#onToggleConcentration,
       toggleCombo: CharacterSheet.#onToggleCombo,
       resetChain: CharacterSheet.#onResetChain,
+      toggleEconomy: CharacterSheet.#onToggleEconomy,
       toggleEquip: CharacterSheet.#onToggleEquip,
       togglePin: CharacterSheet.#onTogglePin,
       toggleExpand: CharacterSheet.#onToggleExpand,
@@ -128,6 +129,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     context.actor = this.actor;
     context.editMode = this.editMode;
     context.editable = this.isEditable;
+    context.isNPC = this.actor.type === "npc";
     context.tabs = this._prepareTabs("primary");
     return context;
   }
@@ -532,6 +534,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /** Clear the armed Combo (the Finisher window passed). */
   static async #onToggleCombo() {
     return this.actor.update({ "flags.n5e.combo": null });
+  }
+
+  /** Mark an action-economy slot used or available. */
+  static async #onToggleEconomy(event, target) {
+    const key = target.dataset.key;
+    const used = !!this.actor.getFlag("n5e", "economy")?.[key];
+    return this.actor.update({ [`flags.n5e.economy.${key}`]: !used });
   }
 
   /** Reset Chain to 0 and hide the tracker. */

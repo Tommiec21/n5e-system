@@ -1,4 +1,5 @@
 <section class="tab n5e-tab features {{tab.cssClass}}" data-tab="features" data-group="primary">
+  {{#unless isNPC}}
   <div class="origins compact">
     {{#with vm.classCard}}
       <div class="origin cls n5e-row" data-item-id="{{id}}" data-tooltip="{{hitDie}} HP · {{chakraDie}} CP · {{tier}} jutsu tier">
@@ -23,6 +24,7 @@
       <div class="origin empty">Drop a background</div>
     {{/with}}
   </div>
+  {{/unless}}
 
   {{#each vm.groups}}
     <div class="feature-group {{key}}">

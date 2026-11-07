@@ -4,6 +4,7 @@
  */
 import { resourceCost, cannotPay } from "../rules/resource-cost.mjs";
 import { postItemCard } from "../chat/card.mjs";
+import { economySlot } from "../rules/turn-start.mjs";
 
 export async function useFeature(actor, item) {
   const cost = resourceCost(item);
@@ -17,5 +18,7 @@ export async function useFeature(actor, item) {
     await actor.update({ [`system.resources.${cost.pool}.value`]: Math.max(0, (pool.value ?? 0) - cost.amount) });
   }
   if ( cost.uses ) await item.update({ "system.uses.spent": (item.system.uses.spent ?? 0) + 1 });
+  const slot = economySlot(item.system.activation?.type);
+  if ( slot ) await actor.update({ [`flags.n5e.economy.${slot}`]: true });
   return postItemCard(item, { spent: cost.pool ? `${cost.amount} ${actor.system.resources[cost.pool]?.label ?? cost.pool}` : cost.uses ? "1 use" : "" });
 }

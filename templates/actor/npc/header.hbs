@@ -1,0 +1,43 @@
+<header class="n5e-head npc-head">
+  <div class="identity">
+    <div class="name-row">
+      {{#if editMode}}<input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">{{else}}<h1 class="name">{{vm.name}}</h1>{{/if}}
+    </div>
+    {{#if editMode}}
+      <div class="npc-fields">
+        <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
+        <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>Role <select name="system.details.role">{{#each npc.roleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>Type <input type="text" name="system.details.creatureType" value="{{npc.creatureType}}"></label>
+        <label>Template <select name="system.details.template">{{#each npc.templateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>
+        <label data-tooltip="Blank = from level and Chakra Die">CP max <input type="number" name="system.cpMax" value="{{npc.cpMax}}" min="0"></label>
+        <label>Hit Die <input type="text" name="system.hitDie" value="{{npc.hitDie}}"></label>
+        <label>Chakra Die <input type="text" name="system.chakraDie" value="{{npc.chakraDie}}"></label>
+      </div>
+    {{else}}
+      <span class="npc-summary">{{npc.summary}}</span>
+    {{/if}}
+  </div>
+  <div class="head-right">
+    <div class="buttons">
+      {{#if editable}}
+        <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
+          data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit stat block{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
+      {{/if}}
+    </div>
+    <div class="ability-strip">
+      {{#each vm.abilities}}
+        <div class="ab-tile" data-tooltip="{{label}}">
+          <span class="abbr">{{abbr}}</span>
+          <b class="mod rollable" data-action="roll" data-roll="ability" data-key="{{key}}">{{mod}}</b>
+          {{#if @root.editMode}}
+            <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
+          {{else}}
+            <span class="score">{{value}}</span>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</header>

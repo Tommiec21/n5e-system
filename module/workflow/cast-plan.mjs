@@ -12,6 +12,7 @@
 import { castUpdates } from "../rules/cast-tracking.mjs";
 import { resourceCost } from "../rules/resource-cost.mjs";
 import { rankValue } from "../rules/progression.mjs";
+import { economySlot } from "../rules/turn-start.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 
@@ -85,6 +86,13 @@ export function castPlan(actor, item, sel = {}) {
     if ( concentration.ending ) update[`flags.n5e.concentrationPaid.-=${concentration.ending}`] = null;
   }
   Object.assign(update, castUpdates(actor, item) ?? {});
+  // Action economy: mark the slot this cast uses; warn when it's already spent this turn.
+  const slot = economySlot(j.activation?.type);
+  if ( slot ) {
+    if ( actor.flags?.n5e?.economy?.[slot] ) warnings.push(`Your ${slot === "bonus" ? "Bonus Action" : slot[0].toUpperCase() + slot.slice(1)} is already used this turn`);
+    update[`flags.n5e.economy.${slot}`] = true;
+    if ( j.activation?.type === "fullTurn" ) update["flags.n5e.economy.bonus"] = true;
+  }
 
   return {
     rank, upcast: rankValue(rank) - rankValue(j.rank),

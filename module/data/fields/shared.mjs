@@ -114,6 +114,8 @@ export function uses() {
     max: formula(),
     spent: int(0, { min: 0 }),
     per: str(),
+    /** "Recharge X-Y" (e.g. "5-6"): rolled at the start of the owner's turn while spent (KB 03). */
+    recharge: str(),
     staminaEligible: bool()
   });
 }

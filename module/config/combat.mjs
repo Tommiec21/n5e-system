@@ -81,6 +81,7 @@ export const durationUnits = {
  * Short rests also count for "rest"; long rests count as short rests (KB 06).
  */
 export const recoveryPeriods = {
+  recharge: "Recharge (roll at turn start)",
   turnStart: "Start of your turn",
   turn: "Per turn",
   round: "Per round",

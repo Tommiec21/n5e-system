@@ -16,6 +16,7 @@ export function castUpdates(actor, item) {
   const update = {};
   if ( keys.has("chain") ) {
     update["system.combat.chain.active"] = true;
+    update["flags.n5e.chainTouched"] = true;
     if ( act === "action" ) update["system.combat.chain.value"] = Math.min(3, (chain.value ?? 0) + 1);
   } else if ( chain.value || chain.active ) {
     update["system.combat.chain.value"] = 0;
