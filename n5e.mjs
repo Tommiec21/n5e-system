@@ -8,6 +8,8 @@ import N5eActor from "./module/documents/actor.mjs";
 import N5eItem from "./module/documents/item.mjs";
 import N5eActiveEffect from "./module/documents/active-effect.mjs";
 import { N5eActorSheet, N5eItemSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
+import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
+import { registerHelpers } from "./module/applications/helpers.mjs";
 import { registerSettings } from "./module/settings.mjs";
 import { checkMigrations, MIGRATIONS } from "./module/migration/runner.mjs";
 import api from "./module/api.mjs";
@@ -56,13 +58,15 @@ Hooks.once("init", () => {
   CONFIG.specialStatusEffects.INVISIBLE = "invisible";
   CONFIG.specialStatusEffects.BLIND = "blinded";
 
-  // Placeholder sheets (Phase 2 replaces these).
+  // Sheets: the Phase 2 character sheet; NPCs and items keep the placeholder until their milestones.
   const { Actors, Items } = foundry.documents.collections;
-  Actors.registerSheet("n5e", N5eActorSheet, { makeDefault: true, label: "N5E.SheetPlaceholder" });
+  Actors.registerSheet("n5e", CharacterSheet, { types: ["character"], makeDefault: true, label: "N5E.SheetCharacter" });
+  Actors.registerSheet("n5e", N5eActorSheet, { types: ["npc"], makeDefault: true, label: "N5E.SheetPlaceholder" });
   Items.registerSheet("n5e", N5eItemSheet, { makeDefault: true, label: "N5E.SheetPlaceholder" });
 
   registerSettings();
-  foundry.applications.handlebars.loadTemplates(TEMPLATE_PATHS);
+  registerHelpers();
+  foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS])]);
 });
 
 Hooks.once("ready", async () => {

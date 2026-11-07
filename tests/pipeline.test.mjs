@@ -197,3 +197,32 @@ test("ASI Mastery ranks only count on skills and toolkits", () => {
     items: [taiSpec(4)] });
   assert.equal(a.system.mastery.asiAvailable, 1);
 });
+
+test("breakdowns add up to every derived number (PF2e-style)", () => {
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(7), load("clans", "Uchiha")],
+    conditions: [{ key: "exhaustion", ranks: 2 }, { key: "shaken", ranks: 1 }, { key: "concussed", ranks: 1 }],
+    acCalc: "martialTechnique" });
+  const s = a.system;
+  const b = k => s.breakdowns[k].toJSON();
+  assert.equal(b("ac").total, s.ac.value);
+  assert.ok(b("ac").parts.some(p => p.label === "Exhaustion 2" && p.value === -2));
+  for ( const k of ["str", "dex", "con", "int", "wis", "cha"] ) assert.equal(b(`save.${k}`).total, s.saves[k].total, k);
+  for ( const k of Object.keys(s.skills) ) {
+    assert.equal(b(`skill.${k}`).total, s.skills[k].total, k);
+    assert.equal(b(`passive.${k}`).total, s.skills[k].passive, `passive ${k}`);
+  }
+  assert.equal(b("initiative").total, s.initiative.total);
+  for ( const d of ["nin", "tai", "gen"] ) {
+    assert.equal(b(`${d}.attack`).total, s.disciplines[d].attack, d);
+    assert.equal(b(`${d}.dc`).total, s.disciplines[d].dc, d);
+  }
+  assert.ok(b("tai.dc").parts.some(p => p.label === "Concussed 1" && p.value === -1));
+  assert.ok(b("save.str").parts.some(p => p.label === "Shaken 1"), "physical d20 penalty shown");
+  assert.ok(!b("save.wis").parts.some(p => p.label === "Shaken 1"), "not on mental saves");
+  assert.equal(b("hp.max").total, s.hp.max);
+  assert.equal(b("cp.max").total, s.cp.max);
+  assert.equal(b("inventory.slots").total, s.inventory.slots);
+  assert.equal(b("dr").total, s.dr);
+  // Martial Technique parts read like the book.
+  assert.deepEqual(b("ac").parts.slice(0, 3).map(p => p.label), ["Base", "Proficiency (Martial Technique)", "Dex"]);
+});

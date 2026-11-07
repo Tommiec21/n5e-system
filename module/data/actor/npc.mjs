@@ -6,6 +6,7 @@ import CreatureData from "./creature.mjs";
 import * as S from "../fields/shared.mjs";
 import { poolMax } from "../../rules/progression.mjs";
 import { dieFaces } from "../../rules/formula.mjs";
+import { Breakdown } from "../../rules/breakdown.mjs";
 
 export default class NPCData extends CreatureData {
 
@@ -43,8 +44,14 @@ export default class NPCData extends CreatureData {
     const hitFaces = dieFaces(this.hitDie);
     const chakraFaces = dieFaces(this.chakraDie);
     super._preparePools({ hitFaces, chakraFaces, conMod });
-    if ( this.hpMax != null ) this.hp.max = this.hpMax + this.bonuses.hpMax;
-    if ( this.cpMax != null ) this.cp.max = this.cpMax + this.bonuses.cpMax;
+    if ( this.hpMax != null ) {
+      this.hp.max = this.hpMax + this.bonuses.hpMax;
+      this.breakdowns["hp.max"] = new Breakdown("Hit Points").base("Stat block", this.hpMax).add("Bonuses", this.bonuses.hpMax);
+    }
+    if ( this.cpMax != null ) {
+      this.cp.max = this.cpMax + this.bonuses.cpMax;
+      this.breakdowns["cp.max"] = new Breakdown("Chakra Points").base("Stat block", this.cpMax).add("Bonuses", this.bonuses.cpMax);
+    }
     if ( !this.level && this.hpMax == null ) this.hp.max = poolMax({ level: 0 });
   }
 

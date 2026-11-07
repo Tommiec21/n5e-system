@@ -1,0 +1,83 @@
+<section class="tab n5e-tab main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="pins" data-pin-zone>
+    <span class="lbl"><i class="fa-solid fa-thumbtack"></i> Pinned</span>
+    {{#each vm.pinned}}
+      <span class="pin n5e-row" data-item-id="{{id}}">
+        <img src="{{img}}" alt="" width="22" height="22">
+        {{{glyph}}}
+        <a data-action="useItem" data-tooltip="Use">{{name}}</a>
+        {{#if detail}}<span class="sub">{{detail}}</span>{{/if}}
+        <a class="ctl" data-action="togglePin" aria-label="Unpin {{name}}"><i class="fa-solid fa-xmark"></i></a>
+      </span>
+    {{else}}
+      <span class="muted small">Drag a jutsu or item here, or use its pin, to keep it one click away.</span>
+    {{/each}}
+  </div>
+
+  <div class="abilities">
+    {{#each vm.abilities}}
+      <div class="ability">
+        <span class="abbr">{{abbr}}</span>
+        <b class="mod">{{mod}}</b>
+        {{#if @root.editMode}}
+          <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
+        {{else}}
+          <span class="score">{{value}}</span>
+        {{/if}}
+        <span class="save" data-tooltip-html="{{saveTip}}">
+          {{#if @root.editMode}}
+            <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
+          {{else}}
+            <span class="dot {{#if saveProficient}}on{{/if}}"></span>
+          {{/if}}
+          Save {{save}}
+        </span>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="disciplines">
+    {{#each vm.disciplines}}
+      <div class="discipline {{key}}">
+        <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
+        <div class="nums"><b data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
+      </div>
+    {{/each}}
+  </div>
+
+  {{#if vm.asiAvailable}}
+    <div class="callout">
+      <b>{{vm.asiAvailable}} Mastery rank{{#if (n5eGt vm.asiAvailable 1)}}s{{/if}} to assign</b>
+      <span>from your ASI levels (skill or toolkit). Until the level-up dialog arrives, add it in edit mode under Biography → All stored fields → mastery, with source "ASI 4".</span>
+    </div>
+  {{/if}}
+
+  <div class="skills">
+    <div class="section-head"><h2>Skills</h2>
+      <span class="sub">● proficient · ◆ Mastery · Passive Perception {{vm.passives.perception}} · Insight {{vm.passives.insight}} · Investigation {{vm.passives.investigation}}</span></div>
+    <div class="skill-cols">
+      {{#each vm.skillColumns}}
+        <ul class="skill-list">
+          {{#each this}}
+            <li class="skill {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}">
+              {{#if @root.editMode}}
+                <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">
+              {{else}}
+                <span class="dot {{#if proficient}}on{{/if}}"></span>
+              {{/if}}
+              <span class="label">{{label}} <span class="ab">{{ability}}{{#if granted}} · granted{{/if}}</span></span>
+              <span class="mastery">{{#each masteryPips}}{{#if filled}}◆{{/if}}{{/each}}</span>
+              <b>{{total}}</b>
+            </li>
+          {{/each}}
+        </ul>
+      {{/each}}
+    </div>
+  </div>
+
+  {{#if vm.toolkits.length}}
+    <div class="toolkits"><span class="lbl">Toolkits</span>
+      {{#each vm.toolkits}}<span class="chip">● {{label}}{{#if mastery}} ◆{{mastery}}{{/if}}</span>{{/each}}
+    </div>
+  {{/if}}
+</section>

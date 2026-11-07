@@ -1,0 +1,20 @@
+<section class="tab n5e-tab biography {{tab.cssClass}}" data-tab="biography" data-group="primary">
+  <div class="bio-fields">
+    {{#each vm.fields}}
+      <label class="bio-field"><span class="lbl">{{label}}</span>
+        {{#if @root.editMode}}<input type="text" name="system.details.{{key}}" value="{{value}}">{{else}}<span>{{#if value}}{{value}}{{else}}—{{/if}}</span>{{/if}}
+      </label>
+    {{/each}}
+  </div>
+  <div class="section-head"><h2>Biography</h2></div>
+  {{#if editMode}}
+    <textarea name="system.details.biography" rows="10" aria-label="Biography">{{vm.biography}}</textarea>
+  {{else}}
+    <div class="bio-text">{{{vm.biographyHTML}}}</div>
+  {{/if}}
+  {{#if editMode}}
+    <details class="all-fields"><summary>All stored fields (advanced)</summary>
+      {{> "systems/n5e/templates/parts/field-rows.hbs" rows=rows editable=editable}}
+    </details>
+  {{/if}}
+</section>

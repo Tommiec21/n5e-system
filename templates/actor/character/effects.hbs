@@ -1,0 +1,23 @@
+<section class="tab n5e-tab effects {{tab.cssClass}}" data-tab="effects" data-group="primary">
+  {{#each vm.groups}}
+    <div class="effect-group">
+      <div class="section-head"><h2>{{label}}</h2></div>
+      {{#each rows}}
+        <div class="effect-row {{#if disabled}}off{{/if}}" data-effect-id="{{id}}">
+          <img src="{{img}}" alt="" width="24" height="24">
+          <a class="name" data-action="editEffect">{{name}}</a>
+          {{#if max}}<span class="ranks">{{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="-1" aria-label="Lower rank">−</a>{{/if}}<b>{{ranks}}</b> / {{max}}{{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="1" aria-label="Raise rank">+</a>{{/if}}</span>{{/if}}
+          <span class="sub">{{source}}</span>
+          {{#if @root.editable}}
+            <span class="row-controls always">
+              <a class="ctl" data-action="toggleEffect" data-tooltip="{{#if disabled}}Enable{{else}}Disable{{/if}}"><i class="fa-solid {{#if disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i></a>
+              <a class="ctl danger" data-action="deleteEffect" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+            </span>
+          {{/if}}
+        </div>
+      {{else}}
+        <p class="muted small">None.</p>
+      {{/each}}
+    </div>
+  {{/each}}
+</section>

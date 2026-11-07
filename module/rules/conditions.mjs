@@ -10,7 +10,9 @@ export function emptyPenalties() {
     allDice: 0, ac: 0, saveDC: 0, d20Physical: 0, d20Mental: 0, checksAndAttacks: 0,
     damageTaken: 0, damageDealt: 0, perception: 0, dr: 0,
     baseCost: { nin: 0, gen: 0, tai: 0, buki: 0 },
-    flags: {}
+    flags: {},
+    /** Per-key contributions for breakdown tooltips: {ac: [{label: "Exhaustion 3", value: -3}], ...}. */
+    sources: {}
   };
 }
 
@@ -32,12 +34,28 @@ export function aggregatePenalties(active, registry = coreConditions) {
     if ( !def ) continue;
     const r = clampRanks(def, ranks);
     if ( !r ) continue;
+    const label = def.maxRanks == null ? def.label : `${def.label} ${r}`;
+    const note = (k, value) => { if ( value ) (out.sources[k] ??= []).push({ label, value }); };
     for ( const [k, v] of Object.entries(def.perRank ?? {}) ) {
-      if ( typeof v === "object" ) for ( const [d, n] of Object.entries(v) ) out[k][d] = (out[k][d] ?? 0) + n * r;
-      else out[k] = (out[k] ?? 0) + v * r;
+      if ( typeof v === "object" ) {
+        for ( const [d, n] of Object.entries(v) ) {
+          out[k][d] = (out[k][d] ?? 0) + n * r;
+          note(`${k}.${d}`, n * r);
+        }
+      } else {
+        out[k] = (out[k] ?? 0) + v * r;
+        note(k, v * r);
+      }
     }
-    for ( const [k, v] of Object.entries(def.flat ?? {}) ) out[k] = (out[k] ?? 0) + v;
-    if ( def.drBySourceRank && sourceRank ) out.dr += def.drBySourceRank[sourceRank] ?? 0;
+    for ( const [k, v] of Object.entries(def.flat ?? {}) ) {
+      out[k] = (out[k] ?? 0) + v;
+      note(k, v);
+    }
+    if ( def.drBySourceRank && sourceRank ) {
+      const v = def.drBySourceRank[sourceRank] ?? 0;
+      out.dr += v;
+      note("dr", v);
+    }
     for ( const [k, v] of Object.entries(def.flags ?? {}) ) out.flags[k] = v;
     out.flags[`has.${key}`] = r;
   }

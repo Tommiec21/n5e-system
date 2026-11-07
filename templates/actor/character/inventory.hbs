@@ -1,0 +1,48 @@
+<section class="tab n5e-tab inventory {{tab.cssClass}}" data-tab="inventory" data-group="primary">
+  <div class="slots" data-tooltip-html="{{vm.slotsTip}}">
+    <div class="line"><b>Inventory Slots</b><span><b>{{vm.used}}</b> / {{vm.slots}}{{#if vm.encumbered}} · <span class="warn">Encumbered (half speed)</span>{{/if}}</span></div>
+    <div class="meter-cells">{{#each vm.meter}}<span class="cell {{#if filled}}on{{/if}} {{#if over}}over{{/if}}"></span>{{/each}}</div>
+  </div>
+
+  {{#each vm.sections}}
+    {{#unless empty}}
+      <div class="inv-section">
+        <div class="section-head"><h2>{{label}}</h2></div>
+        <ol class="rows">
+          {{#each rows}}
+            <li class="n5e-row gear-row draggable" data-item-id="{{id}}" draggable="true">
+              <img src="{{img}}" alt="" width="32" height="32">
+              <div class="name-col">
+                <a class="name" data-action="editItem">{{name}}{{#if (n5eGt quantity 1)}} ×{{quantity}}{{/if}}</a>
+                <span class="sub">{{subtitle}}</span>
+                {{#if chips.length}}{{> "systems/n5e/templates/parts/chips.hbs" chips=chips}}{{/if}}
+              </div>
+              <div class="extras">
+                {{#if seals}}<span class="sub" data-tooltip-text="Seal slots used">Seals {{seals.used}} / {{seals.max}}</span>{{/if}}
+                {{#if ammo}}
+                  <span class="ammo" aria-label="Ammunition die">{{#each ammo}}<button type="button" class="{{#if current}}on{{/if}}" data-action="setAmmo" data-idx="{{idx}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>{{/each}}</span>
+                {{/if}}
+                {{#if charges}}
+                  <span class="charges" aria-label="Charges">{{#each charges}}<button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setCharge" data-idx="{{idx}}" aria-label="Charge {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span>
+                {{/if}}
+              </div>
+              <span class="bulk">Bulk {{bulk}}</span>
+              <span class="use">
+                {{#if equippable}}
+                  <button type="button" class="equip {{#if equipped}}on{{/if}}" data-action="toggleEquip" aria-pressed="{{equipped}}">{{#if equipped}}Equipped{{else}}Equip{{/if}}</button>
+                {{else}}
+                  <button type="button" data-action="useItem">Use</button>
+                {{/if}}
+                {{> "systems/n5e/templates/parts/item-controls.hbs"}}
+              </span>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+    {{/unless}}
+  {{/each}}
+
+  <div class="ryo"><b>Ryo</b>
+    {{#if editable}}<input type="number" name="system.currency.ryo" value="{{vm.ryo}}" min="0" aria-label="Ryo">{{else}}{{vm.ryo}}{{/if}}
+  </div>
+</section>

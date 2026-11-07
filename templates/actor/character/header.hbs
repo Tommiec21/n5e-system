@@ -1,0 +1,37 @@
+<header class="n5e-head">
+  <img class="portrait" src="{{vm.img}}" alt="{{vm.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+  <div class="identity">
+    {{#if editMode}}
+      <input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">
+    {{else}}
+      <h1 class="name">{{vm.name}}</h1>
+    {{/if}}
+    <div class="subtitle">{{vm.subtitle}} · Proficiency {{vm.prof}}</div>
+    <div class="xp">
+      <span class="lbl">XP</span>
+      <span class="bar"><span class="fill" style="width: {{vm.xp.pct}}%"></span></span>
+      {{#if editMode}}
+        <input type="number" name="system.details.xp" value="{{vm.xp.value}}" aria-label="Experience">
+      {{else}}
+        <span class="val">{{vm.xp.value}}{{#if vm.xp.next}} / {{vm.xp.next}}{{/if}}</span>
+      {{/if}}
+    </div>
+  </div>
+  <div class="head-right">
+    <div class="buttons">
+      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Short Rest</button>
+      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Long Rest</button>
+      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Full Rest</button>
+      {{#if editable}}
+        <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
+          data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit mode{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
+      {{/if}}
+    </div>
+    <div class="wof">
+      <span class="lbl">Will of Fire</span>
+      {{#each vm.willOfFire}}
+        <button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setWillOfFire" data-value="{{n}}" aria-label="Will of Fire {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>
+      {{/each}}
+    </div>
+  </div>
+</header>

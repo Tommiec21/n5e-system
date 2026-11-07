@@ -1,0 +1,81 @@
+<section class="tab n5e-tab features {{tab.cssClass}}" data-tab="features" data-group="primary">
+  <div class="origins">
+    {{#with vm.classCard}}
+      <div class="origin dark n5e-row" data-item-id="{{id}}">
+        <span class="lbl">Class</span>
+        <b class="title">{{name}} {{levels}}</b>
+        <span class="sub">{{hitDie}} HP · {{chakraDie}} CP · {{tier}} jutsu tier</span>
+        {{#if @root.editMode}}<label class="inline">Level <input type="number" min="1" max="20" value="{{levels}}" data-item-field="system.levels"></label>{{/if}}
+      </div>
+    {{else}}
+      <div class="origin empty">Drop a class here</div>
+    {{/with}}
+    {{#with vm.clanCard}}
+      <div class="origin n5e-row" data-item-id="{{id}}">
+        <span class="lbl">Clan</span>
+        <b class="title">{{name}}</b>
+        <span class="sub">{{#if affinities}}Affinity: {{affinities}}{{/if}}</span>
+        {{#if hijutsu.length}}
+          <label class="inline">Hijutsu ability
+            <select data-item-field="system.hijutsuChoice" {{#unless @root.editable}}disabled{{/unless}}>
+              <option value="" {{#unless hijutsuChoice}}selected{{/unless}}>Auto (higher)</option>
+              {{#each hijutsu}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+            </select>
+          </label>
+        {{/if}}
+      </div>
+    {{else}}
+      <div class="origin empty">Drop a clan here</div>
+    {{/with}}
+    {{#with vm.backgroundCard}}
+      <div class="origin n5e-row" data-item-id="{{id}}"><span class="lbl">Background</span><b class="title">{{name}}</b></div>
+    {{else}}
+      <div class="origin empty">Drop a background here</div>
+    {{/with}}
+  </div>
+
+  <div class="stances">
+    <div class="section-head"><h2>Stances</h2><span class="sub">One at a time · switching costs a Bonus Action</span></div>
+    {{#each vm.stances}}
+      <div class="n5e-row stance-row {{#if active}}active{{/if}}" data-item-id="{{id}}">
+        <a class="name" data-action="editItem">{{name}}</a><span class="sub">{{categories}}</span>
+        <button type="button" data-action="enterStance" {{#unless @root.editable}}disabled{{/unless}}>{{#if active}}Leave{{else}}Enter{{/if}}</button>
+      </div>
+    {{else}}
+      <p class="muted small">No stances.</p>
+    {{/each}}
+  </div>
+
+  {{#if vm.resources.length}}
+    <div class="resources">
+      <div class="section-head"><h2>Resources</h2></div>
+      {{#each vm.resources}}
+        <div class="resource" data-pool="{{id}}">
+          <b>{{label}}</b>
+          {{#if pips}}
+            <span class="pips">{{#each pips}}<button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setPool" data-value="{{n}}" aria-label="{{../label}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span>
+          {{/if}}
+          <span>{{value}} / {{max}}</span>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#each vm.groups}}
+    <div class="feature-group">
+      <div class="section-head"><h2>{{label}}</h2></div>
+      {{#each rows}}
+        <div class="n5e-row feature-row draggable" data-item-id="{{id}}" draggable="true">
+          <span class="lvl">{{#if level}}Lv {{level}}{{/if}}</span>
+          <span class="glyph">{{{glyph}}}</span>
+          <a class="name" data-action="editItem">{{name}}</a>
+          {{#if category}}<span class="sub">{{category}}</span>{{/if}}
+          {{#if uses}}<span class="sub">{{uses}}</span>{{/if}}
+          <span class="use">{{#unless passive}}<button type="button" data-action="useItem">Use</button>{{/unless}}{{> "systems/n5e/templates/parts/item-controls.hbs"}}</span>
+        </div>
+      {{else}}
+        <p class="muted small">None yet.</p>
+      {{/each}}
+    </div>
+  {{/each}}
+</section>

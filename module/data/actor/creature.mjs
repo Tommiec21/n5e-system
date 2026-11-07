@@ -27,6 +27,7 @@ import { aggregatePenalties } from "../../rules/conditions.mjs";
 import { computeAC } from "../../rules/ac.mjs";
 import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
+import { Breakdown } from "../../rules/breakdown.mjs";
 
 const F = () => foundry.data.fields;
 
@@ -110,6 +111,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.level = this._computeLevel();
     this.prof = proficiencyForLevel(this.level);
     this.derived = { notes: [] };
+    /** Statistic breakdowns, filled during prepareDerivedData: {"ac": Breakdown, "skill.ath": Breakdown, ...}. */
+    this.breakdowns = {};
   }
 
   /** Overridden by character (class levels) and NPC (stored level). */
@@ -160,20 +163,27 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
 
     // Step 6 + 7: Mastery (sources from actor, items, and n5e.mastery.* effects).
     this._prepareMastery(grants, mods);
-    const m = target => this.masteryFor(target).bonus;
 
-    const d20Penalty = abilityKey => {
-      const cat = abilities[abilityKey]?.category;
-      return pen.allDice + (cat === "physical" ? pen.d20Physical : pen.d20Mental);
+    // Every number below is built through a Breakdown so sheets can show its parts (PF2e-style).
+    const B = (key, label) => (this.breakdowns[key] = new Breakdown(label));
+    const P = (...keys) => keys.flatMap(k => pen.sources[k] ?? []);
+    const d20Parts = abilityKey => P("allDice", abilities[abilityKey]?.category === "physical" ? "d20Physical" : "d20Mental");
+    const addMastery = (b, target) => {
+      const mm = this.masteryFor(target);
+      if ( mm.rank ) b.add(`Mastery ${mm.rank}`, mm.bonus);
+      return b;
     };
+    const abbr = key => abilities[key]?.abbr ?? key;
 
     // Saves: mod + prof (or half prof if not proficient) + Mastery.
     for ( const key of Object.keys(abilities) ) {
       const save = this.saves[key];
       save.isProficient = save.proficient || grants.saves.has(key);
-      const profPart = save.isProficient ? this.prof : Math.floor(this.prof / 2);
       save.mastery = this.masteryFor(`save.${key}`).rank;
-      save.total = mod(key) + profPart + m(`save.${key}`) + this.bonuses.save + d20Penalty(key);
+      const b = B(`save.${key}`, `${abilities[key].label} save`).base(abbr(key), mod(key))
+        .add(save.isProficient ? "Proficiency" : "Half proficiency", save.isProficient ? this.prof : Math.floor(this.prof / 2));
+      addMastery(b, `save.${key}`).add("Bonuses", this.bonuses.save).addAll(d20Parts(key));
+      save.total = b.total;
     }
 
     // Skills and passives.
@@ -181,10 +191,14 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       skill.isProficient = skill.proficient || grants.skills.has(key);
       skill.mod = mod(skill.ability);
       skill.mastery = this.masteryFor(`skill.${key}`).rank;
-      skill.total = skill.mod + (skill.isProficient ? this.prof : 0) + m(`skill.${key}`)
-        + evaluateFormula(skill.bonus, rollData, 0) + this.bonuses.check + d20Penalty(skill.ability)
-        + pen.checksAndAttacks;
-      skill.passive = 10 + skill.total + (key === "prc" ? pen.perception : 0);
+      const b = B(`skill.${key}`, skills[key]?.label ?? key).base(abbr(skill.ability), skill.mod)
+        .add("Proficiency", skill.isProficient ? this.prof : 0);
+      addMastery(b, `skill.${key}`).add("Skill bonus", evaluateFormula(skill.bonus, rollData, 0))
+        .add("Bonuses", this.bonuses.check).addAll(d20Parts(skill.ability)).addAll(P("checksAndAttacks"));
+      skill.total = b.total;
+      const pb = B(`passive.${key}`, `Passive ${skills[key]?.label ?? key}`).base("Base", 10).add("Skill", skill.total);
+      if ( key === "prc" ) pb.addAll(P("perception"));
+      skill.passive = pb.total;
     }
     for ( const [key, tool] of Object.entries(this.tools) ) {
       tool.isProficient = tool.proficient || grants.tools.has(key);
@@ -192,27 +206,36 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     }
 
     // Initiative: Dex + floor(prof / 2) + Mastery.
-    this.initiative = {
-      total: mod("dex") + Math.floor(this.prof / 2) + m("initiative") + this.bonuses.initiative
-        + evaluateFormula(this.attributes.init.bonus, rollData, 0) + d20Penalty("dex")
-    };
+    const ib = B("initiative", "Initiative").base("Dex", mod("dex")).add("Half proficiency", Math.floor(this.prof / 2));
+    addMastery(ib, "initiative").add("Bonuses", this.bonuses.initiative)
+      .add("Initiative bonus", evaluateFormula(this.attributes.init.bonus, rollData, 0)).addAll(d20Parts("dex"));
+    this.initiative = { total: ib.total };
 
     // Disciplines: attack = mod + prof; DC = 8 + mod + prof; minus Concussed/Exhaustion on DCs.
     for ( const key of castingDisciplines ) {
       const disc = this.disciplines[key];
+      const label = disciplines[key].label;
       disc.ability = mods.disciplineAbility[key] ?? disc.ability;
       disc.mod = mod(disc.ability);
-      disc.attack = disc.mod + this.prof + this.bonuses.attack[key] + (mods.attack[key] ?? 0) + m(`attack.${key}`)
-        + pen.allDice + pen.checksAndAttacks;
-      disc.dc = dcTables.jutsuSaveBase + disc.mod + this.prof + this.bonuses.saveDC[key]
-        + (mods.saveDC[key] ?? 0) + (mods.saveDC.all ?? 0) + pen.saveDC;
+      const ab = B(`${key}.attack`, `${label} attack`).base(abbr(disc.ability), disc.mod).add("Proficiency", this.prof)
+        .add("Bonuses", this.bonuses.attack[key]).add("Effects", mods.attack[key] ?? 0);
+      addMastery(ab, `attack.${key}`).addAll(P("allDice", "checksAndAttacks"));
+      disc.attack = ab.total;
+      const db = B(`${key}.dc`, `${label} save DC`).base("Base", dcTables.jutsuSaveBase).add(abbr(disc.ability), disc.mod)
+        .add("Proficiency", this.prof).add("Bonuses", this.bonuses.saveDC[key])
+        .add("Effects", (mods.saveDC[key] ?? 0) + (mods.saveDC.all ?? 0)).addAll(P("saveDC"));
+      disc.dc = db.total;
     }
     this.disciplines.buki = this.disciplines.tai;
+    this.breakdowns["buki.attack"] = this.breakdowns["tai.attack"];
+    this.breakdowns["buki.dc"] = this.breakdowns["tai.dc"];
 
     // Step 8: caps and defenses.
     this.critRange = {};
     for ( const [scope, v] of Object.entries(mods.critRange) ) this.critRange[scope] = Math.min(critRangeCap, v);
-    this.dr = Math.max(0, this.traits.dr + grants.reinforced + mods.dr + pen.dr);
+    const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).add("Reinforced armor", grants.reinforced)
+      .add("Effects", mods.dr).addAll(P("dr"));
+    this.dr = Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
     const ac = computeAC({
       calc: this.attributes.ac.calc, dexMod: mod("dex"), prof: this.prof, armor: grants.armor,
@@ -220,6 +243,9 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac
     });
     this.ac = ac;
+    const acb = B("ac", "Armor Class");
+    acb.parts.push(...ac.parts);
+    acb.addAll(P("ac"));
     this.concentration = {
       max: 2 + mods.concentrationMax,
       check: (this.skills.cha?.total ?? mod("con")),
@@ -229,6 +255,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
 
     // Step 9: inventory and computed states.
     const slots = inventorySlots(mod("str"), grants.containerSlots + this.bonuses.inventorySlots);
+    B("inventory.slots", "Inventory Slots").base("Base", 10).add("2 \u00d7 Str", 2 * mod("str"))
+      .add("Storage", grants.containerSlots).add("Bonuses", this.bonuses.inventorySlots);
     // Encumbered: carried Bulk over slots, or armor whose Heavyweight (X) Strength isn't met (King 2026-11-07).
     const req = grants.armor?.strRequirement;
     const encumberedBy = [];
@@ -310,7 +338,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           break;
         case "armor":
           if ( sys.equipped ) {
-            g.armor = { bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category,
+            g.armor = { name: item.name, bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category,
               strRequirement: sys.strRequirement || sys.properties?.heavyweight || null, item };
             g.reinforced = Math.max(g.reinforced, sys.properties?.reinforced ?? 0);
           }
@@ -348,6 +376,15 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       perLevelBonus: this.bonuses.hpPerLevel });
     this.cp.max = poolMax({ level: this.level, dieMax: chakraFaces, conMod, bonus: this.bonuses.cpMax,
       perLevelBonus: this.bonuses.cpPerLevel });
+    const poolParts = (label, faces, bonus, perLevel) => {
+      const b = new Breakdown(label).base("1st level", this.level >= 1 ? 10 : 0)
+        .add(`Die max \u00d7 ${this.level}`, this.level * faces).add(`Con \u00d7 ${this.level}`, this.level * conMod)
+        .add("Per-level bonus", this.level * perLevel).add("Bonuses", bonus);
+      return b;
+    };
+    this.breakdowns ??= {};
+    this.breakdowns["hp.max"] = poolParts("Hit Points", hitFaces, this.bonuses.hpMax, this.bonuses.hpPerLevel);
+    this.breakdowns["cp.max"] = poolParts("Chakra Points", chakraFaces, this.bonuses.cpMax, this.bonuses.cpPerLevel);
     this.hitDice.max = this.level;
     this.hitDice.die = hitFaces ? `d${hitFaces}` : "";
     this.hitDice.value = Math.max(0, this.level - this.hitDice.spent);

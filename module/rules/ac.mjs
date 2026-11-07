@@ -32,22 +32,39 @@ export function computeAC({ calc = "default", dexMod, prof, armor = null, flat =
   blocking = 0, bonus = 0, penalty = 0 }) {
   let base;
   let used = calc;
+  const parts = [];
   // Heavy armor (cap 0) ignores Dex entirely; other caps only limit a positive modifier.
   let cappedDex = dexMod;
   if ( armor && armor.dexCap != null ) cappedDex = armor.dexCap === 0 ? 0 : Math.min(dexMod, armor.dexCap);
   switch ( calc ) {
     case "martialTechnique":
-      if ( armor ) { used = "default"; base = 10 + armor.bonus + cappedDex + Math.floor(prof / 2); }
-      else base = 10 + prof + dexMod;
+      if ( armor ) {
+        used = "default";
+        base = 10 + armor.bonus + cappedDex + Math.floor(prof / 2);
+        parts.push(["Base", 10], [armor.name ?? "Armor", armor.bonus], ["Dex", cappedDex], ["Half proficiency", Math.floor(prof / 2)]);
+      } else {
+        base = 10 + prof + dexMod;
+        parts.push(["Base", 10], ["Proficiency (Martial Technique)", prof], ["Dex", dexMod]);
+      }
       break;
     case "flat":
       base = Number(flat) || 0;
+      parts.push(["Natural armor", base]);
       break;
     case "formula":
       base = evaluateFormula(formula, rollData, 10);
+      parts.push([`Formula (${formula})`, base]);
       break;
     default:
       base = 10 + (armor?.bonus ?? 0) + cappedDex + Math.floor(prof / 2);
+      parts.push(["Base", 10]);
+      if ( armor ) parts.push([armor.name ?? "Armor", armor.bonus]);
+      parts.push(["Dex", cappedDex], ["Half proficiency", Math.floor(prof / 2)]);
   }
-  return { value: base + blocking + bonus + penalty, base, calc: used };
+  if ( blocking ) parts.push(["Blocking", blocking]);
+  if ( bonus ) parts.push(["Bonuses", bonus]);
+  return {
+    value: base + blocking + bonus + penalty, base, calc: used,
+    parts: parts.map(([label, value], i) => ({ label, value, base: i === 0 }))
+  };
 }

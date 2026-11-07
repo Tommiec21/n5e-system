@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.2.0-alpha.1 — Phase 2: character sheet frame
+
+### Added
+- New character sheet (dnd5e v5 structure, PF2e touches): header with XP and Will of Fire, left rail
+  (HP/CP meters with temp, AC, DR, initiative, speed, hit/chakra dice, Chain, concentration, stance,
+  conditions with rank pips and an Add picker), and tabs Main, Actions (alpha.2), Jutsu, Inventory,
+  Features, Effects, Biography.
+- Play mode by default; the pencil switches to edit mode (scores, proficiencies, name, XP, details,
+  all stored fields under Biography).
+- Statistic breakdowns: hover AC, DR, initiative, HP/CP max, saves, skills, passives, discipline
+  attack and DC, inventory slots to see every part, including condition penalties.
+- Action glyphs (Action, Bonus Action, Reaction, Full Turn, Free) and rule chips for keywords,
+  components, and weapon/armor properties.
+- Jutsu tab: search, discipline filter, grouping by discipline then rank, live cost and hit/DC,
+  expandable rows with Chain/Finisher/Overcharge/upcast text and a cast-rank picker.
+- Inventory tab: slot meter, Equipped / Weapons & Armor / Storage / Toolkits / Consumables / Loot,
+  equip toggles, clickable ammo die ladder and toolkit charges, Ryo.
+- Features tab: class, clan (Hijutsu ability picker), background cards, stances with Enter/Leave,
+  resource pools, features and feats.
+- Pinned strip on Main (drag an item onto it, or use its pin), item context menu (Edit, Post to chat,
+  Equip, Pin, Duplicate, Delete), Use posts an item card to chat (no rolls until Phase 3).
+- Drag-and-drop rules: replacing a class, clan, or background asks first; duplicate jutsu are refused.
+- Data: every derived number records its parts (`system.breakdowns`).
+- Tests: view models for every tab, breakdown totals, and Handlebars rendering of every template.
+
 ## 0.1.0-alpha.2
 
 ### Fixed

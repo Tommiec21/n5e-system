@@ -11,6 +11,7 @@ const registered = { sheets: [], settings: [], templates: [] };
 class Doc { static migrateData(s) { return s; } }
 class Sheet {}
 Object.assign(globalThis, {
+  Handlebars: { registerHelper: () => {} },
   Hooks: { once: (name, fn) => { hooks[name] = fn; }, on: () => {} },
   Actor: class extends Doc {}, Item: class extends Doc {}, ActiveEffect: class extends Doc {},
   CONFIG: {
@@ -45,7 +46,7 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 2);
+  assert.equal(registered.sheets.length, 3, "character sheet + NPC placeholder + item placeholder");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
   assert.ok(registered.templates.length >= 1);

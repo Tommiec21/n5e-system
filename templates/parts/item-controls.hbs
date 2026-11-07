@@ -1,0 +1,6 @@
+{{!-- Row controls shown on hover in play mode, always in edit mode. --}}
+<span class="row-controls">
+  <a class="ctl" data-action="togglePin" data-tooltip="Pin to Main" aria-label="Pin to Main"><i class="fa-solid fa-thumbtack"></i></a>
+  <a class="ctl" data-action="editItem" data-tooltip="Edit" aria-label="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+  {{#if @root.editMode}}<a class="ctl danger" data-action="deleteItem" data-tooltip="Delete" aria-label="Delete"><i class="fa-solid fa-trash"></i></a>{{/if}}
+</span>

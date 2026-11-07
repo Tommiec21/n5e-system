@@ -1,0 +1,64 @@
+<aside class="n5e-rail">
+  <div class="meter hp" data-tooltip-html="{{vm.hp.tip}}" data-tooltip-direction="RIGHT">
+    <div class="meter-head"><span>Hit Points</span>
+      <span><input type="number" name="system.hp.value" value="{{vm.hp.value}}" aria-label="Current HP" {{#unless editable}}disabled{{/unless}}> / {{vm.hp.max}}</span></div>
+    <div class="track"><div class="fill" style="width: {{vm.hp.pct}}%"></div></div>
+    <div class="meter-foot"><label>Temp <input type="number" name="system.hp.temp" value="{{vm.hp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
+      <span class="{{#if vm.hp.bloodied}}warn{{/if}}">{{#if vm.hp.bloodied}}Bloodied{{else}}Bloodied at {{vm.hp.bloodiedAt}}{{/if}}</span></div>
+  </div>
+  <div class="meter cp" data-tooltip-html="{{vm.cp.tip}}" data-tooltip-direction="RIGHT">
+    <div class="meter-head"><span>Chakra</span>
+      <span><input type="number" name="system.cp.value" value="{{vm.cp.value}}" aria-label="Current CP" {{#unless editable}}disabled{{/unless}}> / {{vm.cp.max}}</span></div>
+    <div class="track"><div class="fill" style="width: {{vm.cp.pct}}%"></div></div>
+    <div class="meter-foot"><label>Temp <input type="number" name="system.cp.temp" value="{{vm.cp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
+      <span class="{{#if vm.cp.drained}}warn{{/if}}">{{#if vm.cp.drained}}Drained{{else}}Drained at {{vm.cp.drainedAt}}{{/if}}</span></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Armor Class</span><b>{{vm.ac.value}}</b><span class="sub">{{vm.ac.label}}</span></div>
+    <div class="stat" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Damage Red.</span><b>{{vm.dr.value}}</b><span class="sub">Pierce {{vm.dr.pierce}}</span></div>
+    <div class="stat" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Initiative</span><b>{{vm.initiative.value}}</b></div>
+    <div class="stat"><span class="lbl">Speed</span><b>{{vm.speed.value}}</b><span class="sub">{{#if vm.speed.halved}}halved{{else}}ft{{/if}}{{#if vm.speed.other}} · {{vm.speed.other}}{{/if}}</span></div>
+  </div>
+
+  <div class="dice">
+    <div><span class="lbl">Hit Dice</span><b>{{vm.hitDice.value}} / {{vm.hitDice.max}} {{vm.hitDice.die}}</b></div>
+    <div><span class="lbl">Chakra Dice</span><b>{{vm.chakraDice.value}} / {{vm.chakraDice.max}} {{vm.chakraDice.die}}</b></div>
+  </div>
+
+  <div class="block">
+    <h3>Combat</h3>
+    <div class="line"><span>Chain</span>
+      <span class="boxes">{{#each vm.chain}}<button type="button" class="box {{#if filled}}on{{/if}}" data-action="setChain" data-value="{{n}}" aria-label="Chain {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span></div>
+    <div class="line"><span>Concentration</span><b>{{vm.concentration.used}} / {{vm.concentration.max}}</b></div>
+    <div class="line"><span>Stance</span><b class="{{#unless vm.stance}}muted{{/unless}}">{{#if vm.stance}}{{vm.stance}}{{else}}None{{/if}}</b></div>
+  </div>
+
+  <div class="block conditions">
+    <div class="line"><h3>Conditions</h3>
+      {{#if editable}}
+        <select data-add-condition aria-label="Add a condition">
+          <option value="">+ Add</option>
+          {{#each conditionChoices}}<option value="{{key}}">{{label}}</option>{{/each}}
+        </select>
+      {{/if}}
+    </div>
+    {{#each vm.conditions}}
+      <div class="condition {{#if disabled}}off{{/if}}" data-effect-id="{{id}}" data-tooltip-text="{{summary}}" data-tooltip-direction="RIGHT">
+        <span class="name">{{label}}</span>
+        {{#if ranked}}
+          <span class="ranks">
+            {{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="-1" aria-label="Lower rank">−</a>{{/if}}
+            {{#each pips}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}
+            <span class="num">{{ranks}}/{{max}}</span>
+            {{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="1" aria-label="Raise rank">+</a>{{/if}}
+          </span>
+        {{else if @root.editable}}
+          <a class="ctl" data-action="deleteEffect" aria-label="Remove {{label}}"><i class="fa-solid fa-xmark"></i></a>
+        {{/if}}
+      </div>
+    {{else}}
+      <p class="muted small">No conditions.</p>
+    {{/each}}
+  </div>
+</aside>

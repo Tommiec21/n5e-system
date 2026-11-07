@@ -1,0 +1,73 @@
+<section class="tab n5e-tab jutsu {{tab.cssClass}}" data-tab="jutsu" data-group="primary">
+  <div class="toolbar">
+    <label class="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" data-jutsu-search value="{{vm.search}}" placeholder="Search jutsu or keyword" aria-label="Search jutsu"></label>
+    {{#each vm.filters}}
+      <button type="button" class="filter {{#if active}}on{{/if}}" data-action="jutsuFilter" data-discipline="{{key}}">{{label}}</button>
+    {{/each}}
+  </div>
+  <div class="strip">
+    <span><b>Known</b> {{vm.known}}{{#if vm.knownMax}} / {{vm.knownMax}}{{/if}}</span>
+    <span><b>Highest rank</b> {{vm.maxRank}}</span>
+    <span><b>Concentrating</b> {{#if vm.concentrating.length}}{{#each vm.concentrating}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}nothing{{/if}} ({{vm.concentrating.length}} / {{vm.concentrationMax}})</span>
+  </div>
+
+  <div class="n5e-jutsu-list">
+    {{#if vm.empty}}
+      <div class="empty-state"><p>No jutsu yet. Drag jutsu here from the Jutsu compendium.</p></div>
+    {{else if vm.noMatches}}
+      <div class="empty-state"><p>No jutsu match this filter.</p></div>
+    {{/if}}
+    {{#each vm.groups}}
+      <div class="discipline-group">
+        <div class="section-head"><h2>{{label}}</h2>
+          <span class="sub">Attack <b data-tooltip-html="{{attackTip}}">{{attack}}</b> · Save DC <b data-tooltip-html="{{dcTip}}">{{dc}}</b> · {{ability}}</span></div>
+        {{#each ranks}}
+          <div class="rank-head"><span>{{label}}</span><span>Range</span><span class="r">Cost</span><span class="c">Hit / DC</span><span></span></div>
+          <ol class="rows">
+            {{#each rows}}
+              <li class="n5e-row jutsu-row draggable {{#if open}}open{{/if}} {{#if missingAccess}}locked{{/if}}" data-item-id="{{id}}" draggable="true">
+                <div class="row-main">
+                  <span class="glyph" data-tooltip-text="{{glyphLabel}}">{{{glyph}}}</span>
+                  <div class="name-col">
+                    <a class="name" data-action="toggleExpand">{{name}}</a>
+                    <span class="chips-line">
+                      {{> "systems/n5e/templates/parts/chips.hbs" chips=chips}}
+                      {{#if concentration}}<span class="chip">Concentration</span>{{/if}}
+                      {{#if upcastTo}}<span class="chip upcast">Upcast to {{upcastTo}}</span>{{/if}}
+                      {{#if unmetRequirement}}<span class="chip warn">{{unmetRequirement}}</span>{{/if}}
+                      {{#if missingAccess}}<span class="chip warn">No affinity</span>{{/if}}
+                    </span>
+                  </div>
+                  <span class="range">{{range}}{{#if area}}<br><span class="sub">{{area}}</span>{{/if}}</span>
+                  <span class="cost r">{{#if (n5eEq costMode "none")}}—{{else}}{{cost}} CP{{/if}}</span>
+                  <span class="hit c">{{#if hit}}{{hit}}{{else if dc}}DC {{dc}}{{else}}—{{/if}}</span>
+                  <span class="use">
+                    <button type="button" data-action="useItem">Use</button>
+                    {{> "systems/n5e/templates/parts/item-controls.hbs"}}
+                  </span>
+                </div>
+                {{#if detail}}
+                  <div class="row-detail">
+                    <div class="meta"><span><b>Duration</b> {{detail.duration}}</span>
+                      {{#if (n5eGt detail.ranks.length 1)}}
+                        <span class="cast-ranks"><b>Cast at</b>
+                          {{#each detail.ranks}}<button type="button" class="{{#if selected}}on{{/if}}" data-action="castRank" data-rank="{{rank}}">{{rank}} · {{cost}} CP</button>{{/each}}
+                        </span>
+                      {{/if}}
+                    </div>
+                    <div class="desc">{{{detail.description}}}</div>
+                    {{#each detail.chain}}<div class="rider"><b>Chain {{n}}</b>{{{text}}}</div>{{/each}}
+                    {{#if detail.finisher}}<div class="rider accent"><b>Finisher</b>{{{detail.finisher}}}</div>{{/if}}
+                    {{#if detail.overcharge}}<div class="rider"><b>Overcharge</b>{{{detail.overcharge}}}</div>{{/if}}
+                    {{#if detail.upcast}}<div class="rider muted"><b>At higher ranks</b>{{{detail.upcast}}}</div>{{/if}}
+                  </div>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ol>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</section>
