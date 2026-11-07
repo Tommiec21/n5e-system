@@ -51,6 +51,7 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       deleteEffect: N5eActorSheet.#onDeleteEffect,
       toggleEffect: N5eActorSheet.#onToggleEffect,
       changeRanks: N5eActorSheet.#onChangeRanks,
+      toggleEquip: N5eActorSheet.#onToggleEquip,
       editImage
     }
   };
@@ -92,6 +93,7 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       (groups[item.type] ??= []).push({
         id: item.id, name: item.name, img: item.img, type: item.type,
         rank: item.system.rank, live: item.system.live ?? null, equipped: item.system.equipped,
+        equippable: ["weapon", "armor", "container"].includes(item.type),
         levels: item.system.levels, review: item.getFlag("n5e", "review")
       });
     }
@@ -129,6 +131,11 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   static async #onDeleteItem(event, target) {
     await N5eActorSheet.#item.call(this, target)?.deleteDialog();
+  }
+
+  static async #onToggleEquip(event, target) {
+    const item = N5eActorSheet.#item.call(this, target);
+    if ( item && "equipped" in item.system ) await item.update({ "system.equipped": !item.system.equipped });
   }
 
   static async #onDeleteEffect(event, target) {

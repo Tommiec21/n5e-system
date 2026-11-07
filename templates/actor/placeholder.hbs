@@ -75,7 +75,7 @@
           <a data-action="editItem">{{name}}</a>
           {{#if rank}}<span class="tag">{{rank}}</span>{{/if}}
           {{#if levels}}<span class="tag">Lv {{levels}}</span>{{/if}}
-          {{#if equipped}}<span class="tag">equipped</span>{{/if}}
+          {{#if equippable}}<a class="tag ctl" data-action="toggleEquip" title="Equip / unequip">{{#if equipped}}equipped{{else}}not equipped{{/if}}</a>{{/if}}
           {{#if review}}<span class="tag warn" title="Migrated from V3.1: check this item">review</span>{{/if}}
           {{#if live}}
             <span class="live">cost {{live.cost}} CP · atk +{{live.attack}} · DC {{live.dc}}{{#if live.upcastRanks.length}} · upcast {{#each live.upcastRanks}}{{this}} {{/each}}{{/if}}{{#unless live.meetsRequirement}} · needs {{live.ability}} {{live.requirement}}{{/unless}}{{#unless live.castable}} · missing access{{/unless}}</span>

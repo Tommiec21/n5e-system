@@ -11,6 +11,25 @@ export default class N5eItem extends Item {
     return super.migrateData(source);
   }
 
+  /**
+   * @override
+   * Auto-equip gear added to a character: armor (if none is equipped), weapons, and containers
+   * (if none of that storage type is equipped yet, since only one of each type counts).
+   */
+  async _preCreate(data, options, user) {
+    if ( (await super._preCreate(data, options, user)) === false ) return false;
+    const actor = this.parent;
+    if ( actor?.type !== "character" || !("equipped" in (this.system ?? {})) || this.system.equipped ) return;
+    let equip = false;
+    if ( this.type === "weapon" ) equip = true;
+    else if ( this.type === "armor" ) equip = !actor.items.some(i => i.type === "armor" && i.system.equipped);
+    else if ( this.type === "container" ) {
+      equip = !actor.items.some(i => i.type === "container" && i.system.equipped
+        && i.system.containerType === this.system.containerType);
+    }
+    if ( equip ) this.updateSource({ "system.equipped": true });
+  }
+
   /** @override */
   getRollData() {
     const data = this.actor?.getRollData() ?? {};
