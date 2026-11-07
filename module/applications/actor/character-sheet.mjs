@@ -10,6 +10,8 @@ import {
 import { combatVM } from "../../view-models/combat.mjs";
 import { buildRows, coerceListInputs } from "../schema-form.mjs";
 import { postItemCard, postActionCard } from "../../chat/card.mjs";
+import LevelUpDialog from "../level-up.mjs";
+import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -21,7 +23,8 @@ export const CHARACTER_TEMPLATE_PATHS = [
   "systems/n5e/templates/parts/field-rows.hbs",
   "systems/n5e/templates/parts/chips.hbs",
   "systems/n5e/templates/parts/item-controls.hbs",
-  "systems/n5e/templates/parts/action-pill.hbs"
+  "systems/n5e/templates/parts/action-pill.hbs",
+  "systems/n5e/templates/apps/level-up.hbs"
 ];
 
 export default class CharacterSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
@@ -39,6 +42,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       deleteItem: CharacterSheet.#onDeleteItem,
       useItem: CharacterSheet.#onUseItem,
       useAction: CharacterSheet.#onUseAction,
+      levelUp: CharacterSheet.#onLevelUp,
+      levelDown: CharacterSheet.#onLevelDown,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
       toggleCombo: CharacterSheet.#onToggleCombo,
       toggleEquip: CharacterSheet.#onToggleEquip,
@@ -227,8 +232,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       return super._onDropItem(event, item);
     }
 
-    // One class, clan, background: replacing asks first.
-    if ( ["class", "clan", "background"].includes(item.type) ) {
+    // A class runs character creation (level 1 choices); replacing one removes everything it granted.
+    if ( item.type === "class" ) return this.#dropClass(item);
+
+    // One clan, background: replacing asks first.
+    if ( ["clan", "background"].includes(item.type) ) {
       const existing = actor.items.find(i => i.type === item.type);
       if ( existing ) {
         const multiclass = item.type === "class" && game.settings.get("n5e", "multiclassing");
@@ -257,6 +265,26 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const created = await super._onDropItem(event, item);
     if ( created && event.target.closest?.("[data-pin-zone]") ) await this.#pin(created.id, true);
     return created;
+  }
+
+  /** Drop a class: confirm replacement, add it at level 1, run the level 1 choices (cancel removes it). */
+  async #dropClass(item) {
+    const actor = this.actor;
+    const existing = actor.items.find(i => i.type === "class");
+    if ( existing && !game.settings.get("n5e", "multiclassing") ) {
+      const ok = await foundry.applications.api.DialogV2.confirm({
+        window: { title: `Replace ${existing.name}?` },
+        content: `<p>${actor.name} already has the class <strong>${existing.name}</strong> (level ${existing.system.levels}). `
+          + `Replacing it removes every feature, choice, ASI and jutsu its levels granted, then starts <strong>${item.name}</strong> at 1st level.</p>`,
+        rejectClose: false
+      });
+      if ( !ok ) return null;
+      await removeClass(actor, existing);
+    }
+    const [cls] = await actor.createEmbeddedDocuments("Item", [freshClassData(item)]);
+    const applied = await LevelUpDialog.open(actor, cls, 1);
+    if ( !applied && actor.items.get(cls.id) ) await cls.delete();
+    return applied ? cls : null;
   }
 
   /* -------------------------------------------- */
@@ -461,5 +489,29 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /** Combo landed this turn: arms Finishers (cleared at turn start once Phase 3 tracks turns). */
   static async #onToggleCombo() {
     return this.actor.setFlag("n5e", "comboReady", !this.actor.getFlag("n5e", "comboReady"));
+  }
+
+  /** Level Up: the next level of the character's class. */
+  static async #onLevelUp(event, target) {
+    const cls = this.actor.items.get(target.dataset.classId) ?? this.actor.items.find(i => i.type === "class");
+    if ( !cls ) return ui.notifications.warn("Drop a class on the sheet first.");
+    const next = (cls.system.levels ?? 0) + 1;
+    if ( next > 20 ) return ui.notifications.info(`${cls.name} is already level 20.`);
+    return LevelUpDialog.open(this.actor, cls, next);
+  }
+
+  /** Remove the highest class level and everything it granted. */
+  static async #onLevelDown(event, target) {
+    const cls = this.actor.items.get(target.dataset.classId) ?? this.actor.items.find(i => i.type === "class");
+    if ( !cls ) return null;
+    const level = cls.system.levels;
+    const ok = await foundry.applications.api.DialogV2.confirm({
+      window: { title: `Remove ${cls.name} level ${level}?` },
+      content: `<p>This removes the features, choices, jutsu, feat and ability increase gained at ${cls.name} level ${level}`
+        + `${level === 1 ? ", and the class itself" : ""}.</p>`,
+      rejectClose: false
+    });
+    if ( ok ) await revertLevel(this.actor, cls);
+    return null;
   }
 }

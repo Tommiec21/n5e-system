@@ -13,7 +13,7 @@ export const stanceRules = { maxActive: 1, switchAction: "bonus", upgradeLevels:
 export const featCategories = {
   general: "General", skill: "Skill", chakra: "Chakra", ninjutsu: "Ninjutsu", genjutsu: "Genjutsu",
   taijutsu: "Taijutsu", critical: "Critical", clan: "Clan", class: "Class", archetype: "Archetype",
-  rare: "Rare", classFeature: "Class Feature", clanFeature: "Clan Feature", npcFeature: "NPC Feature"
+  rare: "Rare", classFeature: "Class Feature", classOption: "Class Option", clanFeature: "Clan Feature", npcFeature: "NPC Feature"
 };
 
 /** KB 12: class jutsu tiers (High/Medium/Low = 0/1/2-3 extra resources). */

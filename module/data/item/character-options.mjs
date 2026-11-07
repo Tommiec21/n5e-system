@@ -29,6 +29,8 @@ export class ClassData extends TDM() {
       resourcePools: poolDefinitions(),
       subclassLevel: S.int(3, { min: 1, max: 20 }),
       subclassFeatureLevels: S.arr(S.int(1)),
+      /** Subclass uuids offered at subclassLevel. */
+      subclasses: S.arr(S.str()),
       stanceGrant: S.str(),
       advancement: S.advancement()
     };

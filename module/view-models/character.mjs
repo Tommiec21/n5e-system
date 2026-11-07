@@ -45,6 +45,9 @@ export function headerVM(actor) {
     backgroundName: bg?.name ?? "",
     subtitle: [`Level ${sys.level}`, cls?.name, clan?.name, bg?.name].filter(Boolean).join(" · "),
     xp: { value: xp, next, pct: next ? pct(xp, next) : 100 },
+    classId: cls?.id ?? "",
+    canLevelUp: !!cls && (cls.system.levels ?? 0) < 20,
+    nextLevel: cls ? (cls.system.levels ?? 0) + 1 : 1,
     // Compact ability strip (SW5e-style): abbr, modifier, score.
     abilities: Object.entries(abilities).map(([key, cfg]) => ({
       key, abbr: cfg.abbr.toUpperCase(), label: cfg.label,
@@ -91,6 +94,7 @@ export function resourcesVM(actor) {
   }];
   for ( const [id, p] of Object.entries(sys.resources ?? {}) ) {
     const max = p.maxValue ?? 0;
+    if ( !max ) continue;
     out.push({ kind: "pool", id, label: p.label || id, value: p.value, max, pct: pct(p.value, max),
       segments: segments(p.value, max), note: [p.max && !/^\d+$/.test(String(p.max)) ? String(p.max).replace(/@/g, "") : "",
         recoveryNote((p.recovery ?? []).map(r => r.on))].filter(Boolean).join(" · "), action: "setPool" });

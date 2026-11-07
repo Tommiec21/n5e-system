@@ -32,6 +32,11 @@
   </div>
   <div class="head-right">
     <div class="buttons">
+      {{#if editable}}{{#if vm.canLevelUp}}
+        <button type="button" class="level-up" data-action="levelUp" data-class-id="{{vm.classId}}" data-tooltip="Gain level {{vm.nextLevel}}"><i class="fa-solid fa-arrow-up"></i> Level Up</button>
+      {{/if}}{{#if editMode}}{{#if vm.classId}}
+        <button type="button" data-action="levelDown" data-class-id="{{vm.classId}}" data-tooltip="Remove the highest level and what it granted"><i class="fa-solid fa-arrow-down"></i></button>
+      {{/if}}{{/if}}{{/if}}
       <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Short Rest</button>
       <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Long Rest</button>
       <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Full Rest</button>

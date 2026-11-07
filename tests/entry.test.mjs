@@ -24,7 +24,7 @@ Object.assign(globalThis, {
   }
 });
 foundry.applications = {
-  api: { HandlebarsApplicationMixin: C => class extends C {}, DialogV2: {} },
+  api: { HandlebarsApplicationMixin: C => class extends C {}, DialogV2: {}, ApplicationV2: class {} },
   sheets: { ActorSheetV2: Sheet, ItemSheetV2: Sheet },
   handlebars: { loadTemplates: paths => registered.templates.push(...paths) },
   apps: { FilePicker: { implementation: class {} } }

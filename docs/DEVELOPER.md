@@ -66,3 +66,16 @@ migration must be idempotent. If the change is a data-shape change, also handle 
 Any change key starting `n5e.` is held back from Foundry's normal application and parsed by
 `module/rules/change-keys.mjs` (documented there). Use core keys (`system.bonuses.ac`,
 `system.attributes.ac.calc`, `system.disciplines.tai.ability`...) for stored fields.
+
+
+## Content import
+
+`tools/content/build_content.py <ContextFile/N5e-Rules-KB>` rebuilds the generated compendium sources
+from King's book extracts (`_source/full-with-boxes.md`, `_source/classes/orochimaru-full.md`,
+`_data/jutsu-parsed.json`). It only replaces files it owns (`flags.n5e.generated`); hand-made sources are
+left alone. Ids are deterministic, so re-running keeps links stable. Run `npm run pack` afterwards.
+
+Advancement entries on class/subclass items drive level-up (`module/advancement/`):
+`feature` (grant uuids), `itemChoice` (pick `count` of `uuids`), `option` (pick keys), `trait`
+(`count` 0 = fixed grant of `uuids`, e.g. an affinity; otherwise a choice), `mastery` (a Mastery rank in
+`key`). Subclass, ASI, 1st-level proficiency picks and Jutsu Known are implied by the class fields.

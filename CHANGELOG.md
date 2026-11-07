@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.3.0-alpha.1 — Level-up automation and the first class content
+
+### Added
+- **Level Up** (header button) and **character creation** (drop a class on a character): a dialog lists
+  everything the new level grants, with a card for every choice, and Apply stays off until each one is
+  made. Hover any card for its full text.
+  - Hit and Chakra Points by rule (10 + die max + Con at 1st, die max + Con after; never rolled).
+  - 1st level: the class's skill and toolkit picks.
+  - Features granted automatically; option picks (Shinobi's Path, stances, Generalization, Moldings,
+    Assault Maneuvers); Switch Hitter's primary discipline.
+  - Subclass at the class's subclass level, then that subclass's own steps on the same page.
+  - ASI levels: +1 ability, a feat (level requirement checked, prerequisites shown), and a Mastery rank
+    in a proficient skill or toolkit.
+  - Jutsu Known increases: learn from the jutsu compendium up to the class's highest rank, hiding jutsu
+    whose Release you don't have (affinities gained this level count).
+  - Granted affinities and Mastery (Blaze Walker's Fire Release, Scholar's Ninshou).
+- **Remove level** (edit mode, arrow-down button): removes exactly what the highest level added,
+  including its ASI and feat. Replacing a class removes everything the old one granted.
+- Resource pools defined on items appear on the rail automatically and track their own value: Focus,
+  Superiority Dice (from the class table), Pyroclasm (starts empty), a clan's Ocular Charges.
+- Content, imported verbatim from the books by `tools/content/build_content.py`:
+  - Scout-Nin (levels 1-5 and all 20 table rows) with Assault Scout, the 6 Shinobi's Paths,
+    3 Generalizations and 10 Assault Maneuvers.
+  - Ninjutsu Specialist (1-5, full table) with Blaze Walker, the 15 Moldings, and Chakra Surge's Crash
+    and Flow.
+  - All 24 Ch13 Fighting Stances (new Fighting Stances compendium).
+  - 4 random feats a 4th-level character can take: Storing Seal Soul, Light Step Mastery, Master of
+    Disguise, Illusionist Research (new Feats compendium).
+  - 10 jutsu: Fire Release: Flame Whip, Fire Release: Fox Fire, Chakra Shield, Ink Clone,
+    Beast Fist: Forceful Bull, Butterfly Kick, Snake Constricting Grip, Lotus: Anxious Petals,
+    Glamor Tongue, Transform.
+
+### Changed
+- Class columns are available to formulas as `@scale.<classCamelCase>.<column>`
+  (e.g. `@scale.scoutNin.superiorityDice`).
+
 ## 0.2.0-alpha.3 — Combat tab
 
 ### Added

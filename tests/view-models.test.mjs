@@ -39,7 +39,9 @@ test("rail: resources in one list (Will of Fire, pools, feature uses)", () => {
   a.system.prepareDerivedData();
   const r = railVM(a);
   assert.equal(r.prof, "+5");
-  const [wof, ocular, uses] = r.resources;
+  const wof = r.resources[0];
+  const ocular = r.resources.find(x => x.id === "ocular");
+  const uses = r.resources.find(x => x.kind === "uses");
   assert.equal(wof.label, "Will of Fire");
   assert.equal(wof.segments.filter(p => p.filled).length, 1);
   assert.equal(ocular.max, 6);

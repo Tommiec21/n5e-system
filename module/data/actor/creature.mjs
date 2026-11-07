@@ -157,8 +157,21 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     const hitFaces = dieFaces(grants.hitDie);
     const chakraFaces = dieFaces(grants.chakraDie);
     this._preparePools({ hitFaces, chakraFaces, conMod: mod("con") });
+    // Item-defined pools join the actor's: the definition comes from the item, the current value from
+    // system.resources.<id>.value once it has been set (until then: full, or empty for event-built pools).
+    for ( const def of grants.pools ) {
+      const stored = this.resources[def.id];
+      const startsFull = (def.recovery ?? []).some(r => r.on !== "event" && r.on !== "never");
+      this.resources[def.id] = {
+        ...def, ...(stored ?? {}), label: stored?.label || def.label, max: stored?.max || def.max,
+        recovery: stored?.recovery?.length ? stored.recovery : def.recovery,
+        value: stored ? stored.value : null, fromItem: def.source, startsFull
+      };
+    }
     for ( const pool of Object.values(this.resources ?? {}) ) {
       pool.maxValue = Math.max(0, Math.floor(evaluateFormula(pool.max, rollData, 0)));
+      if ( pool.value == null ) pool.value = pool.startsFull === false ? 0 : pool.maxValue;
+      pool.value = Math.min(pool.value, pool.maxValue);
     }
     // Limited uses on owned items ("1 + @prof") resolve against this actor.
     for ( const item of this.parent?.items ?? [] ) {
@@ -306,7 +319,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       saves: new Set(), skills: new Set(), tools: new Set(), affinities: new Set(), keywordAccess: new Set(),
       mastery: [], hitDie: "", chakraDie: "", speed: 0, hijutsuAbilities: [], armor: null, reinforced: 0,
       blocking: 0, containerSlots: 0, bulk: 0, classItem: null, clanItem: null, backgroundItem: null,
-      maxRank: null
+      maxRank: null, subclassItems: [], pools: [], scale: {}
     };
     const containersSeen = new Set();
     const level = this.level;
@@ -321,9 +334,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           for ( const s of sys.skills?.chosen ?? [] ) g.skills.add(s);
           for ( const s of sys.skills?.fixed ?? [] ) g.skills.add(s);
           for ( const t of sys.tools?.fixed ?? [] ) g.tools.add(t);
+          for ( const t of sys.tools?.chosen ?? [] ) g.tools.add(t);
           g.maxRank = sys.maxRankAt?.(sys.levels) ?? null;
           break;
         case "subclass":
+          g.subclassItems.push(item);
           break;
         case "clan":
           g.clanItem ??= item;
@@ -358,12 +373,29 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           }
           break;
       }
-      // Advancement-granted Mastery at or below the actor's level.
+      // Advancement grants at or below the level this item has reached (class levels for classes and
+      // their subclasses, character level otherwise): Mastery ranks and trait grants (affinity, skills...).
+      const reached = this._advancementLevel(item, items, level);
       for ( const adv of sys.advancement ?? [] ) {
-        if ( adv.type !== "mastery" || adv.level > (item.type === "class" ? sys.levels : level) ) continue;
-        for ( const target of (adv.chosen?.length ? adv.chosen : [adv.key]) ) {
-          if ( target ) g.mastery.push({ target, source: `${item.name} ${adv.level}` });
+        if ( adv.level > reached ) continue;
+        if ( adv.type === "mastery" ) {
+          for ( const target of (adv.chosen?.length ? adv.chosen : [adv.key]) ) {
+            if ( target ) g.mastery.push({ target, source: `${item.name} ${adv.level}` });
+          }
+        } else if ( adv.type === "trait" ) {
+          const set = { affinity: g.affinities, skills: g.skills, tools: g.tools, saves: g.saves }[adv.key];
+          const values = adv.count > 0 ? adv.chosen : adv.uuids;
+          for ( const v of values ?? [] ) set?.add(v);
         }
+      }
+      // Resource pools defined by items (Focus, Superiority Dice, Pyroclasm...).
+      for ( const pool of sys.resourcePools ?? [] ) if ( pool.id ) g.pools.push({ ...pool, source: item.name });
+      // Class table columns for formulas: @scale.<classCamelCase>.<column>.
+      if ( item.type === "class" && sys.identifier ) {
+        // Keyed by camel case so formulas can use them: "scout-nin" -> @scale.scoutNin.<column>.
+        const key = sys.identifier.replace(/-(\w)/g, (m, c) => c.toUpperCase());
+        const col = g.scale[key] = {};
+        for ( const c of sys.columns ?? [] ) col[c.key] = Number(c.values?.[Math.max(0, (sys.levels || 1) - 1)]) || 0;
       }
       // Feats/features granting Mastery directly.
       for ( const target of sys.grants?.mastery ?? [] ) g.mastery.push({ target, source: item.name });
@@ -373,6 +405,16 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     for ( const a of this.affinities ?? [] ) g.affinities.add(a);
     for ( const k of this.keywordAccess ?? [] ) g.keywordAccess.add(k);
     return g;
+  }
+
+  /** The level an item's advancement has reached: class levels, a subclass's class levels, else character level. */
+  _advancementLevel(item, items, level) {
+    if ( item.type === "class" ) return item.system.levels ?? 0;
+    if ( item.type === "subclass" ) {
+      const cls = items.find(i => i.type === "class" && i.system.identifier === item.system.classIdentifier);
+      return cls ? cls.system.levels ?? 0 : 0;
+    }
+    return level;
   }
 
   /** Step 5: HP/CP. Characters use class dice; NPCs may override (see NPCData). */
@@ -441,6 +483,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     }
     data.mod.buki = data.mod.tai;
     data.init = this.initiative?.total ?? data.dex;
+    data.scale = this.grants?.scale ?? {};
     return data;
   }
 }

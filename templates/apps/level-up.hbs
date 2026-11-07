@@ -1,0 +1,93 @@
+<div class="lu">
+  <header class="lu-head">
+    <h2>{{cls}} <span>Level {{level}}</span></h2>
+    <p class="sub">Make each choice below, then Apply. Hover any card for its full text.</p>
+  </header>
+  <div class="lu-steps">
+    {{#each steps}}
+      <section class="lu-step lu-{{type}} {{#if full}}done{{/if}}">
+        <div class="lu-step-head">
+          <h3>{{title}}</h3>
+          {{#if need}}<span class="count {{#if full}}ok{{/if}}">{{chosenCount}} / {{need}}</span>{{/if}}
+          {{#if ownerName}}<span class="sub">{{ownerName}}</span>{{/if}}
+        </div>
+
+        {{#if (n5eEq type "pools")}}
+          <p>Hit Points <b>+{{hp}}</b> ({{hitDie}}) · Chakra Points <b>+{{cp}}</b> ({{chakraDie}}). Fixed by rule: no roll.</p>
+        {{/if}}
+
+        {{#if (n5eEq type "grant")}}<p>{{text}}</p>{{/if}}
+
+        {{#if (n5eEq type "feature")}}
+          <div class="lu-cards">{{#each items}}
+            <div class="lu-card static" data-tooltip-html="{{tip}}"><img src="{{img}}" alt="" width="32" height="32"><b>{{name}}</b></div>
+          {{/each}}</div>
+        {{/if}}
+
+        {{#if fixed.length}}<p class="sub">Already granted: {{#each fixed}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>{{/if}}
+
+        {{#if (n5eEq type "itemChoice")}}
+          <div class="lu-cards">{{#each options}}
+            <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}"
+              data-tooltip-html="{{tip}}" {{#if owned}}disabled{{/if}}>
+              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if owned}}<span class="sub">Already known</span>{{else if sub}}<span class="sub">{{sub}}</span>{{/if}}</span>
+            </button>
+          {{/each}}</div>
+        {{/if}}
+
+        {{#if (n5eEq type "subclass")}}
+          <div class="lu-cards wide">{{#each options}}
+            <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}" data-tooltip-html="{{tip}}">
+              <img src="{{img}}" alt="" width="40" height="40"><b>{{name}}</b>
+            </button>
+          {{/each}}</div>
+        {{/if}}
+
+        {{#if (n5eEq type "option")}}
+          <div class="lu-chips">{{#each options}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>
+          {{/each}}</div>
+        {{/if}}
+        {{#if (n5eEq type "trait")}}
+          <div class="lu-chips">{{#each options}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>
+          {{/each}}</div>
+        {{/if}}
+
+        {{#if (n5eEq type "asi")}}
+          <h4>+1 to an ability</h4>
+          <div class="lu-chips">{{#each abilityOptions}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="ability" data-value="{{value}}" {{#if capped}}disabled{{/if}}>{{label}} {{score}}</button>
+          {{/each}}</div>
+          <h4>Feat</h4>
+          <div class="lu-cards">{{#each feats}}
+            <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="feat" data-value="{{value}}" data-tooltip-html="{{tip}}">
+              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if sub}}<span class="sub">{{sub}}</span>{{/if}}</span>
+            </button>
+          {{else}}<p class="muted small">No feats available yet.</p>{{/each}}</div>
+          <h4>Mastery rank (skill or toolkit)</h4>
+          <div class="lu-chips">{{#each mastery}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="mastery" data-value="{{value}}">{{label}}{{#if rank}} ◆{{rank}}{{/if}}</button>
+          {{else}}<p class="muted small">No proficient skills or toolkits.</p>{{/each}}</div>
+        {{/if}}
+
+        {{#if (n5eEq type "jutsu")}}
+          <p class="sub">Up to {{maxRank}}-Rank. Jutsu needing an affinity you don't have are hidden.{{#if short}} <span class="warn">Fewer jutsu are available than you can learn; learn the rest later.</span>{{/if}}</p>
+          {{#each groups}}
+            <h4>{{label}}</h4>
+            <div class="lu-cards">{{#each options}}
+              <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../../id}}" data-value="{{value}}" data-tooltip-html="{{tip}}">
+                <span class="rank">{{rank}}</span><span><b>{{name}}</b><span class="sub">{{sub}}</span></span>
+              </button>
+            {{/each}}</div>
+          {{/each}}
+        {{/if}}
+      </section>
+    {{/each}}
+  </div>
+  <footer class="lu-foot">
+    {{#if problems.length}}<span class="warn small">{{problems.[0]}}{{#if (n5eGt problems.length 1)}} (+{{problems.length}} more){{/if}}</span>{{else}}<span class="ok small">Ready.</span>{{/if}}
+    <button type="button" data-action="cancel">Cancel</button>
+    <button type="button" class="primary" data-action="apply" {{#unless ready}}disabled{{/unless}}>Apply level {{level}}</button>
+  </footer>
+</div>
