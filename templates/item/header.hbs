@@ -1,0 +1,8 @@
+<header class="n5e-item-head">
+  <img class="item-img" src="{{vm.img}}" alt="" {{#if editable}}data-action="editImage" data-tooltip="Change image"{{/if}}>
+  <div class="identity">
+    <span class="type">{{typeLabel}}</span>
+    {{#if editable}}<input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">{{else}}<h1>{{vm.name}}</h1>{{/if}}
+    <span class="subtitle">{{vm.subtitle}}</span>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+<section class="n5e-item-tab description {{tab.cssClass}}" data-tab="description">
+  {{#each blocks}}
+    <div class="desc-block {{#if main}}main{{/if}}">
+      {{#unless main}}<h3>{{label}}</h3>{{/unless}}
+      {{#if @root.editable}}
+        <prose-mirror name="{{path}}" toggled value="{{html}}">{{{enriched}}}</prose-mirror>
+      {{else}}
+        <div class="rich">{{{enriched}}}</div>
+      {{/if}}
+    </div>
+  {{/each}}
+</section>

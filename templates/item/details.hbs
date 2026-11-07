@@ -1,0 +1,40 @@
+<section class="n5e-item-tab details {{tab.cssClass}}" data-tab="details">
+  {{#each vm.details}}
+    <fieldset class="det">
+      <legend>{{label}}</legend>
+      <div class="det-fields">
+        {{#each fields}}
+          {{#if (n5eEq kind "tags")}}
+            <div class="field tags-field">{{#if label}}<span class="lbl">{{label}}</span>{{/if}}
+              <div class="tag-picks">{{#each options}}<button type="button" class="chip pick {{#if selected}}on{{/if}}" data-action="toggleTag" data-path="{{../path}}" data-value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>{{/each}}</div>
+            </div>
+          {{else if (n5eEq kind "props")}}
+            <div class="field props-field">
+              {{#each options}}
+                <span class="prop {{#if selected}}on{{/if}}">
+                  <button type="button" class="chip pick {{#if selected}}on{{/if}}" data-action="toggleProp" data-path="{{../path}}" data-value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>
+                  {{#if selected}}{{#if ranked}}<input type="number" name="{{../path}}.{{value}}" value="{{rank}}" min="1" max="{{max}}" aria-label="{{label}} rank" {{#unless @root.editable}}disabled{{/unless}}>{{/if}}{{/if}}
+                </span>
+              {{/each}}
+            </div>
+          {{else}}
+            <label class="field {{kind}} {{#if small}}small{{/if}} {{#if wide}}wide{{/if}}">
+              <span class="lbl">{{label}}</span>
+              {{#if (n5eEq kind "select")}}
+                <select name="{{path}}" {{#unless @root.editable}}disabled{{/unless}}>{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+              {{else if (n5eEq kind "checkbox")}}
+                <input type="checkbox" name="{{path}}" {{#if value}}checked{{/if}} {{#unless @root.editable}}disabled{{/unless}}>
+              {{else if (n5eEq kind "number")}}
+                <input type="number" name="{{path}}" value="{{value}}" step="any" placeholder="{{placeholder}}" {{#unless @root.editable}}disabled{{/unless}}>
+              {{else}}
+                <input type="text" name="{{path}}" value="{{value}}" placeholder="{{placeholder}}" {{#unless @root.editable}}disabled{{/unless}}>
+              {{/if}}
+            </label>
+          {{/if}}
+        {{/each}}
+      </div>
+    </fieldset>
+  {{else}}
+    <p class="muted small">Nothing to configure for this item type.</p>
+  {{/each}}
+</section>

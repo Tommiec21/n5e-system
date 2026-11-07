@@ -1,0 +1,26 @@
+<section class="n5e-item-tab advancement {{tab.cssClass}}" data-tab="advancement">
+  {{#if vm.advancement}}
+    <table class="adv-table">
+      <thead><tr><th>Lv</th><th>Gains</th>{{#each vm.advancement.levels.[0].columns}}<th class="c">{{label}}</th>{{/each}}</tr></thead>
+      <tbody>
+        {{#each vm.advancement.levels}}
+          <tr class="{{#if reached}}reached{{/if}}">
+            <td class="lv">{{level}}</td>
+            <td>
+              {{#each entries}}
+                <div class="adv-entry">
+                  <span class="kind">{{kind}}{{#if count}} {{count}}{{/if}}</span>
+                  <b>{{title}}</b>
+                  <span class="names">{{#each names}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</span>
+                  {{#if chosen.length}}<span class="chosen">Chosen: {{#each chosen}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</span>{{/if}}
+                </div>
+              {{/each}}
+            </td>
+            {{#each columns}}<td class="c">{{value}}</td>{{/each}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <p class="muted small">Level-up applies these automatically (Level Up on the character sheet).</p>
+  {{/if}}
+</section>

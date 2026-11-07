@@ -1,0 +1,17 @@
+<section class="n5e-item-tab effects {{tab.cssClass}}" data-tab="effects">
+  <div class="section-head"><h2>Effects</h2>
+    {{#if editable}}<button type="button" data-action="createEffect"><i class="fa-solid fa-plus"></i> Add effect</button>{{/if}}</div>
+  {{#each vm.effects}}
+    <div class="effect-row {{#if disabled}}off{{/if}}" data-effect-id="{{id}}">
+      <img src="{{img}}" alt="" width="24" height="24">
+      <a class="name" data-action="editEffect">{{name}}</a>
+      <span class="sub">{{changes}} change{{#unless (n5eEq changes 1)}}s{{/unless}}{{#if transfer}} · applies to the owner{{/if}}</span>
+      {{#if @root.editable}}
+        <a class="ctl" data-action="toggleEffect" data-tooltip="{{#if disabled}}Enable{{else}}Disable{{/if}}"><i class="fa-solid fa-power-off"></i></a>
+        <a class="ctl" data-action="deleteEffect" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+      {{/if}}
+    </div>
+  {{else}}
+    <p class="muted small">No effects. Effects added here apply to whoever owns the item (Active Effects with n5e.* keys).</p>
+  {{/each}}
+</section>

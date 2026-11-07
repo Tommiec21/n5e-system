@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.0-alpha.3 — Item sheets
+
+### Added
+- One N5e item sheet for all 13 item types, replacing the placeholder:
+  - **Header:** image, name, and a one-line summary (e.g. "D-Rank Ninjutsu · Fire Release",
+    "Simple melee weapon", "Medium jutsu tier").
+  - **Sidebar of key facts (PF2e-style):**
+    - Jutsu: cost, time, range, area, duration, attack and save DC when owned.
+    - Weapons: damage, range, Ammunition Die.
+    - Armor: AC, Dex cap, Str requirement.
+    - Features: kind, uses, prerequisites, ASI.
+    - Also keyword, component and property chips, and the source book.
+  - **Description:** rich-text editor, plus the extra text fields an item needs: Chain 1-3 on Chain
+    jutsu, Finisher on Finisher jutsu, Overcharge / At higher ranks when present, and stance upgrades.
+  - **Details:** typed fields per item type, with click-to-toggle chips for keywords, stimuli,
+    damage types, saves, skills and ability options. Weapon and armor properties toggle on and off
+    and take a rank where the property is ranked.
+  - **Progression** (classes) / **Advancement** (subclasses, clans): a level table showing what each
+    level grants, the options, what was chosen, and the class table columns.
+  - **Effects:** add, edit, enable/disable or delete the item's Active Effects.
+
 ## 0.3.0-alpha.2 — Sheet cleanup from King's review
 
 ### Changed
