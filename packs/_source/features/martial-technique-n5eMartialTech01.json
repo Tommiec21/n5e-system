@@ -1,0 +1,64 @@
+{
+  "_id": "n5eMartialTech01",
+  "name": "Martial Technique",
+  "type": "feat",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "system": {
+    "identifier": "martial-technique",
+    "description": "<p>While you are not wearing armor, your AC equals 10 + your proficiency bonus + your Dexterity modifier. You also gain a Taijutsu stance. While in a stance or wielding a weapon you are proficient with: Martial Strength, Agile Combat, and Unwasted Movements (see the class book).</p><p><em>Phase 1 sample: only the AC formula is automated (Active Effect).</em></p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "category": "classFeature",
+    "featureType": "passive",
+    "requirement": {
+      "level": 1,
+      "class": "taijutsu-specialist",
+      "clan": ""
+    }
+  },
+  "effects": [
+    {
+      "_id": "n5eMartialTechAC",
+      "name": "Martial Technique (AC)",
+      "type": "generic",
+      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "martialTechnique",
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "sort": 0,
+      "_key": "!items.effects!n5eMartialTech01.n5eMartialTechAC"
+    }
+  ],
+  "_key": "!items!n5eMartialTech01",
+  "flags": {},
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.1.0-alpha.1"
+  }
+}

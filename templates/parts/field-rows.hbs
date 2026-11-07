@@ -1,0 +1,22 @@
+{{!-- Generic stored-field editor rows (Phase 1 placeholder). --}}
+<div class="n5e-rows">
+  {{#each rows}}
+    {{#if isHeading}}
+      <div class="n5e-row heading" style="padding-left: {{indent}}px">{{label}}</div>
+    {{else}}
+      <label class="n5e-row" style="padding-left: {{indent}}px">
+        <span class="n5e-key" title="{{path}}">{{label}}</span>
+        {{#if isText}}<input type="text" name="{{path}}" value="{{value}}" {{#unless ../editable}}disabled{{/unless}}>{{/if}}
+        {{#if isNumber}}<input type="number" name="{{path}}" value="{{value}}" step="any" {{#unless ../editable}}disabled{{/unless}}>{{/if}}
+        {{#if isCheckbox}}<input type="checkbox" name="{{path}}" {{#if value}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}>{{/if}}
+        {{#if isSelect}}
+          <select name="{{path}}" {{#unless ../editable}}disabled{{/unless}}>
+            {{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+          </select>
+        {{/if}}
+        {{#if isHtml}}<textarea name="{{path}}" rows="4" {{#unless ../editable}}disabled{{/unless}}>{{value}}</textarea>{{/if}}
+        {{#if isJson}}<code class="n5e-json">{{value}}</code>{{/if}}
+      </label>
+    {{/if}}
+  {{/each}}
+</div>

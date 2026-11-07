@@ -1,0 +1,116 @@
+<div class="n5e-sheet">
+  <header class="n5e-header">
+    <img src="{{actor.img}}" alt="" data-action="editImage" data-edit="img" width="72" height="72">
+    <div class="n5e-title">
+      <input type="text" name="name" value="{{actor.name}}" placeholder="Name">
+      <div class="n5e-subtitle">
+        {{#if isNPC}}NPC{{else}}Character{{/if}} · Level {{sys.level}} · Proficiency +{{sys.prof}}
+        {{#if sys.mastery.asiAvailable}} · <strong>{{sys.mastery.asiAvailable}} ASI Mastery rank(s) to assign</strong>{{/if}}
+      </div>
+      <div class="n5e-note">Phase 1 placeholder sheet: numbers are live, layout comes in Phase 2.</div>
+    </div>
+  </header>
+
+  <section class="n5e-body">
+    <div class="n5e-stats">
+      <div class="stat"><span>HP</span><b>{{sys.hp.value}} / {{sys.hp.max}}</b>{{#if sys.hp.temp}}<em>+{{sys.hp.temp}} temp</em>{{/if}}{{#if sys.states.bloodied}}<em>Bloodied</em>{{/if}}</div>
+      <div class="stat"><span>CP</span><b>{{sys.cp.value}} / {{sys.cp.max}}</b>{{#if sys.cp.temp}}<em>+{{sys.cp.temp}} temp</em>{{/if}}{{#if sys.states.drained}}<em>Drained</em>{{/if}}</div>
+      <div class="stat"><span>AC</span><b>{{sys.ac.value}}</b><em>{{sys.ac.calc}}</em></div>
+      <div class="stat"><span>Initiative</span><b>{{sys.initiative.total}}</b></div>
+      <div class="stat"><span>Speed</span><b>{{sys.speed.walk}} ft</b></div>
+      <div class="stat"><span>DR</span><b>{{sys.dr}}</b></div>
+      <div class="stat"><span>Hit Dice</span><b>{{sys.hitDice.value}}/{{sys.hitDice.max}} {{sys.hitDice.die}}</b></div>
+      <div class="stat"><span>Chakra Dice</span><b>{{sys.chakraDice.value}}/{{sys.chakraDice.max}} {{sys.chakraDice.die}}</b></div>
+      <div class="stat"><span>Inventory</span><b>{{sys.inventory.used}} / {{sys.inventory.slots}}</b>{{#if sys.inventory.encumbered}}<em>Encumbered</em>{{/if}}</div>
+      <div class="stat"><span>Will of Fire</span><b>{{sys.willOfFire.value}} / 3</b></div>
+      <div class="stat"><span>Chain</span><b>{{sys.combat.chain.value}}</b></div>
+      <div class="stat"><span>Concentration</span><b>max {{sys.concentration.max}}</b></div>
+    </div>
+
+    <h3>Abilities and saves</h3>
+    <table class="n5e-table">
+      <tr><th></th>{{#each abilities}}<th>{{label}}</th>{{/each}}</tr>
+      <tr><td>Score</td>{{#each abilities}}<td><input type="number" name="system.abilities.{{key}}.value" value="{{value}}"></td>{{/each}}</tr>
+      <tr><td>Mod</td>{{#each abilities}}<td>{{mod}}</td>{{/each}}</tr>
+      <tr><td>Save</td>{{#each abilities}}<td>{{save}} <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} title="Proficient">{{#if saveGranted}}<i title="Granted by class">★</i>{{/if}}</td>{{/each}}</tr>
+    </table>
+
+    <h3>Disciplines</h3>
+    <table class="n5e-table">
+      <tr><th>Discipline</th><th>Ability</th><th>Attack</th><th>Save DC</th></tr>
+      {{#each disciplines}}<tr><td>{{label}}</td><td>{{ability}}</td><td>+{{attack}}</td><td>{{dc}}</td></tr>{{/each}}
+    </table>
+
+    <h3>Skills</h3>
+    <table class="n5e-table skills">
+      <tr><th>Prof</th><th>Skill</th><th>Ability</th><th>Total</th><th>Passive</th><th>Mastery</th></tr>
+      {{#each skills}}
+      <tr>
+        <td><input type="checkbox" name="system.skills.{{key}}.proficient" {{#if proficient}}checked{{/if}}>{{#if granted}}<i title="Granted by an item">★</i>{{/if}}</td>
+        <td>{{label}}</td><td>{{ability}}</td><td>{{total}}</td><td>{{passive}}</td><td>{{#if mastery}}R{{mastery}}{{/if}}</td>
+      </tr>
+      {{/each}}
+    </table>
+
+    {{#if mastery.length}}
+    <h3>Mastery</h3>
+    <table class="n5e-table">
+      <tr><th>Target</th><th>Rank</th><th>Bonus</th><th>Sources</th></tr>
+      {{#each mastery}}<tr><td>{{target}}</td><td>{{rank}}{{#if capped}} (capped){{/if}}</td><td>+{{bonus}}</td><td>{{sources}}</td></tr>{{/each}}
+    </table>
+    {{/if}}
+
+    {{#if resources.length}}
+    <h3>Resources</h3>
+    <table class="n5e-table">{{#each resources}}<tr><td>{{label}}</td><td>{{value}} / {{max}}</td></tr>{{/each}}</table>
+    {{/if}}
+
+    <h3>Items</h3>
+    {{#each itemGroups}}
+      <h4>{{label}}</h4>
+      <ul class="n5e-items">
+        {{#each items}}
+        <li data-item-id="{{id}}">
+          <img src="{{img}}" alt="" width="24" height="24">
+          <a data-action="editItem">{{name}}</a>
+          {{#if rank}}<span class="tag">{{rank}}</span>{{/if}}
+          {{#if levels}}<span class="tag">Lv {{levels}}</span>{{/if}}
+          {{#if equipped}}<span class="tag">equipped</span>{{/if}}
+          {{#if review}}<span class="tag warn" title="Migrated from V3.1: check this item">review</span>{{/if}}
+          {{#if live}}
+            <span class="live">cost {{live.cost}} CP · atk +{{live.attack}} · DC {{live.dc}}{{#if live.upcastRanks.length}} · upcast {{#each live.upcastRanks}}{{this}} {{/each}}{{/if}}{{#unless live.meetsRequirement}} · needs {{live.ability}} {{live.requirement}}{{/unless}}{{#unless live.castable}} · missing access{{/unless}}</span>
+          {{/if}}
+          <a class="ctl" data-action="deleteItem" title="Delete">✕</a>
+        </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="n5e-note">Drag items here from the compendiums or the sidebar.</p>
+    {{/each}}
+
+    <h3>Effects and conditions</h3>
+    <ul class="n5e-items">
+      {{#each effects}}
+      <li data-effect-id="{{id}}" class="{{#if disabled}}disabled{{/if}}">
+        <img src="{{img}}" alt="" width="24" height="24">
+        <span>{{name}}</span><span class="tag">{{type}}</span>
+        {{#if maxRanks}}
+          <a class="ctl" data-action="changeRanks" data-delta="-1">−</a><b>{{ranks}}</b>/{{maxRanks}}<a class="ctl" data-action="changeRanks" data-delta="1">+</a>
+        {{/if}}
+        <a class="ctl" data-action="toggleEffect" title="Toggle">{{#if disabled}}off{{else}}on{{/if}}</a>
+        <a class="ctl" data-action="deleteEffect" title="Delete">✕</a>
+      </li>
+      {{else}}
+      <li class="n5e-note">Toggle conditions from the token HUD.</li>
+      {{/each}}
+    </ul>
+    {{#if conditionPenalties}}
+    <p class="n5e-note">Condition totals: AC {{conditionPenalties.ac}}, save DCs {{conditionPenalties.saveDC}}, all dice {{conditionPenalties.allDice}}, Ninjutsu base cost +{{conditionPenalties.baseCost.nin}}, Genjutsu base cost +{{conditionPenalties.baseCost.gen}}</p>
+    {{/if}}
+
+    <details class="n5e-all-fields">
+      <summary>All stored fields</summary>
+      {{> "systems/n5e/templates/parts/field-rows.hbs" rows=rows editable=editable}}
+    </details>
+  </section>
+</div>

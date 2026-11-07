@@ -1,0 +1,23 @@
+<div class="n5e-sheet">
+  <header class="n5e-header">
+    <img src="{{item.img}}" alt="" data-action="editImage" data-edit="img" width="64" height="64">
+    <div class="n5e-title">
+      <input type="text" name="name" value="{{item.name}}" placeholder="Name">
+      <div class="n5e-subtitle">{{typeLabel}}{{#if legacyType}} · migrated from V3.1 {{legacyType}}{{/if}}</div>
+      {{#if review}}<div class="n5e-note warn">Migrated automatically: check rank, cost, and discipline.</div>{{/if}}
+    </div>
+  </header>
+  <section class="n5e-body">
+    {{#if live}}
+    <div class="n5e-stats">
+      <div class="stat"><span>Cost</span><b>{{live.cost}} CP</b></div>
+      <div class="stat"><span>Attack</span><b>+{{live.attack}}</b></div>
+      <div class="stat"><span>Save DC</span><b>{{live.dc}}</b></div>
+      <div class="stat"><span>Ability</span><b>{{live.ability}}</b></div>
+      <div class="stat"><span>Upcast to</span><b>{{#each live.upcastRanks}}{{this}} {{else}}—{{/each}}</b></div>
+      <div class="stat"><span>Requirement</span><b>{{#if live.requirement}}{{live.ability}} {{live.requirement}}{{#unless live.meetsRequirement}} (not met){{/unless}}{{else}}—{{/if}}</b></div>
+    </div>
+    {{/if}}
+    {{> "systems/n5e/templates/parts/field-rows.hbs" rows=rows editable=editable}}
+  </section>
+</div>

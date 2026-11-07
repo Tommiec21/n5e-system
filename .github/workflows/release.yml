@@ -1,0 +1,50 @@
+# Push a tag like v0.1.0-alpha.2 to publish a release.
+# Foundry checks .../releases/latest/download/system.json for updates, so every
+# published (non-draft) release becomes the update players see in Foundry.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Check version matches tag
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          VERSION="$(node -p "require('./system.json').version")"
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "Tag $TAG does not match system.json version $VERSION"; exit 1
+          fi
+
+      - name: Build release
+        run: npm run release
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Publish
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/system.json
+            dist/n5e.zip
+          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
+          make_latest: true
+          generate_release_notes: true

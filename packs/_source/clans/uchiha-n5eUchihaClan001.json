@@ -1,0 +1,116 @@
+{
+  "_id": "n5eUchihaClan001",
+  "name": "Uchiha",
+  "type": "clan",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
+  "system": {
+    "identifier": "uchiha",
+    "description": "<p>Recommended: +2 Dexterity or Intelligence, +1 Wisdom. Clan features at 1st (Advanced Adaptation), 3rd (Sharingan [Dojutsu]), 7th (Blood of the Fan), 11th (Fanning the Flame), and 15th (Crimson Sovereign).</p><p><em>Phase 1 sample: features and the Hijutsu list are imported from the clan book in Phase 6.</em></p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "asi": {
+      "mode": "choose",
+      "plus2": "",
+      "plus1": "",
+      "recommended": [
+        "dex",
+        "int",
+        "wis"
+      ]
+    },
+    "speed": 30,
+    "skills": {
+      "fixed": [
+        "ins"
+      ],
+      "choose": 1,
+      "from": [
+        "nin",
+        "mar",
+        "ill"
+      ],
+      "chosen": []
+    },
+    "affinities": {
+      "fixed": [
+        "fire"
+      ],
+      "choose": 0,
+      "from": [],
+      "chosen": []
+    },
+    "languages": [],
+    "hijutsuAbilities": [
+      "int",
+      "wis"
+    ],
+    "branches": [],
+    "branch": "",
+    "resourcePools": [
+      {
+        "id": "ocularCharges",
+        "label": "Ocular Charges",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": ""
+          }
+        ],
+        "castsJutsu": false,
+        "countsAsChakraSpend": false,
+        "sort": 0
+      }
+    ],
+    "jutsuList": "",
+    "conditions": [
+      {
+        "key": "offGuard",
+        "label": "Off-Guard",
+        "tags": [
+          "physical",
+          "mental",
+          "sensory"
+        ],
+        "maxRanks": null,
+        "persists": false,
+        "text": "−2 AC; −2 to the first Strength or Dexterity saving throw it makes each turn; suffers the Off-Guard bonus effects of Uchiha Hijutsu.",
+        "icon": "icons/svg/target.svg",
+        "flat": {
+          "ac": -2,
+          "saveDC": 0,
+          "damageTaken": 0
+        },
+        "perRank": {
+          "ac": 0,
+          "saveDC": 0,
+          "damageTaken": 0
+        }
+      }
+    ],
+    "keywords": [],
+    "advancement": []
+  },
+  "_key": "!items!n5eUchihaClan001",
+  "flags": {},
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.1.0-alpha.1"
+  }
+}

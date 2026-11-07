@@ -1,0 +1,70 @@
+{
+  "id": "n5e",
+  "title": "Naruto 5e (N5e 4.0)",
+  "description": "The N5e 4.0 game system for Foundry Virtual Tabletop: chakra, jutsu ranks, Mastery, ranked conditions, Chain, Combo/Finisher, Clash, and the full N5e character chassis.",
+  "version": "0.1.0-alpha.1",
+  "authors": [
+    { "name": "King", "flags": {} }
+  ],
+  "url": "https://github.com/__GITHUB_REPOSITORY__",
+  "manifest": "https://github.com/__GITHUB_REPOSITORY__/releases/latest/download/system.json",
+  "download": "https://github.com/__GITHUB_REPOSITORY__/releases/download/v0.1.0-alpha.1/n5e.zip",
+  "changelog": "https://github.com/__GITHUB_REPOSITORY__/blob/main/CHANGELOG.md",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "compatibility": {
+    "minimum": "13.345",
+    "verified": "13.351",
+    "maximum": "13"
+  },
+  "esmodules": ["n5e.mjs"],
+  "styles": ["styles/n5e.css"],
+  "languages": [
+    { "lang": "en", "name": "English", "path": "lang/en.json" }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": { "htmlFields": ["details.biography"] },
+      "npc": { "htmlFields": ["details.biography"] }
+    },
+    "Item": {
+      "jutsu": { "htmlFields": ["description", "chainEffects.1", "chainEffects.2", "chainEffects.3", "finisher.text", "overcharge.text", "upcast.text"] },
+      "weapon": { "htmlFields": ["description"] },
+      "armor": { "htmlFields": ["description"] },
+      "consumable": { "htmlFields": ["description"] },
+      "toolkit": { "htmlFields": ["description"] },
+      "container": { "htmlFields": ["description"] },
+      "loot": { "htmlFields": ["description"] },
+      "class": { "htmlFields": ["description"] },
+      "subclass": { "htmlFields": ["description"] },
+      "clan": { "htmlFields": ["description"] },
+      "background": { "htmlFields": ["description"] },
+      "feat": { "htmlFields": ["description"] },
+      "stance": { "htmlFields": ["description", "upgrades.5", "upgrades.10", "evocation", "expertise"] }
+    },
+    "ActiveEffect": {
+      "condition": {},
+      "state": {},
+      "amp": {},
+      "stance": {},
+      "concentration": {},
+      "generic": {}
+    }
+  },
+  "packs": [
+    { "name": "classes", "label": "Classes", "system": "n5e", "path": "packs/classes", "type": "Item", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" } },
+    { "name": "features", "label": "Class & Clan Features", "system": "n5e", "path": "packs/features", "type": "Item", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" } },
+    { "name": "clans", "label": "Clans", "system": "n5e", "path": "packs/clans", "type": "Item", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" } },
+    { "name": "jutsu", "label": "Jutsu", "system": "n5e", "path": "packs/jutsu", "type": "Item", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" } },
+    { "name": "equipment", "label": "Equipment", "system": "n5e", "path": "packs/equipment", "type": "Item", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" } }
+  ],
+  "packFolders": [
+    { "name": "N5e 4.0", "sorting": "m", "color": "#7a1f1f", "packs": ["classes", "features", "clans", "jutsu", "equipment"] }
+  ],
+  "grid": { "type": 1, "distance": 5, "units": "ft", "diagonals": 4 },
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": "cp",
+  "socket": true,
+  "background": "",
+  "flags": {}
+}
