@@ -31,6 +31,10 @@ export function headerVM(actor) {
   const bg = sys.grants?.backgroundItem;
   const xp = sys.details?.xp ?? 0;
   const next = sys.details?.xpNext ?? null;
+  const affinities = [...(sys.grants?.affinities ?? [])].join(", ");
+  const bubble = (kind, label, item, sub) => (item
+    ? { kind, label, id: item.id, name: item.name, img: item.img, sub }
+    : { kind, label, empty: true, name: `No ${label.toLowerCase()}` });
   return {
     name: actor.name,
     img: actor.img,
@@ -41,13 +45,65 @@ export function headerVM(actor) {
     backgroundName: bg?.name ?? "",
     subtitle: [`Level ${sys.level}`, cls?.name, clan?.name, bg?.name].filter(Boolean).join(" · "),
     xp: { value: xp, next, pct: next ? pct(xp, next) : 100 },
-    willOfFire: pips(sys.willOfFire?.value ?? 0, 3)
+    // Compact ability strip (SW5e-style): abbr, modifier, score.
+    abilities: Object.entries(abilities).map(([key, cfg]) => ({
+      key, abbr: cfg.abbr.toUpperCase(), label: cfg.label,
+      value: sys.abilities[key].value, mod: signed(sys.abilities[key].mod)
+    })),
+    // Identity bubbles: Class, Clan, Background.
+    origins: [
+      bubble("class", "Class", cls, cls ? `Level ${cls.system.levels ?? sys.level}` : ""),
+      bubble("clan", "Clan", clan, affinities ? `Affinity: ${affinities}` : "Clan"),
+      bubble("background", "Background", bg, "Background")
+    ]
   };
 }
 
 /* -------------------------------------------- */
 /*  Left rail                                   */
 /* -------------------------------------------- */
+
+const RECOVERY = { sr: "short rest", lr: "long rest", fr: "full rest", turn: "turn", round: "round", day: "day", encounter: "encounter" };
+
+/** "back on a short or long rest" from a pool's recovery rows or a uses.per key. */
+function recoveryNote(keys) {
+  const labels = [...new Set(keys.filter(Boolean).map(k => RECOVERY[k] ?? k))];
+  if ( !labels.length ) return "";
+  if ( labels.length > 1 && labels.every(l => l.endsWith(" rest")) ) {
+    const kinds = labels.map(l => l.replace(/ rest$/, ""));
+    return `back on a ${kinds.slice(0, -1).join(", ")} or ${kinds.at(-1)} rest`;
+  }
+  return `back on a ${labels.length > 1 ? `${labels.slice(0, -1).join(", ")} or ${labels.at(-1)}` : labels[0]}`;
+}
+
+/** Segments for a click-to-set bar; long pools fall back to a plain fill bar. */
+const segments = (value, max) => (max > 0 && max <= 12 ? pips(value, max) : null);
+
+/**
+ * Everything the character spends and recovers, in one list for the rail:
+ * Will of Fire, class/clan resource pools, then features with limited uses.
+ */
+export function resourcesVM(actor) {
+  const sys = actor.system;
+  const out = [{
+    kind: "wof", id: "willOfFire", label: "Will of Fire", value: sys.willOfFire?.value ?? 0, max: 3,
+    segments: pips(sys.willOfFire?.value ?? 0, 3), note: "", action: "setWillOfFire"
+  }];
+  for ( const [id, p] of Object.entries(sys.resources ?? {}) ) {
+    const max = p.maxValue ?? 0;
+    out.push({ kind: "pool", id, label: p.label || id, value: p.value, max, pct: pct(p.value, max),
+      segments: segments(p.value, max), note: [p.max && !/^\d+$/.test(String(p.max)) ? String(p.max).replace(/@/g, "") : "",
+        recoveryNote((p.recovery ?? []).map(r => r.on))].filter(Boolean).join(" · "), action: "setPool" });
+  }
+  for ( const i of ofType(actor, "feat") ) {
+    const max = Number(i.system.uses?.maxValue ?? i.system.uses?.max) || 0;
+    if ( !max ) continue;
+    const value = Math.max(0, max - (i.system.uses.spent ?? 0));
+    out.push({ kind: "uses", id: i.id, itemId: i.id, label: i.name, value, max, pct: pct(value, max),
+      segments: segments(value, max), note: recoveryNote([i.system.uses.per]), action: "setUses" });
+  }
+  return out;
+}
 
 export function railVM(actor, registry = coreConditions) {
   const sys = actor.system;
@@ -72,6 +128,11 @@ export function railVM(actor, registry = coreConditions) {
     ? list(actor.items).find(i => i.id === sys.combat.activeStance)?.name ?? "Unknown"
     : null;
   return {
+    img: actor.img,
+    name: actor.name,
+    level: sys.level,
+    prof: signed(sys.prof),
+    resources: resourcesVM(actor),
     hp: { value: sys.hp.value, max: sys.hp.max, temp: sys.hp.temp, pct: pct(sys.hp.value, sys.hp.max),
       bloodiedAt: Math.floor(sys.hp.max / 2), bloodied: !!sys.states?.bloodied, tip: bd(actor, "hp.max", { signedTotal: false }) },
     cp: { value: sys.cp.value, max: sys.cp.max, temp: sys.cp.temp, pct: pct(sys.cp.value, sys.cp.max),
@@ -82,8 +143,8 @@ export function railVM(actor, registry = coreConditions) {
     initiative: { value: signed(sys.initiative.total), tip: bd(actor, "initiative") },
     speed: { value: sys.speed?.walk ?? 0, halved: !!sys.inventory?.encumbered || !!sys.conditionPenalties?.flags?.speedMultiplier,
       other: Object.entries(sys.speed ?? {}).filter(([k, v]) => k !== "walk" && v).map(([k, v]) => `${k} ${v}`).join(", ") },
-    hitDice: { value: sys.hitDice.value, max: sys.hitDice.max, die: sys.hitDice.die || "—" },
-    chakraDice: { value: sys.chakraDice.value, max: sys.chakraDice.max, die: sys.chakraDice.die || "—" },
+    hitDice: { value: sys.hitDice.value, max: sys.hitDice.max, die: sys.hitDice.die || "—", pct: pct(sys.hitDice.value, sys.hitDice.max) },
+    chakraDice: { value: sys.chakraDice.value, max: sys.chakraDice.max, die: sys.chakraDice.die || "—", pct: pct(sys.chakraDice.value, sys.chakraDice.max) },
     chain: pips(sys.combat?.chain?.value ?? 0, 3),
     concentration: { used: sys.combat?.concentrating?.length ?? 0, max: sys.concentration?.max ?? 2 },
     stance,
@@ -328,7 +389,7 @@ export function featuresVM(actor) {
   const feats = ofType(actor, "feat");
   const featRow = i => ({ id: i.id, name: i.name, img: i.img, glyph: glyph(i.system.activation)?.svg ?? "",
     level: i.system.requirement?.level || "", passive: i.system.featureType === "passive",
-    uses: i.system.uses?.max ? `${Math.max(0, (Number(i.system.uses.max) || 0) - i.system.uses.spent)} / ${i.system.uses.max}` : "" });
+    uses: i.system.uses?.max ? `${Math.max(0, (i.system.uses.maxValue ?? (Number(i.system.uses.max) || 0)) - i.system.uses.spent)} / ${i.system.uses.maxValue ?? i.system.uses.max}` : "" });
   const byCategory = cats => feats.filter(i => cats.includes(i.system.category)).map(featRow);
   const cls = sys.grants?.classItem;
   const clan = sys.grants?.clanItem;
@@ -347,9 +408,7 @@ export function featuresVM(actor) {
       { key: "class", label: cls?.name ?? "Class features", rows: byCategory(["classFeature", "class"]) },
       { key: "clan", label: clan?.name ?? "Clan features", rows: byCategory(["clanFeature", "clan"]) },
       { key: "feats", label: "Feats", rows: feats.filter(i => !["classFeature", "class", "clanFeature", "clan"].includes(i.system.category)).map(i => ({ ...featRow(i), category: featCategories[i.system.category] ?? i.system.category })) }
-    ].map(g => ({ ...g, empty: g.rows.length === 0 })),
-    resources: Object.entries(sys.resources ?? {}).map(([id, p]) => ({ id, label: p.label || id, value: p.value,
-      max: p.maxValue ?? 0, pips: (p.maxValue ?? 0) <= 12 ? pips(p.value, p.maxValue ?? 0) : null }))
+    ].map(g => ({ ...g, empty: g.rows.length === 0 }))
   };
 }
 

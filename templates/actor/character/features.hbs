@@ -46,21 +46,6 @@
     {{/each}}
   </div>
 
-  {{#if vm.resources.length}}
-    <div class="resources">
-      <div class="section-head"><h2>Resources</h2></div>
-      {{#each vm.resources}}
-        <div class="resource" data-pool="{{id}}">
-          <b>{{label}}</b>
-          {{#if pips}}
-            <span class="pips">{{#each pips}}<button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setPool" data-value="{{n}}" aria-label="{{../label}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}</span>
-          {{/if}}
-          <span>{{value}} / {{max}}</span>
-        </div>
-      {{/each}}
-    </div>
-  {{/if}}
-
   {{#each vm.groups}}
     <div class="feature-group">
       <div class="section-head"><h2>{{label}}</h2></div>

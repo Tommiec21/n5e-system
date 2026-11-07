@@ -50,7 +50,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       deleteEffect: CharacterSheet.#onDeleteEffect,
       editEffect: CharacterSheet.#onEditEffect,
       enterStance: CharacterSheet.#onEnterStance,
-      setPool: CharacterSheet.#onSetPool
+      setPool: CharacterSheet.#onSetPool,
+      setUses: CharacterSheet.#onSetUses
     }
   };
 
@@ -413,5 +414,16 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const n = Number(target.dataset.value);
     const current = this.actor.system.resources[pool]?.value ?? 0;
     await this.actor.update({ [`system.resources.${pool}.value`]: current === n ? n - 1 : n });
+  }
+
+  /** Click a use segment: set remaining uses to that many (clicking the last filled one spends it). */
+  static async #onSetUses(event, target) {
+    const item = CharacterSheet.#itemFrom.call(this, target);
+    const max = item?.system.uses?.maxValue ?? 0;
+    if ( !max ) return;
+    const n = Number(target.dataset.value);
+    const remaining = max - item.system.uses.spent;
+    const next = remaining === n ? n - 1 : n;
+    await item.update({ "system.uses.spent": Math.max(0, max - next) });
   }
 }

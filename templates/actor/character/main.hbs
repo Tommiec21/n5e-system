@@ -14,35 +14,32 @@
     {{/each}}
   </div>
 
-  <div class="abilities">
-    {{#each vm.abilities}}
-      <div class="ability">
-        <span class="abbr">{{abbr}}</span>
-        <b class="mod">{{mod}}</b>
-        {{#if @root.editMode}}
-          <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
-        {{else}}
-          <span class="score">{{value}}</span>
-        {{/if}}
-        <span class="save" data-tooltip-html="{{saveTip}}">
-          {{#if @root.editMode}}
-            <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
-          {{else}}
-            <span class="dot {{#if saveProficient}}on{{/if}}"></span>
-          {{/if}}
-          Save {{save}}
-        </span>
+  <div class="main-top">
+    <div class="panel saves">
+      <h3>Saving Throws</h3>
+      <div class="save-grid">
+        {{#each vm.abilities}}
+          <div class="save-row {{#if saveProficient}}prof{{/if}}" data-tooltip-html="{{saveTip}}">
+            {{#if @root.editMode}}
+              <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
+            {{else}}
+              <span class="dot {{#if saveProficient}}on{{/if}}"></span>
+            {{/if}}
+            <span class="label">{{label}}</span>
+            <b>{{save}}</b>
+          </div>
+        {{/each}}
       </div>
-    {{/each}}
-  </div>
-
-  <div class="disciplines">
-    {{#each vm.disciplines}}
-      <div class="discipline {{key}}">
-        <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
-        <div class="nums"><b data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
-      </div>
-    {{/each}}
+    </div>
+    <div class="panel disciplines">
+      <h3>Disciplines</h3>
+      {{#each vm.disciplines}}
+        <div class="discipline {{key}}">
+          <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
+          <div class="nums"><b data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
+        </div>
+      {{/each}}
+    </div>
   </div>
 
   {{#if vm.asiAvailable}}

@@ -23,7 +23,32 @@ test("header", () => {
   assert.equal(h.name, "Taijutsu Test");
   assert.equal(h.subtitle, "Level 7 · Taijutsu Specialist · Uchiha");
   assert.equal(h.prof, "+5");
-  assert.equal(h.willOfFire.filter(p => p.filled).length, 1);
+  assert.deepEqual(h.abilities.map(x => x.abbr), ["STR", "DEX", "CON", "INT", "WIS", "CHA"]);
+  assert.deepEqual(h.origins.map(o => o.kind), ["class", "clan", "background"]);
+  assert.equal(h.origins[0].name, "Taijutsu Specialist");
+  assert.equal(h.origins[0].sub, "Level 7");
+  assert.equal(h.origins[1].name, "Uchiha");
+  assert.ok(h.origins[2].empty, "no background -> empty bubble");
+});
+
+test("rail: resources in one list (Will of Fire, pools, feature uses)", () => {
+  const a = level7({ system: { ...baseAbilities, resources: { ocular: { label: "Ocular Charges", value: 4, max: "1 + @prof",
+    recovery: [{ on: "sr" }, { on: "lr" }] } } } });
+  const feat = a.items.find(i => i.type === "feat");
+  feat.system.uses.max = "@prof"; feat.system.uses.spent = 2; feat.system.uses.per = "lr";
+  a.system.prepareDerivedData();
+  const r = railVM(a);
+  assert.equal(r.prof, "+5");
+  const [wof, ocular, uses] = r.resources;
+  assert.equal(wof.label, "Will of Fire");
+  assert.equal(wof.segments.filter(p => p.filled).length, 1);
+  assert.equal(ocular.max, 6);
+  assert.equal(ocular.segments.length, 6);
+  assert.equal(ocular.note, "1 + prof · back on a short or long rest");
+  assert.equal(uses.kind, "uses");
+  assert.equal(uses.value, 3);
+  assert.equal(uses.max, 5);
+  assert.equal(uses.action, "setUses");
 });
 
 test("rail: vitals, breakdown tips, condition pips and summaries", () => {

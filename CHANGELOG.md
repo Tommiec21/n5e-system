@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.0-alpha.2 — Character sheet layout pass (SW5e-inspired)
+
+### Changed
+- Left rail is now the quick-reference column: portrait with level badge, Armor Class, Initiative,
+  Speed, Proficiency, Damage Reduction, Hit Points, Chakra Points, Hit Dice and Chakra Dice bars,
+  then Resources, Combat (Chain, concentration, stance) and Conditions.
+- Resources: Will of Fire, class/clan resource pools and every feature with limited uses sit in one
+  list, each a click-to-set bar with its recovery note ("1 + prof · back on a short or long rest").
+- Header: compact ability strip (abbreviation, modifier, score; editable in edit mode) and identity
+  bubbles for Class, Clan and Background that open the item.
+- Main tab: Saving Throws panel and a compact Disciplines panel replace the large ability cards.
+- Features tab no longer repeats resources.
+
+### Fixed
+- Feature uses written as formulas ("1 + @prof") now resolve against the owning actor.
+
 ## 0.2.0-alpha.1 — Phase 2: character sheet frame
 
 ### Added

@@ -1,12 +1,25 @@
 <header class="n5e-head">
-  <img class="portrait" src="{{vm.img}}" alt="{{vm.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
   <div class="identity">
-    {{#if editMode}}
-      <input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">
-    {{else}}
-      <h1 class="name">{{vm.name}}</h1>
-    {{/if}}
-    <div class="subtitle">{{vm.subtitle}} · Proficiency {{vm.prof}}</div>
+    <div class="name-row">
+      {{#if editMode}}
+        <input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">
+      {{else}}
+        <h1 class="name">{{vm.name}}</h1>
+      {{/if}}
+      <span class="level">Level {{vm.level}}</span>
+    </div>
+    <div class="bubbles">
+      {{#each vm.origins}}
+        {{#if empty}}
+          <div class="bubble empty" data-origin="{{kind}}"><span class="lbl">{{label}}</span><b>{{name}}</b></div>
+        {{else}}
+          <div class="bubble n5e-row {{kind}}" data-item-id="{{id}}" data-action="editItem" data-tooltip="Open {{label}}">
+            <img src="{{img}}" alt="" width="34" height="34">
+            <span class="txt"><b>{{name}}</b><span class="sub">{{sub}}</span></span>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
     <div class="xp">
       <span class="lbl">XP</span>
       <span class="bar"><span class="fill" style="width: {{vm.xp.pct}}%"></span></span>
@@ -27,10 +40,17 @@
           data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit mode{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
       {{/if}}
     </div>
-    <div class="wof">
-      <span class="lbl">Will of Fire</span>
-      {{#each vm.willOfFire}}
-        <button type="button" class="pip {{#if filled}}on{{/if}}" data-action="setWillOfFire" data-value="{{n}}" aria-label="Will of Fire {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>
+    <div class="ability-strip">
+      {{#each vm.abilities}}
+        <div class="ab-tile" data-tooltip="{{label}}">
+          <span class="abbr">{{abbr}}</span>
+          <b class="mod">{{mod}}</b>
+          {{#if @root.editMode}}
+            <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
+          {{else}}
+            <span class="score">{{value}}</span>
+          {{/if}}
+        </div>
       {{/each}}
     </div>
   </div>

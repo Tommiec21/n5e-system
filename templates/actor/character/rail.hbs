@@ -1,4 +1,22 @@
 <aside class="n5e-rail">
+  <div class="portrait-wrap">
+    <img class="portrait" src="{{vm.img}}" alt="{{vm.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    <span class="level-badge" data-tooltip="Level">{{vm.level}}</span>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat ac" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT">
+      <span class="lbl">Armor Class</span><b>{{vm.ac.value}}</b><span class="sub">{{vm.ac.label}}</span></div>
+    <div class="stat" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT">
+      <span class="lbl">Initiative</span><b>{{vm.initiative.value}}</b></div>
+    <div class="stat"><span class="lbl">Speed</span><b>{{vm.speed.value}}</b>
+      <span class="sub">{{#if vm.speed.halved}}halved{{else}}ft{{/if}}{{#if vm.speed.other}} · {{vm.speed.other}}{{/if}}</span></div>
+    <div class="stat"><span class="lbl">Proficiency</span><b>{{vm.prof}}</b></div>
+  </div>
+  <div class="dr-line" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT">
+    <span class="lbl">Damage Reduction</span><b>{{vm.dr.value}}</b>{{#if vm.dr.pierce}}<span class="sub">Pierce {{vm.dr.pierce}}</span>{{/if}}
+  </div>
+
   <div class="meter hp" data-tooltip-html="{{vm.hp.tip}}" data-tooltip-direction="RIGHT">
     <div class="meter-head"><span>Hit Points</span>
       <span><input type="number" name="system.hp.value" value="{{vm.hp.value}}" aria-label="Current HP" {{#unless editable}}disabled{{/unless}}> / {{vm.hp.max}}</span></div>
@@ -7,23 +25,34 @@
       <span class="{{#if vm.hp.bloodied}}warn{{/if}}">{{#if vm.hp.bloodied}}Bloodied{{else}}Bloodied at {{vm.hp.bloodiedAt}}{{/if}}</span></div>
   </div>
   <div class="meter cp" data-tooltip-html="{{vm.cp.tip}}" data-tooltip-direction="RIGHT">
-    <div class="meter-head"><span>Chakra</span>
+    <div class="meter-head"><span>Chakra Points</span>
       <span><input type="number" name="system.cp.value" value="{{vm.cp.value}}" aria-label="Current CP" {{#unless editable}}disabled{{/unless}}> / {{vm.cp.max}}</span></div>
     <div class="track"><div class="fill" style="width: {{vm.cp.pct}}%"></div></div>
     <div class="meter-foot"><label>Temp <input type="number" name="system.cp.temp" value="{{vm.cp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
       <span class="{{#if vm.cp.drained}}warn{{/if}}">{{#if vm.cp.drained}}Drained{{else}}Drained at {{vm.cp.drainedAt}}{{/if}}</span></div>
   </div>
-
-  <div class="stat-grid">
-    <div class="stat" data-tooltip-html="{{vm.ac.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Armor Class</span><b>{{vm.ac.value}}</b><span class="sub">{{vm.ac.label}}</span></div>
-    <div class="stat" data-tooltip-html="{{vm.dr.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Damage Red.</span><b>{{vm.dr.value}}</b><span class="sub">Pierce {{vm.dr.pierce}}</span></div>
-    <div class="stat" data-tooltip-html="{{vm.initiative.tip}}" data-tooltip-direction="RIGHT"><span class="lbl">Initiative</span><b>{{vm.initiative.value}}</b></div>
-    <div class="stat"><span class="lbl">Speed</span><b>{{vm.speed.value}}</b><span class="sub">{{#if vm.speed.halved}}halved{{else}}ft{{/if}}{{#if vm.speed.other}} · {{vm.speed.other}}{{/if}}</span></div>
+  <div class="dice">
+    <div class="die hd"><div class="meter-head"><span>Hit Dice <span class="sub">{{vm.hitDice.die}}</span></span><b>{{vm.hitDice.value}} / {{vm.hitDice.max}}</b></div>
+      <div class="track thin"><div class="fill" style="width: {{vm.hitDice.pct}}%"></div></div></div>
+    <div class="die cd"><div class="meter-head"><span>Chakra Dice <span class="sub">{{vm.chakraDice.die}}</span></span><b>{{vm.chakraDice.value}} / {{vm.chakraDice.max}}</b></div>
+      <div class="track thin"><div class="fill" style="width: {{vm.chakraDice.pct}}%"></div></div></div>
   </div>
 
-  <div class="dice">
-    <div><span class="lbl">Hit Dice</span><b>{{vm.hitDice.value}} / {{vm.hitDice.max}} {{vm.hitDice.die}}</b></div>
-    <div><span class="lbl">Chakra Dice</span><b>{{vm.chakraDice.value}} / {{vm.chakraDice.max}} {{vm.chakraDice.die}}</b></div>
+  <div class="block resources">
+    <h3>Resources</h3>
+    {{#each vm.resources}}
+      <div class="resource {{kind}}" data-pool="{{id}}" {{#if itemId}}data-item-id="{{itemId}}"{{/if}}>
+        <div class="meter-head"><b>{{label}}</b><span>{{value}} / {{max}}</span></div>
+        {{#if segments}}
+          <div class="segments">
+            {{#each segments}}<button type="button" class="seg {{#if filled}}on{{/if}}" data-action="{{../action}}" data-value="{{n}}" aria-label="{{../label}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}
+          </div>
+        {{else}}
+          <div class="track thin"><div class="fill" style="width: {{pct}}%"></div></div>
+        {{/if}}
+        {{#if note}}<div class="sub">{{note}}</div>{{/if}}
+      </div>
+    {{/each}}
   </div>
 
   <div class="block">

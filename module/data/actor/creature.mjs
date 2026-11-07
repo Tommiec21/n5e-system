@@ -160,6 +160,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     for ( const pool of Object.values(this.resources ?? {}) ) {
       pool.maxValue = Math.max(0, Math.floor(evaluateFormula(pool.max, rollData, 0)));
     }
+    // Limited uses on owned items ("1 + @prof") resolve against this actor.
+    for ( const item of this.parent?.items ?? [] ) {
+      const uses = item.system?.uses;
+      if ( uses && uses.max ) uses.maxValue = Math.max(0, Math.floor(evaluateFormula(uses.max, rollData, 0)));
+    }
 
     // Step 6 + 7: Mastery (sources from actor, items, and n5e.mastery.* effects).
     this._prepareMastery(grants, mods);
