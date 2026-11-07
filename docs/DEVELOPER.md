@@ -33,7 +33,7 @@ tests/                   node:test suites; helpers/foundry-stub.mjs fakes Foundr
 Set your Foundry Data path once in `foundry.local.json` (git-ignored):
 
 ```json
-{ "dataPath": "C:/Users/Tommi/AppData/Local/FoundryVTT/Data" }
+{ "dataPath": "C:/FoundryData/Data" }
 ```
 
 Migration tests can run against the old V3.1 packs: set `N5E_V31_PACKS` to a folder of `.db` files
