@@ -41,11 +41,13 @@ or copy them into `tests/fixtures/v31/` (git-ignored).
 
 ## Releasing (auto-updates)
 
-1. `npm run release -- <version>` locally (or just edit the version in `system.json` and `package.json`).
-2. Update `CHANGELOG.md`, commit, then `git tag v<version>` and `git push --follow-tags`.
-3. GitHub Actions tests, builds, and publishes `system.json` + `n5e.zip` to a release.
-   The manifest URL `.../releases/latest/download/system.json` now points at it, so Foundry offers
-   the update.
+1. `npm run release -- <version>` (bumps `system.json` + `package.json`, packs, zips locally).
+2. Add the version to `CHANGELOG.md`, commit, push to `main`.
+3. GitHub Actions sees a version with no release yet, tests, builds, tags `v<version>`, and publishes
+   `system.json` + `n5e.zip` as the latest release. Foundry's manifest URL
+   `.../releases/latest/download/system.json` now points at it, so Foundry offers the update.
+
+Pushes that don't change the version publish nothing.
 
 ## Rules changes
 
