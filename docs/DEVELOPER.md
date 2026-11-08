@@ -62,7 +62,8 @@ module/
   dice/                     d20 rules (d20.mjs) and rolling + chat buttons (roll.mjs)
   workflow/                 Foundry-side actions: cast, attack, damage, rests, turns, trackers
   view-models/              actor/item → sheet data (pure)
-  applications/             sheets, level-up dialog, N5e Rules panel, GM Party Overview
+  applications/             sheets, level-up dialog, N5e Rules panel, GM Party Overview, Compendium Browser
+                            (browser/; tabs and filters in rules/browser.mjs), text shortcuts (enrichers.mjs)
   advancement/              level-up steps (pure) and applying/reverting a level
   chat/card.mjs             item chat cards
   migration/                V3.1 → 4.0 mapping and the world migration runner

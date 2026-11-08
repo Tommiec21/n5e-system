@@ -694,3 +694,26 @@ a.n5e-link {
 }
 a.n5e-link:hover { background: rgba(255, 100, 0, 0.15); text-shadow: none; }
 a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
+
+/* N5e Compendium Browser (applications/browser/compendium-browser.mjs) */
+.n5e-browser .window-content { display: grid; grid-template-columns: 270px 1fr; gap: 8px; padding: 6px; overflow: hidden; }
+.n5e-browser .browser-side { display: flex; flex-direction: column; min-height: 0; }
+.n5e-browser .tabs { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
+.n5e-browser .tabs .tab { padding: 3px 6px; border-radius: 4px; cursor: pointer; }
+.n5e-browser .tabs .tab.active { background: rgba(255, 100, 0, 0.2); font-weight: bold; }
+.n5e-browser .count { opacity: 0.6; font-size: 0.85em; }
+.n5e-browser .filters { overflow-y: auto; display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+.n5e-browser .filter { border: 1px solid #0003; border-radius: 4px; padding: 2px 6px 4px; }
+.n5e-browser .filter .opts { display: flex; flex-direction: column; max-height: 140px; overflow-y: auto; }
+.n5e-browser .filter .opt { display: flex; gap: 4px; align-items: center; }
+.n5e-browser .range { display: flex; gap: 4px; align-items: center; }
+.n5e-browser .range input { width: 70px; }
+.n5e-browser .browser-main { display: flex; flex-direction: column; min-height: 0; }
+.n5e-browser .summary { opacity: 0.7; font-size: 0.9em; margin-bottom: 4px; }
+.n5e-browser .results { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+.n5e-browser .b-row { display: grid; grid-template-columns: 32px 1fr auto; gap: 8px; align-items: center; padding: 3px 4px; border-bottom: 1px solid #0002; cursor: grab; }
+.n5e-browser .b-name { display: flex; flex-direction: column; }
+.n5e-browser .b-name a { font-weight: bold; cursor: pointer; }
+.n5e-browser .b-name .sub { font-size: 0.85em; opacity: 0.75; }
+.n5e-browser .b-row button { width: 28px; }
+.n5e-browser-open { flex: 0 0 100%; margin-top: 4px; }

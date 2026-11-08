@@ -6,6 +6,7 @@
     {{#each vm.filters}}
       <button type="button" class="filter {{#if active}}on{{/if}}" data-action="jutsuFilter" data-discipline="{{key}}">{{label}}</button>
     {{/each}}
+    <button type="button" class="filter" data-action="openBrowser" data-browser-tab="jutsu" data-tooltip="Open the Compendium Browser"><i class="fa-solid fa-book-open"></i> Browse</button>
   </div>
   <div class="strip">
     <span><b>Known</b> {{vm.known}}{{#if vm.knownMax}} / {{vm.knownMax}}{{/if}}</span>
@@ -15,7 +16,7 @@
 
   <div class="n5e-jutsu-list">
     {{#if vm.empty}}
-      <div class="empty-state"><p>No jutsu yet. Drag jutsu here from the Jutsu compendium.</p></div>
+      <div class="empty-state"><p>No jutsu yet. Drag jutsu here from the Jutsu compendium or the Browse button.</p></div>
     {{else if vm.noMatches}}
       <div class="empty-state"><p>No jutsu match this filter.</p></div>
     {{/if}}

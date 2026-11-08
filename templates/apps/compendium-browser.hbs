@@ -1,0 +1,39 @@
+{{!-- N5e Compendium Browser, left column (applications/browser/compendium-browser.mjs).
+      Context: tabs [{key, label, active, count}], filters (rules/browser.mjs TABS + options), search,
+      inText, sorts. Controls carry data-multi / data-range / data-max / data-bool = the filter field. --}}
+<div class="browser-side">
+  <nav class="tabs">
+    {{#each tabs}}<a class="tab{{#if active}} active{{/if}}" data-action="tab" data-tab="{{key}}">{{label}} <span class="count">{{count}}</span></a>{{/each}}
+  </nav>
+  <div class="filters">
+    <input type="search" name="search" value="{{search}}" placeholder="Search names…" aria-label="Search" autocomplete="off">
+    <label class="row"><input type="checkbox" name="inText" {{#if inText}}checked{{/if}}> Search rules text too</label>
+    <label class="row">Sort <select name="sort">{{#each sorts}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    {{#each filters}}
+      <fieldset class="filter">
+        <legend>{{label}}</legend>
+        {{#if isMulti}}
+          <div class="opts">
+            {{#each options}}<label class="opt"><input type="checkbox" data-multi="{{../field}}" value="{{value}}" {{#if checked}}checked{{/if}}> {{label}} <span class="count">{{count}}</span></label>{{/each}}
+          </div>
+        {{/if}}
+        {{#if isRange}}
+          <div class="range">
+            <input type="number" data-range="{{field}}" data-end="min" value="{{min}}" placeholder="{{lo}}" aria-label="Minimum">
+            <span>to</span>
+            <input type="number" data-range="{{field}}" data-end="max" value="{{max}}" placeholder="{{hi}}" aria-label="Maximum">
+          </div>
+        {{/if}}
+        {{#if isMax}}<input type="number" data-max="{{field}}" value="{{value}}" placeholder="{{hi}}" aria-label="{{label}}">{{/if}}
+        {{#if isBool}}
+          <select data-bool="{{field}}" aria-label="{{label}}">
+            <option value="" {{#unless value}}selected{{/unless}}>Any</option>
+            <option value="true" {{#if (eq value "true")}}selected{{/if}}>Yes</option>
+            <option value="false" {{#if (eq value "false")}}selected{{/if}}>No</option>
+          </select>
+        {{/if}}
+      </fieldset>
+    {{/each}}
+    <button type="button" data-action="reset"><i class="fa-solid fa-rotate-left"></i> Clear filters</button>
+  </div>
+</div>

@@ -70,6 +70,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       editItem: CharacterSheet.#onEditItem,
       deleteItem: CharacterSheet.#onDeleteItem,
       useItem: CharacterSheet.#onUseItem,
+      openBrowser: CharacterSheet.#onOpenBrowser,
       useAction: CharacterSheet.#onUseAction,
       roll: CharacterSheet.#onRoll,
       rollInit: CharacterSheet.#onRollInit,
@@ -393,6 +394,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   }
 
   /** Tab buttons: switch the visible tab part (Foundry's changeTab). */
+  /** The Browse button (Jutsu tab): the Compendium Browser on that tab. */
+  static #onOpenBrowser(event, target) {
+    game.n5e.browser(target.dataset.browserTab);
+  }
+
   static #onTab(event, target) {
     this.changeTab(target.dataset.tab, target.dataset.group ?? "primary");
   }

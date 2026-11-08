@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.2-alpha.1 — Compendium Browser
+
+### Added
+- **N5e Compendium Browser:** every Item compendium plus world items in one window.
+  - Open it with the **N5e Browser** button in the Compendium and Items sidebars, the **Browse** button on the character sheet's Jutsu tab, or `game.n5e.browser()`.
+  - **Jutsu tab:** rank, discipline, section, keywords (all must match), activation, chakra cost range, concentration, has an area, source.
+  - **Features & Feats tab:** category, class, option group, level up to, source.
+  - **Stances tab:** category, source.
+  - **Equipment tab:** type, category, weapon group, price up to, source.
+  - **Classes & Origins tab:** classes, subclasses, clans, backgrounds.
+  - Every tab: name search (optionally the rules text) and sorting (rank, name, cost, level, price).
+  - Filter lists show how many items have each value.
+  - Drag a row onto a sheet; click a name to open it; **+** adds it to your selected token or character.
+
 ## 0.9.1-alpha.1 — Shortcuts in text
 
 ### Added

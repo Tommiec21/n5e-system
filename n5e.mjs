@@ -29,6 +29,7 @@ import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
 import { registerEnrichers } from "./module/applications/enrichers.mjs";
+import CompendiumBrowser, { registerCompendiumBrowser } from "./module/applications/browser/compendium-browser.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
 import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
 import NPCSheet from "./module/applications/actor/npc-sheet.mjs";
@@ -63,7 +64,9 @@ Hooks.once("init", () => {
     api,
     rules: { progression, cost, conditions, degree, chain, ac, formula },
     migrations: MIGRATIONS,
-    dice: { ...dice, d20 }
+    dice: { ...dice, d20 },
+    // The Compendium Browser: game.n5e.browser() or game.n5e.browser("jutsu" | "features" | "stances" | "equipment" | "character").
+    browser: tab => CompendiumBrowser.open(tab)
   };
 
   // Documents and data models. The document classes add N5e behavior to Foundry's Actor, Item and
@@ -132,6 +135,8 @@ registerTurnHooks();
 registerPartyOverview();
 // Jutsu areas: concentration areas leave the map when concentration ends (workflow/areas.mjs).
 registerAreaHooks();
+// Compendium Browser buttons in the Compendium and Items sidebars (applications/browser/).
+registerCompendiumBrowser();
 
 Hooks.once("ready", async () => {
   // Clan-scoped conditions and keywords from world clan items (compendium clans load in Phase 6).

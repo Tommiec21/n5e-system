@@ -51,3 +51,4 @@
 | Senses → token vision and detection modes; Chakra Sensing mode | `rules/senses.mjs`, `documents/token.mjs`, `canvas/detection.mjs` | 06 |
 | Climb/swim/crawl extra cost; ruler speed bands | `rules/senses.mjs`, `canvas/ruler.mjs` | 03, 06 |
 | Text shortcuts: [[/save]], [[/check]], [[/damage]], [[/heal]], @Condition[], @State[] | `rules/enrichers.mjs`, `applications/enrichers.mjs`, `config/condition-text.mjs` | 05 |
+| Compendium Browser: tabs, filters, sorting | `rules/browser.mjs`, `applications/browser/compendium-browser.mjs` | — |
