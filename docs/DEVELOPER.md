@@ -311,3 +311,13 @@ Every file starts with a header comment saying what it does, how it fits, and ho
 that first. Each function says what it takes and returns; inline comments explain the rulings and
 the non-obvious steps. When you change behavior, update the comment in the same edit.
 
+### Importing classes
+
+Classes come from Orochimaru's Observation Compendium through `tools/content/build_content.py`.
+Genjutsu Specialist, Hunter-Nin, Medical-Nin, Taijutsu Specialist and Weapon Specialist are data:
+one spec each in `tools/content/classes_spec.py` (table, proficiencies, core features by level,
+subclass group, option lists, pools), built to `MAX_LEVEL` (5) by `build_class()`. Subclass features
+are found by the level their text names ("Also at 3rd level"); options with a level prerequisite
+above `MAX_LEVEL` are skipped. Intelligence Operative, Puppet Master and Science-Nin are left out
+until King remixes them. Run: `python3 tools/content/build_content.py <path to N5e-Rules-KB>`.
+

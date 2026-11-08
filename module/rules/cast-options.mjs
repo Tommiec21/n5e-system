@@ -12,7 +12,8 @@
  *   damage           {formula, type, halfForArea}: an extra damage button on the cast card
  *   effect           an activity effect for the card (Hellrend: targets' DR −2 per Pyroclasm, @amount)
  *   roll             a die rolled when cast, shown with the note (Devastation: 1d6)
- *   note             text on the cast card
+ *   note             text on the cast card (@amount and @rankValue are filled in)
+ *   Formulas may use @amount (pool spent), @rankValue (cast rank: D 1 ... S 5), lvl(...) and @level.
  */
 import { rankValue } from "./progression.mjs";
 import { resolveFormula } from "./unarmed.mjs";
@@ -93,7 +94,9 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
     if ( o.costDelta === "-rank" ) res.subtract += Math.max(0, rankValue(rank));
     else if ( Number(o.costDelta) ) res.subtract -= Number(o.costDelta);
     if ( o.cost?.pool && amount ) res.pools[o.cost.pool] = (res.pools[o.cost.pool] ?? 0) + amount;
-    const sub = v => resolveFormula(String(v ?? "").replace(/@amount/g, String(amount)), actor);
+    // @amount: how many of the pool were spent; @rankValue: the cast rank as a number (D 1 ... S 5).
+    const sub = v => resolveFormula(String(v ?? "").replace(/@amount/g, String(amount))
+      .replace(/@rankValue/g, String(Math.max(0, rankValue(rank)))), actor);
     if ( o.damage?.formula ) {
       const f = sub(o.damage.formula);
       res.damage.push({ label: opt.label, formula: o.damage.halfForArea && area ? halveDice(f) : f, type: o.damage.type ?? "" });
@@ -103,7 +106,7 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
         changes: (o.effect.changes ?? []).map(ch => ({ ...ch, value: sub(ch.value) })) } });
     }
     if ( o.roll ) res.rolls.push({ label: opt.label, formula: o.roll, note: o.note ?? "" });
-    else if ( o.note ) res.notes.push(`${opt.label}: ${o.note}`);
+    else if ( o.note ) res.notes.push(`${opt.label}: ${sub(o.note)}`);
     if ( o.oncePerTurn ) res.update[`flags.n5e.optionTurn.${opt.id}`] = "@now";
   }
   return res;

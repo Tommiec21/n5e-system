@@ -52,6 +52,7 @@ async function onTurnStart(combat) {
   for ( const e of plan.ended ) lines.push(`<span class="warn">${esc(e.name)} ends: couldn't pay ${e.upkeep} CP upkeep</span>`);
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   if ( plan.focusGained ) lines.push("Flow: +1 Focus");
+  if ( plan.refilled?.length ) lines.push(`Refilled: ${plan.refilled.join(", ")}`);
   // Death saves at the start of the turn while at 0 HP (characters; not stable or dead).
   const statuses = actor.statuses ?? new Set();
   if ( rule("deathSaves") && actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {

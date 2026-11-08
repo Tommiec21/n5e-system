@@ -36,7 +36,10 @@ export function advancementSteps(item, level, origin) {
         }
         break;
       case "mastery":
-        out.push({ ...base, type: "grant", key: "mastery", values: [adv.key] });
+        // A fixed target ("skill.nin": Scholar) is a grant; no key means the player picks one of their
+        // proficient skills or toolkits (Hunter-Nin's 5th-level Mastery).
+        if ( adv.key ) out.push({ ...base, type: "grant", key: "mastery", values: [adv.key] });
+        else out.push({ ...base, type: "masteryChoice", count: adv.count || 1 });
         break;
       default:
         break;
@@ -175,7 +178,7 @@ export function validate(steps, sel, poolSizes = {}) {
   const problems = [];
   for ( const st of steps ) {
     const need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
-    if ( ["itemChoice", "option", "trait", "jutsu", "subclass"].includes(st.type) ) {
+    if ( ["itemChoice", "option", "trait", "jutsu", "subclass", "masteryChoice"].includes(st.type) ) {
       const got = list(sel[st.id]).length;
       if ( got < need ) problems.push(`${st.title}: choose ${need - got} more`);
       if ( got > (st.count ?? 0) ) problems.push(`${st.title}: too many chosen`);

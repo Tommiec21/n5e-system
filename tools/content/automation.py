@@ -86,13 +86,17 @@ def ch(key, value, mode=2):
     return {"key": key, "value": str(value), "mode": mode}
 
 
-def transfer(item_name, label, changes):
+def transfer(item_name, label, changes, levels=None):
     """A transfer effect stored on the item (applies to the owner). Marked automation=True so re-runs
-    replace it without touching effects added by hand."""
+    replace it without touching effects added by hand. levels=(min, max) limits it to those character
+    levels (0 = no limit), read by module/documents/active-effect.mjs isSuppressed."""
     eid = make_id("effect", f"{item_name}:{label}")
+    flags = {"automation": True}
+    if levels:
+        flags["levels"] = {"min": levels[0] or 0, "max": levels[1] or 0}
     return {"_id": eid, "name": label, "type": "generic", "img": "icons/svg/aura.svg", "transfer": True, "disabled": False,
             "system": {"category": "feature"}, "changes": [{**c, "priority": None} for c in changes], "duration": {},
-            "description": "", "origin": None, "tint": "#ffffff", "statuses": [], "flags": {"n5e": {"automation": True}}, "sort": 0}
+            "description": "", "origin": None, "tint": "#ffffff", "statuses": [], "flags": {"n5e": flags}, "sort": 0}
 
 
 SD = {"pool": "superiorityDice", "amount": 1, "roll": True}
@@ -216,6 +220,54 @@ FEATURES = {
         roll={"formula": "1d10", "note": "Add to your clash check; the DC to counter, dispel or interrupt this jutsu rises by 2."})]},
 }
 
+# Classes imported 1-5 with build_class (Genjutsu Specialist, Hunter-Nin, Medical-Nin, Taijutsu
+# Specialist, Weapon Specialist). Pools come from the class specs (tools/content/classes_spec.py);
+# Martial Techniques, Katas and Skilled Exploits pay their pool through rules/resource-cost.mjs tags.
+ACT = {"pool": "actualizationDice", "amount": 1}
+FEATURES.update({
+    # Genjutsu Specialist
+    "Actualization": {
+        "activities": [act("roll", "Actualization Die: skill check", cost={**ACT, "roll": True},
+                           roll={"formula": "", "note": "Add it to a Deception, Insight, Perception or Persuasion check."})],
+        "flags": {"castOptions": [
+            {"label": "Actualization: +rank d6 damage (1 die)", "appliesTo": {"discipline": "gen", "requiresDamage": True},
+             "cost": ACT, "damage": {"formula": "(@rankValue)d6"}},
+            {"label": "Actualization: −1 to targets' save per die", "appliesTo": {"discipline": "gen"},
+             "cost": {"pool": "actualizationDice", "choose": True}, "note": "Targets' saving throws −@amount."}]}},
+    "Chakra Disruption": {"activities": [effect("Chakra Disruption", [ch("n5e.cost.all", "lvl(1:2,5:4,9:6,13:8,17:10)")], target="targets",
+        expires="nextTurnEnd", oncePerTurn=True, name="Chakra Disruption (+cost)",
+        text="Creatures affected by your Genjutsu: their next jutsu costs more.")]},
+    # Hunter-Nin
+    "Swift Response": {"effects": [("Swift Response: Initiative Mastery", [ch("n5e.mastery.initiative", "Swift Response", 2)])]},
+    "Lethal Attack": {"activities": [
+        act("damage", "Lethal Attack", damage={"parts": [{"formula": "(@scale.hunterNin.lethalAttack)d8", "type": ""}]}, oncePerTurn=True,
+            text="On a hit with advantage, or with an ally within 5 ft of the target."),
+        act("damage", "Lethal Attack (Attack action / weapon: half)", damage={"parts": [{"formula": "(ceil(@scale.hunterNin.lethalAttack/2))d8", "type": ""}]},
+            oncePerTurn=True)]},
+    "Primary Target": {"activities": [effect("Mark Primary Target", target="targets", seconds=3600, state="primaryTarget",
+        name="Primary Target", text="Until it reaches 0 HP or you mark another creature.")]},
+    # Medical-Nin
+    "Medical Domain": {"activities": [
+        act("roll", "Preserve Life", cost={"pool": "domainCharges", "amount": 1},
+            roll={"formula": "", "note": "Healing dice equal to the jutsu's rank are treated as their maximum (in combat; not undead or constructs)."}),
+        act("roll", "Sustain Life", cost={"pool": "domainCharges", "amount": 1}, activation="action",
+            roll={"formula": "", "note": "Touch a willing creature: it regains CP equal to one of its Chakra Dice + its Con modifier, without spending the die (in combat)."}),
+        act("damage", "Take Life", damage={"parts": [{"formula": "5 + @level", "type": ""}]}, cost={"pool": "domainCharges", "amount": 1},
+            text="Added to a Medical jutsu's damage.")]},
+    # Taijutsu Specialist
+    "Martial Technique": {"effects": [("Martial Technique (AC)", [ch("system.attributes.ac.calc", "martialTechnique", 5)])]},
+    "Enhanced Movement": {"effects": [("Enhanced Movement +10", [ch("system.bonuses.speed", 10)], (1, 4)),
+                                      ("Enhanced Movement +15", [ch("system.bonuses.speed", 15)], (5, 10))]},
+    # Weapon Specialist
+    "Discipline": {"activities": [
+        act("roll", "Deflection", cost={"pool": "discipline", "amount": 1}, activation="reaction",
+            roll={"formula": "lvl(1:1d12,11:2d12,20:3d12)", "note": "Reduce the damage you take by this."}),
+        act("damage", "Chakra Strike", damage={"parts": [{"formula": "lvl(1:1d12,5:2d12,11:3d12,15:4d12,20:5d12)", "type": ""}]},
+            cost={"pool": "discipline", "amount": 1}, oncePerTurn=True, text="Added to a Bukijutsu's [Weapon Damage]; half the dice for areas (min 1)."),
+        act("roll", "Chained Momentum", cost={"pool": "discipline", "amount": 1},
+            roll={"formula": "", "note": "A non-Chain Bukijutsu gains Chain and maintains it (or 2 Discipline: raise or lower Chain by 1)."})]},
+})
+
 # ------------------------------------------------------------------------------------------ #
 #  Feats                                                                                     #
 # ------------------------------------------------------------------------------------------ #
@@ -285,8 +337,9 @@ def apply():
                 doc.setdefault("flags", {}).setdefault("n5e", {}).update(copy.deepcopy(spec["flags"]))
             if "effects" in spec:
                 keep = [e for e in doc.get("effects", []) if not e.get("flags", {}).get("n5e", {}).get("automation")]
-                for label, changes in spec["effects"]:
-                    e = transfer(doc["name"], label, changes)
+                for entry in spec["effects"]:
+                    label, changes, levels = (*entry, None)[:3]   # (label, changes[, (minLevel, maxLevel)])
+                    e = transfer(doc["name"], label, changes, levels)
                     e["_key"] = f"!items.effects!{doc['_id']}.{e['_id']}"
                     keep.append(e)
                 doc["effects"] = keep

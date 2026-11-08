@@ -42,6 +42,7 @@ import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
 import { staminaPool } from "../../rules/trackers.mjs";
 import { featureCritRange } from "../../rules/features.mjs";
+import { resolveFormula } from "../../rules/unarmed.mjs";
 import { rule } from "../../rules-settings.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 
@@ -212,7 +213,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     } else if ( this.resources.stamina && !rule("stamina") ) delete this.resources.stamina;
     // Every pool: max from its formula ("1 + @prof", "@scale.scoutNin.superiorityDice"), value clamped.
     for ( const pool of Object.values(this.resources ?? {}) ) {
-      pool.maxValue = Math.max(0, Math.floor(evaluateFormula(pool.max, rollData, 0)));
+      // lvl(3:4,11:5,17:6) scales by character level (Domain Charges); see rules/unarmed.mjs resolveFormula.
+      pool.maxValue = Math.max(0, Math.floor(evaluateFormula(resolveFormula(pool.max, { system: { level: this.level } }), rollData, 0)));
       if ( pool.value == null ) pool.value = pool.startsFull === false ? 0 : pool.maxValue;
       pool.value = Math.min(pool.value, pool.maxValue);
     }

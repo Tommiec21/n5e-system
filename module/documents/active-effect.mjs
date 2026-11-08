@@ -18,12 +18,22 @@
 export default class N5eActiveEffect extends ActiveEffect {
 
   /**
-   * @override  A stance's effects apply only while it is the active stance (one stance at a time).
+   * @override  A stance's effects apply only while it is the active stance (one stance at a time),
+   * and level-gated effects (flags.n5e.levels) only within their levels.
    * Foundry checks isSuppressed on every prepare, so changing system.combat.activeStance turns the
    * stance's effects on and off with no extra bookkeeping.
    */
   get isSuppressed() {
     const item = this.parent;
+    // Level-gated effects (flags.n5e.levels {min, max}): Enhanced Movement +10 speed until 4th, +15 from
+    // 5th. Character level is read from class items' stored levels (derived data isn't ready yet when
+    // effects apply).
+    const gate = this.flags?.n5e?.levels;
+    if ( gate && (gate.min || gate.max) ) {
+      const actor = item?.documentName === "Item" ? item.actor : item;
+      const level = actor?.items?.filter(i => i.type === "class").reduce((t, c) => t + (c._source?.system?.levels ?? c.system?.levels ?? 0), 0) ?? 0;
+      if ( (gate.min && level < gate.min) || (gate.max && level > gate.max) ) return true;
+    }
     if ( item?.documentName === "Item" && item.type === "stance" && item.actor ) {
       if ( item.actor.system?.combat?.activeStance !== item.id ) return true;
     }

@@ -1,0 +1,123 @@
+{
+  "_id": "n5epmXWj4soWcakd",
+  "name": "Discipline",
+  "type": "feat",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "identifier": "discipline",
+    "description": "<p>Also, at 1st Level, years of relentless training and unyielding resolve have forged your body and mind into weapons as sharp and durable as the steel you wield. You possess a pool of Discipline, represented as your capacity to execute advanced weapon techniques, maintain perfect form or even unleash decisive strikes in battle. You begin with 2 Discipline. You can spend Discipline to use a Flurry Technique. Flurry Techniques utilize a Flurry Die which is represented as a d12.</p>\n<p>Some Flurry Techniques require affected creatures to make a saving throw. You always use your Taijutsu Save DC for such techniques. You can gain additional Flurry Technique options from your Weapon Form (Subclass) or your chosen Styles as you grow in level. You begin with the following Flurry Techniques.</p>\n<p>You regain spent Discipline in one of two ways.</p>\n<p>When you complete a short or long rest you recover all spent Discipline.</p>\n<p>Once per turn, when you cast a Bukijutsu with the Chain keyword, you regain a number of Discipline equal to the Chain Rank effect you’ve benefited from.</p>\n<h4>Deflection</h4>\n<p>As a reaction to taking damage, you can spend 1 Discipline to roll 1 Flurry Die. Reduce the triggering damage taken by the result. This increases to 2 Flurry Die at 11th and 3 Flurry Die at 20th.</p>\n<h4>Chained Momentum</h4>\n<p>Once per turn, as part of castings a Bukijutsu that doesn’t have the Chain keyword, you can spend 1 Discipline. When you do, the jutsu cast gains the Chain keyword, and you can maintain your current chain value.</p>\n<p>Alternatively, Once per turn, if your Bukijutsu has the Chain keyword, you can spend 2 Discipline and choose to either increase or decrease your current Chain rank by 1.</p>\n<h4>Chakra Strike</h4>\n<p>Once per turn, when you deal [Weapon Damage] as part of a Bukijutsu you cast, you can spend 1 Discipline. When you do, the first time you deal damage with the triggering Bukijutsu, you add +1 Flurry Die. This increases to +2 at 5th level, +3 at 11th level, +4 at 15th level and +5 at 20th level. If the Bukijutsu affects an area, reduce the Flurry Die rolled by half (Min 1). This is treated as [Weapon Damage] for the purpose of class features.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "passive",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "weapon-specialist",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [
+      {
+        "id": "discipline",
+        "label": "Discipline",
+        "value": 0,
+        "max": "@scale.weaponSpecialist.discipline",
+        "die": "d12",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eQTiMqwakO7E5q",
+        "type": "roll",
+        "label": "Deflection",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "roll": {
+          "formula": "lvl(1:1d12,11:2d12,20:3d12)",
+          "note": "Reduce the damage you take by this."
+        }
+      },
+      {
+        "id": "n5eFESWrwEtZLhfQ",
+        "type": "damage",
+        "label": "Chakra Strike",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d12,5:2d12,11:3d12,15:4d12,20:5d12)",
+              "type": ""
+            }
+          ]
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "oncePerTurn": true,
+        "text": "Added to a Bukijutsu's [Weapon Damage]; half the dice for areas (min 1)."
+      },
+      {
+        "id": "n5eeJDa0za6ki8U7",
+        "type": "roll",
+        "label": "Chained Momentum",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "A non-Chain Bukijutsu gains Chain and maintains it (or 2 Discipline: raise or lower Chain by 1)."
+        }
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5eKx2AvuYWiyy99",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5epmXWj4soWcakd"
+}

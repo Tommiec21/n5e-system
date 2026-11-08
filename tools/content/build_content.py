@@ -25,9 +25,13 @@ new features with F(name, level, "### Heading"), add them to `items`, and add an
 table column (Maneuvers Known, Moldings) are computed from that column, so widening the level loop
 range is usually enough. The class table itself is read whole, so @scale columns already cover 1-20.
 
-Adding a class: copy build_scout() as a template. A class doc needs identifier (slug), hitDie,
-chakraDie, columns (class table columns for @scale.<classCamelCase>.<column>), resourcePools, and
-advancement; a subclass needs classIdentifier pointing at its class.
+Adding a class: add a spec to tools/content/classes_spec.py (its header lists every key); build_class()
+turns it into the class, its subclasses (every "### " under the subclass group heading, with the
+"#### " features whose text names a level up to MAX_LEVEL) and its option lists. Scout-Nin and
+Ninjutsu Specialist predate the specs and keep their own builders (build_scout, build_ninjutsu).
+A class doc needs identifier (slug), hitDie, chakraDie, columns (class table columns for
+@scale.<classCamelCase>.<column>), and advancement; a subclass needs classIdentifier.
+Raise MAX_LEVEL to import more levels of the spec'd classes (add their later core features first).
 
 When the books change: headings are matched exactly (find/section raise KeyError naming the heading
 when it's gone), so a renamed heading fails loudly instead of importing the wrong text.
@@ -684,6 +688,190 @@ def build_ninjutsu(oro, stance_uuids):
 
 
 # --------------------------------------------------------------------------------------------- #
+#  Data-driven classes (tools/content/classes_spec.py): Genjutsu Specialist, Hunter-Nin,         #
+#  Medical-Nin, Taijutsu Specialist, Weapon Specialist, levels 1 to MAX_LEVEL                    #
+# --------------------------------------------------------------------------------------------- #
+
+MAX_LEVEL = 5
+LEVEL_RE = re.compile(r"\b(\d+)(?:st|nd|rd|th)[\s-]+level", re.I)
+REQ_RE = re.compile(r"(?:prerequisites?|requirements?)\s*:([^\n]*)", re.I)
+
+
+def level_in(lines, default):
+    """The level a subclass feature says it arrives at ("Also at 3rd level, ..."), else `default`."""
+    text = " ".join(ln for ln in lines[:4] if not ln.strip().startswith("|"))
+    m = LEVEL_RE.search(text)
+    return int(m.group(1)) if m else default
+
+
+def required_level(lines):
+    """A level prerequisite on an option ("Prerequisite: 9th level.", "Requirements: Level 10+"), else 0."""
+    for ln in lines[:4]:
+        m = REQ_RE.search(ln)
+        if not m:
+            continue
+        lv = re.search(r"(\d+)(?:st|nd|rd|th)?\s*level|level\s*(\d+)", m.group(1), re.I)
+        if lv:
+            return int(lv.group(1) or lv.group(2))
+    return 0
+
+
+def headed_items(body, prefix):
+    """Split lines into [(name, lines)] at headings that start with `prefix` ("#### ", "### ").
+    A heading of the same or a higher level that doesn't match ends the current item."""
+    depth = len(prefix.strip())
+    out, cur = [], None
+    for ln in body:
+        st = ln.strip()
+        if st.startswith("#") and not st.startswith("|"):
+            d = len(st) - len(st.lstrip("#"))
+            if st.startswith(prefix):
+                cur = (st[len(prefix):].strip(), [])
+                out.append(cur)
+                continue
+            if d <= depth:
+                cur = None
+                continue
+        if cur is not None:
+            cur[1].append(ln)
+    return out
+
+
+def intro_lines(body, prefix="#### "):
+    """The lines of a block before its first `prefix` heading (a feature's text without its sub-options)."""
+    out = []
+    for ln in body:
+        if ln.strip().startswith(prefix):
+            break
+        out.append(ln)
+    return out
+
+
+def build_class(oro, spec, stance_uuids, stance_by_name):
+    """One class from its spec: class doc, core features 1-MAX_LEVEL, every subclass with its features up
+    to MAX_LEVEL, and every option list (options with a level prerequisite above MAX_LEVEL are skipped)."""
+    ident, cname = spec["ident"], spec["name"]
+    at = oro.index(spec["heading"])
+    rows = table_rows(oro, spec["table"])
+    kind = f"feature:{ident}"           # ids unique per class ("Extra Attack" exists in several classes)
+    U = lambda d: uuid("features", d["_id"])
+    out, advs = [], []
+
+    # Core features: text under their "### " heading after the class heading.
+    by_level = {}
+    for level, heading, o in spec["core"]:
+        if level > MAX_LEVEL:
+            continue
+        body = find(oro, heading, at)
+        if o.get("split"):
+            body = intro_lines(body)
+        f = feature(o.get("name") or heading.lstrip("# ").strip(), ident, level, body, act=o.get("act", ""),
+                    img=o.get("img", "icons/svg/upgrade.svg"), pools=o.get("pools"), kind=kind)
+        if o.get("id"):
+            f["_id"], f["_key"] = o["id"], f"!items!{o['id']}"
+        out.append(f)
+        by_level.setdefault(level, []).append(f)
+    for level in sorted(by_level):
+        advs.append(adv(level, "feature", f"{ordinal(level)}-level features", [U(f) for f in by_level[level]]))
+
+    # Stance at 1st: a pick from a stance list, or a stance granted outright.
+    if spec.get("stance"):
+        lv, key = spec["stance"]
+        advs.append(adv(lv, "itemChoice", f"{key.capitalize()} Stance", stance_uuids[key], key="stance"))
+    if spec.get("grantStance"):
+        lv, sname = spec["grantStance"]
+        advs.append(adv(lv, "feature", sname, [stance_by_name[sname]]))
+
+    # Option lists: one itemChoice per level where the count rises.
+    for o in spec["options"]:
+        region, region_at = section(oro, o["region"], at)
+        OPTION_LABELS.setdefault(o["key"], o["label"])
+        # "#### " options grouped under "### " headings keep their group (folder level, see folder_paths).
+        groups = headed_items(region, "### ") if o["prefix"] == "#### " and any(ln.startswith("### ") for ln in region) else [(None, region)]
+        items = []
+        for gname, gbody in groups:
+            for name, body in headed_items(gbody, o["prefix"]):
+                if required_level(body) > MAX_LEVEL or not "".join(body).strip():
+                    continue
+                it = feature(name, ident, 1, body, category="classOption", tags=[o["key"]], act="special", kind=kind)
+                if gname:
+                    it["flags"]["n5e"]["optionGroup"] = gname
+                items.append(it)
+        out.extend(items)
+        counts = dict(o.get("counts", {}))
+        if "column" in o:
+            idx, first = o["column"]
+            vals = [int(x) for x in col(rows, idx)]
+            for lv in range(first, MAX_LEVEL + 1):
+                gain = vals[lv - 1] - (vals[lv - 2] if lv > 1 else 0)
+                if gain > 0:
+                    counts[lv] = gain
+        for lv, n in sorted(counts.items()):
+            if lv <= MAX_LEVEL:
+                advs.append(adv(lv, "itemChoice", o["label"], [U(i) for i in items], count=n, key=o["key"]))
+
+    for lv, typ, title, values, count, key in spec.get("extra", []):
+        if lv <= MAX_LEVEL:
+            advs.append(adv(lv, typ, title, values, count=count, key=key))
+
+    # Subclasses: each "### " under the group heading; features up to MAX_LEVEL by the level in their text.
+    sc = spec["subclass"]
+    group, group_at = section(oro, sc["group"], at)
+    subclasses = []
+    for sname, body in headed_items(group, "### "):
+        feats = []
+        for fname, fbody in headed_items(body, "#### "):
+            lv = level_in(fbody, sc["level"])
+            if lv <= MAX_LEVEL:
+                feats.append(feature(fname, ident, lv, fbody, kind=f"{kind}:{slug(sname)}"))
+        intro = intro_lines(body)
+        sub_levels = {}
+        for f in feats:
+            sub_levels.setdefault(f["system"]["requirement"]["level"], []).append(f)
+        sub = doc("subclass", "classes", sname, "subclass", {
+            "identifier": slug(sname), "description": lines_to_html(intro), "source": source(OROCHIMARU),
+            "classIdentifier": ident, "resourcePools": [],
+            "advancement": [adv(lv, "feature", f"{sname} features", [U(f) for f in fs]) for lv, fs in sorted(sub_levels.items())],
+        }, "icons/svg/upgrade.svg")
+        subclasses.append(sub)
+        out.extend(feats)
+
+    # The class: intro text (before "### Class Features", without the table), proficiencies, table columns.
+    intro = []
+    for ln in oro[at + 1:]:
+        if ln.strip().startswith("### Class Features"):
+            break
+        if not ln.strip().startswith("|") and ln.strip() not in ("[BOX]", "[/BOX]"):
+            intro.append(ln)
+    columns = []
+    for key, label, idx, typ in spec["columns"]:
+        vals = [re.match(r"\d+", r[idx]).group(0) if typ == "dice" and re.match(r"\d+", r[idx]) else None for r in rows]
+        columns.append({"key": key, "label": label,
+                        "values": [v or "0" for v in vals] if typ == "dice" else col(rows, idx)})
+    cls = doc("class", "classes", cname, "class", {
+        "identifier": ident, "description": lines_to_html(intro), "source": source(OROCHIMARU),
+        "levels": 1, "hitDie": spec["hitDie"], "chakraDie": spec["chakraDie"], "jutsuTier": spec["tier"],
+        "saves": spec["saves"],
+        "skills": {**spec["skills"], "chosen": []}, "tools": {**spec["tools"], "chosen": []},
+        "armorProficiencies": spec["armor"], "weaponProficiencies": spec["weapons"],
+        "jutsuKnown": [int(x) for x in col(rows, spec["jutsuCol"])], "maxRank": RANKS,
+        "columns": columns, "resourcePools": [],
+        "subclassLevel": sc["level"], "subclassFeatureLevels": sc["levels"],
+        "stanceGrant": (spec.get("stance") or (0, ""))[1],
+        "subclasses": [uuid("classes", d["_id"]) for d in subclasses],
+        "advancement": advs,
+    }, "icons/svg/upgrade.svg")
+    if spec.get("id"):
+        cls["_id"], cls["_key"] = spec["id"], f"!items!{spec['id']}"
+    return [cls, *subclasses, *out]
+
+
+def ordinal(n):
+    """1 -> "1st", 2 -> "2nd", 3 -> "3rd", 4 -> "4th"."""
+    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n if n < 20 else n % 10, 'th') }"
+
+
+# --------------------------------------------------------------------------------------------- #
 #  Folders: every pack (generated and hand-made docs) is organized into folders                 #
 # --------------------------------------------------------------------------------------------- #
 
@@ -720,7 +908,10 @@ def folder_paths(pack, docs):
             elif d["_id"] in sub_of:
                 out[d["_id"]] = list(sub_of[d["_id"]])
             elif s.get("category") == "classOption":
-                out[d["_id"]] = [cls or "Other", OPTION_LABELS.get((s.get("tags") or ["Options"])[0], "Options")]
+                # Options that sit under a group heading in the book (Skilled / Combat Exploits, the four
+                # Kata groups) get one more folder level: flags.n5e.optionGroup.
+                group = d.get("flags", {}).get("n5e", {}).get("optionGroup")
+                out[d["_id"]] = [cls or "Other", OPTION_LABELS.get((s.get("tags") or ["Options"])[0], "Options"), *([group] if group else [])]
             elif s.get("category") in ("clanFeature", "clan"):
                 out[d["_id"]] = ["Clans", (s.get("requirement") or {}).get("clan") or "Other"]
             else:
@@ -829,9 +1020,15 @@ def main():
     stance_uuids = {
         "all": [uuid("stances", s["_id"]) for s in stances],
         "chakra": [uuid("stances", s["_id"]) for s in stances if "chakra" in s["system"]["categories"]],
+        "taijutsu": [uuid("stances", s["_id"]) for s in stances if "taijutsu" in s["system"]["categories"]],
+        "bukijutsu": [uuid("stances", s["_id"]) for s in stances if "bukijutsu" in s["system"]["categories"]],
     }
+    stance_by_name = {s["name"]: uuid("stances", s["_id"]) for s in stances}
+    from classes_spec import CLASSES  # noqa: E402  (tools/content/classes_spec.py)
+    more_classes = [d for spec in CLASSES for d in build_class(oro, spec, stance_uuids, stance_by_name)]
     feats, feat_names = build_feats(core)
-    docs = [*build_scout(oro, stance_uuids), *build_ninjutsu(oro, stance_uuids), *stances, *feats, *build_jutsu(parsed)]
+    docs = [*build_scout(oro, stance_uuids), *build_ninjutsu(oro, stance_uuids), *more_classes, *stances, *feats,
+            *build_jutsu(parsed)]
     n = write(docs)
     from automation import apply as apply_automation  # noqa: E402  (tools/content/automation.py)
     apply_automation()

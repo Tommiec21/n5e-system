@@ -49,6 +49,11 @@
             <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>
           {{/each}}</div>
         {{/if}}
+        {{#if (n5eEq type "masteryChoice")}}
+          <div class="lu-chips">{{#each options}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>
+          {{else}}<p class="muted small">No proficient skills or toolkits.</p>{{/each}}</div>
+        {{/if}}
         {{#if (n5eEq type "trait")}}
           <div class="lu-chips">{{#each options}}
             <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>

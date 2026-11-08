@@ -5,27 +5,38 @@
   "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "system": {
     "identifier": "martial-technique",
-    "description": "<p>While you are not wearing armor, your AC equals 10 + your proficiency bonus + your Dexterity modifier. You also gain a Taijutsu stance. While in a stance or wielding a weapon you are proficient with: Martial Strength, Agile Combat, and Unwasted Movements (see the class book).</p><p><em>Phase 1 sample: only the AC formula is automated (Active Effect).</em></p>",
+    "description": "<p>Beginning at 1st level, your practice of martial arts gives you master of your body in both an offensive and defensive way. While you are wearing no armor, your AC equals 10 + Proficiency + Dexterity Modifier.</p>\n<p>Also, choose one Taijutsu stance and its associated Expertise located in Chapter 13: Customization Options. You also gain the following benefits while you are in a Taijutsu Stance or wielding a weapon you are proficient in:</p>\n<p><strong>Martial Strength.</strong> Your unarmed damage die is a d6. This increases to a d8 at 7th, d10 at 13th level and d12 at 19th levels.</p>\n<p><strong>Agile Combat.</strong> You can use Strength or Dexterity for the attack and damage rolls and Save DC calculation of your unarmed strikes, Taijutsu and the Martial Arts skill. You can also make one unarmed attack as a Bonus action.</p>\n<p><strong>Unwasted Movements.</strong> When you use Taijutsu, you waste little energy. Taijutsu you cast have a predetermined base chakra cost based on its rank unless its cost is already Special in which case you use the prewritten Special cost. The following values are treated as Special and cannot be combined with other sources of cost reduction. (D-Rank: 3, C-Rank: 5, B-Rank: 9, A-Rank: 14, S-Rank: 20)</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
       "version": "4.0",
       "custom": ""
     },
-    "category": "classFeature",
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
     "featureType": "passive",
+    "category": "classFeature",
     "requirement": {
       "level": 1,
       "class": "taijutsu-specialist",
       "clan": ""
-    }
+    },
+    "tags": [],
+    "resourcePools": []
   },
   "effects": [
     {
-      "_id": "n5eMartialTechAC",
+      "_id": "n5eKeei6DCmec9jS",
       "name": "Martial Technique (AC)",
       "type": "generic",
-      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "img": "icons/svg/aura.svg",
       "transfer": true,
       "disabled": false,
       "system": {
@@ -34,8 +45,8 @@
       "changes": [
         {
           "key": "system.attributes.ac.calc",
-          "mode": 5,
           "value": "martialTechnique",
+          "mode": 5,
           "priority": null
         }
       ],
@@ -44,21 +55,29 @@
       "origin": null,
       "tint": "#ffffff",
       "statuses": [],
-      "flags": {},
+      "flags": {
+        "n5e": {
+          "automation": true
+        }
+      },
       "sort": 0,
-      "_key": "!items.effects!n5eMartialTech01.n5eMartialTechAC"
+      "_key": "!items.effects!n5eMartialTech01.n5eKeei6DCmec9jS"
     }
   ],
-  "_key": "!items!n5eMartialTech01",
-  "flags": {},
   "folder": "n5eTxXLWileSOBPD",
   "sort": 0,
   "ownership": {
     "default": 0
   },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
   "_stats": {
     "coreVersion": "13.351",
     "systemId": "n5e",
-    "systemVersion": "0.1.0-alpha.1"
-  }
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5eMartialTech01"
 }

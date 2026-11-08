@@ -1,0 +1,67 @@
+{
+  "_id": "n5eaL9d7y6YwnytE",
+  "name": "Primary Target",
+  "type": "feat",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "identifier": "primary-target",
+    "description": "<p>Finally, at 2nd level, you have experience researching, tracking, and hunting. You can effectively read and track any creature you come across. Once when rolling initiative, you can select any creature you can see within 60 feet and mark it as your Primary Target at no action cost. You can then spend a bonus action to mark another creature you can see within range. You can only have one creature marked as your Primary Target at a time.</p>\n<p>Creatures remain marked until they reach 0 Hp, or you mark another creature. While marked, you gain the following benefits;</p>\n<p>You have Advantage on Wisdom checks made to track or search for your Primary Target so long as they are within the same countries borders as you.</p>\n<p>You become aware of one of the following. You cannot gain more information about a creature in this way until you complete a Short rest and reapply;</p>\n<p>One damage immunity they have.</p>\n<p>One damage resistance they have.</p>\n<p>Their current Damage reduction value.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "active",
+    "category": "classFeature",
+    "requirement": {
+      "level": 2,
+      "class": "hunter-nin",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eSP4abL2PTB6o2",
+        "type": "effect",
+        "label": "Mark Primary Target",
+        "effect": {
+          "name": "Primary Target",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600,
+          "state": "primaryTarget"
+        },
+        "text": "Until it reaches 0 HP or you mark another creature."
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5emPsUcf0eHBnja",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5eaL9d7y6YwnytE"
+}

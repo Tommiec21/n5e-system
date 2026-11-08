@@ -18,6 +18,7 @@
  */
 import { rule } from "../rules-settings.mjs";
 import { recoveryAllowed } from "./features.mjs";
+import { resolveFormula } from "./unarmed.mjs";
 
 const DAY = 86400;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -150,6 +151,8 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
     const max = pool.maxValue ?? 0;
     let v = pool.value ?? 0;
     if ( r.amount === "setHalf" && type === "short" ) v = Math.max(v, Math.floor(max / 2));
+    // "formula": regain a set number (Mental Refocus: 2 Actualization Dice on a Short Rest, 3 at 11th...).
+    else if ( r.amount === "formula" ) v = Math.min(max, v + (Number(resolveFormula(r.formula, actor)) || 0));
     else if ( r.amount === "half" ) v = Math.min(max, v + Math.floor(max / 2));
     else v = max;
     // A Short Rest only uses a pool's short-rest rule; longer rests use the strongest one.

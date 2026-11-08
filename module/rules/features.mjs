@@ -23,9 +23,11 @@ export const generalization = actor => choiceOf(actor, "jack-of-all");
 /** Attacks per Attack action. */
 export function attacksPerAction(actor) {
   const extra = !!featureById(actor, "extra-attack");
+  // Only Scout-Nin's Extra Attack gives a third attack with Kunai, Shuriken or Senbon.
+  const scoutExtra = list(actor.items).some(i => i.system?.identifier === "extra-attack" && i.system?.requirement?.class === "scout-nin");
   const general = !!featureById(actor, "general-technique");
   const base = extra ? 2 : 1;
-  const implementsN = extra ? 3 : general ? 2 : 1;
+  const implementsN = scoutExtra ? 3 : general ? Math.max(base, 2) : base;
   const weapons = list(actor.items).filter(i => i.type === "weapon" && i.system.equipped);
   const usingImplements = weapons.some(w => SHINOBI_IMPLEMENTS.test(w.name));
   const text = [extra ? "Extra Attack: two attacks per Attack action" : "",

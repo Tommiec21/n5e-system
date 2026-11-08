@@ -2,10 +2,10 @@
   "_id": "n5eTaiSpecClass1",
   "name": "Taijutsu Specialist",
   "type": "class",
-  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "img": "icons/svg/upgrade.svg",
   "system": {
     "identifier": "taijutsu-specialist",
-    "description": "<p>Low jutsu tier. Hit Points: 10 + 12 + Con at 1st level, then 12 + Con per level. Chakra Points: 10 + 6 + Con at 1st level, then 6 + Con per level.</p><p><em>Phase 1 sample: features are listed in advancement; the level-up flow arrives with the Phase 2 sheets. Column values and the skill list will be imported from the class book in Phase 6.</em></p>",
+    "description": "<p>A Hyūga takes their fighting stance, ready for the assault from the surrounding undead summons from the Dark shinobi standing just on the other side of the ridge, the Hyūga leaps from undead to undead, striking them each with unmatched precision taking them down one by one with 1 or two precise strikes.</p>\n<p>Taijutsu Specialist</p>\n<p>A clanless girl in the heat of battle creates an unorthodox stance, and readies for her training session. Her team assaults her as she parries, dodges and counters each one with a graceful swing of her arms and legs as she then follows each one with a powerful strike knocking each training member back.</p>\n<p>These shinobi, different as they might be, are connected by one common factor, they are masters in the field of Taijutsu. While others are able to use Taijutsu techniques they learn with some level of mastery, the Taijutsu Specialists are the absolute masters of unarmed combat and technique. They are able to take the concepts of the Taijutsu they have and accelerate it to new heights and unmatched levels.</p>\n<h4>Character Inspirations</h4>\n<p>When designing this class, it was built with the intent to allow players to utilize different types of Taijutsu and stances, allowing for a variety of fighting styles as shown in the Naruto series and other Manga series. Players would be able to match or exceed their allies in combat, close range and even close distance better than most other classes are able. The characters this class is pulling inspiration from are as follows: Rock Lee, Might Guy, Neji Hyūga, Hinata Hyūga, and Killer B</p>\n<h4>Creating A Taijutsu Specialist</h4>\n<p>When creating a Taijutsu Specialist consider a few things about the character on a personal level? Do they use Taijutsu as a way to push pass their weaknesses and surpass their rivals? Do they use Taijutsu as a way to give themselves discipline and teach themselves patience?</p>\n<p>What made the character so bound to learning so many varied and useful Taijutsu techniques and what drives them to learn more? Did they train under another very skilled Shinobi? Or did they become enamored by the people around them and want to emulate their skills and techniques?</p>\n<h4>Quick Build</h4>\n<p>You can make a Taijutsu Specialist quickly by following these suggestions. First, put your highest ability score in Strength or Dexterity, followed by Constitution. Second, choose the Hyūga, Sarutobi, Inuzuka, Uchiha or Non-Clan, Clans.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -26,7 +26,18 @@
         "mar"
       ],
       "choose": 3,
-      "from": [],
+      "from": [
+        "acr",
+        "ath",
+        "cha",
+        "his",
+        "ins",
+        "inv",
+        "nat",
+        "ste",
+        "prc",
+        "med"
+      ],
       "chosen": []
     },
     "tools": {
@@ -51,9 +62,104 @@
       "Knuckle Blades",
       "Battle Wire"
     ],
-    "jutsuKnown": [],
-    "maxRank": [],
-    "columns": [],
+    "jutsuKnown": [
+      6,
+      7,
+      8,
+      8,
+      9,
+      10,
+      11,
+      11,
+      12,
+      13,
+      14,
+      14,
+      15,
+      16,
+      17,
+      17,
+      18,
+      19,
+      20,
+      20
+    ],
+    "maxRank": [
+      "D",
+      "D",
+      "D",
+      "D",
+      "C",
+      "C",
+      "C",
+      "C",
+      "B",
+      "B",
+      "B",
+      "B",
+      "A",
+      "A",
+      "A",
+      "A",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "columns": [
+      {
+        "key": "martialDie",
+        "label": "Martial Die",
+        "values": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "2",
+          "3",
+          "3",
+          "3",
+          "3",
+          "4",
+          "4",
+          "4",
+          "4",
+          "5",
+          "5",
+          "5",
+          "5"
+        ]
+      },
+      {
+        "key": "martialTechniques",
+        "label": "Martial Techniques",
+        "values": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5"
+        ]
+      }
+    ],
     "resourcePools": [],
     "subclassLevel": 3,
     "subclassFeatureLevels": [
@@ -64,14 +170,23 @@
       17
     ],
     "stanceGrant": "taijutsu",
+    "subclasses": [
+      "Compendium.n5e.classes.Item.n5eHYjodVuiLYJ4E",
+      "Compendium.n5e.classes.Item.n5eL8WrpyZc2QchC",
+      "Compendium.n5e.classes.Item.n5eZRWWnZR1edqnF",
+      "Compendium.n5e.classes.Item.n5eP798XxKEVyVtf",
+      "Compendium.n5e.classes.Item.n5e4HervjbSHGNUH"
+    ],
     "advancement": [
       {
-        "id": "adv1",
+        "id": "feature-1-1st-level-features",
         "level": 1,
         "type": "feature",
-        "title": "Martial Technique",
+        "title": "1st-level features",
         "uuids": [
-          "Compendium.n5e.features.Item.n5eMartialTech01"
+          "Compendium.n5e.features.Item.n5eMartialTech01",
+          "Compendium.n5e.features.Item.n5egpambj2honCoX",
+          "Compendium.n5e.features.Item.n5efQDHnuRbOvdfu"
         ],
         "count": 1,
         "key": "",
@@ -80,11 +195,15 @@
         "chosen": []
       },
       {
-        "id": "adv2",
-        "level": 1,
+        "id": "feature-2-2nd-level-features",
+        "level": 2,
         "type": "feature",
-        "title": "Enhanced Movement",
-        "uuids": [],
+        "title": "2nd-level features",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5ejZD6HZQ6Go2e4",
+          "Compendium.n5e.features.Item.n5e2IoetDWZCVbVJ",
+          "Compendium.n5e.features.Item.n5eQMm4capm2ZflQ"
+        ],
         "count": 1,
         "key": "",
         "value": "",
@@ -92,30 +211,137 @@
         "chosen": []
       },
       {
-        "id": "adv3",
-        "level": 1,
+        "id": "feature-3-3rd-level-features",
+        "level": 3,
         "type": "feature",
-        "title": "Martial Adept",
-        "uuids": [],
+        "title": "3rd-level features",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5eyZWyGSaZhqtRJ"
+        ],
         "count": 1,
         "key": "",
+        "value": "",
+        "branch": "",
+        "chosen": []
+      },
+      {
+        "id": "feature-5-5th-level-features",
+        "level": 5,
+        "type": "feature",
+        "title": "5th-level features",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5essbdrH1znNvmV",
+          "Compendium.n5e.features.Item.n5e8prKgob39Dmax"
+        ],
+        "count": 1,
+        "key": "",
+        "value": "",
+        "branch": "",
+        "chosen": []
+      },
+      {
+        "id": "itemchoice-1-taijutsu-stance",
+        "level": 1,
+        "type": "itemChoice",
+        "title": "Taijutsu Stance",
+        "uuids": [
+          "Compendium.n5e.stances.Item.n5eKa9ypUOKVczTS",
+          "Compendium.n5e.stances.Item.n5e4hyD0iMAXnR9N",
+          "Compendium.n5e.stances.Item.n5eVx74Qf1ZkCDPF",
+          "Compendium.n5e.stances.Item.n5ePLQf0vXzsHE0K",
+          "Compendium.n5e.stances.Item.n5eZTxeIllXGtROX",
+          "Compendium.n5e.stances.Item.n5eXmekGMjAqUXhI",
+          "Compendium.n5e.stances.Item.n5erd8d7VC9rXGJh",
+          "Compendium.n5e.stances.Item.n5eH6tcSInNkapOb"
+        ],
+        "count": 1,
+        "key": "stance",
+        "value": "",
+        "branch": "",
+        "chosen": []
+      },
+      {
+        "id": "itemchoice-1-martial-techniques",
+        "level": 1,
+        "type": "itemChoice",
+        "title": "Martial Techniques",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5eDyFz2kpfcy9tO",
+          "Compendium.n5e.features.Item.n5eqR0PbA48rhqJM",
+          "Compendium.n5e.features.Item.n5e6lS38LvklMEKB",
+          "Compendium.n5e.features.Item.n5eQ1LhNldx1yzAp",
+          "Compendium.n5e.features.Item.n5e3X92NcvNjmQyP",
+          "Compendium.n5e.features.Item.n5eFmhNXHDxOVpQ6",
+          "Compendium.n5e.features.Item.n5ex0hT7XmwcWUuN",
+          "Compendium.n5e.features.Item.n5e2iV0fxP5rZ4gd",
+          "Compendium.n5e.features.Item.n5emPzXzdRjeJY6H",
+          "Compendium.n5e.features.Item.n5eTAZTTYq0iBmaV",
+          "Compendium.n5e.features.Item.n5ey7dBbQgprbgYm",
+          "Compendium.n5e.features.Item.n5eaTqdkb9wqzSxl",
+          "Compendium.n5e.features.Item.n5eloDe4D2P9WaNg",
+          "Compendium.n5e.features.Item.n5eJtEjbw3e4n853",
+          "Compendium.n5e.features.Item.n5eqUP0uZndXCrMI",
+          "Compendium.n5e.features.Item.n5eK2y8yD70F4AMv",
+          "Compendium.n5e.features.Item.n5eezHgZk0o2qheO"
+        ],
+        "count": 2,
+        "key": "tai-technique",
+        "value": "",
+        "branch": "",
+        "chosen": []
+      },
+      {
+        "id": "itemchoice-2-paths-of-perfection",
+        "level": 2,
+        "type": "itemChoice",
+        "title": "Paths of Perfection",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5ewSqnDZgT96tha",
+          "Compendium.n5e.features.Item.n5eZdRryAbeE382C",
+          "Compendium.n5e.features.Item.n5eEtgGbtcPSRD3H",
+          "Compendium.n5e.features.Item.n5eAspKUOlbjZVEN",
+          "Compendium.n5e.features.Item.n5edN5lKH3C2i4uf",
+          "Compendium.n5e.features.Item.n5eJuRiH4JOxAJA6"
+        ],
+        "count": 1,
+        "key": "tai-perfection",
+        "value": "",
+        "branch": "",
+        "chosen": []
+      },
+      {
+        "id": "itemchoice-5-moment-of-stillness",
+        "level": 5,
+        "type": "itemChoice",
+        "title": "Moment of Stillness",
+        "uuids": [
+          "Compendium.n5e.features.Item.n5e9VajIxunLCGDv",
+          "Compendium.n5e.features.Item.n5e0pb39kCfjqhAR",
+          "Compendium.n5e.features.Item.n5e53kp7J8jOdnIB"
+        ],
+        "count": 1,
+        "key": "tai-stillness",
         "value": "",
         "branch": "",
         "chosen": []
       }
     ]
   },
-  "_key": "!items!n5eTaiSpecClass1",
-  "flags": {},
+  "effects": [],
   "folder": "n5ej6CZCfWAdKfqA",
   "sort": 0,
   "ownership": {
     "default": 0
   },
-  "effects": [],
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
   "_stats": {
     "coreVersion": "13.351",
     "systemId": "n5e",
-    "systemVersion": "0.1.0-alpha.1"
-  }
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5eTaiSpecClass1"
 }

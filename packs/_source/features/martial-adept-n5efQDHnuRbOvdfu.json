@@ -1,0 +1,69 @@
+{
+  "_id": "n5efQDHnuRbOvdfu",
+  "name": "Martial Adept",
+  "type": "feat",
+  "img": "icons/svg/upgrade.svg",
+  "system": {
+    "identifier": "martial-adept",
+    "description": "<p>Also at 1st level, your training with unarmed techniques have granted you a technique that others of your skill level could only ever pray to emulate. This manifests in the form of Martial die, which are d6. Your martial die grows in size, matching the size of your unarmed damage die based on the Martial Strength ability from the Martial Strength class feature.</p>\n<p>At the beginning of each of your turns you manifest a pool of martial die, equal to the number shown in the Martial die column of the Taijutsu specialist class table. You can spend your martial die to complete any number of Martial Techniques or Taijutsu specialist class features. Unspent martial die are lost at the beginning of each of your turns.</p>\n<p>You begin with two known martial techniques, learning more as noted in the Martial techniques column of the Taijutsu Specialist class table. Martial Techniques are detailed at the end of this class description and uses your Taijutsu save DC if they require a save of any type.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "passive",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "taijutsu-specialist",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [
+      {
+        "id": "martialDice",
+        "label": "Martial Dice",
+        "value": 0,
+        "max": "@scale.taijutsuSpecialist.martialDie",
+        "die": "d6",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "turn",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5eTxXLWileSOBPD",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5efQDHnuRbOvdfu"
+}

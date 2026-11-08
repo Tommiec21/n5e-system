@@ -1,0 +1,122 @@
+{
+  "_id": "n5egUEcXRwUmAh34",
+  "name": "Medical Domain",
+  "type": "feat",
+  "img": "icons/svg/heal.svg",
+  "system": {
+    "identifier": "medical-domain",
+    "description": "<p>Starting at 3rd Level you have gained the experience needed to save lives, even those in mortal danger or take them, even the ones who are furthest from death&#x27;s door. You learn three abilities under the Medical Domain called Preserve Life, Sustain Life and Take Life. You gain additional Domain abilities granted by your Tenets. Using these Domain abilities can be taxing. You have a 4 Domain Charges per rest and each Domain ability costing 1 charge. At the completion of a short rest, you recover all spent charges. You increase the number of Domain Charges you have by +1 at 11th and 17th levels.</p>\n<h4>Preserve Life</h4>\n<p>When healing a creature other than yourself, you infuse a pulse of medical release Chakra directly into them in attempts to sustain them. When you cast a Jutsu with the Medical keyword that restores hit points you can invoke this Domain ability. If you do, select a number of healing dice the jutsu would roll, equal to its rank and reduce the number rolled by that amount (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5). Each healing dice removed is treated as its maximum value before adding it to the jutsu’s results. A creature cannot benefit from this Domain ability while not in combat due to requiring intense adrenaline to function properly. You cannot use this feature on an undead or construct.</p>\n<h4>Sustain Life</h4>\n<p>By sharing in your reserves of chakra, you keep your allies going far beyond where they would have run out of stamina. As an Action, by touching a willing creature other than yourself, you can invoke this Domain ability. The target creature regains Chakra points equal to one of their Chakra Die + their Constitution Modifier. This does not spend their Chakra die. A creature cannot benefit from this Domain ability while not in combat due to requiring intense adrenaline to function properly. You cannot use this feature on an undead or construct.</p>\n<h4>Take Life</h4>\n<p>While harming a creature you can infuse a pulse of harmful medical release chakra directly into your target. When you would deal damage to a creature using a Jutsu with the Medical keyword, you can invoke this Domain ability, increasing the damage dealt by 5 + your Medical-Nin level.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "passive",
+    "category": "classFeature",
+    "requirement": {
+      "level": 3,
+      "class": "medical-nin",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [
+      {
+        "id": "domainCharges",
+        "label": "Domain Charges",
+        "value": 0,
+        "max": "lvl(3:4,11:5,17:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5exOzaenr9dAqI5",
+        "type": "roll",
+        "label": "Preserve Life",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "Healing dice equal to the jutsu's rank are treated as their maximum (in combat; not undead or constructs)."
+        }
+      },
+      {
+        "id": "n5ejZoHz8TBlY1cW",
+        "type": "roll",
+        "label": "Sustain Life",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "activation": "action",
+        "roll": {
+          "formula": "",
+          "note": "Touch a willing creature: it regains CP equal to one of its Chakra Dice + its Con modifier, without spending the die (in combat)."
+        }
+      },
+      {
+        "id": "n5e744PdmnN1HzeW",
+        "type": "damage",
+        "label": "Take Life",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5 + @level",
+              "type": ""
+            }
+          ]
+        },
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "text": "Added to a Medical jutsu's damage."
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5eYgOe92Qkev1iA",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5egUEcXRwUmAh34"
+}

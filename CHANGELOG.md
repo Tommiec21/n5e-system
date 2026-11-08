@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.8.0-alpha.1 — Five more classes, levels 1-5
+
+### Added
+- **Genjutsu Specialist, Hunter-Nin, Medical-Nin, Taijutsu Specialist and Weapon Specialist**,
+  levels 1-5. Each comes from the book with:
+  - Its table, proficiencies, every core feature from 1st to 5th level, and its stance pick.
+  - Every subclass, with its features up to 5th level.
+  - Every option list, with options that need a level above 5th left out.
+  - The level-up dialog handles them all.
+  - **Genjutsu Specialist:**
+    - 5 Genjutsu Pledges, 4 Genjutsu Inceptions, and 46 Malleable Mirages (2 at 2nd, 1 more at 4th).
+    - Actualization Dice (1 + proficiency, d6). With Mental Refocus, a Short Rest gives 2 back.
+    - Illusions Mastery.
+  - **Hunter-Nin:**
+    - 6 Hunter Creeds, and 27 Hunters Exploits (Skilled and Combat).
+    - Lethal Precision (Taijutsu or Bukijutsu), plus Silent Killing granted.
+    - Lethal Attack dice from the table.
+    - Skilled Exploit uses (proficiency per Long Rest).
+    - A free-choice Mastery at 5th.
+  - **Medical-Nin:**
+    - 5 Tenets of Medicine.
+    - Medical Domain with Domain Charges (4; all back on a Short Rest).
+    - Medicine Mastery.
+  - **Taijutsu Specialist:**
+    - 5 Taijutsu Styles, 17 Martial Techniques, 6 Paths of Perfection, and the 3 Moment of Stillness
+      techniques.
+    - Martial Dice, which refill at the start of every turn.
+    - Replaces the Phase 1 sample class, keeping its id.
+  - **Weapon Specialist:**
+    - 6 Combat Doctrines, 30 Katas in their four groups, and 6 Augmentations.
+    - Weapon Focus group.
+    - Discipline (d12 Flurry Die; all back on a Short Rest).
+- **Automation for the new classes:**
+  - **Genjutsu Specialist:**
+    - Actualization cast options: +rank d6 damage, or −1 to the targets' save per die.
+    - Actualization skill-check die.
+    - Chakra Disruption: a cost increase on the targets.
+  - **Hunter-Nin:**
+    - Lethal Attack damage buttons (full, or half for the Attack action).
+    - Swift Response Initiative Mastery.
+    - Primary Target marker.
+  - **Medical-Nin:** Preserve Life, Sustain Life and Take Life buttons that spend a Domain Charge.
+  - **Taijutsu Specialist:**
+    - Martial Technique AC.
+    - Enhanced Movement speed: +10, then +15 from 5th.
+  - **Weapon Specialist:** Deflection, Chakra Strike and Chained Momentum buttons that spend
+    Discipline.
+  - **Option costs:** Martial Techniques spend Martial Dice, Katas spend Discipline (only the ones
+    whose text spends it), and Skilled Exploits spend a use.
+- **Level-up:** free-choice Mastery steps.
+- **Framework additions:**
+  - Pools that refill each turn.
+  - Pool maxes that scale by level.
+  - Rest recovery by formula, which can require a feature.
+  - Effects that apply only at some levels.
+  - `@rankValue` in cast-option formulas.
+- **Folders:** class option lists are filed by their book groups (Skilled / Combat Exploits, Kata
+  groups).
+
+### Fixed
+- Only Scout-Nin's Extra Attack gives a third attack with Kunai, Shuriken or Senbon.
+
+### Not included
+- Intelligence Operative, Puppet Master and Science-Nin stay out until they're remixed.
+
 ## 0.7.1-alpha.1 — Automation pass for the content in the system
 
 ### Fixed

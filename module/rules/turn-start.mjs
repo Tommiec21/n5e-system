@@ -69,6 +69,15 @@ export function turnStartPlan(actor) {
   update["flags.n5e.chainTouched"] = false;
   const comboCleared = rule("comboClear") && !!flags.combo;
   if ( comboCleared ) update["flags.n5e.combo"] = null;
+  // Per-turn pools (Martial Dice): refill at the start of each turn; unspent dice from last turn are lost.
+  const refilled = [];
+  for ( const [id, pool] of Object.entries(sys.resources ?? {}) ) {
+    const r = [...(pool.recovery ?? [])];
+    if ( r.some(x => x.on === "turn") && (pool.value ?? 0) !== (pool.maxValue ?? 0) ) {
+      update[`system.resources.${id}.value`] = pool.maxValue ?? 0;
+      refilled.push(pool.label || id);
+    }
+  }
   // Chakra Surge, Flow: regain 1 Focus at the start of the turn.
   const flow = list(actor.effects).some(e => !e.disabled && e.flags?.n5e?.state === "flow");
   const focus = sys.resources?.focus;
@@ -79,7 +88,7 @@ export function turnStartPlan(actor) {
   }
   const recharges = list(actor.items).filter(i => i.system.uses?.per === "recharge" && (i.system.uses.spent ?? 0) > 0)
     .map(i => ({ id: i.id, name: i.name, ...parseRecharge(i.system.uses.recharge || "6") }));
-  return { update, paid, ended, upkeep, chainReset, comboCleared, recharges, focusGained };
+  return { update, paid, ended, upkeep, chainReset, comboCleared, recharges, focusGained, refilled };
 }
 
 /** Which economy slot an activation uses. */

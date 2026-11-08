@@ -70,6 +70,8 @@ export async function applyLevel(actor, cls, level, steps, sel) {
         record(st, value ?? []);
         break;
       case "option":
+      case "masteryChoice":
+        // Stored as the advancement's chosen values; the actor pipeline reads them (Mastery: creature.mjs).
         record(st, value ?? []);
         break;
       case "trait":

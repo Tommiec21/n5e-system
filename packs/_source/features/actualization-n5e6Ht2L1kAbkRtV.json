@@ -1,0 +1,118 @@
+{
+  "_id": "n5e6Ht2L1kAbkRtV",
+  "name": "Actualization",
+  "type": "feat",
+  "img": "icons/svg/daze.svg",
+  "system": {
+    "identifier": "actualization",
+    "description": "<p>Also, at 1st level, Genjutsu you cast and Illusion checks you make may use Charisma instead of Wisdom as their Ability modifier, for Attack, Damage and skills, as well as Save DC calculation.</p>\n<p>Additionally, your talent and skill in the art of Genjutsu has granted you the ability to tap into a deep reserve of creativity called Actualization Die, represented as a D6. You have a number of Actualization Die equal to 1 + Proficiency Bonus. You recover spent die on a long rest.</p>\n<p>When you cast a Genjutsu that would affect hostile creature(s), you may spend your Actualization die to do one of the following;</p>\n<p><strong>Spend 1 Actualization Die.</strong> Roll a number of d6’s, equal to rank of the jutsu cast (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5), adding the result to the damage dealt.</p>\n<p>Spend 1 Actualization Die, add the result to any Deception, Insight, Perception or Persuasion skill check.</p>\n<p>Spend any number of Actualization Die, reducing the target(s) save by -1 for each die spent.</p>\n<p>Finally, you gain a rank of Mastery with the Illusion skill. You gain an additional rank in Mastery for Illusions at levels 7 and 13.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "passive",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "genjutsu-specialist",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [
+      {
+        "id": "actualizationDice",
+        "label": "Actualization Dice",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "d6",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "sr",
+            "amount": "formula",
+            "formula": "lvl(5:2,11:3,17:4)",
+            "requires": "mental-refocus"
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eCRhLhI7C1Aheq",
+        "type": "roll",
+        "label": "Actualization Die: skill check",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1,
+          "roll": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Add it to a Deception, Insight, Perception or Persuasion check."
+        }
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5eDeleFmTVw509J",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "castOptions": [
+        {
+          "label": "Actualization: +rank d6 damage (1 die)",
+          "appliesTo": {
+            "discipline": "gen",
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "damage": {
+            "formula": "(@rankValue)d6"
+          }
+        },
+        {
+          "label": "Actualization: −1 to targets' save per die",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "choose": true
+          },
+          "note": "Targets' saving throws −@amount."
+        }
+      ]
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5e6Ht2L1kAbkRtV"
+}

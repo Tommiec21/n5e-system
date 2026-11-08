@@ -179,7 +179,9 @@ export function activityButtons(actor, item, activities) {
         DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki" })}</div>`);
     } else if ( a.type === "damage" ) {
-      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki" })}</div>`);
+      // Authored damage keeps its own name on the button ("Lethal Attack", "Take Life").
+      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki",
+        label: a.label && a.label !== "Damage" ? a.label : "Damage" })}${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     } else if ( a.type === "heal" ) {
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="heal"${attr("formula", a.heal?.formula)}${attr("pool", a.heal?.pool)}>
         <i class="fa-solid fa-heart"></i> ${esc(a.label)}: ${esc(a.heal?.formula)}</button></div>`);

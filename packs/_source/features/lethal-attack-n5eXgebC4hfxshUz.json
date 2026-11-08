@@ -1,0 +1,82 @@
+{
+  "_id": "n5eXgebC4hfxshUz",
+  "name": "Lethal Attack",
+  "type": "feat",
+  "img": "icons/svg/blood.svg",
+  "system": {
+    "identifier": "lethal-attack",
+    "description": "<p>Finally, at 1st level, you know how to exploit a foes distraction, drop in guard, and moment of hesitation. Once per turn, you can deal extra damage to a creature you score a successful attack against. This extra damage is known as a Lethal Attack and is represented as a number of d8’s equal to what is seen in the lethal attack column of the Hunter-Nin Class Table. This extra damage can only be triggered if one of the following is true:</p>\n<p>You have advantage on the attack roll.</p>\n<p>One of your allies is within 5 feet of it.</p>\n<p>The type of attack that triggers this feature determines the number of dice rolled. If it is an attack made as a result of the Attack Action or a Weapon attack you only roll half the listed amount, rounded up. (Min 1</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "active",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "hunter-nin",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5emnGoVsKeoYbB3",
+        "type": "damage",
+        "label": "Lethal Attack",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(@scale.hunterNin.lethalAttack)d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "On a hit with advantage, or with an ally within 5 ft of the target."
+      },
+      {
+        "id": "n5e9zFzaPGw6cG27",
+        "type": "damage",
+        "label": "Lethal Attack (Attack action / weapon: half)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(ceil(@scale.hunterNin.lethalAttack/2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5emPsUcf0eHBnja",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5eXgebC4hfxshUz"
+}

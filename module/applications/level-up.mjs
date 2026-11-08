@@ -151,6 +151,11 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           view.options = st.options.map(o => ({ ...o, selected: chosen.has(o.value) }));
           poolSizes[st.id] = view.options.length;
           break;
+        case "masteryChoice":
+          // Any proficient skill or toolkit; ◆n shows Mastery ranks it already has.
+          view.options = masteryTargets(actor).map(m => ({ value: m.value, label: `${m.label}${m.rank ? ` ◆${m.rank}` : ""}`, selected: chosen.has(m.value) }));
+          poolSizes[st.id] = view.options.length;
+          break;
         case "grant":
           view.text = st.key === "affinity"
             ? `Gain the ${st.values.map(v => CONFIG.N5E.natureReleases?.[v]?.label ?? `${v[0].toUpperCase()}${v.slice(1)} Release`).join(", ")} affinity`

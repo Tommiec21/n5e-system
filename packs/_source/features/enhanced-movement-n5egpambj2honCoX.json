@@ -1,0 +1,122 @@
+{
+  "_id": "n5egpambj2honCoX",
+  "name": "Enhanced Movement",
+  "type": "feat",
+  "img": "icons/svg/upgrade.svg",
+  "system": {
+    "identifier": "enhanced-movement",
+    "description": "<p>Also, at 1st level, your speed is increased by +10 and you can Dash as a Bonus action. This bonus to speed increases to +15 and your jump distance is doubled when you take the Dash action at 5th level. The bonus to speed increases to +20 at 11th level, +25 at 15th level, and +30 at 20th level.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "passive",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "taijutsu-specialist",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": []
+  },
+  "effects": [
+    {
+      "_id": "n5eJJ8f9X2BITwf5",
+      "name": "Enhanced Movement +10",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.speed",
+          "value": "10",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "levels": {
+            "min": 1,
+            "max": 4
+          }
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5egpambj2honCoX.n5eJJ8f9X2BITwf5"
+    },
+    {
+      "_id": "n5eY1ZqOtmiipTQD",
+      "name": "Enhanced Movement +15",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.speed",
+          "value": "15",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "levels": {
+            "min": 5,
+            "max": 10
+          }
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5egpambj2honCoX.n5eY1ZqOtmiipTQD"
+    }
+  ],
+  "folder": "n5eTxXLWileSOBPD",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5egpambj2honCoX"
+}

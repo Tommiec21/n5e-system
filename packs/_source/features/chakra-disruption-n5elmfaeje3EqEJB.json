@@ -1,0 +1,73 @@
+{
+  "_id": "n5elmfaeje3EqEJB",
+  "name": "Chakra Disruption",
+  "type": "feat",
+  "img": "icons/svg/upgrade.svg",
+  "system": {
+    "identifier": "chakra-disruption",
+    "description": "<p>Starting at 1st level, you have learned to restrain some of your enemies Chakra when they are affected by your Genjutsu. Once per turn, when you cast a Genjutsu that affects one or more creatures where they must make a saving throw or you score a hit with a Genjutsu attack, you can disrupt all affected creature’s chakra network until the end of their next turn. When you do, the next jutsu they cast has its cost increased by +2. This cost penalty increases in potency (+2) at 5th, 9th, 13th, and 17th levels becoming +4, +6, +8 and +10 respectively.</p>\n<p>Beginning at 9th level, your ability to disrupt an enemy’s chakra control has amplified. By spending 1 Actualization Die when a creature fails their saving throw vs a Genjutsu you cast, they must make a Concentration check to maintain concentration on jutsu they are concentrating on. If they would already be forced to make a concentration check due to damage dealt or the effect of the jutsu cast, then they make their concentration check at disadvantage.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "featureType": "active",
+    "category": "classFeature",
+    "requirement": {
+      "level": 1,
+      "class": "genjutsu-specialist",
+      "clan": ""
+    },
+    "tags": [],
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5ekP076gUtMYG37",
+        "type": "effect",
+        "label": "Chakra Disruption",
+        "effect": {
+          "name": "Chakra Disruption (+cost)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.cost.all",
+              "value": "lvl(1:2,5:4,9:6,13:8,17:10)",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "oncePerTurn": true,
+        "text": "Creatures affected by your Genjutsu: their next jutsu costs more."
+      }
+    ]
+  },
+  "effects": [],
+  "folder": "n5eDeleFmTVw509J",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.3.0"
+  },
+  "_key": "!items!n5elmfaeje3EqEJB"
+}
