@@ -1,6 +1,8 @@
 /**
  * Phase 1 placeholder sheets (ApplicationV2). They exist to show that every number on a character is
  * right and every piece of content has a home; the dnd5e-based sheets replace them in Phase 2.
+ * Still registered (not as default) as a "raw data" sheet: Sheet → choose "N5e placeholder" to see
+ * and edit every stored field of an actor or item. Useful when debugging data.
  */
 import { buildRows, coerceListInputs } from "./schema-form.mjs";
 

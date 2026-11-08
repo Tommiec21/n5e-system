@@ -1,6 +1,13 @@
 /**
  * Level-up dialog: one page listing what the new level grants, with a card for every choice
  * (dnd5e's advancement flow, flattened). Apply stays disabled until every choice is made.
+ *
+ * Flow: open(actor, classItem, level) → advancement/steps.mjs works out the steps for that level
+ * (HP/CP, features granted, option picks, subclass, ASI, jutsu learning) → the player chooses →
+ * validate() → advancement/manager.mjs applyLevel() creates the items and records what this level
+ * added (so "Remove level" can take exactly that back).
+ * A new kind of choice: add a step type in steps.mjs (and its validation), a card for it in
+ * templates/apps/level-up.hbs (classes are prefixed "lu-"), and its application in manager.mjs.
  */
 import {
   stepsForLevel, subclassSteps, learnableJutsu, eligibleFeats, masteryTargets, validate

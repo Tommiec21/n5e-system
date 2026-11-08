@@ -2,6 +2,9 @@
  * NPC sheet: the character sheet's tabs, rolls, casting and Combat tab, with a stat-block header
  * (level, rank, role, creature type, template; stat-block HP/CP and dice in edit mode) instead of
  * class progression and XP. Like dnd5e's NPC sheet sharing the character sheet's machinery.
+ * Only the header part differs; everything else (actions, other parts) is inherited, so changes to
+ * the character sheet apply here too. NOTE: NPCs get a full design pass after the Bingo Book's NPC
+ * rules are read (King 2026-11-07); expect this to become its own layout then.
  */
 import CharacterSheet from "./character-sheet.mjs";
 import { headerVM } from "../../view-models/character.mjs";

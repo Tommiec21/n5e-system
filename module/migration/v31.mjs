@@ -34,6 +34,7 @@ function oldSystem(source) {
 const text = v => (typeof v === "string" ? v : (v?.value ?? ""));
 const numOr = (v, d) => (Number.isFinite(Number(v)) && v !== null && v !== "" ? Number(v) : d);
 
+/** Keep an unmapped V3.1 value under flags.n5e.legacy.<key> for the GM to review. */
 function setFlag(source, key, value) {
   source.flags ??= {};
   source.flags.n5e ??= {};
@@ -44,6 +45,7 @@ function setFlag(source, key, value) {
 /*  Detection                                   */
 /* -------------------------------------------- */
 
+/** Does this raw item source still have the V3.1 (dnd5e-derived) shape? */
 export function isV31Item(source) {
   if ( !source || typeof source !== "object" ) return false;
   if ( source.flags?.n5e?.migratedFrom ) return false;
@@ -54,6 +56,7 @@ export function isV31Item(source) {
   return ["actionType", "consume", "weight", "hitDice", "damage"].some(k => k in sys && !(k === "damage" && sys.damage?.die));
 }
 
+/** Does this raw actor source still have the V3.1 shape (dnd5e attributes/abilities layout)? */
 export function isV31Actor(source) {
   if ( !source || typeof source !== "object" ) return false;
   if ( source.flags?.n5e?.migratedFrom ) return false;
@@ -81,6 +84,7 @@ export function guessRank(source, sys) {
   return { rank: "D", from: "default", review: true };
 }
 
+/** Jutsu discipline from V3.1 data: the compendium it came from, else words in its name and text (default Ninjutsu). */
 function guessDiscipline(source, sys) {
   const ref = String(source.flags?.core?.sourceId ?? source._stats?.compendiumSource ?? "");
   if ( /non-elemental|ninjutsu/i.test(ref) ) return "nin";
@@ -101,6 +105,7 @@ const RANGE = { ft: "feet", self: "self", touch: "touch", mi: "miles", spec: "sp
 const AREA = { radius: "sphere", sphere: "sphere", cone: "cone", cube: "cube", line: "line", cylinder: "cylinder",
   square: "cube", wall: "line" };
 
+/** V3.1 activation {type, cost, condition} -> 4.0 activation {type, value, trigger}. */
 function migrateActivation(sys) {
   const a = sys.activation ?? {};
   const type = ACTIVATION[a.type] ?? "action";
@@ -109,6 +114,7 @@ function migrateActivation(sys) {
   return out;
 }
 
+/** V3.1 range + target -> 4.0 rangeArea (range type/value, area shape/size). */
 function migrateTarget(sys) {
   const r = sys.range ?? {};
   const t = sys.target ?? {};
@@ -119,12 +125,14 @@ function migrateTarget(sys) {
   };
 }
 
+/** V3.1 damage.parts [[formula, type], ...] -> 4.0 [{formula, type}], unknown types dropped. */
 function migrateDamageParts(sys) {
   return (sys.damage?.parts ?? [])
     .filter(p => Array.isArray(p) && p[0])
     .map(([formula, type]) => ({ formula: String(formula), type: DAMAGE_TYPES.has(type) ? type : "" }));
 }
 
+/** Build 4.0 activities from V3.1 actionType (mwak/rsak/save/heal...) and damage parts. */
 function activitiesFrom(sys) {
   const parts = migrateDamageParts(sys);
   const base = { id: "migrated0", label: "", text: "", riders: [] };
@@ -154,6 +162,7 @@ function splitUpcast(descHtml) {
   return { description, upcast: `<p>${m[1].replace(/<\/?(strong|em|b|i)>/g, "").trim()}</p>` };
 }
 
+/** V3.1 "spell" items -> jutsu: rank from level, cost, keywords, components, activities. */
 function migrateJutsu(source, sys, log) {
   const { rank, from, review } = guessRank(source, sys);
   const desc = text(sys.description);
@@ -206,6 +215,7 @@ function migrateJutsu(source, sys, log) {
 const WEAPON_PROPS = { fin: "finesse", thr: "thrown", lgt: "light", hvy: "heavy", rch: "reach", two: "twoHanded",
   ver: "versatile", amm: "ammunition", ret: "returning", spc: "special", lod: null, rel: null, fir: null, sil: null };
 
+/** Shared physical fields: quantity, weight -> Bulk, price, equipped. */
 function migratePhysical(sys) {
   const price = typeof sys.price === "object" ? sys.price?.value : sys.price;
   return {
@@ -221,6 +231,7 @@ function migratePhysical(sys) {
   };
 }
 
+/** Weapons: category, damage die and types, properties, range, ammo. */
 function migrateWeapon(source, sys, log) {
   const parts = migrateDamageParts(sys);
   const props = {};
@@ -256,6 +267,7 @@ function migrateWeapon(source, sys, log) {
   };
 }
 
+/** V3.1 "equipment" -> armor (AC bonus = full AC − 10, Dex cap, Str requirement) or loot. */
 function migrateEquipment(source, sys) {
   const armorType = sys.armor?.type;
   if ( ["light", "medium", "heavy"].includes(armorType) ) {
@@ -282,6 +294,7 @@ function migrateEquipment(source, sys) {
 const CONSUMABLE_TYPES = { potion: "pill", poison: "poison", food: "meal", scroll: "scroll", ammo: "ammo",
   trinket: "gear", wand: "gear", rod: "gear" };
 
+/** Consumables: subtype, uses, destroy on empty. */
 function migrateConsumable(source, sys) {
   return {
     type: "consumable",
@@ -303,11 +316,13 @@ function migrateConsumable(source, sys) {
   };
 }
 
+/** First table entry whose pattern appears in the name (lower case). */
 function matchName(name, table) {
   const n = String(name ?? "").toLowerCase();
   return table.find(([needle]) => n.includes(needle))?.[1] ?? "";
 }
 
+/** V3.1 "tool" -> toolkit (kit key matched from the name). */
 function migrateTool(source, sys, log) {
   const kit = matchName(source.name, TOOLKIT_NAMES);
   if ( !kit ) log.push(`${source.name}: no matching 4.0 toolkit`);
@@ -325,6 +340,7 @@ function migrateTool(source, sys, log) {
   };
 }
 
+/** V3.1 "backpack" -> container (storage type from the name). */
 function migrateBackpack(source, sys) {
   return {
     type: "container",
@@ -333,6 +349,7 @@ function migrateBackpack(source, sys) {
   };
 }
 
+/** Classes: levels and hit/chakra dice; flagged for review (4.0 class data comes from the new compendium). */
 function migrateClass(source, sys) {
   return {
     type: "class",
@@ -348,6 +365,7 @@ function migrateClass(source, sys) {
   };
 }
 
+/** Feats and features: category from the compendium they came from, uses, activation; flagged for review. */
 function migrateFeat(source, sys) {
   const ref = String(source.flags?.core?.sourceId ?? source._stats?.compendiumSource ?? "");
   let category = "general";
@@ -410,6 +428,7 @@ export function migrateV31Item(source) {
 /*  Actors                                      */
 /* -------------------------------------------- */
 
+/** Filter V3.1 values to the keys 4.0 knows (unknown keys are dropped). */
 function setOf(values, allowed) {
   return [...new Set((values ?? []).filter(v => !allowed || allowed.has(v)))];
 }

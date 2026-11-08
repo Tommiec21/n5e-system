@@ -5,6 +5,14 @@
  *
  * Documents are ALSO migrated in memory on every load (Document.migrateData -> v31.mjs), so a world
  * opens cleanly even before this runner saves the results to the database.
+ *
+ * Adding a migration (when a stored field is renamed, moved or reshaped):
+ *   1. write a function that updates world actors/items (and compendiums if needed), idempotent:
+ *      running it twice must change nothing the second time;
+ *   2. append { id: <next number>, label, run } to MIGRATIONS (never renumber or remove entries);
+ *   3. if old data must also load before the GM runs it, add the in-memory conversion to the
+ *      document's static migrateData (documents/actor.mjs / item.mjs);
+ *   4. add a test in tests/migration.test.mjs.
  */
 import { isV31Actor, isV31Item, migrateV31Actor, migrateV31Item } from "./v31.mjs";
 
@@ -16,6 +24,7 @@ export const MIGRATIONS = [
 ];
 export const LATEST = MIGRATIONS.at(-1).id;
 
+/** The world setting that remembers the last migration run (hidden; set by checkMigrations). */
 export function registerMigrationSetting() {
   game.settings.register("n5e", SETTING, {
     name: "Last data migration", scope: "world", config: false, type: Number, default: 0

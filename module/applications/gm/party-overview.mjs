@@ -1,6 +1,10 @@
 /**
  * GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP,
  * conditions, concentration, Fury, open Gate and Amps; quick damage, healing and conditions.
+ * One window per client (a static instance); it re-renders on actor, effect and combat changes.
+ * Quick damage goes through the full damage pipeline (workflow/apply-damage.mjs), so it posts the
+ * same summary card with Undo. Rows come from view-models/party.mjs (add a column there + in the
+ * template templates/apps/party-overview.hbs).
  */
 import { partyRowVM } from "../../view-models/party.mjs";
 

@@ -3,6 +3,22 @@
  * Structure follows dnd5e v5's ApplicationV2 sheets (one part per tab, edit/play mode, context menus);
  * statistic breakdowns, action glyphs and rule chips follow PF2e. All data comes from view models in
  * module/view-models/character.mjs.
+ *
+ * How the sheet works (ApplicationV2):
+ *   PARTS     one Handlebars template per region (header, tabs, rail, each tab). Foundry can re-render
+ *             a single part (the Jutsu search re-renders only "jutsu").
+ *   _preparePartContext  builds each part's `vm` from the view-model functions; templates print it.
+ *   actions   data-action="name" on any element calls the matching static #onName handler below,
+ *             with `this` = the sheet. This is how every button and clickable label works.
+ *   form      inputs named like "system.hp.value" save to the actor on change (submitOnChange).
+ *             Inputs with data-item-field save to the owned item instead (see _onRender).
+ *   _onRender listeners that actions can't express (search typing, right click, select changes).
+ *
+ * Adding a button: put data-action="myThing" on it in a template, add `myThing: CharacterSheet.#onMyThing`
+ * to DEFAULT_OPTIONS.actions, and write `static async #onMyThing(event, target)`. Keep the rules in a
+ * workflow or rules module and call it from the handler.
+ * The NPC sheet (npc-sheet.mjs) extends this class, so new tabs and actions appear there too
+ * unless it removes them.
  */
 import {
   headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
@@ -28,6 +44,7 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 const T = name => `systems/n5e/templates/actor/character/${name}.hbs`;
 
 /** Partials used inside the character templates. */
+// Loaded at init (n5e.mjs) so they can be used as {{> "systems/n5e/templates/parts/..."}}.
 export const CHARACTER_TEMPLATE_PATHS = [
   "systems/n5e/templates/parts/field-rows.hbs",
   "systems/n5e/templates/parts/chips.hbs",
@@ -39,10 +56,13 @@ export const CHARACTER_TEMPLATE_PATHS = [
 export default class CharacterSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   static DEFAULT_OPTIONS = {
+    // "n5e-v2" scopes every sheet style in styles/sheet.css.
     classes: ["n5e", "sheet", "actor", "character", "n5e-v2"],
     position: { width: 900, height: 1000 },
     window: { resizable: true },
     form: { submitOnChange: true },
+    // data-action name → handler. Grouped roughly as: navigation, items, rolls, combat trackers,
+    // level-up, toggles, small setters. Every handler is defined in the Actions section below.
     actions: {
       n5eTab: CharacterSheet.#onTab,
       toggleMode: CharacterSheet.#onToggleMode,
@@ -85,6 +105,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     }
   };
 
+  // scrollable: [""] keeps each part's scroll position across re-renders.
   static PARTS = {
     header: { template: T("header") },
     tabs: { template: T("tabs") },
@@ -134,7 +155,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /*  Context                                     */
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @override  Context shared by every part (edit mode, permissions, the tab list). */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.actor = this.actor;
@@ -145,7 +166,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return context;
   }
 
-  /** @override */
+  /**
+   * @override  Each part gets its own view model. A new tab: add it to PARTS, TABS and TAB_PARTS,
+   * add a case here that sets context.vm, and write its template.
+   */
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
     const actor = this.actor;
@@ -167,6 +191,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
         context.vm = biographyVM(actor);
         const TextEditor = foundry.applications.ux.TextEditor.implementation;
         context.vm.biographyHTML = await TextEditor.enrichHTML(context.vm.biography, { relativeTo: actor });
+        // Edit mode shows a raw field editor for every stored field (schema-form.mjs) under the biography.
         if ( this.editMode ) {
           this._rows = buildRows(actor.system.schema, actor._source.system, { skip: new Set(["abilities", "saves", "skills"]) });
           context.rows = this._rows.map(r => ({ ...r, isHeading: r.kind === "heading", isText: r.kind === "text" || r.kind === "list",
@@ -180,7 +205,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return context;
   }
 
-  /** @override */
+  /** @override  Turns the raw editor's list inputs (comma-separated text) back into arrays before saving. */
   _processFormData(event, form, formData) {
     const flat = formData.object;
     coerceListInputs(flat, this._rows ?? []);
@@ -191,14 +216,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /*  Rendering hooks                             */
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @override  The right-click menu on item rows (Edit, Post, Equip, Pin, Duplicate, Delete). */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
     const ContextMenu = foundry.applications.ux.ContextMenu.implementation;
     new ContextMenu(this.element, "[data-item-id].n5e-row", this.#itemContextOptions(), { jQuery: false, fixed: true });
   }
 
-  /** @override */
+  /** @override  Runs after every render: listeners that data-action can't cover. */
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.element.classList.toggle("edit-mode", this.editMode);
@@ -253,7 +278,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /*  Drag and drop rules                         */
   /* -------------------------------------------- */
 
-  /** @override */
+  /**
+   * @override  Dropping items onto the sheet. Rules: classes run character creation / replacement,
+   * one clan and one background (replace asks first), no duplicate jutsu, drop on Pinned to pin.
+   */
   async _onDropItem(event, item) {
     if ( !this.actor.isOwner ) return null;
     const actor = this.actor;
@@ -323,6 +351,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /*  Context menu                                */
   /* -------------------------------------------- */
 
+  /** Right-click menu entries for item rows; `condition` hides an entry when it doesn't apply. */
   #itemContextOptions() {
     const item = li => this.actor.items.get(li.dataset.itemId);
     const owner = () => this.actor.isOwner;
@@ -357,19 +386,24 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /*  Actions                                     */
   /* -------------------------------------------- */
 
+  // Handlers receive (event, target) where target is the element with data-action. Most find their
+  // item through the nearest [data-item-id] ancestor.
   static #itemFrom(target) {
     return this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
   }
 
+  /** Tab buttons (the sheet uses its own tab strip; Foundry switches the visible part). */
   static #onTab(event, target) {
     this.changeTab(target.dataset.tab, target.dataset.group ?? "primary");
   }
 
+  /** Pencil toggle: edit mode shows editable fields, delete buttons and the raw field editor. */
   static #onToggleMode() {
     this.#editMode = !this.#editMode;
     this.render();
   }
 
+  /** Click the portrait: Foundry file picker for the actor image. */
   static async #onEditImage() {
     if ( !this.isEditable ) return;
     const FilePicker = foundry.applications.apps.FilePicker.implementation;
@@ -377,14 +411,17 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       callback: path => this.actor.update({ img: path }) }).browse();
   }
 
+  /** Open an owned item's sheet. */
   static #onEditItem(event, target) {
     CharacterSheet.#itemFrom.call(this, target)?.sheet.render(true);
   }
 
+  /** Delete an owned item (asks first). */
   static async #onDeleteItem(event, target) {
     await CharacterSheet.#itemFrom.call(this, target)?.deleteDialog();
   }
 
+  /** "Use" on an item row: jutsu cast, weapons attack, features pay their cost, others post a card. */
   static async #onUseItem(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( !item ) return;
@@ -395,16 +432,19 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
   }
 
+  /** Equip or unequip a weapon, armor or container. */
   static async #onToggleEquip(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( item && "equipped" in item.system ) await item.update({ "system.equipped": !item.system.equipped });
   }
 
+  /** Pin or unpin an item on the Main tab. */
   static async #onTogglePin(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     if ( id ) await this.#pin(id);
   }
 
+  /** Jutsu tab: expand a row to show its full text. */
   static #onToggleExpand(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     if ( !id ) return;
@@ -414,6 +454,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     this.render({ parts: ["jutsu"] });
   }
 
+  /** Jutsu tab: pick the rank a jutsu will be cast at (upcasting). */
   static #onCastRank(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     if ( !id ) return;
@@ -421,6 +462,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     this.render({ parts: ["jutsu"] });
   }
 
+  /** Jutsu tab: discipline filter buttons. */
   static #onJutsuFilter(event, target) {
     this.#jutsu.discipline = target.dataset.discipline ?? "";
     this.render({ parts: ["jutsu"] });
@@ -437,6 +479,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return stepAmmo(item, delta);
   }
 
+  /** Click a charge pip to set the number of charges left. */
   static async #onSetCharge(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( !item ) return;
@@ -445,18 +488,21 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     await item.update({ "system.charges.value": value });
   }
 
+  /** Click a Will of Fire pip to set the count (0-3). */
   static async #onSetWillOfFire(event, target) {
     const n = Number(target.dataset.value);
     const value = this.actor.system.willOfFire.value === n ? n - 1 : n;
     await this.actor.update({ "system.willOfFire.value": Math.max(0, value) });
   }
 
+  /** Click a Chain box to set the Chain rank by hand (players may hold or opt out). */
   static async #onSetChain(event, target) {
     const n = Number(target.dataset.value);
     const value = this.actor.system.combat.chain.value === n ? n - 1 : n;
     await this.actor.update({ "system.combat.chain.value": Math.max(0, value) });
   }
 
+  /** Rail −/+ on a condition: change its ranks (0 removes it). */
   static async #onChangeRanks(event, target) {
     const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
     if ( !effect ) return;
@@ -466,25 +512,30 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     else await effect.update({ "system.ranks": ranks });
   }
 
+  /** Switch an Active Effect on or off (also picks which Amp applies under Amp limits). */
   static async #onToggleEffect(event, target) {
     const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
     await effect?.update({ disabled: !effect.disabled });
   }
 
+  /** Remove an Active Effect. */
   static async #onDeleteEffect(event, target) {
     await this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId)?.delete();
   }
 
+  /** Open an Active Effect's sheet. */
   static #onEditEffect(event, target) {
     this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId)?.sheet.render(true);
   }
 
+  /** Enter a stance, or leave it when it is the active one (one stance at a time). */
   static async #onEnterStance(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     const current = this.actor.system.combat.activeStance;
     await this.actor.update({ "system.combat.activeStance": current === id ? "" : id });
   }
 
+  /** Click a resource pool segment: set its current value. */
   static async #onSetPool(event, target) {
     const pool = target.closest("[data-pool]")?.dataset.pool;
     if ( !pool ) return;
@@ -518,35 +569,43 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return rollD20(this.actor, target.dataset.roll, target.dataset.key, { event });
   }
 
+  /** Fury tracker +/−. */
   static async #onChangeFury(event, target) {
     return changeFury(this.actor, Number(target.dataset.delta) || 0);
   }
 
+  /** 8-Inner Gates: open the next gate (dialog picks the action used). */
   static async #onOpenGate() {
     return openNextGate(this.actor);
   }
 
+  /** 8-Inner Gates: close them (Exhaustion, Bruised, death as the gates say). */
   static async #onCloseGates() {
     return closeGates(this.actor);
   }
 
+  /** Marks tracker: Mark the targeted creatures with this jutsu. */
   static async #onPlaceMark(event, target) {
     return placeMarks(this.actor, target.closest("[data-item-id]")?.dataset.itemId);
   }
 
+  /** Rail hand icon: try to end a condition with its removal check. */
   static async #onTryEndCondition(event, target) {
     const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
     if ( effect ) return tryEndCondition(this.actor, effect, event);
   }
 
+  /** Header Short / Long / Full Rest buttons. */
   static async #onRest(event, target) {
     return restDialog(this.actor, target.dataset.rest);
   }
 
+  /** Rail death-save button (at 0 HP). */
   static async #onDeathSave() {
     return rollDeathSave(this.actor);
   }
 
+  /** Initiative from the sheet (joins the combat value when the actor is a combatant). */
   static async #onRollInit(event) {
     return rollInitiative(this.actor, { event });
   }

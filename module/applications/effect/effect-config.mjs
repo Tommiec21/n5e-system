@@ -1,6 +1,7 @@
 /**
  * Active Effect editor: the core config with a change-key picker. Every Key field suggests the
  * system's keys (n5e.* and system bonus paths) as you type, and shows what the chosen key does.
+ * The list comes from changeKeyCatalog() in rules/change-keys.mjs; a new key added there appears here.
  */
 import { changeKeyCatalog } from "../../rules/change-keys.mjs";
 
