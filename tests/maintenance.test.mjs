@@ -122,7 +122,7 @@ test("cancelled activity refunds its resource payment and does not consume the t
   // A cancelled/unsupported action must not leave a resource debit behind.
   const result = await onActivityClick({ getFlag: (s, k) => k === "actorUuid" ? a.uuid : null },
     { dataset: { n5eAct: "strike", cost: JSON.stringify({ pool: "focus", amount: 1 }), strike: '{"kind":"weapon"}' } }, {});
-  assert.equal(result, undefined);
+  assert.equal(result ?? null, null);
   assert.equal(a.system.resources.focus.value, 2);
 });
 
@@ -134,6 +134,7 @@ test("manual activity kinds display instructions instead of silently disappearin
 
 test("GM relay refuses remote document deletion and requires approval for target effects", async () => {
   environment(); let callback, applied = 0, approvals = 0;
+  game.settings.get = (scope, key) => (key === "gmApprovesRequests" ? true : undefined);
   const emitted = [];
   game.socket = { on: (channel, handler) => { callback = handler; }, emit: (channel, data) => emitted.push(data) };
   globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", createEmbeddedDocuments: async () => applied++ });
@@ -200,4 +201,46 @@ test("migration validates replacement and restores the original when creation fa
   assert.equal(deleted, 1);
   assert.equal(restored._id, "old");
   assert.equal(restored.type, "spell");
+});
+
+test("without the approval rule, validated effect requests apply with no GM dialog", async () => {
+  environment(); let callback, applied = 0, approvals = 0;
+  game.socket = { on: (channel, handler) => { callback = handler; }, emit: () => {} };
+  globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", createEmbeddedDocuments: async () => applied++ });
+  foundry.applications = { api: { DialogV2: { confirm: async () => { approvals++; return true; } } } };
+  registerSocket();
+  await callback({ requestId: "auto-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Mark", type: "generic" }] } });
+  assert.deepEqual([applied, approvals], [1, 0]);
+  await callback({ requestId: "bad-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Bad", changes: [{ key: "ownership.default", mode: 5, value: "3" }] }] } });
+  assert.equal(applied, 1, "invalid requests are still refused");
+});
+
+test("a failed click refunds its cost and leaves the turn allowance and action unused", async () => {
+  environment(); const a = actor();
+  const activity = { id: "fx", type: "effect", label: "Mark", oncePerTurn: true, activation: "bonus", cost: { pool: "focus", amount: 1 } };
+  a.items.push({ id: "feature", system: { activities: [activity] } });
+  globalThis.fromUuid = async () => a;
+  let warned = 0;
+  ui.notifications.warn = () => { warned++; return { id: 1 }; };     // Foundry returns a notification object
+  ui.notifications.info = () => { warned++; return { id: 2 }; };
+  const message = { getFlag: (scope, key) => key === "actorUuid" ? a.uuid : null };
+  // Effect for targets, with nothing targeted: the handler warns and fails.
+  const button = { dataset: { n5eAct: "effect", item: "feature", activity: "fx", once: "1", activation: "bonus",
+    cost: JSON.stringify(activity.cost), effect: JSON.stringify({ name: "Mark", target: "targets" }) } };
+  const result = await onActivityClick(message, button, {});
+  assert.equal(result, null);
+  assert.ok(warned >= 1);
+  assert.equal(a.system.resources.focus.value, 2, "cost refunded");
+  assert.equal(a.flags.n5e.activityUsage?.feature, undefined, "once-per-turn not used");
+  assert.equal(a.flags.n5e.economy?.bonus, undefined, "Bonus Action not used");
+});
+
+test("a costed save without damage gets a Use button that pays; the defenders' save button stays free", () => {
+  const owner = { system: { resources: { discipline: { label: "Discipline", value: 3 } }, disciplines: { tai: { dc: 13 } } }, items: [] };
+  const item = { id: "f", name: "Okuri-Inu Fang", type: "feat", system: {} };
+  const html = activityButtons(owner, item, [{ id: "s", type: "save", label: "Okuri-Inu Fang", cost: { pool: "discipline", amount: 2 },
+    save: { abilities: ["str"], dc: { source: "tai" } }, damage: { parts: [] }, inflicts: [] }]);
+  assert.match(html, /data-n5e-act="roll"[^>]*data-cost=/);
+  const save = html.match(/<button type="button" data-n5e-act="save"[^>]*>/)[0];
+  assert.doesNotMatch(save, /data-cost|data-once|data-activation/);
 });

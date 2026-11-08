@@ -28,6 +28,18 @@ import { asGM } from "../socket.mjs";
 import { rule } from "../rules-settings.mjs";
 import { abilities } from "../config/core.mjs";
 
+/**
+ * Put effects on a creature the user may not own, through the GM. A declined or timed-out request
+ * is reported and the loop carries on with the other targets. Resolves true when applied.
+ */
+async function requestEffects(payload) {
+  try { return await asGM("createEffects", payload); }
+  catch (error) {
+    ui.notifications.warn(error.message);
+    return false;
+  }
+}
+
 // Small helpers shared by every tracker below.
 //   ChatMessage()   the configured ChatMessage class (looked up lazily: CONFIG is filled at init)
 //   nowTurn()       {round, turn} of the running combat, or null out of combat. Trackers store this
@@ -89,7 +101,7 @@ export async function placeMarks(actor, itemId) {
   }
   for ( const t of targets ) {
     const data = trackerEffectData("mark", mark, { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime });
-    await asGM("createEffects", { actorUuid: t.uuid, effects: [data] });
+    await requestEffects({ actorUuid: t.uuid, effects: [data] });
   }
   return say(actor, `<b>${esc(actor.name)}</b> Marks ${esc(targets.map(t => t.name).join(", "))}: ${esc(mark.label)} (${esc(mark.jutsu)})${ammo ? `. ${esc(ammo.name)} ammo die steps down.` : ""}`);
 }
@@ -123,7 +135,7 @@ export async function onTrackerClick(message, btn) {
     const targets = targetedActors();
     if ( !targets.length ) return ui.notifications.info("Target the creatures to Brand (T over a token).");
     for ( const t of targets ) {
-      await asGM("createEffects", { actorUuid: t.uuid, effects: [trackerEffectData("branded", defs.branded,
+      await requestEffects({ actorUuid: t.uuid, effects: [trackerEffectData("branded", defs.branded,
         { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime })] });
     }
     return say(actor, `${esc(targets.map(t => t.name).join(", "))}: ${esc(defs.branded.label)}`);
@@ -135,7 +147,7 @@ export async function onTrackerClick(message, btn) {
     const seconds = dur.unit === "minute" ? (dur.value || 1) * 60 : dur.unit === "hour" ? (dur.value || 1) * 3600
       : dur.unit === "round" ? (dur.value || 1) * 6 : 60;
     for ( const t of who ) {
-      await asGM("createEffects", { actorUuid: t.uuid, effects: [{ name: defs.amp.label, type: "amp", img: item.img,
+      await requestEffects({ actorUuid: t.uuid, effects: [{ name: defs.amp.label, type: "amp", img: item.img,
         origin: item.uuid, description: `<p>From ${esc(actor.name)}'s ${esc(item.name)}: see the jutsu for its bonus.</p>`,
         system: { ampType: defs.amp.ampType, sourceUuid: actor.uuid },
         duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null } }] });
@@ -346,7 +358,10 @@ const evalNumber = expr => {
 export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null } = {}) {
   const sub = v => resolveFormula(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0)), actor);
   const targets = eff.target === "targets" ? targetedActors() : [actor];
-  if ( !targets.length ) return ui.notifications.info("Target the creatures first (T over a token).");
+  if ( !targets.length ) {
+    ui.notifications.info("Target the creatures first (T over a token).");
+    return null;
+  }
   const now = nowTurn();
   const changes = (eff.changes ?? []).map(c => {
     const v = sub(c.value);
@@ -371,7 +386,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
     if ( changes.length || eff.expires || eff.state || eff.ampType ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
-      else await asGM("createEffects", { actorUuid: t.uuid, effects: [data] });
+      else await requestEffects({ actorUuid: t.uuid, effects: [data] });
     }
     if ( eff.tempHp ) {
       const roll = await new Roll(sub(eff.tempHp)).evaluate();

@@ -74,7 +74,8 @@ export function registerSocket() {
     let ok = false, error = "The GM declined the request.";
     try {
       const request = await prepare(data.type, data.payload ?? {});
-      const accepted = await foundry.applications.api.DialogV2.confirm({ window: { title: "Review player request" },
+      // The request was validated above. Only with the gmApprovesRequests rule does the GM confirm it.
+      const accepted = !rule("gmApprovesRequests") || await foundry.applications.api.DialogV2.confirm({ window: { title: "Review player request" },
         content: "<p>" + esc(request.summary) + "</p><details><summary>Requested changes</summary><pre>" + esc(JSON.stringify(request.details, null, 2)) + "</pre></details>", rejectClose: false });
       if ( accepted ) { await request.run(); ok = true; }
     } catch (err) { error = err.message; ui.notifications.warn(error); }

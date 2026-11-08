@@ -140,6 +140,10 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
       ${attr("label", a.label || item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
       DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>`;
   };
+  // A save's cost belongs to the user, but the save button belongs to the defenders (any owner can
+  // click it), so a costed save without damage buttons to carry the cost gets its own Pay button.
+  const payButton = a => (a.cost?.pool && !a.damage?.parts?.length
+    ? `<button type="button" data-n5e-act="roll"${common(a)}><i class="fa-solid fa-coins"></i> Use ${esc(a.label || item.name)}${costNote(a)}</button>` : "");
   for ( const a of activities ) {
     if ( a.minLevel && level < a.minLevel ) continue;
     if ( activityKinds[a.type] === "manual" || !activityKinds[a.type] ) {
@@ -172,7 +176,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     }
     // Feature save with a named DC source ("vs your Taijutsu save DC"): save button + optional damage.
     if ( a.type === "save" && a.save?.dc?.source && item.type !== "jutsu" ) {
-      rows.push(`<div class="act-row">${saveButton(a)}${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label ? `${a.label} damage` : "Damage" })}</div>`);
+      rows.push(`<div class="act-row">${payButton(a)}${saveButton(a)}${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label ? `${a.label} damage` : "Damage" })}</div>`);
       continue;
     }
     // Roll: "roll this and add it" (Tactics +2, Tenacious 1d10). With an empty formula the button
@@ -206,7 +210,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     } else if ( a.type === "save" ) {
       const ab = [...(a.save?.abilities ?? [])][0];
       const dc = dcFor(a);
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
+      rows.push(`<div class="act-row">${payButton(a)}<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
         ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
         DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
@@ -252,7 +256,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
   let amount = 1;
   let payment = null;
   if ( d.cost && ["strike", "effect", "attack", "damage", "heal", "roll", "check"].includes(d.n5eAct) ) {
-    if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can use this.");
+    if ( !caster?.isOwner ) return fail("warn", "Only the owner can use this.");
     const paid = await payPoolCost(caster, JSON.parse(d.cost), { locked: true });
     if ( !paid ) return null;
     payment = paid;
@@ -265,19 +269,19 @@ async function executeActivityClick(message, button, event, { healingTargets = n
   // One case per data-n5e-act value written by activityButtons()/damageButtons().
   switch ( d.n5eAct ) {
     case "summon": {
-      if ( !game.user.isGM ) return ui.notifications.info("Ask the GM to use the Summon button on this card.");
+      if ( !game.user.isGM ) return fail("info", "Ask the GM to use the Summon button on this card.");
       const { summonTokens } = await import("./automation.mjs");
       try {
         return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration });
-      } catch (error) { return ui.notifications.warn(error.message); }
+      } catch (error) { return fail("warn", error.message); }
     }
     case "strike": {
-      if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can make this attack.");
+      if ( !caster?.isOwner ) return fail("warn", "Only the owner can make this attack.");
       const { strikeAttack } = await import("./attack.mjs");
       return strikeAttack(caster, JSON.parse(d.strike || "{}"), { event, label: d.label, poolRoll });
     }
     case "check": {
-      if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can roll this check.");
+      if ( !caster?.isOwner ) return fail("warn", "Only the owner can roll this check.");
       const spec = d.skill ? rollSpec(caster, "skill", d.skill) : rollSpec(caster, "tool", d.tool);
       return rollWithSpec(caster, { ...spec, label: d.label || spec.label }, { event });
     }
@@ -289,12 +293,12 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
     }
     case "effect": {
-      if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can use this.");
+      if ( !caster?.isOwner ) return fail("warn", "Only the owner can use this.");
       const { applyActivityEffect } = await import("./trackers.mjs");
       return applyActivityEffect(caster, JSON.parse(d.effect || "{}"), { label: d.label, item: caster.items.get(d.item), poolRoll });
     }
     case "attack": {
-      if ( !caster?.isOwner ) return ui.notifications.warn("Only the caster's owner can roll this attack.");
+      if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
         { event, mode: d.adv ? "advantage" : undefined });
     }
@@ -305,7 +309,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const parts = JSON.parse(d.parts || "[]");
       const weapon = d.weaponId ? actor?.items.get(d.weaponId) : null;
       const coatings = weapon ? activeCoatings(weapon, game.time.worldTime) : [];
-      if ( coatings.length && !weapon.isOwner ) return ui.notifications.warn("Only the weapon owner can roll coated damage.");
+      if ( coatings.length && !weapon.isOwner ) return fail("warn", "Only the weapon owner can roll coated damage.");
       parts.push(...coatings.flatMap(c => c.parts.map(p => ({ ...p, abilityMod: 0 }))));
       const targets = Array.from(game.user?.targets ?? []);
       const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
@@ -347,8 +351,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "save": {
       const dc = Number(d.dc);
       const targets = targetsOrSelf(null);
-      if ( !targets.length ) return ui.notifications.info("Select the tokens that roll the save.");
+      if ( !targets.length ) return fail("info", "Select the tokens that roll the save.");
       let first = true;
+      let rolled = 0;
       for ( const t of targets ) {
         if ( !t.isOwner ) continue;
         const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
@@ -366,8 +371,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         first = false;
         const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
         await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}") });
+        rolled++;
       }
-      return null;
+      return rolled ? { saves: rolled } : null;
     }
     case "heal": {
       const roll = await new Roll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
@@ -387,6 +393,15 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     default:
       return null;
   }
+}
+
+/**
+ * Warn (or inform) and report a failed click. The runner (activity-execution.mjs) refunds any cost
+ * and skips the once-per-turn and action-economy bookkeeping when a handler returns null.
+ */
+function fail(level, message) {
+  ui.notifications[level](message);
+  return null;
 }
 
 /** All activity kinds share validation, turn limits, resource refund and hook handling. */

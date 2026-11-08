@@ -102,6 +102,10 @@ export const rules = {
   hijutsuFlexibilityPick: { group: "character", type: "boolean", default: true, label: "Players pick their Hijutsu Flexibility ability",
     hint: "Default is the higher of the two abilities." },
 
+  // Player requests (0.10.1)
+  gmApprovesRequests: { group: "casting", type: "boolean", default: false, label: "GM approves player requests",
+    hint: "Off: Marks, Amps and jutsu effects a player puts on creatures they don't own, and party ration spending, apply right away (the GM's client checks the request first). On: the GM confirms each one in a dialog." },
+
   // Map: areas, senses and movement (0.9.0)
   areaPrompt: { group: "map", type: "boolean", default: true, label: "Offer to place the area when casting",
     hint: "Casting a jutsu with an area starts placing its shape on the map (the card keeps a Place area button either way)." },

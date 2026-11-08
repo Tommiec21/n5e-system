@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.1-alpha.1 — Review fixes
+
+### Fixed
+- **Failed button clicks:** a click that stops with a warning (no targets, not the owner, coated weapon you don't own...) now refunds its pool cost and no longer uses up once-per-turn or the action.
+- **Player effects on enemies:** Marks, Branded, Amps and jutsu effects on creatures a player doesn't own apply right away again; the GM's client still checks every request. A declined or timed-out request shows a notice and the other targets still get the effect.
+- **Costed saves:** saves with a cost and no damage (Okuri-Inu Fang) get a **Use** button that pays it. The defenders' save button stays free, and a once-per-turn feature's allowance is no longer blocked by its own save clicks.
+- **Text parser:** damage types in jutsu text are matched with correctly escaped names.
+- **Free pool costs:** a 0-cost pool feature (Weapon Katas) no longer posts a "Spent 0" roll.
+- **Rest with rations:** a declined or timed-out ration request stops the rest with a notice instead of an error.
+
+### Added
+- **N5e Rules → Casting and combat:** "GM approves player requests" (off by default). On: the GM confirms each player request in a dialog, as in 0.10.0.
+
 ## 0.10.0-alpha.1 — Shared execution and maintenance safeguards
 
 ### Correctness

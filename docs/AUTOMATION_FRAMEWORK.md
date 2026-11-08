@@ -68,3 +68,10 @@ Token flags `flags.n5e.summon` record caster/item UUIDs, concentration and expir
 Run `npm test`, `npm run lint`, and `npm run check`. The tests cover predicate failures, source gating, stacking, source breakdowns, save outcome selection, coating expiry/use counts, summon placement/cleanup and ownership checks. They use Foundry stand-ins, not a running Foundry server.
 
 In a disposable v13 world, check: toggle one contextual feature; attack with one marked target and then several targets; roll a four-tier save and reroll it with Will of Fire; roll normal/critical coated weapon damage; summon two unlinked copies and end their concentration; advance world time past a coating/summon expiry; reload the world as GM. Confirm a player cannot summon or alter sources they do not own. Copy a world before updating it.
+
+## Button handler contract (0.10.1)
+
+- A handler in `executeActivityClick` (workflow/activity-buttons.mjs) reports a failed or cancelled click by returning `null`: use `return fail("warn", message)`, never `return ui.notifications.warn(...)` (that returns a notification object, which counts as success).
+- On `null` the runner (workflow/activity-execution.mjs) refunds the pool cost and leaves once-per-turn and the action economy untouched.
+- Save buttons are rolled by the defenders. They never carry a cost, once-per-turn or activation. A costed save with no damage buttons gets its own **Use** button that pays the cost; the feature's once-per-turn is stamped when the feature is used.
+- Player requests to the GM (`socket.mjs`): the GM's client always validates them. They apply right away unless the **GM approves player requests** rule is on, in which case the GM confirms each one. Tracker callers report a declined or timed-out request and carry on with the other targets.

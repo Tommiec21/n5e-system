@@ -61,7 +61,7 @@ export function parseInflicted(text) {
 const strip = html => String(html ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 const ABILITY_BY_NAME = Object.fromEntries(Object.entries(abilities).map(([k, v]) => [v.label.toLowerCase(), k]));
 const DISC = { ninjutsu: "nin", taijutsu: "tai", genjutsu: "gen", bukijutsu: "tai" };
-const damageTypePattern = () => Object.keys({ ...damageTypes, ...(globalThis.CONFIG?.N5E?.damageTypes ?? {}) }).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\const TYPES = Object.keys(damageTypes).join("|");")).join("|");
+const damageTypePattern = () => Object.keys({ ...damageTypes, ...(globalThis.CONFIG?.N5E?.damageTypes ?? {}) }).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
 
 /**
  * @param {string} html

@@ -50,7 +50,7 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
     return null;
   }
   await actor.update({ [`system.resources.${cost.pool}.value`]: nextValue });
-  if ( !cost.roll || !pool.die ) return { roll: null, amount };
+  if ( !cost.roll || !pool.die || !amount ) return { roll: null, amount };
   const roll = await new Roll(`${amount}${pool.die}`).evaluate();
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),
     flavor: `<div class="n5e-roll-card"><header><b>${esc(pool.label || cost.pool)}</b><span class="bonus">${roll.total}</span></header><div class="note">Spent ${amount}</div></div>` });

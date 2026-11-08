@@ -18,7 +18,9 @@ export async function executeActivity(message, button, event, execute, targetsFo
       const d = button.dataset;
       const item = d.item ? actor.items.get?.(d.item) : null;
       const authored = item?.system.activities?.find(a => (a.id || a.label || a.type) === d.activity);
-      const once = authored?.oncePerTurn ?? !!d.once;
+      // Saves are rolled by defenders: the once-per-turn allowance is checked and stamped when the
+      // feature is used (use-feature.mjs), not on each save click.
+      const once = d.n5eAct !== "save" && (authored?.oncePerTurn ?? !!d.once);
       const stamp = activityTurnStamp();
       const key = item?.id;
       if ( once && stamp && key && actor.flags?.n5e?.activityUsage?.[key] === stamp ) {

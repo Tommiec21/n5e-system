@@ -118,18 +118,22 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     });
     if ( !sel ) return null;
   }
+  // Spend and post inside the actor's queue, so a second click re-reads the pools first.
   return withActorLock(actor, async () => {
-    if ( !actor.isOwner ) return ui.notifications.warn("Only the owner can cast this jutsu.");
-  const plan = castPlan(actor, item, sel);
-  if ( !plan.ok ) {
-    ui.notifications.warn(plan.problems[0]);
-    return null;
-  }
-  await actor.update(plan.update);
-  const message = await postCastCard(actor, item, plan);
-  // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
-  if ( rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
-  return message;
+    if ( !actor.isOwner ) {
+      ui.notifications.warn("Only the owner can cast this jutsu.");
+      return null;
+    }
+    const plan = castPlan(actor, item, sel);
+    if ( !plan.ok ) {
+      ui.notifications.warn(plan.problems[0]);
+      return null;
+    }
+    await actor.update(plan.update);
+    const message = await postCastCard(actor, item, plan);
+    // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
+    if ( rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
+    return message;
   });
 }
 

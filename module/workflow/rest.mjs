@@ -86,7 +86,13 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   if ( !actor?.isOwner ) throw new Error("Only the owner can rest this actor.");
   const check = restCheck(actor, type, { now: game.time.worldTime });
   if ( !check.ok ) return ui.notifications.warn(check.reason);
-  if ( check.rationCost ) await spendRations(check.rationCost);
+  if ( check.rationCost ) {
+    try { await spendRations(check.rationCost); }
+    catch (error) {
+      ui.notifications.warn(`No rest: ${error.message}`);
+      return null;
+    }
+  }
   const sys = actor.system;
   const con = sys.abilities.con.mod;
   const rolls = [];
