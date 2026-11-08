@@ -164,6 +164,10 @@ into `system.modifiers` (`rules/change-keys.mjs`), not applied by Foundry.
 
 `data-n5e-area="<item uuid>"` + `data-rank` on a cast card places that jutsu's area (`workflow/areas.mjs`).
 
+Text links (`a.n5e-link[data-n5e-link]`, from `[[/save]]` and the other shortcuts in `docs/TEXT_SHORTCUTS.md`) carry
+`data-spec` (the parsed shortcut, JSON) and `data-source-uuid`; one document-level click listener handles them
+(`applications/enrichers.mjs`).
+
 ### Area templates (MeasuredTemplate `flags.n5e`)
 
 | Flag | Meaning |

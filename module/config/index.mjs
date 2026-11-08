@@ -33,5 +33,8 @@ import { rules as _rules, ruleGroups as _groups } from "./rules.mjs";
 N5E.rules = _rules;
 N5E.ruleGroups = _groups;
 N5E.optionalRules = _rules;
+// Rules text per condition/State (KB 05), shown by condition links in text.
+import { conditionText as _conditionText } from "./condition-text.mjs";
+N5E.conditionText = _conditionText;
 
 export default N5E;

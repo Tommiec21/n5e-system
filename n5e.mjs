@@ -28,6 +28,7 @@ import N5eTokenDocument from "./module/documents/token.mjs";
 import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
+import { registerEnrichers } from "./module/applications/enrichers.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
 import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
 import NPCSheet from "./module/applications/actor/npc-sheet.mjs";
@@ -114,6 +115,8 @@ Hooks.once("init", () => {
   // template the sheets use (preloaded so partials resolve on first render).
   registerSettings();
   registerHelpers();
+  // Shortcuts in text: [[/save]], [[/check]], [[/damage]], [[/heal]], @Condition[], @State[] (applications/enrichers.mjs).
+  registerEnrichers();
   foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS, ...ITEM_TEMPLATE_PATHS])]);
 });
 

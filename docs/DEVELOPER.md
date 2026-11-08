@@ -74,7 +74,8 @@ packs/_source/<pack>/       compendium sources, one JSON per document (the sourc
 tools/                      pack, unpack, release, check, install-local, comments-only
 tools/content/              build_content.py (books → JSON), automation.py (automation data)
 tests/                      node:test suites; helpers/ fakes Foundry's data layer
-docs/                       this guide, RULES_MAP.md (rule → code), DATA_REFERENCE.md (every stored field and flag)
+docs/                       this guide, RULES_MAP.md (rule → code), DATA_REFERENCE.md (every stored field and flag),
+                            TEXT_SHORTCUTS.md ([[/save]], @Condition[] and the other text links)
 ```
 
 ## 3. Everyday commands

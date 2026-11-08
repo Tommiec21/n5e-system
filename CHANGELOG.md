@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.1-alpha.1 — Shortcuts in text
+
+### Added
+- **Roll shortcuts** for journals, item descriptions and chat (full list in `docs/TEXT_SHORTCUTS.md`):
+  - `[[/save dex dc=15]]`; `dc=nin|tai|gen` uses the item owner's save DC; `inflict=staggered,bleed:2` adds Apply buttons on a failure.
+  - `[[/check prc dc=12]]`, `[[/check tool=medicine]]`, `[[/check str]]`.
+  - `[[/damage 2d6 fire, 1d6 cold]]`: a damage card with Apply buttons.
+  - `[[/heal 2d8 + 3]]`; add `temp` or `cp`.
+  - Saves and checks roll for your selected tokens (else your character), the same way cast-card buttons do.
+- **Condition and State links:** `@Condition[bleed 2]`, `@State[prone]`.
+  - Hover shows the rules (KB 05).
+  - Click applies to the selected tokens; Shift+click removes.
+- **Custom labels:** `{label}` after any shortcut.
+- Jutsu descriptions on cast cards resolve shortcuts with the caster's numbers.
+
 ## 0.9.0-alpha.1 — Jutsu on the map
 
 ### Added

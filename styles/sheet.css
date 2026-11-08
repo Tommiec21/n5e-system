@@ -685,3 +685,12 @@
 .n5e-party .quick select[name=condition] { grid-column: 1 / span 3; }
 .n5e-party .quick button { line-height: 22px; padding: 0 6px; }
 .n5e-v2 .feature-row select.choice { flex: 0 0 auto; width: auto; max-width: 140px; height: 20px; font-size: 11px; }
+
+/* Shortcuts in text (module/applications/enrichers.mjs): [[/save]], [[/check]], @Condition[]... */
+a.n5e-link {
+  display: inline-flex; align-items: center; gap: 0.25em; padding: 0 0.35em;
+  border: 1px solid var(--color-border-light-tertiary, #999); border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06); white-space: nowrap; cursor: pointer;
+}
+a.n5e-link:hover { background: rgba(255, 100, 0, 0.15); text-shadow: none; }
+a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
