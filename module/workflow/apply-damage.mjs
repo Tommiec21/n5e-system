@@ -94,7 +94,10 @@ async function undoApply(message) {
 async function concentrationCheck(actor, dc, jutsuIds, event) {
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the owner rolls this check.");
   const spec = { ...rollSpec(actor, "skill", "cha"), label: "Concentration check" };
-  return rollWithSpec(actor, spec, { event, dc, onResult: async r => {
+  // Chakra Surge, Flow: Concentration checks for Ninjutsu at advantage.
+  const flow = actor.effects.some(e => !e.disabled && e.flags?.n5e?.state === "flow")
+    && jutsuIds.some(id => actor.items.get(id)?.system.discipline === "nin");
+  return rollWithSpec(actor, spec, { event, dc, mode: flow ? "advantage" : undefined, onResult: async r => {
     if ( r.success ) return;
     const keep = (actor.system.combat?.concentrating ?? []).filter(id => !jutsuIds.includes(id));
     const update = { "system.combat.concentrating": keep };

@@ -141,6 +141,9 @@ export class StanceData extends TDM() {
       categories: S.set(),                              // taijutsu | bukijutsu | chakra | clan (multi allowed)
       requirement: S.str(),
       unarmedDie: S.str(),
+      unarmedType: S.str(),
+      /** A better die with an item ("Combat Bracers") and, optionally, an ability requirement. */
+      unarmedAlt: S.obj({ die: S.str(), item: S.str(), ability: S.str() }),
       upgrades: S.obj({ 5: S.html(), 10: S.html() }),
       evocation: S.html(),
       /** Placeholder: "Expertise" was a failed experiment, kept until replaced (King ruling). */

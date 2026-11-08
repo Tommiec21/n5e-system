@@ -52,6 +52,8 @@
           <b>{{vm.stance.active.name}}</b><span class="sub">{{vm.stance.active.categories}}</span>
           <button type="button" data-action="enterStance" {{#unless editable}}disabled{{/unless}}>Leave</button>
         </div>
+        {{#if vm.stance.active.strikes}}<div class="pill-row n5e-row" data-item-id="{{vm.stance.active.id}}">
+          <span class="act-pill action"><a class="pill-main" data-action="useItem" data-tooltip="Post the stance card with its strikes and abilities"><span class="nm">{{vm.stance.active.strikes}}</span></a></span></div>{{/if}}
       {{else}}<p class="small muted">{{#if vm.stance.any}}No stance active.{{else}}No stances known.{{/if}}</p>{{/if}}
       {{#if vm.stance.others.length}}
         <div class="pill-row">{{#each vm.stance.others}}

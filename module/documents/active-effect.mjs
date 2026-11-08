@@ -3,6 +3,17 @@
  */
 export default class N5eActiveEffect extends ActiveEffect {
 
+  /**
+   * @override  A stance's effects apply only while it is the active stance (one stance at a time).
+   */
+  get isSuppressed() {
+    const item = this.parent;
+    if ( item?.documentName === "Item" && item.type === "stance" && item.actor ) {
+      if ( item.actor.system?.combat?.activeStance !== item.id ) return true;
+    }
+    return super.isSuppressed;
+  }
+
   /** Effect data for a condition from the registry. */
   static conditionData(key, { ranks = 1, sourceRank = "", origin } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];

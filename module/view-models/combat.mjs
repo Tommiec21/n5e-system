@@ -9,6 +9,8 @@ import { esc, glyph, pips, signed } from "./common.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
+import { unarmedSpec } from "../rules/unarmed.mjs";
+import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates, ampTypes } from "../config/combat.mjs";
 
@@ -59,13 +61,13 @@ function basicCombat(actor) {
       tip: tipHTML({ title: a.label, meta: [activationTypes[a.activation]], body: esc(a.text) }) }));
 
   // Strikes: unarmed always, plus each equipped weapon.
-  const stance = sys.combat?.activeStance ? list(actor.items).find(i => i.id === sys.combat.activeStance) : null;
-  const unarmedDie = stance ? "1d6" : "1";
+  const u = unarmedSpec(actor);
+  const attacks = attacksPerAction(actor);
   const strMod = sys.abilities?.str?.mod ?? 0;
   const strikes = [pill({ kind: "core", key: "unarmed", name: "Unarmed Strike", activation: "action",
-    sub: `${unarmedDie} ${signed(strMod)}`,
+    sub: `${u.die}${u.extra.map(d => `+${d}`).join("")} ${signed(strMod)}${attacks.base > 1 ? ` · ×${attacks.base}` : ""}`,
     tip: tipHTML({ title: "Unarmed Strike", meta: ["Attack", "Always proficient"],
-      body: esc(`${unarmedDie} + Str bludgeoning${stance ? ` (${stance.name} sets the die to d6)` : ""}. Counts as finesse for features; may use Dex if you can cast all Taijutsu with Dex.`) }) })];
+      body: esc(`${u.formula} ${u.type}${u.source ? ` (${u.source})` : ""}. Counts as finesse for features; may use Dex if you can cast all Taijutsu with Dex.${attacks.text ? ` ${attacks.text}` : ""}`) }) })];
   for ( const w of equippedWeapons ) {
     const s = w.system;
     const dmg = `${s.damage?.die ?? ""} ${[...(s.damage?.types ?? [])].join("/")}`.trim();
@@ -232,6 +234,7 @@ function stanceVM(actor) {
   const active = stances.find(s => s.id === sys.combat?.activeStance) ?? null;
   return {
     active: active ? { id: active.id, name: active.name, categories: [...(active.system.categories ?? [])].join(", "),
+      strikes: list(active.system.activities).filter(a => !a.minLevel || (sys.level ?? 0) >= a.minLevel).map(a => a.label).filter(Boolean).join(", "),
       tip: tipHTML({ title: active.name, meta: [[...(active.system.categories ?? [])].join(", ")], body: active.system.description ?? "" }) } : null,
     others: stances.filter(s => s !== active).map(s => ({ id: s.id, name: s.name,
       tip: tipHTML({ title: s.name, meta: ["Switch: Bonus Action"], body: s.system.description ?? "" }) })),

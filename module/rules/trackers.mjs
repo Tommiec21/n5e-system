@@ -211,3 +211,27 @@ export function resavesDue(actor, now) {
   return list(actor.effects).filter(e => !e.disabled && e.flags?.n5e?.resave && !sameTurn(e.flags.n5e.resave.applied, now))
     .map(e => ({ id: e.id, name: e.name, ...e.flags.n5e.resave }));
 }
+
+/* -------------------------------------------- */
+/*  Effects that end on the source's turn       */
+/* -------------------------------------------- */
+
+/**
+ * Effects placed by activities can end at the start or end of the source creature's turn:
+ *   turnStart    "until the start (beginning) of your next turn"
+ *   turnEnd      "until the end of your turn" (the current one, or the next one if placed off-turn)
+ *   nextTurnEnd  "until the end of your next turn"
+ * @param {string} sourceUuid
+ * @param {object[]} effects
+ * @param {"turnStart"|"turnEnd"} when
+ * @param {{round, turn}} now
+ */
+export function expiringEffects(sourceUuid, effects, when, now) {
+  return effects.filter(e => {
+    const x = e.flags?.n5e?.expires;
+    if ( !x || x.sourceUuid !== sourceUuid ) return false;
+    if ( when === "turnStart" ) return x.at === "turnStart";
+    if ( x.at === "turnEnd" ) return true;
+    return x.at === "nextTurnEnd" && !sameTurn(x.placed, now);
+  });
+}

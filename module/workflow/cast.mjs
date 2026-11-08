@@ -9,10 +9,11 @@
 import { trackerButtons } from "./trackers.mjs";
 import { castPlan } from "./cast-plan.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
-import { activityButtons } from "./activity-buttons.mjs";
+import { activityButtons, damageButtons } from "./activity-buttons.mjs";
 import { esc } from "../view-models/common.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
+const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null);
 
 /** Moldings and Maneuvers the actor could add to this cast. */
 function castOptions(actor, item) {
@@ -36,6 +37,9 @@ function dialogContent(actor, item, plan) {
     ${plan.choices?.divisors ? choice("Cost divisor (pick one)", "divisorChoice", plan.choices.divisors.map(d => `/${d}`)) : ""}
     ${opts.length ? `<fieldset><legend>Moldings and Maneuvers</legend>${opts.map(o => `<label class="opt">
       <input type="checkbox" name="opt" value="${o.id}"> ${esc(o.name)}</label>`).join("")}</fieldset>` : ""}
+    ${plan.featureOptions?.length ? `<fieldset><legend>Features</legend>${plan.featureOptions.map(o => o.choose
+      ? `<label class="opt">${esc(o.label)} <input type="number" name="famt-${o.id}" value="0" min="0" max="${o.max}" style="width:50px"> <span class="sub">of ${o.max}</span></label>`
+      : `<label class="opt${o.used ? " used" : ""}"><input type="checkbox" name="fopt" value="${o.id}" ${o.auto && !o.used ? "checked" : ""} ${o.used ? "disabled" : ""}> ${esc(o.label)}${o.used ? " (used this turn)" : ""}</label>`).join("")}</fieldset>` : ""}
     ${plan.concentration?.atLimit ? `<label>End concentration on <select name="endConcentration">${conc.map(c =>
       `<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select></label>` : ""}
     <div class="preview" data-preview></div>
@@ -50,14 +54,17 @@ function readSelection(form) {
     multiplierChoice: val("multiplierChoice") != null ? Number(val("multiplierChoice")) : undefined,
     divisorChoice: val("divisorChoice") != null ? Number(val("divisorChoice")) : undefined,
     options: [...form.querySelectorAll('input[name="opt"]:checked')].map(i => i.value),
-    endConcentration: val("endConcentration") || undefined
+    endConcentration: val("endConcentration") || undefined,
+    featureOptions: [...[...form.querySelectorAll('input[name="fopt"]:checked')].map(i => ({ id: i.value })),
+      ...[...form.querySelectorAll('input[name^="famt-"]')].map(i => ({ id: i.name.slice(5), amount: Number(i.value) || 0 })).filter(o => o.amount > 0)],
+    now: nowTurn()
   };
 }
 
 function previewHTML(plan) {
   const costLine = plan.costMode === "chakra" ? `<b>${plan.cost} CP</b> (${plan.cpAfter} left)`
     : plan.costMode === "none" ? "<b>No cost</b>" : `<b>Special:</b> ${esc(plan.costText || "see text")}`;
-  const pools = Object.entries(plan.pools).map(([k, v]) => `${v} ${k === "focus" ? "Focus" : "Superiority Dice"}`).join(", ");
+  const pools = Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`).join(", ");
   return `<p>Cost: ${costLine}${pools ? ` · plus ${pools}` : ""}${plan.upcast > 0 ? ` · upcast +${plan.upcast}` : ""}</p>
     ${plan.concentration ? `<p>Concentration: upkeep ${plan.costMode === "chakra" ? Math.floor(plan.cost / 2) : 0} CP per turn${plan.concentration.ending ? " (ends one current jutsu)" : ""}</p>` : ""}
     ${plan.warnings.map(w => `<p class="warn">${esc(w)}</p>`).join("")}
@@ -72,7 +79,7 @@ function previewHTML(plan) {
  * @param {boolean} [o.skipDialog]  cast at base rank with defaults (Alt+click)
  */
 export async function castJutsu(actor, item, { skipDialog = false } = {}) {
-  let sel = {};
+  let sel = { now: nowTurn() };
   const initial = castPlan(actor, item, sel);
   const needsDialog = !skipDialog || !initial.ok;
   if ( needsDialog ) {
@@ -112,7 +119,23 @@ export async function postCastCard(actor, item, plan) {
   const j = item.system;
   const activities = effectiveActivities(item);
   const spent = [plan.costMode === "chakra" ? `${plan.cost} CP` : plan.costMode === "none" ? "No cost" : "Special cost",
-    ...Object.entries(plan.pools).map(([k, v]) => `${v} ${k === "focus" ? "Focus" : "Superiority Dice"}`)].join(" · ");
+    ...Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`)].join(" · ");
+  // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
+  const extras = [];
+  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: j.discipline === "gen" })}</div>`);
+  if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
+  for ( const r of plan.extraRolls ?? [] ) {
+    const roll = await new Roll(r.formula).evaluate();
+    extras.push(`<p class="note"><b>${esc(r.label)}</b>: rolled ${roll.total}. ${esc(r.note)}</p>`);
+  }
+  for ( const n of plan.notes ?? [] ) extras.push(`<p class="note">${esc(n)}</p>`);
+  for ( const [k, v] of Object.entries(plan.pools) ) {
+    const die = actor.system.resources?.[k]?.die;
+    if ( !die || !v ) continue;
+    const roll = await new Roll(`${v}${die}`).evaluate();
+    extras.push(`<p class="note"><b>${esc(actor.system.resources[k].label || k)}</b>: rolled ${roll.total} (${v}${die})</p>`);
+  }
+  if ( plan.pyroclasm ) extras.push(`<p class="note">+1 Pyroclasm (${Math.min(3, actor.system.resources?.pyroclasm?.value ?? 0)} / 3)</p>`);
   const TextEditor = foundry.applications.ux.TextEditor.implementation;
   const desc = await TextEditor.enrichHTML(j.description ?? "", { relativeTo: item, rollData: actor.getRollData() });
   const content = `<div class="n5e-cast-card" data-actor-uuid="${actor.uuid}" data-item-uuid="${item.uuid}">
@@ -121,6 +144,7 @@ export async function postCastCard(actor, item, plan) {
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
     ${activityButtons(actor, item, activities, { rank: plan.rank })}
+    ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;

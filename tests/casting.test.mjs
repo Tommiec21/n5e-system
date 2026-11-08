@@ -48,10 +48,14 @@ test("jutsu text becomes activities", () => {
 });
 
 test("unarmed damage and crit doubling", () => {
-  const a = makeActor({ system: structuredClone(baseAbilities) });
+  const a = makeActor({ system: structuredClone(baseAbilities), items: [
+    { _id: "stanceTai0000001", name: "Wolf Fist Stance", type: "stance", system: { categories: ["taijutsu"] } },
+    { _id: "stanceBuki000001", name: "Blade Stance", type: "stance", system: { categories: ["bukijutsu"] } }] });
   assert.equal(unarmedFormula(a), "1 + 3");
-  a.system.combat.activeStance = "x";
-  assert.equal(unarmedFormula(a), "1d6 + 3");
+  a.system.combat.activeStance = "stanceTai0000001";
+  assert.equal(unarmedFormula(a), "1d6 + 3", "Taijutsu stances make the die a d6");
+  a.system.combat.activeStance = "stanceBuki000001";
+  assert.equal(unarmedFormula(a), "1 + 3", "Bukijutsu stances don't");
   assert.equal(critFormula("2d10+2"), "4d10+2", "flat bonus not doubled");
   assert.equal(critFormula("1d4 + 2", 2), "2d4 + 2 + 2", "dice and ability mod doubled");
 });

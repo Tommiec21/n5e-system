@@ -34,7 +34,29 @@
         "dex"
       ],
       "amount": 1
-    }
+    },
+    "activities": [
+      {
+        "id": "n5eoSrl55suYiStm",
+        "type": "effect",
+        "label": "Light Step: +1 AC",
+        "effect": {
+          "name": "Light Step: +1 AC",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "activation": "reaction",
+        "text": "When an attack misses you (light or no armor): move 10 ft without provoking; your next attack on it deals +1d6 (once per turn)."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eT82hLA0iwWGBl",

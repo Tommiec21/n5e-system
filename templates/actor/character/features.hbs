@@ -46,6 +46,9 @@
             <span class="glyph">{{{glyph}}}</span>
             <a class="name" data-action="editItem">{{name}}</a>
             {{#if uses}}<span class="sub">{{uses}}</span>{{/if}}
+            {{#if choice}}<select class="choice" data-item-field="flags.n5e.choice.value" aria-label="{{choice.label}}" data-tooltip="{{choice.label}}" {{#unless @root.editable}}disabled{{/unless}}>
+              <option value="" {{#if choice.none}}selected{{/if}}>{{choice.label}}…</option>
+              {{#each choice.options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>{{/if}}
             <span class="use">{{#unless passive}}<button type="button" data-action="useItem">Use</button>{{/unless}}{{> "systems/n5e/templates/parts/item-controls.hbs"}}</span>
           </div>
         {{else}}

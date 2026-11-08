@@ -28,6 +28,7 @@ import { computeAC } from "../../rules/ac.mjs";
 import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
 import { staminaPool } from "../../rules/trackers.mjs";
+import { featureCritRange } from "../../rules/features.mjs";
 import { rule } from "../../rules-settings.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 
@@ -264,8 +265,14 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
 
     // Step 8: caps and defenses.
     this.critRange = {};
-    for ( const [scope, v] of Object.entries(mods.critRange) ) this.critRange[scope] = Math.min(critRangeCap, v);
-    const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).add("Reinforced armor", grants.reinforced)
+    const fcr = featureCritRange(this.parent ?? { items: [] });
+    for ( const scope of new Set([...Object.keys(mods.critRange), ...Object.keys(fcr)]) ) {
+      this.critRange[scope] = Math.min(critRangeCap, (mods.critRange[scope] ?? 0) + (fcr[scope] ?? 0));
+    }
+    // Titan Fist Stance (n5e.reinforced): Reinforced = Taijutsu modifier without it, or armor's +2.
+    let reinforced = grants.reinforced;
+    if ( mods.reinforced ) reinforced = reinforced > 0 ? reinforced + mods.reinforced : Math.max(0, this.disciplines?.tai?.mod ?? 0);
+    const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).add(grants.reinforced ? "Reinforced armor" : "Reinforced", reinforced)
       .add("Effects", mods.dr).addAll(P("dr"));
     this.dr = Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
@@ -333,7 +340,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       saves: new Set(), skills: new Set(), tools: new Set(), affinities: new Set(), keywordAccess: new Set(),
       mastery: [], hitDie: "", chakraDie: "", speed: 0, hijutsuAbilities: [], armor: null, reinforced: 0,
       blocking: 0, containerSlots: 0, bulk: 0, classItem: null, clanItem: null, backgroundItem: null,
-      maxRank: null, subclassItems: [], pools: [], scale: {}
+      maxRank: null, subclassItems: [], pools: [], scale: {}, profGrants: []
     };
     const containersSeen = new Set();
     const level = this.level;
@@ -413,11 +420,21 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       }
       // Feats/features granting Mastery directly.
       for ( const target of sys.grants?.mastery ?? [] ) g.mastery.push({ target, source: item.name });
+      // Feats granting a proficiency ("skill.ill", "tool.disguise"): Mastery instead when already proficient.
+      for ( const p of sys.grants?.proficiencies ?? [] ) g.profGrants.push({ target: p, source: item.name });
       // Bulk of carried physical items.
       if ( sys.bulk != null && sys.location !== "stored" ) g.bulk += (sys.bulk || 0) * Math.max(1, sys.quantity ?? 1);
     }
     for ( const a of this.affinities ?? [] ) g.affinities.add(a);
     for ( const k of this.keywordAccess ?? [] ) g.keywordAccess.add(k);
+    for ( const { target, source } of g.profGrants ) {
+      const [kind, key] = target.split(".");
+      const set = kind === "skill" ? g.skills : kind === "tool" ? g.tools : kind === "save" ? g.saves : null;
+      if ( !set || !key ) continue;
+      const own = kind === "skill" ? this.skills?.[key]?.proficient : kind === "tool" ? this.tools?.[key]?.proficient : this.saves?.[key]?.proficient;
+      if ( own || set.has(key) ) g.mastery.push({ target, source });
+      else set.add(key);
+    }
     return g;
   }
 

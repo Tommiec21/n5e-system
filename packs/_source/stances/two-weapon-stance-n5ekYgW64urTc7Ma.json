@@ -25,7 +25,45 @@
     "categories": [
       "bukijutsu"
     ],
-    "requirement": "Two weapons with the Light or Multiattack weapon property in each hand."
+    "requirement": "Two weapons with the Light or Multiattack weapon property in each hand.",
+    "activities": [
+      {
+        "id": "n5ekbkIQk5bsNzMP",
+        "type": "attack",
+        "label": "Flutter Attack",
+        "minLevel": 5,
+        "oncePerTurn": false,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "weapon",
+          "attacks": "2"
+        },
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "One attack with each Dancer Weapon; the save only if both hit."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5euxou7fp1RgDnw",

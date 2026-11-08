@@ -29,7 +29,58 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5epsFvdReB0nHtC",
+        "type": "effect",
+        "label": "Follow Up",
+        "effect": {
+          "name": "Follow Up",
+          "target": "targets",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "+1 (11th +2, 19th +3) to hit or to your save DC against it with your next non-Primary jutsu."
+      },
+      {
+        "id": "n5eF64gU8lB8jcQm",
+        "type": "effect",
+        "label": "Set-Up (AC)",
+        "effect": {
+          "name": "Set-Up (AC)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "lvl(2:-1,11:-2,19:-3)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        }
+      },
+      {
+        "id": "n5efo7RI5X8L4Mnb",
+        "type": "effect",
+        "label": "Set-Up (saves)",
+        "effect": {
+          "name": "Set-Up (saves)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.save",
+              "value": "lvl(2:-1,11:-2,19:-3)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ehfgGuQzHIOKKd",
@@ -39,7 +90,16 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "choice": {
+        "label": "Primary discipline",
+        "options": {
+          "nin": "Ninjutsu",
+          "gen": "Genjutsu",
+          "tai": "Taijutsu",
+          "buki": "Bukijutsu"
+        }
+      }
     }
   },
   "_stats": {

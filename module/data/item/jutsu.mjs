@@ -64,7 +64,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
    * @param {string} [castRank]
    * @param {object} [choices]   the caster's pick when several multipliers/divisors apply (index)
    */
-  computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice } = {}) {
+  computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice, noReduction = false, subtract = 0 } = {}) {
     const pen = actorSystem?.conditionPenalties;
     const mods = actorSystem?.modifiers;
     const ctx = { discipline: this.discipline, keywords: this.keywords, rank: castRank };
@@ -78,6 +78,13 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       else if ( c.op === "divide" ) divisors.push(c.value);
       else if ( c.value >= 0 ) additions.push(c.value);
       else subtractions.push(-c.value);
+    }
+    if ( subtract > 0 ) subtractions.push(subtract);
+    // Crash: no source of cost reduction applies (casting at 0 cost isn't a reduction).
+    if ( noReduction ) {
+      subtractions.length = 0;
+      divisors.length = 0;
+      for ( let i = multipliers.length - 1; i >= 0; i-- ) if ( multipliers[i] < 1 ) multipliers.splice(i, 1);
     }
     const baseAdds = [pen?.baseCost?.[this.discipline] ?? 0];
     return computeJutsuCost({

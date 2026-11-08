@@ -143,7 +143,9 @@ test("Scout-Nin 1-5 with Assault Scout", () => {
   assert.equal(sys.resources.superiorityDice.value, 4);
   assert.equal(sys.abilities.int.value, 11, "ASI +1");
   assert.equal(actor.items.filter(i => i.type === "skill" || (i.type === "feat" && ["general", "skill", "ninjutsu", "taijutsu", "genjutsu"].includes(i.system.category))).length, 1, "ASI feat");
-  assert.equal([...sys.grants.skills].length, 4);
+  const featSkills = actor.items.filter(i => i.type === "feat").flatMap(i => [...(i.system.grants?.proficiencies ?? [])])
+    .filter(p => p.startsWith("skill.")).length;
+  assert.equal([...sys.grants.skills].length, 4 + featSkills, "class skills + skills granted by the ASI feat");
   assert.equal(actor.items.filter(i => i.type === "jutsu").length, 9, "Jutsu Known 9 at 5th (pool permitting)");
   const f = featuresVM(actor);
   const classGroup = f.groups.find(g => g.key === "class");

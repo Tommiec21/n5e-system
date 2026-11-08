@@ -31,7 +31,38 @@
     "tags": [
       "assault-maneuver"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5e0gkL9TaG5TjA3",
+        "type": "save",
+        "label": "Menacing Assault",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Creatures of your choice within 20 ft; failure: Demoralized ranks = half the Superiority Die."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eTnCStAL1dOUr8",

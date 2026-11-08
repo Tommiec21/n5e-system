@@ -25,7 +25,55 @@
     "categories": [
       "bukijutsu"
     ],
-    "requirement": "Melee, Flail Weapon Group"
+    "requirement": "Melee, Flail Weapon Group",
+    "activities": [
+      {
+        "id": "n5erhcUC1UTRCOR3",
+        "type": "attack",
+        "label": "Reaping Swing",
+        "minLevel": 0,
+        "oncePerTurn": true,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "weapon"
+        },
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": []
+      },
+      {
+        "id": "n5e8kJhVcu0FsdSF",
+        "type": "effect",
+        "label": "Reaping Swing: DR penalty",
+        "effect": {
+          "name": "Reaping Swing (DR)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "lvl(1:-2,10:-4)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "On a failed Dexterity save."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5euxou7fp1RgDnw",

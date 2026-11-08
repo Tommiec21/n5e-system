@@ -29,7 +29,43 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eGZIk9Z7GDX8b6",
+        "type": "effect",
+        "label": "Mark Combat Rival",
+        "effect": {
+          "name": "Combat Rival",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600,
+          "state": "combatRival"
+        }
+      },
+      {
+        "id": "n5eufAY2EwlFapzs",
+        "type": "effect",
+        "label": "Relentless Durability",
+        "effect": {
+          "name": "Relentless Durability",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 0,
+          "tempHp": "@poolRoll * lvl(3:1,10:2,17:3)"
+        },
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "oncePerTurn": true,
+        "activation": "reaction",
+        "text": "When you take damage."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ejKb4Kg2wwu7sh",

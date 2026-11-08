@@ -64,9 +64,17 @@ export function turnStartPlan(actor) {
   update["flags.n5e.chainTouched"] = false;
   const comboCleared = rule("comboClear") && !!flags.combo;
   if ( comboCleared ) update["flags.n5e.combo"] = null;
+  // Chakra Surge, Flow: regain 1 Focus at the start of the turn.
+  const flow = list(actor.effects).some(e => !e.disabled && e.flags?.n5e?.state === "flow");
+  const focus = sys.resources?.focus;
+  let focusGained = 0;
+  if ( flow && focus && (focus.value ?? 0) < (focus.maxValue ?? 0) ) {
+    update["system.resources.focus.value"] = (focus.value ?? 0) + 1;
+    focusGained = 1;
+  }
   const recharges = list(actor.items).filter(i => i.system.uses?.per === "recharge" && (i.system.uses.spent ?? 0) > 0)
     .map(i => ({ id: i.id, name: i.name, ...parseRecharge(i.system.uses.recharge || "6") }));
-  return { update, paid, ended, upkeep, chainReset, comboCleared, recharges };
+  return { update, paid, ended, upkeep, chainReset, comboCleared, recharges, focusGained };
 }
 
 /** Which economy slot an activation uses. */

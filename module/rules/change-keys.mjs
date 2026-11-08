@@ -18,6 +18,7 @@
  *   n5e.dice.all                  bonus/penalty to all dice rolls
  *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
+ *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
  */
 
 export const CHANGE_KEY_PREFIX = "n5e.";
@@ -25,7 +26,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, disciplineAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, reinforced: 0, unknown: []
   };
 }
 
@@ -82,6 +83,7 @@ export function parseN5eChanges(changes) {
       case "dice": out.diceAll += num(change.value); break;
       case "unarmed": if ( /^\d*d\d+$/.test(String(change.value).trim()) ) out.unarmedDice.push(String(change.value).trim()); break;
       case "fury": out.furyMax += num(change.value); break;
+      case "reinforced": out.reinforced += num(change.value); break;
       default: out.unknown.push(key);
     }
   }
@@ -131,6 +133,7 @@ export function changeKeyCatalog(N5E) {
   }
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
   add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");
+  add("Defense", "n5e.reinforced", "Reinforced: + number to armor's Reinforced; without it, Reinforced = Taijutsu modifier");
   add("Bukijutsu", "n5e.fury.max", "Max Fury: + number (Fury stacks up to 1 + this)");
   add("Rolls", "n5e.saveTier.shift", "Four-tier save results: shift up (+1) or down (−1)");
   add("Concentration", "n5e.concentration.max", "Max concentration jutsu: + number");

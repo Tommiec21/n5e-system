@@ -25,7 +25,68 @@
     "categories": [
       "taijutsu"
     ],
-    "requirement": ""
+    "requirement": "",
+    "unarmedAlt": {
+      "die": "1d8",
+      "item": "Combat Bracers",
+      "ability": "str"
+    },
+    "activities": [
+      {
+        "id": "n5enMf81z6eTqVqf",
+        "type": "attack",
+        "label": "Bone Breaking Strike",
+        "minLevel": 5,
+        "oncePerTurn": true,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "unarmed"
+        },
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ]
+      },
+      {
+        "id": "n5eohRGulAvo20rg",
+        "type": "effect",
+        "label": "Bone Breaking Strike: AC penalty",
+        "effect": {
+          "name": "Bone Breaking Strike (AC)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "lvl(5:-1,10:-2)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "minLevel": 5,
+        "text": "On a failed Strength save."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eOpMgOYddzmz3a",

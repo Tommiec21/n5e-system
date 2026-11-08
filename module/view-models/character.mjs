@@ -412,7 +412,11 @@ const titleCase = s => s.replace(/[-_]+/g, " ").replace(/\b\w/g, c => c.toUpperC
 export function featuresVM(actor) {
   const sys = actor.system;
   const feats = ofType(actor, "feat");
-  const featRow = i => ({ id: i.id, name: i.name, img: i.img, glyph: glyph(i.system.activation)?.svg ?? "",
+  const choiceVM = i => {
+    const c = i.flags?.n5e?.choice;
+    return c?.options ? { label: c.label, options: Object.entries(c.options).map(([value, label]) => ({ value, label, selected: value === c.value })), none: !c.value } : null;
+  };
+  const featRow = i => ({ id: i.id, name: i.name, img: i.img, glyph: glyph(i.system.activation)?.svg ?? "", choice: choiceVM(i),
     level: i.system.requirement?.level || "", passive: i.system.featureType === "passive",
     uses: i.system.uses?.max ? `${Math.max(0, (i.system.uses.maxValue ?? (Number(i.system.uses.max) || 0)) - i.system.uses.spent)} / ${i.system.uses.maxValue ?? i.system.uses.max}` : "" });
   const cls = sys.grants?.classItem;

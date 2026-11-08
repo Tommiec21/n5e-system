@@ -25,7 +25,53 @@
     "categories": [
       "taijutsu"
     ],
-    "requirement": ""
+    "requirement": "",
+    "unarmedType": "piercing",
+    "activities": [
+      {
+        "id": "n5ePHrTb24bUDdQS",
+        "type": "attack",
+        "label": "Serpent Grasp",
+        "minLevel": 5,
+        "oncePerTurn": true,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "unarmed"
+        },
+        "text": "On a hit, grapple it with one hand."
+      },
+      {
+        "id": "n5e87HdsKX5TlOpo",
+        "type": "save",
+        "label": "Serpents Rattle",
+        "minLevel": 5,
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 2d6",
+              "type": "piercing"
+            }
+          ]
+        },
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a failure, swing it into another creature: both take the damage."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eOpMgOYddzmz3a",

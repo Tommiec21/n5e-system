@@ -7,12 +7,13 @@ import { turnStartPlan } from "../rules/turn-start.mjs";
 import { esc } from "../view-models/common.mjs";
 import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
-import { trackersTurnEnd, onTokenMove, onAmpCreated } from "./trackers.mjs";
+import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
 
 async function onTurnStart(combat) {
   if ( !game.users.activeGM?.isSelf ) return;
   const actor = combat.combatant?.actor;
   if ( !actor ) return;
+  await expireSourceEffects(combat, actor, "turnStart", { round: combat.round, turn: combat.turn });
   await postConditionDamage(actor);
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
@@ -32,6 +33,7 @@ async function onTurnStart(combat) {
   }
   for ( const e of plan.ended ) lines.push(`<span class="warn">${esc(e.name)} ends: couldn't pay ${e.upkeep} CP upkeep</span>`);
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
+  if ( plan.focusGained ) lines.push("Flow: +1 Focus");
   // Death saves at the start of the turn while at 0 HP (characters; not stable or dead).
   const statuses = actor.statuses ?? new Set();
   if ( rule("deathSaves") && actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {
@@ -63,6 +65,14 @@ export function registerTurnHooks() {
   });
   Hooks.on("combatStart", combat => onTurnStart(combat));
   Hooks.on("moveToken", (token, movement) => onTokenMove(token, movement));
+  // Combat Rival (Brutish Momentum) lasts until combat ends.
+  Hooks.on("deleteCombat", async combat => {
+    if ( !game.users.activeGM?.isSelf ) return;
+    for ( const c of combat.combatants ) {
+      const ids = c.actor?.effects.filter(e => e.flags?.n5e?.state === "combatRival").map(e => e.id) ?? [];
+      if ( ids.length ) await c.actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+    }
+  });
   Hooks.on("createActiveEffect", (effect, options, userId) => onAmpCreated(effect, options, userId));
 }
 

@@ -25,7 +25,51 @@
     "categories": [
       "bukijutsu"
     ],
-    "requirement": "Melee, Heavy Weapon Property"
+    "requirement": "Melee, Heavy Weapon Property",
+    "activities": [
+      {
+        "id": "n5e6WbEdAz8g8PY3",
+        "type": "attack",
+        "label": "Savage Attack",
+        "minLevel": 5,
+        "oncePerTurn": false,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "@wdie"
+        },
+        "text": "Advantage against a creature that damaged you since your last turn."
+      },
+      {
+        "id": "n5eBI3VF6VdNrwr5",
+        "type": "save",
+        "label": "Savage Attack: knock Prone",
+        "minLevel": 10,
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ]
+      }
+    ]
   },
   "effects": [],
   "folder": "n5euxou7fp1RgDnw",
@@ -35,7 +79,11 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "weaponDie": {
+        "mod": "r<3",
+        "property": "heavy"
+      }
     }
   },
   "_stats": {

@@ -12,8 +12,9 @@
  */
 import {
   chilledMove, gainFury, spendFury, furyTurnEnd, bindingFuryTrigger, jutsuTrackers, trackerEffectData, marksToExpire,
-  ampsToDisable, gateChanges, nextGate, closeGatesPlan, resavesDue
+  ampsToDisable, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects
 } from "../rules/trackers.mjs";
+import { resolveFormula } from "../rules/unarmed.mjs";
 import { innerGates } from "../config/combat.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
@@ -233,6 +234,7 @@ export async function trackersTurnEnd(combat, actor, now) {
     await actor.update(fury);
     await syncFurious(actor);
   }
+  await expireSourceEffects(combat, actor, "turnEnd", now);
   const all = combat.combatants.contents.flatMap(c => c.actor?.effects.contents ?? []);
   const expired = marksToExpire(actor.uuid, all, now);
   for ( const e of expired ) await e.delete();
@@ -263,4 +265,64 @@ export async function rollResave(btn, event) {
     await effect.delete();
     await say(actor, `${esc(effect.name)} ends.`);
   } });
+}
+
+/* -------------------------------------------- */
+/*  Activity effects                            */
+/* -------------------------------------------- */
+
+const evalNumber = expr => {
+  try {
+    return Roll.safeEval(String(expr));
+  } catch {
+    return Number(expr) || 0;
+  }
+};
+
+/**
+ * Apply an activity's effect (Titan Guard, Light Step +1 AC, Reaping Swing's DR penalty...) to the
+ * caster or the targeted creatures, with an optional turn-based ending.
+ */
+export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null } = {}) {
+  const sub = v => resolveFormula(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0)), actor);
+  const targets = eff.target === "targets" ? targetedActors() : [actor];
+  if ( !targets.length ) return ui.notifications.info("Target the creatures first (T over a token).");
+  const now = nowTurn();
+  const changes = (eff.changes ?? []).map(c => {
+    const v = sub(c.value);
+    return { key: c.key, mode: c.mode ?? 2, value: /^[-+*/\d\s().]+$/.test(v) ? String(evalNumber(v)) : v };
+  });
+  const seconds = eff.seconds || (eff.expires ? 12 : 60);
+  const data = { name: eff.name || label, img: item?.img ?? "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
+    description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
+    duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
+    flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
+      state: eff.state || null, exclusive: eff.exclusive || null } } };
+  if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
+  const notes = [];
+  for ( const t of targets ) {
+    if ( eff.exclusive && t.isOwner ) {
+      const old = t.effects.filter(e => e.flags?.n5e?.exclusive === eff.exclusive).map(e => e.id);
+      if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old);
+    }
+    if ( changes.length || eff.expires || eff.state || eff.ampType ) {
+      if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
+      else await asGM("createEffects", { actorUuid: t.uuid, effects: [data] });
+    }
+    if ( eff.tempHp ) {
+      const roll = await new Roll(sub(eff.tempHp)).evaluate();
+      if ( t.isOwner ) await t.update({ "system.hp.temp": Math.max(t.system.hp.temp ?? 0, roll.total) });
+      notes.push(`${t.name}: ${roll.total} temporary HP`);
+    }
+  }
+  const ends = { turnStart: "until the start of your next turn", turnEnd: "until the end of the turn", nextTurnEnd: "until the end of your next turn" }[eff.expires] ?? "";
+  return say(actor, `<b>${esc(data.name)}</b>: ${esc(targets.map(t => t.name).join(", "))}${ends ? ` (${ends})` : ""}${notes.length ? `<div>${esc(notes.join(" · "))}</div>` : ""}`);
+}
+
+/** Turn start / end: remove effects that end on this creature's turn. */
+export async function expireSourceEffects(combat, actor, when, now) {
+  const all = combat.combatants.contents.flatMap(c => c.actor?.effects.contents ?? []);
+  for ( const e of expiringEffects(actor.uuid, all, when, now) ) {
+    if ( e.parent?.isOwner || game.user.isGM ) await e.delete();
+  }
 }

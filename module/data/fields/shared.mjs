@@ -68,7 +68,8 @@ export function resourcePoolFields({ label = "", max = "", recoveryOn = "lr" } =
     recovery: arr(obj({
       on: str({ initial: recoveryOn }),
       amount: str({ initial: "all" }),
-      formula: formula()
+      formula: formula(),
+      requires: str()                     // feature identifier needed for this recovery
     })),
     castsJutsu: bool(),
     countsAsChakraSpend: bool(),
@@ -194,7 +195,33 @@ export function activityFields() {
     check: obj({ skill: str(), tool: str(), dc: obj({ table: str(), difficulty: str(), value: num(null) }),
       outcomes: obj({ critSuccess: str(), success: str(), failure: str(), critFailure: str() }) }),
     text: str(),
-    riders: arr(obj(riderFields()))
+    riders: arr(obj(riderFields())),
+    /** Automation pass (0.7.1): level gate, pool cost, strikes, effects with turn-based expiry. */
+    minLevel: int(0, { min: 0 }),
+    inflicts: arr(obj({ key: str(), kind: str({ initial: "condition" }), ranks: int(1, { min: 0 }), label: str() })),
+    roll: obj({ formula: formula(), note: str() }),
+    oncePerTurn: bool(),
+    activation: str(),                   // overrides the item's activation for this activity
+    cost: obj({ pool: str(), amount: int(0, { min: 0 }), roll: bool() }),
+    strike: obj({
+      kind: str(),                       // unarmed|weapon ("" = not a strike)
+      dieSteps: int(0),                  // step the damage die up (+) or down (-)
+      extraDice: formula(),              // added damage ("2d6", "lvl(1:1d8,10:2d8)")
+      pierce: int(0, { min: 0 }),
+      maximize: bool(),
+      attacks: formula()                 // number of attacks ("2", "lvl(1:2,10:3)")
+    }),
+    effect: obj({
+      name: str(),
+      target: str({ initial: "self" }),  // self|targets
+      changes: arr(obj({ key: str(), value: str(), mode: int(2) })),
+      expires: str(),                    // turnStart|turnEnd|nextTurnEnd ("" = duration only)
+      seconds: int(0, { min: 0 }),
+      tempHp: formula(),
+      state: str(),                      // named state the effect represents (crash, flow, combatRival...)
+      exclusive: str(),                  // group: applying one removes the others (surge: Crash / Flow)
+      ampType: str()                     // makes it an Amp (battle|reflex|fortitude|will|clan)
+    })
   };
 }
 export const activities = () => arr(obj(activityFields()));

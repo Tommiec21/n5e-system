@@ -25,9 +25,68 @@
     "categories": [
       "taijutsu"
     ],
-    "requirement": ""
+    "requirement": "",
+    "activities": [
+      {
+        "id": "n5ekF4AtbiigQnsH",
+        "type": "effect",
+        "label": "Titan Guard",
+        "effect": {
+          "name": "Titan Guard",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.dr",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "minLevel": 5,
+        "activation": "reaction"
+      }
+    ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eQ4fdmdIsi3MOC",
+      "name": "Titan Fist: Reinforced",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.reinforced",
+          "value": "2",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eKa9ypUOKVczTS.n5eQ4fdmdIsi3MOC"
+    }
+  ],
   "folder": "n5eOpMgOYddzmz3a",
   "sort": 0,
   "ownership": {

@@ -31,7 +31,38 @@
     "tags": [
       "assault-maneuver"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5ewK8ajeVSAAusr",
+        "type": "save",
+        "label": "Arresting Strike",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Failed save: speed halved, Prone, standing also costs its Bonus Action until the end of its next turn."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eTnCStAL1dOUr8",

@@ -5,7 +5,7 @@
   "img": "icons/svg/explosion.svg",
   "system": {
     "identifier": "chakra-surge",
-    "description": "<p>Beginning at 3rd level you have learned a technique allowing you to enter a heightened state of chakra potency, called a chakra surge, but unlike other battle states, this one just like your Ninjutsu is flexible in its purpose and use. You have two different battle states you can enter; Crash and Flow. You can enter one of these states as a bonus action and once per turn, can spend a bonus action to swap states. You cannot benefit from both states at once and if you would attempt to enter either Crash or Flow while benefiting from the other, you exit the state you are currently in first. When you activate this feature to enter either state, you can remain in either state for a combined duration of up to 1 minute and you cannot re-enter either state until you have spent 10 minutes of uninterrupted time resting or meditating.</p>\n<aside class=\"n5e-box\">\n<h4>Crash</h4>\n<p>Will Amp</p>\n<p>Crash symbolizes you releasing the limits on your chakra coils, empowering the jutsu you cast.</p>\n<p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 7th, 3d10 at 11th, 4d10 at 15th and 5d10 at 19th level. Reduce the dice rolled by half (rounded up) if the jutsu affects an area.</p>\n<p>You can use two or more Moldings at once as part of the same casting.</p>\n<p>You can use the Draw Reserves skill Action, as an Action.</p>\n<p>You cannot benefit from any source of cost reduction. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>\n</aside>",
+    "description": "<p>Beginning at 3rd level you have learned a technique allowing you to enter a heightened state of chakra potency, called a chakra surge, but unlike other battle states, this one just like your Ninjutsu is flexible in its purpose and use. You have two different battle states you can enter; Crash and Flow. You can enter one of these states as a bonus action and once per turn, can spend a bonus action to swap states. You cannot benefit from both states at once and if you would attempt to enter either Crash or Flow while benefiting from the other, you exit the state you are currently in first. When you activate this feature to enter either state, you can remain in either state for a combined duration of up to 1 minute and you cannot re-enter either state until you have spent 10 minutes of uninterrupted time resting or meditating.</p>\n<aside class=\"n5e-box\">\n<h4>Crash</h4>\n<p>Will Amp</p>\n<p>Crash symbolizes you releasing the limits on your chakra coils, empowering the jutsu you cast.</p>\n<p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 7th, 3d10 at 11th, 4d10 at 15th and 5d10 at 19th level. Reduce the dice rolled by half (rounded up) if the jutsu affects an area.</p>\n<p>You can use two or more Moldings at once as part of the same casting.</p>\n<p>You can use the Draw Reserves skill Action, as an Action.</p>\n<p>You cannot benefit from any source of cost reduction. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>\n</aside><aside class=\"n5e-box\"><p><b>Flow</b> (Will Amp)</p><p>Flow symbolizes you controlling and refining your chakra, making slight adjustments to it as the battle progresses.</p><p>You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 11th level and +3 at 19th level.</p><p>When you being your turn in this state, you regain 1 Focus.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu or features that boosts the damage you deal with Ninjutsu.</p></aside>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -29,7 +29,47 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5egCqzoOn6KvA1k",
+        "type": "effect",
+        "label": "Enter Crash",
+        "effect": {
+          "name": "Chakra Surge: Crash",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "crash",
+          "exclusive": "surge",
+          "ampType": "will"
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5edoFOqoeYZvrPk",
+        "type": "effect",
+        "label": "Enter Flow",
+        "effect": {
+          "name": "Chakra Surge: Flow",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.saveDC.nin",
+              "value": "lvl(3:1,11:2,19:3)",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "state": "flow",
+          "exclusive": "surge",
+          "ampType": "will"
+        },
+        "activation": "bonus"
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eimLU5gTG8gIKX",
@@ -39,7 +79,20 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Crash: bonus damage",
+        "requiresState": "crash",
+        "auto": true,
+        "appliesTo": {
+          "discipline": "nin",
+          "requiresDamage": true
+        },
+        "damage": {
+          "formula": "lvl(3:1d10,7:2d10,11:3d10,15:4d10,19:5d10)",
+          "halfForArea": true
+        }
+      }
     }
   },
   "_stats": {

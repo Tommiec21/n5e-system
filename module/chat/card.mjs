@@ -3,6 +3,7 @@
  * spent and buttons for their rollable parts (attack, damage, save, healing) read from their text.
  * Jutsu use the cast card (workflow/cast.mjs); weapons the attack card (workflow/attack.mjs).
  */
+import { unarmedSpec } from "../rules/unarmed.mjs";
 import { glyph, keywordChip, componentChips, propertyChips, signed } from "../view-models/common.mjs";
 
 export const CARD_TEMPLATE = "systems/n5e/templates/chat/item-card.hbs";
@@ -82,9 +83,9 @@ export function actionCardData(kind, key, actor) {
   const data = { name: unarmed ? "Unarmed Strike" : def.label, img: "icons/svg/combat.svg", type: kind,
     glyph: g?.svg ?? "", glyphLabel: g?.label ?? "", subtitle: "", chips: [], stats: [], blocks: [], description: "" };
   if ( unarmed ) {
-    const str = actor?.system?.abilities?.str?.mod ?? 0;
+    const u = actor ? unarmedSpec(actor) : { formula: "1", type: "bludgeoning" };
     data.subtitle = "Attack · always proficient";
-    data.stats.push({ label: "Damage", value: `${actor?.system?.combat?.activeStance ? "1d6" : "1"} ${signed(str)} bludgeoning` });
+    data.stats.push({ label: "Damage", value: `${u.formula} ${u.type}` });
   } else if ( kind === "skill" ) {
     const skill = N5E.skills?.[def.skill]?.label ?? def.skill;
     data.subtitle = `${skill} · ${N5E.skillActionTiers?.[def.tier]?.label ?? def.tier} skill action`;

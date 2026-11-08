@@ -25,7 +25,33 @@
     "categories": [
       "bukijutsu"
     ],
-    "requirement": "Iron Claws, or a weapon with the Deadly or Hidden weapon property."
+    "requirement": "Iron Claws, or a weapon with the Deadly or Hidden weapon property.",
+    "unarmedDie": "1d6",
+    "unarmedType": "slashing",
+    "unarmedAlt": {
+      "die": "1d8",
+      "item": "Iron Claws"
+    },
+    "activities": [
+      {
+        "id": "n5eotRytF6r1H5ta",
+        "type": "attack",
+        "label": "Assassination Strike",
+        "minLevel": 5,
+        "oncePerTurn": true,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "unarmed",
+          "maximize": true
+        },
+        "text": "Against a creature you are hidden from."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5euxou7fp1RgDnw",

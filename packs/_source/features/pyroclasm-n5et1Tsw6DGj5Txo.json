@@ -29,7 +29,46 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5esf3FD8Qiby1zH",
+        "type": "save",
+        "label": "Detonate",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(2*@amount)d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "pyroclasm",
+          "choose": true
+        },
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "activation": "action",
+        "text": "10 ft around you. Failed save: the damage and 1 rank of Burned per Pyroclasm spent."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eyLwEbzlfm0nR9",
@@ -39,7 +78,49 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOptions": [
+        {
+          "label": "Hellrend (Pyroclasm)",
+          "appliesTo": {
+            "keywords": [
+              "fireRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pyroclasm",
+            "choose": true
+          },
+          "effect": {
+            "name": "Hellrend (DR)",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "-2*@amount",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd"
+          }
+        },
+        {
+          "label": "Devastation (1 Pyroclasm)",
+          "appliesTo": {
+            "keywords": [
+              "fireRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pyroclasm",
+            "amount": 1
+          },
+          "roll": "1d6",
+          "note": "Maximize that many damage dice, halved (round down), minimum 1."
+        }
+      ]
     }
   },
   "_stats": {

@@ -25,9 +25,60 @@
     "categories": [
       "taijutsu"
     ],
-    "requirement": ""
+    "requirement": "",
+    "activities": [
+      {
+        "id": "n5etaCewmpdIDE6x",
+        "type": "attack",
+        "label": "Bunny Roundhouse",
+        "minLevel": 5,
+        "oncePerTurn": true,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "unarmed"
+        },
+        "text": "One roll against every hostile creature in your unarmed range."
+      }
+    ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eDiUoAqXzirbVI",
+      "name": "Rabbit Fist: speed",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.speed",
+          "value": "10",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eXmekGMjAqUXhI.n5eDiUoAqXzirbVI"
+    }
+  ],
   "folder": "n5eOpMgOYddzmz3a",
   "sort": 0,
   "ownership": {

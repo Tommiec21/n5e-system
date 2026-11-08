@@ -23,6 +23,8 @@ import random
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, "packs", "_source")
 CORE_VERSION = "13.351"
@@ -781,6 +783,8 @@ def main():
     feats, feat_names = build_feats(core)
     docs = [*build_scout(oro, stance_uuids), *build_ninjutsu(oro, stance_uuids), *stances, *feats, *build_jutsu(parsed)]
     n = write(docs)
+    from automation import apply as apply_automation  # noqa: E402  (tools/content/automation.py)
+    apply_automation()
     load_all()
     apply_folders()
     print(f"wrote {n} documents ({len(stances)} stances; feats: {', '.join(feat_names)})")

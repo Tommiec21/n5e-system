@@ -25,7 +25,68 @@
     "categories": [
       "bukijutsu"
     ],
-    "requirement": "Melee, Polearm Weapon Group"
+    "requirement": "Melee, Polearm Weapon Group",
+    "activities": [
+      {
+        "id": "n5eBEz8gJt7bd745",
+        "type": "attack",
+        "label": "Opposite end",
+        "minLevel": 0,
+        "oncePerTurn": false,
+        "activation": "bonus",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "weapon",
+          "dieSteps": -1
+        },
+        "text": "After taking the Attack action."
+      },
+      {
+        "id": "n5eDz4uNxK3Efoon",
+        "type": "attack",
+        "label": "Sweeping Attack",
+        "minLevel": 5,
+        "oncePerTurn": false,
+        "activation": "",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "weapon"
+        },
+        "text": "One roll against every creature in a cone as long as your reach; move them 5 ft."
+      },
+      {
+        "id": "n5e8uAAzD76fqE9l",
+        "type": "save",
+        "label": "Knock Prone",
+        "minLevel": 10,
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ]
+      }
+    ]
   },
   "effects": [],
   "folder": "n5euxou7fp1RgDnw",

@@ -9,6 +9,7 @@
  *   "gain 12 Temporary Hit points"             -> temporary HP
  *   "regain 2d8 hit points"                    -> healing
  */
+import { unarmedSpec } from "./unarmed.mjs";
 import { hasResave } from "./trackers.mjs";
 import { abilities } from "../config/core.mjs";
 import { damageTypes } from "../config/combat.mjs";
@@ -107,10 +108,7 @@ export function effectiveActivities(item) {
  * @param {object} actor
  */
 export function unarmedFormula(actor) {
-  const die = actor.system.combat?.activeStance ? "1d6" : "1";
-  const str = actor.system.abilities?.str?.mod ?? 0;
-  const extra = (actor.system.modifiers?.unarmedDice ?? []).map(d => ` + ${d}`).join("");
-  return `${die}${extra}${str ? ` ${str < 0 ? "-" : "+"} ${Math.abs(str)}` : ""}`;
+  return unarmedSpec(actor).formula;
 }
 
 /**

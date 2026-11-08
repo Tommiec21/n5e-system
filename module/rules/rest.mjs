@@ -10,6 +10,7 @@
  * Envenomed: no rest benefits. Long and Full need at least 1 HP.
  */
 import { rule } from "../rules-settings.mjs";
+import { recoveryAllowed } from "./features.mjs";
 
 const DAY = 86400;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -137,7 +138,7 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
   const recovers = new Set(RECOVERS[type]);
   const refreshed = [];
   for ( const [id, pool] of Object.entries(sys.resources ?? {}) ) {
-    const r = list(pool.recovery).find(x => recovers.has(x.on));
+    const r = list(pool.recovery).find(x => recovers.has(x.on) && recoveryAllowed(actor, x));
     if ( !r ) continue;
     const max = pool.maxValue ?? 0;
     let v = pool.value ?? 0;

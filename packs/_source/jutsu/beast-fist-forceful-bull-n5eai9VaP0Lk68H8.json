@@ -47,7 +47,38 @@
       "per": "",
       "staminaEligible": false
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFknufZFPgFqCR",
+        "type": "effect",
+        "label": "Forceful Bull",
+        "effect": {
+          "name": "Forceful Bull",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.abilities.str.value",
+              "value": "18",
+              "mode": 4
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "tempHp": "8"
+        },
+        "text": "Strength becomes 18 if lower; 8 temporary HP."
+      },
+      {
+        "id": "n5eVLrdpAuddZMa0",
+        "type": "heal",
+        "label": "Refresh temporary HP",
+        "heal": {
+          "formula": "8",
+          "pool": "tempHp"
+        },
+        "activation": "bonus"
+      }
+    ],
     "featureType": "active",
     "rank": "D",
     "discipline": "tai",

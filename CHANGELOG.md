@@ -1,5 +1,81 @@
 # Changelog
 
+## 0.7.1-alpha.1 — Automation pass for the content in the system
+
+### Fixed
+- **Unarmed damage:** only Taijutsu stances (and stances that say so) set the Unarmed die to d6.
+  Bukijutsu and Chakra stances no longer do. Serpent Fist deals piercing, Silent Killing slashing
+  (d8 with Iron Claws), and Iron Fist rolls a d8 with Combat Bracers when Strength is your Taijutsu
+  ability. Inner Gate dice now also apply to Unarmed Strikes.
+- **Stance effects** apply only while that stance is active.
+- **Focus** only recovers to half on a Short Rest with Tenketsu Refinement (5th level).
+- **Chakra Surge** now includes the Flow box, which the book layout had placed in Chakra Compression.
+
+### Added
+- **Stance strikes and abilities.** The active stance shows its strikes on the Combat tab; they post
+  as a card with buttons. 5th- and 10th-level options appear at those levels. The strikes: Bleeding
+  Edge, Reaping Swing (with its DR penalty), Savage Attack (+1 die, 10th-level Prone save), Guardian
+  Strike, Bone Breaking Strike (Str save, Bruised, AC penalty), Roaring Strike, Opposite End, Sweeping
+  Attack, Raiding Strike (Pierce 4), Bunny Roundhouse, Serpent Grasp, Serpents Rattle, Pinpoint Shot
+  (max die), Assassination Strike (max die), Flutter Attack (two attacks, Dazed save) and Wolf Fang
+  Fist (die +1 step, 2 attacks, 3 at 10th).
+  - **Passive effects:** Rabbit Fist +10 speed; Titan Fist Reinforced (= Taijutsu modifier, or
+    armor's +2) and Titan Guard (+2 AC and DR until your next turn).
+  - **Other stance abilities:** Great Weapon rerolls 1s and 2s on Heavy weapons' damage die;
+    Drunken Fist's damage reduction roll.
+- **Class features:**
+  - **Chakra Compression:** a cast-dialog option that cuts cost by the rank, once per turn, on
+    1-Action Ninjutsu.
+  - **Chakra Surge:**
+    - Enter Crash or Flow, a Will Amp for 1 minute. Entering one ends the other.
+    - Crash adds its +d10s to Ninjutsu damage (half for areas), lifts the one-Molding limit, and
+      blocks cost reduction.
+    - Flow gives +Ninjutsu DC, +1 Focus at the start of each turn, and advantage on Ninjutsu
+      Concentration checks.
+  - **Quickened / Reactive Ninjutsu** change which action the cast uses.
+  - **Pyroclasm:**
+    - Gained once per turn when casting a Fire Release jutsu (max 3).
+    - **Detonate:** choose how many to spend; Dex save, 2d6 fire and Burned per Pyroclasm.
+    - **Hellrend:** cast option; targets' DR −2 per Pyroclasm until the end of your next turn.
+    - **Devastation:** cast option; rolls the d6.
+  - **Brutish Momentum:**
+    - **Combat Rival** marker, which ends when combat ends.
+    - **Relentless Durability:** spend a Superiority Die for temporary HP (×2 at 10th, ×3 at 17th).
+  - **Superiority Dice** are rolled whenever they're spent. The Assault Maneuvers have buttons for
+    their saves and effects (Arresting Strike, Menacing Assault, Rending Critical, Limit Breaker,
+    Knock Back, Whirlwind Strike, Staggering Will, Relentless Retaliation, Superior Momentum).
+  - **Jack of All:** pick the active Generalization on the Features tab.
+    - **Warfare:** bonus d8s on casts (cast option) or attacks (button), 1 Superiority Die, once per
+      turn.
+    - **Seize** and **Tactics** have buttons.
+  - **Switch Hitter:** pick your Primary discipline on the Features tab. Superior Assault's +1 crit
+    range follows it. Follow Up and Set-Up place their markers and penalties.
+  - **Extra Attack / General Technique:** attacks per Attack action are shown on the Unarmed Strike.
+  - **Meditation:** a group CP roll.
+  - **Path of the Swift:** +10 speed.
+  - **Tenacious Ninjutsu:** a clash roll.
+  - **Scholar:** Ninshou Mastery at 7th and 13th.
+- **Feats:**
+  - **Illusionist Research:** +1 Int or Wis, and Illusions proficiency (Mastery if already
+    proficient).
+  - **Master of Disguise:** Disguise Kit proficiency (or Mastery).
+  - **Light Step Mastery:** +1 AC reaction.
+- **Jutsu:**
+  - **Forceful Bull:** Strength becomes 18 and 8 temporary HP, with a refresh button.
+  - **Fox Fire:** a Glowing marker on the target.
+  - **Glamor Tongue:** a marker on the target.
+- **New building blocks** for future content:
+  - Strike activities (Unarmed or weapon, die steps, extra dice, Pierce, maximized die, several
+    attacks).
+  - Effect activities (self or targets, ending at the start or end of your turn or the end of your
+    next turn; temporary HP, Amps, exclusive states).
+  - Roll activities, and pool costs (fixed, rolled, or "any number").
+  - Level-scaled formulas: `lvl(1:1d8,5:2d8)`.
+  - Feature choices, and cast options from features.
+  - Feat proficiency grants.
+  - The `n5e.reinforced` effect key.
+- Content automation lives in `tools/content/automation.py`, so it survives re-importing the books.
+
 ## 0.7.0-alpha.1 — Phase 6: trackers and GM tools
 
 ### Added

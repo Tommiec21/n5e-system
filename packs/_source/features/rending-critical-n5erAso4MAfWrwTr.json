@@ -31,7 +31,38 @@
     "tags": [
       "assault-maneuver"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eeRYUwZhoMX7VK",
+        "type": "effect",
+        "label": "Rending Critical",
+        "effect": {
+          "name": "Rending Critical",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-floor(@poolRoll/2)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.dr",
+              "value": "-floor(@poolRoll/2)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "text": "Your Combat Rival on a critical hit; it can't gain jutsu bonuses to AC or DR meanwhile."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eTnCStAL1dOUr8",

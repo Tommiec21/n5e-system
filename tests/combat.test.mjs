@@ -105,7 +105,7 @@ test("combat: template and action card render", () => {
   const card = actionCardData("skill", "grapple", make());
   assert.equal(card.name, "Grapple");
   assert.match(card.subtitle, /Athletics/);
-  assert.equal(actionCardData("core", "unarmed", make()).stats[0].value, "1d6 +3 bludgeoning");
+  assert.equal(actionCardData("core", "unarmed", make()).stats[0].value, "1d6 + 3 bludgeoning");
 });
 
 test("casting updates Chain and Combo", async () => {
