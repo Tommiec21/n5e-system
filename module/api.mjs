@@ -1,3 +1,5 @@
+import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons } from "./workflow/automation.mjs";
+
 /**
  * Public API at game.n5e.api for homebrew modules and macros.
  * Registries are plain objects in CONFIG.N5E; these helpers validate and add entries so the engine
@@ -79,6 +81,7 @@ export function registerClanData(clanItem) {
 }
 
 export default {
+  setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
   registerClanData
 };

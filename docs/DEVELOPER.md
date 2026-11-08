@@ -327,3 +327,7 @@ are found by the level their text names ("Also at 3rd level"); options with a le
 above `MAX_LEVEL` are skipped. Intelligence Operative, Puppet Master and Science-Nin are left out
 until King remixes them. Run: `python3 tools/content/build_content.py <path to N5e-Rules-KB>`.
 
+# Automation framework extension
+
+For contextual bonuses, optional rule toggles, save-tier shifts, temporary weapon damage coatings and GM summon/clone templates, see [AUTOMATION_FRAMEWORK.md](AUTOMATION_FRAMEWORK.md). New logic lives in `module/rules/elements.mjs`, `module/rules/coatings.mjs`, and `module/workflow/automation.mjs`; the existing roll, attack and activity workflows call these helpers.
+

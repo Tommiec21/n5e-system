@@ -59,6 +59,12 @@
     </div>
   {{/each}}
 
+  {{#if ruleToggles.length}}
+  <div class="section-head"><h2>Situational rules</h2></div>
+  {{#each ruleToggles}}
+    <button type="button" data-action="toggleRule" data-rule-uuid="{{uuid}}" aria-pressed="{{enabled}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}: {{#if enabled}}On{{else}}Off{{/if}}</button>
+  {{/each}}
+  {{/if}}
   <div class="stances">
     <div class="section-head"><h2>Stances</h2><span class="sub">One at a time · switching costs a Bonus Action</span></div>
     {{#each vm.stances}}

@@ -8,6 +8,7 @@
 import { MODES, clickMode, critThreshold, rollSpec, readD20, willOfFireAward } from "./d20.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
+import { contextualSpec } from "../rules/elements.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
 
@@ -29,6 +30,7 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
   return `<div class="n5e-roll-card ${state}" data-n5e-roll>
     <header><b>${esc(spec.label)}</b>${MODE_LABEL[mode] ? `<span class="mode">${MODE_LABEL[mode]}</span>` : ""}
       <span class="bonus" ${tip ? `data-tooltip-html="${esc(tip)}"` : ""}>${signed(spec.bonus)}${bonusText ? ` ${esc(bonusText)}` : ""}</span></header>
+    ${tip ? `<details class="n5e-roll-breakdown"><summary>Roll breakdown</summary>${tip}</details>` : ""}
     ${spec.note ? `<div class="note">${esc(spec.note)}</div>` : ""}
     ${spec.roll ? `<div class="vs"><b>Roll:</b> ${esc(spec.roll)}</div>` : ""}
     ${spec.outcome ? `<div class="outcome">${esc(spec.outcome)}</div>` : ""}
@@ -69,7 +71,14 @@ export async function rollD20(actor, type, key, options = {}) {
  * @param {string} [options.onFail]      HTML added to the card only on a failure (Apply-condition buttons)
  * @param {Function} [options.onResult]  called with {natural, crit, fumble, degree, success, message}
  */
-export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null } = {}) {
+export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null,
+  target = undefined, tiers = null } = {}) {
+  // Multiple targets can have different defenses: never borrow the first target's facts for all.
+  if ( target === undefined ) {
+    const targets = Array.from(globalThis.game?.user?.targets ?? []);
+    target = targets.length === 1 ? targets[0].actor : null;
+  }
+  spec = contextualSpec(actor, spec, target);
   const type = spec.type ?? "custom";
   const key = spec.key ?? "";
   const click = clickMode(event);
@@ -89,19 +98,20 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
   let degree = null;
   if ( dc != null ) {
-    const d = degreeOfSuccess(roll.total, dc, { natural: result.natural, isSave: spec.kind === "save" });
+    const d = degreeOfSuccess(roll.total, dc, { natural: result.natural, isSave: spec.kind === "save", shift: spec.degreeShift });
     degree = d.degree;
     const labels = ["Critical Failure", "Failure", "Success", "Critical Success"];
     spec = { ...spec, note: [spec.note, `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`].filter(Boolean).join(" · "),
       // Buttons that only matter on a failure (apply a condition, etc.).
-      footer: `${spec.footer ?? ""}${degree < 2 && onFail ? onFail : ""}` };
+      footer: `${spec.footer ?? ""}${tiers?.[d.key] ? `<div class="n5e-save-outcome"><b>Result</b>: ${esc(tiers[d.key])}</div>` : ""}${degree < 2 && onFail && !Object.values(tiers ?? {}).some(Boolean) ? onFail : ""}` };
   }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
     flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }),
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
-      natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid } } }
+      natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
+      dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null } } }
   });
   await awardWillOfFire(actor, result);
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
@@ -133,24 +143,34 @@ export async function spendWillOfFire(message, how) {
   await actor.update({ "system.willOfFire.value": wof - 1 });
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const extra = data.extra ? ` + ${data.extra}` : "";
+  // Re-evaluate the original DC using the original contextual bonus, rather than carrying a stale
+  // degree onto the reroll. Tier effects are exclusive: only the newly selected result is printed.
+  const outcome = (total, natural) => {
+    if ( data.dc == null ) return { degree: null, html: "" };
+    const d = degreeOfSuccess(total, data.dc, { natural, isSave: data.kind === "save", shift: data.degreeShift });
+    const label = data.fourTier ? ["Critical Failure", "Failure", "Success", "Critical Success"][d.degree] : d.degree >= 2 ? "Success" : "Failure";
+    return { degree: d.degree, html: `<div class="note">vs DC ${data.dc}: ${label}</div>${data.tiers?.[d.key] ? `<div class="n5e-save-outcome">${esc(data.tiers[d.key])}</div>` : ""}` };
+  };
   if ( how === "reroll" ) {
     const roll = await new Roll(`${MODES[data.mode] ?? "1d20"} + @bonus${extra}`, { bonus: data.bonus }).evaluate();
     const result = readD20(roll, data.threshold ?? 20);
+    const resolved = outcome(roll.total, result.natural);
     return roll.toMessage({ speaker: ChatMessageCls.getSpeaker({ actor }),
       flavor: `<div class="n5e-roll-card ${result.crit ? "crit" : result.fumble ? "fumble" : ""}"><header><b>${esc(data.label)}</b>
-        <span class="mode">Will of Fire reroll</span></header></div>`,
-      flags: { n5e: { roll: { ...data, natural: result.natural } } } });
+        <span class="mode">Will of Fire reroll</span></header>${resolved.html}</div>`,
+      flags: { n5e: { roll: { ...data, natural: result.natural, degree: resolved.degree } } } });
   }
   // Advantage after the fact: one more d20, keep the higher natural.
   const extraDie = await new Roll("1d20").evaluate();
   const kept = Math.max(data.natural ?? 1, extraDie.total);
   const total = new Roll(`${kept} + @bonus${extra}`, { bonus: data.bonus });
   await total.evaluate();
+  const resolved = outcome(total.total, kept);
   return total.toMessage({ speaker: ChatMessageCls.getSpeaker({ actor }),
     flavor: `<div class="n5e-roll-card ${kept >= (data.threshold ?? 20) ? "crit" : ""}"><header><b>${esc(data.label)}</b>
       <span class="mode">Will of Fire advantage</span></header>
-      <div class="note">First d20 ${data.natural}, second ${extraDie.total}: keeps ${kept}.</div></div>`,
-    flags: { n5e: { roll: { ...data, natural: kept } } } });
+      <div class="note">First d20 ${data.natural}, second ${extraDie.total}: keeps ${kept}.</div>${resolved.html}</div>`,
+    flags: { n5e: { roll: { ...data, natural: kept, degree: resolved.degree } } } });
 }
 
 /**

@@ -52,6 +52,8 @@ import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
+import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
+import { contextualModifiers } from "../rules/elements.mjs";
 
 // A data-* attribute, or nothing when the value is empty. Buttons carry everything their click needs
 // in these attributes (JSON for parts/costs/effects), because chat cards are stored as plain HTML.
@@ -73,11 +75,11 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
  * @param {object|null} [o.cost]    pool cost paid when clicked
  */
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
-  piercing = false } = {}) {
+  piercing = false, weaponId = "" } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
   const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
-  const common = `${attr("parts", json)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
+  const common = `${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
@@ -129,12 +131,19 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     if ( !a.save?.abilities || ![...a.save.abilities].length ) return "";
     const ab = [...a.save.abilities][0];
     const dc = dcFor(a);
-    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
+    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
       ${attr("label", a.label || item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
       DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>`;
   };
   for ( const a of activities ) {
     if ( a.minLevel && level < a.minLevel ) continue;
+    if ( a.type === "summon" && a.summon?.uuid ) {
+      const units = { round: 6, minute: 60, hour: 3600, day: 86400 };
+      const duration = item.system.duration ?? {};
+      const seconds = (units[duration.unit] ?? 60) * (duration.value || 1);
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="summon"${common(a)}${attr("summon", JSON.stringify(a.summon))}${attr("seconds", seconds)}${attr("concentration", duration.concentration ? 1 : "")}>Summon: ${esc(a.label || item.name)} (GM)</button></div>`);
+      continue;
+    }
     // Strike: an Unarmed or weapon attack with changes (workflow/attack.mjs strikeAttack). The label
     // summarizes the changes, e.g. "Wolf Fang Fist (Unarmed, die +1 step)".
     if ( a.type === "attack" && a.strike?.kind ) {
@@ -189,7 +198,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
       const ab = [...(a.save?.abilities ?? [])][0];
       const dc = dcFor(a);
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
-        ${attr("four", a.save?.fourTier ? 1 : "")}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
+        ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
         DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
     } else if ( a.type === "damage" ) {
@@ -244,6 +253,13 @@ export async function onActivityClick(message, button, event) {
   const level = f => resolveFormula(String(f ?? "").replace(/@amount/g, String(amount)).replace(/@poolRoll/g, String(poolRoll ?? 0)), caster);
   // One case per data-n5e-act value written by activityButtons()/damageButtons().
   switch ( d.n5eAct ) {
+    case "summon": {
+      if ( !game.user.isGM ) return ui.notifications.info("Ask the GM to use the Summon button on this card.");
+      const { summonTokens } = await import("./automation.mjs");
+      try {
+        return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration });
+      } catch (error) { return ui.notifications.warn(error.message); }
+    }
     case "strike": {
       if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can make this attack.");
       const { strikeAttack } = await import("./attack.mjs");
@@ -276,13 +292,20 @@ export async function onActivityClick(message, button, event) {
       // typed instances). Crits double every die and the ability modifier, nothing else.
       const actor = caster;
       const parts = JSON.parse(d.parts || "[]");
+      const weapon = d.weaponId ? actor?.items.get(d.weaponId) : null;
+      const coatings = weapon ? activeCoatings(weapon, game.time.worldTime) : [];
+      if ( coatings.length && !weapon.isOwner ) return ui.notifications.warn("Only the weapon owner can roll coated damage.");
+      parts.push(...coatings.flatMap(c => c.parts.map(p => ({ ...p, abilityMod: 0 }))));
+      const targets = Array.from(game.user?.targets ?? []);
+      const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
+      if ( modifiers.bonus && parts.length ) parts[0] = { ...parts[0], formula: `(${parts[0].formula}) + (${modifiers.bonus})` };
       const crit = !!d.crit;
       const strMod = actor?.system.abilities?.str?.mod ?? 0;
       const instances = [];
       const rolls = [];
       for ( const p of parts ) {
         let formula = level(p.formula);
-        let abilityMod = d.mod !== undefined ? Number(d.mod) : null;
+        let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
         if ( formula.includes("@unarmed") ) {
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
           abilityMod = abilityMod ?? strMod;
@@ -292,6 +315,7 @@ export async function onActivityClick(message, button, event) {
         instances.push({ amount: roll.total, type: p.type });
       }
       const total = instances.reduce((t, i) => t + i.amount, 0);
+      if ( coatings.length ) await weapon.update({ "flags.n5e.coatings": spendCoatings(coatings) });
       // Binding Fury Stance: the first weapon damage each turn grants Fury (no-op otherwise).
       if ( d.weapon && actor?.isOwner ) await import("./trackers.mjs").then(m => m.onWeaponDamage(actor));
       // Pierce lowers the target's DR when applied: the actor's own plus the button's (Raiding Strike).
@@ -304,6 +328,8 @@ export async function onActivityClick(message, button, event) {
         content: `<div class="n5e-roll-card damage"><header><b>${crit ? "Critical damage" : "Damage"}</b>
           <span class="mode">${esc(typeLabel(types))}</span><span class="bonus">${total}</span></header>
           <div class="note">${esc(lines)}${pierce ? ` · Pierce ${pierce}` : ""}${crit ? " · dice and ability modifier doubled" : ""}</div>
+          ${modifiers.parts.length ? `<div class="note">${esc(modifiers.parts.map(p => `${p.label}: ${signed(p.value)}`).join(" · "))}</div>` : ""}
+          ${coatings.length ? `<div class="note">${esc(coatings.map(c => c.label).join(", "))} · uses spent on this damage roll</div>` : ""}
           ${applyButtons()}</div>`,
         flags: { n5e: { damage: { instances, crit, total, pierce, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }
@@ -328,7 +354,7 @@ export async function onActivityClick(message, button, event) {
         const dis = d.dis && first;
         first = false;
         const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
-        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode });
+        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}") });
       }
       return null;
     }

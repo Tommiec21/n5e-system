@@ -37,6 +37,7 @@ import { restDialog } from "../../workflow/rest.mjs";
 import { tryEndCondition } from "../../workflow/conditions.mjs";
 import { changeFury, openNextGate, closeGates, placeMarks } from "../../workflow/trackers.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
+import { ruleToggles } from "../../rules/elements.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -66,6 +67,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     actions: {
       n5eTab: CharacterSheet.#onTab,
       toggleMode: CharacterSheet.#onToggleMode,
+      toggleRule: CharacterSheet.#onToggleRule,
       editImage: CharacterSheet.#onEditImage,
       editItem: CharacterSheet.#onEditItem,
       deleteItem: CharacterSheet.#onDeleteItem,
@@ -163,8 +165,17 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     context.editMode = this.editMode;
     context.editable = this.isEditable;
     context.isNPC = this.actor.type === "npc";
+    context.ruleToggles = ruleToggles(this.actor);
     context.tabs = this._prepareTabs("primary");
     return context;
+  }
+
+  /** Toggle an owned source's contextual rules; the source remains visible when switched off. */
+  static async #onToggleRule(event, target) {
+    if ( !this.isEditable ) return;
+    const source = await fromUuid(target.dataset.ruleUuid);
+    if ( !source?.isOwner || (source.actor ?? source.parent?.actor ?? source.parent) !== this.actor ) return;
+    await source.update({ "flags.n5e.ruleToggle.enabled": source.flags?.n5e?.ruleToggle?.enabled === false });
   }
 
   /**

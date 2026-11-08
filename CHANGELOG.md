@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.3-alpha.1 — Automation framework
+
+### Added
+- Data-driven contextual modifiers and save-tier shifts on owned items and Active Effects, with nested predicates, source labels and optional Features-tab toggles.
+- Expandable d20 roll breakdowns. Target-specific predicates use a single target, never a guessed target for a group.
+- Authored four-tier save text selects one outcome; Will of Fire rerolls recalculate the outcome. Existing save-tier Active Effects now participate in d20 saves.
+- Temporary weapon damage coatings, with typed damage, expiry and optional use counts. Weapon attacks and strikes apply coatings without editing base weapon data; uses are spent on the damage roll.
+- GM summon/clone placement from authored world Actor templates, using unlinked tokens. Concentration and elapsed world time clean up flagged tokens across scenes without altering the template actor.
+- Public automation API, `n5e.summoned` extension hook, and `docs/AUTOMATION_FRAMEWORK.md` with examples, stored fields, boundaries and a live-world checklist.
+
+### Scope
+- This completes the reusable framework batch after 0.9.2. Features still need authored rule data; it does not infer every mechanic from prose.
+- Save outcomes display their selected text; conditional effects still require application. Summon templates retain their authored stats and ownership. Coatings currently add damage, not arbitrary on-hit conditions or weapon properties.
+- Verified outside Foundry; live v13 world testing remains required. No additional classes, levels or clans are imported.
+
 ## 0.9.2-alpha.1 — Compendium Browser
 
 ### Added

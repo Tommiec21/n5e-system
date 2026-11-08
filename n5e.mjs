@@ -28,6 +28,7 @@ import N5eTokenDocument from "./module/documents/token.mjs";
 import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
+import { registerAutomationHooks } from "./module/workflow/automation.mjs";
 import { registerEnrichers } from "./module/applications/enrichers.mjs";
 import CompendiumBrowser, { registerCompendiumBrowser } from "./module/applications/browser/compendium-browser.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
@@ -51,6 +52,9 @@ import * as degree from "./module/rules/degree.mjs";
 import * as chain from "./module/rules/chain.mjs";
 import * as ac from "./module/rules/ac.mjs";
 import * as formula from "./module/rules/formula.mjs";
+import * as elements from "./module/rules/elements.mjs";
+
+registerAutomationHooks();
 
 Hooks.once("init", () => {
   console.log("N5e | Initializing N5e 4.0 system");
@@ -62,7 +66,7 @@ Hooks.once("init", () => {
   game.n5e = {
     config: N5E,
     api,
-    rules: { progression, cost, conditions, degree, chain, ac, formula },
+    rules: { progression, cost, conditions, degree, chain, ac, formula, elements },
     migrations: MIGRATIONS,
     dice: { ...dice, d20 },
     // The Compendium Browser: game.n5e.browser() or game.n5e.browser("jutsu" | "features" | "stances" | "equipment" | "character").
