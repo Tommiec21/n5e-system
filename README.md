@@ -29,4 +29,5 @@ Foundry checks that URL for updates, so every published release shows up as an u
 
 See [docs/DEVELOPER.md](docs/DEVELOPER.md): how the code is organized, how data flows, and recipes for
 the common changes (adding a condition, a rule toggle, a sheet button, automation for a feature).
-[docs/RULES_MAP.md](docs/RULES_MAP.md) maps each rule to the code that implements it.
+[docs/RULES_MAP.md](docs/RULES_MAP.md) maps each rule to the code that implements it, and
+[docs/DATA_REFERENCE.md](docs/DATA_REFERENCE.md) lists every stored field, flag, setting and hook.

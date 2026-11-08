@@ -6,16 +6,21 @@
  * anything that can't be mapped with confidence is kept in flags.n5e.legacy and flagged for review.
  */
 
+// Item types that exist in 4.0, and V3.1 types that don't (they are converted: spell -> jutsu,
+// equipment -> armor/weapon/loot, tool -> toolkit, backpack -> container).
 const NEW_ITEM_TYPES = new Set(["jutsu", "weapon", "armor", "consumable", "toolkit", "container", "loot", "class",
   "subclass", "clan", "background", "feat", "stance"]);
 const OLD_ONLY_ITEM_TYPES = new Set(["spell", "equipment", "tool", "backpack"]);
 
+// 4.0 keys the mapping accepts; anything outside these lists goes to flags.n5e.legacy for review.
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 const SKILL_KEYS = ["acr", "ani", "ath", "cha", "dec", "his", "ill", "ins", "itm", "inv", "mar", "med", "nat", "nin",
   "prc", "prf", "per", "slt", "ste", "sur"];
 const ABILITIES = ["str", "dex", "con", "int", "wis", "cha"];
 const DAMAGE_TYPES = new Set(["bludgeoning", "piercing", "slashing", "acid", "cold", "earth", "fire", "lightning",
   "poison", "wind", "chakra", "force", "necrotic", "psychic"]);
+// Conditions removed in 4.0 (dropped from tokens), V3.1 size codes, and name fragments used to guess
+// which 4.0 toolkit / container an old item was ([fragment, 4.0 key], first match wins).
 const RETIRED_STATUSES = new Set(["frightened", "paralyzed", "poisoned"]);
 const SIZE_MAP = { tiny: "tiny", sm: "small", med: "medium", lg: "large", huge: "huge", grg: "gargantuan" };
 const TOOLKIT_NAMES = [

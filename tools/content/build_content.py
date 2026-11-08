@@ -19,6 +19,19 @@ workflow pack them.
 Adding content from the books: write a build_<thing>() that returns doc(...) entries, add it to
 `docs` in main(), and add any automation for it to automation.py (not here: this script copies text).
 
+Extending a class to more levels (e.g. Scout-Nin 6-20): in build_scout()/build_ninjutsu(), add the
+new features with F(name, level, "### Heading"), add them to `items`, and add an adv(level, "feature",
+...) entry (or "itemChoice" for picks) to the class's advancement list. Choices that grow with a class
+table column (Maneuvers Known, Moldings) are computed from that column, so widening the level loop
+range is usually enough. The class table itself is read whole, so @scale columns already cover 1-20.
+
+Adding a class: copy build_scout() as a template. A class doc needs identifier (slug), hitDie,
+chakraDie, columns (class table columns for @scale.<classCamelCase>.<column>), resourcePools, and
+advancement; a subclass needs classIdentifier pointing at its class.
+
+When the books change: headings are matched exactly (find/section raise KeyError naming the heading
+when it's gone), so a renamed heading fails loudly instead of importing the wrong text.
+
 Scope (Phase 2 content slice, King 2026-11-07):
   Scout-Nin 1-5 + Assault Scout, Ninjutsu Specialist 1-5 + Blaze Walker, every option those levels
   offer, all 24 Ch13 Fighting Stances, 4 random feats a 4th-level character can take, 10 jutsu.
@@ -458,9 +471,12 @@ def col(rows, idx):
 
 def build_scout(oro, stance_uuids):
     """Scout-Nin (table, features 1-5, options) and the Assault Scout subclass."""
+    # Everything is searched for after the class's own heading, so same-named headings in other
+    # classes (e.g. "Extra Attack") never match. `rows` is the class table (one row per level).
     at = oro.index("## Scout-Nin")
     rows = table_rows(oro[at:at + 40], "| Level | Proficiency Bonus | Features | Superiority Dice")
     items = []
+    # F(): a core feature of this class from the "### Heading" after the class heading.
     F = lambda name, lvl, heading, **kw: feature(name, "scout-nin", lvl, find(oro, heading, at), **kw)
 
     # Options.
@@ -505,6 +521,8 @@ def build_scout(oro, stance_uuids):
         if ln.strip().startswith("#"):
             break
         assault_intro.append(ln)
+    # Maneuvers Known column (index 4): each level where it rises becomes an itemChoice for the
+    # difference. Widen range(3, 6) to import more levels.
     man_known = [int(x) for x in col(rows, 4)]
     man_adv = []
     for lvl in range(3, 6):

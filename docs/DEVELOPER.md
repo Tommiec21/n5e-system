@@ -12,6 +12,10 @@ with a header comment explaining what it does and how to extend it; this guide t
 - [7. Testing](#7-testing)
 - [8. Releasing](#8-releasing)
 - [9. Conventions and gotchas](#9-conventions-and-gotchas)
+- [10. Where to start for a change](#10-where-to-start-for-a-change)
+
+Companion docs: [RULES_MAP.md](RULES_MAP.md) (each rule → the code that implements it) and
+[DATA_REFERENCE.md](DATA_REFERENCE.md) (every stored field, flag, message flag, setting and hook).
 
 ---
 
@@ -69,7 +73,7 @@ packs/_source/<pack>/       compendium sources, one JSON per document (the sourc
 tools/                      pack, unpack, release, check, install-local, comments-only
 tools/content/              build_content.py (books → JSON), automation.py (automation data)
 tests/                      node:test suites; helpers/ fakes Foundry's data layer
-docs/                       this guide, RULES_MAP.md
+docs/                       this guide, RULES_MAP.md (rule → code), DATA_REFERENCE.md (every stored field and flag)
 ```
 
 ## 3. Everyday commands
@@ -286,3 +290,24 @@ world closed (compendium files are locked while a world is open).
 - **Escaping**: anything put into tooltip HTML or data attributes goes through `esc()`.
 - **Rulings**: when a rule changes, update the context file's Section 11 changelog, `CHANGELOG.md`,
   and `docs/RULES_MAP.md` if the code location changed.
+
+## 10. Where to start for a change
+
+| You want to... | Start in |
+| --- | --- |
+| change a rule's number or table | `module/config/` (the registry), then `docs/RULES_MAP.md` |
+| switch an automation off by default | `module/config/rules.mjs` (`default`) |
+| fix how a number is calculated | `module/data/actor/creature.mjs` (pipeline) or the `module/rules/` function it calls |
+| change what a button does | the `data-n5e-*` handler named in `dice/roll.mjs onRenderChatMessage` |
+| change the cast dialog or cost | `workflow/cast.mjs` (dialog), `workflow/cast-plan.mjs` (plan), `rules/cost.mjs` (cost) |
+| automate a jutsu, feature, stance or feat | `tools/content/automation.py` (section 6) |
+| add a new kind of activity | header of `workflow/activity-buttons.mjs` |
+| add something that happens each turn | header of `workflow/turn.mjs` |
+| change a sheet's layout | the tab's template in `templates/actor/character/`, its data in `view-models/` |
+| change what's stored | `docs/DATA_REFERENCE.md`, the schema, and a migration (section 5) |
+| import more of the books | `tools/content/build_content.py` header |
+
+Every file starts with a header comment saying what it does, how it fits, and how to extend it; read
+that first. Each function says what it takes and returns; inline comments explain the rulings and
+the non-obvious steps. When you change behavior, update the comment in the same edit.
+
