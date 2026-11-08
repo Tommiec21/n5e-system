@@ -34,6 +34,10 @@ export default class RulesConfig extends HandlebarsApplicationMixin(ApplicationV
     return { groups, gm };
   }
 
+  /**
+   * Save (GM only). Each rule's value is coerced to its type (checkbox → boolean, numbers clamped to
+   * min/max) and written to its world setting only when it changed. Code reads them with rule("key").
+   */
   static async #onSubmit(event, form, formData) {
     if ( !game.user.isGM ) return ui.notifications.warn("Only the GM can change the N5e Rules.");
     const data = formData.object;
@@ -46,6 +50,7 @@ export default class RulesConfig extends HandlebarsApplicationMixin(ApplicationV
     ui.notifications.info("N5e Rules saved.");
   }
 
+  /** "Book defaults": every rule back to its default (GM only). */
   static async #onReset() {
     if ( !game.user.isGM ) return;
     for ( const [key, r] of Object.entries(rules) ) if ( key !== "rationPool" ) await game.settings.set("n5e", key, r.default);

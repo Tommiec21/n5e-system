@@ -15,6 +15,7 @@ import { activityButtons, damageButtons } from "./activity-buttons.mjs";
 import { esc } from "../view-models/common.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
+// {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
 const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null);
 
 /**

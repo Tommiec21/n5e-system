@@ -119,6 +119,7 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     for ( const el of this.element.querySelectorAll("[data-action='itemTab']") ) el.classList.toggle("active", el.dataset.tab === this.#tab);
   }
 
+  /** Click the header image: Foundry's file picker, saving the chosen path to the item's img. */
   static async #onEditImage() {
     if ( !this.isEditable ) return null;
     const FilePicker = foundry.applications.apps.FilePicker.implementation;
@@ -142,12 +143,14 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     return this.document.update(has ? { [`${path}.-=${value}`]: null } : { [`${path}.${value}`]: 1 });
   }
 
+  /** Effects tab: new transfer effect (applies to the owner; a stance's only while it is active). */
   static async #onCreateEffect() {
     const cls = CONFIG.ActiveEffect.documentClass;
     return cls.create({ name: `${this.document.name} effect`, img: this.document.img, type: "generic",
       transfer: true, origin: this.document.uuid }, { parent: this.document });
   }
 
+  /** The effect a clicked row belongs to ([data-effect-id]). */
   static #effect(target) {
     return this.document.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
   }

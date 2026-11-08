@@ -15,6 +15,14 @@ export async function spendRations(amount) {
   if ( amount ) return asGM("spendRations", { amount });
 }
 
+/**
+ * The rest dialog's body: the limit/ration status line, then per type: Short = how many Hit and
+ * Chakra Dice to spend (capped at half the max, rules/rest.mjs shortRestDice); Long = the food and
+ * drink checkbox; Full = a confirmation. Input names (hd, cd, food) are read back in restDialog().
+ * @param {Actor} actor
+ * @param {"short"|"long"|"full"} type
+ * @param {{ok, benefit, reason, rationCost}} check  from rules/rest.mjs restCheck()
+ */
 function dialogContent(actor, type, check) {
   const sys = actor.system;
   const status = [
@@ -38,7 +46,12 @@ function dialogContent(actor, type, check) {
   return `<div class="n5e-rest">${status}<p>Regain all HP, CP, Hit Dice and Chakra Dice, and recover from conditions that persist.</p></div>`;
 }
 
-/** Open a rest dialog for an actor. */
+/**
+ * Open a rest dialog for an actor (the header's Short / Long / Full Rest buttons).
+ * When the rest isn't allowed (limits, 0 HP, no Full Rests on missions) the dialog only explains why.
+ * @param {Actor} actor
+ * @param {"short"|"long"|"full"} type
+ */
 export async function restDialog(actor, type) {
   const check = restCheck(actor, type, { now: game.time.worldTime });
   const { DialogV2 } = foundry.applications.api;
@@ -58,7 +71,16 @@ export async function restDialog(actor, type) {
   return takeRest(actor, type, choice, check);
 }
 
-/** Roll, apply, post. */
+/**
+ * Take the rest: roll the dice spent (Short Rest only, all Hit Dice in one roll and all Chakra Dice
+ * in another, + Con per die), apply rules/rest.mjs restPlan() (actor update, item use resets,
+ * condition removals), spend rations through the GM, and post the summary card.
+ * Can be called without the dialog (macros, a future "party rest" tool).
+ * @param {Actor} actor
+ * @param {"short"|"long"|"full"} type
+ * @param {{hd?: number, cd?: number, food?: boolean}} [choice]
+ * @param {object} [check]  restCheck() result (recomputed when omitted)
+ */
 export async function takeRest(actor, type, { hd = 0, cd = 0, food = true } = {}, check = restCheck(actor, type, { now: game.time.worldTime })) {
   const sys = actor.system;
   const con = sys.abilities.con.mod;

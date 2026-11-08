@@ -9,7 +9,9 @@
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const SHINOBI_IMPLEMENTS = /kunai|shuriken|senbon/i;
 
+/** The owned item with this identifier (class features are matched by identifier, not name). */
 export const featureById = (actor, identifier) => list(actor.items).find(i => i.system?.identifier === identifier) ?? null;
+/** A feature's chosen value (flags.n5e.choice.value, set with the Features tab picker), or "". */
 export const choiceOf = (actor, identifier) => featureById(actor, identifier)?.flags?.n5e?.choice?.value || "";
 
 /** Switch Hitter's Primary casting discipline (nin|gen|tai|buki), or "". */

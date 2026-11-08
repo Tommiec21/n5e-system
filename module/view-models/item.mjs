@@ -85,6 +85,7 @@ function activatable(src, { duration = true, uses = true } = {}) {
   ].filter(Boolean);
 }
 
+/** Quantity, Bulk, location and equipped: shared by every physical item (weapons, armor, gear...). */
 function physical(src) {
   return section("Item", [
     F.num(src, "quantity", "Quantity", { small: true }),

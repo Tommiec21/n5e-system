@@ -14,7 +14,12 @@ import { esc } from "../view-models/common.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
 
-/** Turn start: roll condition damage and post it (applied with the card's Apply button). */
+/**
+ * Turn start: roll condition damage (Burned, Bleed) and post one card for it. The card's Apply buttons
+ * hit this creature only (flags.n5e.damage.targetUuid) and skip DR (ignoreDR), per KB 03.
+ * Not applied automatically (King's choice): the GM applies it or skips it.
+ * @param {Actor} actor  whose turn starts
+ */
 export async function postConditionDamage(actor) {
   const hits = conditionTurnStart(actor);
   if ( !hits.length ) return null;
@@ -33,7 +38,13 @@ export async function postConditionDamage(actor) {
     flags: { n5e: { damage: { instances, total, ignoreDR: true, targetUuid: actor.uuid }, actorUuid: actor.uuid } } });
 }
 
-/** Turn end: decay ranks, end turn-end conditions and expired ones. */
+/**
+ * Turn end: decay ranks, end turn-end conditions and expired ones (rules/condition-lifecycle.mjs
+ * conditionTurnEnd decides; this applies it and posts a card if anything changed).
+ * isExpired uses Foundry's own duration math (effect.duration.remaining) for the 1-minute default.
+ * @param {Actor} actor             whose turn ends
+ * @param {{round, turn}} now        the turn that is ending (a condition gained during it waits)
+ */
 export async function processConditionTurnEnd(actor, now) {
   const isExpired = e => e.duration?.type && e.duration.type !== "none" && (e.duration.remaining ?? 1) <= 0;
   const { decay, end } = conditionTurnEnd(actor, { now, isExpired });
@@ -45,7 +56,15 @@ export async function processConditionTurnEnd(actor, now) {
     content: `<div class="n5e-turn-card"><b>${esc(actor.name)}: end of turn</b>${lines.map(l => `<div>${l}</div>`).join("")}</div>` });
 }
 
-/** Try to end a condition with a check (an Action). */
+/**
+ * "Try to end" (hand icon on the rail): the condition's removal entries (config/conditions.mjs
+ * removal) become one button per allowed check; the roll uses the Action in combat. Success removes
+ * ranks (Bleed: more for beating the DC by 2s); a failure against Sealed raises its DC by 4, stored
+ * on the condition (flags.n5e.removalDC).
+ * @param {Actor} actor
+ * @param {ActiveEffect} effect  the condition
+ * @param {Event} event
+ */
 export async function tryEndCondition(actor, effect, event) {
   const options = removalOptions(effect).filter(o => o.checks.length);
   const notes = removalOptions(effect).filter(o => o.text).map(o => `<p class="sub">${esc(o.text)}</p>`).join("");

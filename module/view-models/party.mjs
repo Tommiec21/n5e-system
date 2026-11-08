@@ -4,6 +4,11 @@
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const pct = (v, m) => (m ? Math.max(0, Math.min(100, Math.round((v / m) * 100))) : 0);
 
+/**
+ * One Party Overview row: HP and CP (with bar percentages and temp), condition names with ranks,
+ * states, concentrated jutsu names, and badges (Fury, open Gate, Amps, 0 HP).
+ * @param {Actor} actor
+ */
 export function partyRowVM(actor) {
   const s = actor.system;
   const effects = list(actor.effects).filter(e => !e.disabled);

@@ -10,6 +10,7 @@ export const HELPERS = {
   n5eGt: (a, b) => Number(a) > Number(b)
 };
 
+/** Register the helpers above with Handlebars (init, and tests' own Handlebars instance). */
 export function registerHelpers(hbs = globalThis.Handlebars) {
   for ( const [name, fn] of Object.entries(HELPERS) ) hbs.registerHelper(name, fn);
 }

@@ -10,6 +10,10 @@ import { rules } from "./config/rules.mjs";
 import { registerMigrationSetting } from "./migration/runner.mjs";
 import RulesConfig from "./applications/settings/rules-config.mjs";
 
+/**
+ * Called at init: one hidden world setting per rule in config/rules.mjs (edited through the N5e Rules
+ * panel, registered here as a settings menu), plus the migration version setting.
+ */
 export function registerSettings() {
   for ( const [key, r] of Object.entries(rules) ) {
     game.settings.register("n5e", key, {

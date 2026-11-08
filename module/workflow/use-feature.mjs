@@ -6,6 +6,15 @@ import { resourceCost, cannotPay } from "../rules/resource-cost.mjs";
 import { postItemCard } from "../chat/card.mjs";
 import { economySlot } from "../rules/turn-start.mjs";
 
+/**
+ * "Use" on a feature (sheet button or Combat tab pill).
+ *   - Features whose activities carry their own cost just post their card: the buttons pay.
+ *   - Otherwise pay the feature's cost (rules/resource-cost.mjs: a Molding's Focus, a Maneuver's
+ *     Superiority Dice, Stamina when that rule is on, else a limited use), roll the spent dice when the
+ *     pool has a die, mark the action slot used, and post the card.
+ * @param {Actor} actor
+ * @param {Item} item  a feat-type item (class feature, option, feat)
+ */
 export async function useFeature(actor, item) {
   // Features whose activities carry their own cost (Relentless Durability, Detonate...) pay on those buttons.
   if ( (item.system.activities ?? []).some(a => a.cost?.pool) ) return postItemCard(item);

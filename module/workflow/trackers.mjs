@@ -28,6 +28,12 @@ import { asGM } from "../socket.mjs";
 import { rule } from "../rules-settings.mjs";
 import { abilities } from "../config/core.mjs";
 
+// Small helpers shared by every tracker below.
+//   ChatMessage()   the configured ChatMessage class (looked up lazily: CONFIG is filled at init)
+//   nowTurn()       {round, turn} of the running combat, or null out of combat. Trackers store this
+//                   when something starts and compare it later to know "was this placed this turn?"
+//   say()           a short chat note from the actor, styled as a turn card
+//   targetedActors() the actors behind the user's targeted tokens (T key), not the selected ones
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
 const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null);
 const say = (actor, html) => ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }),
@@ -44,6 +50,12 @@ async function syncFurious(actor) {
   if ( on !== !!actor.statuses?.has("furious") ) await actor.toggleStatusEffect("furious", { active: on });
 }
 
+/**
+ * Combat tab +/− buttons. Gaining refreshes the duration (it lasts until the end of the turn after the
+ * latest gain); the cap is furyMax (1, more with n5e.fury.max).
+ * @param {Actor} actor
+ * @param {number} delta  +1 gain, −1 spend
+ */
 export async function changeFury(actor, delta) {
   const update = delta > 0 ? gainFury(actor, nowTurn(), delta) : spendFury(actor, -delta);
   await actor.update(update);
@@ -92,6 +104,12 @@ export function trackerButtons(actor, item) {
   return b.length ? `<div class="n5e-apply">${b.join("")}</div>` : "";
 }
 
+/**
+ * Click on a cast card's Mark / Brand / Amp button ([data-n5e-track], wired in dice/roll.mjs).
+ * Effects on creatures the player doesn't own go through the GM (asGM in module/socket.mjs).
+ * @param {ChatMessage} message  the cast card (flags.n5e.cast.actorUuid names the caster)
+ * @param {HTMLElement} btn      data-n5e-track = mark|branded|amp, data-item = the jutsu's id
+ */
 export async function onTrackerClick(message, btn) {
   const casterUuid = message.getFlag("n5e", "cast")?.actorUuid;
   const actor = casterUuid ? await fromUuid(casterUuid) : null;
@@ -147,6 +165,12 @@ export async function onAmpCreated(effect, options, userId) {
 const gateEffect = actor => actor.effects.find(e => e.flags?.n5e?.gates);
 export const openGate = actor => (gateEffect(actor)?.flags.n5e.gates.n ?? 0);
 
+/**
+ * Open the next 8-Inner Gate (they open in order). Checks access (rules/trackers.mjs nextGate),
+ * asks which action pays for it, then writes ONE effect holding the cumulative bonuses of every open
+ * gate (replaced, not stacked, when another gate opens). Opening ends Ninjutsu/Genjutsu concentration.
+ * @param {Actor} actor
+ */
 export async function openNextGate(actor) {
   const current = openGate(actor);
   const check = nextGate(actor, current, { worldTime: game.time.worldTime });
@@ -181,6 +205,11 @@ export async function openNextGate(actor) {
   return say(actor, `<b>${esc(actor.name)}</b> opens Gate ${gate.n}, ${esc(gate.label)}.${gate.tempHp ? ` +${gate.tempHp} temporary HP.` : ""}${keep.length !== conc.length ? " Ninjutsu and Genjutsu concentration ends." : ""}`);
 }
 
+/**
+ * Close the gates (free on your turn): delete the gates effect, start the 10-minute cooldown, apply
+ * the cumulative Exhaustion (rules/trackers.mjs closeGatesPlan), Bruised after Gate 7, death after
+ * Gate 8, and post what happened.
+ */
 export async function closeGates(actor) {
   const effect = gateEffect(actor);
   if ( !effect ) return null;
@@ -210,6 +239,13 @@ export async function closeGates(actor) {
 /* -------------------------------------------- */
 
 /** moveToken hook (active GM): Chilled creatures that move more than 5 ft take cold damage once per turn. */
+/*
+ * Chilled. Foundry v13 fires moveToken on every client after a token moves; only the active GM acts.
+ * movement.passed.distance is the distance travelled in scene units (feet), movement.passed.waypoints
+ * carry the movement action ("displace" = forced movement, which doesn't count), and method "undo"
+ * means the move was taken back. The running total for this turn is stored on the actor
+ * (flags.n5e.chilledMove) so several short moves add up.
+ */
 export async function onTokenMove(token, movement) {
   if ( !game.users.activeGM?.isSelf ) return;
   const actor = token.actor;
@@ -277,6 +313,8 @@ export async function rollResave(btn, event) {
 /*  Activity effects                            */
 /* -------------------------------------------- */
 
+// Effect values can be arithmetic after formula substitution ("-floor(4/2)", "-2*3"); Foundry's
+// Roll.safeEval evaluates them without dice. Anything else is kept as text.
 const evalNumber = expr => {
   try {
     return Roll.safeEval(String(expr));
@@ -288,6 +326,22 @@ const evalNumber = expr => {
 /**
  * Apply an activity's effect (Titan Guard, Light Step +1 AC, Reaping Swing's DR penalty...) to the
  * caster or the targeted creatures, with an optional turn-based ending.
+ *
+ * eff fields (schema: activityFields().effect in data/fields/shared.mjs):
+ *   name, target ("self" | "targets"), changes [{key, value, mode}], seconds (duration out of combat),
+ *   expires ("turnStart" | "turnEnd" | "nextTurnEnd": ends on the CASTER's turn, see
+ *     rules/trackers.mjs expiringEffects), tempHp (formula, given once, keeps the higher),
+ *   state (a named state other code checks, e.g. "crash", "flow", "combatRival"),
+ *   exclusive (group: applying one removes the others in the group, e.g. Crash/Flow = "surge"),
+ *   ampType (makes it an Amp effect, so Amp limits and the Amps tracker see it).
+ * Values may use lvl(...), @level and @poolRoll; they're resolved now, at apply time.
+ *
+ * @param {Actor} actor   the caster (owner of the source)
+ * @param {object} eff
+ * @param {object} [o]
+ * @param {string} [o.label]      fallback name
+ * @param {Item|null} [o.item]    source item (image, origin, description)
+ * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
 export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null } = {}) {
   const sub = v => resolveFormula(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0)), actor);
@@ -298,6 +352,8 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     const v = sub(c.value);
     return { key: c.key, mode: c.mode ?? 2, value: /^[-+*/\d\s().]+$/.test(v) ? String(evalNumber(v)) : v };
   });
+  // Duration: the given seconds; otherwise 2 rounds for turn-ended effects (a safety net if the turn
+  // hook never runs, e.g. out of combat) and 1 minute for the rest.
   const seconds = eff.seconds || (eff.expires ? 12 : 60);
   const data = { name: eff.name || label, img: item?.img ?? "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
@@ -307,10 +363,12 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
   const notes = [];
   for ( const t of targets ) {
+    // Exclusive group: remove the other member first (entering Flow ends Crash).
     if ( eff.exclusive && t.isOwner ) {
       const old = t.effects.filter(e => e.flags?.n5e?.exclusive === eff.exclusive).map(e => e.id);
       if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old);
     }
+    // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
     if ( changes.length || eff.expires || eff.state || eff.ampType ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
       else await asGM("createEffects", { actorUuid: t.uuid, effects: [data] });
@@ -325,7 +383,14 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   return say(actor, `<b>${esc(data.name)}</b>: ${esc(targets.map(t => t.name).join(", "))}${ends ? ` (${ends})` : ""}${notes.length ? `<div>${esc(notes.join(" · "))}</div>` : ""}`);
 }
 
-/** Turn start / end: remove effects that end on this creature's turn. */
+/**
+ * Turn start / end: remove effects that end on this creature's turn, wherever they are (an effect
+ * this creature put on an enemy ends on THIS creature's turn). Called from workflow/turn.mjs.
+ * @param {Combat} combat
+ * @param {Actor} actor               whose turn is starting or ending
+ * @param {"turnStart"|"turnEnd"} when
+ * @param {{round, turn}} now          the turn in question
+ */
 export async function expireSourceEffects(combat, actor, when, now) {
   const all = combat.combatants.contents.flatMap(c => c.actor?.effects.contents ?? []);
   for ( const e of expiringEffects(actor.uuid, all, when, now) ) {

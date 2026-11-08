@@ -10,6 +10,12 @@
  */
 const kw = item => (item.system.keywords instanceof Set ? item.system.keywords : new Set(item.system.keywords ?? []));
 
+/**
+ * Actor update for the trackers when a jutsu is cast: Chain (activates; a 1-Action cast raises it,
+ * a Bonus Action / Reaction cast maintains it; marks it touched so it doesn't reset next turn) and
+ * Combo (arms a Finisher window, flags.n5e.combo). Part of castPlan's single update.
+ * @returns {object|null}  null for items that aren't jutsu
+ */
 export function castUpdates(actor, item) {
   if ( item?.type !== "jutsu" ) return null;
   const keys = kw(item);

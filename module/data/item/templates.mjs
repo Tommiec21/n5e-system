@@ -10,6 +10,10 @@
  */
 import * as S from "../fields/shared.mjs";
 
+/**
+ * Fields every item type has: identifier (stable slug other data refers to, e.g. "superior-assault"
+ * in rules/features.mjs, "scout-nin" for @scale formulas), description (rich text), source (book, page).
+ */
 export function baseFields() {
   return {
     identifier: S.str(),
@@ -18,6 +22,7 @@ export function baseFields() {
   };
 }
 
+/** Fields every physical item has: quantity, Bulk, location (carried/stored), equipped, value... */
 export function physicalFields() {
   return {
     quantity: S.int(1, { min: 0 }),

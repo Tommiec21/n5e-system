@@ -30,6 +30,10 @@
 
 export const CHANGE_KEY_PREFIX = "n5e.";
 
+/**
+ * The parsed-modifiers object (system.modifiers). Every field starts empty; parseN5eChanges() fills
+ * them from n5e.* effect changes. A new key needs a field here first.
+ */
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, disciplineAbility: {},

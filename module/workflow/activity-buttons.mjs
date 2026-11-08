@@ -1,11 +1,46 @@
 /**
- * Chat card buttons for activities: attack, damage (and crit damage), targets' saves, healing and
- * temporary HP. Buttons carry their data in data-attributes so any card (cast card, attack card)
- * can use them; onActivityClick dispatches.
+ * Chat card buttons for activities, and what happens when they're clicked.
  *
- * Saves roll for the controlled tokens (or your assigned character). Healing and temp HP apply to the
- * controlled tokens (or the caster): temp HP doesn't stack (keep the higher). Damage is rolled here;
- * applying it to tokens (DR, resistance, interception) is Phase 4.
+ * WHAT AN ACTIVITY IS
+ *   One rollable or applicable part of an item: an attack, a save, damage, healing, a strike, an
+ *   effect, a plain roll. Items either carry authored activities (system.activities, written by
+ *   tools/content/automation.py or the item sheet) or get them parsed from their text
+ *   (rules/activity-parse.mjs). effectiveActivities() picks which.
+ *
+ * TWO HALVES
+ *   activityButtons() / damageButtons() / applyButtons()  build HTML for a card (cast card, item card,
+ *     attack card). Each button stores everything its click needs in data-* attributes, because a
+ *     chat card is saved as plain HTML in the ChatMessage and re-rendered later, possibly on another
+ *     client; there is no in-memory object to point back to.
+ *   onActivityClick()  runs when a [data-n5e-act] button is clicked (wired in dice/roll.mjs
+ *     onRenderChatMessage). It reads the attributes, finds the caster from the message flags, pays a
+ *     pool cost if the button has one, then does the action.
+ *
+ * BUTTON ATTRIBUTES (data-n5e-act="<kind>" plus):
+ *   attack   bonus, scope (crit-range scope), label
+ *   damage   parts (JSON [{formula, type}]), mod (ability mod, doubled on crits), crit, gen (Genjutsu:
+ *            psychic ignores DR), weapon (counts as weapon damage: Binding Fury), pierce, cost
+ *   save     ability, dc, four (four-tier Genjutsu save), resave, label, inflicts (JSON conditions
+ *            offered as Apply buttons on a failure)
+ *   heal     formula, pool (hp|cp|tempHp|tempCp)
+ *   strike   strike (JSON: kind, dieSteps, extraDice, pierce, maximize, attacks), item, label, cost
+ *   effect   effect (JSON: name, target, changes, expires, seconds, tempHp, state, exclusive, ampType),
+ *            item, label, cost
+ *   roll     formula, note, item, label, cost
+ *   cost (any kind): JSON {pool, amount, roll, choose}; paid before the action. A rolled pool die is
+ *     available to formulas as @poolRoll, a chosen amount as @amount; lvl(...) scales by level.
+ *
+ * WHO IT APPLIES TO
+ *   Saves roll for the controlled tokens (else your assigned character). Healing and temp HP go to the
+ *   controlled tokens (else the caster); temp HP doesn't stack (keep the higher). Damage is rolled
+ *   here and posted as a damage card; its Apply buttons (workflow/apply-damage.mjs) run the damage
+ *   pipeline on the selected tokens.
+ *
+ * ADDING A NEW ACTIVITY KIND
+ *   1. Add its fields to activityFields() in data/fields/shared.mjs (unknown fields are dropped).
+ *   2. Add a branch in activityButtons() that writes a button with data-n5e-act="<kind>".
+ *   3. Add a case in onActivityClick() (and its kind to the cost list if it can have a cost).
+ *   4. Optionally a builder in tools/content/automation.py; a test in tests/automation.test.mjs.
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
@@ -22,7 +57,20 @@ import { resolveFormula } from "../rules/unarmed.mjs";
 const attr = (k, v) => (v === undefined || v === null || v === "" ? "" : ` data-${k}="${esc(String(v))}"`);
 const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? t).join(" / ");
 
-/** Damage buttons (normal and critical) for a list of damage parts. */
+/**
+ * Damage buttons (normal and critical) for a list of damage parts.
+ * Each part keeps its own type so the damage card can apply DR once and resistance per type.
+ * "@unarmed" in a formula is replaced at click time with the actor's current Unarmed damage
+ * (rules/unarmed.mjs), so a stance change between casting and rolling is respected.
+ * @param {Array<{formula: string, type?: string}>} parts
+ * @param {object} [o]
+ * @param {string} [o.label]        button text before the formula
+ * @param {number|null} [o.abilityMod]  modifier the formula already adds (doubled on a crit, King ruling)
+ * @param {boolean} [o.genjutsu]    Genjutsu psychic damage ignores DR
+ * @param {boolean} [o.weapon]      weapon/Bukijutsu damage (Binding Fury Stance watches for it)
+ * @param {number} [o.pierce]       extra Pierce on top of the actor's (Raiding Strike)
+ * @param {object|null} [o.cost]    pool cost paid when clicked
+ */
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
@@ -32,7 +80,10 @@ export function damageButtons(parts, { label = "Damage", abilityMod = null, genj
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
 
-/** Apply buttons for a rolled damage card. */
+/**
+ * Apply buttons for a rolled damage card. The card stores the rolled instances in its message flags
+ * (flags.n5e.damage); these buttons only say how to apply them (full, half, double, or as healing).
+ */
 export function applyButtons() {
   return `<div class="n5e-apply" data-n5e-apply-row>
     <button type="button" data-n5e-apply="full" data-tooltip="Apply to the selected tokens (to intercept: select the interceptor)"><i class="fa-solid fa-heart-crack"></i> Apply</button>
@@ -42,13 +93,15 @@ export function applyButtons() {
 }
 
 /**
- * Buttons for a jutsu/feature's activities.
- * @param {Actor} actor
+ * Buttons for an item's activities, one row per activity.
+ * The branches run in order and the first match handles an activity: strikes, effects, feature saves,
+ * rolls and costed damage (authored kinds) come first; attack / save / damage / heal (the kinds the
+ * text parser produces, also used by jutsu) last. Activities above the actor's level are skipped.
+ * @param {Actor} actor   the owner (DCs, bonuses and pool labels come from them)
  * @param {Item} item
- * @param {object[]} activities
+ * @param {object[]} activities  from effectiveActivities(item), or built on the fly (cast extras)
+ * @returns {string} HTML
  */
-//   The row builders below run in order; the first matching branch handles an activity. Strikes,
-//   effects, feature saves and rolls come first; attack / save / damage / heal are the parsed kinds.
 export function activityButtons(actor, item, activities) {
   const live = item.system.live ?? {};
   const rows = [];
@@ -60,8 +113,12 @@ export function activityButtons(actor, item, activities) {
     const disc = ["nin", "tai", "gen"].includes(src) ? src : item.system.discipline;
     return actor.system.disciplines?.[disc]?.dc;
   };
+  // Attributes every authored button shares: which item, its label, and its pool cost.
   const common = a => `${attr("item", item.id)}${attr("label", a.label || item.name)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}`;
+  // " · 1 Superiority Dice" after the button text, so the player sees the price before clicking.
   const costNote = a => (a.cost?.pool ? ` · ${a.cost.amount} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : "");
+  // A save button for activities that have one (strikes and effects can carry a save too, e.g.
+  // Bone Breaking Strike: attack, then the target's Strength save against Bruised).
   const saveButton = a => {
     if ( !a.save?.abilities || ![...a.save.abilities].length ) return "";
     const ab = [...a.save.abilities][0];
@@ -72,6 +129,8 @@ export function activityButtons(actor, item, activities) {
   };
   for ( const a of activities ) {
     if ( a.minLevel && level < a.minLevel ) continue;
+    // Strike: an Unarmed or weapon attack with changes (workflow/attack.mjs strikeAttack). The label
+    // summarizes the changes, e.g. "Wolf Fang Fist (Unarmed, die +1 step)".
     if ( a.type === "attack" && a.strike?.kind ) {
       const s = a.strike;
       const bits = [s.kind === "unarmed" ? "Unarmed" : "Weapon", s.dieSteps ? `die ${s.dieSteps > 0 ? "+" : ""}${s.dieSteps} step` : "",
@@ -80,24 +139,32 @@ export function activityButtons(actor, item, activities) {
         <i class="fa-solid fa-hand-fist"></i> ${esc(a.label || "Strike")} (${esc(bits)})${costNote(a)}</button>${saveButton(a)}</div>`);
       continue;
     }
+    // Effect: creates an Active Effect on the caster or the targeted tokens (workflow/trackers.mjs
+    // applyActivityEffect), optionally ending on the caster's turn.
     if ( a.type === "effect" ) {
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="effect"${common(a)}${attr("effect", JSON.stringify(a.effect ?? {}))}>
         <i class="fa-solid fa-wand-sparkles"></i> ${esc(a.label || "Apply")}${a.effect?.target === "targets" ? " (targets)" : ""}${costNote(a)}</button>${saveButton(a)}</div>`);
       continue;
     }
+    // Feature save with a named DC source ("vs your Taijutsu save DC"): save button + optional damage.
     if ( a.type === "save" && a.save?.dc?.source && item.type !== "jutsu" ) {
       rows.push(`<div class="act-row">${saveButton(a)}${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label ? `${a.label} damage` : "Damage" })}</div>`);
       continue;
     }
+    // Roll: "roll this and add it" (Tactics +2, Tenacious 1d10). With an empty formula the button
+    // only pays its cost, which rolls the pool die (Seize, Knock Back).
     if ( a.type === "roll" ) {
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="roll"${common(a)}${attr("formula", a.roll?.formula)}${attr("note", a.roll?.note)}>
         <i class="fa-solid fa-dice"></i> ${esc(a.label || "Roll")}${a.roll?.formula ? `: ${esc(a.roll.formula.replace(/lvl\(([^)]*)\)/g, "…"))}` : ""}${costNote(a)}</button></div>`);
       continue;
     }
+    // Damage that costs a pool (Warfare's attack bonus): the cost rides on the damage buttons.
     if ( a.type === "damage" && a.cost?.pool ) {
       rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label || "Damage" })}</div>`);
       continue;
     }
+    // Parsed kinds. Attack bonus: a jutsu's own live bonus (ability, Hijutsu, effects); otherwise the
+    // discipline's (Bukijutsu attacks use the Taijutsu numbers).
     if ( a.type === "attack" ) {
       const disc = a.attack?.discipline || item.system.discipline;
       const bonus = item.type === "jutsu" ? live.attack : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
@@ -121,7 +188,10 @@ export function activityButtons(actor, item, activities) {
   return rows.length ? `<div class="n5e-acts">${rows.join("")}</div>` : `<p class="hint">No rollable parts found in the text.</p>`;
 }
 
-/** Actors a save/heal applies to: controlled tokens, else the user's character, else the fallback. */
+/**
+ * Actors a save/heal applies to: controlled tokens, else the user's assigned character, else the
+ * fallback (the caster, for healing). Saves pass no fallback: someone must be selected.
+ */
 function targetsOrSelf(fallback) {
   const controlled = canvas?.tokens?.controlled?.map(t => t.actor).filter(Boolean) ?? [];
   if ( controlled.length ) return controlled;
@@ -131,9 +201,11 @@ function targetsOrSelf(fallback) {
 
 /**
  * Handle a click on a [data-n5e-act] button.
- * @param {ChatMessage} message
- * @param {HTMLElement} button
- * @param {Event} event
+ * The caster is whoever the card belongs to: cast cards store flags.n5e.cast.actorUuid, roll cards
+ * flags.n5e.roll.actorUuid, item and damage cards flags.n5e.actorUuid; else the message speaker.
+ * @param {ChatMessage} message  the card's message
+ * @param {HTMLElement} button   the clicked button (its dataset holds the activity data)
+ * @param {Event} event          the click (Shift/Alt/Ctrl pick the roll mode, see dice/d20.mjs)
  */
 export async function onActivityClick(message, button, event) {
   const d = button.dataset;
@@ -151,6 +223,8 @@ export async function onActivityClick(message, button, event) {
     poolRoll = paid.roll;
     amount = paid.amount;
   }
+  // Formula pre-processing: @amount (chosen pool amount), @poolRoll (rolled pool die), lvl(...)
+  // (level scaling) and @level. Everything else (@abilities..., dice) is left for Roll.
   const level = f => resolveFormula(String(f ?? "").replace(/@amount/g, String(amount)).replace(/@poolRoll/g, String(poolRoll ?? 0)), caster);
   // One case per data-n5e-act value written by activityButtons()/damageButtons().
   switch ( d.n5eAct ) {
@@ -176,6 +250,8 @@ export async function onActivityClick(message, button, event) {
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope }, { event });
     }
     case "damage": {
+      // Roll each part on its own so every damage type keeps its amount (the damage pipeline needs
+      // typed instances). Crits double every die and the ability modifier, nothing else.
       const actor = caster;
       const parts = JSON.parse(d.parts || "[]");
       const crit = !!d.crit;
@@ -194,10 +270,13 @@ export async function onActivityClick(message, button, event) {
         instances.push({ amount: roll.total, type: p.type });
       }
       const total = instances.reduce((t, i) => t + i.amount, 0);
+      // Binding Fury Stance: the first weapon damage each turn grants Fury (no-op otherwise).
       if ( d.weapon && actor?.isOwner ) await import("./trackers.mjs").then(m => m.onWeaponDamage(actor));
+      // Pierce lowers the target's DR when applied: the actor's own plus the button's (Raiding Strike).
       const pierce = (actor?.system.pierce ?? 0) + (Number(d.pierce) || 0);
       const types = instances.map(i => i.type).filter(Boolean);
       const lines = instances.map(i => `${i.amount}${i.type ? ` ${typeLabel([i.type])}` : ""}`).join(" + ");
+      // The damage card. flags.n5e.damage is what its Apply buttons read (workflow/apply-damage.mjs).
       const ChatMessageCls = CONFIG.ChatMessage.documentClass;
       return ChatMessageCls.create({ speaker: speaker({ actor }), rolls,
         content: `<div class="n5e-roll-card damage"><header><b>${crit ? "Critical damage" : "Damage"}</b>
@@ -213,9 +292,13 @@ export async function onActivityClick(message, button, event) {
       for ( const t of targets ) {
         if ( !t.isOwner ) continue;
         const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
+        // What a failure inflicts becomes Apply buttons on the save card (not automatic: many jutsu
+        // only inflict under conditions in their text). With a resave, the applied condition remembers
+        // the save so the end-of-turn card can offer it again (workflow/trackers.mjs).
         const inflicts = JSON.parse(d.inflicts || "[]");
         const onFail = inflicts.length ? `<div class="n5e-apply">${inflicts.map(i =>
           `<button type="button" data-n5e-inflict="${esc(i.key)}" data-kind="${esc(i.kind)}" data-ranks="${i.ranks}"${d.resave ? ` data-resave="${esc(JSON.stringify({ ability: d.ability, dc, label: d.label }))}"` : ""}>Apply ${esc(i.label)}${i.kind === "condition" ? ` ${i.ranks}` : ""}</button>`).join("")}</div>` : "";
+        // Condition resistance (optional rule): advantage on saves against a condition you resist.
         const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition").map(i => i.key));
         if ( resisted ) spec.note = [spec.note, "Advantage: resists the condition"].filter(Boolean).join(" · ");
         await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode: resisted ? "advantage" : undefined });
@@ -247,7 +330,12 @@ export async function onActivityClick(message, button, event) {
 
 /**
  * Pay an activity's pool cost; roll the pool's die when asked (Superiority Dice: d8).
- * @returns {Promise<{roll: number|null}|null>}
+ * Pools are system.resources.<id> (class pools such as focus, superiorityDice, pyroclasm, and the
+ * optional stamina pool). Warns and returns null when the pool is missing or short.
+ * @param {Actor} actor
+ * @param {{pool: string, amount?: number, roll?: boolean, choose?: boolean}} cost
+ *   choose: ask the player how many to spend (Pyroclasm's Detonate)
+ * @returns {Promise<{roll: number|null, amount: number}|null>}  roll: the pool die total, when rolled
  */
 export async function payPoolCost(actor, cost) {
   const pool = actor.system.resources?.[cost.pool];

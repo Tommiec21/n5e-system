@@ -15,6 +15,7 @@
  */
 export const CHAIN_MAX = 3;
 
+/** A fresh Chain state (value 0, inactive, no jutsu used yet). */
 export function newChainState() {
   return { value: 0, active: false, used: [] };
 }

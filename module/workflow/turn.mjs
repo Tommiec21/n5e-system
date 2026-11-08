@@ -72,6 +72,15 @@ export async function endConcentration(actor, id) {
 }
 
 /** Called once at module load (n5e.mjs). Every combat-related hook the system uses is here. */
+/**
+ * Hooks this module listens to (registered once from n5e.mjs):
+ *   combatTurnChange(combat, prior)  end of the prior combatant's turn, then start of the new one
+ *   combatStart(combat)              start of the first combatant's turn
+ *   moveToken(token, movement)       Chilled movement damage (workflow/trackers.mjs onTokenMove)
+ *   createActiveEffect(effect)       Amp limit enforcement (workflow/trackers.mjs onAmpCreated)
+ *   deleteCombat(combat)             Combat Rival markers end with the combat
+ * Each handler returns early unless this client is the active GM (createActiveEffect: the creating user).
+ */
 export function registerTurnHooks() {
   // prior = {round, turn, combatantId} of the turn that just ended.
   Hooks.on("combatTurnChange", async (combat, prior) => {

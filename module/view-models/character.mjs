@@ -85,6 +85,7 @@ export function headerVM(actor) {
 const RECOVERY = { rest10m: "10min/Rest", sr: "SR", lr: "LR", fr: "FR", rest: "SR/LR", turn: "Turn", turnStart: "Turn",
   round: "Round", encounter: "Encounter", initiative: "Initiative", day: "Day" };
 
+/** "SR/LR" style note from a pool's or use's recovery keys (unique, in RECOVERY's wording). */
 function recoveryNote(keys) {
   return [...new Set(keys.filter(k => k && RECOVERY[k]).map(k => RECOVERY[k]))].join("/");
 }
@@ -355,6 +356,10 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
 /*  Inventory tab                               */
 /* -------------------------------------------- */
 
+/**
+ * One inventory row: quantity, Bulk, equip toggle (items that can be equipped), Ammunition Die state
+ * (face and steps) for weapons that use one, toolkit charge pips, and the row's tooltip.
+ */
 function gearRow(i) {
   const s = i.system;
   const row = {

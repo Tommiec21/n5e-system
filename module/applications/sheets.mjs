@@ -122,6 +122,7 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     return foundry.utils.expandObject(flat);
   }
 
+  // Placeholder-sheet row actions (the real sheets have their own in actor/character-sheet.mjs).
   static #item(target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     return this.document.items.get(id);

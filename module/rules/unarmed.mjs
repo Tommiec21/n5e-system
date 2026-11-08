@@ -6,6 +6,7 @@
  */
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 
+/** The actor's active stance item (system.combat.activeStance holds its id), or null. */
 export function activeStance(actor) {
   const id = actor.system.combat?.activeStance;
   return id ? (actor.items.get?.(id) ?? list(actor.items).find(i => i.id === id) ?? null) : null;
@@ -32,8 +33,9 @@ export function unarmedSpec(actor) {
   return { die, type, extra, mod, ability: "str", formula, source: stance && die !== "1" ? stance.name : "" };
 }
 
-/** Step a die ("1d6" +1 -> "1d8"); flat "1" steps to d4. */
+/** Die ladder for stepping: d4 > d6 > d8 > d10 > d12 (capped at both ends). */
 const STEPS = [4, 6, 8, 10, 12];
+/** Step a die ("1d6" +1 -> "1d8"); flat "1" steps up to d4. Keeps the dice count. */
 export function stepDie(die, steps = 0) {
   if ( !steps ) return die;
   const m = String(die).match(/^(\d*)d(\d+)$/);

@@ -8,7 +8,13 @@ import { glyph, keywordChip, componentChips, propertyChips, signed } from "../vi
 
 export const CARD_TEMPLATE = "systems/n5e/templates/chat/item-card.hbs";
 
-/** Pure: card data for an item (exported for tests). */
+/**
+ * Pure: card data for an item (exported for tests). Builds what templates/chat/item-card.hbs prints:
+ * name, image, glyph (action type), subtitle, chips (keywords, components, properties), stats rows
+ * (cost, DC, damage...), extra text blocks, and the description.
+ * @param {Item} item
+ * @param {{rank?: string}} [o]  for jutsu: show the cost at this cast rank
+ */
 export function itemCardData(item, { rank } = {}) {
   const s = item.system;
   const actorSys = item.actor?.system;
@@ -48,7 +54,12 @@ export function itemCardData(item, { rank } = {}) {
   return data;
 }
 
-/** Post an item's card to chat. */
+/**
+ * Post an item's card to chat, with its activity buttons when the item is owned (the buttons need the
+ * owner's DCs and bonuses). The message flags (itemUuid, actorUuid) let button clicks find the source.
+ * @param {Item} item
+ * @param {{rank?: string, spent?: string}} [options]  spent: "1 Superiority Dice (rolled 6)" stat row
+ */
 export async function postItemCard(item, options = {}) {
   const data = itemCardData(item, options);
   if ( options.spent ) data.stats.unshift({ label: "Spent", value: options.spent });

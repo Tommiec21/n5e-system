@@ -3,7 +3,8 @@
  *
  * Attack = ability mod + proficiency (if proficient) + condition penalties (once per roll).
  *   Melee: Str; ranged: Dex; finesse or thrown: the better of Str and Dex (KB 03).
- * Damage = weapon die + the same ability mod; unarmed = 1 (or the stance's d6) + Str.
+ * Damage = weapon die + the same ability mod; unarmed = rules/unarmed.mjs (1, or the Taijutsu stance's
+ *   die and type, + Inner Gate dice) + Str.
  * A natural roll in the crit range crits; crit damage doubles dice and the ability mod only.
  * Weapons with an Ammunition Die roll it on each use: 1-2 steps it down; reaching 0 removes the item.
  */
@@ -14,7 +15,15 @@ import { damageButtons } from "./activity-buttons.mjs";
 import { rollAmmo } from "./ammo.mjs";
 import { unarmedSpec, stepDie, resolveFormula, activeStance } from "../rules/unarmed.mjs";
 
-/** Attack spec for a weapon (or null for unarmed). */
+/**
+ * Attack spec for a weapon (or null for unarmed): everything rollWithSpec() needs (bonus with its
+ * Breakdown for the hover tooltip, crit scope) plus the damage parts the card's buttons will roll.
+ * Pure apart from reading the actor, so it's tested in Node.
+ * @param {Actor} actor
+ * @param {Item|null} weapon
+ * @returns {object} spec: {type, key, kind, scope, label, bonus, breakdown, ability, abilityMod,
+ *   damage: {formula, die, extra, types}, ammo, tooltip}
+ */
 export function weaponAttackSpec(actor, weapon = null) {
   const sys = actor.system;
   const mod = k => sys.abilities?.[k]?.mod ?? 0;
@@ -56,6 +65,8 @@ export function weaponAttackSpec(actor, weapon = null) {
 }
 
 /**
+ * The plain Attack: one attack roll card with Damage / Critical buttons, the Action marked used, and
+ * the Ammunition Die rolled for weapons that use one.
  * Attack with a weapon (or unarmed when weapon is null): attack card with damage buttons, then the
  * Ammunition Die for weapons that use one.
  */

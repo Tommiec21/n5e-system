@@ -50,6 +50,7 @@ export const effectModels = {
   generic: GenericEffectData
 };
 
+/** Called at init (n5e.mjs): tells Foundry which data model each document type uses. */
 export function registerDataModels() {
   Object.assign(CONFIG.Actor.dataModels, actorModels);
   Object.assign(CONFIG.Item.dataModels, itemModels);

@@ -14,6 +14,7 @@ const WORDS = { one: 1, two: 2, three: 3, four: 4 };
 const tags = item => new Set(item.system?.tags ?? []);
 const text = item => String(item.system?.description ?? "").replace(/<[^>]+>/g, " ");
 
+/** How many of a pool the text says to spend ("spend two superiority die"): 1 if it doesn't say. */
 function countIn(item, noun) {
   const m = text(item).match(new RegExp(`spend(?:ing)? (\\d+|one|two|three|four) ${noun}`, "i"));
   if ( !m ) return 1;

@@ -72,11 +72,13 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     return `${this.actor.name}: ${this.cls.name} level ${this.level}`;
   }
 
+  /** Load a document by uuid once per dialog (steps point at compendium items by uuid). */
   async #doc(uuid) {
     if ( !this.#docs.has(uuid) ) this.#docs.set(uuid, await fromUuid(uuid));
     return this.#docs.get(uuid);
   }
 
+  /** Every document of a type in one of the system's packs (feat and jutsu pickers), cached. */
   async #packDocs(name, type) {
     const key = `pack:${name}`;
     if ( !this.#docs.has(key) ) {
@@ -218,6 +220,11 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this.render();
   }
 
+  /**
+   * Apply: validate every step has its choices (advancement/steps.mjs validate), then
+   * advancement/manager.mjs applyLevel() writes the level (class levels, HP/CP, granted items with
+   * flags.n5e.advancement so Remove level can undo exactly them, ASI, Mastery, jutsu).
+   */
   static async #onApply() {
     const problems = validate(this._steps, this.#sel, this._poolSizes);
     if ( problems.length ) return ui.notifications.warn(problems[0]);
@@ -228,6 +235,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     return this.close();
   }
 
+  /** Cancel: close without changing anything (a 1st level from a dropped class is removed by the caller). */
   static #onCancel() {
     return this.close();
   }

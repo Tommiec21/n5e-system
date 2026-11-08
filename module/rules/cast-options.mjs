@@ -27,6 +27,7 @@ export function hasState(actor, state) {
   return list(actor.effects).some(e => !e.disabled && e.flags?.n5e?.state === state);
 }
 
+/** Does this jutsu deal damage (activity damage parts, or "XdY ... damage" in its text)? */
 function hasDamage(jutsu, activities) {
   return activities.some(a => a.damage?.parts?.length) || /\d+d\d+[^.]*damage/i.test(String(jutsu.system.description ?? ""));
 }

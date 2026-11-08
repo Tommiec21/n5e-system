@@ -16,6 +16,7 @@ export function band(table, level) {
 
 export const abilityMod = score => Math.floor((Number(score ?? 10) - 10) / 2);
 
+/** Proficiency bonus at a character level (config/core.mjs progression.proficiency bands). */
 export function proficiencyForLevel(level) {
   return band(progression.proficiency, Math.max(1, level || 1));
 }

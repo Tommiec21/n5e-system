@@ -53,6 +53,7 @@ export class WeaponData extends TDM() {
     return super.migrateData(source);
   }
 
+  /** Derived: Enhancement Seal totals, and the Ammunition Die's current face (steps[step]; 0 = empty). */
   prepareDerivedData() {
     prepareSeals(this);
     this.ammo.current = this.ammo.usesDie ? (this.ammo.steps[this.ammo.step] ?? 0) : null;
@@ -75,6 +76,7 @@ export class ArmorData extends TDM() {
     };
   }
 
+  /** Derived: the Dex cap (the armor's own, else its category's), Strength requirement, seal totals. */
   prepareDerivedData() {
     this.dexCap = this.armor.dexCap ?? armorCategories[this.category]?.dexCap ?? null;
     this.strRequirement ??= this.properties?.heavyweight || null;
@@ -109,6 +111,7 @@ export class ToolkitData extends TDM() {
     };
   }
 
+  /** Derived: max charges (an explicit max wins, else by kit rank). */
   prepareDerivedData() {
     // Charges by kit rank (D 5, C 6, B 7, A 8); no recovery (King ruling).
     const byRank = toolkitRules.chargesByRank[this.rank];
@@ -128,6 +131,7 @@ export class ContainerData extends TDM() {
     };
   }
 
+  /** Derived: inventory slots this container adds (its own value, else its container type's). */
   prepareDerivedData() {
     this.slots ??= containerTypes[this.containerType]?.slots ?? 0;
   }

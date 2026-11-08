@@ -9,6 +9,11 @@
  */
 import { rules } from "./config/rules.mjs";
 
+/**
+ * Current value of an optional rule (key from config/rules.mjs). Every automation checks this before
+ * acting, so the GM can switch it off. Safe in Node tests and before settings are registered.
+ * @param {string} key
+ */
 export function rule(key) {
   try {
     const v = globalThis.game?.settings?.get?.("n5e", key);

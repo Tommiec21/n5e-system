@@ -22,6 +22,8 @@ import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates, ampTypes } from "../config/combat.mjs";
 
+// list(): schema set()/arr() fields are Sets after Foundry prepares them but arrays in JSON and tests;
+// list() accepts both. flag(): reads flags.n5e.<key> from a real document or a plain test object.
 const list = items => (Array.isArray(items) ? items : [...(items ?? [])]);
 const ofType = (actor, ...types) => list(actor.items).filter(i => types.includes(i.type));
 const flag = (doc, key) => (typeof doc.getFlag === "function" ? doc.getFlag("n5e", key) : doc.flags?.n5e?.[key]);
@@ -33,6 +35,7 @@ const ECONOMY = [
   { key: "reaction", label: "Reactions", types: ["reaction"] },
   { key: "other", label: "Free & Special", types: ["free", "special", "move", "none"] }
 ];
+// Activation types that belong on the Combat tab (long activations like "minute" and "hour" don't).
 const COMBAT_ACTIVATIONS = new Set(["action", "fullTurn", "bonus", "reaction", "free", "special", "move"]);
 const economyOf = type => ECONOMY.find(e => e.types.includes(type))?.key ?? "other";
 
@@ -45,6 +48,13 @@ function tipHTML({ title, meta = [], body = "", footer = "" }) {
 
 // A clickable action. kind: core (combat action) | item (owned item) | skill (skill action);
 // economy decides which row it sits in (Actions, Bonus Actions, Reactions, Free & Special).
+/**
+ * One action "pill". Fields the template reads (templates/parts/action-pill.hbs):
+ *   kind ("core" | "item" | "skill"), id / key (what the click acts on), name, sub (small text after the
+ *   name: dice, uses), cost, rank, badges [{key, label, on}], dim (unusable now), warn (why), tip (hover
+ *   HTML), glyph (activation icon), economy (which row: action | bonus | reaction | other),
+ *   concentration / concentrating (the ◯ toggle on concentration jutsu).
+ */
 const pill = (o) => ({
   badges: [], cost: "", sub: "", dim: false, warn: "", ...o,
   glyph: glyph(o.activation)?.svg ?? "",
@@ -60,6 +70,12 @@ function byEconomy(pills) {
 /*  Basic Combat                                */
 /* -------------------------------------------- */
 
+/**
+ * Basic Combat: core actions (Dash, Dodge...), strikes (Unarmed + each equipped weapon), active
+ * features, usable consumables, and skill actions usable in a fight (moved to their own group at the
+ * end by combatVM). Skill actions show their tier penalty (rules/skill-actions.mjs) when the
+ * skillActionPenalties rule is on.
+ */
 function basicCombat(actor) {
   const sys = actor.system;
   const equippedWeapons = ofType(actor, "weapon").filter(w => w.system.equipped);
@@ -126,6 +142,10 @@ function basicCombat(actor) {
   };
 }
 
+/**
+ * Pill for a feature or consumable: uses left as "n/max" (dimmed at 0). With the Stamina rule on, a
+ * feat whose uses come from Stamina shows the Stamina pool instead ("2/3 St").
+ */
 function itemPill(i, extra = {}) {
   const s = i.system;
   if ( usesStamina(i) ) {
@@ -148,6 +168,11 @@ function itemPill(i, extra = {}) {
 /*  Jutsu groups                                */
 /* -------------------------------------------- */
 
+/**
+ * Pill for a jutsu: rank, live cost (after effects), badges (Combo, Finisher — lit when a Combo is
+ * armed —, Chain, Clash, Conc.), dimmed when it can't be cast now (not enough CP, missing affinity).
+ * The tooltip carries the full text plus Chain 1-3, Finisher and Overcharge riders.
+ */
 function jutsuPill(actor, i, { comboReady }) {
   const s = i.system;
   const live = s.live ?? {};
@@ -183,6 +208,10 @@ function jutsuPill(actor, i, { comboReady }) {
   });
 }
 
+/**
+ * One group per discipline (Ninjutsu, Genjutsu, Taijutsu, Bukijutsu), jutsu sorted by rank then name
+ * and split into economy rows. Empty groups are dropped by combatVM. Bukijutsu use Taijutsu numbers.
+ */
 function jutsuGroups(actor, state) {
   const rankOrder = Object.keys(rankDefs);
   const all = ofType(actor, "jutsu").sort((a, b) =>
@@ -199,6 +228,12 @@ function jutsuGroups(actor, state) {
 /*  Trackers                                    */
 /* -------------------------------------------- */
 
+/**
+ * Concentration tracker: the jutsu concentrated on (system.combat.concentrating, item ids in the order
+ * they started), each one's upkeep (half the CP paid when cast, flags.n5e.concentrationPaid; Efficient
+ * = 0), the total vs current CP, and the damage-check DC (base + ranks of everything concentrated on).
+ * Shown when concentrating, or when the character knows any concentration jutsu.
+ */
 function concentrationVM(actor) {
   const sys = actor.system;
   const paidMap = flag(actor, "concentrationPaid") ?? {};
@@ -226,6 +261,10 @@ function concentrationVM(actor) {
   };
 }
 
+/**
+ * Chain tracker (Bukijutsu Chain 0-3): the current value and which known Chain jutsu have an effect at
+ * exactly that value. Hidden until a Chain jutsu has been cast (chain.active) or the value is above 0.
+ */
 function chainVM(actor) {
   const sys = actor.system;
   const value = sys.combat?.chain?.value ?? 0;
@@ -238,6 +277,10 @@ function chainVM(actor) {
   return { show: !!sys.combat?.chain?.active || value > 0, value, boxes: pips(value, 3), atRank };
 }
 
+/**
+ * Stance tracker: the active stance (system.combat.activeStance), its strikes' names available at the
+ * character's level (posted as a card with buttons), and the other known stances to switch to.
+ */
 function stanceVM(actor) {
   const sys = actor.system;
   const stances = ofType(actor, "stance");
@@ -252,6 +295,10 @@ function stanceVM(actor) {
   };
 }
 
+/**
+ * Combo / Finisher: when a Combo jutsu armed a Finisher this turn (flags.n5e.combo, cleared at turn
+ * start), list the Finishers that can follow.
+ */
 function comboVM(actor, combo) {
   if ( !combo ) return { show: false, finishers: [] };
   const has = (i, k) => (i.system.keywords instanceof Set ? i.system.keywords : new Set(i.system.keywords ?? [])).has(k);
@@ -264,8 +311,11 @@ function comboVM(actor, combo) {
 /*  Phase 6 trackers                            */
 /* -------------------------------------------- */
 
+// Does any owned item's name or text mention this? Used to show a tracker only to characters who
+// have something that uses it (Fury).
 const mentions = (actor, re) => list(actor.items).some(i => re.test(i.name) || re.test(String(i.system?.description ?? "")));
 
+/** Fury tracker: value / max boxes; shown when Fury > 0 or something the character has mentions Fury. */
 function furyVM(actor) {
   const value = actor.system.combat?.fury ?? 0;
   const max = furyMax(actor);
@@ -274,6 +324,10 @@ function furyVM(actor) {
     binding: !!stance && /binding fury/i.test(stance.name) };
 }
 
+/**
+ * 8-Inner Gates tracker: boxes 1..reachable (Gate 8 shown once Gate 7 is reachable), which are open
+ * (the gates effect's flags.n5e.gates.n), and the next gate's button. Shown only with the feat.
+ */
 function gatesVM(actor) {
   const limit = gateLimit(actor);
   const effect = list(actor.effects).find(e => e.flags?.n5e?.gates);
@@ -286,6 +340,7 @@ function gatesVM(actor) {
   return { show: true, open, limit, gates, next: next && gates.some(g => g.n === next.n) ? { n: next.n, label: next.label } : null };
 }
 
+/** Marks tracker: concentrated jutsu that grant a Mark (config/combat.mjs marks), each with "Mark targets". */
 function marksVM(actor) {
   const rows = list(actor.system.combat?.concentrating).map(id => list(actor.items).find(i => i.id === id)).filter(Boolean)
     .map(i => ({ item: i, mark: jutsuTrackers(i).mark })).filter(r => r.mark)
@@ -293,6 +348,7 @@ function marksVM(actor) {
   return { show: rows.length > 0, rows };
 }
 
+/** Amps tracker: Amp effects with type and time left, and which Amp limit is in force. */
 function ampsVM(actor) {
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, name: e.name, disabled: !!e.disabled,
     type: ampTypes[e.system?.ampType] ?? e.system?.ampType ?? "", remaining: e.duration?.label ?? "" }));

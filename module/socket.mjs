@@ -21,6 +21,7 @@ const HANDLERS = {
     const actor = await fromUuid(actorUuid);
     if ( actor ) await actor.createEmbeddedDocuments("ActiveEffect", effects);
   },
+  // Delete effects by uuid (any actor).
   async deleteEffects({ uuids }) {
     for ( const uuid of uuids ?? [] ) await (await fromUuid(uuid))?.delete();
   }

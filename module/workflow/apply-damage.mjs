@@ -19,11 +19,22 @@ import { rule } from "../rules-settings.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
 
+/** Actors behind the user's selected (controlled) tokens that the user may change. */
 function selectedActors() {
   return (canvas?.tokens?.controlled ?? []).map(t => t.actor).filter(a => a?.isOwner);
 }
 
-/** Apply damage instances (or healing) to the selected tokens and post a summary. */
+/**
+ * Apply damage instances (or healing) to the selected tokens and post a summary.
+ * @param {object} data   a damage card's flags.n5e.damage:
+ *   instances [{amount, type}]  each rolled part with its type
+ *   total                       sum (used for healing)
+ *   crit, pierce, genjutsu      passed to the damage pipeline (rules/damage.mjs damagePlan)
+ *   ignoreDR                    condition/environment damage (Burned, Bleed, Chilled cards)
+ *   targetUuid                  a fixed target (condition damage on that creature; the GM Party
+ *                               Overview's quick damage) instead of the selected tokens
+ * @param {"full"|"half"|"double"|"heal"} mode
+ */
 export async function applyToSelected(data, mode) {
   const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
   const targets = fixed ? (fixed.isOwner ? [fixed] : []) : selectedActors();
@@ -32,6 +43,7 @@ export async function applyToSelected(data, mode) {
   const rows = [];
   const undo = [];
   for ( const actor of targets ) {
+    // Snapshot for Undo: stored on the summary card (flags.n5e.undo) and restored by undoApply().
     const before = { uuid: actor.uuid, hp: actor.system.hp.value, tempHp: actor.system.hp.temp, cp: actor.system.cp.value,
       tempCp: actor.system.cp.temp, deathSaves: { ...actor.system.deathSaves } };
     if ( mode === "heal" ) {

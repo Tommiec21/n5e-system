@@ -21,15 +21,19 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
 
   static PARTS = { body: { template: "systems/n5e/templates/apps/party-overview.hbs", scrollable: [".rows"] } };
 
+  // One shared window: open() reuses it, refresh() re-renders it when anything it shows changes.
   static #instance;
+  /** Open (or bring forward) the Party Overview. */
   static open() {
     this.#instance ??= new PartyOverview();
     return this.#instance.render({ force: true });
   }
+  /** Re-render if open; called from actor/effect/combat hooks (registerPartyOverview). */
   static refresh() {
     if ( this.#instance?.rendered ) this.#instance.render();
   }
 
+  /** Who is listed: player-owned characters, then every combatant not already listed. */
   actors() {
     const seen = new Set();
     const out = [];
@@ -55,10 +59,15 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     };
   }
 
+  /** Click a name: open that actor's sheet. */
   static async #onOpen(event, target) {
     (await fromUuid(target.closest("[data-uuid]").dataset.uuid))?.sheet.render(true);
   }
 
+  /**
+   * Row quick actions. Damage and Heal go through the normal damage pipeline with this actor as the
+   * fixed target (so DR, resistances and Undo all work); Add puts 1 rank of the chosen condition.
+   */
   static async #onQuick(event, target) {
     const row = target.closest("[data-uuid]");
     const actor = await fromUuid(row.dataset.uuid);
