@@ -5,6 +5,8 @@
  * concentration to end) and only enables Cast when the plan is allowed. Casting applies the plan
  * (CP, Focus, Superiority Dice, concentration, Chain/Combo) in one actor update, then posts a card
  * whose buttons roll the attack, damage, healing, and targets' saves.
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { trackerButtons } from "./trackers.mjs";
 import { castPlan } from "./cast-plan.mjs";
@@ -15,7 +17,10 @@ import { esc } from "../view-models/common.mjs";
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null);
 
-/** Moldings and Maneuvers the actor could add to this cast. */
+/**
+ * Moldings and Maneuvers the actor could add to this cast (by tag). Feature cast options (Chakra
+ * Compression, Crash, Warfare, Pyroclasm...) are separate: rules/cast-options.mjs, listed in the plan.
+ */
 function castOptions(actor, item) {
   return actor.items.filter(i => {
     const tags = i.system.tags instanceof Set ? i.system.tags : new Set(i.system.tags ?? []);
@@ -24,6 +29,7 @@ function castOptions(actor, item) {
   });
 }
 
+/** The cast dialog's form. Every control's name is read back by readSelection(). */
 function dialogContent(actor, item, plan) {
   const j = item.system;
   const ranks = [j.rank, ...(j.live?.upcastRanks ?? [])].filter((r, i, a) => a.indexOf(r) === i);
@@ -46,6 +52,7 @@ function dialogContent(actor, item, plan) {
   </div>`;
 }
 
+/** The dialog's current choices, in the shape castPlan() takes. Re-read on every change for the preview. */
 function readSelection(form) {
   const f = form.elements;
   const val = n => f[n]?.value;
@@ -61,6 +68,7 @@ function readSelection(form) {
   };
 }
 
+/** The live preview under the form: cost, pools, upkeep, warnings, and what blocks the cast. */
 function previewHTML(plan) {
   const costLine = plan.costMode === "chakra" ? `<b>${plan.cost} CP</b> (${plan.cpAfter} left)`
     : plan.costMode === "none" ? "<b>No cost</b>" : `<b>Special:</b> ${esc(plan.costText || "see text")}`;

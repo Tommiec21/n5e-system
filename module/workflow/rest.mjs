@@ -2,6 +2,8 @@
  * Rest dialogs (Foundry side). Short: choose Hit Dice and Chakra Dice to spend (rolled together,
  * + Con per die). Long: with or without food and drink. Full: confirm. Each shows the limit or ration
  * check first, applies the plan, spends rations (through the GM when a player rests), and posts a card.
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";

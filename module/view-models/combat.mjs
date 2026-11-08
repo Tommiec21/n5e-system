@@ -1,6 +1,14 @@
 /**
  * Combat tab view model: every option the character has in a fight, plus the trackers
  * (Chain, concentration and upkeep, stance, Combo/Finisher). Pure, tested in Node.
+ * Phase 6 trackers: Fury, 8-Inner Gates, Marks, Amps. The active stance shows its strikes.
+ *
+ * Layout (templates/actor/character/combat.hbs): action economy row, trackers (each hidden until
+ * relevant), Basic Combat (core actions, strikes, features, items), one group per discipline the
+ * character knows jutsu in, then Skill Actions. Every action is a "pill" (see pill()) whose hover
+ * tooltip is the full rules text.
+ * A new tracker: write a xxxVM(actor) function next to the others, add it to combatVM's return,
+ * and add its block to the trackers section of combat.hbs, shown with {{#if vm.xxx.show}}.
  */
 import { abilities, skills, toolkits, disciplines, ranks as rankDefs, dcTables } from "../config/core.mjs";
 import { coreActions, activationTypes } from "../config/combat.mjs";
@@ -35,6 +43,8 @@ function tipHTML({ title, meta = [], body = "", footer = "" }) {
     + `${body ? `<div class="tb">${body}</div>` : ""}${footer ? `<div class="tf">${footer}</div>` : ""}</div>`;
 }
 
+// A clickable action. kind: core (combat action) | item (owned item) | skill (skill action);
+// economy decides which row it sits in (Actions, Bonus Actions, Reactions, Free & Special).
 const pill = (o) => ({
   badges: [], cost: "", sub: "", dim: false, warn: "", ...o,
   glyph: glyph(o.activation)?.svg ?? "",
@@ -294,6 +304,7 @@ function ampsVM(actor) {
 /*  Entry                                       */
 /* -------------------------------------------- */
 
+/** Everything the Combat tab prints. */
 export function combatVM(actor) {
   const combo = flag(actor, "combo") ?? null;
   const comboReady = !!combo;

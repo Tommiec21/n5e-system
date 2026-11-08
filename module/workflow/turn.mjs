@@ -2,6 +2,23 @@
  * Turn start (Foundry side). The active GM's client applies the turn-start plan for the combatant
  * whose turn begins: concentration upkeep, Chain/Combo resets, action economy, recharge rolls; then
  * posts one short summary card (with End buttons for each jutsu still concentrated on).
+ *
+ * Order when the turn passes from A to B (combatTurnChange):
+ *   1. end of A's turn: condition decay/endings (conditions.mjs), Fury and Mark expiry, effects that
+ *      end at the end of A's turn, resave prompts (trackers.mjs);
+ *   2. start of B's turn: effects that end at the start of B's turn, Burned/Bleed damage card, then
+ *      the turn-start plan (upkeep, resets, economy, recharge, Flow Focus) and B's summary card.
+ * A new start- or end-of-turn automation: add it to the matching step below (or inside the
+ * functions it calls), behind its rule("...") toggle.
+ *
+ * Workflow conventions (all of module/workflow/):
+ *   - The rules decision is a pure function in module/rules/ (tested in Node); this folder does the
+ *     Foundry part: dialogs, rolls, document updates, chat cards.
+ *   - Combat automation (turn hooks, token movement) runs once, on the active GM's client
+ *     (game.users.activeGM?.isSelf), so every change happens exactly once.
+ *   - Buttons check ownership (actor.isOwner) before changing an actor; changes to creatures the
+ *     user doesn't own go through the GM relay (module/socket.mjs asGM).
+ *   - Chat cards carry what their buttons need in flags.n5e (damage instances, actor uuids).
  */
 import { turnStartPlan } from "../rules/turn-start.mjs";
 import { esc } from "../view-models/common.mjs";
@@ -9,6 +26,7 @@ import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
 
+/** Start of the current combatant's turn (also called when combat starts, for the first combatant). */
 async function onTurnStart(combat) {
   if ( !game.users.activeGM?.isSelf ) return;
   const actor = combat.combatant?.actor;
@@ -47,12 +65,15 @@ async function onTurnStart(combat) {
 }
 
 /** End concentration from a turn card (free). */
+/** End concentration from a turn card (free): drop the jutsu id and its recorded paid cost. */
 export async function endConcentration(actor, id) {
   const keep = (actor.system.combat?.concentrating ?? []).filter(x => x !== id);
   return actor.update({ "system.combat.concentrating": keep, [`flags.n5e.concentrationPaid.-=${id}`]: null });
 }
 
+/** Called once at module load (n5e.mjs). Every combat-related hook the system uses is here. */
 export function registerTurnHooks() {
+  // prior = {round, turn, combatantId} of the turn that just ended.
   Hooks.on("combatTurnChange", async (combat, prior) => {
     if ( game.users.activeGM?.isSelf && prior?.combatantId ) {
       const ending = combat.combatants.get(prior.combatantId)?.actor;
@@ -64,6 +85,7 @@ export function registerTurnHooks() {
     return onTurnStart(combat);
   });
   Hooks.on("combatStart", combat => onTurnStart(combat));
+  // Chilled: damage when a Chilled creature moves (trackers.mjs onTokenMove).
   Hooks.on("moveToken", (token, movement) => onTokenMove(token, movement));
   // Combat Rival (Brutish Momentum) lasts until combat ends.
   Hooks.on("deleteCombat", async combat => {
@@ -73,6 +95,7 @@ export function registerTurnHooks() {
       if ( ids.length ) await c.actor.deleteEmbeddedDocuments("ActiveEffect", ids);
     }
   });
+  // Optional Amp limit: a new Amp may switch older ones off.
   Hooks.on("createActiveEffect", (effect, options, userId) => onAmpCreated(effect, options, userId));
 }
 

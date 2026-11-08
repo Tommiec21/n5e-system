@@ -2,6 +2,11 @@
  * Item sheet view model (pure). One sheet serves all 13 item types: a header with a one-line summary,
  * a PF2e-style sidebar of key facts, typed Details fields per type, rich-text blocks, the advancement
  * table for classes/subclasses/clans, and effects. Templates only print what this returns.
+ *
+ * Adding an editable field to an item sheet: add it to the type's list in DETAILS below, using a
+ * builder from F (text, num, check, select, chips...). The builder writes the field's "system.<path>"
+ * as the input name, so the sheet saves it with no extra code. Values come from the item's _source
+ * (what's stored), not the prepared data, so derived numbers never get saved back by accident.
  */
 import { abilities, ranks, rankOrder, disciplines, skills, toolkits } from "../config/core.mjs";
 import { keywords, jutsuSections, upcastPresets, stimuli } from "../config/jutsu.mjs";
@@ -24,6 +29,8 @@ const opts = (choices, value, { blank = false } = {}) => [
 /*  Field builders                              */
 /* -------------------------------------------- */
 
+// Field builders: each returns {kind, path, label, value, ...} that templates/item/details.hbs renders
+// as the matching input. kind decides the control (text, number, checkbox, select, chips...).
 const F = {
   text: (src, path, label, extra = {}) => ({ kind: "text", path: `system.${path}`, label, value: get(src, path) ?? "", ...extra }),
   num: (src, path, label, extra = {}) => ({ kind: "number", path: `system.${path}`, label, value: get(src, path) ?? "", ...extra }),
@@ -97,6 +104,10 @@ const rankChoices = Object.fromEntries(rankOrder.map(r => [r, ranks[r].label]));
 const kwChoices = Object.fromEntries(Object.entries(keywords).filter(([, k]) => !k.removed).map(([k, v]) => [k, v.label]));
 const abilityChoices = Object.fromEntries(Object.entries(abilities).map(([k, v]) => [k, v.label]));
 
+/**
+ * Details tab fields per item type, as sections of fields. A type with no entry shows no Details tab.
+ * Order here is the order on the sheet.
+ */
 const DETAILS = {
   jutsu: src => [
     section("Jutsu", [
@@ -242,6 +253,7 @@ const HTML_FIELDS = {
 /*  Header, sidebar                             */
 /* -------------------------------------------- */
 
+/** One-line summary under the item name, plus the sidebar's key facts and chips. */
 function summary(item) {
   const s = item.system;
   const facts = [];

@@ -1,6 +1,15 @@
 /**
  * Character sheet view models: actor in, plain data out. Templates only print what these return.
  * Pure (no Foundry calls), so every tab is tested in Node (dnd5e prepares context per part the same way).
+ *
+ * One function per sheet part, matching the templates in templates/actor/character/:
+ *   headerVM → header.hbs     railVM → rail.hbs (left column on every tab)
+ *   mainVM → main.hbs         jutsuVM → jutsu.hbs       inventoryVM → inventory.hbs
+ *   featuresVM → features.hbs effectsVM → effects.hbs   biographyVM → biography.hbs
+ *   (the Combat tab's model is view-models/combat.mjs)
+ * The sheet (applications/actor/character-sheet.mjs) calls these in _prepareContext and puts the
+ * result in the template's `vm`. To show something new: compute it in the actor's data model,
+ * expose it here, print it in the template. Keep decisions out of templates.
  */
 import { rule } from "../rules-settings.mjs";
 import {
@@ -17,6 +26,8 @@ import {
 } from "./common.mjs";
 import { AC_FORMULAS } from "../rules/ac.mjs";
 
+// Small helpers shared by every part. `list` accepts arrays, Sets and Foundry Collections alike
+// (tests pass arrays; Foundry passes Collections).
 const list = items => (Array.isArray(items) ? items : [...(items ?? [])]);
 const ofType = (actor, ...types) => list(actor.items).filter(i => types.includes(i.type));
 const bd = (actor, key, opts) => breakdownTooltip(actor.system.breakdowns?.[key], opts);
@@ -27,6 +38,7 @@ const flag = (doc, key) => (typeof doc.getFlag === "function" ? doc.getFlag("n5e
 /*  Header                                      */
 /* -------------------------------------------- */
 
+/** Name, portrait, level/XP, ability strip, Class / Clan / Background strip, rest buttons. */
 export function headerVM(actor) {
   const sys = actor.system;
   const cls = sys.grants?.classItem;
@@ -69,7 +81,7 @@ export function headerVM(actor) {
 /*  Left rail                                   */
 /* -------------------------------------------- */
 
-/** Terse recovery labels for the rail ("10min/Rest", "SR/LR"). */
+/** Terse recovery labels for the rail ("10min/Rest", "SR/LR"; King: no formulas). */
 const RECOVERY = { rest10m: "10min/Rest", sr: "SR", lr: "LR", fr: "FR", rest: "SR/LR", turn: "Turn", turnStart: "Turn",
   round: "Round", encounter: "Encounter", initiative: "Initiative", day: "Day" };
 
@@ -106,6 +118,11 @@ export function resourcesVM(actor) {
   return out;
 }
 
+/**
+ * The left rail: portrait, AC/SPD/Init/Prof/DR with hover math, HP/CP bars, Hit/Chakra Dice, death
+ * saves at 0 HP, every resource and limited use (resourcesVM), and the conditions with their ranks
+ * and "Try to end" buttons.
+ */
 export function railVM(actor, registry = coreConditions) {
   const sys = actor.system;
   const conditionList = [];
@@ -170,6 +187,7 @@ export function railVM(actor, registry = coreConditions) {
 /*  Main tab                                    */
 /* -------------------------------------------- */
 
+/** Main tab: saving throws, skills (with tier and Mastery), toolkits, discipline attack/DC panels. */
 export function mainVM(actor) {
   const sys = actor.system;
   const abilityCards = Object.entries(abilities).map(([key, cfg]) => ({
@@ -223,6 +241,7 @@ export function mainVM(actor) {
 /*  Jutsu tab                                   */
 /* -------------------------------------------- */
 
+/** "30 ft · 15 ft cone" style label from a jutsu's range and area. */
 function rangeLabel(target) {
   const r = target?.range ?? {};
   const a = target?.area ?? {};
@@ -371,6 +390,7 @@ function gearRow(i) {
   return row;
 }
 
+/** Inventory tab: gear grouped by type, Bulk vs slots, equip toggles, Ammunition Die controls. */
 export function inventoryVM(actor) {
   const sys = actor.system;
   const physical = ofType(actor, "weapon", "armor", "consumable", "toolkit", "container", "loot");
@@ -409,6 +429,10 @@ export const OPTION_GROUPS = {
 };
 const titleCase = s => s.replace(/[-_]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
+/**
+ * Features tab: Class / Clan / Background strip, then Class features (core, subclass, one group per
+ * option type), Clan, Feats by category, and Stances. Rows carry uses and feature choice pickers.
+ */
 export function featuresVM(actor) {
   const sys = actor.system;
   const feats = ofType(actor, "feat");
@@ -470,6 +494,7 @@ export function featuresVM(actor) {
   };
 }
 
+/** Effects tab: every Active Effect grouped (conditions, states, Amps, concentration, other). */
 export function effectsVM(actor) {
   const rows = list(actor.effects).map(e => ({
     id: e.id, name: e.name, img: e.img, type: e.type, disabled: !!e.disabled,
@@ -493,6 +518,7 @@ export function effectsVM(actor) {
   };
 }
 
+/** Biography tab: the rich-text biography and the character details fields. */
 export function biographyVM(actor) {
   const d = actor.system.details ?? {};
   return {

@@ -9,6 +9,10 @@
  *   Gates       open the next gate (Action / BA / Reaction), close all (Exhaustion, Bruised, death).
  *   Chilled     damage card when a Chilled creature moves more than 5 ft (once per turn).
  *   Turn end    Fury expiry, Mark expiry, resave prompts.
+ *   Activity effects  "effect" activities (Titan Guard, Set-Up, Crash/Flow...) and their turn-based
+ *               endings (applyActivityEffect, expireSourceEffects).
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import {
   chilledMove, gainFury, spendFury, furyTurnEnd, bindingFuryTrigger, jutsuTrackers, trackerEffectData, marksToExpire,
@@ -34,6 +38,7 @@ const targetedActors = () => [...(game.user.targets ?? [])].map(t => t.actor).fi
 /*  Fury                                        */
 /* -------------------------------------------- */
 
+/** Keep the Furious token status in step with system.combat.fury (on while Fury > 0). */
 async function syncFurious(actor) {
   const on = (actor.system.combat?.fury ?? 0) > 0;
   if ( on !== !!actor.statuses?.has("furious") ) await actor.toggleStatusEffect("furious", { active: on });
@@ -138,6 +143,7 @@ export async function onAmpCreated(effect, options, userId) {
 /*  8-Inner Gates                               */
 /* -------------------------------------------- */
 
+// One effect holds every open gate's bonuses (flags.n5e.gates.n = the highest open gate).
 const gateEffect = actor => actor.effects.find(e => e.flags?.n5e?.gates);
 export const openGate = actor => (gateEffect(actor)?.flags.n5e.gates.n ?? 0);
 

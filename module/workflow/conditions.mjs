@@ -3,6 +3,8 @@
  *   - Turn start: a damage card for Burned / Bleed with Apply (to that creature, ignoring DR).
  *   - Turn end: rank decay and endings, posted as one short card.
  *   - "Try to end" from the sheet: pick the check, roll vs the DC, spend the Action.
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { conditionTurnStart, conditionTurnEnd, removalOptions, removalResult } from "../rules/condition-lifecycle.mjs";
 import { applyButtons } from "./activity-buttons.mjs";

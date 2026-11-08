@@ -8,6 +8,8 @@
  *   - a Concentration check button when a target concentrating on a non-Stable jutsu took damage,
  *   - a note when a target falls to 0 (Dying for characters; NPCs that die at 0 are marked Dead).
  * Save results can carry "Apply <condition>" buttons (from the jutsu text) that apply to the roller.
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { damagePlan, healPlan, concentrationOnDamage, deathSaveResult } from "../rules/damage.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";

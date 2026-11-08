@@ -1,6 +1,8 @@
 /**
  * Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. Roll it each use; a 1-2 steps it down. Recovering ammo
  * steps it up. Reaching 0 removes the item (King 2026-11-07).
+ * The ladder is weapon.system.ammo.steps (config/equipment.mjs ammoDie.steps by default); `step` is
+ * the index, so "down" is +1. The sheet's Ammunition Die control: left click down, right click up.
  */
 
 /** Move the die along its ladder: +1 = down a step, -1 = up a step. */

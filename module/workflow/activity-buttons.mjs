@@ -6,6 +6,8 @@
  * Saves roll for the controlled tokens (or your assigned character). Healing and temp HP apply to the
  * controlled tokens (or the caster): temp HP doesn't stack (keep the higher). Damage is rolled here;
  * applying it to tokens (DR, resistance, interception) is Phase 4.
+ *
+ * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { esc, signed } from "../view-models/common.mjs";
 import { unarmedFormula, critFormula } from "../rules/activity-parse.mjs";
@@ -15,6 +17,8 @@ import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 
+// A data-* attribute, or nothing when the value is empty. Buttons carry everything their click needs
+// in these attributes (JSON for parts/costs/effects), because chat cards are stored as plain HTML.
 const attr = (k, v) => (v === undefined || v === null || v === "" ? "" : ` data-${k}="${esc(String(v))}"`);
 const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? t).join(" / ");
 
@@ -43,6 +47,8 @@ export function applyButtons() {
  * @param {Item} item
  * @param {object[]} activities
  */
+//   The row builders below run in order; the first matching branch handles an activity. Strikes,
+//   effects, feature saves and rolls come first; attack / save / damage / heal are the parsed kinds.
 export function activityButtons(actor, item, activities) {
   const live = item.system.live ?? {};
   const rows = [];
@@ -146,6 +152,7 @@ export async function onActivityClick(message, button, event) {
     amount = paid.amount;
   }
   const level = f => resolveFormula(String(f ?? "").replace(/@amount/g, String(amount)).replace(/@poolRoll/g, String(poolRoll ?? 0)), caster);
+  // One case per data-n5e-act value written by activityButtons()/damageButtons().
   switch ( d.n5eAct ) {
     case "strike": {
       if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can make this attack.");

@@ -1,6 +1,7 @@
 /**
  * Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips.
  * Pure functions (no Foundry), so they run in Node tests.
+ * Anything placed inside tooltip HTML or data attributes must go through esc() first.
  */
 import { signed } from "../rules/breakdown.mjs";
 import { keywords, components, featureTags } from "../config/jutsu.mjs";
@@ -39,6 +40,8 @@ export function breakdownTooltip(bd, { signedTotal = true } = {}) {
 /* -------------------------------------------- */
 
 const SVG = (w, body) => `<svg class="n5e-glyph" width="${w}" height="16" viewBox="0 0 ${w} 16" aria-hidden="true">${body}</svg>`;
+// Inline SVG glyphs for the action economy (Action ◆, Bonus ◇, Reaction ↺...), drawn here so the
+// sheet needs no icon font for them. glyph(activation) picks one.
 const GLYPH_SVG = {
   action: SVG(16, "<path d=\"M8 1L15 8L8 15L1 8Z\" fill=\"currentColor\"/>"),
   bonus: SVG(16, "<path d=\"M8 1.5L14.5 8L8 14.5L1.5 8Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/>"
