@@ -3,6 +3,13 @@
  * Applies core Active Effect changes normally (effects pass 1) and holds back "n5e.*" change keys for
  * the system's derived-data pipeline (effects pass 2), so custom keys never hit Foundry's property
  * application.
+ *
+ * Prepare order for an actor (Foundry calls these; the N5e parts are in module/data/actor/creature.mjs):
+ *   1. data model prepareBaseData        stored values, item grants
+ *   2. applyActiveEffects (here)         core keys applied; n5e.* keys collected into _n5eChanges
+ *   3. data model prepareDerivedData     every derived number (reads _n5eChanges via parseN5eChanges)
+ *
+ * Also the condition helpers every workflow uses: getCondition, addCondition, removeCondition.
  */
 import { CHANGE_KEY_PREFIX } from "../rules/change-keys.mjs";
 import { isV31Actor, migrateV31Actor } from "../migration/v31.mjs";
@@ -19,13 +26,20 @@ export default class N5eActor extends Actor {
     return super.migrateData(source);
   }
 
-  /** @override */
+  /**
+   * @override
+   * Same as core's applyActiveEffects (statuses, priority order, effect.apply), with one difference:
+   * changes whose key starts with "n5e." are not applied to the actor. They are kept, with their
+   * effect attached, in this._n5eChanges for the derived-data pipeline, which knows what they mean
+   * (DR, crit range, cost changes, Mastery sources...; see module/rules/change-keys.mjs).
+   */
   applyActiveEffects() {
     const overrides = {};
     this.statuses.clear();
     this._n5eChanges = [];
     const changes = [];
     for ( const effect of this.allApplicableEffects() ) {
+      // effect.active is false for disabled effects and suppressed ones (inactive stances).
       if ( !effect.active ) continue;
       for ( const statusId of effect.statuses ) this.statuses.add(statusId);
       for ( const change of effect.changes ) {
@@ -45,7 +59,7 @@ export default class N5eActor extends Actor {
     this.overrides = foundry.utils.expandObject(overrides);
   }
 
-  /** @override */
+  /** @override  Adds the system's roll data (@prof, @level, @abilities..., @scale.<class>.<column>). */
   getRollData() {
     return { ...super.getRollData(), ...(this.system.getRollData?.() ?? {}) };
   }
@@ -57,7 +71,18 @@ export default class N5eActor extends Actor {
 
   /**
    * Add ranks to a condition (one effect per condition; ranks stack, clamped to max).
-   * Phase 4 adds saves, immunity, and duration handling on top of this.
+   *   - Immunity (traits.conditionImmune) blocks it when the Condition resistance rule is on.
+   *   - Existing condition: ranks add up and the duration restarts (King 2026-11-07).
+   *   - New condition: the default 1-minute duration unless it persists or ends on its own
+   *     (rules/condition-lifecycle.mjs defaultDuration); the combat round/turn is recorded either
+   *     way, which "ends at the end of its next turn" conditions need.
+   * @param {string} key          condition id (CONFIG.N5E.conditions or clanConditions)
+   * @param {number} [ranks=1]
+   * @param {object} [o]
+   * @param {string} [o.sourceRank]  rank of the jutsu that caused it (Corroded and Charmed scale by it)
+   * @param {string} [o.origin]      uuid of the source
+   * @param {{seconds?: number, rounds?: number}} [o.duration]  overrides the default
+   * @returns {Promise<ActiveEffect|null>}
    */
   async addCondition(key, ranks = 1, { sourceRank = "", origin, duration } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];

@@ -1,6 +1,14 @@
 /**
  * NPCs, adversaries, summons, clones, and companions. Summons and clones are NPCs with a template
  * flag rather than separate actor types (Phase 1 plan).
+ *
+ * Differences from characters (everything else is CreatureData):
+ *   - level is typed on the NPC (details.level), not summed from class items;
+ *   - Hit/Chakra Dice are fields on the NPC (no class item);
+ *   - hpMax / cpMax override the level formula when a stat block gives a number;
+ *   - diesAtZero: most NPCs die at 0 HP instead of making death saves (optional rule).
+ * NOTE (King 2026-11-07): this is a stopgap. NPCs get a full pass once the Bingo Book's NPC rules
+ * are read; expect this file to grow then.
  */
 import CreatureData from "./creature.mjs";
 import * as S from "../fields/shared.mjs";
@@ -39,7 +47,11 @@ export default class NPCData extends CreatureData {
     return Math.max(0, this.details.level ?? 1);
   }
 
-  /** @override */
+  /**
+   * @override
+   * HP/CP from the NPC's own dice and level (same formula as characters), then the stat-block
+   * overrides. Each override replaces the hover breakdown too, so the sheet shows where it came from.
+   */
   _preparePools({ conMod }) {
     const hitFaces = dieFaces(this.hitDie);
     const chakraFaces = dieFaces(this.chakraDie);

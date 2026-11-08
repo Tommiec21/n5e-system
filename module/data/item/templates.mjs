@@ -3,6 +3,10 @@
  *   base         every item: identifier, description, source
  *   physical     Bulk, price, rank, quantity, equipped, location
  *   activatable  Activation, Range/Area, Duration, Uses, Activities
+ *
+ * A new field that several item types need goes here, so every type that composes the template gets
+ * it. A field for one type goes in that type's own defineSchema. Field builders (S.*) are in
+ * module/data/fields/shared.mjs.
  */
 import * as S from "../fields/shared.mjs";
 
@@ -25,6 +29,13 @@ export function physicalFields() {
   };
 }
 
+/**
+ * Anything that can be used: jutsu, features, stances, consumables, weapons.
+ *   activities   what pressing its buttons does (attack, save, damage, strike, effect...; see
+ *                activityFields in fields/shared.mjs). When empty, the text is parsed instead
+ *                (rules/activity-parse.mjs). Authored activities always win over parsing.
+ *   featureType  "passive" hides the Use button.
+ */
 export function activatableFields() {
   return {
     activation: S.activation(),

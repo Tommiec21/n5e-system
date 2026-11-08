@@ -1,5 +1,6 @@
 /**
- * N5e Item document. Rolling and use workflows arrive in Phase 3; Phase 1 only exposes data helpers.
+ * N5e Item document. Using items (casting, attacking, features) lives in module/workflow/; this
+ * class holds the document-level behavior: V3.1 data conversion, auto-equip, and roll data.
  */
 import { isV31Item, migrateV31Item } from "../migration/v31.mjs";
 
@@ -19,6 +20,7 @@ export default class N5eItem extends Item {
   async _preCreate(data, options, user) {
     if ( (await super._preCreate(data, options, user)) === false ) return false;
     const actor = this.parent;
+    // Only characters, only equippable types, only if it isn't equipped already.
     if ( actor?.type !== "character" || !("equipped" in (this.system ?? {})) || this.system.equipped ) return;
     let equip = false;
     if ( this.type === "weapon" ) equip = true;
@@ -30,7 +32,11 @@ export default class N5eItem extends Item {
     if ( equip ) this.updateSource({ "system.equipped": true });
   }
 
-  /** @override */
+  /**
+   * @override
+   * The owner's roll data plus @item (this item's system data) and, for jutsu, @rank (E=0 ... S=5)
+   * so formulas like "2d6 * @rank" work.
+   */
   getRollData() {
     const data = this.actor?.getRollData() ?? {};
     data.item = { ...(this.system.toObject?.() ?? {}) };

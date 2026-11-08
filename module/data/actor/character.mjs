@@ -1,5 +1,10 @@
 /**
  * Player character. Level comes from the class item (single class in v1; multiclass is an optional rule).
+ *
+ * Almost everything a character has is shared with NPCs and lives in CreatureData (creature.mjs):
+ * abilities, skills, HP/CP, disciplines, DR, conditions, resources. This class only adds the
+ * character-specific stored fields (biography details, Ryo, downtime, Favor, lifestyle) and how the
+ * level is found.
  */
 import CreatureData from "./creature.mjs";
 import * as S from "../fields/shared.mjs";
@@ -27,14 +32,14 @@ export default class CharacterData extends CreatureData {
     return schema;
   }
 
-  /** @override */
+  /** @override  Character level = total class levels (1-20). With no class yet, level 1. */
   _computeLevel() {
     const classes = this.parent?.items?.filter(i => i.type === "class") ?? [];
     const total = classes.reduce((sum, c) => sum + (c.system.levels || 0), 0);
     return Math.max(1, Math.min(20, total || 1));
   }
 
-  /** @override */
+  /** @override  Everything in CreatureData, then the XP needed for the next level (the header shows it). */
   prepareDerivedData() {
     super.prepareDerivedData();
     const N5E = globalThis.CONFIG?.N5E;

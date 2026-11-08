@@ -6,11 +6,19 @@
  *   stance         the single active stance
  *   concentration  a concentrated jutsu (max 2 per actor by default)
  *   generic        jutsu buffs, feature effects, item effects, ailments
+ *
+ * NOTE on stance and concentration: the live trackers are system.combat.activeStance and
+ * system.combat.concentrating on the actor (item ids). These two effect types exist for data
+ * imported from V3.1 and for future token display; the current workflows don't create them.
+ *
+ * Extra behavior any effect can opt into through flags.n5e (expires, state, exclusive, tracker,
+ * resave, gates) is listed in module/documents/active-effect.mjs.
  */
 import * as S from "../fields/shared.mjs";
 
 const TDM = () => foundry.abstract.TypeDataModel;
 
+/** A condition. Its rules (penalties, decay, removal) come from the registry entry for `key`. */
 export class ConditionEffectData extends TDM() {
   static defineSchema() {
     return {
@@ -32,12 +40,14 @@ export class ConditionEffectData extends TDM() {
     return this.definition?.maxRanks ?? null;
   }
 
+  /** Unranked conditions count as 1 rank; ranked ones never exceed their max. */
   prepareDerivedData() {
     const max = this.maxRanks;
     this.effectiveRanks = max == null ? 1 : Math.min(this.ranks, max);
   }
 }
 
+/** A State (Prone, Grappled, Furious...): on or off, no ranks (CONFIG.N5E.states). */
 export class StateEffectData extends TDM() {
   static defineSchema() {
     return {
@@ -48,6 +58,7 @@ export class StateEffectData extends TDM() {
   }
 }
 
+/** An Amp. ampType drives the optional Amp limits (rules/trackers.mjs ampsToDisable). */
 export class AmpEffectData extends TDM() {
   static defineSchema() {
     return {

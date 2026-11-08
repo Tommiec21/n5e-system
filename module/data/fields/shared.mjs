@@ -4,6 +4,13 @@
  *
  * Every helper returns a fresh field so it can be used in any defineSchema(). Fields are built lazily
  * (inside functions) because `foundry` only exists at runtime.
+ *
+ * Changing a schema safely:
+ *   - Adding a field is always safe: existing documents get its `initial` value when loaded.
+ *   - Renaming or moving a field loses the old data unless a migration copies it
+ *     (module/migration/runner.mjs; see docs/DEVELOPER.md "Adding a migration").
+ *   - Node tests build these fields through tests/helpers/foundry-stub.mjs, so a field type the stub
+ *     doesn't know needs adding there as well.
  */
 import { rankOrder } from "../../config/core.mjs";
 
@@ -12,6 +19,10 @@ const F = () => foundry.data.fields;
 /* -------------------------------------------- */
 /*  Primitive helpers                           */
 /* -------------------------------------------- */
+
+// Shorthands used by every model: str (text, blank allowed), int (whole number), num (number or
+// null), bool, html (rich text), set (unique strings), arr (list), obj (nested object), choice
+// (one of a fixed list).
 
 export const str = (options = {}) => new (F().StringField)({ required: true, blank: true, initial: "", ...options });
 export const int = (initial = 0, options = {}) => new (F().NumberField)({
@@ -53,7 +64,11 @@ export const rank = (initial = "D", options = {}) => new (F().StringField)({
  *  - max: formula (e.g. "1 + @prof")
  *  - die: optional die size for dice pools ("d6")
  *  - steps: die-step mode (ammo die: [8,6,4,1,0]); `step` is the current index
- *  - recovery: [{on, amount, formula}]
+ *  - recovery: [{on, amount, formula, requires}]
+ *      on: sr | lr | fr | rest (any rest) | rest10m (10 minutes of rest) | day | event | never
+ *      amount: all | half (regain half the max) | setHalf (a Short Rest raises it to half)
+ *      requires: a feature identifier the owner must have (Focus on a Short Rest: tenketsu-refinement)
+ *      (rest handling: rules/rest.mjs)
  *  - castsJutsu: can pay jutsu costs instead of chakra (clan resources)
  *  - countsAsChakraSpend: spending it ends Suppress Chakra
  */
@@ -82,6 +97,7 @@ export const resourcePool = (options) => obj(resourcePoolFields(options));
 /*  Activation / Range / Duration / Uses        */
 /* -------------------------------------------- */
 
+/** How something is used: action | bonus | reaction | special | free | fullTurn | long | none (+ trigger text). */
 export function activation() {
   return obj({
     type: str({ initial: "action" }),
@@ -91,6 +107,7 @@ export function activation() {
   });
 }
 
+/** Range and area. area.shape (sphere, cube, cone, cylinder, line) + size, used for area halving and templates. */
 export function rangeArea() {
   return obj({
     range: obj({ type: str({ initial: "feet" }), value: num(null, { min: 0 }), long: num(null, { min: 0 }),
@@ -100,6 +117,7 @@ export function rangeArea() {
   });
 }
 
+/** Duration: value + unit (instant, round, minute, hour...), and whether it needs concentration. */
 export function duration() {
   return obj({
     value: num(null, { min: 0 }),
@@ -109,7 +127,11 @@ export function duration() {
   });
 }
 
-/** Limited uses: per turn/round/encounter/sr/lr/rest/fr/day; staminaEligible for the Stamina option. */
+/**
+ * Limited uses: per turn/round/encounter/sr/lr/rest/fr/day; staminaEligible for the Stamina option.
+ * max is a formula ("1 + @prof"); the owner resolves it into uses.maxValue each prepare. Only `spent`
+ * changes in play. Rests reset `spent` for matching `per` values (rules/rest.mjs).
+ */
 export function uses() {
   return obj({
     max: formula(),
@@ -125,6 +147,10 @@ export function uses() {
 /*  Components                                  */
 /* -------------------------------------------- */
 
+/**
+ * Jutsu components: hs (hand seals), cm (chakra molding), cs (chakra source), m (mobility), plus a
+ * weapon requirement (W) and a tool requirement. Conditions like Confused and Slowed read these.
+ */
 export function components() {
   return obj({
     hs: bool(), cm: bool(), cs: bool(), m: bool(),
@@ -166,6 +192,20 @@ export function riderFields() {
 /**
  * Activity: one resolvable step on an item. Phase 1 stores; Phase 3 executes.
  * One superset schema keeps storage simple; `type` says which sub-object is meaningful.
+ *
+ * Each activity becomes a button on the item's chat card (workflow/activity-buttons.mjs builds the
+ * buttons and handles the clicks). By type:
+ *   attack   roll a discipline attack (attack.*), with damage buttons (damage.parts)
+ *            + strike.kind set: an Unarmed or weapon strike instead (stance strikes; workflow/attack.mjs)
+ *   save     targets roll a save vs the DC (save.dc.source: nin|tai|gen for features); inflicts are
+ *            offered as Apply buttons on a failure
+ *   damage   damage buttons only
+ *   heal     heal / CP / temporary HP to the selected tokens (or the user)
+ *   effect   apply an Active Effect to self or targets (effect.*; workflow/trackers.mjs applyActivityEffect)
+ *   roll     roll a formula and post it (roll.*), e.g. Drunken Fist's damage reduction
+ * Shared extras: minLevel hides it until that level; cost spends from a pool first (rolled pool die
+ * available as @poolRoll, a chosen amount as @amount); formulas may use lvl(level:value,...).
+ * Unknown fields are dropped when the item is saved, so every field an activity needs must be here.
  */
 export function activityFields() {
   const damageParts = () => arr(obj({ formula: formula(), type: str() }));
@@ -198,10 +238,12 @@ export function activityFields() {
     riders: arr(obj(riderFields())),
     /** Automation pass (0.7.1): level gate, pool cost, strikes, effects with turn-based expiry. */
     minLevel: int(0, { min: 0 }),
+    // What a failed save offers to apply: {key, kind: condition|state, ranks, label}.
     inflicts: arr(obj({ key: str(), kind: str({ initial: "condition" }), ranks: int(1, { min: 0 }), label: str() })),
     roll: obj({ formula: formula(), note: str() }),
     oncePerTurn: bool(),
     activation: str(),                   // overrides the item's activation for this activity
+    // Pool cost paid when the button is clicked (roll: roll the pool's die and post it).
     cost: obj({ pool: str(), amount: int(0, { min: 0 }), roll: bool() }),
     strike: obj({
       kind: str(),                       // unarmed|weapon ("" = not a strike)
@@ -233,7 +275,10 @@ export const activities = () => arr(obj(activityFields()));
 /**
  * Level-keyed grants on class, subclass, clan, background (dnd5e Advancement concept).
  * type: feature (uuids) | choice (pick count from uuids) | asi | mastery | pool | scale | proficiency
- * The interactive level-up flow arrives with the Phase 2 sheets; the data is stored now.
+ *       | itemChoice (pick `count` items tagged `key`, e.g. nin-molding) | trait (key: affinity,
+ *       skills, tools, saves; values in uuids or chosen)
+ * Read by the level-up flow (module/advancement/steps.mjs builds a level's steps from these) and,
+ * for mastery and trait entries, by the actor pipeline directly.
  */
 export function advancementFields() {
   return {

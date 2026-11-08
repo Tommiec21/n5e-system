@@ -1,6 +1,16 @@
 /**
  * Advancement item types: class, subclass, clan, background. Plus feat and stance.
  * Source: KB 09, 12, 13.
+ *
+ * How level-ups use these: each item's `advancement` array lists what it grants at which level
+ * (features, choices, ASIs, Mastery, pools, traits). The level-up dialog (applications/level-up.mjs)
+ * walks those entries for the new level; advancement/manager.mjs applies the choices and records
+ * them so "Remove level" can undo exactly that level. The derived-data pipeline also reads Mastery
+ * and trait entries directly (creature.mjs _collectItemGrants), so editing an advancement entry on
+ * an owned item takes effect at once.
+ *
+ * Automation data (activities, effects, feature choices, cast options) for imported features and
+ * stances comes from tools/content/automation.py; see docs/DEVELOPER.md, "Automating content".
  */
 import * as S from "../fields/shared.mjs";
 import { baseFields, activatableFields, grantChoice, poolDefinitions } from "./templates.mjs";
@@ -9,6 +19,11 @@ import { maxRankForLevel } from "../../rules/progression.mjs";
 const TDM = () => foundry.abstract.TypeDataModel;
 const twenty = (element) => S.arr(element);
 
+/**
+ * A class (one per character in v1). `levels` is the class level; the character's level is the sum
+ * over class items. Class table columns (Superiority Dice, Maneuvers Known...) are `columns`, and
+ * formulas read the current level's value as @scale.<classCamelCase>.<column key>.
+ */
 export class ClassData extends TDM() {
   static defineSchema() {
     return {
@@ -46,12 +61,14 @@ export class ClassData extends TDM() {
     return this.columns.find(c => c.key === key)?.values?.[level - 1] ?? null;
   }
 
+  /** Current-level values for the sheet and level-up checks. */
   prepareDerivedData() {
     this.jutsuKnownNow = this.jutsuKnown?.[this.levels - 1] ?? null;
     this.maxRankNow = this.maxRankAt(this.levels || 1);
   }
 }
 
+/** A subclass (Assault Scout, Blaze Walker...). Its advancement levels follow the class's levels. */
 export class SubclassData extends TDM() {
   static defineSchema() {
     return {
@@ -63,6 +80,7 @@ export class SubclassData extends TDM() {
   }
 }
 
+/** A clan: ASI, speed, skills, affinities, Hijutsu, clan-only conditions and keywords. */
 export class ClanData extends TDM() {
   static defineSchema() {
     return {
@@ -111,6 +129,16 @@ export class BackgroundData extends TDM() {
   }
 }
 
+/**
+ * Feats AND class/clan features (category says which: "classFeature", "classOption", "clanFeature",
+ * or a feat category like "skill", "taijutsu"). Tags group class options (nin-molding,
+ * assault-maneuver, scout-path, scout-generalization) and drive costs (rules/resource-cost.mjs).
+ *   grants.mastery         Mastery targets ("skill.nin")
+ *   grants.proficiencies   "skill.ill" / "tool.disguise": proficiency, or Mastery if already proficient
+ *   identifier             stable id code looks for (rules/features.mjs: "extra-attack", "switch-hitter"...)
+ * Optional flags.n5e: choice {label, options, value} (a picker on the Features tab), castOption /
+ * castOptions (cast-dialog options; rules/cast-options.mjs).
+ */
 export class FeatData extends TDM() {
   static defineSchema() {
     return {
@@ -133,6 +161,13 @@ export class FeatData extends TDM() {
   }
 }
 
+/**
+ * A Fighting Stance. Only one is active (system.combat.activeStance holds its item id).
+ * While active: its transfer effects apply (documents/active-effect.mjs isSuppressed), its Unarmed
+ * die/type rules apply (rules/unarmed.mjs), and its activities (strikes) appear on the Combat tab.
+ * Taijutsu stances make the Unarmed die a d6 unless unarmedDie says otherwise.
+ * Optional flags.n5e.weaponDie {mod, property}: a modifier on weapon damage dice (Great Weapon: "r<3").
+ */
 export class StanceData extends TDM() {
   static defineSchema() {
     return {

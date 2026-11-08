@@ -1,6 +1,11 @@
 /**
  * Jutsu (KB 11 schema, signed off in the Phase 1 plan).
  * Full text always stays on the item, so a jutsu without automated activities still posts a readable card.
+ *
+ * Stored: rank, discipline, keywords, cost, components, upcast rules, Chain/Finisher/Overcharge text.
+ * Derived per owner (prepareActorDerived, step 10 of the actor pipeline): `live` = the numbers the
+ * sheet and cast dialog show (cost now, attack, DC, upcast ranks, whether it can be cast).
+ * Casting itself: workflow/cast.mjs (dialog, card) and workflow/cast-plan.mjs (what gets spent).
  */
 import * as S from "../fields/shared.mjs";
 import { baseFields, activatableFields } from "./templates.mjs";
@@ -43,6 +48,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     };
   }
 
+  /** Clan jutsu ignore ability requirements and Release affinity checks (KB 04). */
   get isHijutsu() {
     return this.keywords.has("hijutsu") || !!this.hijutsu.clan;
   }
@@ -64,6 +70,8 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
    * @param {string} [castRank]
    * @param {object} [choices]   the caster's pick when several multipliers/divisors apply (index)
    */
+  //   noReduction: drop every reduction (Chakra Surge: Crash); subtract: a one-off reduction from a
+  //   cast option (Chakra Compression). The cost math itself (order, floors) is rules/cost.mjs.
   computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice, noReduction = false, subtract = 0 } = {}) {
     const pen = actorSystem?.conditionPenalties;
     const mods = actorSystem?.modifiers;
@@ -72,6 +80,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     const subtractions = [];
     const multipliers = [];
     const divisors = [];
+    // n5e.cost.* effect changes that apply to this jutsu, sorted into the four kinds computeJutsuCost uses.
     for ( const c of mods?.cost ?? [] ) {
       if ( !scopeApplies(c.scope, ctx) ) continue;
       if ( c.op === "multiply" ) multipliers.push(c.value);
@@ -86,6 +95,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       divisors.length = 0;
       for ( let i = multipliers.length - 1; i >= 0; i-- ) if ( multipliers[i] < 1 ) multipliers.splice(i, 1);
     }
+    // Sealed raises the BASE cost (before reductions and the half-base floor).
     const baseAdds = [pen?.baseCost?.[this.discipline] ?? 0];
     return computeJutsuCost({
       base: this.cost.value,
@@ -110,11 +120,13 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       if ( allowPick && choice && flex.includes(choice) ) abilityKey = choice;
       else abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
     }
+    // The discipline's attack and DC already include its ability; shift them when this jutsu uses another.
     const abilityMod = sys.abilities?.[abilityKey]?.mod ?? 0;
     const delta = abilityMod - (disc?.mod ?? 0);
     const requirement = this.isHijutsu ? null : abilityRequirement(this.rank);
     const castMax = sys.grants?.maxRank ?? maxRankForLevel(sys.level ?? 1);
     const cost = this.computeCost(sys);
+    // Release keywords (fireRelease...) need the matching nature affinity; Hijutsu are exempt.
     const missingAccess = [];
     for ( const kw of this.keywords ) {
       const def = globalThis.CONFIG?.N5E?.keywords?.[kw];

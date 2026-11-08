@@ -15,6 +15,19 @@
  *  10  item-side derived: each jutsu's live cost, DC, attack, upcast range
  * Steps 7 and 8 values are gathered first (they are pure lookups) and applied where each number is built,
  * so every modifier lands at a predictable point.
+ *
+ * Stored vs derived: defineSchema() is what the database keeps (ability scores, HP value, spent
+ * dice, proficiency checkboxes...). Everything else on `system` (ability mods, totals, DCs, AC,
+ * speed, max HP, breakdowns, states) is recomputed on every prepare and never saved. To show a new
+ * number on the sheet, compute it here and read it in the view model (module/view-models/).
+ *
+ * Hover breakdowns: each total is built with a Breakdown (rules/breakdown.mjs) under a key in
+ * this.breakdowns ("ac", "skill.ath", "nin.dc"...); the sheet's tooltips read those keys.
+ *
+ * Effects can change a number in three ways, in this order of preference:
+ *   1. an n5e.* change key (DR, Pierce, crit range, cost, saveDC.nin...; rules/change-keys.mjs),
+ *   2. an ADD to system.bonuses.* (AC, speed, saves, checks, attack/saveDC per discipline),
+ *   3. a core change on a stored field (e.g. Forceful Bull UPGRADEs abilities.str.value to 18).
  */
 import * as S from "../fields/shared.mjs";
 import { abilities, skills, toolkits, castingDisciplines, disciplines, dcTables } from "../../config/core.mjs";
@@ -58,17 +71,23 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     const discNumbers = () => S.obj({ nin: S.int(0), tai: S.int(0), gen: S.int(0) });
 
     return {
+      // Ability scores (mods are derived). One entry per CONFIG.N5E.abilities key.
       abilities: S.obj(abilityFields),
       saves: S.obj(saveFields),
       skills: S.obj(skillFields),
       tools: S.obj(toolFields),
+      // Mastery sources added by hand or by level-up choices ({target: "skill.ath", source: "ASI 4"}).
+      // Item and effect sources are added during prepare; ranks come from the count of sources.
       mastery: S.obj({ sources: S.masterySources() }),
       hp: S.obj({ value: S.int(10, { min: 0 }), temp: S.int(0, { min: 0 }) }),
       cp: S.obj({ value: S.int(10, { min: 0 }), temp: S.int(0, { min: 0 }) }),
+      // Only "spent" is stored; max (= level), die and value are derived in _preparePools.
       hitDice: S.obj({ spent: S.int(0, { min: 0 }) }),
       chakraDice: S.obj({ spent: S.int(0, { min: 0 }) }),
       deathSaves: S.obj({ success: S.int(0, { min: 0, max: 3 }), failure: S.int(0, { min: 0, max: 3 }) }),
+      // Casting discipline abilities (nin/tai/gen); attack, DC and mod are derived. Bukijutsu uses Taijutsu.
       disciplines: S.obj(disciplineFields),
+      // Nature affinities and keyword access added on the actor itself (items add more during prepare).
       affinities: S.set(),
       keywordAccess: S.set(),
       attributes: S.obj({
@@ -86,6 +105,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           fly: S.int(0, { min: 0 }), burrow: S.int(0, { min: 0 }), hover: S.bool() }),
         languages: S.set()
       }),
+      // Combat trackers (Combat tab): Chain rank, Combo targets, Fury, the one active stance (item id),
+      // and the ids of jutsu being concentrated on (upkeep at turn start; rules/turn-start.mjs).
       combat: S.obj({
         chain: S.obj({ value: S.int(0, { min: 0, max: 3 }), active: S.bool(), used: S.arr(S.str()) }),
         comboTargets: S.set(),
@@ -93,6 +114,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         activeStance: S.str(),
         concentrating: S.arr(S.str())
       }),
+      // Resource pools by id (focus, superiorityDice, pyroclasm, stamina...). Pools defined on items are
+      // merged in during prepare; only their current value needs to be stored here.
       resources: new (F().TypedObjectField)(S.resourcePool()),
       willOfFire: S.obj({ value: S.int(1, { min: 0, max: 3 }) }),
       /** Flat bonuses Active Effects can target with ADD (derived numbers can't be targeted directly). */
@@ -109,7 +132,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
   /*  Step 1: base data                           */
   /* -------------------------------------------- */
 
-  /** @override */
+  /**
+   * @override
+   * Runs before Active Effects apply, so effects can read level and proficiency.
+   * Resets the per-prepare scratch objects (derived notes, breakdowns).
+   */
   prepareBaseData() {
     this.level = this._computeLevel();
     this.prof = proficiencyForLevel(this.level);
@@ -127,13 +154,19 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
   /*  Steps 2-10                                  */
   /* -------------------------------------------- */
 
-  /** @override */
+  /**
+   * @override
+   * The pipeline (steps 2-10 above). Order matters: each section may read what earlier ones built
+   * (skills need Mastery, DR needs discipline mods, jutsu need discipline DCs). Add new derived
+   * numbers after the numbers they depend on, and give them a Breakdown if the sheet shows them.
+   */
   prepareDerivedData() {
     const actor = this.parent;
     const items = actor?.items ?? [];
     const N5E = globalThis.CONFIG?.N5E;
 
-    // Gather step 7 inputs up front (pure lookups).
+    // Gather step 7 inputs up front (pure lookups): n5e.* effect changes, and the summed penalties of
+    // every active condition (per rank and flat; rules/conditions.mjs).
     const mods = parseN5eChanges(actor?._n5eChanges ?? []);
     const conditionRegistry = { ...(N5E?.conditions ?? {}), ...(N5E?.clanConditions ?? {}) };
     const activeConditions = this._activeConditions();
@@ -171,11 +204,13 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         value: stored ? stored.value : null, fromItem: def.source, startsFull
       };
     }
-    // Optional Stamina pool (= proficiency bonus) shared by limited-use feat abilities.
+    // Optional Stamina pool (= proficiency bonus) shared by limited-use feat abilities. When the rule
+    // is off the pool is dropped from the prepared data (its stored value is kept for later).
     if ( rule("stamina") && this.parent?.type === "character" ) {
       const stored = this.resources.stamina;
       this.resources.stamina = { ...staminaPool(), value: stored ? stored.value : null, sort: -1 };
     } else if ( this.resources.stamina && !rule("stamina") ) delete this.resources.stamina;
+    // Every pool: max from its formula ("1 + @prof", "@scale.scoutNin.superiorityDice"), value clamped.
     for ( const pool of Object.values(this.resources ?? {}) ) {
       pool.maxValue = Math.max(0, Math.floor(evaluateFormula(pool.max, rollData, 0)));
       if ( pool.value == null ) pool.value = pool.startsFull === false ? 0 : pool.maxValue;
@@ -191,6 +226,9 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this._prepareMastery(grants, mods);
 
     // Every number below is built through a Breakdown so sheets can show its parts (PF2e-style).
+    //   B(key, label)   start a breakdown and store it under this.breakdowns[key]
+    //   P(...keys)      condition penalty parts for those penalty kinds (allDice, ac, saveDC...)
+    //   d20Parts(ab)    the penalties every d20 roll with that ability takes (physical or mental)
     const B = (key, label) => (this.breakdowns[key] = new Breakdown(label));
     const P = (...keys) => keys.flatMap(k => pen.sources[k] ?? []);
     const d20Parts = abilityKey => P("allDice", abilities[abilityKey]?.category === "physical" ? "d20Physical" : "d20Mental");
@@ -263,7 +301,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.breakdowns["buki.attack"] = this.breakdowns["tai.attack"];
     this.breakdowns["buki.dc"] = this.breakdowns["tai.dc"];
 
-    // Step 8: caps and defenses.
+    // Step 8: caps and defenses. Crit range: effects plus features (Superior Assault), capped at +3.
     this.critRange = {};
     const fcr = featureCritRange(this.parent ?? { items: [] });
     for ( const scope of new Set([...Object.keys(mods.critRange), ...Object.keys(fcr)]) ) {
@@ -285,6 +323,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     const acb = B("ac", "Armor Class");
     acb.parts.push(...ac.parts);
     acb.addAll(P("ac"));
+    // Concentration: 2 jutsu at once (+ effects), checks with Chakra Control (Con if missing).
     this.concentration = {
       max: 2 + mods.concentrationMax,
       check: (this.skills.cha?.total ?? mod("con")),
@@ -302,6 +341,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     if ( grants.bulk > slots ) encumberedBy.push("bulk");
     if ( req && (this.abilities.str?.value ?? 0) < req ) encumberedBy.push("heavyweight");
     this.inventory = { slots, used: grants.bulk, encumbered: encumberedBy.length > 0, encumberedBy };
+    // Speed: clan speed replaces walk; bonuses add to every speed the creature has; Encumbered and
+    // Slowed halve (multipliers never stack: the lowest applies, King ruling).
     const speedMult = Math.min(1, this.inventory.encumbered ? 0.5 : 1, pen.flags.speedMultiplier ?? 1);
     this.speed = {};
     for ( const [k, v] of Object.entries(this.traits.speed) ) {
@@ -309,6 +350,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       const base = (k === "walk" && grants.speed) ? grants.speed : v;
       this.speed[k] = Math.floor((base + (base ? this.bonuses.speed : 0)) * speedMult);
     }
+    // States computed from numbers (never stored; the sheet and rules read them here).
     this.states = {
       bloodied: this.hp.max > 0 && this.hp.value <= this.hp.max / 2,
       drained: this.cp.max > 0 && this.cp.value <= this.cp.max / 2,
@@ -317,7 +359,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     };
     this.asi = { earned: asiCount(this.level), masteryCap: masteryCap(this.level) };
 
-    // Step 10: item-side derived numbers.
+    // Step 10: item-side derived numbers. Jutsu work out their live cost, attack, DC and upcast range
+    // against this actor (JutsuData.prepareActorDerived); other item types can add the same hook.
     for ( const item of items ) item.system.prepareActorDerived?.(actor);
   }
 
@@ -334,7 +377,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     return out;
   }
 
-  /** Step 2: what items grant. */
+  /**
+   * Step 2: what items grant. One pass over the actor's items builds a plain "grants" object:
+   * proficiencies, affinities, dice, armor, Reinforced/Blocking, storage slots, carried Bulk, pools,
+   * Mastery sources, class table columns. Kept on system.grants for view models to read.
+   * New item-granted benefits go here (by item type in the switch, or generically below it).
+   */
   _collectItemGrants(items) {
     const g = {
       saves: new Set(), skills: new Set(), tools: new Set(), affinities: new Set(), keywordAccess: new Set(),
@@ -427,6 +475,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     }
     for ( const a of this.affinities ?? [] ) g.affinities.add(a);
     for ( const k of this.keywordAccess ?? [] ) g.keywordAccess.add(k);
+    // Feat proficiency grants resolve last, once every other source of proficiency is known.
     for ( const { target, source } of g.profGrants ) {
       const [kind, key] = target.split(".");
       const set = kind === "skill" ? g.skills : kind === "tool" ? g.tools : kind === "save" ? g.saves : null;
@@ -448,7 +497,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     return level;
   }
 
-  /** Step 5: HP/CP. Characters use class dice; NPCs may override (see NPCData). */
+  /**
+   * Step 5: HP/CP. Characters use class dice; NPCs may override (see NPCData).
+   * Max = 10 + die max + Con at 1st level, then die max + Con per level (fixed, no rolling; King ruling),
+   * plus bonuses. Hit/Chakra Dice: one per level; value = level − spent.
+   */
   _preparePools({ hitFaces, chakraFaces, conMod }) {
     this.hp.max = poolMax({ level: this.level, dieMax: hitFaces, conMod, bonus: this.bonuses.hpMax,
       perLevelBonus: this.bonuses.hpPerLevel });
@@ -471,7 +524,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.chakraDice.value = Math.max(0, this.level - this.chakraDice.spent);
   }
 
-  /** Step 6/7: Mastery map {target: {rank, bonus, sources[]}} with the level cap. */
+  /**
+   * Step 6/7: Mastery map {target: {rank, bonus, sources[]}} with the level cap.
+   * Each distinct source counts once (the same feature twice is still one rank); rank = number of
+   * sources, capped by level (rules/progression.mjs masteryRank). Targets are strings like
+   * "skill.ath", "save.con", "tool.medicine", "attack.tai", "initiative".
+   */
   _prepareMastery(grants, mods) {
     const map = new Map();
     const add = (target, source) => {

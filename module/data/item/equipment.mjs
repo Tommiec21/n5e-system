@@ -1,5 +1,10 @@
 /**
  * Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08).
+ *
+ * Properties are a key -> rank map (properties.reinforced = 2, properties.finesse = 1); the property
+ * list itself is CONFIG.N5E.weaponProperties / armorProperties (module/config/equipment.mjs).
+ * Equipped armor, weapons and containers feed the actor's grants (AC, Reinforced DR, Blocking,
+ * storage slots) in creature.mjs _collectItemGrants.
  */
 import * as S from "../fields/shared.mjs";
 import { baseFields, physicalFields, activatableFields, sealFields, propertyMap } from "./templates.mjs";
@@ -17,6 +22,11 @@ function prepareSeals(sys) {
   sys.sealCharges = sys.seals.reduce((a, s) => a + (s.charges || 0), 0);
 }
 
+/**
+ * Weapons. Attacks: workflow/attack.mjs (melee Str, ranged Dex, finesse/thrown the better).
+ * ammo.usesDie: the Ammunition Die (d8 → d6 → d4 → 1 → gone), stepping down on a 1-2; `step` is the
+ * index into `steps` and is the only part that changes in play.
+ */
 export class WeaponData extends TDM() {
   static defineSchema() {
     return {
@@ -49,6 +59,7 @@ export class WeaponData extends TDM() {
   }
 }
 
+/** Armor: AC bonus, Dex cap (by category unless set), Strength requirement (Heavyweight X). */
 export class ArmorData extends TDM() {
   static defineSchema() {
     return {
@@ -86,6 +97,7 @@ export class ConsumableData extends TDM() {
   }
 }
 
+/** Toolkits: charges by kit rank, spent by skill actions that need the kit (KB 08). */
 export class ToolkitData extends TDM() {
   static defineSchema() {
     return {
@@ -104,6 +116,7 @@ export class ToolkitData extends TDM() {
   }
 }
 
+/** Storage (backpacks, scrolls...): one equipped container per type adds its slots. */
 export class ContainerData extends TDM() {
   static defineSchema() {
     return {
