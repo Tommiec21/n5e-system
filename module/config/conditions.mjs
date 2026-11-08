@@ -164,7 +164,9 @@ export const states = {
     includes: ["incapacitated", "prone"] },
   stabilized: { label: "Stabilized", type: "encounter", icon: "icons/svg/regen.svg", includes: ["unconscious"] },
   dying: { label: "Dying", type: "encounter", icon: "icons/svg/skull.svg", includes: ["unconscious"] },
-  dead: { label: "Dead", type: "encounter", icon: "icons/svg/skull.svg" }
+  dead: { label: "Dead", type: "encounter", icon: "icons/svg/skull.svg" },
+  /** Fury (Power Bukijutsu): red mist until the end of the turn after gaining it. */
+  furious: { label: "Furious", type: "encounter", icon: "icons/svg/explosion.svg" }
 };
 
 /** Conditions removed in 4.0 (V3.1 statuses dropped by migration). */

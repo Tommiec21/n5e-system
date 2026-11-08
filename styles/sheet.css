@@ -647,3 +647,32 @@
 .n5e-rest-card { font-size: 12px; display: flex; flex-direction: column; gap: 2px; }
 .n5e-v2 .rail .condition .ctl.try { opacity: .7; }
 .n5e-v2 .rail .condition .ctl.try:hover { opacity: 1; }
+
+/* Phase 6 trackers */
+.n5e-v2 .tracker.fury.on { border-color: #B23A26; }
+.n5e-v2 .tracker.gates .box { width: 18px; height: 18px; font-size: 10px; display: inline-flex; align-items: center; justify-content: center; }
+.n5e-v2 .tracker.gates.on { border-color: #2E7D32; }
+.n5e-v2 .tracker .t-foot button { flex: none; width: auto; padding: 0 8px; }
+.n5e-v2 .tracker .conc-row button { flex: none; width: auto; padding: 0 6px; line-height: 20px; }
+.n5e-v2 .tracker .conc-row.off { opacity: .55; }
+.n5e-v2 .mark-orange { color: #E07B22; } .n5e-v2 .mark-red { color: #B23A26; } .n5e-v2 .mark-yellow { color: #D4B106; }
+.n5e-v2 .mark-gold { color: #C9A227; } .n5e-v2 .mark-green { color: #3C8D3F; } .n5e-v2 .mark-blue { color: #2D6FB5; }
+
+/* GM Party Overview */
+.n5e-party .window-content { padding: 6px; }
+.n5e-party .rows { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; height: 100%; }
+.n5e-party .p-row { display: grid; grid-template-columns: 36px 1fr auto; gap: 8px; align-items: start; padding: 6px; border: 1px solid #0003; border-radius: 6px; }
+.n5e-party .p-row img { border: none; border-radius: 4px; }
+.n5e-party .nm { font-weight: 700; cursor: pointer; }
+.n5e-party .bars { display: flex; gap: 6px; margin: 2px 0; }
+.n5e-party .bar { position: relative; flex: 1; height: 16px; background: #0002; border-radius: 3px; overflow: hidden; font-size: 11px; }
+.n5e-party .bar > span { position: absolute; inset: 0 auto 0 0; }
+.n5e-party .bar.hp > span { background: #B23A2699; }
+.n5e-party .bar.cp > span { background: #2D6FB599; }
+.n5e-party .bar b { position: relative; padding-left: 4px; line-height: 16px; }
+.n5e-party .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.n5e-party .tag { font-size: 10px; padding: 0 5px; border-radius: 8px; background: #0001; border: 1px solid #0002; }
+.n5e-party .tag.cond { border-color: #B23A2666; } .n5e-party .tag.conc { border-color: #2D6FB566; } .n5e-party .tag.badge { border-color: #C9A22766; }
+.n5e-party .quick { display: grid; grid-template-columns: 56px 92px auto auto; gap: 3px; align-items: center; }
+.n5e-party .quick select[name=condition] { grid-column: 1 / span 3; }
+.n5e-party .quick button { line-height: 22px; padding: 0 6px; }

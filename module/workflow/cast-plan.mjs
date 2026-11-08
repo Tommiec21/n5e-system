@@ -40,6 +40,9 @@ export function castPlan(actor, item, sel = {}) {
   const cp = sys.cp?.value ?? 0;
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
   if ( item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
+  if ( ["nin", "gen"].includes(item.system.discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
+    problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
+  }
 
   // Moldings and maneuvers.
   const pools = {};

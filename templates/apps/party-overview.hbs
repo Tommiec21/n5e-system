@@ -1,0 +1,34 @@
+<div class="party">
+  <div class="rows">
+    {{#each rows}}
+      <div class="p-row" data-uuid="{{uuid}}">
+        <img src="{{img}}" alt="" width="36" height="36">
+        <div class="who">
+          <a class="nm" data-action="openSheet">{{name}}</a>
+          <div class="bars">
+            <span class="bar hp" data-tooltip="HP"><span style="width: {{hp.pct}}%"></span><b>{{hp.value}}/{{hp.max}}{{#if hp.temp}} +{{hp.temp}}{{/if}}</b></span>
+            <span class="bar cp" data-tooltip="CP"><span style="width: {{cp.pct}}%"></span><b>{{cp.value}}/{{cp.max}}{{#if cp.temp}} +{{cp.temp}}{{/if}}</b></span>
+          </div>
+          <div class="tags">
+            {{#each conditions}}<span class="tag cond">{{this}}</span>{{/each}}
+            {{#each states}}<span class="tag state">{{this}}</span>{{/each}}
+            {{#each concentration}}<span class="tag conc" data-tooltip="Concentrating">◯ {{this}}</span>{{/each}}
+            {{#each badges}}<span class="tag badge">{{this}}</span>{{/each}}
+          </div>
+        </div>
+        <div class="quick">
+          <input type="number" name="amount" min="0" placeholder="0" aria-label="Amount">
+          <select name="type" aria-label="Damage type"><option value="">Untyped</option>
+            {{#each @root.damageTypes}}<option value="{{key}}">{{label}}</option>{{/each}}</select>
+          <button type="button" data-action="quick" data-kind="full">Damage</button>
+          <button type="button" data-action="quick" data-kind="heal">Heal</button>
+          <select name="condition" aria-label="Condition"><option value="">Condition…</option>
+            {{#each @root.conditions}}<option value="{{key}}">{{label}}</option>{{/each}}</select>
+          <button type="button" data-action="quick" data-kind="condition">Add</button>
+        </div>
+      </div>
+    {{else}}
+      <p class="muted">No player characters{{#unless inCombat}} and no combat{{/unless}}.</p>
+    {{/each}}
+  </div>
+</div>

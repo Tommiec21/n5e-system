@@ -152,8 +152,17 @@ export async function onApplyClick(message, btn, event) {
     const actor = uuid ? await fromUuid(uuid) : null;
     if ( !actor?.isOwner ) return ui.notifications.warn("Only the owner of the creature that failed can apply this.");
     btn.disabled = true;
-    if ( d.kind === "state" ) return actor.toggleStatusEffect(d.n5eInflict, { active: true });
-    return actor.addCondition(d.n5eInflict, Number(d.ranks) || 1);
+    let effect;
+    if ( d.kind === "state" ) {
+      await actor.toggleStatusEffect(d.n5eInflict, { active: true });
+      effect = actor.effects.find(e => e.statuses?.has(d.n5eInflict));
+    } else effect = await actor.addCondition(d.n5eInflict, Number(d.ranks) || 1);
+    // "Repeat the save at the end of each of its turns": remembered on the effect for the turn-end prompt.
+    if ( d.resave && effect?.setFlag ) {
+      const now = game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null;
+      await effect.setFlag("n5e", "resave", { ...JSON.parse(d.resave), applied: now });
+    }
+    return effect;
   }
   return null;
 }

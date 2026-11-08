@@ -9,6 +9,7 @@
  *   "gain 12 Temporary Hit points"             -> temporary HP
  *   "regain 2d8 hit points"                    -> healing
  */
+import { hasResave } from "./trackers.mjs";
 import { abilities } from "../config/core.mjs";
 import { damageTypes } from "../config/combat.mjs";
 import { conditions as CONDITIONS, states as STATES } from "../config/conditions.mjs";
@@ -81,7 +82,7 @@ export function parseActivities(html, { discipline = "" } = {}) {
     const inflicts = parseInflicted(text.slice(save.index));
     out.push({ id: next(), type: "save", label: "Save", inflicts,
       save: { abilities: [ABILITY_BY_NAME[save[1].toLowerCase()]], dc: { source: "discipline" }, onSuccess: half ? "half" : "none",
-        fourTier: discipline === "gen" },
+        fourTier: discipline === "gen", resave: hasResave(text.slice(save.index)) },
       // Save-based damage when there's no attack roll to carry it.
       damage: { parts: atk ? [] : [...parts] } });
   }
@@ -108,7 +109,8 @@ export function effectiveActivities(item) {
 export function unarmedFormula(actor) {
   const die = actor.system.combat?.activeStance ? "1d6" : "1";
   const str = actor.system.abilities?.str?.mod ?? 0;
-  return `${die}${str ? ` ${str < 0 ? "-" : "+"} ${Math.abs(str)}` : ""}`;
+  const extra = (actor.system.modifiers?.unarmedDice ?? []).map(d => ` + ${d}`).join("");
+  return `${die}${extra}${str ? ` ${str < 0 ? "-" : "+"} ${Math.abs(str)}` : ""}`;
 }
 
 /**

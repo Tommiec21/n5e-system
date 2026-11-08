@@ -16,7 +16,8 @@ import { registerHelpers } from "./module/applications/helpers.mjs";
 import { registerSettings } from "./module/settings.mjs";
 import * as dice from "./module/dice/roll.mjs";
 import { registerTurnHooks, onRenderTurnCard } from "./module/workflow/turn.mjs";
-import { registerRestSocket } from "./module/workflow/rest.mjs";
+import { registerSocket } from "./module/socket.mjs";
+import { registerPartyOverview } from "./module/applications/gm/party-overview.mjs";
 import * as d20 from "./module/dice/d20.mjs";
 import { checkMigrations, MIGRATIONS } from "./module/migration/runner.mjs";
 import api from "./module/api.mjs";
@@ -85,10 +86,11 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
   onRenderTurnCard(message, html);
 });
 registerTurnHooks();
+registerPartyOverview();
 
 Hooks.once("ready", async () => {
   // Clan-scoped conditions and keywords from world clan items (compendium clans load in Phase 6).
   for ( const item of game.items.filter(i => i.type === "clan") ) api.registerClanData(item);
-  registerRestSocket();
+  registerSocket();
   await checkMigrations();
 });

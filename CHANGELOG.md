@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.7.0-alpha.1 — Phase 6: trackers and GM tools
+
+### Added
+- **Stamina** (optional rule, N5e Rules → Resting): a Stamina pool equal to your proficiency bonus
+  appears on the rail. Feat abilities with Short Rest, Long Rest or rest-based uses spend Stamina
+  instead of their own uses. Full on a Long Rest, half back on a Short Rest.
+- **Chilled:** when a Chilled creature moves more than 5 ft in a turn, a damage card posts (1d10 cold
+  per rank, ignores DR, once per turn). Forced movement is skipped; Apply hits that creature.
+- **Fury tracker** (Combat tab): gain and spend buttons, and a Furious token status. Fury lasts until
+  the end of the turn after you gain it. While in **Binding Fury Stance**, you gain Fury the first
+  time each turn you roll weapon or Bukijutsu damage. The new effect key `n5e.fury.max` lets a
+  feat stack Fury (Power Weapon Adept: +2).
+- **Marks:** while you concentrate on a Mark jutsu (Rundas, Takeminakata's, Neith's, Apollo's,
+  Artemis's, Ullr Ammo), the Combat tab has **Mark targets**. It marks the targeted creatures and
+  steps your equipped weapon's Ammunition Die down 1. Marks show on the token and end at the end of
+  your next turn.
+- **Branded:** jutsu that Brand get a **Brand targets** button on the cast card. It places
+  "Branded (Jutsu Name)" on the targeted creatures.
+- **Amps:** jutsu that grant an Amp get an **Apply Amp** button on the cast card (targets, or
+  yourself). The Combat tab lists your Amps with time left. With the optional Amp limit, a new Amp
+  switches off older ones (Singleton: same type; Rule of 3's: oldest), and you pick which applies.
+- **8-Inner Gates tracker** (with the 8-Inner Gates: Seimon feat):
+  - **Open Gate N** in order (Action, Bonus Action or Reaction), up to the gates your takes of the
+    feat allow. Gate 8 asks for the GM's permission.
+  - Each gate's bonuses add up (Taijutsu attack and DC, speed, AC, Unarmed dice, crit range, Mastery,
+    Pierce), and Gate 2 grants 10 temporary HP.
+  - While a gate is open you can't cast Ninjutsu or Genjutsu, and their concentrations end.
+  - **Close the gates** applies the Exhaustion, Bruised after Gate 7, and death after Gate 8. The
+    gates then can't reopen for 10 minutes.
+  - New effect key `n5e.unarmed.dice` (extra Unarmed damage dice).
+- **End-of-turn resaves:** when a jutsu says the target can repeat the save at the end of each of its
+  turns, the condition it applies remembers the save. At the end of each later turn, a **Resave**
+  button appears, and a success ends the condition.
+- **GM Party Overview** (Token controls → users icon, GM only): every player character and
+  combatant with HP, CP, conditions, states, concentration, Fury, open Gate and Amps. Quick
+  Damage / Heal (with type, through the full damage pipeline, undoable) and Add Condition per row.
+
 ## 0.6.0-alpha.1 — Phase 5: rests, condition lifecycle, optional rules
 
 ### Added

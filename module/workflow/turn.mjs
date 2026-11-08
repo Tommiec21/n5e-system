@@ -7,6 +7,7 @@ import { turnStartPlan } from "../rules/turn-start.mjs";
 import { esc } from "../view-models/common.mjs";
 import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
+import { trackersTurnEnd, onTokenMove, onAmpCreated } from "./trackers.mjs";
 
 async function onTurnStart(combat) {
   if ( !game.users.activeGM?.isSelf ) return;
@@ -53,11 +54,16 @@ export function registerTurnHooks() {
   Hooks.on("combatTurnChange", async (combat, prior) => {
     if ( game.users.activeGM?.isSelf && prior?.combatantId ) {
       const ending = combat.combatants.get(prior.combatantId)?.actor;
-      if ( ending ) await processConditionTurnEnd(ending, { round: prior.round, turn: prior.turn });
+      if ( ending ) {
+        await processConditionTurnEnd(ending, { round: prior.round, turn: prior.turn });
+        await trackersTurnEnd(combat, ending, { round: prior.round, turn: prior.turn });
+      }
     }
     return onTurnStart(combat);
   });
   Hooks.on("combatStart", combat => onTurnStart(combat));
+  Hooks.on("moveToken", (token, movement) => onTokenMove(token, movement));
+  Hooks.on("createActiveEffect", (effect, options, userId) => onAmpCreated(effect, options, userId));
 }
 
 /** Chat buttons on turn cards. */

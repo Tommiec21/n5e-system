@@ -6,20 +6,11 @@
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";
 import { esc } from "../view-models/common.mjs";
+import { asGM } from "../socket.mjs";
 
 /** Spend rations (GM writes the world setting; players ask the GM over the socket). */
 export async function spendRations(amount) {
-  if ( !amount ) return;
-  if ( game.user.isGM ) return game.settings.set("n5e", "rationPool", Math.max(0, rule("rationPool") - amount));
-  game.socket.emit("system.n5e", { type: "spendRations", amount });
-}
-
-/** GM side of the socket. */
-export function registerRestSocket() {
-  game.socket?.on("system.n5e", async data => {
-    if ( data?.type !== "spendRations" || !game.users.activeGM?.isSelf ) return;
-    await game.settings.set("n5e", "rationPool", Math.max(0, rule("rationPool") - (Number(data.amount) || 0)));
-  });
+  if ( amount ) return asGM("spendRations", { amount });
 }
 
 function dialogContent(actor, type, check) {

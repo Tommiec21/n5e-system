@@ -161,6 +161,12 @@ export function onRenderChatMessage(message, html) {
       import("../workflow/activity-buttons.mjs").then(m => m.onActivityClick(message, btn, ev));
     });
   }
+  for ( const btn of html.querySelectorAll("[data-n5e-track], [data-n5e-resave]") ) {
+    btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      import("../workflow/trackers.mjs").then(m => (btn.dataset.n5eResave ? m.rollResave(btn, ev) : m.onTrackerClick(message, btn)));
+    });
+  }
   for ( const btn of html.querySelectorAll("[data-n5e-wof]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();

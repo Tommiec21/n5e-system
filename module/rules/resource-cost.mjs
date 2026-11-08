@@ -5,6 +5,8 @@
  *     ("spend two superiority die").
  *   - Features with limited uses spend 1 use.
  */
+import { usesStamina } from "./trackers.mjs";
+
 const WORDS = { one: 1, two: 2, three: 3, four: 4 };
 const tags = item => new Set(item.system?.tags ?? []);
 const text = item => String(item.system?.description ?? "").replace(/<[^>]+>/g, " ");
@@ -23,6 +25,7 @@ export function resourceCost(item) {
   const t = tags(item);
   if ( t.has("nin-molding") ) return { pool: "focus", amount: countIn(item, "focus"), uses: false };
   if ( t.has("assault-maneuver") ) return { pool: "superiorityDice", amount: countIn(item, "superiority di"), uses: false };
+  if ( usesStamina(item) ) return { pool: "stamina", amount: 1, uses: false };
   const max = item.system?.uses?.maxValue ?? 0;
   return { pool: null, amount: max ? 1 : 0, uses: max > 0 };
 }
@@ -36,7 +39,7 @@ export function resourceCost(item) {
 export function cannotPay(actor, cost, item) {
   if ( cost.pool ) {
     const pool = actor.system.resources?.[cost.pool];
-    if ( !pool ) return `No ${cost.pool === "focus" ? "Focus" : "Superiority Dice"} pool`;
+    if ( !pool ) return `No ${{ focus: "Focus", superiorityDice: "Superiority Dice", stamina: "Stamina" }[cost.pool] ?? cost.pool} pool`;
     if ( (pool.value ?? 0) < cost.amount ) return `Not enough ${pool.label || cost.pool} (${pool.value ?? 0} / ${cost.amount})`;
   }
   if ( cost.uses ) {

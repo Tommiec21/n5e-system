@@ -6,6 +6,7 @@
  * (CP, Focus, Superiority Dice, concentration, Chain/Combo) in one actor update, then posts a card
  * whose buttons roll the attack, damage, healing, and targets' saves.
  */
+import { trackerButtons } from "./trackers.mjs";
 import { castPlan } from "./cast-plan.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
 import { activityButtons } from "./activity-buttons.mjs";
@@ -120,6 +121,7 @@ export async function postCastCard(actor, item, plan) {
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
     ${activityButtons(actor, item, activities, { rank: plan.rank })}
+    ${trackerButtons(actor, item)}
   </div>`;
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,

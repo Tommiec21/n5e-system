@@ -9,6 +9,8 @@ import { esc, glyph, pips, signed } from "./common.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
+import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
+import { innerGates, ampTypes } from "../config/combat.mjs";
 
 const list = items => (Array.isArray(items) ? items : [...(items ?? [])]);
 const ofType = (actor, ...types) => list(actor.items).filter(i => types.includes(i.type));
@@ -114,6 +116,12 @@ function basicCombat(actor) {
 
 function itemPill(i, extra = {}) {
   const s = i.system;
+  if ( usesStamina(i) ) {
+    const st = i.actor?.system?.resources?.stamina;
+    return pill({ kind: "item", id: i.id, name: i.name, activation: s.activation?.type ?? "action",
+      sub: st ? `${st.value}/${st.maxValue} St` : "", dim: (st?.value ?? 0) <= 0,
+      tip: tipHTML({ title: i.name, meta: [activationTypes[s.activation?.type], "Uses Stamina"], body: s.description ?? "" }), ...extra });
+  }
   const max = s.uses?.maxValue ?? 0;
   const left = max ? Math.max(0, max - (s.uses.spent ?? 0)) : null;
   return pill({
@@ -240,6 +248,46 @@ function comboVM(actor, combo) {
 }
 
 /* -------------------------------------------- */
+/*  Phase 6 trackers                            */
+/* -------------------------------------------- */
+
+const mentions = (actor, re) => list(actor.items).some(i => re.test(i.name) || re.test(String(i.system?.description ?? "")));
+
+function furyVM(actor) {
+  const value = actor.system.combat?.fury ?? 0;
+  const max = furyMax(actor);
+  const stance = list(actor.items).find(i => i.id === actor.system.combat?.activeStance);
+  return { show: value > 0 || mentions(actor, /\bfury\b/i), value, max, boxes: pips(value, max),
+    binding: !!stance && /binding fury/i.test(stance.name) };
+}
+
+function gatesVM(actor) {
+  const limit = gateLimit(actor);
+  const effect = list(actor.effects).find(e => e.flags?.n5e?.gates);
+  const open = effect?.flags.n5e.gates.n ?? 0;
+  const top = Math.max(limit, open);
+  if ( !top ) return { show: false };
+  const gates = innerGates.filter(g => g.n <= Math.max(top, limit === 7 ? 8 : top))
+    .map(g => ({ n: g.n, label: g.label, on: g.n <= open, tip: tipHTML({ title: `Gate ${g.n}, ${g.label}`, meta: [g.requires], body: esc(g.text) }) }));
+  const next = innerGates.find(g => g.n === open + 1);
+  return { show: true, open, limit, gates, next: next && gates.some(g => g.n === next.n) ? { n: next.n, label: next.label } : null };
+}
+
+function marksVM(actor) {
+  const rows = list(actor.system.combat?.concentrating).map(id => list(actor.items).find(i => i.id === id)).filter(Boolean)
+    .map(i => ({ item: i, mark: jutsuTrackers(i).mark })).filter(r => r.mark)
+    .map(r => ({ id: r.item.id, name: r.item.name, label: r.mark.label, color: r.mark.color, text: r.mark.text }));
+  return { show: rows.length > 0, rows };
+}
+
+function ampsVM(actor) {
+  const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, name: e.name, disabled: !!e.disabled,
+    type: ampTypes[e.system?.ampType] ?? e.system?.ampType ?? "", remaining: e.duration?.label ?? "" }));
+  const mode = rule("ampLimit");
+  return { show: rows.length > 0, rows, limit: mode === "singleton" ? "Singleton: 1 per type" : mode === "ruleOfThree" ? "Rule of 3's: 3 active" : "" };
+}
+
+/* -------------------------------------------- */
 /*  Entry                                       */
 /* -------------------------------------------- */
 
@@ -258,6 +306,10 @@ export function combatVM(actor) {
     concentration: concentrationVM(actor),
     stance: stanceVM(actor),
     combo: comboVM(actor, combo),
+    fury: furyVM(actor),
+    gates: gatesVM(actor),
+    marks: marksVM(actor),
+    amps: ampsVM(actor),
     basic,
     // Only disciplines the character has jutsu in.
     jutsu: jutsuGroups(actor, { comboReady }).filter(g => !g.empty),

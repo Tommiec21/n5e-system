@@ -61,6 +61,53 @@
     </div>
     {{/if}}
 
+    {{#if vm.fury.show}}
+    <div class="tracker fury {{#if vm.fury.value}}on{{/if}}">
+      <div class="t-head"><h3>Fury</h3>
+        <span class="boxes">{{#each vm.fury.boxes}}<span class="box {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+        <b class="big">{{vm.fury.value}}{{#if (n5eGt vm.fury.max 1)}} / {{vm.fury.max}}{{/if}}</b>
+        {{#if editable}}<a class="ctl" data-action="changeFury" data-delta="1" data-tooltip="Gain Fury" aria-label="Gain Fury"><i class="fa-solid fa-plus"></i></a>
+          <a class="ctl" data-action="changeFury" data-delta="-1" data-tooltip="Spend Fury" aria-label="Spend Fury"><i class="fa-solid fa-minus"></i></a>{{/if}}</div>
+      <p class="small muted">Lasts until the end of the turn after gaining it.{{#if vm.fury.binding}} Binding Fury Stance: gained the first time each turn you roll weapon damage.{{/if}}</p>
+    </div>
+    {{/if}}
+
+    {{#if vm.gates.show}}
+    <div class="tracker gates {{#if vm.gates.open}}on{{/if}}">
+      <div class="t-head"><h3>8-Inner Gates</h3>
+        <span class="boxes">{{#each vm.gates.gates}}<span class="box {{#if on}}on{{/if}}" data-tooltip-html="{{tip}}">{{n}}</span>{{/each}}</span>
+        <b class="big">{{#if vm.gates.open}}Gate {{vm.gates.open}}{{else}}Closed{{/if}}</b></div>
+      {{#if editable}}<div class="t-foot">
+        {{#if vm.gates.next}}<button type="button" data-action="openGate">Open Gate {{vm.gates.next.n}}: {{vm.gates.next.label}}</button>{{/if}}
+        {{#if vm.gates.open}}<button type="button" data-action="closeGates">Close the gates</button>{{/if}}
+      </div>{{/if}}
+    </div>
+    {{/if}}
+
+    {{#if vm.marks.show}}
+    <div class="tracker marks">
+      <div class="t-head"><h3>Marks</h3><span class="sub">Target, then Mark (steps the ammo die down 1)</span></div>
+      {{#each vm.marks.rows}}
+        <div class="conc-row" data-item-id="{{id}}" data-tooltip-text="{{text}}">
+          <span class="rank mark-{{color}}">●</span><span class="nm">{{label}} ({{name}})</span>
+          {{#if @root.editable}}<button type="button" data-action="placeMark">Mark targets</button>{{/if}}
+        </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if vm.amps.show}}
+    <div class="tracker amps">
+      <div class="t-head"><h3>Amps</h3>{{#if vm.amps.limit}}<span class="sub">{{vm.amps.limit}}</span>{{/if}}</div>
+      {{#each vm.amps.rows}}
+        <div class="conc-row {{#if disabled}}off{{/if}}" data-effect-id="{{id}}">
+          <span class="rank">{{type}}</span><span class="nm">{{name}}</span><span class="upkeep">{{remaining}}</span>
+          {{#if @root.editable}}<a class="ctl" data-action="toggleEffect" data-tooltip="{{#if disabled}}Make this the one that applies{{else}}Switch off{{/if}}"><i class="fa-solid {{#if disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i></a>{{/if}}
+        </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
     {{#if vm.combo.show}}
     <div class="tracker combo ready">
       <div class="t-head"><h3>Finisher armed</h3>

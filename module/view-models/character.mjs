@@ -8,6 +8,7 @@ import {
 } from "../config/core.mjs";
 import { conditions as coreConditions, states } from "../config/conditions.mjs";
 import { removalOptions } from "../rules/condition-lifecycle.mjs";
+import { usesStamina } from "../rules/trackers.mjs";
 import { jutsuSections } from "../config/jutsu.mjs";
 import { containerTypes, consumableTypes } from "../config/equipment.mjs";
 import { featCategories } from "../config/character.mjs";
@@ -89,7 +90,7 @@ export function resourcesVM(actor) {
     kind: "wof", id: "willOfFire", label: "Will of Fire", value: sys.willOfFire?.value ?? 0, max: 3,
     segments: pips(sys.willOfFire?.value ?? 0, 3), note: "", action: "setWillOfFire"
   }];
-  for ( const [id, p] of Object.entries(sys.resources ?? {}) ) {
+  for ( const [id, p] of Object.entries(sys.resources ?? {}).sort(([, a], [, b]) => (a.sort ?? 0) - (b.sort ?? 0)) ) {
     const max = p.maxValue ?? 0;
     if ( !max ) continue;
     out.push({ kind: "pool", id, label: p.label || id, value: p.value, max, pct: pct(p.value, max),
@@ -97,7 +98,7 @@ export function resourcesVM(actor) {
   }
   for ( const i of ofType(actor, "feat") ) {
     const max = Number(i.system.uses?.maxValue ?? i.system.uses?.max) || 0;
-    if ( !max ) continue;
+    if ( !max || usesStamina(i) ) continue;
     const value = Math.max(0, max - (i.system.uses.spent ?? 0));
     out.push({ kind: "uses", id: i.id, itemId: i.id, label: i.name, value, max, pct: pct(value, max),
       segments: segments(value, max), note: recoveryNote([i.system.uses.per]), action: "setUses" });

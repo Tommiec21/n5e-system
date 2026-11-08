@@ -189,3 +189,50 @@ export const coreActions = {
   offhand: { label: "Off-hand Attack", activation: "bonus", requires: "lightWeapon",
     text: "After taking the Attack action with a light weapon, attack with a different light weapon in your other hand. No ability modifier to damage unless it's negative." }
 };
+
+/**
+ * Bukijutsu Marks (Ammunition jutsu, KB / Context 6). Marked until the end of the marker's next turn;
+ * only the marker sees the mist. Keyed by the jutsu that grants them.
+ */
+export const marks = {
+  "Rundas Ammo": { label: "Fortune", color: "orange", text: "Chosen creatures that miss it can reroll, ending the mark." },
+  "Takeminakata's Ammo": { label: "War", color: "red", text: "Spending its Action provokes Opportunity Attacks from hostiles within 10 ft, who may take a full Attack action." },
+  "Neith's Ammo": { label: "Ra", color: "yellow", text: "Once per turn on taking damage, detonates for 2d6 fire damage within 15 ft." },
+  "Apollo's Ammo": { label: "Apollo", color: "gold", text: "−2 AC against the first attack each turn; the marker sees it while it's invisible." },
+  "Artemis's Ammo": { label: "Artemis", color: "green", text: "+4 damage from the first bludgeoning, piercing or slashing damage it takes each turn." },
+  "Ullr Ammo": { label: "Skadi", color: "blue", text: "Chosen creatures reroll damage against it, taking the higher." }
+};
+
+/**
+ * 8-Inner Gates: Seimon (Context 8f). Each gate's bonuses add to the ones before it.
+ *   changes  Active Effect changes (cumulative)    pierce  sets Pierce (highest gate wins)
+ *   fatigue  Exhaustion ranks applied when the gates end
+ */
+const STR_DEX_SKILLS = ["acr", "ath", "mar", "slt", "ste"];
+const masteryStrDex = gate => STR_DEX_SKILLS.map(s => ({ key: `n5e.mastery.skill.${s}`, value: `Gate ${gate}` }));
+export const innerGates = [
+  { n: 1, label: "Opening", fatigue: 0, changes: [{ key: "n5e.attack.tai", value: 1 }, { key: "system.bonuses.speed", value: 10, mode: 2 }, ...masteryStrDex(1)],
+    text: "+1 Taijutsu attacks, +10 speed, Mastery on Str/Dex skill checks. Repeated Exposure: entering and ending without going past this gate is limited to 2 per Long Rest." },
+  { n: 2, label: "Rest", fatigue: 1, tempHp: 10, changes: [],
+    text: "10 temporary HP and spend up to 2 Hit Dice on entry; Bonus Action: spend 1 Hit Die for twice the roll as temporary HP." },
+  { n: 3, label: "Life", fatigue: 1, changes: [{ key: "n5e.unarmed.dice", value: "1d8" }, { key: "n5e.saveDC.tai", value: 1 }, { key: "system.bonuses.speed", value: 10, mode: 2 }],
+    text: "+1d8 Unarmed damage, +1 Taijutsu DC, +10 speed." },
+  { n: 4, label: "Pain", fatigue: 1, minLevel: 8, requires: "Level 8+, Taijutsu score 18+",
+    changes: [{ key: "n5e.critRange.unarmed", value: 1 }, ...masteryStrDex(4)],
+    text: "+1 crit range, unarmed crits triple the die, Mastery on Str/Dex skills, once per turn +5 ft to a Taijutsu area." },
+  { n: 5, label: "Limit", fatigue: 0, pierce: 8, requires: "Taijutsu score 20+, Con 16+",
+    changes: [{ key: "n5e.unarmed.dice", value: "1d8" }, { key: "system.bonuses.ac", value: 1, mode: 2 }, { key: "system.bonuses.speed", value: 10, mode: 2 }],
+    text: "+1d8 Unarmed damage, +1 AC, +10 speed, unarmed Pierce 8. Gate Exhaustion now recovers 1 per Short Rest, all on a Full Rest." },
+  { n: 6, label: "View", fatigue: 1, minLevel: 16, requires: "Level 16+, Con 18+",
+    changes: [{ key: "n5e.attack.tai", value: 1 }, ...masteryStrDex(6)],
+    text: "+1 Taijutsu attacks, Mastery on Str/Dex skills, Eight Gates Special Action (cast a 1-Action Taijutsu, regained each turn)." },
+  { n: 7, label: "Wonder", fatigue: 1, bruised: true, requires: "Con 20",
+    changes: [{ key: "n5e.unarmed.dice", value: "1d8" }, { key: "system.bonuses.ac", value: 1, mode: 2 }, { key: "system.bonuses.speed", value: 10, mode: 2 },
+      { key: "n5e.saveDC.tai", value: 1 }, { key: "n5e.critRange.unarmed", value: 1 }],
+    text: "+1d8 Unarmed damage, +1 AC, +10 speed, +1 Taijutsu DC, Taijutsu attack ranges +60 ft, +1 crit range, crits triple ability modifier damage. Bruised until the Exhaustion is gone." },
+  { n: 8, label: "Death", fatigue: 0, pierce: 12, death: true, requires: "GM permission",
+    changes: [{ key: "n5e.attack.tai", value: 1 }, { key: "n5e.saveDC.tai", value: 1 }],
+    text: "+1 Taijutsu attack and DC, melee crits on 16+, Taijutsu damage Pierce 12. When it ends you die and turn to dust." }
+];
+/** Gates reachable per take of the feat (Gate 8 also needs the GM's permission). */
+export const gateAccess = [0, 3, 5, 7];

@@ -16,6 +16,8 @@
  *   n5e.concentration.max         +max concentration jutsu
  *   n5e.upkeep.<scope>            upkeep change (number), same scopes as cost
  *   n5e.dice.all                  bonus/penalty to all dice rolls
+ *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
+ *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  */
 
 export const CHANGE_KEY_PREFIX = "n5e.";
@@ -23,7 +25,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, disciplineAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, unknown: []
   };
 }
 
@@ -78,6 +80,8 @@ export function parseN5eChanges(changes) {
       case "saveTier": out.saveTierShift += num(change.value); break;
       case "concentration": out.concentrationMax += num(change.value); break;
       case "dice": out.diceAll += num(change.value); break;
+      case "unarmed": if ( /^\d*d\d+$/.test(String(change.value).trim()) ) out.unarmedDice.push(String(change.value).trim()); break;
+      case "fury": out.furyMax += num(change.value); break;
       default: out.unknown.push(key);
     }
   }
@@ -126,6 +130,8 @@ export function changeKeyCatalog(N5E) {
     add("Discipline", `n5e.disciplineAbility.${d}`, `${discLabel(d)} ability: value = str|dex|con|int|wis|cha`);
   }
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
+  add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");
+  add("Bukijutsu", "n5e.fury.max", "Max Fury: + number (Fury stacks up to 1 + this)");
   add("Rolls", "n5e.saveTier.shift", "Four-tier save results: shift up (+1) or down (−1)");
   add("Concentration", "n5e.concentration.max", "Max concentration jutsu: + number");
   for ( const [k, v] of Object.entries(N5E.skills ?? {}) ) add("Mastery", `n5e.mastery.skill.${k}`, `Mastery rank: ${v.label} (value = source label)`);

@@ -27,6 +27,8 @@ import { aggregatePenalties } from "../../rules/conditions.mjs";
 import { computeAC } from "../../rules/ac.mjs";
 import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
+import { staminaPool } from "../../rules/trackers.mjs";
+import { rule } from "../../rules-settings.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 
 const F = () => foundry.data.fields;
@@ -168,6 +170,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         value: stored ? stored.value : null, fromItem: def.source, startsFull
       };
     }
+    // Optional Stamina pool (= proficiency bonus) shared by limited-use feat abilities.
+    if ( rule("stamina") && this.parent?.type === "character" ) {
+      const stored = this.resources.stamina;
+      this.resources.stamina = { ...staminaPool(), value: stored ? stored.value : null, sort: -1 };
+    } else if ( this.resources.stamina && !rule("stamina") ) delete this.resources.stamina;
     for ( const pool of Object.values(this.resources ?? {}) ) {
       pool.maxValue = Math.max(0, Math.floor(evaluateFormula(pool.max, rollData, 0)));
       if ( pool.value == null ) pool.value = pool.startsFull === false ? 0 : pool.maxValue;
