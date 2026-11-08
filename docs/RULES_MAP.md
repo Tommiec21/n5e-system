@@ -52,3 +52,13 @@
 | Climb/swim/crawl extra cost; ruler speed bands | `rules/senses.mjs`, `canvas/ruler.mjs` | 03, 06 |
 | Text shortcuts: [[/save]], [[/check]], [[/damage]], [[/heal]], @Condition[], @State[] | `rules/enrichers.mjs`, `applications/enrichers.mjs`, `config/condition-text.mjs` | 05 |
 | Compendium Browser: tabs, filters, sorting | `rules/browser.mjs`, `applications/browser/compendium-browser.mjs` | — |
+# Shared execution additions (0.10.0-alpha.1)
+
+- Activity turn limits/action tracking: `workflow/activity-execution.mjs`.
+- Resource validation: `rules/resources.mjs`; payment: `workflow/resources.mjs`.
+- Actor command queues: `workflow/commands.mjs` (client-local, not distributed transactions).
+- Healing/revival: `workflow/health.mjs` calls the established `rules/damage.mjs` healing plan.
+- Data-loss guard: `rules/activity-contract.mjs`, enforced by `tools/check.mjs`.
+- Legacy retry and activity-field repair: migration 2 in `migration/runner.mjs`.
+- Live client smoke check: `testing/smoke.mjs`.
+

@@ -15,6 +15,7 @@ import { activityButtons, damageButtons } from "./activity-buttons.mjs";
 import { esc } from "../view-models/common.mjs";
 import { areaButton, placeArea } from "./areas.mjs";
 import { areaOf } from "../rules/area.mjs";
+import { withActorLock } from "./commands.mjs";
 import { rule } from "../rules-settings.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
@@ -117,6 +118,8 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     });
     if ( !sel ) return null;
   }
+  return withActorLock(actor, async () => {
+    if ( !actor.isOwner ) return ui.notifications.warn("Only the owner can cast this jutsu.");
   const plan = castPlan(actor, item, sel);
   if ( !plan.ok ) {
     ui.notifications.warn(plan.problems[0]);
@@ -127,6 +130,7 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
   // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
   if ( rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
   return message;
+  });
 }
 
 /** The cast card: what was spent, the rules text, and activity buttons. */

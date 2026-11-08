@@ -1,3 +1,4 @@
+import { resourceChange } from "../rules/resources.mjs";
 /**
  * Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so
  * the cast dialog can preview it and refuse what isn't allowed.
@@ -75,8 +76,8 @@ export function castPlan(actor, item, sel = {}) {
   for ( const [id, amount] of Object.entries(fx.pools) ) pools[id] = (pools[id] ?? 0) + amount;
   if ( maneuvers > 1 ) warnings.push("Only one Maneuver per turn");
   for ( const [id, amount] of Object.entries(pools) ) {
-    const have = sys.resources?.[id]?.value ?? 0;
-    if ( have < amount ) problems.push(`Not enough ${sys.resources?.[id]?.label || id} (${have} / ${amount})`);
+    try { resourceChange(sys.resources?.[id], amount); }
+    catch (error) { problems.push(error.message); }
   }
 
   // Concentration.

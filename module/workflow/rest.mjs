@@ -8,6 +8,7 @@
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";
 import { esc } from "../view-models/common.mjs";
+import { withActorLock } from "./commands.mjs";
 import { asGM } from "../socket.mjs";
 
 /** Spend rations (GM writes the world setting; players ask the GM over the socket). */
@@ -68,7 +69,7 @@ export async function restDialog(actor, type) {
     rejectClose: false
   });
   if ( !choice ) return null;
-  return takeRest(actor, type, choice, check);
+  return takeRest(actor, type, choice);
 }
 
 /**
@@ -81,14 +82,18 @@ export async function restDialog(actor, type) {
  * @param {{hd?: number, cd?: number, food?: boolean}} [choice]
  * @param {object} [check]  restCheck() result (recomputed when omitted)
  */
-export async function takeRest(actor, type, { hd = 0, cd = 0, food = true } = {}, check = restCheck(actor, type, { now: game.time.worldTime })) {
+async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
+  if ( !actor?.isOwner ) throw new Error("Only the owner can rest this actor.");
+  const check = restCheck(actor, type, { now: game.time.worldTime });
+  if ( !check.ok ) return ui.notifications.warn(check.reason);
+  if ( check.rationCost ) await spendRations(check.rationCost);
   const sys = actor.system;
   const con = sys.abilities.con.mod;
   const rolls = [];
   let hdRoll = 0;
   let cdRoll = 0;
-  hd = Math.min(hd, shortRestDice(sys.hitDice));
-  cd = Math.min(cd, shortRestDice(sys.chakraDice));
+  hd = Math.min(Math.max(0, Math.floor(hd)), shortRestDice(sys.hitDice));
+  cd = Math.min(Math.max(0, Math.floor(cd)), shortRestDice(sys.chakraDice));
   if ( type === "short" && check.benefit ) {
     if ( hd && sys.hitDice.die ) {
       const r = await new Roll(`${hd}${sys.hitDice.die} + ${con * hd}`).evaluate();
@@ -106,9 +111,11 @@ export async function takeRest(actor, type, { hd = 0, cd = 0, food = true } = {}
   await actor.update(plan.update);
   if ( plan.items.length ) await actor.updateEmbeddedDocuments("Item", plan.items);
   for ( const c of plan.conditions ) await actor.removeCondition(c.key, c.ranks);
-  if ( check.rationCost ) await spendRations(check.rationCost);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), rolls,
     content: `<div class="n5e-rest-card"><b>${esc(REST_LABELS[type])}</b>${check.rationCost ? `<span class="sub"> · ${check.rationCost} rations</span>` : ""}
       ${plan.lines.map(l => `<div>${esc(l)}</div>`).join("") || "<div>Nothing to recover.</div>"}</div>` });
 }
+
+/** Recheck limits inside the queue; await GM ration approval before granting benefits. */
+export function takeRest(actor, type, choice) { return withActorLock(actor, () => executeRest(actor, type, choice)); }

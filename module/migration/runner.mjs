@@ -20,12 +20,49 @@ export const SETTING = "migrationVersion";
 
 /** Ordered list. Add new entries at the end; never renumber. */
 export const MIGRATIONS = [
-  { id: 1, label: "V3.1 world actors and items -> 4.0", run: migrateWorldV31 }
+  { id: 1, label: "V3.1 world actors and items -> 4.0", run: migrateWorldV31 },
+  { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation }
 ];
 export const LATEST = MIGRATIONS.at(-1).id;
 
+/** Restore only newly supported booleans from a linked compendium source; preserve all item ids,
+ * formulas, choices and other homebrew edits. Items without a source are left untouched.
+ */
+async function repairAutomation(log) {
+  await migrateWorldV31(log);
+  const failures = [];
+  const items = [...game.items, ...[...game.actors].flatMap(a => [...a.items])];
+  for ( const item of items ) {
+    const sourceUuid = item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
+    if ( !sourceUuid?.startsWith("Compendium.") || !item.system.activities?.length ) continue;
+    try {
+      const source = await fromUuid(sourceUuid);
+      if ( !source ) continue;
+      // Raw pack data retains fields that older schemas could not initialize.
+      const raw = source._source;
+      const originals = raw?.system?.activities ?? [];
+      const activities = item.system.activities.map(a => a.toObject?.() ?? foundry.utils.deepClone(a));
+      let changed = false;
+      for ( const activity of activities ) {
+        const original = originals.find(a => a.id && a.id === activity.id);
+        if ( !original ) continue;
+        for ( const [group, key] of [["cost", "gain"], ["cost", "choose"], ["save", "resave"]] ) {
+          if ( original[group]?.[key] === true && !activity[group]?.[key] ) {
+            activity[group] ??= {}; activity[group][key] = true; changed = true;
+          }
+        }
+      }
+      if ( changed ) { await item.update({ "system.activities": activities }); log.push(`Restored automation fields: ${item.uuid}`); }
+    } catch (error) { failures.push({ uuid: item.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some automation fields could not be repaired."); error.failures = failures; throw error; }
+}
+
 /** The world setting that remembers the last migration run (hidden; set by checkMigrations). */
 export function registerMigrationSetting() {
+  game.settings.register("n5e", "migrationFailures", {
+    name: "Incomplete migration documents", scope: "world", config: false, type: Object, default: {}
+  });
   game.settings.register("n5e", SETTING, {
     name: "Last data migration", scope: "world", config: false, type: Number, default: 0
   });
@@ -54,8 +91,14 @@ export async function checkMigrations() {
   const log = [];
   for ( const m of pending ) {
     ui.notifications.info(`N5e migration ${m.id}: ${m.label}...`);
-    await m.run(log);
+    try { await m.run(log); }
+    catch (error) {
+      await game.settings.set("n5e", "migrationFailures", { migration: m.id, errors: error.failures ?? [error.message] });
+      ui.notifications.error("N5e migration is incomplete. Failed documents are recorded for retry; the migration version was not advanced.");
+      throw error;
+    }
     await game.settings.set("n5e", SETTING, m.id);
+    await game.settings.set("n5e", "migrationFailures", {});
   }
   console.groupCollapsed(`N5e | migration complete (${log.length} notes)`);
   for ( const line of log ) console.log(line);
@@ -77,13 +120,23 @@ async function persist(doc, migrated, { parent } = {}) {
   } catch (err) {
     if ( !typeChanged ) throw err;
     const data = foundry.utils.deepClone(migrated);
+    const original = doc.toObject();
+    // Validate before deleting anything. If replacement fails, restore the original id and source.
+    const candidate = new cls(data, { parent, strict: true });
+    candidate.validate({ strict: true });
     await doc.delete({ n5eMigration: true });
-    await cls.create(data, { parent, keepId: true, n5eMigration: true });
+    try { await cls.create(data, { parent, keepId: true, n5eMigration: true }); }
+    catch (replacementError) {
+      try { await cls.create(original, { parent, keepId: true, n5eMigration: true }); }
+      catch (restoreError) { throw new Error(`Replacement and restoration failed for ${doc.uuid}: ${replacementError.message}; ${restoreError.message}. Restore from your world backup.`); }
+      throw new Error(`Replacement failed for ${doc.uuid}; original restored: ${replacementError.message}`);
+    }
   }
 }
 
 /** Migration 1: V3.1 -> 4.0 for world actors (with embedded items/effects) and world items. */
 async function migrateWorldV31(log) {
+  const failures = [];
   const conditionKeys = new Set(Object.keys(CONFIG.N5E.conditions));
   // Raw stored data (pre-migrateData) lives in collection._source.
   const rawActors = new Map((game.actors._source ?? []).map(s => [s._id, s]));
@@ -94,7 +147,7 @@ async function migrateWorldV31(log) {
     if ( !raw || !isV31Item(raw) ) continue;
     const r = migrateV31Item(raw);
     log.push(...r.log);
-    try { await persist(item, raw); } catch (err) { log.push(`Item ${item.name}: ${err.message}`); }
+    try { await persist(item, raw); } catch (err) { failures.push({ uuid: item.uuid, error: err.message }); log.push(`Item ${item.name}: ${err.message}`); }
   }
 
   for ( const actor of game.actors ) {
@@ -118,7 +171,13 @@ async function migrateWorldV31(log) {
       const drop = actor.effects.filter(e => !keep.has(e.id)).map(e => e.id);
       if ( drop.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", drop, { n5eMigration: true });
     } catch (err) {
+      failures.push({ uuid: actor.uuid, error: err.message });
       log.push(`Actor ${actor.name}: ${err.message}`);
     }
+  }
+  if ( failures.length ) {
+    const error = new Error(`${failures.length} documents could not be migrated.`);
+    error.failures = failures;
+    throw error;
   }
 }

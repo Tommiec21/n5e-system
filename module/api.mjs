@@ -1,5 +1,10 @@
 import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons } from "./workflow/automation.mjs";
 
+/** Optional integration check, loaded lazily so normal system startup does not load test UI. */
+export async function runSmokeTests() {
+  return (await import("./testing/smoke.mjs")).runSmokeTests();
+}
+
 /**
  * Public API at game.n5e.api for homebrew modules and macros.
  * Registries are plain objects in CONFIG.N5E; these helpers validate and add entries so the engine
@@ -23,9 +28,12 @@ import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummon
 function register(registry, key, data, { overwrite = false } = {}) {
   const target = CONFIG.N5E[registry];
   if ( !target ) throw new Error(`N5e | unknown registry "${registry}"`);
-  if ( !key || typeof key !== "string" ) throw new Error("N5e | registry key must be a string");
+  if ( typeof key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]*$/.test(key)
+    || ["constructor", "prototype", "__proto__"].includes(key) ) throw new Error("N5e | invalid registry key");
+  if ( !data || typeof data !== "object" || typeof data.label !== "string" || !data.label.trim() ) throw new Error("N5e | registry entries require a label");
   if ( key in target && !overwrite ) throw new Error(`N5e | ${registry}.${key} already exists (pass overwrite: true)`);
   target[key] = data;
+  globalThis.Hooks?.callAll("n5e.registryChanged", registry, key, data);
   return target[key];
 }
 
@@ -81,6 +89,7 @@ export function registerClanData(clanItem) {
 }
 
 export default {
+  runSmokeTests,
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
   registerClanData

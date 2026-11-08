@@ -1,44 +1,83 @@
 /**
- * GM relay for changes a player can't make themselves (world settings, effects on creatures they
- * don't own). The active GM's client runs the handler; a GM runs it directly.
- *
- * How it works: Foundry gives each system one socket channel ("system.n5e", enabled by
- * "socket": true in system.json). A player's client emits { type, payload }; every connected client
- * receives it, and only the active GM's client acts, so the change happens exactly once.
- *
- * To add a GM action: add a handler to HANDLERS below, then call asGM("yourType", payload) wherever
- * a player needs it. Keep payloads to plain data (uuids, numbers, effect data), never documents.
+ * Privileged requests. Foundry system-socket payloads do not authenticate their sender, so remote
+ * requests NEVER authorize themselves by claiming a user id. The active GM reviews each request.
+ * Local owned-actor changes execute directly. Replies acknowledge completion before callers proceed.
  */
 import { rule } from "./rules-settings.mjs";
+import { esc } from "./view-models/common.mjs";
+import { withActorLock } from "./workflow/commands.mjs";
+const pending = new Map();
+const seen = new Set();
+const CHANNEL = "system.n5e";
 
-const HANDLERS = {
-  /** Ration Pool (Phase 5): the pool is a world setting, which only a GM can write. */
-  async spendRations({ amount }) {
-    await game.settings.set("n5e", "rationPool", Math.max(0, rule("rationPool") - (Number(amount) || 0)));
-  },
-  /** Marks, Branded, Amps and activity effects placed on creatures the player doesn't own. */
-  async createEffects({ actorUuid, effects }) {
-    const actor = await fromUuid(actorUuid);
-    if ( actor ) await actor.createEmbeddedDocuments("ActiveEffect", effects);
-  },
-  // Delete effects by uuid (any actor).
-  async deleteEffects({ uuids }) {
-    for ( const uuid of uuids ?? [] ) await (await fromUuid(uuid))?.delete();
+/** Limit effect requests to typed effects and system change keys; never accept arbitrary documents. */
+export function validateEffectRequest(data) {
+  if ( !data || typeof data.name !== "string" || data.name.length > 200 ) throw new Error("Invalid effect name.");
+  if ( !["generic", "condition", "state", "amp"].includes(data.type || "generic") ) throw new Error("Invalid effect type.");
+  if ( (data.changes ?? []).length > 30 ) throw new Error("Too many effect changes.");
+  for ( const c of data.changes ?? [] ) {
+    if ( !/^(system\.|n5e\.)/.test(c.key) || /(?:^|\.)(?:__proto__|prototype|constructor)(?:\.|$)/.test(c.key)
+      || !Number.isInteger(c.mode) || c.mode < 0 || c.mode > 5 || String(c.value).length > 200 ) throw new Error("Invalid effect change.");
   }
-};
-
-/** Run an action as the GM (directly when this user is a GM; otherwise over the socket). */
-export async function asGM(type, payload) {
-  if ( game.user.isGM ) return HANDLERS[type]?.(payload);
-  if ( !game.users.activeGM ) return ui.notifications.warn("A GM needs to be connected for this.");
-  game.socket.emit("system.n5e", { type, payload });
+  const { name, img, origin, system, duration, changes, statuses } = data;
+  return { name, img, origin, system, duration, changes, statuses, type: data.type || "generic",
+    flags: { n5e: structuredClone(data.flags?.n5e ?? {}) } };
 }
 
-/** Called at "ready". game.socket is absent in the Node tests, hence the optional chaining. */
+/** Validate the target before presenting a remote request to the GM. */
+async function prepare(type, payload) {
+  if ( type === "createEffects" ) {
+    const actor = await fromUuid(payload.actorUuid);
+    if ( actor?.documentName !== "Actor" || !Array.isArray(payload.effects) || !payload.effects.length || payload.effects.length > 5 ) throw new Error("Invalid actor effect request.");
+    const effects = payload.effects.map(validateEffectRequest);
+    return { summary: "Apply effects to " + actor.name + ": " + effects.map(e => e.name).join(", "), details: effects,
+      owned: actor.isOwner, run: () => actor.createEmbeddedDocuments("ActiveEffect", effects) };
+  }
+  if ( type === "spendRations" ) {
+    const amount = Number(payload.amount);
+    if ( !Number.isSafeInteger(amount) || amount <= 0 ) throw new Error("Ration amount must be a positive integer.");
+    return { summary: "Spend " + amount + " party rations", details: { amount }, run: () => withActorLock({ uuid: "world:n5e:rations" }, async () => {
+      const current = Number(rule("rationPool"));
+      if ( amount > current ) throw new Error("Not enough party rations.");
+      await game.settings.set("n5e", "rationPool", current - amount);
+    }) };
+  }
+  // No public remote delete operation: lifecycle cleanup is already performed by the active GM.
+  throw new Error("Unknown or unsupported GM request.");
+}
+
+export async function asGM(type, payload) {
+  const request = await prepare(type, payload);
+  if ( game.user.isGM || request.owned ) { await request.run(); return true; }
+  if ( !game.users.activeGM ) throw new Error("A GM needs to be connected for this.");
+  const requestId = crypto.randomUUID();
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => { pending.delete(requestId); reject(new Error("The GM request timed out; no success was confirmed.")); }, 120000);
+    pending.set(requestId, { resolve, reject, timer });
+    game.socket.emit(CHANNEL, { requestId, type, payload });
+  });
+}
+
 export function registerSocket() {
-  game.socket?.on("system.n5e", async data => {
-    if ( !game.users.activeGM?.isSelf ) return;
-    // data.payload for current messages; data itself for the Phase 5 ration format.
-    await HANDLERS[data?.type]?.(data.payload ?? data);
+  game.socket?.on(CHANNEL, async data => {
+    if ( data?.responseTo ) {
+      const p = pending.get(data.responseTo);
+      if ( !p ) return;
+      pending.delete(data.responseTo); clearTimeout(p.timer);
+      if ( data.ok ) p.resolve(true); else p.reject(new Error(data.error || "The GM declined the request."));
+      return;
+    }
+    if ( !game.users.activeGM?.isSelf || typeof data?.requestId !== "string" || seen.has(data.requestId) ) return;
+    seen.add(data.requestId);
+    // Bounded replay cache. Consent is still required for every new remote request.
+    if ( seen.size > 500 ) seen.delete(seen.values().next().value);
+    let ok = false, error = "The GM declined the request.";
+    try {
+      const request = await prepare(data.type, data.payload ?? {});
+      const accepted = await foundry.applications.api.DialogV2.confirm({ window: { title: "Review player request" },
+        content: "<p>" + esc(request.summary) + "</p><details><summary>Requested changes</summary><pre>" + esc(JSON.stringify(request.details, null, 2)) + "</pre></details>", rejectClose: false });
+      if ( accepted ) { await request.run(); ok = true; }
+    } catch (err) { error = err.message; ui.notifications.warn(error); }
+    game.socket.emit(CHANNEL, { responseTo: data.requestId, ok, error: ok ? null : error });
   });
 }

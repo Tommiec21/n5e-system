@@ -1,5 +1,9 @@
 # Developer guide
 
+The current shared execution boundaries, migration safeguards, GM request behavior and live smoke
+check are documented in [MAINTENANCE.md](MAINTENANCE.md). New activities must pass the schema/content
+contract check and use the shared executor and health/resource services.
+
 How the N5e system is put together, and how to change it safely. Every source file also starts
 with a header comment explaining what it does and how to extend it; this guide ties them together.
 

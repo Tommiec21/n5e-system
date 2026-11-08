@@ -13,6 +13,7 @@
  *     doesn't know needs adding there as well.
  */
 import { rankOrder } from "../../config/core.mjs";
+import { activityKinds } from "../../config/activities.mjs";
 
 const F = () => foundry.data.fields;
 
@@ -211,7 +212,7 @@ export function activityFields() {
   const damageParts = () => arr(obj({ formula: formula(), type: str() }));
   return {
     id: str(),
-    type: str({ initial: "utility" }),  // attack|save|damage|heal|condition|summon|movement|utility|check
+    type: str({ initial: "utility", choices: Object.keys(activityKinds) }),
     label: str(),
     attack: obj({
       discipline: str(),                 // nin|tai|gen|buki or "" for weapon
@@ -225,6 +226,7 @@ export function activityFields() {
       dc: obj({ source: str({ initial: "discipline" }), formula: formula() }),
       onSuccess: str({ initial: "half" }),   // half|none|custom
       fourTier: bool(),
+      resave: bool(),
       tiers: obj({ critSuccess: str(), success: str(), failure: str(), critFailure: str() })
     }),
     damage: obj({ parts: damageParts(), pierce: int(0, { min: 0 }), ignoreDR: bool() }),
@@ -244,7 +246,7 @@ export function activityFields() {
     oncePerTurn: bool(),
     activation: str(),                   // overrides the item's activation for this activity
     // Pool cost paid when the button is clicked (roll: roll the pool's die and post it).
-    cost: obj({ pool: str(), amount: int(0, { min: 0 }), roll: bool() }),
+    cost: obj({ pool: str(), amount: int(1, { min: 0 }), roll: bool(), gain: bool(), choose: bool() }),
     strike: obj({
       kind: str(),                       // unarmed|weapon ("" = not a strike)
       dieSteps: int(0),                  // step the damage die up (+) or down (-)

@@ -21,10 +21,16 @@ const write = (f, d) => fs.writeFileSync(path.join(ROOT, f), `${JSON.stringify(d
 const system = read("system.json");
 const pkg = read("package.json");
 const newVersion = process.argv[2];
+// Manual release builds obey the same gate as CI; a failed check cannot produce installable assets.
+execSync("npm run verify", { cwd: ROOT, stdio: "inherit" });
 if ( newVersion ) {
   system.version = pkg.version = newVersion;
   write("system.json", system);
   write("package.json", pkg);
+  const lock = read("package-lock.json");
+  lock.version = newVersion;
+  if ( lock.packages?.[""] ) lock.packages[""].version = newVersion;
+  write("package-lock.json", lock);
   console.log(`version -> ${newVersion}`);
 }
 

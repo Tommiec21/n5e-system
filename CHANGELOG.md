@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.10.0-alpha.1 — Shared execution and maintenance safeguards
+
+### Correctness
+- Preserve resource-gain, amount-choice and repeat-save activity fields through item loading.
+- Apply once-per-turn activity limits, including alternative buttons on one feature; record declared action costs.
+- Route activity and damage-card healing through one service, including Envenomed and revival cleanup.
+- Validate resource amounts and serialize local commands; refund a cancelled activity's pool payment.
+- Keep recognized alternative save outcomes separate, avoid immunity/removal infliction, and recognize runtime registry additions.
+- Show explicit instructions for manual activity kinds instead of silently omitting them.
+
+### Maintenance
+- Separate activity execution, resource arithmetic/payment, actor sequencing and healing into focused modules.
+- Reject undeclared activity fields during verification; registration keys/labels are validated.
+- Add versioned repair for dropped booleans on linked world items without replacing IDs or other edits.
+- Record migration failures and retain their prior version; validate replacements and attempt restoration on failure.
+- Gate both CI and publishing on the same verification command, also required by manual release builds.
+- Add focused regression coverage and an opt-in live Foundry smoke check (`game.n5e.api.runSmokeTests()`).
+
+### GM behavior
+- Remove unrestricted remote deletion and validate effect/ration requests. Remote privileged requests
+  now require GM review because system sockets do not authenticate senders. Owned changes remain direct.
+- Ration-dependent player rests wait for approval before granting benefits.
+
+### Boundaries
+- Local command queues prevent overlapping clicks on one client, not simultaneous control from several clients.
+- Text parsing remains a fallback; unusual conditional prose needs authored activities.
+- Live Foundry and multiplayer smoke checks are separate from automated Node verification. See `docs/MAINTENANCE.md`.
+
 ## 0.9.3-alpha.2 — Rules settings window fix
 
 - Fixed **Open N5e Rules** failing to open: its template had multiple top-level elements, which Foundry's ApplicationV2 renderer rejects. A single wrapper now contains the header, rules and footer.

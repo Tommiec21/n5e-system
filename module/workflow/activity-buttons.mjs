@@ -53,6 +53,11 @@ import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
+import { executeActivity } from "./activity-execution.mjs";
+import { activityKinds } from "../config/activities.mjs";
+import { payPoolCost } from "./resources.mjs";
+export { payPoolCost } from "./resources.mjs";
+import { applyHealing } from "./health.mjs";
 import { contextualModifiers } from "../rules/elements.mjs";
 
 // A data-* attribute, or nothing when the value is empty. Buttons carry everything their click needs
@@ -75,11 +80,11 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
  * @param {object|null} [o.cost]    pool cost paid when clicked
  */
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
-  piercing = false, weaponId = "" } = {}) {
+  piercing = false, weaponId = "", activity = null, itemId = "" } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
   const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
-  const common = `${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
+  const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
@@ -122,7 +127,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     return actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.dc;
   };
   // Attributes every authored button shares: which item, its label, and its pool cost.
-  const common = a => `${attr("item", item.id)}${attr("label", a.label || item.name)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}`;
+  const common = a => `${attr("activity", a.id || a.label || a.type)}${attr("once", a.oncePerTurn ? 1 : "")}${attr("activation", a.activation || "")}${attr("item", item.id)}${attr("label", a.label || item.name)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}`;
   // " · 1 Superiority Dice" after the button text, so the player sees the price before clicking.
   const costNote = a => (a.cost?.gain ? ` · +${a.cost.amount || 1} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : a.cost?.pool ? ` · ${a.cost.amount} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : "");
   // A save button for activities that have one (strikes and effects can carry a save too, e.g.
@@ -137,6 +142,10 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
   };
   for ( const a of activities ) {
     if ( a.minLevel && level < a.minLevel ) continue;
+    if ( activityKinds[a.type] === "manual" || !activityKinds[a.type] ) {
+      rows.push(`<p class="hint">${esc(a.label || a.type)}: ${esc(a.text || "Resolve this activity manually using the item description.")}</p>`);
+      continue;
+    }
     if ( a.type === "summon" && a.summon?.uuid ) {
       const units = { round: 6, minute: 60, hour: 3600, day: 86400 };
       const duration = item.system.duration ?? {};
@@ -183,7 +192,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     }
     // Damage that costs a pool (Warfare's attack bonus): the cost rides on the damage buttons.
     if ( a.type === "damage" && a.cost?.pool ) {
-      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label || "Damage" })}</div>`);
+      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { cost: a.cost, activity: a, itemId: item.id, label: a.label || "Damage" })}</div>`);
       continue;
     }
     // Parsed kinds. Attack bonus: a jutsu's own live bonus (ability, Hijutsu, effects); otherwise the
@@ -204,7 +213,7 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
     } else if ( a.type === "damage" ) {
       // Authored damage keeps its own name on the button ("Lethal Attack", "Take Life").
       rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki",
-        label: a.label && a.label !== "Damage" ? a.label : "Damage" })}${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
+        activity: a, itemId: item.id, label: a.label && a.label !== "Damage" ? a.label : "Damage" })}${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     } else if ( a.type === "heal" ) {
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="heal"${attr("formula", a.heal?.formula)}${attr("pool", a.heal?.pool)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}>
         <i class="fa-solid fa-heart"></i> ${esc(a.label)}: ${esc(String(a.heal?.formula ?? "").replace(/lvl\(([^)]*)\)/g, "…"))}${costNote(a)}</button>${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
@@ -232,7 +241,7 @@ function targetsOrSelf(fallback) {
  * @param {HTMLElement} button   the clicked button (its dataset holds the activity data)
  * @param {Event} event          the click (Shift/Alt/Ctrl pick the roll mode, see dice/d20.mjs)
  */
-export async function onActivityClick(message, button, event) {
+async function executeActivityClick(message, button, event, { healingTargets = null } = {}) {
   const d = button.dataset;
   const speaker = CONFIG.ChatMessage.documentClass.getSpeaker;
   const casterUuid = message.getFlag("n5e", "cast")?.actorUuid ?? message.getFlag("n5e", "roll")?.actorUuid
@@ -241,10 +250,12 @@ export async function onActivityClick(message, button, event) {
   // Activities with a pool cost (e.g. 1 Superiority Die) pay it first; a rolled pool die is @poolRoll.
   let poolRoll = null;
   let amount = 1;
+  let payment = null;
   if ( d.cost && ["strike", "effect", "attack", "damage", "heal", "roll", "check"].includes(d.n5eAct) ) {
     if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can use this.");
-    const paid = await payPoolCost(caster, JSON.parse(d.cost));
+    const paid = await payPoolCost(caster, JSON.parse(d.cost), { locked: true });
     if ( !paid ) return null;
+    payment = paid;
     poolRoll = paid.roll;
     amount = paid.amount;
   }
@@ -273,7 +284,7 @@ export async function onActivityClick(message, button, event) {
     case "roll": {
       const formula = level(d.formula);
       const roll = formula ? await new Roll(formula, caster?.getRollData?.() ?? {}).evaluate() : null;
-      if ( !roll ) return null;
+      if ( !roll ) return payment;
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
     }
@@ -362,14 +373,11 @@ export async function onActivityClick(message, button, event) {
       const roll = await new Roll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
       const pool = d.pool || "hp";
       const names = [];
-      for ( const t of targetsOrSelf(caster) ) {
+      for ( const t of healingTargets ?? targetsOrSelf(caster) ) {
         if ( !t.isOwner ) continue;
-        const s = t.system;
-        if ( pool === "tempHp" ) await t.update({ "system.hp.temp": Math.max(s.hp.temp ?? 0, roll.total) });
-        else if ( pool === "tempCp" ) await t.update({ "system.cp.temp": Math.max(s.cp.temp ?? 0, roll.total) });
-        else if ( pool === "cp" ) await t.update({ "system.cp.value": Math.min(s.cp.max, s.cp.value + roll.total) });
-        else await t.update({ "system.hp.value": Math.min(s.hp.max, s.hp.value + roll.total) });
-        names.push(t.name);
+        const result = await applyHealing(t, roll.total, pool, { locked: true });
+        if ( result.blocked ) ui.notifications.warn(`${t.name}: ${result.blocked}`);
+        else names.push(t.name);
       }
       const what = { tempHp: "temporary HP", tempCp: "temporary CP", cp: "CP", hp: "HP" }[pool];
       return roll.toMessage({ speaker: speaker({ actor: caster }),
@@ -381,47 +389,7 @@ export async function onActivityClick(message, button, event) {
   }
 }
 
-/**
- * Pay an activity's pool cost; roll the pool's die when asked (Superiority Dice: d8).
- * Pools are system.resources.<id> (class pools such as focus, superiorityDice, pyroclasm, and the
- * optional stamina pool). Warns and returns null when the pool is missing or short.
- * @param {Actor} actor
- * @param {{pool: string, amount?: number, roll?: boolean, choose?: boolean}} cost
- *   choose: ask the player how many to spend (Pyroclasm's Detonate)
- * @returns {Promise<{roll: number|null, amount: number}|null>}  roll: the pool die total, when rolled
- */
-export async function payPoolCost(actor, cost) {
-  const pool = actor.system.resources?.[cost.pool];
-  let amount = cost.amount || 1;
-  if ( !pool ) {
-    ui.notifications.warn(`No ${cost.pool} pool.`);
-    return null;
-  }
-  // "Any number" (Pyroclasm Detonate): the player picks how many.
-  if ( cost.choose ) {
-    const cap = cost.gain ? (pool.maxValue ?? 0) - (pool.value ?? 0) : (pool.value ?? 0);
-    const { DialogV2 } = foundry.applications.api;
-    const n = await DialogV2.prompt({ window: { title: `Spend ${pool.label || cost.pool}` },
-      content: `<label>How many? <input type="number" name="n" value="1" min="1" max="${cap}"></label>`,
-      ok: { callback: (event, button) => Number(button.form.elements.n.value) || 0 }, rejectClose: false });
-    if ( !n ) return null;
-    amount = n;
-  }
-  // gain: the button adds to the pool instead (Carnage, Momentum, Blight, Mental Refocus...), capped at its max.
-  if ( cost.gain ) {
-    const value = Math.min(pool.maxValue ?? 0, (pool.value ?? 0) + amount);
-    await actor.update({ [`system.resources.${cost.pool}.value`]: value });
-    ui.notifications.info(`${pool.label || cost.pool}: ${value} / ${pool.maxValue ?? 0}`);
-    return { roll: null, amount, gained: true };
-  }
-  if ( (pool.value ?? 0) < amount ) {
-    ui.notifications.warn(`Not enough ${pool.label || cost.pool} (${pool.value ?? 0} / ${amount}).`);
-    return null;
-  }
-  await actor.update({ [`system.resources.${cost.pool}.value`]: pool.value - amount });
-  if ( !cost.roll || !pool.die ) return { roll: null, amount };
-  const roll = await new Roll(`${amount}${pool.die}`).evaluate();
-  await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),
-    flavor: `<div class="n5e-roll-card"><header><b>${esc(pool.label || cost.pool)}</b><span class="bonus">${roll.total}</span></header><div class="note">Spent ${amount}</div></div>` });
-  return { roll: roll.total, amount };
+/** All activity kinds share validation, turn limits, resource refund and hook handling. */
+export function onActivityClick(message, button, event) {
+  return executeActivity(message, button, event, executeActivityClick, targetsOrSelf);
 }

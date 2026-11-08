@@ -11,10 +11,12 @@
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
-import { damagePlan, healPlan, concentrationOnDamage, deathSaveResult } from "../rules/damage.mjs";
+import { damagePlan, concentrationOnDamage, deathSaveResult } from "../rules/damage.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { esc } from "../view-models/common.mjs";
+import { withActorLock } from "./commands.mjs";
+import { applyHealing } from "./health.mjs";
 import { rule } from "../rules-settings.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
@@ -42,23 +44,20 @@ export async function applyToSelected(data, mode) {
   if ( !targets.length ) return ui.notifications.info("Select the tokens to apply this to.");
   const rows = [];
   const undo = [];
-  for ( const actor of targets ) {
+  for ( const actor of [...new Set(targets)] ) {
+    await withActorLock(actor, async () => {
     // Snapshot for Undo: stored on the summary card (flags.n5e.undo) and restored by undoApply().
     const before = { uuid: actor.uuid, hp: actor.system.hp.value, tempHp: actor.system.hp.temp, cp: actor.system.cp.value,
       tempCp: actor.system.cp.temp, deathSaves: { ...actor.system.deathSaves } };
     if ( mode === "heal" ) {
-      const plan = healPlan(actor, data.total, "hp");
+      const plan = await applyHealing(actor, data.total, "hp", { locked: true });
       if ( plan.blocked ) {
         rows.push(`<div><b>${esc(actor.name)}</b>: ${esc(plan.blocked)}</div>`);
-        continue;
-      }
-      await actor.update(plan.update);
-      if ( plan.revived ) {
-        for ( const s of ["dying", "unconscious", "stabilized"] ) await actor.toggleStatusEffect(s, { active: false });
+        return;
       }
       undo.push(before);
       rows.push(`<div><b>${esc(actor.name)}</b> regains ${plan.gained} HP${plan.revived ? " and is no longer Dying" : ""}.</div>`);
-      continue;
+      return;
     }
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
     const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
@@ -84,6 +83,7 @@ export async function applyToSelected(data, mode) {
       plan.chakra ? `${plan.chakra} Chakra damage${plan.tempCpLost ? ` (${plan.tempCpLost} to temp CP)` : ""}` : ""].filter(Boolean).join(", ") || "no damage";
     rows.push(`<div class="target"><b>${esc(actor.name)}</b> takes ${esc(taken)}${notes.length ? `: <span class="warn">${esc(notes.join("; "))}</span>` : ""}
       ${plan.steps.length ? `<div class="steps">${esc(plan.steps.join(" · "))}</div>` : ""}${concBtn}</div>`);
+    });
   }
   if ( !rows.length ) return null;
   return ChatMessage().create({

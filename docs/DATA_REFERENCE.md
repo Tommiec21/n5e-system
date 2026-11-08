@@ -223,3 +223,17 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `lvl(1:1d8,5:2d8,11:3d8)` | value for the highest level reached (0 below the first) | `resolveFormula` |
 | `@poolRoll` | the pool die rolled when paying an activity's cost | activity clicks |
 | `@amount` | how many of a pool the player chose to spend | activity clicks, cast options |
+# Maintenance additions (0.10.0-alpha.1)
+
+- `flags.n5e.activityUsage.<itemId>`: last successful once-per-turn use as `combatId:round:turn`.
+  Alternative buttons share the item key. Old stamps expire by comparison, not by timed deletion.
+- World setting `migrationFailures`: `{migration, errors: [{uuid, error}]}` when an upgrade fails;
+  the previous `migrationVersion` is retained. Cleared after a successful migration step.
+- Activity schema now stores `cost.gain`, `cost.choose` and `save.resave` booleans. Omitted cost
+  amount defaults to 1; an explicitly authored 0 remains zero.
+- Public `game.n5e.api.runSmokeTests()` performs an opt-in, unsaved-document Foundry check.
+- Extension hooks: `n5e.preActivity`, `n5e.activityComplete`, `n5e.registryChanged`.
+- Socket messages use `{requestId,type,payload}` and acknowledgement `{responseTo,ok,error}`.
+  Sender claims are not authorization. Remote privileged changes require GM review; remote
+  document deletion is unsupported. See [MAINTENANCE.md](MAINTENANCE.md).
+
