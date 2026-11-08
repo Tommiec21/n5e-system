@@ -1,3 +1,4 @@
+{{!-- One Combat-tab action (a "pill"). Fields from combat.mjs pill(): kind, economy, glyph, name, sub, tip (full rules text on hover). --}}
 <span class="act-pill {{kind}} {{economy}} {{#if dim}}dim{{/if}} {{#if concentrating}}concentrating{{/if}} {{#if id}}n5e-row{{/if}}"
   {{#if id}}data-item-id="{{id}}"{{/if}} data-tooltip-html="{{tip}}" data-tooltip-direction="UP">
   <a class="pill-main" data-action="{{#if id}}useItem{{else}}useAction{{/if}}" {{#unless id}}data-kind="{{kind}}" data-key="{{key}}"{{/unless}}>

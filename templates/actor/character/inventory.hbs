@@ -1,3 +1,4 @@
+{{!-- Inventory tab. Data: vm = inventoryVM(actor). The Ammunition Die control: left click down (data-action="ammoDown"), right click up (listener in _onRender). --}}
 <section class="tab n5e-tab inventory {{tab.cssClass}}" data-tab="inventory" data-group="primary">
   <div class="slots" data-tooltip-html="{{vm.slotsTip}}">
     <div class="line"><b>Inventory Slots</b><span><b>{{vm.used}}</b> / {{vm.slots}}{{#if vm.encumbered}} · <span class="warn">Encumbered (half speed)</span>{{/if}}</span></div>

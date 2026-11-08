@@ -2,6 +2,14 @@
  * N5e character sheet (Phase 2) + chat cards.
  * Look: ink on paper, vermilion accent, chakra blue; Shippori Mincho headings over Inter.
  * Layout: dnd5e v5's sidebar sheet; glyphs, chips, and breakdown tooltips after PF2e.
+ *
+ * Scoping: every sheet rule starts with .n5e-v2 (the class on the character, NPC and item sheets and
+ * the N5e dialogs), so nothing here can restyle Foundry's own windows. Chat cards use .n5e-card and
+ * the .n5e-*-card classes. Dialogs with their own layout prefix their classes (level-up: "lu-").
+ * Colors and fonts: change the custom properties below; everything reads them.
+ * Sections, in order: frame, header/tabs, rail, tab bodies, tooltips, chat cards, Combat tab,
+ * level-up, item sheet, rolls, cast card/dialog, damage, rules panel, rests, trackers, party overview.
+ * New styles go at the end of the section they belong to (or a new section at the end of the file).
  */
 @import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Inter:wght@400;500;600;700&display=swap");
 

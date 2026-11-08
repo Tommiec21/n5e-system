@@ -392,7 +392,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
   }
 
-  /** Tab buttons (the sheet uses its own tab strip; Foundry switches the visible part). */
+  /** Tab buttons: switch the visible tab part (Foundry's changeTab). */
   static #onTab(event, target) {
     this.changeTab(target.dataset.tab, target.dataset.group ?? "primary");
   }
@@ -479,7 +479,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return stepAmmo(item, delta);
   }
 
-  /** Click a charge pip to set the number of charges left. */
+  /** Toolkit charge pips: click sets the charges to that pip (clicking the last filled one removes it). */
   static async #onSetCharge(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( !item ) return;
@@ -535,7 +535,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     await this.actor.update({ "system.combat.activeStance": current === id ? "" : id });
   }
 
-  /** Click a resource pool segment: set its current value. */
+  /** Resource pool segments: click sets the pool to that value (clicking the current value lowers it by 1). */
   static async #onSetPool(event, target) {
     const pool = target.closest("[data-pool]")?.dataset.pool;
     if ( !pool ) return;
@@ -605,7 +605,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return rollDeathSave(this.actor);
   }
 
-  /** Initiative from the sheet (joins the combat value when the actor is a combatant). */
+  /** Initiative from the sheet (sets the combatant's initiative when in combat; Adaptive Initiative asks). */
   static async #onRollInit(event) {
     return rollInitiative(this.actor, { event });
   }

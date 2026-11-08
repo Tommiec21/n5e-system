@@ -1,3 +1,6 @@
+/**
+ * Character sheet view models (module/view-models/character.mjs) on actors built from the packs.
+ */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { makeActor, load, baseAbilities, taiSpec } from "./helpers/actor.mjs";

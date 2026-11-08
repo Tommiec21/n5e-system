@@ -2,6 +2,9 @@
  * Minimal stand-in for the parts of Foundry's data layer the N5e models use, so schemas and the
  * derived-data pipeline can be exercised in Node. It initializes source data from field initials and
  * turns SetFields into Sets, like Foundry does. It does not validate.
+ * If a data model starts using a Foundry field type or API this file doesn't have, tests fail at
+ * import with "is not a constructor"/"undefined": add a matching stand-in here.
+ * tests/helpers/actor.mjs builds prepared actors from pack sources on top of this (makeActor, load).
  */
 class DataField {
   constructor(options = {}) { this.options = options; this.initial = options.initial; this.choices = options.choices; }

@@ -1,3 +1,4 @@
+{{!-- Combat tab. Data: vm = combatVM(actor) (view-models/combat.mjs). Trackers each hide behind {{#if vm.<tracker>.show}}; add new trackers in the .trackers block. Pills use parts/action-pill.hbs. --}}
 <section class="tab n5e-tab combat {{tab.cssClass}}" data-tab="combat" data-group="primary">
   <div class="economy" aria-label="Action economy this turn">
     {{#each vm.economy}}

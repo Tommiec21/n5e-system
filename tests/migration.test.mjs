@@ -1,3 +1,7 @@
+/**
+ * V3.1 -> 4.0 data migration (module/migration/v31.mjs) on sample V3.1 actors and items, and on the
+ * real V3.1 packs when N5E_V31_PACKS points at them (or tests/fixtures/v31/ holds them).
+ */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";

@@ -9,6 +9,20 @@ Each entry patches one document by pack + name: system fields (deep-merged), act
 text-parsed ones), transfer effects (applied while owned; a stance's only while it is the active
 stance), flags (feature choices, cast options, stance die rules), and description additions.
 The books' text is never rewritten.
+
+Automating an item (recipe):
+  1. Find its pack and exact name (packs/_source/<pack>/*.json "name").
+  2. Add an entry to the matching table below (STANCES, FEATURES, FEATS, JUTSU) keyed by that name.
+     Use the builders: strike() for attacks with a stepped die / extra dice / Pierce / several
+     attacks, act("save", ...) + save() for saves with conditions, effect() for buffs and penalties
+     (self or targets, with an ending), act("roll", ...) for "roll this and add it", act("heal", ...).
+     "effects" (transfer, always on while owned; a stance's only while active) take (label, [ch(...)]).
+     "flags" carry feature choices (choice) and cast-dialog options (castOption / castOptions).
+  3. Run `python3 tools/content/automation.py`, then `npm test`.
+  Level-scaled numbers: "lvl(1:1d8,5:2d8,11:3d8)". A rolled pool die: "@poolRoll". A chosen amount:
+  "@amount". Effect keys: any n5e.* key (module/rules/change-keys.mjs) or system.bonuses.*.
+  Activity fields are listed in module/data/fields/shared.mjs (activityFields): a field missing
+  there is dropped when Foundry loads the item.
 """
 import copy
 import glob
@@ -31,37 +45,50 @@ def make_id(kind, name):
 # ------------------------------------------------------------------------------------------ #
 
 def act(type_, label, **kw):
-    """Activity (fields not given take the schema defaults)."""
+    """Activity (fields not given take the schema defaults). The id is derived from the label, so it is
+    stable across runs; give activities on one item distinct labels."""
     a = {"id": make_id("activity", f"{label}:{kw.get('minLevel', 0)}")[:16], "type": type_, "label": label}
     a.update(kw)
     return a
 
 
 def strike(label, kind="unarmed", minLevel=0, oncePerTurn=False, activation="", **s):
+    """An Unarmed (kind="unarmed") or weapon (kind="weapon") strike. Strike options go in **s:
+    dieSteps, extraDice ("@wdie" = one more weapon die), pierce, maximize, attacks. save=, inflicts=,
+    text= and cost= are passed through to the activity instead."""
     extra = {k: s.pop(k) for k in ("save", "inflicts", "text", "cost") if k in s}
     return act("attack", label, minLevel=minLevel, oncePerTurn=oncePerTurn, activation=activation,
                attack={"discipline": "tai", "range": "melee", "count": 1}, strike={"kind": kind, **s}, **extra)
 
 
 def save(ability, dc="tai", inflicts=None, resave=False, **kw):
+    """Keyword arguments for a save activity: the ability, whose DC (nin/tai/gen), and what a failure
+    offers to apply (a list of cond(...))."""
     return {"save": {"abilities": [ability], "dc": {"source": dc}, "onSuccess": "none", "resave": resave},
             "inflicts": inflicts or [], **kw}
 
 
 def cond(key, ranks=1, kind="condition", label=None):
+    """A condition (kind="condition", key from CONFIG.N5E.conditions) or state (kind="state") to apply."""
     return {"key": key, "kind": kind, "ranks": ranks, "label": label or key.capitalize()}
 
 
 def effect(label, changes=None, target="self", expires="", seconds=0, **kw):
+    """An effect activity. target: self | targets. expires: turnStart (until the start of your next
+    turn) | turnEnd | nextTurnEnd, or seconds for a plain duration. Extra effect fields in **kw:
+    tempHp, state, exclusive, ampType, name; everything else goes on the activity (cost, text...)."""
     return act("effect", label, effect={"name": kw.pop("name", label), "target": target, "changes": changes or [],
                                         "expires": expires, "seconds": seconds, **{k: kw.pop(k) for k in list(kw) if k in ("tempHp", "state", "exclusive", "ampType")}}, **kw)
 
 
 def ch(key, value, mode=2):
+    """An Active Effect change. mode 2 = ADD, 4 = UPGRADE, 5 = OVERRIDE (Foundry's numbering)."""
     return {"key": key, "value": str(value), "mode": mode}
 
 
 def transfer(item_name, label, changes):
+    """A transfer effect stored on the item (applies to the owner). Marked automation=True so re-runs
+    replace it without touching effects added by hand."""
     eid = make_id("effect", f"{item_name}:{label}")
     return {"_id": eid, "name": label, "type": "generic", "img": "icons/svg/aura.svg", "transfer": True, "disabled": False,
             "system": {"category": "feature"}, "changes": [{**c, "priority": None} for c in changes], "duration": {},
@@ -227,6 +254,7 @@ CLASS_PATCHES = {
 
 
 def deep_merge(dst, src):
+    """Merge src into dst recursively (dicts merge; anything else replaces)."""
     for k, v in src.items():
         if isinstance(v, dict) and isinstance(dst.get(k), dict):
             deep_merge(dst[k], v)
@@ -235,6 +263,7 @@ def deep_merge(dst, src):
 
 
 def apply():
+    """Patch every document named in the tables, plus the class patches. Idempotent."""
     changed = 0
     for pack, table in PACKS.items():
         for path in glob.glob(os.path.join(SRC, pack, "*.json")):

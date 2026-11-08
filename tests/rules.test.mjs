@@ -1,3 +1,7 @@
+/**
+ * Pure rules functions (module/rules/): progression, cost, conditions, degree of success, Chain, AC,
+ * formulas, change keys.
+ */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {

@@ -1,3 +1,4 @@
+{{!-- Item sheet sidebar: key facts and chips (itemVM summary). --}}
 <aside class="n5e-item-side">
   {{#if vm.chips.length}}
     <div class="chips">{{#each vm.chips}}<span class="chip {{tone}}" {{#if tooltip}}data-tooltip-html="{{tooltip}}"{{/if}}>{{label}}</span>{{/each}}</div>

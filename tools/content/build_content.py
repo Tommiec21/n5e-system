@@ -11,6 +11,14 @@ Writes packs/_source/{classes,features,stances,feats,jutsu}/<slug>-<id>.json. Re
 only the files this script owns (flags.n5e.generated = true). Text is copied verbatim from the
 books; mechanics (activation, cost, keywords, advancement) are filled from the tables.
 
+Re-running is safe: documents are matched by deterministic ids, hand-made documents (no generated
+flag) are never touched, and tools/content/automation.py re-applies the automation data afterwards.
+After running: `npm test` (the tests load these files), then `npm run pack` or let the release
+workflow pack them.
+
+Adding content from the books: write a build_<thing>() that returns doc(...) entries, add it to
+`docs` in main(), and add any automation for it to automation.py (not here: this script copies text).
+
 Scope (Phase 2 content slice, King 2026-11-07):
   Scout-Nin 1-5 + Assault Scout, Ninjutsu Specialist 1-5 + Blaze Walker, every option those levels
   offer, all 24 Ch13 Fighting Stances, 4 random feats a 4th-level character can take, 10 jutsu.
@@ -47,10 +55,12 @@ def make_id(kind, name):
 
 
 def slug(name):
+    """URL-safe lower-case name used in file names and identifiers ("Shinobi’s Path" -> "shinobis-path")."""
     return re.sub(r"[^a-z0-9]+", "-", name.lower().replace("’", "")).strip("-")
 
 
 def uuid(pack, _id):
+    """Compendium uuid for a document in one of this system's packs (used in advancement grants)."""
     return f"Compendium.n5e.{pack}.Item.{_id}"
 
 
@@ -90,6 +100,7 @@ def lines_to_html(lines):
 
 
 def read(path):
+    """Read a KB markdown file as a list of lines."""
     with open(path, encoding="utf-8") as f:
         return f.read().split("\n")
 
@@ -111,14 +122,17 @@ def section(lines, heading, start=0, stop_level=None):
 
 
 def find(lines, heading, after=0):
+    """Just the lines of section(); raises KeyError when the heading is missing (book layout changed)."""
     return section(lines, heading, after)[0]
 
 
 def stats(created=True):
+    """Foundry _stats block stamped on every generated document."""
     return {"coreVersion": CORE_VERSION, "systemId": "n5e", "systemVersion": SYSTEM_VERSION}
 
 
 def doc(kind, pack, name, type_, system, img, effects=None):
+    """A compendium document. flags.n5e.generated marks it as owned by this script (re-runs replace it)."""
     _id = make_id(kind, name)
     return {
         "_id": _id, "name": name, "type": type_, "img": img,
@@ -129,15 +143,18 @@ def doc(kind, pack, name, type_, system, img, effects=None):
 
 
 def adv(level, type_, title, uuids=None, count=1, key="", value="", aid=None):
+    """One advancement entry for a class/subclass (see advancementFields in module/data/fields/shared.mjs)."""
     return {"id": aid or slug(f"{type_}-{level}-{title}")[:40], "level": level, "type": type_, "title": title,
             "uuids": uuids or [], "count": count, "key": key, "value": value, "branch": "", "chosen": []}
 
 
 def source(book, page=""):
+    """Source citation for the item sheet."""
     return {"book": book, "page": page, "version": "4.0", "custom": ""}
 
 
 def activation(t="", trigger=""):
+    """Activation from the book's casting-time / action text ("1 Bonus Action", "Reaction, which you take...")."""
     t = t.lower()
     if "reaction" in t:
         typ = "reaction"
@@ -158,6 +175,7 @@ def activation(t="", trigger=""):
 
 def feature(name, cls_ident, level, body_lines, *, category="classFeature", act="", tags=(), pools=None,
             book=OROCHIMARU, img="icons/svg/upgrade.svg", passive=None, kind="feature"):
+    """A class feature or class option (a feat item in the features pack), text verbatim from the book."""
     text_lc = " ".join(body_lines).lower()
     a = activation(act) if act else {"type": "none", "value": 1, "unit": "", "trigger": {"event": "", "text": ""}}
     is_passive = passive if passive is not None else a["type"] == "none"
@@ -179,6 +197,7 @@ STANCE_GROUPS = [("### Taijutsu Stances", "taijutsu"), ("### Bukijutsu Stances",
 
 
 def build_stances(core):
+    """All Ch13 Fighting Stances (Taijutsu, Bukijutsu, Chakra), text verbatim."""
     ch13 = core.index("# Chapter 13: Customization Options")
     out = []
     for heading, cat in STANCE_GROUPS:
@@ -209,6 +228,7 @@ ABIL = {"strength": "str", "dexterity": "dex", "constitution": "con", "intellige
 
 
 def build_feats(core, seed=20261107):
+    """Four random feats a 4th-level character can take (fixed seed, so re-runs pick the same four)."""
     ch13 = core.index("# Chapter 13: Customization Options")
     feats_at = core.index("## Feats", ch13)
     pool = []
@@ -278,6 +298,7 @@ JUTSU_IMG = {"nin": "icons/svg/fire.svg", "gen": "icons/svg/eye.svg", "tai": "ic
 
 
 def parse_range(text):
+    """Book range text -> rangeArea ("Self (15-foot radius)", "30 feet", "Touch", "60-foot cone")."""
     t = (text or "").strip()
     low = t.lower()
     area = {"shape": "", "size": None, "width": None, "height": None}
@@ -303,6 +324,7 @@ def parse_range(text):
 
 
 def parse_duration(text):
+    """Book duration text -> {value, unit, concentration}."""
     low = (text or "").lower().strip().rstrip(".")
     conc = "concentration" in low
     m = re.search(r"(\d+)\s*(round|minute|hour|day|turn)", low)
@@ -314,6 +336,7 @@ def parse_duration(text):
 
 
 def parse_cost(text):
+    """Book cost text -> {mode: chakra|none|special, value}."""
     low = (text or "").lower()
     m = re.search(r"(\d+)", low)
     if "none" in low or not low:
@@ -324,6 +347,7 @@ def parse_cost(text):
 
 
 def parse_components(text):
+    """Book components text ("HS, CM, NT (Medicine Kit)") -> components flags and tool requirement."""
     t = (text or "").upper()
     tool = re.search(r"NT\s*\(([^)]*)\)", text or "")
     return {
@@ -367,6 +391,7 @@ JUTSU_PICKS = ["Fire Release: Flame Whip", "Fire Release: Fox Fire", "Chakra Shi
 
 
 def build_jutsu(parsed):
+    """The jutsu in JUTSU_PICKS from the parsed compendium: keywords, stimuli, cost, riders split out."""
     by_name = {j["name"]: j for j in parsed}
     out = []
     for name in JUTSU_PICKS:
@@ -411,6 +436,7 @@ RANKS = ["D"] * 4 + ["C"] * 4 + ["B"] * 4 + ["A"] * 4 + ["S"] * 4
 
 
 def table_rows(lines, header_start):
+    """Rows of a markdown class table, starting after the header line that begins with header_start."""
     rows = []
     started = False
     for ln in lines:
@@ -426,10 +452,12 @@ def table_rows(lines, header_start):
 
 
 def col(rows, idx):
+    """One column of table rows as strings of digits ("-" and blanks become "0")."""
     return [("0" if r[idx] in ("-", "", "–") else re.sub(r"[^\d]", "", r[idx]) or "0") for r in rows]
 
 
 def build_scout(oro, stance_uuids):
+    """Scout-Nin (table, features 1-5, options) and the Assault Scout subclass."""
     at = oro.index("## Scout-Nin")
     rows = table_rows(oro[at:at + 40], "| Level | Proficiency Bonus | Features | Superiority Dice")
     items = []
@@ -531,6 +559,7 @@ MOLDING_ICON = "icons/svg/lightning.svg"
 
 
 def build_ninjutsu(oro, stance_uuids):
+    """Ninjutsu Specialist (table, features 1-5, Moldings) and the Blaze Walker subclass."""
     at = oro.index("## Ninjutsu Specialist")
     table_at = max(i for i in range(at) if oro[i].strip() == "Ninjutsu Specialist")
     rows = table_rows(oro[table_at:table_at + 30], "| Level | Proficiency Bonus | Features | Moldings Known")
@@ -724,6 +753,7 @@ ALL_DOCS = {}
 
 
 def load_all():
+    """Load every pack's documents (generated and hand-made) for the folder pass."""
     ALL_DOCS.clear()
     for pack in sorted(os.listdir(OUT)):
         folder = os.path.join(OUT, pack)
@@ -744,6 +774,7 @@ def load_all():
 # --------------------------------------------------------------------------------------------- #
 
 def write(docs):
+    """Delete this script's previous output, then write each document as packs/_source/<pack>/<slug>-<id>.json."""
     owned = {}
     for pack in sorted(set(os.listdir(OUT)) | {"classes", "features", "stances", "feats", "jutsu"}):
         folder = os.path.join(OUT, pack)
@@ -768,6 +799,7 @@ def write(docs):
 
 
 def main():
+    """Run the whole import: books -> documents -> automation data -> folders."""
     kb = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("N5E_KB", "")
     if not kb:
         raise SystemExit(__doc__)
