@@ -15,7 +15,8 @@ export const ruleGroups = {
   conditions: "Conditions",
   resting: "Resting",
   rations: "Rations (Resource Based Rests)",
-  character: "Character options"
+  character: "Character options",
+  map: "Map: areas, senses and movement"
 };
 
 export const rules = {
@@ -99,5 +100,21 @@ export const rules = {
   multiclassing: { group: "character", type: "boolean", default: false, label: "Legacy multiclassing",
     hint: "Allow more than one class (removed from balance)." },
   hijutsuFlexibilityPick: { group: "character", type: "boolean", default: true, label: "Players pick their Hijutsu Flexibility ability",
-    hint: "Default is the higher of the two abilities." }
+    hint: "Default is the higher of the two abilities." },
+
+  // Map: areas, senses and movement (0.9.0)
+  areaPrompt: { group: "map", type: "boolean", default: true, label: "Offer to place the area when casting",
+    hint: "Casting a jutsu with an area starts placing its shape on the map (the card keeps a Place area button either way)." },
+  areaAutoTarget: { group: "map", type: "boolean", default: true, label: "Target the tokens in a placed area",
+    hint: "Placing an area targets every token inside it (the caster is left out of Self areas), so save buttons roll for all of them." },
+  areaCleanup: { group: "map", type: "boolean", default: true, label: "Remove areas when they end",
+    hint: "Instantaneous areas go at the end of the caster's turn, timed ones when their rounds run out, concentration ones when concentration ends." },
+  areaTurnStart: { group: "map", type: "boolean", default: true, label: "Lasting area reminders",
+    hint: "When a creature starts its turn inside a lasting area, the GM gets a card with that jutsu's buttons." },
+  syncSenses: { group: "map", type: "boolean", default: true, label: "Senses give tokens vision",
+    hint: "Darkvision, Blindsight, Tremor Sense, True Sight, Chakra Sight and Chakra Sensing on the sheet become token vision and detection modes." },
+  movementCosts: { group: "map", type: "boolean", default: true, label: "Climb, swim and crawl cost extra",
+    hint: "+1 ft per ft without a climb or swim speed, and while crawling (KB 03, 06)." },
+  rulerSpeed: { group: "map", type: "boolean", default: true, label: "Color the ruler by speed",
+    hint: "Movement within your speed shows normally, up to double (Dash) in yellow, beyond in red." }
 };

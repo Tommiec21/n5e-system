@@ -57,7 +57,8 @@ module/
   data/                     data models: stored schema + derived data
     actor/creature.mjs      THE derived-data pipeline (abilities → pools → skills → DR/AC → states)
     fields/shared.mjs       shared field builders, incl. the activity schema
-  documents/                Actor / Item / ActiveEffect classes (condition helpers, effect rules)
+  documents/                Actor / Item / ActiveEffect / Token classes (condition helpers, effect rules, senses → vision)
+  canvas/                   map registrations: Chakra Sensing detection mode, movement costs, speed-colored ruler
   dice/                     d20 rules (d20.mjs) and rolling + chat buttons (roll.mjs)
   workflow/                 Foundry-side actions: cast, attack, damage, rests, turns, trackers
   view-models/              actor/item → sheet data (pure)
@@ -118,7 +119,8 @@ sheet shows on hover. **Derived numbers are never saved**; only the schema field
 `useItem` (sheet) → `castJutsu` (workflow/cast.mjs) opens the dialog → `castPlan` (workflow/cast-plan.mjs,
 pure) works out cost, pools, concentration, Chain/Combo, cast options, problems → on Cast, one actor
 update applies the plan → `postCastCard` posts the card with activity buttons
-(workflow/activity-buttons.mjs).
+(workflow/activity-buttons.mjs). A jutsu with an area (rules/area.mjs areaOf) also gets a Place area
+button, and placement starts right away with the areaPrompt rule (workflow/areas.mjs placeArea).
 
 ### Chat card buttons
 
@@ -132,7 +134,9 @@ selected tokens and post a summary with Undo.
 On the active GM's client (workflow/turn.mjs): end of the previous turn (condition decay, Fury/Mark
 expiry, effects ending at turn end, resave prompts) → start of the new turn (effects ending at turn
 start, Burned/Bleed damage card, upkeep, Chain/Combo reset, action economy, recharge, Flow Focus) →
-summary card.
+summary card. Areas (workflow/areas.mjs): instantaneous ones leave at the end of the caster's turn,
+timed ones when their round comes, concentration ones when concentration ends (updateActor hook);
+a creature starting its turn in a lasting area gets a GM card with the jutsu's buttons.
 
 ### Players changing things they don't own
 

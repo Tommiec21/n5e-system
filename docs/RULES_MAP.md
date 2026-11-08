@@ -47,3 +47,6 @@
 | Feat proficiency grants (Mastery when already proficient) | `creature.mjs _collectItemGrants` | 09 |
 | Optional rules (every toggle) | `config/rules.mjs`, `rules-settings.mjs`, `applications/settings/rules-config.mjs` | various |
 | Per-item automation for imported content | `tools/content/automation.py` | 09, 12, 13 |
+| Areas: shapes, sizes from item/range/text, upcast growth, coverage, lifetimes | `rules/area.mjs`, `workflow/areas.mjs` | 04 |
+| Senses → token vision and detection modes; Chakra Sensing mode | `rules/senses.mjs`, `documents/token.mjs`, `canvas/detection.mjs` | 06 |
+| Climb/swim/crawl extra cost; ruler speed bands | `rules/senses.mjs`, `canvas/ruler.mjs` | 03, 06 |

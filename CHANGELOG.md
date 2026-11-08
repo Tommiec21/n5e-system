@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.9.0-alpha.1 — Jutsu on the map
+
+### Added
+- **Area shapes from jutsu:**
+  - Cast cards for jutsu with an area get a **Place area** button (e.g. "20-ft radius", "15-ft cone").
+  - With the new rule on (default), placement starts right after casting.
+  - The area comes from the jutsu's area fields, else its range text ("Self (15-foot cone)"), else its description.
+  - Upcast rules that grow the area add to the size for each rank cast above base.
+  - Shapes: cone (53°), line (with its width), cube, sphere/radius, cylinder.
+  - Self areas sit on the caster; cones and lines turn toward the cursor. Other areas follow the cursor, snapped to the grid.
+  - Shift or Ctrl + mouse wheel rotates. Left click places; right click or Escape cancels.
+- **Targeting from the area:** placing an area targets every token inside it (any square it occupies). The caster is left out of Self areas.
+- **Lasting areas:**
+  - Instantaneous areas leave the map at the end of the caster's turn.
+  - Timed areas (1 minute = 10 rounds) leave when their round comes.
+  - Concentration areas leave when concentration ends.
+  - A creature starting its turn inside a lasting area gives the GM a card with that jutsu's buttons.
+- **Senses on tokens:**
+  - Darkvision sets the token's sight range and darkvision mode.
+  - Blindsight, Tremor Sense, True Sight and Chakra Sight become detection modes.
+  - New **Chakra Sensing** detection mode: notices creatures with chakra, through walls.
+  - Changing a sense on the sheet updates every token. Set a token's `flags.n5e.manualVision` to keep its own settings.
+- **Movement:**
+  - Climbing or swimming without that speed, and crawling, cost +1 ft per ft (Foundry's difficult terrain still applies on top).
+  - The token ruler turns yellow past your speed (Dash) and red past double.
+- **N5e Rules panel:** new "Map: areas, senses and movement" section with a toggle for each of the above.
+
 ## 0.8.1-alpha.1 — Class feature automation
 
 ### Added

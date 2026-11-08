@@ -13,6 +13,9 @@ import { castPlan } from "./cast-plan.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
 import { activityButtons, damageButtons } from "./activity-buttons.mjs";
 import { esc } from "../view-models/common.mjs";
+import { areaButton, placeArea } from "./areas.mjs";
+import { areaOf } from "../rules/area.mjs";
+import { rule } from "../rules-settings.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 // {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
@@ -120,7 +123,10 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     return null;
   }
   await actor.update(plan.update);
-  return postCastCard(actor, item, plan);
+  const message = await postCastCard(actor, item, plan);
+  // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
+  if ( rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
+  return message;
 }
 
 /** The cast card: what was spent, the rules text, and activity buttons. */
@@ -159,6 +165,7 @@ export async function postCastCard(actor, item, plan) {
       <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[j.discipline]?.label ?? ""}`)}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
+    ${areaButton(item, { rank: plan.rank })}
     ${activityButtons(actor, item, activities, { rank: plan.rank, flags: moldingFlags })}
     ${extras.join("")}
     ${trackerButtons(actor, item)}

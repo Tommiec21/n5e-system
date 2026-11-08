@@ -24,6 +24,10 @@ import { registerDataModels } from "./module/data/_index.mjs";
 import N5eActor from "./module/documents/actor.mjs";
 import N5eItem from "./module/documents/item.mjs";
 import N5eActiveEffect from "./module/documents/active-effect.mjs";
+import N5eTokenDocument from "./module/documents/token.mjs";
+import { registerDetectionModes } from "./module/canvas/detection.mjs";
+import { registerMovement } from "./module/canvas/ruler.mjs";
+import { registerAreaHooks } from "./module/workflow/areas.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
 import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
 import NPCSheet from "./module/applications/actor/npc-sheet.mjs";
@@ -67,6 +71,11 @@ Hooks.once("init", () => {
   CONFIG.Actor.documentClass = N5eActor;
   CONFIG.Item.documentClass = N5eItem;
   CONFIG.ActiveEffect.documentClass = N5eActiveEffect;
+  // Tokens: sheet senses become vision and detection modes (documents/token.mjs); Chakra Sensing is an
+  // N5e detection mode (canvas/detection.mjs); movement costs and the speed-colored ruler (canvas/ruler.mjs).
+  CONFIG.Token.documentClass = N5eTokenDocument;
+  registerDetectionModes();
+  registerMovement();
   registerDataModels();
 
 
@@ -118,6 +127,8 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
 // limits) and the GM's Party Overview button on the token controls.
 registerTurnHooks();
 registerPartyOverview();
+// Jutsu areas: concentration areas leave the map when concentration ends (workflow/areas.mjs).
+registerAreaHooks();
 
 Hooks.once("ready", async () => {
   // Clan-scoped conditions and keywords from world clan items (compendium clans load in Phase 6).

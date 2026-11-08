@@ -162,6 +162,21 @@ into `system.modifiers` (`rules/change-keys.mjs`), not applied by Foundry.
 | `undo` | apply summary | snapshots restored by Undo |
 | `turnStart` | turn card | marks a start-of-turn summary |
 
+`data-n5e-area="<item uuid>"` + `data-rank` on a cast card places that jutsu's area (`workflow/areas.mjs`).
+
+### Area templates (MeasuredTemplate `flags.n5e`)
+
+| Flag | Meaning |
+| --- | --- |
+| `actorUuid`, `itemUuid`, `itemId` | caster and jutsu |
+| `rank` | cast rank (upcast area size, buttons on reminder cards) |
+| `lifetime` | `concentration` \| `rounds` \| `turn` \| `manual` (`rules/area.mjs areaLifetime`) |
+| `expires` | `{round, turn}` for `rounds` areas |
+| `originToken` | the caster's token id for Self areas (left out of targeting and reminders) |
+| `casterCombatant` | the caster's combatant id when placed in combat |
+
+Token `flags.n5e.manualVision = true` stops sheet senses from overriding that token's vision.
+
 Button attributes are listed in the header of `workflow/activity-buttons.mjs`; the click dispatch
 for every `data-n5e-*` attribute is `onRenderChatMessage` in `dice/roll.mjs`.
 
@@ -182,6 +197,7 @@ migration that ran in this world.
 | `moveToken` | `workflow/turn.mjs` → `trackers.mjs onTokenMove` | Chilled |
 | `createActiveEffect` | `workflow/turn.mjs` → `trackers.mjs onAmpCreated` | Amp limit |
 | `deleteCombat` | `workflow/turn.mjs` | Combat Rival markers end |
+| `updateActor` | `workflow/areas.mjs` | concentration areas leave the map when concentration ends |
 | `getSceneControlButtons` | `applications/gm/party-overview.mjs` | GM Party Overview button |
 | `updateActor`, `create/update/deleteActiveEffect`, `updateCombat`, `create/deleteCombatant` | party overview | live refresh |
 

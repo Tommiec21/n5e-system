@@ -25,6 +25,7 @@ import { esc } from "../view-models/common.mjs";
 import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
+import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
 
 /** Start of the current combatant's turn (also called when combat starts, for the first combatant). */
 async function onTurnStart(combat) {
@@ -32,6 +33,8 @@ async function onTurnStart(combat) {
   const actor = combat.combatant?.actor;
   if ( !actor ) return;
   await expireSourceEffects(combat, actor, "turnStart", { round: combat.round, turn: combat.turn });
+  // Jutsu areas: timed ones that ran out go; lasting ones this creature starts in get a GM card.
+  await areasTurnStart(combat, actor);
   await postConditionDamage(actor);
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
@@ -90,6 +93,7 @@ export function registerTurnHooks() {
       if ( ending ) {
         await processConditionTurnEnd(ending, { round: prior.round, turn: prior.turn });
         await trackersTurnEnd(combat, ending, { round: prior.round, turn: prior.turn });
+        await areasTurnEnd(combat, ending);
       }
     }
     return onTurnStart(combat);

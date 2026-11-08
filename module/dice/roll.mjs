@@ -182,6 +182,13 @@ export function onRenderChatMessage(message, html) {
       import("../workflow/trackers.mjs").then(m => (btn.dataset.n5eResave ? m.rollResave(btn, ev) : m.onTrackerClick(message, btn)));
     });
   }
+  // Place a jutsu's area on the map (workflow/areas.mjs).
+  for ( const btn of html.querySelectorAll("[data-n5e-area]") ) {
+    btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      import("../workflow/areas.mjs").then(m => m.onAreaClick(message, btn));
+    });
+  }
   for ( const btn of html.querySelectorAll("[data-n5e-wof]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();

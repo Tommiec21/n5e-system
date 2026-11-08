@@ -17,7 +17,7 @@ Object.assign(globalThis, {
   Actor: class extends Doc {}, Item: class extends Doc {}, ActiveEffect: class extends Doc {},
   CONFIG: {
     Actor: { dataModels: {} }, Item: { dataModels: {} }, ActiveEffect: { dataModels: {} },
-    Combat: {}, specialStatusEffects: {}, statusEffects: []
+    Combat: {}, specialStatusEffects: {}, statusEffects: [], Token: {}, Canvas: { detectionModes: {} }
   },
   game: {
     settings: { register: (ns, key, cfg) => registered.settings.push(`${ns}.${key}`), registerMenu: (ns, key) => registered.settings.push(`menu:${ns}.${key}`) },
@@ -31,7 +31,7 @@ foundry.applications = {
   apps: { FilePicker: { implementation: class {} },
     DocumentSheetConfig: { registerSheet: (doc, ns, cls, o) => registered.sheets.push(["ActiveEffect", ns, o.makeDefault]) } }
 };
-foundry.documents = { collections: {
+foundry.documents = { TokenDocument: class extends Doc {}, collections: {
   Actors: { registerSheet: (ns, cls, o) => registered.sheets.push(["Actor", ns, o.makeDefault]) },
   Items: { registerSheet: (ns, cls, o) => registered.sheets.push(["Item", ns, o.makeDefault]) }
 } };
@@ -55,5 +55,6 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(registered.settings.includes("menu:n5e.rulesConfig"));
   assert.ok(registered.templates.length >= 1);
   assert.ok(game.n5e.rules.cost.computeJutsuCost);
+  assert.ok(CONFIG.Token.documentClass, "token document with senses");
   await hooks.ready();   // no clan items, not GM -> no-op
 });
