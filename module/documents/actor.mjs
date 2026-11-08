@@ -6,6 +6,8 @@
  */
 import { CHANGE_KEY_PREFIX } from "../rules/change-keys.mjs";
 import { isV31Actor, migrateV31Actor } from "../migration/v31.mjs";
+import { defaultDuration } from "../rules/condition-lifecycle.mjs";
+import { rule } from "../rules-settings.mjs";
 
 export default class N5eActor extends Actor {
 
@@ -60,11 +62,16 @@ export default class N5eActor extends Actor {
   async addCondition(key, ranks = 1, { sourceRank = "", origin, duration } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
-    if ( this.system.traits?.conditionImmune?.has(key) ) return null;
+    if ( rule("conditionResistance") && this.system.traits?.conditionImmune?.has(key) ) return null;
     const existing = this.getCondition(key);
     if ( existing ) {
       // New ranks reset the condition's duration (King 2026-11-07).
       const max = def.maxRanks ?? 1;
+      const next = existing.system.ranks + ranks;
+      // Gaining the 11th rank of Exhaustion kills (optional rule).
+      if ( def.flags?.deathAbove && next > def.flags.deathAbove && rule("exhaustionDeath") ) {
+        await this.toggleStatusEffect("dead", { active: true, overlay: true });
+      }
       return existing.update({
         "system.ranks": Math.min(max, existing.system.ranks + ranks),
         "duration.startTime": game.time.worldTime,
@@ -74,6 +81,10 @@ export default class N5eActor extends Actor {
       });
     }
     const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin });
+    const dur = duration ?? defaultDuration(key);
+    if ( dur ) data.duration = { seconds: dur.seconds ?? null, rounds: dur.rounds ?? null, startTime: game.time.worldTime,
+      startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null };
+    else if ( game.combat ) data.duration = { startRound: game.combat.round, startTurn: game.combat.turn };
     return CONFIG.ActiveEffect.documentClass.create(data, { parent: this });
   }
 

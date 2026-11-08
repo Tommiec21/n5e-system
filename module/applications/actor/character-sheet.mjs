@@ -17,6 +17,8 @@ import { castJutsu } from "../../workflow/cast.mjs";
 import { attackWithWeapon } from "../../workflow/attack.mjs";
 import { useFeature } from "../../workflow/use-feature.mjs";
 import { rollDeathSave } from "../../workflow/apply-damage.mjs";
+import { restDialog } from "../../workflow/rest.mjs";
+import { tryEndCondition } from "../../workflow/conditions.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -51,6 +53,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       roll: CharacterSheet.#onRoll,
       rollInit: CharacterSheet.#onRollInit,
       deathSave: CharacterSheet.#onDeathSave,
+      rest: CharacterSheet.#onRest,
+      tryEndCondition: CharacterSheet.#onTryEndCondition,
       levelUp: CharacterSheet.#onLevelUp,
       levelDown: CharacterSheet.#onLevelDown,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
@@ -507,6 +511,15 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onRoll(event, target) {
     event.preventDefault();
     return rollD20(this.actor, target.dataset.roll, target.dataset.key, { event });
+  }
+
+  static async #onTryEndCondition(event, target) {
+    const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
+    if ( effect ) return tryEndCondition(this.actor, effect, event);
+  }
+
+  static async #onRest(event, target) {
+    return restDialog(this.actor, target.dataset.rest);
   }
 
   static async #onDeathSave() {

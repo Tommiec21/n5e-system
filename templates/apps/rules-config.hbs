@@ -1,0 +1,28 @@
+<div class="rules-head">
+  <p>Every rule below is part of N5e 4.0 or an optional rule from the books. Turn off anything your table doesn't use.
+  {{#unless gm}}<b>Only the GM can change these.</b>{{/unless}}</p>
+</div>
+<div class="rule-groups">
+  {{#each groups}}
+    <fieldset class="rule-group">
+      <legend>{{label}}</legend>
+      {{#each rules}}
+        <div class="rule {{#if changed}}changed{{/if}}">
+          <label class="rule-label" for="n5e-rule-{{key}}">{{label}}{{#if changed}} <span class="tag">changed</span>{{/if}}</label>
+          <span class="rule-input">
+            {{#if isBool}}<input id="n5e-rule-{{key}}" type="checkbox" name="{{key}}" {{#if value}}checked{{/if}} {{#unless @root.gm}}disabled{{/unless}}>{{/if}}
+            {{#if isNumber}}<input id="n5e-rule-{{key}}" type="number" name="{{key}}" value="{{value}}" min="{{min}}" max="{{max}}" {{#unless @root.gm}}disabled{{/unless}}>{{/if}}
+            {{#if isChoice}}<select id="n5e-rule-{{key}}" name="{{key}}" {{#unless @root.gm}}disabled{{/unless}}>{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>{{/if}}
+          </span>
+          {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+        </div>
+      {{/each}}
+    </fieldset>
+  {{/each}}
+</div>
+{{#if gm}}
+  <footer class="rules-foot">
+    <button type="button" data-action="reset"><i class="fa-solid fa-rotate-left"></i> Book defaults</button>
+    <button type="submit" class="primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+  </footer>
+{{/if}}

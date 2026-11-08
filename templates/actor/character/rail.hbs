@@ -70,6 +70,7 @@
     {{#each vm.conditions}}
       <div class="condition {{#if disabled}}off{{/if}}" data-effect-id="{{id}}" data-tooltip-text="{{summary}}" data-tooltip-direction="RIGHT">
         <span class="name">{{label}}</span>
+        {{#if removable}}{{#if @root.editable}}<a class="ctl try" data-action="tryEndCondition" data-tooltip="Try to end (Action check)"><i class="fa-solid fa-hand-sparkles"></i></a>{{/if}}{{/if}}
         {{#if ranked}}
           <span class="ranks">
             {{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="-1" aria-label="Lower rank">−</a>{{/if}}

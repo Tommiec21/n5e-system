@@ -12,6 +12,7 @@ import { unarmedFormula, critFormula } from "../rules/activity-parse.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
+import { resistsAny } from "../rules/condition-lifecycle.mjs";
 
 const attr = (k, v) => (v === undefined || v === null || v === "" ? "" : ` data-${k}="${esc(String(v))}"`);
 const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? t).join(" / ");
@@ -133,7 +134,9 @@ export async function onActivityClick(message, button, event) {
         const inflicts = JSON.parse(d.inflicts || "[]");
         const onFail = inflicts.length ? `<div class="n5e-apply">${inflicts.map(i =>
           `<button type="button" data-n5e-inflict="${esc(i.key)}" data-kind="${esc(i.kind)}" data-ranks="${i.ranks}">Apply ${esc(i.label)}${i.kind === "condition" ? ` ${i.ranks}` : ""}</button>`).join("")}</div>` : "";
-        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail });
+        const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition").map(i => i.key));
+        if ( resisted ) spec.note = [spec.note, "Advantage: resists the condition"].filter(Boolean).join(" · ");
+        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode: resisted ? "advantage" : undefined });
       }
       return null;
     }

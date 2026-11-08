@@ -25,15 +25,11 @@ export const N5E = {
  * Optional rules (KB various). Registered as world settings in settings.mjs.
  * Values are defaults.
  */
-export const optionalRules = {
-  rations: { label: "Resource-based rests (Ration Pool)", default: false },
-  stamina: { label: "Stamina pool for limited-use feats", default: false },
-  ampLimit: { label: "Amp limit", default: "none", choices: combat.ampLimits },
-  freeOutOfCombatUpkeep: { label: "Out of combat: charge only the initial concentration cost", default: false },
-  willOfFireVariants: { label: "Will of Fire variants (Kage Guide)", default: false },
-  multiclassing: { label: "Legacy multiclassing", default: false },
-  hijutsuFlexibilityPick: { label: "Players may pick their Hijutsu Flexibility ability", default: true }
-};
-N5E.optionalRules = optionalRules;
+// Optional and table rules: one registry, one settings panel (config/rules.mjs).
+export { rules as optionalRules, ruleGroups } from "./rules.mjs";
+import { rules as _rules, ruleGroups as _groups } from "./rules.mjs";
+N5E.rules = _rules;
+N5E.ruleGroups = _groups;
+N5E.optionalRules = _rules;
 
 export default N5E;

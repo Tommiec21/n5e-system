@@ -37,9 +37,11 @@
       {{/if}}{{#if editMode}}{{#if vm.classId}}
         <button type="button" data-action="levelDown" data-class-id="{{vm.classId}}" data-tooltip="Remove the highest level and what it granted"><i class="fa-solid fa-arrow-down"></i></button>
       {{/if}}{{/if}}{{/if}}
-      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Short Rest</button>
-      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Long Rest</button>
-      <button type="button" class="rest" disabled data-tooltip="Rest dialogs arrive in Phase 5">Full Rest</button>
+      {{#if editable}}
+        <button type="button" class="rest" data-action="rest" data-rest="short" data-tooltip="1 hour: spend Hit and Chakra Dice">Short Rest</button>
+        <button type="button" class="rest" data-action="rest" data-rest="long" data-tooltip="8 hours: half HP and CP, half spent dice">Long Rest</button>
+        <button type="button" class="rest" data-action="rest" data-rest="full" data-tooltip="24 hours: everything back, persisting conditions end">Full Rest</button>
+      {{/if}}
       {{#if editable}}
         <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
           data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit mode{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>

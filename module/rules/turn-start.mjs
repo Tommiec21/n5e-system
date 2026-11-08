@@ -8,6 +8,8 @@
  *     Special Action, free object interaction.
  *   - Recharge X-Y: each spent ability rolls; die size from Y (3-4 d4, 5-6 d6, 7-8 d8, 9-10 d10, 11-12 d12).
  */
+import { rule } from "../rules-settings.mjs";
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const kw = item => (item.system.keywords instanceof Set ? item.system.keywords : new Set(item.system.keywords ?? []));
 
@@ -35,7 +37,7 @@ export function turnStartPlan(actor) {
   const paid = [];
   const ended = [];
   const keep = [];
-  for ( const id of list(sys.combat?.concentrating) ) {
+  for ( const id of rule("concentrationUpkeep") ? list(sys.combat?.concentrating) : [] ) {
     const item = actor.items.get?.(id) ?? list(actor.items).find(i => i.id === id);
     if ( !item ) continue;
     const upkeep = kw(item).has("efficient") ? 0 : Math.floor((paidMap[id] ?? item.system.live?.cost ?? 0) / 2);
@@ -54,13 +56,13 @@ export function turnStartPlan(actor) {
     if ( upkeep ) update["system.cp.value"] = cp;
   }
   const chain = sys.combat?.chain ?? {};
-  const chainReset = (chain.value > 0 || chain.active) && !flags.chainTouched;
+  const chainReset = rule("chainReset") && (chain.value > 0 || chain.active) && !flags.chainTouched;
   if ( chainReset ) {
     update["system.combat.chain.value"] = 0;
     update["system.combat.chain.active"] = false;
   }
   update["flags.n5e.chainTouched"] = false;
-  const comboCleared = !!flags.combo;
+  const comboCleared = rule("comboClear") && !!flags.combo;
   if ( comboCleared ) update["flags.n5e.combo"] = null;
   const recharges = list(actor.items).filter(i => i.system.uses?.per === "recharge" && (i.system.uses.spent ?? 0) > 0)
     .map(i => ({ id: i.id, name: i.name, ...parseRecharge(i.system.uses.recharge || "6") }));

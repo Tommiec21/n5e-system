@@ -20,7 +20,7 @@ Object.assign(globalThis, {
     Combat: {}, specialStatusEffects: {}, statusEffects: []
   },
   game: {
-    settings: { register: (ns, key, cfg) => registered.settings.push(`${ns}.${key}`) },
+    settings: { register: (ns, key, cfg) => registered.settings.push(`${ns}.${key}`), registerMenu: (ns, key) => registered.settings.push(`menu:${ns}.${key}`) },
     items: [], actors: { size: 0 }, user: { isGM: false }
   }
 });
@@ -51,6 +51,8 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.equal(registered.sheets.length, 5, "character, NPC, raw-data placeholder, item, effect");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
+  assert.ok(registered.settings.includes("n5e.restLimit"));
+  assert.ok(registered.settings.includes("menu:n5e.rulesConfig"));
   assert.ok(registered.templates.length >= 1);
   assert.ok(game.n5e.rules.cost.computeJutsuCost);
   await hooks.ready();   // no clan items, not GM -> no-op

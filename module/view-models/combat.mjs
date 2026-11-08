@@ -8,6 +8,7 @@ import { skillActions, skillActionTiers } from "../config/character.mjs";
 import { esc, glyph, pips, signed } from "./common.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
 import { rankValue } from "../rules/progression.mjs";
+import { rule } from "../rules-settings.mjs";
 
 const list = items => (Array.isArray(items) ? items : [...(items ?? [])]);
 const ofType = (actor, ...types) => list(actor.items).filter(i => types.includes(i.type));
@@ -79,7 +80,7 @@ function basicCombat(actor) {
     if ( a.tier === "kit" ) {
       if ( !a.kit || !sys.tools?.[a.kit]?.isProficient || !sk?.isProficient ) continue;
     }
-    const penalty = a.tier === "kit" ? 0 : skillActionPenalty(a.tier, { proficient: !!sk?.isProficient, masteryRank: sk?.mastery ?? 0 });
+    const penalty = a.tier === "kit" || !rule("skillActionPenalties") ? 0 : skillActionPenalty(a.tier, { proficient: !!sk?.isProficient, masteryRank: sk?.mastery ?? 0 });
     const skillLabel = skills[a.skill]?.label ?? a.skill;
     const tierLabel = skillActionTiers[a.tier]?.label ?? a.tier;
     skillPills.push(pill({ kind: "skill", key, name: a.label, activation: a.activation === "move" ? "free" : a.activation,
@@ -252,7 +253,7 @@ export function combatVM(actor) {
   const economy = [["action", "Action"], ["bonus", "Bonus"], ["reaction", "Reaction"], ["special", "Special"], ["object", "Object"]]
     .map(([key, label]) => ({ key, label, used: !!used[key], glyph: glyph(key === "object" ? "free" : key)?.svg ?? "" }));
   return {
-    economy,
+    economy: rule("actionEconomy") ? economy : [],
     chain: chainVM(actor),
     concentration: concentrationVM(actor),
     stance: stanceVM(actor),

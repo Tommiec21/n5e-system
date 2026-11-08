@@ -9,6 +9,8 @@ import { abilities, skills, toolkits, disciplines } from "../config/core.mjs";
 import { critRangeCap } from "../config/combat.mjs";
 import { skillActions, skillActionTiers } from "../config/character.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
+import { rule } from "../rules-settings.mjs";
+
 
 export const MODES = { normal: "1d20", advantage: "2d20kh", disadvantage: "2d20kl" };
 
@@ -25,7 +27,7 @@ export function clickMode(event = {}) {
 /** Lowest natural d20 that crits for a scope (all + scope bonuses, capped at +3: 17-20). */
 export function critThreshold(actor, scope = "") {
   const cr = actor.system.critRange ?? {};
-  const bonus = Math.min(critRangeCap, (cr.all ?? 0) + (scope ? cr[scope] ?? 0 : 0));
+  const bonus = Math.min(rule("critRangeCap") ?? critRangeCap, (cr.all ?? 0) + (scope ? cr[scope] ?? 0 : 0));
   return 20 - bonus;
 }
 
@@ -68,7 +70,7 @@ export function rollSpec(actor, type, key) {
       const a = skillActions[key];
       if ( !a ) return null;
       const sk = sys.skills?.[a.skill] ?? {};
-      const penalty = a.tier === "kit" ? 0
+      const penalty = a.tier === "kit" || !rule("skillActionPenalties") ? 0
         : skillActionPenalty(a.tier, { proficient: !!sk.isProficient, masteryRank: sk.mastery ?? 0 });
       return { type, key, kind: "check", label: a.label, bonus: (sk.total ?? 0) + penalty, penalty,
         breakdown: bd[`skill.${a.skill}`], skill: a.skill,
@@ -105,7 +107,7 @@ export function readD20(roll, threshold = 20) {
  * @returns {{award: boolean, value?: number}}
  */
 export function willOfFireAward(actor, result, combatId) {
-  if ( !combatId || !(result.natural === 1 || result.natural === 20) ) return { award: false };
+  if ( !rule("willOfFireAward") || !combatId || !(result.natural === 1 || result.natural === 20) ) return { award: false };
   const flag = actor.flags?.n5e?.wofEncounter;
   const current = actor.system.willOfFire?.value ?? 0;
   if ( flag === combatId || current >= 3 ) return { award: false };

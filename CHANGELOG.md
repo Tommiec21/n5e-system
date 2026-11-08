@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.6.0-alpha.1 — Phase 5: rests, condition lifecycle, optional rules
+
+### Added
+- **N5e Rules panel** (Game Settings → Configure Settings → N5e Rules): every automated rule can be
+  switched on or off, grouped by Rolls, Casting, Damage, Conditions, Resting, Rations and Character.
+  - Open to all players; only the GM can save changes.
+  - **Book defaults** resets everything.
+- **Rests** from the character header (Short / Long / Full):
+  - **Short Rest:** spend up to half your Hit Dice and, separately, up to half your Chakra Dice,
+    rolled together (+ Con per die). Death saves reset.
+  - **Long Rest:** half max HP and CP back, half of spent Hit and Chakra Dice back, temporary HP and
+    CP end, −2 Exhaustion with food and drink. Counts as a Short Rest for recoveries.
+  - **Full Rest:** everything back; [Persists] conditions end.
+  - Resource pools and limited uses recover on the matching rest; a summary card is posted.
+  - Long and Full Rests need at least 1 HP; Envenomed creatures get no benefit.
+- **Rest limits** (GM setting, free by default):
+  - **Count:** Short Rests per Long Rest and Long Rests per Full Rest (0 = unlimited).
+  - **Time:** one Long Rest per 24 hours, one Full Rest per 96 hours.
+- **Ration Pool** (optional): pool size and current rations, Short and Long Rest costs, and whether
+  Full Rests are allowed on missions are all editable. A rest without enough rations passes time with
+  no benefit. Players' rests spend rations through the GM.
+- **Condition lifecycle:**
+  - **Turn start:** Burned (1d8 fire per rank) and Bleed (1d6 necrotic per rank) post a damage card;
+    Apply hits that creature and ignores DR.
+  - **Turn end:** Shocked, Shaken and Demoralized lose a rank; Staggered, Dazed, Berserk, Confused and
+    Slowed end. A condition gained during the same turn waits for the next one.
+  - **Default 1-minute duration** for conditions that don't persist or end on their own.
+  - **Try to end** (hand icon on the rail): pick the check, roll vs the DC, spend the Action. Bleed
+    removes an extra rank per 2 over the DC; a failed check against Sealed raises its DC by 4.
+  - **Condition resistance:** advantage on saves against conditions you resist. Immunity blocks them.
+
 ## 0.5.0-alpha.1 — Phase 4: damage and conditions
 
 ### Added

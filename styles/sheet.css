@@ -619,3 +619,31 @@
 .n5e-v2 .death-saves .bad .pip.on { background: var(--n5e-hp); border-color: var(--n5e-hp); }
 .n5e-v2 .death-saves button { height: 22px; padding: 0 8px; font-size: 11px; width: auto; flex: none; }
 .n5e-v2 .death-saves.dead { background: var(--n5e-ink); }
+
+/* N5e Rules panel */
+.n5e-rules-config .window-content { padding: 0; display: flex; flex-direction: column; background: var(--n5e-paper); color: var(--n5e-ink); font-family: var(--n5e-body); }
+.n5e-rules-config .rules-head { padding: 10px 16px; background: var(--n5e-ink); color: var(--n5e-paper); font-size: 12px; }
+.n5e-rules-config .rules-head p { margin: 0; }
+.n5e-rules-config .rule-groups { flex: 1; overflow-y: auto; padding: 10px 16px; }
+.n5e-rules-config .rule-group { border: 1px solid var(--n5e-line); border-radius: 8px; margin: 0 0 10px; padding: 4px 10px 6px; }
+.n5e-rules-config .rule-group legend { font-family: var(--n5e-head); font-size: 15px; padding: 0 4px; }
+.n5e-rules-config .rule { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; padding: 5px 0; border-bottom: 1px solid var(--n5e-line-soft); }
+.n5e-rules-config .rule:last-child { border-bottom: none; }
+.n5e-rules-config .rule-label { font-weight: 600; font-size: 13px; }
+.n5e-rules-config .rule-input input[type="number"] { width: 70px; }
+.n5e-rules-config .rule-input select { width: auto; max-width: 260px; }
+.n5e-rules-config .hint { grid-column: 1 / -1; margin: 1px 0 0; font-size: 11px; color: var(--n5e-muted); }
+.n5e-rules-config .tag { font-size: 9px; text-transform: uppercase; padding: 0 5px; border-radius: 8px; background: var(--n5e-accent-soft); color: var(--n5e-accent-ink); }
+.n5e-rules-config .rules-foot { display: flex; justify-content: flex-end; gap: 6px; padding: 8px 16px; border-top: 1px solid var(--n5e-line); background: var(--n5e-paper-2); }
+.n5e-rules-config .rules-foot button { width: auto; flex: none; }
+.n5e-rules-config .rules-foot .primary { background: var(--n5e-accent); color: #FFF; border-color: var(--n5e-accent); }
+
+/* Rests */
+.n5e-rest { display: flex; flex-direction: column; gap: 6px; }
+.n5e-rest label { display: flex; align-items: center; gap: 8px; }
+.n5e-rest input[type="number"] { width: 60px; flex: none; }
+.n5e-rest .problem { color: #B23A26; font-weight: 700; }
+.n5e-rest .warn { color: #8A5A0C; }
+.n5e-rest-card { font-size: 12px; display: flex; flex-direction: column; gap: 2px; }
+.n5e-v2 .rail .condition .ctl.try { opacity: .7; }
+.n5e-v2 .rail .condition .ctl.try:hover { opacity: 1; }

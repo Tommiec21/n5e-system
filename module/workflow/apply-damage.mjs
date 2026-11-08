@@ -13,6 +13,7 @@ import { damagePlan, healPlan, concentrationOnDamage, deathSaveResult } from "..
 import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { esc } from "../view-models/common.mjs";
+import { rule } from "../rules-settings.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
 
@@ -22,7 +23,9 @@ function selectedActors() {
 
 /** Apply damage instances (or healing) to the selected tokens and post a summary. */
 export async function applyToSelected(data, mode) {
-  const targets = selectedActors();
+  const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
+  const targets = fixed ? (fixed.isOwner ? [fixed] : []) : selectedActors();
+  if ( fixed && !targets.length ) return ui.notifications.warn(`Only ${fixed.name}'s owner or the GM can apply this.`);
   if ( !targets.length ) return ui.notifications.info("Select the tokens to apply this to.");
   const rows = [];
   const undo = [];
@@ -44,19 +47,20 @@ export async function applyToSelected(data, mode) {
       continue;
     }
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
-    const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit });
+    const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR });
     const update = { ...plan.update };
     if ( plan.deathFailures ) update["system.deathSaves.failure"] = Math.min(3, (actor.system.deathSaves?.failure ?? 0) + plan.deathFailures);
     if ( Object.keys(update).length ) await actor.update(update);
     undo.push(before);
     const notes = [];
     const isNPC = actor.type === "npc";
-    if ( plan.instantDeath || (isNPC && actor.system.diesAtZero && plan.dropsToZero) || update["system.deathSaves.failure"] === 3 ) {
+    if ( plan.instantDeath || (isNPC && rule("npcDieAtZero") && actor.system.diesAtZero && plan.dropsToZero)
+      || (rule("deathSaves") && update["system.deathSaves.failure"] === 3) ) {
       await actor.toggleStatusEffect("dead", { active: true, overlay: true });
       notes.push(plan.instantDeath ? "killed outright (damage beyond 0 ≥ max HP)" : "dies");
     } else if ( plan.dropsToZero ) {
-      await actor.toggleStatusEffect("dying", { active: true });
-      notes.push("falls to 0 HP: Dying");
+      await actor.toggleStatusEffect(rule("deathSaves") && !isNPC ? "dying" : "unconscious", { active: true });
+      notes.push(rule("deathSaves") && !isNPC ? "falls to 0 HP: Dying" : "falls to 0 HP: Unconscious");
     } else if ( plan.deathFailures ) notes.push(`${plan.deathFailures} death save failure${plan.deathFailures > 1 ? "s" : ""}`);
     const conc = concentrationOnDamage(actor, plan.total);
     const concBtn = conc ? `<button type="button" data-n5e-concheck="${conc.dc}" data-actor="${actor.uuid}"

@@ -2,10 +2,12 @@
  * Character sheet view models: actor in, plain data out. Templates only print what these return.
  * Pure (no Foundry calls), so every tab is tested in Node (dnd5e prepares context per part the same way).
  */
+import { rule } from "../rules-settings.mjs";
 import {
   abilities, skills, toolkits, castingDisciplines, disciplines, rankOrder, ranks as rankDefs, progression
 } from "../config/core.mjs";
 import { conditions as coreConditions, states } from "../config/conditions.mjs";
+import { removalOptions } from "../rules/condition-lifecycle.mjs";
 import { jutsuSections } from "../config/jutsu.mjs";
 import { containerTypes, consumableTypes } from "../config/equipment.mjs";
 import { featCategories } from "../config/character.mjs";
@@ -119,7 +121,8 @@ export function railVM(actor, registry = coreConditions) {
       ranked: max != null,
       pips: max != null ? pips(e.system.ranks, Math.min(max, 11)) : [],
       disabled: !!e.disabled,
-      summary: conditionSummary(e.system.key, e.system.ranks, registry)
+      summary: conditionSummary(e.system.key, e.system.ranks, registry),
+      removable: removalOptions(e, registry).some(o => o.checks.length)
     });
   }
   const stance = sys.combat?.activeStance
@@ -131,7 +134,7 @@ export function railVM(actor, registry = coreConditions) {
     level: sys.level,
     prof: signed(sys.prof),
     resources: resourcesVM(actor),
-    deathSaves: (sys.hp?.value ?? 1) <= 0 && actor.type === "character" ? {
+    deathSaves: rule("deathSaves") && (sys.hp?.value ?? 1) <= 0 && actor.type === "character" ? {
       success: pips(sys.deathSaves?.success ?? 0, 3), failure: pips(sys.deathSaves?.failure ?? 0, 3),
       stable: !!actor.statuses?.has?.("stabilized"), dead: !!actor.statuses?.has?.("dead") } : null,
     hp: { value: sys.hp.value, max: sys.hp.max, temp: sys.hp.temp, pct: pct(sys.hp.value, sys.hp.max),

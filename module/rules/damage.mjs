@@ -14,6 +14,8 @@
  * at 0 HP = 1 death save failure (crit: 2). Most NPCs die at 0 (diesAtZero).
  */
 
+import { rule } from "../rules-settings.mjs";
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k));
 
@@ -87,7 +89,7 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
 
   // 0 HP consequences.
   const hpMax = sys.hp?.max ?? 0;
-  const instantDeath = health > 0 && !wasAtZero && hp.value === 0 && hp.overflow >= hpMax && hpMax > 0;
+  const instantDeath = rule("instantDeath") && health > 0 && !wasAtZero && hp.value === 0 && hp.overflow >= hpMax && hpMax > 0;
   const deathFromDamageAtZero = wasAtZero && health > 0 && hp.taken + hp.fromTemp > 0;
   let deathFailures = 0;
   if ( deathFromDamageAtZero ) deathFailures = (health >= hpMax ? 3 : (crit ? 2 : 1));
@@ -107,7 +109,7 @@ export function healPlan(target, amount, pool = "hp") {
   const sys = target.system;
   const n = Math.max(0, Math.floor(Number(amount) || 0));
   if ( pool === "hp" ) {
-    const envenomed = list(target.effects).some(e => e.type === "condition" && e.system?.key === "envenomed" && !e.disabled);
+    const envenomed = rule("envenomedBlocksHealing") && list(target.effects).some(e => e.type === "condition" && e.system?.key === "envenomed" && !e.disabled);
     if ( envenomed ) return { blocked: "Envenomed: can't regain hit points", update: {} };
     const value = Math.min(sys.hp.max, sys.hp.value + n);
     const revived = sys.hp.value <= 0 && value > 0;
@@ -132,7 +134,7 @@ export function healPlan(target, amount, pool = "hp") {
  * @returns {{dc:number, atRisk: Array<{id,name}>}|null}
  */
 export function concentrationOnDamage(target, damage, { rankValue = r => ["E", "D", "C", "B", "A", "S"].indexOf(r) } = {}) {
-  if ( damage <= 0 ) return null;
+  if ( damage <= 0 || !rule("concentrationOnDamage") ) return null;
   const ids = list(target.system.combat?.concentrating);
   const items = ids.map(id => target.items.get?.(id) ?? list(target.items).find(i => i.id === id)).filter(Boolean);
   const kw = i => (i.system.keywords instanceof Set ? i.system.keywords : new Set(i.system.keywords ?? []));

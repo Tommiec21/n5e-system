@@ -5,11 +5,14 @@
  */
 import { turnStartPlan } from "../rules/turn-start.mjs";
 import { esc } from "../view-models/common.mjs";
+import { rule } from "../rules-settings.mjs";
+import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 
 async function onTurnStart(combat) {
   if ( !game.users.activeGM?.isSelf ) return;
   const actor = combat.combatant?.actor;
   if ( !actor ) return;
+  await postConditionDamage(actor);
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
 
@@ -30,7 +33,7 @@ async function onTurnStart(combat) {
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   // Death saves at the start of the turn while at 0 HP (characters; not stable or dead).
   const statuses = actor.statuses ?? new Set();
-  if ( actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {
+  if ( rule("deathSaves") && actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {
     lines.push(`<span class="conc warn">At 0 HP: roll a death save <button type="button" data-n5e-deathsave="${actor.uuid}">Death save</button></span>`);
   }
   if ( !lines.length ) return;
@@ -47,7 +50,13 @@ export async function endConcentration(actor, id) {
 }
 
 export function registerTurnHooks() {
-  Hooks.on("combatTurnChange", combat => onTurnStart(combat));
+  Hooks.on("combatTurnChange", async (combat, prior) => {
+    if ( game.users.activeGM?.isSelf && prior?.combatantId ) {
+      const ending = combat.combatants.get(prior.combatantId)?.actor;
+      if ( ending ) await processConditionTurnEnd(ending, { round: prior.round, turn: prior.turn });
+    }
+    return onTurnStart(combat);
+  });
   Hooks.on("combatStart", combat => onTurnStart(combat));
 }
 
