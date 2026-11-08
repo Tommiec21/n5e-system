@@ -34,6 +34,15 @@ export default class N5eActiveEffect extends ActiveEffect {
       const level = actor?.items?.filter(i => i.type === "class").reduce((t, c) => t + (c._source?.system?.levels ?? c.system?.levels ?? 0), 0) ?? 0;
       if ( (gate.min && level < gate.min) || (gate.max && level > gate.max) ) return true;
     }
+    // Effects that need a stance category (flags.n5e.requiresStance: "taijutsu"): Path of The Genius's
+    // +1 Taijutsu DC applies only while in a Taijutsu stance.
+    const needStance = this.flags?.n5e?.requiresStance;
+    if ( needStance ) {
+      const actor = item?.documentName === "Item" ? item.actor : item;
+      const st = actor?.items?.get?.(actor.system?.combat?.activeStance);
+      const cats = st?.system?.categories;
+      if ( !st || !(cats instanceof Set ? cats.has(needStance) : [...(cats ?? [])].includes(needStance)) ) return true;
+    }
     if ( item?.documentName === "Item" && item.type === "stance" && item.actor ) {
       if ( item.actor.system?.combat?.activeStance !== item.id ) return true;
     }

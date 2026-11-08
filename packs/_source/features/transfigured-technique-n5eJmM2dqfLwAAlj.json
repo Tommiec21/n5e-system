@@ -29,7 +29,41 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5erhSBMR4ScyCd5",
+        "type": "effect",
+        "label": "Transfigure an ally",
+        "effect": {
+          "name": "Transfigured",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "ampType": "fortitude"
+        },
+        "activation": "bonus",
+        "text": "One ally at a time; pick its designation from the Transfiguration box."
+      },
+      {
+        "id": "n5e3evV0iMX8BAIp",
+        "type": "save",
+        "label": "Transfigure an enemy",
+        "activation": "bonus",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": []
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ehGc7P1ehrOhTn",

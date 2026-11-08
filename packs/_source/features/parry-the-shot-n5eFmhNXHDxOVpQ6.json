@@ -31,7 +31,23 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5e2PqyFLAcwkQ9p",
+        "type": "roll",
+        "label": "Parry The Shot",
+        "activation": "reaction",
+        "cost": {
+          "pool": "martialDice",
+          "choose": true
+        },
+        "roll": {
+          "formula": "(@amount)d6 + @level",
+          "note": "Reduce the damage taken by this (up to 3 Martial Dice)."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

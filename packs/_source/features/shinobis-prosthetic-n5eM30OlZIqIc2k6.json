@@ -29,7 +29,40 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "prostheticUses",
+        "label": "Prosthetic uses",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest10m",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eMVKdr11NR9Jhz",
+        "type": "roll",
+        "label": "Use a Prosthetic Tool",
+        "cost": {
+          "pool": "prostheticUses",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "No more than 4 times every 10 minutes."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eWtAU5vhZC0Q4R",

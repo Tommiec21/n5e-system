@@ -31,7 +31,38 @@
     "tags": [
       "tai-stillness"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eSe3VWmABKInfk",
+        "type": "save",
+        "label": "Balance Breaker",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": []
+      },
+      {
+        "id": "n5e9KXeeXgRBpLAw",
+        "type": "effect",
+        "label": "Balance Broken",
+        "effect": {
+          "name": "Balance Broken",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "On a failed save (ends at the end of its turn)."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e6KSfo7DMYblQa",

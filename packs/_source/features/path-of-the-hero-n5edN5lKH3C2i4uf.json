@@ -41,7 +41,29 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Protective Taijutsu (ally +1 AC)",
+        "appliesTo": {
+          "discipline": "tai",
+          "stance": "taijutsu"
+        },
+        "oncePerTurn": true,
+        "auto": true,
+        "effect": {
+          "name": "Protected (+AC)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart"
+        },
+        "note": "An ally within 10 ft gains +1 AC per instance of damage (max +2): target the ally."
+      }
     }
   },
   "_stats": {

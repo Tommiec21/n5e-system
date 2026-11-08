@@ -31,7 +31,28 @@
     "tags": [
       "tai-perfection"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eZ5cczb4cp9GiX",
+        "type": "effect",
+        "label": "Can't Run",
+        "effect": {
+          "name": "Can't Run",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-5",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Each time you deal unarmed damage to it."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eakTYV3SxLDHGE",
@@ -41,7 +62,29 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Furious Taijutsu (DR −2 per hit)",
+        "appliesTo": {
+          "discipline": "tai",
+          "requiresDamage": true,
+          "stance": "taijutsu"
+        },
+        "oncePerTurn": true,
+        "auto": true,
+        "effect": {
+          "name": "Furious (DR)",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "-2",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd"
+        }
+      }
     }
   },
   "_stats": {

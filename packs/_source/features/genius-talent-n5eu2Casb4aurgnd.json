@@ -29,7 +29,55 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "perfection",
+        "label": "Perfection",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5enhUuwl4cqAaen",
+        "type": "roll",
+        "label": "Gain Perfection",
+        "cost": {
+          "pool": "perfection",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "When you spend at least 1 Martial Die (Flawless state)."
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5enBViXsFhda8P8",
+        "type": "roll",
+        "label": "Spend Perfection",
+        "cost": {
+          "pool": "perfection",
+          "amount": 2
+        },
+        "roll": {
+          "formula": "",
+          "note": "Flawless Disturbance and the other Perfection abilities."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eceH3mxypgGDlU",

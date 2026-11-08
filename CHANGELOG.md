@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.8.1-alpha.1 — Class feature automation
+
+### Added
+- **Genjutsu Specialist:**
+  - Reality Shift (Alteration of Reality) as a 1-minute Will Amp state that spends an Actualization Die.
+  - Rending Thoughts: Wisdom save on the Genjutsu DC, with damage buttons for success, failure and critical failure.
+  - Mental Refocus and Phantasm buttons for Actualization Dice.
+  - Mind Over Matter as a Genjutsu cast option (+Genjutsu modifier psychic damage).
+  - Phantom Vapors: Alchemist's tools, a Vapor Charges pool, throw and recharge buttons.
+  - Inceptions: Hallucinatory Instrument, Illusory Weapon attacks (melee and ranged), Reality Marble, Temporal Stopwatch.
+  - Mirages: Beguiling Influence and Illusionary Vigor Mastery, Demon Sight darkvision, Cloak of Chains, Decelerate,
+    Book of Stolen Secrets, Psyche Drinker, Relentless Pain, Muddled Movements.
+- **Hunter-Nin:**
+  - Creed proficiencies granted (Warden, Brutal, Medical, Stalkers, Void, Wolf), plus Brutal speed and Stalkers Blindsight.
+  - Pools with gain and spend buttons: Carnage, Black Medicine Array, Dread Arsenal, Prosthetic uses, Posture.
+  - Void Anchor marks; Cunning Action Stealth check.
+  - Every Skilled Exploit gets a check button for its skill.
+- **Medical-Nin:**
+  - Channeled Healing adds its healing to Medical jutsu automatically (once per turn).
+  - Rejuvenating Rest roll; Talented Support and Hematoxic Touch cast options.
+  - Blight and Healing Surge counters; Ascension state; Transfigured Technique.
+  - Byakugou Seals pool and Battle Medic state; Chakra Scalpel attack; Mystical Palm.
+- **Taijutsu Specialist:**
+  - Sustained Pressure damage and Valve Break cast option.
+  - Path cast options in a Taijutsu stance (Tyrant, Genius, Savage, Predator, Hero, Technician); Genius +1 Taijutsu DC.
+  - Martial Techniques: saves, rolls and Martial Die cast options (Arresting, Forceful, Drowsy, Martial Guard,
+    Parry The Shot, Delayed Fall, Precise, Raw, Technical, Shockwave, Quivering, Regenerative Surge,
+    Hurricane Strikes, Step of Savagery).
+  - Moment of Stillness breakers (Bone, Balance, Flow) with saves and Broken effects.
+  - Momentum, Tempo and Perfection counters; Elemental Cloak state.
+- **Weapon Specialist:**
+  - Critical Focus (+1 Bukijutsu crit range); Eye for Skill check.
+  - Augmentations: Restorative healing, Mobile speed roll, Sensory Blindsight, Enduring/Psyche/Tactical spends.
+  - Katas: saves (Battle Boast, Disorienting Strike, Horrid Aggression, Muted Strike), rolls, effects,
+    Hidden Hand Mastery, Efficient Bukijutsu cast option, Discipline gain buttons.
+  - Doctrines: Battle Trance, Waltz and Samba (one at a time), Vector Seal, Quarry, Obsidian Ward pool, Provoke, Okuri-Inu Fang.
+
 ## 0.8.0-alpha.1 — Five more classes, levels 1-5
 
 ### Added

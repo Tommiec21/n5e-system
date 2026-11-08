@@ -29,7 +29,41 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eyFswov67CyNWO",
+        "type": "effect",
+        "label": "Coat your hands",
+        "effect": {
+          "name": "Chakra Scalpel",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "activation": "bonus",
+        "text": "Attack action attacks become melee Ninjutsu attacks."
+      },
+      {
+        "id": "n5eBiZjyh3dSEaL1",
+        "type": "attack",
+        "label": "Chakra Scalpel",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8 + @scale.medicalNin.channeledHealing",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eYgOe92Qkev1iA",

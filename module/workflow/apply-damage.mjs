@@ -61,7 +61,8 @@ export async function applyToSelected(data, mode) {
       continue;
     }
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
-    const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR });
+    const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
+      piercing: !!data.piercing });
     const update = { ...plan.update };
     if ( plan.deathFailures ) update["system.deathSaves.failure"] = Math.min(3, (actor.system.deathSaves?.failure ?? 0) + plan.deathFailures);
     if ( Object.keys(update).length ) await actor.update(update);

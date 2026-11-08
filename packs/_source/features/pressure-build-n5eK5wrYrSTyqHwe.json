@@ -31,7 +31,28 @@
     "tags": [
       "weapon-kata"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eAqP66WU4QrbtF",
+        "type": "effect",
+        "label": "Pressure Build",
+        "effect": {
+          "name": "Pressure Build",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "+1 DR for each instance of [Weapon Damage] you deal."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eKog0rxOOl3K44",

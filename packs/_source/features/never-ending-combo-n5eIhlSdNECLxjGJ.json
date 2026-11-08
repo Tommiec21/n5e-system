@@ -29,7 +29,41 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "tempo",
+        "label": "Tempo",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5egmxMACVzeZFQP",
+        "type": "roll",
+        "label": "Gain Tempo",
+        "cost": {
+          "pool": "tempo",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Each Combo Taijutsu in DYNAMIC FORM!; lose 1 at the end of a turn without one."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5edxgXVpuoLgBuM",

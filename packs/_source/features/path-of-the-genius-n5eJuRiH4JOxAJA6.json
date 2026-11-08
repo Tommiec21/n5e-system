@@ -33,7 +33,40 @@
     ],
     "resourcePools": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5efFcg2usyqKKaJ",
+      "name": "The New Era: +1 Taijutsu DC",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.saveDC.tai",
+          "value": "1",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "requiresStance": "taijutsu"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eJuRiH4JOxAJA6.n5efFcg2usyqKKaJ"
+    }
+  ],
   "folder": "n5eakTYV3SxLDHGE",
   "sort": 0,
   "ownership": {
@@ -41,7 +74,17 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Elite Taijutsu (+1 to hit)",
+        "appliesTo": {
+          "discipline": "tai",
+          "stance": "taijutsu"
+        },
+        "oncePerTurn": true,
+        "auto": true,
+        "note": "+1 to its attack rolls."
+      }
     }
   },
   "_stats": {

@@ -31,7 +31,32 @@
     "tags": [
       "weapon-augmentation"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5ebn8yyaAoIVbbg",
+        "type": "effect",
+        "label": "Sensory Augmentation",
+        "effect": {
+          "name": "Sensory Augmentation",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "30",
+              "mode": 4
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "text": "Blindsight shown; pick Tremor Sense instead if you prefer. Out of combat it lasts 1 minute."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eWvPu9tL9XHxCd",

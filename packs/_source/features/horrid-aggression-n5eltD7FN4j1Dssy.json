@@ -31,7 +31,51 @@
     "tags": [
       "weapon-kata"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5e4817c0aqiQ0qz",
+        "type": "save",
+        "label": "Horrid Aggression",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Pick one condition on a failure."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ecV5gB5Cd9gFuJ",

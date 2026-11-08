@@ -29,7 +29,47 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "dreadArsenal",
+        "label": "Dread Arsenal",
+        "value": 0,
+        "max": "@prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "sr",
+            "amount": "formula",
+            "formula": "2",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eaDTdMrPmarqJj",
+        "type": "roll",
+        "label": "Summon a Dread Weapon",
+        "cost": {
+          "pool": "dreadArsenal",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "Lasts 1 minute; a W component for Shinobi Basics and Blade Bukijutsu."
+        },
+        "activation": "bonus"
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e6CQqVPVARV5Wx",

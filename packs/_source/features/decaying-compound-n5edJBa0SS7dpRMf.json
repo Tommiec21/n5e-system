@@ -29,7 +29,54 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "blackMedicineArray",
+        "label": "Black Medicine Array",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eeSNe39Ae7cS52",
+        "type": "roll",
+        "label": "Infuse a jutsu",
+        "cost": {
+          "pool": "blackMedicineArray",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "A Poison or Necrotic save jutsu gains a Decaying Compound effect."
+        }
+      },
+      {
+        "id": "n5eeX9Cgcz23l6cD",
+        "type": "roll",
+        "label": "Putrefy a weapon",
+        "cost": {
+          "pool": "blackMedicineArray",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": ""
+        },
+        "activation": "bonus"
+      }
+    ]
   },
   "effects": [],
   "folder": "n5edzfPXyfGdOiBy",

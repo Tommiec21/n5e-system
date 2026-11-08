@@ -29,7 +29,55 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "blight",
+        "label": "Blight",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eINiZy4ltCUhJt",
+        "type": "roll",
+        "label": "Gain Blight",
+        "cost": {
+          "pool": "blight",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Bonus Action, or when you inflict Envenomed or Corroded."
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eXvLsF3nvtlKN7",
+        "type": "roll",
+        "label": "Spend Blight",
+        "cost": {
+          "pool": "blight",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "Septic Detonation and the other Blight abilities (Ninjutsu save DC)."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ec6wcAb5BrWBu4",

@@ -31,7 +31,34 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eBhRJe4P4CK5OO",
+        "type": "save",
+        "label": "Forceful Strike",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": []
+      },
+      {
+        "id": "n5edadNCV0GKy7qF",
+        "type": "roll",
+        "label": "Push distance",
+        "roll": {
+          "formula": "5 * 1d6",
+          "note": "Feet pushed on a failure (1d6 per bludgeoning per 5 ft short if stopped)."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

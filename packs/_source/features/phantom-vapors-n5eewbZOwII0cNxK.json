@@ -29,7 +29,60 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "phantomVapors",
+        "label": "Phantom Vapor Charges",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "tool.alchemist"
+      ]
+    },
+    "activities": [
+      {
+        "id": "n5eJ5GpLeGbm8v4h",
+        "type": "roll",
+        "label": "Throw a Phantom Vapor vial",
+        "cost": {
+          "pool": "phantomVapors",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "A thin cloud at a point within 30 ft (see the text)."
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e4c9QiazJat4bP",
+        "type": "roll",
+        "label": "Recharge with 1 Actualization Die",
+        "cost": {
+          "pool": "phantomVapors",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Spend 1 Actualization Die (or 10 minutes) to regain a charge."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5enscaEEQvT8lbO",

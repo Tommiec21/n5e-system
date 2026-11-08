@@ -31,7 +31,45 @@
     "tags": [
       "gen-inception"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5ehmfonlQsoHVti",
+        "type": "attack",
+        "label": "Illusory Weapon (melee)",
+        "attack": {
+          "discipline": "gen",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8 + @disciplines.gen.mod",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ega5PnKbtpJKh8",
+        "type": "attack",
+        "label": "Illusory Weapon (ranged, 30 ft)",
+        "attack": {
+          "discipline": "gen",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6 + @disciplines.gen.mod",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eB7tSpFehjOruK",

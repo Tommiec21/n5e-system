@@ -39,7 +39,30 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOptions": [
+        {
+          "label": "Talented Support: 4 temporary HP (no conditions)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ]
+          },
+          "heal": {
+            "formula": "4",
+            "pool": "tempHp"
+          }
+        },
+        {
+          "label": "Talented Support: cost −rank (target has a condition)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ]
+          },
+          "costDelta": "-rank"
+        }
+      ]
     }
   },
   "_stats": {

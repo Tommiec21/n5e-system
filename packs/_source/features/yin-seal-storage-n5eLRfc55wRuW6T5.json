@@ -29,7 +29,71 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "byakugouSeals",
+        "label": "Byakugou Seals",
+        "value": 0,
+        "max": "4",
+        "die": "d12",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest10m",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eDaLPUkOQJtgKM",
+        "type": "effect",
+        "label": "Enter Battle Medic",
+        "effect": {
+          "name": "Battle Medic",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "battleMedic"
+        },
+        "activation": "bonus",
+        "text": "In combat; 10 minutes before reuse."
+      },
+      {
+        "id": "n5eXI03N7KKpJhJ5",
+        "type": "roll",
+        "label": "Spend a Byakugou Seal",
+        "cost": {
+          "pool": "byakugouSeals",
+          "amount": 1,
+          "roll": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Crimson Lotus Missile and the other Battle Medic techniques."
+        }
+      },
+      {
+        "id": "n5eBseNJQSB8hoDd",
+        "type": "roll",
+        "label": "Regain a Byakugou Seal",
+        "cost": {
+          "pool": "byakugouSeals",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "On a melee unarmed or Taijutsu critical hit."
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "folder": "n5esxBe46UEeqpRI",

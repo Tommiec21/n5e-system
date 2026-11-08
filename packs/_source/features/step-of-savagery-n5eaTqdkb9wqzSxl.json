@@ -31,7 +31,46 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5euyqpJePGqCQox",
+        "type": "save",
+        "label": "Step of Savagery",
+        "cost": {
+          "pool": "martialDice",
+          "choose": true
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + (@amount)d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "activation": "action",
+        "text": "Up to 4 Martial Dice; creatures in the line are dragged along."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

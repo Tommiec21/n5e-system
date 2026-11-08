@@ -31,7 +31,34 @@
     "tags": [
       "gen-mirage"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eGomh6ZV4bjf6g",
+        "type": "save",
+        "label": "Decelerate",
+        "activation": "action",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "The creature spends its Reaction to repeat the save, ending it on a success."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eAkmquwfWSm0k0",

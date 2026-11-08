@@ -48,3 +48,16 @@ export function featureCritRange(actor) {
 export function recoveryAllowed(actor, recovery) {
   return !recovery?.requires || !!featureById(actor, recovery.requires);
 }
+
+/**
+ * The discipline whose save DC a class feature's save uses: the one its text names ("vs your
+ * Genjutsu save DC"), else its class's main discipline, else Taijutsu.
+ */
+const CLASS_DISCIPLINE = { "genjutsu-specialist": "gen", "ninjutsu-specialist": "nin", "medical-nin": "nin",
+  "hunter-nin": "tai", "scout-nin": "tai", "taijutsu-specialist": "tai", "weapon-specialist": "tai" };
+export function featureDiscipline(item) {
+  const text = String(item.system?.description ?? "");
+  const m = text.match(/\b(Ninjutsu|Genjutsu|Taijutsu|Bukijutsu)\s+save\s+DC/i);
+  if ( m ) return { ninjutsu: "nin", genjutsu: "gen", taijutsu: "tai", bukijutsu: "tai" }[m[1].toLowerCase()];
+  return CLASS_DISCIPLINE[item.system?.requirement?.class] ?? "tai";
+}

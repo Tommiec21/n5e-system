@@ -129,9 +129,16 @@ export async function postCastCard(actor, item, plan) {
   const activities = effectiveActivities(item);
   const spent = [plan.costMode === "chakra" ? `${plan.cost} CP` : plan.costMode === "none" ? "No cost" : "Special cost",
     ...Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`)].join(" · ");
+  // Moldings that change the card's buttons: Precise (attack advantage), Heightened (first save at
+  // disadvantage), Piercing (damage: half DR, no resistance).
+  const usedIds = new Set((plan.options ?? []).map(o => actor.items.get(o.id)?.system.identifier).filter(Boolean));
+  const moldingFlags = { precise: usedIds.has("precise-ninjutsu"), heightened: usedIds.has("heightened-ninjutsu"),
+    piercing: usedIds.has("piercing-ninjutsu") };
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
   const extras = [];
-  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: j.discipline === "gen" })}</div>`);
+  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: j.discipline === "gen", piercing: moldingFlags.piercing })}</div>`);
+  // Healing a feature adds (Channeled Healing, Talented Support's temporary HP).
+  if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
   for ( const r of plan.extraRolls ?? [] ) {
     const roll = await new Roll(r.formula).evaluate();
@@ -152,7 +159,7 @@ export async function postCastCard(actor, item, plan) {
       <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[j.discipline]?.label ?? ""}`)}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
-    ${activityButtons(actor, item, activities, { rank: plan.rank })}
+    ${activityButtons(actor, item, activities, { rank: plan.rank, flags: moldingFlags })}
     ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;

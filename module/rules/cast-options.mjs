@@ -1,7 +1,8 @@
 /**
  * Cast options that come from features (pure). A feature item carries flags.n5e.castOption:
  *   label            shown in the cast dialog
- *   appliesTo        {discipline, keywords: [any of], activation, requiresDamage}
+ *   appliesTo        {discipline, keywords: [any of], activation, requiresDamage, requiresHealing,
+ *                    stance: a stance category the caster must be in}
  *   requiresState    an active effect state ("crash") the caster must be in
  *   requiresChoice   {feature, value}: e.g. Jack of All's Generalization = warfare
  *   blockedByState   a state that forbids it ("flow": no damage boosts)
@@ -10,6 +11,7 @@
  *   costDelta        "-rank" (Chakra Compression) or a number
  *   cost             {pool, amount, choose}: spend from a pool (choose: the caster picks how many)
  *   damage           {formula, type, halfForArea}: an extra damage button on the cast card
+ *   heal             {formula, pool}: an extra healing button on the cast card
  *   effect           an activity effect for the card (Hellrend: targets' DR −2 per Pyroclasm, @amount)
  *   roll             a die rolled when cast, shown with the note (Devastation: 1d6)
  *   note             text on the cast card (@amount and @rankValue are filled in)
@@ -18,6 +20,7 @@
 import { rankValue } from "./progression.mjs";
 import { resolveFormula } from "./unarmed.mjs";
 import { choiceOf } from "./features.mjs";
+import { activeStance } from "./unarmed.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const kwSet = j => (j.system.keywords instanceof Set ? j.system.keywords : new Set(j.system.keywords ?? []));
@@ -26,6 +29,18 @@ const sameTurn = (a, b) => !!a && !!b && a.round === b.round && a.turn === b.tur
 /** Named states from active effects (flags.n5e.state). */
 export function hasState(actor, state) {
   return list(actor.effects).some(e => !e.disabled && e.flags?.n5e?.state === state);
+}
+
+/** Does this jutsu heal (a heal activity, or "regain(s) ... hit points" in its text)? */
+function hasHealing(jutsu, activities) {
+  return activities.some(a => a.type === "heal") || /regains?\b[^.]*hit points/i.test(String(jutsu.system.description ?? ""));
+}
+
+/** Is the actor's active stance of this category (taijutsu, bukijutsu, chakra)? */
+export function stanceIs(actor, category) {
+  const st = activeStance(actor);
+  const cats = st?.system?.categories;
+  return !!st && (cats instanceof Set ? cats.has(category) : list(cats).includes(category));
 }
 
 /** Does this jutsu deal damage (activity damage parts, or "XdY ... damage" in its text)? */
@@ -53,6 +68,9 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null) 
     if ( a.keywords?.length && !a.keywords.some(k => kwSet(jutsu).has(k)) ) continue;
     if ( a.activation && jutsu.system.activation?.type !== a.activation ) continue;
     if ( a.requiresDamage && !hasDamage(jutsu, activities) ) continue;
+    if ( a.requiresHealing && !hasHealing(jutsu, activities) ) continue;
+    // Only while in a stance of this category (Paths of Perfection: "while you are in a Taijutsu stance").
+    if ( a.stance && !stanceIs(actor, a.stance) ) continue;
     if ( o.requiresState && !hasState(actor, o.requiresState) ) continue;
     if ( o.blockedByState && hasState(actor, o.blockedByState) ) continue;
     if ( o.requiresChoice && choiceOf(actor, o.requiresChoice.feature) !== o.requiresChoice.value ) continue;
@@ -78,7 +96,7 @@ export function halveDice(formula) {
  * @param {string} rank         cast rank
  */
 export function applyCastOptions(actor, jutsu, chosen, available, rank) {
-  const res = { subtract: 0, pools: {}, damage: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [] };
+  const res = { subtract: 0, pools: {}, damage: [], heals: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [] };
   const area = !!jutsu.system.target?.area?.shape;
   for ( const c of chosen ) {
     const opt = available.find(o => o.id === c.id);
@@ -101,6 +119,7 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
       const f = sub(o.damage.formula);
       res.damage.push({ label: opt.label, formula: o.damage.halfForArea && area ? halveDice(f) : f, type: o.damage.type ?? "" });
     }
+    if ( o.heal?.formula ) res.heals.push({ label: opt.label, formula: sub(o.heal.formula), pool: o.heal.pool || "hp" });
     if ( o.effect ) {
       res.effects.push({ label: o.effect.name || opt.label, effect: { ...o.effect,
         changes: (o.effect.changes ?? []).map(ch => ({ ...ch, value: sub(ch.value) })) } });

@@ -31,7 +31,33 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eEofcbXVuBfjgr",
+        "type": "save",
+        "label": "Arresting Technique",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Failure: speed 0 and Prone until the start of your next turn."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

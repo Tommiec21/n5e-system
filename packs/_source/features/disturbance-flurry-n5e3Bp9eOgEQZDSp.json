@@ -29,7 +29,55 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "momentum",
+        "label": "Momentum",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5emoycKJB6sTpIX",
+        "type": "roll",
+        "label": "Gain Momentum",
+        "cost": {
+          "pool": "momentum",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "When you deal unarmed damage; lasts 1 minute."
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5ea2sb0guhgexGv",
+        "type": "roll",
+        "label": "Blitzing Momentum",
+        "cost": {
+          "pool": "momentum",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "+10 speed; move 10 ft with each reaction until your next turn."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eSbItgwmWUGbZH",

@@ -31,7 +31,49 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5exZQ1A72xD09Gc",
+        "type": "attack",
+        "label": "Hurricane Strikes",
+        "minLevel": 0,
+        "oncePerTurn": false,
+        "activation": "action",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d6"
+        },
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "One roll against up to 4 creatures, then teleport next to one.",
+        "cost": {
+          "pool": "martialDice",
+          "amount": 4
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

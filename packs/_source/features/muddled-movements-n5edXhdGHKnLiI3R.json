@@ -31,7 +31,28 @@
     "tags": [
       "gen-mirage"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eHiLaDRtmZSd9D",
+        "type": "effect",
+        "label": "Muddled Movements",
+        "effect": {
+          "name": "Muddled Movements",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-10",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "On a hit with a Genjutsu attack."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eAkmquwfWSm0k0",

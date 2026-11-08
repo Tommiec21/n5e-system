@@ -31,7 +31,35 @@
     "tags": [
       "tai-technique"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eAEZ52xhubhaV9",
+        "type": "save",
+        "label": "Quivering Strike",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "bludgeoning"
+            }
+          ],
+          "ignoreDR": true
+        },
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": true
+        },
+        "inflicts": [],
+        "text": "At the end of each of its turns; can't be reduced; a success ends it."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e2pmCgOChz4JXo",

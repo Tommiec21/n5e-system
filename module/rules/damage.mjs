@@ -28,8 +28,9 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {boolean} [o.ignoreDR]      condition/environment damage, or effects that say so
  * @param {boolean} [o.genjutsu]      source is a Genjutsu (its psychic damage ignores DR)
  * @param {boolean} [o.crit]
+ * @param {boolean} [o.piercing]      Piercing Ninjutsu: half DR, no resistance, immunity -> resistance
  */
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false } = {}) {
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false } = {}) {
   const sys = target.system;
   const traits = sys.traits ?? {};
   const steps = [];
@@ -38,7 +39,9 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   if ( multiplier !== 1 ) steps.push(`${multiplier === 0.5 ? "Half" : `×${multiplier}`}: ${raw}`);
 
   // DR once for the whole calculation, minus Pierce; exempt instances don't use it up.
-  const dr = Math.max(0, (sys.dr ?? 0) - pierce);
+  // Piercing Ninjutsu (Molding): half of the target's DR (after Pierce), resistance ignored, immunity
+  // treated as resistance.
+  const dr = Math.max(0, piercing ? Math.floor(((sys.dr ?? 0) - pierce) / 2) : (sys.dr ?? 0) - pierce);
   if ( !ignoreDR && dr > 0 ) {
     let left = dr;
     parts = parts.map(p => {
@@ -54,11 +57,16 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   // Resistance / vulnerability / immunity per type.
   parts = parts.map(p => {
     if ( !p.type || !p.amount ) return p;
+    if ( has(traits.immune, p.type) && piercing ) {
+      const half = Math.floor(p.amount / 2);
+      steps.push(`Immune to ${p.type}, Piercing: ${p.amount} → ${half}`);
+      return { ...p, amount: half };
+    }
     if ( has(traits.immune, p.type) ) {
       steps.push(`Immune to ${p.type}: −${p.amount}`);
       return { ...p, amount: 0 };
     }
-    const r = has(traits.resist, p.type);
+    const r = has(traits.resist, p.type) && !piercing;
     const v = has(traits.vuln, p.type);
     if ( r && !v ) {
       const half = Math.floor(p.amount / 2);

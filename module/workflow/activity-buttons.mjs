@@ -51,6 +51,7 @@ import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
+import { featureDiscipline } from "../rules/features.mjs";
 
 // A data-* attribute, or nothing when the value is empty. Buttons carry everything their click needs
 // in these attributes (JSON for parts/costs/effects), because chat cards are stored as plain HTML.
@@ -71,11 +72,12 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
  * @param {number} [o.pierce]       extra Pierce on top of the actor's (Raiding Strike)
  * @param {object|null} [o.cost]    pool cost paid when clicked
  */
-export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null } = {}) {
+export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
+  piercing = false } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
   const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
-  const common = `${attr("parts", json)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}`;
+  const common = `${attr("parts", json)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
@@ -102,28 +104,32 @@ export function applyButtons() {
  * @param {object[]} activities  from effectiveActivities(item), or built on the fly (cast extras)
  * @returns {string} HTML
  */
-export function activityButtons(actor, item, activities) {
+export function activityButtons(actor, item, activities, { flags = {} } = {}) {
   const live = item.system.live ?? {};
+  // Cast-time flags from the Moldings chosen (workflow/cast.mjs): Precise = advantage on the attack,
+  // Heightened = the first target's save at disadvantage, Piercing = damage ignores resistance and half DR.
+  const castAttrs = { attack: flags.precise ? attr("adv", 1) : "", save: flags.heightened ? attr("dis", 1) : "",
+    damage: flags.piercing ? { piercing: true } : {} };
   const rows = [];
   const level = actor?.system?.level ?? 0;
   // Save DC: a jutsu's own; otherwise the discipline the activity names ("Taijutsu save DC"), else the item's.
   const dcFor = a => {
     if ( item.type === "jutsu" ) return live.dc;
     const src = a.save?.dc?.source;
-    const disc = ["nin", "tai", "gen"].includes(src) ? src : item.system.discipline;
-    return actor.system.disciplines?.[disc]?.dc;
+    const disc = ["nin", "tai", "gen"].includes(src) ? src : (item.system.discipline || featureDiscipline(item));
+    return actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.dc;
   };
   // Attributes every authored button shares: which item, its label, and its pool cost.
   const common = a => `${attr("item", item.id)}${attr("label", a.label || item.name)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}`;
   // " · 1 Superiority Dice" after the button text, so the player sees the price before clicking.
-  const costNote = a => (a.cost?.pool ? ` · ${a.cost.amount} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : "");
+  const costNote = a => (a.cost?.gain ? ` · +${a.cost.amount || 1} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : a.cost?.pool ? ` · ${a.cost.amount} ${esc(actor.system.resources?.[a.cost.pool]?.label ?? a.cost.pool)}` : "");
   // A save button for activities that have one (strikes and effects can carry a save too, e.g.
   // Bone Breaking Strike: attack, then the target's Strength save against Bruised).
   const saveButton = a => {
     if ( !a.save?.abilities || ![...a.save.abilities].length ) return "";
     const ab = [...a.save.abilities][0];
     const dc = dcFor(a);
-    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("resave", a.save?.resave ? 1 : "")}
+    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
       ${attr("label", a.label || item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
       DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>`;
   };
@@ -158,6 +164,14 @@ export function activityButtons(actor, item, activities) {
         <i class="fa-solid fa-dice"></i> ${esc(a.label || "Roll")}${a.roll?.formula ? `: ${esc(a.roll.formula.replace(/lvl\(([^)]*)\)/g, "…"))}` : ""}${costNote(a)}</button></div>`);
       continue;
     }
+    // Check: a skill check for the user (Hunters Exploits, Eye for Skill): "Perception check vs its AC".
+    if ( a.type === "check" && (a.check?.skill || a.check?.tool) ) {
+      const key = a.check.skill || a.check.tool;
+      const label = a.check.skill ? CONFIG.N5E?.skills?.[key]?.label ?? key : CONFIG.N5E?.toolkits?.[key]?.label ?? key;
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="check"${common(a)}${attr("skill", a.check.skill)}${attr("tool", a.check.tool)}>
+        <i class="fa-solid fa-dice-d20"></i> ${esc(a.label || `${label} check`)}${costNote(a)}</button>${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
+      continue;
+    }
     // Damage that costs a pool (Warfare's attack bonus): the cost rides on the damage buttons.
     if ( a.type === "damage" && a.cost?.pool ) {
       rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { cost: a.cost, label: a.label || "Damage" })}</div>`);
@@ -168,23 +182,23 @@ export function activityButtons(actor, item, activities) {
     if ( a.type === "attack" ) {
       const disc = a.attack?.discipline || item.system.discipline;
       const bonus = item.type === "jutsu" ? live.attack : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}
-        ${attr("label", `${item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki" })}</div>`);
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}${castAttrs.attack}
+        ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}${flags.precise ? " (advantage)" : ""}</button>
+        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen" || disc === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
     } else if ( a.type === "save" ) {
       const ab = [...(a.save?.abilities ?? [])][0];
-      const dc = item.type === "jutsu" ? live.dc : actor.system.disciplines?.[item.system.discipline]?.dc;
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}
+      const dc = dcFor(a);
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
         ${attr("four", a.save?.fourTier ? 1 : "")}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
-        DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki" })}</div>`);
+        DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
+        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
     } else if ( a.type === "damage" ) {
       // Authored damage keeps its own name on the button ("Lethal Attack", "Take Life").
       rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki",
         label: a.label && a.label !== "Damage" ? a.label : "Damage" })}${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     } else if ( a.type === "heal" ) {
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="heal"${attr("formula", a.heal?.formula)}${attr("pool", a.heal?.pool)}>
-        <i class="fa-solid fa-heart"></i> ${esc(a.label)}: ${esc(a.heal?.formula)}</button></div>`);
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="heal"${attr("formula", a.heal?.formula)}${attr("pool", a.heal?.pool)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}>
+        <i class="fa-solid fa-heart"></i> ${esc(a.label)}: ${esc(String(a.heal?.formula ?? "").replace(/lvl\(([^)]*)\)/g, "…"))}${costNote(a)}</button>${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     }
   }
   return rows.length ? `<div class="n5e-acts">${rows.join("")}</div>` : `<p class="hint">No rollable parts found in the text.</p>`;
@@ -218,7 +232,7 @@ export async function onActivityClick(message, button, event) {
   // Activities with a pool cost (e.g. 1 Superiority Die) pay it first; a rolled pool die is @poolRoll.
   let poolRoll = null;
   let amount = 1;
-  if ( d.cost && ["strike", "effect", "attack", "damage", "heal", "roll"].includes(d.n5eAct) ) {
+  if ( d.cost && ["strike", "effect", "attack", "damage", "heal", "roll", "check"].includes(d.n5eAct) ) {
     if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can use this.");
     const paid = await payPoolCost(caster, JSON.parse(d.cost));
     if ( !paid ) return null;
@@ -235,6 +249,11 @@ export async function onActivityClick(message, button, event) {
       const { strikeAttack } = await import("./attack.mjs");
       return strikeAttack(caster, JSON.parse(d.strike || "{}"), { event, label: d.label, poolRoll });
     }
+    case "check": {
+      if ( !caster?.isOwner ) return ui.notifications.warn("Only the owner can roll this check.");
+      const spec = d.skill ? rollSpec(caster, "skill", d.skill) : rollSpec(caster, "tool", d.tool);
+      return rollWithSpec(caster, { ...spec, label: d.label || spec.label }, { event });
+    }
     case "roll": {
       const formula = level(d.formula);
       const roll = formula ? await new Roll(formula, caster?.getRollData?.() ?? {}).evaluate() : null;
@@ -249,7 +268,8 @@ export async function onActivityClick(message, button, event) {
     }
     case "attack": {
       if ( !caster?.isOwner ) return ui.notifications.warn("Only the caster's owner can roll this attack.");
-      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope }, { event });
+      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
+        { event, mode: d.adv ? "advantage" : undefined });
     }
     case "damage": {
       // Roll each part on its own so every damage type keeps its amount (the damage pipeline needs
@@ -285,12 +305,13 @@ export async function onActivityClick(message, button, event) {
           <span class="mode">${esc(typeLabel(types))}</span><span class="bonus">${total}</span></header>
           <div class="note">${esc(lines)}${pierce ? ` · Pierce ${pierce}` : ""}${crit ? " · dice and ability modifier doubled" : ""}</div>
           ${applyButtons()}</div>`,
-        flags: { n5e: { damage: { instances, crit, total, pierce, genjutsu: !!d.gen }, actorUuid: actor?.uuid ?? null } } });
+        flags: { n5e: { damage: { instances, crit, total, pierce, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }
     case "save": {
       const dc = Number(d.dc);
       const targets = targetsOrSelf(null);
       if ( !targets.length ) return ui.notifications.info("Select the tokens that roll the save.");
+      let first = true;
       for ( const t of targets ) {
         if ( !t.isOwner ) continue;
         const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
@@ -303,7 +324,11 @@ export async function onActivityClick(message, button, event) {
         // Condition resistance (optional rule): advantage on saves against a condition you resist.
         const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition").map(i => i.key));
         if ( resisted ) spec.note = [spec.note, "Advantage: resists the condition"].filter(Boolean).join(" · ");
-        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode: resisted ? "advantage" : undefined });
+        // Heightened Ninjutsu: the first target rolls at disadvantage (resistance cancels it out).
+        const dis = d.dis && first;
+        first = false;
+        const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
+        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode });
       }
       return null;
     }
@@ -348,12 +373,20 @@ export async function payPoolCost(actor, cost) {
   }
   // "Any number" (Pyroclasm Detonate): the player picks how many.
   if ( cost.choose ) {
+    const cap = cost.gain ? (pool.maxValue ?? 0) - (pool.value ?? 0) : (pool.value ?? 0);
     const { DialogV2 } = foundry.applications.api;
     const n = await DialogV2.prompt({ window: { title: `Spend ${pool.label || cost.pool}` },
-      content: `<label>How many? <input type="number" name="n" value="1" min="1" max="${pool.value ?? 0}"></label>`,
+      content: `<label>How many? <input type="number" name="n" value="1" min="1" max="${cap}"></label>`,
       ok: { callback: (event, button) => Number(button.form.elements.n.value) || 0 }, rejectClose: false });
     if ( !n ) return null;
     amount = n;
+  }
+  // gain: the button adds to the pool instead (Carnage, Momentum, Blight, Mental Refocus...), capped at its max.
+  if ( cost.gain ) {
+    const value = Math.min(pool.maxValue ?? 0, (pool.value ?? 0) + amount);
+    await actor.update({ [`system.resources.${cost.pool}.value`]: value });
+    ui.notifications.info(`${pool.label || cost.pool}: ${value} / ${pool.maxValue ?? 0}`);
+    return { roll: null, amount, gained: true };
   }
   if ( (pool.value ?? 0) < amount ) {
     ui.notifications.warn(`Not enough ${pool.label || cost.pool} (${pool.value ?? 0} / ${amount}).`);

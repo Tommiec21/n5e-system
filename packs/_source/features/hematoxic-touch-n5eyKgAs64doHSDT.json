@@ -39,7 +39,21 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Hematoxic Touch (+rank damage)",
+        "auto": true,
+        "appliesTo": {
+          "keywords": [
+            "medical"
+          ],
+          "requiresDamage": true
+        },
+        "damage": {
+          "formula": "@rankValue"
+        },
+        "note": "Reroll 1s and 2s on its damage dice."
+      }
     }
   },
   "_stats": {

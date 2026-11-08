@@ -29,7 +29,71 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "healingSurges",
+        "label": "Healing Surges",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5er1SNeiSzTtZiY",
+        "type": "effect",
+        "label": "Enter Ascension",
+        "effect": {
+          "name": "Ascension",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "ascension",
+          "ampType": "will"
+        },
+        "activation": "bonus",
+        "text": "In combat; 10 minutes of meditation before reuse."
+      },
+      {
+        "id": "n5eQ3McmY6fBJZ6w",
+        "type": "roll",
+        "label": "Gain a Healing Surge",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "When a jutsu you cast restores HP or grants temporary HP."
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eIKBHCCstQKxsq",
+        "type": "roll",
+        "label": "Spend a Healing Surge",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "Battle Surge and the other Surge abilities."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eXCAqSaRaj7jrK",

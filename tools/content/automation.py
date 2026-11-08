@@ -25,6 +25,7 @@ Automating an item (recipe):
   there is dropped when Foundry loads the item.
 """
 import copy
+import re
 import glob
 import hashlib
 import json
@@ -86,7 +87,38 @@ def ch(key, value, mode=2):
     return {"key": key, "value": str(value), "mode": mode}
 
 
-def transfer(item_name, label, changes, levels=None):
+def chk(skill, label=None, **kw):
+    """A skill check button (Hunters Exploits: "Make a Perception check vs the target's AC")."""
+    return act("check", label or f"{SKILL_LABELS.get(skill, skill)} check", check={"skill": skill}, **kw)
+
+
+def gain(pool, label, amount=1, **kw):
+    """A button that adds to a counter pool (Carnage, Momentum, Blight...), capped at its max."""
+    return act("roll", label, cost={"pool": pool, "amount": amount, "gain": True}, roll={"formula": "", "note": kw.pop("note", "")}, **kw)
+
+
+def spend(pool, label, amount=1, note="", formula="", roll=False, **kw):
+    """A button that spends a pool and optionally rolls something (or the pool's die with roll=True)."""
+    return act("roll", label, cost={"pool": pool, "amount": amount, **({"roll": True} if roll else {})},
+               roll={"formula": formula, "note": note}, **kw)
+
+
+def pool(pid, label, mx, die="", recovery=(("lr", "all", "", ""),)):
+    """A resource pool definition for an item (system.resourcePools). recovery: (on, amount, formula, requires).
+    on="event" makes it a counter that starts empty (gained during play)."""
+    return {"id": pid, "label": label, "value": 0, "max": mx, "die": die, "steps": [], "step": 0,
+            "recovery": [{"on": on, "amount": amt, "formula": f, "requires": req} for on, amt, f, req in recovery]}
+
+
+COUNTER = (("event", "all", "", ""),)
+SKILL_LABELS = {"acr": "Acrobatics", "ani": "Animal Handling", "ath": "Athletics", "cha": "Chakra Control", "dec": "Deception",
+                "his": "History", "ill": "Illusions", "ins": "Insight", "itm": "Intimidation", "inv": "Investigation",
+                "mar": "Martial Arts", "med": "Medicine", "nat": "Nature", "nin": "Ninshou", "prc": "Perception",
+                "prf": "Performance", "per": "Persuasion", "slt": "Sleight of Hand", "ste": "Stealth", "sur": "Survival"}
+SKILL_KEYS = {v.lower(): k for k, v in SKILL_LABELS.items()}
+
+
+def transfer(item_name, label, changes, levels=None, stance=None):
     """A transfer effect stored on the item (applies to the owner). Marked automation=True so re-runs
     replace it without touching effects added by hand. levels=(min, max) limits it to those character
     levels (0 = no limit), read by module/documents/active-effect.mjs isSuppressed."""
@@ -94,6 +126,8 @@ def transfer(item_name, label, changes, levels=None):
     flags = {"automation": True}
     if levels:
         flags["levels"] = {"min": levels[0] or 0, "max": levels[1] or 0}
+    if stance:
+        flags["requiresStance"] = stance           # only while in a stance of this category
     return {"_id": eid, "name": label, "type": "generic", "img": "icons/svg/aura.svg", "transfer": True, "disabled": False,
             "system": {"category": "feature"}, "changes": [{**c, "priority": None} for c in changes], "duration": {},
             "description": "", "origin": None, "tint": "#ffffff", "statuses": [], "flags": {"n5e": flags}, "sort": 0}
@@ -269,6 +303,243 @@ FEATURES.update({
 })
 
 # ------------------------------------------------------------------------------------------ #
+#  Class features, subclass features and options (0.8.1 pass)                                 #
+#  Each entry automates what the text makes mechanical; the rest stays as the book's text.    #
+# ------------------------------------------------------------------------------------------ #
+
+AD = "actualizationDice"
+MD = "martialDice"
+DISC = "discipline"
+def MIN_AMP(label, amp, state, **kw):
+    """A 1-minute Bonus Action amplification state (Reality Shift, Ascension, Battle Trance...)."""
+    return effect(label, seconds=60, state=state, ampType=amp, activation="bonus", **kw)
+
+FEATURES.update({
+    # ---- Genjutsu Specialist ---------------------------------------------------------------
+    "Alteration of Reality": {"activities": [MIN_AMP("Enter Reality Shift", "will", "realityShift", name="Reality Shift",
+        changes=[ch("n5e.saveDC.gen", 1)], cost={"pool": AD, "amount": 1},
+        text="1 minute; Genjutsu save DC as AC and Wisdom saves are applied by hand. 10 minutes before reuse.")]},
+    "Mental Refocus": {"activities": [gain(AD, "Regain 1 Actualization Die", note="Once per round, on succeeding a save against a hostile creature.")]},
+    "Mind Over Matter": {"flags": {"castOption": {"label": "Mind Over Matter (with Actualization)", "appliesTo": {"discipline": "gen", "requiresDamage": True},
+        "damage": {"formula": "@disciplines.gen.mod", "type": "psychic"}, "note": "Only when you use an Actualization effect on this Genjutsu."}}},
+    "Rending Thoughts": {"activities": [
+        act("save", "Rending Thoughts", activation="action", **save("wis", "gen")),
+        act("damage", "Rending Thoughts: success", damage={"parts": [{"formula": "1d6", "type": "psychic"}]}),
+        act("damage", "Rending Thoughts: failure", damage={"parts": [{"formula": "2d6", "type": "psychic"}]},
+            text="Also a 1d4 penalty to its next attack roll before your next turn."),
+        act("damage", "Rending Thoughts: critical failure", damage={"parts": [{"formula": "3d6", "type": "psychic"}]})]},
+    "Phantasm": {"activities": [spend(AD, "Recharge a Phantasm ability", note="One of its Recharge abilities is ready again.")]},
+    "Phantom Vapors": {"system": {"grants": {"proficiencies": ["tool.alchemist"]},
+        "resourcePools": [pool("phantomVapors", "Phantom Vapor Charges", "1 + @prof", recovery=(("rest", "all", "", ""),))]},
+        "activities": [spend("phantomVapors", "Throw a Phantom Vapor vial", activation="bonus", note="A thin cloud at a point within 30 ft (see the text)."),
+                       gain("phantomVapors", "Recharge with 1 Actualization Die", note="Spend 1 Actualization Die (or 10 minutes) to regain a charge.")]},
+    "Venom Strike Adept": {"activities": [spend("phantomVapors", "Coat a weapon in poison", note="Its damage becomes poison; Phantom Weapon and Hallucinatory Flurry are available.")]},
+    "Hallucinatory Instrument": {"activities": [effect("Tune the Instrument", seconds=60, activation="bonus", name="Hallucinatory Instrument (tuned)",
+        text="Auditory Genjutsu without an attack: Self 20-ft cone or 10-ft radius. 10 minutes before retuning.")]},
+    "Illusory Weapon": {"activities": [
+        act("attack", "Illusory Weapon (melee)", attack={"discipline": "gen", "range": "melee", "count": 1},
+            damage={"parts": [{"formula": "1d8 + @disciplines.gen.mod", "type": "psychic"}]}),
+        act("attack", "Illusory Weapon (ranged, 30 ft)", attack={"discipline": "gen", "range": "ranged", "count": 1},
+            damage={"parts": [{"formula": "1d6 + @disciplines.gen.mod", "type": "psychic"}]})]},
+    "Reality Marble": {"activities": [effect("Awaken the Reality Marble", seconds=60, activation="bonus", name="Reality Marble (awakened)",
+        text="Each Genjutsu stores a Reality Mote; spend one to mark a reality relay.")]},
+    "Temporal Stopwatch": {"activities": [
+        spend(AD, "Shift initiative", roll=True, note="Raise or lower one creature's initiative by the roll (once per initiative)."),
+        effect("Wind the Stopwatch", seconds=60, activation="bonus", name="Temporal Stopwatch (wound)",
+               text="Once per turn, a Genjutsu cast also grants Dash or Disengage.")]},
+    "Beguiling Influence": {"effects": [("Beguiling Influence", [ch("n5e.mastery.skill.dec", "Beguiling Influence"), ch("n5e.mastery.skill.per", "Beguiling Influence")])]},
+    "Illusionary Vigor": {"effects": [("Illusionary Vigor", [ch("n5e.mastery.skill.ath", "Illusionary Vigor"), ch("n5e.mastery.skill.acr", "Illusionary Vigor")])]},
+    "Demon Sight": {"effects": [("Demon Sight", [ch("system.traits.senses.darkvision", 120, 4)])]},
+    "Cloak of Chains": {"activities": [effect("Cloak of Chains", seconds=60, activation="bonus", cost={"pool": AD, "amount": 1},
+        text="5-ft aura: hostile creatures starting their turn in it take 4 psychic damage.")]},
+    "Decelerate": {"activities": [act("save", "Decelerate", activation="action", **save("wis", "gen", [cond("slowed", label="Slowed")]),
+        text="The creature spends its Reaction to repeat the save, ending it on a success.")]},
+    "Book of Stolen Secrets": {"activities": [act("save", "Book of Stolen Secrets", **save("wis", "gen"))]},
+    "Psyche Drinker": {"activities": [spend(AD, "Psyche Drinker", note="Gain the damage dealt as temporary HP until the end of your next turn (once per turn).")]},
+    "Relentless Pain": {"activities": [spend(AD, "Relentless Pain", activation="reaction", note="Deal psychic damage equal to the damage you took.")]},
+    "Muddled Movements": {"activities": [effect("Muddled Movements", [ch("system.bonuses.speed", -10)], target="targets", expires="nextTurnEnd",
+        text="On a hit with a Genjutsu attack.")]},
+
+    # ---- Hunter-Nin ------------------------------------------------------------------------
+    "Warden’s Proficiency": {"system": {"grants": {"proficiencies": ["skill.ath", "skill.itm"]}}},
+    "Brutal Proficiency": {"system": {"grants": {"proficiencies": ["skill.ath"]}}, "effects": [("Brutal Proficiency: speed", [ch("system.bonuses.speed", 10)])]},
+    "Medical Proficiency": {"system": {"grants": {"proficiencies": ["skill.med", "tool.medicine"]}}},
+    "Stalkers Proficiency": {"system": {"grants": {"proficiencies": ["skill.slt", "skill.dec"]}},
+        "effects": [("Stalkers Proficiency: Blindsight", [ch("system.traits.senses.blindsight", 20, 4)])]},
+    "Void Proficiency": {"system": {"grants": {"proficiencies": ["skill.nin"]}}},
+    "Wolf’s Proficiency": {"system": {"grants": {"proficiencies": ["skill.mar", "skill.sur"]},
+        "resourcePools": [pool("posture", "Posture", "3", recovery=COUNTER)]},
+        "activities": [gain("posture", "Gain Posture", note="Once per turn, when you reduce or resist damage with a reaction feature or jutsu.")]},
+    "Carnage": {"system": {"resourcePools": [pool("carnage", "Carnage", "3", recovery=COUNTER)]},
+        "activities": [gain("carnage", "Gain Carnage", oncePerTurn=True, note="When you deal or take damage from a creature (Executioners Drive)."),
+                       spend("carnage", "Guillotine Cleave", note="A melee weapon attack against every creature in reach."),
+                       spend("carnage", "Butchers Momentum", note="On a hit: 30 ft of bonus movement.")]},
+    "Decaying Compound": {"system": {"resourcePools": [pool("blackMedicineArray", "Black Medicine Array", "4", recovery=(("rest", "all", "", ""),))]},
+        "activities": [spend("blackMedicineArray", "Infuse a jutsu", note="A Poison or Necrotic save jutsu gains a Decaying Compound effect."),
+                       spend("blackMedicineArray", "Putrefy a weapon", activation="bonus")]},
+    "Shadow stalker": {"system": {"resourcePools": [pool("dreadArsenal", "Dread Arsenal", "@prof",
+        recovery=(("lr", "all", "", ""), ("sr", "formula", "2", "")))]},
+        "activities": [spend("dreadArsenal", "Summon a Dread Weapon", activation="bonus", note="Lasts 1 minute; a W component for Shinobi Basics and Blade Bukijutsu.")]},
+    "Shinobi’s Prosthetic": {"system": {"resourcePools": [pool("prostheticUses", "Prosthetic uses", "4", recovery=(("rest10m", "all", "", ""),))]},
+        "activities": [spend("prostheticUses", "Use a Prosthetic Tool", note="No more than 4 times every 10 minutes.")]},
+    "Void Anchor": {"activities": [effect("Place a Void Anchor", target="targets", seconds=60, activation="bonus", name="Void Anchor",
+        text="Up to 4 at a time; the oldest fades when you place a fifth.")]},
+    "Cunning Action": {"activities": [chk("ste", "Stealth (Hide/Sneak/Conceal, +2)", text="Add +2 for hiding, sneaking or concealing.")]},
+
+    # ---- Medical-Nin -----------------------------------------------------------------------
+    "Channeled Healing": {"flags": {"castOption": {"label": "Channeled Healing", "auto": True, "oncePerTurn": True,
+        "appliesTo": {"keywords": ["medical"], "requiresHealing": True},
+        "heal": {"formula": "@scale.medicalNin.channeledHealing", "pool": "hp"}}}},
+    "Rejuvenating Rest": {"activities": [act("roll", "Rejuvenating Rest", roll={"formula": "lvl(1:1d6,5:2d6,10:3d6,15:4d6)",
+        "note": "Add to the HP you and your allies regain at the end of a Short Rest."})]},
+    "Talented Support": {"flags": {"castOptions": [
+        {"label": "Talented Support: 4 temporary HP (no conditions)", "appliesTo": {"keywords": ["medical"]}, "heal": {"formula": "4", "pool": "tempHp"}},
+        {"label": "Talented Support: cost −rank (target has a condition)", "appliesTo": {"keywords": ["medical"]}, "costDelta": "-rank"}]}},
+    "Hematoxic Touch": {"flags": {"castOption": {"label": "Hematoxic Touch (+rank damage)", "auto": True,
+        "appliesTo": {"keywords": ["medical"], "requiresDamage": True}, "damage": {"formula": "@rankValue"},
+        "note": "Reroll 1s and 2s on its damage dice."}}},
+    "Toxic Chakra": {"system": {"resourcePools": [pool("blight", "Blight", "3", recovery=COUNTER)]},
+        "activities": [gain("blight", "Gain Blight", oncePerTurn=True, note="Bonus Action, or when you inflict Envenomed or Corroded."),
+                       spend("blight", "Spend Blight", note="Septic Detonation and the other Blight abilities (Ninjutsu save DC).")]},
+    "Healing Ascension": {"system": {"resourcePools": [pool("healingSurges", "Healing Surges", "3", recovery=COUNTER)]},
+        "activities": [MIN_AMP("Enter Ascension", "will", "ascension", name="Ascension", text="In combat; 10 minutes of meditation before reuse."),
+                       gain("healingSurges", "Gain a Healing Surge", oncePerTurn=True, note="When a jutsu you cast restores HP or grants temporary HP."),
+                       spend("healingSurges", "Spend a Healing Surge", note="Battle Surge and the other Surge abilities.")]},
+    "Transfigured Technique": {"activities": [
+        effect("Transfigure an ally", target="targets", seconds=60, activation="bonus", ampType="fortitude", name="Transfigured",
+               text="One ally at a time; pick its designation from the Transfiguration box."),
+        act("save", "Transfigure an enemy", activation="bonus", **save("con", "nin"))]},
+    "Yin Seal: Storage": {"system": {"resourcePools": [pool("byakugouSeals", "Byakugou Seals", "4", "d12", recovery=(("rest10m", "all", "", ""),))]},
+        "activities": [effect("Enter Battle Medic", seconds=60, activation="bonus", state="battleMedic", name="Battle Medic",
+                              text="In combat; 10 minutes before reuse."),
+                       spend("byakugouSeals", "Spend a Byakugou Seal", roll=True, note="Crimson Lotus Missile and the other Battle Medic techniques."),
+                       gain("byakugouSeals", "Regain a Byakugou Seal", oncePerTurn=True, note="On a melee unarmed or Taijutsu critical hit.")]},
+    "Bladed Chakra Scalpel": {"activities": [
+        effect("Coat your hands", seconds=60, activation="bonus", name="Chakra Scalpel", text="Attack action attacks become melee Ninjutsu attacks."),
+        act("attack", "Chakra Scalpel", attack={"discipline": "nin", "range": "melee", "count": 1},
+            damage={"parts": [{"formula": "1d8 + @scale.medicalNin.channeledHealing", "type": "slashing"}]})]},
+    "Mystical Palm": {"activities": [effect("Mystical Palm", seconds=600, activation="bonus", name="Mystical Palm",
+        text="For your next Medicine Kit activity.")]},
+
+    # ---- Taijutsu Specialist ---------------------------------------------------------------
+    "Chakra Valves": {"activities": [act("damage", "Sustained Pressure", damage={"parts": [{"formula": "1d6", "type": ""}]},
+        cost={"pool": MD, "amount": 1}, text="This and every later unarmed attack this turn adds a Martial Die.")],
+        "flags": {"castOption": {"label": "Valve Break (1 Martial Die: +rank Martial Dice)", "appliesTo": {"discipline": "tai", "requiresDamage": True},
+            "cost": {"pool": MD, "amount": 1}, "damage": {"formula": "(@rankValue)d6"}, "note": "The first time you deal damage this turn."}}},
+    "Path of The Tyrant": {"flags": {"castOption": {"label": "Brutal Taijutsu (+damage)", "appliesTo": {"discipline": "tai", "requiresDamage": True, "stance": "taijutsu"},
+        "oncePerTurn": True, "auto": True, "damage": {"formula": "lvl(1:2,11:4)"}}}},
+    "Path of The Genius": {"effects": [("The New Era: +1 Taijutsu DC", [ch("n5e.saveDC.tai", 1)], None, "taijutsu")],
+        "flags": {"castOption": {"label": "Elite Taijutsu (+1 to hit)", "appliesTo": {"discipline": "tai", "stance": "taijutsu"}, "oncePerTurn": True, "auto": True,
+            "note": "+1 to its attack rolls."}}},
+    "Path of The Savage": {"flags": {"castOption": {"label": "Devastating Taijutsu (+1 crit range)", "appliesTo": {"discipline": "tai", "stance": "taijutsu"},
+        "oncePerTurn": True, "auto": True, "note": "+1 critical threat range on this Taijutsu."}}},
+    "Path of The Predator": {"activities": [effect("Can't Run", [ch("system.bonuses.speed", -5)], target="targets", expires="nextTurnEnd",
+        text="Each time you deal unarmed damage to it.")],
+        "flags": {"castOption": {"label": "Furious Taijutsu (DR −2 per hit)", "appliesTo": {"discipline": "tai", "requiresDamage": True, "stance": "taijutsu"},
+            "oncePerTurn": True, "auto": True,
+            "effect": {"name": "Furious (DR)", "target": "targets", "changes": [{"key": "n5e.dr", "value": "-2", "mode": 2}], "expires": "nextTurnEnd"}}}},
+    "Path of The Hero": {"flags": {"castOption": {"label": "Protective Taijutsu (ally +1 AC)", "appliesTo": {"discipline": "tai", "stance": "taijutsu"},
+        "oncePerTurn": True, "auto": True,
+        "effect": {"name": "Protected (+AC)", "target": "targets", "changes": [{"key": "system.bonuses.ac", "value": "1", "mode": 2}], "expires": "turnStart"},
+        "note": "An ally within 10 ft gains +1 AC per instance of damage (max +2): target the ally."}}},
+    "Path of The Technician": {"flags": {"castOption": {"label": "Technical Taijutsu", "appliesTo": {"discipline": "tai", "stance": "taijutsu"},
+        "oncePerTurn": True, "note": "Martial Arts checks in place of Chakra Control to keep its concentration."}}},
+    "Arresting Technique": {"activities": [act("save", "Arresting Technique", **save("dex", "tai", [cond("prone", kind="state", label="Prone")]),
+        text="Failure: speed 0 and Prone until the start of your next turn.")]},
+    "Forceful Strike": {"activities": [act("save", "Forceful Strike", **save("str", "tai")),
+        act("roll", "Push distance", roll={"formula": "5 * 1d6", "note": "Feet pushed on a failure (1d6 per bludgeoning per 5 ft short if stopped)."})]},
+    "Drowsy Strike": {"activities": [act("roll", "Drowsy Strike", roll={"formula": "1d6 * 10", "note": "At or above its current HP: unconscious for 10 minutes."})]},
+    "Martial Guard": {"activities": [act("roll", "Martial Guard", activation="reaction", roll={"formula": "1d6", "note": "Reduce the triggering damage by this."})]},
+    "Parry The Shot": {"activities": [act("roll", "Parry The Shot", activation="reaction", cost={"pool": MD, "choose": True},
+        roll={"formula": "(@amount)d6 + @level", "note": "Reduce the damage taken by this (up to 3 Martial Dice)."})]},
+    "Delayed Fall": {"activities": [act("roll", "Delayed Fall", cost={"pool": MD, "choose": True},
+        roll={"formula": "(@amount)d6 * 2", "note": "Fewer falling damage dice by this many (up to 3 Martial Dice)."})]},
+    "Precise Technique": {"flags": {"castOption": {"label": "Precise Technique (+1 to hit per die)", "appliesTo": {"discipline": "tai"},
+        "cost": {"pool": MD, "choose": True}, "note": "+@amount to hit."}}},
+    "Raw Technique": {"flags": {"castOption": {"label": "Raw Technique (+1 DC per die)", "appliesTo": {"discipline": "tai"},
+        "cost": {"pool": MD, "choose": True}, "note": "+@amount to its DC."}}},
+    "Technical Technique": {"flags": {"castOption": {"label": "Technical Technique (1 Martial Die)", "appliesTo": {"discipline": "tai"},
+        "cost": {"pool": MD, "amount": 1}, "roll": "1d6", "note": "Concentration upkeep reduced by half the roll."}}},
+    "Shockwave Strike": {"flags": {"castOption": {"label": "Shockwave Strike (1 Martial Die)", "appliesTo": {"discipline": "tai"},
+        "cost": {"pool": MD, "amount": 1}, "note": "Creatures within 5 ft of the target: Dexterity save or half the damage."}}},
+    "Quivering Strike": {"activities": [act("save", "Quivering Strike", damage={"parts": [{"formula": "5d6", "type": "bludgeoning"}], "ignoreDR": True},
+        **save("con", "tai", resave=True), text="At the end of each of its turns; can't be reduced; a success ends it.")]},
+    "Regenerative Surge": {"activities": [act("heal", "Regenerative Surge", heal={"formula": "2d6 + @disciplines.tai.mod", "pool": "hp"},
+        activation="bonus", text="Once per rest.")]},
+    "Hurricane Strikes": {"activities": [strike("Hurricane Strikes", extraDice="4d6", activation="action", cost={"pool": MD, "amount": 4},
+        **save("con", "tai", [cond("staggered", label="Staggered")]), text="One roll against up to 4 creatures, then teleport next to one.")]},
+    "Step of Savagery": {"activities": [act("save", "Step of Savagery", cost={"pool": MD, "choose": True},
+        damage={"parts": [{"formula": "@unarmed + (@amount)d6", "type": "bludgeoning"}]}, **save("dex", "tai", [cond("prone", kind="state", label="Prone")]),
+        activation="action", text="Up to 4 Martial Dice; creatures in the line are dragged along.")]},
+    "Bone Breaker": {"activities": [act("save", "Bone Breaker", **save("str", "tai")),
+        effect("Bone Broken", target="targets", expires="turnStart", name="Bone Broken", text="On a failed save (ends at the end of its turn).")]},
+    "Balance Breaker": {"activities": [act("save", "Balance Breaker", **save("con", "tai")),
+        effect("Balance Broken", target="targets", expires="turnStart", name="Balance Broken", text="On a failed save (ends at the end of its turn).")]},
+    "Flow Breaker": {"activities": [act("save", "Flow Breaker", **save("dex", "tai")),
+        effect("Flow Broken", target="targets", expires="turnStart", name="Flow Broken", text="On a failed save (ends at the end of its turn).")]},
+    "Disturbance Flurry": {"system": {"resourcePools": [pool("momentum", "Momentum", "4", recovery=COUNTER)]},
+        "activities": [gain("momentum", "Gain Momentum", oncePerTurn=True, note="When you deal unarmed damage; lasts 1 minute."),
+                       spend("momentum", "Blitzing Momentum", note="+10 speed; move 10 ft with each reaction until your next turn.")]},
+    "Never Ending Combo": {"system": {"resourcePools": [pool("tempo", "Tempo", "3", recovery=COUNTER)]},
+        "activities": [gain("tempo", "Gain Tempo", note="Each Combo Taijutsu in DYNAMIC FORM!; lose 1 at the end of a turn without one.")]},
+    "Genius Talent": {"system": {"resourcePools": [pool("perfection", "Perfection", "4", recovery=COUNTER)]},
+        "activities": [gain("perfection", "Gain Perfection", oncePerTurn=True, note="When you spend at least 1 Martial Die (Flawless state)."),
+                       spend("perfection", "Spend Perfection", amount=2, note="Flawless Disturbance and the other Perfection abilities.")]},
+    "Nature enhanced Combat": {"activities": [MIN_AMP("Enter Elemental Cloak", "fortitude", "elementalCloak", name="Elemental Cloak",
+        cost={"pool": MD, "amount": 1}, text="10 minutes of meditation before reuse.")]},
+
+    # ---- Weapon Specialist -----------------------------------------------------------------
+    "Eye for Skill": {"activities": [chk("mar", "Eye for Skill: Martial Arts check", activation="bonus", text="Against the creature's Level DC.")]},
+    "Critical Focus": {"effects": [("Critical Focus", [ch("n5e.critRange.buki", 1)])]},
+    "Enduring Augmentation": {"activities": [spend(DISC, "Enduring Augmentation", amount=2, note="Advantage on this Strength or Constitution save.")]},
+    "Psyche Augmentation": {"activities": [spend(DISC, "Psyche Augmentation", amount=2, note="Advantage on this Wis/Cha save against a Genjutsu or mental effect.")]},
+    "Tactical Augmentation": {"activities": [spend(DISC, "Tactical Augmentation", note="Advantage on this Intelligence or Wisdom skill check.")]},
+    "Mobile Augmentation": {"activities": [spend(DISC, "Mobile Augmentation", formula="5 * 1d12", note="Extra speed (feet); Dash as a Bonus Action this turn.")]},
+    "Restorative Augmentation": {"activities": [act("heal", "Restorative Augmentation", heal={"formula": "lvl(1:1d12,9:2d12,15:3d12)", "pool": "hp"},
+        activation="bonus", cost={"pool": DISC, "amount": 1}, text="In combat; not again until the end of your next turn.")]},
+    "Sensory Augmentation": {"activities": [effect("Sensory Augmentation", [ch("system.traits.senses.blindsight", 30, 4)], expires="turnStart",
+        cost={"pool": DISC, "amount": 1}, text="Blindsight shown; pick Tremor Sense instead if you prefer. Out of combat it lasts 1 minute.")]},
+    "Battle Boast": {"activities": [act("save", "Battle Boast", **save("wis", "tai"), text="Hostile creatures in a 20-ft cone.")]},
+    "Disorienting Strike": {"activities": [act("save", "Disorienting Strike", **save("wis", "tai", resave=True), text="Pick one of the three effects for 1 minute.")]},
+    "Horrid Aggression": {"activities": [act("save", "Horrid Aggression", **save("str", "tai",
+        [cond("bruised", label="Bruised"), cond("weakened", label="Weakened"), cond("dazzled", label="Dazzled"), cond("concussed", label="Concussed")]),
+        text="Pick one condition on a failure.")]},
+    "Muted Strike": {"activities": [act("save", "Muted Strike", **save("con", "tai"), text="Failure: no jutsu of D-Rank or lower until the end of its next turn.")]},
+    "Battle Medic": {"activities": [act("roll", "Battle Medic", roll={"formula": "2d12", "note": "10+: remove 1 Physical condition rank; doubles remove all ranks."})]},
+    "Persistent Will": {"activities": [act("roll", "Persistent Will", roll={"formula": "1d12", "note": "Add to your concentration check."})]},
+    "Pressure Build": {"activities": [effect("Pressure Build", [ch("n5e.dr", 1)], expires="turnStart", text="+1 DR for each instance of [Weapon Damage] you deal.")]},
+    "Unbound Ferocity": {"activities": [effect("Unbound Ferocity", target="targets", expires="turnStart", name="Unbound Ferocity",
+        text="You have advantage on Taijutsu attacks against it; it has advantage against you.")]},
+    "Elite Focus": {"activities": [effect("Elite Focus", seconds=60, activation="bonus", name="Elite Focus",
+        text="Concentration as a B-Rank jutsu; pick two benefits; 2 Discipline at the start of each turn.")]},
+    "Hidden hand": {"effects": [("Hidden Hand", [ch("n5e.mastery.skill.ste", "Hidden Hand")])]},
+    "Efficient Bukijutsu": {"flags": {"castOption": {"label": "Efficient Bukijutsu (1 Discipline: cost −rank)", "appliesTo": {"discipline": "buki"},
+        "oncePerTurn": True, "cost": {"pool": DISC, "amount": 1}, "costDelta": "-rank"}}},
+    "Disciplined Illusions": {"activities": [act("roll", "Gain Discipline (Genjutsu)", cost={"pool": DISC, "choose": True, "gain": True},
+        roll={"formula": "", "note": "D/C-Rank 1, B/A-Rank 2, S-Rank 3."})]},
+    "Disciplined Ninshou": {"activities": [act("roll", "Gain Discipline (Ninjutsu)", cost={"pool": DISC, "choose": True, "gain": True},
+        roll={"formula": "", "note": "D/C-Rank 1, B/A-Rank 2, S-Rank 3."})]},
+    "Disciplined Strikes": {"activities": [act("roll", "Gain Discipline (attacks)", cost={"pool": DISC, "choose": True, "gain": True},
+        roll={"formula": "", "note": "1 per attack made with the Attack action."})]},
+    "Disciplined Maneuvers": {"activities": [gain(DISC, "Gain Discipline (skill action)", note="Once per turn (2 at 11th, 3 at 20th).")]},
+    "Efficient Chain": {"activities": [act("roll", "Gain Discipline (sustained Chain)", cost={"pool": DISC, "choose": True, "gain": True},
+        roll={"formula": "", "note": "Equal to the Chain rank you sustained."})]},
+    "Fang Breaker Fury": {"activities": [MIN_AMP("Enter Battle Trance", "battle", "battleTrance", name="Battle Trance",
+        cost={"pool": DISC, "amount": 1}, text="10 minutes before reuse (or +1 Discipline per extra use).")]},
+    "Dazzling Dances": {"activities": [
+        effect("Waltz", seconds=60, activation="bonus", state="waltz", exclusive="dance", ampType="battle", name="Waltz"),
+        effect("Samba", seconds=60, activation="bonus", state="samba", exclusive="dance", ampType="battle", name="Samba")]},
+    "Converging Vector": {"activities": [effect("Vector Seal", target="targets", seconds=60, activation="bonus", cost={"pool": DISC, "amount": 1},
+        name="Vector Seal", text="One at a time.")]},
+    "Reavers Quarry": {"activities": [effect("Mark your Quarry", target="targets", seconds=60, activation="bonus", state="quarry", name="Quarry",
+        text="+1 [Weapon Damage] against it (+2 at 10th, +3 at 17th).")]},
+    "Obsidian Ward": {"system": {"resourcePools": [pool("obsidianWard", "Obsidian Ward", "11 + @level", recovery=(("sr", "all", "", ""), ("lr", "all", "", "")))]},
+        "activities": [act("roll", "Ward Restoration", roll={"formula": "lvl(3:1d12,10:2d12,17:3d12)", "note": "The ward regains this (when you spend Discipline, once per turn)."})]},
+    "Warden Techniques": {"activities": [effect("Provoke", target="targets", expires="turnStart", cost={"pool": DISC, "amount": 1}, name="Provoked")]},
+    "Savage Assault": {"activities": [act("save", "Okuri-Inu Fang", cost={"pool": DISC, "amount": 2}, **save("str", "tai", [cond("shaken", label="Shaken")]))]},
+})
+
+# ------------------------------------------------------------------------------------------ #
 #  Feats                                                                                     #
 # ------------------------------------------------------------------------------------------ #
 
@@ -305,6 +576,24 @@ CLASS_PATCHES = {
 }
 
 
+def skilled_exploit(doc):
+    """Hunters Exploits of type "Skilled Exploit": a check button for the skill named on the "Skill:"
+    line, with the activation the text names. Combat exploits keep the text parser's buttons."""
+    tags = doc.get("system", {}).get("tags", [])
+    if "hunter-exploit" not in tags:
+        return None
+    text = re.sub(r"<[^>]+>", " ", doc["system"].get("description", ""))
+    if not re.search(r"Exploit Type:\s*Skilled", text):
+        return None
+    m = re.search(r"Skill:\s*([A-Za-z ]+?)\s{2,}", text)
+    key = SKILL_KEYS.get(m.group(1).strip().lower()) if m else None
+    if not key:
+        return None
+    low = text.lower()
+    activation = "reaction" if "as a reaction" in low else "bonus" if "bonus action" in low else "action" if "as an action" in low else ""
+    return {"activities": [chk(key, f"{doc['name']}: {SKILL_LABELS[key]} check", activation=activation)]}
+
+
 def deep_merge(dst, src):
     """Merge src into dst recursively (dicts merge; anything else replaces)."""
     for k, v in src.items():
@@ -324,6 +613,8 @@ def apply():
             with open(path, encoding="utf-8") as f:
                 doc = json.load(f)
             spec = table.get(doc["name"])
+            if not spec and pack == "features":
+                spec = skilled_exploit(doc)
             if not spec:
                 continue
             sysd = doc.setdefault("system", {})
@@ -338,8 +629,9 @@ def apply():
             if "effects" in spec:
                 keep = [e for e in doc.get("effects", []) if not e.get("flags", {}).get("n5e", {}).get("automation")]
                 for entry in spec["effects"]:
-                    label, changes, levels = (*entry, None)[:3]   # (label, changes[, (minLevel, maxLevel)])
-                    e = transfer(doc["name"], label, changes, levels)
+                    # (label, changes[, (minLevel, maxLevel)[, stance category]])
+                    label, changes, levels, stance = (*entry, None, None)[:4]
+                    e = transfer(doc["name"], label, changes, levels, stance)
                     e["_key"] = f"!items.effects!{doc['_id']}.{e['_id']}"
                     keep.append(e)
                 doc["effects"] = keep

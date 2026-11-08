@@ -31,7 +31,24 @@
     "tags": [
       "weapon-augmentation"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5egUcBVQE9bBV6l",
+        "type": "heal",
+        "label": "Restorative Augmentation",
+        "heal": {
+          "formula": "lvl(1:1d12,9:2d12,15:3d12)",
+          "pool": "hp"
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "text": "In combat; not again until the end of your next turn."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eWvPu9tL9XHxCd",

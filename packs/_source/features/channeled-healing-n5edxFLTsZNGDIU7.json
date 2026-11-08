@@ -39,7 +39,22 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Channeled Healing",
+        "auto": true,
+        "oncePerTurn": true,
+        "appliesTo": {
+          "keywords": [
+            "medical"
+          ],
+          "requiresHealing": true
+        },
+        "heal": {
+          "formula": "@scale.medicalNin.channeledHealing",
+          "pool": "hp"
+        }
+      }
     }
   },
   "_stats": {

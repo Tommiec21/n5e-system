@@ -29,7 +29,47 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "posture",
+        "label": "Posture",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "grants": {
+      "proficiencies": [
+        "skill.mar",
+        "skill.sur"
+      ]
+    },
+    "activities": [
+      {
+        "id": "n5eCZYx2mgYa22sK",
+        "type": "roll",
+        "label": "Gain Posture",
+        "cost": {
+          "pool": "posture",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, when you reduce or resist damage with a reaction feature or jutsu."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eWtAU5vhZC0Q4R",

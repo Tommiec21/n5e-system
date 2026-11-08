@@ -29,7 +29,68 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [
+      {
+        "id": "carnage",
+        "label": "Carnage",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5ep1nIccBO8KVSg",
+        "type": "roll",
+        "label": "Gain Carnage",
+        "cost": {
+          "pool": "carnage",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "When you deal or take damage from a creature (Executioners Drive)."
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5ej7XGgI4xghZdm",
+        "type": "roll",
+        "label": "Guillotine Cleave",
+        "cost": {
+          "pool": "carnage",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "A melee weapon attack against every creature in reach."
+        }
+      },
+      {
+        "id": "n5eBHrenFyxYm84n",
+        "type": "roll",
+        "label": "Butchers Momentum",
+        "cost": {
+          "pool": "carnage",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "On a hit: 30 ft of bonus movement."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5e6Gr4yPYA7av5l",

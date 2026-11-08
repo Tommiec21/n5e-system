@@ -31,7 +31,37 @@
     "tags": [
       "gen-inception"
     ],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eTk5vhnftoXEl8",
+        "type": "roll",
+        "label": "Shift initiative",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1,
+          "roll": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Raise or lower one creature's initiative by the roll (once per initiative)."
+        }
+      },
+      {
+        "id": "n5euSNCm4pgP46F2",
+        "type": "effect",
+        "label": "Wind the Stopwatch",
+        "effect": {
+          "name": "Temporal Stopwatch (wound)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "activation": "bonus",
+        "text": "Once per turn, a Genjutsu cast also grants Dash or Disengage."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eB7tSpFehjOruK",

@@ -29,7 +29,66 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eJBqB9t5r40eeA",
+        "type": "save",
+        "label": "Rending Thoughts",
+        "activation": "action",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": []
+      },
+      {
+        "id": "n5epmjPOw2x400VM",
+        "type": "damage",
+        "label": "Rending Thoughts: success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ewdPhbb0I8tNuD",
+        "type": "damage",
+        "label": "Rending Thoughts: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Also a 1d4 penalty to its next attack roll before your next turn."
+      },
+      {
+        "id": "n5eeTUpo0n35ZvjY",
+        "type": "damage",
+        "label": "Rending Thoughts: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ec2fGodeElqLee",

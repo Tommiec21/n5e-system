@@ -29,7 +29,27 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eRXWFnV6mnR8JR",
+        "type": "damage",
+        "label": "Sustained Pressure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": ""
+            }
+          ]
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
+        "text": "This and every later unarmed attack this turn adds a Martial Die."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eTxXLWileSOBPD",
@@ -39,7 +59,22 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Valve Break (1 Martial Die: +rank Martial Dice)",
+        "appliesTo": {
+          "discipline": "tai",
+          "requiresDamage": true
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
+        "damage": {
+          "formula": "(@rankValue)d6"
+        },
+        "note": "The first time you deal damage this turn."
+      }
     }
   },
   "_stats": {

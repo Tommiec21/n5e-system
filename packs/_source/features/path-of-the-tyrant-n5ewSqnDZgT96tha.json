@@ -41,7 +41,20 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Brutal Taijutsu (+damage)",
+        "appliesTo": {
+          "discipline": "tai",
+          "requiresDamage": true,
+          "stance": "taijutsu"
+        },
+        "oncePerTurn": true,
+        "auto": true,
+        "damage": {
+          "formula": "lvl(1:2,11:4)"
+        }
+      }
     }
   },
   "_stats": {
