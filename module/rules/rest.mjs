@@ -8,6 +8,13 @@
  *   with food and drink.
  * Full (24 h): everything back; [Persists] conditions removed; all recoveries.
  * Envenomed: no rest benefits. Long and Full need at least 1 HP.
+ *
+ * Rest limits and rations are optional rules (N5e Rules → Resting / Rations). The counters that the
+ * "count" and "time" limit modes need are kept on the actor in flags.n5e.rest:
+ *   srSinceLr, lrSinceFr  rests taken since the last Long / Full Rest
+ *   lastLr, lastFr        world time (seconds) of the last Long / Full Rest
+ * restCheck decides whether the rest is allowed and gives its benefits; restPlan lists every change.
+ * workflow/rest.mjs shows the dialog, rolls the dice and applies the plan.
  */
 import { rule } from "../rules-settings.mjs";
 import { recoveryAllowed } from "./features.mjs";

@@ -4,6 +4,13 @@
  * resolves numeric formulas like "1 + @prof" or "floor(@level / 2) + @abilities.con.mod".
  *
  * Supported: numbers, + - * / ( ), @path.to.value, floor ceil round min max abs.
+ *
+ * Two formula layers exist; don't mix them up:
+ *   evaluateFormula (here)      numbers only, used while preparing data (pool max, uses max, DCs).
+ *   resolveFormula (unarmed.mjs) text substitution before a Roll: lvl(1:1d8,5:2d8), @level,
+ *                                @amount, @poolRoll. The result then goes to Foundry's Roll.
+ * Security: the expression is checked against a whitelist before it is evaluated, so stored text
+ * can never run code.
  */
 
 const FUNCTIONS = { floor: Math.floor, ceil: Math.ceil, round: Math.round, min: Math.min, max: Math.max, abs: Math.abs };

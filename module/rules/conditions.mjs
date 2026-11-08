@@ -1,6 +1,16 @@
 /**
  * Condition rank penalties -> one aggregate object the derived-data pipeline applies (step 7).
  * Source: KB 05. Per-rank numbers live in config/conditions.mjs.
+ *
+ * Penalty kinds (keys of the aggregate) and where the pipeline applies them (creature.mjs):
+ *   allDice           every d20 roll and DC            ac           Armor Class
+ *   saveDC            your save DCs                    d20Physical  Str/Dex/Con rolls
+ *   d20Mental         Int/Wis/Cha rolls                checksAndAttacks  checks and attack rolls
+ *   perception        Passive Perception               dr           Damage Reduction
+ *   damageTaken / damageDealt  (shown; applied by the damage workflow where noted)
+ *   baseCost.<disc>   added to a jutsu's base cost (Sealed)
+ *   flags             rule switches (noHealing, speedMultiplier, maxComponents...) read by name
+ * Adding a new penalty kind: add it to emptyPenalties() and apply it where the number is built.
  */
 import { conditions as coreConditions } from "../config/conditions.mjs";
 
@@ -56,6 +66,7 @@ export function aggregatePenalties(active, registry = coreConditions) {
       out.dr += v;
       note("dr", v);
     }
+    // Flags are switches, not sums: the last condition that sets one wins (they are all "true" today).
     for ( const [k, v] of Object.entries(def.flags ?? {}) ) out.flags[k] = v;
     out.flags[`has.${key}`] = r;
   }

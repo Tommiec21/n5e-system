@@ -1,6 +1,12 @@
 /**
  * Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates,
  * end-of-turn resaves. Foundry wiring lives in workflow/trackers.mjs.
+ *
+ * Pattern for a new tracker: put the decision ("what changes, given this actor and this turn") here
+ * as a pure function returning an update or a list, test it in tests/trackers.test.mjs, then call it
+ * from workflow/trackers.mjs (buttons, turn hooks) and show it from view-models/combat.mjs.
+ * Turns are compared as {round, turn} pairs (sameTurn) so "until the end of your next turn" works
+ * the same in and out of the round boundary.
  */
 import { conditions as coreConditions } from "../config/conditions.mjs";
 import { marks as markTable, innerGates, gateAccess } from "../config/combat.mjs";

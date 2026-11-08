@@ -5,6 +5,8 @@
  *   - Combo/Finisher: a Combo arms Finishers; the Finisher effect needs the Combo immediately before it,
  *     so a Finisher, or any other jutsu, disarms it.
  * Pure: returns the actor update, so the sheet (and Phase 3's cast workflow) can apply it.
+ * flags.n5e.chainTouched tells the next turn start that Chain was raised or maintained (no reset).
+ * The full Chain state machine, with the no-repeat rule, is rules/chain.mjs.
  */
 const kw = item => (item.system.keywords instanceof Set ? item.system.keywords : new Set(item.system.keywords ?? []));
 

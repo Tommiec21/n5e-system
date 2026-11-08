@@ -4,6 +4,9 @@
  *   - Assault Maneuvers (tag assault-maneuver) spend Superiority Dice: 1, or the number named
  *     ("spend two superiority die").
  *   - Features with limited uses spend 1 use.
+ *   - With the Stamina rule on, feats whose uses recover on a rest spend 1 Stamina instead.
+ * Features whose authored activities carry their own cost (e.g. "1 Superiority Die" on a button)
+ * pay on that button instead (workflow/use-feature.mjs). New tag-based costs go in resourceCost.
  */
 import { usesStamina } from "./trackers.mjs";
 

@@ -59,9 +59,15 @@ export async function rollD20(actor, type, key, options = {}) {
 
 /**
  * Roll any d20 spec ({label, bonus, kind, scope?, breakdown?, note?}).
+ * Every d20 in the system ends up here: sheet rolls, attacks, saves from cards, removal checks,
+ * resaves. The message carries flags.n5e.roll so Will of Fire can reroll it later.
  * @param {object} [options]
+ * @param {Event} [options.event]        the click (modifier keys pick the mode; Shift opens the dialog)
+ * @param {string} [options.mode]        force normal | advantage | disadvantage (e.g. condition resistance)
  * @param {number} [options.dc]          compare against a DC (saves from a card)
  * @param {boolean} [options.fourTier]   report Genjutsu four-tier results
+ * @param {string} [options.onFail]      HTML added to the card only on a failure (Apply-condition buttons)
+ * @param {Function} [options.onResult]  called with {natural, crit, fumble, degree, success, message}
  */
 export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null } = {}) {
   const type = spec.type ?? "custom";
@@ -147,7 +153,16 @@ export async function spendWillOfFire(message, how) {
     flags: { n5e: { roll: { ...data, natural: kept } } } });
 }
 
-/** Wire chat card buttons (call from the renderChatMessageHTML hook). */
+/**
+ * Wire chat card buttons (call from the renderChatMessageHTML hook).
+ * Cards are stored as HTML, so buttons are found by their data attributes on every render:
+ *   data-n5e-apply / -inflict / -undo / -concheck / -deathsave   workflow/apply-damage.mjs
+ *   data-n5e-act (attack, damage, save, heal, strike, effect, roll)  workflow/activity-buttons.mjs
+ *   data-n5e-track / data-n5e-resave                               workflow/trackers.mjs
+ *   data-n5e-wof                                                   Will of Fire (below)
+ * A new kind of card button: pick a new data-n5e-* attribute and add a loop here. The handlers are
+ * imported on click so loading the chat log stays cheap.
+ */
 export function onRenderChatMessage(message, html) {
   for ( const btn of html.querySelectorAll("[data-n5e-apply], [data-n5e-inflict], [data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave]") ) {
     btn.addEventListener("click", ev => {

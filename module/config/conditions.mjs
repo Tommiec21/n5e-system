@@ -11,9 +11,21 @@
  *   perRank     numeric penalties multiplied by ranks (read by rules/conditions.mjs)
  *   flat        numeric penalties applied once while present
  *   flags       rule switches the engine checks (noHealing, maxComponents...)
- *   removal     how it can be removed (data for Phase 4 automation)
+ *   removal     how it can be removed: [{action, check: [ability or skill keys], dc, ranks: n|"all",
+ *               perOver: {every, ranks} (Bleed), onFail: {dcIncrease} (Sealed), requiresTool}] or
+ *               [{text}] for removals the GM judges. Drives the rail's "Try to end" button.
+ *   turnStartDamage {die, type, perRank}  damage card at the start of the creature's turn (Burned, Bleed)
+ *   moveDamage  {die, type, perRank, thresholdFeet, oncePerTurn}  damage on movement (Chilled)
+ *   drBySourceRank  DR change by the inflicting jutsu's rank (Corroded)
+ *   affliction  the damage type it is the Elemental Affliction of
+ *   immunityFrom    immunities that also grant immunity to this condition
  *   group       "compelled" for the three Compelled conditions
  *   icon        token status icon
+ *
+ * Adding a condition: add an entry here. It appears on the token HUD and in the rail's Add list, its
+ * penalties apply through rules/conditions.mjs, jutsu text that names it gets Apply buttons
+ * (rules/activity-parse.mjs), and decay, durations, removal and turn damage follow its fields
+ * (rules/condition-lifecycle.mjs). Code only needs changing for a brand-new kind of behavior.
  */
 export const conditionTags = {
   fatigue: "Fatigue", elemental: "Elemental", physical: "Physical", mental: "Mental", sensory: "Sensory"

@@ -1,6 +1,8 @@
 /**
  * Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. Pure functions.
  * Source: KB 01, 04, 08. Tables come from config/core.mjs so homebrew edits flow through.
+ * To change a progression number (proficiency bands, Mastery caps, ASI levels, rank minimum
+ * levels), edit the table in config/core.mjs; these functions read it.
  */
 import { progression, ranks, rankOrder, levelToRank, abilities } from "../config/core.mjs";
 import { inventory as inventoryRules } from "../config/equipment.mjs";

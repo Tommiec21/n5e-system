@@ -1,5 +1,8 @@
 /**
  * Skill-action attempt penalty (Core Ch6; King 2026-11-07: penalties don't stack).
+ * Tiers (config/character.mjs skillActionTiers): np = anyone, p = needs proficiency (−3 without),
+ * m = needs Mastery (−5 without), kit = needs the kit and spends a charge (no penalty, just gated).
+ * When both apply, the worse one is used.
  */
 import { skillActionTiers } from "../config/character.mjs";
 

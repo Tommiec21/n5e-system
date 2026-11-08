@@ -19,6 +19,13 @@
  *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
+ *
+ * Adding a new key (four places, all in this file plus the reader):
+ *   1. a field in emptyModifiers() with its neutral value,
+ *   2. a case in parseN5eChanges() that folds the change's value into it,
+ *   3. an entry in changeKeyCatalog() so the effect editor suggests it,
+ *   4. read system.modifiers.<field> wherever the number is built (usually creature.mjs).
+ * Unrecognized n5e.* keys are collected in `unknown` (shown in the effect editor) instead of erroring.
  */
 
 export const CHANGE_KEY_PREFIX = "n5e.";

@@ -28,6 +28,8 @@ export const N5E = {
 // Optional and table rules: one registry, one settings panel (config/rules.mjs).
 export { rules as optionalRules, ruleGroups } from "./rules.mjs";
 import { rules as _rules, ruleGroups as _groups } from "./rules.mjs";
+// The same registry under three names: rules (current), ruleGroups (panel sections), and
+// optionalRules (the Phase 1 name; kept so older macros keep working).
 N5E.rules = _rules;
 N5E.ruleGroups = _groups;
 N5E.optionalRules = _rules;

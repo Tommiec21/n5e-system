@@ -2,6 +2,11 @@
  * Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control
  * which rules apply). Each becomes a world setting, edited in the "N5e Rules" panel (open to everyone;
  * only the GM can change it). type: boolean | number | choice. Defaults = the book's rules.
+ *
+ * Entry: { group, type, default, label, hint, [min, max] for numbers, [choices] for choice }.
+ * Add one here and it is registered (settings.mjs), shown in the panel (applications/settings/
+ * rules-config.mjs), and readable anywhere with rule("key") (rules-settings.mjs). Put the rule's
+ * check where the automation happens, so turning it off skips just that automation.
  */
 export const ruleGroups = {
   rolls: "Rolls and Will of Fire",

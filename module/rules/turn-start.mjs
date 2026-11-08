@@ -7,6 +7,11 @@
  *   - Action economy resets: Action, Bonus Action, Reaction (once per round, back at your turn),
  *     Special Action, free object interaction.
  *   - Recharge X-Y: each spent ability rolls; die size from Y (3-4 d4, 5-6 d6, 7-8 d8, 9-10 d10, 11-12 d12).
+ *   - Chakra Surge, Flow: +1 Focus.
+ * The plan is pure; workflow/turn.mjs applies it on the active GM's client when a turn begins and
+ * posts the start-of-turn card. Other turn-start work (condition damage, effects that end at the
+ * start of the creature's turn) is done by workflow/conditions.mjs and workflow/trackers.mjs.
+ * Each part checks its optional rule, so turning a rule off in N5e Rules only skips that part.
  */
 import { rule } from "../rules-settings.mjs";
 

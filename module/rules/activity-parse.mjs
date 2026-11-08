@@ -8,6 +8,14 @@
  *   "2d10+2 Fire damage", "[Unarmed damage] + 2d6" -> damage parts (@unarmed = the actor's unarmed damage)
  *   "gain 12 Temporary Hit points"             -> temporary HP
  *   "regain 2d8 hit points"                    -> healing
+ *   "repeat the saving throw at the end of each of its turns" -> save.resave (turn-end resave prompt)
+ *
+ * The parser is deliberately conservative: it only produces buttons for phrasing it is sure of, and
+ * the full text is always on the card, so a missed phrase costs a manual roll, never a wrong one.
+ * When the text is too unusual (choices, conditional riders), author the activities instead
+ * (tools/content/automation.py for imported content, or the item sheet's activities for homebrew).
+ * Improving the parser: add the phrasing here and a case to tests/casting.test.mjs, which runs the
+ * parser over every imported jutsu.
  */
 import { unarmedSpec } from "./unarmed.mjs";
 import { hasResave } from "./trackers.mjs";
@@ -15,7 +23,10 @@ import { abilities } from "../config/core.mjs";
 import { damageTypes } from "../config/combat.mjs";
 import { conditions as CONDITIONS, states as STATES } from "../config/conditions.mjs";
 
-/** Condition and state names as they appear in text -> {key, kind}. */
+/**
+ * Condition and state names as they appear in text -> {key, kind}. Built from the registries, so a
+ * new condition is recognized in text automatically. "Compelled: Berserk" is matched as "berserk".
+ */
 const EFFECT_NAMES = (() => {
   const out = {};
   for ( const [k, v] of Object.entries(CONDITIONS) ) out[v.label.replace(/^Compelled:\s*/, "").toLowerCase()] = { key: k, kind: "condition" };
@@ -96,7 +107,11 @@ export function parseActivities(html, { discipline = "" } = {}) {
   return out;
 }
 
-/** The activities an item actually uses: authored ones, else read from its text. */
+/**
+ * The activities an item actually uses: authored ones, else read from its text.
+ * Every caller (cards, cast dialog, cast options) goes through this, so authoring activities on an
+ * item fully replaces the parsed ones for it.
+ */
 export function effectiveActivities(item) {
   const authored = [...(item.system.activities ?? [])];
   if ( authored.length ) return authored.map(a => ({ ...a, authored: true }));

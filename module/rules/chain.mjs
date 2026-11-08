@@ -8,6 +8,10 @@
  *  - Reset to 0: any non-Chain jutsu; or your turn starts and you neither raised nor maintained
  *    since your last turn started. You can sit at Chain 3; opting out doesn't reset.
  *  - No repeats: the same named jutsu can't be cast twice in one chain.
+ *
+ * This is the full rule as a pure state machine (tests use it as the reference). The live sheet
+ * applies the simpler update in rules/cast-tracking.mjs (at cast) and rules/turn-start.mjs (the
+ * reset). Keep the three in step when the Chain rule changes.
  */
 export const CHAIN_MAX = 3;
 
