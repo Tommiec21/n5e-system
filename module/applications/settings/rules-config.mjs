@@ -17,6 +17,8 @@ export default class RulesConfig extends HandlebarsApplicationMixin(ApplicationV
     actions: { reset: RulesConfig.#onReset }
   };
 
+  // The template wraps its header, scrolling groups and footer in one section: ApplicationV2
+  // rejects ordinary template parts with several top-level elements before opening the window.
   static PARTS = { form: { template: "systems/n5e/templates/apps/rules-config.hbs", scrollable: [".rule-groups"] } };
 
   /** @override */

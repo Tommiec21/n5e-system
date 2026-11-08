@@ -630,6 +630,8 @@
 
 /* N5e Rules panel */
 .n5e-rules-config .window-content { padding: 0; display: flex; flex-direction: column; background: var(--n5e-paper); color: var(--n5e-ink); font-family: var(--n5e-body); }
+/* ApplicationV2 parts require one root. Keep its middle group list scrollable inside the window. */
+.n5e-rules-config .rules-panel { display: flex; flex-direction: column; flex: 1; min-height: 0; }
 .n5e-rules-config .rules-head { padding: 10px 16px; background: var(--n5e-ink); color: var(--n5e-paper); font-size: 12px; }
 .n5e-rules-config .rules-head p { margin: 0; }
 .n5e-rules-config .rule-groups { flex: 1; overflow-y: auto; padding: 10px 16px; }

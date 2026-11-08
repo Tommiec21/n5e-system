@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.3-alpha.2 — Rules settings window fix
+
+- Fixed **Open N5e Rules** failing to open: its template had multiple top-level elements, which Foundry's ApplicationV2 renderer rejects. A single wrapper now contains the header, rules and footer.
+- Preserved scrolling for the grouped rules and the player's read-only view.
+- Added regression coverage using the actual panel context and template for both GM and player views.
+
 ## 0.9.3-alpha.1 — Automation framework
 
 ### Added
