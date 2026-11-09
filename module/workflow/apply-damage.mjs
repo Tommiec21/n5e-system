@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs.
  *
@@ -151,7 +152,7 @@ async function concentrationCheck(actor, dc, jutsuIds, event) {
 /** Death save (no bonuses): >= 10 success; nat 1 two failures; nat 20 back to 1 HP. */
 export async function rollDeathSave(actor) {
   if ( !actor?.isOwner ) return null;
-  const roll = await new Roll("1d20").evaluate();
+  const roll = await createN5eRoll("1d20").evaluate();
   const res = deathSaveResult(actor.system.deathSaves, roll.total);
   const update = { "system.deathSaves.success": res.success, "system.deathSaves.failure": res.failure };
   let note = `${res.success} success / ${res.failure} failure`;

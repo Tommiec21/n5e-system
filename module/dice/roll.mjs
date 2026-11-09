@@ -1,3 +1,4 @@
+import { createN5eRoll } from "./n5e-roll.mjs";
 /**
  * Rolling d20s from the sheet and posting them to chat (Foundry side). The rules live in dice/d20.mjs.
  *
@@ -92,7 +93,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     extra = res.bonus;
   }
   const formula = `${MODES[mode]} + @bonus${extra ? ` + ${extra}` : ""}`;
-  const roll = await new Roll(formula, { bonus: spec.bonus }).evaluate();
+  const roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
   const threshold = critThreshold(actor, spec.scope);
   const result = readD20(roll, threshold);
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
@@ -154,7 +155,7 @@ export async function spendWillOfFire(message, how) {
     return { degree: d.degree, html: `<div class="note">vs DC ${data.dc}: ${label}</div>${data.tiers?.[key] ? `<div class="n5e-save-outcome">${esc(data.tiers[key])}</div>` : ""}` };
   };
   if ( how === "reroll" ) {
-    const roll = await new Roll(`${MODES[data.mode] ?? "1d20"} + @bonus${extra}`, { bonus: data.bonus }).evaluate();
+    const roll = await createN5eRoll(`${MODES[data.mode] ?? "1d20"} + @bonus${extra}`, { bonus: data.bonus }).evaluate();
     const result = readD20(roll, data.threshold ?? 20);
     const resolved = outcome(roll.total, result.natural);
     return roll.toMessage({ speaker: ChatMessageCls.getSpeaker({ actor }),
@@ -163,9 +164,9 @@ export async function spendWillOfFire(message, how) {
       flags: { n5e: { roll: { ...data, natural: result.natural, degree: resolved.degree } } } });
   }
   // Advantage after the fact: one more d20, keep the higher natural.
-  const extraDie = await new Roll("1d20").evaluate();
+  const extraDie = await createN5eRoll("1d20").evaluate();
   const kept = Math.max(data.natural ?? 1, extraDie.total);
-  const total = new Roll(`${kept} + @bonus${extra}`, { bonus: data.bonus });
+  const total = createN5eRoll(`${kept} + @bonus${extra}`, { bonus: data.bonus });
   await total.evaluate();
   const resolved = outcome(total.total, kept);
   return total.toMessage({ speaker: ChatMessageCls.getSpeaker({ actor }),

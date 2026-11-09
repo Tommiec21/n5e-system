@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /** Opt-in active-GM pilot: persistent damage identity, owner decision, then one validated mutation. */
 import { createReceiptCoordinator, requestFingerprint } from "../automation/receipts.mjs";
 import { deflectionOffer } from "../rules/deflection.mjs";
@@ -51,7 +52,7 @@ export async function coordinateDamage(message, data, mode, targets, apply) {
           const offer = deflectionOffer(actor, { combat: !!currentStamp, ...data });
           if ( !offer || offer.item.id !== originalOffer.item.id || stamp !== currentStamp ) throw new Error("Deflection eligibility changed; reconcile this damage instead of applying it automatically.");
           const revision = actor._stats?.modifiedTime;
-          const roll = await new Roll(`${offer.dice}${offer.die}`).evaluate();
+          const roll = await createN5eRoll(`${offer.dice}${offer.die}`).evaluate();
           if ( !game.users.activeGM?.isSelf || actor._stats?.modifiedTime !== revision ) throw new Error("Authority or actor changed during the reaction roll; reconcile the request.");
           return { flatReduction: roll.total, update: { "system.resources.discipline.value": actor.system.resources.discipline.value - offer.cost, "flags.n5e.economy.reaction": true },
             roll, label: "Deflection" };

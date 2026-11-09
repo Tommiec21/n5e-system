@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. Roll it each use; a 1-2 steps it down. Recovering ammo
  * steps it up. Reaching 0 removes the item (King 2026-11-07).
@@ -28,7 +29,7 @@ export async function rollAmmo(item) {
       content: `<div class="n5e-roll-card"><b>${item.name}</b>: last of the ammunition used.</div>` });
     return stepAmmo(item, 1);
   }
-  const roll = await new Roll(`1d${face}`).evaluate();
+  const roll = await createN5eRoll(`1d${face}`).evaluate();
   const down = (CONFIG.N5E.ammoDie?.stepDownOn ?? [1, 2]).includes(roll.total);
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor: item.actor }),
     flavor: `<div class="n5e-roll-card"><header><b>${item.name}: Ammunition Die</b><span class="mode">d${face}</span></header>

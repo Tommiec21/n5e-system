@@ -1,3 +1,9 @@
+## 0.13.0-alpha.6 — N5e dice-expression precedence (MATH2)
+
+- Route N5e-owned dice through a local grouping adapter so addition/subtraction precede multiplication/division; keep Foundry dice evaluation and third-party Roll behavior intact.
+- Preserve explicit grouping, supported pool/function syntax and flavor; report unsupported syntax rather than falling back to conventional precedence.
+- No global Roll patch or new dependency.
+
 ## 0.13.0-alpha.5 — Observer visibility and Uncanny Dodge (VIS1)
 
 - Use observer-specific Foundry13 detection with token-size sampling; Blindsight qualifies per user ruling, while unsupported/ambiguous sight remains unresolved.

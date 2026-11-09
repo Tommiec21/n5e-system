@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Rest dialogs (Foundry side). Short: choose Hit Dice and Chakra Dice to spend (rolled together,
  * + Con per die). Long: with or without food and drink. Full: confirm. Each shows the limit or ration
@@ -102,12 +103,12 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   cd = Math.min(Math.max(0, Math.floor(cd)), shortRestDice(sys.chakraDice));
   if ( type === "short" && check.benefit ) {
     if ( hd && sys.hitDice.die ) {
-      const r = await new Roll(`${hd}${sys.hitDice.die} + ${con * hd}`).evaluate();
+      const r = await createN5eRoll(`${hd}${sys.hitDice.die} + ${con * hd}`).evaluate();
       rolls.push(r);
       hdRoll = r.total;
     }
     if ( cd && sys.chakraDice.die ) {
-      const r = await new Roll(`${cd}${sys.chakraDice.die} + ${con * cd}`).evaluate();
+      const r = await createN5eRoll(`${cd}${sys.chakraDice.die} + ${con * cd}`).evaluate();
       rolls.push(r);
       cdRoll = r.total;
     }

@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs.
  *   - Turn start: a damage card for Burned / Bleed with Apply (to that creature, ignoring DR).
@@ -26,7 +27,7 @@ export async function postConditionDamage(actor) {
   const rolls = [];
   const instances = [];
   for ( const h of hits ) {
-    const r = await new Roll(h.formula).evaluate();
+    const r = await createN5eRoll(h.formula).evaluate();
     rolls.push(r);
     instances.push({ amount: r.total, type: h.type, label: `${h.name}${h.ranks > 1 ? ` ${h.ranks}` : ""}` });
   }

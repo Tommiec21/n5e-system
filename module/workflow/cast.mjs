@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card.
  *
@@ -155,14 +156,14 @@ export async function postCastCard(actor, item, plan) {
   if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
   for ( const r of plan.extraRolls ?? [] ) {
-    const roll = await new Roll(r.formula).evaluate();
+    const roll = await createN5eRoll(r.formula).evaluate();
     extras.push(`<p class="note"><b>${esc(r.label)}</b>: rolled ${roll.total}. ${esc(r.note)}</p>`);
   }
   for ( const n of plan.notes ?? [] ) extras.push(`<p class="note">${esc(n)}</p>`);
   for ( const [k, v] of Object.entries(plan.pools) ) {
     const die = actor.system.resources?.[k]?.die;
     if ( !die || !v ) continue;
-    const roll = await new Roll(`${v}${die}`).evaluate();
+    const roll = await createN5eRoll(`${v}${die}`).evaluate();
     extras.push(`<p class="note"><b>${esc(actor.system.resources[k].label || k)}</b>: rolled ${roll.total} (${v}${die})</p>`);
   }
   if ( plan.pyroclasm ) extras.push(`<p class="note">+1 Pyroclasm (${Math.min(3, actor.system.resources?.pyroclasm?.value ?? 0)} / 3)</p>`);

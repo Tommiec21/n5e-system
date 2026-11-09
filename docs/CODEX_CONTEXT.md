@@ -125,3 +125,14 @@ Version 0.13.0-alpha.5: observer-specific Foundry13 sight provider and Uncanny D
 Dodge revalidates ownership, reaction, combat turn and current observer sight on commit. Half/double factors are deduplicated globally before cancellation. If both base reactions qualify, Dodge is offered first and declining may offer Deflection; accepting one does not chain the other. Integration tests cover visible/unseen/unknown sources and resource/reaction effects.
 
 Verification: 224 passed, 2 original fixture skips, zero failures; lint/consistency checks and package build passed. No live Foundry verification. This is a bounded standard-scene provider, not full geometry/cover/elevation or universal vision-module support. Next prerequisite MATH2: explicit N5e precedence adapter for supported complex dice expressions. Publication pending; local Foundry remains untouched.
+
+### VIS1 published; MATH2 active
+
+https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.5; commit 5e75c4f16db4b5b039eac7deaf180aa5ec5ef6bd. CI/Release succeeded, both assets verified. Codex owns MATH2: local N5e roll-expression grouping for addition/subtraction-first precedence without modifying Foundry or third-party Roll classes. Complex unsupported syntax must report failure rather than silently apply conventional precedence.
+
+
+### MATH2 completed — publication pending
+
+Version 0.13.0-alpha.6: N5e-owned rolls use a local grouping factory before Foundry evaluation, enforcing addition/subtraction before multiplication/division without global patches or third-party changes. Explicit parentheses, supported functions/pools, dice modifiers and flavor are preserved; string formula references are grouped. Unsupported syntax (including exponentiation/modulo and quoted strings outside annotations) reports failure. This adapter is not a universal custom dice parser or DAE script engine.
+
+Verification: 227 passed, 2 original migration fixture skips, zero failures; lint/schema checks and release build passed. Live Foundry dice evaluation remains unverified. A disposable multiplayer verification checklist is saved at outputs/N5e-multiplayer-live-test-checklist.md and in repository docs. Publication pending. Next scope LIVE1: live validation only, awaiting the user's permission for an isolated Foundry instance or an offered test session. Do not treat the existing approvals as permission to install into the local production Foundry system.

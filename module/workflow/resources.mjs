@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /** Shared validated resource payment for activities and feature use. */
 import { withActorLock } from "./commands.mjs";
 import { resourceChange } from "../rules/resources.mjs";
@@ -51,7 +52,7 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
   }
   await actor.update({ [`system.resources.${cost.pool}.value`]: nextValue });
   if ( !cost.roll || !pool.die || !amount ) return { roll: null, amount };
-  const roll = await new Roll(`${amount}${pool.die}`).evaluate();
+  const roll = await createN5eRoll(`${amount}${pool.die}`).evaluate();
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),
     flavor: `<div class="n5e-roll-card"><header><b>${esc(pool.label || cost.pool)}</b><span class="bonus">${roll.total}</span></header><div class="note">Spent ${amount}</div></div>` });
   return { roll: roll.total, amount };

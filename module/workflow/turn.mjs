@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Turn start (Foundry side). The active GM's client applies the turn-start plan for the combatant
  * whose turn begins: concentration upkeep, Chain/Combo resets, action economy, recharge rolls; then
@@ -41,7 +42,7 @@ async function onTurnStart(combat) {
 
   const lines = [];
   for ( const r of plan.recharges ) {
-    const roll = await new Roll(`1d${r.die}`).evaluate();
+    const roll = await createN5eRoll(`1d${r.die}`).evaluate();
     const ok = roll.total >= r.min;
     if ( ok ) await actor.items.get(r.id)?.update({ "system.uses.spent": 0 });
     lines.push(`${esc(r.name)}: recharge d${r.die} rolled ${roll.total}${ok ? " (recharged)" : ""}`);

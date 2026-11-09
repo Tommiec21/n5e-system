@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Chat card buttons for activities, and what happens when they're clicked.
  *
@@ -287,7 +288,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "roll": {
       const formula = level(d.formula);
-      const roll = formula ? await new Roll(formula, caster?.getRollData?.() ?? {}).evaluate() : null;
+      const roll = formula ? await createN5eRoll(formula, caster?.getRollData?.() ?? {}).evaluate() : null;
       if ( !roll ) return payment;
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
@@ -325,7 +326,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
           abilityMod = abilityMod ?? strMod;
         }
-        const roll = await new Roll(crit ? critFormula(formula, abilityMod) : formula, actor?.getRollData?.() ?? {}).evaluate();
+        const roll = await createN5eRoll(crit ? critFormula(formula, abilityMod) : formula, actor?.getRollData?.() ?? {}).evaluate();
         rolls.push(roll);
         instances.push({ amount: roll.total, type: p.type });
       }
@@ -376,7 +377,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       return rolled ? { saves: rolled } : null;
     }
     case "heal": {
-      const roll = await new Roll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
+      const roll = await createN5eRoll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
       const pool = d.pool || "hp";
       const names = [];
       for ( const t of healingTargets ?? targetsOrSelf(caster) ) {

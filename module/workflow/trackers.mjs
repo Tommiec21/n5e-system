@@ -1,3 +1,4 @@
+import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Phase 6 trackers (Foundry side); rules in rules/trackers.mjs.
  *   Fury        gain / spend; Furious token status; Binding Fury Stance grants it on weapon damage.
@@ -269,7 +270,7 @@ export async function onTokenMove(token, movement) {
   const res = chilledMove(actor, { feet, willing, now: nowTurn() });
   await actor.update({ "flags.n5e.chilledMove": res.state });
   if ( !res.hit ) return;
-  const roll = await new Roll(res.hit.formula).evaluate();
+  const roll = await createN5eRoll(res.hit.formula).evaluate();
   await ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), rolls: [roll],
     content: `<div class="n5e-roll-card damage"><header><b>${esc(actor.name)}: Chilled</b><span class="bonus">${roll.total}</span></header>
       <div class="note">Moved more than 5 ft: ${esc(res.hit.formula)} cold (${res.hit.ranks} rank${res.hit.ranks > 1 ? "s" : ""}) · ignores DR · skip if the movement was forced</div>
@@ -389,7 +390,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       else await requestEffects({ actorUuid: t.uuid, effects: [data] });
     }
     if ( eff.tempHp ) {
-      const roll = await new Roll(sub(eff.tempHp)).evaluate();
+      const roll = await createN5eRoll(sub(eff.tempHp)).evaluate();
       if ( t.isOwner ) await t.update({ "system.hp.temp": Math.max(t.system.hp.temp ?? 0, roll.total) });
       notes.push(`${t.name}: ${roll.total} temporary HP`);
     }
