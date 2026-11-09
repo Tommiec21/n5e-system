@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.9 published: native active-GM multiplayer action coordination, explicit player targets, stored-card validation, basic duplicate protection and damage retargeting. GitHub only; local Foundry unchanged.
+Current release: 0.13.0-alpha.10 published: expanded native effect authoring, typed fields/validation, draft-only changes, supported flags/predicates, previews and safe portability. GitHub only; local Foundry unchanged.
 
-Current stage: MP3 published; narrowed multiplayer implementation complete, automated gate passed. User performs in-game acceptance. Never perform live verification again.
+Current stage: EE1 effect authoring batch published; automated gate passed. User performs in-game acceptance. Never perform live verification again.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -196,3 +196,5 @@ Expanded effect editor first supported authoring batch. Extend native Foundry13 
 Existing Foundry effect sheet expanded, not replaced with a parallel application engine. Added typed search/catalog/presets, draft-only changes/import, save validation, legacy retention, stale-revision guard, supported flags/conditional predicates, previews and source/timing diagnostics, portable disabled import/copy. Native Details/Duration tabs retained. New files: rules/effect-authoring.mjs, templates/effect/changes.hbs, tests/effect-authoring.test.mjs and docs/EFFECT_EDITOR.md; updated effect-config.mjs and scoped CSS.
 
 Nine focused checks passed on first attempt; zero failures. Local lint passed. One CI verification/build reserved, then publish its exact artifact without retest. No live testing ever. User requested finish; publication pending. Capability matrix explicitly records dynamic change formulas, new event expiration, effect macros, appearance providers and automatic DAE import as unavailable future services, rather than claiming parity. This is the planned first supported editor authoring batch. No local Foundry installation.
+
+EE1 publication verified: runtime commit 1ff40a6d4; CI run 42723262909 and Release run 42723313865 succeeded. GitHub v0.13.0-alpha.10 assets verified: n5e.zip (2,354,498 bytes), system.json (5,161 bytes). Nine focused checks passed locally and again in the sole CI gate: two attempts per changed scenario, zero failures. Release consumed the verified CI artifact without retesting. No live verification or local installation. Capability matrix: docs/EFFECT_EDITOR.md and outputs/N5e-expanded-effect-editor.md. Native editor authoring expansion completed; dynamic change formulas, effect macros, new expiration types and token providers remain separate pending services, explicitly unavailable in the UI. EE1 ownership released.
