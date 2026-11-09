@@ -5,6 +5,7 @@
  * the item view model, so one template serves every type.
  */
 import { itemVM } from "../../view-models/item.mjs";
+import { editReaction } from "./reaction-editor.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
@@ -19,6 +20,10 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     window: { resizable: true },
     form: { submitOnChange: true },
     actions: {
+      editReaction: async function() {
+        try { await editReaction(this.document); }
+        catch (error) { ui.notifications.warn(error.message); }
+      },
       editImage: ItemSheet.#onEditImage,
       itemTab: ItemSheet.#onTab,
       toggleTag: ItemSheet.#onToggleTag,
@@ -78,7 +83,7 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     ];
     if ( !tabs.some(t => t.id === this.#tab) ) this.#tab = "description";
     return Object.assign(context, {
-      vm, item, editable: this.isEditable,
+      vm, item, editable: this.isEditable, canConfigureReaction: this.isEditable && game.user.isGM,
       typeLabel: game.i18n.localize(CONFIG.Item.typeLabels?.[item.type] ?? item.type),
       tabs: tabs.map(t => ({ ...t, active: t.id === this.#tab }))
     });

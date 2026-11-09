@@ -33,15 +33,29 @@ async function store(message, window) {
 }
 
 /** GM-authored eligibility/trigger; later ability adapters will produce these inputs. */
-export async function openReactionWindow(actor, item, { label = item?.name, trigger = "Reaction opportunity" } = {}) {
+export async function openReactionWindow(actor, item, { label = item?.name, trigger = "Reaction opportunity", requestId } = {}) {
   if ( !activeGM() ) throw new Error("The active GM opens reaction windows.");
   if ( !rule("reactionWindows") ) throw new Error("Reaction windows are disabled in N5e Rules.");
   if ( actor?.documentName !== "Actor" || item?.actor?.uuid !== actor.uuid || !label || label.length > 160 || trigger.length > 400 ) throw new Error("Choose an owned ability and a valid reaction description.");
   const owners = game.users.filter(u => !u.isGM && u.active && actor.testUserPermission(u, "OWNER")).map(u => u.id);
   const window = { version: 1, actorUuid: actor.uuid, itemId: item.id, label, trigger, owners,
     state: owners.length ? "pending" : "gm", openedAt: Date.now(), deadline: reactionDeadline(Number(rule("reactionTimeoutSeconds"))) };
+  if ( requestId !== undefined ) {
+    if ( typeof requestId !== "string" || !/^[A-Za-z0-9_-]{1,100}$/.test(requestId) ) throw new Error("Invalid reaction command identity.");
+    window.requestId = requestId;
+  }
   return CONFIG.ChatMessage.documentClass.create({ content: content(window),
     whisper: [...new Set([...owners, ...game.users.filter(u => u.isGM).map(u => u.id)])], flags: { n5e: { reactionWindow: window } } });
+}
+
+export async function retireReactionWindows(requestId) {
+  if ( !activeGM() ) throw new Error("Only the active GM can retire interrupted prompts.");
+  for ( const message of game.messages.values() ) {
+    const window = current(message);
+    if ( message.author?.isGM && window?.requestId === requestId && ["pending", "gm"].includes(window.state) ) {
+      await store(message, { ...window, state: "declined", retired: true });
+    }
+  }
 }
 
 export async function resolveReactionWindow(message, decision) {

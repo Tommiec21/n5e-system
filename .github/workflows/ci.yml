@@ -1,10 +1,8 @@
 name: CI
-
 on:
   push:
     branches: [main]
   pull_request:
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,4 +13,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run verify
+      - if: github.event_name == 'pull_request'
+        run: npm run verify
+      - if: github.event_name == 'push'
+        run: npm run release
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'push'
+        with:
+          name: verified-release
+          path: |
+            dist/system.json
+            dist/n5e.zip
+          if-no-files-found: error
+          retention-days: 7

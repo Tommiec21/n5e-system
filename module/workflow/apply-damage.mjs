@@ -74,10 +74,11 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       plan = damagePlan(actor, data.instances, { ...damageOptions, drOrder });
     }
     const update = { ...plan.update, ...reaction.update };
+    if ( reaction.validate ) await reaction.validate();
     if ( coordinated && !game.users.activeGM?.isSelf ) throw new Error("GM authority changed before damage commit; reconcile the pending request.");
     if ( plan.deathFailures ) update["system.deathSaves.failure"] = Math.min(3, (actor.system.deathSaves?.failure ?? 0) + plan.deathFailures);
     if ( Object.keys(update).length ) await actor.update(update);
-    if ( reaction.roll ) await reaction.roll.toMessage({ speaker: ChatMessage().getSpeaker({ actor }), flavor: "Deflection — reduction applied with 1 Discipline and reaction spent" });
+    if ( reaction.roll ) await reaction.roll.toMessage({ speaker: ChatMessage().getSpeaker({ actor }), flavor: reaction.label ?? "Reaction" });
     undo.push(before);
     const notes = [];
     const isNPC = actor.type === "npc";

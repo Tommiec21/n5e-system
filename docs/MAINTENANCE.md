@@ -108,3 +108,8 @@ alone does not establish live Foundry compatibility or multiplayer behavior.
 
 Before play, also verify a real player/GM ration approval and a targeted effect request in a disposable
 world, then check an existing character's migrated resource-gain buttons. Keep a world backup.
+
+
+### Single verification publication gate (alpha8)
+
+Main-branch CI runs npm run release once (including verify), then uploads verified-release. The Release workflow is triggered only by successful same-repository push CI and downloads that exact run's artifacts. It checks source/package versions and current main before publishing. It never rebuilds or retests the package. PRs still verify. Bump system/package/lock versions together before pushing; do not run a redundant local full suite if prior unchanged-scenario attempts are exhausted. Count any focused local tests and CI executions against the user's attempt cap. Tag-only/manual release triggering was replaced by this verified-main-artifact path.

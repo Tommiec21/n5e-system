@@ -1,3 +1,12 @@
+## 0.13.0-alpha.8 — Extensible reactions and reviewed recovery (RX3 / MP2)
+
+- Replace hardcoded reaction branching with an owned-item adapter registry, multiple offers, deterministic priorities and one-use preparation.
+- Add a GM item-sheet damage-reaction editor: rolled DR, multipliers, resource costs, reaction spending and automated source sight. Keep existing DR/HP/CP arithmetic.
+- Resolve explicitly authored nested interruptions newest first, with depth/work bounds and no mutation lock held while choosing child reactions.
+- Revalidate eligibility, costs, authority and turn immediately before commit, including after DR allocation dialogs.
+- Share durable GM command coordination through the public API; allow explicit recovery of interrupted review, never replay applying/uncertain mutations.
+- Publish the exact CI-verified artifact without a redundant release test run. No local Foundry installation changes or new live verification.
+
 ## 0.13.0-alpha.7 — Live-verified reaction fixes (LIVE1)
 
 - Close stale owner prompts on resolution, handoff or deletion without sending an extra decision.

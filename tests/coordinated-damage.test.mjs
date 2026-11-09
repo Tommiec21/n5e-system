@@ -71,6 +71,19 @@ test("GM coordinated damage commits one roll/cost/reaction and cannot repeat on 
   assert.equal(rolls(), 1); assert.equal(actor.system.hp.value, 91); assert.equal(ledger().entries[0].state, "committed");
 });
 
+test("authored damage reaction commits through the common DR and receipt pipeline", async () => {
+  const { actor, source, button, ledger, rolls } = coordinatedFixture();
+  actor.items[0].system.identifier = "custom-defense";
+  actor.items[0].flags = { n5e: { reaction: { version: 1, enabled: true, reduction: "1d6", multiplier: 0.5,
+    requireSight: false, spendReaction: true, pool: "discipline", cost: 2 } } };
+  await onApplyClick(source, button, {});
+  assert.equal(actor.system.hp.value, 96);
+  assert.equal(actor.system.resources.discipline.value, 0);
+  assert.equal(actor.flags.n5e.economy.reaction, true);
+  await onApplyClick(source, button, {});
+  assert.equal(rolls(), 1); assert.equal(ledger().entries[0].state, "committed");
+});
+
 test("coordinated Dodge uses observer visibility, halves after DR, and never spends Discipline", async () => {
   const { actor, source, button, rolls } = coordinatedFixture({ uncanny: true });
   await onApplyClick(source, button, {});

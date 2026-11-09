@@ -4,7 +4,7 @@ Updated November 9, 2026. This is the separate context file the user authorized 
 
 Current release: 0.13.0-alpha.7 published with verified recovery-scroll and stale-prompt fixes. GitHub-only publication. Local Foundry is not updated by these batches.
 
-Current stage: LIVE1 published; no additional live or local test runs. Stop additional live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
+Current stage: RX3 / MP2 implemented; publication pending. No new live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -158,3 +158,15 @@ The isolated server is stopped; its temporary license/session copies were remove
 ### LIVE1 publication confirmed
 
 https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.7; commit 54a4d9a9c4c0980bb5ede97da914d34764200a46. GitHub CI and Release both succeeded; n5e.zip/system.json verified. Since the new testing instruction, two automatic verification attempts ran and passed; zero failures, no local/live reruns. No third attempt is scheduled. Final context-only bookkeeping uses [skip ci] because no runtime code changes and further verification is unnecessary. The production Foundry installation and campaign worlds were not changed.
+
+## RX3 / MP2 active batch — Codex, November 9
+User renewed instruction: finish the work. Scope: shared registered reaction dispatch and reusable GM-coordinated command execution; route existing damage reactions through these boundaries. Preserve existing rulings, reviewed transport and fail-closed interrupted requests. No broad live cycle. Test budget reserved: one local release verification, one CI verification, one release-builder verification (maximum three); stop entire process after two failures. Newly changed behavior is not live-verified. Ownership: module/workflow/reaction-dispatch.mjs, reaction-adapters.mjs, coordinated-damage.mjs, module/automation/commands.mjs, API, focused tests and documentation.
+
+
+### RX3 / MP2 delivery snapshot — November 9, 2026
+
+Owner Codex. Paths include reaction dispatch/adapters/chain, authored recipe rules, item reaction editor, automation command/receipt recovery, GM recovery UI, API, workflows and focused tests. Implemented shared registered reaction dispatch, owned multi-offers, GM-authored damage recipes, final eligibility validation, newest-first explicit nested interruptions with bounds, shared GM command API and safe pre-application review resumption. User confirmed newest-first nested timing in this chat. Unsupported mechanics remain explicit; no imported prose is silently assigned a reaction.
+
+Local evidence: 17 new focused checks passed (8 dispatcher/recipe/command, 1 integrated authored damage, 4 recovery/commit revalidation, 4 nested chains), zero failures. No broad/local existing-suite repetition. Existing unchanged suite already had two post-limit runs; only ONE additional CI verification is reserved, bringing it to three. New focused cases have one local attempt and one CI attempt reserved. CI will build/verify once and Release will publish the exact artifact, with no release rerun. Do not run another local full suite. If any scenario reaches two failures stop the entire process. UI/network changes in this batch are not live-verified. Latest preceding live evidence remains alpha7's 17 scenarios.
+
+Version candidate 0.13.0-alpha.8. GitHub-only, pending CI and asset verification. Local Foundry unchanged. General attack/save/casting routing, advanced/redirecting content adapters, automatic uncertain-write replay, authenticated unattended transport and automatic undo are NOT claimed complete. Reaction recipes cover before-damage reduction/multipliers/costs; other timings require registered adapters and explicit workflow wiring. This closes the special-case-only dispatch and pre-application recovery gaps, not the entire future automation roadmap.

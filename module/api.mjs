@@ -1,3 +1,5 @@
+import { coordinateCommand } from "./automation/commands.mjs";
+import { registerReaction, listReactions, chooseReaction, resolveReactionChain } from "./workflow/reaction-adapters.mjs";
 import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons } from "./workflow/automation.mjs";
 import { requestHistory, archiveRequestHistory } from "./automation/history.mjs";
 import { openReactionWindow, resolveReactionWindow } from "./workflow/reactions.mjs";
@@ -92,6 +94,7 @@ export function registerClanData(clanItem) {
 }
 
 export default {
+  coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
   observerVisibility,
   openReactionWindow, resolveReactionWindow,
   requestHistory, archiveRequestHistory,

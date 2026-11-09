@@ -8,6 +8,7 @@
     <tbody>{{#each entries}}
       <tr><td>{{id}}</td><td>{{type}}</td><td>{{state}}{{#if unfinished}} — needs review{{/if}}</td>
         <td>{{#if actorUuid}}<button type="button" data-action="inspect" data-uuid="{{actorUuid}}">Actor</button>{{/if}}
+          {{#if resumable}}<button type="button" data-action="resume" data-id="{{id}}" {{#unless @root.allowed}}disabled{{/unless}}>Resume review</button>{{/if}}
           {{#if sourceUuid}}<span title="{{sourceUuid}}">Source: {{sourceUuid}}</span>{{/if}}</td></tr>
     {{else}}<tr><td colspan="4">No request receipts in this epoch.</td></tr>{{/each}}</tbody>
   </table>

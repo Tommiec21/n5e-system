@@ -21,7 +21,7 @@ export async function requestFingerprint(type, payload) {
 export function createReceiptCoordinator({ read, write, authority, now = () => Date.now(), limit = 200 }) {
   const requireAuthority = () => { if ( !authority() ) throw new Error("Only the active GM can coordinate requests."); };
   return {
-    async execute({ id, type, payload, epoch = 1 }, approve, apply) {
+    async execute({ id, type, payload, epoch = 1, resumeReview = false }, approve, apply) {
       if ( typeof id !== "string" || !/^[A-Za-z0-9_-]{1,100}$/.test(id) ) throw new Error("Invalid request id.");
       const fingerprint = await requestFingerprint(type, payload);
       return withActorLock("world:n5e:privileged-requests", async () => {
@@ -32,15 +32,18 @@ export function createReceiptCoordinator({ read, write, authority, now = () => D
         const prior = ledger.entries.find(e => e.id === id);
         if ( prior ) {
           if ( prior.fingerprint !== fingerprint ) throw new Error("Request id was reused for different content.");
-          if ( !["committed", "declined", "rejected"].includes(prior.state) ) throw new Error("Request completion is uncertain. The GM must inspect the target; do not resubmit it.");
-          return { ok: prior.state === "committed", state: prior.state, replay: true };
+          if ( !(resumeReview && prior.state === "reviewing") ) {
+            if ( !["committed", "declined", "rejected"].includes(prior.state) ) throw new Error("Request completion is uncertain. The GM must inspect the target; do not resubmit it.");
+            return { ok: prior.state === "committed", state: prior.state, replay: true };
+          }
         }
         // Never evict receipts silently: otherwise an old packet could apply again.
-        if ( ledger.entries.length >= limit ) throw new Error("Request history is full. The GM must archive/reconcile it before more remote requests.");
-        const receipt = { id, type, fingerprint, state: "reviewing", created: now(),
+        if ( !prior && ledger.entries.length >= limit ) throw new Error("Request history is full. The GM must archive/reconcile it before more remote requests.");
+        const receipt = prior ?? { id, type, fingerprint, state: "reviewing", created: now(),
           actorUuid: typeof (payload.actorUuid ?? payload.target) === "string" ? (payload.actorUuid ?? payload.target) : null,
-          sourceUuid: typeof payload.message === "string" ? payload.message : null };
-        ledger.entries.push(receipt);
+          sourceUuid: typeof payload.message === "string" ? payload.message : null,
+          mode: type === "damage" && ["full", "half", "double"].includes(payload.mode) ? payload.mode : null };
+        if ( prior ) receipt.resumed = now(); else ledger.entries.push(receipt);
         const persist = async () => { requireAuthority(); receipt.updated = now(); await write(structuredClone(ledger)); };
         await persist(); // Failure here prevents any prompt or mutation.
         try {
