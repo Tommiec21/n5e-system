@@ -3,6 +3,8 @@ import { createReceiptCoordinator, requestFingerprint } from "../automation/rece
 import { deflectionOffer } from "../rules/deflection.mjs";
 import { openReactionWindow, waitForReactionWindow } from "./reactions.mjs";
 import { rule } from "../rules-settings.mjs";
+import { uncannyDodgeOffer } from "../rules/uncanny-dodge.mjs";
+import { damageSourceVisibility } from "../canvas/visibility.mjs";
 
 export async function coordinateDamage(message, data, mode, targets, apply) {
   if ( !game.users.activeGM?.isSelf ) throw new Error("The active GM applies coordinated damage. Use the manual workflow when no GM is available.");
@@ -17,11 +19,18 @@ export async function coordinateDamage(message, data, mode, targets, apply) {
   const results = [];
   for ( const target of new Map(targets.map(a => [a.uuid, a])).values() ) {
     const identity = await requestFingerprint("damage-source", { message: message.uuid, target: target.uuid });
-    let accepted = false, originalOffer, stamp;
+    let accepted = false, originalOffer, stamp, kind = "deflection";
     const result = await service.execute({ id: `damage-${identity.slice(0, 40)}`, type: "damage", payload: { message: message.uuid, target: target.uuid, data, mode },
       epoch: game.settings.get("n5e", "requestReceipts")?.epoch ?? 1 },
     async () => {
       stamp = game.combat?.started ? `${game.combat.id}:${game.combat.round}:${game.combat.turn}` : null;
+      const dodge = uncannyDodgeOffer(target, { combat: !!stamp, instances: data.instances,
+        visibility: target.items.some(i => i.system?.identifier === "uncanny-dodge") ? damageSourceVisibility(target, message) : null });
+      if ( dodge ) {
+        const window = await openReactionWindow(target, dodge.item, { label: "Uncanny Dodge", trigger: "The source creature is automatically visible. Use your reaction to halve this damage?" });
+        accepted = await waitForReactionWindow(window) === "accepted";
+        if ( accepted ) { kind = "dodge"; originalOffer = dodge; return true; }
+      }
       originalOffer = deflectionOffer(target, { combat: !!stamp, ...data });
       if ( originalOffer ) {
         const window = await openReactionWindow(target, originalOffer.item, { label: "Deflection", trigger: "Use your reaction and 1 Discipline to reduce this damage?" });
@@ -34,6 +43,11 @@ export async function coordinateDamage(message, data, mode, targets, apply) {
         beforePlan: async actor => {
           if ( !accepted ) return {};
           const currentStamp = game.combat?.started ? `${game.combat.id}:${game.combat.round}:${game.combat.turn}` : null;
+          if ( kind === "dodge" ) {
+            const dodge = uncannyDodgeOffer(actor, { combat: !!currentStamp, instances: data.instances, visibility: damageSourceVisibility(actor, message) });
+            if ( !dodge || dodge.item.id !== originalOffer.item.id || stamp !== currentStamp ) throw new Error("Uncanny Dodge eligibility changed; reconcile this damage.");
+            return { multiplier: 0.5, update: { "flags.n5e.economy.reaction": true } };
+          }
           const offer = deflectionOffer(actor, { combat: !!currentStamp, ...data });
           if ( !offer || offer.item.id !== originalOffer.item.id || stamp !== currentStamp ) throw new Error("Deflection eligibility changed; reconcile this damage instead of applying it automatically.");
           const revision = actor._stats?.modifiedTime;

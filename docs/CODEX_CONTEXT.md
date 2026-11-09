@@ -112,3 +112,16 @@ Added GM Automation Recovery settings window, receipt target/source references, 
 Verification: 217 tests passed, 2 original fixture skips, zero failures; lint/data/template checks and package build passed. Coverage includes mixed HP/CP DR, creature-chosen type order/resistance interactions, rolled DR/Pierce, Deflection scaling/eligibility, one application/cost/roll per card, forged success acknowledgments and archive failure handling. Live GM/two-player verification remains outstanding. No local Foundry changes.
 
 Publication pending. Next dependencies: observer-specific automated visibility (Uncanny Dodge must wait; no GM confirmation substitute) and N5e precedence for complex Foundry dice expressions. RX2 is a bounded base-Deflection pilot, not completed universal reactive resolution.
+
+### RX2 published and VIS1 active
+
+RX2 published at https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.4, commit b4d2df5892e767349138eb34b7255aa9f3a0854e. GitHub CI/Release succeeded; n5e.zip/system.json verified. Codex now owns VIS1: observer-specific visibility and Uncanny Dodge integration. User ruled Blindsight satisfies can-see within its radius. Preserve existing wall semantics; never substitute GM omniscience. Unknown visibility blocks automatic eligibility. Next unrelated agents must coordinate before editing these same workflow/canvas paths.
+
+
+### VIS1 completed — publication pending
+
+Version 0.13.0-alpha.5: observer-specific Foundry13 sight provider and Uncanny Dodge integration. User ruling: Blindsight qualifies for can-see within its radius. Provider uses that token's prepared vision source and configured range/wall/light/detection backend with token-size nine-point sampling, never global GM visibility. Chakra Sensing/Tremor Sense alone do not qualify. Missing/ambiguous source identity, unprepared vision, relational stealth, hidden scene tokens, unsupported elevation or failing providers remain unknown; a potential Dodge owner's unknown result blocks automatic application. No GM-confirmation visibility substitute.
+
+Dodge revalidates ownership, reaction, combat turn and current observer sight on commit. Half/double factors are deduplicated globally before cancellation. If both base reactions qualify, Dodge is offered first and declining may offer Deflection; accepting one does not chain the other. Integration tests cover visible/unseen/unknown sources and resource/reaction effects.
+
+Verification: 224 passed, 2 original fixture skips, zero failures; lint/consistency checks and package build passed. No live Foundry verification. This is a bounded standard-scene provider, not full geometry/cover/elevation or universal vision-module support. Next prerequisite MATH2: explicit N5e precedence adapter for supported complex dice expressions. Publication pending; local Foundry remains untouched.

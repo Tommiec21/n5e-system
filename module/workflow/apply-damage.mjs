@@ -63,7 +63,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
     const reaction = beforePlan ? await beforePlan(actor) : {};
     const damageOptions = { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
-      piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0 };
+      piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0, reactionMultiplier: reaction.multiplier ?? 1 };
     let plan = damagePlan(actor, data.instances, damageOptions);
     if ( plan.requiresDROrder ) {
       const revision = actor._stats?.modifiedTime;

@@ -1,3 +1,9 @@
+## 0.13.0-alpha.5 — Observer visibility and Uncanny Dodge (VIS1)
+
+- Use observer-specific Foundry13 detection with token-size sampling; Blindsight qualifies per user ruling, while unsupported/ambiguous sight remains unresolved.
+- Integrate visibility-checked Uncanny Dodge with the optional coordinated damage pilot, reaction revalidation and non-stacking/cancelling multiplier rules.
+- No GM visibility substitute, full cover engine, elevated-scene certification or live multiplayer certification is claimed.
+
 ## 0.13.0-alpha.4 — Coordinated damage and base Deflection (RX2)
 
 - Optional GM damage-card workflow with durable per-card/actor identity, private reaction decisions, eligibility rechecks and combined damage/resource/reaction updates.

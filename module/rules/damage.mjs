@@ -30,7 +30,7 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {boolean} [o.crit]
  * @param {boolean} [o.piercing]      Piercing Ninjutsu: half DR, no resistance, immunity -> resistance
  */
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder } = {}) {
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1 } = {}) {
   const sys = target.system;
   const traits = sys.traits ?? {};
   const steps = [];
@@ -69,11 +69,10 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
     const r = (has(traits.resist, p.type) && !piercing) || immunityAsResistance;
     const v = !immunityAsResistance && has(traits.vuln, p.type);
     // Equal sources do not stack; opposite Half/Double sources cancel (King 2026-11-09).
-    const defenseFactor = r === v ? 1 : r ? 0.5 : 2;
-    const factor = defenseFactor === 1 ? multiplier : multiplier === 1 || multiplier === defenseFactor ? defenseFactor
-      : (multiplier === 0.5 && defenseFactor === 2) || (multiplier === 2 && defenseFactor === 0.5) ? 1 : multiplier;
+    const factors = new Set([multiplier, reactionMultiplier, ...(r ? [0.5] : []), ...(v ? [2] : [])]);
+    const factor = factors.has(0.5) && factors.has(2) ? 1 : factors.has(0.5) ? 0.5 : factors.has(2) ? 2 : multiplier;
     const amount = Math.max(0, Math.floor(p.amount * factor));
-    if ( factor !== 1 || (multiplier !== 1 && defenseFactor !== 1) ) steps.push(`${p.type || "Damage"} multiplier ${factor}${immunityAsResistance ? " (immunity treated as resistance)" : ""}: ${p.amount} → ${amount}`);
+    if ( factor !== 1 || factors.has(0.5) && factors.has(2) ) steps.push(`${p.type || "Damage"} multiplier ${factor}${immunityAsResistance ? " (immunity treated as resistance)" : ""}: ${p.amount} → ${amount}`);
     return { ...p, amount };
   });
 
