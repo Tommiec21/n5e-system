@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.6 published; 0.13.0-alpha.7 prepared with verified recovery-scroll and stale-prompt fixes. GitHub-only publication. Local Foundry is not updated by these batches.
+Current release: 0.13.0-alpha.7 published with verified recovery-scroll and stale-prompt fixes. GitHub-only publication. Local Foundry is not updated by these batches.
 
-Current stage: finish LIVE1 publication using existing evidence. Stop additional live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
+Current stage: LIVE1 published; no additional live or local test runs. Stop additional live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -52,7 +52,7 @@ Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users
 
 ### 13.4 Current batch ownership and decisions
 
-- Codex owns LIVE1 final publication (0.13.0-alpha.7). No additional live runs. The isolated server is stopped and temporary license/session copies are removed.
+- LIVE1 ownership is complete (0.13.0-alpha.7 published). No additional live runs. The isolated server is stopped and temporary license/session copies are removed.
 - GitHub releases only; local Foundry remains untouched. Player reaction choices require GM review until authentication is verified.
 - Timeout defaults to 60 seconds; editable in seconds; 0 disables. Blindsight qualifies for can-see. No GM-visibility substitute for Uncanny Dodge.
 - Addition/subtraction precede multiplication/division. Identical Half/Double sources apply once; opposites cancel. DR independently protects HP/CP; creature chooses type order within each pool. Deflection is rolled DR with those same rules.
@@ -68,7 +68,7 @@ Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users
 | RX2 coordinated Deflection/DR | 0.13.0-alpha.4 | Published; CI/release passed |
 | VIS1 sight/Uncanny Dodge | 0.13.0-alpha.5 | Published; CI/release passed |
 | MATH2 dice grouping | 0.13.0-alpha.6 | Published; CI/release passed |
-| LIVE1 verified UI corrections | 0.13.0-alpha.7 | Prepared; publication pending |
+| LIVE1 verified UI corrections | 0.13.0-alpha.7 | Published; CI/release passed |
 
 ### Confirmed continuation decisions — November 9, 2026
 
@@ -154,3 +154,7 @@ Fourteen live scenarios and three reload/handover/archive scenarios passed in Fo
 Final automated release evidence before the new testing cap: 227 passed, 2 original missing-fixture skips, zero failures. No additional local/live reruns after that instruction. The redundant explicit release-workflow verify step was removed because the release builder already verifies; this avoids an extra automatic repetition. The current publication will run CI verification once and release-builder verification once, with no reruns authorized after two failures.
 
 The isolated server is stopped; its temporary license/session copies were removed. Production N5e/worlds remain unchanged. Report: outputs/N5e-multiplayer-live-verification.md. Remaining scope includes upgraded/redirecting reactions, automatic attack/save orchestration, broader geometry/cover/elevation, authenticated unattended transport and optional module integration; do not claim these are complete.
+
+### LIVE1 publication confirmed
+
+https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.7; commit 54a4d9a9c4c0980bb5ede97da914d34764200a46. GitHub CI and Release both succeeded; n5e.zip/system.json verified. Since the new testing instruction, two automatic verification attempts ran and passed; zero failures, no local/live reruns. No third attempt is scheduled. Final context-only bookkeeping uses [skip ci] because no runtime code changes and further verification is unnecessary. The production Foundry installation and campaign worlds were not changed.
