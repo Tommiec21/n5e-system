@@ -23,3 +23,13 @@ Use a disposable Foundry13 world to test GM review, double delivery, effect crea
 ## Confirmed reactive policy for the next batches
 
 Ask eligible players to accept or decline; the GM resolves unanswered prompts. Default handoff after 60 seconds, configurable in seconds, with 0 disabling the timer. Test-case selection is delegated to Codex; ambiguous game rulings still require the user's answer. No automatic reaction expenditure or acceptance.
+
+## RX1: private reaction decision windows
+
+Enable **N5e Rules → Casting and combat → Reaction decision windows (pilot)**. It defaults off. **Reaction player timeout (seconds)** defaults to 60; 0 disables the timer, and any finite nonnegative supported seconds value can be set. The GM can resolve a window early; an elapsed timer hands it to the GM without selecting an answer or spending a resource. Existing windows preserve their original deadline when settings change.
+
+The active GM opens a window with `await game.n5e.api.openReactionWindow(actor, ownedItem, {trigger: "Describe the opportunity"})`. Only connected owners and GMs receive the private card. Eligible owners receive an accept/decline dialog; closing it leaves the window unanswered. Player socket responses are advisory and require the active GM to confirm the choice with the player. They do not prove sender identity. GM controls remain on the card. No effect, damage, reaction allowance or pool is spent in this batch. Accept means accepted for later validated resolution, not mechanically applied.
+
+The active GM resumes persisted deadlines on startup and user updates. A decision cannot be overwritten after resolution. Deleted abilities are rejected on final decision. Prompt text must not include hidden rolls or private defenses; the caller supplies only public opportunity text. Feature-specific visibility, cost/eligibility, damage math and suspended combat continuation are later batches. Uncanny Dodge cannot be enabled until automated visibility is available, by user direction.
+
+Automated tests cover configurable/disabled timing, GM-only handoff, immutable/terminal state, eligible owners, private recipients, mandatory response review and no resource mutation. Actual multi-client dialogs, GM handover and browser timer behavior still require live test-world validation.

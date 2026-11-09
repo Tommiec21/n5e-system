@@ -1,5 +1,6 @@
 import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons } from "./workflow/automation.mjs";
 import { requestHistory, archiveRequestHistory } from "./automation/history.mjs";
+import { openReactionWindow, resolveReactionWindow } from "./workflow/reactions.mjs";
 
 /** Optional integration check, loaded lazily so normal system startup does not load test UI. */
 export async function runSmokeTests() {
@@ -90,6 +91,7 @@ export function registerClanData(clanItem) {
 }
 
 export default {
+  openReactionWindow, resolveReactionWindow,
   requestHistory, archiveRequestHistory,
   runSmokeTests,
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,

@@ -41,6 +41,7 @@ import { registerSettings } from "./module/settings.mjs";
 import * as dice from "./module/dice/roll.mjs";
 import { registerTurnHooks, onRenderTurnCard } from "./module/workflow/turn.mjs";
 import { registerSocket } from "./module/socket.mjs";
+import { registerReactionWindows } from "./module/workflow/reactions.mjs";
 import { registerPartyOverview } from "./module/applications/gm/party-overview.mjs";
 import * as d20 from "./module/dice/d20.mjs";
 import { checkMigrations, MIGRATIONS } from "./module/migration/runner.mjs";
@@ -147,6 +148,7 @@ Hooks.once("ready", async () => {
   for ( const item of game.items.filter(i => i.type === "clan") ) api.registerClanData(item);
   // The GM relay (players asking the GM to change things they don't own; module/socket.mjs).
   registerSocket();
+  registerReactionWindows();
   // Data migrations the world hasn't run yet (GM only; module/migration/runner.mjs).
   await checkMigrations();
 });

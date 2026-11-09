@@ -44,7 +44,7 @@ Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users
 
 ### 13.4 Current batch ownership and decisions
 
-- **Owner:** Codex, this workspace/chat. **Status:** ACTIVE — Batch MP1, multiplayer foundations and recovery. Relevant paths: `module/socket.mjs`, proposed `module/automation/`, related tests/settings/docs. No other agent is assigned. Do not duplicate this batch without checking its latest status.
+- **Owner:** Codex, this workspace/chat. **Status:** ACTIVE — Batch RX1, reactive decision windows. Relevant paths: `module/socket.mjs`, proposed `module/automation/`, related tests/settings/docs. No other agent is assigned. Do not duplicate this batch without checking its latest status.
 - Next: reaction workflow in dependent batches; user requests largest-cost challenges first but authorizes prerequisite work needed for functionality.
 - Confirmed player reaction policy: **ask eligible players to accept/decline; GM resolves unanswered prompts**. Do not silently auto-spend or auto-accept.
 - Publication policy: **GitHub release only**, batch-by-batch. Local Foundry remains unchanged by future batches unless newly authorized.
@@ -55,8 +55,8 @@ Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users
 
 | Batch | State | Verification | GitHub release |
 | --- | --- | --- | --- |
-| MP1 | In development | Pending | Not published |
-| Reactive foundation | Pending MP1 and required rule clarifications | Not run | Not published |
+| MP1 | Published (relay foundation only) | 203 passed; 2 skips; no live test | v0.13.0-alpha.1 |
+| RX1 reactive decision windows | Prepared for release | 207 passed; 2 skips; no live test | Pending v0.13.0-alpha.2 |
 
 Update this table and the current owner/status after every batch. Do not state that a batch was published until the GitHub release assets and associated checks have been verified.
 
@@ -70,3 +70,18 @@ This is the separate Codex context file authorized by the user after OneDrive wr
 MP1 implements durable receipts for the existing privileged effects/ration relay, not all combat mutations. Requests persist reviewing/applying/committed states; duplicate IDs replay stored results, changed payloads are rejected, uncertain executions are not retried, and old epochs cannot replay after explicit GM reconciliation/archive. GM review remains mandatory. Added inspection/archive API and documented limits; retained upstream failed-click/save-cost/parser/ration fixes. Version 0.13.0-alpha.1 packaged. Verification: 203 passed, 2 pre-existing skips, zero failures; lint and consistency checks passed. Live GM/two-player testing has not been performed. Local Foundry remains 0.12.0-alpha.2 and was not changed.
 
 GitHub publication pending. MP1 owner remains Codex until release verification. Next batch: reactive decision windows and configurable 60-second/disabled handoff, with GM review for unauthenticated player responses. No ability effect or resource is to be inferred from a response alone. The source reconciliation preserved upstream fixes except the explicitly rejected unauthenticated automatic-request behavior.
+
+### MP1 published — 2026-11-09
+
+MP1 is published as https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.1, source commit f662c0df21de8ecc5e0f9caf8075adfeaa0419a5. GitHub CI and Release workflows both succeeded. MP1 ownership is complete for its documented relay-only scope. Live multiplayer validation remains outstanding. Next active batch RX1: reaction decision windows, GM handoff and configurable timer; exact damage modifier ordering/visibility rulings have been asked and are pending. Do not duplicate RX1.
+
+
+### Locked user ruling — arithmetic precedence
+
+2026-11-09: N5e arithmetic always evaluates Addition/Subtraction first, then Multiplication/Division. This supersedes conventional operator precedence for N5e expressions. The existing formula engine has not been audited or changed to implement this ruling yet. Future formulas/reaction math must respect it; do not silently rely on JavaScript/Foundry default precedence. Explicit damage-stage and rounding interactions still need checking against source/user rulings.
+
+
+### RX1 completed — publication pending
+
+Version 0.13.0-alpha.2: opt-in private reaction prompts to eligible connected owners; GM-reviewed advisory responses; persisted terminal decisions; source ability recheck; 60-second default, configurable nonnegative seconds, 0 disables; elapsed time hands unanswered prompts to GM with no auto-answer/cost. Verified 207 passed, 2 existing skips, lint/schema checks passed. No live Foundry validation. API/manual pilot only: no ability effect or resource consumption and no automatic combat suspension yet. User requires automated visibility before Uncanny Dodge eligibility. Next prerequisites: arithmetic precedence and automatic visibility, while full damage modifier choice ruling is pending.
+

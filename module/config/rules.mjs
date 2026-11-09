@@ -20,6 +20,10 @@ export const ruleGroups = {
 };
 
 export const rules = {
+  reactionWindows: { group: "casting", type: "boolean", default: false, label: "Reaction decision windows (pilot)",
+    hint: "Enable GM-authored player reaction prompts. Decisions do not yet apply damage or spend resources." },
+  reactionTimeoutSeconds: { group: "casting", type: "number", default: 60, min: 0, label: "Reaction player timeout (seconds)",
+    hint: "After this many seconds the GM resolves unanswered prompts. Set 0 to disable the timer. Existing windows keep their original deadline." },
   // Rolls
   willOfFireAward: { group: "rolls", type: "boolean", default: true, label: "Will of Fire from a natural 1 or 20",
     hint: "The first natural 1 or 20 a creature rolls in an encounter grants a Will of Fire (max 3)." },

@@ -1,3 +1,9 @@
+## 0.13.0-alpha.2 — Reaction decision-window pilot (RX1)
+
+- Optional private owner accept/decline prompts, active-GM review and final resolution, persisted deadlines, and a GM-editable 60-second timeout (0 disables it).
+- Decisions never auto-spend or apply effects; no unattended use of unauthenticated player replies. Uncanny Dodge remains pending automated visibility.
+- Records the user's N5e arithmetic precedence ruling; arithmetic implementation is a separate prerequisite batch, not silently changed here.
+
 ## 0.13.0-alpha.1 — Multiplayer receipt foundation (MP1)
 
 - Keep GM review mandatory for unauthenticated remote effect/ration requests, superseding the 0.10.1 automatic-request option by explicit user direction.
