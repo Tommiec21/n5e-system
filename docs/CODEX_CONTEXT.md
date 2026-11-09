@@ -1,3 +1,11 @@
+# N5e Codex Context
+
+Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
+
+Current release: 0.13.0-alpha.6 published; 0.13.0-alpha.7 prepared with verified recovery-scroll and stale-prompt fixes. GitHub-only publication. Local Foundry is not updated by these batches.
+
+Current stage: finish LIVE1 publication using existing evidence. Stop additional live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
+
 ## 13. Codex implementation ledger and agent coordination
 
 Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users\Tommi\Documents\Codex\2026-11-08\i-currently-have-some-tasks-running`. This section records implementation evidence and the user's current instructions. It does not change King's game rules or lock draft game content.
@@ -44,21 +52,23 @@ Updated 2026-11-09. Maintainer for this section: Codex, chat workspace `C:\Users
 
 ### 13.4 Current batch ownership and decisions
 
-- **Owner:** Codex, this workspace/chat. **Status:** ACTIVE — Batch RX1, reactive decision windows. Relevant paths: `module/socket.mjs`, proposed `module/automation/`, related tests/settings/docs. No other agent is assigned. Do not duplicate this batch without checking its latest status.
-- Next: reaction workflow in dependent batches; user requests largest-cost challenges first but authorizes prerequisite work needed for functionality.
-- Confirmed player reaction policy: **ask eligible players to accept/decline; GM resolves unanswered prompts**. Do not silently auto-spend or auto-accept.
-- Publication policy: **GitHub release only**, batch-by-batch. Local Foundry remains unchanged by future batches unless newly authorized.
-- Remaining gameplay choices must be asked before implementing their dependent behavior: initial reactive ability examples and exact timing/rules, timeout duration, hidden information, reaction priority/nesting. Foundational command contracts can proceed independently.
-- Testing: automated tests and packaging are not equivalent to live GM/two-player validation. Record any missing live gate explicitly before claiming multiplayer readiness.
+- Codex owns LIVE1 final publication (0.13.0-alpha.7). No additional live runs. The isolated server is stopped and temporary license/session copies are removed.
+- GitHub releases only; local Foundry remains untouched. Player reaction choices require GM review until authentication is verified.
+- Timeout defaults to 60 seconds; editable in seconds; 0 disables. Blindsight qualifies for can-see. No GM-visibility substitute for Uncanny Dodge.
+- Addition/subtraction precede multiplication/division. Identical Half/Double sources apply once; opposites cancel. DR independently protects HP/CP; creature chooses type order within each pool. Deflection is rolled DR with those same rules.
+- NEW MANDATORY TESTING RULE: From the user's 2026-11-09 instruction onward, at most THREE TOTAL attempts per test/scenario, counting local, CI and harness/setup retries. After TWO failures STOP THE ENTIRE PROCESS, report why, and await the user's direction. Do not reset counts by renaming a test or harness. Prefer focused checks and avoid repeated live setup. No further local/live test runs are scheduled for this batch; CI and release each have one remaining planned verification run.
 
 ### 13.5 Batch release ledger
 
-| Batch | State | Verification | GitHub release |
-| --- | --- | --- | --- |
-| MP1 | Published (relay foundation only) | 203 passed; 2 skips; no live test | v0.13.0-alpha.1 |
-| RX1 reactive decision windows | Prepared for release | 207 passed; 2 skips; no live test | Pending v0.13.0-alpha.2 |
-
-Update this table and the current owner/status after every batch. Do not state that a batch was published until the GitHub release assets and associated checks have been verified.
+| Batch | Release | State |
+| --- | --- | --- |
+| MP1 receipt foundation | 0.13.0-alpha.1 | Published; CI/release passed |
+| RX1 reaction windows | 0.13.0-alpha.2 | Published; CI/release passed |
+| MATH1 numeric/damage precedence | 0.13.0-alpha.3 | Published; CI/release passed |
+| RX2 coordinated Deflection/DR | 0.13.0-alpha.4 | Published; CI/release passed |
+| VIS1 sight/Uncanny Dodge | 0.13.0-alpha.5 | Published; CI/release passed |
+| MATH2 dice grouping | 0.13.0-alpha.6 | Published; CI/release passed |
+| LIVE1 verified UI corrections | 0.13.0-alpha.7 | Prepared; publication pending |
 
 ### Confirmed continuation decisions — November 9, 2026
 
@@ -136,3 +146,11 @@ https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.5; commit 5e7
 Version 0.13.0-alpha.6: N5e-owned rolls use a local grouping factory before Foundry evaluation, enforcing addition/subtraction before multiplication/division without global patches or third-party changes. Explicit parentheses, supported functions/pools, dice modifiers and flavor are preserved; string formula references are grouped. Unsupported syntax (including exponentiation/modulo and quoted strings outside annotations) reports failure. This adapter is not a universal custom dice parser or DAE script engine.
 
 Verification: 227 passed, 2 original migration fixture skips, zero failures; lint/schema checks and release build passed. Live Foundry dice evaluation remains unverified. A disposable multiplayer verification checklist is saved at outputs/N5e-multiplayer-live-test-checklist.md and in repository docs. Publication pending. Next scope LIVE1: live validation only, awaiting the user's permission for an isolated Foundry instance or an offered test session. Do not treat the existing approvals as permission to install into the local production Foundry system.
+
+### LIVE1 evidence and final corrections
+
+Fourteen live scenarios and three reload/handover/archive scenarios passed in Foundry13.351, isolated alpha6 plus candidate fixes. Final runs recorded zero page errors. GM scene rendered; two player contexts and backup-GM context used no-canvas mode for UI/permission tests. Recovery overflow was corrected; stale owner dialogs now close on resolution/handoff/deletion without sending another decision. A core wall-deletion issue in no-canvas clients was isolated; final harness moved the test wall instead. Tests do not certify all module combinations, graphics, elevation, stealth or reaction upgrades.
+
+Final automated release evidence before the new testing cap: 227 passed, 2 original missing-fixture skips, zero failures. No additional local/live reruns after that instruction. The redundant explicit release-workflow verify step was removed because the release builder already verifies; this avoids an extra automatic repetition. The current publication will run CI verification once and release-builder verification once, with no reruns authorized after two failures.
+
+The isolated server is stopped; its temporary license/session copies were removed. Production N5e/worlds remain unchanged. Report: outputs/N5e-multiplayer-live-verification.md. Remaining scope includes upgraded/redirecting reactions, automatic attack/save orchestration, broader geometry/cover/elevation, authenticated unattended transport and optional module integration; do not claim these are complete.

@@ -1,3 +1,9 @@
+## 0.13.0-alpha.7 — Live-verified reaction fixes (LIVE1)
+
+- Close stale owner prompts on resolution, handoff or deletion without sending an extra decision.
+- Make long automation recovery histories scrollable.
+- Record 17 isolated live scenarios, their coverage and limits. No production Foundry installation changes.
+
 ## 0.13.0-alpha.6 — N5e dice-expression precedence (MATH2)
 
 - Route N5e-owned dice through a local grouping adapter so addition/subtraction precede multiplication/division; keep Foundry dice evaluation and third-party Roll behavior intact.

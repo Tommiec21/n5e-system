@@ -42,3 +42,6 @@
 .n5e-row .n5e-key { font-family: monospace; font-size: 0.85em; overflow: hidden; text-overflow: ellipsis; }
 .n5e-row textarea { width: 100%; font-family: monospace; font-size: 0.85em; }
 .n5e-json { font-size: 0.8em; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow: auto; }
+/* Recovery histories must remain reachable inside the bounded ApplicationV2 window. */
+#n5e-automation-recovery .window-content { overflow: auto; }
+#n5e-automation-recovery td { overflow-wrap: anywhere; }

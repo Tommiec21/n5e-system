@@ -48,6 +48,9 @@ test("private windows preserve actor resources and require GM review of advisory
   const message = await openReactionWindow(actor, item);
   assert.deepEqual(message.whisper.sort(), ["gm", "p"]);
   registerReactionWindows();
+  let closed = 0;
+  handlers.get("renderDialogV2")({ id: "n5e-reaction-prompt-window", close: async () => closed++ });
+  assert.equal(closed, 0, "a live owner prompt remains open");
   await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "x" } });
   assert.equal(reviews, 0);
   await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "p" } });
@@ -55,6 +58,8 @@ test("private windows preserve actor resources and require GM review of advisory
   approved = true;
   await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "p" } });
   assert.equal(message.getFlag().state, "accepted");
+  handlers.get("updateChatMessage")(message);
+  assert.equal(closed, 1, "resolved decisions close the owner's stale prompt without a second response");
   await assert.rejects(resolveReactionWindow(message, "decline"), /resolved/);
   assert.equal(actor.system.resources.discipline.value, 2); assert.equal(mutations, 0);
 });

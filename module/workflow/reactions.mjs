@@ -5,9 +5,18 @@ import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 
 const timers = new Map(), prompted = new Set();
+const prompts = new Map();
 const CHANNEL = "system.n5e";
 const current = message => message.getFlag("n5e", "reactionWindow");
 const activeGM = () => !!game.users?.activeGM?.isSelf;
+
+function syncPrompt(message) {
+  const window = current(message);
+  if ( window?.state === "pending" && reactionPhase(window) === "pending" ) return;
+  const dialog = prompts.get(message.id);
+  prompts.delete(message.id);
+  if ( dialog ) Promise.resolve(dialog.close()).catch(error => ui.notifications.warn(error.message));
+}
 
 function content(window) {
   const phase = reactionPhase(window);
@@ -90,11 +99,13 @@ async function receive(data) {
 function schedule(message) {
   clearTimeout(timers.get(message.id)); timers.delete(message.id);
   const window = current(message);
-  if ( !activeGM() || !window || !message.author?.isGM || window.state !== "pending" || window.deadline === null ) return;
+  syncPrompt(message);
+  if ( !window || !message.author?.isGM || window.state !== "pending" || window.deadline === null ) return;
+  if ( !activeGM() && (!window.owners.includes(game.user.id) || reactionPhase(window) === "gm") ) return;
   const delay = Math.max(0, Math.min(60000, window.deadline - Date.now()));
   timers.set(message.id, setTimeout(async () => {
     timers.delete(message.id);
-    if ( !activeGM() ) return;
+    if ( !activeGM() ) { syncPrompt(message); schedule(message); return; }
     try {
       await withActorLock(`reaction:${message.id}`, async () => {
         const latest = current(message);
@@ -111,7 +122,22 @@ export function registerReactionWindows() {
   Hooks.on("updateUser", resume);
   Hooks.on("createChatMessage", schedule);
   Hooks.on("updateChatMessage", schedule);
-  Hooks.on("deleteChatMessage", message => { clearTimeout(timers.get(message.id)); timers.delete(message.id); });
+  Hooks.on("renderDialogV2", dialog => {
+    const prefix = "n5e-reaction-prompt-";
+    if ( !dialog.id?.startsWith(prefix) ) return;
+    const id = dialog.id.slice(prefix.length), message = game.messages.get(id);
+    prompts.set(id, dialog);
+    if ( message ) syncPrompt(message);
+  });
+  Hooks.on("closeDialogV2", dialog => {
+    const id = dialog.id?.replace(/^n5e-reaction-prompt-/, "");
+    if ( prompts.get(id) === dialog ) prompts.delete(id);
+  });
+  Hooks.on("deleteChatMessage", message => {
+    clearTimeout(timers.get(message.id)); timers.delete(message.id);
+    const dialog = prompts.get(message.id); prompts.delete(message.id);
+    if ( dialog ) Promise.resolve(dialog.close()).catch(error => ui.notifications.warn(error.message));
+  });
   Hooks.on("renderChatMessageHTML", (message, html) => {
     const window = current(message);
     if ( !window || !message.author?.isGM ) return;
@@ -124,7 +150,7 @@ export function registerReactionWindows() {
     }
     if ( eligible && !prompted.has(message.id) ) {
       prompted.add(message.id);
-      foundry.applications.api.DialogV2.wait({ window: { title: window.label }, content: `<p>${esc(window.trigger)}</p><p>Accept or decline this reaction opportunity?</p>`,
+      foundry.applications.api.DialogV2.wait({ id: `n5e-reaction-prompt-${message.id}`, window: { title: window.label }, content: `<p>${esc(window.trigger)}</p><p>Accept or decline this reaction opportunity?</p>`,
         buttons: ["accept", "decline"].map(action => ({ action, label: action === "accept" ? "Accept" : "Decline", callback: () => action })), rejectClose: false })
         .then(decision => decision && sendDecision(message, decision)).catch(error => ui.notifications.warn(error.message));
     }
