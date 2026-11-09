@@ -1,0 +1,114 @@
+{
+  "_id": "c6a242762ca67562",
+  "_key": "!items!c6a242762ca67562",
+  "type": "jutsu",
+  "name": "Wolf Pack",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "56caf9d71198b52f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "inuzuka",
+      "sourceLine": 1430,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-Foot Radius)",
+        "duration": "Concentration, up to 1 Minute",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "inuzuka-wolf-pack",
+    "description": "<p>A modified version of the Shadow Clone Technique, you make numerous clones of you and your Nin-Dog, filling a 30-foot radius, centered on you.</p>\n<p>When this jutsu is cast you gain a Pack Dice, which is a d8. For the duration, once per turn, when you or your Nin-Dog miss an attack, you or the Nin-Dog can remake the attack roll, and must roll the Pack Dice.</p>\n<p>Additionally, for the duration of this jutsu, once per turn, if a hostile creature would deal damage to you or your Nin-Dog, you can use one of the many clones to soften the impact, reducing the damage taken by twice the size of the roll the Pack Dice. When you do, roll the Pack Dice.</p>\n<p>On a roll of 1 or 2, reduce the size of the dice by 1 stage. If you roll a 1 or 2 while the dice is a d4, this jutsu ends early.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1430; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "inuzuka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

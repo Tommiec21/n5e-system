@@ -30,7 +30,7 @@ function castOptions(actor, item) {
   return actor.items.filter(i => {
     const tags = i.system.tags instanceof Set ? i.system.tags : new Set(i.system.tags ?? []);
     if ( tags.has("nin-molding") ) return item.system.discipline === "nin";
-    return tags.has("assault-maneuver");
+    return tags.has("assault-maneuver") || tags.has("scout-maneuver");
   });
 }
 

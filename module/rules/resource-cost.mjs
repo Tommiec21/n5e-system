@@ -30,6 +30,7 @@ function countIn(item, noun) {
 const TAG_POOLS = {
   "nin-molding": ["focus", "focus", 1],
   "assault-maneuver": ["superiorityDice", "superiority di", 1],
+  "scout-maneuver": ["superiorityDice", "superiority di", 1],
   "tai-technique": ["martialDice", "martial di", 1],
   "tai-stillness": ["martialDice", "martial di", 2],
   "weapon-kata": ["discipline", "discipline", 0]

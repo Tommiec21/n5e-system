@@ -1,0 +1,116 @@
+{
+  "_id": "5b6a668f79072bd7",
+  "_key": "!items!5b6a668f79072bd7",
+  "type": "jutsu",
+  "name": "Lick Wounds",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "24f6b35eae2e568b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "inuzuka",
+      "sourceLine": 1405,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Tag-Team",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "inuzuka-lick-wounds",
+    "description": "<p>You lick your wounds using chakra to stitch them close or forcing scar tissue to grow at an accelerated rate.</p>\n<p>You can spend up to 2 Hit Die. For every hit die spent this way, roll 2 dice the same size as your hit dice. You regain hit points equal to the result.</p>\n<p>Tag-Team: Your Nin-Dog follows your lead and licks their wounds, rolling 2d10 and regaining the result.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.  If this jutsu is cast at C-Rank, you can command your Nin-Dog to instead lick the wounds of an ally they are adjacent to. When they do, that allied creature can benefit from this jutsu’s effect as if they were casting it. If this jutsu is cast at B-Rank, increase the number of Hit Die you can spend by +1. If this jutsu is cast at S-Rank, increase the number of Hit Die you can spend by +2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1405; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "medical",
+      "tag-team"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "inuzuka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.  If this jutsu is cast at C-Rank, you can command your Nin-Dog to instead lick the wounds of an ally they are adjacent to. When they do, that allied creature can benefit from this jutsu’s effect as if they were casting it. If this jutsu is cast at B-Rank, increase the number of Hit Die you can spend by +1. If this jutsu is cast at S-Rank, increase the number of Hit Die you can spend by +2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

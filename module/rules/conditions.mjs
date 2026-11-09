@@ -30,6 +30,7 @@ export function emptyPenalties() {
 export function clampRanks(def, ranks) {
   if ( !def ) return 0;
   if ( def.maxRanks == null ) return ranks > 0 ? 1 : 0;
+  if ( def.maxRanks === 0 ) return Math.max(0, Math.floor(ranks)); // Ranked, no source-defined ceiling.
   return Math.max(0, Math.min(def.maxRanks, Math.floor(ranks)));
 }
 

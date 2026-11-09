@@ -1,0 +1,117 @@
+{
+  "_id": "1cc9fc52c6519673",
+  "_key": "!items!1cc9fc52c6519673",
+  "type": "jutsu",
+  "name": "Synthetic Art: False Smog Technique",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "b9ce957e6de28991",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jinzo",
+      "sourceLine": 7426,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when a hostile creature you can see moves within 10 feet of you.",
+        "range": "Self (10-foot radius)",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Shin Branch",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-synthetic-art-false-smog-technique",
+    "description": "<p>When a creature moves close enough, you are able to trigger your trap, releasing a thick smog of smoke from your body, forming a smokescreen that both masks you and your allies movements, but also is harmful to breathe. You spew a thick cloud of dense black smoke that forms as a 10-foot radius cloud centered on you, that lasts until the end of your next turn, forcing the triggering creature to make a Constitution saving throw.</p>\n<p>Critical Success: No further effect</p>\n<p>Success: Affected creature becomes Dazzled and treats the smoke as light obscurement until the end of the current turn</p>\n<p>Failure: Affected creatures gains 2 ranks of Dazzled until the end of the current turn, and treats the smoke as light obscurement for its duration.</p>\n<p>Critical Failure: Same as failure, but the smoke causes them to enter a Stupor for its duration.</p>\n<p>Shin-Seal: If an affected creature has a Shin Seal, you can dispel it. If you do, on a failure, they are also Blinded until the end of their next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and increase the size of the smoke cloud and the range in which a creature needs to be to cast this jutsu by +5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7426; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-inhale",
+      "tactile",
+      "shin-branch"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a hostile creature you can see moves within 10 feet of you."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "jinzo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and increase the size of the smoke cloud and the range in which a creature needs to be to cast this jutsu by +5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -43,7 +43,7 @@ export class ConditionEffectData extends TDM() {
   /** Unranked conditions count as 1 rank; ranked ones never exceed their max. */
   prepareDerivedData() {
     const max = this.maxRanks;
-    this.effectiveRanks = max == null ? 1 : Math.min(this.ranks, max);
+    this.effectiveRanks = max == null ? 1 : max === 0 ? this.ranks : Math.min(this.ranks, max);
   }
 }
 

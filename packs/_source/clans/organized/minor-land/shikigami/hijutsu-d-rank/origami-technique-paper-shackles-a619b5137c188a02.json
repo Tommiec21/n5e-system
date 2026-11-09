@@ -1,0 +1,114 @@
+{
+  "_id": "a619b5137c188a02",
+  "_key": "!items!a619b5137c188a02",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Shackles",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "af5ba6d9a64a4fc2",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8165,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 Feet",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
+        "components": "CS, M, W"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-shackles",
+    "description": "<p>You created a layered structure, similar to handcuffs and attempt to bind the hands of a target creature. Select one creature you can see in range, forcing them to make a Dexterity saving throw. On a failure, their hands are bound, and they cannot make Weapon or Taijutsu attacks for the duration. The affected creature can remake their saving throw at the end of each of their turns, ending this effect on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8165; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": true,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CS, M, W"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CS, M, W"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

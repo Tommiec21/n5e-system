@@ -1,0 +1,115 @@
+{
+  "_id": "cde8aa939d0ef461",
+  "_key": "!items!cde8aa939d0ef461",
+  "type": "jutsu",
+  "name": "Crystal Release: Crystal Ammunition",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f662b460b27e0009",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shoton",
+      "sourceLine": 7048,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self",
+        "duration": "Permanent, until used",
+        "cost": "3 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shoton-crystal-release-crystal-ammunition",
+    "description": "<p>You manifest a d10 stack of ammunition made of crystal. This ammunition can be used for any weapon that requires it. This ammunition has no bulk, and you can only have 1 stack of it at a time. If you manifest another stack, the previous stack dissolves.</p>\n<p>When using this ammunition, weapons whose damage die is less than 1d8, becomes 1d8 and its damage type becomes Earth. Additionally, attacks made using this ammunition gain the Deadly 2 weapon property and the weapon used is counted as a Crystal Weapon.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7048; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Permanent, until used"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "shoton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

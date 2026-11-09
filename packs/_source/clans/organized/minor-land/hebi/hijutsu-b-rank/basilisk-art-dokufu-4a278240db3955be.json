@@ -1,0 +1,115 @@
+{
+  "_id": "4a278240db3955be",
+  "_key": "!items!4a278240db3955be",
+  "type": "jutsu",
+  "name": "Basilisk Art: Dokufu",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c304ec9deb15a515",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8393,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30 Foot Cone)",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Medical",
+        "components": "CM, M, W (Any Blade)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-dokufu",
+    "description": "<p>You store your chakra within your blade before you open your mouth, releasing a small cloud of venomous gas, that you spin and swing your blade through, releasing your stored chakra tearing through the ground and area creating a claw like rift shredding through everything with sharpened venom.</p>\n<p>All creatures in a 30-foot cone originating from you must make a Dexterity saving throw, taking your [Weapon Damage] + 2d10 poison damage and inflicting 2 ranks of Envenomed on a failure, or half as much damage on a success.</p>\n<p>Serpent Coil. If you use a Strike ability from the Serpent’s Coil stance or as a Venom Art, as part of this jutsu’s casting, creatures that fail their saving throw, are also inflicted with Virulent until the end of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8393; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": 30,
+        "long": null,
+        "text": "Self (30 Foot Cone)"
+      },
+      "area": {
+        "shape": "Cone",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Blade)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Blade)"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

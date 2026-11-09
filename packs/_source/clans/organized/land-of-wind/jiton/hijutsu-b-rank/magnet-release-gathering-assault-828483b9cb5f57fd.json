@@ -1,0 +1,116 @@
+{
+  "_id": "828483b9cb5f57fd",
+  "_key": "!items!828483b9cb5f57fd",
+  "type": "jutsu",
+  "name": "Magnet Release: Gathering Assault",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "9a505b674b85274f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jiton",
+      "sourceLine": 3322,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "120 feet",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "11 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Wind Release.",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jiton-magnet-release-gathering-assault",
+    "description": "<p>You gather a great volume of dust particles and compress it into a high-density shape, before launching it at a creature within range.</p>\n<p>Select a Creature, or a space you can see within range, as you drop this massive structure onto it.</p>\n<p>If you are targeting a creature, make a ranged ninjutsu attack, dealing 8d10 earth damage and landing on top of the target.</p>\n<p>If you are selecting a space then the space is damaged beyond repair, destroying the ground. If the surface is not at least 5 feet thick, then the ground collapses into whatever lies below, and the structure falls to the next surface landing and occupying a 15-feet wide, 20-feet tall cube like space. All creatures within 40-feet of the structure when it lands, must make a Strength saving throw, if they are wielding a metallic weapon. On a failed save, the weapon is drawn to the structure and merged into it for the duration. If a creature hit by this jutsu’s attack fails their strength saving throw to retain their weapon they are also Restrained by being under the structure. A restrained creature remakes their saving throw at the end of each of their turns, escaping from under the structure on a success.</p>\n<p>The Structure remains solid and does not fall apart for the duration. Weapons merged into the structure fall harmlessly into a space that can hold it when this jutsu ends.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d10, and the number of structures/attacks you can make by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3322; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "earthRelease",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 11,
+      "text": "11 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "jiton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d10, and the number of structures/attacks you can make by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

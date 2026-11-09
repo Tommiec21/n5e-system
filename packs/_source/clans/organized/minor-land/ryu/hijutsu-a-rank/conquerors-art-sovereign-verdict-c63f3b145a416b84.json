@@ -1,0 +1,116 @@
+{
+  "_id": "c63f3b145a416b84",
+  "_key": "!items!c63f3b145a416b84",
+  "type": "jutsu",
+  "name": "Conqueror’s Art: Sovereign Verdict",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "bdbc3ee4c0dfc3c1",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ryu",
+      "sourceLine": 8787,
+      "sourceHeader": {
+        "time": "1 Action.",
+        "range": "Self (20-Foot Radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "25 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ryu-conquerors-art-sovereign-verdict",
+    "description": "<p>You swirl your chakra-laced claws around you in a tightening spiral with the intent of rending a foes potential clear from their being, disrupting their flow of chakra and shattering their body.</p>\n<p>First, you cover your body in draconic chakra manifesting dragon claws before striking at all creatures in range. Make a melee Ninjutsu attack, comparing the result vs the AC of all hostile creatures within 20 feet of you, dealing your [Unarmed Damage] (or [Weapon Damage]) + 6d6 damage as you rend them.</p>\n<p>Next, damaged creatures must make a Charisma saving throw as you attempt to rend them of a core aspect of themselves. On a failure, select one Keyword between the following, they cannot cast jutsu with the select keyword for the duration; Earth Release, Wind Release, Fire Release, Water Release, Lightning Release, Medical, Fuinjutsu.</p>\n<p>Creatures that failed their saving throw remakes their saving throw at the end of each of their turns, ending this effect on them on a success.</p>\n<p>Dragon Rage State. If this jutsu is cast while in your Dragon Rage State, by spending 3 Draconic Chakra, select one creature you hit with the attack made as part of this jutsu, forcing them to make their saving throw at disadvantage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8787; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 25,
+      "text": "25 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "ryu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "_id": "da2f100368b83118",
+  "_key": "!items!da2f100368b83118",
+  "type": "jutsu",
+  "name": "Explosion Release: Grenade Strike",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d5b5d11a71f2d4bb",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceLine": 4938,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "5 Feet",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-grenade-strike",
+    "description": "<p>You channel explosive chakra into one of your fists, before swinging out in a furious haymaker. Make a melee Ninjutsu (or Taijutsu) attack against a creature or object. On a hit, you deal your [Unarmed Damage] + 3d8 force damage.</p>\n<p>Also, the target must make a Constitution saving throw, being pushed back 10 feet, falling Prone and being Shaken on a failed save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is Cast at A-Rank or higher, the number of attacks you can make is increased to two.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4938; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "earthRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is Cast at A-Rank or higher, the number of attacks you can make is increased to two.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

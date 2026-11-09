@@ -1,0 +1,114 @@
+{
+  "_id": "80a98485db27b1eb",
+  "_key": "!items!80a98485db27b1eb",
+  "type": "jutsu",
+  "name": "Spider Art: Web Bind",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "929a4e3cafe3658a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "tsuchigumo",
+      "sourceLine": 7633,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-foot cone)",
+        "duration": "Instant",
+        "cost": "3 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "tsuchigumo-spider-art-web-bind",
+    "description": "<p>You knead sticky webbing in your mouth and spit it out covering the target area in front of you. Creatures in the target area must make a Dexterity saving throw, being Restrained and being unable to make opportunity attacks, on a failed save as the sticky web restricts movement until the end of the affected creatures next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the size of the cone by 5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7633; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-foot cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "tsuchigumo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the size of the cone by 5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

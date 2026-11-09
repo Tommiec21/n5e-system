@@ -1,0 +1,118 @@
+{
+  "_id": "1921abc4f956b3d2",
+  "_key": "!items!1921abc4f956b3d2",
+  "type": "jutsu",
+  "name": "Swift Release: Flicker",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "a5f6167fc258babf",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "namikaze",
+      "sourceLine": 1648,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "1 round.",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu, Wind Release, Lightning Release.",
+        "components": "HS, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "namikaze-swift-release-flicker",
+    "description": "<p>When forced to avoid a hostile effect through sheer agility, evasiveness or speed, you don’t disappoint. You flicker in place so quickly that you make attacks and hostile effects phase through you.</p>\n<p>Until the beginning of your next turn, the first time each turn that you take damage, including against the triggering instance of damage, roll a d4 gaining the benefit of the result.</p>\n<p>If you roll a 1, you gain 4 damage reduction to that instance of damage. If you roll a 2, increase the DR gained by +2, and now applies to each instance of damage until the end of the turn. If you roll a 3, same as 2 but you have resistance instead. If you roll a 4, same as 3, but you gain immunity to the triggering instance of damage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1648; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "fuinjutsu",
+      "windRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 round."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "namikaze",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -13,13 +13,13 @@ export const stanceRules = { maxActive: 1, switchAction: "bonus", upgradeLevels:
 export const featCategories = {
   general: "General", skill: "Skill", chakra: "Chakra", ninjutsu: "Ninjutsu", genjutsu: "Genjutsu",
   taijutsu: "Taijutsu", critical: "Critical", clan: "Clan", class: "Class", archetype: "Archetype",
-  rare: "Rare", classFeature: "Class Feature", classOption: "Class Option", clanFeature: "Clan Feature", npcFeature: "NPC Feature"
+  rare: "Rare", classFeature: "Class Feature", classOption: "Class Option", clanFeature: "Clan Feature", clanOption: "Clan Option", backgroundFeature: "Background Feature", npcFeature: "NPC Feature"
 };
 
 /** KB 12: class jutsu tiers (High/Medium/Low = 0/1/2-3 extra resources). */
 export const jutsuTiers = { high: "High", medium: "Medium", low: "Low" };
 
-/** KB 09: 16 backgrounds (data in compendium later; keys here for migration and filters). */
+/** KB 09: 16 backgrounds; organized content lives in the backgrounds compendium. */
 export const backgrounds = [
   "advisor", "bureaucrat", "chronicler", "entertainer", "gangster", "genius", "hardWorker", "hermit",
   "lastClansmen", "leader", "noble", "student", "traveler", "troubleMaker", "urchin", "warChild"

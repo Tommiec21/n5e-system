@@ -1,0 +1,118 @@
+{
+  "_id": "99808bd5ae7ddfa7",
+  "_key": "!items!99808bd5ae7ddfa7",
+  "type": "jutsu",
+  "name": "Demonic Illusion: Steaming Mirage",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "0d89ba4b0bb9767b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hozuki",
+      "sourceLine": 4189,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "90 Feet (20-foot Radius)",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Genjutsu (Visual, Auditory, Inhale, Tactile), Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hozuki-demonic-illusion-steaming-mirage",
+    "description": "<p>You begin to release a gout of steam from your body, and have it collected into an area of your choice. Select a point you can see within range, forcing all creatures within a 20-foot radius of the chosen point to make a Wisdom saving throw. Creatures that end their turn in the affected area for the duration remake this saving throw.</p>\n<p>Success: Affected creature becomes Confused.</p>\n<p>Failure: Affected creatures cannot discern friend from foe. They perceive all other creatures as if it was the caster for the duration. They can remake their saving throw at the end of their turns, ending this effect on a success.</p>\n<p>Critical Failure: Same as failure, but the affected creature does not remake their saving throws at the end of their turns.</p>\n<p>Hydrofication. You count as invisible to all creatures that fail their saving throw.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the size of the radius by +10 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4189; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "waterRelease",
+      "genjutsu-visual",
+      "auditory",
+      "inhale",
+      "tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 Feet (20-foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hozuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the size of the radius by +10 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

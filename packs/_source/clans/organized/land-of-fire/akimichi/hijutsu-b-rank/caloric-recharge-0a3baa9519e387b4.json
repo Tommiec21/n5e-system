@@ -1,0 +1,114 @@
+{
+  "_id": "0a3baa9519e387b4",
+  "_key": "!items!0a3baa9519e387b4",
+  "type": "jutsu",
+  "name": "Caloric Recharge",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3dc35950e673dbb6",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "akimichi",
+      "sourceLine": 776,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "Special",
+        "keywords": "Hijutsu, Ninjutsu, Medical",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "akimichi-caloric-recharge",
+    "description": "<p>By spending any number of calories, you are able to regain hit points by forcibly converting them into healing energies.</p>\n<p>For every Calorie spent this way, you regain 1d8+1 hit point, up to a maximum of 10 calories spent.</p>\n<p>Expansion Crash. You can impart this healing onto a willing creature you can reach. If you do, this casting time becomes 1 Action.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the amount of hit points regained for each calorie spent by +2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 776; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "medical"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "akimichi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": null,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the amount of hit points regained for each calorie spent by +2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

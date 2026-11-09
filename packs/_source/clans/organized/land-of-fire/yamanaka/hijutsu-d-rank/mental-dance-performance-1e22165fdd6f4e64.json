@@ -1,0 +1,118 @@
+{
+  "_id": "1e22165fdd6f4e64",
+  "_key": "!items!1e22165fdd6f4e64",
+  "type": "jutsu",
+  "name": "Mental Dance Performance",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "0023b9e5350eaf53",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamanaka",
+      "sourceLine": 2634,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 Feet (15-foot cube)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamanaka-mental-dance-performance",
+    "description": "<p>You release a pulse of intent, that fills an area with mental suggestion. Select point you can see within range, as you project the desire to dance, move or act erratically to all creatures within a 15-foot cube originating from the chosen point. All affected creatures must make a Wisdom saving throw.</p>\n<p>Critical Success: No further effects.</p>\n<p>Success: Targets become Confused until the end of their next turn.</p>\n<p>Failure: Targets begin to dance, move or act in a non-hostile but erratic way. It must use all of its movement on its turn to perform this activity, and has disadvantage on ranged attacks. A dancing creature remakes their saving throw at the end of each of their turns, ending this effect on them, on a success they gain 1 Mental Overwrite.</p>\n<p>Critical Failure: Same as failure, but they must also spend their Bonus action as well.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at B-Rank, increase the range of this jutsu to 60 feet (15-foot cube). If this jutsu is cast at S-Rank, increase the size of the cube to 30-feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2634; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu",
+      "genjutsu-tactile",
+      "auditory",
+      "unaware"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet (15-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamanaka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at B-Rank, increase the range of this jutsu to 60 feet (15-foot cube). If this jutsu is cast at S-Rank, increase the size of the cube to 30-feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

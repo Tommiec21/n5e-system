@@ -1,0 +1,115 @@
+{
+  "_id": "a559b75f4c5c336b",
+  "_key": "!items!a559b75f4c5c336b",
+  "type": "jutsu",
+  "name": "Kujaku Art: Cosmic Pressure",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "77427807d6c5ec9a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hoshi",
+      "sourceLine": 8009,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-foot radius)",
+        "duration": "Concentration, up to 1 Minute",
+        "cost": "12 Chakra (or 6 Star Chakra)",
+        "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Stable",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hoshi-kujaku-art-cosmic-pressure",
+    "description": "<p>You release so much Star chakra, that it becomes difficult for other chakra signatures to maintain any sort of stability near you.</p>\n<p>For the duration, you radiate an aura of pressure, like that of a dying star, that only affects chakra. If a creature begins its turn (or its summoners turn) within this jutsu’s radius and it is a construct, it must make a Charisma saving throw. On a failure, it becomes Destabilized for the next minute. If a Destabilized creature fails this saving throw, they are dispelled. If the Dispelled creature was summoned as a result of a Jutsu, its summoner cannot summon that creature again unless they summon the creature at least 1 rank higher than it was when it was dispelled.</p>\n<p>| #### Art Link / Pinterest Link |</p>\n<p>Irradiated: If a creature concentrating on a Jutsu enters this area, that jutsu loses both the Stable and Efficient keywords, if it had either.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 (or 2 star chakra), increase the aura's radius by 5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8009; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "stable"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra (or 6 Star Chakra)"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hoshi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 (or 2 star chakra), increase the aura's radius by 5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

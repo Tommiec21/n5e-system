@@ -1,0 +1,117 @@
+{
+  "_id": "507533ca8ba2c6c5",
+  "_key": "!items!507533ca8ba2c6c5",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Sound of Doom",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ee75d5abf63b4b71",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6840,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (60-Feet Radius)",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Visual, Tactile)",
+        "components": "CM, W (Shinobi Instrument)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-sound-of-doom",
+    "description": "<p>You strum, play or tune your Shinobi Instrument in a way that the next sounds that escape it sound like screams and pleas of those who are damned.</p>\n<p>As you play, it feels like spirits from the beyond begin to cry out for another chance. All creatures in range begin to see images of the spirits of their loved ones rising and begging for them to switch places. All creatures of your choice in a 60-foot radius, centered on you must make a Charisma saving throw.</p>\n<p>Critical Success: The target suffers no additional effects.</p>\n<p>Success: The target has their speed reduced to 0 until the end of their next turn.</p>\n<p>Failure: The target takes 4d10 psychic damage, gains 2 ranks of Disoriented and lose 1 Elite Action. (If the affected creature is a player character, then they lose any Special Action, they have as a result of a feature or jutsu).</p>\n<p>Critical Failure: Same effects as a failure, but if the target has multiple Elite Actions, they cannot exchange any remaining for additional reactions.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6840; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-auditory",
+      "visual",
+      "tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60-Feet Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Shinobi Instrument)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Shinobi Instrument)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

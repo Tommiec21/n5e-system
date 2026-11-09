@@ -1,0 +1,113 @@
+{
+  "_id": "887869bccc862c46",
+  "_key": "!items!887869bccc862c46",
+  "type": "jutsu",
+  "name": "Gentle Counter",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d89aee609bec9e4e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hyuga",
+      "sourceLine": 982,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage from a melee attack.",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Taijutsu",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-gentle-counter",
+    "description": "<p>As a part of casting this jutsu, you must be gaining the benefits of the Gentle Fist Stance. You instantly react to an incoming attack. When you are damaged with a melee attack, you may roll 1d8 + Your Unarmed attack bonus. Reduce the damage you received by the result.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and reduce damage by an additional 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 982; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage from a melee attack."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hyuga",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and reduce damage by an additional 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "_id": "fc87d0e70bd5bbe6",
+  "_key": "!items!fc87d0e70bd5bbe6",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Chakram",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "8f580c2ca9218029",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8224,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "120 feet",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "10 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
+        "components": "HS, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-chakram",
+    "description": "<p>You create an incredibly sharp chakram of paper, which you mentally command to attack opponents repeatedly for the duration or until you dismiss this jutsu.</p>\n<p>When you cast this jutsu, the chakram is summoned within 20 feet of you and you can command it to make a melee ninjutsu attack, against a creature within 5 feet of it, dealing 6d6 slashing damage.</p>\n<p>On subsequent turns, you can spend your Bonus action command it to move it up to 30 feet and remake its attack against a target within 5 feet of it.</p>\n<p>If you score a critical hit with the paper chakram, the target gains the 3 ranks of the Bleed.</p>\n<p>Explosive Veil. If you score a critical hit with the chakram, it also explodes inflicting 3 ranks of Burned.</p>\n<p>Serrated Veil. Attacks made with the chakram compare the attack result, vs the AC of all hostile creatures within 5 feet of the chakram.</p>\n<p>Binding Veil. Once per turn, hostile creatures the chakram is adjacent to, that move away from it, triggers an attack of opportunity from it, allowing you to make an attack with it against the moving creature.</p>\n<p>Weaving Veil. The Chakram instead floats around you, unable to move independently as normal. Now, once per turn, when you make an unarmed attack, you can make one follow up attack with the chakram, against the same creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost by 3, the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8224; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost by 3, the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

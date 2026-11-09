@@ -1,0 +1,116 @@
+{
+  "_id": "531ee90011381875",
+  "_key": "!items!531ee90011381875",
+  "type": "jutsu",
+  "name": "Lava Release: Expanding Flame Rings",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "30d8bd4a582f332f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yoton",
+      "sourceLine": 5469,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet",
+        "duration": "Instant",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release, Fire Release",
+        "components": "HS, CM, W (any Shuriken or Chakram)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yoton-lava-release-expanding-flame-rings",
+    "description": "<p>You use Lava release Chakra to augment a Shuriken or Chakram that you have turning it into a bright red glowing piece of metal that keeps the shape of the Ninja tool used. You then throw them with extreme force. Make a ranged Ninjutsu (or taijutsu) attack and if a Shuriken is used for this jutsu, you reduce your ammunition die by 1 step. On a hit, you deal [Weapon Damage] + 3d10 Fire damage.</p>\n<p>All creatures within 10 feet of the original target must make a Dexterity saving throw, being Molten until the end of your next turn on a failure.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the damage by 1d10</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5469; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "earthRelease",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, W (any Shuriken or Chakram)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, W (any Shuriken or Chakram)"
+      }
+    },
+    "hijutsu": {
+      "clan": "yoton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the damage by 1d10</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

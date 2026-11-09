@@ -1,0 +1,117 @@
+{
+  "_id": "75b078a6b23a5919",
+  "_key": "!items!75b078a6b23a5919",
+  "type": "jutsu",
+  "name": "Explosion Release: Impact Landmine",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d5b5d11a71f2d4bb",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceLine": 4943,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (10-foot radius)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-impact-landmine",
+    "description": "<p>You channel explosive chakra into one of your striking limbs before striking the ground, causing an explosion, upturning the earth. All creature, excluding you in a 10-foot radius, centered on a point of your space, must make a Dexterity saving throw. On a failure, they take 3d6 force damage and gain a rank of Dazzled or half as much damage on a success.  The affected area is difficult terrain until the end of your next turn to all creatures, excluding you.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at C-Rank or higher, creatures who fail their save are pushed back 10-feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4943; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "earthRelease",
+      "lightningRelease",
+      "reckless-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at C-Rank or higher, creatures who fail their save are pushed back 10-feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

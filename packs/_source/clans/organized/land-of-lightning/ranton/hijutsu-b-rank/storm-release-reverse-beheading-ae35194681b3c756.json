@@ -1,0 +1,118 @@
+{
+  "_id": "ae35194681b3c756",
+  "_key": "!items!ae35194681b3c756",
+  "type": "jutsu",
+  "name": "Storm Release: Reverse Beheading",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "8662f3f048774162",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ranton",
+      "sourceLine": 6209,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot Radius)",
+        "duration": "Instant",
+        "cost": "10 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Water Release, Lightning Release, Storm Branch",
+        "components": "CM, M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-storm-release-reverse-beheading",
+    "description": "<p>While covered in lightning, you spin, generating enough momentum to strike at everything around you. All creatures in range must make a Dexterity saving throw, taking your [Unarmed Damage] or [Weapon Damage] + 4d12 lightning damage on a failure or half as much on a success.</p>\n<p>If a creature fails their saving throw by 5 or more, they treat the damage they take as if they are vulnerable to it.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6209; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "waterRelease",
+      "lightningRelease",
+      "storm-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "ranton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

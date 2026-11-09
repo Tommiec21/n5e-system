@@ -1,0 +1,115 @@
+{
+  "_id": "cd08e73997918125",
+  "_key": "!items!cd08e73997918125",
+  "type": "jutsu",
+  "name": "Typhoon Release: Storm Bastion",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "e486cc9d767b0171",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "fushin",
+      "sourceLine": 2866,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you or an allied creature in range takes damage.",
+        "range": "30 Feet",
+        "duration": "1 Round",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Wind Release, Barrier",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "fushin-typhoon-release-storm-bastion",
+    "description": "<p>You manifest a spiraling helix of hardened air streams around the protected target. The Barrier has 2d8 + 10 hit points and 2 DR and lasts until the beginning of your next turn.</p>\n<p>If this Barriers hit points are reduced to 0, all creatures within 10 feet of the protected creature, excluding you must make a Strength saving throw as the hardened wind quickly expands into an invisible explosion of force. On a failure they are pushed 20 feet away from the protected creature and are Dazed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the barriers hit points by 1d8+4</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2866; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or an allied creature in range takes damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "fushin",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the barriers hit points by 1d8+4</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

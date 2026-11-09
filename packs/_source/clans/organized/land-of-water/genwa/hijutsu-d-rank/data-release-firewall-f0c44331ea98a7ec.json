@@ -1,0 +1,115 @@
+{
+  "_id": "f0c44331ea98a7ec",
+  "_key": "!items!f0c44331ea98a7ec",
+  "type": "jutsu",
+  "name": "Data Release: Firewall",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "186020b89c252aa6",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "genwa",
+      "sourceLine": 3863,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you would take damage",
+        "range": "Self",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Lightning Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "genwa-data-release-firewall",
+    "description": "<p>As a reaction when you take damage, you can quickly manifest a barrier of data release to protect you. The barrier you summoned has 2d10 + 8 hit points.</p>\n<p>After This jutsu reduces the triggering damage, the barrier is conjured as a shield of your design, that floats, around you. For the remaining duration, the first time you take damage each turn, you can choose to block some of the incoming damage with the shield, reducing the damage by 2d10.</p>\n<p>Angel Link: You can alter the trigger of this jutsu to also trigger when an allied creature within 30 feet of you takes damage, applying this jutsu’s effect to the allied creature and granting them Signal Boosted.</p>\n<p>Demon Link: While you have a shield created by this jutsu, when you reduce damage, you also deal lightning damage to a creature of your choice within 30 feet of you, equal to the damage reduced by the shield.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the barrier and shields damage reduction effect by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3863; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "genwa",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the barrier and shields damage reduction effect by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -13,6 +13,7 @@ import {
   stepsForLevel, subclassSteps, learnableJutsu, eligibleFeats, masteryTargets, validate
 } from "../advancement/steps.mjs";
 import { applyLevel } from "../advancement/manager.mjs";
+import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const esc = s => foundry.utils.escapeHTML?.(String(s ?? "")) ?? String(s ?? "");
@@ -84,7 +85,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     if ( !this.#docs.has(key) ) {
       const pack = game.packs.get(`n5e.${name}`);
       const docs = pack ? await pack.getDocuments() : [];
-      this.#docs.set(key, [...docs, ...game.items.filter(i => i.type === type)]);
+      if ( !this.#docs.has("clan:documents") ) this.#docs.set("clan:documents", await game.packs.get("n5e.clans")?.getDocuments() ?? []);
+      this.#docs.set(key, [...docs, ...this.#docs.get("clan:documents").filter(i => i.type === type), ...game.items.filter(i => i.type === type)]);
     }
     return this.#docs.get(key);
   }
@@ -133,15 +135,21 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           break;
         }
         case "itemChoice":
+        case "featChoice":
         case "subclass": {
           view.options = [];
-          for ( const u of st.uuids ) {
+          const clanKey = actor.items.find(i => i.type === "clan")?.system.identifier ?? "";
+          const choices = st.type === "featChoice" ? eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, clan: clanKey }).map(d => d.uuid) : st.uuids;
+          if ( st.type === "featChoice" ) view.type = "itemChoice";
+          for ( const u of choices ) {
             const d = await this.#doc(u);
             if ( !d ) continue;
+            if ( !itemChoiceAllowed(d, { actor, level: this.level, key: st.key }) ) continue;
             const owned = ownedNames.has(d.name.toLowerCase());
             const req = d.system.requirement;
             view.options.push({ value: u, name: d.name, img: d.img, owned, selected: chosen.has(u),
-              sub: typeof req === "string" ? req : "", tip: this.#tip(d, typeof req === "string" && req ? `Requirement: ${req}` : "") });
+              sub: [typeof req === "string" ? req : req?.level > 1 ? `Level ${req.level}` : "", ...(d.system.prerequisites ?? [])].filter(Boolean).join("; "),
+              tip: this.#tip(d, (d.system.prerequisites ?? []).join("; ")) });
           }
           poolSizes[st.id] = view.options.filter(o => !o.owned).length;
           break;
@@ -165,7 +173,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
         case "asi": {
           const a = this.#sel[st.id] ?? {};
           view.abilityOptions = st.abilities.map(o => ({ ...o, selected: a.ability === o.value }));
-          const feats = eligibleFeats(await this.#packDocs("feats", "feat"), { level: actor.system.level, owned: ownedNames });
+          const feats = eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, clan: actor.items.find(i => i.type === "clan")?.system.identifier ?? "" })
+            .filter(f => !f.system.requirement?.clan || f.system.requirement.clan === actor.items.find(i => i.type === "clan")?.system.identifier);
           view.feats = feats.map(f => ({ value: f.uuid, name: f.name, img: f.img, selected: a.feat === f.uuid,
             sub: f.system.prerequisites?.join("; ") ?? "", tip: this.#tip(f, f.system.prerequisites?.length ? `Prerequisite: ${f.system.prerequisites.join("; ")}` : "") }));
           view.mastery = masteryTargets(actor).map(m => ({ ...m, selected: a.mastery === m.value }));
@@ -176,7 +185,9 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
         case "jutsu": {
           const all = await this.#packDocs("jutsu", "jutsu");
           const known = new Set(actor.items.filter(i => i.type === "jutsu").map(i => i.name.toLowerCase()));
-          const learnable = learnableJutsu(all, { maxRank: st.maxRank, affinities, known, keywords: CONFIG.N5E.keywords });
+          const clan = actor.items.find(i => i.type === "clan");
+          const learnable = learnableJutsu(all, { maxRank: st.maxRank, affinities, known, keywords: CONFIG.N5E.keywords,
+            clan: clan?.system.identifier ?? "", branch: clan?.system.branch ?? "" });
           const groups = {};
           for ( const j of learnable ) {
             const g = groups[j.system.discipline] ??= { label: CONFIG.N5E.disciplines[j.system.discipline]?.label ?? j.system.discipline, options: [] };
@@ -199,6 +210,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this._steps = steps;
     this._poolSizes = poolSizes;
     const problems = validate(steps, this.#sel, poolSizes);
+    problems.push(...await validateItemChoices(actor, this.level, steps, this.#sel, uuid => this.#doc(uuid)));
     return { steps: views, problems, ready: problems.length === 0, level: this.level, cls: this.cls.name,
       rankOrder: RANK_ORDER };
   }
@@ -232,6 +244,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
    */
   static async #onApply() {
     const problems = validate(this._steps, this.#sel, this._poolSizes);
+    problems.push(...await validateItemChoices(this.actor, this.level, this._steps, this.#sel));
     if ( problems.length ) return ui.notifications.warn(problems[0]);
     await applyLevel(this.actor, this.cls, this.level, this._steps, this.#sel);
     ui.notifications.info(`${this.actor.name} is now a level ${this.level} ${this.cls.name}.`);

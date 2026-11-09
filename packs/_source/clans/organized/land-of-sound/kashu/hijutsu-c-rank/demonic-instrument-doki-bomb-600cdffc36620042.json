@@ -1,0 +1,117 @@
+{
+  "_id": "600cdffc36620042",
+  "_key": "!items!600cdffc36620042",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Doki Bomb",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cc27a80758f9c842",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6788,
+      "sourceHeader": {
+        "time": "1 Action.",
+        "range": "Special",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Genjutsu (Auditory), Harmonic Branch",
+        "components": "CM, W (Auditory Ninja Tool)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-doki-bomb",
+    "description": "<p>You can only cast this jutsu while you have at least one active Doki.</p>\n<p>You play a melody forcing your Doki to realize that they are weapons of relative destruction. Select one active Doki. They spend their movement moving as close to a hostile creature as possible.  At the end of their movement, if a hostile creature is within range, they can make an attack, targeting them using one of their available attacks. After the attack, your Doki self-destructs, blowing themselves up. All creatures within 20-feet of the Doki when it explodes make a Dexterity saving throw. On a failure, they take 4d12 force damage.</p>\n<p>As part of them detonating, you can spend your Reaction to resummon this Doki.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6788; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "bukijutsu",
+      "genjutsu-auditory",
+      "harmonic-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Auditory Ninja Tool)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Auditory Ninja Tool)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

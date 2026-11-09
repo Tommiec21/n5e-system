@@ -1,0 +1,117 @@
+{
+  "_id": "14dcdb8d674f9852",
+  "_key": "!items!14dcdb8d674f9852",
+  "type": "jutsu",
+  "name": "Test Cutting: Spring Garden",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f761929b5b2f5d99",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4563,
+      "sourceHeader": {
+        "time": "1 Reaction, as part of rolling initiative.",
+        "range": "Movement Speed",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Genjutsu (Visual, Tactile) Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-spring-garden",
+    "description": "<p>You quickly dash forward as you draw your sword with the intent to finish the battle before it begins. Move into a space you can see within your movement speeds range. At the end of that movement, make a melee taijutsu attack against a creature within your weapons range. On a hit, you deal your [Weapon Damage] + 4d6 and for the affected creature to make a Wisdom saving throw.</p>\n<p>Success: Affected creature is Dazzled.</p>\n<p>Failure: Affected creature is Dazzled and loses their Reaction until the end of your next turn.</p>\n<p>Critical Failure: Same as failure, but the affected creature also loses their Action.</p>\n<p>Ideal Cut: Roll 1d6. On a roll of 5 or 6, you regain your spent Reaction.</p>\n<p>Tao: Roll 1d6, on a roll of 5 or 6, you gain an additional Bonus action on your first turn in combat.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4563; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "bukijutsu",
+      "chain",
+      "genjutsu-visual",
+      "tactile-chain"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, as part of rolling initiative."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

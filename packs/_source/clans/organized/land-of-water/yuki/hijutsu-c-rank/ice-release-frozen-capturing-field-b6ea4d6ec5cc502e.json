@@ -1,0 +1,115 @@
+{
+  "_id": "b6ea4d6ec5cc502e",
+  "_key": "!items!b6ea4d6ec5cc502e",
+  "type": "jutsu",
+  "name": "Ice Release: Frozen Capturing Field",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "88e34220269e0386",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yuki",
+      "sourceLine": 4801,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "self (30 feet cube)",
+        "duration": "Concentration, Up to 1 Minute",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-ice-release-frozen-capturing-field",
+    "description": "<p>The ground erupts outward from you covering a 30-foot cube, originating from you, across the ground freezing the feet of creatures in range. Creatures in range must make a Dexterity saving throw, having their movement speed reduced by 20 feet and gaining a rank of Frostbite on a failed save. Creatures captured in this jutsu can make strength saving throw as an action on their turn to escape this jutsu.</p>\n<p>The area this jutsu affects leaves behind ice-covered ground being treated as difficult terrain for the duration. Creatures who enter this area of this jutsu must make a Dexterity saving throw to avoid falling Prone.</p>\n<p>If this jutsu is cast while occupying an Ice Mirror, you can select up to 3 spaces you can see within range, and conjure a Ice Mirrors. At the end of the current turn, dispel all Ice Mirrors beyond your current limit of what you can maintain.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the size of the cube by +10 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4801; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "windRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": 30,
+        "long": null,
+        "text": "self (30 feet cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the size of the cube by +10 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

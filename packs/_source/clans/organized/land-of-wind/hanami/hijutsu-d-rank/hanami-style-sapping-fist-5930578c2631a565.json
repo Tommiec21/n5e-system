@@ -1,0 +1,116 @@
+{
+  "_id": "5930578c2631a565",
+  "_key": "!items!5930578c2631a565",
+  "type": "jutsu",
+  "name": "Hanami Style: Sapping Fist",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "794456b83980fceb",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hanami",
+      "sourceLine": 3002,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Stable",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hanami-hanami-style-sapping-fist",
+    "description": "<p>You coat your hands in medical chakra designed to sap the life force of anyone you touch. Once per turn, when you deal [Unarmed Damage] to a creature, you gain temporary hit points equal to the damage [Unarmed Damage] dealt.</p>\n<p>Monstrous Burst. For the duration, your [Unarmed Damage] can be necrotic. When you make an unarmed attack, If you roll a 5 or 6, on your [Unarmed Damage] die, you add an additional 1d6 to the damage. You can repeat this effect up to 4 times, each turn.</p>\n<p>Healers Touch. For the duration, when you deal [Unarmed Damage], you can select one willing creature within 10 feet of you, and they gain temporary hit points equal to the [Unarmed Damage] dealt.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of the jutsu by 3. If this jutsu is cast as a B-Rank or higher, you also regain Hit Points equal to the [Unarmed Damage] dealt. If cast as an S-Rank, you can gain temporary hit points twice per turn. Temporary hit points gained this way, stacks with itself.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3002; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "stable",
+      "medical"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hanami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of the jutsu by 3. If this jutsu is cast as a B-Rank or higher, you also regain Hit Points equal to the [Unarmed Damage] dealt. If cast as an S-Rank, you can gain temporary hit points twice per turn. Temporary hit points gained this way, stacks with itself.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

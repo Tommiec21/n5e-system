@@ -1,0 +1,115 @@
+{
+  "_id": "85ee22f38ca52b95",
+  "_key": "!items!85ee22f38ca52b95",
+  "type": "jutsu",
+  "name": "Steel Release: Impervious Armor",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "2e36d1bfe8e6fd93",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "konjiki",
+      "sourceLine": 3420,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "1 Round",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "konjiki-steel-release-impervious-armor",
+    "description": "<p>You quickly turn your skin into a steel-like material before suffering a hostile effect. For the duration, you gain resistance to the triggering damage type, unless its lightning damage.</p>\n<p>Alomancy Infusion. If you have the Iron Bulwark Alomancy Technique, you can spend 1 ingot to cast this jutsu in reaction to an allied creature within 30 feet of you taking damage, applying this jutsu’s effect on the target creature in addition to the Iron Bulwark features effect.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you can cast this jutsu if you would make a Strength or Constitution saving throw, gaining advantage on the triggering save.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3420; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "konjiki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you can cast this jutsu if you would make a Strength or Constitution saving throw, gaining advantage on the triggering save.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

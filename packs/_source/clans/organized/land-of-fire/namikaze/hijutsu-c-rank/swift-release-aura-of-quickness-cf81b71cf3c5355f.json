@@ -1,0 +1,116 @@
+{
+  "_id": "cf81b71cf3c5355f",
+  "_key": "!items!cf81b71cf3c5355f",
+  "type": "jutsu",
+  "name": "Swift Release: Aura of Quickness",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ba040aa373b8b6fa",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "namikaze",
+      "sourceLine": 1667,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot radius)",
+        "duration": "Special",
+        "cost": "6 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Wind Release, Lightning Release.",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "namikaze-swift-release-aura-of-quickness",
+    "description": "<p>You extend your chakra creating a 15-foot radius of aura that occasionally crackles with a soft yellow spark.</p>\n<p>If used in combat, the duration of this jutsu becomes Concentration, up to 1 minute. For that duration the aura moves with you, centered on you and each creature of your choice, that begins its turn within your aura has its speed increased by +10 feet until beginning of your next turn.</p>\n<p>If used during exploration or land travel, its duration becomes 1 hour and you and your team treat normal travel pace as Fast travel pace.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and allied creatures bonus to their movement speed by an additional +10 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1667; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "windRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "namikaze",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and allied creatures bonus to their movement speed by an additional +10 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

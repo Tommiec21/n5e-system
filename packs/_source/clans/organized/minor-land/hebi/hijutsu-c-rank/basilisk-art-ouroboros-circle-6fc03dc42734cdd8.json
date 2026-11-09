@@ -1,0 +1,114 @@
+{
+  "_id": "6fc03dc42734cdd8",
+  "_key": "!items!6fc03dc42734cdd8",
+  "type": "jutsu",
+  "name": "Basilisk Art: Ouroboros Circle",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c19fc2dfd325c495",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8383,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Medical",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-ouroboros-circle",
+    "description": "<p>You call upon your venomous heritage, summoning a serpent like construct made of your Viper Blood, that you command to encircle you, like a snake eating its own tail, before expanding outward in a 15-foot radius. All allied creatures in range without Viper Blood, lose all ranks of Envenomed, and regain 3d6 hit points, + 1d6 for each rank of Envenomed they lost.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points regained by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8383; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points regained by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

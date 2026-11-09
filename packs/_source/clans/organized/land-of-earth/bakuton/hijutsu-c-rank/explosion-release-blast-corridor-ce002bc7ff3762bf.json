@@ -1,0 +1,116 @@
+{
+  "_id": "ce002bc7ff3762bf",
+  "_key": "!items!ce002bc7ff3762bf",
+  "type": "jutsu",
+  "name": "Explosion Release: Blast Corridor",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "bb51a6c6ed7e23bf",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceLine": 4976,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (60-foot Cone)",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-blast-corridor",
+    "description": "<p>You slam your fists into each other as you focus the explosive energy into a single point before releasing it like a focused beam of destruction. All creatures in a 5-foot wide, 60-foot-long line must make a Dexterity saving throw taking 3d12 force damage on a failed save or half as much on a success.</p>\n<p>Barriers treat damage from this jutsu as if they are vulnerable to it. Creatures with Temporary hit points that fail their saving throw reduce their temporary hit points to 0 before performing damage calculations.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, the damage by 1d12. If this jutsu is cast at A-Rank or higher you can change the range of this jutsu to instead a 30-foot cone and all creatures benefiting from a Barrier makes their saving throw at disadvantage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4976; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "earthRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60-foot Cone)"
+      },
+      "area": {
+        "shape": "Cone",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, the damage by 1d12. If this jutsu is cast at A-Rank or higher you can change the range of this jutsu to instead a 30-foot cone and all creatures benefiting from a Barrier makes their saving throw at disadvantage.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "cfe0f2d8d5140639",
+  "_key": "!items!cfe0f2d8d5140639",
+  "type": "jutsu",
+  "name": "Ice Release: Twin Dragon Whirlwind",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "650c57a9ea42bc51",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yuki",
+      "sourceLine": 4819,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-foot radius sphere)",
+        "duration": "Concentration, Up to 1 Minute",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-ice-release-twin-dragon-whirlwind",
+    "description": "<p>You freeze the air around you and swirl it creating a localized ice storm. For the duration you cannot be targeted by ranged attacks or effects that require line of sight. Once per turn, creatures who enter the radius of your whirlwind must make a Constitution saving throw. On a failed save, they gain 2 ranks of Frostbite.</p>\n<p>Additionally, creatures within the radius of this jutsu who failed the saving throw are blinded by the strong Winds and ice shards slicing at their eyes for the duration or unless they leave the radius.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4819; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "windRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

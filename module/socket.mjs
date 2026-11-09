@@ -6,9 +6,14 @@
 import { rule } from "./rules-settings.mjs";
 import { esc } from "./view-models/common.mjs";
 import { withActorLock } from "./workflow/commands.mjs";
+import { createReceiptCoordinator } from "./automation/receipts.mjs";
 const pending = new Map();
-const seen = new Set();
 const CHANNEL = "system.n5e";
+const coordinator = createReceiptCoordinator({
+  read: () => game.settings.get("n5e", "requestReceipts") ?? { version: 1, epoch: 1, entries: [] },
+  write: data => game.settings.set("n5e", "requestReceipts", data),
+  authority: () => !!game.users.activeGM?.isSelf
+});
 
 /** Limit effect requests to typed effects and system change keys; never accept arbitrary documents. */
 export function validateEffectRequest(data) {
@@ -54,7 +59,7 @@ export async function asGM(type, payload) {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => { pending.delete(requestId); reject(new Error("The GM request timed out; no success was confirmed.")); }, 120000);
     pending.set(requestId, { resolve, reject, timer });
-    game.socket.emit(CHANNEL, { requestId, type, payload });
+    game.socket.emit(CHANNEL, { requestId, type, payload, requestEpoch: game.settings.get("n5e", "requestReceipts")?.epoch ?? 1 });
   });
 }
 
@@ -67,17 +72,15 @@ export function registerSocket() {
       if ( data.ok ) p.resolve(true); else p.reject(new Error(data.error || "The GM declined the request."));
       return;
     }
-    if ( !game.users.activeGM?.isSelf || typeof data?.requestId !== "string" || seen.has(data.requestId) ) return;
-    seen.add(data.requestId);
-    // Bounded replay cache. Consent is still required for every new remote request.
-    if ( seen.size > 500 ) seen.delete(seen.values().next().value);
+    if ( !game.users.activeGM?.isSelf || typeof data?.requestId !== "string" ) return;
     let ok = false, error = "The GM declined the request.";
     try {
       const request = await prepare(data.type, data.payload ?? {});
-      // The request was validated above. Only with the gmApprovesRequests rule does the GM confirm it.
-      const accepted = !rule("gmApprovesRequests") || await foundry.applications.api.DialogV2.confirm({ window: { title: "Review player request" },
-        content: "<p>" + esc(request.summary) + "</p><details><summary>Requested changes</summary><pre>" + esc(JSON.stringify(request.details, null, 2)) + "</pre></details>", rejectClose: false });
-      if ( accepted ) { await request.run(); ok = true; }
+      const result = await coordinator.execute({ id: data.requestId, type: data.type, payload: data.payload, epoch: data.requestEpoch ?? 1 },
+        () => foundry.applications.api.DialogV2.confirm({ window: { title: "Review player request" },
+          content: "<p>" + esc(request.summary) + "</p><details><summary>Requested changes</summary><pre>" + esc(JSON.stringify(request.details, null, 2)) + "</pre></details>", rejectClose: false }),
+        async () => { const current = await prepare(data.type, data.payload ?? {}); await current.run(); });
+      ok = result.ok;
     } catch (err) { error = err.message; ui.notifications.warn(error); }
     game.socket.emit(CHANNEL, { responseTo: data.requestId, ok, error: ok ? null : error });
   });

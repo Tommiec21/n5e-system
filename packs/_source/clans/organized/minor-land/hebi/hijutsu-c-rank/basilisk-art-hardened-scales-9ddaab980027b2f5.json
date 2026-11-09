@@ -1,0 +1,115 @@
+{
+  "_id": "9ddaab980027b2f5",
+  "_key": "!items!9ddaab980027b2f5",
+  "type": "jutsu",
+  "name": "Basilisk Art: Hardened Scales",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c19fc2dfd325c495",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8378,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "1 round",
+        "cost": "6 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-hardened-scales",
+    "description": "<p>You skin becomes encased in Chakra taking the shape of a snake’s scales layering itself and hardening at the point of impact reducing the potency of incoming damage. You gain +6 DR and if you make a saving throw vs a Physical or Elemental condition, you make it at advantage, until the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and DR by +3.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8378; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and DR by +3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

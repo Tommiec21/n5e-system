@@ -1,0 +1,116 @@
+{
+  "_id": "423d9a9eb24f7a46",
+  "_key": "!items!423d9a9eb24f7a46",
+  "type": "jutsu",
+  "name": "Giant Palm Rotation",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "9bd73437be8e7fc9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hyuga",
+      "sourceLine": 1029,
+      "sourceHeader": {
+        "time": "1 Reaction, when you or an allied creature within range take damage or make a Strength or Dexterity saving throw.",
+        "range": "Self (10-foot radius sphere)",
+        "duration": "1 Round",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Main Branch, Taijutsu, Clash, Barrier",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-giant-palm-rotation",
+    "description": "<p>The perfected form of the Palm Rotation taught only to those of the main branch of the Hyūga clan. This creates a dome chakra, repelling everything of your choice.</p>\n<p>Until the start of your next turn, you and all creatures you have selected to not be affected by this jutsu within 10 feet of you benefit from this Jutsu’s effects.</p>\n<p>You and affected allies gain a +4 Bonus to AC; This includes the triggering attack. If any of you are subject to a jutsu that requires you to make a Strength or Dexterity saving throw you make the save at advantage. Creatures benefiting from this jutsu cannot benefit from bonuses to AC from other Reactions.</p>\n<p>Hostile creatures who are within 10 feet of you when you cast this jutsu must make a Strength saving throw taking 4d8 Force damage and being pushed back 10 feet on a failed save.</p>\n<p>Eight Trigram. The Rotation you erect is potent enough to absorb some impact from damage that leaks through. Yourself and all affected creatures reduces the damage they take from hostile effects by 6, for the duration.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1029; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "clash",
+      "barrier",
+      "main-branch"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, when you or an allied creature within range take damage or make a Strength or Dexterity saving throw."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hyuga",
+      "branch": "main"
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

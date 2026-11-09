@@ -1,0 +1,114 @@
+{
+  "_id": "26f861176cfb934c",
+  "_key": "!items!26f861176cfb934c",
+  "type": "jutsu",
+  "name": "Cellular Regeneration: Absorption",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f47e00452aeea93b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jugo",
+      "sourceLine": 6415,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Medical",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jugo-cellular-regeneration-absorption",
+    "description": "<p>You reach out and attempt to destabilize the cellular structure of your foe, while also trying to absorb these destabilized cells through your Nature Energy. Target creature must make a Constitution saving throw. On a failure, they gain 2 ranks of Weakened, and you regain 5d6 hit points.</p>\n<p>Amplify: By spending 3 Natural Energy as part of this jutsu’s casting, you magnify the power of this ability, allowing you to also drain the targets Chakra. On a failure, the target take chakra damage equal the hit points you regained and you gain temporary chakra points equal to half your level.</p>\n<p>At Higher Ranks: For each rank above C-Rank you cast this jutsu, increase the cost by 3 and the amount of hit points regained by 1d6. If this just is cast at A-Rank or higher, increase the ranks of Weakened inflicted by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6415; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "jugo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank above C-Rank you cast this jutsu, increase the cost by 3 and the amount of hit points regained by 1d6. If this just is cast at A-Rank or higher, increase the ranks of Weakened inflicted by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -75,3 +75,7 @@ In a disposable v13 world, check: toggle one contextual feature; attack with one
 - On `null` the runner (workflow/activity-execution.mjs) refunds the pool cost and leaves once-per-turn and the action economy untouched.
 - Save buttons are rolled by the defenders. They never carry a cost, once-per-turn or activation. A costed save with no damage buttons gets its own **Use** button that pays the cost; the feature's once-per-turn is stamped when the feature is used.
 - Player requests to the GM (`socket.mjs`): the GM's client always validates them. They apply right away unless the **GM approves player requests** rule is on, in which case the GM confirms each one. Tracker callers report a declined or timed-out request and carry on with the other targets.
+
+
+### MP1 override
+Remote privileged requests require GM review regardless of the old gmApprovesRequests setting until verified transport authentication is available. See MULTIPLAYER.md.

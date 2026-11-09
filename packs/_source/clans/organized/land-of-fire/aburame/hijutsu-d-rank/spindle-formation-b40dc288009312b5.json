@@ -1,0 +1,113 @@
+{
+  "_id": "b40dc288009312b5",
+  "_key": "!items!b40dc288009312b5",
+  "type": "jutsu",
+  "name": "Spindle Formation",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ebde2837202f7e6f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 613,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-Foot line)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu",
+        "components": "HS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-spindle-formation",
+    "description": "<p>You call upon your insects to swarm in a spiraling formation, slamming into your enemies making it difficult for them to retaliate. Your insect ram forward in a 5-foot wide, 30-foot-long line forcing all creature in the area to make a Dexterity saving throw, being knocked prone and being unable to cast jutsu that require Hand Signs (HS) until the end of their next turn. An affected creature that would cast a jutsu with the HS component, must make either a Ninshou or Illusions skill check vs your jutsu Save DC, being able to cast their jutsu as normal on a success.</p>\n<p>If you have your Swarm active when you cast this jutsu affected creatures make their skill check at disadvantage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range by 5 feet. If this jutsu is cast at B-Rank or higher, you can change its range to instead a 30-foot cone originating from you. If this jutsu is cast at S-Rank, its range becomes a 40-foot radius, centered on you.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 613; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot line)"
+      },
+      "area": {
+        "shape": "line",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range by 5 feet. If this jutsu is cast at B-Rank or higher, you can change its range to instead a 30-foot cone originating from you. If this jutsu is cast at S-Rank, its range becomes a 40-foot radius, centered on you.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

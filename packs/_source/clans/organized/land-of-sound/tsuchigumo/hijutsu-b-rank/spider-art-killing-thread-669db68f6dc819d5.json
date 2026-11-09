@@ -1,0 +1,114 @@
+{
+  "_id": "669db68f6dc819d5",
+  "_key": "!items!669db68f6dc819d5",
+  "type": "jutsu",
+  "name": "Spider Art: Killing Thread",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3899f712aeebb383",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "tsuchigumo",
+      "sourceLine": 7679,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (30-Foot Cube)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "tsuchigumo-spider-art-killing-thread",
+    "description": "<p>You launch dozens of near invisible cutting threads of silk, anchoring them between everything that can hold them, across a wide area. Select a point you can see within range, as you manifest a 30-foot cube of lacerating silk threads originating from this point for the duration.</p>\n<p>This area is treated as difficult terrain, and if it crosses an area occupied by your Web Anchor, the entire area is also treated as your Web Anchor.</p>\n<p>The first time each turn a creature moves through this jutsu’s area, they must make a Dexterity saving throw, taking 6d8 slashing damage and fall prone on a failure, or half as much damage on a success on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7679; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (30-Foot Cube)"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "tsuchigumo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

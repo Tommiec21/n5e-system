@@ -1,0 +1,115 @@
+{
+  "_id": "10d190d88b202ca6",
+  "_key": "!items!10d190d88b202ca6",
+  "type": "jutsu",
+  "name": "Dance of the Katsura",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ebbad24287e69f2e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kaguya",
+      "sourceLine": 4297,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Weapon Range",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
+        "components": "M, W (Any Melee Weapon)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kaguya-dance-of-the-katsura",
+    "description": "<p>With your Weapon in hand, you strike with a flurry of focus and grace befitting of the weapons chosen striking preference. Make 2 melee taijutsu attacks, dealing your [Weapons Damage] or [Unarmed Damage]. If at least one attack scores a hit, the target must make a Constitution saving throw. On a failed save, based on the damage type of your weapon this jutsu inflicts a different condition.</p>\n<p>Bludgeoning. Bruised.</p>\n<p>Piercing. +1 rank of Weakened.</p>\n<p>Slashing. +1 rank of Bleeding.</p>\n<p>Battle Lust: By spending 2 Battle Lust when this jutsu is cast, you can force the affected creature to make the saving throw twice, inflicting any of the listed conditions on a failure regardless of the damage type used.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage you deal by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4297; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "M, W (Any Melee Weapon)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "M, W (Any Melee Weapon)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kaguya",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage you deal by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

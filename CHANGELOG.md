@@ -1,3 +1,14 @@
+## 0.13.0-alpha.1 — Multiplayer receipt foundation (MP1)
+
+- Keep GM review mandatory for unauthenticated remote effect/ration requests, superseding the 0.10.1 automatic-request option by explicit user direction.
+- Persist request intent/results, reject changed-content replay, serialize remote requests and stop uncertain applications from retrying after reconnect.
+- Add GM-only receipt inspection and explicit archive/epoch rotation. Retain upstream button, save-cost, parser, free-cost and ration fixes.
+- Scope: existing remote effect/ration relay, not yet coordinated combat or reactive prompts. Live multi-client validation remains outstanding.
+
+# 0.12.0-alpha.2
+
+- Remove all 147 imported Clan Feats and their empty folders; exclude them from future content builds while the rules are being revised. Preserve clan features, Hijutsu and other clan content.
+
 # Changelog
 
 ## 0.10.1-alpha.1 — Review fixes
@@ -698,3 +709,23 @@
 - Stabilize is an Action; hostile-terrain indirect exposure is a Survival check (incl. Extreme Cold).
 - Concentration: base 2, features raise it, no hard cap.
 - "Sealing Kit" is the toolkit name; starting wealth is 500 Ryo or 5d6 × 30 (Ch5).
+# Background content update
+
+- Added all 16 Chapter 3 backgrounds in a dedicated compendium, organized by background with nested feature and starting-equipment folders.
+- Added background setup choices, linked feature/feat grants, equipment manifests and a separate background-feature group.
+- Preserved full conditional feature text and flagged the undefined Traveler's Pack rather than inventing rules.
+
+# Class content expansion through level 20
+
+- Completed core and subclass feature imports for the seven supported classes, with 42 subclasses and full late-level option lists.
+- Preserved existing IDs and automation; added structured choice eligibility and apply-time guards.
+- Organized new content by class/subclass and added source-derived regression coverage.
+- Existing actor copies are not overwritten; contextual rules and new feature automation still require review.
+
+# Clan content import in six batches
+
+- Added all 44 source clan packages, organized by nation and clan inside the built-in Clans compendium.
+- Imported source level features, Hijutsu, clan feats, optional mutations, stance records, companion rules and latent bloodline tables.
+- Added clan setup and level-up integration, branch and clan access checks, replacement rollback and source-derived regression coverage.
+- Preserved existing identities and actor data. Contextual effects, mutation dependencies, latent budgets and companion construction still need manual review.
+

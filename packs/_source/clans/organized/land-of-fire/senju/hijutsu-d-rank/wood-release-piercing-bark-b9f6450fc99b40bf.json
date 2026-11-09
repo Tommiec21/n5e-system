@@ -1,0 +1,117 @@
+{
+  "_id": "b9f6450fc99b40bf",
+  "_key": "!items!b9f6450fc99b40bf",
+  "type": "jutsu",
+  "name": "Wood Release: Piercing Bark",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "7b5b730e57d52dd4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "senju",
+      "sourceLine": 1998,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet, 5-Foot Cube",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Fuinjutsu,  Earth Release, Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "senju-wood-release-piercing-bark",
+    "description": "<p>You bring to life a single root, manipulating it as it bends to your will. Select a point you can see within range and make a ranged Ninjutsu attack against all creatures within a 5-foot cube originating from the select point comparing your result to their AC as the root bursts forth from the ground like spears.</p>\n<p>On a hit, you deal 3d6 Earth, Cold or Chakra damage and each affected creature must make a Dexterity saving throw to avoid being pierced by the roots. On a failed save, they are Grappled in place. A creature that fails by 5 or more is instead Restrained in place.</p>\n<p>A creatures grappled or restrained by this jutsu makes a Strength saving throw at the end of their turns, ending either condition on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the size of the cube by +5 feet. If this jutsu is cast at S-Rank, increase size of the cube by +5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1998; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "fuinjutsu",
+      "earthRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet, 5-Foot Cube"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 5,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "senju",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the size of the cube by +5 feet. If this jutsu is cast at S-Rank, increase size of the cube by +5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

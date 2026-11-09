@@ -1,0 +1,113 @@
+{
+  "_id": "66a22ce48a27388b",
+  "_key": "!items!66a22ce48a27388b",
+  "type": "jutsu",
+  "name": "Parasitic Giant Insect",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d80f15dd34bd0a73",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 658,
+      "sourceHeader": {
+        "time": "Special",
+        "range": "120 feet",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu",
+        "components": "HS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-parasitic-giant-insect",
+    "description": "<p>As part of the activation of this jutsu, you select one creature you can see within range than has 5 or more ranks of Infested.</p>\n<p>You can cast this jutsu once per turn. The target creature has the infestation come to the surface being burrowed from the inside out by parasitic insects as grow in size from the chakra consumed.</p>\n<p>The target makes a Constitution saving throw, with a -1 penalty for every rank of Infested beyond 5 they have when this jutsu is cast.</p>\n<p>On a failure the insects explode from their pours before returning to your swarm. The affected creature takes 10d12 poison and chakra damage and lose all ranks of Infested. On a success, no further effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3, the damage by 1d12</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 658; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3, the damage by 1d12</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

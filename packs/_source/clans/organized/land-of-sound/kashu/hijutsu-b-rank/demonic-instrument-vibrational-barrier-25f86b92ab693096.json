@@ -1,0 +1,119 @@
+{
+  "_id": "25f86b92ab693096",
+  "_key": "!items!25f86b92ab693096",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Vibrational Barrier",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ee75d5abf63b4b71",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6817,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "10 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Genjutsu (Auditory, Tactile), Barrier, Symphonic Branch",
+        "components": "CM, W (Shinobi Instrument)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-vibrational-barrier",
+    "description": "<p>You raise your Shinobi Instrument and release a surge of chakra through it causing it to vibrate like a tuning fork. These vibrations radiate a frequency that you take advantage of, forming a barrier to protect you from harm. This Barrier has 5d8 + 5 hit points and resistance to bludgeoning, piercing and slashing damage. If the triggering damage would be greater than this barriers hit points, you take any remaining.</p>\n<p>If your Barrier would have hit points remaining, all creatures within 10 feet of you feel the backlash, and they must make a Dexterity saving throw, taking psychic or force damage, equal to the barriers original hit points.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the barriers hit points by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6817; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "barrier",
+      "genjutsu-auditory",
+      "tactile",
+      "symphonic-branch"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Shinobi Instrument)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Shinobi Instrument)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the barriers hit points by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

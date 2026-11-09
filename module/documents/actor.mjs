@@ -91,7 +91,7 @@ export default class N5eActor extends Actor {
     const existing = this.getCondition(key);
     if ( existing ) {
       // New ranks reset the condition's duration (King 2026-11-07).
-      const max = def.maxRanks ?? 1;
+      const max = def.maxRanks === 0 ? Infinity : def.maxRanks ?? 1;
       const next = existing.system.ranks + ranks;
       // Gaining the 11th rank of Exhaustion kills (optional rule).
       if ( def.flags?.deathAbove && next > def.flags.deathAbove && rule("exhaustionDeath") ) {

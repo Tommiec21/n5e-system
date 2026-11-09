@@ -1,0 +1,115 @@
+{
+  "_id": "64b3e03dfa301060",
+  "_key": "!items!64b3e03dfa301060",
+  "type": "jutsu",
+  "name": "Steel Release: Steel Rain",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "2e36d1bfe8e6fd93",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "konjiki",
+      "sourceLine": 3460,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet (15-foot sphere)",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
+        "components": "HS, CM, W (Bulk 1)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "konjiki-steel-release-steel-rain",
+    "description": "<p>You manifest numerous thrown weapons such as Shuriken or Kunai at a point within 60 feet and unleash all of them upon all targets within a 15-foot sphere. All creatures within range must make a Dexterity saving throw, taking your [Weapons Damage] + 1d10 and gaining one rank of Weakened on a failed saving throw, or half damage and no effects on a successful saving throw.</p>\n<p>Alomancy Infusion. If you have the Superheavy Metals or Metallic Fan Alomancy Technique, you can spend 1 ingot to magnify the weight of the weapons used, causing creatures who fail their saving throw to be knocked Prone.</p>\n<p>At Higher Ranks: For each rank for each rank, you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3460; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (15-foot sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, W (Bulk 1)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, W (Bulk 1)"
+      }
+    },
+    "hijutsu": {
+      "clan": "konjiki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank for each rank, you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

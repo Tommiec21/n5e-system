@@ -1,0 +1,116 @@
+{
+  "_id": "7e7fc7decb7fba8c",
+  "_key": "!items!7e7fc7decb7fba8c",
+  "type": "jutsu",
+  "name": "Hanami Style: Sapping Strike",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "794456b83980fceb",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hanami",
+      "sourceLine": 3015,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "5 feet",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Finisher",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hanami-hanami-style-sapping-strike",
+    "description": "<p>Your hands glow a pinkish hue as you get ready to devastate your target. Make a melee ninjutsu (or taijutsu) attack, dealing [Unarmed damage] + 2d8 Necrotic damage, and regain hit points equal to half the damage dealt.</p>\n<p>Finisher: Make a second attack against the same creature, dealing [Unarmed Damage] + 2d8 but as chakra damage. You gain temporary chakra points equal to half the result of this jutsu’s d8 damage die.</p>\n<p>Monstrous Burst. On a hit, force the affected creature to make a Constitution saving throw. On a failure, they become Bruised.</p>\n<p>Healers Touch. On a hit, force the affected creature to make a Constitution saving throw. On a failure, any Physical condition you have ranks of, reduce the ranks of the chosen condition by 1, and the affected creature gains 1 rank of the same condition.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of the jutsu by 3 and increase the damage by 1d8. If you cast this jutsu at A-Rank or higher you instead regain hit point equal to the total damage dealt.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3015; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "finisher",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hanami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of the jutsu by 3 and increase the damage by 1d8. If you cast this jutsu at A-Rank or higher you instead regain hit point equal to the total damage dealt.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

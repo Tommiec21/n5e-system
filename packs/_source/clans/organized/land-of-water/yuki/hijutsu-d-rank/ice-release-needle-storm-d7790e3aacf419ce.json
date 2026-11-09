@@ -1,0 +1,116 @@
+{
+  "_id": "d7790e3aacf419ce",
+  "_key": "!items!d7790e3aacf419ce",
+  "type": "jutsu",
+  "name": "Ice Release: Needle Storm",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "158a58d8ebbef092",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yuki",
+      "sourceLine": 4789,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Special (60-Foot Long, 5-foot-wide Line)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release, Wind Release",
+        "components": "HS, W (Any Melee), M, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-ice-release-needle-storm",
+    "description": "<p>This jutsu can only be cast while you are occupying a Ice Mirrors. You dash out of your mirror pane in a straight line, forcing all creatures you pass through to make a Dexterity saving throw, dealing [Weapons Damage] + 1d8 cold damage on a failure, or half as much on a success. You end this movement in a space that can hold you, adjacent to the end of the line.</p>\n<p>If you would cross the space of a Ice Mirrors, you can change direction from this space, but you can only move up to 30 feet from the Ice Mirrors. You can dash from a Ice Mirrors in this way, once per casting.</p>\n<p>A creature that is crossed multiple times only makes one saving throw. Increase the damage you deal by +1d8 cold damage for each time they are crossed as part of this jutsu’s casting.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the initial damage by 1d8 cold damage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4789; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "windRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special (60-Foot Long, 5-foot-wide Line)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, W (Any Melee), M, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, W (Any Melee), M, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the initial damage by 1d8 cold damage.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

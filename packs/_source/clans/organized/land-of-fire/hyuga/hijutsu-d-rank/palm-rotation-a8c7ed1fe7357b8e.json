@@ -1,0 +1,115 @@
+{
+  "_id": "a8c7ed1fe7357b8e",
+  "_key": "!items!a8c7ed1fe7357b8e",
+  "type": "jutsu",
+  "name": "Palm Rotation",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d89aee609bec9e4e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hyuga",
+      "sourceLine": 987,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage, or make a Strength or Dexterity saving throw.",
+        "range": "Self",
+        "duration": "1 Round",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Clash, Barrier",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-palm-rotation",
+    "description": "<p>You spin at a violent speed, while releasing Chakra from your body, creating a chakra dome, repelling most attacks. Until the start of your next turn, you have a +4 Bonus to AC including to the triggering attack. If you are subject to a jutsu that requires you to make a Strength or Dexterity saving throw you make the save at advantage.</p>\n<p>Creatures who are within 5 feet of you when you cast this jutsu must make a Strength saving throw, taking 2d8 Force damage and being pushed back 5 feet on a failed save.</p>\n<p>Eight Trigram. You spin faster and faster until you look like a blur within your own jutsu. Using your Gentle fist, you are able to deflect some incoming damage from attacks or effects that get passed your rotation, gaining 6 DR.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 987; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "clash",
+      "barrier"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage, or make a Strength or Dexterity saving throw."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hyuga",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "adf2ba5cd9dd6633",
+  "_key": "!items!adf2ba5cd9dd6633",
+  "type": "jutsu",
+  "name": "Gentle Reprieve",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d89aee609bec9e4e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hyuga",
+      "sourceLine": 1003,
+      "sourceHeader": {
+        "time": "1 Action or 1 Bonus Action.",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-gentle-reprieve",
+    "description": "<p>As part of the requirements of this jutsu be benefiting from the Gentle Fist Stance. You reach out to touch an allied creature, using your chakra to speed up the flow of their chakra network aiding in their chakra efficiency or recovery.</p>\n<p>Action. You allow the target creature to spend up to 2 Chakra die, recovering the result + Your Wisdom modifier.</p>\n<p>Bonus Action. Reduce the cost of the next jutsu an allied creature casts by 2. This effect cannot be used on yourself.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of chakra dice that can be spent by +1. If this jutsu is cast at B-Rank, as a bonus action, reduce the cost of the allies next jutsu by an additional 1. If cast at S-Rank as a bonus action reduce the allies next jutsu by an additional 2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1003; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "medical"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hyuga",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of chakra dice that can be spent by +1. If this jutsu is cast at B-Rank, as a bonus action, reduce the cost of the allies next jutsu by an additional 1. If cast at S-Rank as a bonus action reduce the allies next jutsu by an additional 2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

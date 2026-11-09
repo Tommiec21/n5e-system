@@ -1,0 +1,115 @@
+{
+  "_id": "16f739f5784070ba",
+  "_key": "!items!16f739f5784070ba",
+  "type": "jutsu",
+  "name": "Conqueror’s Art: Emperors Claw",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "dd732e620842bb8a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ryu",
+      "sourceLine": 8723,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "20-foot cone",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
+        "components": "CM, M (or W (Blade Group))"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ryu-conquerors-art-emperors-claw",
+    "description": "<p>You swipe your hand releasing a massive surge of Draconic chakra serrating everything in range. Make a melee Ninjutsu attack comparing the result vs the AC of all creatures in range. On a hit, affected creatures take [Unarmed Damage] (Or [Weapon Damage]) + 2d8 damage.</p>\n<p>If this attack result is 5 or more over the AC of the affected creature, they must make a Strength saving throw to resist having their guard shattered, making the next attack targeting them, before the beginning of your next turn be made at advantage.</p>\n<p>Dragons Rage. If this jutsu is cast while in your Dragon Rage State, if an affected creature would cast a jutsu with the Barrier keyword, that barriers hit points, DR or AC bonus is reduced by half.       At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the size of the cone by 5 feet and the damage by 1d8 damage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8723; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "20-foot cone"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M (or W (Blade Group))"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M (or W (Blade Group))"
+      }
+    },
+    "hijutsu": {
+      "clan": "ryu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the size of the cone by 5 feet and the damage by 1d8 damage.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

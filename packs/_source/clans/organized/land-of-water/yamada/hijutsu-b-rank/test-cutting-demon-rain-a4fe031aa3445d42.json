@@ -1,0 +1,117 @@
+{
+  "_id": "a4fe031aa3445d42",
+  "_key": "!items!a4fe031aa3445d42",
+  "type": "jutsu",
+  "name": "Test Cutting: Demon Rain",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "bdb28d8126b5558f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4648,
+      "sourceHeader": {
+        "time": "Special",
+        "range": "Special",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Genjutsu (Visual, Tactile), Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-demon-rain",
+    "description": "<p>This jutsu can only be cast directly after you deal damage with another Yamada Hijutsu. When this jutsu is cast, you follow your previous jutsu’s casting with a flurry of earth-bound strikes..</p>\n<p>Using your Tao, all creatures you’ve previously damaged with the prerequisite casting must make a Wisdom saving throw as you conjure figments of yourself striking at them, as you yourself, use your monstrous speed to dash and strike at each creature, before returning to your current space. Once you cast this jutsu, you cannot cast it again until the end of your next turn.</p>\n<p>Success: Affected creature takes only half of [Weapons Damage] + 2d12.</p>\n<p>Failure: Affected creature takes [Weapons Damage] + 2d12 and are Severed.</p>\n<p>Critical Failure: Same as failure, but the affected creatures cannot regain hit points until the end of your next turn.</p>\n<p>Ideal Cut: Select one creature that failed this saving throw. This gains the effect of your Empty Blade attack, as if you were foregoing 3 attacks, but only against the chosen creature of the affected creatures.</p>\n<p>Tao: Select up to two creatures that failed this saving throw and roll your Severed conditions d6, once for each creature, applying the rolled effect to the target. You cannot apply the same effect more than once to the same creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the  damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4648; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "bukijutsu",
+      "chain",
+      "genjutsu-visual",
+      "tactile"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the  damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

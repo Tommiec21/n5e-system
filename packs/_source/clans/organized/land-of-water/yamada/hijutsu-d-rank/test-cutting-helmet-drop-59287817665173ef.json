@@ -1,0 +1,114 @@
+{
+  "_id": "59287817665173ef",
+  "_key": "!items!59287817665173ef",
+  "type": "jutsu",
+  "name": "Test Cutting: Helmet Drop",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f761929b5b2f5d99",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4550,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Weapon Range",
+        "duration": "Instant",
+        "cost": "3 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-helmet-drop",
+    "description": "<p>You assume a readied stance before swinging downward, fast and hard enough to kick up a small shockwave and even crack the ground. Make a melee taijutsu attack against a creature in range. On a hit you deal your [Weapon Damage] + 2d12.</p>\n<p>Ideal Cut: The affected creature must make a Constitution saving throw, having their AC reduced by 2, until the beginning of your next turn.</p>\n<p>Tao: The affected creature must make a Constitution saving throw, having their next saving throw they make suffer a -2 penalty before the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4550; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "_id": "0b0734492439cd89",
+  "_key": "!items!0b0734492439cd89",
+  "type": "jutsu",
+  "name": "Basilisk Art: Formation of One Thousand Snakes",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "77d9bff42f88178f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8367,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot Cube)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "M, W (Any Blade)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-formation-of-one-thousand-snakes",
+    "description": "<p>You release a series of blade swings so swiftly that you create the visage of thousand snakes coiling around you and striking out at all creatures of your choice in a 15-foot cube originating from you. Affected creatures in range must make a Dexterity saving throw. Taking [Weapon Damage] and 1 rank of Bleed or half as much damage on a successful save.</p>\n<p>Serpent Coil. This jutsu can be cast as a Reaction, to taking damage from a hostile creatures Ninjutsu, Taijutsu or Bukijutsu. If cast in this way, this jutsu gains the Clash keyword and initiates a clash with the triggering effect.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8367; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot Cube)"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "M, W (Any Blade)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "M, W (Any Blade)"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

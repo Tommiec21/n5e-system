@@ -1,0 +1,116 @@
+{
+  "_id": "7b32cba5ff63b842",
+  "_key": "!items!7b32cba5ff63b842",
+  "type": "jutsu",
+  "name": "Hanami Style: Colossal Impact",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ba13db20eb80d38c",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hanami",
+      "sourceLine": 3084,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "5 feet (20-foot radius)",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Finisher",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hanami-hanami-style-colossal-impact",
+    "description": "<p>You drive your fist into the stomach of a creature with enough power to lift them off their feet, you then slam them into the ground with massive force.</p>\n<p>Make a melee ninjutsu (or taijutsu) attack, on a hit you deal your [Unarmed Damage] + 4d6 and each creature (excluding you and the original target) within 20 feet must make a Dexterity saving throw as you slam the original target into the ground. Affected creatures take 4d6 bludgeoning damage on a failed save or half as much on a success.</p>\n<p>Finisher: The original target must make a Constitution saving throw, being Staggered and Bruised on a failed save.</p>\n<p>Monstrous Burst. Creatures within 5 feet of you when you cast this jutsu makes their saving throws at disadvantage.</p>\n<p>Healers Touch. Allied creatures within range are unaffected by the shockwave, and instead gain temporary hit points equal to half of the damage area of effect damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of the jutsu by 3 and increase the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3084; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "finisher",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet (20-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hanami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of the jutsu by 3 and increase the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

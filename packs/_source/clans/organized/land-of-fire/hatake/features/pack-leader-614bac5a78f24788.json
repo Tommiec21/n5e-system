@@ -1,0 +1,63 @@
+{
+  "_id": "614bac5a78f24788",
+  "_key": "!items!614bac5a78f24788",
+  "type": "feat",
+  "name": "Pack Leader",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "8d24b22b30b150a9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hatake",
+      "sourceLine": 850
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hatake-pack-leader",
+    "description": "<p>1st Level Clan Feature</p>\n<p>The Hatake Clan are known for being prestigious leaders and teachers. They have brought up multiple generations of leaders and prominent shinobi. This tutelage seems to be almost hereditary as you embody some of these core concepts.</p>\n<p>When you complete a long rest, you gain a number of d20 equal to your highest ability modifier. This pool of dice becomes known as your Command Dice. You can spend Command Dice on any feature or ability that calls for it. You regain spent Command Dice when you complete a long rest. The first of such things you can spend Command Dice on are your Pack Tactics. Special team-oriented tactics that derive their strength from your force of personality and comradery with your team. You gain 1 Pack Tactic at character creation and an additional choice at 7th and 15th levels.</p>\n<p>Leaders Aura</p>\n<p>You call out to your team, barking orders or issuing commands in tandem with each other in hopes of coming out on top. By spending 1 Command Dice you radiate an aura of leadership in a 15-foot radius around you. The first time an allied creature, excluding yourself, rolls a d20 and fails their attack, check or save, you can lead them, allowing them to remake their d20 roll, taking the second result. Once you lead someone in this way, you cannot do so again until the beginning of your next turn.</p>\n<p>Your Leaders Aura lasts for 1 minute and increases in size when you reach 7th and 15th levels by +5 feet.</p>\n<p>In/famous</p>\n<p>Your fame or infamy creates a level of uncertainty or certainty, depending on who is aware of your exploits.</p>\n<p>When you roll initiative, you can attempt to invoke your Fame or Infamy. By spending 1 Command Dice, you roll it, adding your level and highest ability modifier contested by hostile creatures making a History check.</p>\n<p>On a success, hostile creatures become aware of you and gain 2 ranks of Demoralized until the beginning of their following turn, as your presence shakes them. This increases to 3 ranks at 11th level.</p>\n<p>Shared Burden</p>\n<p>You see how your allies are trying to put forth their best effort, so you put some weight behind their efforts. When an allied creature is casting a Jutsu as an Action, you can spend 1 Command Dice, giving their attacks advantage.</p>\n<p>You can also share in their jutsu cost. By spending up to 3 White Chakra, you reduce the jutsu’s cost by -2, for every White chakra spent this way.</p>\n<p>Team Coordination</p>\n<p>You organize your team in order to set up a big play. By spending 2 Command Dice, you are able to designate one allied creature as the Assault Leader. All other willing allied creatures, including yourself can choose to spend their Reaction. Summoned creatures do not count. Count the number of reactions spent this way. For every 2 Reactions spent this way, the Assault Leader gains 1 additional Action on their turn. If an odd number of Reactions were spent, the Assault Leader also gains 1 additional Bonus Action on their turn.</p>\n<p>A creature can be designated the Assault Leader once per long rest.</p>\n<p>Defensive Formation</p>\n<p>When an allied creature takes damage, you can spend your Reaction and 1 Command Dice. When you do, you can order allied creatures, including yourself, that can reach an adjacent space next to the damaged creature, to move into that space.</p>\n<p>Divide the damage evenly as possible amongst all creatures that end their movement adjacent to the damaged ally, as part of this ability.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 850; contextual rules require adjudication."
+    },
+    "category": "clanFeature",
+    "requirement": {
+      "level": 1,
+      "class": "",
+      "clan": "hatake"
+    },
+    "featureType": "passive",
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [],
+    "prerequisites": [],
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "commandDice",
+        "label": "Command Dice",
+        "max": "max(0,@abilities.str.mod,@abilities.dex.mod,@abilities.con.mod,@abilities.int.mod,@abilities.wis.mod,@abilities.cha.mod)",
+        "die": "d20",
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
+  }
+}

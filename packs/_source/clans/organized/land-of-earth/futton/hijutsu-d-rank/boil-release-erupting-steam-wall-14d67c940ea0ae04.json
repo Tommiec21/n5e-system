@@ -1,0 +1,117 @@
+{
+  "_id": "14d67c940ea0ae04",
+  "_key": "!items!14d67c940ea0ae04",
+  "type": "jutsu",
+  "name": "Boil Release: Erupting Steam Wall",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "801509ff739064f4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "futton",
+      "sourceLine": 5140,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release, Water Release, Stable, Barrier",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-boil-release-erupting-steam-wall",
+    "description": "<p>You swirl boiling chakra into your muscles before expelling it into a thin barrier for the duration. When this jutsu is cast, you gain 10 temporary hit points. If a creature hits you with a melee attack before the end of the jutsu’s duration, they take 5 acid damage.</p>\n<p>At the beginning of each of your turns, if you have less than the maximum temporary hit points granted by this jutsu, you regain 10 temporary hit points.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the temporary hit points gained by +10 and the damage by +5. If this jutsu is cast at B-Rank or higher, when you take damage from an attack, you can choose to cause the steam, barrier to instead be expelled outward like a shockwave, affected all creatures within 10 feet of you, dealing damage to each creature within range equal to the listed acid damage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5140; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "stable",
+      "fireRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "futton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the temporary hit points gained by +10 and the damage by +5. If this jutsu is cast at B-Rank or higher, when you take damage from an attack, you can choose to cause the steam, barrier to instead be expelled outward like a shockwave, affected all creatures within 10 feet of you, dealing damage to each creature within range equal to the listed acid damage.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

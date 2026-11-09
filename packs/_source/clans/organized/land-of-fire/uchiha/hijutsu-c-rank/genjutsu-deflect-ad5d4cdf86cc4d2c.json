@@ -1,0 +1,114 @@
+{
+  "_id": "ad5d4cdf86cc4d2c",
+  "_key": "!items!ad5d4cdf86cc4d2c",
+  "type": "jutsu",
+  "name": "Genjutsu: Deflect!",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "660c77b3f003d5ee",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uchiha",
+      "sourceLine": 2265,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you or another creature you can see fall under the effects of a Genjutsu.",
+        "range": "30 feet",
+        "duration": "Instant",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Genjutsu, Visual",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uchiha-genjutsu-deflect",
+    "description": "<p>As part of the requirements of this jutsu, you must have the Sharingan active. You may immediately attempt to make a Standard Jutsu ability check using your Genjutsu Ability modifier vs the triggering Genjutsu.</p>\n<p>On a success, you end the Genjutsu affecting you or another creature as it becomes Deflected. When you do you must select another targeting within range, that you can see and make eye contact with. The target creature must make a Wisdom saving throw.</p>\n<p>Success: The target resists this jutsu’s effects.</p>\n<p>Failure: Affected creatures falls under the effect of the Deflected Genjutsu as if you had cast it. They follow the original Failure effect of that Genjutsu.</p>\n<p>Critical Failure: Same as failure, but the target follows the original Critical Failure effect of that Genjutsu. If that Genjutsu had no critical failure effect, they instead becomes Restrained for the Genjutsu’s original duration. A restrained creature is unable to make hand signs and remakes their saving throw at the end of each of their turns to end this effect on them.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2265; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "visual"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or another creature you can see fall under the effects of a Genjutsu."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "uchiha",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

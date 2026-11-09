@@ -1,0 +1,116 @@
+{
+  "_id": "19b3cbe8b4e9962b",
+  "_key": "!items!19b3cbe8b4e9962b",
+  "type": "jutsu",
+  "name": "Kujaku Art: Nova charge",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3032932cf905e8c3",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hoshi",
+      "sourceLine": 7993,
+      "sourceHeader": {
+        "time": "Special, As part of Casting a Non-Hoshi Clan Jutsu",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "Special",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu, Taijutsu, Bukijutsu",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hoshi-kujaku-art-nova-charge",
+    "description": "<p>You overclock the power of your next Jutsu with a surge of Star Chakra. As you cast this jutsu, you spend multiples of 2 Star Chakra up to a maximum of 10, empowering the next Jutsu you cast before the start of your next turn. You gain only the listed benefit based on the amount of Star Chakra you spend, not all previous benefits.;</p>\n<p>2, 4-, 6-, 8-, or 10-Star Chakra: Increase the jutsu’s damage by +1d6 for 2 Star chakra spent for this benefit.</p>\n<p>4 Star Chakra: All targets affected by your Jutsu must make a Constitution saving throw, gaining 2 ranks of Weakened on a failed save. If your jutsu already forces a saving throw, then instead, on a failure of that save, they also gain 2 ranks of Weakened.</p>\n<p>6 Star Chakra: Creatures have disadvantage on effects to dispel, interrupt, or negate the this jutsu’s casting or persisting effects.</p>\n<p>8 Star Chakra: All targets affected by your Jutsu must make a Constitution saving throw, gaining 2 ranks of Star Sickened on a failed save. If your jutsu already forces a saving throw, then instead, on a failure of that save, they also gain 2 ranks of Star Sickened.</p>\n<p>10 Star Chakra: Select two of the previous effects to benefit from.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7993; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "taijutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hoshi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

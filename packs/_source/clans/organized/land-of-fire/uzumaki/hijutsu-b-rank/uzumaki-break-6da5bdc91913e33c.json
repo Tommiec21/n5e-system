@@ -1,0 +1,114 @@
+{
+  "_id": "6da5bdc91913e33c",
+  "_key": "!items!6da5bdc91913e33c",
+  "type": "jutsu",
+  "name": "Uzumaki Break",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "1309b812e91ce471",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uzumaki",
+      "sourceLine": 2457,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet (5-foot Radius)",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Fuinjutsu, Ninjutsu",
+        "components": "HS, CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uzumaki-uzumaki-break",
+    "description": "<p>Using your knowledge of seals and Fuinjutsu, you surgically attempt to dismantle and break jutsu you see within range, that is currently being maintained or is active. As part of the activation of this jutsu, select a point you can see with range make a Ninshou skill check vs the Jutsu save DC of all jutsu based effects within a 5-foot radius centered on the chosen point.</p>\n<p>On a success you understand the inner workings of all active Ninjutsu and Genjutsu within the area, their rank, effects and the general direction of its caster.</p>\n<p>Additionally, up to 2 jutsu of your choice whose rank is lower than this jutsu is dispelled, and any creatures in the affected area must make a Charisma saving throw.</p>\n<p>On a failure, they cannot gain jutsu based bonuses or healing until the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2457; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (5-foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 5,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "uzumaki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

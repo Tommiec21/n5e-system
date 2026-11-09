@@ -1,0 +1,113 @@
+{
+  "_id": "ebb08ad6f5da51ba",
+  "_key": "!items!ebb08ad6f5da51ba",
+  "type": "jutsu",
+  "name": "Insect Amp",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ebde2837202f7e6f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 625,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu",
+        "components": "HS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-insect-amp",
+    "description": "<p>You fill your insects with an intense surge of Chakra enhancing their overall potential and abilities.</p>\n<p>For the duration, when you cast an Aburame Hijutsu that deals damage, you add your Ninjutsu ability modifier to the damage.</p>\n<p>Additionally, for the duration, if you would inflict a rank of Infested, you instead inflict +1 additional rank.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 625; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

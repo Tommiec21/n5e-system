@@ -1,0 +1,116 @@
+{
+  "_id": "8be4df1f0a5256dc",
+  "_key": "!items!8be4df1f0a5256dc",
+  "type": "jutsu",
+  "name": "Typhoon Release: Soaring Wind Veil",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "eab16e31b0581886",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "fushin",
+      "sourceLine": 2779,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot Cylinder)",
+        "duration": "Concentration, up to 1 Minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory), Wind Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "fushin-typhoon-release-soaring-wind-veil",
+    "description": "<p>You create a vortex of ferocious wind 15-foot-radius, 60-foot-high cylinder centering on you. When a creature other than you enters the jutsu's area for the first time on a turn or starts its turn there, they are pushed by the pressure and must make a Strength saving throw. If taking 3d6 wind damage on a failed save or half as much on a successful one. Creatures inside the radius of this jutsu are heavily obscured from creatures who aren't and vice versa.</p>\n<p>Critical Success: Affected creatures take half of 3d6 wind damage.</p>\n<p>Success: Affected creatures takes half of 3d6 wind damage and becomes Bruised.</p>\n<p>Failure: Affected creatures takes 3d6 wind damage, is Bruised and are pushed back 10-feet.</p>\n<p>Critical Failure: Same as failure, but affected creatures take 5d6 wind damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6. If this jutsu is cast at B-Rank or Higher, you can see through this obstruction. If this jutsu is cast at S-Rank or higher, you reduce the damage of ranged attacks targeting you by 3d6 and this jutsu gains the Barrier keyword.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2779; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "windRelease",
+      "genjutsu-auditory"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot Cylinder)"
+      },
+      "area": {
+        "shape": "Cylinder",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "fushin",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6. If this jutsu is cast at B-Rank or Higher, you can see through this obstruction. If this jutsu is cast at S-Rank or higher, you reduce the damage of ranged attacks targeting you by 3d6 and this jutsu gains the Barrier keyword.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "d2bbab2c8ea7e76d",
+  "_key": "!items!d2bbab2c8ea7e76d",
+  "type": "jutsu",
+  "name": "Uzumaki Art: Chakra Suppression",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cf52d7ef8da0811a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uzumaki",
+      "sourceLine": 2420,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (10-foot radius)",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu, Fuinjutsu",
+        "components": "CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uzumaki-uzumaki-art-chakra-suppression",
+    "description": "<p>You quickly deploy a suppressive seal at a point you can see within range. You throw the suppressive seal and it lands on the chosen point, and radiate 10-foot radius aura centered on it.</p>\n<p>For the duration, creatures that begin or end their turn in the aura or would enter the aura for the first time on their turns, must make a Charisma saving throw, being unable to cast jutsu of a rank equal to this jutsu when it was cast.</p>\n<p>Seal Break. If a hostile creature within the jutsu’s radius has ranks of Sealed, you can dispel one rank of that creatures Sealed condition to increase the size of the radius by +5 feet.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2420; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "uzumaki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

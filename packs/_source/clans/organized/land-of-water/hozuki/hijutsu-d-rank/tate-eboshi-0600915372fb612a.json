@@ -1,0 +1,115 @@
+{
+  "_id": "0600915372fb612a",
+  "_key": "!items!0600915372fb612a",
+  "type": "jutsu",
+  "name": "Tate Eboshi",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "4e15e77df3497f81",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hozuki",
+      "sourceLine": 4110,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when an allied creature within range takes damage",
+        "range": "30 feet",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Barrier",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hozuki-tate-eboshi",
+    "description": "<p>You transform into a wave of water that resembles a demon-like fish, and act as a barrier between your ally and the triggering effect. You move up to your speed, and end your movement within 5 feet of your ally. You then gain 2d8 + 8 temporary hit points, and interpose the damage the ally would take.</p>\n<p>Hydrofication. This jutsu gains the Clash keyword and if you reduce the incoming damage to 0, then if the triggering creature is within 10 feet of you, then they take 2d8 + 8 cold damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points you gain and damage you deal with your Hydrofication effect by +1d8. If this jutsu is cast at B-Rank or higher, you grow in size and can interpose for all allied creatures in a 15-foot cube.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4110; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when an allied creature within range takes damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hozuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points you gain and damage you deal with your Hydrofication effect by +1d8. If this jutsu is cast at B-Rank or higher, you grow in size and can interpose for all allied creatures in a 15-foot cube.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "6383d96f3595cd92",
+  "_key": "!items!6383d96f3595cd92",
+  "type": "jutsu",
+  "name": "Shadow Imitation",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3cdf61bfc22b6b5e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "nara",
+      "sourceLine": 1789,
+      "sourceHeader": {
+        "time": "1 Reaction, to an ally taking damage",
+        "range": "30 feet",
+        "duration": "1 Round",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "nara-shadow-imitation",
+    "description": "<p>You manipulate your shadow and stretch it outwards, fusing your shadow with a willing creature. As a reaction, you grant the target creature your shadow is attached to a +2 to their AC and an advantage on Dexterity saving throws until the beginning of your next turn.</p>\n<p>Bright. Increase the range of this jutsu to 60-feet.</p>\n<p>Dimly Lit. This jutsu can affect +1 additional creature of your choice.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the AC Bonus by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1789; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-tactile"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, to an ally taking damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "nara",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the AC Bonus by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "_id": "b3e3d00ea72781fb",
+  "_key": "!items!b3e3d00ea72781fb",
+  "type": "jutsu",
+  "name": "Orbital Drop",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "76e2940b12aa12aa",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "iburi",
+      "sourceLine": 1247,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Movement Speed (60-Foot sphere)",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "iburi-orbital-drop",
+    "description": "<p>You move up to your movement speed at a space within range and send yourself high into the air with a burst of smoke. Your body splits into 3 pillars of smoke that rise tangent to each other 200 feet into the air. As the smoke pillars rise, they are set on fire from the friction in the air. These pillars merge and reform into your body, and you begin hurling back down to earth like a missile.</p>\n<p>Select a point you can see within 60 feet of the space you were in when you cast this jutsu, as you crash into the ground creating a massive explosion originating from the chosen point, annihilating creatures within a 60-foot radius sphere.</p>\n<p>Each creature within range must make a Dexterity saving throw, taking 7d10 Fire damage, gaining 2 ranks of Burned, and becoming Blinded for 1 minute on a failed save. Or half as uch damage on a successful save.</p>\n<p>A creature blinded by this jutsu can spend their Bonus action to make a Constitution saving throw, ending the blinded condition on a success.</p>\n<p>| Character Art / Credits: Robert ДенIro |</p>\n<p>The area this jutsu effects permanently becomes difficult terrain, and as this jutsu concludes.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1247; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed (60-Foot sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "iburi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

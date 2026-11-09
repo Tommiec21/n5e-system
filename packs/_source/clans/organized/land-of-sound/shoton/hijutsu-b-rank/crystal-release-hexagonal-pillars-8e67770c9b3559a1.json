@@ -1,0 +1,116 @@
+{
+  "_id": "8e67770c9b3559a1",
+  "_key": "!items!8e67770c9b3559a1",
+  "type": "jutsu",
+  "name": "Crystal Release: Hexagonal Pillars",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "6f15845f1782eab3",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shoton",
+      "sourceLine": 7097,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (60-Foot Radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Fuinjutsu, Stable.",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shoton-crystal-release-hexagonal-pillars",
+    "description": "<p>You manifest 5 Large, crystalline pillars in spaces found on the edges of your jutsu’s radius. Each pillar releases heavy waves of crystal energy across everything within the jutsu’s radius. Select a point on the space you currently occupy. This point becomes the center of this jutsu’s radius.</p>\n<p>All allied creatures that cast jutsu inside the radius of this jutsu, has their effect amplified increasing the damage they deal by +1 damage die.</p>\n<p>Additionally, creatures summoned as a result of a Shoton Hijutsu you cast within this jutsu’s affected area gains the Crystal Dynamics ability.</p>\n<p>Crystal Dynamics (Recharge 5-6). This creature can cast Crystal Needles, Crystal Wheel or Gods Crossing, at their base rank.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at S-Rank, the Crystal Dynamics ability recharges at the end of your turn, for this jutsu’s duration.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7097; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "stable",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "shoton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at S-Rank, the Crystal Dynamics ability recharges at the end of your turn, for this jutsu’s duration.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

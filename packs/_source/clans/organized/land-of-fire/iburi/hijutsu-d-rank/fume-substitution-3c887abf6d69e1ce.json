@@ -1,0 +1,114 @@
+{
+  "_id": "3c887abf6d69e1ce",
+  "_key": "!items!3c887abf6d69e1ce",
+  "type": "jutsu",
+  "name": "Fume Substitution",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "441593685e20ac76",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "iburi",
+      "sourceLine": 1173,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage",
+        "range": "Self",
+        "duration": "1 Round",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "iburi-fume-substitution",
+    "description": "<p>You quickly morph your body into smoke to avoid being struck by an enemy's assault. Increase your AC by +4 for the triggering attack and each subsequent attack until the beginning of your next turn.</p>\n<p>For each attack that misses you as a result of this jutsu you may force the creature that missed, to make a Constitution saving throw as you release a plume of smoke into their eyes. On a failed save, they gain a rank of Dazzled or Envenomed, your choice.</p>\n<p>If you are currently receiving the benefits of the Smoke Style stance, you can move up to 10 feet when an attack misses you.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1173; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "iburi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "edf9249b3621581f",
+  "_key": "!items!edf9249b3621581f",
+  "type": "jutsu",
+  "name": "Shadow Imitation Field",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "21f7e7c92437c7a7",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "nara",
+      "sourceLine": 1819,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "20-foot Radius on the ground.",
+        "duration": "Concentration, Up to 1 minute",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "nara-shadow-imitation-field",
+    "description": "<p>You expand your shadow in a 20-foot radius circle centering on a point of the space you currently occupy, from you capturing all creatures within it who are on the same surface as you. All Creatures in the radius upon activation, must make a Strength saving throw, being Shadow Bound on a failed save for the duration. On an affected creatures turn, they can make a Strength saving throw to break free from this jutsu, ending its effect on them.</p>\n<p>Bright. Affected creatures making their saving throws suffer a -1 penalty to the result.</p>\n<p>Dimly Lit.. Creatures Shadow Bound by this jutsu are slowly strangled, taking 3d12 bludgeoning or necrotic damage at the beginning of each creatures turns.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the radius by 5ft.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1819; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "20-foot Radius on the ground."
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "nara",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the radius by 5ft.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

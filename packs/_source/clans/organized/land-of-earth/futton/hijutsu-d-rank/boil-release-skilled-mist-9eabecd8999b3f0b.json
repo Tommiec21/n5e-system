@@ -1,0 +1,120 @@
+{
+  "_id": "9eabecd8999b3f0b",
+  "_key": "!items!9eabecd8999b3f0b",
+  "type": "jutsu",
+  "name": "Boil Release: Skilled Mist",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "801509ff739064f4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "futton",
+      "sourceLine": 5123,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-foot Cone)",
+        "duration": "Concentration, Up to 1 minute.",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Fire Release, Water Release, Corrosive Branch, Stable",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-boil-release-skilled-mist",
+    "description": "<p>You expel a corrosive cloud of mist from your mouth that begins to melt anything it touches, that lingers as a cloud of acidic mist. Creatures, objects and structures in range of this jutsu when cast, or that begin their turns in the affected area must make a Dexterity saving throw.</p>\n<p>Critical Success: Affected creature takes half of 4d6 acid damage.</p>\n<p>Success: Affected creatures takes half of 4d6 acid damage and suffer a -1 penalty to their AC until the beginning of their next turn.</p>\n<p>Failure: Affected creatures take 4d6 acid damage and become Corroded..</p>\n<p>Critical Failure: Same as failure and they also gain a rank of Deteriorate.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the size of the affected area by +20 feet. If this jutsu is cast at S-Rank, increase the size of the affected area by +20 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5123; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "stable",
+      "fireRelease",
+      "waterRelease",
+      "genjutsu-inhale",
+      "tactile",
+      "corrosive-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-foot Cone)"
+      },
+      "area": {
+        "shape": "Cone",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "futton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the size of the affected area by +20 feet. If this jutsu is cast at S-Rank, increase the size of the affected area by +20 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

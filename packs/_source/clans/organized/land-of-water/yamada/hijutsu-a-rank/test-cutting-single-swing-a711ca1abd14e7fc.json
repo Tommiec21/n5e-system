@@ -1,0 +1,114 @@
+{
+  "_id": "a711ca1abd14e7fc",
+  "_key": "!items!a711ca1abd14e7fc",
+  "type": "jutsu",
+  "name": "Test Cutting: Single Swing",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "38fb4d13990383b9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4680,
+      "sourceHeader": {
+        "time": "1 Full Turn Action",
+        "range": "Weapon Range",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-single-swing",
+    "description": "<p>This jutsu can only be cast targeting a creature that is Grappled, Prone and Severed.</p>\n<p>You target the nape of your targets neck, preparing to strike with a single swift and lethal swing. Make a melee taijutsu attack against the target creature dealing [Weapons Damage] + 10d6, rerolling 1’s and 2’s taking the second result.</p>\n<p>Ideal Cut: For every 4, 5 or 6 you roll, using this jutsu’s damage dice, the target creature suffers a -1 penalty to their AC and saving throws, until the beginning of your next turn.</p>\n<p>Tao: If this attack is 10 or higher than the targets AC, this attack is a critical hit and the affected creature suffers the effects of all 6 of the severed conditions effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the  damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4680; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the  damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

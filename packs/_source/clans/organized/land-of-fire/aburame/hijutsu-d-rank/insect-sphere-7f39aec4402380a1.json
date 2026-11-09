@@ -1,0 +1,113 @@
+{
+  "_id": "7f39aec4402380a1",
+  "_key": "!items!7f39aec4402380a1",
+  "type": "jutsu",
+  "name": "Insect Sphere",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ebde2837202f7e6f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 602,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 feet",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-insect-sphere",
+    "description": "<p>You send a swarm of insects to entrap creatures in a select creature. Select a point you can see within range, forcing all creatures in a 5-foot radius of the chosen point to make a Dexterity saving throw. On a failed save they are grappled in place as you deal 3d8 poison (or Chakra, your choice) damage to the grappled target at the end of each of their turns. Grappled creatures can make a Strength saving throw at the end of each of their turns. On a success, the jutsu ends on them.</p>\n<p>While grappled in this way Jutsu the creature casts has its base cost increased by +4.</p>\n<p>If you have your Swarm active when you cast this jutsu, you can select a second point within the same range.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, damage by 1d8 and the jutsu cost penalty by +2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 602; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, damage by 1d8 and the jutsu cost penalty by +2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

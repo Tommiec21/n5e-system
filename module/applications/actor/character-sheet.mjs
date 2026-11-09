@@ -38,6 +38,8 @@ import { tryEndCondition } from "../../workflow/conditions.mjs";
 import { changeFury, openNextGate, closeGates, placeMarks } from "../../workflow/trackers.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
 import { ruleToggles } from "../../rules/elements.mjs";
+import { addBackground } from "../../workflow/background.mjs";
+import { addClan } from "../../workflow/clan.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -306,6 +308,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
     // A class runs character creation (level 1 choices); replacing one removes everything it granted.
     if ( item.type === "class" ) return this.#dropClass(item);
+    if ( item.type === "background" && item.flags?.n5e?.background ) return addBackground(actor, item);
+    if ( item.type === "clan" && item.flags?.n5e?.clanPackage ) return addClan(actor, item);
 
     // One clan, background: replacing asks first.
     if ( ["clan", "background"].includes(item.type) ) {
@@ -523,7 +527,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onChangeRanks(event, target) {
     const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
     if ( !effect ) return;
-    const max = effect.system.maxRanks ?? 1;
+    const max = effect.system.maxRanks === 0 ? Infinity : effect.system.maxRanks ?? 1;
     const ranks = Math.max(0, Math.min(max, effect.system.ranks + (Number(target.dataset.delta) || 0)));
     if ( ranks === 0 ) await effect.delete();
     else await effect.update({ "system.ranks": ranks });

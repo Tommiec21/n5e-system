@@ -1,0 +1,114 @@
+{
+  "_id": "3fed99f4e1b937cd",
+  "_key": "!items!3fed99f4e1b937cd",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Coffin",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "8f580c2ca9218029",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8238,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet",
+        "duration": "Concentration, up to 10 minutes",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Efficient",
+        "components": "CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-coffin",
+    "description": "<p>You cover a target in sheets of paper, with restrict their movements and plug their nose and mouth, suffocating them. A target creature you can see within range must make a Dexterity saving throw, being covered by countless sheets of paper on a failure. On a success, they avoid the paper, ending the jutsu.</p>\n<p>A creature captured by this jutsu is Restrained, unable to cast jutsu that require Hand Signs (HS), draw or stow weapons or make complex body movements like making a weapon attack or speak, but can be allowed to talk at your choice, at the beginning of their turn. You can disallow them from speaking, covering their mouths on your turn.</p>\n<p>At the start of each of the captured creatures turns, they begins suffocating, taking 9d6 Necrotic Damage that ignore resistance and damage reduction.</p>\n<p>A creature that you allowed to talk at the beginning of their turn or that does not need to breathe does not take damage from this jutsu. At the end of the captured creature's turn, it can make a Strength saving throw, breaking free of the paper on a successful save.</p>\n<p>A creature can attempt to destroy the paper Coffin you have created. It has an AC equal to your Ninjutsu save DC, 25 Hit points and vulnerability to Fire damage. If your Paper coffin’s hit points are reduced to 0, this jutsu ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8238; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "efficient"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

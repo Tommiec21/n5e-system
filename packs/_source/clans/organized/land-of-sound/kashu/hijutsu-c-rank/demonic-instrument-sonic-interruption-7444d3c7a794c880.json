@@ -1,0 +1,116 @@
+{
+  "_id": "7444d3c7a794c880",
+  "_key": "!items!7444d3c7a794c880",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Sonic Interruption",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cc27a80758f9c842",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6759,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when a creature within range would cast a jutsu with the HS component.",
+        "range": "60 feet",
+        "duration": "Instant",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Genjutsu (Auditory), Mnemonic Branch, Interrupt",
+        "components": "CM, W (Auditory Ninja Tool)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-sonic-interruption",
+    "description": "<p>When you see a creature attempt to cast a jutsu and weave hand seals, you release a sound wave in response attempting to disturb them. Target creature must make a Wisdom saving throw.</p>\n<p>Critical Success: The target suffers no additional effects.</p>\n<p>Success: The target gains 1 rank of Disoriented.</p>\n<p>Failure: The target gains 2 ranks of Disoriented and have the triggering jutsu’s casting fails.</p>\n<p>Critical Failure: Same effects as a failure, but the target cannot cast the triggering jutsu for the next minute as their thoughts become hazy when thinking of it. They can clear their haze by spending an Action to still their thoughts.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6759; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "interrupt",
+      "genjutsu-auditory",
+      "mnemonic-branch"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature within range would cast a jutsu with the HS component."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Auditory Ninja Tool)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Auditory Ninja Tool)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

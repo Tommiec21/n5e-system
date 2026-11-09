@@ -1,0 +1,115 @@
+{
+  "_id": "15bbb3a8f5637bd3",
+  "_key": "!items!15bbb3a8f5637bd3",
+  "type": "jutsu",
+  "name": "Typhoon Release: High Wind Destruction",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f7708a5a4013b7cd",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "fushin",
+      "sourceLine": 2894,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (40-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Wind Release, Sensory",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "fushin-typhoon-release-high-wind-destruction",
+    "description": "<p>You create a powerful swirling area of wind that prevents creatures from acting against your will. Select a point you can see within range and you can choose up to 6 creatures and yourself to be unaffected by the adverse effects of this jutsu as the wind flows around them.</p>\n<p>When a creature enters the jutsu's area for the first time on a turn or starts its turn there, they are pushed to the ground by the wind and must make a Strength saving throw being knocked Prone and are Blinded and Deafened until the beginning of their next turn on a failed save. On a successful save they treat the affected area as if it’s difficult terrain. Flying creatures make their saving throw at disadvantage.</p>\n<p>Creatures that begin their turns inside the radius of this jutsu are heavily obscured from creatures who aren't and vice versa and must remake their saving throw against this jutsu’s effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 the size of the jutsu’s radius by +5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2894; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "sensory",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (40-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 40,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "fushin",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 the size of the jutsu’s radius by +5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

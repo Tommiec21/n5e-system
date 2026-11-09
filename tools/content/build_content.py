@@ -47,6 +47,7 @@ import os
 import random
 import re
 import sys
+import subprocess
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -965,12 +966,16 @@ def load_all():
     """Load every pack's documents (generated and hand-made) for the folder pass."""
     ALL_DOCS.clear()
     for pack in sorted(os.listdir(OUT)):
+        if pack == "backgrounds":
+            continue  # Backgrounds have their own organized importer and folder tree.
         folder = os.path.join(OUT, pack)
         if not os.path.isdir(folder):
             continue
         ALL_DOCS[pack] = []
         for fn in sorted(os.listdir(folder)):
             p = os.path.join(folder, fn)
+            if not os.path.isfile(p) or not p.endswith(".json"):
+                continue
             with open(p, encoding="utf-8") as f:
                 d = json.load(f)
             if str(d.get("_key", "")).startswith("!folders!"):
@@ -985,13 +990,15 @@ def load_all():
 def write(docs):
     """Delete this script's previous output, then write each document as packs/_source/<pack>/<slug>-<id>.json."""
     owned = {}
-    for pack in sorted(set(os.listdir(OUT)) | {"classes", "features", "stances", "feats", "jutsu"}):
+    for pack in ("classes", "features", "stances", "feats", "jutsu"):
         folder = os.path.join(OUT, pack)
         if not os.path.isdir(os.path.join(OUT, pack)) and pack not in ("classes", "features", "stances", "feats", "jutsu"):
             continue
         os.makedirs(folder, exist_ok=True)
         for fn in os.listdir(folder):
             p = os.path.join(folder, fn)
+            if not os.path.isfile(p) or not p.endswith(".json"):
+                continue
             with open(p, encoding="utf-8") as f:
                 if json.load(f).get("flags", {}).get("n5e", {}).get("generated"):
                     os.remove(p)
@@ -1034,6 +1041,10 @@ def main():
     apply_automation()
     load_all()
     apply_folders()
+    # Complete the seven supported classes through 20 after preserving the original base IDs/automation.
+    subprocess.run(["node", os.path.join(ROOT, "tools", "content", "build-class-expansion.mjs"), kb], check=True)
+    for clan_batch in range(1, 7):
+        subprocess.run(["node", os.path.join(ROOT, "tools", "content", "build-clans.mjs"), kb, str(clan_batch)], check=True)
     print(f"wrote {n} documents ({len(stances)} stances; feats: {', '.join(feat_names)})")
 
 

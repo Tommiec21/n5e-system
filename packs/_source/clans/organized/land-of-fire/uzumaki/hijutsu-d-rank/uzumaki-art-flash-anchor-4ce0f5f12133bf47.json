@@ -1,0 +1,114 @@
+{
+  "_id": "4ce0f5f12133bf47",
+  "_key": "!items!4ce0f5f12133bf47",
+  "type": "jutsu",
+  "name": "Uzumaki Art: Flash Anchor",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cf52d7ef8da0811a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uzumaki",
+      "sourceLine": 2414,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you would take damage or make a saving throw.",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fuinjutsu",
+        "components": "CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uzumaki-uzumaki-art-flash-anchor",
+    "description": "<p>You quickly deploy Chakra seals around you to create an immovable defensive barrier. Until the end of the current turn, you gain a rank of mastery to your AC and saving throws against the triggering effect and all subsequent effects and cannot be moved or teleported against your will.</p>\n<p>Seal Break. If a creature within 30 feet of you have ranks of Sealed, you can dispel one rank of that creatures Sealed condition to extend this jutsu’s duration to the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, the bonus is increased to two ranks of Mastery. If this jutsu is cast at S-Rank, the bonus is increased to three ranks of Mastery.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2414; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage or make a saving throw."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "uzumaki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, the bonus is increased to two ranks of Mastery. If this jutsu is cast at S-Rank, the bonus is increased to three ranks of Mastery.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

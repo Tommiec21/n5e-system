@@ -1,0 +1,115 @@
+{
+  "_id": "c51af78ca17bb972",
+  "_key": "!items!c51af78ca17bb972",
+  "type": "jutsu",
+  "name": "Test Cutting: Armor Splitter",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f761929b5b2f5d99",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4593,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you would take damage from a creature within your weapons range.",
+        "range": "Weapons range",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-armor-splitter",
+    "description": "<p>You assume a stance meant for your blade to counter strike a creature within your striking range.</p>\n<p>Make a melee taijutsu attack, against the triggering creature, dealing [Weapon Damage] + 2d6, and forcing them to make a Constitution saving throw, becoming Severed on a failure.</p>\n<p>Ideal Cut: This attack gains the effect of your Empty Blade attack, as if you were foregoing 2 attacks. You can use the d6’s rolled as part of this jutsu to determine if its effects are applied.</p>\n<p>Tao: This attack is made with a +1 bonus to its critical threat range. If you score a critical hit with this attack, you regain your spent Reaction, and must immediately spend it, to cast this jutsu again ignoring its casting time, targeting the same creature at no additional cost.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4593; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage from a creature within your weapons range."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

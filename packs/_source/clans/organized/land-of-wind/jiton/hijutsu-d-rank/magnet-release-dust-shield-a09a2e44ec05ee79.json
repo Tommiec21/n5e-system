@@ -1,0 +1,116 @@
+{
+  "_id": "a09a2e44ec05ee79",
+  "_key": "!items!a09a2e44ec05ee79",
+  "type": "jutsu",
+  "name": "Magnet Release: Dust Shield",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "96b57dba0082d592",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jiton",
+      "sourceLine": 3270,
+      "sourceHeader": {
+        "time": "1 Action or 1 Reaction, which you take when you or an allied creature would take damage.",
+        "range": "30 Feet",
+        "duration": "Special",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jiton-magnet-release-dust-shield",
+    "description": "<p>You draw dust particles around yourself to create a Barrier, in any design of your choosing. This wall protects you from damage and can even protect other willing creatures.</p>\n<p>As an Action, you can manifest this dust shield surrounding either yourself or another willing creature within range. If the affected creature moves from its current space at all, this jutsu ends. While active, a creature gains a Barrier with 18 Hit points and remains until the creature moves out of its current space, or the Dust shields hit points are reduced to 0.</p>\n<p>Alternatively, as a reaction when you or an allied creature within range takes damage, you can protect that creature, granting them a Barrier that has 12 Hit points and lasts until the beginning of their next turn.</p>\n<p>Regardless of how you cast this jutsu, the Barrier created by this jutsu has resistance to Cold and Earth Damage, but vulnerability to Lightning Damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Dust Shield Hit points by 8. When you cast this jutsu a B-Rank or higher, affected creature cannot be moved against their wills while protected by this jutsu.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3270; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "earthRelease",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Action or 1 Reaction, which you take when you or an allied creature would take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "jiton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Dust Shield Hit points by 8. When you cast this jutsu a B-Rank or higher, affected creature cannot be moved against their wills while protected by this jutsu.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

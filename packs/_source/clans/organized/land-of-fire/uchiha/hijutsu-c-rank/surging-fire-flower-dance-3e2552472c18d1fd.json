@@ -1,0 +1,116 @@
+{
+  "_id": "3e2552472c18d1fd",
+  "_key": "!items!3e2552472c18d1fd",
+  "type": "jutsu",
+  "name": "Surging Fire Flower Dance",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "660c77b3f003d5ee",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uchiha",
+      "sourceLine": 2283,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch or Weapons Range",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Finisher, Chain",
+        "components": "CM, M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uchiha-surging-fire-flower-dance",
+    "description": "<p>You ignite your weapon or unarmed strike with flames performing a flurry of strike, finishing with a heavy strike meant to shatter the ground.</p>\n<p>Make two melee Taijutsu attacks comparing the result to the AC of all creatures of your choice that you can see within your attacks range, dealing your [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire damage.</p>\n<p>Finisher: Each strike is followed by a flaming streak that you can trace to deliver a devastating blow. If an affected creature spends their action on their turn make an attack or cast a jutsu while within your melee attack range, you can make an attack of opportunity against them without spending your reaction, once each. This attacks damage is increased by +1d6 fire damage and then you can move up to your movement speed without provoking opportunity attacks into a space that can hold you.</p>\n<p>Chain 3: If you score a hit with at least one attack, the affected creature must make a Strength or Dexterity saving throw, your choice, being knocked prone and having their speed reduced by half until the end of their next turn.</p>\n<p>Off-Guard. When you deal damage to an Off-Guard creature you gain an additional action which you can use to recast this jutsu. If you do, you gain a +1 bonus to that castings attacks critical threat range against the Off-Guard creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2283; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "finisher",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch or Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "uchiha",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

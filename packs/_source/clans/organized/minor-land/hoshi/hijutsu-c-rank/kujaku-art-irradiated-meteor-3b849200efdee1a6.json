@@ -1,0 +1,114 @@
+{
+  "_id": "3b849200efdee1a6",
+  "_key": "!items!3b849200efdee1a6",
+  "type": "jutsu",
+  "name": "Kujaku Art: Irradiated Meteor",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3032932cf905e8c3",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hoshi",
+      "sourceLine": 7981,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (20-Foot Radius)",
+        "duration": "Instant",
+        "cost": "9 Chakra (or 4 Star Chakra)",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hoshi-kujaku-art-irradiated-meteor",
+    "description": "<p>You gather a concentrated mass of star chakra above a point you can see within range, compressing it until it collapses under its own mass and weight, before dropping it like a falling meteor. Select a point you can see within range, filling a 20-foot radius centered on this point. All creatures in range must make a Dexterity saving throw, taking 4d8 force damage and being knocked Prone on a failed save.</p>\n<p>Irradiated: The affected area is radioactive until the end of your next turn. Any creature that enters this area for the first time on a turn must make a Constitution saving throw, taking 4d8 chakra damage on a failure and increasing the cost of their next jutsu cast within the next minute by the result of the chakra damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 (or 2-star chakra), and increase the damage by 1d8 and the size of the radius by +5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7981; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (20-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra (or 4 Star Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hoshi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 (or 2-star chakra), and increase the damage by 1d8 and the size of the radius by +5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

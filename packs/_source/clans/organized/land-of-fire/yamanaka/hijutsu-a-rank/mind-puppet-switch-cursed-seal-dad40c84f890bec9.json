@@ -1,0 +1,117 @@
+{
+  "_id": "dad40c84f890bec9",
+  "_key": "!items!dad40c84f890bec9",
+  "type": "jutsu",
+  "name": "Mind Puppet Switch: Cursed Seal",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c3a388d6b6fdc2ae",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamanaka",
+      "sourceLine": 2676,
+      "sourceHeader": {
+        "time": "1 Full-Turn Action",
+        "range": "5 Feet",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Unaware), Fuinjutsu",
+        "components": "HS, CM, NT, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamanaka-mind-puppet-switch-cursed-seal",
+    "description": "<p>You take a puppet, doll, or an item of humanoid shape, no smaller than an average sized children’s toy. You place a secret Yamanaka sealing jutsu on the item. As part of casting this jutsu, the target creature must have 5 ranks of Mental Overwrite or at least 7 combined ranks of conditions with the [Mental] tag.</p>\n<p>Once cast, the triggering creature must immediately make a Charisma Saving throw against your highest jutsu save DC.</p>\n<p>Critical Success: No further effect, and cannot be targeted by this jutsu again for 24 hours.</p>\n<p>Success: Target is able to resist having its consciousness snatched from it, but is Confused until the end of its next turn.</p>\n<p>Failure: Targets consciousness is bound inside of the item used. While bound, the target creatures body is incapacitated until their consciousness returns. A bound creature remakes this saving throw, once per 10 minutes as if it still suffers the same conditions it had prior to the binding. If the item is destroyed, the creatures consciousness attempts to re-enter their body. If the body is dead, their consciousness is remains wandering until binding itself to another body or item of its choice. If a creature succeeds on this saving throw, they cannot be targeted by this jutsu for 24 hours.</p>\n<p>Critical Failure: Same as failure, but the creature can only remake their saving throw once every 24 hours.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2676; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu",
+      "genjutsu-tactile",
+      "unaware"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, NT, CS"
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 1,
+        "text": "HS, CM, NT, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamanaka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

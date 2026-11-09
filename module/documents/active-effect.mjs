@@ -83,6 +83,6 @@ export default class N5eActiveEffect extends ActiveEffect {
   get rankedName() {
     if ( this.type !== "condition" ) return this.name;
     const max = this.system.maxRanks;
-    return max ? `${this.name} ${this.system.ranks}` : this.name;
+    return max != null ? `${this.name} ${this.system.ranks}` : this.name;
   }
 }

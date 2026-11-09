@@ -1,0 +1,117 @@
+{
+  "_id": "5295eae102b4c7c7",
+  "_key": "!items!5295eae102b4c7c7",
+  "type": "jutsu",
+  "name": "Basilisk Art: Mark of the Basilisk",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d23d4080f8233ddc",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8406,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Weapons Range",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "25 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Bukijutsu, Fuinjutsu",
+        "components": "HS, CM, M, W (Any Blade)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-mark-of-the-basilisk",
+    "description": "<p>You quickly drag your blade across your palm, drawing Viper Blood before swiping your finger across its flat side, drawing a Hebi Clan sealing circle, followed by a wide arcing feint followed by a direct thrust of the blade.</p>\n<p>Make a melee Taijutsu attack, dealing your [Weapon Damage] on a hit, and forcing the affected creature to make a Charisma saving throw as the sealing circle is branded upon them binding and subjugating their wills. Select one of the listed effects between Basilisks Edict or Blood Override using their effects</p>\n<p>Basilisks Edict: The sealed creature cannot willingly target any creature, other than the Hebi with either hostile or supportive effects, so long as they can see and are aware of the Hebi’s location. Effects the sealed creature uses that affect an area, now only affect the Hebi.</p>\n<p>Blood Override: The sealed creature cannot cast Ninjutsu with the Hijutsu keyword of B-Rank or higher. And if they are a player character, their third level clan features are suppressed. If they are an adversary, they lose access to their clan traits/features for the duration.</p>\n<p>Critical Success: Affected creatures is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature suffers the chosen effect, lasting until the beginning of your next turn.</p>\n<p>Failure: Affected creature suffers the chosen effect, lasting for the duration. An affected creature remakes their saving throw at the end of each of their turns, ending this effect on them, on a success.</p>\n<p>Critical Failure: Same as failure, but they instead suffer both Basilisks Edict and Blood Override.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8406; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "bukijutsu",
+      "fuinjutsu",
+      "genjutsu-tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 25,
+      "text": "25 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, M, W (Any Blade)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, M, W (Any Blade)"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

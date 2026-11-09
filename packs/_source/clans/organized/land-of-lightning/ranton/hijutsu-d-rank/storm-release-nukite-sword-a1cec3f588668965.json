@@ -1,0 +1,118 @@
+{
+  "_id": "a1cec3f588668965",
+  "_key": "!items!a1cec3f588668965",
+  "type": "jutsu",
+  "name": "Storm Release: Nukite Sword",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "af0d612ead24af09",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ranton",
+      "sourceLine": 6146,
+      "sourceHeader": {
+        "time": "1 Action.",
+        "range": "Self (15-foot Cone)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Water Release, Lightning Release, Storm Branch",
+        "components": "CM, M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-storm-release-nukite-sword",
+    "description": "<p>You coat your hand in lightning making it act like a buzzsaw around your striking implement.</p>\n<p>You strike out in an arc, at every creature in range. Make a single melee Taijutsu (or Ninjutsu) attack, comparing the result vs each creatures AC, dealing either your [Unarmed Damage] or [Weapon Damage] + 2d6 lightning damage.</p>\n<p>If a target creature spends their reaction to cast a jutsu that grants them temporary hit points or a bonus to their AC, if you still score a hit, increase the damage dealt by 2d6 lightning damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the damage by 1d6, and the size of the cone by 5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6146; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "waterRelease",
+      "lightningRelease",
+      "storm-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot Cone)"
+      },
+      "area": {
+        "shape": "Cone",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "ranton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the damage by 1d6, and the size of the cone by 5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "_id": "0a4dbd3770832f03",
+  "_key": "!items!0a4dbd3770832f03",
+  "type": "jutsu",
+  "name": "Test Cutting: Roaring Rain",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f761929b5b2f5d99",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4579,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Weapon Range",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Taijutsu, Chain, Combo",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-roaring-rain",
+    "description": "<p>You strike so fast your enemy doesn’t have time to react. Select up to 3 creatures within your movement speed range and make a melee taijutsu attack, comparing your result to each of their AC. On a hit you deal your [Weapons Damage].</p>\n<p>If the target would cast a Jutsu as a Reaction to the damage you deal, the cost of their jutsu is increased by +4 due to the strain required to keep up with your strike. If their jutsu or choice of reaction, does not cost chakra, they must spend 12 chakra to take their reaction.</p>\n<p>Ideal Cut: Increase the damage dealt by 1d6 for each creature targeted by this jutsu.</p>\n<p>Tao: Force each affected creature to make a Constitution saving throw, becoming Severed on a failure.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the extra cost to take a reaction by +4.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4579; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "combo",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the extra cost to take a reaction by +4.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

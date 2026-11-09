@@ -1,0 +1,115 @@
+{
+  "_id": "35fdc9ded6ad7530",
+  "_key": "!items!35fdc9ded6ad7530",
+  "type": "jutsu",
+  "name": "Wood Release: World Of Trees",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "7b5b730e57d52dd4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "senju",
+      "sourceLine": 1990,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-foot Cube)",
+        "duration": "1 Minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "senju-wood-release-world-of-trees",
+    "description": "<p>You inject Chakra into the ground giving birth to roots and plants that surge upwards filling a 30-foot cube originating from you with bulging wood and roots. All creatures, excluding yourself treat the area as difficult terrain. This area is also treated as New Growth for the purpose of interacting with Senju features and Jutsu.</p>\n<p>Creatures within this New Growth cannot take the dash or dodge actions.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the size of the cube by 5 feet. If this jutsu is cast at B-Rank or higher, Senju clan Hijutsu you cast while inside the affected area that deal damage has half of its damage Penetrate through jutsu with the Barrier keyword.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1990; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "earthRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot Cube)"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "senju",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the size of the cube by 5 feet. If this jutsu is cast at B-Rank or higher, Senju clan Hijutsu you cast while inside the affected area that deal damage has half of its damage Penetrate through jutsu with the Barrier keyword.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

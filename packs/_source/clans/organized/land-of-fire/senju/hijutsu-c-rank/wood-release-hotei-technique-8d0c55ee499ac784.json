@@ -1,0 +1,115 @@
+{
+  "_id": "8d0c55ee499ac784",
+  "_key": "!items!8d0c55ee499ac784",
+  "type": "jutsu",
+  "name": "Wood Release: Hotei Technique",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ed379ce2a7fccb5a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "senju",
+      "sourceLine": 2034,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet",
+        "duration": "Concentration, Up to 1 minute",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "senju-wood-release-hotei-technique",
+    "description": "<p>You conjure multiple hands of wood that jut from the ground and attempt to grapple up to two creatures you can see within range. Target creature must make a Dexterity saving throw, being grappled on a failed save or avoiding the grasping hands on a successful save with no further effects.</p>\n<p>A grappled creature is pulled to the ground if they were airborne. A grappled creature also takes 3d8 Earth or Cold damage at the beginning of each of their turns and can make a Strength saving throw breaking free on a success.</p>\n<p>While grappling a creature, the wooden hands generate a 15-foot radius of difficult terrain which is treated as New Growth for the purpose of interacting with Senju features and Jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and select one additional creature for this jutsu to affect.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2034; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "earthRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "senju",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and select one additional creature for this jutsu to affect.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

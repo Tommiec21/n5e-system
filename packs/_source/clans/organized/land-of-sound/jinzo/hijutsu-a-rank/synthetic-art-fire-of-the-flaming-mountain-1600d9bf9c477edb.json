@@ -1,0 +1,116 @@
+{
+  "_id": "1600d9bf9c477edb",
+  "_key": "!items!1600d9bf9c477edb",
+  "type": "jutsu",
+  "name": "Synthetic Art: Fire of the Flaming Mountain",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "56ae4802d65bbe4b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jinzo",
+      "sourceLine": 7534,
+      "sourceHeader": {
+        "time": "1 Full Turn Action",
+        "range": "90-Feet (20-Foot radius, 120-Foot-high cylinder)",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Fire Release, Shin Branch",
+        "components": "HS, CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-synthetic-art-fire-of-the-flaming-mountain",
+    "description": "<p>In order to cast this jutsu, you must currently have your Synthetic Chakra Mode active and have a creature marked with your Shin Seal.</p>\n<p>You draw your synthetic blood, calling to the fires of the flaming mountain to destroy your foes. Select a creature you can see marked with your Shin Seal, and dispel it. When you do, your seal grows, and opens a gate centered on them to the flames of fire mountain, creating a 20-foot radius, 120-foot-high eruption of hell fire, forcing all creatures in range to make a Constitution saving throw, taking 10d6 fire damage on a failure, or half as much on success.</p>\n<p>If an affected creature has ranks of Doused it is treated as if they have 5 ranks, even if they actually have less.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7534; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "fireRelease",
+      "shin-branch"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "90-Feet (20-Foot radius, 120-Foot-high cylinder)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "jinzo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

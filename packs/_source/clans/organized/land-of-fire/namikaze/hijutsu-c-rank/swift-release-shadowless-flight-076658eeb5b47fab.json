@@ -1,0 +1,118 @@
+{
+  "_id": "076658eeb5b47fab",
+  "_key": "!items!076658eeb5b47fab",
+  "type": "jutsu",
+  "name": "Swift Release: Shadowless Flight",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ba040aa373b8b6fa",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "namikaze",
+      "sourceLine": 1676,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "120",
+        "duration": "Instant",
+        "cost": "6 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu, Wind Release, Lightning Release.",
+        "components": "HS, M, W (Any, Optional)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "namikaze-swift-release-shadowless-flight",
+    "description": "<p>You prime all Speed Seals you have marking a creature, and use it to flash between each one at blinding speeds. Make a melee Ninjutsu (or Taijutsu) attack vs the AC of all marked creatures.</p>\n<p>On a hit, you deal 5d6 Wind or Lightning damage if a ninjutsu attack or your [Unarmed Damage] (or [Weapon Damage]) + 3d6 if a Taijutsu attack.</p>\n<p>Each affected creature must then make a Dexterity saving throw being Concussed on a failed save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select one damaged creature, and teleport into a space that can hold you, that is adjacent to them.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1676; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "fuinjutsu",
+      "windRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "120"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, M, W (Any, Optional)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, M, W (Any, Optional)"
+      }
+    },
+    "hijutsu": {
+      "clan": "namikaze",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select one damaged creature, and teleport into a space that can hold you, that is adjacent to them.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

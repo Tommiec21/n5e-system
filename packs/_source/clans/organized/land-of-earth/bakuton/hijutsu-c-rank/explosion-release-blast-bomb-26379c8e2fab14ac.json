@@ -1,0 +1,118 @@
+{
+  "_id": "26379c8e2fab14ac",
+  "_key": "!items!26379c8e2fab14ac",
+  "type": "jutsu",
+  "name": "Explosion Release: Blast Bomb",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "bb51a6c6ed7e23bf",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceLine": 4957,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (10-foot Cube)",
+        "duration": "Instant",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Lightning Release, Earth Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-blast-bomb",
+    "description": "<p>You mold clay, earth or another inorganic earthen substance into a sphere housing destruction. Select a point you can see in range as you throw this blast bomb to that point and it detonates forcing all creatures in range to make a Dexterity saving throw.</p>\n<p>Critical Success: Affected creatures is able to resist this jutsu’s effects</p>\n<p>Success: Affected creatures take 3d6 force or poison damage.</p>\n<p>Failure: Affected creatures take 5d6 force or poison damage and are Dazed.</p>\n<p>Critical Failure: Affected creatures take 7d6 force damage and are Dazed and Staggered.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of points you can target by +1. Creatures caught in more than one explosion only makes a single saving throw by takes a -1 penalty for every explosion radius they are in beyond the first.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4957; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "earthRelease",
+      "lightningRelease",
+      "genjutsu-inhale",
+      "tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (10-foot Cube)"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of points you can target by +1. Creatures caught in more than one explosion only makes a single saving throw by takes a -1 penalty for every explosion radius they are in beyond the first.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

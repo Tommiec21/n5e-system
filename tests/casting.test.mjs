@@ -15,7 +15,7 @@ import { weaponAttackSpec } from "../module/workflow/attack.mjs";
 const SRC = path.join(import.meta.dirname, "..", "packs", "_source");
 const all = [];
 for ( const p of fs.readdirSync(SRC) ) {
-  for ( const f of fs.readdirSync(path.join(SRC, p)) ) {
+  for ( const f of fs.readdirSync(path.join(SRC, p), { recursive: true }).filter(f => f.endsWith(".json")) ) {
     const d = JSON.parse(fs.readFileSync(path.join(SRC, p, f), "utf8"));
     if ( !d._key.startsWith("!folders!") ) all.push(d);
   }

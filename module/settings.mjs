@@ -15,6 +15,9 @@ import RulesConfig from "./applications/settings/rules-config.mjs";
  * panel, registered here as a settings menu), plus the migration version setting.
  */
 export function registerSettings() {
+  game.settings.register("n5e", "requestReceipts", {
+    scope: "world", config: false, type: Object, default: { version: 1, epoch: 1, entries: [] }
+  });
   for ( const [key, r] of Object.entries(rules) ) {
     game.settings.register("n5e", key, {
       name: r.label,

@@ -1,0 +1,117 @@
+{
+  "_id": "f839703748d9f872",
+  "_key": "!items!f839703748d9f872",
+  "type": "jutsu",
+  "name": "Data Release: System Break",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "7510050273e949ec",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "genwa",
+      "sourceLine": 3900,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "90 feet",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Lightning Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "genwa-data-release-system-break",
+    "description": "<p>You select a target within range conjure a neon pillar of light before dropping it upon them forcing them to make a Dexterity saving throw.</p>\n<p>Success: Affected creature takes half of 5d6 lightning damage and are Dazzled until the end of their next turn.</p>\n<p>Failure: Affected creature takes 5d6 lightning damage and roll 1d6, gaining the listed condition (1 or 2: Blinded, 3 or 4: Deafened, 5 or 6: Both Blinded &amp; Deafened), until the end of your next turn.</p>\n<p>Critical Failure: Same as failure, but the condition the affected creature gains lasts for 1 minute, as they make a Constitution saving throw at the end of each of their turns, ending the conditions they gain as a result of this jutsu.</p>\n<p>Angel Link: Select two additional creatures for this jutsu to target.</p>\n<p>Demon Link: For the duration of the affected creature condition, once per turn, if an attack targeting them would score a hit, the data release blinding or deafening them detonates within them, inflicting them with 1 rank of Concussed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3900; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "lightningRelease",
+      "genjutsu-visual",
+      "tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "genwa",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

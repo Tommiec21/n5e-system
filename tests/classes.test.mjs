@@ -22,14 +22,15 @@ const withClass = (ident, level, features = []) => {
   return makeActor({ system: structuredClone(baseAbilities), items: [cls, ...features.map(f => load("features", f))] });
 };
 
-test("each class: book dice, proficiencies, advancement only up to 5th, subclasses with features", () => {
+test("each class: book dice, proficiencies, advancement through 20th, subclasses with features", () => {
   const dice = { "genjutsu-specialist": ["d6", "d12"], "hunter-nin": ["d10", "d8"], "medical-nin": ["d8", "d10"],
     "taijutsu-specialist": ["d12", "d6"], "weapon-specialist": ["d10", "d8"] };
   for ( const ident of CLASSES ) {
     const c = load("classes", ident);
     assert.deepEqual([c.system.hitDie, c.system.chakraDie], dice[ident], ident);
     assert.equal(c.system.saves.length, 3, `${ident} saves`);
-    assert.ok(c.system.advancement.every(a => a.level <= 5), `${ident}: nothing above 5th`);
+    assert.ok(c.system.advancement.every(a => a.level <= 20), `${ident}: valid levels`);
+    assert.ok(c.system.advancement.some(a => a.level === 20 && a.type === "feature"), `${ident}: capstone`);
     assert.ok(c.system.advancement.some(a => a.level === 1 && a.type === "feature"), `${ident}: 1st-level features`);
     assert.ok(c.system.subclasses.length >= 5, `${ident}: subclasses`);
     assert.equal(c.system.jutsuKnown[0], 6, `${ident}: 6 jutsu at 1st`);
@@ -38,13 +39,13 @@ test("each class: book dice, proficiencies, advancement only up to 5th, subclass
 });
 
 test("option counts follow the class table", () => {
-  const counts = (ident, key) => load("classes", ident).system.advancement.filter(a => a.key === key).map(a => [a.level, a.count]);
+  const counts = (ident, key) => load("classes", ident).system.advancement.filter(a => a.key === key && a.level <= 5).map(a => [a.level, a.count]);
   assert.deepEqual(counts("genjutsu-specialist", "gen-mirage"), [[2, 2], [4, 1]]);
   assert.deepEqual(counts("hunter-nin", "hunter-exploit"), [[2, 2], [5, 1]]);
   assert.deepEqual(counts("taijutsu-specialist", "tai-technique"), [[1, 2]]);
   assert.deepEqual(counts("weapon-specialist", "weapon-kata"), [[2, 1], [5, 1]]);
   const mirages = load("classes", "genjutsu-specialist").system.advancement.find(a => a.key === "gen-mirage").uuids.length;
-  assert.equal(mirages, 46, "48 Mirages minus the 9th- and 15th-level ones");
+  assert.equal(mirages, 48, "all Mirages are in the pool; eligibility gates the 9th- and 15th-level ones");
 });
 
 test("Hunter-Nin 5th-level Mastery is a choice; Lethal Attack dice come from the table", () => {

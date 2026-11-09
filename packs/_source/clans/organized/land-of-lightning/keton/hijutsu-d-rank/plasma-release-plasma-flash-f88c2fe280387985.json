@@ -1,0 +1,115 @@
+{
+  "_id": "f88c2fe280387985",
+  "_key": "!items!f88c2fe280387985",
+  "type": "jutsu",
+  "name": "Plasma Release: Plasma Flash",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "2374bcc950e17581",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "keton",
+      "sourceLine": 5929,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage as a result of an attack",
+        "range": "Self (10-foot radius)",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "keton-plasma-release-plasma-flash",
+    "description": "<p>When you are struck by an attack you unleash a flash of Plasma, bright enough to blind an unprepared creature.</p>\n<p>All creatures in a 10-foot radius must make a Constitution saving throw, being Blinded on a failure until the beginning of your next turn. Creatures Blinded as a result of this jutsu creatures can spend an action on their turn to recover their vision earlier.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5929; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fireRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage as a result of an attack"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "keton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

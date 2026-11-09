@@ -1,0 +1,65 @@
+{
+  "_id": "f5e039ee6d3f51fe",
+  "_key": "!items!f5e039ee6d3f51fe",
+  "type": "feat",
+  "name": "Caloric Arts",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c5ff6e6dfd1ae70a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "akimichi",
+      "sourceLine": 688
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "akimichi-caloric-arts",
+    "description": "<p>3rd Level Clan Feature</p>\n<p>Beginning at 3rd level you gain access to a reserve of energy called Calories that when spent enable you to perform a series of special abilities and techniques unique to you and your clansmen. You have a number of Calories equal to 1 + your proficiency bonus. As you spend calories, you become thinner and less plump, losing fat from around your body. You regain spent calories when you complete a rest.</p>\n<p>You can spend these Calories on your chosen Caloric Arts or Hijutsu you know. You gain 2 Caloric Arts when you gain this feature and an additional 2 at 11th level.</p>\n<p>Fat Burner</p>\n<p>When you cast a jutsu as an Action, that requires hand signs, you can spend Calories to augment that jutsu, allowing you to cast it faster than normal, allowing you to cast it as a Bonus action based on its rank.  (D-Rank/C-Rank: 2, B-Rank/A-Rank: 3, S-Rank: 4)</p>\n<p>Caloric Burst</p>\n<p>As a bonus action, you can spend up to 3 Calories to roll a number of Hit die, equal to the number of calories spent. You regain hit points equal to the result + your constitution modifier. This does not spend your rolled hit die.</p>\n<p>Caloric Ignition</p>\n<p>As a Bonus action, you can spend 2 Calories and consume an Akimichi food pill to enter your Caloric Ignition state. You remain in this state for 1 minute after which, you require 10 minutes to recover before you can reuse it.</p>\n<p>Fat Rolls</p>\n<p>| #### Caloric Ignition / Battle Amp / While in this state, you gain the following benefits; / Your Unarmed Damage die increase in size by 1 step to a max of d12. / You have a rank of Mastery on Strength based skill and ability checks. / While standing on the ground, you have advantage on checks and saves to resist being moved, knocked prone, grappled, restrained or Exhausted. |</p>\n<p>As a reaction, when you take damage, you can spend up to 4 Calories to redirect your fat to the impacted area, gaining +4 temporary hit points for each calorie spent.</p>\n<p>Insular Fat</p>\n<p>Elemental conditions are treated as Physical conditions for you. Also, when you would make a saving throw to resist gaining a Physical condition, you can spend 2 Calories to make the saving throw at advantage.</p>\n<p>Metabolic Manipulation</p>\n<p>At the beginning of your turns, you can spend 2 Calories to reduce the rank of one Physical condition you have by one, that doesn’t have the [Persist] tag.</p>\n<p>Retaliating Knuckle Sandwich</p>\n<p>While you are within melee range of a hostile creature and they deal damage to an allied creature you can spend 1 Calorie to make an attack of opportunity against them at no reaction cost.</p>\n<p>Rolling Shoulders</p>\n<p>While moving, you can spend 2 Calories and 10 feet of your remaining movement to push through an enemies space. If you do, they must make a Dexterity saving throw vs your highest Jutsu save DC, being pushed 10 feet and knocked prone. You can only affect a creature with this effect once per turn.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 688; contextual rules require adjudication."
+    },
+    "category": "clanFeature",
+    "requirement": {
+      "level": 3,
+      "class": "",
+      "clan": "akimichi"
+    },
+    "featureType": "active",
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [],
+    "prerequisites": [],
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "calories",
+        "label": "Calories",
+        "max": "1 + @prof",
+        "die": "",
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "castsJutsu": false,
+        "countsAsChakraSpend": false
+      }
+    ]
+  }
+}

@@ -7,6 +7,7 @@
  *   - Jutsu Known increases are learned from the jutsu list, up to the class's highest rank.
  */
 import { skills, toolkits, abilities, progression, castingDisciplines, disciplines } from "../config/core.mjs";
+import { advancementAvailable } from "./eligibility.mjs";
 
 const dieMax = die => Number(String(die ?? "").replace(/^\D*/, "")) || 0;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -16,13 +17,19 @@ export function advancementSteps(item, level, origin) {
   const out = [];
   for ( const adv of list(item.system.advancement) ) {
     if ( adv.level !== level ) continue;
-    const base = { id: `${origin}:${adv.id}`, advId: adv.id, origin, ownerName: item.name, title: adv.title };
+    if ( adv.branch && adv.branch !== item.system.branch ) continue;
+    const base = { id: `${origin}:${adv.id}`, advId: adv.id, origin, ownerName: item.name, title: adv.title,
+      advLevel: adv.level,
+      requires: item.flags?.n5e?.advancementRequirements?.[adv.id] ?? [] };
     switch ( adv.type ) {
       case "feature":
         out.push({ ...base, type: "feature", uuids: list(adv.uuids) });
         break;
       case "itemChoice":
         out.push({ ...base, type: "itemChoice", uuids: list(adv.uuids), count: adv.count || 1, key: adv.key });
+        break;
+      case "featChoice":
+        out.push({ ...base, type: "featChoice", uuids: [], count: adv.count || 1, key: "free-feat" });
         break;
       case "option":
         out.push({ ...base, type: "option", count: adv.count || 1, key: adv.key,
@@ -87,6 +94,11 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
   }
 
   steps.push(...advancementSteps(cls, level, "class"));
+  const clan = actor.items.find(i => i.type === "clan");
+  if ( clan ) {
+    const characterLevel = (actor.system.level ?? level) + Math.max(0, level - (cls.system.levels ?? level));
+    if ( !(clan.flags?.n5e?.clanAppliedLevels ?? []).includes(characterLevel) ) steps.push(...advancementSteps(clan, characterLevel, "clan"));
+  }
 
   // Subclass: chosen at subclassLevel; its own steps follow (the dialog adds them once one is picked).
   if ( level === sys.subclassLevel && !subclass ) {
@@ -109,7 +121,7 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
     steps.push({ id: "class:jutsu", type: "jutsu", title: "Learn jutsu", count: gain,
       maxRank: sys.maxRank?.[level - 1] || null });
   }
-  return steps;
+  return steps.filter(step => advancementAvailable(step, actor));
 }
 
 /** Steps a subclass adds when it is picked during this same level-up. */
@@ -133,26 +145,29 @@ const RANKS = ["E", "D", "C", "B", "A", "S"];
  * @param {Set<string>} o.known        names (lowercase) already known
  * @param {object} o.keywords          CONFIG.N5E.keywords
  */
-export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords }) {
+export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords, clan = "", branch = "" }) {
   const max = RANKS.indexOf(maxRank ?? "D");
   return jutsu.filter(j => {
     const s = j.system;
     if ( RANKS.indexOf(s.rank) > max ) return false;
     if ( known.has(j.name.toLowerCase()) ) return false;
+    const hijutsu = !!s.hijutsu?.clan || list(s.keywords).includes("hijutsu");
+    if ( hijutsu && (!clan || s.hijutsu?.clan !== clan || (s.hijutsu.branch && s.hijutsu.branch !== branch)) ) return false;
     for ( const kw of list(s.keywords) ) {
       const def = keywords?.[kw];
       if ( !def ) continue;
-      if ( def.affinity && !affinities.has(def.affinity) ) return false;
-      if ( kw === "hijutsu" || kw === "kinjutsu" ) return false;
+      if ( def.affinity && !hijutsu && !affinities.has(def.affinity) ) return false;
+      if ( kw === "kinjutsu" ) return false;
     }
     return true;
   }).sort((a, b) => (RANKS.indexOf(a.system.rank) - RANKS.indexOf(b.system.rank)) || a.name.localeCompare(b.name));
 }
 
 /** Feats a character may take at this level (level requirement only; prerequisites are shown to the player). */
-export function eligibleFeats(feats, { level, owned }) {
+export function eligibleFeats(feats, { level, owned, clan = "" }) {
   return feats.filter(f => (f.system.requirement?.level ?? 0) <= level && !owned.has(f.name.toLowerCase())
-    && !["classFeature", "classOption", "clanFeature", "npcFeature"].includes(f.system.category))
+    && (!f.system.requirement?.clan || f.system.requirement.clan === clan)
+    && !["classFeature", "classOption", "clanFeature", "clanOption", "backgroundFeature", "npcFeature"].includes(f.system.category))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -178,7 +193,7 @@ export function validate(steps, sel, poolSizes = {}) {
   const problems = [];
   for ( const st of steps ) {
     const need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
-    if ( ["itemChoice", "option", "trait", "jutsu", "subclass", "masteryChoice"].includes(st.type) ) {
+    if ( ["itemChoice", "featChoice", "option", "trait", "jutsu", "subclass", "masteryChoice"].includes(st.type) ) {
       const got = list(sel[st.id]).length;
       if ( got < need ) problems.push(`${st.title}: choose ${need - got} more`);
       if ( got > (st.count ?? 0) ) problems.push(`${st.title}: too many chosen`);

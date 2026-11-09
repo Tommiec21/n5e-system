@@ -1,0 +1,65 @@
+{
+  "_id": "7ba937d09684048f",
+  "_key": "!items!7ba937d09684048f",
+  "type": "feat",
+  "name": "Onijutsu",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "3460f6d114cbe3d0",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kurama",
+      "sourceLine": 1460
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kurama-onijutsu",
+    "description": "<p>1st Level Clan Feature</p>\n<p>Your Genjutsu are extensions of your subconsciousness, and your ability to control your dreams using your clans Kekkei Genkai give birth to a unique subset of Genjutsu molding, known as Onijutsu. The Kurama clans Onijutsu manifests in the form of Oni-Coils. You have a number of coils equal to 1 + your proficiency bonus.</p>\n<p>You can spend Oni-Coils on chosen Onijutsu. Each Onijutsu costs 1 or more Oni-Coils. If an Onijutsu costs more than 1 Oni-Coil it will specify its cost, otherwise, they cost 1 Oni-Coil. Each Onijutsu can be used once per turn, as part of casting a Genjutsu you know, unless otherwise specified. You can use up to 2 Onijutsu per casting. You regain spent Oni-Coils when you finish a rest. You gain 2 Onijutsu at character creation and can select one additional Onijutsu at 7th and 15th levels.</p>\n<p>Infectious Genjutsu</p>\n<p>When an affected creature, fails their saving throw or you score a hit with your Genjutsu attack, the target becomes a relay point for your Genjutsu. Until the beginning of your next turn, Once per turn, if the affected creature has an ally move within 10 feet of them, the moving creature must make a Saving throw against the effects of your Genjutsu, suffering its effects as if they were the original target.</p>\n<p>Overwhelming Illusions</p>\n<p>When a creature succeeds their saving throw against the amplified Genjutsu, until the end of their next turn, they increase the cost of jutsu they cast by an amount equal to the rank of the amplified jutsu. (D-Rank: +4, C-Rank: +8, B-Rank: +12, A-Rank: +16, S-Rank: +20)</p>\n<p>Punishing Illusions</p>\n<p>If one of your targets succeeds on their save against the amplified Genjutsu, you manifest a secondary illusion with the original. The affected creature remakes their saving throw.</p>\n<p>If they fail this remade save, they suffer the Genjutsu’s effects of a Success, but also become Confused.</p>\n<p>Sensory Domination</p>\n<p>A creature that fails their saving throw against the amplified Genjutsu, that have a special sense such as Blind Sight or Chakra Sight are instead Blinded for the duration of the jutsu. If the jutsu doesn’t have a duration, they remain blinded until the beginning of your next turn.</p>\n<p>Subtle Illusion</p>\n<p>The amplified Genjutsu can be cast without Hand Signs (HS) or Chakra Seals (CS). When cast this way, you must either make eye contact or make physical contact with the target as part of the jutsu’s casting.</p>\n<p>The Pain Is Real</p>\n<p>At the cost of 2 Oni-Coils, when you cast a Ninjutsu, Taijutsu or Bukijutsu that deals damage as an Action, you can convert it into a Genjutsu. The Jutsu cast loses its Ninjutsu, Taijutsu or Bukijutsu keywords, gaining the Genjutsu and Tactile keywords.</p>\n<p>Will Breaker</p>\n<p>When an affected creature fails their saving throw against the amplified Genjutsu, their bodies ability to resist harm suffers as well. They suffer a -1 penalty to their next Strength or Dexterity saving throw. This increases to -2 at 11th level.</p>\n<p>Versatile Authority</p>\n<p>A creature making a saving throw against the amplified Genjutsu that has ranks of a Physical or Elemental condition cannot gain a jutsu based bonus to their saving throw.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1460; contextual rules require adjudication."
+    },
+    "category": "clanFeature",
+    "requirement": {
+      "level": 1,
+      "class": "",
+      "clan": "kurama"
+    },
+    "featureType": "passive",
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [],
+    "prerequisites": [],
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "oniCoils",
+        "label": "Oni-Coils",
+        "max": "1 + @prof",
+        "die": "",
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "castsJutsu": false,
+        "countsAsChakraSpend": false
+      }
+    ]
+  }
+}

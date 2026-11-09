@@ -1,0 +1,116 @@
+{
+  "_id": "4c13d49958d632e1",
+  "_key": "!items!4c13d49958d632e1",
+  "type": "jutsu",
+  "name": "Wood Release: Hōbi Technique",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ed379ce2a7fccb5a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "senju",
+      "sourceLine": 2025,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you or a creature you can see within range take damage.",
+        "range": "Self (10-foot radius sphere)",
+        "duration": "1 Round",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Water Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "senju-wood-release-hobi-technique",
+    "description": "<p>You conjure a massive wooden dome of your design and description that is treated as an Earthen Artifact.</p>\n<p>Yourself, and all creatures of your choice are enclosed in protective domes. These protective domes have 2d8+15 hit points and intercepts all damage, excluding psychic damage. This barrier has 8 DR</p>\n<p>The structure breaks line of sight as all affected creatures gain total cover for the duration. The structure splinters and dissolves at the beginning of your next turn. A creature can leave the protection of the structure, but cannot reenter it once they leave.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the Hit Points of the Structure by 1d8 +4 and its DR by +2</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2025; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "earthRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or a creature you can see within range take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "senju",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, and the Hit Points of the Structure by 1d8 +4 and its DR by +2</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "_id": "6f9180881742a0be",
+  "_key": "!items!6f9180881742a0be",
+  "type": "jutsu",
+  "name": "Explosion Release: Shielding Demolition",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d5b5d11a71f2d4bb",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceLine": 4924,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "3 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-shielding-demolition",
+    "description": "<p>You create a small explosion from the palm of your hand, timed to deflect incoming damage, capable of bounding ranged attacks back. Reduce the triggering damage by 4d6.</p>\n<p>If the triggering damage was the result of a ranged attack from a creature you can see, you deflect some of it back. Make a ranged Ninjutsu (or Taijutsu) attack targeting the attacking creature. On a hit, you deal 2d6 force damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the damage reduced and the damage dealt by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4924; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "barrier",
+      "earthRelease",
+      "lightningRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the damage reduced and the damage dealt by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

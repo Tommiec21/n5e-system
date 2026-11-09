@@ -14,7 +14,7 @@ const ROOT = path.join(import.meta.dirname, "..");
 const SRC = path.join(ROOT, "packs", "_source");
 const byName = name => {
   for ( const pack of fs.readdirSync(SRC) ) {
-    for ( const f of fs.readdirSync(path.join(SRC, pack)) ) {
+    for ( const f of fs.readdirSync(path.join(SRC, pack), { recursive: true }).filter(f => f.endsWith(".json")) ) {
       const d = JSON.parse(fs.readFileSync(path.join(SRC, pack, f), "utf8"));
       if ( d.name === name && !d._key.startsWith("!folders!") ) return d;
     }

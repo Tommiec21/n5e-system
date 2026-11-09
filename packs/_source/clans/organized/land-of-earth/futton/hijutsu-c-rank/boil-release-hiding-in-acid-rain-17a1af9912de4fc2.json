@@ -1,0 +1,120 @@
+{
+  "_id": "17a1af9912de4fc2",
+  "_key": "!items!17a1af9912de4fc2",
+  "type": "jutsu",
+  "name": "Boil Release: Hiding in Acid Rain",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ba9ebfe03cf6e422",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "futton",
+      "sourceLine": 5172,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Inhale, Tactile), Fire Release, Water Release, Corrosive Branch",
+        "components": "HS, CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-boil-release-hiding-in-acid-rain",
+    "description": "<p>You conjure a cloud of highly corrosive particles condensing into a large cloud of mist, centered on a point connected to your space. Creatures inside this cloud of mist treat creatures within and outside the cloud as lightly obscured. Creatures outside the mist treat creatures within the mist as lightly obscured. This cloud moves with you.</p>\n<p>Additionally, creatures of your choice within the cloud that begins their turn in the affected area that needs to breath must make a Constitution saving throw.</p>\n<p>Critical Success: Affected creature takes half of 3d8 acid damage.</p>\n<p>Success: Affected creature takes half of 3d8 acid damage and are Dazed..</p>\n<p>Failure: Affected creature takes 3d8 acid damage and gains 1 rank of Deteriorate or Scaled, your choice.</p>\n<p>Critical Failure: Same as failure, you deal 5d8 acid damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank and the damage by 1d8. If this jutsu is cast at A-Rank or higher, increase the size of the cloud by +10 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5172; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fireRelease",
+      "waterRelease",
+      "genjutsu-visual",
+      "inhale",
+      "tactile",
+      "corrosive-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "futton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": null,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank and the damage by 1d8. If this jutsu is cast at A-Rank or higher, increase the size of the cloud by +10 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

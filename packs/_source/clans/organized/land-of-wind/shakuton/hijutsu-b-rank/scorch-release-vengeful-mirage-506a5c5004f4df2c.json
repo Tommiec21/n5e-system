@@ -1,0 +1,118 @@
+{
+  "_id": "506a5c5004f4df2c",
+  "_key": "!items!506a5c5004f4df2c",
+  "type": "jutsu",
+  "name": "Scorch Release: Vengeful Mirage",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c5221c1e928e761e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shakuton",
+      "sourceLine": 3711,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-Foot Radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "11 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Wind Release, Fire Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shakuton-scorch-release-vengeful-mirage",
+    "description": "<p>You create a hazy aura of heat that disorients enemies that remain too long. This jutsu creates a 20-foot radius of intense heat, forcing all creatures in range who begin their turn in the radius or would enter the radius the first time on a turn to make a Wisdom saving throw.</p>\n<p>Critical Success: Affected creatures are able to resist the effects of this jutsu.</p>\n<p>Success: Affected creatures gain 1 rank of Shaken and Dazzled until the end of their next turn.</p>\n<p>Failure: Affected creatures gain 2 rank of Shaken and Dazzled.</p>\n<p>Critical Failure: Affected creatures gain 3 rank of Shaken and Dazzled.</p>\n<p>Scorch. By spending 4 Scorch Charges, Select one Aura from the Desiccated Heat clan feature, even if you don’t know it. This jutsu also has the effects of that jutsu as part of its failure effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the radius by +10 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3711; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "windRelease",
+      "fireRelease",
+      "genjutsu-visual",
+      "tactile"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 11,
+      "text": "11 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "shakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the radius by +10 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

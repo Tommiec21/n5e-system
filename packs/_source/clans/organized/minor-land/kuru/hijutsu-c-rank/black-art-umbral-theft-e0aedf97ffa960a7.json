@@ -1,0 +1,118 @@
+{
+  "_id": "e0aedf97ffa960a7",
+  "_key": "!items!e0aedf97ffa960a7",
+  "type": "jutsu",
+  "name": "Black Art: Umbral Theft",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "0fc02da2eb7031fe",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kuru",
+      "sourceLine": 8585,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take while you can see a hostile creature concentrating on a Ninjutsu or Genjutsu with an effect you are aware of or can identify.",
+        "range": "30 Feet",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "Special (10 Chakra)",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Fuinjutsu, Yin Release",
+        "components": "HS, CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kuru-black-art-umbral-theft",
+    "description": "<p>As part of casting this jutsu, you must have your Miraigan active.</p>\n<p>You vision pierces into a possible future where you or an ally knows this technique, and you suffuse your consciousness with this knowledge. You infuse your Yin Seal into a tag formula before forming binding hand seals while focusing on this Ninjutsu or Genjutsu effect. The target creature must make a Charisma saving throw. If the stolen jutsu has a feature or special resource requirement to be cast, they automatically pass the saving throw.</p>\n<p>On a failure, you wrestle control of it from them as they lose concentration of it. You can now apply its affects as if you cast it as part of this jutsu’s casting moving its target where applicable. This casting cannot benefit from Class features. In order to maintain its effects, you must maintain concentration of this jutsu, otherwise, the stolen jutsu’s effects end.</p>\n<p>If the triggering jutsu is of a Higher rank than this jutsu when cast, you make your ability check at disadvantage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8585; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu",
+      "genjutsu-visual",
+      "tactile",
+      "yin-release"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take while you can see a hostile creature concentrating on a Ninjutsu or Genjutsu with an effect you are aware of or can identify."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special (10 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "kuru",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -9,8 +9,9 @@ import { TABS, tabFor, entryFrom, facetOptions, filterEntries, sortEntries } fro
 // Every document in the real compendium sources, as the browser would see it.
 const entries = [];
 for ( const pack of ["jutsu", "features", "feats", "stances", "equipment", "classes", "clans"] ) {
-  for ( const f of readdirSync(`packs/_source/${pack}`).filter(f => !f.startsWith("_folder")) ) {
+  for ( const f of readdirSync(`packs/_source/${pack}`, { recursive: true }).filter(f => f.endsWith(".json")) ) {
     const d = JSON.parse(readFileSync(`packs/_source/${pack}/${f}`, "utf8"));
+    if ( d._key.startsWith("!folders!") ) continue;
     entries.push(entryFrom({ ...d, uuid: `Compendium.n5e.${pack}.Item.${d._id}` }, { pack }));
   }
 }

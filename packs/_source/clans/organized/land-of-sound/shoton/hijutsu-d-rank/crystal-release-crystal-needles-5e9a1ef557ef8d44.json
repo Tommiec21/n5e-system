@@ -1,0 +1,115 @@
+{
+  "_id": "5e9a1ef557ef8d44",
+  "_key": "!items!5e9a1ef557ef8d44",
+  "type": "jutsu",
+  "name": "Crystal Release: Crystal Needles",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "f662b460b27e0009",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shoton",
+      "sourceLine": 7040,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shoton-crystal-release-crystal-needles",
+    "description": "<p>You manifest crystal rods that you then launch at a creature you can see in range.</p>\n<p>Make two ranged ninjutsu attacks against a creature you can see within range. On a hit, you deal 2d6 Earth damage and the affected creatures speed is reduced by -10, until the end of their next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost by 3 and the number of attacks by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7040; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "shoton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost by 3 and the number of attacks by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

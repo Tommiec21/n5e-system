@@ -1,0 +1,118 @@
+{
+  "_id": "414a1d2431d8075d",
+  "_key": "!items!414a1d2431d8075d",
+  "type": "jutsu",
+  "name": "Incinerating Burst",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "441593685e20ac76",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "iburi",
+      "sourceLine": 1179,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fire Release, Combo, Chain",
+        "components": "CM, M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "iburi-incinerating-burst",
+    "description": "<p>Your body briefly erupts into a smoldering smoke like form, moving up to half your movement speed, into a space adjacent to a hostile creature within that range. You follow this movement with a powerful smoldering smoke powered uppercut.</p>\n<p>Make a melee Ninjutsu or Taijutsu attack. On a hit, you deal 3d12 Fire damage if a Ninjutsu attack or ([Unarmed Damage] or [Weapon Damage]) + 1d12 fire damage if a Taijutsu attack.</p>\n<p>On a hit, the creature makes a constitution saving throw, being Burned on a failed save.</p>\n<p>If your attack result is 5 or higher than the targets AC, you can make one additional attack against another creature you could reach, by moving half of your movement. You can repeat this effect up to twice per casting.</p>\n<p>Chain 1: When you score a hit, you can move up to half of your movement speed away, without provoking attacks of opportunity.</p>\n<p>Chain 2: Your attack no longer needs to be 5 or higher than a targets AC to trigger the additional attack effect.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the damage by 1d12. If this jutsu is cast at B-Rank or higher, you can perform this jutsu as a reaction, when you would take an attack of opportunity.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1179; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "combo",
+      "chain",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "iburi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": null,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the damage by 1d12. If this jutsu is cast at B-Rank or higher, you can perform this jutsu as a reaction, when you would take an attack of opportunity.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

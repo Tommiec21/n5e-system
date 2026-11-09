@@ -1,0 +1,114 @@
+{
+  "_id": "c90a246ab7eb9739",
+  "_key": "!items!c90a246ab7eb9739",
+  "type": "jutsu",
+  "name": "Test Cutting: Two-Wheeled Moon",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "bdb28d8126b5558f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4665,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60-Feet, (10-foot radius)",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-two-wheeled-moon",
+    "description": "<p>You gather your Tao within yourself, before moving fast enough to leave afterimages of yourself, while attempting to strike simultaneously with your afterimage, against all creatures in range. Select a point you can see within 60 feet. Make a single melee taijutsu attack, comparing the result vs the AC of all creatures of your choice within the affected area.</p>\n<p>On a hit, you deal [Weapon Damage] + 3d10 and the affected creatures make a Constitution saving throw, becoming Staggered and Severed on a failure.</p>\n<p>Ideal Cut: One creature within range, makes their saving throw at disadvantage.</p>\n<p>Tao: This attack has a +2 bonus to its critical threat range. If this attack scores a critical hit, you also gain the effect of your Empty Blade attack as if you were forgoing 2 attacks, against all creatures within range.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4665; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "60-Feet, (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

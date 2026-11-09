@@ -1,0 +1,116 @@
+{
+  "_id": "cf68dc200d3192c0",
+  "_key": "!items!cf68dc200d3192c0",
+  "type": "jutsu",
+  "name": "Basilisk Art: Pythons Gaze",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "c304ec9deb15a515",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hebi",
+      "sourceLine": 8399,
+      "sourceHeader": {
+        "time": "1 Bonus Action",
+        "range": "Self (30-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "10 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Stable",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-basilisk-art-pythons-gaze",
+    "description": "<p>You inject a surge of Chakra into your eyes increasing your visual perception, making it look like the</p>\n<p>world is slowing down around you.</p>\n<p>For the duration, creatures whom you can see within range actions seemingly slow down to a crawl. Melee weapons attacks or Hebi clan Bukijutsu you cast cannot be made at disadvantage and creatures within range cannot gain advantage against any Hebi clan Bukijutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, this jutsu’s casting time becomes Special, Only on your turn, at no action cost.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8399; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "stable",
+      "genjutsu-tactile"
+    ],
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hebi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, this jutsu’s casting time becomes Special, Only on your turn, at no action cost.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

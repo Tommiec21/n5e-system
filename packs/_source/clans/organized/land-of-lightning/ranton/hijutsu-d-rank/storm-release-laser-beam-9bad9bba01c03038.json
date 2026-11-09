@@ -1,0 +1,116 @@
+{
+  "_id": "9bad9bba01c03038",
+  "_key": "!items!9bad9bba01c03038",
+  "type": "jutsu",
+  "name": "Storm Release: Laser Beam",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "af0d612ead24af09",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ranton",
+      "sourceLine": 6122,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (60 feet line)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release, Reezaa Branch",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-storm-release-laser-beam",
+    "description": "<p>You conjure a beam of Lightning and Water that bends around corners and piercing its targets with lethal efficiency. Draw a 60-foot long, 5-foot-wide line, originating from you. This line can change directions turn corners and move diagonally. Creatures that this beam passes through must make a Dexterity saving throw, taking 3d8 Lightning damage on a failed save, or half as much on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6122; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "waterRelease",
+      "lightningRelease",
+      "reezaa-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": 60,
+        "long": null,
+        "text": "Self (60 feet line)"
+      },
+      "area": {
+        "shape": "line",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "ranton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

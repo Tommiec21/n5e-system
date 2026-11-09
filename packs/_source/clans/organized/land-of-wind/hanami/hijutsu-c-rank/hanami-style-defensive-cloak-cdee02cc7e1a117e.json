@@ -1,0 +1,115 @@
+{
+  "_id": "cdee02cc7e1a117e",
+  "_key": "!items!cdee02cc7e1a117e",
+  "type": "jutsu",
+  "name": "Hanami Style: Defensive Cloak",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ba13db20eb80d38c",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hanami",
+      "sourceLine": 3099,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Medical, Efficient",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hanami-hanami-style-defensive-cloak",
+    "description": "<p>You cover your entire body in vile cloak of medical jutsu, that harms any who touch you. When a creature hits you with a melee attack, they take 2d6 Necrotic damage and you gain temporary hit points equal to half the Necrotic damage dealt. This effect can trigger twice per turn.</p>\n<p>Monstrous Burst. For the duration, each time you are hit with a melee attack, the vile chakra splashes off of you like molten acid, instead affecting all creatures of your choice within 10 feet of you.</p>\n<p>Healers Touch. For the duration, when an allied creature within 10 feet of you takes damage from a melee attack, this jutsu triggers, affecting the attacking creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of the jutsu by 3 and the damage by 1d6. If you cast this jutsu at A-Rank or higher you instead gain temporary hit points equal to the full damage dealt.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3099; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "efficient",
+      "medical"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hanami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of the jutsu by 3 and the damage by 1d6. If you cast this jutsu at A-Rank or higher you instead gain temporary hit points equal to the full damage dealt.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

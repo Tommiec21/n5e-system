@@ -1,0 +1,116 @@
+{
+  "_id": "cfaef616ca22e2ff",
+  "_key": "!items!cfaef616ca22e2ff",
+  "type": "jutsu",
+  "name": "Boil Release: Water Evaporation/ Fire Extinguish",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "801509ff739064f4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "futton",
+      "sourceLine": 5157,
+      "sourceHeader": {
+        "time": "1 Reaction, which you would take when a creature would cast a Jutsu that deals fire or cold damage or with the Fire or Water release keywords.",
+        "range": "60 Feet",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release, Water Release, Interrupt",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-boil-release-water-evaporation-fire-extinguish",
+    "description": "<p>You counter a creature conjuring fire or water using it for either an offense or defense as you interrupt the casting of the jutsu.</p>\n<p>Make a Contested check using your Ninshou vs the targets Constitution saving throw. On a success, the target jutsu’s casting fails and the target creature spends twice their jutsu’s cost.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5157; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "interrupt",
+      "fireRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you would take when a creature would cast a Jutsu that deals fire or cold damage or with the Fire or Water release keywords."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "futton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

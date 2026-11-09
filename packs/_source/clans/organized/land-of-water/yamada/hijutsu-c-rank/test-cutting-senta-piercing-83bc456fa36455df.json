@@ -1,0 +1,114 @@
+{
+  "_id": "83bc456fa36455df",
+  "_key": "!items!83bc456fa36455df",
+  "type": "jutsu",
+  "name": "Test Cutting: Senta Piercing",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ac82ca7ecf6d44a9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4633,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-Foot Line)",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-senta-piercing",
+    "description": "<p>You strike swiftly, becoming a living pincushion of strikes that attempt to pierce through all in its way, penetrating everything in front of you like a skewer through food.</p>\n<p>All creatures within range, must make a Constitution saving throw, taking your [Weapons Damage] and becoming Severed on a failure.</p>\n<p>Ideal Cut: Roll your Severed conditions d6, twice, picking which result you want to inflict. If an affected creature is already Severed, you can instead choose to inflict the rolled result, in addition to their current severed effect, instead of applying Shaken.</p>\n<p>Tao: You drain the laten Tao energy from creatures who fail their saving throw, as you gain temporary hit points and chakra points equal to the result of 1d6 for every creature affected, that last for 1 minute.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4633; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot Line)"
+      },
+      "area": {
+        "shape": "Line",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -4,12 +4,16 @@
  * Choices are recorded on the class/subclass advancement entries (`chosen`) and ASIs in
  * flags.n5e.asi.<level> on the class.
  */
+import { validateItemChoices } from "./eligibility.mjs";
+
 const FLAG = "advancement";
 
 /** Load documents by uuid and return creation data stamped with the advancement origin. */
-async function itemData(uuids, stamp) {
+async function itemData(uuids, stamp, seen = new Set()) {
   const out = [];
   for ( const uuid of uuids ) {
+    if ( seen.has(uuid) ) continue;
+    seen.add(uuid);
     const doc = await fromUuid(uuid);
     if ( !doc ) {
       ui.notifications.warn(`N5e | Missing compendium item ${uuid}`);
@@ -21,6 +25,7 @@ async function itemData(uuids, stamp) {
     foundry.utils.setProperty(data, "_stats.compendiumSource", uuid);
     foundry.utils.setProperty(data, `flags.n5e.${FLAG}`, stamp);
     out.push(data);
+    out.push(...await itemData(doc.flags?.n5e?.grants ?? [], stamp, seen));
   }
   return out;
 }
@@ -42,10 +47,14 @@ function recordChoices(item, level, byAdvId) {
  * @param {Record<string, any>} sel   selections keyed by step id
  */
 export async function applyLevel(actor, cls, level, steps, sel) {
+  const choiceErrors = await validateItemChoices(actor, level, steps, sel);
+  if ( choiceErrors.length ) throw new Error(choiceErrors[0]);
   if ( (cls.system.levels ?? 0) < level ) await cls.update({ "system.levels": level });
   const create = [];
   const classChoices = {};
   const subChoices = {};
+  const clanChoices = {};
+  const clan = actor.items.find(i => i.type === "clan");
   let subclass = actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === cls.system.identifier);
 
   // Subclass first, so its features carry its id as their origin.
@@ -54,18 +63,20 @@ export async function applyLevel(actor, cls, level, steps, sel) {
     const [data] = await itemData(sel[subStep.id], { origin: cls.id, level, step: subStep.id });
     if ( data ) [subclass] = await actor.createEmbeddedDocuments("Item", [data]);
   }
-  const originId = st => (st.origin === "subclass" ? subclass?.id : cls.id);
-  const record = (st, value) => { (st.origin === "subclass" ? subChoices : classChoices)[st.advId] = value; };
+  const originId = st => st.origin === "clan" ? clan?.id : st.origin === "subclass" ? subclass?.id : cls.id;
+  const record = (st, value) => { (st.origin === "clan" ? clanChoices : st.origin === "subclass" ? subChoices : classChoices)[st.advId] = value; };
 
   const updates = {};
   for ( const st of steps ) {
     const stamp = { origin: originId(st), level, step: st.id };
+    if ( st.origin === "clan" ) Object.assign(stamp, { classOrigin: cls.id, characterLevel: st.advLevel });
     const value = sel[st.id];
     switch ( st.type ) {
       case "feature":
         create.push(...await itemData(st.uuids, stamp));
         break;
       case "itemChoice":
+      case "featChoice":
         create.push(...await itemData(value ?? [], stamp));
         record(st, value ?? []);
         break;
@@ -100,6 +111,9 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   if ( create.length ) await actor.createEmbeddedDocuments("Item", create);
   await recordChoices(cls, level, classChoices);
   await recordChoices(subclass, level, subChoices);
+  await recordChoices(clan, steps.find(s => s.origin === "clan")?.advLevel ?? level, clanChoices);
+  const clanLevel = steps.find(s => s.origin === "clan")?.advLevel;
+  if ( clan && clanLevel ) await clan.setFlag("n5e", "clanAppliedLevels", [...new Set([...(clan.flags?.n5e?.clanAppliedLevels ?? []), clanLevel])]);
 }
 
 /**
@@ -110,9 +124,11 @@ export async function revertLevel(actor, cls) {
   const level = cls.system.levels ?? 1;
   const subclass = actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === cls.system.identifier);
   const origins = new Set([cls.id, subclass?.id].filter(Boolean));
+  const clan = actor.items.find(i => i.type === "clan");
   const ids = actor.items.filter(i => {
     const f = i.getFlag("n5e", FLAG);
-    return f && f.level === level && origins.has(f.origin);
+    return f && f.level === level && (origins.has(f.origin) || f.classOrigin === cls.id)
+      || (clan && i.flags?.n5e?.clanOrigin === clan.id && i.flags?.n5e?.clanLevel > Math.max(1, (actor.system?.level ?? level) - 1));
   }).map(i => i.id);
 
   const asi = cls.getFlag("n5e", `asi.${level}`);
@@ -134,6 +150,11 @@ export async function revertLevel(actor, cls) {
   if ( ids.length ) await actor.deleteEmbeddedDocuments("Item", ids);
   const sub = actor.items.get(subclass?.id);
   if ( sub ) await clear(sub);
+  if ( clan ) {
+    const characterLevel = actor.system.level ?? level;
+    await clan.update({ "system.advancement": clan.system.toObject().advancement.map(a => a.level === characterLevel ? { ...a, chosen: [] } : a) });
+    await clan.setFlag("n5e", "clanAppliedLevels", (clan.flags?.n5e?.clanAppliedLevels ?? []).filter(l => l !== characterLevel));
+  }
   if ( level <= 1 ) return cls.delete();
   await clear(cls);
   return cls.update({ "system.levels": level - 1 });

@@ -1,0 +1,116 @@
+{
+  "_id": "d247204a556017c4",
+  "_key": "!items!d247204a556017c4",
+  "type": "jutsu",
+  "name": "Black Art: False Release",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "7ca9d0377e4f6eee",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kuru",
+      "sourceLine": 8549,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet (15-Foot Radius)",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Yin Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kuru-black-art-false-release",
+    "description": "<p>You focus on manifesting your Yin Release in the exact way another nature release would manifest, conjuring a surge of black chakra that behaves like your chosen release to emulate. Select one of nature release, and then a point you can see within range, as a wave of black chakra erupts with the properties of the chosen release, forcing all creatures in range to make a Dexterity saving throw.</p>\n<p>Success: Affected creatures take half of 3d6 Necrotic damage</p>\n<p>Failure: Affected creatures takes 3d6 Necrotic damage, and gains 1 rank of the chosen releases condition.</p>\n<p>Earth Release: Shaken</p>\n<p>Wind Release: Bleed</p>\n<p>Fire Release: Burned</p>\n<p>Water Release: Chilled</p>\n<p>Lightning Release: Shocked.</p>\n<p>Critical Failure: Same as failure, but they take 5d6 Necrotic damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the ranks of the chosen releases condition by +1. If this jutsu is cast at S-Rank, increase the ranks of the chosen releases condition by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8549; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-tactile",
+      "yin-release"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (15-Foot Radius)"
+      },
+      "area": {
+        "shape": "Radius",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "kuru",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the ranks of the chosen releases condition by +1. If this jutsu is cast at S-Rank, increase the ranks of the chosen releases condition by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

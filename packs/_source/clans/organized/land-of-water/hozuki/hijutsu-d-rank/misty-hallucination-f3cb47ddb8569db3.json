@@ -1,0 +1,117 @@
+{
+  "_id": "f3cb47ddb8569db3",
+  "_key": "!items!f3cb47ddb8569db3",
+  "type": "jutsu",
+  "name": "Misty Hallucination",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "4e15e77df3497f81",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hozuki",
+      "sourceLine": 4129,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 Feet (10-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Water Release, Unaware",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hozuki-misty-hallucination",
+    "description": "<p>You infuse your body with illusionary chakra, before releasing a portion of yourself into a watery grenade.</p>\n<p>Select a point you can see within 30 feet, as you conjure a ball of water, formed from yourself that then explodes spreading a hallucinogenic mist in the area, forcing all creatures to make a Wisdom saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this Jutsu's effects.</p>\n<p>Success: Affected creature gains a rank of Dazzled.</p>\n<p>Failure: If the affected creature spends its action to make an attack, it must target the closest creature to it with the first attack it makes, then this effect ends.</p>\n<p>Critical Failure: Same as failure, but the affected creature must use the first attack made as part of spending its Action, targeting the closest creature to it, for the duration. Affected creature can remake their saving throw at the end of each of their turns, ending this effect on a success.</p>\n<p>Hydrofication. Your allies are immune to this jutsu’s effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range by +10 feet and the size of this jutsu’s radius by +5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4129; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "waterRelease",
+      "genjutsu-visual",
+      "tactile",
+      "unaware"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hozuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range by +10 feet and the size of this jutsu’s radius by +5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

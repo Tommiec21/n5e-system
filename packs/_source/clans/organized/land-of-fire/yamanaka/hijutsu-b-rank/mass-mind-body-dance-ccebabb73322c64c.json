@@ -1,0 +1,118 @@
+{
+  "_id": "ccebabb73322c64c",
+  "_key": "!items!ccebabb73322c64c",
+  "type": "jutsu",
+  "name": "Mass Mind Body Dance",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d5a651a55c651469",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamanaka",
+      "sourceLine": 2655,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamanaka-mass-mind-body-dance",
+    "description": "<p>You issue a command and influence up to 6 creatures of your choice that you can see and can hear you within range. The command cannot be to harm themselves or perform an action that would result in them harming themselves. Each target must make a Charisma saving throw. Creatures that cannot be Compelled are immune to this jutsu’s effects.</p>\n<p>Critical Success: No further effects.</p>\n<p>Success: Targets become Slowed until the end of their next turn.</p>\n<p>Failure: Targets pursues the command, as an Action on each of its turns for the duration. A commanded creature remakes their saving throw at the end of each of their turns, ending this effect on them, on a success. If a commanded creature takes damage, it ends this jutsu’s effect on them immediately and they gain 1 Mental Overwrite.</p>\n<p>Critical Failure: Same as failure, but now damage only allows them to remake their saving throw.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2655; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu",
+      "genjutsu-tactile",
+      "auditory",
+      "unaware"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamanaka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

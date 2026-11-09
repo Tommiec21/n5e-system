@@ -1,0 +1,115 @@
+{
+  "_id": "04434bb5370da2a0",
+  "_key": "!items!04434bb5370da2a0",
+  "type": "jutsu",
+  "name": "Uzumaki Art: Basic Seal",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cf52d7ef8da0811a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uzumaki",
+      "sourceLine": 2405,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu",
+        "components": "CM, CS, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uzumaki-uzumaki-art-basic-seal",
+    "description": "<p>You inscribe a Chakra seal onto the palm of your hand and create a three-point seal.</p>\n<p>Make a melee Ninjutsu attack, dealing 4d6 chakra damage and forcing the affected creature make a Charisma saving throw, gaining a rank of Sealed on a failed save.</p>\n<p>Seal Break. If a creature within 30 feet of you have ranks of Sealed, you can dispel one rank of that creatures Sealed condition to change this jutsu’s range to Self (15-Cube) originating from you, comparing your attack result to all creatures in the affected area.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of ranks of Sealed by +1. If this jutsu is cast at S-Rank increase the number of ranks of Sealed by +2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2405; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": true,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, CS, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, CS, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "uzumaki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of ranks of Sealed by +1. If this jutsu is cast at S-Rank increase the number of ranks of Sealed by +2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

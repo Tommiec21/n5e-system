@@ -1,0 +1,114 @@
+{
+  "_id": "6c3a3190f3b52bcd",
+  "_key": "!items!6c3a3190f3b52bcd",
+  "type": "jutsu",
+  "name": "Conqueror’s Art: Wyrmcaller’s Pulse",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "5ede2fae1c2d4340",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ryu",
+      "sourceLine": 8748,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-Foot radius)",
+        "duration": "Concentration, Up to 1 Minute",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ryu-conquerors-art-wyrmcallers-pulse",
+    "description": "<p>You amplify the bodies of your allies with your draconic chakra, compelling them to fight harder, while also diverting attention to yourself.</p>\n<p>All creatures of your choice, excluding yourself within this jutsu’s radius is affected by this jutsu in either a Wyrmling or Prey like fashion. Wyrmling’s are often your allies or non-hostile creatures. While Prey are your foes or hostile creatures.</p>\n<p>Dragon Rage State. If this jutsu is cast while in your Dragon Rage State, for every creature, hostile or allied, that are affected by this jutsu, you gain +4 Temporary hit points..</p>\n<p>Wyrmling’s gain a +1 bonus to their AC and 14 temporary hit points.</p>\n<p>Prey must make a Wisdom saving throw to avoid being compelled to strike you.</p>\n<p>Critical Success: The affected creature is able to resist this jutsu’s effect.</p>\n<p>Success: The affected creature has disadvantage on the next attack they make before the end of their next turn against creatures other than you.</p>\n<p>Failure: Affected creatures gain disadvantage on attacks against creatures other than you for the duration.</p>\n<p>Critical Failure: Same as failure, but they also gain 2 ranks of your chosen nature releases condition. (Earth Release:  Shaken, Wind Release: Bleed, Fire Release: Burned, Water Release: Chilled, Lightning Release: Shocked).</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the temporary hit points granted by +4.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8748; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "ryu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the temporary hit points granted by +4.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

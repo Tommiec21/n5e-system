@@ -1,0 +1,118 @@
+{
+  "_id": "6f6a1af803abec18",
+  "_key": "!items!6f6a1af803abec18",
+  "type": "jutsu",
+  "name": "Black Art: Spiraling Dark wall",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "7ca9d0377e4f6eee",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kuru",
+      "sourceLine": 8543,
+      "sourceHeader": {
+        "time": "Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Fuinjutsu, Yin Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kuru-black-art-spiraling-dark-wall",
+    "description": "<p>A Spiraling wall of black chakra appears to shield you. Until the beginning of your next turn, you gain a +3 bonus to your AC against ranged attacks. If the triggering effect affects an area or targets you and forces a saving throw, your Yin chakra cushions the impact, as the Barrier gains 1d6+8 hit points against the triggering effect.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points your Barrier has by +1d6.</p>\n<p>If this jutsu is cast at B-Rank or higher, this jutsu’s range becomes Self (10-Foot Radius) and can be cast as a Reaction when you or an allied creature takes damage. If the triggering jutsu affects an area, the Barriers hit points applies to all creatures in range. If this jutsu is cast at A-Rank or Higher, increase the AC bonus of this jutsu by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8543; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fuinjutsu",
+      "barrier",
+      "genjutsu-tactile",
+      "yin-release"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "kuru",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points your Barrier has by +1d6.</p>\n<p>If this jutsu is cast at B-Rank or higher, this jutsu’s range becomes Self (10-Foot Radius) and can be cast as a Reaction when you or an allied creature takes damage. If the triggering jutsu affects an area, the Barriers hit points applies to all creatures in range. If this jutsu is cast at A-Rank or Higher, increase the AC bonus of this jutsu by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

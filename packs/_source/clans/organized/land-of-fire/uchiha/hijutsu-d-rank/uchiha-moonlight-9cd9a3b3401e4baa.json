@@ -1,0 +1,116 @@
+{
+  "_id": "9cd9a3b3401e4baa",
+  "_key": "!items!9cd9a3b3401e4baa",
+  "type": "jutsu",
+  "name": "Uchiha Moonlight",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "b89a419f4b5325ed",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uchiha",
+      "sourceLine": 2244,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Combo, Chain",
+        "components": "M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uchiha-uchiha-moonlight",
+    "description": "<p>You strike with your weapon as a feint, then use it as an anchor, striking the ground followed by an upper strike to an enemies torso that is followed by a downward strike, driving them to the ground.</p>\n<p>Make two melee Taijutsu attacks against a creature you can see. The first attack deals your [Weapon Damage], and the second attack dealing your [Unarmed Damage] + 1d6.</p>\n<p>Chain 1: If you score a hit with both attacks, the affected creature must make a Dexterity or Constitution saving throw, being knocked Off-Guard on a failed save until the end of your next turn.</p>\n<p>Chain 2: If you score a hit with at least one attack, the affected creature must make a Strength or Intelligence saving throw being knocked Off-Guard on a failed save until the end of your next turn.</p>\n<p>Off-Guard. An off-guard creature that takes damage from this jutsu has the Off-Guard condition extended until the end of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for each attack. If this jutsu is cast at B-Rank or higher, you can make one additional melee Taijutsu attack, dealing your [Weapon Damage] + [Unarmed Damage].</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2244; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "combo",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "uchiha",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for each attack. If this jutsu is cast at B-Rank or higher, you can make one additional melee Taijutsu attack, dealing your [Weapon Damage] + [Unarmed Damage].</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

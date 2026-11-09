@@ -1,0 +1,65 @@
+{
+  "_id": "fc8fe78aae8b4e15",
+  "_key": "!items!fc8fe78aae8b4e15",
+  "type": "feat",
+  "name": "Blood of the Swift",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "e7837d7fa76c4c8a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "namikaze",
+      "sourceLine": 1579
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "namikaze-blood-of-the-swift",
+    "description": "<p>1st Level Clan Feature</p>\n<p>The Namikaze are known for their incredible reflexes and agility. Due to your natural gift for speed, you develop a special fuinjutsu meant to seal bursts of chakra within you, that you can release for exponential boosts to your physicality. This special fuinjutsu is known as Speed Seals and are represented as D8’s. You have a number of Speed Seals equal to 1 + your proficiency bonus.</p>\n<p>You can spend Speed Seals on any feature or ability that calls for it. You regain spent seals when you finish a rest of any type. The first of such abilities you can spend Speed Seals on are your Blitz Arts, special abilities passed down from clansmen to clansmen. You begin with 2 such abilities. You gain an additional one at 7th and 15th levels.</p>\n<p>Flash Dodge</p>\n<p>As a reaction to taking damage, you can spend up to 2 Speed Seals, gaining +2 bonus to AC, until the beginning of your next turn, for each die spent. This bonus to AC is also applied against the triggering attack.</p>\n<p>Flash Step</p>\n<p>At the beginning of your turn, by spending 1 Speed Seal you gain the benefits of the Dash action. You also cannot have your speed reduced as a result of hostile effects for the duration.</p>\n<p>Speed Amplification</p>\n<p>At the beginning of your turn, you can spend 1 Speed Seal. When you do, you gain a +10-bonus speed and ignore difficult terrain until the end of your next turn. This increases to +20 at 7th level and +30 at 15th level.</p>\n<p>Blitz Assault</p>\n<p>Once per turn, as part of making an attack when you cast a jutsu, you can spend 2 Speed Seals to make one additional attack of the same type, dealing 2d8 damage on a hit and reapplying the jutsu’s non-damaging effect on a success, if any. This damage increases to 4d8 at 7th, and 6d8 at 15th level.</p>\n<p>Blink of an Eye</p>\n<p>At the beginning of your turn, by spending 2 Speed Seals, you can select a space within your movement speed range and teleport to the chosen location. All hostile creatures whose space is adjacent to the space you teleport to must make a Dexterity saving throw, suffering a -2 penalty to their AC until the beginning of your next turn on a failed save due to the suddenness of your appearance. If you were to make an attack against a creature with a penalized AC during the same turn you teleport, you can choose to spend 1 additional Speed Seal to teleport back to the original space you started your turn in.</p>\n<p>Phase Dodge</p>\n<p>As a reaction to making a Strength or Constitution saving throw, you can spend 2 Speed Seals. When you do, you make a Dexterity saving throw in place of the triggering save.</p>\n<p>Like the Wind</p>\n<p>Once per turn, when you deal wind or lightning damage to a creature, you can spend 1 Speed Seal, and select a different creature within 30 feet of you, and teleport into a space adjacent to them, and make one unarmed or weapon attack against them, dealing your [Unarmed Damage] or [Weapon Damage], plus your spent Speed Seal.</p>\n<p>Rushing Start</p>\n<p>When you roll initiative, you can spend 1 Speed Seal, adding twice the result to your initiative.</p>\n<p>Speed Burst</p>\n<p>Once per turn, on your turn, you can spend 3 Speed Seals to gain an additional Action. This additional action lasts until the end of the current turn. Once you use this blitz art, increase the Speed Seal cost of this blitz art by +1, until you complete a long rest.</p>\n<p>Speed Formula</p>\n<p>As a bonus action, you can mark one weapon you are wielding with your Speed Seal. This mark lasts for the next hour or until spent. Marking a weapon doesn’t spend it.</p>\n<p>As a bonus action on following turns, you can spend the marked weapons Speed Seal, teleporting to it, so long as its within 120 feet of you and is not destroyed/broken.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1579; contextual rules require adjudication."
+    },
+    "category": "clanFeature",
+    "requirement": {
+      "level": 1,
+      "class": "",
+      "clan": "namikaze"
+    },
+    "featureType": "active",
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [],
+    "prerequisites": [],
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "speedSeals",
+        "label": "Speed Seals",
+        "max": "1 + @prof",
+        "die": "d8",
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "castsJutsu": false,
+        "countsAsChakraSpend": false
+      }
+    ]
+  }
+}

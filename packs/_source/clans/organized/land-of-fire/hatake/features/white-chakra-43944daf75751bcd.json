@@ -1,0 +1,65 @@
+{
+  "_id": "43944daf75751bcd",
+  "_key": "!items!43944daf75751bcd",
+  "type": "feat",
+  "name": "White Chakra",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "8d24b22b30b150a9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hatake",
+      "sourceLine": 819
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hatake-white-chakra",
+    "description": "<p>1st Level Clan Feature</p>\n<p>The Hatake Clan are extremely proficient Chakra molders. They innately have the ability to call upon a unique source of Chakra called White Chakra. Beginning at 1st level, you have a number of White Chakra equal to 1 + your proficiency bonus.</p>\n<p>You can spend White Chakra on any feature or ability that calls for it. You regain spent White Chakra when you finish a rest. The first of such things you can spend White Chakra on are your White Wolf Arts. Special abilities that derive their strength and flexibility from your unique chakra. You gain 1 White Wolf Arts at character creation and an additional choice at 7th and 15th levels.</p>\n<p>Area Scanning</p>\n<p>You reach out and touch a physical surface with your hands and channel chakra through this surface, allowing you to function an individual echo-location machine.</p>\n<p>By spending 1 minute focusing you become aware of the current location of all creatures currently on a shared surface within 120 feet of you.</p>\n<p>By spending 1 White Chakra, this instead happens as an Action.</p>\n<p>Jutsu Overcharge</p>\n<p>When casting jutsu with the Chakra Molding (CM) component, you are able to express your elite efficiency.</p>\n<p>By spending 2 White Chakra as part of casting a Jutsu, you gain the following enhanced benefits of the jutsu you cast based on its associated keywords as listed. If a jutsu has more than one of the listed keywords, you only one of its effects:</p>\n<p>Earth Release: If the jutsu you cast summons a construct or structure that intercepts damage, you increase its hits points by an amount equal to its rank (D-Rank: 4, C-Rank: 8, B-Rank: 12, A-Rank: 16, S-Rank: 20)</p>\n<p>Wind Release: You trigger Swirl and spread any Physical or Elemental conditions as part of it.</p>\n<p>Fire Release: Increase the damage dealt by +1 for every dice rolled, up to a maximum of +10.</p>\n<p>Water Release: You gain the benefit of having a source of water.</p>\n<p>Lightning Release: You gain the Overcharge effect.</p>\n<p>Medical: You or an allied creature within 10 feet of you gains a number of temporary hit points equal to the rank of the jutsu cast, that last until the beginning of your next turn. (D-Rank: 4, C-Rank: 8, B-Rank: 12, A-Rank: 16, S-Rank: 20)</p>\n<p>Taijutsu: The jutsu gains the Combo or Finisher keyword following its standard benefit if it didn’t already. If it gains the Finisher Keyword, increase the number of dice you roll by +2.</p>\n<p>Bukijutsu: You gain the benefit of any one chain rank effect of your choice, even if you are not at that chain rank. This does not set you at that chain rank.</p>\n<p>Genjutsu: Reduce the difference needed for a creature to critically fail by -2, and increase the difference needed for a creature to critically succeed by +2.</p>\n<p>Silver Weapon</p>\n<p>You touch a weapon you are proficient in and infuse it with 2 White Chakra and it becomes your Silver Weapon. Your Silver weapon gains the following benefits for the next minute:</p>\n<p>Chakra Edge. Your weapon deals the damage type associated with your passive affinity chosen at character creation. (If Medical then Poison).</p>\n<p>Flashing Parry. When a melee attack hits you, you can spend your reaction to reduce the damage taken by your [Weapon Damage] + [Weapon Damage] and then move up to 10 feet without provoking opportunity attacks.</p>\n<p>Wolves Prey. When you deal [Weapon Damage] to a creature, they become marked by you until the end of your next turn. While marked, you gain a rank of mastery to damage dealt to them. This increases to two ranks at 11th level.</p>\n<p>Martial Reversal</p>\n<p>When you take damage from a creature as a result of a Taijutsu or Bukijutsu, you can respond with a devastating counter. By spending your Reaction and 2 White Chakra you can cast a Taijutsu or Bukijutsu of the same rank or lower than the triggering Bukijutsu against the triggering creature at no reaction cost.</p>\n<p>Swift Cast</p>\n<p>You’ve memorized complex hand and can push yourself to cast them faster than anyone else. When casting a jutsu that require Hand Signs (HS) as an Action, you can spend 3 White Chakra to cast it as a Bonus action instead. Once you’ve casted a jutsu in this way, you cannot do so again with the same jutsu until you complete a rest.</p>\n<p>Pale Perception</p>\n<p>You are able to focus chakra into your perceptive organs, allowing you to perceive and understand things on a level only those with a Dojutsu could comprehend. When a hostile creature casts a Jutsu, and you attempt a Read the Enemy or Identify (Ninjutsu, Genjutsu, Taijutsu/Bukijutsu) skill-based reaction, you can spend 1 White Chakra to use it at no reaction cost. You can do this once, before the beginning of your next turn.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 819; contextual rules require adjudication."
+    },
+    "category": "clanFeature",
+    "requirement": {
+      "level": 1,
+      "class": "",
+      "clan": "hatake"
+    },
+    "featureType": "passive",
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [],
+    "prerequisites": [],
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "whiteChakra",
+        "label": "White Chakra",
+        "max": "1 + @prof",
+        "die": "",
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "castsJutsu": false,
+        "countsAsChakraSpend": false
+      }
+    ]
+  }
+}

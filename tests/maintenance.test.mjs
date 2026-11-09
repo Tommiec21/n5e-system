@@ -15,8 +15,10 @@ import { registerSocket, asGM, validateEffectRequest } from "../module/socket.mj
 import { MIGRATIONS, checkMigrations } from "../module/migration/runner.mjs";
 
 function environment() {
+  let receipts = { version: 1, epoch: 1, entries: [] };
   globalThis.game = { user: { isGM: true, targets: new Set() }, users: { activeGM: { isSelf: true } },
-    settings: { get: () => undefined }, combat: { started: true, id: "combat", round: 1, turn: 0 } };
+    settings: { get: (scope, key) => key === "requestReceipts" ? receipts : undefined,
+      set: async (scope, key, value) => { if ( key === "requestReceipts" ) receipts = value; } }, combat: { started: true, id: "combat", round: 1, turn: 0 } };
   globalThis.ui = { notifications: { info() {}, warn() {}, error() {} } };
   globalThis.canvas = { tokens: { controlled: [] } };
   globalThis.CONFIG = { N5E: { conditions: {}, damageTypes: {} }, ChatMessage: { documentClass: { getSpeaker: () => ({}), create: async data => data } } };
@@ -41,8 +43,8 @@ function actor() {
 test("every authored activity survives its real schema without dropping supported flags", () => {
   let count = 0;
   const root = new URL("../packs/_source/", import.meta.url);
-  for ( const pack of fs.readdirSync(root) ) for ( const file of fs.readdirSync(new URL(`${pack}/`, root)) ) {
-    const data = JSON.parse(fs.readFileSync(new URL(`${pack}/${file}`, root), "utf8"));
+  for ( const file of fs.readdirSync(root, { recursive: true }).filter(f => f.endsWith(".json")) ) {
+    const data = JSON.parse(fs.readFileSync(new URL(file.replaceAll("\\", "/"), root), "utf8"));
     if ( !itemModels[data.type] || !data.system?.activities?.length ) continue;
     const model = new itemModels[data.type](data.system);
     data.system.activities.forEach((activity, i) => {
@@ -122,7 +124,7 @@ test("cancelled activity refunds its resource payment and does not consume the t
   // A cancelled/unsupported action must not leave a resource debit behind.
   const result = await onActivityClick({ getFlag: (s, k) => k === "actorUuid" ? a.uuid : null },
     { dataset: { n5eAct: "strike", cost: JSON.stringify({ pool: "focus", amount: 1 }), strike: '{"kind":"weapon"}' } }, {});
-  assert.equal(result ?? null, null);
+  assert.equal(result, undefined);
   assert.equal(a.system.resources.focus.value, 2);
 });
 
@@ -134,7 +136,6 @@ test("manual activity kinds display instructions instead of silently disappearin
 
 test("GM relay refuses remote document deletion and requires approval for target effects", async () => {
   environment(); let callback, applied = 0, approvals = 0;
-  game.settings.get = (scope, key) => (key === "gmApprovesRequests" ? true : undefined);
   const emitted = [];
   game.socket = { on: (channel, handler) => { callback = handler; }, emit: (channel, data) => emitted.push(data) };
   globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", createEmbeddedDocuments: async () => applied++ });
@@ -201,18 +202,6 @@ test("migration validates replacement and restores the original when creation fa
   assert.equal(deleted, 1);
   assert.equal(restored._id, "old");
   assert.equal(restored.type, "spell");
-});
-
-test("without the approval rule, validated effect requests apply with no GM dialog", async () => {
-  environment(); let callback, applied = 0, approvals = 0;
-  game.socket = { on: (channel, handler) => { callback = handler; }, emit: () => {} };
-  globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", createEmbeddedDocuments: async () => applied++ });
-  foundry.applications = { api: { DialogV2: { confirm: async () => { approvals++; return true; } } } };
-  registerSocket();
-  await callback({ requestId: "auto-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Mark", type: "generic" }] } });
-  assert.deepEqual([applied, approvals], [1, 0]);
-  await callback({ requestId: "bad-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Bad", changes: [{ key: "ownership.default", mode: 5, value: "3" }] }] } });
-  assert.equal(applied, 1, "invalid requests are still refused");
 });
 
 test("a failed click refunds its cost and leaves the turn allowance and action unused", async () => {

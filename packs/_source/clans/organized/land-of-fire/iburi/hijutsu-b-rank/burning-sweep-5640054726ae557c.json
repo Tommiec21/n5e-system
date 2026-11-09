@@ -1,0 +1,114 @@
+{
+  "_id": "5640054726ae557c",
+  "_key": "!items!5640054726ae557c",
+  "type": "jutsu",
+  "name": "Burning Sweep",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "9285200bc6044994",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "iburi",
+      "sourceLine": 1231,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (60-foot Cone)",
+        "duration": "Instant",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "iburi-burning-sweep",
+    "description": "<p>You aggressively slash the air in front of you, creating an awesome shockwave of force, heat and sulfuric smoke that rides across the battlefield.</p>\n<p>Creatures caught in the awesome forces of smoke and wind within this jutsu's range must make a Dexterity saving throw. Creatures with a movement speed of 0, make this saving throw at advantage.</p>\n<p>Creatures who fail their saving throw against this jutsu take 6d8 Fire damage, and suffer any combination of two of the following effects at your choice. You can select two of the same effects:</p>\n<p>1 rank of Burned.</p>\n<p>1 rank of Envenomed.</p>\n<p>1 rank of Dazzled.</p>\n<p>If you are currently receiving the benefits of the Smoke Style stance, you can also choose to select 1 rank of Corroded. Creatures resistant or immune to Acid or Poison damage do not have advantage on saving throws to resist ranks of Corroded or Envenomed granted by this feature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1231; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60-foot Cone)"
+      },
+      "area": {
+        "shape": "Cone",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "iburi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

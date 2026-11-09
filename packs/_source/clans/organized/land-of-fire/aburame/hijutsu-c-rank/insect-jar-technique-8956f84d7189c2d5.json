@@ -1,0 +1,114 @@
+{
+  "_id": "8956f84d7189c2d5",
+  "_key": "!items!8956f84d7189c2d5",
+  "type": "jutsu",
+  "name": "Insect Jar Technique",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "94d11a8e8c49ffc2",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 646,
+      "sourceHeader": {
+        "time": "1 Reaction, when you or an allied creature in range would take damage.",
+        "range": "Self (10-feet)",
+        "duration": "1 Round",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-insect-jar-technique",
+    "description": "<p>Your insects swarm around you and allied creatures creating a barrier that covers a 10-foot radius, centered on yourself. The barrier has 5d8 hit points, and intercepts damage meant for you or any creature within the barriers area.</p>\n<p>If damage would be applied to you and allied creatures at the same time (Ex. A jutsu that affects an area), it treats the damage each creature would take, as a single instance. This barrier lasts until the beginning of your next turn.</p>\n<p>If you have your Swarm active when you cast this jutsu the barrier gains +2 hit points for each die you roll for its hit points.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and hit points by 1d8</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 646; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, when you or an allied creature in range would take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-feet)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and hit points by 1d8</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

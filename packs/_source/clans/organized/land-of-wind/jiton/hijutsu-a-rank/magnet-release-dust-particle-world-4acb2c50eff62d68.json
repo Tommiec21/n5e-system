@@ -1,0 +1,115 @@
+{
+  "_id": "4acb2c50eff62d68",
+  "_key": "!items!4acb2c50eff62d68",
+  "type": "jutsu",
+  "name": "Magnet Release: Dust Particle World",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cefb9ac70f89c17c",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jiton",
+      "sourceLine": 3343,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "150 feet (40-foot radius sphere)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release.",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jiton-magnet-release-dust-particle-world",
+    "description": "<p>You create a two masses of dust particles of opposing magnetic fields, and then merge them together, repelling the particles across a 40-foot radius sphere centered on a point you choose within range. For the duration, the jutsu's area is difficult terrain. Creatures attempting to see through the area have disadvantage on perception-based checks and any creature of your choice, that enters the jutsu's area for the first time on a turn or starts its turn there must make a Constitution saving throw, taking 4d8 piercing damage and 4d8 earth damage on a failed save becoming Restrained for the duration and gaining 2 ranks of Sealed, or half as much damage on a successful one.</p>\n<p>A creature Grappled or Restrained by a Jiton clan Hijutsu or clan feature you are used that failed this jutsu’s saving throw becomes Stunned until the end of their next turn.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3343; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "earthRelease",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 150,
+        "long": null,
+        "text": "150 feet (40-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 40,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "jiton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

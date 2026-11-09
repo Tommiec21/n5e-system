@@ -1,0 +1,116 @@
+{
+  "_id": "4cb4601f8846807c",
+  "_key": "!items!4cb4601f8846807c",
+  "type": "jutsu",
+  "name": "Genjutsu: Red Star",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "660c77b3f003d5ee",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uchiha",
+      "sourceLine": 2272,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 feet",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Unaware",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uchiha-genjutsu-red-star",
+    "description": "<p>You attempt to put a group of creatures under a strange and terrifying illusion of the sun turning red becoming an eldritch horror of your description.</p>\n<p>Select a point you can see within range. All creatures in a 20-foot radius sphere centered on the point must make a Wisdom saving throw.</p>\n<p>Success: Affected creatures are Off-Guard until the end of their next turn.</p>\n<p>Failure: Affected creatures gains 2 rank of Shaken and must try to escape the sun. They must spend their reaction now (if able) and their movement on each of their turns to move to a space covered in Darkness. It will spend its movement on each turn to accomplish this. If the creature has a jutsu or ability that would generate Darkness or reasonably shield it from the sun, it will spend its actions to cast it to protect itself. A creature that begins its turn under any source of light takes 5d6 psychic damage. All affected creatures remake their save at the end of each of their turns, ending this effect on them on a success.</p>\n<p>Critical Failure: Same as failure, but the target instead takes 6d6 psychic damage and suffers a -1 penalty to their AC for the duration.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2272; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "genjutsu-visual",
+      "tactile",
+      "unaware"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "uchiha",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

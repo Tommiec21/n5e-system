@@ -1,0 +1,115 @@
+{
+  "_id": "bb6498c3dc962ef9",
+  "_key": "!items!bb6498c3dc962ef9",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Substitution",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "af5ba6d9a64a4fc2",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8180,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage.",
+        "range": "Self",
+        "duration": "1 Round",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Fuinjutsu",
+        "components": "HS, CS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-substitution",
+    "description": "<p>You turn your body into sheets of paper, scattering on impact to absorb some of the damage. You gain a +3 bonus to AC and resistance to Bludgeoning, piercing and slashing damage until the beginning of your next turn.</p>\n<p>Paper Veil. If this jutsu is cast while your Paper Veil state is active, it gains the benefit of your first Canvas Type.</p>\n<p>Explosive Veil. You move up to 30 feet away, as a loose collection of paper, then the space you were previously in explodes, forcing all creatures within 5 feet of that space to make a Dexterity saving throw, taking 3d6 fire damage on a failure, or half as much on a success.</p>\n<p>Serrated Veil. If triggering creature is within 10 feet of you, they are caught by a swirl of spinning serrated pages, forcing them to a make a Dexterity saving throw, gaining a rank of Bleed on a failure.</p>\n<p>Binding Veil. If the triggering creature is more than 10 feet away from you, your binding seal trigger, forcing them to make a Charisma saving throw, being Weakened and pulled 10 feet closer.</p>\n<p>Weaving Veil. If the triggering creature is within 20 feet of you, you move up to half your speed, and end your movement as close as possible to them as you make two unarmed attacks against the triggering creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3. If this jutsu is cast at B-Rank or higher, increase the AC bonus by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8180; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3. If this jutsu is cast at B-Rank or higher, increase the AC bonus by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

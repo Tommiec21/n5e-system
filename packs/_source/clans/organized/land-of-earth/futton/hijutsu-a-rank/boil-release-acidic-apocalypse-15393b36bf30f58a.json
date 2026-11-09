@@ -1,0 +1,120 @@
+{
+  "_id": "15393b36bf30f58a",
+  "_key": "!items!15393b36bf30f58a",
+  "type": "jutsu",
+  "name": "Boil Release: Acidic Apocalypse",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "70ee9c586323826e",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "futton",
+      "sourceLine": 5227,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (20-foot radius sphere)",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "19 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Inhale, Tactile), Fire Release, Water Release, Corrosive Branch",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-boil-release-acidic-apocalypse",
+    "description": "<p>You release a massive flux of acidic steam for your body, enough to fill a 20-foot radius sphere, centered on you. All creatures, objects, and structures of your choice, in the radius must make a Constitution saving throw taking 6d10 Acid Damage and gaining 2 ranks of either Deteriorate or Scald (your choice) on a failed save. On a successful save they take half damage.</p>\n<p>After this jutsu’s initial casting, your body continues to release acidic steam. At the beginning of each creatures turns who begins within the affected radius or who would enter the radius for the first time each turn, they must make a constitution saving throw, taking 3d10 acid damage and gaining 1 rank of Deteriorate or Scald (your choice) on a failed save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3, initial and secondary damage by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5227; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "fireRelease",
+      "waterRelease",
+      "genjutsu-visual",
+      "inhale",
+      "tactile",
+      "corrosive-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "futton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3, initial and secondary damage by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -15,7 +15,7 @@ import { featuresVM } from "../module/view-models/character.mjs";
 const SRC = path.join(import.meta.dirname, "..", "packs", "_source");
 const all = {};
 for ( const pack of fs.readdirSync(SRC) ) {
-  for ( const f of fs.readdirSync(path.join(SRC, pack)) ) {
+  for ( const f of fs.readdirSync(path.join(SRC, pack), { recursive: true }).filter(f => f.endsWith(".json")) ) {
     const d = JSON.parse(fs.readFileSync(path.join(SRC, pack, f), "utf8"));
     if ( d._key.startsWith("!folders!") ) continue;
     all[`Compendium.n5e.${pack}.Item.${d._id}`] = { ...d, uuid: `Compendium.n5e.${pack}.Item.${d._id}` };
@@ -42,8 +42,10 @@ function play(className, upTo, pick = {}) {
     const sel = {};
     for ( const st of steps ) {
       if ( st.type === "subclass" ) {
-        sel[st.id] = [st.uuids[0]];
-        const sc = clone(all[st.uuids[0]]);
+        const wanted = className === "Scout-Nin" ? "Assault Scout" : className === "Ninjutsu Specialist" ? "Blaze Walker" : null;
+        const selected = st.uuids.find(u => all[u].name === wanted) ?? st.uuids[0];
+        sel[st.id] = [selected];
+        const sc = clone(all[selected]);
         sources.push(sc);
         actor = build();
         steps = [...steps, ...subclassSteps(actor.items.find(i => i.type === "subclass"), level)];

@@ -1,0 +1,116 @@
+{
+  "_id": "aa622c49e7b2bd51",
+  "_key": "!items!aa622c49e7b2bd51",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Hypnotic Music",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cc27a80758f9c842",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6732,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "90 feet (20-foot radius)",
+        "duration": "Concentration, up to 1 Minute",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Unaware)",
+        "components": "CM, W (Shinobi Instrument)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-hypnotic-music",
+    "description": "<p>You play an enchanting song that captivates those in a 20-foot radius sphere originating on a point in range, and causes them to dance like no one is watching. Each creature in the area who hears this song must make a Wisdom saving throw.</p>\n<p>While charmed by this jutsu, the creature cannot hear anything besides the music being made by the genjutsu.</p>\n<p>Success: No effects, and this jutsu ends on the target.</p>\n<p>Failure: The creature is Charmed and Restrained, enraptured by the music. The target may remake this saving throw to end this jutsu’s effects at the end of each of their turns. This jutsu’s effects end immediately if the take damage or are knocked prone.</p>\n<p>Critical Failure: Same effects a failure, but the target is also Incapacitated for the duration.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6732; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-auditory",
+      "unaware"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet (20-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Shinobi Instrument)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Shinobi Instrument)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

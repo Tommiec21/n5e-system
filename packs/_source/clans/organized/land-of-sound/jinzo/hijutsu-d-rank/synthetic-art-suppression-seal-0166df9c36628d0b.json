@@ -1,0 +1,117 @@
+{
+  "_id": "0166df9c36628d0b",
+  "_key": "!items!0166df9c36628d0b",
+  "type": "jutsu",
+  "name": "Synthetic Art: Suppression Seal",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d68f4ce430400ebd",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jinzo",
+      "sourceLine": 7366,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet",
+        "duration": "Concentration, Up to 1 minute",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release, Lightning Release, Fuinjutsu, Shin Branch",
+        "components": "HS, CM, CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-synthetic-art-suppression-seal",
+    "description": "<p>You conjure 4 stone pillars that occupy a space they appear in. Select a point you can see in range, then select 4 spaces within a 30-foot radius not occupied by a creature, structure or construct, where your special stone pillar will be summoned. Finally, select one pillar and draw a straight line from it, to another pillar, repeating this process until each pillar connects to one another from this line. All creatures within the area of the newly drawn enclosure are trapped within a special suppressing seal as jolts of lightning arcs following the line drawn from each pillar to the next. All enclosed creatures must make a Constitution saving throw. On a failure, they cannot cast Jutsu with the Chakra Molding (CM) component of the same rank or lower as this jutsu until the end of your next turn. Each affected creature remakes their saving throw at the end of each of your turns.</p>\n<p>Each Stone pillar has an AC equal to your Ninjutsu save DC, and 25 Hit Points. Each time a Pillar is destroyed, you must redraw the line reconnecting each pillar to one another. If there are ever 2 or fewer Stone pillars remaining, this jutsu ends early.</p>\n<p>Shin-Seal: If an affected creature has a Shin Seal, you can dispel it. If you do, they make their saving throw with a -2 penalty and on a failure, they also gain the Shocked condition.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the hit points of the Pillars by +10. If this jutsu is cast at B-Rank or higher, increase the number of Pillars you summon by +2. If this jutsu is cast at S-Rank, increase the number of Pillars you summon by +2.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7366; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "fuinjutsu",
+      "earthRelease",
+      "lightningRelease",
+      "shin-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "jinzo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the hit points of the Pillars by +10. If this jutsu is cast at B-Rank or higher, increase the number of Pillars you summon by +2. If this jutsu is cast at S-Rank, increase the number of Pillars you summon by +2.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "_id": "8ed65141c3c3cacd",
+  "_key": "!items!8ed65141c3c3cacd",
+  "type": "jutsu",
+  "name": "Fang Over Fang",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "68a4d57deba91ef1",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "inuzuka",
+      "sourceLine": 1412,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Movement Speed",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team, Clash",
+        "components": "CM, M, W (Melee Blade, Optional)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "inuzuka-fang-over-fang",
+    "description": "<p>You spin at an accelerated rate chasing down enemies and slashing into them with each pass.</p>\n<p>As part of casting this jutsu, move up to your movement speed. You are able to pass through creatures spaces as part of this movement.</p>\n<p>Make a melee Taijutsu attack against each creature you pass through dealing your [Unarmed Damage] (or [Weapon Damage] if using a weapon) +4d6 and forcing them to make a Constitution saving throw, being Bruised on a failed save. A creature can only be attacked once as part of this jutsu’s casting.</p>\n<p>Tag-Team: Your Nin-Dog follows up with a spiraling cross similar to yours. They also get to move up to their movement speed, passing through creatures spaces. They also make a melee Taijutsu attack for each creature they pass through, dealing their Bite damage + 2d6. If the Nin-Dog deals damage to a creature that failed their saving throw, that creature is also Dazed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for both you and your Nin-Dog.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1412; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "clash",
+      "tag-team"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Melee Blade, Optional)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Melee Blade, Optional)"
+      }
+    },
+    "hijutsu": {
+      "clan": "inuzuka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for both you and your Nin-Dog.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

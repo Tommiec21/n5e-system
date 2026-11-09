@@ -128,6 +128,11 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     const cost = this.computeCost(sys);
     // Release keywords (fireRelease...) need the matching nature affinity; Hijutsu are exempt.
     const missingAccess = [];
+    if ( this.isHijutsu && this.hijutsu.clan ) {
+      const clan = sys.grants?.clanItem?.system;
+      if ( clan?.identifier !== this.hijutsu.clan ) missingAccess.push(`clan:${this.hijutsu.clan}`);
+      else if ( this.hijutsu.branch && clan.branch !== this.hijutsu.branch ) missingAccess.push(`branch:${this.hijutsu.branch}`);
+    }
     for ( const kw of this.keywords ) {
       const def = globalThis.CONFIG?.N5E?.keywords?.[kw];
       if ( !def?.affinity || this.isHijutsu ) continue;

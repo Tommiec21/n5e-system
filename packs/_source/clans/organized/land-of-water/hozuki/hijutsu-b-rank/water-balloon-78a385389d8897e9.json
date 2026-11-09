@@ -1,0 +1,114 @@
+{
+  "_id": "78a385389d8897e9",
+  "_key": "!items!78a385389d8897e9",
+  "type": "jutsu",
+  "name": "Water Balloon",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "0d89ba4b0bb9767b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hozuki",
+      "sourceLine": 4201,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet (20-foot Cube)",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hozuki-water-balloon",
+    "description": "<p>You create a puddle of Water mixed with oil, producing bubbles that float around you. These bubbles are then launched at a point you can see within range, then filling a 20-foot cube, centered on this point. Creatures of your choice, who first enter the chosen area or who begin their turn within it must make a Dexterity saving throw taking 2d10 cold damage, 2d10 bludgeoning damage and being Staggered on a failure, or half as much on a successful save.</p>\n<p>As a Bonus action for the duration, you can select a new point within range, firing these bubbles, filling a new area and forcing creatures to make their saving throws against the effects of this jutsu.</p>\n<p>Hydrofication. You count as invisible to all creatures that fail their saving throw.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d10 for each damage type.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4201; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (20-foot Cube)"
+      },
+      "area": {
+        "shape": "Cube",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hozuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d10 for each damage type.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

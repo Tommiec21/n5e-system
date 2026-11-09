@@ -1,0 +1,119 @@
+{
+  "_id": "de1200310612480d",
+  "_key": "!items!de1200310612480d",
+  "type": "jutsu",
+  "name": "Storm Release: Lariat",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "fb10a8376553fced",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ranton",
+      "sourceLine": 6183,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Movement Speed",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu Water Release, Lightning Release, Storm Branch",
+        "components": "CM, M, W (Any Melee)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-storm-release-lariat",
+    "description": "<p>While covered in lightning, you dash forward towards a creature like a bolt of lightning, generating enough momentum to cause a clap of thunder after you strike. Move into a space next to a creature you can reach with your Movement speed, then make a melee Taijutsu (or Ninjutsu) attack against them, dealing your [Unarmed Damage] or [Weapon Damage] + 5d12 lightning damage as you clothes line them, forcing them to make a Strength saving throw, being Dazed and knocked Prone on a failure. A creature that fails this saving throw by 5 or more is also Bruised.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6183; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "waterRelease",
+      "lightningRelease",
+      "bukijutsu-water-release",
+      "storm-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M, W (Any Melee)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M, W (Any Melee)"
+      }
+    },
+    "hijutsu": {
+      "clan": "ranton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

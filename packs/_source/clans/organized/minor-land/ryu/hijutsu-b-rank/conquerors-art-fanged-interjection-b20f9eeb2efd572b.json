@@ -1,0 +1,116 @@
+{
+  "_id": "b20f9eeb2efd572b",
+  "_key": "!items!b20f9eeb2efd572b",
+  "type": "jutsu",
+  "name": "Conqueror’s Art: Fanged Interjection",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "5a94b5d44a385ef8",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ryu",
+      "sourceLine": 8778,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when a creature casts a Jutsu within range.",
+        "range": "20 Feet",
+        "duration": "Instant",
+        "cost": "13 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Interrupt",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ryu-conquerors-art-fanged-interjection",
+    "description": "<p>You lash out mid-casting, your claws flaring as you manifest a Chakra construct in the shape of a Dragons claw that reaches out to disrupt an offending creature.</p>\n<p>First, move up to 20 feet, ending this movement within 5 feet of the triggering creature and make a melee Taijutsu attack targeting them, dealing your [Unarmed Damage] (or [Weapon Damage]) + 4d6 damage and forcing them to make a Strength saving throw. On a failed save, they are pushed 20 feet away from you and have their Jutsu interrupted. On a successful save they can cast as normal.</p>\n<p>Dragon Rage State. If this jutsu is cast while in your Dragon Rage State, on a failed save the affected creature also gains 2 ranks of your nature releases associated condition. (Earth Release:  Shaken, Wind Release: Bleed, Fire Release: Burned, Water Release: Chilled, Lightning Release: Shocked)</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8778; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "interrupt"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature casts a Jutsu within range."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 20,
+        "long": null,
+        "text": "20 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "ryu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

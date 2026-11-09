@@ -1,0 +1,115 @@
+{
+  "_id": "c170302bf224c2ac",
+  "_key": "!items!c170302bf224c2ac",
+  "type": "jutsu",
+  "name": "Ice Release: Ice Prison",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "158a58d8ebbef092",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yuki",
+      "sourceLine": 4783,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet",
+        "duration": "Concentration, up to 10 minutes",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-ice-release-ice-prison",
+    "description": "<p>You release a stream of jagged Ice crystals forward as they evaporate upward into a mist and flash freeze over a creature freezing them in place. Select one creature in range that you can see, forcing them to make a Dexterity saving throw, being Restrained in a block of ice and gaining a rank of Frostbite on a failed save.</p>\n<p>A creature Restrained inside the ice is deafened but can otherwise see everything they normally could while frozen. The affected creature makes a Strength saving throw to break out of the ice and end this effect at the end of each of its turns.</p>\n<p>The ice trapping the creature can be used as an Ice Mirrors, and has 20 AC and 10 Hit points and has resistance to damage originating from inside the trap. If its hit points are reduced to 0 this jutsu ends early. Any excess damage is dealt to the encased creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the hit points of the ice trap by +10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4783; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "windRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the hit points of the ice trap by +10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "_id": "c16b63be10d972b9",
+  "_key": "!items!c16b63be10d972b9",
+  "type": "jutsu",
+  "name": "Typhoon Release: Jettison",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "eab16e31b0581886",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "fushin",
+      "sourceLine": 2768,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you take damage from an attack.",
+        "range": "Self (10-foot radius sphere)",
+        "duration": "1 Round",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Wind Release, Barrier",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "fushin-typhoon-release-jettison",
+    "description": "<p>You release an explosion of wind protecting you with a burst of air. Until the start of your next turn, you have a +4 Bonus to AC. Creatures who are within the affected area when you cast this jutsu must succeed a Strength saving throw, taking 2d6 wind damage and push to the edge of this jutsu’s area into a space that can hold them on a failure.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the area by 5 feet.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2768; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "windRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage from an attack."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "fushin",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the area by 5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

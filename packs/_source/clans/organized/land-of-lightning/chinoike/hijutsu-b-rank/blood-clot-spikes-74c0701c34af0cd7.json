@@ -1,0 +1,114 @@
+{
+  "_id": "74c0701c34af0cd7",
+  "_key": "!items!74c0701c34af0cd7",
+  "type": "jutsu",
+  "name": "Blood Clot Spikes",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "92d12439e42a093c",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "chinoike",
+      "sourceLine": 5747,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when a creature would cast a Jutsu with the M component.",
+        "range": "60 feet",
+        "duration": "Instant",
+        "cost": "10 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "chinoike-blood-clot-spikes",
+    "description": "<p>As a reaction to a creature casting a jutsu with the Mobility (M) component, you manipulate their blood to coagulate and spike, restricting their blood flow. The affected creature must make a Constitution saving throw. On a failure, the creature’s movement is interrupted being reduced to 0 until the end of their next turn, causing their jutsu to fail and chakra to be wasted. The creature also takes 6d8 necrotic damage.</p>\n<p>Blood Detonation. Some of the creatures veins and arteries rupture, causing them to gain 3 ranks of Bleed on a failure.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5747; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature would cast a Jutsu with the M component."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "chinoike",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, the damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

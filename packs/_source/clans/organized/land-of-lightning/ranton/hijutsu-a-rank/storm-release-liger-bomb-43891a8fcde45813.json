@@ -1,0 +1,118 @@
+{
+  "_id": "43891a8fcde45813",
+  "_key": "!items!43891a8fcde45813",
+  "type": "jutsu",
+  "name": "Storm Release: Liger Bomb",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "5a40bbd93bf327d2",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "ranton",
+      "sourceLine": 6226,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "20 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Water Release, Lightning Release, Storm Branch",
+        "components": "CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-storm-release-liger-bomb",
+    "description": "<p>As part of casting this jutsu, you must be in Spear Form of your Storm Force state.</p>\n<p>You must be targeting a creature currently Dazed, Stunned, Incapacitated, Staggered or Grappled by you. You snatch them up, and cover yourself and them in storm release chakra as you lift them high into the air. You then attempt to smash them into the ground headfirst with enough force to destroy the ground you are standing on.</p>\n<p>Make a melee Taijutsu (or Ninjutsu) attack against the target. On a hit, you deal your [Unarmed Damage] or [Weapon Damage] + 6d12 lightning damage.</p>\n<p>If your attack result is 10 or higher than the targets AC, you treat it as a critical hit. If the target has two or more of the required conditions to cast this jutsu, they treat the damage they take from this jutsu as if they are Vulnerable to it.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6226; contextual rules require adjudication."
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "waterRelease",
+      "lightningRelease",
+      "storm-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "ranton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "text": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

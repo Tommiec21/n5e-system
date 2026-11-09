@@ -1,0 +1,114 @@
+{
+  "_id": "3ad09aec8161cb00",
+  "_key": "!items!3ad09aec8161cb00",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Clone",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "fd92e9203411a459",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8194,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self",
+        "duration": "1 Hour",
+        "cost": "Special (8 Chakra)",
+        "keywords": "Hijutsu, Ninjutsu, Clone",
+        "components": "CS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-clone",
+    "description": "<p>You conjure a clone made of paper, similar to the Shadow Clone Technique constructed of special chakra reinforced paper to a space it can occupy within 10 feet of you, known as a Paper Clone, that weigh a fraction of its caster weight.</p>\n<p>When this jutsu is cast, by spending 8 Chakra, you summon one Clone. You can spend 4 additional chakra to summon up to 1 additional Clone. You can maintain up to 2 Clones at a time.</p>\n<p>Paper Clones have Immunity to bludgeoning, piercing and slashing damage, Vulnerability to fire damage and can cast up to two C-Rank and lower Shikigami Clan Hijutsu before this jutsu ends.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost by 3 and the increase the number of Paper clones you can summon and maintain, by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8194; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "clone"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "hours",
+      "concentration": false,
+      "text": "1 Hour"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special (8 Chakra)"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost by 3 and the increase the number of Paper clones you can summon and maintain, by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -136,9 +136,9 @@ export function railVM(actor, registry = coreConditions) {
       key: e.system.key,
       label: def.label ?? e.name,
       ranks: e.system.ranks,
-      max,
+      max: max === 0 ? "∞" : max,
       ranked: max != null,
-      pips: max != null ? pips(e.system.ranks, Math.min(max, 11)) : [],
+      pips: max != null ? pips(e.system.ranks, max === 0 ? Math.min(Math.max(e.system.ranks, 3), 11) : Math.min(max, 11)) : [],
       disabled: !!e.disabled,
       summary: conditionSummary(e.system.key, e.system.ranks, registry),
       removable: removalOptions(e, registry).some(o => o.checks.length)
@@ -475,7 +475,7 @@ export function featuresVM(actor) {
   ].filter(g => !g.empty || g.key === "core");
 
   // Feats by category.
-  const general = feats.filter(i => !["classFeature", "class", "classOption", "clanFeature", "clan"].includes(i.system.category));
+  const general = feats.filter(i => !["classFeature", "class", "classOption", "clanFeature", "clanOption", "clan", "backgroundFeature"].includes(i.system.category));
   const cats = [...new Set(general.map(i => i.system.category))];
   const featSubs = cats.map(c => sub(c, featCategories[c] ?? titleCase(c), general.filter(i => i.system.category === c).map(featRow)
     .sort((a, b) => a.name.localeCompare(b.name))));
@@ -493,8 +493,10 @@ export function featuresVM(actor) {
     groups: [
       { key: "class", label: cls?.name ?? "Class features", subgroups: classSubs },
       { key: "clan", label: clan?.name ?? "Clan features", clan: true,
-        subgroups: [sub("clan", "Clan features", feats.filter(i => ["clanFeature", "clan"].includes(i.system.category)).map(featRow).sort(byLevel))] },
-      { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] }
+        subgroups: [sub("clan", "Clan features and options", feats.filter(i => ["clanFeature", "clanOption", "clan"].includes(i.system.category)).map(featRow).sort(byLevel))] },
+      { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] },
+      { key: "background", label: bg?.name ?? "Background features", subgroups: [sub("background", "Background features",
+        feats.filter(i => i.system.category === "backgroundFeature").map(featRow))] }
     ]
   };
 }
@@ -504,7 +506,8 @@ export function effectsVM(actor) {
   const rows = list(actor.effects).map(e => ({
     id: e.id, name: e.name, img: e.img, type: e.type, disabled: !!e.disabled,
     ranks: e.type === "condition" ? e.system.ranks : null,
-    max: e.type === "condition" ? (coreConditions[e.system.key]?.maxRanks ?? null) : null,
+    max: e.type === "condition" ? ((globalThis.CONFIG?.N5E?.clanConditions?.[e.system.key] ?? coreConditions[e.system.key])?.maxRanks === 0 ? "∞"
+      : (globalThis.CONFIG?.N5E?.clanConditions?.[e.system.key] ?? coreConditions[e.system.key])?.maxRanks ?? null) : null,
     source: e.sourceName ?? "", duration: e.duration?.label ?? ""
   }));
   const group = (key, label, filter) => {

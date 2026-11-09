@@ -1,0 +1,117 @@
+{
+  "_id": "6dbe2f867de34629",
+  "_key": "!items!6dbe2f867de34629",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Sonic Rupture",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "508b3d22199b6a9c",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6675,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Special (20-foot radius)",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Tactile), Mnemonic Branch",
+        "components": "CM, W (Shinobi Instrument)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-sonic-rupture",
+    "description": "<p>You can only cast this jutsu while you have a Bell Wire active.</p>\n<p>Select one Bell Wire. It begins to ring out at such a high frequency that even eye sockets begin to bleed. All creatures in a 20-foot radius must make an Intelligence saving throw as their thoughts are thrown into disarray</p>\n<p>Critical Success: The target takes no damage and suffers no additional effects.</p>\n<p>Success: The target takes no damage but gain 1 rank of Dazzled.</p>\n<p>Failure: The target takes 3d8 psychic damage and 1 rank of Dazzled.</p>\n<p>Critical Failure: The target the target takes 5d8 psychic damage and are Blinded until the end of their next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, you can have this jutsu’s effects originate from up to 3 Bell Wires. A creature can only be affected by one source of this jutsu at a time.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6675; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "genjutsu",
+      "genjutsu-auditory",
+      "tactile",
+      "mnemonic-branch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special (20-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Shinobi Instrument)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Shinobi Instrument)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, you can have this jutsu’s effects originate from up to 3 Bell Wires. A creature can only be affected by one source of this jutsu at a time.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

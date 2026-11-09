@@ -1,0 +1,115 @@
+{
+  "_id": "9dfd672ef1652536",
+  "_key": "!items!9dfd672ef1652536",
+  "type": "jutsu",
+  "name": "Smoke Dragon",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "001648017baddbc4",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "iburi",
+      "sourceLine": 1211,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (90-foot line)",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Fire Release, Clash",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "iburi-smoke-dragon",
+    "description": "<p>You release a massive collection of ashen chakra, until it forms into a large dragonoid construct of your description. You then send this dragon out as it completely overwhelms everything in a in a 60-foot long, 10-foot-wide line. All creatures within range, must make a Constitution saving throw.</p>\n<p>On a failed save, affected creatures take 5d6 Fire damage and gain 1 rank of Dazzled and Envenomed on a failed save. You can control how long this line becomes and where it stops, avoiding affecting unwanted creatures if they are further along in the line.</p>\n<p>If you are currently receiving the benefits of the Smoke Style stance, you can morph your whole body into smoke and travel with the dragon without expending your movement speed. Upon ending your movement, creatures within 10 feet of you provoke attack of opportunity attacks from you.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost by 3, the damage by 1d6. If cast at A-Rank or higher, increase the ranks of each condition inflicted by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1211; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "clash",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (90-foot line)"
+      },
+      "area": {
+        "shape": "line",
+        "size": 90,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "iburi",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost by 3, the damage by 1d6. If cast at A-Rank or higher, increase the ranks of each condition inflicted by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

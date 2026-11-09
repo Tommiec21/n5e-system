@@ -1,0 +1,114 @@
+{
+  "_id": "e332c26a5913bdae",
+  "_key": "!items!e332c26a5913bdae",
+  "type": "jutsu",
+  "name": "8-Trigrams Grid Palm",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "9bd73437be8e7fc9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hyuga",
+      "sourceLine": 1024,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot radius)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Fuinjutsu",
+        "components": "CS, CM, M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-8-trigrams-grid-palm",
+    "description": "<p>You slam your hand on the ground creating a network of grids along the ground that then cover all enemies inflicting great pain on them. Select a point on the space you occupy as you fill a 15-foot radius centered on this point with your special grid. All creatures of your choice, within range, must make a Charisma saving throw, becoming restrained by the intense pain they experience for the duration. Creatures restrained in this way remake their saves at the end of each of their turns.</p>\n<p>Eight Trigram. For the duration of this jutsu, creatures who fail their saving throw become unable to cast jutsu that requires hand signs of a rank equal to or lower than the rank of this jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1024; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "fuinjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": true,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CS, CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CS, CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "hyuga",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

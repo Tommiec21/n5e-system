@@ -1,0 +1,115 @@
+{
+  "_id": "1c4cbf9a6564a978",
+  "_key": "!items!1c4cbf9a6564a978",
+  "type": "jutsu",
+  "name": "Rain Dance",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "013afbfd9091b365",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hozuki",
+      "sourceLine": 4144,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Weapon Range",
+        "duration": "Instance",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release",
+        "components": "W (Any Melee), CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hozuki-rain-dance",
+    "description": "<p>With a flurry of swings, you release droplets of water into the immediate area before you turn your weapon on your foe. Make a melee Ninjutsu (or taijutsu) attack, dealing your [Weapon Damage] + 3d6 cold damage. On a hit, you call all of the released water droplets back acting like bullets returning back to your body.</p>\n<p>All creatures of your choice, within 5 feet of you must make a Dexterity saving throw. On a failure they gain 2 ranks of Weakened from the bombardment of strikes across their body.</p>\n<p>Hydrofication. Compare your attack result vs the AC of all creatures of your choice within 5 feet of you. Also, creatures that fail their saving throw are also Bruised.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank, increase the ranks of Weakened inflicted by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4144; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Instance"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "hozuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank, increase the ranks of Weakened inflicted by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

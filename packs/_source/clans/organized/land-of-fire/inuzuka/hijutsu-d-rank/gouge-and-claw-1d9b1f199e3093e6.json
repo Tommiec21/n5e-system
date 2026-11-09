@@ -1,0 +1,115 @@
+{
+  "_id": "1d9b1f199e3093e6",
+  "_key": "!items!1d9b1f199e3093e6",
+  "type": "jutsu",
+  "name": "Gouge and Claw",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "24f6b35eae2e568b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "inuzuka",
+      "sourceLine": 1388,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Touch",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team",
+        "components": "M, W (Melee Blade, Optional)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "inuzuka-gouge-and-claw",
+    "description": "<p>With sharpened claws or teeth, you make a flurry of gouging strikes. Make two melee Taijutsu attacks dealing your [Unarmed Damage] (or [Weapon Damage] if using a weapon) +2d4. If you deal damage as part of casting this jutsu, the affected creatures must make a Constitution saving throw, being knocked prone on a failure.</p>\n<p>Tag-Team: Your Nin-Dog follows up with sharp fangs and claws. They make a melee Taijutsu attack, dealing their Bite damage. If they deal damage as part of this Tag-Team, if the affected creature fails their original save, they gain a rank of Bleed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage you deal by +1d4. If this jutsu is cast at B-Rank or higher, increase the number of attacks your Nin-Dog makes by +1. If this jutsu is cast at S-Rank, increase the number of attacks you make by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1388; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "tag-team"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "M, W (Melee Blade, Optional)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "M, W (Melee Blade, Optional)"
+      }
+    },
+    "hijutsu": {
+      "clan": "inuzuka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage you deal by +1d4. If this jutsu is cast at B-Rank or higher, increase the number of attacks your Nin-Dog makes by +1. If this jutsu is cast at S-Rank, increase the number of attacks you make by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

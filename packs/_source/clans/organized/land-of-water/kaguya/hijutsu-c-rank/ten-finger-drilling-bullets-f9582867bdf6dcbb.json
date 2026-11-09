@@ -1,0 +1,115 @@
+{
+  "_id": "f9582867bdf6dcbb",
+  "_key": "!items!f9582867bdf6dcbb",
+  "type": "jutsu",
+  "name": "Ten-Finger Drilling Bullets",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "d9451511d102278b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kaguya",
+      "sourceLine": 4319,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-foot cone)",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
+        "components": "CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kaguya-ten-finger-drilling-bullets",
+    "description": "<p>You clasp your hands together pointing your fingers in any direction of your choice firing them all at once with enough of a combined force to rip through even chakra barriers. You fire bone bullets like a shotgun burst in a 30-foot cone originating from you.</p>\n<p>All creatures in range must make a Dexterity saving throw taking 4d6 piercing damage and gains 2 ranks of Bleeding on a failed save or half as much damage and no additional effects on a success. Barriers are treated as vulnerable to this jutsu’s damage.</p>\n<p>Battle Lust: By spending 2 Battle Lust as part of this jutsu’s casting you change the range of this jutsu to Self (60-foot line). Creatures in this new range that fail their saving throw become Staggered.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4319; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "kaguya",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

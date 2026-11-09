@@ -1,0 +1,114 @@
+{
+  "_id": "f0d662fab3a90c36",
+  "_key": "!items!f0d662fab3a90c36",
+  "type": "jutsu",
+  "name": "Test Cutting: Autumn Shower",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "ac82ca7ecf6d44a9",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yamada",
+      "sourceLine": 4619,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (15-foot cone)",
+        "duration": "Instant",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Bukijutsu, Chain",
+        "components": "W (Any Melee), M"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-test-cutting-autumn-shower",
+    "description": "<p>Taking the teachings of the Yamada to its extreme, you enter a brief striking stance, before releasing enough force that with a single strike, all creatures standing before you becomes a victim to your assault.</p>\n<p>All creatures within range, must make a Dexterity saving throw, taking your [Weapons Damage] + 2d8 and gain a rank of Shaken on a failure or half as much damage on a success.</p>\n<p>Ideal Cut: This jutsu gains the effect of your Empty Blade attack, as if you were foregoing 2 attacks, but only against one of the affected creatures. If both d6’s trigger the Empty Blade effect, the affected creature becomes Severed.</p>\n<p>Tao: This jutsu’s range becomes Self (20-foot radius) and doesn’t affect allied creatures.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4619; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "bukijutsu",
+      "chain"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "W (Any Melee), M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "W (Any Melee), M"
+      }
+    },
+    "hijutsu": {
+      "clan": "yamada",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "_id": "9bed0e7ebdcce304",
+  "_key": "!items!9bed0e7ebdcce304",
+  "type": "jutsu",
+  "name": "Demonic Instrument: Vibrational Delay",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "cc27a80758f9c842",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "kashu",
+      "sourceLine": 6773,
+      "sourceHeader": {
+        "time": "Special, when you deal [Unarmed Damage] or [Weapon Damage] to a creature.",
+        "range": "Special",
+        "duration": "Instant",
+        "cost": "7 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Genjutsu (Auditory), Symphonic Branch",
+        "components": "CM, W (Auditory Ninja Tool)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kashu-demonic-instrument-vibrational-delay",
+    "description": "<p>When you deal [Unarmed Damage] or [Weapon Damage] to a creature, you inject vibrational energy into their body, oscillating their internal organs until you cause the vibrations to peak causing internal shock. The affected creature must make a Constitution saving throw.</p>\n<p>Critical Success: The target suffers no additional effects.</p>\n<p>Success: The target gains 1 rank of Disoriented.</p>\n<p>Failure: The target gains 2 ranks of Disoriented and if the affected creature takes psychic or force damage before the end of your next turn, the vibration energy detonates, dealing 5d8 force or psychic damage (your choice).</p>\n<p>Critical Failure: Same effects as a failure, but each time the affected creature begins concentrating on a jutsu before this jutsu’s effect ends, then this jutsu has a duration of 1 minute, and each time they maintain concentration on the chosen jutsu at the beginning of their turns, they take 5d8 psychic damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6773; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "genjutsu",
+      "taijutsu",
+      "bukijutsu",
+      "genjutsu-auditory",
+      "symphonic-branch"
+    ],
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, W (Auditory Ninja Tool)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, W (Auditory Ninja Tool)"
+      }
+    },
+    "hijutsu": {
+      "clan": "kashu",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

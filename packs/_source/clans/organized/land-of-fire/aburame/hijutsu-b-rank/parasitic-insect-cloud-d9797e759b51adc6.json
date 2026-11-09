@@ -1,0 +1,113 @@
+{
+  "_id": "d9797e759b51adc6",
+  "_key": "!items!d9797e759b51adc6",
+  "type": "jutsu",
+  "name": "Parasitic Insect Cloud",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "97bd578edd224138",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "aburame",
+      "sourceLine": 653,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 feet (15-foot cube)",
+        "duration": "Concentration, up to 1 minute",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu",
+        "components": "HS"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-parasitic-insect-cloud",
+    "description": "<p>Your insects create a noxious gas that is exuded from your body. When you cast this jutsu, you select an area you can see within range and the gas moves to the chosen area. Creatures in the path of the gas on the way to the chosen location, and creatures who start their turn in the gas, make a Constitution saving throw becoming poisoned and taking 6d8 poison damage. At the beginning of a creatures turn where they start inside the gas they repeat the saving throw. As a bonus action on each turn thereafter, for this jutsu’s duration you may move this cloud 30 feet.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d8</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 653; contextual rules require adjudication."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (15-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS"
+      }
+    },
+    "hijutsu": {
+      "clan": "aburame",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d8</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

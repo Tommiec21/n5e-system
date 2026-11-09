@@ -1,0 +1,115 @@
+{
+  "_id": "1097ee548eb00e6e",
+  "_key": "!items!1097ee548eb00e6e",
+  "type": "jutsu",
+  "name": "Tunneling Fang",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "24f6b35eae2e568b",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "inuzuka",
+      "sourceLine": 1399,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "30 feet",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team",
+        "components": "M, W (Melee Blade, Optional)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "inuzuka-tunneling-fang",
+    "description": "<p>You spin like a drill, with your body becoming a blur attempting a spiraling sweep attack. Select a space you can see up to 30 feet away and move into that space. This movement does not provoke attacks of opportunity.</p>\n<p>If you end this movement adjacent to at least one hostile creature, you can make a melee Taijutsu attack against all hostile creatures, comparing the result vs each of their AC. On a hit, you deal your [Unarmed Damage] (or [Weapon Damage] if using a weapon) + 2d6 bludgeoning damage.</p>\n<p>Tag-Team: Your Nin-Dog follows up with their own spinning body slam. They also move up to 30 feet, and must end their movement adjacent to one of the affected creatures. When they do, they make a melee Taijutsu attack, dealing their Bite damage + 1d6 and your Nin-Dog becomes Feral.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for both you and your Nin-Dog.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 1399; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "taijutsu",
+      "bukijutsu",
+      "tag-team"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "M, W (Melee Blade, Optional)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "M, W (Melee Blade, Optional)"
+      }
+    },
+    "hijutsu": {
+      "clan": "inuzuka",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and damage by 1d6 for both you and your Nin-Dog.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

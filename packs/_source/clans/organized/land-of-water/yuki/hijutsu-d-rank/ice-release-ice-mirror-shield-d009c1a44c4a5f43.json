@@ -1,0 +1,116 @@
+{
+  "_id": "d009c1a44c4a5f43",
+  "_key": "!items!d009c1a44c4a5f43",
+  "type": "jutsu",
+  "name": "Ice Release: Ice Mirror Shield",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "158a58d8ebbef092",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "yuki",
+      "sourceLine": 4777,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when you or an allied creature within range would take damage.",
+        "range": "30 Feet",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release, Barrier",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-ice-release-ice-mirror-shield",
+    "description": "<p>You quickly materialize a shield of Ice protecting yourself or an allied creature within range. The shield of ice has 1d10+ 10 hit points.</p>\n<p>If this jutsu is cast while occupying an Ice Mirror, this barrier can gain the DR, resistances, immunities and vulnerabilities of your Ice Mirrors.</p>\n<p>If the triggering damage doesn’t destroy the shield, at the beginning of your next turn, the shield of ice hardens into a structure of ice that lasts for 1 minute. This new structure can be used as an Ice Mirror.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the shields hit points by 1d10.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 4777; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "barrier",
+      "windRelease",
+      "waterRelease"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or an allied creature within range would take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "yuki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the shields hit points by 1d10.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

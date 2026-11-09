@@ -1,0 +1,116 @@
+{
+  "_id": "bce8dd94983817c4",
+  "_key": "!items!bce8dd94983817c4",
+  "type": "jutsu",
+  "name": "Synthetic Art: Binding Serpent Curse",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "b9ce957e6de28991",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "jinzo",
+      "sourceLine": 7467,
+      "sourceHeader": {
+        "time": "1 Reaction, which you take when a creature within range is making an attack or casting a jutsu with the Mobility (M) component.",
+        "range": "15 Feet",
+        "duration": "Concentration, up to 1 minute.",
+        "cost": "9 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu, Bio Serpent",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-synthetic-art-binding-serpent-curse",
+    "description": "<p>You can only cast and maintain this jutsu while your Bio-Pet is active. You call them to you, as the teleport under your clothes and you infuse some of your Biomass into them, as they quickly grow in size until it becomes large, rushing back out towards the triggering creature, attempting to wrap and bite into them.</p>\n<p>The triggering creature must make a Strength saving throw, being Grappled by your Bio-Pet on a failure. A creature grappled in this way, is then bitten by the pet dealing 3d6 Chakra and 3d6 poison damage and inflicting the Stupor condition for the duration.</p>\n<p>While grappled in this way, your Bio-Pet remains large, but its speed is reduced to 0. By spending your Bonus action, you can command it to bite the target again, dealing the listed damage without an attack roll.</p>\n<p>The grappled creature can remake their Strength saving throw at the end of each of its turns to end this effect early. When this jutsu ends your Bio-Pet returns to its normal size.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, both types of damage by 1d6, and the ranks of Envenomed inflicted by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 7467; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "fuinjutsu",
+      "bio-serpent"
+    ],
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature within range is making an attack or casting a jutsu with the Mobility (M) component."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 15,
+        "long": null,
+        "text": "15 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "jinzo",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3, both types of damage by 1d6, and the ranks of Envenomed inflicted by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

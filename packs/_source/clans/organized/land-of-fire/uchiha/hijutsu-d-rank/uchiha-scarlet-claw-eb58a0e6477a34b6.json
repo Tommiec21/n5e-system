@@ -1,0 +1,115 @@
+{
+  "_id": "eb58a0e6477a34b6",
+  "_key": "!items!eb58a0e6477a34b6",
+  "type": "jutsu",
+  "name": "Uchiha Scarlet Claw",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "b89a419f4b5325ed",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "uchiha",
+      "sourceLine": 2237,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet",
+        "duration": "Instant",
+        "cost": "5 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Fire Release",
+        "components": "HS, CM, W (Any Thrown or Ammunition)"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "uchiha-uchiha-scarlet-claw",
+    "description": "<p>You unleash a volley of shuriken, kunai or some other thrown or ranged weapon implements and ignite a blaze covering them with fire release chakra, increasing their destructive potential.</p>\n<p>Select a creature you can see within range that your enflamed weapons will target and make a ranged Ninjutsu or Taijutsu attack, dealing [Weapon Damage] + 3d6 fire damage.</p>\n<p>The affected creature must make a Dexterity saving throw, being Burned on a failed save.</p>\n<p>Off-Guard. An off-guard creature that takes damage from this jutsu suffers a 10-foot penalty to their speed and if they don’t move before the end of their next turn, they take 3d6 fire damage at the end of their next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of this jutsu by 1d6. If this jutsu is cast at B-Rank or higher, the Off-Guard effect now applies a 15-foot penalty to a creatures speed.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 2237; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu",
+      "fireRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, W (Any Thrown or Ammunition)"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, W (Any Thrown or Ammunition)"
+      }
+    },
+    "hijutsu": {
+      "clan": "uchiha",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of this jutsu by 1d6. If this jutsu is cast at B-Rank or higher, the Off-Guard effect now applies a 15-foot penalty to a creatures speed.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

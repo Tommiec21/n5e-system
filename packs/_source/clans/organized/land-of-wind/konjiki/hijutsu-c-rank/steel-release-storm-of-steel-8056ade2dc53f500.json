@@ -1,0 +1,114 @@
+{
+  "_id": "8056ade2dc53f500",
+  "_key": "!items!8056ade2dc53f500",
+  "type": "jutsu",
+  "name": "Steel Release: Storm of Steel",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "20bee10a871ecc1d",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "konjiki",
+      "sourceLine": 3501,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Self (30-foot radius)",
+        "duration": "Concentration, up to 1 Minute.",
+        "cost": "8 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Earth Release",
+        "components": "HS, CM"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "konjiki-steel-release-storm-of-steel",
+    "description": "<p>You create a massive quantity of steel weapons above you in a 30-foot radius. All hostile creatures that start their turn or enter this area for the first time on their turn must make a Dexterity saving throw suffering one of the listed damage type. On a successful saving throw, creatures take half damage and no effects.</p>\n<p>Bludgeoning: On a failure, creatures take 5d6 bludgeoning damage and are Dazed.</p>\n<p>Piercing: On a failure, creatures take 5d6 piercing damage and gain 1 rank of Weakened.</p>\n<p>Slashing: On a failure, creatures take 5d6 slashing damage and gain 1 rank of Ble</p>\n<p>Alomancy Infusion. If you have the Metallic Fan or Metallic Step Alomancy Technique; you can spend 1 ingot as part of this jutsu’s casting to cause all creatures that fail this jutsu’s saving throw to be skewered and pulled into a space of your choice within the affected area.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 3501; contextual rules require adjudication."
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "earthRelease"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM"
+      }
+    },
+    "hijutsu": {
+      "clan": "konjiki",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}

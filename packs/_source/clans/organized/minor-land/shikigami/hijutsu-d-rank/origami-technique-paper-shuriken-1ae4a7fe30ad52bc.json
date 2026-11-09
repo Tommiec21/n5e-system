@@ -1,0 +1,114 @@
+{
+  "_id": "1ae4a7fe30ad52bc",
+  "_key": "!items!1ae4a7fe30ad52bc",
+  "type": "jutsu",
+  "name": "Origami Technique: Paper Shuriken",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "af5ba6d9a64a4fc2",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "shikigami",
+      "sourceLine": 8152,
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "60 Feet",
+        "duration": "Instant",
+        "cost": "4 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
+        "components": "CS, M, W"
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shikigami-origami-technique-paper-shuriken",
+    "description": "<p>You create razor-sharp origami shuriken, and launch them at your foe. Make a ranged ninjutsu attack dealing 4d4 slashing damage.</p>\n<p>Paper Veil. If this jutsu is cast while your Paper Veil state is active, it gains the benefit of your first Canvas Type.</p>\n<p>Explosive Veil. On a hit, the shuriken detonate, forcing the target creature, and all creatures within 10 feet of the target to make a Dexterity saving throw, taking 2d6 fire damage on a failure, or half as much on a success.</p>\n<p>Serrated Veil. On a hit, the affected creature makes a Constitution saving throw, gaining a rank of Bleed on a failure.</p>\n<p>Binding Veil. On a hit, the affected creature makes a Charisma saving throw, gaining a rank of Sealed on a failure.</p>\n<p>Weaving Veil. On a hit, you move up to your speed, and if you end your movement within range of a target, you can make one unarmed attack against them.</p>\n<p>Origami Angel/Demon. If this jutsu is cast while in your Origami Angel/Demon state this jutsu’s range becomes Self (30-foot cone), comparing your attack result, vs the AC of all creatures in range.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3, the attacks damage by 2d4 and all other damage by +1 damage die. If this jutsu is cast at B-Rank or higher, increase the ranks of conditions inflicted and unarmed attacks made by +1. If this jutsu is cast at S-Rank, increase the ranks of conditions inflicted and unarmed attacks made by +1.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 8152; contextual rules require adjudication."
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "bukijutsu"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": true,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "groups": [],
+        "any": true,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CS, M, W"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CS, M, W"
+      }
+    },
+    "hijutsu": {
+      "clan": "shikigami",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost by 3, the attacks damage by 2d4 and all other damage by +1 damage die. If this jutsu is cast at B-Rank or higher, increase the ranks of conditions inflicted and unarmed attacks made by +1. If this jutsu is cast at S-Rank, increase the ranks of conditions inflicted and unarmed attacks made by +1.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [],
+    "featureType": "active"
+  }
+}
