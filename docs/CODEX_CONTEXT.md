@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.7 published with verified recovery-scroll and stale-prompt fixes. GitHub-only publication. Local Foundry is not updated by these batches.
+Current release: 0.13.0-alpha.8 published with registered reaction dispatch, authored damage recipes, newest-first interruption chains and reviewed pre-application recovery. GitHub-only publication. Local Foundry is not updated by these batches.
 
-Current stage: RX3 / MP2 implemented; publication pending. No new live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
+Current stage: RX3 / MP2 published; CI and release succeeded. No new live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -170,3 +170,5 @@ Owner Codex. Paths include reaction dispatch/adapters/chain, authored recipe rul
 Local evidence: 17 new focused checks passed (8 dispatcher/recipe/command, 1 integrated authored damage, 4 recovery/commit revalidation, 4 nested chains), zero failures. No broad/local existing-suite repetition. Existing unchanged suite already had two post-limit runs; only ONE additional CI verification is reserved, bringing it to three. New focused cases have one local attempt and one CI attempt reserved. CI will build/verify once and Release will publish the exact artifact, with no release rerun. Do not run another local full suite. If any scenario reaches two failures stop the entire process. UI/network changes in this batch are not live-verified. Latest preceding live evidence remains alpha7's 17 scenarios.
 
 Version candidate 0.13.0-alpha.8. GitHub-only, pending CI and asset verification. Local Foundry unchanged. General attack/save/casting routing, advanced/redirecting content adapters, automatic uncertain-write replay, authenticated unattended transport and automatic undo are NOT claimed complete. Reaction recipes cover before-damage reduction/multipliers/costs; other timings require registered adapters and explicit workflow wiring. This closes the special-case-only dispatch and pre-application recovery gaps, not the entire future automation roadmap.
+
+RX3 / MP2 publication verified: runtime commit 8d049eeb5, CI run 42685134334 succeeded, Release run 42685208216 succeeded. GitHub v0.13.0-alpha.8 is published with n5e.zip (2,336,982 bytes) and system.json (5,159 bytes). The release downloaded the exact verified CI artifact and ran no additional tests. Existing unchanged suite post-instruction attempts: 3 total, zero failures; new focused scenarios: 2 total (one local, one CI), zero failures. Do not repeat unchanged scenarios. No local installation or new live checks. Broader attack/save-specific integrations and advanced content adapters remain outside this implemented batch; do not describe the entire requested automation scope as finished. Ownership of this batch is released.
