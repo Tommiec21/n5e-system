@@ -1,3 +1,11 @@
+## 0.13.0-alpha.10 — Expanded effect authoring (EE1)
+
+- Expand the existing Foundry effect editor with a searchable typed field browser, explanations, presets, validation and draft-only add/remove/import actions. Save is the commit boundary; stale document saves are refused.
+- Expose existing N5e level/stance suppression, activity exclusivity, state, conditional roll predicates and source-turn expiration controls alongside native transfer/duration settings.
+- Add bounded field estimates, N5e contribution previews, source/timing diagnostics and a raw draft view. Preserve unknown existing flags and unchanged legacy rows.
+- Export portable N5e effect data; import/copy disabled effects without IDs or foreign executable flags. Explicitly identify future engines as unavailable.
+- Nine focused automated checks passed; no live verification. GitHub publication only.
+
 ## 0.13.0-alpha.9 — Native multiplayer coordination (MP3)
 
 - Route native casts, feature use, attacks, activities, resource payments, healing, rests, trackers, saves and damage through active-GM execution, preserving the existing planners and local actor locks.

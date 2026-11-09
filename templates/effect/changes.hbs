@@ -1,0 +1,66 @@
+<section class="tab changes n5e-effect-authoring{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  <p class="hint">Changes stay in this draft until Save effect. Closing discards them. {{suppression}}.</p>
+  {{#if editable}}
+  <fieldset class="n5e-field-browser"><legend>Add a supported field</legend>
+    <label>Search fields<input type="search" data-field-search placeholder="Damage reduction, speed, mastery…"></label>
+    <label>Field<select data-field-picker>{{#each catalog}}<option value="{{key}}">{{group}} · {{label}} [{{type}}] — {{key}}</option>{{/each}}</select></label>
+    <button type="button" data-action="addField"><i class="fa-solid fa-plus"></i> Add selected field</button>
+    <label>Preset<select data-preset>{{#each presets}}<option value="{{id}}">{{label}}</option>{{/each}}</select></label>
+    <button type="button" data-action="preset">Add preset</button>
+  </fieldset>
+  {{/if}}
+  <div class="n5e-effect-row n5e-effect-head"><span>Field</span><span>Mode</span><span>Value</span><span>Priority</span><span></span></div>
+  <ol data-changes>
+    {{#each source.changes as |change i|}}
+    <li class="n5e-effect-row" data-index="{{i}}">
+      <input name="changes.{{i}}.key" value="{{change.key}}" aria-label="Change {{i}} field" placeholder="n5e.dr">
+      <select name="changes.{{i}}.mode" data-dtype="Number" aria-label="Change {{i}} mode">{{selectOptions @root.modes selected=change.mode}}</select>
+      <input name="changes.{{i}}.value" value="{{change.value}}" aria-label="Change {{i}} value" placeholder="2">
+      <input type="number" name="changes.{{i}}.priority" value="{{change.priority}}" data-dtype="Number" aria-label="Change {{i}} priority" placeholder="Auto">
+      {{#if @root.editable}}<button type="button" data-action="deleteChange" aria-label="Remove change {{i}}"><i class="fa-solid fa-trash"></i></button>{{/if}}
+    </li>
+    {{else}}<li class="hint">No field changes. Add a field or preset above.</li>{{/each}}
+  </ol>
+  {{#if editable}}<button type="button" data-action="addChange">Add blank change</button>{{/if}}
+  <div data-editor-status class="n5e-effect-status" role="status" aria-live="polite"></div>
+  <p class="hint">N5e keys use their own additive, cost, dice or mastery rules. Core mode and priority do not alter that behavior. Core system fields use Foundry modes. Hover a field for its explanation.</p>
+  <details>
+    <summary>Conditions, suppression and source-turn expiration</summary>
+    <div class="n5e-effect-fields">
+      <label>Minimum character level (0 = none)<input name="n5eEditor.min" type="number" min="0" step="1" value="{{guidance.min}}"></label>
+      <label>Maximum character level (0 = none)<input name="n5eEditor.max" type="number" min="0" step="1" value="{{guidance.max}}"></label>
+      <label>Required stance category<input name="n5eEditor.stance" value="{{guidance.stance}}" placeholder="taijutsu"></label>
+      <label>Activity exclusivity group<input name="n5eEditor.exclusive" value="{{guidance.exclusive}}"></label>
+      <label>Named N5e state<input name="n5eEditor.state" value="{{guidance.state}}"></label>
+      <label>Source-turn expiration<select name="n5eEditor.expires">{{selectOptions expirationChoices selected=guidance.expires}}</select></label>
+      <label>Source actor UUID<input name="n5eEditor.sourceUuid" value="{{guidance.sourceUuid}}" placeholder="Actor.…"></label>
+    </div>
+    <p class="hint">Level and stance conditions suppress rather than delete an effect. Exclusivity is used by activity application; it is not a universal stacking policy. Source-turn expiration requires the source in the active combat. Seconds/rounds and transfer are configured in the native Duration and Details tabs.</p>
+  </details>
+  <details>
+    <summary>Conditional roll modifiers</summary>
+    <p class="hint">Existing N5e predicates only. Keys: modifier or degreeShift. Selectors: all, attack, damage, save, or an exact roll type/key. Predicates use all/any/not and facts such as self:status:prone. Values are numbers; no scripts.</p>
+    <textarea name="n5eEditor.rules" rows="7" spellcheck="false" aria-label="Conditional modifier rules JSON">{{guidance.rules}}</textarea>
+  </details>
+  <details>
+    <summary>Current timing and source diagnostics</summary>
+    <p class="hint">Current document timing is shown alongside draft settings. Changes take effect after Save. Source-turn rules are evaluated by N5e combat hooks; this is not a new event scheduler.</p>
+    <pre tabindex="0" aria-label="Effect source and timing diagnostics">{{timing}}</pre>
+  </details>
+  <details>
+    <summary>Field estimates and N5e modifier contributions</summary>
+    <p class="hint">Core estimates apply each row to the actor's stored field separately. They do not simulate other effects, ordering or derived statistics. N5e before/after shows this effect's contributions only. Save to recalculate the actor.</p>
+    <pre data-preview tabindex="0" aria-label="Effect field estimates"></pre>
+  </details>
+  <details>
+    <summary>Draft data and portability</summary>
+    <textarea data-raw rows="9" readonly spellcheck="false" aria-label="Read-only effect draft JSON">{{raw}}</textarea>
+    <div class="n5e-effect-tools"><button type="button" data-action="exportEffect">Export draft</button>
+    {{#if editable}}<button type="button" data-action="importEffect">Import draft</button><button type="button" data-action="duplicateEffect">Create disabled copy</button>{{/if}}</div>
+    <p class="hint">Portable exports omit IDs, source-turn links and foreign/executable flags. Imports and copies start disabled. Unknown existing data is retained when editing the original; unsupported rows must remain unchanged or be removed.</p>
+  </details>
+  <details>
+    <summary>Capabilities still unavailable</summary>
+    <p class="hint">Dynamic change formulas; general stacking policies; new event-expiration types; effect macros; token-appearance providers; and automatic DAE import depend on later services. Foreign macro flags do not become N5e scripts.</p>
+  </details>
+</section>

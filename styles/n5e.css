@@ -45,3 +45,26 @@
 /* Recovery histories must remain reachable inside the bounded ApplicationV2 window. */
 #n5e-automation-recovery .window-content { overflow: auto; }
 #n5e-automation-recovery td { overflow-wrap: anywhere; }
+
+/* Expanded effect authoring preserves Foundry's native theme and tabs. */
+.n5e-effect-config .window-content { min-height: 0; }
+.n5e-effect-config .n5e-effect-authoring { overflow: auto; min-height: 0; gap: .65rem; }
+.n5e-effect-config .n5e-field-browser { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .5rem; }
+.n5e-effect-config .n5e-field-browser label:first-of-type { grid-column: 1 / -1; }
+.n5e-effect-config label { display: flex; flex-direction: column; gap: .25rem; font-weight: 500; }
+.n5e-effect-config [data-changes] { list-style: none; margin: 0; padding: 0; }
+.n5e-effect-config .n5e-effect-row { display: grid; grid-template-columns: minmax(150px, 2fr) minmax(95px, 1fr) minmax(75px, 1fr) 70px 32px; gap: .4rem; align-items: center; margin-bottom: .4rem; }
+.n5e-effect-config .n5e-effect-row input, .n5e-effect-config select { min-width: 0; width: 100%; }
+.n5e-effect-config .n5e-effect-head { font-weight: 600; margin-top: .8rem; }
+.n5e-effect-config .n5e-effect-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin-block: .6rem; }
+.n5e-effect-config details { border-top: 1px solid var(--color-border-light-primary, #888); padding-top: .65rem; margin-top: .65rem; }
+.n5e-effect-config summary { cursor: pointer; font-weight: 600; }
+.n5e-effect-config textarea { width: 100%; resize: vertical; min-height: 6rem; font-family: monospace; }
+.n5e-effect-config pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 20rem; overflow: auto; }
+.n5e-effect-config .n5e-effect-status { min-height: 1.5em; font-weight: 600; overflow-wrap: anywhere; }
+.n5e-effect-config .n5e-effect-tools { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: .5rem; }
+.n5e-effect-config :is(input, select, textarea, button, summary):focus-visible { outline: 2px solid var(--color-border-highlight, #b75c40); outline-offset: 2px; }
+@media (max-width: 650px) {
+  .n5e-effect-config .n5e-effect-fields { grid-template-columns: 1fr; }
+  .n5e-effect-config .n5e-effect-row { grid-template-columns: minmax(115px, 2fr) minmax(80px, 1fr) minmax(65px, 1fr) 55px 28px; gap: .2rem; }
+}
