@@ -23,7 +23,7 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {object} target       prepared actor
  * @param {Array<{amount:number, type:string}>} instances
  * @param {object} [o]
- * @param {number} [o.multiplier=1]   0.5 for Half, 2 for Double (applied before DR; rounded down)
+ * @param {number} [o.multiplier=1]   0.5 for Half, 2 for Double; after flat subtraction.
  * @param {number} [o.pierce=0]
  * @param {boolean} [o.ignoreDR]      condition/environment damage, or effects that say so
  * @param {boolean} [o.genjutsu]      source is a Genjutsu (its psychic damage ignores DR)
@@ -34,9 +34,8 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   const sys = target.system;
   const traits = sys.traits ?? {};
   const steps = [];
-  let parts = instances.map(i => ({ type: i.type || "", amount: Math.max(0, Math.floor((Number(i.amount) || 0) * multiplier)) }));
+  let parts = instances.map(i => ({ type: i.type || "", amount: Math.max(0, Math.floor(Number(i.amount) || 0)) }));
   const raw = parts.reduce((t, p) => t + p.amount, 0);
-  if ( multiplier !== 1 ) steps.push(`${multiplier === 0.5 ? "Half" : `×${multiplier}`}: ${raw}`);
 
   // DR once for the whole calculation, minus Pierce; exempt instances don't use it up.
   // Piercing Ninjutsu (Molding): half of the target's DR (after Pierce), resistance ignored, immunity
@@ -56,28 +55,21 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
 
   // Resistance / vulnerability / immunity per type.
   parts = parts.map(p => {
-    if ( !p.type || !p.amount ) return p;
-    if ( has(traits.immune, p.type) && piercing ) {
-      const half = Math.floor(p.amount / 2);
-      steps.push(`Immune to ${p.type}, Piercing: ${p.amount} → ${half}`);
-      return { ...p, amount: half };
-    }
-    if ( has(traits.immune, p.type) ) {
+    if ( !p.amount ) return p;
+    if ( has(traits.immune, p.type) && !piercing ) {
       steps.push(`Immune to ${p.type}: −${p.amount}`);
       return { ...p, amount: 0 };
     }
-    const r = has(traits.resist, p.type) && !piercing;
-    const v = has(traits.vuln, p.type);
-    if ( r && !v ) {
-      const half = Math.floor(p.amount / 2);
-      steps.push(`Resists ${p.type}: ${p.amount} → ${half}`);
-      return { ...p, amount: half };
-    }
-    if ( v && !r ) {
-      steps.push(`Vulnerable to ${p.type}: ${p.amount} → ${p.amount * 2}`);
-      return { ...p, amount: p.amount * 2 };
-    }
-    return p;
+    const immunityAsResistance = has(traits.immune, p.type) && piercing;
+    const r = (has(traits.resist, p.type) && !piercing) || immunityAsResistance;
+    const v = !immunityAsResistance && has(traits.vuln, p.type);
+    // Equal sources do not stack; opposite Half/Double sources cancel (King 2026-11-09).
+    const defenseFactor = r === v ? 1 : r ? 0.5 : 2;
+    const factor = defenseFactor === 1 ? multiplier : multiplier === 1 || multiplier === defenseFactor ? defenseFactor
+      : (multiplier === 0.5 && defenseFactor === 2) || (multiplier === 2 && defenseFactor === 0.5) ? 1 : multiplier;
+    const amount = Math.max(0, Math.floor(p.amount * factor));
+    if ( factor !== 1 || (multiplier !== 1 && defenseFactor !== 1) ) steps.push(`${p.type || "Damage"} multiplier ${factor}${immunityAsResistance ? " (immunity treated as resistance)" : ""}: ${p.amount} → ${amount}`);
+    return { ...p, amount };
   });
 
   const chakra = parts.filter(p => p.type === "chakra").reduce((t, p) => t + p.amount, 0);

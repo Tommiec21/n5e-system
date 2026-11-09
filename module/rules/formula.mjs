@@ -9,8 +9,8 @@
  *   evaluateFormula (here)      numbers only, used while preparing data (pool max, uses max, DCs).
  *   resolveFormula (unarmed.mjs) text substitution before a Roll: lvl(1:1d8,5:2d8), @level,
  *                                @amount, @poolRoll. The result then goes to Foundry's Roll.
- * Security: the expression is checked against a whitelist before it is evaluated, so stored text
- * can never run code.
+ * N5e precedence (King 2026-11-09): addition/subtraction before multiplication/division.
+ * Parentheses retain explicit grouping. A bounded parser evaluates numbers, never JavaScript.
  */
 
 const FUNCTIONS = { floor: Math.floor, ceil: Math.ceil, round: Math.round, min: Math.min, max: Math.max, abs: Math.abs };
@@ -35,15 +35,41 @@ export function replaceRefs(formula, data = {}) {
  * @param {number} [fallback=0]
  */
 export function evaluateFormula(formula, data = {}, fallback = 0) {
-  if ( typeof formula === "number" ) return formula;
+  if ( typeof formula === "number" ) return Number.isFinite(formula) ? formula : fallback;
   if ( formula == null || String(formula).trim() === "" ) return fallback;
   const expr = replaceRefs(formula, data);
-  // Only allow digits, operators, whitespace, parentheses, commas, dots, and known function names.
-  const stripped = expr.replace(/\b(floor|ceil|round|min|max|abs)\b/g, "");
-  if ( /[^\d+\-*/().,\s]/.test(stripped) ) return fallback;
   try {
-    const fn = new Function(...Object.keys(FUNCTIONS), `"use strict"; return (${expr});`);
-    const result = fn(...Object.values(FUNCTIONS));
+    if ( expr.length > 4096 ) return fallback;
+    const tokens = expr.match(/\d+(?:\.\d*)?|\.\d+|[a-zA-Z_]+|[^\s]/g) ?? [];
+    let at = 0, depth = 0;
+    const primary = () => {
+      if ( ++depth > 60 ) throw new Error("Formula nesting limit");
+      let result;
+      const token = tokens[at++];
+      if ( token === "+" || token === "-" ) result = (token === "-" ? -1 : 1) * primary();
+      else if ( token === "(" ) { result = product(); if ( tokens[at++] !== ")" ) throw new Error("Missing parenthesis"); }
+      else if ( Object.hasOwn(FUNCTIONS, token) ) {
+        if ( tokens[at++] !== "(" ) throw new Error("Expected function arguments");
+        const args = [product()];
+        while ( tokens[at] === "," ) { at++; args.push(product()); }
+        if ( tokens[at++] !== ")" || (!["min", "max"].includes(token) && args.length !== 1) ) throw new Error("Invalid function arguments");
+        result = FUNCTIONS[token](...args);
+      } else if ( /^(?:\d+(?:\.\d*)?|\.\d+)$/.test(token ?? "") ) result = Number(token);
+      else throw new Error("Invalid formula token");
+      depth--; return result;
+    };
+    const sum = () => {
+      let value = primary();
+      while ( ["+", "-"].includes(tokens[at]) ) { const op = tokens[at++], next = primary(); value = op === "+" ? value + next : value - next; }
+      return value;
+    };
+    const product = () => {
+      let value = sum();
+      while ( ["*", "/"].includes(tokens[at]) ) { const op = tokens[at++], next = sum(); value = op === "*" ? value * next : value / next; }
+      return value;
+    };
+    const result = product();
+    if ( at !== tokens.length ) return fallback;
     return Number.isFinite(result) ? result : fallback;
   } catch {
     return fallback;

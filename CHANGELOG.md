@@ -1,3 +1,9 @@
+## 0.13.0-alpha.3 — N5e numeric precedence and damage modifiers (MATH1)
+
+- Numeric formula parser evaluates addition/subtraction before multiplication/division, with explicit grouping and no JavaScript evaluation.
+- Flat damage subtraction precedes multipliers; equal half/double sources apply once and opposite sources cancel.
+- Scope: numeric preparation and damage planning; complex Foundry dice syntax still requires a later adapter. No automated ability use yet.
+
 ## 0.13.0-alpha.2 — Reaction decision-window pilot (RX1)
 
 - Optional private owner accept/decline prompts, active-GM review and final resolution, persisted deadlines, and a GM-editable 60-second timeout (0 disables it).

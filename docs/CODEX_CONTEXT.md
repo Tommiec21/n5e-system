@@ -85,3 +85,13 @@ MP1 is published as https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0
 
 Version 0.13.0-alpha.2: opt-in private reaction prompts to eligible connected owners; GM-reviewed advisory responses; persisted terminal decisions; source ability recheck; 60-second default, configurable nonnegative seconds, 0 disables; elapsed time hands unanswered prompts to GM with no auto-answer/cost. Verified 207 passed, 2 existing skips, lint/schema checks passed. No live Foundry validation. API/manual pilot only: no ability effect or resource consumption and no automatic combat suspension yet. User requires automated visibility before Uncanny Dodge eligibility. Next prerequisites: arithmetic precedence and automatic visibility, while full damage modifier choice ruling is pending.
 
+
+### RX1 published and next prerequisite batch
+
+RX1 published: https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.2; commit 69171b19f4805854b5ef288beb92c2d772f7f7dc; n5e.zip and system.json verified present. Next active scope: MATH1, numeric expression precedence and damage multiplier ordering/cancellation, required before reactive damage. User ruling: halving and doubling cancel to normal damage; identical multiplier sources apply only once. No manual visibility override for Uncanny Dodge; wait for automated visibility.
+
+
+### MATH1 completed — publication pending
+
+Version 0.13.0-alpha.3: bounded numeric parser with addition/subtraction before multiplication/division and explicit parentheses; flat damage subtraction before multipliers; identical Half/Double sources apply once, opposite Half/Double cancel. Immunity priority preserved. 210 passed, 2 existing skips, zero failures, lint/schema checks passed. Complex dice expressions still use Foundry parsing and need a later adapter. No arbitrary JavaScript numeric evaluation. RX1 GitHub CI and Release confirmed successful. Next active implementation: coordinated GM damage with Deflection; Uncanny Dodge still waits for automated visibility.
+

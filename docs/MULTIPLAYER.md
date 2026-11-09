@@ -33,3 +33,11 @@ The active GM opens a window with `await game.n5e.api.openReactionWindow(actor, 
 The active GM resumes persisted deadlines on startup and user updates. A decision cannot be overwritten after resolution. Deleted abilities are rejected on final decision. Prompt text must not include hidden rolls or private defenses; the caller supplies only public opportunity text. Feature-specific visibility, cost/eligibility, damage math and suspended combat continuation are later batches. Uncanny Dodge cannot be enabled until automated visibility is available, by user direction.
 
 Automated tests cover configurable/disabled timing, GM-only handoff, immutable/terminal state, eligible owners, private recipients, mandatory response review and no resource mutation. Actual multi-client dialogs, GM handover and browser timer behavior still require live test-world validation.
+
+## MATH1: prerequisite arithmetic rules
+
+User rulings November9: addition/subtraction precedes multiplication/division; halving and doubling cancel to normal damage; identical multiplier sources do not stack. Numeric derived formulas now use a bounded parser with this precedence and explicit parentheses. Examples: `10 - 2 * 3 = 24`; `10 - (2 * 3) = 4`. Missing references retain the existing fallback-to-zero contract; invalid numeric formulas return their fallback. No JavaScript evaluation is used by the numeric evaluator.
+
+The damage planner now performs flat DR subtraction before half/double modifiers and combines those modifiers with resistance/vulnerability without repeated halving/doubling. Immunity retains priority; Piercing immunity-as-resistance is not ignored. Existing DR-once and source exemptions are preserved. This is a rules correction, not a toggle: existing formulas containing mixed ungrouped operators may change their derived totals under the user's ruling. Audit custom formulas and add explicit grouping if intended.
+
+Scope warning: Foundry dice-roll expressions still use their existing parsing. Converting every complex dice syntax to N5e precedence requires a separate roll-expression adapter; this batch changes numeric derived formulas and damage-stage math only. Do not claim global dice precedence is complete. Deflection and Uncanny Dodge are not automatically resolved by this batch. Live test-world validation remains outstanding.
