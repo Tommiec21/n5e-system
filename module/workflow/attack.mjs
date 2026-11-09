@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData } from "../automation/multiplayer.mjs";
 /**
  * Weapon and unarmed attacks (pure spec + Foundry roll).
  *
@@ -70,11 +71,12 @@ export function weaponAttackSpec(actor, weapon = null) {
  * Attack with a weapon (or unarmed when weapon is null): attack card with damage buttons, then the
  * Ammunition Die for weapons that use one.
  */
-export async function attackWithWeapon(actor, weapon = null, { event } = {}) {
+export async function attackWithWeapon(actor, weapon = null, { event, authoritative = false, targetActors } = {}) {
+  if ( shouldCoordinate(authoritative) ) return submitWorkflow("attack", { actorUuid: actor.uuid, itemId: weapon?.id, event: clickData(event), ...targetSnapshot() });
   const spec = weaponAttackSpec(actor, weapon);
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }], { abilityMod: spec.abilityMod, weapon: true, weaponId: weapon?.id })}</div></div>`;
-  const message = await rollWithSpec(actor, spec, { event });
+  const message = await rollWithSpec(actor, spec, { event, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
   if ( message && actor.isOwner ) await actor.update({ "flags.n5e.economy.action": true });
   if ( message && weapon && spec.ammo ) await rollAmmo(weapon);
   return message;
@@ -86,7 +88,7 @@ export async function attackWithWeapon(actor, weapon = null, { event } = {}) {
  * @param {Actor} actor
  * @param {{kind, dieSteps, extraDice, pierce, maximize, attacks}} s
  */
-export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll = null } = {}) {
+export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll = null, targetActors = null } = {}) {
   const weapon = s.kind === "weapon" ? actor.items.find(i => i.type === "weapon" && i.system.equipped) ?? null : null;
   if ( s.kind === "weapon" && !weapon ) return ui.notifications.warn("Equip a weapon for this strike.");
   const spec = weaponAttackSpec(actor, weapon);
@@ -102,7 +104,7 @@ export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll
     const one = { ...spec, label: `${label}${n > 1 ? ` (${i + 1}/${n})` : ""}` };
     one.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons([{ formula, type: spec.damage.types[0] ?? "" }],
       { abilityMod: mod, weapon: true, weaponId: weapon?.id, pierce: s.pierce || 0 })}</div></div>`;
-    last = await rollWithSpec(actor, one, { event });
+    last = await rollWithSpec(actor, one, { event, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     if ( !last ) return null;
     if ( weapon && spec.ammo ) await rollAmmo(weapon);
   }

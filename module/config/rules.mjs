@@ -20,10 +20,12 @@ export const ruleGroups = {
 };
 
 export const rules = {
+  multiplayerCoordination: { group: "casting", type: "boolean", default: true, label: "Coordinate multiplayer actions through the active GM",
+    hint: "Serialize casts, attacks, activities, resources, healing, rests and damage on the active GM. Player requests require GM review. Disable for the manual owner-local workflow." },
   coordinatedDamage: { group: "casting", type: "boolean", default: false, label: "Coordinated GM damage and reactions (pilot)",
-    hint: "Active GM applies each damage-card/target once. Requires reaction windows. Base Deflection and visibility-checked Uncanny Dodge; unsupported geometry/upgrades need reconciliation." },
+    hint: "Active GM applies each damage-card/target once. Requires reaction windows. Base Deflection, visibility-checked Uncanny Dodge and configured damage reactions; unsupported geometry remains manual." },
   reactionWindows: { group: "casting", type: "boolean", default: false, label: "Reaction decision windows (pilot)",
-    hint: "Enable GM-authored player reaction prompts. Decisions do not yet apply damage or spend resources." },
+    hint: "Ask players about eligible successful-hit or damage reactions; GM reviews responses. Configured resolutions recheck costs before application." },
   reactionTimeoutSeconds: { group: "casting", type: "number", default: 60, min: 0, label: "Reaction player timeout (seconds)",
     hint: "After this many seconds the GM resolves unanswered prompts. Set 0 to disable the timer. Existing windows keep their original deadline." },
   // Rolls

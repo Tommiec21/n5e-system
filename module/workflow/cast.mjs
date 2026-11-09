@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card.
@@ -119,6 +120,12 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     });
     if ( !sel ) return null;
   }
+  if ( shouldCoordinate(false) ) return submitWorkflow("cast", { actorUuid: actor.uuid, itemId: item.id, selection: sel, ...targetSnapshot() });
+  return executeCast(actor, item, sel);
+}
+
+export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
+  sel = { ...sel, now: nowTurn() };
   // Spend and post inside the actor's queue, so a second click re-reads the pools first.
   return withActorLock(actor, async () => {
     if ( !actor.isOwner ) {
@@ -133,7 +140,7 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     await actor.update(plan.update);
     const message = await postCastCard(actor, item, plan);
     // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
-    if ( rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
+    if ( areaPrompt && rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
     return message;
   });
 }

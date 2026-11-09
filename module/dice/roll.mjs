@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "./n5e-roll.mjs";
 /**
  * Rolling d20s from the sheet and posting them to chat (Foundry side). The rules live in dice/d20.mjs.
@@ -55,9 +56,10 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
  * @returns {Promise<ChatMessage|null>}
  */
 export async function rollD20(actor, type, key, options = {}) {
+  if ( shouldCoordinate(options.authoritative) ) return submitWorkflow("roll", { actorUuid: actor.uuid, rollType: type, key, event: clickData(options.event), ...targetSnapshot() });
   const spec = rollSpec(actor, type, key);
   if ( !spec ) return null;
-  return rollWithSpec(actor, spec, options);
+  return rollWithSpec(actor, spec, { ...options, ...(options.targetActors ? { target: options.targetActors.length === 1 ? options.targetActors[0] : null } : {}) });
 }
 
 /**
@@ -110,7 +112,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
-    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }),
+    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }) + (spec.kind === "attack" ? '<button type="button" data-n5e-hit="1">Successful hit: reactions</button>' : ""),
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
       dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null } } }
@@ -136,7 +138,8 @@ async function awardWillOfFire(actor, result) {
  * @param {ChatMessage} message
  * @param {"reroll"|"advantage"} how
  */
-export async function spendWillOfFire(message, how) {
+export async function spendWillOfFire(message, how, { authoritative = false } = {}) {
+  if ( shouldCoordinate(authoritative) ) return submitWorkflow("willOfFire", { messageUuid: message.uuid, how });
   const data = message.getFlag("n5e", "roll");
   const actor = data?.actorUuid ? await fromUuid(data.actorUuid) : null;
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the roller's owner can spend their Will of Fire.");
@@ -187,7 +190,7 @@ export async function spendWillOfFire(message, how) {
  * imported on click so loading the chat log stays cheap.
  */
 export function onRenderChatMessage(message, html) {
-  for ( const btn of html.querySelectorAll("[data-n5e-apply], [data-n5e-inflict], [data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave]") ) {
+  for ( const btn of html.querySelectorAll("[data-n5e-hit], [data-n5e-retarget], [data-n5e-apply], [data-n5e-inflict], [data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();
       import("../workflow/apply-damage.mjs").then(m => m.onApplyClick(message, btn, ev));
@@ -202,7 +205,7 @@ export function onRenderChatMessage(message, html) {
   for ( const btn of html.querySelectorAll("[data-n5e-track], [data-n5e-resave]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();
-      import("../workflow/trackers.mjs").then(m => (btn.dataset.n5eResave ? m.rollResave(btn, ev) : m.onTrackerClick(message, btn)));
+      import("../workflow/trackers.mjs").then(m => (btn.dataset.n5eResave ? m.rollResave(btn, ev, { message }) : m.onTrackerClick(message, btn)));
     });
   }
   // Place a jutsu's area on the map (workflow/areas.mjs).

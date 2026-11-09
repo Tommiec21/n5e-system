@@ -56,6 +56,7 @@ dispatcher.register("authored-damage", {
 export const registerReaction = (id, adapter) => dispatcher.register(id, adapter);
 export const listReactions = () => dispatcher.list();
 export async function chooseReaction(actor, event, context) {
+  if ( !["beforeDamage", "successfulHit"].includes(event) ) throw new Error("This reaction timing is manual. Automation supports successful hits and rolled damage only.");
   if ( !rule("reactionWindows") ) return null;
   return dispatcher.choose(actor, event, context);
 }

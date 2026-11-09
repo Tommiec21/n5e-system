@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Phase 6 trackers (Foundry side); rules in rules/trackers.mjs.
@@ -89,11 +90,11 @@ export async function onWeaponDamage(actor) {
 /* -------------------------------------------- */
 
 /** Mark the targeted creatures with a Mark jutsu the actor is concentrating on (steps the ammo die down 1). */
-export async function placeMarks(actor, itemId) {
+export async function placeMarks(actor, itemId, targetActors = null) {
   const item = actor.items.get(itemId);
   const { mark } = item ? jutsuTrackers(item) : {};
   if ( !mark ) return null;
-  const targets = targetedActors();
+  const targets = targetActors ?? targetedActors();
   if ( !targets.length ) return ui.notifications.info("Target the creatures to Mark (T over a token).");
   const ammo = actor.items.find(i => i.type === "weapon" && i.system.equipped && i.system.ammo?.usesDie);
   if ( ammo ) {
@@ -123,17 +124,21 @@ export function trackerButtons(actor, item) {
  * @param {ChatMessage} message  the cast card (flags.n5e.cast.actorUuid names the caster)
  * @param {HTMLElement} btn      data-n5e-track = mark|branded|amp, data-item = the jutsu's id
  */
-export async function onTrackerClick(message, btn) {
+export async function onTrackerClick(message, btn, { authoritative = false, targetActors = null } = {}) {
+  if ( shouldCoordinate(authoritative) ) {
+    try { return submitWorkflow("tracker", { messageUuid: message.uuid, buttonIndex: buttonIndex(message, btn, "[data-n5e-track]"), ...targetSnapshot() }); }
+    catch (error) { ui.notifications.warn(error.message); return null; }
+  }
   const casterUuid = message.getFlag("n5e", "cast")?.actorUuid;
   const actor = casterUuid ? await fromUuid(casterUuid) : null;
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the caster's owner can use this.");
   const item = actor.items.get(btn.dataset.item);
   if ( !item ) return null;
   const kind = btn.dataset.n5eTrack;
-  if ( kind === "mark" ) return placeMarks(actor, item.id);
+  if ( kind === "mark" ) return placeMarks(actor, item.id, targetActors);
   const defs = jutsuTrackers(item);
   if ( kind === "branded" ) {
-    const targets = targetedActors();
+    const targets = targetActors ?? targetedActors();
     if ( !targets.length ) return ui.notifications.info("Target the creatures to Brand (T over a token).");
     for ( const t of targets ) {
       await requestEffects({ actorUuid: t.uuid, effects: [trackerEffectData("branded", defs.branded,
@@ -142,7 +147,7 @@ export async function onTrackerClick(message, btn) {
     return say(actor, `${esc(targets.map(t => t.name).join(", "))}: ${esc(defs.branded.label)}`);
   }
   if ( kind === "amp" ) {
-    const targets = targetedActors();
+    const targets = targetActors ?? targetedActors();
     const who = targets.length ? targets : [actor];
     const dur = item.system.duration ?? {};
     const seconds = dur.unit === "minute" ? (dur.value || 1) * 60 : dur.unit === "hour" ? (dur.value || 1) * 3600
@@ -308,7 +313,12 @@ export async function trackersTurnEnd(combat, actor, now) {
 }
 
 /** Resave button: success ends the effect. */
-export async function rollResave(btn, event) {
+export async function rollResave(btn, event, { authoritative = false, message } = {}) {
+  if ( shouldCoordinate(authoritative) && message ) {
+    try { return submitWorkflow("resave", { actorUuid: btn.dataset.actor, messageUuid: message.uuid,
+      buttonIndex: buttonIndex(message, btn, "[data-n5e-resave]"), event: { altKey: !!event?.altKey, shiftKey: !!event?.shiftKey, ctrlKey: !!event?.ctrlKey, metaKey: !!event?.metaKey } }); }
+    catch (error) { ui.notifications.warn(error.message); return null; }
+  }
   const actor = await fromUuid(btn.dataset.actor);
   const effect = actor?.effects.get(btn.dataset.n5eResave);
   if ( !actor?.isOwner || !effect ) return ui.notifications.warn("Only the owner rolls this save.");
@@ -356,9 +366,9 @@ const evalNumber = expr => {
  * @param {Item|null} [o.item]    source item (image, origin, description)
  * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
-export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null } = {}) {
+export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null } = {}) {
   const sub = v => resolveFormula(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0)), actor);
-  const targets = eff.target === "targets" ? targetedActors() : [actor];
+  const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");
     return null;

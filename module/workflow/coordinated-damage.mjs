@@ -1,7 +1,7 @@
 /** Persistent per-target damage commands with extensible, revalidated reaction adapters. */
 import { requestFingerprint } from "../automation/receipts.mjs";
 import { coordinateCommand } from "../automation/commands.mjs";
-import { chooseReaction, resolveReactionChain } from "./reaction-adapters.mjs";
+import { chooseReaction } from "./reaction-adapters.mjs";
 import { rule } from "../rules-settings.mjs";
 import { retireReactionWindows } from "./reactions.mjs";
 
@@ -22,16 +22,10 @@ export async function coordinateDamage(message, data, mode, targets, apply, { re
         return true; // Declining a reaction does not decline the GM's damage command.
       },
       apply: async () => {
-        await resolveReactionChain(target, "beforeDamage", { data, message, mode }, async ({ actor, event, context, selection }) => {
-          if ( event !== "beforeDamage" || !Array.isArray(context.data?.instances) || !context.data.instances.length
-            || context.data.instances.some(i => !Number.isFinite(i.amount) || i.amount < 0)
-            || !["full", "half", "double"].includes(context.mode ?? mode) ) throw new Error("Damage interruptions must supply a valid beforeDamage context.");
-          const applied = await apply({ ...context.data, targetUuid: actor.uuid }, context.mode ?? mode, {
-            coordinated: true, beforePlan: current => selection ? selection.prepare(current) : {}
-          });
-          if ( !applied ) throw new Error("Damage application was cancelled; inspect its receipt before retrying.");
-          return applied;
-        }, { selection });
+        const applied = await apply({ ...data, targetUuid: target.uuid }, mode, {
+          coordinated: true, beforePlan: actor => selection ? selection.prepare(actor) : {}
+        });
+        if ( !applied ) throw new Error("Damage application was cancelled; check the actor before retrying.");
       }
     });
     results.push(result);

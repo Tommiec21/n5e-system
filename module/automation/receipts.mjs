@@ -34,14 +34,14 @@ export function createReceiptCoordinator({ read, write, authority, now = () => D
           if ( prior.fingerprint !== fingerprint ) throw new Error("Request id was reused for different content.");
           if ( !(resumeReview && prior.state === "reviewing") ) {
             if ( !["committed", "declined", "rejected"].includes(prior.state) ) throw new Error("Request completion is uncertain. The GM must inspect the target; do not resubmit it.");
-            return { ok: prior.state === "committed", state: prior.state, replay: true };
+            return { ok: prior.state === "committed", state: prior.state, replay: true, ...(prior.result === undefined ? {} : { result: prior.result }) };
           }
         }
         // Never evict receipts silently: otherwise an old packet could apply again.
         if ( !prior && ledger.entries.length >= limit ) throw new Error("Request history is full. The GM must archive/reconcile it before more remote requests.");
         const receipt = prior ?? { id, type, fingerprint, state: "reviewing", created: now(),
           actorUuid: typeof (payload.actorUuid ?? payload.target) === "string" ? (payload.actorUuid ?? payload.target) : null,
-          sourceUuid: typeof payload.message === "string" ? payload.message : null,
+          sourceUuid: typeof (payload.message ?? payload.messageUuid) === "string" ? (payload.message ?? payload.messageUuid) : null,
           mode: type === "damage" && ["full", "half", "double"].includes(payload.mode) ? payload.mode : null };
         if ( prior ) receipt.resumed = now(); else ledger.entries.push(receipt);
         const persist = async () => { requireAuthority(); receipt.updated = now(); await write(structuredClone(ledger)); };
@@ -52,10 +52,14 @@ export function createReceiptCoordinator({ read, write, authority, now = () => D
           receipt.state = "applying";
           await persist(); // Write-ahead intent: a crash after this is uncertain, never safe to replay.
           requireAuthority();
-          await apply();
+          const result = await apply();
+          if ( type === "workflow" && result !== undefined ) {
+            await requestFingerprint("result", result);
+            receipt.result = structuredClone(result);
+          }
           receipt.state = "committed";
           await persist();
-          return { ok: true, state: receipt.state, replay: false };
+          return { ok: true, state: receipt.state, replay: false, ...(receipt.result === undefined ? {} : { result: receipt.result }) };
         } catch (error) {
           receipt.state = ["applying", "committed"].includes(receipt.state) ? "uncertain" : "rejected";
           try { await persist(); } catch { /* Retained write-ahead intent blocks retry after handover. */ }

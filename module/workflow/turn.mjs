@@ -71,7 +71,9 @@ async function onTurnStart(combat) {
 
 /** End concentration from a turn card (free). */
 /** End concentration from a turn card (free): drop the jutsu id and its recorded paid cost. */
-export async function endConcentration(actor, id) {
+export async function endConcentration(actor, id, { authoritative = false } = {}) {
+  const { shouldCoordinate, submitWorkflow } = await import("../automation/multiplayer.mjs");
+  if ( shouldCoordinate(authoritative) ) return submitWorkflow("endConcentration", { actorUuid: actor.uuid, itemId: id });
   const keep = (actor.system.combat?.concentrating ?? []).filter(x => x !== id);
   return actor.update({ "system.combat.concentrating": keep, [`flags.n5e.concentrationPaid.-=${id}`]: null });
 }

@@ -6,15 +6,15 @@ import { rule } from "../rules-settings.mjs";
  * Alternative buttons on one feature share its once-per-turn allowance (e.g. Lethal Attack).
  * Save rolls belong to the defenders and therefore never consume the caster's action here.
  */
-export async function executeActivity(message, button, event, execute, targetsFor) {
+export async function executeActivity(message, button, event, execute, targetsFor, { selectedActors = null, targetActors = null } = {}) {
   if ( button.disabled ) return null;
   button.disabled = true;
   try {
     const uuid = message.getFlag("n5e", "cast")?.actorUuid ?? message.getFlag("n5e", "roll")?.actorUuid ?? message.getFlag("n5e", "actorUuid");
     const actor = uuid ? await fromUuid(uuid) : message.speakerActor;
     if ( !actor ) return execute(message, button, event);
-    const healingTargets = button.dataset.n5eAct === "heal" ? targetsFor(actor) : [];
-    return await withActorLocks([actor, ...healingTargets], async () => {
+    const healingTargets = button.dataset.n5eAct === "heal" ? (selectedActors?.length ? selectedActors : selectedActors ? [actor] : targetsFor(actor)) : [];
+    return await withActorLocks([actor, ...healingTargets, ...(selectedActors ?? []), ...(targetActors ?? [])], async () => {
       const d = button.dataset;
       const item = d.item ? actor.items.get?.(d.item) : null;
       const authored = item?.system.activities?.find(a => (a.id || a.label || a.type) === d.activity);
@@ -34,7 +34,7 @@ export async function executeActivity(message, button, event, execute, targetsFo
       const refund = async () => {
         if ( poolBefore !== undefined && actor.system.resources[cost.pool].value !== poolBefore ) await actor.update({ [`system.resources.${cost.pool}.value`]: poolBefore });
       };
-      try { result = await execute(message, button, event, { healingTargets }); }
+      try { result = await execute(message, button, event, { healingTargets, selectedActors, targetActors }); }
       catch (error) { await refund(); throw error; }
       if ( result == null ) await refund();
       // Failed/cancelled operations return null/undefined; successful plain resource rolls return a receipt.

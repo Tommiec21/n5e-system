@@ -1,3 +1,5 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
+import { chooseReaction } from "./reaction-adapters.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs.
@@ -151,7 +153,8 @@ async function concentrationCheck(actor, dc, jutsuIds, event) {
 }
 
 /** Death save (no bonuses): >= 10 success; nat 1 two failures; nat 20 back to 1 HP. */
-export async function rollDeathSave(actor) {
+export async function rollDeathSave(actor, { authoritative = false } = {}) {
+  if ( shouldCoordinate(authoritative) ) return submitWorkflow("deathSave", { actorUuid: actor.uuid });
   if ( !actor?.isOwner ) return null;
   const roll = await createN5eRoll("1d20").evaluate();
   const res = deathSaveResult(actor.system.deathSaves, roll.total);
@@ -178,8 +181,30 @@ export async function rollDeathSave(actor) {
 }
 
 /** Chat button dispatcher (damage card, apply card, save result, turn card). */
-export async function onApplyClick(message, btn, event) {
+export async function onApplyClick(message, btn, event, { authoritative = false } = {}) {
+  if ( shouldCoordinate(authoritative) ) {
+    try {
+      if ( btn.dataset.n5eHit ) {
+        const roll = message.getFlag("n5e", "roll");
+        const uuids = roll?.targetUuid ? [roll.targetUuid] : targetSnapshot().selectedActorUuids;
+        if ( !uuids.length ) return ui.notifications.info("Select the creature hit by this attack.");
+        return Promise.all(uuids.map(actorUuid => submitWorkflow("hit", { actorUuid, messageUuid: message.uuid })));
+      }
+      if ( btn.dataset.n5eRetarget ) return retargetDamage(message);
+      if ( btn.dataset.n5eApply ) {
+        const data = message.getFlag("n5e", "damage") ?? {};
+        const uuids = data.targetUuid ? [data.targetUuid] : targetSnapshot().selectedActorUuids;
+        if ( !uuids.length ) return ui.notifications.info("Select recipients, or use Retarget.");
+        const results = [];
+        for ( const actorUuid of uuids ) results.push(await submitWorkflow("damage", { actorUuid, messageUuid: message.uuid, mode: btn.dataset.n5eApply }));
+        return results;
+      }
+      return submitWorkflow("apply", { messageUuid: message.uuid, buttonIndex: buttonIndex(message, btn, "[data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave], [data-n5e-inflict]"), event: clickData(event) });
+    } catch (error) { ui.notifications.warn(error.message); return null; }
+  }
+  if ( btn.dataset.n5eRetarget ) return retargetDamage(message);
   const d = btn.dataset;
+  if ( d.n5eHit ) return ui.notifications.info("Resolve this hit manually, or enable multiplayer coordination for its reaction window.");
   if ( d.n5eApply ) {
     const data = message.getFlag("n5e", "damage") ?? {};
     if ( rule("coordinatedDamage") && d.n5eApply !== "heal" ) {
@@ -198,7 +223,7 @@ export async function onApplyClick(message, btn, event) {
     btn.disabled = true;
     return concentrationCheck(actor, Number(d.n5eConcheck), JSON.parse(d.jutsu || "[]"), event);
   }
-  if ( d.n5eDeathsave ) return rollDeathSave(await fromUuid(d.n5eDeathsave));
+  if ( d.n5eDeathsave ) return rollDeathSave(await fromUuid(d.n5eDeathsave), { authoritative });
   if ( d.n5eInflict ) {
     const uuid = message.getFlag("n5e", "roll")?.actorUuid;
     const actor = uuid ? await fromUuid(uuid) : null;
@@ -217,4 +242,31 @@ export async function onApplyClick(message, btn, event) {
     return effect;
   }
   return null;
+}
+
+/** Damage-roll timing only; nested reaction work is deferred by the user. */
+export async function resolveDamageReaction(message, data, mode, actor, apply) {
+  const selection = mode !== "heal" && rule("coordinatedDamage") && rule("reactionWindows")
+    ? await chooseReaction(actor, "beforeDamage", { data, message }) : null;
+  const result = await apply({ ...data, targetUuid: actor.uuid }, mode, { coordinated: true,
+    beforePlan: current => selection ? selection.prepare(current) : {} });
+  if ( !result ) throw new Error("Damage application was cancelled or unconfirmed.");
+  return result;
+}
+
+async function retargetDamage(message) {
+  const candidates = new Map();
+  for ( const token of canvas?.tokens?.placeables ?? [] ) if ( token.actor && (game.user.isGM || token.visible) ) candidates.set(token.actor.uuid, token.actor);
+  for ( const actor of game.actors?.contents ?? [] ) if ( game.user.isGM || actor.testUserPermission(game.user, "LIMITED") ) candidates.set(actor.uuid, actor);
+  if ( !candidates.size ) return ui.notifications.info("No visible recipients are available.");
+  const uuid = await foundry.applications.api.DialogV2.prompt({ window: { title: "Retarget rolled damage" },
+    content: '<p>Choose who receives this existing roll. This does not reroll damage or undo an earlier application.</p><label>Recipient<select name="recipient">' + [...candidates.values()].map(a => '<option value="' + esc(a.uuid) + '">' + esc(a.name) + '</option>').join('') + '</select></label>',
+    ok: { label: "Apply to recipient", callback: (event, button) => button.form.elements.recipient.value }, rejectClose: false });
+  if ( !uuid || !candidates.has(uuid) ) return null;
+  if ( !rule("multiplayerCoordination") ) {
+    const actor = candidates.get(uuid);
+    if ( !actor.isOwner ) return ui.notifications.warn("Enable multiplayer coordination to request damage on another actor.");
+    return applyToSelected({ ...message.getFlag("n5e", "damage"), targetUuid: uuid }, "full");
+  }
+  return submitWorkflow("damage", { actorUuid: uuid, messageUuid: message.uuid, mode: "full" });
 }

@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Rest dialogs (Foundry side). Short: choose Hit Dice and Chakra Dice to spend (rolled together,
@@ -125,4 +126,7 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
 }
 
 /** Recheck limits inside the queue; await GM ration approval before granting benefits. */
-export function takeRest(actor, type, choice) { return withActorLock(actor, () => executeRest(actor, type, choice)); }
+export function takeRest(actor, type, choice, { authoritative = false } = {}) {
+  if ( shouldCoordinate(authoritative) ) return submitWorkflow("rest", { actorUuid: actor.uuid, restType: type, choice });
+  return withActorLock(actor, () => executeRest(actor, type, choice));
+}

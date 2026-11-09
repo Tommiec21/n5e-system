@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData } from "../../automation/multiplayer.mjs";
 /**
  * N5e character sheet (Phase 2).
  * Structure follows dnd5e v5's ApplicationV2 sheets (one part per tab, edit/play mode, context menus);
@@ -592,27 +593,32 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
   /** Fury tracker +/−. */
   static async #onChangeFury(event, target) {
+    if ( shouldCoordinate(false) ) return submitWorkflow("trackerAction", { actorUuid: this.actor.uuid, action: "fury", delta: Number(target.dataset.delta) || 0 });
     return changeFury(this.actor, Number(target.dataset.delta) || 0);
   }
 
   /** 8-Inner Gates: open the next gate (dialog picks the action used). */
   static async #onOpenGate() {
+    if ( shouldCoordinate(false) ) return submitWorkflow("trackerAction", { actorUuid: this.actor.uuid, action: "openGate" });
     return openNextGate(this.actor);
   }
 
   /** 8-Inner Gates: close them (Exhaustion, Bruised, death as the gates say). */
   static async #onCloseGates() {
+    if ( shouldCoordinate(false) ) return submitWorkflow("trackerAction", { actorUuid: this.actor.uuid, action: "closeGates" });
     return closeGates(this.actor);
   }
 
   /** Marks tracker: Mark the targeted creatures with this jutsu. */
   static async #onPlaceMark(event, target) {
+    if ( shouldCoordinate(false) ) return submitWorkflow("trackerAction", { actorUuid: this.actor.uuid, action: "mark", itemId: target.closest("[data-item-id]")?.dataset.itemId, ...targetSnapshot() });
     return placeMarks(this.actor, target.closest("[data-item-id]")?.dataset.itemId);
   }
 
   /** Rail hand icon: try to end a condition with its removal check. */
   static async #onTryEndCondition(event, target) {
     const effect = this.actor.effects.get(target.closest("[data-effect-id]")?.dataset.effectId);
+    if ( effect && shouldCoordinate(false) ) return submitWorkflow("endCondition", { actorUuid: this.actor.uuid, effectId: effect.id, event: clickData(event) });
     if ( effect ) return tryEndCondition(this.actor, effect, event);
   }
 

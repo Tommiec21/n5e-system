@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /** Shared validated resource payment for activities and feature use. */
 import { withActorLock } from "./commands.mjs";
@@ -13,7 +14,11 @@ import { esc } from "../view-models/common.mjs";
  *   choose: ask the player how many to spend (Pyroclasm's Detonate)
  * @returns {Promise<{roll: number|null, amount: number}|null>}  roll: the pool die total, when rolled
  */
-export async function payPoolCost(actor, cost, { locked = false } = {}) {
+export async function payPoolCost(actor, cost, { locked = false, authoritative = false } = {}) {
+  if ( !locked && shouldCoordinate(authoritative) ) {
+    const chosen = cost.choose ? await choosePoolCost(actor, cost) : cost;
+    return chosen ? submitWorkflow("resource", { actorUuid: actor.uuid, cost: chosen }) : null;
+  }
   if ( !locked ) return withActorLock(actor, () => payPoolCost(actor, cost, { locked: true }));
   let pool = actor.system.resources?.[cost.pool];
   let amount = cost.amount ?? 1;
@@ -56,5 +61,18 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),
     flavor: `<div class="n5e-roll-card"><header><b>${esc(pool.label || cost.pool)}</b><span class="bonus">${roll.total}</span></header><div class="note">Spent ${amount}</div></div>` });
   return { roll: roll.total, amount };
+}
+
+/** Collect the player's quantity before GM dispatch; execution still rechecks the live pool. */
+export async function choosePoolCost(actor, cost) {
+  const pool = actor.system.resources?.[cost.pool];
+  if ( !pool ) throw new Error("That resource pool is unavailable.");
+  const cap = cost.gain ? (pool.maxValue ?? 0) - (pool.value ?? 0) : (pool.value ?? 0);
+  const amount = await foundry.applications.api.DialogV2.prompt({ window: { title: `Choose ${pool.label || cost.pool}` },
+    content: `<label>Amount<input name="amount" type="number" min="1" max="${cap}" step="1" value="1"></label>`,
+    ok: { callback: (event, button) => Number(button.form.elements.amount.value) }, rejectClose: false });
+  if ( amount == null ) return null;
+  if ( !Number.isSafeInteger(amount) || amount < 1 || amount > cap ) throw new Error("Choose a whole amount within the available resource limit.");
+  return { ...cost, choose: false, amount };
 }
 

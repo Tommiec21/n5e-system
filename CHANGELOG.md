@@ -1,3 +1,11 @@
+## 0.13.0-alpha.9 — Native multiplayer coordination (MP3)
+
+- Route native casts, feature use, attacks, activities, resource payments, healing, rests, trackers, saves and damage through active-GM execution, preserving the existing planners and local actor locks.
+- Carry player selection/target snapshots; reconstruct actions from original stored cards and reject cards changed while awaiting approval. Remote requests retain mandatory GM review.
+- Return verified durable results, coalesce simultaneous clicks, retain duplicate detection and isolate failed requests with an unconfirmed-result warning. No automatic retry or expanded recovery.
+- Add Retarget to rolled damage; retain the original roll and use the recipient's defenses. Permit successful-hit confirmation windows and rolled-damage reactions only. Other timings are manual.
+- Defer nested chains and advanced redirects by user instruction. No live verification; user performs in-game acceptance. No local Foundry installation changes.
+
 ## 0.13.0-alpha.8 — Extensible reactions and reviewed recovery (RX3 / MP2)
 
 - Replace hardcoded reaction branching with an owned-item adapter registry, multiple offers, deterministic priorities and one-use preparation.

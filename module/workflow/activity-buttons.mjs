@@ -1,3 +1,4 @@
+import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Chat card buttons for activities, and what happens when they're clicked.
@@ -99,6 +100,7 @@ export function applyButtons() {
     <button type="button" data-n5e-apply="full" data-tooltip="Apply to the selected tokens (to intercept: select the interceptor)"><i class="fa-solid fa-heart-crack"></i> Apply</button>
     <button type="button" data-n5e-apply="half" data-tooltip="Half damage (e.g. a successful save)">Half</button>
     <button type="button" data-n5e-apply="double" data-tooltip="Double damage (vulnerability effects that say so)">×2</button>
+    <button type="button" data-n5e-retarget="1">Retarget</button>
     <button type="button" data-n5e-apply="heal" data-tooltip="Heal the selected tokens by this amount">Heal</button></div>`;
 }
 
@@ -246,7 +248,7 @@ function targetsOrSelf(fallback) {
  * @param {HTMLElement} button   the clicked button (its dataset holds the activity data)
  * @param {Event} event          the click (Shift/Alt/Ctrl pick the roll mode, see dice/d20.mjs)
  */
-async function executeActivityClick(message, button, event, { healingTargets = null } = {}) {
+async function executeActivityClick(message, button, event, { healingTargets = null, selectedActors = null, targetActors = null } = {}) {
   const d = button.dataset;
   const speaker = CONFIG.ChatMessage.documentClass.getSpeaker;
   const casterUuid = message.getFlag("n5e", "cast")?.actorUuid ?? message.getFlag("n5e", "roll")?.actorUuid
@@ -279,7 +281,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "strike": {
       if ( !caster?.isOwner ) return fail("warn", "Only the owner can make this attack.");
       const { strikeAttack } = await import("./attack.mjs");
-      return strikeAttack(caster, JSON.parse(d.strike || "{}"), { event, label: d.label, poolRoll });
+      return strikeAttack(caster, JSON.parse(d.strike || "{}"), { event, label: d.label, poolRoll, targetActors });
     }
     case "check": {
       if ( !caster?.isOwner ) return fail("warn", "Only the owner can roll this check.");
@@ -301,7 +303,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "attack": {
       if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
-        { event, mode: d.adv ? "advantage" : undefined });
+        { event, mode: d.adv ? "advantage" : undefined, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     }
     case "damage": {
       // Roll each part on its own so every damage type keeps its amount (the damage pipeline needs
@@ -312,7 +314,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const coatings = weapon ? activeCoatings(weapon, game.time.worldTime) : [];
       if ( coatings.length && !weapon.isOwner ) return fail("warn", "Only the weapon owner can roll coated damage.");
       parts.push(...coatings.flatMap(c => c.parts.map(p => ({ ...p, abilityMod: 0 }))));
-      const targets = Array.from(game.user?.targets ?? []);
+      const targets = targetActors ? targetActors.map(actor => ({ actor })) : Array.from(game.user?.targets ?? []);
       const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
       if ( modifiers.bonus && parts.length ) parts[0] = { ...parts[0], formula: `(${parts[0].formula}) + (${modifiers.bonus})` };
       const crit = !!d.crit;
@@ -351,7 +353,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "save": {
       const dc = Number(d.dc);
-      const targets = targetsOrSelf(null);
+      const targets = selectedActors ?? targetsOrSelf(null);
       if ( !targets.length ) return fail("info", "Select the tokens that roll the save.");
       let first = true;
       let rolled = 0;
@@ -406,6 +408,25 @@ function fail(level, message) {
 }
 
 /** All activity kinds share validation, turn limits, resource refund and hook handling. */
-export function onActivityClick(message, button, event) {
-  return executeActivity(message, button, event, executeActivityClick, targetsOrSelf);
+export async function onActivityClick(message, button, event, options = {}) {
+  if ( shouldCoordinate(options.authoritative) ) {
+    try {
+      if ( button.disabled ) return null;
+      button.disabled = true;
+      const index = buttonIndex(message, button, "[data-n5e-act]");
+      const cost = JSON.parse(button.dataset.cost ?? "null");
+      let resourceAmount;
+      if ( cost?.choose ) {
+        const uuid = message.getFlag("n5e", "cast")?.actorUuid ?? message.getFlag("n5e", "roll")?.actorUuid ?? message.getFlag("n5e", "actorUuid");
+        const actor = await fromUuid(uuid);
+        const chosen = await (await import("./resources.mjs")).choosePoolCost(actor, cost);
+        if ( !chosen ) return null;
+        resourceAmount = chosen.amount;
+      }
+      return await submitWorkflow("activity", { messageUuid: message.uuid, buttonIndex: index, resourceAmount, event: clickData(event), ...targetSnapshot() });
+    }
+    catch (error) { return fail("warn", error.message); }
+    finally { button.disabled = false; }
+  }
+  return executeActivity(message, button, event, executeActivityClick, targetsOrSelf, options);
 }
