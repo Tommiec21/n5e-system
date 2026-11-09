@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.8 published with registered reaction dispatch, authored damage recipes, newest-first interruption chains and reviewed pre-application recovery. GitHub-only publication. Local Foundry is not updated by these batches.
+Current release: 0.13.0-alpha.9 published: native active-GM multiplayer action coordination, explicit player targets, stored-card validation, basic duplicate protection and damage retargeting. GitHub only; local Foundry unchanged.
 
-Current stage: RX3 / MP2 published; CI and release succeeded. No new live tests. Testing cap: three total attempts per test/scenario; two failures stop the entire process. Count automatic CI runs too.
+Current stage: MP3 published; narrowed multiplayer implementation complete, automated gate passed. User performs in-game acceptance. Never perform live verification again.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -182,3 +182,7 @@ User narrowed scope: finish multiplayer action coordination; reactions only succ
 Native multiplayer entrypoints now submit typed requests to active-GM execution. Covers casts/features/attacks/card activities/pool costs/healing/rests/trackers/d20/death saves/condition saves/concentration/Will of Fire and rolled damage. Explicit player target snapshots, stored-card reconstruction/fingerprints, committed-result acknowledgments, concurrent click coalescing and isolated errors use existing planners/queues/receipts. Retarget UI retains rolled damage. Hit-confirmed reaction windows and damage timing only; all other timings manual. Nested automatic dispatch removed from damage and deferred, advanced automation excluded. No recovery expansion. No live verification EVER per user; user performs acceptance. Local Foundry untouched.
 
 Focused MP3 attempt1: six of seven new scenarios passed. Stored-card activity scenario failed because the harness omitted CONFIG.ChatMessage.documentClass.getSpeaker, before card execution. Added that missing Foundry stub; do NOT rerun locally. Its next attempt is CI (attempt2); a second failure stops the entire process. One CI verification/build reserved; release consumes its exact artifact, no second gate. Do not repeat passing local cases. Publication pending.
+
+MP3 publication verified: runtime commit 34e171711, CI run 42689068638 succeeded, Release run 42689126479 succeeded. GitHub v0.13.0-alpha.9 has n5e.zip (2,345,266 bytes) and system.json (5,159 bytes). Release reused the CI-verified artifact without another test execution. New scenarios: one local attempt (6 pass, 1 missing CONFIG fixture failure), then one CI attempt (all passed). The missing fixture was fixed without local repetition; its total failure count is one. No scenario ran more than twice in this batch. No live verification or local installation.
+
+Native multiplayer coordination for the user's narrowed scope is implemented and published. Successful-hit confirmation and damage-roll timing only; other reaction timings manual. No advanced redirect system: recipient retargeting is provided. Nested chains are deferred and no longer called by automatic damage. Basic duplicate protection and uncertain-completion warnings remain; no recovery expansion. Direct field edits, canvas placement and arbitrary third-party/macro mutations remain ordinary Foundry editing and are not intercepted. In-game verification is deliberately left to the user, per their instruction. MP3 ownership released.
