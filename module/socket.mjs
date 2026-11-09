@@ -6,9 +6,17 @@
 import { rule } from "./rules-settings.mjs";
 import { esc } from "./view-models/common.mjs";
 import { withActorLock } from "./workflow/commands.mjs";
-import { createReceiptCoordinator } from "./automation/receipts.mjs";
+import { createReceiptCoordinator, requestFingerprint } from "./automation/receipts.mjs";
 const pending = new Map();
 const CHANNEL = "system.n5e";
+function settleReceipt(id) {
+  const request = pending.get(id);
+  if ( !request?.acknowledged ) return;
+  const ledger = game.settings.get("n5e", "requestReceipts");
+  const receipt = ledger?.entries?.find(e => e.id === id);
+  if ( (ledger?.epoch ?? 1) !== request.epoch || receipt?.fingerprint !== request.fingerprint || receipt.state !== "committed" ) return;
+  pending.delete(id); clearTimeout(request.timer); request.resolve(true);
+}
 const coordinator = createReceiptCoordinator({
   read: () => game.settings.get("n5e", "requestReceipts") ?? { version: 1, epoch: 1, entries: [] },
   write: data => game.settings.set("n5e", "requestReceipts", data),
@@ -56,20 +64,25 @@ export async function asGM(type, payload) {
   if ( game.user.isGM || request.owned ) { await request.run(); return true; }
   if ( !game.users.activeGM ) throw new Error("A GM needs to be connected for this.");
   const requestId = crypto.randomUUID();
+  const fingerprint = await requestFingerprint(type, payload);
+  const epoch = game.settings.get("n5e", "requestReceipts")?.epoch ?? 1;
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => { pending.delete(requestId); reject(new Error("The GM request timed out; no success was confirmed.")); }, 120000);
-    pending.set(requestId, { resolve, reject, timer });
-    game.socket.emit(CHANNEL, { requestId, type, payload, requestEpoch: game.settings.get("n5e", "requestReceipts")?.epoch ?? 1 });
+    pending.set(requestId, { resolve, reject, timer, fingerprint, epoch });
+    game.socket.emit(CHANNEL, { requestId, type, payload, requestEpoch: epoch });
   });
 }
 
 export function registerSocket() {
+  globalThis.Hooks?.on?.("updateSetting", setting => {
+    if ( setting.key === "n5e.requestReceipts" ) for ( const id of pending.keys() ) settleReceipt(id);
+  });
   game.socket?.on(CHANNEL, async data => {
     if ( data?.responseTo ) {
       const p = pending.get(data.responseTo);
       if ( !p ) return;
-      pending.delete(data.responseTo); clearTimeout(p.timer);
-      if ( data.ok ) p.resolve(true); else p.reject(new Error(data.error || "The GM declined the request."));
+      if ( data.ok ) { p.acknowledged = true; settleReceipt(data.responseTo); }
+      else { pending.delete(data.responseTo); clearTimeout(p.timer); p.reject(new Error(data.error || "The GM declined the request.")); }
       return;
     }
     if ( !game.users.activeGM?.isSelf || typeof data?.requestId !== "string" ) return;

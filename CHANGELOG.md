@@ -1,3 +1,9 @@
+## 0.13.0-alpha.4 — Coordinated damage and base Deflection (RX2)
+
+- Optional GM damage-card workflow with durable per-card/actor identity, private reaction decisions, eligibility rechecks and combined damage/resource/reaction updates.
+- Apply user rulings: DR independently protects HP/CP; the creature chooses type allocation within a pool; Deflection is rolled DR with the same rules.
+- Legacy manual workflow stays default; coordinated corrections use explicit reconciliation rather than unsafe snapshot undo. Advanced Deflection and Uncanny Dodge remain outside this pilot.
+
 ## 0.13.0-alpha.3 — N5e numeric precedence and damage modifiers (MATH1)
 
 - Numeric formula parser evaluates addition/subtraction before multiplication/division, with explicit grouping and no JavaScript evaluation.

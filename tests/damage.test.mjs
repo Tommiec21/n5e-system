@@ -18,12 +18,12 @@ const target = (traits = {}, extra = {}) => {
   return a;
 };
 
-test("DR applies once to the whole calculation, before resistance; Pierce lowers it", () => {
+test("DR applies once within the HP pool before resistance; Pierce lowers it", () => {
   const a = target({ resist: ["fire"] });
   const p = damagePlan(a, [{ amount: 10, type: "fire" }, { amount: 6, type: "slashing" }]);
   // DR 3 comes off the first instance (10 -> 7), then fire resisted (7 -> 3); slashing 6.
   assert.equal(p.health, 3 + 6);
-  assert.match(p.steps[0], /DR 3: −3/);
+  assert.match(p.steps[0], /DR 3 per pool: −3/);
   const pierced = damagePlan(a, [{ amount: 10, type: "slashing" }], { pierce: 2 });
   assert.equal(pierced.health, 9, "DR 3 - Pierce 2 = 1");
 });

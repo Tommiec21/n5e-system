@@ -32,7 +32,7 @@
 | Ammunition Die (d8 → d6 → d4 → 1 → gone on 1-2) | `workflow/ammo.mjs`, `config/equipment.mjs ammoDie` | 03, 08 |
 | Casting: cost, Moldings/Maneuvers, concentration, Chain/Combo, cast options | `workflow/cast-plan.mjs`, `rules/cast-options.mjs`, `rules/cast-tracking.mjs` | 04, 12 |
 | Turn start: upkeep, Chain reset, Combo clear, economy, recharge | `rules/turn-start.mjs`, `workflow/turn.mjs` | 03, 04 |
-| Damage: interception, DR once before resistance, Pierce, Genjutsu psychic, res/vuln/immunity, temp pools | `rules/damage.mjs` | 03 |
+| Damage: interception, DR per resource pool with creature-chosen type order, before resistance, Pierce, Genjutsu psychic, res/vuln/immunity, temp pools | `rules/damage.mjs` | 03 |
 | 0 HP, instant death, death saves, NPCs die at 0 | `rules/damage.mjs`, `workflow/apply-damage.mjs` | 03 |
 | Concentration check on damage (Stable exempt) | `rules/damage.mjs concentrationOnDamage` | 04 |
 | Conditions from failed saves (Apply buttons) | `rules/activity-parse.mjs parseInflicted` | 05, 10 |

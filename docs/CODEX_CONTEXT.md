@@ -95,3 +95,20 @@ RX1 published: https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alph
 
 Version 0.13.0-alpha.3: bounded numeric parser with addition/subtraction before multiplication/division and explicit parentheses; flat damage subtraction before multipliers; identical Half/Double sources apply once, opposite Half/Double cancel. Immunity priority preserved. 210 passed, 2 existing skips, zero failures, lint/schema checks passed. Complex dice expressions still use Foundry parsing and need a later adapter. No arbitrary JavaScript numeric evaluation. RX1 GitHub CI and Release confirmed successful. Next active implementation: coordinated GM damage with Deflection; Uncanny Dodge still waits for automated visibility.
 
+
+### MATH1 published
+
+https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.3; commit f93f521d6c5998b322269b875da867155cc50670. GitHub CI/Release succeeded and both assets verified. Next batch RX2: opt-in coordinated GM damage/Deflection pilot; no Uncanny Dodge until automated visibility. Exact allocation of flat reduction across multiple damage types has been asked and remains pending.
+
+
+### RX2 and DR rulings — completed, publication pending
+
+Owner Codex. Version 0.13.0-alpha.4: opt-in coordinated active-GM damage-card application with durable per-card/actor identity; base Deflection private decisions and revalidation; one combined actor update for damage, Discipline and reaction allowance. Repeated cards cannot roll/pay/apply again; changed apply modes are refused under that identity. Advanced Flurry Techniques/Defensive Draw and Uncanny Dodge remain unsupported in this pilot. Multi-actor actions are individually receipted, not atomic.
+
+LOCKED USER RULINGS: Deflection is dynamic/rolled DR and follows the same rules as static DR. DR is independently available against HP and CP damage (e.g. Fire and Chakra each receive DR). Types sharing a pool use one budget; the damaged creature chooses which type receives DR first, with leftovers applied to the next. The old 'one budget for the whole calculation' statement is superseded. Static plus rolled DR is handled together, including Pierce/exemptions, before multipliers. HP-type allocation is an explicit dialog; a GM operating it records the creature's choice rather than inventing it.
+
+Added GM Automation Recovery settings window, receipt target/source references, explicit export/archive, and positive-reply verification against committed matching world receipts. Unknown/partial outcomes never blindly retry. Legacy snapshot Undo is disabled only for coordinated applications because it cannot safely reverse the reaction/resources; default manual workflow retains Undo. Corrections use explicit GM reconciliation. GM loss while waiting aborts the original continuation; a pending prompt is not permission to restart an uncertain damage action.
+
+Verification: 217 tests passed, 2 original fixture skips, zero failures; lint/data/template checks and package build passed. Coverage includes mixed HP/CP DR, creature-chosen type order/resistance interactions, rolled DR/Pierce, Deflection scaling/eligibility, one application/cost/roll per card, forged success acknowledgments and archive failure handling. Live GM/two-player verification remains outstanding. No local Foundry changes.
+
+Publication pending. Next dependencies: observer-specific automated visibility (Uncanny Dodge must wait; no GM confirmation substitute) and N5e precedence for complex Foundry dice expressions. RX2 is a bounded base-Deflection pilot, not completed universal reactive resolution.

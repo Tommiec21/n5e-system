@@ -48,6 +48,18 @@ export async function resolveReactionWindow(message, decision) {
   });
 }
 
+/** Wait without holding actor locks; authority loss cancels continuation, never auto-applies it. */
+export function waitForReactionWindow(message) {
+  return new Promise((resolve, reject) => {
+    const timer = setInterval(() => {
+      if ( !activeGM() ) { clearInterval(timer); reject(new Error("GM authority changed; reconcile the pending damage request.")); return; }
+      if ( !game.messages.has(message.id) ) { clearInterval(timer); reject(new Error("Reaction window was deleted; damage was not resumed.")); return; }
+      const state = current(message)?.state;
+      if ( ["accepted", "declined"].includes(state) ) { clearInterval(timer); resolve(state); }
+    }, 250);
+  });
+}
+
 async function sendDecision(message, decision) {
   if ( activeGM() ) return resolveReactionWindow(message, decision);
   const window = current(message), actor = await fromUuid(window.actorUuid);

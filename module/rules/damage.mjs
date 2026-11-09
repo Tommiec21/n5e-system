@@ -3,7 +3,7 @@
  *
  *   1. Interception happens first and changes the target entirely: apply the damage to the interceptor,
  *      whose DR, resistances and effects are the ones that count.
- *   2. DR applies ONCE to the whole damage calculation (not per type), reduced by Pierce. Damage from
+ *   2. DR applies once per resource pool, in the damaged creature’s chosen type order, reduced by Pierce. Damage from
  *      conditions or hostile environments ignores DR. Genjutsu psychic damage ignores DR.
  *   3. Resistance halves (round down), vulnerability doubles; both on the same type cancel.
  *   4. Immunity: no damage of that type.
@@ -30,27 +30,32 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {boolean} [o.crit]
  * @param {boolean} [o.piercing]      Piercing Ninjutsu: half DR, no resistance, immunity -> resistance
  */
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false } = {}) {
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder } = {}) {
   const sys = target.system;
   const traits = sys.traits ?? {};
   const steps = [];
   let parts = instances.map(i => ({ type: i.type || "", amount: Math.max(0, Math.floor(Number(i.amount) || 0)) }));
   const raw = parts.reduce((t, p) => t + p.amount, 0);
 
-  // DR once for the whole calculation, minus Pierce; exempt instances don't use it up.
-  // Piercing Ninjutsu (Molding): half of the target's DR (after Pierce), resistance ignored, immunity
-  // treated as resistance.
-  const dr = Math.max(0, piercing ? Math.floor(((sys.dr ?? 0) - pierce) / 2) : (sys.dr ?? 0) - pierce);
+  // Static and rolled DR share the same rules; one budget independently protects HP and CP.
+  if ( !Number.isFinite(flatReduction) || flatReduction < 0 ) throw new Error("Invalid rolled DR.");
+  const totalDR = (sys.dr ?? 0) + Math.floor(flatReduction);
+  const dr = Math.max(0, piercing ? Math.floor((totalDR - pierce) / 2) : totalDR - pierce);
+  const eligibleTypes = [...new Set(parts.filter(p => p.amount > 0 && !(genjutsu && p.type === "psychic")).map(p => p.type))];
+  const healthTypes = eligibleTypes.filter(t => t !== "chakra");
+  const requiresDROrder = !ignoreDR && dr > 0 && healthTypes.length > 1 && drOrder === undefined;
+  if ( drOrder && (drOrder.length !== eligibleTypes.length || new Set(drOrder).size !== drOrder.length || eligibleTypes.some(t => !drOrder.includes(t))) ) throw new Error("Choose every eligible damage type exactly once.");
   if ( !ignoreDR && dr > 0 ) {
-    let left = dr;
-    parts = parts.map(p => {
-      if ( genjutsu && p.type === "psychic" ) return p;
-      const cut = Math.min(left, p.amount);
-      left -= cut;
-      return { ...p, amount: p.amount - cut };
-    });
-    const used = dr - left;
-    if ( used ) steps.push(`DR ${dr}${pierce ? ` (Pierce ${pierce})` : ""}: −${used}`);
+    const left = { hp: dr, cp: dr }, order = drOrder ?? eligibleTypes;
+    const indices = parts.map((p, index) => index).sort((a, b) => order.indexOf(parts[a].type) - order.indexOf(parts[b].type));
+    for ( const i of indices ) {
+      const p = parts[i];
+      if ( genjutsu && p.type === "psychic" ) continue;
+      const pool = p.type === "chakra" ? "cp" : "hp", cut = Math.min(left[pool], p.amount);
+      left[pool] -= cut; parts[i] = { ...p, amount: p.amount - cut };
+    }
+    const used = (dr - left.hp) + (dr - left.cp);
+    if ( used ) steps.push("DR " + dr + " per pool" + (flatReduction ? " (includes " + flatReduction + " Deflection)" : "") + ": −" + used);
   }
 
   // Resistance / vulnerability / immunity per type.
@@ -95,7 +100,7 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   if ( deathFromDamageAtZero ) deathFailures = (health >= hpMax ? 3 : (crit ? 2 : 1));
   const dropsToZero = health > 0 && !wasAtZero && hp.value === 0;
   return {
-    total: health + chakra, health, chakra, raw, steps, parts,
+    total: health + chakra, health, chakra, raw, steps, parts, requiresDROrder, eligibleTypes,
     hpLost: health ? (sys.hp.value - hp.value) : 0, tempHpLost: hp.fromTemp, cpLost: chakra ? (sys.cp.value - cp.value) : 0,
     tempCpLost: cp.fromTemp, update, dropsToZero, instantDeath, deathFailures, wasAtZero
   };

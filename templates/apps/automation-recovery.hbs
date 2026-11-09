@@ -1,0 +1,14 @@
+<section>
+  <p>Request epoch {{epoch}}. Review interrupted requests against the actor and chat history before starting a replacement action. A timeout does not prove that nothing happened.</p>
+  <p>Recovery never automatically reverses damage or resource spending. Reconcile partial results first, then export and archive reviewed history.</p>
+  <button type="button" data-action="refresh">Refresh</button>
+  <button type="button" data-action="archive" {{#unless allowed}}disabled{{/unless}}>I reconciled this history — export and archive</button>
+  <table>
+    <thead><tr><th>Request</th><th>Type</th><th>Status</th><th>Inspect</th></tr></thead>
+    <tbody>{{#each entries}}
+      <tr><td>{{id}}</td><td>{{type}}</td><td>{{state}}{{#if unfinished}} — needs review{{/if}}</td>
+        <td>{{#if actorUuid}}<button type="button" data-action="inspect" data-uuid="{{actorUuid}}">Actor</button>{{/if}}
+          {{#if sourceUuid}}<span title="{{sourceUuid}}">Source: {{sourceUuid}}</span>{{/if}}</td></tr>
+    {{else}}<tr><td colspan="4">No request receipts in this epoch.</td></tr>{{/each}}</tbody>
+  </table>
+</section>

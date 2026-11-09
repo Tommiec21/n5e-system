@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createReceiptCoordinator } from "../module/automation/receipts.mjs";
+import { createReceiptCoordinator, requestFingerprint } from "../module/automation/receipts.mjs";
 
 function fixture() {
   let ledger = { version: 1, entries: [] }, active = true, failWrite = false;
@@ -8,6 +8,10 @@ function fixture() {
   return { service: () => createReceiptCoordinator(options), ledger: () => ledger, active: value => { active = value; }, fail: () => { failWrite = true; } };
 }
 const request = { id: "receipt-1", type: "spendRations", payload: { amount: 1 } };
+
+test("optional undefined object fields fingerprint like their JSON socket representation", async () => {
+  assert.equal(await requestFingerprint("effect", { name: "Mark", origin: undefined }), await requestFingerprint("effect", { name: "Mark" }));
+});
 
 test("concurrent duplicate requests and a new coordinator share one durable result", async () => {
   const f = fixture(); let calls = 0, approvals = 0;

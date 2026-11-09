@@ -6,7 +6,7 @@ function canonical(value, depth = 0) {
   if ( value === null || ["string", "boolean"].includes(typeof value) ) return JSON.stringify(value);
   if ( typeof value === "number" && Number.isFinite(value) ) return JSON.stringify(value);
   if ( Array.isArray(value) ) return `[${value.map(v => canonical(v, depth + 1)).join(",")}]`;
-  if ( value && Object.getPrototypeOf(value) === Object.prototype ) return `{${Object.keys(value).sort().map(k => `${JSON.stringify(k)}:${canonical(value[k], depth + 1)}`).join(",")}}`;
+  if ( value && Object.getPrototypeOf(value) === Object.prototype ) return `{${Object.keys(value).filter(k => value[k] !== undefined).sort().map(k => `${JSON.stringify(k)}:${canonical(value[k], depth + 1)}`).join(",")}}`;
   throw new Error("Requests must contain ordinary JSON data.");
 }
 
@@ -37,7 +37,9 @@ export function createReceiptCoordinator({ read, write, authority, now = () => D
         }
         // Never evict receipts silently: otherwise an old packet could apply again.
         if ( ledger.entries.length >= limit ) throw new Error("Request history is full. The GM must archive/reconcile it before more remote requests.");
-        const receipt = { id, type, fingerprint, state: "reviewing", created: now() };
+        const receipt = { id, type, fingerprint, state: "reviewing", created: now(),
+          actorUuid: typeof (payload.actorUuid ?? payload.target) === "string" ? (payload.actorUuid ?? payload.target) : null,
+          sourceUuid: typeof payload.message === "string" ? payload.message : null };
         ledger.entries.push(receipt);
         const persist = async () => { requireAuthority(); receipt.updated = now(); await write(structuredClone(ledger)); };
         await persist(); // Failure here prevents any prompt or mutation.

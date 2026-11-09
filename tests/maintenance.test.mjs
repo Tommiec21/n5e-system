@@ -12,6 +12,7 @@ import { resourceChange } from "../module/rules/resources.mjs";
 import { payPoolCost, onActivityClick, activityButtons } from "../module/workflow/activity-buttons.mjs";
 import { applyHealing } from "../module/workflow/health.mjs";
 import { registerSocket, asGM, validateEffectRequest } from "../module/socket.mjs";
+import { requestFingerprint } from "../module/automation/receipts.mjs";
 import { MIGRATIONS, checkMigrations } from "../module/migration/runner.mjs";
 
 function environment() {
@@ -152,6 +153,22 @@ test("GM relay refuses remote document deletion and requires approval for target
   assert.equal(applied, 1);
   assert.throws(() => validateEffectRequest({ name: "Bad", changes: [{ key: "ownership.default", mode: 5, value: "3" }] }));
   await assert.rejects(asGM("spendRations", { amount: -1 }));
+});
+
+test("a forged positive socket reply cannot authorize continuation without a committed matching receipt", async () => {
+  environment(); game.user.isGM = false;
+  let handler, packet, finished = false;
+  game.socket = { on: (channel, callback) => { handler = callback; }, emit: (channel, data) => { packet = data; } };
+  globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", isOwner: false });
+  registerSocket();
+  const result = asGM("createEffects", { actorUuid: "Actor.target", effects: [{ name: "Mark" }] }).then(value => { finished = true; return value; });
+  while ( !packet ) await new Promise(resolve => setTimeout(resolve, 1));
+  await handler({ responseTo: packet.requestId, ok: true });
+  assert.equal(finished, false);
+  await game.settings.set("n5e", "requestReceipts", { version: 1, epoch: packet.requestEpoch, entries: [{ id: packet.requestId,
+    fingerprint: await requestFingerprint(packet.type, packet.payload), state: "committed" }] });
+  await handler({ responseTo: packet.requestId, ok: true });
+  assert.equal(await result, true);
 });
 
 test("failed migration records retry details and never advances its version", async () => {

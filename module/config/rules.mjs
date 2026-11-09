@@ -20,6 +20,8 @@ export const ruleGroups = {
 };
 
 export const rules = {
+  coordinatedDamage: { group: "casting", type: "boolean", default: false, label: "Coordinated GM damage and base Deflection (pilot)",
+    hint: "Active GM applies each damage-card/target once with durable receipts. Requires reaction windows. Base Deflection only; upgraded techniques and corrections use GM reconciliation." },
   reactionWindows: { group: "casting", type: "boolean", default: false, label: "Reaction decision windows (pilot)",
     hint: "Enable GM-authored player reaction prompts. Decisions do not yet apply damage or spend resources." },
   reactionTimeoutSeconds: { group: "casting", type: "number", default: 60, min: 0, label: "Reaction player timeout (seconds)",

@@ -18,6 +18,7 @@ import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 import { applyHealing } from "./health.mjs";
 import { rule } from "../rules-settings.mjs";
+import { coordinateDamage } from "./coordinated-damage.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
 
@@ -37,7 +38,7 @@ function selectedActors() {
  *                               Overview's quick damage) instead of the selected tokens
  * @param {"full"|"half"|"double"|"heal"} mode
  */
-export async function applyToSelected(data, mode) {
+export async function applyToSelected(data, mode, { coordinated = false, beforePlan } = {}) {
   const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
   const targets = fixed ? (fixed.isOwner ? [fixed] : []) : selectedActors();
   if ( fixed && !targets.length ) return ui.notifications.warn(`Only ${fixed.name}'s owner or the GM can apply this.`);
@@ -60,11 +61,22 @@ export async function applyToSelected(data, mode) {
       return;
     }
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
-    const plan = damagePlan(actor, data.instances, { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
-      piercing: !!data.piercing });
-    const update = { ...plan.update };
+    const reaction = beforePlan ? await beforePlan(actor) : {};
+    const damageOptions = { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
+      piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0 };
+    let plan = damagePlan(actor, data.instances, damageOptions);
+    if ( plan.requiresDROrder ) {
+      const revision = actor._stats?.modifiedTime;
+      const drOrder = await chooseDROrder(actor, plan.eligibleTypes);
+      if ( !drOrder ) return null;
+      if ( actor._stats?.modifiedTime !== revision ) throw new Error("Actor changed while choosing DR allocation. Recalculate before applying damage.");
+      plan = damagePlan(actor, data.instances, { ...damageOptions, drOrder });
+    }
+    const update = { ...plan.update, ...reaction.update };
+    if ( coordinated && !game.users.activeGM?.isSelf ) throw new Error("GM authority changed before damage commit; reconcile the pending request.");
     if ( plan.deathFailures ) update["system.deathSaves.failure"] = Math.min(3, (actor.system.deathSaves?.failure ?? 0) + plan.deathFailures);
     if ( Object.keys(update).length ) await actor.update(update);
+    if ( reaction.roll ) await reaction.roll.toMessage({ speaker: ChatMessage().getSpeaker({ actor }), flavor: "Deflection — reduction applied with 1 Discipline and reaction spent" });
     undo.push(before);
     const notes = [];
     const isNPC = actor.type === "npc";
@@ -88,9 +100,21 @@ export async function applyToSelected(data, mode) {
   if ( !rows.length ) return null;
   return ChatMessage().create({
     content: `<div class="n5e-apply-card"><b>${mode === "heal" ? "Healing applied" : `${{ full: "Damage", half: "Half damage", double: "Double damage" }[mode]} applied`}</b>
-      ${rows.join("")}<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button></div>`,
-    flags: { n5e: { undo } }
+      ${rows.join("")}${coordinated ? '<p>Coordinated application recorded. Use GM reconciliation for corrections; legacy snapshot Undo is disabled.</p>' : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
+    flags: { n5e: { undo: coordinated ? [] : undo } }
   });
+}
+
+/** Owner chooses directly, or the GM records the damaged creature's choice. */
+async function chooseDROrder(actor, types) {
+  const health = types.filter(t => t !== "chakra");
+  const label = t => CONFIG.N5E?.damageTypes?.[t]?.label ?? (t || "Untyped");
+  const order = await foundry.applications.api.DialogV2.prompt({ window: { title: `${actor.name}: allocate DR` },
+    content: `<p>The damaged creature chooses which HP damage type DR reduces first; leftovers reduce the next type. Chakra damage receives its own DR budget.</p><p>If you are the GM, record that creature's choice.</p>${health.map((t, index) => `<label>Priority ${index + 1}<select name="dr${index}">${health.map(type => `<option value="${esc(type)}" ${type === t ? "selected" : ""}>${esc(label(type))}</option>`).join("")}</select></label>`).join("")}`,
+    ok: { label: "Apply chosen order", callback: (event, button) => health.map((t, index) => button.form.elements[`dr${index}`].value) }, rejectClose: false });
+  if ( !order ) return null;
+  if ( new Set(order).size !== health.length || order.some(t => !health.includes(t)) ) throw new Error("Choose every HP damage type exactly once; no damage was applied.");
+  return [...order, ...types.filter(t => t === "chakra")];
 }
 
 /** Restore pools recorded on an apply card. */
@@ -154,7 +178,15 @@ export async function rollDeathSave(actor) {
 /** Chat button dispatcher (damage card, apply card, save result, turn card). */
 export async function onApplyClick(message, btn, event) {
   const d = btn.dataset;
-  if ( d.n5eApply ) return applyToSelected(message.getFlag("n5e", "damage") ?? {}, d.n5eApply);
+  if ( d.n5eApply ) {
+    const data = message.getFlag("n5e", "damage") ?? {};
+    if ( rule("coordinatedDamage") && d.n5eApply !== "heal" ) {
+      const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
+      try { return await coordinateDamage(message, data, d.n5eApply, fixed ? [fixed] : selectedActors(), applyToSelected); }
+      catch (error) { ui.notifications.warn(error.message); return null; }
+    }
+    return applyToSelected(data, d.n5eApply);
+  }
   if ( d.n5eUndo ) {
     btn.disabled = true;
     return undoApply(message);
