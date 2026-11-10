@@ -1,5 +1,4 @@
 import { damageFromMessage, damageApplicationTrace } from "../rules/damage-trace.mjs";
-import { damageRollHTML, damageApplicationHTML } from "../view-models/damage-trace.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { chooseReaction } from "./reaction-adapters.mjs";
@@ -104,15 +103,14 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const taken = [plan.health ? `${plan.health} damage${plan.tempHpLost ? ` (${plan.tempHpLost} to temp HP)` : ""}` : "",
       plan.chakra ? `${plan.chakra} Chakra damage${plan.tempCpLost ? ` (${plan.tempCpLost} to temp CP)` : ""}` : ""].filter(Boolean).join(", ") || "no damage";
     rows.push(`<div class="target"><b>${esc(actor.name)}</b> takes ${esc(taken)}${notes.length ? `: <span class="warn">${esc(notes.join("; "))}</span>` : ""}
-      ${damageApplicationHTML(trace)}${concBtn}</div>`);
+      ${concBtn}</div>`);
     });
   }
   if ( !rows.length ) return null;
   return ChatMessage().create({
     content: `<div class="n5e-apply-card"><b>${mode === "heal" ? "Healing applied" : `${{ full: "Damage", half: "Half damage", double: "Double damage" }[mode]} applied`}</b>
-      ${damageRollHTML(data.rollTrace)}
-      ${data.rollTrace?.sourceUuid ? `<button type="button" data-n5e-source="${esc(data.rollTrace.sourceUuid)}">View source damage roll</button>` : ""}
-      ${rows.join("")}${coordinated ? '<p>Coordinated application recorded. Use GM reconciliation for corrections; legacy snapshot Undo is disabled.</p>' : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
+      ${data.rollTrace?.sourceUuid ? `<button type="button" class="n5e-source-roll inline-control icon fa-solid fa-dice" data-n5e-source="${esc(data.rollTrace.sourceUuid)}" title="View damage roll" aria-label="View damage roll"></button>` : ""}
+      ${rows.join("")}${coordinated ? "" : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
     ...(data.sourceVisibility ?? {}),
     flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications } } }
   });

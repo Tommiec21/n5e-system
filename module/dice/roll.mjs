@@ -196,8 +196,9 @@ export function onRenderChatMessage(message, html) {
       const source = await fromUuid(button.dataset.n5eSource);
       if ( !source || source.visible === false || source.isContentVisible === false ) return ui.notifications.warn("The source roll is unavailable or private.");
       const { damageFromMessage } = await import("../rules/damage-trace.mjs");
-      const { damageRollHTML } = await import("../view-models/damage-trace.mjs");
-      await foundry.applications.api.DialogV2.wait({ window: { title: "Source damage roll" }, content: damageRollHTML(damageFromMessage(source).rollTrace),
+      const { renderDamageRolls } = await import("../view-models/damage-trace.mjs");
+      await foundry.applications.api.DialogV2.wait({ window: { title: "Source damage roll" }, content: await renderDamageRolls(source.rolls, damageFromMessage(source).rollTrace),
+        render: (event, dialog) => { for ( const roll of dialog.element.querySelectorAll('[data-action="expandRoll"]') ) roll.addEventListener("click", click => { click.preventDefault(); click.stopPropagation(); roll.classList.toggle("expanded"); }); },
         buttons: [{ action: "close", label: "Close", default: true }], rejectClose: false });
     } catch (error) { ui.notifications.warn(error.message); }
   });

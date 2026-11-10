@@ -1,3 +1,10 @@
+## 0.13.0-alpha.13 — Compact Foundry damage cards (CHAT1)
+
+- Use Foundry's standard expandable dice renderer for the actual damage roll only.
+- Remove custom roll prose, repeated damage types/totals, normal-versus-critical comparisons, applied calculation blocks and coordination/undo boilerplate from new chat cards.
+- Applied cards retain the recipient/result and a compact dice icon for the source roll. Verification and calculation records remain internal; arithmetic is unchanged.
+- Seven focused checks passed; no live verification or local installation.
+
 ## 0.13.0-alpha.12 — Damage roll/application trace (DT1)
 
 - Show original formulas, kept/discarded die results and normal/critical formula basis directly on new damage cards.

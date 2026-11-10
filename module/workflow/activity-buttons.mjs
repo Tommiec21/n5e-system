@@ -1,5 +1,5 @@
 import { damageRollTrace } from "../rules/damage-trace.mjs";
-import { damageRollHTML } from "../view-models/damage-trace.mjs";
+import { renderDamageRolls } from "../view-models/damage-trace.mjs";
 import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
@@ -342,17 +342,13 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       if ( d.weapon && actor?.isOwner ) await import("./trackers.mjs").then(m => m.onWeaponDamage(actor));
       // Pierce lowers the target's DR when applied: the actor's own plus the button's (Raiding Strike).
       const pierce = (actor?.system.pierce ?? 0) + (Number(d.pierce) || 0);
-      const types = instances.map(i => i.type).filter(Boolean);
-      const lines = instances.map(i => `${i.amount}${i.type ? ` ${typeLabel([i.type])}` : ""}`).join(" + ");
+      const diceHTML = await renderDamageRolls(rolls, rollTrace);
       // The damage card. flags.n5e.damage is what its Apply buttons read (workflow/apply-damage.mjs).
       const ChatMessageCls = CONFIG.ChatMessage.documentClass;
       return ChatMessageCls.create({ speaker: speaker({ actor }), rolls,
         content: `<div class="n5e-roll-card damage"><header><b>${crit ? "Critical damage" : "Damage"}</b>
-          <span class="mode">${esc(typeLabel(types))}</span><span class="bonus">${total}</span></header>
-          <div class="note">${esc(lines)}${pierce ? ` · Pierce ${pierce}` : ""}${crit ? " · dice and ability modifier doubled" : ""}</div>
-          ${modifiers.parts.length ? `<div class="note">${esc(modifiers.parts.map(p => `${p.label}: ${signed(p.value)}`).join(" · "))}</div>` : ""}
-          ${coatings.length ? `<div class="note">${esc(coatings.map(c => c.label).join(", "))} · uses spent on this damage roll</div>` : ""}
-          ${damageRollHTML(rollTrace)}
+          </header>
+          ${diceHTML}
           ${applyButtons()}</div>`,
         flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }

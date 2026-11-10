@@ -9,3 +9,7 @@ The source ChatMessage UUID, original activity-card UUID when available, roll sn
 Attack-card actions now search stored flavor and content, and both are fingerprinted. Tooltip-only rendering metadata is excluded from action identity; action fields/critical flags/formulas remain validated. Previously pending requests may be refused after the fingerprint change; use a fresh card and check prior outcomes before retrying.
 
 Automated evidence: six focused checks passed for source association/dice/crit details, mismatch refusal, legacy handling, DR/temp pools, actual application without reroll and private provenance, and flavor-backed validation/tamper refusal. One CI gate reserved; no live verification. This does not fix the separate ActorDelta item duplication report, or change routine-action GM approval policy.
+
+## Alpha13 presentation supersedes the above visible-detail description
+
+The user rejected verbose diagnostic chat output. New damage cards now use the native expandable Foundry roll display: actual formula/dice/total, with no damage-type repetition or normal/critical comparison. New applied cards show the recipient/result and one compact dice icon for source access; no public audit block or coordination boilerplate. Structured provenance/verification remains internal and math is unchanged. Previously saved chat HTML is not rewritten; create a new roll to see the compact layout.
