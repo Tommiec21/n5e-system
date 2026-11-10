@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.12 published: saved damage roll provenance, visible formulas/dice and per-recipient application calculations. GitHub only; local Foundry unchanged.
+Current release: 0.13.0-alpha.13 published: compact native Foundry damage dice and minimal application cards; verbose diagnostic chat removed. GitHub only; local installation unchanged.
 
-Current stage: DT1 damage trace fix published; automated gates passed. No live verification; user acceptance remains.
+Current stage: CHAT1 published; automated gates passed. No live verification; user acceptance remains.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -222,3 +222,5 @@ User rejects verbose duplicate damage presentation. Replace custom public breakd
 
 
 CHAT1 implemented, candidate alpha13: user explicitly rejected prose/diagnostic clutter. Native Roll.render now displays only the actual damage dice; no duplicate types/totals, normal-formula comparison, public applied calculation or coordination/undo boilerplate. Applied cards retain recipient/result plus compact native dice-icon source access. Structured verification/provenance stays internal; no arithmetic changes. Seven focused checks passed first attempt, lint passed; one CI gate reserved. No live tests/local installation. Saved legacy chat HTML is not rewritten. Publication pending.
+
+CHAT1 publication verified: runtime commit 862af92be; CI 42729916872 and Release 42729971859 succeeded. GitHub v0.13.0-alpha.13 has n5e.zip and system.json. Seven focused checks passed locally and in CI (two attempts per changed scenario, zero failures). No release retest/live verification/local install. User's UI preference is authoritative: damage chat must use native actual dice only, with no diagnostic prose, duplicated types/totals, normal-versus-critical comparison or applied audit/coordination block. Metadata stays internal. New cards have the compact layout; stored historical chat HTML remains unchanged. CHAT1 ownership released.
