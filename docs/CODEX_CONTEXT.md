@@ -238,3 +238,7 @@ Ten focused tests passed first attempt; lint passed. Import generation: initial 
 
 ### JUTSU1 publication check correction
 First CI run 42734764035 failed: 277 passed, 8 failed, 2 skipped. Failures traced to flat-directory test readers (5), the outdated Flame Whip radius assumption (source is a single creature within 20 feet), expanded search results, and an advancement test choosing alphabetical jutsu instead of explicitly choosing the newly granted fire affinity. Corrected the fixtures/readers against the source without changing gameplay rules. One final CI attempt authorized within the three-attempt ceiling; if a scenario fails again, stop. No live verification.
+
+
+### JUTSU1 STOP — release blocked
+Core content committed to main: f4a12ac13, regression fixture corrections 03475bce7. Second CI 42735023859: 284 passed, 1 failed, 2 skipped. Remaining scenario tests/damage.test.mjs compendium jutsu: what a failed save inflicts failed twice (first flat-directory EISDIR, second Butterfly Kick parser returns Concussed + Prone versus legacy expected Concussed only). STOPPED under user policy; no third CI, no live tests, no published alpha14 artifact. Next work requires user authorization to resume and source review of Butterfly Kick conditional Prone before adjusting test/parser. Do not claim import fully verified or released. All 968 item sources and import tooling are committed; complex clauses/manual costs remain documented.
