@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.10 published: expanded native effect authoring, typed fields/validation, draft-only changes, supported flags/predicates, previews and safe portability. GitHub only; local Foundry unchanged.
+Current release: 0.13.0-alpha.11 published: effect dynamic numeric formulas, qualifying-event expiration, opt-in GM-approved world Macro bindings and reversible appearance providers. GitHub only; local Foundry unchanged.
 
-Current stage: EE1 effect authoring batch published; automated gate passed. User performs in-game acceptance. Never perform live verification again.
+Current stage: ES1 pending effect services implemented and published; automated gates passed. No live verification; user acceptance remains.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -204,3 +204,5 @@ Implement pending effect services: bounded dynamic numeric changes, event expira
 
 
 ES1 implemented, candidate alpha11: pending effect services now include bounded dynamic numeric changes, qualifying-event expiration, explicitly GM-approved opt-in world Macros, and reversible appearance providers/filter. Existing parser, actor effect application and editor reused. 17 focused tests passed first attempt; local lint passed. One CI/build gate reserved; release consumes verified artifact without retest. No live verification, local installation, foreign script conversion, universal stacking claim or third-party provider certification. User requested completion within ten minutes; publication in progress.
+
+ES1 publication verified within the user time limit: started 23:58:44 UTC, release verified 00:07:28 UTC (8m44s). Runtime commit bf7db4517; CI run 42725734844 and Release run 42725777067 succeeded. GitHub v0.13.0-alpha.11 assets n5e.zip (2,361,393 bytes) and system.json (5,161 bytes) verified. Seventeen focused checks passed first local attempt; CI full gate also passed. Two attempts per changed scenario, zero failures; release reused artifact without retest. Local lint passed. No live test or local installation. Authoring now exposes service JSON and explicit approval of saved world Macro bindings. Macro approvals include referenced code and ownership. Existing numeric previews resolve available formulas and report unresolved references. Documentation: docs/EFFECT_SERVICES.md and outputs/N5e-effect-services.md. Optional external appearance provider adapters are supported through the public registry but specific third-party module adapters are not bundled/certified. No universal stacking engine or DAE script conversion claimed. ES1 ownership released.
