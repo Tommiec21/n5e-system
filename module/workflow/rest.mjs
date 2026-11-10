@@ -1,3 +1,4 @@
+import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
@@ -120,6 +121,7 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   if ( plan.items.length ) await actor.updateEmbeddedDocuments("Item", plan.items);
   for ( const c of plan.conditions ) await actor.removeCondition(c.key, c.ranks);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
+  void emitEffectEvent(actor, "rest", { restType: type }).catch(error => ui.notifications.warn(error.message));
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), rolls,
     content: `<div class="n5e-rest-card"><b>${esc(REST_LABELS[type])}</b>${check.rationCost ? `<span class="sub"> · ${check.rationCost} rations</span>` : ""}
       ${plan.lines.map(l => `<div>${esc(l)}</div>`).join("") || "<div>Nothing to recover.</div>"}</div>` });

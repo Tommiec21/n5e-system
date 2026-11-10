@@ -20,6 +20,8 @@ export const ruleGroups = {
 };
 
 export const rules = {
+  effectMacros: { group: "casting", type: "boolean", default: false, label: "Effect world Macro execution", hint: "Execute only saved bindings explicitly approved by the active GM. Trusted world Macros run with GM privileges; foreign scripts remain inert." },
+  effectAppearanceProviders: { group: "casting", type: "boolean", default: true, label: "Effect token appearance providers", hint: "Reversible client-side effect visuals. Built-in filter and optional registered providers; no token data is overwritten." },
   multiplayerCoordination: { group: "casting", type: "boolean", default: true, label: "Coordinate multiplayer actions through the active GM",
     hint: "Serialize casts, attacks, activities, resources, healing, rests and damage on the active GM. Player requests require GM review. Disable for the manual owner-local workflow." },
   coordinatedDamage: { group: "casting", type: "boolean", default: false, label: "Coordinated GM damage and reactions (pilot)",

@@ -1,3 +1,4 @@
+import { registerEffectServices } from "./module/automation/effect-services.mjs";
 /**
  * N5e 4.0 game system for Foundry VTT v13 — entry point.
  *
@@ -149,6 +150,7 @@ Hooks.once("ready", async () => {
   // The GM relay (players asking the GM to change things they don't own; module/socket.mjs).
   registerSocket();
   registerReactionWindows();
+  registerEffectServices();
   // Data migrations the world hasn't run yet (GM only; module/migration/runner.mjs).
   await checkMigrations();
 });

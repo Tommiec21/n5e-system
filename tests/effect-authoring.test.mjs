@@ -15,7 +15,7 @@ test("effect catalog describes actual custom/core types and supported modes", ()
 });
 
 test("typed changes reject invalid formulas, modes, paths and adjustment divisions", () => {
-  for ( const change of [row("n5e.dr", "@level + 2"), row("n5e.dr", "2", 5), row("n5e.unarmed.dice", "1d8 + 2"),
+  for ( const change of [row("n5e.dr", "process.exit()"), row("n5e.dr", "2", 5), row("n5e.unarmed.dice", "1d8 + 2"),
     row("n5e.cost.all", "/0"), row("system.__proto__.x", "1"), row("unknown.field", "1"), null] ) {
     assert.ok(validateEffectChanges([change], [], catalog).errors.length);
   }

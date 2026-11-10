@@ -172,6 +172,7 @@ export async function prepareWorkflow(payload) {
         if ( message?.getFlag("n5e", "roll")?.kind !== "attack" ) throw new Error("Successful-hit reactions require an attack roll card.");
         if ( !await foundry.applications.api.DialogV2.confirm({ window: { title: "Confirm successful hit" },
           content: "<p>Confirm that this attack successfully hit the selected recipient. Misses and saves do not trigger this window.</p>", rejectClose: false }) ) break;
+        void (await import("./effect-services.mjs")).emitEffectEvent(actor, "successfulHit", { id: message.uuid + ":" + actor.uuid }).catch(error => ui.notifications.warn(error.message));
         const { chooseReaction } = await import("../workflow/reaction-adapters.mjs");
         const choice = await chooseReaction(actor, "successfulHit", { message, attackerUuid: message.getFlag("n5e", "roll").actorUuid });
         if ( choice ) {

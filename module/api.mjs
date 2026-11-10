@@ -1,3 +1,4 @@
+import { emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros } from "./automation/effect-services.mjs";
 import { coordinateCommand } from "./automation/commands.mjs";
 import { registerReaction, listReactions, chooseReaction, resolveReactionChain } from "./workflow/reaction-adapters.mjs";
 import { setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons } from "./workflow/automation.mjs";
@@ -94,6 +95,7 @@ export function registerClanData(clanItem) {
 }
 
 export default {
+  emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
   observerVisibility,
   openReactionWindow, resolveReactionWindow,

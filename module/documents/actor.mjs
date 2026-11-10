@@ -1,3 +1,6 @@
+import { effectFormulaData, resolveEffectFormula } from "../rules/effect-services.mjs";
+import { effectFieldCatalog } from "../rules/effect-authoring.mjs";
+import { getPath } from "../rules/formula.mjs";
 /**
  * N5e Actor document.
  * Applies core Active Effect changes normally (effects pass 1) and holds back "n5e.*" change keys for
@@ -37,6 +40,9 @@ export default class N5eActor extends Actor {
     const overrides = {};
     this.statuses.clear();
     this._n5eChanges = [];
+    this._n5eEffectErrors = [];
+    const formulaData = effectFormulaData(this);
+    const fields = new Map(effectFieldCatalog(CONFIG.N5E).map(f => [f.key, f]));
     const changes = [];
     for ( const effect of this.allApplicableEffects() ) {
       // effect.active is false for disabled effects and suppressed ones (inactive stances).
@@ -45,6 +51,15 @@ export default class N5eActor extends Actor {
       for ( const change of effect.changes ) {
         const c = foundry.utils.deepClone(change);
         c.effect = effect;
+        const field = fields.get(c.key);
+        if ( field && ["number", "adjustment"].includes(field.type) && String(c.value).trim() && !Number.isFinite(Number(c.value))
+          && !(field.type === "adjustment" && /^[*/][+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(String(c.value))) ) {
+          try {
+            const source = effect.origin ? globalThis.fromUuidSync?.(effect.origin) : null;
+            const sourceActor = source?.documentName === "Actor" ? source : source?.actor;
+            c.value = String(resolveEffectFormula(c.value, { ...formulaData, target: formulaData, source: sourceActor ? effectFormulaData(sourceActor) : {}, base: getPath(formulaData, c.key) ?? 0 }));
+          } catch (error) { this._n5eEffectErrors.push({ effect: effect.uuid, key: c.key, error: error.message }); continue; }
+        }
         c.priority ??= c.mode * 10;
         if ( c.key?.startsWith(CHANGE_KEY_PREFIX) ) this._n5eChanges.push(c);
         else changes.push(c);

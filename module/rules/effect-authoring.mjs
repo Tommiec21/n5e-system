@@ -1,3 +1,4 @@
+import { resolveEffectFormula, validateServiceConfig, effectFormulaData } from "./effect-services.mjs";
 /** Effect authoring contracts. No document writes, evaluated scripts or independent effect engine. */
 import { changeKeyCatalog, parseN5eChanges } from "./change-keys.mjs";
 import { getPath } from "./formula.mjs";
@@ -28,11 +29,11 @@ export function validateEffectChanges(changes, original, catalog) {
     else if ( !field ) problem = `unsupported field ${change.key}. Existing unchanged legacy rows are preserved.`;
     else if ( !field.modes.includes(Number(change.mode)) ) problem = "this mode is not supported for the field.";
     else if ( change.priority != null && change.priority !== "" && !Number.isFinite(Number(change.priority)) ) problem = "priority must be a finite number.";
-    else if ( field.type === "number" && (!value || !Number.isFinite(Number(value))) ) problem = "enter a finite number. Dynamic field formulas are not implemented yet.";
+    else if ( field.type === "number" && (!value || !Number.isFinite(Number(value))) ) { try { resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
     else if ( field.type === "ability" && !field.choices.includes(value) ) problem = "choose str, dex, con, int, wis or cha.";
     else if ( field.type === "dice" && !/^([1-9]\d*)?d[1-9]\d*$/.test(value) ) problem = "use a simple dice term, such as 1d8.";
     else if ( field.type === "adjustment" && (!/^([*/])?[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)
-      || !Number.isFinite(Number(value.replace(/^[*/]/, ""))) || (/^[*/]/.test(value) && Number(value.slice(1)) <= 0)) ) problem = "use a number, a positive multiplier (*0.5), or a positive divisor (/2).";
+      || !Number.isFinite(Number(value.replace(/^[*/]/, ""))) || (/^[*/]/.test(value) && Number(value.slice(1)) <= 0)) ) { try { if ( /^[*/]/.test(value) ) throw new Error("Use a positive multiplier/divisor."); resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
     else if ( field.type === "text" && !value ) problem = "enter the source label.";
     if ( value.length > 1000 ) problem = "value is too long.";
     if ( problem ) {
@@ -84,6 +85,10 @@ export function editorFlags(input, original = {}) {
     if ( at && !/^(Actor\.[A-Za-z0-9]+|Scene\.[A-Za-z0-9]+\.Token\.[A-Za-z0-9]+\.Actor\.[A-Za-z0-9]+)$/.test(sourceUuid) ) throw new Error("Source-turn expiration needs the source actor UUID.");
     patch.expires = at ? { ...original.expires, at, sourceUuid } : null;
   }
+  if ( input.services !== undefined ) {
+    const services = JSON.parse(input.services || "{}");
+    if ( !equal(services, original.services ?? {}) ) patch.services = validateServiceConfig(services);
+  }
   return patch;
 }
 
@@ -94,7 +99,15 @@ export const EFFECT_PRESETS = [
 ];
 
 export function effectPreview(original, draft, actor) {
-  const core = (draft.changes ?? []).filter(c => c.key?.startsWith("system.")).map(c => {
+  const unresolved = [], data = effectFormulaData(actor);
+  const resolve = rows => rows.flatMap(c => {
+    if ( Number.isFinite(Number(c.value)) || /^(n5e\.(mastery|disciplineAbility|unarmed)\.)/.test(c.key)
+      || (/^n5e\.(cost|upkeep)\./.test(c.key) && /^[*/]/.test(c.value)) ) return [c];
+    try { return [{ ...c, value: String(resolveEffectFormula(c.value, { ...data, target: data, base: getPath(data, c.key) ?? 0 })) }]; }
+    catch (error) { unresolved.push({ key: c.key, reason: error.message }); return []; }
+  });
+  const beforeRows = resolve(original.changes ?? []), afterRows = resolve(draft.changes ?? []);
+  const core = afterRows.filter(c => c.key?.startsWith("system.")).map(c => {
     const before = getPath(actor?._source ?? {}, c.key), amount = Number(c.value), mode = Number(c.mode);
     let after = null;
     if ( Number.isFinite(Number(before)) && Number.isFinite(amount) ) {
@@ -103,7 +116,7 @@ export function effectPreview(original, draft, actor) {
     }
     return { key: c.key, before: before ?? "Unavailable", after: after ?? "Not estimated" };
   });
-  return { core, modifiersBefore: parseN5eChanges(original.changes ?? []), modifiersAfter: parseN5eChanges(draft.changes ?? []) };
+  return { core, modifiersBefore: parseN5eChanges(beforeRows), modifiersAfter: parseN5eChanges(afterRows), unresolved };
 }
 
 /** Portable data never imports executable foreign flags or IDs; existing document flags are untouched. */
@@ -111,6 +124,7 @@ export function portableEffect(source) {
   const out = Object.fromEntries(["name", "img", "type", "system", "changes", "duration", "statuses", "transfer", "disabled", "description"].filter(k => k in source).map(k => [k, structuredClone(source[k])]));
   const flags = source.flags?.n5e ?? {};
   out.flags = { n5e: Object.fromEntries(["levels", "requiresStance", "exclusive", "state", "rules", "ruleToggle"].filter(k => k in flags).map(k => [k, structuredClone(flags[k])])) };
+  if ( flags.services ) { const services = validateServiceConfig(flags.services); out.flags.n5e.services = { ...services, macros: [] }; }
   return { format: "n5e-effect", version: 1, effect: out };
 }
 

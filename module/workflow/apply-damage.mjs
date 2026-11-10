@@ -1,3 +1,4 @@
+import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { chooseReaction } from "./reaction-adapters.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
@@ -92,6 +93,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       await actor.toggleStatusEffect(rule("deathSaves") && !isNPC ? "dying" : "unconscious", { active: true });
       notes.push(rule("deathSaves") && !isNPC ? "falls to 0 HP: Dying" : "falls to 0 HP: Unconscious");
     } else if ( plan.deathFailures ) notes.push(`${plan.deathFailures} death save failure${plan.deathFailures > 1 ? "s" : ""}`);
+    if ( plan.total > 0 ) void emitEffectEvent(actor, "damageTaken", { id: crypto.randomUUID(), damage: plan.total }).catch(error => ui.notifications.warn(error.message));
     const conc = concentrationOnDamage(actor, plan.total);
     const concBtn = conc ? `<button type="button" data-n5e-concheck="${conc.dc}" data-actor="${actor.uuid}"
       data-jutsu='${esc(JSON.stringify(conc.atRisk.map(j => j.id)))}'>Concentration check DC ${conc.dc} (${esc(conc.atRisk.map(j => j.name).join(", "))})</button>` : "";

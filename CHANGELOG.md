@@ -1,3 +1,11 @@
+## 0.13.0-alpha.11 — Effect services (ES1)
+
+- Dynamic numeric changes use the existing bounded N5e arithmetic parser and a fixed base/source snapshot. Invalid or missing references skip only that change with actor diagnostics.
+- Event-count expiration handles turn start/end, combat end, damage taken, confirmed hits and rests with persisted counters and duplicate event suppression.
+- Opt-in world Macro bindings require active-GM approval keyed to the effect, bindings, Macro code and ownership. Foreign scripts remain inert; Macro code is trusted, not sandboxed.
+- Add optional appearance provider registration and a reversible built-in filter (grayscale, sepia, brightness), with independent cleanup and error isolation.
+- Integrate authoring and approvals into the expanded editor and APIs. Portable copies exclude executable bindings. No live verification or local installation.
+
 ## 0.13.0-alpha.10 — Expanded effect authoring (EE1)
 
 - Expand the existing Foundry effect editor with a searchable typed field browser, explanations, presets, validation and draft-only add/remove/import actions. Save is the commit boundary; stale document saves are refused.

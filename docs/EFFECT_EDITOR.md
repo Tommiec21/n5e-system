@@ -25,3 +25,5 @@ Open an existing actor/item effect and select **Changes**. The native Details an
 N5e custom keys do not inherit Foundry's generic mode behavior. Core field estimates use the actor's stored value separately for each row, so they exclude other effects, full ordering and derived-stat recalculation. Save recalculates the actor normally. Source-turn expiration requires the referenced source in combat. Activity exclusivity is consumed by activity application; editing a group does not retroactively replace every other effect.
 
 Automated evidence: nine focused checks passed for types/validation, predicates, legacy preservation, safe portability, previews, draft-only actions, stale saves and template compilation. CI is the sole full verification/build gate. No live tests by user instruction; in-game acceptance remains with the user.
+
+Alpha11: dynamic formulas, event expiration, GM-approved Macro bindings and appearance providers are now implemented. See EFFECT_SERVICES.md; the alpha10 unavailable-service rows above are historical and superseded.

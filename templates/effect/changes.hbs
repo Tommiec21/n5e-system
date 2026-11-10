@@ -60,7 +60,11 @@
     <p class="hint">Portable exports omit IDs, source-turn links and foreign/executable flags. Imports and copies start disabled. Unknown existing data is retained when editing the original; unsupported rows must remain unchanged or be removed.</p>
   </details>
   <details>
-    <summary>Capabilities still unavailable</summary>
-    <p class="hint">Dynamic change formulas; general stacking policies; new event-expiration types; effect macros; token-appearance providers; and automatic DAE import depend on later services. Foreign macro flags do not become N5e scripts.</p>
+    <summary>Effect services: expiration, world Macros and appearance</summary>
+    <p class="hint">Numeric fields accept formulas such as =1 + @level / 2. References use a fixed base snapshot; missing values skip the change with an actor diagnostic. No dice or JavaScript in derived numeric fields.</p>
+    <p class="hint">Service JSON: expiration [{"event":"damageTaken","count":1}], macros [{"event":"apply","uuid":"Macro.ID"}], appearance [{"provider":"filter","options":{"preset":"grayscale"}}]. Events: apply, remove, enable, disable, turnStart, turnEnd, combatEnd, damageTaken, successfulHit, rest. Expiration supports turn/combat/damage/hit/rest events. Counted expirations count distinct matching events.</p>
+    <textarea name="n5eEditor.services" rows="8" spellcheck="false" aria-label="Effect service bindings JSON">{{guidance.services}}</textarea>
+    {{#if canApproveMacros}}<button type="button" data-action="approveMacros">Approve saved Macro bindings</button>{{/if}}
+    <p class="hint">Save bindings first, then approve on the active GM. Effect Macros must also be enabled in N5e Rules. Bindings and referenced Macro code/ownership changes invalidate approval. Trusted world Macros run with GM privileges, not in a sandbox. Foreign scripts remain inert. Appearance filters do not overwrite token data. Automatic DAE import and universal stacking policies are not provided.</p>
   </details>
 </section>

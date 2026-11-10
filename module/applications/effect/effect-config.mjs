@@ -6,6 +6,7 @@ export default class EffectConfig extends Base {
   static DEFAULT_OPTIONS = {
     classes: ["n5e-effect-config"], position: { width: 860, height: 760 }, window: { resizable: true },
     actions: {
+      approveMacros: async function() { try { await (await import("../../automation/effect-services.mjs")).approveEffectMacros(this.document); } catch (error) { this.notice(error.message); } },
       addChange: function() { this.editDraft("add"); }, deleteChange: function(event, target) { this.editDraft("delete", Number(target.closest("[data-index]").dataset.index)); },
       addField: function() { this.editDraft("field"); }, preset: function() { this.editDraft("preset"); },
       exportEffect: function() { this.exportDraft(); }, importEffect: function() { this.importDraft(); },
@@ -28,10 +29,10 @@ export default class EffectConfig extends Base {
     context = await super._preparePartContext(partId, context);
     if ( partId !== "changes" ) return context;
     const flags = this.#draft.flags?.n5e ?? {};
-    return Object.assign(context, { catalog: this.catalog, presets: EFFECT_PRESETS, expirationChoices: { "": "None", turnStart: "Start of source turn", turnEnd: "End of source turn", nextTurnEnd: "End of next source turn" },
+    return Object.assign(context, { catalog: this.catalog, presets: EFFECT_PRESETS, canApproveMacros: !!globalThis.game?.user?.isGM, expirationChoices: { "": "None", turnStart: "Start of source turn", turnEnd: "End of source turn", nextTurnEnd: "End of next source turn" },
       guidance: { min: flags.levels?.min ?? 0, max: flags.levels?.max ?? 0, stance: flags.requiresStance ?? "",
         exclusive: flags.exclusive ?? "", state: flags.state ?? "", expires: flags.expires?.at ?? "", sourceUuid: flags.expires?.sourceUuid ?? "",
-        rules: JSON.stringify(flags.rules ?? [], null, 2) },
+        rules: JSON.stringify(flags.rules ?? [], null, 2), services: JSON.stringify(flags.services ?? {}, null, 2) },
       raw: JSON.stringify(this.#draft, null, 2), timing: JSON.stringify({ origin: this.#draft.origin ?? null,
         disabled: this.#draft.disabled, transfer: this.#draft.transfer, configuredDuration: this.#draft.duration ?? {},
         sourceTurn: flags.expires ?? null, currentCoreDuration: this.document.duration ?? null }, null, 2),
@@ -47,6 +48,7 @@ export default class EffectConfig extends Base {
     const next = foundry.utils.mergeObject(structuredClone(this.#draft), data, { inplace: false });
     if ( guidance ) {
       const patch = editorFlags(guidance, this.#draft.flags?.n5e);
+      if ( patch.services && JSON.stringify(patch.services.macros) !== JSON.stringify(this.#draft.flags?.n5e?.services?.macros ?? []) && !globalThis.game?.user?.isGM ) throw new Error("Only a GM may author Macro bindings.");
       if ( patch.expires && !patch.expires.placed ) patch.expires.placed = game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null;
       next.flags ??= {}; next.flags.n5e = { ...next.flags.n5e, ...patch };
     }
