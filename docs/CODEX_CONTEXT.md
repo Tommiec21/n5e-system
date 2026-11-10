@@ -242,3 +242,7 @@ First CI run 42734764035 failed: 277 passed, 8 failed, 2 skipped. Failures trace
 
 ### JUTSU1 STOP — release blocked
 Core content committed to main: f4a12ac13, regression fixture corrections 03475bce7. Second CI 42735023859: 284 passed, 1 failed, 2 skipped. Remaining scenario tests/damage.test.mjs compendium jutsu: what a failed save inflicts failed twice (first flat-directory EISDIR, second Butterfly Kick parser returns Concussed + Prone versus legacy expected Concussed only). STOPPED under user policy; no third CI, no live tests, no published alpha14 artifact. Next work requires user authorization to resume and source review of Butterfly Kick conditional Prone before adjusting test/parser. Do not claim import fully verified or released. All 968 item sources and import tooling are committed; complex clauses/manual costs remain documented.
+
+
+### JUTSU1 user-authorized retry
+User explicitly said Retry after explanation of the stopped condition scenario. One additional CI attempt reserved; no local repeated tests or live testing. Correct the existing compendium condition check to use effectiveActivities (the runtime authored-activity selector), preserving the normal Concussed-only assertion and adding the distinct Finisher Concussed+Prone assertion. No jutsu rules/content or fallback parser changed. Historical failures remain counted; authorization applies only to this additional attempt.

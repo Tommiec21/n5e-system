@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { makeActor, baseAbilities } from "./helpers/actor.mjs";
 import { damagePlan, healPlan, concentrationOnDamage, deathSaveResult } from "../module/rules/damage.mjs";
-import { parseActivities } from "../module/rules/activity-parse.mjs";
+import { effectiveActivities } from "../module/rules/activity-parse.mjs";
 
 const target = (traits = {}, extra = {}) => {
   const a = makeActor({ system: { ...structuredClone(baseAbilities), traits: { dr: 3, ...traits }, ...extra } });
@@ -93,8 +93,11 @@ test("death saves", () => {
 test("compendium jutsu: what a failed save inflicts", () => {
   const SRC = path.join(import.meta.dirname, "..", "packs", "_source", "jutsu");
   const get = n => fs.readdirSync(SRC, { recursive: true }).filter(f => f.endsWith(".json") && !path.basename(f).startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"))).find(d => d.name === n);
-  const save = n => parseActivities(get(n).system.description, { discipline: get(n).system.discipline }).find(a => a.type === "save");
+  const save = n => effectiveActivities(get(n)).find(a => a.type === "save");
   assert.deepEqual(save("Butterfly Kick").inflicts.map(i => [i.key, i.ranks]), [["concussed", 1]]);
+  const finisher = effectiveActivities(get("Butterfly Kick")).find(a => a.type === "save" && a.id.startsWith("finisher-"));
+  assert.ok(finisher, "Finisher retains its own save activity");
+  assert.deepEqual(finisher.inflicts.map(i => [i.key, i.ranks]), [["concussed", 1], ["prone", 1]]);
   assert.deepEqual(save("Snake Constricting Grip").inflicts.map(i => i.key), ["restrained"]);
   assert.deepEqual(save("Fire Release: Flame Whip").inflicts.map(i => i.key), ["prone", "burned"]);
   assert.deepEqual(save("Leaf Hurricane").inflicts.map(i => i.key), ["prone"]);
