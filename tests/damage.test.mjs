@@ -92,7 +92,7 @@ test("death saves", () => {
 
 test("compendium jutsu: what a failed save inflicts", () => {
   const SRC = path.join(import.meta.dirname, "..", "packs", "_source", "jutsu");
-  const get = n => fs.readdirSync(SRC).map(f => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"))).find(d => d.name === n);
+  const get = n => fs.readdirSync(SRC, { recursive: true }).filter(f => f.endsWith(".json") && !path.basename(f).startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"))).find(d => d.name === n);
   const save = n => parseActivities(get(n).system.description, { discipline: get(n).system.discipline }).find(a => a.type === "save");
   assert.deepEqual(save("Butterfly Kick").inflicts.map(i => [i.key, i.ranks]), [["concussed", 1]]);
   assert.deepEqual(save("Snake Constricting Grip").inflicts.map(i => i.key), ["restrained"]);

@@ -48,7 +48,7 @@ test("filters: any-of, all-of keywords, cost range, booleans, search", () => {
   assert.ok(cheap.every(e => e.cost <= 5));
   const area = filterEntries(entries, { hasArea: "true" }, { tab });
   assert.ok(area.every(e => e.hasArea));
-  assert.deepEqual(filterEntries(entries, {}, { tab, search: "leaf hurr" }).map(e => e.name), ["Leaf Hurricane"]);
+  assert.deepEqual(filterEntries(entries, {}, { tab, search: "leaf hurr" }).map(e => e.name), ["Leaf Hurricane Bullet", "Leaf Hurricane"]);
   assert.ok(filterEntries(entries, {}, { tab, search: "whirlwind", inText: true }).some(e => e.name === "Leaf Hurricane"), "rules text search");
   const gen = filterEntries(entries, { cls: ["genjutsu-specialist"], level: 2 }, { tab: "features" });
   assert.ok(gen.length && gen.every(e => e.cls === "genjutsu-specialist" && e.level <= 2));

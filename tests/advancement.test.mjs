@@ -65,7 +65,10 @@ function play(className, upTo, pick = {}) {
         for ( const g of steps ) if ( g.type === "grant" && g.key === "affinity" ) g.values.forEach(v => affinities.add(v));
         const learn = learnableJutsu(Object.values(all).filter(d => d.type === "jutsu"),
           { maxRank: st.maxRank, affinities, known: new Set(sources.filter(s => s.type === "jutsu").map(s => s.name.toLowerCase())), keywords: N5E.keywords });
-        sel[st.id] = learn.slice(0, st.count).map(j => j.uuid);
+        // Explicitly exercise the newly granted affinity, independently of the expanded pack ordering.
+        const preferred = learn.find(j => j.system.keywords?.includes("fireRelease"));
+        const choices = preferred ? [preferred, ...learn.filter(j => j !== preferred)] : learn;
+        sel[st.id] = choices.slice(0, st.count).map(j => j.uuid);
       } else if ( st.type === "asi" ) {
         const feats = eligibleFeats(Object.values(all).filter(d => d.type === "feat"), { level, owned });
         sel[st.id] = { ability: "int", feat: feats[0]?.uuid, mastery: masteryTargets(actor)[0]?.value };

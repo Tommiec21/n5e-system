@@ -50,3 +50,7 @@ Printed fixed Special costs now deduct their known chakra amount for these impor
 ## Verification
 
 Ten focused checks passed on their first test run: whole-book uniqueness/coverage; folder depth/references; all keywords/stimuli; expression identity and existing activity/formula contracts; duplicate-name separation/stable starter IDs; non-cumulative conditional damage; cast-rank selection; fixed/manual Special costs; boxed/plain-title/header parsing; retained starter authoring. Lint passed. Initial import-generation failure identified a pre-header box, which was fixed; two subsequent generation runs succeeded. No further generation retries. One CI full verification/build is reserved; release reuses its artifact without retesting. No live verification or local Foundry installation, by user instruction.
+
+
+### JUTSU1 publication check correction
+First CI run 42734764035 failed: 277 passed, 8 failed, 2 skipped. Failures traced to flat-directory test readers (5), the outdated Flame Whip radius assumption (source is a single creature within 20 feet), expanded search results, and an advancement test choosing alphabetical jutsu instead of explicitly choosing the newly granted fire affinity. Corrected the fixtures/readers against the source without changing gameplay rules. One final CI attempt authorized within the three-attempt ceiling; if a scenario fails again, stop. No live verification.

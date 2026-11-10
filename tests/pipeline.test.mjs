@@ -15,7 +15,7 @@ globalThis.CONFIG = { N5E };
 const SRC = path.join(import.meta.dirname, "..", "packs", "_source");
 function load(pack, idPart) {
   const dir = path.join(SRC, pack);
-  const file = fs.readdirSync(dir).find(f => f.includes(idPart));
+  const file = fs.readdirSync(dir, { recursive: true }).find(f => f.endsWith(".json") && !path.basename(f).startsWith("_folder") && path.basename(f).includes(idPart));
   return JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
 }
 

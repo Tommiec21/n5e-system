@@ -21,7 +21,7 @@ test("areas from text: cones, radii, lines with widths, cubes", () => {
 test("areaOf: authored area first, Self flag, upcast growth", () => {
   const whip = load("jutsu", "flame-whip").system;
   const a = areaOf(whip);
-  assert.deepEqual([a.shape, a.size, a.source, a.self], ["sphere", 20, "item", true]);
+  assert.equal(a, null, "Flame Whip targets one creature within 20 feet; it is not a radius");
   const sys = { rank: "C", target: { range: { type: "feet", text: "" }, area: {} }, description: "a 15-foot cone",
     upcast: { perRank: [{ type: "area", value: "+5 ft" }] } };
   assert.equal(areaOf(sys, { rank: "A" }).size, 25, "two ranks above C: +10");
