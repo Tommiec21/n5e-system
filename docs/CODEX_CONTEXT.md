@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.11 published: effect dynamic numeric formulas, qualifying-event expiration, opt-in GM-approved world Macro bindings and reversible appearance providers. GitHub only; local Foundry unchanged.
+Current release: 0.13.0-alpha.12 published: saved damage roll provenance, visible formulas/dice and per-recipient application calculations. GitHub only; local Foundry unchanged.
 
-Current stage: ES1 pending effect services implemented and published; automated gates passed. No live verification; user acceptance remains.
+Current stage: DT1 damage trace fix published; automated gates passed. No live verification; user acceptance remains.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -212,3 +212,7 @@ Fix damage roll/application association: visible formula/dice breakdown, authori
 
 
 DT1 implementation candidate alpha12: source roll lineage, visible formulas/die results, roll-total verification, immutable application snapshot and per-recipient defense/resource breakdown. Native source visibility preserved. Fixed flavor-backed button lookup and flavor fingerprinting as the required card linkage path. Damage/critical rules unchanged. Six focused tests passed first attempt; lint passed. One full CI gate reserved, release artifact reused. No live testing/local installation. ActorDelta duplicate item bug and overbroad GM approval are separate outstanding reports. Publication pending.
+
+DT1 publication verified: runtime commit f5c7441b4; CI run 42728446273 and Release run 42728499959 succeeded. GitHub v0.13.0-alpha.12 published with n5e.zip and system.json. Six focused checks passed locally and in CI; two attempts per changed scenario, zero failures. Release reused the verified artifact. No live verification or local installation. User clarified that the issue is missing roll/application association, not whether an independently rerolled critical equals twice a prior normal roll. Applied summaries now preserve and display source roll snapshots plus defense/pool changes without rerolling. Source flavor mismatch corrected; in-game acceptance pending.
+
+User asked why Uncanny Dodge appears central: it was an early example given disproportionate development attention. It remains an optional registered ability, not a required damage/coordination subsystem. The new reaction label identifies the actually accepted ability only; no automatic Uncanny Dodge label on ordinary damage. Other reported ActorDelta item duplication, missing embedded Kunai item and overbroad routine GM approval remain unresolved separate tasks. DT1 ownership released.
