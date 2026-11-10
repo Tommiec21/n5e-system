@@ -14,22 +14,23 @@ export function targetSnapshot() {
 }
 export function storedButton(message, selector, index) {
   if ( !Number.isSafeInteger(index) || index < 0 || index > 500 ) throw new Error("Invalid card action index.");
-  const root = new DOMParser().parseFromString(message.content ?? "", "text/html");
+  const root = new DOMParser().parseFromString([message.content ?? "", message.flavor ?? ""].join("\n"), "text/html");
   const button = root.querySelectorAll(selector)[index];
   if ( !button ) throw new Error("The original card action is unavailable. Use the current card.");
   return button;
 }
 export function buttonIndex(message, button, selector) {
-  const root = new DOMParser().parseFromString(message.content ?? "", "text/html");
-  const keys = Object.keys(button.dataset).sort();
+  const root = new DOMParser().parseFromString([message.content ?? "", message.flavor ?? ""].join("\n"), "text/html");
+  const keysFor = node => Object.keys(node.dataset).filter(k => !/^tooltip/i.test(k)).sort();
+  const keys = keysFor(button);
   const index = [...root.querySelectorAll(selector)].findIndex(b => keys.every(k => b.dataset[k] === button.dataset[k])
-    && Object.keys(b.dataset).length === keys.length);
+    && keysFor(b).length === keys.length);
   if ( index < 0 ) throw new Error("This action does not match the original card.");
   return index;
 }
 
 export async function sourceStamp(message) {
-  const content = String(message.content ?? "");
+  const content = JSON.stringify([message.content ?? "", message.flavor ?? ""]);
   if ( content.length > 256000 ) throw new Error("This card is too large for a coordinated action.");
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(content));
   const html = [...new Uint8Array(digest)].map(n => n.toString(16).padStart(2, "0")).join("");

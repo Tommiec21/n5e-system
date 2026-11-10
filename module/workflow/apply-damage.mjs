@@ -1,3 +1,5 @@
+import { damageFromMessage, damageApplicationTrace } from "../rules/damage-trace.mjs";
+import { damageRollHTML, damageApplicationHTML } from "../view-models/damage-trace.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { chooseReaction } from "./reaction-adapters.mjs";
@@ -48,7 +50,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
   if ( fixed && !targets.length ) return ui.notifications.warn(`Only ${fixed.name}'s owner or the GM can apply this.`);
   if ( !targets.length ) return ui.notifications.info("Select the tokens to apply this to.");
   const rows = [];
-  const undo = [];
+  const undo = [], applications = [];
   for ( const actor of [...new Set(targets)] ) {
     await withActorLock(actor, async () => {
     // Snapshot for Undo: stored on the summary card (flags.n5e.undo) and restored by undoApply().
@@ -97,17 +99,22 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const conc = concentrationOnDamage(actor, plan.total);
     const concBtn = conc ? `<button type="button" data-n5e-concheck="${conc.dc}" data-actor="${actor.uuid}"
       data-jutsu='${esc(JSON.stringify(conc.atRisk.map(j => j.id)))}'>Concentration check DC ${conc.dc} (${esc(conc.atRisk.map(j => j.name).join(", "))})</button>` : "";
+    const trace = damageApplicationTrace(actor, data, mode, plan, before, reaction);
+    applications.push(trace);
     const taken = [plan.health ? `${plan.health} damage${plan.tempHpLost ? ` (${plan.tempHpLost} to temp HP)` : ""}` : "",
       plan.chakra ? `${plan.chakra} Chakra damage${plan.tempCpLost ? ` (${plan.tempCpLost} to temp CP)` : ""}` : ""].filter(Boolean).join(", ") || "no damage";
     rows.push(`<div class="target"><b>${esc(actor.name)}</b> takes ${esc(taken)}${notes.length ? `: <span class="warn">${esc(notes.join("; "))}</span>` : ""}
-      ${plan.steps.length ? `<div class="steps">${esc(plan.steps.join(" · "))}</div>` : ""}${concBtn}</div>`);
+      ${damageApplicationHTML(trace)}${concBtn}</div>`);
     });
   }
   if ( !rows.length ) return null;
   return ChatMessage().create({
     content: `<div class="n5e-apply-card"><b>${mode === "heal" ? "Healing applied" : `${{ full: "Damage", half: "Half damage", double: "Double damage" }[mode]} applied`}</b>
+      ${damageRollHTML(data.rollTrace)}
+      ${data.rollTrace?.sourceUuid ? `<button type="button" data-n5e-source="${esc(data.rollTrace.sourceUuid)}">View source damage roll</button>` : ""}
       ${rows.join("")}${coordinated ? '<p>Coordinated application recorded. Use GM reconciliation for corrections; legacy snapshot Undo is disabled.</p>' : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
-    flags: { n5e: { undo: coordinated ? [] : undo } }
+    ...(data.sourceVisibility ?? {}),
+    flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications } } }
   });
 }
 
@@ -194,7 +201,7 @@ export async function onApplyClick(message, btn, event, { authoritative = false 
       }
       if ( btn.dataset.n5eRetarget ) return retargetDamage(message);
       if ( btn.dataset.n5eApply ) {
-        const data = message.getFlag("n5e", "damage") ?? {};
+        const data = damageFromMessage(message);
         const uuids = data.targetUuid ? [data.targetUuid] : targetSnapshot().selectedActorUuids;
         if ( !uuids.length ) return ui.notifications.info("Select recipients, or use Retarget.");
         const results = [];
@@ -248,6 +255,7 @@ export async function onApplyClick(message, btn, event, { authoritative = false 
 
 /** Damage-roll timing only; nested reaction work is deferred by the user. */
 export async function resolveDamageReaction(message, data, mode, actor, apply) {
+  data = damageFromMessage(message);
   const selection = mode !== "heal" && rule("coordinatedDamage") && rule("reactionWindows")
     ? await chooseReaction(actor, "beforeDamage", { data, message }) : null;
   const result = await apply({ ...data, targetUuid: actor.uuid }, mode, { coordinated: true,
@@ -268,7 +276,7 @@ async function retargetDamage(message) {
   if ( !rule("multiplayerCoordination") ) {
     const actor = candidates.get(uuid);
     if ( !actor.isOwner ) return ui.notifications.warn("Enable multiplayer coordination to request damage on another actor.");
-    return applyToSelected({ ...message.getFlag("n5e", "damage"), targetUuid: uuid }, "full");
+    return applyToSelected({ ...damageFromMessage(message), targetUuid: uuid }, "full");
   }
   return submitWorkflow("damage", { actorUuid: uuid, messageUuid: message.uuid, mode: "full" });
 }

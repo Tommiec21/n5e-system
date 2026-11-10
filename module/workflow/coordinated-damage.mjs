@@ -1,3 +1,4 @@
+import { damageFromMessage } from "../rules/damage-trace.mjs";
 /** Persistent per-target damage commands with extensible, revalidated reaction adapters. */
 import { requestFingerprint } from "../automation/receipts.mjs";
 import { coordinateCommand } from "../automation/commands.mjs";
@@ -10,6 +11,7 @@ export async function coordinateDamage(message, data, mode, targets, apply, { re
   if ( !rule("reactionWindows") ) throw new Error("Enable reaction decision windows before using the coordinated damage pilot.");
   if ( !["full", "half", "double"].includes(mode) || !Array.isArray(data.instances) || !data.instances.length
     || data.instances.some(i => !Number.isFinite(i.amount) || i.amount < 0) ) throw new Error("Unsupported coordinated damage data.");
+  data = damageFromMessage(message);
   const results = [];
   for ( const target of new Map(targets.map(a => [a.uuid, a])).values() ) {
     const identity = await requestFingerprint("damage-source", { message: message.uuid, target: target.uuid });

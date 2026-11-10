@@ -190,6 +190,17 @@ export async function spendWillOfFire(message, how, { authoritative = false } = 
  * imported on click so loading the chat log stays cheap.
  */
 export function onRenderChatMessage(message, html) {
+  for ( const button of html.querySelectorAll("[data-n5e-source]") ) button.addEventListener("click", async event => {
+    event.preventDefault();
+    try {
+      const source = await fromUuid(button.dataset.n5eSource);
+      if ( !source || source.visible === false || source.isContentVisible === false ) return ui.notifications.warn("The source roll is unavailable or private.");
+      const { damageFromMessage } = await import("../rules/damage-trace.mjs");
+      const { damageRollHTML } = await import("../view-models/damage-trace.mjs");
+      await foundry.applications.api.DialogV2.wait({ window: { title: "Source damage roll" }, content: damageRollHTML(damageFromMessage(source).rollTrace),
+        buttons: [{ action: "close", label: "Close", default: true }], rejectClose: false });
+    } catch (error) { ui.notifications.warn(error.message); }
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-hit], [data-n5e-retarget], [data-n5e-apply], [data-n5e-inflict], [data-n5e-undo], [data-n5e-concheck], [data-n5e-deathsave]") ) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();

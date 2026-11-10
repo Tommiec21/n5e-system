@@ -1,3 +1,11 @@
+## 0.13.0-alpha.12 — Damage roll/application trace (DT1)
+
+- Show original formulas, kept/discarded die results and normal/critical formula basis directly on new damage cards.
+- Associate application with the saved source roll, verify typed amounts/totals against stored rolls, and retain a structured per-recipient audit.
+- Show rolled amount, DR/multiplier steps, final damage, temporary-pool consumption and HP/CP before/after. View source roll without rerolling; preserve source whisper/blind visibility on summaries.
+- Resolve legitimate card actions stored in message flavor as well as content, while fingerprinting both and still rejecting changed action data.
+- Six focused automated checks passed; no damage-rule change, live testing or local installation. Separate ActorDelta duplicate-item and GM-approval policy reports are not claimed fixed.
+
 ## 0.13.0-alpha.11 — Effect services (ES1)
 
 - Dynamic numeric changes use the existing bounded N5e arithmetic parser and a fixed base/source snapshot. Invalid or missing references skip only that change with actor diagnostics.

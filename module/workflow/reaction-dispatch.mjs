@@ -63,7 +63,7 @@ export function createReactionDispatcher({ authority, stamp, open, wait }) {
             requireAuthority();
             if ( revision !== currentActor._stats?.modifiedTime || originalStamp !== stamp() ) throw new Error("Actor or turn changed during reaction preparation; reconcile this action.");
             if ( !result || typeof result !== "object" ) throw new Error("Reaction adapter must return a preparation result.");
-            return { ...result, validate: async () => {
+            return { ...result, label: result.label ?? current.offer.label ?? current.offer.item.name, validate: async () => {
               requireAuthority();
               if ( revision !== currentActor._stats?.modifiedTime || originalStamp !== stamp() || adapters.get(id) !== adapter ) throw new Error("Reaction changed before commit; reconcile this action.");
               const refreshed = await adapter.offer(currentActor, context);

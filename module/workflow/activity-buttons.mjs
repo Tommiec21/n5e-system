@@ -1,3 +1,5 @@
+import { damageRollTrace } from "../rules/damage-trace.mjs";
+import { damageRollHTML } from "../view-models/damage-trace.mjs";
 import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
@@ -320,7 +322,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const crit = !!d.crit;
       const strMod = actor?.system.abilities?.str?.mod ?? 0;
       const instances = [];
-      const rolls = [];
+      const rolls = [], rollMetadata = [];
       for ( const p of parts ) {
         let formula = level(p.formula);
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
@@ -330,9 +332,11 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         }
         const roll = await createN5eRoll(crit ? critFormula(formula, abilityMod) : formula, actor?.getRollData?.() ?? {}).evaluate();
         rolls.push(roll);
+        rollMetadata.push({ formula: crit ? critFormula(formula, abilityMod) : formula, normalFormula: formula, abilityMod });
         instances.push({ amount: roll.total, type: p.type });
       }
       const total = instances.reduce((t, i) => t + i.amount, 0);
+      const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };
       if ( coatings.length ) await weapon.update({ "flags.n5e.coatings": spendCoatings(coatings) });
       // Binding Fury Stance: the first weapon damage each turn grants Fury (no-op otherwise).
       if ( d.weapon && actor?.isOwner ) await import("./trackers.mjs").then(m => m.onWeaponDamage(actor));
@@ -348,8 +352,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           <div class="note">${esc(lines)}${pierce ? ` · Pierce ${pierce}` : ""}${crit ? " · dice and ability modifier doubled" : ""}</div>
           ${modifiers.parts.length ? `<div class="note">${esc(modifiers.parts.map(p => `${p.label}: ${signed(p.value)}`).join(" · "))}</div>` : ""}
           ${coatings.length ? `<div class="note">${esc(coatings.map(c => c.label).join(", "))} · uses spent on this damage roll</div>` : ""}
+          ${damageRollHTML(rollTrace)}
           ${applyButtons()}</div>`,
-        flags: { n5e: { damage: { instances, crit, total, pierce, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
+        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }
     case "save": {
       const dc = Number(d.dc);
