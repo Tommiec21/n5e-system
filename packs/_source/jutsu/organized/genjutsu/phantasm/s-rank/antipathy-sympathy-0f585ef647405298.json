@@ -1,0 +1,175 @@
+{
+  "_id": "0f585ef647405298",
+  "_key": "!items!0f585ef647405298",
+  "name": "Antipathy/Sympathy",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "antipathy-sympathy",
+    "description": "<p>This genjutsu attracts or repels creatures of your choice. You target something within range, either a huge or smaller object or creature or an area that is no larger than a 200-foot cube. Then specify a kind of intelligent creature, such as Sage’s beasts, Demons, or even Humans. You inject the target with an aura that either attracts or repels the specified creatures for the duration. Choose antipathy or sympathy as the aura’s effect.</p>\n<p>Antipathy. The Genjutsu causes creatures of the kind you designated to feel an intense urge to leave the area and avoid the target. When such a creature can see the target or comes within 60 feet of it, the creature must make a Wisdom saving throw or become frightened. The creature remains frightened while it can see the target or is within 60 feet of it. While frightened by the target, the creature must use its movement to move to the nearest safe spot from which it can’t see the target. If the creature moves more than 60 feet from the target and can’t see it, the creature is no longer frightened, but the creature becomes frightened again if it regains sight of the target or moves within 60 feet of it.</p>\n<p>Sympathy. The enchantment causes the specified creatures to feel an intense urge to approach the target while within 60 feet of it or able to see it. When such a creature can see the target or comes within 60 feet of it, the creature must make a Wisdom saving throw or use its movement on each of its turns to enter the area or move within reach of the target. When the creature has done so, it can’t willingly move away from the target. If the target damages or otherwise harms an affected creature, the affected creature can make a Wisdom saving throw to end the effect, as described below.</p>\n<p>Ending the Effect. If an affected creature ends its turn while not within 60 feet of the target or able to see it, the creature makes a Wisdom saving throw. On a successful save, the creature is no longer affected by the target and recognizes the feeling of repugnance or attraction as magical. In addition, a creature affected by the genjutsu is allowed another Wisdom saving throw every 24 hours while the genjutsu persists. A creature that successfully saves against this effect is immune to it for 1 minute, after which time it can be affected again.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3405",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "long",
+      "value": 1,
+      "unit": "hour",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "day",
+      "concentration": false,
+      "text": "10 Days"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 28,
+      "text": "28 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3405,
+        "sourceHash": "39e60aac7372b3fdbf6cb2b3b05e9545da7c1eded5637e71046fd24e18649c07",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "S",
+          "time": "1 Hour",
+          "range": "60 Feet",
+          "duration": "10 Days",
+          "cost": "28 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Genjutsu (Visual)"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Hour Range: 60 Feet Duration: 10 Days\nComponents: HS, CM, CS Cost: 28 Chakra Keywords: Genjutsu (Visual) Description: This genjutsu attracts or repels creatures of your choice. You target something within range, either a huge or smaller object or creature or an area that is no larger than a 200-foot cube. Then specify a kind of intelligent creature, such as Sage’s beasts, Demons, or even Humans. You inject the target with an aura that either attracts or repels the specified creatures for the duration. Choose antipathy or sympathy as the aura’s effect.\nAntipathy. The Genjutsu causes creatures of the kind you designated to feel an intense urge to leave the area and avoid the target. When such a creature can see the target or comes within 60 feet of it, the creature must make a Wisdom saving throw or become frightened. The creature remains frightened while it can see the target or is within 60 feet of it. While frightened by the target, the creature must use its movement to move to the nearest safe spot from which it can’t see the target. If the creature moves more than 60 feet from the target and can’t see it, the creature is no longer frightened, but the creature becomes frightened again if it regains sight of the target or moves within 60 feet of it.\nSympathy. The enchantment causes the specified creatures to feel an intense urge to approach the target while within 60 feet of it or able to see it. When such a creature can see the target or comes within 60 feet of it, the creature must make a Wisdom saving throw or use its movement on each of its turns to enter the area or move within reach of the target. When the creature has done so, it can’t willingly move away from the target. If the target damages or otherwise harms an affected creature, the affected creature can make a Wisdom saving throw to end the effect, as described below.\nEnding the Effect. If an affected creature ends its turn while not within 60 feet of the target or able to see it, the creature makes a Wisdom saving throw. On a successful save, the creature is no longer affected by the target and recognizes the feeling of repugnance or attraction as magical. In addition, a creature affected by the genjutsu is allowed another Wisdom saving throw every 24 hours while the genjutsu persists. A creature that successfully saves against this effect is immune to it for 1 minute, after which time it can be affected again.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "e6c3bf38d4144669"
+}

@@ -1,0 +1,188 @@
+{
+  "_id": "eb192fac9ab8f1aa",
+  "_key": "!items!eb192fac9ab8f1aa",
+  "name": "Earth Release: Calcite Boons",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-calcite-boons",
+    "description": "<p>You create a surge of Earth Release Chakra and use it to amplify a willing creature you can see within range other than yourself. The target creature gains a bonus to their physical abilities from the following options;</p>\n<p>Stones Might. Their Strength becomes 18 if it is not already. Their Unarmed, Weapon, and Taijutsu Attacks deal an additional 1d6 Earth damage.</p>\n<p>Stones Swiftness. Their Dexterity becomes 18 for the duration if it is not already. They gain a rank of mastery with their Dexterity saving throws and their speed is increased by +20 feet</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain the Stones Power option. If this jutsu is cast at B-Rank or higher it can be cast targeting its caster. If this jutsu is cast at A-Rank or higher, you gain the Stones Tenacity option. If this jutsu is cast at S-Rank, this jutsu instead affects all creatures of your choice within a 15-foot radius, centered on you when cast.</p>\n<p>Stones Power. Jutsu they cast are amplified by Earth chakra, boosting its damage by +2d8 Earth damage once per casting and gain a +1 bonus to its initial Save DC.</p>\n<p>Stones Tenacity. They gain advantaged on Strength, Dexterity, and Constitution saving throws, immunity to Physical conditions, excluding Grappled or Restrained and regains 2d6 + 4 hit points at the beginning of each of their turns, so long as they begin their turns with at least 1 hit point.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1628",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain the Stones Power option. If this jutsu is cast at B-Rank or higher it can be cast targeting its caster. If this jutsu is cast at A-Rank or higher, you gain the Stones Tenacity option. If this jutsu is cast at S-Rank, this jutsu instead affects all creatures of your choice within a 15-foot radius, centered on you when cast.</p>\n<p>Stones Power. Jutsu they cast are amplified by Earth chakra, boosting its damage by +2d8 Earth damage once per casting and gain a +1 bonus to its initial Save DC.</p>\n<p>Stones Tenacity. They gain advantaged on Strength, Dexterity, and Constitution saving throws, immunity to Physical conditions, excluding Grappled or Restrained and regains 2d6 + 4 hit points at the beginning of each of their turns, so long as they begin their turns with at least 1 hit point.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1628,
+        "sourceHash": "99c944c8c1888d5b4f5422cfac322b6dbaa8bb124f370fa27ec97f8a3cc109a7",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "30 Feet",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release, Medical"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: 30 Feet Duration: Concentration, Up to 1 minute\nComponents:  HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Earth Release, Medical Description: You create a surge of Earth Release Chakra and use it to amplify a willing creature you can see within range other than yourself. The target creature gains a bonus to their physical abilities from the following options;\nStones Might. Their Strength becomes 18 if it is not already. Their Unarmed, Weapon, and Taijutsu Attacks deal an additional 1d6 Earth damage.\nStones Swiftness. Their Dexterity becomes 18 for the duration if it is not already. They gain a rank of mastery with their Dexterity saving throws and their speed is increased by +20 feet\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain the Stones Power option. If this jutsu is cast at B-Rank or higher it can be cast targeting its caster. If this jutsu is cast at A-Rank or higher, you gain the Stones Tenacity option. If this jutsu is cast at S-Rank, this jutsu instead affects all creatures of your choice within a 15-foot radius, centered on you when cast.\nStones Power. Jutsu they cast are amplified by Earth chakra, boosting its damage by +2d8 Earth damage once per casting and gain a +1 bonus to its initial Save DC.\nStones Tenacity. They gain advantaged on Strength, Dexterity, and Constitution saving throws, immunity to Physical conditions, excluding Grappled or Restrained and regains 2d6 + 4 hit points at the beginning of each of their turns, so long as they begin their turns with at least 1 hit point.",
+        "expressions": [
+          {
+            "expression": "1d6",
+            "offset": 345,
+            "context": "Their Unarmed, Weapon, and Taijutsu Attacks deal an additional 1d6 Earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8",
+            "offset": 1116,
+            "context": "Jutsu they cast are amplified by Earth chakra, boosting its damage by +2d8 Earth damage once per casting and gain a +1 bonus to its initial Save DC.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "2d6 + 4",
+            "offset": 1366,
+            "context": "They gain advantaged on Strength, Dexterity, and Constitution saving throws, immunity to Physical conditions, excluding Grappled or Restrained and regains 2d6 + 4 hit points at the beginning of each of their turns, so long as they begin their turns with at least 1 hit point.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "59ce6e14db17de3b"
+}

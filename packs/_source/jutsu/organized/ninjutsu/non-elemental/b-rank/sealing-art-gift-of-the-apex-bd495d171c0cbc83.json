@@ -1,0 +1,231 @@
+{
+  "_id": "bd495d171c0cbc83",
+  "_key": "!items!bd495d171c0cbc83",
+  "name": "Sealing Art: Gift of the Apex",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-gift-of-the-apex",
+    "description": "<p>You begin to gain qualities of a single bestial creature. Granting you chakra projections that enhance your physical traits. Select one of the following beasts to gain traits from.</p>\n<p>Bears Endurance: You gain advantage on constitution saving throws and the Kuma Fortitude reaction.</p>\n<p>Kuma Fortitude. As a reaction to making a saving throw to resist a Physical, Elemental or Sensory condition, your bestial projection protects you from the worst of it. Select one condition type that can have more than 1 rank and you reduce the number of ranks you would gain of that condition type, by 1.</p>\n<p>Bull’s Strength: You gain advantage on Strength saving throws and the Bulls Rush attack as you grow chakra construct horns.</p>\n<p>Bulls Rush. In place of an attack made as part of the attack action, you attempt to gore an enemy. Make an unarmed attack against a creature within 5 feet of you dealing 2d12 + Strength Piercing damage. They also have to make a Strength saving throw vs the damage result, being knocked Prone on a failure.</p>\n<p>Cat’s Grace: You gain advantage on Dexterity Saving Throws and feline claws made of chakra letting you perform the Cats Pounce attack.</p>\n<p>Cats Pounce. When you would take the attack action, you can use this attack before or after one of your normal unarmed attacks are made, once per turn. Make an unarmed attack that deals 2d8 + your Dexterity modifier in slashing damage. On a hit the target must also make a Dexterity saving throw vs the damage result, gaining a rank of Bleed on a failure</p>\n<p>Eagle’s Splendor: You gain advantage on Wisdom Saving Throws and the Eagle Eye ability.</p>\n<p>Eagle Eye. As a bonus action, you can perform the Search skill action, viewing things in full clarity up to 500 feet away as long as there are no obstructions as if you were only 1 foot away from it</p>\n<p>Fox’s Cunning: You gain advantage on Intelligence Saving Throws and can concentrate on one additional jutsu.</p>\n<p>Lions Presence: You gain advantage on Charisma Saving Throws and the Tora Growl ability.</p>\n<p>Tora Growl. As part of attempting to perform the Coerce, Demoralize, or Make an Impression skill actions you cannot make them at disadvantage and affected creatures making contested checks make their checks with a -2 penalty</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1091",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d12",
+        "roll": {
+          "formula": "2d12",
+          "note": "Make an unarmed attack against a creature within 5 feet of you dealing 2d12 + Strength Piercing damage. They also have to make a Strength saving throw vs the damage result, being knocked Prone on a failure."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "2d8",
+        "roll": {
+          "formula": "2d8",
+          "note": "Make an unarmed attack that deals 2d8 + your Dexterity modifier in slashing damage. On a hit the target must also make a Dexterity saving throw vs the damage result, gaining a rank of Bleed on a failure"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1091,
+        "sourceHash": "7d614af384047e82dfc7a7cc56c65935f5568488b7edbb229024b13a0950b3e6",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, up to 1 minute.",
+          "cost": "14 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 1 minute.\nComponents:  HS, CM, CS Cost: 14 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You begin to gain qualities of a single bestial creature. Granting you chakra projections that enhance your physical traits. Select one of the following beasts to gain traits from.\nBears Endurance: You gain advantage on constitution saving throws and the Kuma Fortitude reaction.\nKuma Fortitude. As a reaction to making a saving throw to resist a Physical, Elemental or Sensory condition, your bestial projection protects you from the worst of it. Select one condition type that can have more than 1 rank and you reduce the number of ranks you would gain of that condition type, by 1.\nBull’s Strength: You gain advantage on Strength saving throws and the Bulls Rush attack as you grow chakra construct horns.\nBulls Rush. In place of an attack made as part of the attack action, you attempt to gore an enemy. Make an unarmed attack against a creature within 5 feet of you dealing 2d12 + Strength Piercing damage. They also have to make a Strength saving throw vs the damage result, being knocked Prone on a failure.\nCat’s Grace: You gain advantage on Dexterity Saving Throws and feline claws made of chakra letting you perform the Cats Pounce attack.\nCats Pounce. When you would take the attack action, you can use this attack before or after one of your normal unarmed attacks are made, once per turn. Make an unarmed attack that deals 2d8 + your Dexterity modifier in slashing damage. On a hit the target must also make a Dexterity saving throw vs the damage result, gaining a rank of Bleed on a failure\nEagle’s Splendor: You gain advantage on Wisdom Saving Throws and the Eagle Eye ability.\nEagle Eye. As a bonus action, you can perform the Search skill action, viewing things in full clarity up to 500 feet away as long as there are no obstructions as if you were only 1 foot away from it\nFox’s Cunning: You gain advantage on Intelligence Saving Throws and can concentrate on one additional jutsu.\nLions Presence: You gain advantage on Charisma Saving Throws and the Tora Growl ability.\nTora Growl. As part of attempting to perform the Coerce, Demoralize, or Make an Impression skill actions you cannot make them at disadvantage and affected creatures making contested checks make their checks with a -2 penalty",
+        "expressions": [
+          {
+            "expression": "2d12",
+            "offset": 879,
+            "context": "Make an unarmed attack against a creature within 5 feet of you dealing 2d12 + Strength Piercing damage. They also have to make a Strength saving throw vs the damage result, being knocked Prone on a failure.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8",
+            "offset": 1336,
+            "context": "Make an unarmed attack that deals 2d8 + your Dexterity modifier in slashing damage. On a hit the target must also make a Dexterity saving throw vs the damage result, gaining a rank of Bleed on a failure",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c568998800eeab7a"
+}

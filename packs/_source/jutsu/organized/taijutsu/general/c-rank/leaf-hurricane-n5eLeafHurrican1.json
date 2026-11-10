@@ -1,0 +1,232 @@
+{
+  "_id": "n5eLeafHurrican1",
+  "_key": "!items!n5eLeafHurrican1",
+  "name": "Leaf Hurricane",
+  "type": "jutsu",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "system": {
+    "identifier": "leaf-hurricane",
+    "description": "<p>You perform a powerful spinning backwards kick, fast enough to not be seen and powerful enough to create a strong whirlwind affecting creatures surrounding the user. Creatures in a 15-foot radius centering on a point of the space you occupy, must make a Dexterity saving throw, taking your [Unarmed damage] + 2d6, are knocked Prone and pulled 10 feet towards you, ending this movement in a space that can hold them on a failed save, or half as much damage on a success.</p>\n<p>Finisher: you kick twice causing the whirlwind to manifest and then explode outward. You instead deal your [Unarmed damage] + 4d6 and creatures who fail their saving throw, are pushed 30 away.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4652",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15 Foot radius Sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 2d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "damage",
+        "label": "Finisher: Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 4d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "ability": "",
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "riders": [],
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: you kick twice causing the whirlwind to manifest and then explode outward. You instead deal your [Unarmed damage] + 4d6 and creatures who fail their saving throw, are pushed 30 away.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4652,
+        "sourceHash": "f2a5639f1ed37e594b6493c6b4b74f3cf9121caec553e1abfeb71928e13f501c",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (15 Foot radius Sphere)",
+          "duration": "Instant",
+          "cost": "8 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (15 Foot radius Sphere) Duration: Instant\nComponents: M Cost: 8 Chakra Keywords: Taijutsu, Finisher Description: You perform a powerful spinning backwards kick, fast enough to not be seen and powerful enough to create a strong whirlwind affecting creatures surrounding the user. Creatures in a 15-foot radius centering on a point of the space you occupy, must make a Dexterity saving throw, taking your [Unarmed damage] + 2d6, are knocked Prone and pulled 10 feet towards you, ending this movement in a space that can hold them on a failed save, or half as much damage on a success.\nFinisher: you kick twice causing the whirlwind to manifest and then explode outward. You instead deal your [Unarmed damage] + 4d6 and creatures who fail their saving throw, are pushed 30 away.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 290,
+            "context": "Creatures in a 15-foot radius centering on a point of the space you occupy, must make a Dexterity saving throw, taking your [Unarmed damage] + 2d6, are knocked Prone and pulled 10 feet towards you, ending this movement in a space that can hold them on a failed save, or half as much damage on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 309,
+            "context": "Creatures in a 15-foot radius centering on a point of the space you occupy, must make a Dexterity saving throw, taking your [Unarmed damage] + 2d6, are knocked Prone and pulled 10 feet towards you, ending this movement in a space that can hold them on a failed save, or half as much damage on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 577,
+            "context": "You instead deal your [Unarmed damage] + 4d6 and creatures who fail their saving throw, are pushed 30 away.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "4d6",
+            "offset": 596,
+            "context": "You instead deal your [Unarmed damage] + 4d6 and creatures who fail their saving throw, are pushed 30 away.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "1d6",
+            "offset": 783,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

@@ -1,0 +1,246 @@
+{
+  "_id": "e2e5f949ef1ced1d",
+  "_key": "!items!e2e5f949ef1ced1d",
+  "name": "Mind Sliver",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "mind-sliver",
+    "description": "<p>You inject a disorienting spike of chakra into the mind of one creature you can see within range. Make a ranged Genjutsu attack, dealing 1d6 psychic damage. The target must also succeed an Intelligence saving throw. On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration.</p>\n<p>At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3797",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "E",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round."
+    },
+    "cost": {
+      "mode": "none",
+      "value": 0,
+      "text": "None"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "gen",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "d4",
+        "roll": {
+          "formula": "d4",
+          "note": "On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration."
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
+        }
+      },
+      {
+        "id": "sourceRoll6",
+        "type": "roll",
+        "label": "4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3797,
+        "sourceHash": "e2cdea183072a243b3709531d35cb4ba6104bb6671c185d575017ba76545114a",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "E",
+          "time": "1 Action",
+          "range": "30 Feet",
+          "duration": "1 Round.",
+          "cost": "None",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile)"
+        },
+        "sourceText": "Rank: E-Rank Casting Time: 1 Action Range: 30 Feet Duration: 1 Round.\nComponents: HS, CM Cost: None Keywords: Genjutsu (Visual, Tactile)  Description: You inject a disorienting spike of chakra into the mind of one creature you can see within range. Make a ranged Genjutsu attack, dealing 1d6 psychic damage. The target must also succeed an Intelligence saving throw. On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration.\nAt Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)",
+        "expressions": [
+          {
+            "expression": "1d6",
+            "offset": 137,
+            "context": "Make a ranged Genjutsu attack, dealing 1d6 psychic damage. The target must also succeed an Intelligence saving throw. On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration.",
+            "section": "Base"
+          },
+          {
+            "expression": "d4",
+            "offset": 281,
+            "context": "On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 464,
+            "context": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 494,
+            "context": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 512,
+            "context": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)",
+            "section": "Base"
+          },
+          {
+            "expression": "4d6",
+            "offset": 530,
+            "context": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "7ba0b480d2fe1d5b"
+}

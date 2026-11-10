@@ -1,0 +1,161 @@
+{
+  "_id": "dbd60fa0dc3a3335",
+  "_key": "!items!dbd60fa0dc3a3335",
+  "name": "Earth Release: Geo Breastplate",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-geo-breastplate",
+    "description": "<p>You create an aura of Earth Release chakra that permeates your body for the duration. This chakra acts as a breastplate of steel like material.</p>\n<p>For the duration your AC is Calculated as 13 + Your Intelligence (Or Constitution) + Half of your proficiency bonus, and you have 2 DR. This jutsu ends if you dismiss it as a Bonus action.</p>\n<p>You cannot gain the benefit of this jutsu if you are wearing Armor and This jutsu’s effects end when you complete a short rest.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain +2 DR (damage reduction). If this jutsu is cast at B-Rank or higher, increase the AC this Jutsu grants by +1. If this jutsu is cast at A-Rank or higher, you gain an additional +2 DR (For a total bonus of +4). If this jutsu is cast at S-Rank, increase the AC this Jutsu grants by +2, instead of +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1658",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 8,
+      "unit": "hour",
+      "concentration": false,
+      "text": "8 Hours"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain +2 DR (damage reduction). If this jutsu is cast at B-Rank or higher, increase the AC this Jutsu grants by +1. If this jutsu is cast at A-Rank or higher, you gain an additional +2 DR (For a total bonus of +4). If this jutsu is cast at S-Rank, increase the AC this Jutsu grants by +2, instead of +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1658,
+        "sourceHash": "5665320d6dd63ade228285801dcd0fe3391e42156bf19bff12e69d9b9cdc4527",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "8 Hours",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self\nDuration: 8 Hours\nComponents:  HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Earth Release  Description: You create an aura of Earth Release chakra that permeates your body for the duration. This chakra acts as a breastplate of steel like material.\nFor the duration your AC is Calculated as 13 + Your Intelligence (Or Constitution) + Half of your proficiency bonus, and you have 2 DR. This jutsu ends if you dismiss it as a Bonus action.\nYou cannot gain the benefit of this jutsu if you are wearing Armor and This jutsu’s effects end when you complete a short rest.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you gain +2 DR (damage reduction). If this jutsu is cast at B-Rank or higher, increase the AC this Jutsu grants by +1. If this jutsu is cast at A-Rank or higher, you gain an additional +2 DR (For a total bonus of +4). If this jutsu is cast at S-Rank, increase the AC this Jutsu grants by +2, instead of +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "59ce6e14db17de3b"
+}

@@ -1,0 +1,163 @@
+{
+  "_id": "e5b429c3e9d59ee2",
+  "_key": "!items!e5b429c3e9d59ee2",
+  "name": "Lackluster Thoughts",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lackluster-thoughts",
+    "description": "<p>You speak unfocused words and statements of indecision into a chakra seal before you then attempt to implant them into the mind of a creature you can see within range.</p>\n<p>Select creature within range must make an Intelligence Save at the beginning of each of their turns. On a failed save, they instead spend their turn doing completely unproductive activities such as drawing in the sand fixing the straps on their armor, counting their kunai and shuriken or verbally planning out scenario’s in elaborate 10 step plans.</p>\n<p>If a creature succeeds their Intelligence Save by 10 or more, this jutsu immediately ends on them and they become immune to this genjutsu for 1 hour.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank increase the cost of this jutsu by 3 and the number of creatures this jutsu can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3383",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 17,
+      "text": "17 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank increase the cost of this jutsu by 3 and the number of creatures this jutsu can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3383,
+        "sourceHash": "6b45630bc88ef2a71f5afe15e8c35ded0f754b85ad8f062ef4b5e6aa9880e00a",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "90 Feet",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "17 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Genjutsu (Auditory), Fuinjutsu"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 90 Feet Duration: Concentration, Up to 1 minute\nComponents: HS, CM, CS\nCost: 17 Chakra Keywords: Genjutsu (Auditory), Fuinjutsu Description: You speak unfocused words and statements of indecision into a chakra seal before you then attempt to implant them into the mind of a creature you can see within range.\nSelect creature within range must make an Intelligence Save at the beginning of each of their turns. On a failed save, they instead spend their turn doing completely unproductive activities such as drawing in the sand fixing the straps on their armor, counting their kunai and shuriken or verbally planning out scenario’s in elaborate 10 step plans.\nIf a creature succeeds their Intelligence Save by 10 or more, this jutsu immediately ends on them and they become immune to this genjutsu for 1 hour.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank increase the cost of this jutsu by 3 and the number of creatures this jutsu can target by +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "31317d7b8ae082be"
+}

@@ -1,0 +1,239 @@
+{
+  "_id": "39413e5928639bc5",
+  "_key": "!items!39413e5928639bc5",
+  "name": "Abyssal Aura",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "abyssal-aura",
+    "description": "<p>You spin your weapon slowly as it draws anxiety from those around you eliciting different effects based on which Chain rank you are in.</p>\n<p>Chain 1: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 1 rank of Demoralized.</p>\n<p>Chain 2: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 2 ranks of Concussed.</p>\n<p>Chain 3: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 3 ranks of Dazzled.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6017",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "flail",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (Weapons Range)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Flail"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "chain-1-parsed1",
+        "type": "save",
+        "label": "Chain 1: Save",
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "chain-2-parsed1",
+        "type": "save",
+        "label": "Chain 2: Save",
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "chain-3-parsed1",
+        "type": "save",
+        "label": "Chain 3: Save",
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Dazzled"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 1 rank of Demoralized.</p>",
+      "2": "<p>Chain 2: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 2 ranks of Concussed.</p>",
+      "3": "<p>Chain 3: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 3 ranks of Dazzled.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6017,
+        "sourceHash": "828255b2a0130161b6d312183cf4d5e029f8fb54947698d4d54872a4ef835faa",
+        "discipline": "Bukijutsu",
+        "group": "Flail",
+        "header": {
+          "rank": "C",
+          "time": "1 Bonus Action",
+          "range": "Self (Weapons Range)",
+          "duration": "1 Round",
+          "cost": "9 Chakra",
+          "components": "W (Any Flail), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Bonus Action\nRange: Self (Weapons Range) Duration: 1 Round\nComponents: W (Any Flail), M\nCost: 9 Chakra\nKeywords: Bukijutsu, Chain\nDescription: You spin your weapon slowly as it draws anxiety from those around you eliciting different effects based on which Chain rank you are in.\nChain 1: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 1 rank of Demoralized.\nChain 2: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 2 ranks of Concussed.\nChain 3: All creatures in range, must make a Wisdom saving throw. On a failed save the next time they take damage from a flail weapon or Bukijutsu that uses a Flail they gain 3 ranks of Dazzled.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0e415a5f84ce5a5f"
+}

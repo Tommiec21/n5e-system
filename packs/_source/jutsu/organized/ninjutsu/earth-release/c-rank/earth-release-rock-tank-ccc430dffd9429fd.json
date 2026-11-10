@@ -1,0 +1,360 @@
+{
+  "_id": "ccc430dffd9429fd",
+  "_key": "!items!ccc430dffd9429fd",
+  "name": "Earth Release: Rock Tank",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-rock-tank",
+    "description": "<p>The user covers itself with earth, soil or sand and molds it into a rolling sphere that is then launched at a target in range, crushing them beneath its new weight. Make a melee ninjutsu attack against a creature you can see within range propelling yourself towards the target creature and ending your movement occupying the targets space, if possible, dealing 4d8 Earth damage. The target also makes a Strength saving throw being knocked Prone.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1778",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1778,
+        "sourceHash": "122ba6c796e518a4c5e655ca3c7683514c3ea5e9c87d06161bd89e9ee5df6eb5",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "30 feet",
+          "duration": "Instant",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release, Clash"
+        },
+        "sourceText": "Rank: C-Rank  Casting Time: 1 Action Range: 30 feet Duration: Instant\nComponents:  HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Earth Release, Clash Description: The user covers itself with earth, soil or sand and molds it into a rolling sphere that is then launched at a target in range, crushing them beneath its new weight. Make a melee ninjutsu attack against a creature you can see within range propelling yourself towards the target creature and ending your movement occupying the targets space, if possible, dealing 4d8 Earth damage. The target also makes a Strength saving throw being knocked Prone.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "4d8",
+            "offset": 361,
+            "context": "Make a melee ninjutsu attack against a creature you can see within range propelling yourself towards the target creature and ending your movement occupying the targets space, if possible, dealing 4d8 Earth damage. The target also makes a Strength saving throw being knocked Prone.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 566,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "bdb81013175b0aa5"
+}

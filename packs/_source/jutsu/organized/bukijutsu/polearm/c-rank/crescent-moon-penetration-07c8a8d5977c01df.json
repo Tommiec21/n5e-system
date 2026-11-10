@@ -1,0 +1,267 @@
+{
+  "_id": "07c8a8d5977c01df",
+  "_key": "!items!07c8a8d5977c01df",
+  "name": "Crescent Moon Penetration",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "crescent-moon-penetration",
+    "description": "<p>You grip your weapon with two-hands to the best of your abilities. You attack with your weapon with the ferocity to pierce straight through their heart. Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart.</p>\n<p>Chain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once.</p>\n<p>Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d10 or the number of d20’s rolled by 1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6320",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "4d10",
+        "roll": {
+          "formula": "4d10",
+          "note": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "4d20",
+        "roll": {
+          "formula": "4d20",
+          "note": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart."
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "Chain 1: d20",
+        "roll": {
+          "formula": "d20",
+          "note": "Chain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once."
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "Chain 2: d4",
+        "roll": {
+          "formula": "d4",
+          "note": "Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d10 or the number of d20’s rolled by 1.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once.</p>",
+      "2": "<p>Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6320,
+        "sourceHash": "d4b1e1ea02226f643fa31492688761c4161c538a6aced2b0784377475b089cf0",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Weapon Range Duration: Instant\nComponents: W (Any Polearm), M Cost: 9 Chakra Keywords: Bukijutsu, Chain Description: You grip your weapon with two-hands to the best of your abilities. You attack with your weapon with the ferocity to pierce straight through their heart. Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart.\nChain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once.\nChain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d10 or the number of d20’s rolled by 1.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 202,
+            "context": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d10",
+            "offset": 221,
+            "context": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d20",
+            "offset": 320,
+            "context": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart.",
+            "section": "Base"
+          },
+          {
+            "expression": "d20",
+            "offset": 526,
+            "context": "Chain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once.",
+            "section": "Chain 1"
+          },
+          {
+            "expression": "d4",
+            "offset": 640,
+            "context": "Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.",
+            "section": "Chain 2"
+          },
+          {
+            "expression": "d20",
+            "offset": 655,
+            "context": "Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.",
+            "section": "Chain 2"
+          },
+          {
+            "expression": "d20",
+            "offset": 717,
+            "context": "Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20.",
+            "section": "Chain 2"
+          },
+          {
+            "expression": "1d10",
+            "offset": 881,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d10 or the number of d20’s rolled by 1.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "d20",
+            "offset": 903,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d10 or the number of d20’s rolled by 1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "f8b8034e73078532"
+}

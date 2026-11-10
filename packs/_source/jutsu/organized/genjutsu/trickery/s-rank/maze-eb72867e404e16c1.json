@@ -1,0 +1,189 @@
+{
+  "_id": "eb72867e404e16c1",
+  "_key": "!items!eb72867e404e16c1",
+  "name": "Maze",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "maze",
+    "description": "<p>You select up to 4 creatures you can see within range. Each creature must make a Wisdom saving throw. On a failed save you banish the minds of the creature into a labyrinth of your design. The target mentally remains there for the duration or until it escapes the maze.</p>\n<p>A mentally trapped creature falls Prone and is physically Stunned, but mentally active.</p>\n<p>On each of its turns it can do one of the following vs your Genjutsu save DC in an attempt to escape. They can only make one of the following skills checks if they are proficient. If they are not proficient in any of the following, they instead make a flat Intelligence Check vs your Genjutsu save DC to escape. A creature does not add Mastery for these checks;</p>\n<p>Intelligence (Investigation) check. On a successful check, it finds the exit immediately ending this Jutsu's effects upon them.</p>\n<p>Wisdom (Insight) check. On a successful check, at the beginning of its next turn, it remakes its wisdom saving throw at advantage, ending this Jutsu's effects upon them on a success.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3774",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu",
+      "kinjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, 10 Minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 28,
+      "text": "28 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3774,
+        "sourceHash": "09da7ed55cf8c474c250a0ba941e0703f08c20dfbb7e0b571e35b1a072a081bf",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "60 feet",
+          "duration": "Concentration, 10 Minutes",
+          "cost": "28 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual), Kinjutsu"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: 60 feet Duration: Concentration, 10 Minutes\nComponents: HS, CM\nCost: 28 Chakra Keywords: Genjutsu (Visual), Kinjutsu Description: You select up to 4 creatures you can see within range. Each creature must make a Wisdom saving throw. On a failed save you banish the minds of the creature into a labyrinth of your design. The target mentally remains there for the duration or until it escapes the maze.\nA mentally trapped creature falls Prone and is physically Stunned, but mentally active.\nOn each of its turns it can do one of the following vs your Genjutsu save DC in an attempt to escape. They can only make one of the following skills checks if they are proficient. If they are not proficient in any of the following, they instead make a flat Intelligence Check vs your Genjutsu save DC to escape. A creature does not add Mastery for these checks;\nIntelligence (Investigation) check. On a successful check, it finds the exit immediately ending this Jutsu's effects upon them.\nWisdom (Insight) check. On a successful check, at the beginning of its next turn, it remakes its wisdom saving throw at advantage, ending this Jutsu's effects upon them on a success.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b43e363ae1f523df"
+}

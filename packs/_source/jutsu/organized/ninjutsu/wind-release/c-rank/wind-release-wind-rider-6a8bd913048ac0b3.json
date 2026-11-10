@@ -1,0 +1,161 @@
+{
+  "_id": "6a8bd913048ac0b3",
+  "_key": "!items!6a8bd913048ac0b3",
+  "name": "Wind Release: Wind Rider",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-wind-rider",
+    "description": "<p>You coat yourself in Wind Release Chakra. For the duration, you gain a 30ft flying speed, but at the end of your turn you begin to float down towards the ground, ending this movement within 1-foot of the ground. You cannot suffer falling damage or be knocked Prone as you are always carried by the wind to a safe landing.</p>\n<p>Additionally, you are always floating at least 1 feet off the ground for the duration.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you no longer need to end your movement within 1 feet of the ground. If this jutsu is cast at A-Rank or higher, if you take the dash Action you gain an additional +60 fly speed until the end of the current turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2103",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you no longer need to end your movement within 1 feet of the ground. If this jutsu is cast at A-Rank or higher, if you take the dash Action you gain an additional +60 fly speed until the end of the current turn.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2103,
+        "sourceHash": "092cb5850bb0464c71bdb718e561b952772753d6e0f32907c399e5d3fee172bf",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, up to 1 Minute\nComponents: HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Wind Release Description: You coat yourself in Wind Release Chakra. For the duration, you gain a 30ft flying speed, but at the end of your turn you begin to float down towards the ground, ending this movement within 1-foot of the ground. You cannot suffer falling damage or be knocked Prone as you are always carried by the wind to a safe landing.\nAdditionally, you are always floating at least 1 feet off the ground for the duration.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you no longer need to end your movement within 1 feet of the ground. If this jutsu is cast at A-Rank or higher, if you take the dash Action you gain an additional +60 fly speed until the end of the current turn.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c316a04b2e905f38"
+}

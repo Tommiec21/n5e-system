@@ -1,0 +1,198 @@
+{
+  "_id": "3cbaeca1f389bc2d",
+  "_key": "!items!3cbaeca1f389bc2d",
+  "name": "Overcomer",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "overcomer",
+    "description": "<p>Your weapon, your will and your drive are all that you have and you have learned to tap into them simultaneously, at will.</p>\n<p>For the duration, if you would make a Strength saving throw you gain a +1d4 bonus to the roll.</p>\n<p>Additionally, while your hit points are at half or less, at the beginning of each turn you gain 10 Temporary hit points and effects that would move you against your will fail. If the effect to move you occurs before or after damage, the damage is still applied if applicable, but you are not moved.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6465",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "heal",
+        "label": "Temporary HP",
+        "heal": {
+          "formula": "10",
+          "pool": "tempHp"
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d4",
+        "roll": {
+          "formula": "1d4",
+          "note": "For the duration, if you would make a Strength saving throw you gain a +1d4 bonus to the roll."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6465,
+        "sourceHash": "9da83d18c2b3f4f3ed70db14fbeaed3ccf364364a725b4d9f0c1359faefdf343",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "16 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Self Duration: Concentration, up to 1 minute\nComponents: W (Any Polearm), M Cost: 16 Chakra Keywords: Bukijutsu Description: Your weapon, your will and your drive are all that you have and you have learned to tap into them simultaneously, at will.\nFor the duration, if you would make a Strength saving throw you gain a +1d4 bonus to the roll.\nAdditionally, while your hit points are at half or less, at the beginning of each turn you gain 10 Temporary hit points and effects that would move you against your will fail. If the effect to move you occurs before or after damage, the damage is still applied if applicable, but you are not moved.",
+        "expressions": [
+          {
+            "expression": "1d4",
+            "offset": 195,
+            "context": "For the duration, if you would make a Strength saving throw you gain a +1d4 bonus to the roll.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "405991324385ff7a"
+}

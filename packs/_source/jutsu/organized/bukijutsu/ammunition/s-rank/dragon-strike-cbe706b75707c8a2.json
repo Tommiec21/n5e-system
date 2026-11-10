@@ -1,0 +1,198 @@
+{
+  "_id": "cbe706b75707c8a2",
+  "_key": "!items!cbe706b75707c8a2",
+  "name": "Dragon-Strike",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "dragon-strike",
+    "description": "<p>You aim your weapon and coat it in a twisting chakra that and then becomes a pair of dragons</p>\n<p>that spiral around each other when you Fire, expanding until the weapon is completely obscured. All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one.</p>\n<p>Chain 3: After firing all creatures who fail their saving throw has their movement speed reduced to 0 until the beginning of your next turn and you can shift your Chain rank to any value other than 0 if you choose.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 7178",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (Weapons Range Line)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 21,
+      "text": "21 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any ranged/Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "7d10",
+        "roll": {
+          "formula": "7d10",
+          "note": "All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": "<p>Chain 3: After firing all creatures who fail their saving throw has their movement speed reduced to 0 until the beginning of your next turn and you can shift your Chain rank to any value other than 0 if you choose.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 7178,
+        "sourceHash": "39e56860f759b3ff348ed71fd9c9fd0aeb032849fea4bd0824e517a94764f842",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self (Weapons Range Line)",
+          "duration": "Instant",
+          "cost": "21 Chakra",
+          "components": "W (Any ranged/Thrown), CM",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self (Weapons Range Line) Duration: Instant Components: W (Any ranged/Thrown), CM Cost: 21 Chakra Keywords: Bukijutsu, Chain Description: You aim your weapon and coat it in a twisting chakra that and then becomes a pair of dragons\nthat spiral around each other when you Fire, expanding until the weapon is completely obscured. All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one.\nChain 3: After firing all creatures who fail their saving throw has their movement speed reduced to 0 until the beginning of your next turn and you can shift your Chain rank to any value other than 0 if you choose.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 339,
+            "context": "All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "7d10",
+            "offset": 358,
+            "context": "All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a8010b352a59571c"
+}

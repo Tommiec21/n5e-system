@@ -1,0 +1,541 @@
+{
+  "_id": "88c8298ecd942d45",
+  "_key": "!items!88c8298ecd942d45",
+  "name": "Iron Knuckle",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "iron-knuckle",
+    "description": "<p>As a requirement to activate this jutsu, you must currently be in the Iron Fist Stance.</p>\n<p>You perform a single high-powered strike with full intention to cause harm. Make a melee taijutsu attack. On a hit, you deal your [Unarmed damage] + 2d6 and force the target to make a Strength saving throw. On a failed save, you knock them back a number of feet equal to 5 x your Strength ability modifier.</p>\n<p>Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4355",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "damage",
+        "label": "Finisher: Damage",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "Finisher: 4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "Finisher: 3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4355,
+        "sourceHash": "9ad4fca71b4fd1c19203eec93d71d3f41d5c3e62a374dbf64694b1a018aff5aa",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 5 Feet Duration: Instant\nComponents: M Cost: 3 Chakra Keywords: Taijutsu, Finisher  Description: As a requirement to activate this jutsu, you must currently be in the Iron Fist Stance.\nYou perform a single high-powered strike with full intention to cause harm. Make a melee taijutsu attack. On a hit, you deal your [Unarmed damage] + 2d6 and force the target to make a Strength saving throw. On a failed save, you knock them back a number of feet equal to 5 x your Strength ability modifier.\nFinisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 218,
+            "context": "On a hit, you deal your [Unarmed damage] + 2d6 and force the target to make a Strength saving throw. On a failed save, you knock them back a number of feet equal to 5 x your Strength ability modifier.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 237,
+            "context": "On a hit, you deal your [Unarmed damage] + 2d6 and force the target to make a Strength saving throw. On a failed save, you knock them back a number of feet equal to 5 x your Strength ability modifier.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 427,
+            "context": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "4d6",
+            "offset": 446,
+            "context": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "3d6",
+            "offset": 710,
+            "context": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "1d6",
+            "offset": 853,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "finisher-parsed1",
+              "type": "damage",
+              "label": "Finisher: Damage",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "sourceRoll4",
+              "type": "roll",
+              "label": "Finisher: 4d6",
+              "roll": {
+                "formula": "4d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            },
+            {
+              "id": "sourceRoll5",
+              "type": "roll",
+              "label": "Finisher: 3d6",
+              "roll": {
+                "formula": "3d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "finisher-parsed1",
+              "type": "damage",
+              "label": "Finisher: Damage",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "sourceRoll4",
+              "type": "roll",
+              "label": "Finisher: 4d6",
+              "roll": {
+                "formula": "4d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            },
+            {
+              "id": "sourceRoll5",
+              "type": "roll",
+              "label": "Finisher: 3d6",
+              "roll": {
+                "formula": "3d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "finisher-parsed1",
+              "type": "damage",
+              "label": "Finisher: Damage",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "sourceRoll4",
+              "type": "roll",
+              "label": "Finisher: 4d6",
+              "roll": {
+                "formula": "4d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            },
+            {
+              "id": "sourceRoll5",
+              "type": "roll",
+              "label": "Finisher: 3d6",
+              "roll": {
+                "formula": "3d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d6) + (4d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "finisher-parsed1",
+              "type": "damage",
+              "label": "Finisher: Damage",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "sourceRoll4",
+              "type": "roll",
+              "label": "Finisher: 4d6",
+              "roll": {
+                "formula": "4d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            },
+            {
+              "id": "sourceRoll5",
+              "type": "roll",
+              "label": "Finisher: 3d6",
+              "roll": {
+                "formula": "3d6",
+                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b31b1b0d97c02089"
+}

@@ -1,0 +1,216 @@
+{
+  "_id": "a723e7bee1ededc9",
+  "_key": "!items!a723e7bee1ededc9",
+  "name": "Wind Release: Vacuum Field",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-vacuum-field",
+    "description": "<p>You manifest a Seal of wind Release Chakra that glows in the air. The seal then triggers removing all oxygen and atmosphere from within a 30-foot radius, centering on you. You and all other casters are immune to this jutsu’s effects.</p>\n<p>All creatures who begin their turns in this jutsu’s range must make a Constitution Saving throw or begin immediately suffocating as they are robbed of their air in their lungs. A suffocating creature can only survive a number of rounds equal to their constitution modifier before passing out falling unconscious from the lack of air. An unconscious creature in this jutsu’s radius takes 3d12 Necrotic damage. A creature who’s hit points are reduced to 0 as a result of this jutsu internal organs explode while inside the body, making them unable to be revived unless those are restored. An unconscious creature can regain consciousness when another creature spends an action waking them.</p>\n<p>Fire &amp; Lightning cannot exist within this field and if a jutsu with a Fire or lightning release keyword would have an effect that would cross into this fields jutsu’s radius they are immediately dispelled.</p>\n<p>Combination: Increases the damage dealt by 1d12 and the size of the radius by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2075",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "combination",
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot Radius Sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute."
+    },
+    "cost": {
+      "mode": "special",
+      "value": 36,
+      "text": "Special (36 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "suffocating",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Suffocating"
+          },
+          {
+            "key": "unconscious",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Unconscious"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d12",
+        "roll": {
+          "formula": "1d12",
+          "note": "Combination: Increases the damage dealt by 1d12 and the size of the radius by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2075,
+        "sourceHash": "ac961518a140a4b6ebd9e3ba466a66c1839f58feafab2cdd69e8d29a11ff41f8",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action.",
+          "range": "Self (30-foot Radius Sphere)",
+          "duration": "Concentration, Up to 1 minute.",
+          "cost": "Special (36 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release, Fuinjutsu, Combination"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action. Range: Self (30-foot Radius Sphere)   Duration: Concentration, Up to 1 minute.\nComponents: HS, CM\nCost: Special (36 Chakra)\nKeywords: Ninjutsu, Wind Release, Fuinjutsu, Combination\nDescription: You manifest a Seal of wind Release Chakra that glows in the air. The seal then triggers removing all oxygen and atmosphere from within a 30-foot radius, centering on you. You and all other casters are immune to this jutsu’s effects.\nAll creatures who begin their turns in this jutsu’s range must make a Constitution Saving throw or begin immediately suffocating as they are robbed of their air in their lungs. A suffocating creature can only survive a number of rounds equal to their constitution modifier before passing out falling unconscious from the lack of air. An unconscious creature in this jutsu’s radius takes 3d12 Necrotic damage. A creature who’s hit points are reduced to 0 as a result of this jutsu internal organs explode while inside the body, making them unable to be revived unless those are restored. An unconscious creature can regain consciousness when another creature spends an action waking them.\nFire & Lightning cannot exist within this field and if a jutsu with a Fire or lightning release keyword would have an effect that would cross into this fields jutsu’s radius they are immediately dispelled.\nCombination: Increases the damage dealt by 1d12 and the size of the radius by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two.",
+        "expressions": [
+          {
+            "expression": "3d12",
+            "offset": 621,
+            "context": "An unconscious creature in this jutsu’s radius takes 3d12 Necrotic damage. A creature who’s hit points are reduced to 0 as a result of this jutsu internal organs explode while inside the body, making them unable to be revived unless those are restored. An unconscious creature can regain consciousness when another creature spends an action waking them.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 1171,
+            "context": "Combination: Increases the damage dealt by 1d12 and the size of the radius by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c316a04b2e905f38"
+}

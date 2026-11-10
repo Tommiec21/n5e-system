@@ -1,0 +1,171 @@
+{
+  "_id": "19868c51c4fa2e19",
+  "_key": "!items!19868c51c4fa2e19",
+  "name": "Dancer's Grace",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "dancers-grace",
+    "description": "<p>You unleash the fury of your blade as you spin, increasing in speed with each rotation. All creatures within your weapons range must make 2 Dexterity saving throws, taking your weapon's damage +2d10 on a failure and gaining 1 rank of Bleeding for each failure.</p>\n<p>Chain 2: Creatures who fail their saving throws are also knocked Prone.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the number of Dexterity Saving throws needed by 1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5846",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon's Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d10",
+        "roll": {
+          "formula": "2d10",
+          "note": "All creatures within your weapons range must make 2 Dexterity saving throws, taking your weapon's damage +2d10 on a failure and gaining 1 rank of Bleeding for each failure."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the number of Dexterity Saving throws needed by 1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Creatures who fail their saving throws are also knocked Prone.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5846,
+        "sourceHash": "caf22516f3e57e3bdd3f16ea92f8b846c2c9803f884cc8374a20e675c65a4223",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapon's Range",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "W (Any Blade), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action\nRange: Weapon's Range\nDuration: Instant\nComponents: W (Any Blade), M\nCost: 12 Chakra\nKeywords: Bukijutsu, Chain\nDescription:  You unleash the fury of your blade as you spin, increasing in speed with each rotation. All creatures within your weapons range must make 2 Dexterity saving throws, taking your weapon's damage +2d10 on a failure and gaining 1 rank of Bleeding for each failure.\nChain 2: Creatures who fail their saving throws are also knocked Prone.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, and the number of Dexterity Saving throws needed by 1.",
+        "expressions": [
+          {
+            "expression": "2d10",
+            "offset": 194,
+            "context": "All creatures within your weapons range must make 2 Dexterity saving throws, taking your weapon's damage +2d10 on a failure and gaining 1 rank of Bleeding for each failure.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "850448e8be1ed23c"
+}

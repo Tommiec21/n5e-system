@@ -1,0 +1,300 @@
+{
+  "_id": "db252cb45c4434fe",
+  "_key": "!items!db252cb45c4434fe",
+  "name": "Water Release: Water Dragon",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-dragon",
+    "description": "<p>You expel a massive quantity of water or pull from a nearby source, conjuring a large Dragon of your description from water. The Dragon attempts to ram its target. Make a ranged ninjutsu attack, on a hit target creature 14d6 cold damage. The target creature must make a constitution saving throw, being Stunned until the end of the affected creatures next turn and knocked Prone on a failed save.</p>\n<p>If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2728",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "14d6",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "d8",
+        "roll": {
+          "formula": "d8",
+          "note": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2728,
+        "sourceHash": "d54b1e9c8da50e8b9888fda038d435f624393de16feed9dfb7f417b30b520c83",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "19 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Clash"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 60 Feet Duration:  Instant\nComponents: HS, CM Cost: 19 Chakra Keywords: Ninjutsu, Water Release, Clash Description:  You expel a massive quantity of water or pull from a nearby source, conjuring a large Dragon of your description from water. The Dragon attempts to ram its target. Make a ranged ninjutsu attack, on a hit target creature 14d6 cold damage. The target creature must make a constitution saving throw, being Stunned until the end of the affected creatures next turn and knocked Prone on a failed save.\nIf used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "14d6",
+            "offset": 220,
+            "context": "Make a ranged ninjutsu attack, on a hit target creature 14d6 cold damage. The target creature must make a constitution saving throw, being Stunned until the end of the affected creatures next turn and knocked Prone on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "d8",
+            "offset": 532,
+            "context": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 665,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(14d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "sourceRoll2",
+              "type": "roll",
+              "label": "d8",
+              "roll": {
+                "formula": "d8",
+                "note": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8."
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d643965c516da2e4"
+}

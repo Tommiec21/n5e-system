@@ -1,0 +1,176 @@
+{
+  "_id": "95cc2d5fe028ae17",
+  "_key": "!items!95cc2d5fe028ae17",
+  "name": "Chain Pull",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "chain-pull",
+    "description": "<p>You throw your weapon wrapping it around a target and pulling towards yourself. The target must succeed a Strength saving throw. On a failed save they become Grappled by you. At the end of the affected creatures turns, they can make a Strength saving throw to end the grapple effect on a successful save.</p>\n<p>Chain 1: You can target one additional creature in range.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range of this jutsu by +5 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5975",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "flail",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Flail"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range of this jutsu by +5 feet.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: You can target one additional creature in range.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5975,
+        "sourceHash": "541c6623675cc091cf6dd8b5ab07dc8082c073c1b690da3b233746d3e401c4b6",
+        "discipline": "Bukijutsu",
+        "group": "Flail",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "W (Any Flail), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Weapon Range Duration: Instant\nComponents: W (Any Flail), M Cost: 3 Chakra Keywords: Bukijutsu, Chain Description: You throw your weapon wrapping it around a target and pulling towards yourself. The target must succeed a Strength saving throw. On a failed save they become Grappled by you. At the end of the affected creatures turns, they can make a Strength saving throw to end the grapple effect on a successful save.\nChain 1: You can target one additional creature in range.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the range of this jutsu by +5 feet.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "405b2bbb2a52157d"
+}

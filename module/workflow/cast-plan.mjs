@@ -51,7 +51,9 @@ export function castPlan(actor, item, sel = {}) {
   const cost = j.computeCost(sys, rank, { multiplierChoice: sel.multiplierChoice, divisorChoice: sel.divisorChoice,
     noReduction: crash, subtract: crash ? 0 : fx.subtract });
   if ( crash && fx.subtract > 0 ) warnings.push("Crash: no cost reduction applies");
-  const spendsChakra = j.cost?.mode === "chakra";
+  const imported = item.flags?.n5e?.jutsuBookImport;
+  const spendsChakra = j.cost?.mode === "chakra" || (!!imported && j.cost?.mode === "special" && j.cost.value > 0);
+  if ( imported?.manualCost ) problems.push("This jutsu has a source-defined cost. Resolve it manually; automatic casting cannot assume a free cost.");
   const cp = sys.cp?.value ?? 0;
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
   if ( item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");

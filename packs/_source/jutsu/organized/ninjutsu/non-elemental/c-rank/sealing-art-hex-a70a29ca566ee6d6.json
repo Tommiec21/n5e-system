@@ -1,0 +1,210 @@
+{
+  "_id": "a70a29ca566ee6d6",
+  "_key": "!items!a70a29ca566ee6d6",
+  "name": "Sealing Art: Hex",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-hex",
+    "description": "<p>You infuse chakra into a chakra seal as you attempt to mark a creature you can touch with the seal of pestilence. You do not need to spend chakra to maintain Concentration on this jutsu.</p>\n<p>You touch a creature, and that creature must make a Charisma saving throw, gaining the special Hexed condition for this jutsu’s duration on a failed save. When a creature becomes Hexed, select which hex they are afflicted with as part of the hex. A Hexed creature is treated as having 1 rank of Sealed for effects that interact with it.</p>\n<p>Disable. Choose one Ability Score. While cursed, the target has disadvantage on ability checks, skill checks and saving throws made with that ability score.</p>\n<p>Death. At the beginning of a cursed creatures turn, they remake their saving throw, taking 3d10 necrotic damage on a failed save or half as much on a successful one. This increases by 1d10 for every rank about C-Rank.</p>\n<p>Unluck. While cursed, the target has disadvantage on attack rolls against you.</p>\n<p>Hopelessness. A Cursed creature is overwhelmed with despair for the duration. During this time, it can’t attack or target any creature with harmful abilities, jutsu or attacks.</p>\n<p>Stolen Sense. While cursed, the target loses all special senses it has.</p>\n<p>Variable Curse. At the GM discretion, you may choose an alternative curse effect, but it should be no more powerful than those described above. The DM has final say on such a curses effect.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, you can remove concentration on this jutsu, if you do, its duration becomes 10 minutes. If you choose maintain concentration, its duration becomes 24 hours. If this jutsu is cast at S-Rank, this jutsu has a duration of Permanent (Until dispelled) if using any of the above curse effects.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 988",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d10",
+        "roll": {
+          "formula": "1d10",
+          "note": "This increases by 1d10 for every rank about C-Rank."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, you can remove concentration on this jutsu, if you do, its duration becomes 10 minutes. If you choose maintain concentration, its duration becomes 24 hours. If this jutsu is cast at S-Rank, this jutsu has a duration of Permanent (Until dispelled) if using any of the above curse effects.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 988,
+        "sourceHash": "6d8ae842b934c5a1e82e902db255139f83611ce7a50acc15b1f2fe50567ff312",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, Up to 1 minute\nComponents: HS, CM, CS Cost: 8 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You infuse chakra into a chakra seal as you attempt to mark a creature you can touch with the seal of pestilence. You do not need to spend chakra to maintain Concentration on this jutsu.\nYou touch a creature, and that creature must make a Charisma saving throw, gaining the special Hexed condition for this jutsu’s duration on a failed save. When a creature becomes Hexed, select which hex they are afflicted with as part of the hex. A Hexed creature is treated as having 1 rank of Sealed for effects that interact with it.\nDisable. Choose one Ability Score. While cursed, the target has disadvantage on ability checks, skill checks and saving throws made with that ability score.\nDeath. At the beginning of a cursed creatures turn, they remake their saving throw, taking 3d10 necrotic damage on a failed save or half as much on a successful one. This increases by 1d10 for every rank about C-Rank.\nUnluck. While cursed, the target has disadvantage on attack rolls against you.\nHopelessness. A Cursed creature is overwhelmed with despair for the duration. During this time, it can’t attack or target any creature with harmful abilities, jutsu or attacks.\nStolen Sense. While cursed, the target loses all special senses it has.\nVariable Curse. At the GM discretion, you may choose an alternative curse effect, but it should be no more powerful than those described above. The DM has final say on such a curses effect.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, you can remove concentration on this jutsu, if you do, its duration becomes 10 minutes. If you choose maintain concentration, its duration becomes 24 hours. If this jutsu is cast at S-Rank, this jutsu has a duration of Permanent (Until dispelled) if using any of the above curse effects.",
+        "expressions": [
+          {
+            "expression": "3d10",
+            "offset": 772,
+            "context": "At the beginning of a cursed creatures turn, they remake their saving throw, taking 3d10 necrotic damage on a failed save or half as much on a successful one. This increases by 1d10 for every rank about C-Rank.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 865,
+            "context": "This increases by 1d10 for every rank about C-Rank.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "cfa6ae1d0e387079"
+}

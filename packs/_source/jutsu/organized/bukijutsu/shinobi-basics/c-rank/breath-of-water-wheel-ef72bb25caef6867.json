@@ -1,0 +1,339 @@
+{
+  "_id": "ef72bb25caef6867",
+  "_key": "!items!ef72bb25caef6867",
+  "name": "Breath of Water: Wheel",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-water-wheel",
+    "description": "<p>You begin to collect and manifest water release chakra until it laces the striking portion of your weapon. The water release chakra begins to transform into streams of water, as you spin forward, attacking in a circular motion.</p>\n<p>Move into a space you can see within your movement speed range, then each creature of your choice, within your weapons range must make a Dexterity Saving Throw. On a failed save, you deal your [Weapons damage] + 1d10 Cold damage they gain 1 rank of Chilled or half as much damage on a successful save. A creature who makes a save that is Chilled or Dazed suffer a -2 penalty to their saving throw.</p>\n<p>Chain 1: If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or your weapon gains +1 rank of the Reach property until the end of the current turn.</p>\n<p>Chain 2: Creatures who fail their saving throw, gain an additional rank of Chilled.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5379",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "waterRelease",
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or your weapon gains +1 rank of the Reach property until the end of the current turn.</p>",
+      "2": "<p>Chain 2: Creatures who fail their saving throw, gain an additional rank of Chilled.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5379,
+        "sourceHash": "0ad3cd4b4c92b0117fdf911994f89b1e817cdf77ecf3ad68cbfe00f37b1ee151",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "Instant",
+          "cost": "7 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Water Release, Chain, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: Weapon Range\nDuration: Instant\nComponents: CM, W (Any melee), M Cost: 7 Chakra Keywords: Bukijutsu, Water Release, Chain, Clash Description: You begin to collect and manifest water release chakra until it laces the striking portion of your weapon. The water release chakra begins to transform into streams of water, as you spin forward, attacking in a circular motion.\nMove into a space you can see within your movement speed range, then each creature of your choice, within your weapons range must make a Dexterity Saving Throw. On a failed save, you deal your [Weapons damage] + 1d10 Cold damage they gain 1 rank of Chilled or half as much damage on a successful save. A creature who makes a save that is Chilled or Dazed suffer a -2 penalty to their saving throw.\nChain 1: If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or your weapon gains +1 rank of the Reach property until the end of the current turn.\nChain 2: Creatures who fail their saving throw, gain an additional rank of Chilled.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 421,
+            "context": "On a failed save, you deal your [Weapons damage] + 1d10 Cold damage they gain 1 rank of Chilled or half as much damage on a successful save. A creature who makes a save that is Chilled or Dazed suffer a -2 penalty to their saving throw.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 440,
+            "context": "On a failed save, you deal your [Weapons damage] + 1d10 Cold damage they gain 1 rank of Chilled or half as much damage on a successful save. A creature who makes a save that is Chilled or Dazed suffer a -2 penalty to their saving throw.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 1009,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d10.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0032efe7c08875b9"
+}

@@ -1,0 +1,186 @@
+{
+  "_id": "ba5e326eedc7668e",
+  "_key": "!items!ba5e326eedc7668e",
+  "name": "Fire Release: Fire Storm",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-fire-storm",
+    "description": "<p>A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten, 10-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make a Dexterity saving throw. It takes 10d4+10 Fire damage on a failed save or half as much on a successful one. The Fire damages objects in the area and ignites flammable objects that aren’t being worn or carried.</p>\n<p>A creature in the area of more than one fiery storm is affected a maximum of once.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2429",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d4+10",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2429,
+        "sourceHash": "01bb640d8f64c51e0c7f8bed12b87a50c4d526996b8df9afde86f25023652c90",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "120 Feet",
+          "duration": "Instant",
+          "cost": "19 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 120 Feet Duration: Instant\nComponents: HS, CM Cost: 19 Chakra Keywords: Ninjutsu, Fire Release Description: A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten, 10-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make a Dexterity saving throw. It takes 10d4+10 Fire damage on a failed save or half as much on a successful one. The Fire damages objects in the area and ignites flammable objects that aren’t being worn or carried.\nA creature in the area of more than one fiery storm is affected a maximum of once.",
+        "expressions": [
+          {
+            "expression": "10d4+10",
+            "offset": 332,
+            "context": "It takes 10d4+10 Fire damage on a failed save or half as much on a successful one. The Fire damages objects in the area and ignites flammable objects that aren’t being worn or carried.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6d60386b2f6cb7c3"
+}

@@ -1,0 +1,205 @@
+{
+  "_id": "6fdfa48f7b185957",
+  "_key": "!items!6fdfa48f7b185957",
+  "name": "Swallow Dance",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "swallow-dance",
+    "description": "<p>You perform a powerful wide sweeping roundhouse kick, lifting both yourself and all creatures you strike.</p>\n<p>All creatures in a 10-foot cone originating from you must make a Dexterity saving throw. On a failed save they take your unarmed damage + 1d8 and are launched 15 feet into the air until the end of the current turn, falling Prone.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4459",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "combo"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-Foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d8",
+        "roll": {
+          "formula": "1d8",
+          "note": "On a failed save they take your unarmed damage + 1d8 and are launched 15 feet into the air until the end of the current turn, falling Prone."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4459,
+        "sourceHash": "acaefb24f7ca75c4f87cd074931cd6b2528e798827e815c0d859c46321d0c40a",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (10-Foot Cone)",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Combo"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (10-Foot Cone) Duration: Instant\nComponents: M Cost: 5 Chakra Keywords: Taijutsu, Combo Description: You perform a powerful wide sweeping roundhouse kick, lifting both yourself and all creatures you strike.\nAll creatures in a 10-foot cone originating from you must make a Dexterity saving throw. On a failed save they take your unarmed damage + 1d8 and are launched 15 feet into the air until the end of the current turn, falling Prone.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "1d8",
+            "offset": 244,
+            "context": "On a failed save they take your unarmed damage + 1d8 and are launched 15 feet into the air until the end of the current turn, falling Prone.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 455,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b31b1b0d97c02089"
+}

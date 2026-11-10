@@ -1,0 +1,307 @@
+{
+  "_id": "197e41ab6456ab7f",
+  "_key": "!items!197e41ab6456ab7f",
+  "name": "Earth Release: Tectonic Stone Spears",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-tectonic-stone-spears",
+    "description": "<p>You choose a point you can see and cause a fountain of spiked earth molded from the ground filling a 20-foot cube, centered on the chosen point.</p>\n<p>Each creature in that area must make a Dexterity saving throw. On a failed save, a creature takes 2d12 earth damage or half as much on a successful save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d12. If this jutsu is cast at C-Rank or higher, on a failed save affected creatures also become Bruised. If this jutsu is cast at B-Rank or higher, increase the size of the affected area to a 30-foot Cube. If this jutsu is cast at A-Rank or higher, the spikes of earth remain, occupying the affected area, as it becomes difficult terrain and heavily obscures all creatures in the affected area from each other and creatures outside the affected area and the area counts as a single Earthen Artifact. If this jutsu is cast at S-Rank, you can select a second point, causing this jutsu’s effects to affect two different areas. A creature can only make a save as a result of this jutsu once per casting.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1653",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (20-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d12. If this jutsu is cast at C-Rank or higher, on a failed save affected creatures also become Bruised. If this jutsu is cast at B-Rank or higher, increase the size of the affected area to a 30-foot Cube. If this jutsu is cast at A-Rank or higher, the spikes of earth remain, occupying the affected area, as it becomes difficult terrain and heavily obscures all creatures in the affected area from each other and creatures outside the affected area and the area counts as a single Earthen Artifact. If this jutsu is cast at S-Rank, you can select a second point, causing this jutsu’s effects to affect two different areas. A creature can only make a save as a result of this jutsu once per casting.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1653,
+        "sourceHash": "a10f6886683965f56611b8109fd11a62c169b229eeb7c597edd72623678927d6",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 feet (20-foot cube)",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 feet (20-foot cube) Duration: Instant\nComponents: HS, CM Cost: 3 Chakra Keywords: Ninjutsu, Earth Release Description: You choose a point you can see and cause a fountain of spiked earth molded from the ground filling a 20-foot cube, centered on the chosen point.\nEach creature in that area must make a Dexterity saving throw. On a failed save, a creature takes 2d12 earth damage or half as much on a successful save.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d12. If this jutsu is cast at C-Rank or higher, on a failed save affected creatures also become Bruised. If this jutsu is cast at B-Rank or higher, increase the size of the affected area to a 30-foot Cube. If this jutsu is cast at A-Rank or higher, the spikes of earth remain, occupying the affected area, as it becomes difficult terrain and heavily obscures all creatures in the affected area from each other and creatures outside the affected area and the area counts as a single Earthen Artifact. If this jutsu is cast at S-Rank, you can select a second point, causing this jutsu’s effects to affect two different areas. A creature can only make a save as a result of this jutsu once per casting.",
+        "expressions": [
+          {
+            "expression": "2d12",
+            "offset": 243,
+            "context": "On a failed save, a creature takes 2d12 earth damage or half as much on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 419,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d12. If this jutsu is cast at C-Rank or higher, on a failed save affected creatures also become Bruised. If this jutsu is cast at B-Rank or higher, increase the size of the affected area to a 30-foot Cube. If this jutsu is cast at A-Rank or higher, the spikes of earth remain, occupying the affected area, as it becomes difficult terrain and heavily obscures all creatures in the affected area from each other and creatures outside the affected area and the area counts as a single Earthen Artifact. If this jutsu is cast at S-Rank, you can select a second point, causing this jutsu’s effects to affect two different areas. A creature can only make a save as a result of this jutsu once per casting.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "59ce6e14db17de3b"
+}

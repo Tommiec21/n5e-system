@@ -1,0 +1,279 @@
+{
+  "_id": "f4342c80e3f22ae8",
+  "_key": "!items!f4342c80e3f22ae8",
+  "name": "Earth Release: Tectonic Palm",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-tectonic-palm",
+    "description": "<p>You place your palm onto any surface of earth and cause the earth to splinter, break, and shift. Selecting a point on a surface you can reach and shift and distort the earth in a 30-foot cube originating from you.</p>\n<p>All creatures in the affected area must make a Strength saving throw to avoid being crushed and slammed by the shifting earth. On a failed save affected creatures take 4d6 earth damage and affected area becomes difficult terrain.</p>\n<p>You can cast this jutsu targeting an area with difficult terrain due to uneven or damaged earth like ground, you can remove the difficult terrain at no cost. Casting this jutsu to remove difficult terrain does not cost chakra.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher, its range can become 60-feet (20-foot radius) and can only originate from an Earthen Artifact within 60 feet, causing the chosen Earthen Artifact to release a 20-foot radius shockwave forcing creatures in the area to make their saving throw being affected by this jutsu’s effect.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1804",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot Cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher, its range can become 60-feet (20-foot radius) and can only originate from an Earthen Artifact within 60 feet, causing the chosen Earthen Artifact to release a 20-foot radius shockwave forcing creatures in the area to make their saving throw being affected by this jutsu’s effect.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1804,
+        "sourceHash": "794b489b0e6f0d811dbb75067bf1a5290ac61edd8579cdd1c5e8d502fbe3133b",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (30-Foot Cube)",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (30-Foot Cube) Duration: Instant\nComponents:  HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Earth Release Description: You place your palm onto any surface of earth and cause the earth to splinter, break, and shift. Selecting a point on a surface you can reach and shift and distort the earth in a 30-foot cube originating from you.\nAll creatures in the affected area must make a Strength saving throw to avoid being crushed and slammed by the shifting earth. On a failed save affected creatures take 4d6 earth damage and affected area becomes difficult terrain.\nYou can cast this jutsu targeting an area with difficult terrain due to uneven or damaged earth like ground, you can remove the difficult terrain at no cost. Casting this jutsu to remove difficult terrain does not cost chakra.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher, its range can become 60-feet (20-foot radius) and can only originate from an Earthen Artifact within 60 feet, causing the chosen Earthen Artifact to release a 20-foot radius shockwave forcing creatures in the area to make their saving throw being affected by this jutsu’s effect.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 382,
+            "context": "On a failed save affected creatures take 4d6 earth damage and affected area becomes difficult terrain.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 787,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher, its range can become 60-feet (20-foot radius) and can only originate from an Earthen Artifact within 60 feet, causing the chosen Earthen Artifact to release a 20-foot radius shockwave forcing creatures in the area to make their saving throw being affected by this jutsu’s effect.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "bdb81013175b0aa5"
+}

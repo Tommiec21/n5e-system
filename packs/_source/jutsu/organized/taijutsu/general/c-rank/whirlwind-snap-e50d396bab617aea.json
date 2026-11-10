@@ -1,0 +1,312 @@
+{
+  "_id": "e50d396bab617aea",
+  "_key": "!items!e50d396bab617aea",
+  "name": "Whirlwind Snap",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "whirlwind-snap",
+    "description": "<p>You perform a reverse round house kick. All creatures in a 15-foot cone originating from you must make a Strength saving throw. On a failed save they take your [Unarmed damage] + 2d6 and are pulled up to 10 feet closer to you into a space that can hold them and are Bruised, or half as much damage on a successful save.</p>\n<p>Until the end of the current turn, an allied creature within 15 feet of you, can target the triggering creature with a Taijutsu Finisher regardless of range, once per turn, using a Reaction.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3, the damage by 1d6 and the cone size by +5 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4798",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 2d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3, the damage by 1d6 and the cone size by +5 feet.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4798,
+        "sourceHash": "50121afd301705801e63700b4e21aa4abc6f6ed0e2e72ba2a2089e855c9c7752",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (15-foot Cone)",
+          "duration": "1 Round",
+          "cost": "7 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: Self (15-foot Cone)\nDuration: 1 Round\nComponents: M\nCost: 7 Chakra\nKeywords: Taijutsu\nDescription: You perform a reverse round house kick. All creatures in a 15-foot cone originating from you must make a Strength saving throw. On a failed save they take your [Unarmed damage] + 2d6 and are pulled up to 10 feet closer to you into a space that can hold them and are Bruised, or half as much damage on a successful save.\nUntil the end of the current turn, an allied creature within 15 feet of you, can target the triggering creature with a Taijutsu Finisher regardless of range, once per turn, using a Reaction.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3, the damage by 1d6 and the cone size by +5 feet.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 160,
+            "context": "On a failed save they take your [Unarmed damage] + 2d6 and are pulled up to 10 feet closer to you into a space that can hold them and are Bruised, or half as much damage on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 179,
+            "context": "On a failed save they take your [Unarmed damage] + 2d6 and are pulled up to 10 feet closer to you into a space that can hold them and are Bruised, or half as much damage on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 627,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3, the damage by 1d6 and the cone size by +5 feet.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

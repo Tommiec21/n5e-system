@@ -1,0 +1,186 @@
+{
+  "_id": "5947ea7bcba72a28",
+  "_key": "!items!5947ea7bcba72a28",
+  "name": "Lightning Release: Storm Breaker",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-storm-breaker",
+    "description": "<p>As a part of the requirements to cast this jutsu, you must be able to see storm clouds in the sky above you.</p>\n<p>You use Lightning Release chakra to manipulate the clouds causing them to fall to ground level.</p>\n<p>All creatures in a 120-foot radius, centering on a point you can see is plummeted into darkness as the thick storm clouds obstructs everyone’s vision with thick opaque fog and gas. The storm clouds cannot be seen through from the outside. Creatures with Chakra sight, within the storm clouds radius, is Blinded by the massive volumes of chakra. Removing/Ending chakra sight, ends this blindness.</p>\n<p>For the duration, each time a creature takes lightning damage, lightning from the storm clouds is attracted to the damaged creature as a follow up lightning bolt is generated, forcing them to make a Dexterity saving throw. On a failed save, they take 6d6 lightning damage or half as much on a successful save. A creature can only be affected by this jutsu’s lightning bolt once per turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3004",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "fullTurn",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute."
+    },
+    "cost": {
+      "mode": "special",
+      "value": 20,
+      "text": "Special (20 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3004,
+        "sourceHash": "d0a241976a2fea922911f432c3cb13bc8a0abff6cecbfd0807fe6b4997ae9aae",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Full Turn Action",
+          "range": "Special",
+          "duration": "Concentration, Up to 1 minute.",
+          "cost": "Special (20 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Full Turn Action Range: Special Duration: Concentration, Up to 1 minute.\nComponents: HS, CM Cost: Special (20 Chakra) Keywords: Ninjutsu, Lightning Release Description: As a part of the requirements to cast this jutsu, you must be able to see storm clouds in the sky above you.\nYou use Lightning Release chakra to manipulate the clouds causing them to fall to ground level.\nAll creatures in a 120-foot radius, centering on a point you can see is plummeted into darkness as the thick storm clouds obstructs everyone’s vision with thick opaque fog and gas. The storm clouds cannot be seen through from the outside. Creatures with Chakra sight, within the storm clouds radius, is Blinded by the massive volumes of chakra. Removing/Ending chakra sight, ends this blindness.\nFor the duration, each time a creature takes lightning damage, lightning from the storm clouds is attracted to the damaged creature as a follow up lightning bolt is generated, forcing them to make a Dexterity saving throw. On a failed save, they take 6d6 lightning damage or half as much on a successful save. A creature can only be affected by this jutsu’s lightning bolt once per turn.",
+        "expressions": [
+          {
+            "expression": "6d6",
+            "offset": 852,
+            "context": "On a failed save, they take 6d6 lightning damage or half as much on a successful save. A creature can only be affected by this jutsu’s lightning bolt once per turn.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "406afaae95c62927"
+}

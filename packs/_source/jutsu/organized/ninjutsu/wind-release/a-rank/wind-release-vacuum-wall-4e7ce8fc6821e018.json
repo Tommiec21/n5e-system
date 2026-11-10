@@ -1,0 +1,169 @@
+{
+  "_id": "4e7ce8fc6821e018",
+  "_key": "!items!4e7ce8fc6821e018",
+  "name": "Wind Release: Vacuum Wall",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-vacuum-wall",
+    "description": "<p>You create a vacuum of air around a willing creature in range. Until the beginning of your next turn. All melee and ranged attacks, targeting the affected creature, must roll 1d20 when they declare the attack. On a roll of 8 or greater, the attack is diverted to another random creature in range. Assign a number to each creature within the attacks range, excluding the original target, and the GM randomly decides which number is the new target.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2178",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 15,
+      "text": "15 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d20",
+        "roll": {
+          "formula": "1d20",
+          "note": "All melee and ranged attacks, targeting the affected creature, must roll 1d20 when they declare the attack. On a roll of 8 or greater, the attack is diverted to another random creature in range. Assign a number to each creature within the attacks range, excluding the original target, and the GM randomly decides which number is the new target."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2178,
+        "sourceHash": "4a84bb6fb04054c8e283cca1508fc88bf7a07e4150451a39941ea3cbcdf3d95b",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "30 feet",
+          "duration": "1 Round",
+          "cost": "15 Chakra",
+          "components": "HS, CM, M",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 30 feet Duration: 1 Round\nComponents: HS, CM, M Cost: 15 Chakra Keywords: Ninjutsu, Wind Release Description:  You create a vacuum of air around a willing creature in range. Until the beginning of your next turn. All melee and ranged attacks, targeting the affected creature, must roll 1d20 when they declare the attack. On a roll of 8 or greater, the attack is diverted to another random creature in range. Assign a number to each creature within the attacks range, excluding the original target, and the GM randomly decides which number is the new target.",
+        "expressions": [
+          {
+            "expression": "1d20",
+            "offset": 175,
+            "context": "All melee and ranged attacks, targeting the affected creature, must roll 1d20 when they declare the attack. On a roll of 8 or greater, the attack is diverted to another random creature in range. Assign a number to each creature within the attacks range, excluding the original target, and the GM randomly decides which number is the new target.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "2bad3181bb3e61ad"
+}

@@ -1,0 +1,182 @@
+{
+  "_id": "e831d36376f7c31b",
+  "_key": "!items!e831d36376f7c31b",
+  "name": "Mental Taunt",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "mental-taunt",
+    "description": "<p>You create a sound of attraction. Meant to force creatures to focus on you against their will.</p>\n<p>Select a creature within range and force them to make a Charisma saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this Jutsu's effects.</p>\n<p>Success: If the affected creature makes an attack during their turn, they have disadvantage on this attack, unless they target you.</p>\n<p>Failure: Affected creature must target you with any jutsu they cast until the end of their next turn.</p>\n<p>Critical Failure: Same effect as failure, and they cannot cast jutsu or used features, effects or items that would heal them.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3257",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
+            "success": "Success: If the affected creature makes an attack during their turn, they have disadvantage on this attack, unless they target you.",
+            "failure": "failure, and they cannot cast jutsu or used features, effects or items that would heal them.",
+            "critFailure": "Critical Failure: Same effect as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3257,
+        "sourceHash": "a32856dfbe050cf588ba71d2a1a2e481adb98f3836aa20bacfe0e3550bdc1dc8",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "6 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 60 Feet Duration: Instant\nComponents:  HS, CM Cost: 6 Chakra Keywords: Genjutsu (Auditory) Description: You create a sound of attraction. Meant to force creatures to focus on you against their will.\nSelect a creature within range and force them to make a Charisma saving throw.\nCritical Success: Affected creature is able to resist this Jutsu's effects.\nSuccess: If the affected creature makes an attack during their turn, they have disadvantage on this attack, unless they target you.\nFailure: Affected creature must target you with any jutsu they cast until the end of their next turn.\nCritical Failure: Same effect as failure, and they cannot cast jutsu or used features, effects or items that would heal them.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "68fe90231eaf9f92"
+}

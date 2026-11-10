@@ -1,0 +1,183 @@
+{
+  "_id": "f16c20c47c7de8ef",
+  "_key": "!items!f16c20c47c7de8ef",
+  "name": "Fire Release: Heat Snap",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-heat-snap",
+    "description": "<p>You snap your fingers in an attempt to turn a burning target into dust. You can only target a creature currently under the Burned condition forcing them to make a Constitution saving throw.</p>\n<p>On a failed save they take the maximum possible damage from the Burned condition.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at S-Rank, the snap can be heard by all burning creatures in initiative. If a creature with ranks of Burned has 100 or less hit points, it dies, turning to dust in a flash Fire. If a creature dies as a result of this jutsu in this way, you cannot cast this jutsu at S-Rank until you complete a Full-Rest.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2368",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at S-Rank, the snap can be heard by all burning creatures in initiative. If a creature with ranks of Burned has 100 or less hit points, it dies, turning to dust in a flash Fire. If a creature dies as a result of this jutsu in this way, you cannot cast this jutsu at S-Rank until you complete a Full-Rest.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2368,
+        "sourceHash": "6659446499e7915588861c97d6b8b193708714325b84804423afe215737cd25a",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "90 feet",
+          "duration": "Instant",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 90 feet\nDuration: Instant\nComponents: HS, CM Cost: 14 Chakra Keywords: Ninjutsu, Fire Release  Description: You snap your fingers in an attempt to turn a burning target into dust. You can only target a creature currently under the Burned condition forcing them to make a Constitution saving throw.\nOn a failed save they take the maximum possible damage from the Burned condition.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at S-Rank, the snap can be heard by all burning creatures in initiative. If a creature with ranks of Burned has 100 or less hit points, it dies, turning to dust in a flash Fire. If a creature dies as a result of this jutsu in this way, you cannot cast this jutsu at S-Rank until you complete a Full-Rest.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c03a256155b16b00"
+}

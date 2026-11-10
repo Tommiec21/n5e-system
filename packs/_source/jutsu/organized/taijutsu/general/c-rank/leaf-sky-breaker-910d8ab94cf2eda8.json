@@ -1,0 +1,173 @@
+{
+  "_id": "910d8ab94cf2eda8",
+  "_key": "!items!910d8ab94cf2eda8",
+  "name": "Leaf Sky Breaker",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "leaf-sky-breaker",
+    "description": "<p>When you or an allied creature within range would take damage from a melee attack. You twist your body in a way that builds momentum and kinetic energy, before you kick skyward creating a powerful updraft, creating a barrier of air between the triggering creature and its target.</p>\n<p>You create a wall of air and pure force. The triggering creature must make a Strength Saving throw. On a failed save they are thrown 30 feet upwards. Taking damage as if they fell at the end of the current turn.</p>\n<p>You grant one ally within 15 feet of you an additional reaction which they can only use to cast a Taijutsu with the Finisher Keyword that has a casting time of 1 action</p>\n<p>Until the end of the current turn, an allied creature within 15 feet of you, can target the triggering creature with a Taijutsu Finisher regardless of range, once per turn, using a Reaction.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4657",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or an allied creature within 10 feet of you would take damage from a melee attack from a creature within range."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 15,
+        "long": null,
+        "text": "15 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4657,
+        "sourceHash": "baa203b0aab9e2e29f624e5f65c8631b13982fdaabf47af957849b8e2f230bf3",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when you or an allied creature within 10 feet of you would take damage from a melee attack from a creature within range.",
+          "range": "15 feet",
+          "duration": "Instant.",
+          "cost": "9 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Reaction, which you take when you or an allied creature within 10 feet of you would take damage from a melee attack from a creature within range.\nRange: 15 feet\nDuration: Instant.\nComponents: M\nCost: 9 Chakra\nKeywords: Taijutsu\nDescription: When you or an allied creature within range would take damage from a melee attack. You twist your body in a way that builds momentum and kinetic energy, before you kick skyward creating a powerful updraft, creating a barrier of air between the triggering creature and its target.\nYou create a wall of air and pure force. The triggering creature must make a Strength Saving throw. On a failed save they are thrown 30 feet upwards. Taking damage as if they fell at the end of the current turn.\nYou grant one ally within 15 feet of you an additional reaction which they can only use to cast a Taijutsu with the Finisher Keyword that has a casting time of 1 action\nUntil the end of the current turn, an allied creature within 15 feet of you, can target the triggering creature with a Taijutsu Finisher regardless of range, once per turn, using a Reaction.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

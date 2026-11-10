@@ -1,0 +1,244 @@
+{
+  "_id": "f517fae6ba79d054",
+  "_key": "!items!f517fae6ba79d054",
+  "name": "Breath of Flame: Rengoku",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-flame-rengoku",
+    "description": "<p>You begin to collect Fire release chakra until it transforms into gouts of flame that erupt from your weapon.</p>\n<p>Select a space you can see within range that passes through one or more creatures in a 10-foot wide, 30-foot-long line, originating from you. You then move to a space at the end of this line that can hold you leaving behind a burning gout of flame in your wake.</p>\n<p>Make one melee taijutsu attack, comparing the result against the AC of all creatures whose space your line passes through. On a hit you deal your [Weapons damage] +6d6 Fire damage. If you score a critical hit with this attack, only one creature, of your choice suffers the effects of a critical hit.</p>\n<p>Chain 2: Your attack is so savage that the damage you deal ignores DR as a result of Jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at S-Rank, if you score a critical hit with this attack, all creatures suffer the effects of the critical hit.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5491",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "fireRelease",
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot line)"
+      },
+      "area": {
+        "shape": "line",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at S-Rank, if you score a critical hit with this attack, all creatures suffer the effects of the critical hit.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Your attack is so savage that the damage you deal ignores DR as a result of Jutsu.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5491,
+        "sourceHash": "8877f707cb3d51d23f08e195e3a767a0ccce42a7f0e84481149cfc0f2f31b253",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "B",
+          "time": "1 Action.",
+          "range": "Self (30-foot line)",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Fire Release, Chain, Clash"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action.\nRange: Self (30-foot line)\nDuration: Instant\nComponents: CM, W (Any melee), M Cost: 12 Chakra Keywords: Bukijutsu, Fire Release, Chain, Clash Description: You begin to collect Fire release chakra until it transforms into gouts of flame that erupt from your weapon.\nSelect a space you can see within range that passes through one or more creatures in a 10-foot wide, 30-foot-long line, originating from you. You then move to a space at the end of this line that can hold you leaving behind a burning gout of flame in your wake.\nMake one melee taijutsu attack, comparing the result against the AC of all creatures whose space your line passes through. On a hit you deal your [Weapons damage] +6d6 Fire damage. If you score a critical hit with this attack, only one creature, of your choice suffers the effects of a critical hit.\nChain 2: Your attack is so savage that the damage you deal ignores DR as a result of Jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at S-Rank, if you score a critical hit with this attack, all creatures suffer the effects of the critical hit.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 518,
+            "context": "On a hit you deal your [Weapons damage] +6d6 Fire damage. If you score a critical hit with this attack, only one creature, of your choice suffers the effects of a critical hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d6",
+            "offset": 536,
+            "context": "On a hit you deal your [Weapons damage] +6d6 Fire damage. If you score a critical hit with this attack, only one creature, of your choice suffers the effects of a critical hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 883,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at S-Rank, if you score a critical hit with this attack, all creatures suffer the effects of the critical hit.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(6d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(6d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c3fd08eae955429"
+}

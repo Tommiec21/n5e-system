@@ -1,0 +1,227 @@
+{
+  "_id": "262fadd3554c03ad",
+  "_key": "!items!262fadd3554c03ad",
+  "name": "Illusory Bamboozlement",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "illusory-bamboozlement",
+    "description": "<p>You create the illusion of a trap upon an object you touch, such as a door, a chest, or a 5-foot square area of floor. A creature specifically looking for traps that examines the object must make a Wisdom saving throw. On a successful save the jutsu ends and the creature realizes the trap was not real.</p>\n<p>Success: Affected creature is able to see through this illusory trap, rendering it useless against them.</p>\n<p>Failure: Affected creature believes the object contains a trap. If the creature then tries to disarm or otherwise interact with the trap in order to set it off, it must make a Dexterity (Sleight of hand) check vs your Genjutsu save DC. On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times</p>\n<p>Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3692",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Permanent"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature is able to see through this illusory trap, rendering it useless against them.",
+            "failure": "Failure: Affected creature believes the object contains a trap. If the creature then tries to disarm or otherwise interact with the trap in order to set it off, it must make a Dexterity (Sleight of hand) check vs your Genjutsu save DC. On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times",
+            "critFailure": "Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d10",
+        "roll": {
+          "formula": "2d10",
+          "note": "On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times"
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "5d10",
+        "roll": {
+          "formula": "5d10",
+          "note": "On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times"
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "d12",
+        "roll": {
+          "formula": "d12",
+          "note": "Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3692,
+        "sourceHash": "0f7a7fdc8de8476309a34e40b1135041c55ba7fd54b1d76f8c1698eb7a6b9d3b",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Permanent",
+          "cost": "8 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Genjutsu (Visual, Tactile, Unaware), Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch Duration: Permanent\nComponents: HS, CM, CS\nCost: 8 Chakra Keywords: Genjutsu (Visual, Tactile, Unaware), Fuinjutsu Description: You create the illusion of a trap upon an object you touch, such as a door, a chest, or a 5-foot square area of floor. A creature specifically looking for traps that examines the object must make a Wisdom saving throw. On a successful save the jutsu ends and the creature realizes the trap was not real.\nSuccess: Affected creature is able to see through this illusory trap, rendering it useless against them.\nFailure: Affected creature believes the object contains a trap. If the creature then tries to disarm or otherwise interact with the trap in order to set it off, it must make a Dexterity (Sleight of hand) check vs your Genjutsu save DC. On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times\nCritical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12.",
+        "expressions": [
+          {
+            "expression": "2d10",
+            "offset": 698,
+            "context": "On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times",
+            "section": "Base"
+          },
+          {
+            "expression": "5d10",
+            "offset": 841,
+            "context": "On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times",
+            "section": "Base"
+          },
+          {
+            "expression": "d12",
+            "offset": 1129,
+            "context": "Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "293cc8e640ba6c9d"
+}

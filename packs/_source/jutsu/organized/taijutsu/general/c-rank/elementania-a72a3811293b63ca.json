@@ -1,0 +1,255 @@
+{
+  "_id": "a72a3811293b63ca",
+  "_key": "!items!a72a3811293b63ca",
+  "name": "Elementania",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "elementania",
+    "description": "<p>As a part of casting this jutsu, you can only target a creature whom you can target with a Finisher as a result of a Jutsu cast with the Combo keyword.</p>\n<p>You bob and weave in and out of a creatures combat range, building up momentum, preparing yourself for a massive strike that takes the shape and visage of a roaring elemental storm.</p>\n<p>Make a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)</p>\n<p>Earth: The ground and earth around you shakes and upheaves. All creatures within 10 feet of the original target must make a Dexterity saving throw, taking 3d6 bludgeoning damage from the erupting earth.</p>\n<p>Wind: The wind whips and whistles as you forcefully move it out of your way. The target must make a Strength saving throw, being thrown back 15 x your Taijutsu ability modifier, feet on a failed save. If the target would hit a solid surface as a result of this knock back. They take 2d6 bludgeoning damage for every 15 feet that they were unable to be moved.</p>\n<p>Fire: Your attack creates such wind resistance that your striking limb ignites into flame on impact. Your attack instead deals Fire damage and the target must make a Constitution saving throw, gaining 1 rank of the Burned condition on a failed save.</p>\n<p>Water: Your attack becomes graceful, like flowing water, allowing you to strike far more effectively. Reroll all 1’s and 2’s, taking the second result.</p>\n<p>Lightning: Your attack is swift, decisive and powerful, like lightning. When your attack hits the target, creatures up to 300 feet away can hear an audible boom erupt from the point of impact. All creatures, excluding you, within 30 of the target creatures must make a Constitution saving throw, being Dazed.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4541",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d12",
+        "roll": {
+          "formula": "3d12",
+          "note": "Make a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)"
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "All creatures within 10 feet of the original target must make a Dexterity saving throw, taking 3d6 bludgeoning damage from the erupting earth."
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "They take 2d6 bludgeoning damage for every 15 feet that they were unable to be moved."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4541,
+        "sourceHash": "1013fc9328bceb55db252bde35ab5b4ee25d5c30c8cd4feccb76e8d114df90cc",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "5 feet",
+          "duration": "Instant.",
+          "cost": "9 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Finisher, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: 5 feet\nDuration: Instant.\nComponents: CM, M\nCost: 9 Chakra\nKeywords: Taijutsu, Finisher, Clash\nDescription: As a part of casting this jutsu, you can only target a creature whom you can target with a Finisher as a result of a Jutsu cast with the Combo keyword.\nYou bob and weave in and out of a creatures combat range, building up momentum, preparing yourself for a massive strike that takes the shape and visage of a roaring elemental storm.\nMake a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)\nEarth: The ground and earth around you shakes and upheaves. All creatures within 10 feet of the original target must make a Dexterity saving throw, taking 3d6 bludgeoning damage from the erupting earth.\nWind: The wind whips and whistles as you forcefully move it out of your way. The target must make a Strength saving throw, being thrown back 15 x your Taijutsu ability modifier, feet on a failed save. If the target would hit a solid surface as a result of this knock back. They take 2d6 bludgeoning damage for every 15 feet that they were unable to be moved.\nFire: Your attack creates such wind resistance that your striking limb ignites into flame on impact. Your attack instead deals Fire damage and the target must make a Constitution saving throw, gaining 1 rank of the Burned condition on a failed save.\nWater: Your attack becomes graceful, like flowing water, allowing you to strike far more effectively. Reroll all 1’s and 2’s, taking the second result.\nLightning: Your attack is swift, decisive and powerful, like lightning. When your attack hits the target, creatures up to 300 feet away can hear an audible boom erupt from the point of impact. All creatures, excluding you, within 30 of the target creatures must make a Constitution saving throw, being Dazed.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 377,
+            "context": "Make a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)",
+            "section": "Base"
+          },
+          {
+            "expression": "3d12",
+            "offset": 396,
+            "context": "Make a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 688,
+            "context": "All creatures within 10 feet of the original target must make a Dexterity saving throw, taking 3d6 bludgeoning damage from the erupting earth.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 1019,
+            "context": "They take 2d6 bludgeoning damage for every 15 feet that they were unable to be moved.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

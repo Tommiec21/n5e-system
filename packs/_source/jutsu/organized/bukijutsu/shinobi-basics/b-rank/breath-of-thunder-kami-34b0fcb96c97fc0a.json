@@ -1,0 +1,244 @@
+{
+  "_id": "34b0fcb96c97fc0a",
+  "_key": "!items!34b0fcb96c97fc0a",
+  "name": "Breath of Thunder: Kami",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-thunder-kami",
+    "description": "<p>You begin to collect lightning release chakra until it sparks off of your weapon and body with violent jolts. You make a singular forward slash as lightning forms an image of a beast of your description behind you.</p>\n<p>Move yourself into a space adjacent to a creature of your choice within range that can hold you and make a melee taijutsu attack.</p>\n<p>On a hit, you deal your [Weapons damage] + 4d10 lightning damage. If the target has any ranks of the Shocked condition, you make your attacks at advantage.</p>\n<p>Chain 2: Your attack is so swift, that your attacks ignore bonuses to AC as a result of Jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5513",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "lightningRelease",
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Your attack is so swift, that your attacks ignore bonuses to AC as a result of Jutsu.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5513,
+        "sourceHash": "f7b555ad28998b58b5a49c076da24501eb2d4a35cd42e47f40d80b65eb03d18c",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Movement Speed",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Lightning Release, Chain, Clash"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action\nRange: Movement Speed\nDuration: Instant\nComponents: CM, W (Any melee), M Cost: 12 Chakra Keywords: Bukijutsu, Lightning Release, Chain, Clash Description: You begin to collect lightning release chakra until it sparks off of your weapon and body with violent jolts. You make a singular forward slash as lightning forms an image of a beast of your description behind you.\nMove yourself into a space adjacent to a creature of your choice within range that can hold you and make a melee taijutsu attack.\nOn a hit, you deal your [Weapons damage] + 4d10 lightning damage. If the target has any ranks of the Shocked condition, you make your attacks at advantage.\nChain 2: Your attack is so swift, that your attacks ignore bonuses to AC as a result of Jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 369,
+            "context": "On a hit, you deal your [Weapons damage] + 4d10 lightning damage. If the target has any ranks of the Shocked condition, you make your attacks at advantage.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d10",
+            "offset": 388,
+            "context": "On a hit, you deal your [Weapons damage] + 4d10 lightning damage. If the target has any ranks of the Shocked condition, you make your attacks at advantage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 715,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d10.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(4d10) + (1d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(4d10) + (2d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c3fd08eae955429"
+}

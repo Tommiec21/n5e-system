@@ -1,0 +1,240 @@
+{
+  "_id": "dffa841f35c6e445",
+  "_key": "!items!dffa841f35c6e445",
+  "name": "Breath of Roses: Hanagoromo",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-roses-hanagoromo",
+    "description": "<p>You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you. You unleash a single strike that bends, curves and twists around you as if you made multiple strikes at once. Make a melee taijutsu attack dealing [Weapon damage] + 4d6 and forcing the target to make a Constitution saving throw, being Weakened on a failed save.</p>\n<p>Chain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage.</p>\n<p>Chain 2: Creatures who failed their save gain an additional rank of Weakened.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage increased by 1d6. If this jutsu is cast at S-Rank, you can make one additional attack, targeting a different creature in range.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5355",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "medical",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "Chain 1: 2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "Chain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage increased by 1d6. If this jutsu is cast at S-Rank, you can make one additional attack, targeting a different creature in range.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage.</p>",
+      "2": "<p>Chain 2: Creatures who failed their save gain an additional rank of Weakened.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5355,
+        "sourceHash": "ed1b080e837d546f7f4abfb9a9d6145f91a670f002bf31c15e78501a0613f39f",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "C",
+          "time": "1 Action.",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "7 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Medical, Chain, Clash"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action. Range: Weapons Range Duration: Instant\nComponents: CM, W (Any melee), M Cost: 7 Chakra Keywords: Bukijutsu, Medical, Chain, Clash Description: You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you. You unleash a single strike that bends, curves and twists around you as if you made multiple strikes at once. Make a melee taijutsu attack dealing [Weapon damage] + 4d6 and forcing the target to make a Constitution saving throw, being Weakened on a failed save.\nChain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage.\nChain 2: Creatures who failed their save gain an additional rank of Weakened.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage increased by 1d6. If this jutsu is cast at S-Rank, you can make one additional attack, targeting a different creature in range.",
+        "expressions": [
+          {
+            "expression": "[Weapon damage]",
+            "offset": 252,
+            "context": "Make a melee taijutsu attack dealing [Weapon damage] + 4d6 and forcing the target to make a Constitution saving throw, being Weakened on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d6",
+            "offset": 270,
+            "context": "Make a melee taijutsu attack dealing [Weapon damage] + 4d6 and forcing the target to make a Constitution saving throw, being Weakened on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 441,
+            "context": "Chain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage.",
+            "section": "Chain 1"
+          },
+          {
+            "expression": "1d6",
+            "offset": 692,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage increased by 1d6. If this jutsu is cast at S-Rank, you can make one additional attack, targeting a different creature in range.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0032efe7c08875b9"
+}

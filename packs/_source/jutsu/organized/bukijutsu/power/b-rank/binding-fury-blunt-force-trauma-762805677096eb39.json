@@ -1,0 +1,447 @@
+{
+  "_id": "762805677096eb39",
+  "_key": "!items!762805677096eb39",
+  "name": "Binding Fury: Blunt Force Trauma",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "binding-fury-blunt-force-trauma",
+    "description": "<p>You swing your weapon looking to release as much kinetic force into this strike as possible, cracking the ground you’re standing on and even superheating the air via friction alone.</p>\n<p>Make a melee Taijutsu attack, dealing your [Weapons damage] + 3d12 and forcing the target creature to make a Constitution saving throw on a hit.</p>\n<p>On a failed save, the affected creature is pushed back 40-feet in a straight line and becomes Bruised. If you score a critical hit, on a failed save the affected creature is instead Stunned.</p>\n<p>If you have Fury, you can spend it to treat your Chain Rank as 2, regardless of your current Chain rank.</p>\n<p>Chain 2: On a failed save if the affected creature is turned into a short-range missile. Creatures that the target creature passes through while being pushed, must make a Dexterity saving throw. On a failed save, they are picked up and pushed along the same trajectory as the original creature. At the end of the original creature’s movement, all picked up creatures are knocked Prone and become Dazed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6623",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon’s Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "chain-2-parsed1",
+        "type": "save",
+        "label": "Chain 2: Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: On a failed save if the affected creature is turned into a short-range missile. Creatures that the target creature passes through while being pushed, must make a Dexterity saving throw. On a failed save, they are picked up and pushed along the same trajectory as the original creature. At the end of the original creature’s movement, all picked up creatures are knocked Prone and become Dazed.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6623,
+        "sourceHash": "b6c418f360f9a5c3adb16d784c1739d280f4196e30cf7be07a28b2826d64e569",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapon’s Range",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "W (Any Power), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action\nRange: Weapon’s Range\nDuration: Instant\nComponents: W (Any Power), M\nCost: 12 Chakra\nKeywords: Bukijutsu, Chain, Clash\nDescription:  You swing your weapon looking to release as much kinetic force into this strike as possible, cracking the ground you’re standing on and even superheating the air via friction alone.\nMake a melee Taijutsu attack, dealing your [Weapons damage] + 3d12 and forcing the target creature to make a Constitution saving throw on a hit.\nOn a failed save, the affected creature is pushed back 40-feet in a straight line and becomes Bruised. If you score a critical hit, on a failed save the affected creature is instead Stunned.\nIf you have Fury, you can spend it to treat your Chain Rank as 2, regardless of your current Chain rank.\nChain 2: On a failed save if the affected creature is turned into a short-range missile. Creatures that the target creature passes through while being pushed, must make a Dexterity saving throw. On a failed save, they are picked up and pushed along the same trajectory as the original creature. At the end of the original creature’s movement, all picked up creatures are knocked Prone and become Dazed.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d12.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 225,
+            "context": "Make a melee Taijutsu attack, dealing your [Weapons damage] + 3d12 and forcing the target creature to make a Constitution saving throw on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d12",
+            "offset": 244,
+            "context": "Make a melee Taijutsu attack, dealing your [Weapons damage] + 3d12 and forcing the target creature to make a Constitution saving throw on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 1139,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d12) + (1d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "chain-2-parsed1",
+              "type": "save",
+              "label": "Chain 2: Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d12) + (2d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "chain-2-parsed1",
+              "type": "save",
+              "label": "Chain 2: Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "f69fa4fab70e66b3"
+}

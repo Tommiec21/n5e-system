@@ -1,0 +1,180 @@
+{
+  "_id": "59186192d28aed4b",
+  "_key": "!items!59186192d28aed4b",
+  "name": "Leaf Hurricane Bullet",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "leaf-hurricane-bullet",
+    "description": "<p>You strike with enough force to create a focused bullet of air pressure to strike at ranged targets. Make two ranged taijutsu attack, dealing 5d8 bludgeoning damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of ranged taijutsu attacks by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4887",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 45,
+        "long": null,
+        "text": "45 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of ranged taijutsu attacks by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4887,
+        "sourceHash": "b816faf8b591a82c6c229e02d5ee6de8c7533594674eafb1c91196527a5e43f6",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "45 feet",
+          "duration": "Instant",
+          "cost": "10 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Clash"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 45 feet Duration: Instant\nComponents: M Cost: 10 Chakra Keywords: Taijutsu, Clash  Description: You strike with enough force to create a focused bullet of air pressure to strike at ranged targets. Make two ranged taijutsu attack, dealing 5d8 bludgeoning damage.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of ranged taijutsu attacks by +1.",
+        "expressions": [
+          {
+            "expression": "5d8",
+            "offset": 142,
+            "context": "Make two ranged taijutsu attack, dealing 5d8 bludgeoning damage.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

@@ -1,0 +1,226 @@
+{
+  "_id": "e493a49c568cb084",
+  "_key": "!items!e493a49c568cb084",
+  "name": "Fire Release: Delayed Fire Missile",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-delayed-fire-missile",
+    "description": "<p>A beam of yellow light flashes from your hands, then condenses to linger in your hand as a glowing bead for the duration. When this jutsu ends, either because your concentration is broken or because you decide to end it, the bead blossoms with a low roar into an explosion of flame that spreads around corners.</p>\n<p>Each creature in a 20-foot radius sphere centered on that point must make a Dexterity saving throw. A creature takes Fire damage equal to the total accumulated damage on a failed save, or half as much damage on a successful one.</p>\n<p>The jutsu base damage is 8d8+8. If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4.</p>\n<p>As a bonus action, you can make a ranged ninjutsu attack throwing the bead at a creature or object causing it to detonate on a hit. On a miss the target creature gets advantage on its saving throw.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the base damage and damage increase by 1d8+1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2422",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "8d8+8",
+        "roll": {
+          "formula": "8d8+8",
+          "note": "The jutsu base damage is 8d8+8. If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "4d8+4",
+        "roll": {
+          "formula": "4d8+4",
+          "note": "If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the base damage and damage increase by 1d8+1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2422,
+        "sourceHash": "925d3fc8cf972b0d4f8ad77ad7aa3624f30474f44d6ac158165932e5fb217cd0",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "90 feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "16 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 90 feet Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 16 Chakra Keywords: Ninjutsu, Fire Release Description: A beam of yellow light flashes from your hands, then condenses to linger in your hand as a glowing bead for the duration. When this jutsu ends, either because your concentration is broken or because you decide to end it, the bead blossoms with a low roar into an explosion of flame that spreads around corners.\nEach creature in a 20-foot radius sphere centered on that point must make a Dexterity saving throw. A creature takes Fire damage equal to the total accumulated damage on a failed save, or half as much damage on a successful one.\nThe jutsu base damage is 8d8+8. If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4.\nAs a bonus action, you can make a ranged ninjutsu attack throwing the bead at a creature or object causing it to detonate on a hit. On a miss the target creature gets advantage on its saving throw.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the base damage and damage increase by 1d8+1.",
+        "expressions": [
+          {
+            "expression": "8d8+8",
+            "offset": 565,
+            "context": "The jutsu base damage is 8d8+8. If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d8+4",
+            "offset": 656,
+            "context": "If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8+1",
+            "offset": 1015,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the base damage and damage increase by 1d8+1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6d60386b2f6cb7c3"
+}

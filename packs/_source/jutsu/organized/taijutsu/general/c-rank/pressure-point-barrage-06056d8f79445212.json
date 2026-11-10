@@ -1,0 +1,208 @@
+{
+  "_id": "06056d8f79445212",
+  "_key": "!items!06056d8f79445212",
+  "name": "Pressure Point Barrage",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "pressure-point-barrage",
+    "description": "<p>You unleash a barrage of precise strikes into your targets pressure points crushing their form. Make a melee taijutsu attack, dealing your [Unarmed damage] and the target must make a constitution saving throw gaining 3 ranks of Weakened for the next minute.</p>\n<p>At the end of the targets turn, they can remake their saving throw to reduce the ranks of Weakened they have by 1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4674",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Weakened"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4674,
+        "sourceHash": "7ade014f5076a1a239980b2bae3431a2a40b4eb3bfbd60a5f64b72adc5a027d5",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 5 Feet Duration: Instant\nComponents: M Cost: 9 Chakra Keywords: Taijutsu Description: You unleash a barrage of precise strikes into your targets pressure points crushing their form. Make a melee taijutsu attack, dealing your [Unarmed damage] and the target must make a constitution saving throw gaining 3 ranks of Weakened for the next minute.\nAt the end of the targets turn, they can remake their saving throw to reduce the ranks of Weakened they have by 1.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 139,
+            "context": "Make a melee taijutsu attack, dealing your [Unarmed damage] and the target must make a constitution saving throw gaining 3 ranks of Weakened for the next minute.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

@@ -1,0 +1,219 @@
+{
+  "_id": "d63342e7ea97e3ea",
+  "_key": "!items!d63342e7ea97e3ea",
+  "name": "Reapers Swing",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "reapers-swing",
+    "description": "<p>As a requirement to activate this jutsu, you must be targeting a creature who is either; Grappled, Prone, Restrained, Stunned, or Unconscious.</p>\n<p>You swing your blade with such ferocity that the air and other materials or objects in its path doesn’t recognize that it’s been slashed.</p>\n<p>Make a melee taijutsu attack with a +1 bonus to its attacks critical threat range, dealing your weapons damage + 6d6.</p>\n<p>Chain 1: Affected creature must make a Constitution saving throw, gaining a rank of Bleed on a failed save.</p>\n<p>Chain 2: On a critical hit, you can make an additional attack targeting a different creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5795",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "chain-1-parsed1",
+        "type": "save",
+        "label": "Chain 1: Save",
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "6d6",
+        "roll": {
+          "formula": "6d6",
+          "note": "Make a melee taijutsu attack with a +1 bonus to its attacks critical threat range, dealing your weapons damage + 6d6."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: Affected creature must make a Constitution saving throw, gaining a rank of Bleed on a failed save.</p>",
+      "2": "<p>Chain 2: On a critical hit, you can make an additional attack targeting a different creature.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5795,
+        "sourceHash": "1826696f594977f3f851a417fa3a4af1608ff490c7bf7c47839b1b5952aca6fe",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "W (Any Blade), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: Weapons Range\nDuration: Instant\nComponents: W (Any Blade), M Cost: 9 Chakra Keywords: Bukijutsu, Chain, Clash Description: As a requirement to activate this jutsu, you must be targeting a creature who is either; Grappled, Prone, Restrained, Stunned, or Unconscious.\nYou swing your blade with such ferocity that the air and other materials or objects in its path doesn’t recognize that it’s been slashed.\nMake a melee taijutsu attack with a +1 bonus to its attacks critical threat range, dealing your weapons damage + 6d6.\nChain 1: Affected creature must make a Constitution saving throw, gaining a rank of Bleed on a failed save.\nChain 2: On a critical hit, you can make an additional attack targeting a different creature.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "6d6",
+            "offset": 394,
+            "context": "Make a melee taijutsu attack with a +1 bonus to its attacks critical threat range, dealing your weapons damage + 6d6.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 720,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "575645fa4b1ef057"
+}

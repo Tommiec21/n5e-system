@@ -1,0 +1,211 @@
+{
+  "_id": "1cd177585ead1e0b",
+  "_key": "!items!1cd177585ead1e0b",
+  "name": "Blade of Sin: Envy",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "blade-of-sin-envy",
+    "description": "<p>You seek to emulate the power of one of the Seven Deadly Sins of Humanity in your blade, imbuing the Sin of Envy inside the edge. Make a melee Taijutsu attack against a creature in range. On a hit you deal your Weapons damage+6d8. If the target creature is benefiting from a jutsu based bonus to AC or DR they must make a Constitution Saving Throw. On a failed save the benefits they receive is transferred to you as they lose it until the beginning of your next turn.</p>\n<p>Chain 2: You can share your ill-gotten benefits. Select one willing allied creature within 20-feet of you. They gain the same transferred benefits as you until the end of your next turn.</p>\n<p>Chain 3: You can share the conditions you currently have with your enemies as they share their benefits with you. On a failed save, any conditions you may have, you transfer them to the affected creature, at the same time that you transfer their benefits to you. They retain these conditions until the end of your next turn.</p>\n<p>At Higher Ranks: For every rank you cast this jutsu above A-Rank, increase the cost by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5889",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 15,
+      "text": "15 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "6d8",
+        "roll": {
+          "formula": "6d8",
+          "note": "On a hit you deal your Weapons damage+6d8. If the target creature is benefiting from a jutsu based bonus to AC or DR they must make a Constitution Saving Throw. On a failed save the benefits they receive is transferred to you as they lose it until the beginning of your next turn."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For every rank you cast this jutsu above A-Rank, increase the cost by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: You can share your ill-gotten benefits. Select one willing allied creature within 20-feet of you. They gain the same transferred benefits as you until the end of your next turn.</p>",
+      "3": "<p>Chain 3: You can share the conditions you currently have with your enemies as they share their benefits with you. On a failed save, any conditions you may have, you transfer them to the affected creature, at the same time that you transfer their benefits to you. They retain these conditions until the end of your next turn.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5889,
+        "sourceHash": "216fb9c60b777621aece6383e6c02f41930372196a55b7dc665aac6de0861d91",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Weapon range",
+          "duration": "Instant",
+          "cost": "15 Chakra",
+          "components": "W (Any Blade), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Weapon range Duration: Instant\nComponents: W (Any Blade), M Cost: 15 Chakra Keywords: Bukijutsu, Chain Description: You seek to emulate the power of one of the Seven Deadly Sins of Humanity in your blade, imbuing the Sin of Envy inside the edge. Make a melee Taijutsu attack against a creature in range. On a hit you deal your Weapons damage+6d8. If the target creature is benefiting from a jutsu based bonus to AC or DR they must make a Constitution Saving Throw. On a failed save the benefits they receive is transferred to you as they lose it until the beginning of your next turn.\nChain 2: You can share your ill-gotten benefits. Select one willing allied creature within 20-feet of you. They gain the same transferred benefits as you until the end of your next turn.\nChain 3: You can share the conditions you currently have with your enemies as they share their benefits with you. On a failed save, any conditions you may have, you transfer them to the affected creature, at the same time that you transfer their benefits to you. They retain these conditions until the end of your next turn.\nAt Higher Ranks: For every rank you cast this jutsu above A-Rank, increase the cost by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "6d8",
+            "offset": 226,
+            "context": "On a hit you deal your Weapons damage+6d8. If the target creature is benefiting from a jutsu based bonus to AC or DR they must make a Constitution Saving Throw. On a failed save the benefits they receive is transferred to you as they lose it until the beginning of your next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 1088,
+            "context": "At Higher Ranks: For every rank you cast this jutsu above A-Rank, increase the cost by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "00a31a843def3e70"
+}

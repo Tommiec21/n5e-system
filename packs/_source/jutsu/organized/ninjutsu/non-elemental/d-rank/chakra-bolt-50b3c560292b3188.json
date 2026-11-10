@@ -1,0 +1,267 @@
+{
+  "_id": "50b3c560292b3188",
+  "_key": "!items!50b3c560292b3188",
+  "name": "Chakra Bolt",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "chakra-bolt",
+    "description": "<p>You manifest a sphere of pure chakra which is fired at a creature you can see within range. Make a ranged ninjutsu attack. On a hit, the target takes 4d6 force damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select +1 additional creature to target with this jutsu’s attack.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 814",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select +1 additional creature to target with this jutsu’s attack.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 814,
+        "sourceHash": "f53662918261ca32366c51f46474f1f52749dd7f7c9e833a9a702c03da73d1de",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 Feet Duration: Instant\nComponents:  HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Clash Description: You manifest a sphere of pure chakra which is fired at a creature you can see within range. Make a ranged ninjutsu attack. On a hit, the target takes 4d6 force damage.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select +1 additional creature to target with this jutsu’s attack.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 150,
+            "context": "On a hit, the target takes 4d6 force damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 288,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, you can select +1 additional creature to target with this jutsu’s attack.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eDpY0QdrV0NfEW"
+}

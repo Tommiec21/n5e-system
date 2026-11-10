@@ -1,0 +1,161 @@
+{
+  "_id": "22eae01c093c4c6e",
+  "_key": "!items!22eae01c093c4c6e",
+  "name": "Late Death",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "late-death",
+    "description": "<p>You delay the death of a friend, by any means necessary. When a creature within 5 feet of you falls to 0 hit points you strike a series of pressure points in a desperate attempt to save them, if only for a moment. The target remains at 0 hit points, but stays conscious until the end of their next turn. If the creature would end their turn with 0 hit points after this jutsu’s casting, they fall unconscious.</p>\n<p>Regardless if they regain hit points or fall unconscious, they gain 1 failed death saving throws.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, the creatures instead fails 0 death saving throws. If this jutsu is cast at S-Rank, the creature remains at 1 Hit point.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4637",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you or an allied creature within 5 feet of you would fall to 0 hit points."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, the creatures instead fails 0 death saving throws. If this jutsu is cast at S-Rank, the creature remains at 1 Hit point.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4637,
+        "sourceHash": "56d49083ad0592a11e63eedad5180f8cc4e24edd056172197ae5319b222b583f",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when you or an allied creature within 5 feet of you would fall to 0 hit points.",
+          "range": "5 feet",
+          "duration": "Instant",
+          "cost": "7 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Medical"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Reaction, which you take when you or an allied creature within 5 feet of you would fall to 0 hit points.\nRange: 5 feet\nDuration: Instant\nComponents: CM, M\nCost: 7 Chakra\nKeywords: Taijutsu, Medical\nDescription: You delay the death of a friend, by any means necessary. When a creature within 5 feet of you falls to 0 hit points you strike a series of pressure points in a desperate attempt to save them, if only for a moment. The target remains at 0 hit points, but stays conscious until the end of their next turn. If the creature would end their turn with 0 hit points after this jutsu’s casting, they fall unconscious.\nRegardless if they regain hit points or fall unconscious, they gain 1 failed death saving throws.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, the creatures instead fails 0 death saving throws. If this jutsu is cast at S-Rank, the creature remains at 1 Hit point.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

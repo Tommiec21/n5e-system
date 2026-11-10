@@ -1,0 +1,247 @@
+{
+  "_id": "13ea20ba91c65d6c",
+  "_key": "!items!13ea20ba91c65d6c",
+  "name": "Medical Release: Venom Sphere",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-venom-sphere",
+    "description": "<p>You begin to generate poisonous medical chakra and release it, creating a ball of poisonous, acidic liquid, that then rain of needles formed from it.</p>\n<p>Select a point in the air that you can see within range. You manifest a ball of acidic point, that begins to rain down needles made of poisonous acid filling a 30-foot cylinder. Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.</p>\n<p>The ground this area affects generates poisonous thorns on the ground that lasts for 1 minute. Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and both damage types by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1518",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60Feet (30-foot Cylinder)"
+      },
+      "area": {
+        "shape": "cylinder",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "3d4",
+        "roll": {
+          "formula": "3d4",
+          "note": "A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn."
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and both damage types by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1518,
+        "sourceHash": "3ea92b67c108c16acfc362a61bf46c9b05180502d2e55028c39cffdc5f799b27",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "60Feet (30-foot Cylinder)",
+          "duration": "Instant",
+          "cost": "10 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 60Feet (30-foot Cylinder) Duration: Instant\nComponents:  HS, CM Cost: 10 Chakra Keywords: Ninjutsu, Medical Description: You begin to generate poisonous medical chakra and release it, creating a ball of poisonous, acidic liquid, that then rain of needles formed from it.\nSelect a point in the air that you can see within range. You manifest a ball of acidic point, that begins to rain down needles made of poisonous acid filling a 30-foot cylinder. Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.\nThe ground this area affects generates poisonous thorns on the ground that lasts for 1 minute. Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and both damage types by 1d6.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 400,
+            "context": "Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 415,
+            "context": "Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d4",
+            "offset": 527,
+            "context": "A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d4",
+            "offset": 542,
+            "context": "A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 746,
+            "context": "Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 761,
+            "context": "Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 957,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and both damage types by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d1f8f3baa49a3e3a"
+}

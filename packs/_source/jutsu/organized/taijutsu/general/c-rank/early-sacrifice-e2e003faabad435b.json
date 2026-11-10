@@ -1,0 +1,180 @@
+{
+  "_id": "e2e003faabad435b",
+  "_key": "!items!e2e003faabad435b",
+  "name": "Early Sacrifice",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "early-sacrifice",
+    "description": "<p>After dodging an enemy’s melee attack, you leap on their shoulder and attempt to throw them 30 feet in a direction of your choice. The target must make a Strength saving throw, being thrown 30 feet in a straight line, in a direction of your choice.</p>\n<p>A thrown target must make a Dexterity saving throw, landing Prone on a failed save.</p>\n<p>If the target hits a surface such as a wall, ceiling, or large or larger object they take damage as if they were falling.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4536",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a melee attack misses you."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4536,
+        "sourceHash": "f1dfa43b72c5b69b1706e77146be8267273d7ae327b633d9ce67859b55326169",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when a melee attack misses you.",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "6 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Reaction, which you take when a melee attack misses you. Range: 5 Feet Duration: Instant\nComponents: M Cost: 6 Chakra Keywords: Taijutsu Description: After dodging an enemy’s melee attack, you leap on their shoulder and attempt to throw them 30 feet in a direction of your choice. The target must make a Strength saving throw, being thrown 30 feet in a straight line, in a direction of your choice.\nA thrown target must make a Dexterity saving throw, landing Prone on a failed save.\nIf the target hits a surface such as a wall, ceiling, or large or larger object they take damage as if they were falling.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

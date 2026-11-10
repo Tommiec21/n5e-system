@@ -1,0 +1,292 @@
+{
+  "_id": "90426001eb0c23de",
+  "_key": "!items!90426001eb0c23de",
+  "name": "Labyrinthine Howl",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "labyrinthine-howl",
+    "description": "<p>You let loose the howl of a ravenous beast, causing each hostile creature within range that can hear you to make a Wisdom saving throw.</p>\n<p>On a failed save, a creature believes it has been moved into a labyrinth and is under attack by a savage beast of your description.</p>\n<p>An affected creature on its turn must decide to face the beast head on or defend itself from the beast. A creature that faces the beast takes 8d6 psychic damage and this jutsu ends. A creature that defends itself from the beast falls Prone and is Stunned until the beginning of its next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 2d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3724",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "tactile"
+    ],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60 feet)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 2d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3724,
+        "sourceHash": "22ff16b3729f5d4b62a01b9f6409c8e562f45dc6f794100896d3d374fffbcf56",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self (60 feet)",
+          "duration": "1 Round",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory), Tactile, Unaware."
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self (60 feet) Duration: 1 Round\nComponents: HS, CM\nCost: 14 Chakra Keywords: Genjutsu (Auditory), Tactile, Unaware. Description: You let loose the howl of a ravenous beast, causing each hostile creature within range that can hear you to make a Wisdom saving throw.\nOn a failed save, a creature believes it has been moved into a labyrinth and is under attack by a savage beast of your description.\nAn affected creature on its turn must decide to face the beast head on or defend itself from the beast. A creature that faces the beast takes 8d6 psychic damage and this jutsu ends. A creature that defends itself from the beast falls Prone and is Stunned until the beginning of its next turn.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 2d6.",
+        "expressions": [
+          {
+            "expression": "8d6",
+            "offset": 410,
+            "context": "A creature that faces the beast takes 8d6 psychic damage and this jutsu ends. A creature that defends itself from the beast falls Prone and is Stunned until the beginning of its next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 680,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 2d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "fae9e18fa9699f4f"
+}

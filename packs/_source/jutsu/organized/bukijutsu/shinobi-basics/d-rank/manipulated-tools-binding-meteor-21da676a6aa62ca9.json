@@ -1,0 +1,168 @@
+{
+  "_id": "21da676a6aa62ca9",
+  "_key": "!items!21da676a6aa62ca9",
+  "name": "Manipulated Tools: Binding Meteor",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "manipulated-tools-binding-meteor",
+    "description": "<p>You summon forth a weighted chain from your weapon scroll and use it to restrain multiple targets you can see within range. Make a melee taijutsu attack against up to three targets, who are within 30 feet of one another.</p>\n<p>On a hit you grapple them and chain them to each other. Creatures chained together and pulled to be within 10 feet of one another and cannot move more than 10 feet from one another while chained in this way.</p>\n<p>A creature chained by this jutsu can, as an action, make a Dexterity (Acrobatics) or (Sleight of Hand) check vs your Taijutsu save DC, escaping the chains on a success.</p>\n<p>Chain 1: A creature who fails this check makes it harder to escape for other chained creatures. All other chained creatures who attempt to escape after another creature has failed, suffers a -2 penalty to their check, until the end of their next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5288",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Weapon Scroll"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: A creature who fails this check makes it harder to escape for other chained creatures. All other chained creatures who attempt to escape after another creature has failed, suffers a -2 penalty to their check, until the end of their next turn.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5288,
+        "sourceHash": "f9fb5e68f41df93c39f6468b75386301f70e51f1ed4b35df518d3494482308e2",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "30 feet",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "W (Weapon Scroll), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 feet Duration: Instant\nComponents: W (Weapon Scroll), M Cost: 3 Chakra Keywords: Bukijutsu, Chain Description:  You summon forth a weighted chain from your weapon scroll and use it to restrain multiple targets you can see within range. Make a melee taijutsu attack against up to three targets, who are within 30 feet of one another.\nOn a hit you grapple them and chain them to each other. Creatures chained together and pulled to be within 10 feet of one another and cannot move more than 10 feet from one another while chained in this way.\nA creature chained by this jutsu can, as an action, make a Dexterity (Acrobatics) or (Sleight of Hand) check vs your Taijutsu save DC, escaping the chains on a success.\nChain 1: A creature who fails this check makes it harder to escape for other chained creatures. All other chained creatures who attempt to escape after another creature has failed, suffers a -2 penalty to their check, until the end of their next turn.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "1b8bbde86064544a"
+}

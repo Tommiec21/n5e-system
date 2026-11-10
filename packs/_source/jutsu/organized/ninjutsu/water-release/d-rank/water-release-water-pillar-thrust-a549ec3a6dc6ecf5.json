@@ -1,0 +1,343 @@
+{
+  "_id": "a549ec3a6dc6ecf5",
+  "_key": "!items!a549ec3a6dc6ecf5",
+  "name": "Water Release: Water Pillar Thrust",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-pillar-thrust",
+    "description": "<p>You create a surge of water that erupts upwards from under a creature that you can see within range. This jutsu ignores cover. The target must make a Dexterity saving throw taking 2d10 cold damage and being Dazed on a failed save and half as much on a successful save and no further effects. If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to affect all creatures within 5 feet of the target creature as well. A creature can only be affected by this jutsu once per casting.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the number of targets this jutsu can affect by +1 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2548",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the number of targets this jutsu can affect by +1 and the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2548,
+        "sourceHash": "4a52234263cc71cdcf9b84f845bdd6f45bcaeab9a5da3716fd99a5c5a9033c57",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "30 Feet",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 Feet Duration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Water Release, Clash Description: You create a surge of water that erupts upwards from under a creature that you can see within range. This jutsu ignores cover. The target must make a Dexterity saving throw taking 2d10 cold damage and being Dazed on a failed save and half as much on a successful save and no further effects. If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to affect all creatures within 5 feet of the target creature as well. A creature can only be affected by this jutsu once per casting.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the number of targets this jutsu can affect by +1 and the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "2d10",
+            "offset": 180,
+            "context": "The target must make a Dexterity saving throw taking 2d10 cold damage and being Dazed on a failed save and half as much on a successful save and no further effects. If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to affect all creatures within 5 feet of the target creature as well. A creature can only be affected by this jutsu once per casting.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 712,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the number of targets this jutsu can affect by +1 and the damage by 1d10.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (4d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "3b09f83137c247b7"
+}

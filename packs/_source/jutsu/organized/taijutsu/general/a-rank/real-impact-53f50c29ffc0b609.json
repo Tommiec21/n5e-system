@@ -1,0 +1,229 @@
+{
+  "_id": "53f50c29ffc0b609",
+  "_key": "!items!53f50c29ffc0b609",
+  "name": "Real Impact",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "real-impact",
+    "description": "<p>You reel back preparing to perform a rising uppercut with enough chakra to distort the area around you from the force of your attack alone.</p>\n<p>Make a melee taijutsu attack, on a hit you deal your [Unarmed damage] + 8d8 and all creatures, including the original target who are adjacent to you must make a strength saving throw. On a failed save they are thrown 30 feet into the air, becoming airborne.</p>\n<p>All other creatures excluding your original target, until the end of the current turn, can be targeted by your allies within 30 feet of you with a Taijutsu or Bukijutsu Finisher regardless of range, once per turn, using their reaction, ignoring its listed casting time.</p>\n<p>Finisher: on a failed save, the target instead takes 10d6 necrotic damage and suffers 5 ranks of Bleed.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5039",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "8d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "damage",
+        "label": "Finisher: Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: on a failed save, the target instead takes 10d6 necrotic damage and suffers 5 ranks of Bleed.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5039,
+        "sourceHash": "191d55b1e41c1e92e9bf0182032510597e87e300b1614a95df03a276f7237356",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "19 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: A-Rank\nCasting Time: 1 Action\nRange: 5 Feet\nDuration: Instant\nComponents: CM, M\nCost: 19 Chakra\nKeywords: Taijutsu, Finisher\nDescription: You reel back preparing to perform a rising uppercut with enough chakra to distort the area around you from the force of your attack alone.\nMake a melee taijutsu attack, on a hit you deal your [Unarmed damage] + 8d8 and all creatures, including the original target who are adjacent to you must make a strength saving throw. On a failed save they are thrown 30 feet into the air, becoming airborne.\nAll other creatures excluding your original target, until the end of the current turn, can be targeted by your allies within 30 feet of you with a Taijutsu or Bukijutsu Finisher regardless of range, once per turn, using their reaction, ignoring its listed casting time.\nFinisher: on a failed save, the target instead takes 10d6 necrotic damage and suffers 5 ranks of Bleed.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 193,
+            "context": "Make a melee taijutsu attack, on a hit you deal your [Unarmed damage] + 8d8 and all creatures, including the original target who are adjacent to you must make a strength saving throw. On a failed save they are thrown 30 feet into the air, becoming airborne.",
+            "section": "Base"
+          },
+          {
+            "expression": "8d8",
+            "offset": 212,
+            "context": "Make a melee taijutsu attack, on a hit you deal your [Unarmed damage] + 8d8 and all creatures, including the original target who are adjacent to you must make a strength saving throw. On a failed save they are thrown 30 feet into the air, becoming airborne.",
+            "section": "Base"
+          },
+          {
+            "expression": "10d6",
+            "offset": 721,
+            "context": "Finisher: on a failed save, the target instead takes 10d6 necrotic damage and suffers 5 ranks of Bleed.",
+            "section": "Finisher"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ee1379d61e3505ec"
+}

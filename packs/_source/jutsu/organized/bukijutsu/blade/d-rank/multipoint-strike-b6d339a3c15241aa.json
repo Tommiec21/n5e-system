@@ -1,0 +1,169 @@
+{
+  "_id": "b6d339a3c15241aa",
+  "_key": "!items!b6d339a3c15241aa",
+  "name": "Multipoint Strike",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "multipoint-strike",
+    "description": "<p>You lash out with a flurry of attacks meant to completely overwhelm your enemy in the blink of an eye.</p>\n<p>You make a series of strikes leaving afterimages with each strike. Make a three melee taijutsu attacks. On a hit, you deal your [Weapons damage Die].</p>\n<p>Chain 1: If you score a hit with at least two or more attacks, you increase your speed by +20 feet and the target creature cannot make an attack of opportunity against you until the end of the current turn..</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the bonus damage die by +2. If this jutsu is cast at S-Rank, increase the bonus damage die by +4.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5743",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade, Light"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the bonus damage die by +2. If this jutsu is cast at S-Rank, increase the bonus damage die by +4.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: If you score a hit with at least two or more attacks, you increase your speed by +20 feet and the target creature cannot make an attack of opportunity against you until the end of the current turn..</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5743,
+        "sourceHash": "df35dfc80541b76c35a6979dc90b746ba6d564ed4b7d53a9a8aa9ad166f069de",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "Instant.",
+          "cost": "4 Chakra",
+          "components": "W (Any Blade, Light), M",
+          "keywords": "Bukijutsu, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Weapon Range Duration: Instant.\nComponents: W (Any Blade, Light), M Cost: 4 Chakra Keywords: Bukijutsu, Clash Description: You lash out with a flurry of attacks meant to completely overwhelm your enemy in the blink of an eye.\nYou make a series of strikes leaving afterimages with each strike. Make a three melee taijutsu attacks. On a hit, you deal your [Weapons damage Die].\nChain 1: If you score a hit with at least two or more attacks, you increase your speed by +20 feet and the target creature cannot make an attack of opportunity against you until the end of the current turn..\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the bonus damage die by +2. If this jutsu is cast at S-Rank, increase the bonus damage die by +4.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage Die]",
+            "offset": 231,
+            "context": "On a hit, you deal your [Weapons damage Die].",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Weapon-die-only expression is retained; no full weapon/modifier substitution is assumed.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c23989398aafdb46"
+}

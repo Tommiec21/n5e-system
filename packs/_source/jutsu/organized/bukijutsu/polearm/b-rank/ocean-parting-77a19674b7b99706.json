@@ -1,0 +1,204 @@
+{
+  "_id": "77a19674b7b99706",
+  "_key": "!items!77a19674b7b99706",
+  "name": "Ocean Parting",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "ocean-parting",
+    "description": "<p>You slam your weapon down on its end with the force to part the ocean itself. Select a point on a space which your weapon can reach. All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet.</p>\n<p>All allied creatures within 10-feet of you when this jutsu is cast can spend their Reaction to cast a Ninjutsu or Genjutsu with a casting time of 1 Action targeting one of the affected creatures.</p>\n<p>Chain 2: Creatures who fail their saving throw are Dazed. If the Dazed creature takes damage from an allied creature as part of this jutsu’s casting has the duration of the Daze increased by 1 round.</p>\n<p>At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6393",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range (20-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d10",
+        "roll": {
+          "formula": "3d10",
+          "note": "All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Creatures who fail their saving throw are Dazed. If the Dazed creature takes damage from an allied creature as part of this jutsu’s casting has the duration of the Daze increased by 1 round.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6393,
+        "sourceHash": "83b322cedf52be628492c5db7083df56296a7a290b05a06522845c2364b37c1b",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapons Range (20-foot cube)",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action\nRange: Weapons Range (20-foot cube) Duration: Instant\nComponents: W (Any Polearm), M\nCost: 12 Chakra\nKeywords: Bukijutsu, Chain\nDescription: You slam your weapon down on its end with the force to part the ocean itself. Select a point on a space which your weapon can reach. All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet.\nAll allied creatures within 10-feet of you when this jutsu is cast can spend their Reaction to cast a Ninjutsu or Genjutsu with a casting time of 1 Action targeting one of the affected creatures.\nChain 2: Creatures who fail their saving throw are Dazed. If the Dazed creature takes damage from an allied creature as part of this jutsu’s casting has the duration of the Daze increased by 1 round.\nAt Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 242,
+            "context": "All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d10",
+            "offset": 261,
+            "context": "All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 812,
+            "context": "At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage by 1d10.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "df4eaad46b8ce1b6"
+}

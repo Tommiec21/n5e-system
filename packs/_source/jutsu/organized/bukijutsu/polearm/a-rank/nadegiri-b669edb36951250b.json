@@ -1,0 +1,190 @@
+{
+  "_id": "b669edb36951250b",
+  "_key": "!items!b669edb36951250b",
+  "name": "Nadegiri",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "nadegiri",
+    "description": "<p>You make an attack so fast and precise that the target does not notice it as happened until it is too late. Make a melee taijutsu attack dealing your [Weapon’s damage] + 6d8. If the target of this jutsu is large or bigger, you make this attack at advantage.</p>\n<p>If your attack beats the creatures AC by 10 or more, you treat the attack as a critical hit.</p>\n<p>Chain 2: This jutsu’s damage ignores a creature’s Temporary hit points.</p>\n<p>Chain 3: If the target is large or bigger, the target cannot take a Reaction against this jutsu’s damage.</p>\n<p>At Higher Ranks: For each rank above A -rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at S-Rank, if the target is Large or larger, they treat damage from this jutsu as if they are Vulnerable.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6459",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "6d8",
+        "roll": {
+          "formula": "6d8",
+          "note": "Make a melee taijutsu attack dealing your [Weapon’s damage] + 6d8. If the target of this jutsu is large or bigger, you make this attack at advantage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank above A -rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at S-Rank, if the target is Large or larger, they treat damage from this jutsu as if they are Vulnerable.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: This jutsu’s damage ignores a creature’s Temporary hit points.</p>",
+      "3": "<p>Chain 3: If the target is large or bigger, the target cannot take a Reaction against this jutsu’s damage.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6459,
+        "sourceHash": "3ebc2c200293bd45e04962593c9bde4dae8e3bca2f551d09007bd0522f628170",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "instant.",
+          "cost": "16 Chakra",
+          "components": "M, W (Any Polearm).",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: A-rank Casting Time: 1 Action Range: Weapon Range Duration: instant. Components: M, W (Any Polearm). Cost: 16 Chakra Keywords: Bukijutsu, Chain Description: You make an attack so fast and precise that the target does not notice it as happened until it is too late. Make a melee taijutsu attack dealing your [Weapon’s damage] + 6d8. If the target of this jutsu is large or bigger, you make this attack at advantage.\nIf your attack beats the creatures AC by 10 or more, you treat the attack as a critical hit.\nChain 2: This jutsu’s damage ignores a creature’s Temporary hit points.\nChain 3: If the target is large or bigger, the target cannot take a Reaction against this jutsu’s damage.\nAt Higher Ranks: For each rank above A -rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at S-Rank, if the target is Large or larger, they treat damage from this jutsu as if they are Vulnerable.",
+        "expressions": [
+          {
+            "expression": "6d8",
+            "offset": 170,
+            "context": "Make a melee taijutsu attack dealing your [Weapon’s damage] + 6d8. If the target of this jutsu is large or bigger, you make this attack at advantage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 631,
+            "context": "At Higher Ranks: For each rank above A -rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at S-Rank, if the target is Large or larger, they treat damage from this jutsu as if they are Vulnerable.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "405991324385ff7a"
+}

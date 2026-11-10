@@ -1,0 +1,160 @@
+{
+  "_id": "0b10cd7141fae3cd",
+  "_key": "!items!0b10cd7141fae3cd",
+  "name": "Water Release: Bloody Mist Absorption",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-bloody-mist-absorption",
+    "description": "<p>An advanced variation of the Hidden Mist Technique. This variation requires the user to draw blood from themselves cutting their palm, reducing their current Hit points by 5. You release a crimson red mist that fills a 45-foot-cube originating from you. All creatures inside this mist are heavily obscured and cannot clearly see anything more than 5 feet away from them. You know the location of all creatures inside this red mist and all creatures except for you suffer the following effects.</p>\n<p>Creatures who start their turns inside the red mist, who have less than their max hit points lose 4 + Half of any Bleed damage they take, in chakra.</p>\n<p>Creatures cannot regain Hit points or remove stacks of Bleeding while inside the red mist.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2664",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "efficient",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (45-Foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 45,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2664,
+        "sourceHash": "76881b943727d8a2f026a1de4634a6754e97b0023bc63bad0aa76c9d0434ece3",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self (45-Foot cube)",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Efficient"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self (45-Foot cube) Duration: Concentration, up to 1 Minute\nComponents: HS, CM Cost: 14 Chakra Keywords: Ninjutsu, Water Release, Efficient Description: An advanced variation of the Hidden Mist Technique. This variation requires the user to draw blood from themselves cutting their palm, reducing their current Hit points by 5. You release a crimson red mist that fills a 45-foot-cube originating from you. All creatures inside this mist are heavily obscured and cannot clearly see anything more than 5 feet away from them. You know the location of all creatures inside this red mist and all creatures except for you suffer the following effects.\nCreatures who start their turns inside the red mist, who have less than their max hit points lose 4 + Half of any Bleed damage they take, in chakra.\nCreatures cannot regain Hit points or remove stacks of Bleeding while inside the red mist.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d3253d03dc1bed22"
+}

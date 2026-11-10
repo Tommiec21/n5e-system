@@ -1,0 +1,234 @@
+{
+  "_id": "4a74e859f6e9c6ae",
+  "_key": "!items!4a74e859f6e9c6ae",
+  "name": "Psionics: Dark Daze!",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "psionics-dark-daze",
+    "description": "<p>You manifest a shockwave of psionic chakra and release it into an omnidirectional wave around you.</p>\n<p>All creatures of your choice in a 30-foot radius, originating from you must make an Intelligence saving throw.</p>\n<p>Success: Affected creature takes 1d8 psychic damage.</p>\n<p>Failure: Affected creature takes 3d8 psychic damage and becomes Dazzled.</p>\n<p>Critical Failure: Affected creature takes 5d8 psychic damage and affected creatures gains 3 ranks of Dazzled.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3945",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature takes 1d8 psychic damage.",
+            "failure": "Failure: Affected creature takes 3d8 psychic damage and becomes Dazzled.",
+            "critFailure": "Critical Failure: Affected creature takes 5d8 psychic damage and affected creatures gains 3 ranks of Dazzled."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d8",
+        "roll": {
+          "formula": "1d8",
+          "note": "Success: Affected creature takes 1d8 psychic damage."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d8",
+        "roll": {
+          "formula": "3d8",
+          "note": "Failure: Affected creature takes 3d8 psychic damage and becomes Dazzled."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "5d8",
+        "roll": {
+          "formula": "5d8",
+          "note": "Critical Failure: Affected creature takes 5d8 psychic damage and affected creatures gains 3 ranks of Dazzled."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3945,
+        "sourceHash": "b2f0fe2a8bedf60990dd4d68b41f9a1b336ab2b658933e502a79202abd061d38",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (30-foot radius)",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (30-foot radius) Duration: Instant\nComponents:  HS, CM Cost: 9 Chakra Keywords: Genjutsu (Visual, Tactile)  Description: You manifest a shockwave of psionic chakra and release it into an omnidirectional wave around you.\nAll creatures of your choice in a 30-foot radius, originating from you must make an Intelligence saving throw.\nSuccess: Affected creature takes 1d8 psychic damage.\nFailure: Affected creature takes 3d8 psychic damage and becomes Dazzled.\nCritical Failure: Affected creature takes 5d8 psychic damage and affected creatures gains 3 ranks of Dazzled.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "1d8",
+            "offset": 243,
+            "context": "Success: Affected creature takes 1d8 psychic damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d8",
+            "offset": 296,
+            "context": "Failure: Affected creature takes 3d8 psychic damage and becomes Dazzled.",
+            "section": "Base"
+          },
+          {
+            "expression": "5d8",
+            "offset": 378,
+            "context": "Critical Failure: Affected creature takes 5d8 psychic damage and affected creatures gains 3 ranks of Dazzled.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 566,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6a663b31d79aed95"
+}

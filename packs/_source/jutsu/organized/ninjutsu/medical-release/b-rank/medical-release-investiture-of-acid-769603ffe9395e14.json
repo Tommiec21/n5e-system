@@ -1,0 +1,195 @@
+{
+  "_id": "769603ffe9395e14",
+  "_key": "!items!769603ffe9395e14",
+  "name": "Medical Release: Investiture of Acid",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-investiture-of-acid",
+    "description": "<p>You draw out acidic chakra and infuse it into yourself, coating your entire body like armor. The acid does not harm you. For the duration, you gain the following benefits;</p>\n<p>You are immune to Acid damage.</p>\n<p>You have resistance to Bludgeoning, Piercing and Slashing damage.</p>\n<p>You have vulnerability to Earth damage.</p>\n<p>You can move across difficult terrain on solid ground without spending any extra movement, as you melt the obstructions in your path.</p>\n<p>The ground in a 10-foot radius around you is covered in acid, counts as difficult terrain for creatures other than you, and moves with you.</p>\n<p>You can use your action to blast a 15-foot cone of acid from you in a direction you choose. Each creature in the cone must make a Constitution saving throw. A creature takes 4d8 Acid damage and becomes Corroded on a failed save or half as much and no further effects on a successful one.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1489",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "efficient",
+      "ninjutsu",
+      "medical",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1489,
+        "sourceHash": "3a8135aa99da617c827de17abab61d6b0b4de3966b68263d4122c4b03b78ac53",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 10 minutes",
+          "cost": "12 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical, Stable, Efficient"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self Duration: Concentration, up to 10 minutes\nComponents:  HS, CM Cost: 12 Chakra Keywords: Ninjutsu, Medical, Stable, Efficient Description: You draw out acidic chakra and infuse it into yourself, coating your entire body like armor. The acid does not harm you. For the duration, you gain the following benefits;\nYou are immune to Acid damage.\nYou have resistance to Bludgeoning, Piercing and Slashing damage.\nYou have vulnerability to Earth damage.\nYou can move across difficult terrain on solid ground without spending any extra movement, as you melt the obstructions in your path.\nThe ground in a 10-foot radius around you is covered in acid, counts as difficult terrain for creatures other than you, and moves with you.\nYou can use your action to blast a 15-foot cone of acid from you in a direction you choose. Each creature in the cone must make a Constitution saving throw. A creature takes 4d8 Acid damage and becomes Corroded on a failed save or half as much and no further effects on a successful one.",
+        "expressions": [
+          {
+            "expression": "4d8",
+            "offset": 757,
+            "context": "A creature takes 4d8 Acid damage and becomes Corroded on a failed save or half as much and no further effects on a successful one.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d1f8f3baa49a3e3a"
+}

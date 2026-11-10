@@ -1,0 +1,162 @@
+{
+  "_id": "e3b42081c61fc88e",
+  "_key": "!items!e3b42081c61fc88e",
+  "name": "Devil Sight",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "devil-sight",
+    "description": "<p>You touch a willing creature who you can see. You impart upon them the special sense Perceptive Authority for the duration.</p>\n<p>Perceptive Authority. Creatures with this sense have a rank of mastery to Identify Genjutsu checks and 30 Feet of Dark Vision.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1. If this jutsu is cast at A-Rank or higher this jutsu no longer requires concentration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4051",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1. If this jutsu is cast at A-Rank or higher this jutsu no longer requires concentration.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4051,
+        "sourceHash": "21b675d85bc3602f4bf1685fed985418c3c56794c36dbb6a337eaf5ef1e69ccf",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "6 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 1 Minute\nComponents: HS, CM\nCost: 6 Chakra Keywords: Genjutsu (Visual)  Description: You touch a willing creature who you can see. You impart upon them the special sense Perceptive Authority for the duration.\nPerceptive Authority. Creatures with this sense have a rank of mastery to Identify Genjutsu checks and 30 Feet of Dark Vision.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1. If this jutsu is cast at A-Rank or higher this jutsu no longer requires concentration.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eerYeblcK91isN"
+}

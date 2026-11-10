@@ -1,0 +1,254 @@
+{
+  "_id": "af874c04c54f640b",
+  "_key": "!items!af874c04c54f640b",
+  "name": "Rabbit Boss Stomp",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "rabbit-boss-stomp",
+    "description": "<p>You kick with the force of 10,000 rabbits stomping someone to death.</p>\n<p>Make one melee taijutsu attacks targeting a creature you can see within range dealing your [Unarmed damage] + 6d8 and all creatures in a 30-foot cone originating from the target creature must make a Strength saving throw suffering the residual shockwave taking 6d8 bludgeoning damage on a failed save or half as much on a success.</p>\n<p>The affected area behind the original target creatures becomes difficult terrain as the ground shatters and collapses from your kick.</p>\n<p>Finisher: you instead deal [Unarmed Damage] + 9d8 and.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d8 or 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4936",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "6d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "damage",
+        "label": "Finisher: Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 9d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d8 or 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: you instead deal [Unarmed Damage] + 9d8 and.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4936,
+        "sourceHash": "ce2b51b77561ed98f1b420512feb0d69940563e2901f1e4bb7e5c1b2d05ea5ec",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "5 feet",
+          "duration": "Instant",
+          "cost": "14 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Clash, Finisher"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 5 feet\nDuration: Instant\nComponents: M Cost: 14 Chakra Keywords: Taijutsu, Clash, Finisher Description: You kick with the force of 10,000 rabbits stomping someone to death.\nMake one melee taijutsu attacks targeting a creature you can see within range dealing your [Unarmed damage] + 6d8 and all creatures in a 30-foot cone originating from the target creature must make a Strength saving throw suffering the residual shockwave taking 6d8 bludgeoning damage on a failed save or half as much on a success.\nThe affected area behind the original target creatures becomes difficult terrain as the ground shatters and collapses from your kick.\nFinisher: you instead deal [Unarmed Damage] + 9d8 and.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d8 or 1d12.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 160,
+            "context": "Make one melee taijutsu attacks targeting a creature you can see within range dealing your [Unarmed damage] + 6d8 and all creatures in a 30-foot cone originating from the target creature must make a Strength saving throw suffering the residual shockwave taking 6d8 bludgeoning damage on a failed save or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d8",
+            "offset": 179,
+            "context": "Make one melee taijutsu attacks targeting a creature you can see within range dealing your [Unarmed damage] + 6d8 and all creatures in a 30-foot cone originating from the target creature must make a Strength saving throw suffering the residual shockwave taking 6d8 bludgeoning damage on a failed save or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d8",
+            "offset": 330,
+            "context": "Make one melee taijutsu attacks targeting a creature you can see within range dealing your [Unarmed damage] + 6d8 and all creatures in a 30-foot cone originating from the target creature must make a Strength saving throw suffering the residual shockwave taking 6d8 bludgeoning damage on a failed save or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed Damage]",
+            "offset": 561,
+            "context": "Finisher: you instead deal [Unarmed Damage] + 9d8 and.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "9d8",
+            "offset": 580,
+            "context": "Finisher: you instead deal [Unarmed Damage] + 9d8 and.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "1d8",
+            "offset": 705,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d8 or 1d12.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "1d12",
+            "offset": 712,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d8 or 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

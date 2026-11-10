@@ -1,0 +1,217 @@
+{
+  "_id": "904a9f2042c2376c",
+  "_key": "!items!904a9f2042c2376c",
+  "name": "Iron Vanguard",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "iron-vanguard",
+    "description": "<p>You whip your flail into the air, rotating it at breakneck speeds until you create an impenetrable barrier of steel and chain. When you or an ally within range would take damage, you quickly leap into action by deflecting the incoming attacks. Allies gain +4 AC to the triggering attack, and +2 to AC for subsequent attacks until the beginning of your next turn.</p>\n<p>Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8.</p>\n<p>Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6189",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "flail",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, you take when you or an ally within range take damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Flail"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "chain-3-parsed1",
+        "type": "attack",
+        "label": "Chain 3: Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "Chain 2: 2d8",
+        "roll": {
+          "formula": "2d8",
+          "note": "Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8."
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "Chain 3: 2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8.</p>",
+      "3": "<p>Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6189,
+        "sourceHash": "387db255b7ce7538431aa6dd7f2cff0c2b63db53ec86384fc626a85abd77ff5b",
+        "discipline": "Bukijutsu",
+        "group": "Flail",
+        "header": {
+          "rank": "A",
+          "time": "1 Reaction, you take when you or an ally within range take damage",
+          "range": "Weapons Range",
+          "duration": "1 Round",
+          "cost": "16 Chakra",
+          "components": "M, W (Any Flail).",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: A-rank Casting Time: 1 Reaction, you take when you or an ally within range take damage\nRange: Weapons Range\nDuration: 1 Round\nComponents: M, W (Any Flail). Cost: 16 Chakra Keywords: Bukijutsu, Chain Description: You whip your flail into the air, rotating it at breakneck speeds until you create an impenetrable barrier of steel and chain. When you or an ally within range would take damage, you quickly leap into action by deflecting the incoming attacks. Allies gain +4 AC to the triggering attack, and +2 to AC for subsequent attacks until the beginning of your next turn.\nChain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8.\nChain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 485,
+            "context": "Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8.",
+            "section": "Chain 2"
+          },
+          {
+            "expression": "2d8",
+            "offset": 504,
+            "context": "Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8.",
+            "section": "Chain 2"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 627,
+            "context": "Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.",
+            "section": "Chain 3"
+          },
+          {
+            "expression": "2d6",
+            "offset": 646,
+            "context": "Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.",
+            "section": "Chain 3"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 777,
+            "context": "Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature.",
+            "section": "Chain 3"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "3d2e2375a5c550b3"
+}

@@ -1,0 +1,272 @@
+{
+  "_id": "c3e34e4f109b41fb",
+  "_key": "!items!c3e34e4f109b41fb",
+  "name": "Passionate Dancing Leaf",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "passionate-dancing-leaf",
+    "description": "<p>You are filled to the brim with the Passion of Youth TM, and you let it guide your movements.</p>\n<p>All creature in a 45-foot cone originating from you must make a dexterity saving throw to dodge and avoid the plethora of punches and kicks you throw out as you dance across the battlefield, before returning back to place in an instant. On a failed save, creatures take 5d6 bludgeoning damage and are knocked Prone.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4914",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "combo"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (45-foot cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 45,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4914,
+        "sourceHash": "0cdb34c52d4221a7065532c6e4c84dd35862026fc648c35be70e932c345d1fe2",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self (45-foot cone)",
+          "duration": "Instant",
+          "cost": "13 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Combo"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self (45-foot cone)\nDuration: Instant\nComponents: CM, M Cost: 13 Chakra Keywords: Taijutsu, Combo Description: You are filled to the brim with the Passion of Youth TM, and you let it guide your movements.\nAll creature in a 45-foot cone originating from you must make a dexterity saving throw to dodge and avoid the plethora of punches and kicks you throw out as you dance across the battlefield, before returning back to place in an instant. On a failed save, creatures take 5d6 bludgeoning damage and are knocked Prone.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "5d6",
+            "offset": 364,
+            "context": "On a failed save, creatures take 5d6 bludgeoning damage and are knocked Prone.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 526,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

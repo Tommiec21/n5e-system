@@ -1,0 +1,228 @@
+{
+  "_id": "4637e834021b5f34",
+  "_key": "!items!4637e834021b5f34",
+  "name": "Earth Release: Iron Skinned Spear",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-iron-skinned-spear",
+    "description": "<p>You focus Earth Release chakra throughout one of your limbs until it darkens into a dark brown hue and gains the texture of solid stone. You then use this darkened ligament to strike at a creature with enough force to tear through almost anything.</p>\n<p>Make a melee ninjutsu attack against a creature within range. On a hit, you deal 8d6 Earth damage and marking the creature with a mark of petrification.</p>\n<p>A creature marked this way makes Constitution saving throws at the beginning of each of their turns for the next minute. On a failure its skin begins to harden at the point of impact as their body begins to petrify. If the creature fails this saving throw three times their body fully hardens as they become Petrified turning fully into stone for the next 24 hours.</p>\n<p>If the target creature succeeds 3 saves, they reject the earth chakra from their body ending the effects of this jutsu. If this jutsu is used on a creature previously affected by this jutsu within 24 hours, they make each saving throw at advantage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1829",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1829,
+        "sourceHash": "3cd13c75ecf7160a8b842b81e07ca91505b7a155ca655bcb716904c947ffd220",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release, Clash"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 5 Feet Duration: Instant\nComponents:  HS, CM Cost: 14 Chakra Keywords: Ninjutsu, Earth Release, Clash Description: You focus Earth Release chakra throughout one of your limbs until it darkens into a dark brown hue and gains the texture of solid stone. You then use this darkened ligament to strike at a creature with enough force to tear through almost anything.\nMake a melee ninjutsu attack against a creature within range. On a hit, you deal 8d6 Earth damage and marking the creature with a mark of petrification.\nA creature marked this way makes Constitution saving throws at the beginning of each of their turns for the next minute. On a failure its skin begins to harden at the point of impact as their body begins to petrify. If the creature fails this saving throw three times their body fully hardens as they become Petrified turning fully into stone for the next 24 hours.\nIf the target creature succeeds 3 saves, they reject the earth chakra from their body ending the effects of this jutsu. If this jutsu is used on a creature previously affected by this jutsu within 24 hours, they make each saving throw at advantage.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "8d6",
+            "offset": 329,
+            "context": "On a hit, you deal 8d6 Earth damage and marking the creature with a mark of petrification.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1132,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (1d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b7e6162521e0f78f"
+}

@@ -1,0 +1,161 @@
+{
+  "_id": "4d43b8af99da83e7",
+  "_key": "!items!4d43b8af99da83e7",
+  "name": "Sealing Art: Inanimate Puppet",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-inanimate-puppet",
+    "description": "<p>You infuse chakra into a chakra seal as you attempt to mark an object you can see with the seal of false life.</p>\n<p>This jutsu creates false life. A creature from nothingness. A servant formed from the world around you. Choose a pile of rocks, dried bones, leaves, wood or any other inanimate objects that you can reach while casting this jutsu, and summon 1 Inanimate Puppet found in the Summon Stat Blocks section.</p>\n<p>You can spend an additional 6 Chakra to summon 1 additional Inanimate Puppet, up to a max of 4 puppets in total.</p>\n<p>You can command all of your Inanimate Puppets as a bonus action. You can command any or all of them at the same time, issuing the same command to each one. Alternatively, you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 999",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "long",
+      "value": 1,
+      "unit": "hour",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "hour",
+      "concentration": true,
+      "text": "Concentration, up to 1 hour."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 999,
+        "sourceHash": "5de86dda8adcfc3af3f2de0ede67a4f1ea6982415422822bf954b7bd49a0e245",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "C",
+          "time": "1 Hour",
+          "range": "Touch",
+          "duration": "Concentration, up to 1 hour.",
+          "cost": "10 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Hour Range: Touch Duration: Concentration, up to 1 hour.\nComponents: HS, CM, CS Cost: 10 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You infuse chakra into a chakra seal as you attempt to mark an object you can see with the seal of false life.\nThis jutsu creates false life. A creature from nothingness. A servant formed from the world around you. Choose a pile of rocks, dried bones, leaves, wood or any other inanimate objects that you can reach while casting this jutsu, and summon 1 Inanimate Puppet found in the Summon Stat Blocks section.\nYou can spend an additional 6 Chakra to summon 1 additional Inanimate Puppet, up to a max of 4 puppets in total.\nYou can command all of your Inanimate Puppets as a bonus action. You can command any or all of them at the same time, issuing the same command to each one. Alternatively, you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "cfa6ae1d0e387079"
+}

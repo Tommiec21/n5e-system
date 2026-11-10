@@ -1,0 +1,178 @@
+{
+  "_id": "e927ff12e857cd8c",
+  "_key": "!items!e927ff12e857cd8c",
+  "name": "Brutal Block",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "shinobi-basics-brutal-block",
+    "description": "<p>You raise your weapon to block incoming damage at its source.</p>\n<p>You raise your weapons to guard yourself. Roll 2d6, and record the result. You reduce the triggering damage and the first damage taken each turn, until the beginning of your next turn, by the result.</p>\n<p>Chain 1: The next attack you make before the end of your next turn, increases its critical threat range by +1.</p>\n<p>Chain 2: A creature in your weapons range when you reduce damage, takes damage equal to the result.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage reduced by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5399",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "Roll 2d6, and record the result. You reduce the triggering damage and the first damage taken each turn, until the beginning of your next turn, by the result."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage reduced by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: The next attack you make before the end of your next turn, increases its critical threat range by +1.</p>",
+      "2": "<p>Chain 2: A creature in your weapons range when you reduce damage, takes damage equal to the result.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5399,
+        "sourceHash": "24d417b269171f7f97da47b8c639c5c3334a811be13c5a2ffff1e7ae72b6606e",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when you would take damage.",
+          "range": "Self",
+          "duration": "1 Round",
+          "cost": "6 Chakra",
+          "components": "W (Any), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Reaction, which you take when you would take damage.\nRange: Self\nDuration: 1 Round\nComponents: W (Any), M Cost: 6 Chakra Keywords: Bukijutsu, Chain, Clash Description: You raise your weapon to block incoming damage at its source.\nYou raise your weapons to guard yourself. Roll 2d6, and record the result. You reduce the triggering damage and the first damage taken each turn, until the beginning of your next turn, by the result.\nChain 1: The next attack you make before the end of your next turn, increases its critical threat range by +1.\nChain 2: A creature in your weapons range when you reduce damage, takes damage equal to the result.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage reduced by 1d6.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 109,
+            "context": "Roll 2d6, and record the result. You reduce the triggering damage and the first damage taken each turn, until the beginning of your next turn, by the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 600,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the damage reduced by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0032efe7c08875b9"
+}

@@ -1,0 +1,172 @@
+{
+  "_id": "1b4cb7665eb377ad",
+  "_key": "!items!1b4cb7665eb377ad",
+  "name": "Binding Fury: Juggernaut",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "binding-fury-juggernaut",
+    "description": "<p>Once you get started there's no stopping your momentum. At the beginning of each of your turns, you can cast this jutsu. If you do, you gain a rank of Fury as if under the effects of Binding Fury Stance.  If you do not spend your Fury as part of casting a Bukijutsu before the end of the current turn, you suffer harsh and echoing feedback, taking 4d8 Chakra damage.  If you do spend your Fury, you suffer no feedback.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6740",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6740,
+        "sourceHash": "8514481ab011df89c469e003069ade9a2360aaf7b971437e0303aa0dff4f1676",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "S",
+          "time": "Special",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "Special",
+          "components": "M, W (Any Power)",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: S-Rank\nCasting Time: Special\nRange: Self\nDuration: Instant\nComponents: M, W (Any Power)\nCost: Special\nKeywords: Bukijutsu\nDescription: Once you get started there's no stopping your momentum. At the beginning of each of your turns, you can cast this jutsu. If you do, you gain a rank of Fury as if under the effects of Binding Fury Stance.  If you do not spend your Fury as part of casting a Bukijutsu before the end of the current turn, you suffer harsh and echoing feedback, taking 4d8 Chakra damage.  If you do spend your Fury, you suffer no feedback.",
+        "expressions": [
+          {
+            "expression": "4d8",
+            "offset": 348,
+            "context": "If you do not spend your Fury as part of casting a Bukijutsu before the end of the current turn, you suffer harsh and echoing feedback, taking 4d8 Chakra damage.  If you do spend your Fury, you suffer no feedback.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": true
+      }
+    }
+  },
+  "folder": "3defed4a961f01ae"
+}

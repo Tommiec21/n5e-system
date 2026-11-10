@@ -1,0 +1,428 @@
+{
+  "_id": "e039039fd5a20adf",
+  "_key": "!items!e039039fd5a20adf",
+  "name": "Flashing Streaks",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "flashing-streaks",
+    "description": "<p>You ready yourself to attack with your weapons at high speeds and attaching a Flash Tag to your ammunition. Make a ranged taijutsu attack targeting a creature you can see in range. On a hit, you deal your [Weapons damage] + 2d6. Regardless of a hit or miss, the affected creature, and all creatures within 10 feet of it, must make a Constitution saving throw as the Flash Tag detonates. On a failed save, affected creatures gain a rank of Dazzled.</p>\n<p>Chain 1: Increase the size of the affected flash range to 15 feet, making all creatures within 15 feet of the target creature make their saving throw vs jutsu effect.</p>\n<p>At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d4.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6799",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any ranged/Thrown"
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Flash Tag"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d4.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: Increase the size of the affected flash range to 15 feet, making all creatures within 15 feet of the target creature make their saving throw vs jutsu effect.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6799,
+        "sourceHash": "be43badaf772a1390aa0b957b431831c16a138ecc1b194f4a0db842b765027d1",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "D",
+          "time": "1 action",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "W (Any ranged/Thrown), NT (Flash Tag), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 action Range: Weapons Range Duration: Instant\nComponents: W (Any ranged/Thrown), NT (Flash Tag), M Cost: 3 Chakra Keywords: Bukijutsu, Chain Description: You ready yourself to attack with your weapons at high speeds and attaching a Flash Tag to your ammunition. Make a ranged taijutsu attack targeting a creature you can see in range. On a hit, you deal your [Weapons damage] + 2d6. Regardless of a hit or miss, the affected creature, and all creatures within 10 feet of it, must make a Constitution saving throw as the Flash Tag detonates. On a failed save, affected creatures gain a rank of Dazzled.\nChain 1: Increase the size of the affected flash range to 15 feet, making all creatures within 15 feet of the target creature make their saving throw vs jutsu effect.\nAt Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d4.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 205,
+            "context": "On a hit, you deal your [Weapons damage] + 2d6. Regardless of a hit or miss, the affected creature, and all creatures within 10 feet of it, must make a Constitution saving throw as the Flash Tag detonates. On a failed save, affected creatures gain a rank of Dazzled.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 224,
+            "context": "On a hit, you deal your [Weapons damage] + 2d6. Regardless of a hit or miss, the affected creature, and all creatures within 10 feet of it, must make a Constitution saving throw as the Flash Tag detonates. On a failed save, affected creatures gain a rank of Dazzled.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d4",
+            "offset": 722,
+            "context": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d4.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (1d4)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (2d4)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (3d4)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (4d4)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "4dbff179bff78120"
+}

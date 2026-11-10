@@ -1,0 +1,180 @@
+{
+  "_id": "30cd925b474746e6",
+  "_key": "!items!30cd925b474746e6",
+  "name": "Parasitic Rider",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "parasitic-rider",
+    "description": "<p>You invade the mind of another creature you can see within range. You fire your consciousness into the target creature, as they make a Charisma saving throw. A creature aware of your presence automatically passes their saving throw. Your body is forced to spend chakra to maintain concentration so long as you occupy the body of another creature.</p>\n<p>When you cast this jutsu your body remains where it is, falling Prone and becoming Stunned for the duration. You lose all ability to experience sensations your body experiences, such as pain etc. If your body is killed this jutsu’s duration becomes permanent or until dispelled, as you have no body to return to, remaining trapped in the body you chose to inhabit.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects and becomes aware that something or someone has attempted to enter their mind.</p>\n<p>Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Failure: You enter the mind of the target creature. You cannot control or influence them by any means, but you can see and experience everything they do through their senses. If they would take damage, you must make a Charisma saving throw vs your own Save DC to remain within the body of the creature.</p>\n<p>Critical Failure: You gain the effects of the Failure effect, and you can occasionally act as a voice in their mind speaking to them as if you were their normal thoughts. This does not control them or take away their free will, but you may make Charisma based skill checks to attempt to influence them.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4178",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Poison Kit or Poisonous Flower"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects and becomes aware that something or someone has attempted to enter their mind.",
+            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
+            "failure": "Failure: You enter the mind of the target creature. You cannot control or influence them by any means, but you can see and experience everything they do through their senses. If they would take damage, you must make a Charisma saving throw vs your own Save DC to remain within the body of the creature.",
+            "critFailure": "Critical Failure: You gain the effects of the Failure effect, and you can occasionally act as a voice in their mind speaking to them as if you were their normal thoughts. This does not control them or take away their free will, but you may make Charisma based skill checks to attempt to influence them."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4178,
+        "sourceHash": "ad45d17aac3cd3409e83cb4e11f7f1f8bd51ea13b09a0d14170a3d9c3a179126",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "120 feet",
+          "duration": "Concentration, up to 10 minutes",
+          "cost": "14 Chakra",
+          "components": "HS, CM, NT (Poison Kit or Poisonous Flower)",
+          "keywords": "Genjutsu, Fuinjutsu, Unaware, Stable"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 120 feet Duration: Concentration, up to 10 minutes\nComponents:  HS, CM, NT (Poison Kit or Poisonous Flower) Cost: 14 Chakra Keywords: Genjutsu, Fuinjutsu, Unaware, Stable Description: You invade the mind of another creature you can see within range. You fire your consciousness into the target creature, as they make a Charisma saving throw. A creature aware of your presence automatically passes their saving throw. Your body is forced to spend chakra to maintain concentration so long as you occupy the body of another creature.\nWhen you cast this jutsu your body remains where it is, falling Prone and becoming Stunned for the duration. You lose all ability to experience sensations your body experiences, such as pain etc. If your body is killed this jutsu’s duration becomes permanent or until dispelled, as you have no body to return to, remaining trapped in the body you chose to inhabit.\nCritical Success: Affected creature is able to resist this jutsu’s effects and becomes aware that something or someone has attempted to enter their mind.\nSuccess: Affected creature is able to resist this jutsu’s effects.\nFailure: You enter the mind of the target creature. You cannot control or influence them by any means, but you can see and experience everything they do through their senses. If they would take damage, you must make a Charisma saving throw vs your own Save DC to remain within the body of the creature.\nCritical Failure: You gain the effects of the Failure effect, and you can occasionally act as a voice in their mind speaking to them as if you were their normal thoughts. This does not control them or take away their free will, but you may make Charisma based skill checks to attempt to influence them.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "1f4ded8719811acd"
+}

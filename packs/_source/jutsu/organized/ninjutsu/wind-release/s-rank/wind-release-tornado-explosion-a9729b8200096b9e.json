@@ -1,0 +1,211 @@
+{
+  "_id": "a9729b8200096b9e",
+  "_key": "!items!a9729b8200096b9e",
+  "name": "Wind Release: Tornado Explosion",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-tornado-explosion",
+    "description": "<p>You create a spiraling cylinder of wind centered on yourself that has a 30 Foot radius and is 120 feet high. This cylinder appears for a moment and explodes, throwing everything in its affected area like rag dolls.</p>\n<p>All creatures, objects, structures, and constructs, in this jutsu’s affected area of your choice, must make a Strength saving throw. Creatures that are flying, objects, structures and constructs makes their saving throw at disadvantage.</p>\n<p>On a failed save, the following occurs.</p>\n<p>Take 8d12 wind damage.</p>\n<p>Are thrown 120 feet in a random direction, and landing prone taking fall damage as if you fell from twice the distance thrown.</p>\n<p>Become Stunned until the end of their next turn.</p>\n<p>On a successful save, only take half of 8d12 wind damage and no further effects.</p>\n<p>Swirl. Creatures who would fail their saving throw, spreads all Elemental conditions currently affecting them around to all creatures, excluding the caster within 5 feet of them. Hostile creatures within 5 feet of the failing one gains 1 rank of all elemental conditions currently affecting it.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2188",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 21,
+      "text": "21 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "8d12",
+        "roll": {
+          "formula": "8d12",
+          "note": "Take 8d12 wind damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2188,
+        "sourceHash": "03b96b64aecdc5125b0afa53c057bad2c1f201478845dd386b8e146d24e4293d",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "21 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self Duration: Instant\nComponents: HS, CM, CS Cost: 21 Chakra Keywords: Ninjutsu, Wind Release Description: You create a spiraling cylinder of wind centered on yourself that has a 30 Foot radius and is 120 feet high. This cylinder appears for a moment and explodes, throwing everything in its affected area like rag dolls.\nAll creatures, objects, structures, and constructs, in this jutsu’s affected area of your choice, must make a Strength saving throw. Creatures that are flying, objects, structures and constructs makes their saving throw at disadvantage.\nOn a failed save, the following occurs.\nTake 8d12 wind damage.\nAre thrown 120 feet in a random direction, and landing prone taking fall damage as if you fell from twice the distance thrown.\nBecome Stunned until the end of their next turn.\nOn a successful save, only take half of 8d12 wind damage and no further effects.\nSwirl. Creatures who would fail their saving throw, spreads all Elemental conditions currently affecting them around to all creatures, excluding the caster within 5 feet of them. Hostile creatures within 5 feet of the failing one gains 1 rank of all elemental conditions currently affecting it.",
+        "expressions": [
+          {
+            "expression": "8d12",
+            "offset": 497,
+            "context": "Take 8d12 wind damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "8d12",
+            "offset": 731,
+            "context": "On a successful save, only take half of 8d12 wind damage and no further effects.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "efe41c5a36c311aa"
+}

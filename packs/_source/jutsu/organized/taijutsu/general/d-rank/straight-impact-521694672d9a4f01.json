@@ -1,0 +1,216 @@
+{
+  "_id": "521694672d9a4f01",
+  "_key": "!items!521694672d9a4f01",
+  "name": "Straight Impact",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "straight-impact",
+    "description": "<p>You take a readied stance preparing your fist or foot for a single powerful strike.</p>\n<p>When you activate this jutsu, you can spend 5 chakras coating your fist in this chakra. You learn to be able to commit additional actions to make this attack stronger.</p>\n<p>You can spend your bonus action and an additional 5 Chakra to magnify this jutsu by 1 step.</p>\n<p>You can spend your reaction and an additional 5 chakra to magnify this jutsu by 1 step.</p>\n<p>You can inflict the Stunned condition on yourself at the end of your turn until the beginning of your next turn to magnify this jutsu by 1 step.</p>\n<p>Make a single fiery Taijutsu attack. On a hit, you deal your unarmed damage + 2d4 on a hit. For each step you magnify this jutsu by, increase the bonus damage by 2d4.</p>\n<p>Finisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the chakra spent activating this jutsu’s initial &amp; additional effect by 3. If this jutsu is cast at B-Rank, increase the damage die of this jutsu by 1 step (D4&gt;D6). If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6&gt;D8)</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4449",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d4",
+        "roll": {
+          "formula": "2d4",
+          "note": "On a hit, you deal your unarmed damage + 2d4 on a hit. For each step you magnify this jutsu by, increase the bonus damage by 2d4."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "Finisher: 4d4",
+        "roll": {
+          "formula": "4d4",
+          "note": "Finisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the chakra spent activating this jutsu’s initial &amp; additional effect by 3. If this jutsu is cast at B-Rank, increase the damage die of this jutsu by 1 step (D4&gt;D6). If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6&gt;D8)</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4449,
+        "sourceHash": "c07cb22a969bf0e38c754e6beff10a18d5afebc3e315e8c48d7deb8c6379c55f",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Special",
+          "cost": "Special",
+          "components": "M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Touch Duration: Special\nComponents: M Cost: Special Keywords: Taijutsu, Finisher Description: You take a readied stance preparing your fist or foot for a single powerful strike.\nWhen you activate this jutsu, you can spend 5 chakras coating your fist in this chakra. You learn to be able to commit additional actions to make this attack stronger.\nYou can spend your bonus action and an additional 5 Chakra to magnify this jutsu by 1 step.\nYou can spend your reaction and an additional 5 chakra to magnify this jutsu by 1 step.\nYou can inflict the Stunned condition on yourself at the end of your turn until the beginning of your next turn to magnify this jutsu by 1 step.\nMake a single fiery Taijutsu attack. On a hit, you deal your unarmed damage + 2d4 on a hit. For each step you magnify this jutsu by, increase the bonus damage by 2d4.\nFinisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the chakra spent activating this jutsu’s initial & additional effect by 3. If this jutsu is cast at B-Rank, increase the damage die of this jutsu by 1 step (D4>D6). If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6>D8)",
+        "expressions": [
+          {
+            "expression": "2d4",
+            "offset": 655,
+            "context": "On a hit, you deal your unarmed damage + 2d4 on a hit. For each step you magnify this jutsu by, increase the bonus damage by 2d4.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d4",
+            "offset": 739,
+            "context": "For each step you magnify this jutsu by, increase the bonus damage by 2d4.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d4",
+            "offset": 824,
+            "context": "Finisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "D4",
+            "offset": 1059,
+            "context": "If this jutsu is cast at B-Rank, increase the damage die of this jutsu by 1 step (D4>D6). If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6>D8)",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "D6",
+            "offset": 1062,
+            "context": "If this jutsu is cast at B-Rank, increase the damage die of this jutsu by 1 step (D4>D6). If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6>D8)",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "D6",
+            "offset": 1149,
+            "context": "If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6>D8)",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "D8",
+            "offset": 1152,
+            "context": "If this jutsu is cast at S-Rank, increase the damage die of this jutsu by 1 step (D6>D8)",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": true
+      }
+    }
+  },
+  "folder": "b31b1b0d97c02089"
+}

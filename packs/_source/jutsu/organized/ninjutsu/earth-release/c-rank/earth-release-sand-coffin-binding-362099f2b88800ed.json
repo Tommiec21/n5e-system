@@ -1,0 +1,307 @@
+{
+  "_id": "362099f2b88800ed",
+  "_key": "!items!362099f2b88800ed",
+  "name": "Earth Release: Sand Coffin Binding",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-sand-coffin-binding",
+    "description": "<p>You call forth a collection of sand, dust and pebbles to surround and capture a creature you can see within range in order to crush it.</p>\n<p>The target creature must make a Dexterity saving throw. On a failure, target creature is Stunned and held 5 feet off the ground by this jutsu. They are surrounded by a mass of sand, dust and pebbles with 15 hit points. damage that would be dealt to him, instead harms the sand. If the masses hit points are reduced to 0, this jutsu ends early.</p>\n<p>As an action, on a following turn after capturing a creature in this jutsu, the user may compress a captured creature crushing them dealing 5d12 earth damage.</p>\n<p>At the end of a captured creatures turns they makes a Strength saving throw to escape regardless of being Stunned.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12 respectively</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1787",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 15,
+        "long": null,
+        "text": "15 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12 respectively</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1787,
+        "sourceHash": "f3cb68c49b1d548a7c509d73d637d5ddc3a3a3e341dc9b124b568032e3a1fce0",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "15 feet",
+          "duration": "concentration, up to 1 minute",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 15 feet Duration: concentration, up to 1 minute\nComponents: HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Earth Release Description: You call forth a collection of sand, dust and pebbles to surround and capture a creature you can see within range in order to crush it.\nThe target creature must make a Dexterity saving throw. On a failure, target creature is Stunned and held 5 feet off the ground by this jutsu. They are surrounded by a mass of sand, dust and pebbles with 15 hit points. damage that would be dealt to him, instead harms the sand. If the masses hit points are reduced to 0, this jutsu ends early.\nAs an action, on a following turn after capturing a creature in this jutsu, the user may compress a captured creature crushing them dealing 5d12 earth damage.\nAt the end of a captured creatures turns they makes a Strength saving throw to escape regardless of being Stunned.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12 respectively",
+        "expressions": [
+          {
+            "expression": "5d12",
+            "offset": 620,
+            "context": "As an action, on a following turn after capturing a creature in this jutsu, the user may compress a captured creature crushing them dealing 5d12 earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 874,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d12 respectively",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (1d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (2d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (3d12)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "bdb81013175b0aa5"
+}

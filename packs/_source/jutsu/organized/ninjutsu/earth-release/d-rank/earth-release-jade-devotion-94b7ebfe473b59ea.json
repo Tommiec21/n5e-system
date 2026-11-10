@@ -1,0 +1,177 @@
+{
+  "_id": "94b7ebfe473b59ea",
+  "_key": "!items!94b7ebfe473b59ea",
+  "name": "Earth Release: Jade Devotion",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-jade-devotion",
+    "description": "<p>You release a surge of earth release chakra that permeates you and your allies. All willing creatures of your choice within a 10-foot sphere centering on you, gain 3d6 temporary hit points and resistance to bludgeoning piercing and slashing damage so long as they have temporary hit points granted by this jutsu. Creatures who have temporary hit points granted by this jutsu count as Earthen Artifacts created by you.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and temporary hit points by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1693",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "heal",
+        "label": "Temporary HP",
+        "heal": {
+          "formula": "3d6",
+          "pool": "tempHp"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and temporary hit points by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1693,
+        "sourceHash": "a7928e48e2bf37b906b8e0d01a5a13247e8ff96f9d26d3d9a7d017836697fab3",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (10-foot sphere)",
+          "duration": "1 Minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (10-foot sphere) Duration: 1 Minute\nComponents:  HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Earth Release  Description: You release a surge of earth release chakra that permeates you and your allies. All willing creatures of your choice within a 10-foot sphere centering on you, gain 3d6 temporary hit points and resistance to bludgeoning piercing and slashing damage so long as they have temporary hit points granted by this jutsu. Creatures who have temporary hit points granted by this jutsu count as Earthen Artifacts created by you.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and temporary hit points by 1d6.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 164,
+            "context": "All willing creatures of your choice within a 10-foot sphere centering on you, gain 3d6 temporary hit points and resistance to bludgeoning piercing and slashing damage so long as they have temporary hit points granted by this jutsu. Creatures who have temporary hit points granted by this jutsu count as Earthen Artifacts created by you.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 548,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and temporary hit points by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "59ce6e14db17de3b"
+}

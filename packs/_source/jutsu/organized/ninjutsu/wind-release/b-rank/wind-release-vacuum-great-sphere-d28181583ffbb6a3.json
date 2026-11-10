@@ -1,0 +1,183 @@
+{
+  "_id": "d28181583ffbb6a3",
+  "_key": "!items!d28181583ffbb6a3",
+  "name": "Wind Release: Vacuum Great Sphere",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-vacuum-great-sphere",
+    "description": "<p>You generate 2 large Spheres of wind chakra. Choose 2 points you can see in range. You send out two 20-foot radius spheres of wind, each centered on a chosen point that envelops all creatures in their effected areas.</p>\n<p>Creatures that begin their turn in these affected areas or who enter them for the first time on their turns, have their movement speed is reduced to 0 and they cannot breathe while inside the sphere.</p>\n<p>Creatures that begin their turn in an affected area, must make a strength saving throw. On a failed save, they gain 1 rank of Exhaustion. On a successful save, they regain half of their movement speed.</p>\n<p>Upon exiting the affected area or this jutsu having its effects ended, affected creatures recover from all ranks of Exhaustion this jutsu imposed on them.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and select one additional space this jutsu affects.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2144",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet (20-foot radius Sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and select one additional space this jutsu affects.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2144,
+        "sourceHash": "cd8c129cc9ac518028302e7555b510366b987e5f3a707e789c046d4d58fe2b16",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "120 Feet (20-foot radius Sphere)",
+          "duration": "Concentration, 1 minute",
+          "cost": "13 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action\nRange: 120 Feet (20-foot radius Sphere) Duration: Concentration, 1 minute\nComponents: HS, CM Cost: 13 Chakra Keywords: Ninjutsu, Wind Release Description: You generate 2 large Spheres of wind chakra. Choose 2 points you can see in range. You send out two 20-foot radius spheres of wind, each centered on a chosen point that envelops all creatures in their effected areas.\nCreatures that begin their turn in these affected areas or who enter them for the first time on their turns, have their movement speed is reduced to 0 and they cannot breathe while inside the sphere.\nCreatures that begin their turn in an affected area, must make a strength saving throw. On a failed save, they gain 1 rank of Exhaustion. On a successful save, they regain half of their movement speed.\nUpon exiting the affected area or this jutsu having its effects ended, affected creatures recover from all ranks of Exhaustion this jutsu imposed on them.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and select one additional space this jutsu affects.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "df8acb8c158b687b"
+}

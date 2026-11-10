@@ -54,7 +54,7 @@ import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
-import { resolveFormula } from "../rules/unarmed.mjs";
+import { resolveFormula, unarmedSpec } from "../rules/unarmed.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
 import { executeActivity } from "./activity-execution.mjs";
@@ -328,6 +328,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
         if ( formula.includes("@unarmed") ) {
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
+          p.type = unarmedSpec(actor).type;
           abilityMod = abilityMod ?? strMod;
         }
         const roll = await createN5eRoll(crit ? critFormula(formula, abilityMod) : formula, actor?.getRollData?.() ?? {}).evaluate();

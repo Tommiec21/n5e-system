@@ -1,0 +1,343 @@
+{
+  "_id": "851eb7678d7df6a0",
+  "_key": "!items!851eb7678d7df6a0",
+  "name": "Fire Release: Fireball",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-fireball",
+    "description": "<p>You breathe a stream of Fire onto the target area which then expands into a ball of Fire burning all in its range. Select a point you can see as you breathe a stream of flame that expands into a ball of Fire filling a 10-foot radius sphere centering on the chosen point. All creatures in range must make a Dexterity saving throw, taking 4d6+4 Fire damage and 1 rank of Burned on a failed save or half as much damage on a success save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6+1. If this jutsu is cast at C-Rank or higher, flammable objects caught in the radius ignites if it isn’t being worn or carried. If this jutsu is cast at B-Rank or higher, you can change this jutsu’s range to Self (60-Foot Line). If cast in this way the line is 10-feet wide. If this jutsu is cast at S-Rank, you can change this jutsu’s range to Self (60-Foot Cone)</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2236",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet (10 Foot radius Sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6+4",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6+1. If this jutsu is cast at C-Rank or higher, flammable objects caught in the radius ignites if it isn’t being worn or carried. If this jutsu is cast at B-Rank or higher, you can change this jutsu’s range to Self (60-Foot Line). If cast in this way the line is 10-feet wide. If this jutsu is cast at S-Rank, you can change this jutsu’s range to Self (60-Foot Cone)</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2236,
+        "sourceHash": "5ce3c2d76999a12e7dc8d7494ad477d6b81cd57749ea815ac0ec4aecd7046fa3",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "30 Feet (10 Foot radius Sphere)",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 Feet (10 Foot radius Sphere) Duration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Fire Release, Clash Description: You breathe a stream of Fire onto the target area which then expands into a ball of Fire burning all in its range. Select a point you can see as you breathe a stream of flame that expands into a ball of Fire filling a 10-foot radius sphere centering on the chosen point. All creatures in range must make a Dexterity saving throw, taking 4d6+4 Fire damage and 1 rank of Burned on a failed save or half as much damage on a success save.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6+1. If this jutsu is cast at C-Rank or higher, flammable objects caught in the radius ignites if it isn’t being worn or carried. If this jutsu is cast at B-Rank or higher, you can change this jutsu’s range to Self (60-Foot Line). If cast in this way the line is 10-feet wide. If this jutsu is cast at S-Rank, you can change this jutsu’s range to Self (60-Foot Cone)",
+        "expressions": [
+          {
+            "expression": "4d6+4",
+            "offset": 337,
+            "context": "All creatures in range must make a Dexterity saving throw, taking 4d6+4 Fire damage and 1 rank of Burned on a failed save or half as much damage on a success save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6+1",
+            "offset": 564,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d6+1. If this jutsu is cast at C-Rank or higher, flammable objects caught in the radius ignites if it isn’t being worn or carried. If this jutsu is cast at B-Rank or higher, you can change this jutsu’s range to Self (60-Foot Line). If cast in this way the line is 10-feet wide. If this jutsu is cast at S-Rank, you can change this jutsu’s range to Self (60-Foot Cone)",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (1d6+1)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (2d6+2)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (3d6+3)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (4d6+4)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eegPtnn07turpr"
+}

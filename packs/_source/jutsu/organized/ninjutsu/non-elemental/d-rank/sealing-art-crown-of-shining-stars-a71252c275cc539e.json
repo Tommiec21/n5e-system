@@ -1,0 +1,181 @@
+{
+  "_id": "a71252c275cc539e",
+  "_key": "!items!a71252c275cc539e",
+  "name": "Sealing Art: Crown of Shining Stars",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-crown-of-shining-stars",
+    "description": "<p>You force your palms together before pointing them towards the sky, pulling down or manifesting star like constructs that encircle you in any description you desire. As part of casting this jutsu, you may select 4 spaces within 60 feet of you that you can see, firing a star into each. You may not select the same space more than once. Stars radiate 10-feet of bright light and an additional 10-feet of dim light, dissipating at the beginning of your next turn.</p>\n<p>Objects, creatures and structures in the selected spaces where a star is directed take 1d12 force damage. A creature, object or structure occupying multiple spaces in which a star has fallen, takes the damage of each of these stars no more than twice per casting.</p>\n<p>As an action on following turns, you may select two more spaces, sending stars to occupy them, after which they dissipate at the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase the number of spaces you may select by +2 when both casting and spending your action on following turns.</p>\n<p>If this jutsu is Cast at B-Rank or higher, when you cast this jutsu or spend your Action on subsequent turns you can choose to instead target up to 2 creatures within 60-feet that you can see, making a ranged ninjutsu attack, dealing 4d12 force damage on a hit. The space the target creature is in radiates light as if a star was directed to occupy the space.</p>\n<p>If this jutsu is cast at A-Rank or higher, you can increase the number of spaces selected or creatures that can be targeted by +2. If this jutsu is cast at S-Rank its duration becomes Concentration, up to 10 minutes.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 846",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase the number of spaces you may select by +2 when both casting and spending your action on following turns.</p>\n<p>If this jutsu is Cast at B-Rank or higher, when you cast this jutsu or spend your Action on subsequent turns you can choose to instead target up to 2 creatures within 60-feet that you can see, making a ranged ninjutsu attack, dealing 4d12 force damage on a hit. The space the target creature is in radiates light as if a star was directed to occupy the space.</p>\n<p>If this jutsu is cast at A-Rank or higher, you can increase the number of spaces selected or creatures that can be targeted by +2. If this jutsu is cast at S-Rank its duration becomes Concentration, up to 10 minutes.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 846,
+        "sourceHash": "f5557b15c67a9058dff91a34d7056ae3018f3d018d33571a82de209e1f46625c",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self Duration: Concentration, up to 1 minute\nComponents:  HS, CM, CS Cost: 4 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You force your palms together before pointing them towards the sky, pulling down or manifesting star like constructs that encircle you in any description you desire. As part of casting this jutsu, you may select 4 spaces within 60 feet of you that you can see, firing a star into each. You may not select the same space more than once. Stars radiate 10-feet of bright light and an additional 10-feet of dim light, dissipating at the beginning of your next turn.\nObjects, creatures and structures in the selected spaces where a star is directed take 1d12 force damage. A creature, object or structure occupying multiple spaces in which a star has fallen, takes the damage of each of these stars no more than twice per casting.\nAs an action on following turns, you may select two more spaces, sending stars to occupy them, after which they dissipate at the beginning of your next turn.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase the number of spaces you may select by +2 when both casting and spending your action on following turns.\nIf this jutsu is Cast at B-Rank or higher, when you cast this jutsu or spend your Action on subsequent turns you can choose to instead target up to 2 creatures within 60-feet that you can see, making a ranged ninjutsu attack, dealing 4d12 force damage on a hit. The space the target creature is in radiates light as if a star was directed to occupy the space.\nIf this jutsu is cast at A-Rank or higher, you can increase the number of spaces selected or creatures that can be targeted by +2. If this jutsu is cast at S-Rank its duration becomes Concentration, up to 10 minutes.",
+        "expressions": [
+          {
+            "expression": "1d12",
+            "offset": 549,
+            "context": "Objects, creatures and structures in the selected spaces where a star is directed take 1d12 force damage. A creature, object or structure occupying multiple spaces in which a star has fallen, takes the damage of each of these stars no more than twice per casting.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d12",
+            "offset": 1378,
+            "context": "If this jutsu is Cast at B-Rank or higher, when you cast this jutsu or spend your Action on subsequent turns you can choose to instead target up to 2 creatures within 60-feet that you can see, making a ranged ninjutsu attack, dealing 4d12 force damage on a hit. The space the target creature is in radiates light as if a star was directed to occupy the space.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eDpY0QdrV0NfEW"
+}

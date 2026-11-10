@@ -1,0 +1,181 @@
+{
+  "_id": "n5e3U3bFxtKJnkdo",
+  "_key": "!items!n5e3U3bFxtKJnkdo",
+  "name": "Lotus: Anxious Petals",
+  "type": "jutsu",
+  "img": "icons/svg/eye.svg",
+  "system": {
+    "identifier": "lotus-anxious-petals",
+    "description": "<p>You grasp a hand full of poisonous Lotus petals, spreading them in a unique way. Select a space you can within range as you fill a 10-foot cube with a petal dance of revulsion. A creature who’s failed this jutsu’s save once before, cannot be affected again for 1 minute.</p>\n<p>As they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.</p>\n<p>Critical Success: Affected creature is able to resist most of this jutsu’s effects.</p>\n<p>Success: Affected creature is Dazed.</p>\n<p>Failure: Affected creatures enters a state of panic. For the duration, creatures must spend its action to take the Dash action. At the end of an affected creatures turns, remake their saving throw, ending this effect on a success. If it cannot move or has a movement speed of 0, this jutsu immediately ends.</p>\n<p>Critical Failure: Same as failure, but the target must also spend its bonus action to make an Athletics check vs a DC 15, to gain an additional +10 movement speed.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4057",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet (10-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
+            "success": "on a success. If it cannot move or has a movement speed of 0, this jutsu immediately ends.",
+            "failure": "failure, but the target must also spend its bonus action to make an Athletics check vs a DC 15, to gain an additional +10 movement speed.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "rank": "D",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "inhaled"
+    ],
+    "unaware": false,
+    "ability": "",
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Poison Kit, 1 Charges"
+      }
+    },
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "riders": [],
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4057,
+        "sourceHash": "33e23b2c1e5ae48d23ef64e768d4762712df6f0cef317c60c8ec599f61849d8e",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "30 feet (10-foot cube)",
+          "duration": "1 Minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+          "keywords": "Genjutsu (Inhale)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 feet (10-foot cube) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Lotus petals, spreading them in a unique way. Select a space you can within range as you fill a 10-foot cube with a petal dance of revulsion. A creature who’s failed this jutsu’s save once before, cannot be affected again for 1 minute.\nAs they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature is Dazed.\nFailure: Affected creatures enters a state of panic. For the duration, creatures must spend its action to take the Dash action. At the end of an affected creatures turns, remake their saving throw, ending this effect on a success. If it cannot move or has a movement speed of 0, this jutsu immediately ends.\nCritical Failure: Same as failure, but the target must also spend its bonus action to make an Athletics check vs a DC 15, to gain an additional +10 movement speed.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eerYeblcK91isN"
+}

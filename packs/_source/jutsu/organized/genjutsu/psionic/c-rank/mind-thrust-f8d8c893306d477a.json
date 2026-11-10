@@ -1,0 +1,213 @@
+{
+  "_id": "f8d8c893306d477a",
+  "_key": "!items!f8d8c893306d477a",
+  "name": "Mind Thrust",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "mind-thrust",
+    "description": "<p>You thrust a blade formed through your Genjutsu into the mind of one creature you can see within range. The target must make an Intelligence saving throw.</p>\n<p>Success: Affected creature is able to resist this Genjutsu’s effects.</p>\n<p>Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn.</p>\n<p>Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3938",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
+            "failure": "Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn.",
+            "critFailure": "Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d8",
+        "roll": {
+          "formula": "2d8",
+          "note": "Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "4d8",
+        "roll": {
+          "formula": "4d8",
+          "note": "Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3938,
+        "sourceHash": "a2b267dc68c5954e09eb6f289bb5c632d694ec05f7a691629643eb16b1d075eb",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "C",
+          "time": "1 bonus action",
+          "range": "30 feet",
+          "duration": "1 round",
+          "cost": "7 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 bonus action Range: 30 feet Duration: 1 round\nComponents: HS, CM Cost: 7 Chakra Keywords: Genjutsu (Visual, Tactile) Description: You thrust a blade formed through your Genjutsu into the mind of one creature you can see within range. The target must make an Intelligence saving throw.\nSuccess: Affected creature is able to resist this Genjutsu’s effects.\nFailure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn.\nCritical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+        "expressions": [
+          {
+            "expression": "2d8",
+            "offset": 260,
+            "context": "Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d8",
+            "offset": 383,
+            "context": "Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6a663b31d79aed95"
+}

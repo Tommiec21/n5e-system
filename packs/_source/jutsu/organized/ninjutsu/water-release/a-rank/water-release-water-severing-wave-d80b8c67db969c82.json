@@ -1,0 +1,237 @@
+{
+  "_id": "d80b8c67db969c82",
+  "_key": "!items!d80b8c67db969c82",
+  "name": "Water Release: Water Severing Wave",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-severing-wave",
+    "description": "<p>You cup your hands against your mouth releasing a torrent of highly pressurized water and using your chakra like a nozzle. You sweep your head from side to side targeting a cone area up to 60 feet in distance. Creatures caught in the radius of this jutsu must make a Dexterity saving throw, taking 8d10 cold damage on a failed save.</p>\n<p>If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can force affected creatures to make a constitution saving throw, gaining 2 ranks of Chilled on a failed save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2733",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60ft cone"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Chilled"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d10",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2733,
+        "sourceHash": "c19bedff57728939859409007624c23b2769ad8ed04fcdbfcdd3f23a8f5847cc",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "60ft cone",
+          "duration": "Instant",
+          "cost": "19 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 60ft cone Duration: Instant\nComponents: HS, CM Cost: 19 Chakra Keywords: Ninjutsu, Water Release Description: You cup your hands against your mouth releasing a torrent of highly pressurized water and using your chakra like a nozzle. You sweep your head from side to side targeting a cone area up to 60 feet in distance. Creatures caught in the radius of this jutsu must make a Dexterity saving throw, taking 8d10 cold damage on a failed save.\nIf used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can force affected creatures to make a constitution saving throw, gaining 2 ranks of Chilled on a failed save.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "8d10",
+            "offset": 298,
+            "context": "Creatures caught in the radius of this jutsu must make a Dexterity saving throw, taking 8d10 cold damage on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 665,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d10.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Chilled"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d10) + (1d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d643965c516da2e4"
+}

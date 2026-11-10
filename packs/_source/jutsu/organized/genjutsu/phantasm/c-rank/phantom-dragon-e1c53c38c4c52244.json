@@ -1,0 +1,186 @@
+{
+  "_id": "e1c53c38c4c52244",
+  "_key": "!items!e1c53c38c4c52244",
+  "name": "Phantom Dragon",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "phantom-dragon",
+    "description": "<p>All creatures of your choice within 30 feet who are not blind when this jutsu is cast and at the beginning of each of their turns must make a Wisdom saving throw or risk seeing a vile draconic image of your description.</p>\n<p>Creatures whom can see the dragon, that you score a successful attack against, see the illusory dragon performing the attack itself. The affected creature suffers Draconic Madness until the end of their next turn. This unique condition is treated as a Mental.</p>\n<p>Draconic Madness. This effect applies the effects of 1 rank of Demoralize and 1 rank of Sealed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, Draconic Madness lasts for 1 minute or until removed.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3273",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, Draconic Madness lasts for 1 minute or until removed.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3273,
+        "sourceHash": "44021ef5e0b9ef55411b3a9c5595fd501011b0c2a3f6703d2daa50215e046327",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, Up to 1 Minute",
+          "cost": "7 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual), Auditory, Tactile"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self Duration: Concentration, Up to 1 Minute\nComponents: HS, CM\nCost: 7 Chakra Keywords: Genjutsu (Visual), Auditory, Tactile  Description: All creatures of your choice within 30 feet who are not blind when this jutsu is cast and at the beginning of each of their turns must make a Wisdom saving throw or risk seeing a vile draconic image of your description.\nCreatures whom can see the dragon, that you score a successful attack against, see the illusory dragon performing the attack itself. The affected creature suffers Draconic Madness until the end of their next turn. This unique condition is treated as a Mental.\nDraconic Madness. This effect applies the effects of 1 rank of Demoralize and 1 rank of Sealed.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, Draconic Madness lasts for 1 minute or until removed.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "68fe90231eaf9f92"
+}

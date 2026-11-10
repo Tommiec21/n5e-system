@@ -1,0 +1,177 @@
+{
+  "_id": "13ed114a43f698b8",
+  "_key": "!items!13ed114a43f698b8",
+  "name": "Wind Release: Second Wind",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-second-wind",
+    "description": "<p>You breathe in deeply filling your lungs and blood with chakra filtered oxygen accelerating its blood flow and slightly rejuvenating you. You recover 2d6+ Your Ninjutsu ability modifier hit points.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and roll an additional 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2002",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "You recover 2d6+ Your Ninjutsu ability modifier hit points."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and roll an additional 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2002,
+        "sourceHash": "43ae94a3525cef4453c7e94bf721ac542eed25115eddcaad52816291d6ad0aef",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range:  Self Duration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Wind Release Description: You breathe in deeply filling your lungs and blood with chakra filtered oxygen accelerating its blood flow and slightly rejuvenating you. You recover 2d6+ Your Ninjutsu ability modifier hit points.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and roll an additional 1d6.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 150,
+            "context": "You recover 2d6+ Your Ninjutsu ability modifier hit points.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 323,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and roll an additional 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "20268cc1727cd95c"
+}

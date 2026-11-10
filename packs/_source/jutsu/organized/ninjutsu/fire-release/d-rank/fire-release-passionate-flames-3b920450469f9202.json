@@ -1,0 +1,162 @@
+{
+  "_id": "3b920450469f9202",
+  "_key": "!items!3b920450469f9202",
+  "name": "Fire Release: Passionate Flames",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-passionate-flames",
+    "description": "<p>You manifest a fuchsia-colored flame and place it on a wounded creature you can see within range.</p>\n<p>Target creature rolls 2 Hit Die, spending one. When they do, they recover twice the result.</p>\n<p>After casting the target creature gains resistance to Fire damage until the end of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of Hit die rolled and spent by 1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2274",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of Hit die rolled and spent by 1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2274,
+        "sourceHash": "baa6c4b18f5baa174c624434fdf48fa8accb0ee827637d3d8344651841fbc81b",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action.",
+          "range": "Touch",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release, Medical"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action. Range: Touch Duration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Fire Release, Medical Description: You manifest a fuchsia-colored flame and place it on a wounded creature you can see within range.\nTarget creature rolls 2 Hit Die, spending one. When they do, they recover twice the result.\nAfter casting the target creature gains resistance to Fire damage until the end of your next turn.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of Hit die rolled and spent by 1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eegPtnn07turpr"
+}

@@ -1,0 +1,197 @@
+{
+  "_id": "0ed96eb43f3c7f2a",
+  "_key": "!items!0ed96eb43f3c7f2a",
+  "name": "Die",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "die",
+    "description": "<p>You utter a word of absolute authority commanding a creature to attack itself with its most potent attack. Target creatures whom can see and hear you within range, must make a Charisma saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this Jutsu's effects.</p>\n<p>Success: Affected creature is Confused until the end of their next turn.</p>\n<p>Failure: On the affected creatures next turn, they must cast a jutsu or make an attack of the caster’s choice, targeting themselves. If commanded to perform an attack they do not know or are able to perform, they perform the last offensive damaging attack they used in combat, but on themselves. If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage.</p>\n<p>Critical Failure: Same as Failure but affected creature automatically scores a critical hit against themselves on the first attack made.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3376",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "tactile"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
+            "success": "Success: Affected creature is Confused until the end of their next turn.",
+            "failure": "Failure: On the affected creatures next turn, they must cast a jutsu or make an attack of the caster’s choice, targeting themselves. If commanded to perform an attack they do not know or are able to perform, they perform the last offensive damaging attack they used in combat, but on themselves. If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage.",
+            "critFailure": "Critical Failure: Same as Failure but affected creature automatically scores a critical hit against themselves on the first attack made."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "8d10",
+        "roll": {
+          "formula": "8d10",
+          "note": "If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3376,
+        "sourceHash": "aad8a8a6be4d92e7fc7c54c195ee4a7d5838064dda83d85690ea717735478b13",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "30 Feet",
+          "duration": "Instant",
+          "cost": "18 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory), Tactile"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 30 Feet Duration: Instant\nComponents: HS, CM Cost: 18 Chakra Keywords: Genjutsu (Auditory), Tactile Description: You utter a word of absolute authority commanding a creature to attack itself with its most potent attack. Target creatures whom can see and hear you within range, must make a Charisma saving throw.\nCritical Success: Affected creature is able to resist this Jutsu's effects.\nSuccess: Affected creature is Confused until the end of their next turn.\nFailure: On the affected creatures next turn, they must cast a jutsu or make an attack of the caster’s choice, targeting themselves. If commanded to perform an attack they do not know or are able to perform, they perform the last offensive damaging attack they used in combat, but on themselves. If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage.\nCritical Failure: Same as Failure but affected creature automatically scores a critical hit against themselves on the first attack made.",
+        "expressions": [
+          {
+            "expression": "8d10",
+            "offset": 723,
+            "context": "If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "31317d7b8ae082be"
+}

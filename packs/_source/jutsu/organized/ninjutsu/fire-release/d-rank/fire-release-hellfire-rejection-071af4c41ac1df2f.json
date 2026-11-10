@@ -1,0 +1,307 @@
+{
+  "_id": "071af4c41ac1df2f",
+  "_key": "!items!071af4c41ac1df2f",
+  "name": "Fire Release: Hellfire Rejection",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-hellfire-rejection",
+    "description": "<p>When you are hit by a creature that you can see, you release a brilliant burst of Fire chakra in a 15-foot sphere centered on a point of the space you are occupying. Creatures of your choice caught in the radius must make a Dexterity saving throw, taking 3d8+3 Fire damage on a failed save, or half as much on a successful one.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d8+1. If this jutsu is cast at B-Rank or higher, creatures who fail their saving throw gain 2 ranks of Shaken. If this jutsu is cast at A-Rank or higher you can increase the range of this jutsu to Self (30-foot Radius).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2270",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self, (15-Foot Radius Sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8+3",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d8+1. If this jutsu is cast at B-Rank or higher, creatures who fail their saving throw gain 2 ranks of Shaken. If this jutsu is cast at A-Rank or higher you can increase the range of this jutsu to Self (30-foot Radius).</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2270,
+        "sourceHash": "769d80d9fb7f2bd952a64f22682d8af912b5953df5dab2efa4762c8dcb83d86f",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you take damage.",
+          "range": "Self, (15-Foot Radius Sphere)",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you take damage. Range: Self, (15-Foot Radius Sphere) Duration:  Instant\nComponents: HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Fire Release Description: When you are hit by a creature that you can see, you release a brilliant burst of Fire chakra in a 15-foot sphere centered on a point of the space you are occupying. Creatures of your choice caught in the radius must make a Dexterity saving throw, taking 3d8+3 Fire damage on a failed save, or half as much on a successful one.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d8+1. If this jutsu is cast at B-Rank or higher, creatures who fail their saving throw gain 2 ranks of Shaken. If this jutsu is cast at A-Rank or higher you can increase the range of this jutsu to Self (30-foot Radius).",
+        "expressions": [
+          {
+            "expression": "3d8+3",
+            "offset": 255,
+            "context": "Creatures of your choice caught in the radius must make a Dexterity saving throw, taking 3d8+3 Fire damage on a failed save, or half as much on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8+1",
+            "offset": 457,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and increase the damage by 1d8+1. If this jutsu is cast at B-Rank or higher, creatures who fail their saving throw gain 2 ranks of Shaken. If this jutsu is cast at A-Rank or higher you can increase the range of this jutsu to Self (30-foot Radius).",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8+3) + (1d8+1)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8+3) + (2d8+2)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8+3) + (3d8+3)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8+3) + (4d8+4)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eegPtnn07turpr"
+}

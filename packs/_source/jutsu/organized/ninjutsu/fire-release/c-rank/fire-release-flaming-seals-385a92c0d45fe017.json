@@ -1,0 +1,163 @@
+{
+  "_id": "385a92c0d45fe017",
+  "_key": "!items!385a92c0d45fe017",
+  "name": "Fire Release: Flaming Seals",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-flaming-seals",
+    "description": "<p>This jutsu places a flaming seal on a willing creature other than yourself that you touch, creating a chakra connection between you and the target until the jutsu ends. Affected creatures gain a +1 bonus to all saving throws and resistance to Fire damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, increase the bonus by +1. If this jutsu is cast at S-Rank, increase the bonus by +2.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2324",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "fuinjutsu",
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, increase the bonus by +1. If this jutsu is cast at S-Rank, increase the bonus by +2.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2324,
+        "sourceHash": "c9161a7bcad63c2bc9addf9beec11ee995403c3848fdc43ba9d1e07f0b15e370",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, up to 1 Minute.",
+          "cost": "9 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fire Release, Fuinjutsu, Stable"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 1 Minute.\nComponents: HS, CM, CS Cost: 9 Chakra Keywords: Ninjutsu, Fire Release, Fuinjutsu, Stable Description: This jutsu places a flaming seal on a willing creature other than yourself that you touch, creating a chakra connection between you and the target until the jutsu ends. Affected creatures gain a +1 bonus to all saving throws and resistance to Fire damage.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank, increase the bonus by +1. If this jutsu is cast at S-Rank, increase the bonus by +2.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d322c5d25b2d40d2"
+}

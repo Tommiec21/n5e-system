@@ -1,0 +1,177 @@
+{
+  "_id": "ca79d58264216dd8",
+  "_key": "!items!ca79d58264216dd8",
+  "name": "Blade of Sin: Pride",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "blade-of-sin-pride",
+    "description": "<p>You seek to emulate the power of one of the Seven Deadly Sins of Humanity in your blade, imbuing the Sin of Pride inside the edge. When you would take damage, roll your weapons damage+4d6 and reduce the damage by the rolled amount as you parry some or all of the impact. If you reduce the damage to 0, the triggering creature gains a rank of Demoralized.</p>\n<p>Chain 2: Your pride is so fervent that not even illusions are immune to your defense. This jutsu can also trigger when you take Psychic damage, reducing the damage as if this jutsu were a Genjutsu.</p>\n<p>At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage reduction by 1d6. If this jutsu is cast at A-Rank or higher some of the impact can be redirected to hostile creatures. Hostile creatures of your choice within 5 feet of you take damage equal to half the result. If this jutsu is cast at S-Rank and reduces the triggering damage to 0, then all hostile creatures within 20 feet of you becomes Demoralized.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5841",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction when you take damage from a Weapon, Ninjutsu, Taijutsu or Bukijutsu"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "When you would take damage, roll your weapons damage+4d6 and reduce the damage by the rolled amount as you parry some or all of the impact. If you reduce the damage to 0, the triggering creature gains a rank of Demoralized."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage reduction by 1d6. If this jutsu is cast at A-Rank or higher some of the impact can be redirected to hostile creatures. Hostile creatures of your choice within 5 feet of you take damage equal to half the result. If this jutsu is cast at S-Rank and reduces the triggering damage to 0, then all hostile creatures within 20 feet of you becomes Demoralized.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Your pride is so fervent that not even illusions are immune to your defense. This jutsu can also trigger when you take Psychic damage, reducing the damage as if this jutsu were a Genjutsu.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5841,
+        "sourceHash": "b5594beaeafad9f464109f5a58908009a6f7db6e51ef08d3fdadbf83f6320514",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "B",
+          "time": "1 Reaction when you take damage from a Weapon, Ninjutsu, Taijutsu or Bukijutsu",
+          "range": "Weapon range",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "W (Any Blade), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Reaction when you take damage from a Weapon, Ninjutsu, Taijutsu or Bukijutsu Range: Weapon range Duration: Instant\nComponents: W (Any Blade), M Cost: 12 Chakra Keywords: Bukijutsu, Chain Description: You seek to emulate the power of one of the Seven Deadly Sins of Humanity in your blade, imbuing the Sin of Pride inside the edge. When you would take damage, roll your weapons damage+4d6 and reduce the damage by the rolled amount as you parry some or all of the impact. If you reduce the damage to 0, the triggering creature gains a rank of Demoralized.\nChain 2: Your pride is so fervent that not even illusions are immune to your defense. This jutsu can also trigger when you take Psychic damage, reducing the damage as if this jutsu were a Genjutsu.\nAt Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage reduction by 1d6. If this jutsu is cast at A-Rank or higher some of the impact can be redirected to hostile creatures. Hostile creatures of your choice within 5 feet of you take damage equal to half the result. If this jutsu is cast at S-Rank and reduces the triggering damage to 0, then all hostile creatures within 20 feet of you becomes Demoralized.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 184,
+            "context": "When you would take damage, roll your weapons damage+4d6 and reduce the damage by the rolled amount as you parry some or all of the impact. If you reduce the damage to 0, the triggering creature gains a rank of Demoralized.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 670,
+            "context": "At Higher Ranks: For every rank you cast this jutsu above B-Rank, increase the cost by 3 and the damage reduction by 1d6. If this jutsu is cast at A-Rank or higher some of the impact can be redirected to hostile creatures. Hostile creatures of your choice within 5 feet of you take damage equal to half the result. If this jutsu is cast at S-Rank and reduces the triggering damage to 0, then all hostile creatures within 20 feet of you becomes Demoralized.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "850448e8be1ed23c"
+}

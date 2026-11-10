@@ -1,0 +1,281 @@
+{
+  "_id": "84d4262415768ff4",
+  "_key": "!items!84d4262415768ff4",
+  "name": "Medical Release: Grim Legion",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-grim-legion",
+    "description": "<p>You weave summoning seals together and infuse them with medical release chakra and a portion of your spirit, manifesting a summoning tag that you throw into a point you can see within range. From the chakra seal an echoing call of shadowy figures of your choice begin to manifest filling a 20-foot radius, which counts as difficult terrain. The creatures resemble once living entities you knew. Whenever a creature starts its turn in this jutsu’s radius or enters it for the first time on its turn, the conjured shadows all strike.</p>\n<p>Affected creatures make a Strength saving throw, taking 2d12 necrotic damage and dragging them 5 feet towards the center of the radius. Creature who begin their turns within the radius of this jutsu have their speed reduced by half until the beginning of their following turn</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 chakra and the size of the cube by 5 feet and the damage by 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1413",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu",
+      "kinjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 chakra and the size of the cube by 5 feet and the damage by 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1413,
+        "sourceHash": "a306e9d33a0836fa575f674906e312e60da0ae53f0043c3d19ea6f839ce1c2a9",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "90 feet",
+          "duration": "Concentration, up to 1 minute.",
+          "cost": "9 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Medical, Fuinjutsu, Kinjutsu"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: 90 feet Duration: Concentration, up to 1 minute.\nComponents:  HS, CM, CS Cost: 9 Chakra  Keywords: Ninjutsu, Medical, Fuinjutsu, Kinjutsu Description: You weave summoning seals together and infuse them with medical release chakra and a portion of your spirit, manifesting a summoning tag that you throw into a point you can see within range. From the chakra seal an echoing call of shadowy figures of your choice begin to manifest filling a 20-foot radius, which counts as difficult terrain. The creatures resemble once living entities you knew. Whenever a creature starts its turn in this jutsu’s radius or enters it for the first time on its turn, the conjured shadows all strike.\nAffected creatures make a Strength saving throw, taking 2d12 necrotic damage and dragging them 5 feet towards the center of the radius. Creature who begin their turns within the radius of this jutsu have their speed reduced by half until the beginning of their following turn\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 chakra and the size of the cube by 5 feet and the damage by 1d12.",
+        "expressions": [
+          {
+            "expression": "2d12",
+            "offset": 588,
+            "context": "Affected creatures make a Strength saving throw, taking 2d12 necrotic damage and dragging them 5 feet towards the center of the radius. Creature who begin their turns within the radius of this jutsu have their speed reduced by half until the beginning of their following turn",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 970,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 chakra and the size of the cube by 5 feet and the damage by 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0359bedeffa2100b"
+}

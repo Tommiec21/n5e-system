@@ -1,0 +1,197 @@
+{
+  "_id": "cf5b5c1e6f41ae42",
+  "_key": "!items!cf5b5c1e6f41ae42",
+  "name": "Zone of Truth",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "zone-of-truth",
+    "description": "<p>You create a chakra filled zone that guards against deception in a 30-foot sphere centered on a point of your choice within range. Until the Genjutsu ends, a creature that enters the jutsu’s area for the first time on a turn or starts its turn there must make a Charisma saving throw. You know whether each creature succeeds or fails on its saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this Genjutsu’s effects and you are unaware if it passed or failed the save.</p>\n<p>Success: Affected creature is able to resist some of this jutsu’s effects but they still find it difficult to lie. They suffer a 1d4 penalty to Deception checks.</p>\n<p>Failure: Affected creature find it very difficult to speak any deliberate or intentional lies as they show a look of obvious discomfort and make Deception checks at disadvantage.</p>\n<p>Critical Failure: Affected creature becomes unable to speak if they would lie.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3296",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 15,
+        "long": null,
+        "text": "15 Foot radius Sphere"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects and you are unaware if it passed or failed the save.",
+            "success": "Success: Affected creature is able to resist some of this jutsu’s effects but they still find it difficult to lie. They suffer a 1d4 penalty to Deception checks.",
+            "failure": "Failure: Affected creature find it very difficult to speak any deliberate or intentional lies as they show a look of obvious discomfort and make Deception checks at disadvantage.",
+            "critFailure": "Critical Failure: Affected creature becomes unable to speak if they would lie."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d4",
+        "roll": {
+          "formula": "1d4",
+          "note": "They suffer a 1d4 penalty to Deception checks."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3296,
+        "sourceHash": "7f8d0785d4c2e37b5a7357db92f1b99403d0e37bd4de4e26692ec391c1d445f7",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "15 Foot radius Sphere",
+          "duration": "Concentration, up to 10 minutes.",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory), Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 15 Foot radius Sphere Duration: Concentration, up to 10 minutes.\nComponents: HS, CM Cost: 9 Chakra Keywords: Genjutsu (Auditory), Fuinjutsu Description: You create a chakra filled zone that guards against deception in a 30-foot sphere centered on a point of your choice within range. Until the Genjutsu ends, a creature that enters the jutsu’s area for the first time on a turn or starts its turn there must make a Charisma saving throw. You know whether each creature succeeds or fails on its saving throw.\nCritical Success: Affected creature is able to resist this Genjutsu’s effects and you are unaware if it passed or failed the save.\nSuccess: Affected creature is able to resist some of this jutsu’s effects but they still find it difficult to lie. They suffer a 1d4 penalty to Deception checks.\nFailure: Affected creature find it very difficult to speak any deliberate or intentional lies as they show a look of obvious discomfort and make Deception checks at disadvantage.\nCritical Failure: Affected creature becomes unable to speak if they would lie.",
+        "expressions": [
+          {
+            "expression": "1d4",
+            "offset": 615,
+            "context": "They suffer a 1d4 penalty to Deception checks.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "68fe90231eaf9f92"
+}

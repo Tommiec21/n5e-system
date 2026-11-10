@@ -1,3 +1,12 @@
+## 0.13.0-alpha.14 — Complete Jiraiya jutsu content import (JUTSU1)
+
+- Import all 968 source-book jutsu into the core Jutsu compendium: 403 Ninjutsu, 167 Genjutsu, 146 Taijutsu and 252 Bukijutsu.
+- Organize 118 folders as Discipline / Nature Release or Group / Rank; preserve the existing 12 jutsu IDs and distinguish both Brutal Block variants.
+- Preserve original rules, keywords/stimuli, costs/components, riders and 1,535 source expressions with line/hash provenance. Record four metadata-label repairs without changing source text.
+- Author existing-schema activities conservatively: never combine alternative/periodic damage with base damage. 192 source-clear higher-rank damage maps are consumed by the existing cast-card activity selector; current unarmed damage types follow the active stance.
+- Charge imported fixed Special chakra costs through existing cost rules. Eleven unresolved/scheduled/ambiguous costs are explicitly manual rather than silently free; complex choices/riders remain source-directed.
+- Add a reproducible checked-in source snapshot, importer, coverage report and ten focused checks. No new gameplay framework, live verification or local installation.
+
 ## 0.13.0-alpha.13 — Compact Foundry damage cards (CHAT1)
 
 - Use Foundry's standard expandable dice renderer for the actual damage roll only.

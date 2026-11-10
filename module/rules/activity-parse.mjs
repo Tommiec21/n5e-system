@@ -124,8 +124,9 @@ export function parseActivities(html, { discipline = "" } = {}) {
  * Every caller (cards, cast dialog, cast options) goes through this, so authoring activities on an
  * item fully replaces the parsed ones for it.
  */
-export function effectiveActivities(item) {
-  const authored = [...(item.system.activities ?? [])];
+export function effectiveActivities(item, { rank } = {}) {
+  const ranked = rank ? item.flags?.n5e?.jutsuBookImport?.activitiesByRank?.[rank] : null;
+  const authored = [...(Array.isArray(ranked) ? ranked : item.system.activities ?? [])];
   if ( authored.length ) return authored.map(a => ({ ...a, authored: true }));
   return parseActivities(item.system.description, { discipline: item.system.discipline ?? "" });
 }

@@ -1,0 +1,183 @@
+{
+  "_id": "044fb75eb81329bc",
+  "_key": "!items!044fb75eb81329bc",
+  "name": "Earth Release: Earth Flow River",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-earth-flow-river",
+    "description": "<p>You transform the surface in front of you into a mud river. The river created is a 30-foot cone, that sweeps creatures off of their feet and carries them to the end of the cone furthest away from the caster.</p>\n<p>Creatures in the path of the mud slide must make a Strength saving throw. On a failed save they are swept up and moved to the end of the stream, falling Prone being disarmed of any weapons or items they are holding and having their speed reduced by 10 feet until the end of their next turn. On a successful save, no effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the size of the cone by 5ft and the speed they are reduced by 5 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1636",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30 Foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the size of the cone by 5ft and the speed they are reduced by 5 feet.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1636,
+        "sourceHash": "d9da85f418452ea14cdd10180e62015046a36da2ffb8b5058a37fd7c053de8be",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (30 Foot Cone)",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (30 Foot Cone) Duration: Instant\nComponents:  HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Earth Release Description:  You transform the surface in front of you into a mud river. The river created is a 30-foot cone, that sweeps creatures off of their feet and carries them to the end of the cone furthest away from the caster.\nCreatures in the path of the mud slide must make a Strength saving throw. On a failed save they are swept up and moved to the end of the stream, falling Prone being disarmed of any weapons or items they are holding and having their speed reduced by 10 feet until the end of their next turn. On a successful save, no effects.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the size of the cone by 5ft and the speed they are reduced by 5 feet.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "59ce6e14db17de3b"
+}

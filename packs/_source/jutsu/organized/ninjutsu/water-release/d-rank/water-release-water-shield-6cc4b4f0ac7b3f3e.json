@@ -1,0 +1,173 @@
+{
+  "_id": "6cc4b4f0ac7b3f3e",
+  "_key": "!items!6cc4b4f0ac7b3f3e",
+  "name": "Water Release: Water Shield",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-shield",
+    "description": "<p>You create a floating wall of spiraling water, capable of pushing back creatures and blocking attacks. Increase your AC by +2 and gain 4 damage reduction until the beginning of your next turn. If this jutsu would reduce Fire damage from another jutsu, you instead initiate a Clash, and add 1d6 to your clash check.</p>\n<p>If you have a sufficient water source nearby, reduce the chakra cost of this jutsu by 2 or you can choose to select another willing creature within 30 feet of you to also gain this Jutsu's benefit until the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at B-Rank or higher, increase the AC bonus by +1. If this jutsu is cast at A-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at S-Rank, increase the AC bonus by +2.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2555",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "barrier",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage or make a saving throw."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "If this jutsu would reduce Fire damage from another jutsu, you instead initiate a Clash, and add 1d6 to your clash check."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at B-Rank or higher, increase the AC bonus by +1. If this jutsu is cast at A-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at S-Rank, increase the AC bonus by +2.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2555,
+        "sourceHash": "eb32df52e45536e010131b85cea73cabe8388310877988256a5790cce3d4201b",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you would take damage or make a saving throw.",
+          "range": "Self",
+          "duration": "1 Round",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Barrier, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you would take damage or make a saving throw. Range: Self Duration: 1 Round\nComponents: HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Water Release, Barrier, Clash Description: You create a floating wall of spiraling water, capable of pushing back creatures and blocking attacks. Increase your AC by +2 and gain 4 damage reduction until the beginning of your next turn. If this jutsu would reduce Fire damage from another jutsu, you instead initiate a Clash, and add 1d6 to your clash check.\nIf you have a sufficient water source nearby, reduce the chakra cost of this jutsu by 2 or you can choose to select another willing creature within 30 feet of you to also gain this Jutsu's benefit until the beginning of your next turn.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at B-Rank or higher, increase the AC bonus by +1. If this jutsu is cast at A-Rank or higher, reduce the next instance of damage by an additional +2. If this jutsu is cast at S-Rank, increase the AC bonus by +2.",
+        "expressions": [
+          {
+            "expression": "1d6",
+            "offset": 290,
+            "context": "If this jutsu would reduce Fire damage from another jutsu, you instead initiate a Clash, and add 1d6 to your clash check.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "3b09f83137c247b7"
+}

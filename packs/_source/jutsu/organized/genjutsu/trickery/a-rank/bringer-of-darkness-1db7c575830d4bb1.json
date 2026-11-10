@@ -1,0 +1,181 @@
+{
+  "_id": "1db7c575830d4bb1",
+  "_key": "!items!1db7c575830d4bb1",
+  "name": "Bringer of Darkness",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "bringer-of-darkness",
+    "description": "<p>You release a surge of chakra from yourself attempting to remove the sight, Sound, and Tactile senses of all creatures in a 30 Foot Radius centering on you. Each creature in this jutsu’s affected area or when a creature enters the affected area for the first time on their turn, must make a Wisdom saving throw.</p>\n<p>Creatures who fail remake their saving throw at the end of each of their turns, ending this jutsu’s effect on them on a success.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature is Blinded until the end of their next turn..</p>\n<p>Failure: Affected creatures are Blinded, Deafened and unable to feel physical touch for the duration.</p>\n<p>Critical Failure: Same as Failure, but they are also Confused for the duration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3757",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature is Blinded until the end of their next turn..",
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+            "failure": "Failure, but they are also Confused for the duration.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3757,
+        "sourceHash": "3591e7a9caa1bb78ac7c018ffb1b5f68c111b56551d77352455314eb08398493",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Self (30-foot radius)",
+          "duration": "Concentration, up to 10 minutes",
+          "cost": "18 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory, Visual)"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Self (30-foot radius) Duration: Concentration, up to 10 minutes\nComponents: HS, CM Cost: 18 Chakra Keywords: Genjutsu (Auditory, Visual) Description: You release a surge of chakra from yourself attempting to remove the sight, Sound, and Tactile senses of all creatures in a 30 Foot Radius centering on you. Each creature in this jutsu’s affected area or when a creature enters the affected area for the first time on their turn, must make a Wisdom saving throw.\nCreatures who fail remake their saving throw at the end of each of their turns, ending this jutsu’s effect on them on a success.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is Blinded until the end of their next turn..\nFailure: Affected creatures are Blinded, Deafened and unable to feel physical touch for the duration.\nCritical Failure: Same as Failure, but they are also Confused for the duration.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "bb4e5d99d4d4ee8e"
+}

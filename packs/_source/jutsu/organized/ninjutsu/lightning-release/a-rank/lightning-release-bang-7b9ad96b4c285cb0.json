@@ -1,0 +1,208 @@
+{
+  "_id": "7b9ad96b4c285cb0",
+  "_key": "!items!7b9ad96b4c285cb0",
+  "name": "Lightning Release: Bang",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-bang",
+    "description": "<p>You focus Lightning chakra into a super compressed point on the tip of your finger, pointing it at a creature you can see in range, and releasing it in a single swift motion. The lightning explodes leaving your finger with an audible explosive boom, that shatters glass and other fragile but rigid material in a 500-foot radius. Make a ranged ninjutsu attack. On a hit, the target creature takes 9d12 Lightning damage.</p>\n<p>Overcharge. If you target a creature within 5 feet of you and make the ranged attack at disadvantage, increase your critical threat range by +3. If you score a critical hit, triple the damage die, instead of doubling it.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 2d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2975",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "9d12",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 2d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": "<p>Overcharge. If you target a creature within 5 feet of you and make the ranged attack at disadvantage, increase your critical threat range by +3. If you score a critical hit, triple the damage die, instead of doubling it.</p>"
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2975,
+        "sourceHash": "f077152f75368c65e87464ab8ebded4faa551c7d1c3d9f14db6d9b2189356605",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "16 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Clash"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 60 Feet Duration: Instant\nComponents: HS, CM Cost: 16 Chakra Keywords: Ninjutsu, Lightning Release, Clash Description: You focus Lightning chakra into a super compressed point on the tip of your finger, pointing it at a creature you can see in range, and releasing it in a single swift motion. The lightning explodes leaving your finger with an audible explosive boom, that shatters glass and other fragile but rigid material in a 500-foot radius. Make a ranged ninjutsu attack. On a hit, the target creature takes 9d12 Lightning damage.\nOvercharge. If you target a creature within 5 feet of you and make the ranged attack at disadvantage, increase your critical threat range by +3. If you score a critical hit, triple the damage die, instead of doubling it.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 2d12.",
+        "expressions": [
+          {
+            "expression": "9d12",
+            "offset": 396,
+            "context": "On a hit, the target creature takes 9d12 Lightning damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d12",
+            "offset": 769,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and increase the damage by 2d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d12) + (2d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "406afaae95c62927"
+}

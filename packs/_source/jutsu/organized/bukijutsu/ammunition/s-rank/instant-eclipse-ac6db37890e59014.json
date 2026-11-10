@@ -1,0 +1,195 @@
+{
+  "_id": "ac6db37890e59014",
+  "_key": "!items!ac6db37890e59014",
+  "name": "Instant Eclipse",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "instant-eclipse",
+    "description": "<p>You grasp two of the scrolls Sealed with ammunition into them and unfurl them in a double helix formation as you jump 60 feet into the air.</p>\n<p>The Sealed ammunition creates a blanket of steel above your opponent, enough to block out the sun. All creatures in a 30-foot radius originating from a point of the space you occupy, excluding you, must make a Dexterity saving throw taking 16d4 piercing damage and gain 4 ranks of Bleed on a failed save or half as much damage on a successful save.</p>\n<p>After this jutsu’s casting, both scrolls are destroyed and the weapons instead are unsalvageable.</p>\n<p>Chain 3: When this jutsu is cast, you can select any number of creatures to avoid striking as they are precisely avoided by the hail of steel.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 7195",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 22,
+      "text": "22 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "2 weapons Scrolls with a Thrown weapon Sealed inside"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 4,
+            "label": "Bleed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "16d4",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": "<p>Chain 3: When this jutsu is cast, you can select any number of creatures to avoid striking as they are precisely avoided by the hail of steel.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 7195,
+        "sourceHash": "d714707b007232ed8319a6d7d1fc04311c007fd826cdbc205b5d0ef95af172fe",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self (30-foot radius sphere)",
+          "duration": "Instant",
+          "cost": "22 Chakra",
+          "components": "M, NT (2 weapons Scrolls with a Thrown weapon Sealed inside)",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self (30-foot radius sphere) Duration: Instant Components: M, NT (2 weapons Scrolls with a Thrown weapon Sealed inside) Cost: 22 Chakra Keywords: Bukijutsu, Chain Description: You grasp two of the scrolls Sealed with ammunition into them and unfurl them in a double helix formation as you jump 60 feet into the air.\nThe Sealed ammunition creates a blanket of steel above your opponent, enough to block out the sun. All creatures in a 30-foot radius originating from a point of the space you occupy, excluding you, must make a Dexterity saving throw taking 16d4 piercing damage and gain 4 ranks of Bleed on a failed save or half as much damage on a successful save.\nAfter this jutsu’s casting, both scrolls are destroyed and the weapons instead are unsalvageable.\nChain 3: When this jutsu is cast, you can select any number of creatures to avoid striking as they are precisely avoided by the hail of steel.",
+        "expressions": [
+          {
+            "expression": "16d4",
+            "offset": 380,
+            "context": "All creatures in a 30-foot radius originating from a point of the space you occupy, excluding you, must make a Dexterity saving throw taking 16d4 piercing damage and gain 4 ranks of Bleed on a failed save or half as much damage on a successful save.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a8010b352a59571c"
+}

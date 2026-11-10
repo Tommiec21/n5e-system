@@ -1,0 +1,189 @@
+{
+  "_id": "95805d839ea89d2b",
+  "_key": "!items!95805d839ea89d2b",
+  "name": "Spiral Cloud Passage",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "spiral-cloud-passage",
+    "description": "<p>You leap into the air while slashing relentlessly, Striking everyone and everything around your multiple times. Make 3 melee taijutsu attacks, comparing the result of your attacks to the AC All creatures of your choice within range.</p>\n<p>On a hit, you deal your [Weapons damage] + 4d6. If any of these attacks score a critical hit, then all creatures suffer the effects of the critical hit.</p>\n<p>Chain 3: If you score two or more critical hits as part of this Jutsu’s casting, when you end your turn, you immediately take another one. You can gain the benefit of this chain effect, once every other turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5937",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "blade",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 25,
+      "text": "25 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Blade"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": "<p>Chain 3: If you score two or more critical hits as part of this Jutsu’s casting, when you end your turn, you immediately take another one. You can gain the benefit of this chain effect, once every other turn.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5937,
+        "sourceHash": "d22682a27ea57a5d766e1f5045e5fc380ecc047bde15a56dfdf902a67e9fa7cf",
+        "discipline": "Bukijutsu",
+        "group": "Blade",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self (10-foot radius)",
+          "duration": "Instant",
+          "cost": "25 Chakra",
+          "components": "W (Any Blade), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self (10-foot radius) Duration: Instant\nComponents: W (Any Blade), M Cost: 25 Chakra Keywords: Bukijutsu, Chain Description: You leap into the air while slashing relentlessly, Striking everyone and everything around your multiple times. Make 3 melee taijutsu attacks, comparing the result of your attacks to the AC All creatures of your choice within range.\nOn a hit, you deal your [Weapons damage] + 4d6. If any of these attacks score a critical hit, then all creatures suffer the effects of the critical hit.\nChain 3: If you score two or more critical hits as part of this Jutsu’s casting, when you end your turn, you immediately take another one. You can gain the benefit of this chain effect, once every other turn.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 257,
+            "context": "On a hit, you deal your [Weapons damage] + 4d6. If any of these attacks score a critical hit, then all creatures suffer the effects of the critical hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d6",
+            "offset": 276,
+            "context": "On a hit, you deal your [Weapons damage] + 4d6. If any of these attacks score a critical hit, then all creatures suffer the effects of the critical hit.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0e23cefc01dadef0"
+}

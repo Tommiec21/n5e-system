@@ -1,0 +1,220 @@
+{
+  "_id": "1bcd23927041a588",
+  "_key": "!items!1bcd23927041a588",
+  "name": "Exorcism",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "exorcism",
+    "description": "<p>You perform a multi-strike combination with all of your strength and Body weight. Make three melee taijutsu attacks. On a hit you deal 1d12 bludgeoning damage and push the target 5 feet in any direction of your choice.</p>\n<p>If you score at least one attack on a creature, they must make a Constitution saving throw. On a failed save they become Bruised.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, increase the damage by +1d12. If this jutsu is cast at S-Rank, increase the damage by +1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4315",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "combo"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, increase the damage by +1d12. If this jutsu is cast at S-Rank, increase the damage by +1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4315,
+        "sourceHash": "10d7e388ac4cc4c7d65ea0238ed5a3b341eb3efb5118d84668886f4123e8bf77",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "5 feet",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Combo"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 5 feet Duration: Instant\nComponents: M Cost: 4 Chakra Keywords: Taijutsu, Combo Description: You perform a multi-strike combination with all of your strength and Body weight. Make three melee taijutsu attacks. On a hit you deal 1d12 bludgeoning damage and push the target 5 feet in any direction of your choice.\nIf you score at least one attack on a creature, they must make a Constitution saving throw. On a failed save they become Bruised.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, increase the damage by +1d12. If this jutsu is cast at S-Rank, increase the damage by +1d12.",
+        "expressions": [
+          {
+            "expression": "1d12",
+            "offset": 135,
+            "context": "On a hit you deal 1d12 bludgeoning damage and push the target 5 feet in any direction of your choice.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 519,
+            "context": "If this jutsu is cast at B-Rank or higher, increase the damage by +1d12. If this jutsu is cast at S-Rank, increase the damage by +1d12.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "1d12",
+            "offset": 582,
+            "context": "If this jutsu is cast at S-Rank, increase the damage by +1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b31b1b0d97c02089"
+}

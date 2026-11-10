@@ -1,0 +1,202 @@
+{
+  "_id": "19f95f1f7183d9a8",
+  "_key": "!items!19f95f1f7183d9a8",
+  "name": "Breath of Roses: Plum",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-roses-plum",
+    "description": "<p>You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you.</p>\n<p>When you would take damage, you begin to make a series of rotating strikes to deflect as much damage as possible. Reduce the damage you would take by 2d8 and all hostile creatures adjacent to you must make a dexterity saving throw, taking 2d8 poison damage on a failed save or half as much on a successful save.</p>\n<p>Chain 1: You may add your [Weapon damage Dice] to the damage reduced.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage reduced and dealt by 1d8. If this jutsu is cast at B-Rank or higher, on a failed save, affected creatures gain a rank of Envenomed.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5222",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "medical",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage, excluding from a Genjutsu."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (Weapon Range Radius)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage reduced and dealt by 1d8. If this jutsu is cast at B-Rank or higher, on a failed save, affected creatures gain a rank of Envenomed.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: You may add your [Weapon damage Dice] to the damage reduced.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5222,
+        "sourceHash": "abd018f627d58bbcf32ced01147335132a207439b268800fda4ef004c9af5a11",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you take damage, excluding from a Genjutsu.",
+          "range": "Self (Weapon Range Radius)",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Chain, Medical, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you take damage, excluding from a Genjutsu. Range: Self (Weapon Range Radius) Duration: Instant\nComponents: CM, W (Any melee), M Cost: 4 Chakra Keywords: Bukijutsu, Chain, Medical, Clash Description: You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you.\nWhen you would take damage, you begin to make a series of rotating strikes to deflect as much damage as possible. Reduce the damage you would take by 2d8 and all hostile creatures adjacent to you must make a dexterity saving throw, taking 2d8 poison damage on a failed save or half as much on a successful save.\nChain 1: You may add your [Weapon damage Dice] to the damage reduced.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage reduced and dealt by 1d8. If this jutsu is cast at B-Rank or higher, on a failed save, affected creatures gain a rank of Envenomed.",
+        "expressions": [
+          {
+            "expression": "2d8",
+            "offset": 255,
+            "context": "Reduce the damage you would take by 2d8 and all hostile creatures adjacent to you must make a dexterity saving throw, taking 2d8 poison damage on a failed save or half as much on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8",
+            "offset": 344,
+            "context": "Reduce the damage you would take by 2d8 and all hostile creatures adjacent to you must make a dexterity saving throw, taking 2d8 poison damage on a failed save or half as much on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 624,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage reduced and dealt by 1d8. If this jutsu is cast at B-Rank or higher, on a failed save, affected creatures gain a rank of Envenomed.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "1b8bbde86064544a"
+}

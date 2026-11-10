@@ -1,0 +1,346 @@
+{
+  "_id": "e2f027fc3863c713",
+  "_key": "!items!e2f027fc3863c713",
+  "name": "Breath of Roses: Futility",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-roses-futility",
+    "description": "<p>You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you.</p>\n<p>Select one create you can see within range as you begin to imitate a throned stem striking them with each passing gesture.</p>\n<p>Make three melee taijutsu attacks with your weapon, dealing your [Weapons damage] + 2d6 poison damage.</p>\n<p>An affected creature must make a Constitution saving throw gaining 1 rank of Weakened and Envenomed on a failed save.</p>\n<p>Chain 2: If the affected creature would regain hit points or gain temporary hit points before the end of your next turn, that effect fails and they instead take additional damage equal to the hit points or temporary hit points they would gain.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5501",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "medical",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: If the affected creature would regain hit points or gain temporary hit points before the end of your next turn, that effect fails and they instead take additional damage equal to the hit points or temporary hit points they would gain.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5501,
+        "sourceHash": "8008055236a3d4d9eb31f07978ff1f17a76d3970ed555abfdd391dca5b93f0ca",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "B",
+          "time": "1 Action.",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Medical, Chain, Clash"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time: 1 Action.\nRange: Weapons Range\nDuration: Instant\nComponents: CM, W (Any melee), M Cost: 12 Chakra Keywords: Bukijutsu, Medical, Chain, Clash\nDescription: You begin to collect medical chakra until it creates a visage of a poisonous flowers falling around you.\nSelect one create you can see within range as you begin to imitate a throned stem striking them with each passing gesture.\nMake three melee taijutsu attacks with your weapon, dealing your [Weapons damage] + 2d6 poison damage.\nAn affected creature must make a Constitution saving throw gaining 1 rank of Weakened and Envenomed on a failed save.\nChain 2: If the affected creature would regain hit points or gain temporary hit points before the end of your next turn, that effect fails and they instead take additional damage equal to the hit points or temporary hit points they would gain.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 293,
+            "context": "Make three melee taijutsu attacks with your weapon, dealing your [Weapons damage] + 2d6 poison damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 312,
+            "context": "Make three melee taijutsu attacks with your weapon, dealing your [Weapons damage] + 2d6 poison damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 812,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c3fd08eae955429"
+}

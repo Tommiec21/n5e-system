@@ -1,0 +1,168 @@
+{
+  "_id": "f3dc3829ccb4397f",
+  "_key": "!items!f3dc3829ccb4397f",
+  "name": "Genjutsu Break",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "genjutsu-break",
+    "description": "<p>Choose one creature, object, or Genjutsu effect within range. Any Genjutsu of equal rank or lower is transferred into the Chakra seal used in this jutsu’s casting, immediately ending its effect on the affected creature(s), or object(s). For each Genjutsu of higher rank, affecting the target, make an ability check using your Genjutsu ability. The DC equals 12 + The Jutsu’s Rank. Rank (B-3, A-4, S-5). On a successful check, the Genjutsu is transferred to the Chakra seal and can be stored for no more than 10 minutes.</p>\n<p>For the duration of this hour, you can attempt to transfer this Genjutsu to another creature within 5 feet of you by spending an action to make a melee Genjutsu attack against a creature within 5 feet of you. On a hit the Sealing tag is applied to the target, and at the beginning of its next turn they must make a saving throw against the original save DC to resist its effects as if the jutsu were originally cast on them.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. The removed jutsu has no effect if its rank is less than or equal to the rank of this jutsu when you cast it.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3672",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "gen",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. The removed jutsu has no effect if its rank is less than or equal to the rank of this jutsu when you cast it.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3672,
+        "sourceHash": "fb49e4c9119b3126f9f35b1706780ec64f5db6e297a4df82010c03873d88972d",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Instant",
+          "cost": "8 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Genjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch Duration: Instant\nComponents: HS, CM, CS Cost: 8 Chakra Keywords: Genjutsu, Fuinjutsu Description: Choose one creature, object, or Genjutsu effect within range. Any Genjutsu of equal rank or lower is transferred into the Chakra seal used in this jutsu’s casting, immediately ending its effect on the affected creature(s), or object(s). For each Genjutsu of higher rank, affecting the target, make an ability check using your Genjutsu ability. The DC equals 12 + The Jutsu’s Rank. Rank (B-3, A-4, S-5). On a successful check, the Genjutsu is transferred to the Chakra seal and can be stored for no more than 10 minutes.\nFor the duration of this hour, you can attempt to transfer this Genjutsu to another creature within 5 feet of you by spending an action to make a melee Genjutsu attack against a creature within 5 feet of you. On a hit the Sealing tag is applied to the target, and at the beginning of its next turn they must make a saving throw against the original save DC to resist its effects as if the jutsu were originally cast on them.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. The removed jutsu has no effect if its rank is less than or equal to the rank of this jutsu when you cast it.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "293cc8e640ba6c9d"
+}

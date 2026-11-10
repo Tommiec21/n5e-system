@@ -1,0 +1,241 @@
+{
+  "_id": "9755702e4e96a930",
+  "_key": "!items!9755702e4e96a930",
+  "name": "Water Release: Cutting Water Claws",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-cutting-water-claws",
+    "description": "<p>You manifest a construct of water release chakra in the shape of two claws that surround your hands, of your design and description.</p>\n<p>For the duration, as an Action, you can choose to make a Spinning Claw attack or Slicing Water attack. If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or increase the ranks of Bleed inflicted with Spinning Claw +1 or the number of creatures you can target with Slicing Water by +1.</p>\n<p>Spinning Claw. Make two melee ninjutsu attacks, comparing the result vs the AC of all targets of your choice within 5 feet of you. On a hit, you deal 2d6 cold damage and once per turn force affected creatures to make a Constitution Saving throw, gaining 1 rank of Bleed, on a failed save.</p>\n<p>Slicing Water. Make a ranged ninjutsu attack as you slash the air releasing blades of thin water to slice into opposing creatures up to 15-feet away. On a hit, you deal 2d6 slashing damage as the affected creature becomes sheathed in vibrating water until the start of your next turn. If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of both the attack and the explosion damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2536",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "On a hit, you deal 2d6 cold damage and once per turn force affected creatures to make a Constitution Saving throw, gaining 1 rank of Bleed, on a failed save."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of both the attack and the explosion damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2536,
+        "sourceHash": "44649c9bc29deecd55640c52d6b11f0d69c151e145059dce2178367873e5c141",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute.",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Stable"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, up to 1 minute.\nComponents: HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Water Release, Stable Description: You manifest a construct of water release chakra in the shape of two claws that surround your hands, of your design and description.\nFor the duration, as an Action, you can choose to make a Spinning Claw attack or Slicing Water attack. If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or increase the ranks of Bleed inflicted with Spinning Claw +1 or the number of creatures you can target with Slicing Water by +1.\nSpinning Claw. Make two melee ninjutsu attacks, comparing the result vs the AC of all targets of your choice within 5 feet of you. On a hit, you deal 2d6 cold damage and once per turn force affected creatures to make a Constitution Saving throw, gaining 1 rank of Bleed, on a failed save.\nSlicing Water. Make a ranged ninjutsu attack as you slash the air releasing blades of thin water to slice into opposing creatures up to 15-feet away. On a hit, you deal 2d6 slashing damage as the affected creature becomes sheathed in vibrating water until the start of your next turn. If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of both the attack and the explosion damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 602,
+            "context": "On a hit, you deal 2d6 cold damage and once per turn force affected creatures to make a Constitution Saving throw, gaining 1 rank of Bleed, on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 910,
+            "context": "On a hit, you deal 2d6 slashing damage as the affected creature becomes sheathed in vibrating water until the start of your next turn. If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1131,
+            "context": "If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1407,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage of both the attack and the explosion damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "3b09f83137c247b7"
+}

@@ -1,0 +1,207 @@
+{
+  "_id": "f5bd5ae1003e65ee",
+  "_key": "!items!f5bd5ae1003e65ee",
+  "name": "Falling Heaven: Protect",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "falling-heaven-protect",
+    "description": "<p>You spin your weapon in front of you while coated in your chakra creating a spinning shield. Roll your [Weapons Damage] + 2d6, reducing the triggering damage by the result.</p>\n<p>You can then lash out, retaliating against the offending target. Make a ranged Taijutsu attack against the triggering creature if they are within your weapons range. On a hit, you deal [Weapons Damage] + 2d6. Make an additional attack targeting the same creature if you are in Chain rank 2 or 3.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and reduce damage you take and increase the damage you deal retaliating by an additional 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6914",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, that you take when you or an allied creature within range take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and reduce damage you take and increase the damage you deal retaliating by an additional 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6914,
+        "sourceHash": "a3263fc9cda1f41805ac4e20528515ba8519e877c27248325da5f30bf7d22fe0",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, that you take when you or an allied creature within range take damage.",
+          "range": "30 Feet",
+          "duration": "1 Round",
+          "cost": "6 Chakra",
+          "components": "M, W (Any Thrown)",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Reaction, that you take when you or an allied creature within range take damage. Range: 30 Feet Duration: 1 Round\nComponents: M, W (Any Thrown) Cost: 6 Chakra Keywords: Bukijutsu, Chain Description: You spin your weapon in front of you while coated in your chakra creating a spinning shield. Roll your [Weapons Damage] + 2d6, reducing the triggering damage by the result.\nYou can then lash out, retaliating against the offending target. Make a ranged Taijutsu attack against the triggering creature if they are within your weapons range. On a hit, you deal [Weapons Damage] + 2d6. Make an additional attack targeting the same creature if you are in Chain rank 2 or 3.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and reduce damage you take and increase the damage you deal retaliating by an additional 1d6.",
+        "expressions": [
+          {
+            "expression": "[Weapons Damage]",
+            "offset": 103,
+            "context": "Roll your [Weapons Damage] + 2d6, reducing the triggering damage by the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 122,
+            "context": "Roll your [Weapons Damage] + 2d6, reducing the triggering damage by the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons Damage]",
+            "offset": 358,
+            "context": "On a hit, you deal [Weapons Damage] + 2d6. Make an additional attack targeting the same creature if you are in Chain rank 2 or 3.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 377,
+            "context": "On a hit, you deal [Weapons Damage] + 2d6. Make an additional attack targeting the same creature if you are in Chain rank 2 or 3.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 660,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and reduce damage you take and increase the damage you deal retaliating by an additional 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "f8211708ba076b1c"
+}

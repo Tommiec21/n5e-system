@@ -1,0 +1,162 @@
+{
+  "_id": "df51b3133e726122",
+  "_key": "!items!df51b3133e726122",
+  "name": "Phantom Light",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "phantom-light",
+    "description": "<p>You touch a single object that measure less than 10 feet in every dimension. Until this Jutsu ends, you and up to 3 other creatures can see Bright light originating from that object in a 20-foot radius, and dim light for another 20 feet.</p>\n<p>The light can be colored as you like. Only you and the selected creatures can gain benefit from this artificial light source. You can use your bonus action to dismiss this jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of objects you can affect with this jutsu by +1. If this jutsu is cast at B-Rank or higher A hostile creature attempting to cast a Genjutsu of C-Rank or lower that has the visual keyword, while within the bright light, must make a Wisdom saving throw. On a failed save, any creature who would make a saving throw as a result of their Genjutsu, makes their saving throw at advantage.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3611",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "hour",
+      "concentration": false,
+      "text": "1 Hour"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of objects you can affect with this jutsu by +1. If this jutsu is cast at B-Rank or higher A hostile creature attempting to cast a Genjutsu of C-Rank or lower that has the visual keyword, while within the bright light, must make a Wisdom saving throw. On a failed save, any creature who would make a saving throw as a result of their Genjutsu, makes their saving throw at advantage.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3611,
+        "sourceHash": "d1eeb7084c65598362b346bf1306403ebcd9cba425aca70d0417cc514015cbbc",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "1 Hour",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Touch Duration: 1 Hour\nComponents:  HS, CM\nCost: 3 Chakra Keywords: Genjutsu (Visual)  Description: You touch a single object that measure less than 10 feet in every dimension. Until this Jutsu ends, you and up to 3 other creatures can see Bright light originating from that object in a 20-foot radius, and dim light for another 20 feet.\nThe light can be colored as you like. Only you and the selected creatures can gain benefit from this artificial light source. You can use your bonus action to dismiss this jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of objects you can affect with this jutsu by +1. If this jutsu is cast at B-Rank or higher A hostile creature attempting to cast a Genjutsu of C-Rank or lower that has the visual keyword, while within the bright light, must make a Wisdom saving throw. On a failed save, any creature who would make a saving throw as a result of their Genjutsu, makes their saving throw at advantage.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5ecbQOCtW8LIE7D"
+}

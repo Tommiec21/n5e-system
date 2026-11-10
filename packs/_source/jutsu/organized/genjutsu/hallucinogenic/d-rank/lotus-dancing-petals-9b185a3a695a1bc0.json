@@ -1,0 +1,212 @@
+{
+  "_id": "9b185a3a695a1bc0",
+  "_key": "!items!9b185a3a695a1bc0",
+  "name": "Lotus: Dancing Petals",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lotus-dancing-petals",
+    "description": "<p>You grasp a hand full of poisonous Lotus petals, spreading them around yourself in a dance of despair.</p>\n<p>As they flutter around you, all creatures within range must make a Charisma saving throw to realize they should hold their breath before inhaling the poisonous pollen.</p>\n<p>Critical Success: Affected creature is able to resist most of this jutsu’s effects.</p>\n<p>Success: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage.</p>\n<p>Failure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end.</p>\n<p>Critical Failure: Same as failure, but if the target attempts the ability check to end its effects, all creatures who are currently unaffected by this jutsu, within 10 feet of the retching target must also make a Charisma saving throw, as if they were the original targets of this jutsu.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4083",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "inhaled"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Poison Kit, 1 Charges"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
+            "success": "On a success, this jutsu’s effects end.",
+            "failure": "failure, but if the target attempts the ability check to end its effects, all creatures who are currently unaffected by this jutsu, within 10 feet of the retching target must also make a Charisma saving throw, as if they were the original targets of this jutsu.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "Success: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Failure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4083,
+        "sourceHash": "b98e3f74a7ffbf54c3a58e2ca012123e52af5ad6c61a64ad0bbb6b997c42bed9",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (10-foot radius)",
+          "duration": "1 Minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+          "keywords": "Genjutsu (Inhale, Tactile)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (10-foot radius) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 4 Chakra Keywords: Genjutsu (Inhale, Tactile) Description: You grasp a hand full of poisonous Lotus petals, spreading them around yourself in a dance of despair.\nAs they flutter around you, all creatures within range must make a Charisma saving throw to realize they should hold their breath before inhaling the poisonous pollen.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage.\nFailure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end.\nCritical Failure: Same as failure, but if the target attempts the ability check to end its effects, all creatures who are currently unaffected by this jutsu, within 10 feet of the retching target must also make a Charisma saving throw, as if they were the original targets of this jutsu.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 446,
+            "context": "Success: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 540,
+            "context": "Failure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eerYeblcK91isN"
+}

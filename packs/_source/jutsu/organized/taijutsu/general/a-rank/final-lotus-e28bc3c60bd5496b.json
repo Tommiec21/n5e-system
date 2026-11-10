@@ -1,0 +1,205 @@
+{
+  "_id": "e28bc3c60bd5496b",
+  "_key": "!items!e28bc3c60bd5496b",
+  "name": "Final Lotus",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "final-lotus",
+    "description": "<p>This jutsu can only be cast as a Taijutsu Finisher. As part of the requirements of this jutsu, you must have at least the 5th Gate: Limit from the 8 Inner Gates: Seimon Taijutsu Feat.</p>\n<p>The target of this jutsu must be Restrained or Grappled. Make five Taijutsu attacks against the target. On a hit, you deal [Unarmed Damage] + 1d12.</p>\n<p>If all five attacks hit, you make a 6th attack. On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5030",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "finisher-parsed1",
+        "type": "attack",
+        "label": "Finisher: Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d12",
+        "roll": {
+          "formula": "1d12",
+          "note": "On a hit, you deal [Unarmed Damage] + 1d12."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "6d12",
+        "roll": {
+          "formula": "6d12",
+          "note": "On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher. As part of the requirements of this jutsu, you must have at least the 5th Gate: Limit from the 8 Inner Gates: Seimon Taijutsu Feat.</p>\n<p>The target of this jutsu must be Restrained or Grappled. Make five Taijutsu attacks against the target. On a hit, you deal [Unarmed Damage] + 1d12.</p>\n<p>If all five attacks hit, you make a 6th attack. On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5030,
+        "sourceHash": "4c6e3f92dea27eaa5ff369a117f41e888d5396401aa5eeb45e61ce60ffad4803",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Instant",
+          "cost": "18 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Touch Duration: Instant\nComponents: CM, M Cost: 18 Chakra Keywords: Taijutsu, Finisher Description: This jutsu can only be cast as a Taijutsu Finisher. As part of the requirements of this jutsu, you must have at least the 5th Gate: Limit from the 8 Inner Gates: Seimon Taijutsu Feat.\nThe target of this jutsu must be Restrained or Grappled. Make five Taijutsu attacks against the target. On a hit, you deal [Unarmed Damage] + 1d12.\nIf all five attacks hit, you make a 6th attack. On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone.",
+        "expressions": [
+          {
+            "expression": "[Unarmed Damage]",
+            "offset": 307,
+            "context": "On a hit, you deal [Unarmed Damage] + 1d12.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 326,
+            "context": "On a hit, you deal [Unarmed Damage] + 1d12.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d12",
+            "offset": 419,
+            "context": "On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ee1379d61e3505ec"
+}

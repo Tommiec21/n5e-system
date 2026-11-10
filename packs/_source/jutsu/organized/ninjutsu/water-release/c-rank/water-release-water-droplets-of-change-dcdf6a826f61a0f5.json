@@ -1,0 +1,199 @@
+{
+  "_id": "dcdf6a826f61a0f5",
+  "_key": "!items!dcdf6a826f61a0f5",
+  "name": "Water Release: Water Droplets of Change",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-droplets-of-change",
+    "description": "<p>You solidify your Water Release Chakra into pure water that floats above your hand in the shape of a teardrop. This teardrop holds the power of change within. Select a willing creature within 30 feet of you to consume the special water. They gain the listed effect;</p>\n<p>Encourage. Gain 3d12 temporary hit points and a special action called Encouraged Momentum which they lose at the end of their next turn.</p>\n<p>Encouraged Momentum. On your turn, you can use this special action to take the following actions; Dash, Hide, Disengage, or Dodge.</p>\n<p>Cleanse. Regain 3d6 hit points and lose all ranks of one of the listed conditions; Bleeding, Burned, Chilled or Envenomed.</p>\n<p>Crush. Until the end of your next turn, Jutsu cast with the Water Release keyword gain a rank of Mastery to attack rolls, a +1 Bonus to initial save DC’s and a +2 bonus to damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you gain an extra effect you can choose from called Reflect. If cast at S-Rank, you can select two effects when this jutsu is cast.</p>\n<p>Reflect. Until the end of your next turn, the affected creature is enveloped in a barrier of water that intercepts all damage for the affected creature. The barrier has 6d8 hit points and resistance to Cold and Fire damage. It also has vulnerability to Earth damage. Each time the barrier is struct with an attack it fires a mote of high-pressure water at the attacking creature. Make a ranged ninjutsu attack. On a hit, it deals 4d8 cold damage.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2591",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "barrier"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "heal",
+        "label": "Temporary HP",
+        "heal": {
+          "formula": "3d12",
+          "pool": "tempHp"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "heal",
+        "label": "Healing",
+        "heal": {
+          "formula": "3d6",
+          "pool": "hp"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you gain an extra effect you can choose from called Reflect. If cast at S-Rank, you can select two effects when this jutsu is cast.</p>\n<p>Reflect. Until the end of your next turn, the affected creature is enveloped in a barrier of water that intercepts all damage for the affected creature. The barrier has 6d8 hit points and resistance to Cold and Fire damage. It also has vulnerability to Earth damage. Each time the barrier is struct with an attack it fires a mote of high-pressure water at the attacking creature. Make a ranged ninjutsu attack. On a hit, it deals 4d8 cold damage.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2591,
+        "sourceHash": "61018a9699c31cbcbff7060a465cb64f2026e001eb237d877a7f52490345c0ec",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Special",
+          "duration": "Instant",
+          "cost": "7 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Barrier"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Special  Duration: Instant\nComponents: HS, CM Cost: 7 Chakra Keywords: Ninjutsu, Water Release, Barrier Description: You solidify your Water Release Chakra into pure water that floats above your hand in the shape of a teardrop. This teardrop holds the power of change within. Select a willing creature within 30 feet of you to consume the special water. They gain the listed effect;\nEncourage. Gain 3d12 temporary hit points and a special action called Encouraged Momentum which they lose at the end of their next turn.\nEncouraged Momentum. On your turn, you can use this special action to take the following actions; Dash, Hide, Disengage, or Dodge.\nCleanse. Regain 3d6 hit points and lose all ranks of one of the listed conditions; Bleeding, Burned, Chilled or Envenomed.\nCrush. Until the end of your next turn, Jutsu cast with the Water Release keyword gain a rank of Mastery to attack rolls, a +1 Bonus to initial save DC’s and a +2 bonus to damage.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you gain an extra effect you can choose from called Reflect. If cast at S-Rank, you can select two effects when this jutsu is cast.\nReflect. Until the end of your next turn, the affected creature is enveloped in a barrier of water that intercepts all damage for the affected creature. The barrier has 6d8 hit points and resistance to Cold and Fire damage. It also has vulnerability to Earth damage. Each time the barrier is struct with an attack it fires a mote of high-pressure water at the attacking creature. Make a ranged ninjutsu attack. On a hit, it deals 4d8 cold damage.",
+        "expressions": [
+          {
+            "expression": "3d12",
+            "offset": 282,
+            "context": "Gain 3d12 temporary hit points and a special action called Encouraged Momentum which they lose at the end of their next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 550,
+            "context": "Regain 3d6 hit points and lose all ranks of one of the listed conditions; Bleeding, Burned, Chilled or Envenomed.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d8",
+            "offset": 1270,
+            "context": "The barrier has 6d8 hit points and resistance to Cold and Fire damage. It also has vulnerability to Earth damage. Each time the barrier is struct with an attack it fires a mote of high-pressure water at the attacking creature. Make a ranged ninjutsu attack. On a hit, it deals 4d8 cold damage.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "4d8",
+            "offset": 1531,
+            "context": "On a hit, it deals 4d8 cold damage.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c43a048cce4a087"
+}

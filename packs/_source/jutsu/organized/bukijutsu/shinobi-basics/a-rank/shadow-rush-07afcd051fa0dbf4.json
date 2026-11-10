@@ -1,0 +1,181 @@
+{
+  "_id": "07afcd051fa0dbf4",
+  "_key": "!items!07afcd051fa0dbf4",
+  "name": "Shadow Rush",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "shadow-rush",
+    "description": "<p>You cloak yourself in a dark aura meant to accelerate your movement. You make a Dash towards your target creature in range, attempting to stab them first as you impact them then using their body as a Launch pad, jumping into the air directly after.</p>\n<p>First, move up to 60 feet in any direction towards a creature you can see within range, ending your movement within 5 feet of them. Next, make a melee taijutsu attack against the target creature, on a hit the target takes your weapons damage + 4d4.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5659",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Movement Speed"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "4d4",
+        "roll": {
+          "formula": "4d4",
+          "note": "Next, make a melee taijutsu attack against the target creature, on a hit the target takes your weapons damage + 4d4."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5659,
+        "sourceHash": "96c40c66b29464d2c23c6a5f5c2c0496d724bca484c93693c5e846c436b941ed",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "A",
+          "time": "1 Bonus Action",
+          "range": "Movement Speed",
+          "duration": "Instant",
+          "cost": "18 Chakra",
+          "components": "W (Any melee), M, CM",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Bonus Action Range: Movement Speed Duration: Instant\nComponents: W (Any melee), M, CM  Cost: 18 Chakra Keywords: Bukijutsu Description: You cloak yourself in a dark aura meant to accelerate your movement. You make a Dash towards your target creature in range, attempting to stab them first as you impact them then using their body as a Launch pad, jumping into the air directly after.\nFirst, move up to 60 feet in any direction towards a creature you can see within range, ending your movement within 5 feet of them. Next, make a melee taijutsu attack against the target creature, on a hit the target takes your weapons damage + 4d4.",
+        "expressions": [
+          {
+            "expression": "4d4",
+            "offset": 493,
+            "context": "Next, make a melee taijutsu attack against the target creature, on a hit the target takes your weapons damage + 4d4.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "7116760d98edc24e"
+}

@@ -1,0 +1,189 @@
+{
+  "_id": "27b4647773a27b48",
+  "_key": "!items!27b4647773a27b48",
+  "name": "Fire Release: Heavenly Prison",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-heavenly-prison",
+    "description": "<p>You take a chakra seal and imprint your chakra onto it, before attempting to bind it to a creature, forcing them to make a Charisma saving throw. On a failed save, the target creature is branded with a flaming chakra seal for the duration. While branded with this seal, creatures have extreme difficulty molding chakra. When the affected creature would cast a Ninjutsu or Genjutsu with the Chakra Molding (CM) component, They must make a Chakra Control check at disadvantage vs your Ninjutsu save DC. On a failure, they take 5d8 Fire damage. Creatures can make a Ninshou skill check as an action vs your Ninjutsu save DC to break the seal ending this jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, its duration becomes 1 Hour. If this jutsu is cast at A-Rank or higher, its casting time becomes 10 minutes and its duration becomes 1 Week. Affected creatures lose the ability to mold chakra for the duration. If this jutsu is cast at S-Rank, and its duration becomes Until Dispelled. Affected creatures lose the ability to mold chakra for the duration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2343",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": false,
+      "text": "10 minutes"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 10,
+      "text": "Special (10 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, its duration becomes 1 Hour. If this jutsu is cast at A-Rank or higher, its casting time becomes 10 minutes and its duration becomes 1 Week. Affected creatures lose the ability to mold chakra for the duration. If this jutsu is cast at S-Rank, and its duration becomes Until Dispelled. Affected creatures lose the ability to mold chakra for the duration.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2343,
+        "sourceHash": "072ca8b982b74f2fe57970a39e67998eb22f5302e0bce967bd7595189ce32263",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "5 feet",
+          "duration": "10 minutes",
+          "cost": "Special (10 Chakra)",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fire Release, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 5 feet Duration: 10 minutes\nComponents: HS, CM, CS Cost: Special (10 Chakra) Keywords: Ninjutsu, Fire Release, Fuinjutsu Description: You take a chakra seal and imprint your chakra onto it, before attempting to bind it to a creature, forcing them to make a Charisma saving throw. On a failed save, the target creature is branded with a flaming chakra seal for the duration. While branded with this seal, creatures have extreme difficulty molding chakra. When the affected creature would cast a Ninjutsu or Genjutsu with the Chakra Molding (CM) component, They must make a Chakra Control check at disadvantage vs your Ninjutsu save DC. On a failure, they take 5d8 Fire damage. Creatures can make a Ninshou skill check as an action vs your Ninjutsu save DC to break the seal ending this jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, its duration becomes 1 Hour. If this jutsu is cast at A-Rank or higher, its casting time becomes 10 minutes and its duration becomes 1 Week. Affected creatures lose the ability to mold chakra for the duration. If this jutsu is cast at S-Rank, and its duration becomes Until Dispelled. Affected creatures lose the ability to mold chakra for the duration.",
+        "expressions": [
+          {
+            "expression": "5d8",
+            "offset": 525,
+            "context": "On a failure, they take 5d8 Fire damage. Creatures can make a Ninshou skill check as an action vs your Ninjutsu save DC to break the seal ending this jutsu.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d322c5d25b2d40d2"
+}

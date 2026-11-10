@@ -1,0 +1,247 @@
+{
+  "_id": "06c172bff0516d84",
+  "_key": "!items!06c172bff0516d84",
+  "name": "Draw!",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "draw",
+    "description": "<p>You quickly dash backwards creating distance between yourself and another creature.</p>\n<p>As a as a reaction when you would take damage from an attack, you can dodge backwards, moving up to 10 feet away from the triggering target in an attempt to escape the attacks range. When you do, make a contested Dexterity saving throw vs the attack roll result.  On a success the triggering attack misses you. You then immediately move up to 20 feet towards the triggering creature, making an unarmed attack, on a hit you deal your [Unarmed damage] + 2 [Unarmed damage die].</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by +1 [Unarmed damage die].</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4300",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage from an attack."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by +1 [Unarmed damage die].</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4300,
+        "sourceHash": "ef9ce3c8ada28d9b92dfca4b88c82975e2e65c145b1d448175a5d276746a95fe",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you take damage from an attack.",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you take damage from an attack. Range: Self\nDuration: Instant\nComponents: M Cost: 4 Chakra Keywords: Taijutsu Description: You quickly dash backwards creating distance between yourself and another creature.\nAs a as a reaction when you would take damage from an attack, you can dodge backwards, moving up to 10 feet away from the triggering target in an attempt to escape the attacks range. When you do, make a contested Dexterity saving throw vs the attack roll result.  On a success the triggering attack misses you. You then immediately move up to 20 feet towards the triggering creature, making an unarmed attack, on a hit you deal your [Unarmed damage] + 2 [Unarmed damage die].\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by +1 [Unarmed damage die].",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 517,
+            "context": "You then immediately move up to 20 feet towards the triggering creature, making an unarmed attack, on a hit you deal your [Unarmed damage] + 2 [Unarmed damage die].",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage die]",
+            "offset": 538,
+            "context": "You then immediately move up to 20 feet towards the triggering creature, making an unarmed attack, on a hit you deal your [Unarmed damage] + 2 [Unarmed damage die].",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage die]",
+            "offset": 682,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by +1 [Unarmed damage die].",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed) + (1)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed) + (2)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed) + (3)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed) + (4)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b31b1b0d97c02089"
+}

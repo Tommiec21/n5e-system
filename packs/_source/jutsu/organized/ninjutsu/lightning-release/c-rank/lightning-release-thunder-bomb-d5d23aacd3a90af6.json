@@ -1,0 +1,258 @@
+{
+  "_id": "d5d23aacd3a90af6",
+  "_key": "!items!d5d23aacd3a90af6",
+  "name": "Lightning Release: Thunder Bomb",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-thunder-bomb",
+    "description": "<p>You collect a surge of lightning into your fingertips as you pinpoint all creatures within your Jutsu’s radius that are Shocked.</p>\n<p>All Shocked creatures within range can feel the Lightning chakra on them begin to react before it violently explodes creating audible sounds over 1000 feet away.</p>\n<p>Creatures with more than one rank of the Shocked Condition suffer greater impacts. Shocked creatures within range must make a Constitution saving throw taking lightning damage equal to the following based on the ranks of Shocked they have or half as much on a successful save.</p>\n<p>(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)</p>\n<p>Creatures within 10 feet of a Shocked creature when this explosion happens makes a Dexterity saving throw taking half the damage on a failed save or no damage on a successful save. If a creature is Shocked and within 10 feet of another Shocked creature when this explosion occurs, they make their save at Disadvantage.</p>\n<p>A creature can be affected by no more than 2 explosions. The Shocked condition ends on all creatures within range regardless of passing or failing.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2925",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "interrupt",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature gains or would lose a rank of Shocked."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d8",
+        "roll": {
+          "formula": "3d8",
+          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "4d8",
+        "roll": {
+          "formula": "4d8",
+          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "5d8",
+        "roll": {
+          "formula": "5d8",
+          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
+        }
+      },
+      {
+        "id": "sourceRoll4",
+        "type": "roll",
+        "label": "6d8",
+        "roll": {
+          "formula": "6d8",
+          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "7d8",
+        "roll": {
+          "formula": "7d8",
+          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2925,
+        "sourceHash": "9462bf34e04717fb4501e6a3836f0e7331fa113123387cb8eadb3aa75c021312",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when a creature gains or would lose a rank of Shocked.",
+          "range": "Self (30-foot radius)",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Interrupt"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Reaction, which you take when a creature gains or would lose a rank of Shocked. Range: Self (30-foot radius) Duration: Instant\nComponents: HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Lightning Release, Interrupt  Description: You collect a surge of lightning into your fingertips as you pinpoint all creatures within your Jutsu’s radius that are Shocked.\nAll Shocked creatures within range can feel the Lightning chakra on them begin to react before it violently explodes creating audible sounds over 1000 feet away.\nCreatures with more than one rank of the Shocked Condition suffer greater impacts. Shocked creatures within range must make a Constitution saving throw taking lightning damage equal to the following based on the ranks of Shocked they have or half as much on a successful save.\n(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)\nCreatures within 10 feet of a Shocked creature when this explosion happens makes a Dexterity saving throw taking half the damage on a failed save or no damage on a successful save. If a creature is Shocked and within 10 feet of another Shocked creature when this explosion occurs, they make their save at Disadvantage.\nA creature can be affected by no more than 2 explosions. The Shocked condition ends on all creatures within range regardless of passing or failing.",
+        "expressions": [
+          {
+            "expression": "3d8",
+            "offset": 578,
+            "context": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)",
+            "section": "Base"
+          },
+          {
+            "expression": "4d8",
+            "offset": 593,
+            "context": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)",
+            "section": "Base"
+          },
+          {
+            "expression": "5d8",
+            "offset": 608,
+            "context": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)",
+            "section": "Base"
+          },
+          {
+            "expression": "6d8",
+            "offset": 623,
+            "context": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)",
+            "section": "Base"
+          },
+          {
+            "expression": "7d8",
+            "offset": 639,
+            "context": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "5a30ed7096cb7ea2"
+}

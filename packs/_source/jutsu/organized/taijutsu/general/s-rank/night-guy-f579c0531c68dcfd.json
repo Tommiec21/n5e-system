@@ -1,0 +1,199 @@
+{
+  "_id": "f579c0531c68dcfd",
+  "_key": "!items!f579c0531c68dcfd",
+  "name": "Night Guy",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "night-guy",
+    "description": "<p>As a part of casting this jutsu, you must currently have at least the 8th Gate: Death from the 8 Inner Gates Taijutsu feat. You begin to emit an enormous amount of red steam, known as the ‘Steam of Blood’, and your chakra manifests into a red burning beast of your description around your body. You then shout an activation word of your choice, before dashing forward with such force that space in front of your becomes distorted.</p>\n<p>You may select any creature or space you can see or within 120 feet of you. You move in as straight a line as possible. You move through all structures, environmental obstructions and anything similar as if you phase through them. You ignore barriers and structures that intercept damage or inhibit movement and the target cannot gain the benefits of a Reaction until the beginning of their next turn as you kick with the force required to distort time and space.</p>\n<p>Make a melee Taijutsu attack, at advantage, rerolling 1’s and 2’s.</p>\n<p>On a hit, the target must make a Constitution saving throw. On a failed save, they are immediately killed. On a successful save, they take deal 10d12 + 100 bludgeoning damage.</p>\n<p>At the conclusion of this attack, all of the blood in the users body is boiled out of them, forcing the end of their 8 Inner Gates.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5160",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "kinjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 1,
+      "text": "Special (1 Chakra)"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d12+100",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5160,
+        "sourceHash": "72319c2031799f0d762ba238144da06be4a7d4249c9d66395c72d1c891c39665",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Special",
+          "duration": "Instant",
+          "cost": "Special (1 Chakra)",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Kinjutsu"
+        },
+        "sourceText": "Rank: S-Rank\nCasting Time: 1 Action\nRange: Special\nDuration: Instant\nComponents: CM, M\nCost: Special (1 Chakra)\nKeywords: Taijutsu, Kinjutsu\nDescription: As a part of casting this jutsu, you must currently have at least the 8th Gate: Death from the 8 Inner Gates Taijutsu feat. You begin to emit an enormous amount of red steam, known as the ‘Steam of Blood’, and your chakra manifests into a red burning beast of your description around your body. You then shout an activation word of your choice, before dashing forward with such force that space in front of your becomes distorted.\nYou may select any creature or space you can see or within 120 feet of you. You move in as straight a line as possible. You move through all structures, environmental obstructions and anything similar as if you phase through them. You ignore barriers and structures that intercept damage or inhibit movement and the target cannot gain the benefits of a Reaction until the beginning of their next turn as you kick with the force required to distort time and space.\nMake a melee Taijutsu attack, at advantage, rerolling 1’s and 2’s.\nOn a hit, the target must make a Constitution saving throw. On a failed save, they are immediately killed. On a successful save, they take deal 10d12 + 100 bludgeoning damage.\nAt the conclusion of this attack, all of the blood in the users body is boiled out of them, forcing the end of their 8 Inner Gates.",
+        "expressions": [
+          {
+            "expression": "10d12 + 100",
+            "offset": 1106,
+            "context": "On a successful save, they take deal 10d12 + 100 bludgeoning damage.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "49c20138df26d73f"
+}

@@ -1,0 +1,242 @@
+{
+  "_id": "16bf2f47b2377119",
+  "_key": "!items!16bf2f47b2377119",
+  "name": "Branding Fury",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "branding-fury",
+    "description": "<p>You lash out, striking many times in a controlled zone, leaving a lasting mark upon all in a given area reminding them of your zeal. Select a point you can see in range and make two melee taijutsu attacks comparing the result against all creatures of your choice AC within a 5-foot radius of the chosen point.</p>\n<p>On a hit you deal your [Weapons damage] + 3d6 and all affected creatures are Branded by your strike until the end of your next turn. While Branded, allied creatures that target them with attacks cannot make their attacks with disadvantage.</p>\n<p>Chain 2: While branded, the target creature has 2 ranks of Weakened.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank or higher, a branded creature is branded for 1 minute or until they spend a full-turn action to remove the branding. If this jutsu is cast at S-Rank, Branded creatures must make a Constitution saving throw at the beginning of each of their turns, being Dazed on a failed save and the wound radiates with unbearable pain.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6112",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "flail",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range (5-Foot Radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 5,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 15,
+      "text": "15 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Flail"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank or higher, a branded creature is branded for 1 minute or until they spend a full-turn action to remove the branding. If this jutsu is cast at S-Rank, Branded creatures must make a Constitution saving throw at the beginning of each of their turns, being Dazed on a failed save and the wound radiates with unbearable pain.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: While branded, the target creature has 2 ranks of Weakened.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6112,
+        "sourceHash": "d190fd7f8477e6372c1506178b020015ca1fb32ad57b450cc1146379aca396b9",
+        "discipline": "Bukijutsu",
+        "group": "Flail",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapons Range (5-Foot Radius)",
+          "duration": "Instant",
+          "cost": "15 Chakra",
+          "components": "W (Any Flail), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Weapons Range (5-Foot Radius) Duration: Instant\nComponents: W (Any Flail), M Cost: 15 Chakra Keywords: Bukijutsu, Chain Description: You lash out, striking many times in a controlled zone, leaving a lasting mark upon all in a given area reminding them of your zeal. Select a point you can see in range and make two melee taijutsu attacks comparing the result against all creatures of your choice AC within a 5-foot radius of the chosen point.\nOn a hit you deal your [Weapons damage] + 3d6 and all affected creatures are Branded by your strike until the end of your next turn. While Branded, allied creatures that target them with attacks cannot make their attacks with disadvantage.\nChain 2: While branded, the target creature has 2 ranks of Weakened.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank or higher, a branded creature is branded for 1 minute or until they spend a full-turn action to remove the branding. If this jutsu is cast at S-Rank, Branded creatures must make a Constitution saving throw at the beginning of each of their turns, being Dazed on a failed save and the wound radiates with unbearable pain.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 333,
+            "context": "On a hit you deal your [Weapons damage] + 3d6 and all affected creatures are Branded by your strike until the end of your next turn. While Branded, allied creatures that target them with attacks cannot make their attacks with disadvantage.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 352,
+            "context": "On a hit you deal your [Weapons damage] + 3d6 and all affected creatures are Branded by your strike until the end of your next turn. While Branded, allied creatures that target them with attacks cannot make their attacks with disadvantage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 739,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at A-Rank or higher, a branded creature is branded for 1 minute or until they spend a full-turn action to remove the branding. If this jutsu is cast at S-Rank, Branded creatures must make a Constitution saving throw at the beginning of each of their turns, being Dazed on a failed save and the wound radiates with unbearable pain.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a56cd4d54013a971"
+}

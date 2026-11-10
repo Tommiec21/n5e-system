@@ -1,0 +1,162 @@
+{
+  "_id": "d27be6a124d1f700",
+  "_key": "!items!d27be6a124d1f700",
+  "name": "Invisibility",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "invisibility",
+    "description": "<p>A creature you touch becomes Invisible for the duration. The Jutsu ends early immediately after the target makes an attack roll, deals damage, or casts a Jutsu. This lasts for up to 1 hour provided you maintain concentration and the invisible creature doesn’t end the effect themselves.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, the affected creature does not lose the Invisible condition if they make an attack roll, deal damage or cast a jutsu. If cast in this way, This lasts for up to 1 minute provided you maintain concentration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3687",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": true,
+      "text": "Concentration, Special"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, the affected creature does not lose the Invisible condition if they make an attack roll, deal damage or cast a jutsu. If cast in this way, This lasts for up to 1 minute provided you maintain concentration.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3687,
+        "sourceHash": "7ec4fb98bfa278e3ad3e11395ebac0f4344103ab7f2ea85c2b96a5ee2cb6e090",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, Special",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch\nDuration: Concentration, Special\nComponents: HS, CM Cost: 9 Chakra Keywords: Genjutsu (Visual) Description: A creature you touch becomes Invisible for the duration. The Jutsu ends early immediately after the target makes an attack roll, deals damage, or casts a Jutsu. This lasts for up to 1 hour provided you maintain concentration and the invisible creature doesn’t end the effect themselves.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, the affected creature does not lose the Invisible condition if they make an attack roll, deal damage or cast a jutsu. If cast in this way, This lasts for up to 1 minute provided you maintain concentration.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "293cc8e640ba6c9d"
+}

@@ -1,0 +1,201 @@
+{
+  "_id": "bd158754328de3a5",
+  "_key": "!items!bd158754328de3a5",
+  "name": "Medical Release: Water to Acid",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-water-to-acid",
+    "description": "<p>You draw out acidic chakra and infuse it into a body of water that you can see. You convert a 15-foot cubes worth of water, into pure acid for the duration. Jutsu with the Water release keyword that would require a source of water, cannot use this pool of acid. If you would convert a pool of water into acid and there is water outside of this jutsu’s area of effect, then creatures can still use water release ninjutsu that requires sources of water.</p>\n<p>Any creature that is in contact with the water when it turns to acid such as stand on top of it with the water walking technique immediately sinks down into it. Creatures who would begin their turn submerged in the acid takes 7d6 acid damage and must make a constitution saving throw, being Blinded and becomes Corroded on a failed save.</p>\n<p>When this jutsu would end, the acid turns back into normal water.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the size of the acid conversion doubles. (15&gt;30&gt;60)</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1524",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d6",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the size of the acid conversion doubles. (15&gt;30&gt;60)</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1524,
+        "sourceHash": "60744035d3e3bbed521d0b85d8de7a43903079d0862e1c610c8ae340e999e92c",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, up to 10 minutes",
+          "cost": "13 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 10 minutes\nComponents:  HS, CM Cost: 13 Chakra Keywords: Ninjutsu, Medical Description: You draw out acidic chakra and infuse it into a body of water that you can see. You convert a 15-foot cubes worth of water, into pure acid for the duration. Jutsu with the Water release keyword that would require a source of water, cannot use this pool of acid. If you would convert a pool of water into acid and there is water outside of this jutsu’s area of effect, then creatures can still use water release ninjutsu that requires sources of water.\nAny creature that is in contact with the water when it turns to acid such as stand on top of it with the water walking technique immediately sinks down into it. Creatures who would begin their turn submerged in the acid takes 7d6 acid damage and must make a constitution saving throw, being Blinded and becomes Corroded on a failed save.\nWhen this jutsu would end, the acid turns back into normal water.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the size of the acid conversion doubles. (15>30>60)",
+        "expressions": [
+          {
+            "expression": "7d6",
+            "offset": 678,
+            "context": "Creatures who would begin their turn submerged in the acid takes 7d6 acid damage and must make a constitution saving throw, being Blinded and becomes Corroded on a failed save.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "d1f8f3baa49a3e3a"
+}

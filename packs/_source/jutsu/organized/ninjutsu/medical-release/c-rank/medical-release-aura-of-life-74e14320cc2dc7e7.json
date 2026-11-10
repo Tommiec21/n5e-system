@@ -1,0 +1,161 @@
+{
+  "_id": "74e14320cc2dc7e7",
+  "_key": "!items!74e14320cc2dc7e7",
+  "name": "Medical Release: Aura of Life",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-aura-of-life",
+    "description": "<p>You infuse medical chakra into yourself as you release it as an aura of supporting energy.</p>\n<p>For this jutsu’s duration, anytime you or a non-hostile creature in this jutsu’s radius would take damage from a hostile creature, they immediately regain 12 Hit points. This jutsu can trigger 5 times per casting, after which this jutsu ends immediately.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the maximum number of times this jutsu can trigger by +2.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1388",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the maximum number of times this jutsu can trigger by +2.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1388,
+        "sourceHash": "e8399b3fb6fc9a75684b3331d11884ca83ca698d2334f205e0b351dd776baee8",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (30-foot radius sphere)",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "7 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (30-foot radius sphere) Duration: Concentration, up to 1 Minute\nComponents: HS, CM Cost: 7 Chakra Keywords: Ninjutsu, Medical Description: You infuse medical chakra into yourself as you release it as an aura of supporting energy.\nFor this jutsu’s duration, anytime you or a non-hostile creature in this jutsu’s radius would take damage from a hostile creature, they immediately regain 12 Hit points. This jutsu can trigger 5 times per casting, after which this jutsu ends immediately.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the maximum number of times this jutsu can trigger by +2.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0359bedeffa2100b"
+}

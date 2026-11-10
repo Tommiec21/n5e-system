@@ -1,0 +1,289 @@
+{
+  "_id": "ed489f89762f02fe",
+  "_key": "!items!ed489f89762f02fe",
+  "name": "Offensive Dodge",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "offensive-dodge",
+    "description": "<p>You take a reverse grip on your weapon and attempt to strike before you are struck. You gain a +2 bonus to AC against the triggering attack and you can make a melee taijutsu attack against the triggering creature. On a hit you deal your [Weapon damage] + 2d8.</p>\n<p>Chain 1: if you score a hit, you gain temporary hit points equal to the result of your weapons damage die.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the AC bonus to +3.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6275",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, Which you take when you take damage from an attack."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the AC bonus to +3.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: if you score a hit, you gain temporary hit points equal to the result of your weapons damage die.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6275,
+        "sourceHash": "e12501389fb0977a59ff8c1276a0b68fc156ede313e7247dfd2faa7573e0c14d",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, Which you take when you take damage from an attack.",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, Which you take when you take damage from an attack. Range: Self Duration: Instant\nComponents: W (Any Polearm), M Cost: 4 Chakra Keywords: Bukijutsu, Chain, Clash Description: You take a reverse grip on your weapon and attempt to strike before you are struck. You gain a +2 bonus to AC against the triggering attack and you can make a melee taijutsu attack against the triggering creature. On a hit you deal your [Weapon damage] + 2d8.\nChain 1: if you score a hit, you gain temporary hit points equal to the result of your weapons damage die.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the AC bonus to +3.",
+        "expressions": [
+          {
+            "expression": "[Weapon damage]",
+            "offset": 237,
+            "context": "On a hit you deal your [Weapon damage] + 2d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8",
+            "offset": 255,
+            "context": "On a hit you deal your [Weapon damage] + 2d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 482,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the AC bonus to +3.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d8) + (1d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d8) + (2d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d8) + (3d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d8) + (4d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "204c67326d5fa509"
+}

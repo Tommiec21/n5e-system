@@ -1,0 +1,208 @@
+{
+  "_id": "533d6984277f2fd7",
+  "_key": "!items!533d6984277f2fd7",
+  "name": "Medical Release: Genocide",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-genocide",
+    "description": "<p>You begin to generate corrupted medical chakra and infuse it with pure prejudice and malice towards a creature and their bloodline.</p>\n<p>Select the name of a Clan or a specific creature if you are unsure of their clan. The target must be of a level equal to or lower than your own as you Fire a blast of Necrotic chakra that cannot miss, so long as you can see them. The target must make a constitution saving throw. For every condition with a different name, they are under the effects of, they suffer a -2 penalty to their save. On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save.</p>\n<p>At the beginning of the affected creatures turn, pass or fail, tendrils of necrotic chakra leap out from that creature, up to 100 feet, to all other creatures that share the targets clan, or bloodline based on what you chose. All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much on a success.</p>\n<p>At the beginning of a creature who fails their saving throws from the tendrils, more tendrils leap out from them with the same restrictions an additional 100 feet repeating the previous process, but excluding all creatures who were previously affected by the jutsu. This affect repeats until no other creatures who share the original targets clan or bloodline are within range of the tendrils.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1581",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 50,
+      "text": "Special (50 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {
+            "failure": "On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save. At the beginning of the affected creatures turn, pass or fail, tendrils of necrotic chakra leap out from that creature, up to 100 feet, to all other creatures that share the targets clan, or bloodline based on what you chose. All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much",
+            "success": "on a success. At the beginning of a creature who fails their saving throws from the tendrils, more tendrils leap out from them with the same restrictions an additional 100 feet repeating the previous process, but excluding all creatures who were previously affected by the jutsu. This affect repeats until no other creatures who share the original targets clan or bloodline are within range of the tendrils."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "10d6+50",
+        "roll": {
+          "formula": "10d6+50",
+          "note": "On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "50",
+        "roll": {
+          "formula": "50",
+          "note": "All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much on a success."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1581,
+        "sourceHash": "778d90f8d69b27cd6328946284fec38a96d104a96b16788f7b633c462a084ed3",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "120 Feet",
+          "duration": "Instant",
+          "cost": "Special (50 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: 120 Feet Duration: Instant\nComponents: HS, CM  Cost: Special (50 Chakra) Keywords: Ninjutsu, Medical Description: You begin to generate corrupted medical chakra and infuse it with pure prejudice and malice towards a creature and their bloodline.\nSelect the name of a Clan or a specific creature if you are unsure of their clan. The target must be of a level equal to or lower than your own as you Fire a blast of Necrotic chakra that cannot miss, so long as you can see them. The target must make a constitution saving throw. For every condition with a different name, they are under the effects of, they suffer a -2 penalty to their save. On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save.\nAt the beginning of the affected creatures turn, pass or fail, tendrils of necrotic chakra leap out from that creature, up to 100 feet, to all other creatures that share the targets clan, or bloodline based on what you chose. All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much on a success.\nAt the beginning of a creature who fails their saving throws from the tendrils, more tendrils leap out from them with the same restrictions an additional 100 feet repeating the previous process, but excluding all creatures who were previously affected by the jutsu. This affect repeats until no other creatures who share the original targets clan or bloodline are within range of the tendrils.",
+        "expressions": [
+          {
+            "expression": "10d6+50",
+            "offset": 557,
+            "context": "On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "50",
+            "offset": 937,
+            "context": "All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much on a success.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b0d365bba0d080fc"
+}

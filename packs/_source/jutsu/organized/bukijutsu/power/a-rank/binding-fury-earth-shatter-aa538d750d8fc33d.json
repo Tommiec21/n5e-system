@@ -1,0 +1,244 @@
+{
+  "_id": "aa538d750d8fc33d",
+  "_key": "!items!aa538d750d8fc33d",
+  "name": "Binding Fury: Earth Shatter",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "binding-fury-earth-shatter",
+    "description": "<p>You wind up a powerful overhead swing and send it straight into the ground crackling the earth. Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank.</p>\n<p>Chain 2. Increase the size of the cone to 25-feet.</p>\n<p>Chain 3. You slam your weapon into the ground at your feet, releasing that kinetic energy outward affecting everyone in a 20-foot radius. All Creatures within a 20-foot radius centered on a point of the space you are occupying, that is standing on the ground must make a Dexterity saving throw. On a failed save, they suffer this jutsu’s damage and other effects. After casting this jutsu you can leap to a space you can see within 20 feet. This movement does not trigger attacks of opportunities.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6674",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-foot cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "chain-3-parsed1",
+        "type": "save",
+        "label": "Chain 3: Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d8",
+        "roll": {
+          "formula": "3d8",
+          "note": "Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2. Increase the size of the cone to 25-feet.</p>",
+      "3": "<p>Chain 3. You slam your weapon into the ground at your feet, releasing that kinetic energy outward affecting everyone in a 20-foot radius. All Creatures within a 20-foot radius centered on a point of the space you are occupying, that is standing on the ground must make a Dexterity saving throw. On a failed save, they suffer this jutsu’s damage and other effects. After casting this jutsu you can leap to a space you can see within 20 feet. This movement does not trigger attacks of opportunities.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6674,
+        "sourceHash": "c18a4be786435fe6dac7fe4dc95a35d2857de47bb72749491564b446c3042cc7",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Self (15-foot cone)",
+          "duration": "Instant",
+          "cost": "16 Chakra",
+          "components": "W (Any Power), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: A-Rank\nCasting Time: 1 Action\nRange: Self (15-foot cone)\nDuration: Instant\nComponents: W (Any Power), M\nCost: 16 Chakra\nKeywords: Bukijutsu, Chain\nDescription: You wind up a powerful overhead swing and send it straight into the ground crackling the earth. Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank.\nChain 2. Increase the size of the cone to 25-feet.\nChain 3. You slam your weapon into the ground at your feet, releasing that kinetic energy outward affecting everyone in a 20-foot radius. All Creatures within a 20-foot radius centered on a point of the space you are occupying, that is standing on the ground must make a Dexterity saving throw. On a failed save, they suffer this jutsu’s damage and other effects. After casting this jutsu you can leap to a space you can see within 20 feet. This movement does not trigger attacks of opportunities.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 175,
+            "context": "Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d8",
+            "offset": 194,
+            "context": "Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 1094,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "2bc91904eae523f2"
+}

@@ -1,0 +1,295 @@
+{
+  "_id": "03ba182ffd2306b5",
+  "_key": "!items!03ba182ffd2306b5",
+  "name": "Impaler Stab",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "impaler-stab",
+    "description": "<p>You thrust your weapon into your enemy, and keep it there. Make a melee taijutsu Attack. On a hit deal your [Weapon damage] + 2d12. You then can choose to keep it impaled into the enemy. If you do, you cannot attack with that weapon or use it as part of other Bukijutsu.</p>\n<p>A creature impaled by your weapon is Grappled by you until they can escape. While they are Grappled you can use your bonus action to twist the weapon, dealing 2d12 piercing damage.</p>\n<p>A creature impaled by your weapon makes Strength saving throws at the end of each of their turns, to break the grapple. Alternatively, if they can escape your weapons range, they are no longer impaled by your weapon.</p>\n<p>Chain 1: A creature impaled by your weapon cannot take reactions.</p>\n<p>At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the initial and bonus action damage by 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6268",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon’s range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the initial and bonus action damage by 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: A creature impaled by your weapon cannot take reactions.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6268,
+        "sourceHash": "7fe17edce3033531106b0ecb14d4ea1601614540a2131ffe08d7de81e071e4b0",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Weapon’s range",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Weapon’s range Duration: Instant\nComponents: W (Any Polearm), M Cost: 5 Chakra Keywords: Bukijutsu, Chain, Clash Description: You thrust your weapon into your enemy, and keep it there. Make a melee taijutsu Attack. On a hit deal your [Weapon damage] + 2d12. You then can choose to keep it impaled into the enemy. If you do, you cannot attack with that weapon or use it as part of other Bukijutsu.\nA creature impaled by your weapon is Grappled by you until they can escape. While they are Grappled you can use your bonus action to twist the weapon, dealing 2d12 piercing damage.\nA creature impaled by your weapon makes Strength saving throws at the end of each of their turns, to break the grapple. Alternatively, if they can escape your weapons range, they are no longer impaled by your weapon.\nChain 1: A creature impaled by your weapon cannot take reactions.\nAt Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the initial and bonus action damage by 1d12.",
+        "expressions": [
+          {
+            "expression": "[Weapon damage]",
+            "offset": 108,
+            "context": "On a hit deal your [Weapon damage] + 2d12. You then can choose to keep it impaled into the enemy. If you do, you cannot attack with that weapon or use it as part of other Bukijutsu.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d12",
+            "offset": 126,
+            "context": "On a hit deal your [Weapon damage] + 2d12. You then can choose to keep it impaled into the enemy. If you do, you cannot attack with that weapon or use it as part of other Bukijutsu.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d12",
+            "offset": 430,
+            "context": "While they are Grappled you can use your bonus action to twist the weapon, dealing 2d12 piercing damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 867,
+            "context": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the initial and bonus action damage by 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d12) + (1d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d12) + (2d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d12) + (3d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(2d12) + (4d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "204c67326d5fa509"
+}

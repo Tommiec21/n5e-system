@@ -1,0 +1,227 @@
+{
+  "_id": "bd7272b22a8d25a2",
+  "_key": "!items!bd7272b22a8d25a2",
+  "name": "Full House",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "full-house",
+    "description": "<p>While falling you change trajectory to instead come down diagonally against a creature within range.</p>\n<p>You come down aggressively with the force of a falling star. Move up to 30 feet towards a creature you can see within range, ending your movement within 5 feet of the target. Make a melee taijutsu attack dealing your [Unarmed damage] + 4d8.</p>\n<p>Finisher: you instead deal your [Unarmed damage] + 6d8 and all creatures within 10 feet of the target must make a Strength saving throw as the force of your kick cracks the air and creates an unprecedented shockwave. On a failed save the creatures are thrown 10 feet away into a space that can hold them.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4851",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Action or Reaction, which you only take while airborne, falling at least 30 feet."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "save",
+        "label": "Finisher: Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 6d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: you instead deal your [Unarmed damage] + 6d8 and all creatures within 10 feet of the target must make a Strength saving throw as the force of your kick cracks the air and creates an unprecedented shockwave. On a failed save the creatures are thrown 10 feet away into a space that can hold them.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4851,
+        "sourceHash": "bf478f2cc403bf02a8c7404e0469e5e9d572f01589808f0ce188b9ce9e82110e",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action or Reaction, which you only take while airborne, falling at least 30 feet.",
+          "range": "30 feet",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Finisher"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action or Reaction, which you only take while airborne, falling at least 30 feet. Range: 30 feet\nDuration: Instant\nComponents: M Cost: 12 Chakra Keywords: Taijutsu, Finisher Description: While falling you change trajectory to instead come down diagonally against a creature within range.\nYou come down aggressively with the force of a falling star. Move up to 30 feet towards a creature you can see within range, ending your movement within 5 feet of the target. Make a melee taijutsu attack dealing your [Unarmed damage] + 4d8.\nFinisher: you instead deal your [Unarmed damage] + 6d8 and all creatures within 10 feet of the target must make a Strength saving throw as the force of your kick cracks the air and creates an unprecedented shockwave. On a failed save the creatures are thrown 10 feet away into a space that can hold them.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 318,
+            "context": "Make a melee taijutsu attack dealing your [Unarmed damage] + 4d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d8",
+            "offset": 337,
+            "context": "Make a melee taijutsu attack dealing your [Unarmed damage] + 4d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 374,
+            "context": "Finisher: you instead deal your [Unarmed damage] + 6d8 and all creatures within 10 feet of the target must make a Strength saving throw as the force of your kick cracks the air and creates an unprecedented shockwave. On a failed save the creatures are thrown 10 feet away into a space that can hold them.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "6d8",
+            "offset": 393,
+            "context": "Finisher: you instead deal your [Unarmed damage] + 6d8 and all creatures within 10 feet of the target must make a Strength saving throw as the force of your kick cracks the air and creates an unprecedented shockwave. On a failed save the creatures are thrown 10 feet away into a space that can hold them.",
+            "section": "Finisher"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

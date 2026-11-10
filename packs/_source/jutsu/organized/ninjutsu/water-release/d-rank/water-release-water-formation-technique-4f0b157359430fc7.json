@@ -1,0 +1,161 @@
+{
+  "_id": "4f0b157359430fc7",
+  "_key": "!items!4f0b157359430fc7",
+  "name": "Water Release: Water Formation Technique",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-water-formation-technique",
+    "description": "<p>You generate a Pool of water from your stomach and expel it onto the ground in front of you filling a 5-foot cube covering the ground with enough water to step into submerging up to your knee. This pool holds dozens of gallons of water. You can use this puddle as a source of drinking water, lay a trap, or use it as a source for more complex Water Ninjutsu and it lasts for 1 minute before evaporating.</p>\n<p>You may use the water this Jutsu produces as a Source of Water up to two twice before the pool dries up.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of times you can use the pool as a source of water by +2. If this jutsu is cast at B-Rank or higher, the size of the Pool is able to fill a 15-foot Cube. If Cast at S-Rank, the size of the Pool is able to fill a 30-foot cube.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2543",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "5-Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of times you can use the pool as a source of water by +2. If this jutsu is cast at B-Rank or higher, the size of the Pool is able to fill a 15-foot Cube. If Cast at S-Rank, the size of the Pool is able to fill a 30-foot cube.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2543,
+        "sourceHash": "f8ed73121bdddd539a192e0c7dd33c2f4f699984231778728eb122f4167031d7",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "5-Feet",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: 5-Feet Duration: Instant\nComponents: HS, CM Cost: 3 Chakra Keywords: Ninjutsu, Water Release Description: You generate a Pool of water from your stomach and expel it onto the ground in front of you filling a 5-foot cube covering the ground with enough water to step into submerging up to your knee. This pool holds dozens of gallons of water. You can use this puddle as a source of drinking water, lay a trap, or use it as a source for more complex Water Ninjutsu and it lasts for 1 minute before evaporating.\nYou may use the water this Jutsu produces as a Source of Water up to two twice before the pool dries up.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of times you can use the pool as a source of water by +2. If this jutsu is cast at B-Rank or higher, the size of the Pool is able to fill a 15-foot Cube. If Cast at S-Rank, the size of the Pool is able to fill a 30-foot cube.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "3b09f83137c247b7"
+}

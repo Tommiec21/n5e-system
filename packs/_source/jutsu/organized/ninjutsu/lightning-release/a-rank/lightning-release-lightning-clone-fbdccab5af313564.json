@@ -1,0 +1,192 @@
+{
+  "_id": "fbdccab5af313564",
+  "_key": "!items!fbdccab5af313564",
+  "name": "Lightning Release: Lightning Clone",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-lightning-clone",
+    "description": "<p>A modified version of the Shadow Clone Technique that allows the user to create a clone but constructed from solid lightning. Lightning Clones have no measurable weight and explode if exposed to a body of water. Creatures who have chakra sight can tell the clone is made of lightning and can distinguish the clone from the original.</p>\n<p>When this jutsu is cast, by spending 16 chakra, you summon one Clone. You can spend 8 additional chakra to summon 1 additional Clone. You can spend 8 additional chakra in this way to summon additional Clones up to 3 times per casting.</p>\n<p>Lightning Clones have Immunity to Genjutsu, Psychic &amp; Poison damage, It has a movement speed equal to your movement speed or 50-foot move speed.</p>\n<p>When Lightning Clones have 0 hit points, it Discharges.</p>\n<p>Discharge. All creatures within 20 feet of the clone must make a Constitution saving throw, gaining 3 ranks of Shocked and being Dazed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the number of clones you can summon by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2980",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "fuinjutsu",
+      "ninjutsu",
+      "clash",
+      "clone"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 16,
+      "text": "Special (16 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Shocked"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the number of clones you can summon by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2980,
+        "sourceHash": "ac4a4bd517f00def357a2203ee8c910fc73cb3f6617adfd0dbaaa10d8ec0eb0b",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "1 Minute",
+          "cost": "Special (16 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Clone, Clash, Fuinjutsu"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Self\nDuration: 1 Minute\nComponents: HS, CM Cost: Special (16 Chakra)\nKeywords: Ninjutsu, Lightning Release, Clone, Clash, Fuinjutsu\nDescription: A modified version of the Shadow Clone Technique that allows the user to create a clone but constructed from solid lightning. Lightning Clones have no measurable weight and explode if exposed to a body of water. Creatures who have chakra sight can tell the clone is made of lightning and can distinguish the clone from the original.\nWhen this jutsu is cast, by spending 16 chakra, you summon one Clone. You can spend 8 additional chakra to summon 1 additional Clone. You can spend 8 additional chakra in this way to summon additional Clones up to 3 times per casting.\nLightning Clones have Immunity to Genjutsu, Psychic & Poison damage, It has a movement speed equal to your movement speed or 50-foot move speed.\nWhen Lightning Clones have 0 hit points, it Discharges.\nDischarge. All creatures within 20 feet of the clone must make a Constitution saving throw, gaining 3 ranks of Shocked and being Dazed.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the number of clones you can summon by +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "406afaae95c62927"
+}

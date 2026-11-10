@@ -1,0 +1,187 @@
+{
+  "_id": "67b3ca88bc254213",
+  "_key": "!items!67b3ca88bc254213",
+  "name": "Lightning Release: Lightning Rod",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-lightning-rod",
+    "description": "<p>You conjure your lightning release chakra creating a lightning release construct lance, staff or polearm of your description that as an action can make a Lightning Strike Attack, bonus action to perform a Lightning Supercharge, or as a Reaction to taking damage perform a Lightning Guard. For the duration of this jutsu you do not need to spend chakra to maintain concentration on this jutsu.</p>\n<p>Lightning Strike Attack. Make a melee ninjutsu attack against a creature up to 10 feet away dealing 4d10 lightning damage on a hit.</p>\n<p>Lightning Supercharge. As a bonus action charge the Lance with more chakra. The next Lightning Strike Attack you make Pierces 6 DR.</p>\n<p>Lightning Guard. As a reaction to taking damage, you spin your weapon attempting to guard some of the force of the strike, gaining 6 DR vs incoming damage, except wind, until the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, increase the damage this jutsu deals by 1d10 and the DR gained by +2S.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2887",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, increase the damage this jutsu deals by 1d10 and the DR gained by +2S.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2887,
+        "sourceHash": "f0e03e3931c8dea1713dd8f6d550ec6e27c1facffea3dd573d920d5964beca1b",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Stable"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self\nDuration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Lightning Release, Stable Description: You conjure your lightning release chakra creating a lightning release construct lance, staff or polearm of your description that as an action can make a Lightning Strike Attack, bonus action to perform a Lightning Supercharge, or as a Reaction to taking damage perform a Lightning Guard. For the duration of this jutsu you do not need to spend chakra to maintain concentration on this jutsu.\nLightning Strike Attack. Make a melee ninjutsu attack against a creature up to 10 feet away dealing 4d10 lightning damage on a hit.\nLightning Supercharge. As a bonus action charge the Lance with more chakra. The next Lightning Strike Attack you make Pierces 6 DR.\nLightning Guard. As a reaction to taking damage, you spin your weapon attempting to guard some of the force of the strike, gaining 6 DR vs incoming damage, except wind, until the beginning of your next turn.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at A-Rank or higher, increase the damage this jutsu deals by 1d10 and the DR gained by +2S.",
+        "expressions": [
+          {
+            "expression": "4d10",
+            "offset": 493,
+            "context": "Make a melee ninjutsu attack against a creature up to 10 feet away dealing 4d10 lightning damage on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 1051,
+            "context": "If this jutsu is cast at A-Rank or higher, increase the damage this jutsu deals by 1d10 and the DR gained by +2S.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "5a30ed7096cb7ea2"
+}

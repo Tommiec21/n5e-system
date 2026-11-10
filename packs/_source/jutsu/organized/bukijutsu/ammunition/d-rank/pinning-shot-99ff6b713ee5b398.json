@@ -1,0 +1,216 @@
+{
+  "_id": "99ff6b713ee5b398",
+  "_key": "!items!99ff6b713ee5b398",
+  "name": "Pinning Shot",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "pinning-shot",
+    "description": "<p>You make a series of ranged attacks designed to pin your enemy in place in a way of your choosing.</p>\n<p>Make a ranged taijutsu Attack, using your weapon of choice dealing your [Weapons damage] + 1d10 and forcing the target creature to make a Strength saving throw, being Restrained on a failed save.</p>\n<p>Remakes their saving throw at the end of each of their turns, ending the Restrained condition on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6815",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any ranged/Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "1d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6815,
+        "sourceHash": "448130fa4c191b4075b178f3b698396c8569ca84ddf7135f5e6732cc3b223922",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Weapon Range",
+          "duration": "Special",
+          "cost": "5 Chakra",
+          "components": "W (Any ranged/Thrown), M",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Weapon Range Duration: Special\nComponents: W (Any ranged/Thrown), M Cost: 5 Chakra Keywords: Bukijutsu  Description: You make a series of ranged attacks designed to pin your enemy in place in a way of your choosing.\nMake a ranged taijutsu Attack, using your weapon of choice dealing your [Weapons damage] + 1d10 and forcing the target creature to make a Strength saving throw, being Restrained on a failed save.\nRemakes their saving throw at the end of each of their turns, ending the Restrained condition on a success.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 171,
+            "context": "Make a ranged taijutsu Attack, using your weapon of choice dealing your [Weapons damage] + 1d10 and forcing the target creature to make a Strength saving throw, being Restrained on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 190,
+            "context": "Make a ranged taijutsu Attack, using your weapon of choice dealing your [Weapons damage] + 1d10 and forcing the target creature to make a Strength saving throw, being Restrained on a failed save.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "4dbff179bff78120"
+}

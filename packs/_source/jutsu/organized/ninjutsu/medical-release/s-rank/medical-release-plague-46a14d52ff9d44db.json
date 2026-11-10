@@ -1,0 +1,181 @@
+{
+  "_id": "46a14d52ff9d44db",
+  "_key": "!items!46a14d52ff9d44db",
+  "name": "Medical Release: Plague",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-plague",
+    "description": "<p>You begin to generate poisonous, venomous and toxic medical chakra and infuse it directly into the air itself. Yourself and 10 other creatures of your choice are immune to the effects of this jutsu. Once this jutsu is cast, it continues to permeate the affected area forever after casting.</p>\n<p>Dark green, purple and black clouds fill the air, as a foul smell of poison and toxins sail in the wind. A low moan can always be heard. Each creature who are under the clouds when this jutsu is cast must make a constitution saving throw. A creature who is already suffering from a disease or who is Envenomed makes their saves at a -5 penalty. On a failed save, a creature gains 5 ranks of the Envenomed condition and they are permanently Envenomed unless removed by a Jutsu with the medical keyword that removes conditions of S-Rank. This jutsu ignores immunity to the Envenomed condition and damage. A creature can never have their hit points reduced below 0 as a result of the Envenomed condition, instead forced to suffer until killed by other means.</p>\n<p>Creatures who come into contact with a creature who was Envenomed by this jutsu must make the save as if they were under the clouds of this jutsu when cast.</p>\n<p>A creature who would wake up from a rest of any type under clouds created by this jutsu must make a save as if they were under the clouds of this jutsu when cast.</p>\n<p>The affected area grows by 1 mile every month until this jutsu is dispelled. The clouds can only be dispelled by 3 castings of a Ninjutsu with the Fuinjutsu keyword cast at S-Rank targeting them from within 10 feet of the original space the jutsu was cast from.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1590",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (1 Mile)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Forever"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 100,
+      "text": "Special (100 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1590,
+        "sourceHash": "67e710f7a7b4edb0b16f9dad86b44e70e4eb91d61e5936597fcc8743a83a4bbe",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Day",
+          "range": "Self (1 Mile)",
+          "duration": "Forever",
+          "cost": "Special (100 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Day Range: Self (1 Mile)  Duration: Forever\nComponents: HS, CM  Cost: Special (100 Chakra) Keywords: Ninjutsu, Medical Description: You begin to generate poisonous, venomous and toxic medical chakra and infuse it directly into the air itself. Yourself and 10 other creatures of your choice are immune to the effects of this jutsu. Once this jutsu is cast, it continues to permeate the affected area forever after casting.\nDark green, purple and black clouds fill the air, as a foul smell of poison and toxins sail in the wind. A low moan can always be heard. Each creature who are under the clouds when this jutsu is cast must make a constitution saving throw. A creature who is already suffering from a disease or who is Envenomed makes their saves at a -5 penalty. On a failed save, a creature gains 5 ranks of the Envenomed condition and they are permanently Envenomed unless removed by a Jutsu with the medical keyword that removes conditions of S-Rank. This jutsu ignores immunity to the Envenomed condition and damage. A creature can never have their hit points reduced below 0 as a result of the Envenomed condition, instead forced to suffer until killed by other means.\nCreatures who come into contact with a creature who was Envenomed by this jutsu must make the save as if they were under the clouds of this jutsu when cast.\nA creature who would wake up from a rest of any type under clouds created by this jutsu must make a save as if they were under the clouds of this jutsu when cast.\nThe affected area grows by 1 mile every month until this jutsu is dispelled. The clouds can only be dispelled by 3 castings of a Ninjutsu with the Fuinjutsu keyword cast at S-Rank targeting them from within 10 feet of the original space the jutsu was cast from.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b0d365bba0d080fc"
+}

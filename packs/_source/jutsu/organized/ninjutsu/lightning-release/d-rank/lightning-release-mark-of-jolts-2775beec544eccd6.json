@@ -1,0 +1,343 @@
+{
+  "_id": "2775beec544eccd6",
+  "_key": "!items!2775beec544eccd6",
+  "name": "Lightning Release: Mark of Jolts",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-mark-of-jolts",
+    "description": "<p>You conjure your lightning release chakra and mold it around a chakra seal until you form a Kanji of your own description and with its own meaning. This Kanji Floats at a point within 5 feet of you and can be moved up to 20 feet in any direction of your choice as a bonus action. Choose one of the following effects;</p>\n<p>Jolts: All creatures except you, within a 10-foot radius sphere centered on your Kanji takes 2d8 lightning damage at the end of each of your turns.</p>\n<p>Shocks: All creatures except you, within a 10-foot radius sphere centered on your Kanji that takes lightning damage must make a Constitution saving throw, gaining 1 rank of Shocked on a failed save. Once this effect has triggered and inflicted the Shocked condition 3 times this jutsu immediately ends.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 or the number of triggers by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2814",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 or the number of triggers by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2814,
+        "sourceHash": "39066719fd6ce52668b2d9d3586a42f9035adb1a2c6ba5f4e9e1eca214f0df69",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, Up to 1 minute.",
+          "cost": "5 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Lightning Release, Fuinjutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: Self\nDuration: Concentration, Up to 1 minute.\nComponents: HS, CM, CS Cost: 5 Chakra Keywords: Ninjutsu, Lightning Release, Fuinjutsu  Description: You conjure your lightning release chakra and mold it around a chakra seal until you form a Kanji of your own description and with its own meaning. This Kanji Floats at a point within 5 feet of you and can be moved up to 20 feet in any direction of your choice as a bonus action. Choose one of the following effects;\nJolts: All creatures except you, within a 10-foot radius sphere centered on your Kanji takes 2d8 lightning damage at the end of each of your turns.\nShocks: All creatures except you, within a 10-foot radius sphere centered on your Kanji that takes lightning damage must make a Constitution saving throw, gaining 1 rank of Shocked on a failed save. Once this effect has triggered and inflicted the Shocked condition 3 times this jutsu immediately ends.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 or the number of triggers by +1.",
+        "expressions": [
+          {
+            "expression": "2d8",
+            "offset": 410,
+            "context": "Jolts: All creatures except you, within a 10-foot radius sphere centered on your Kanji takes 2d8 lightning damage at the end of each of your turns.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 888,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 or the number of triggers by +1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8ebb04f9de7c596b"
+}

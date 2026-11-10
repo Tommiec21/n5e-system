@@ -1,0 +1,189 @@
+{
+  "_id": "f9e372306aacd908",
+  "_key": "!items!f9e372306aacd908",
+  "name": "Breath of Sun: Heat Haze",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-sun-heat-haze",
+    "description": "<p>You begin to collect and manifest a bright chakra until it laces the striking portion of your weapon, causing it to shine, like the rising sun. This chakra then begins to glow brightly with enough intensity to dispel any chakra based or natural darkness until the end of your current turn leaving a hazy illusion of all movement you make.</p>\n<p>Make a melee weapon attack of any description of your choice. Regardless of the result of the attack, you automatically hit. You can roll to hit and declare the attack a hit or a miss, and the target can choose to react accordingly as they normally would. You deal your [Weapons damage] + 12d12. This jutsu cannot gain the benefits of a critical hit, damage dice multiplication or alteration effects. This jutsu cannot benefit from bonuses to damage.</p>\n<p>Chain 3: If the target creature is gaining a bonus as a result of a jutsu, regardless of the source, you can make a Standard Jutsu Ability Check using Martial Arts vs the rank of the effect. On a success, you dispel the effect, ending it immediately.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5671",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 40,
+      "text": "Special (40 Chakra)"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "12d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": "<p>Chain 3: If the target creature is gaining a bonus as a result of a jutsu, regardless of the source, you can make a Standard Jutsu Ability Check using Martial Arts vs the rank of the effect. On a success, you dispel the effect, ending it immediately.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5671,
+        "sourceHash": "2d77911eb695b0e4e0e2c0b9aa5dae8fa8a43acad272b794a6d88a0bca0e9467",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "Special (40 Chakra)",
+          "components": "W (Any), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Weapons Range Duration: Instant\nComponents: W (Any), M Cost: Special (40 Chakra) Keywords: Bukijutsu, Chain Description: You begin to collect and manifest a bright chakra until it laces the striking portion of your weapon, causing it to shine, like the rising sun. This chakra then begins to glow brightly with enough intensity to dispel any chakra based or natural darkness until the end of your current turn leaving a hazy illusion of all movement you make.\nMake a melee weapon attack of any description of your choice. Regardless of the result of the attack, you automatically hit. You can roll to hit and declare the attack a hit or a miss, and the target can choose to react accordingly as they normally would. You deal your [Weapons damage] + 12d12. This jutsu cannot gain the benefits of a critical hit, damage dice multiplication or alteration effects. This jutsu cannot benefit from bonuses to damage.\nChain 3: If the target creature is gaining a bonus as a result of a jutsu, regardless of the source, you can make a Standard Jutsu Ability Check using Martial Arts vs the rank of the effect. On a success, you dispel the effect, ending it immediately.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 609,
+            "context": "You deal your [Weapons damage] + 12d12. This jutsu cannot gain the benefits of a critical hit, damage dice multiplication or alteration effects. This jutsu cannot benefit from bonuses to damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "12d12",
+            "offset": 628,
+            "context": "You deal your [Weapons damage] + 12d12. This jutsu cannot gain the benefits of a critical hit, damage dice multiplication or alteration effects. This jutsu cannot benefit from bonuses to damage.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8a9c91a8d73fad43"
+}

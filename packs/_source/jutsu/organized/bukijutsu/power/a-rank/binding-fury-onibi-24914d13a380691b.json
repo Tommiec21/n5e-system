@@ -1,0 +1,214 @@
+{
+  "_id": "24914d13a380691b",
+  "_key": "!items!24914d13a380691b",
+  "name": "Binding Fury: Onibi",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "binding-fury-onibi",
+    "description": "<p>You make a powerful trust with your weapon, attempting to create a large, gaping, cylindrical hole in a target. Make a melee taijutsu attack, dealing your [weapon’s damage] + 6d12 bludgeoning damage on a hit. Then, all creatures in a 30 foot long, 5-foot-wide line originating from the target creature must make a Dexterity saving throw. On a failed save all affected creatures gain 2 ranks of Weakened and are knocked Prone. If you have Fury, you can spend it to make the original target make the Dexterity saving throw as well.</p>\n<p>Chain 2. The original target is pushed back in a 30-foot line ending their movement Prone.</p>\n<p>Chain 3. If you score a critical hit, you can cast a Bukijutsu with a casting time of 1 Action, immediately after the conclusion of this jutsu’s effect. If you do not cast a Jutsu using this Action by the end of your turn, you gain a rank of Fury as if under the effects of Binding Fury Stance.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6704",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 16,
+      "text": "16 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2. The original target is pushed back in a 30-foot line ending their movement Prone.</p>",
+      "3": "<p>Chain 3. If you score a critical hit, you can cast a Bukijutsu with a casting time of 1 Action, immediately after the conclusion of this jutsu’s effect. If you do not cast a Jutsu using this Action by the end of your turn, you gain a rank of Fury as if under the effects of Binding Fury Stance.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6704,
+        "sourceHash": "43c50d170ae260c457c4e32805bcf8647d29707fd39f8dc889dffe28561b0154",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Weapons Range",
+          "duration": "instant.",
+          "cost": "16 Chakra",
+          "components": "M, W (Any Power).",
+          "keywords": "Bukijutsu, Chain."
+        },
+        "sourceText": "Rank: A-rank Casting Time: 1 Action Range: Weapons Range Duration: instant. Components: M, W (Any Power). Cost: 16 Chakra Keywords: Bukijutsu, Chain. Description: You make a powerful trust with your weapon, attempting to create a large, gaping, cylindrical hole in a target. Make a melee taijutsu attack, dealing your [weapon’s damage] + 6d12 bludgeoning damage on a hit. Then, all creatures in a 30 foot long, 5-foot-wide line originating from the target creature must make a Dexterity saving throw. On a failed save all affected creatures gain 2 ranks of Weakened and are knocked Prone. If you have Fury, you can spend it to make the original target make the Dexterity saving throw as well.\nChain 2. The original target is pushed back in a 30-foot line ending their movement Prone.\nChain 3. If you score a critical hit, you can cast a Bukijutsu with a casting time of 1 Action, immediately after the conclusion of this jutsu’s effect. If you do not cast a Jutsu using this Action by the end of your turn, you gain a rank of Fury as if under the effects of Binding Fury Stance.",
+        "expressions": [
+          {
+            "expression": "6d12",
+            "offset": 175,
+            "context": "Make a melee taijutsu attack, dealing your [weapon’s damage] + 6d12 bludgeoning damage on a hit. Then, all creatures in a 30 foot long, 5-foot-wide line originating from the target creature must make a Dexterity saving throw. On a failed save all affected creatures gain 2 ranks of Weakened and are knocked Prone. If you have Fury, you can spend it to make the original target make the Dexterity saving throw as well.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "2bc91904eae523f2"
+}

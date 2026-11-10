@@ -1,0 +1,194 @@
+{
+  "_id": "262ce9b329f82edb",
+  "_key": "!items!262ce9b329f82edb",
+  "name": "Medical Release: Wall of Bee’s",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-wall-of-bees",
+    "description": "<p>You weave together a mixture of summoning seals and summon forth a wall of angry, irrational and non-compromising bees. The wall is 5 feet thick, 10 feet high and up to 30 feet long. The wall must be continuous and at least 5 feet thick along its entire length. You select where the wall of bees appear and the entire length must be within your line of sight and within this jutsu’s range from you.</p>\n<p>A creature that starts within the bee’s wall or that gets within 5 feet of the wall of bees agitates the insects and are swarmed by them and must make a constitution saving throw against their assault. On a failed save they take 4d6 poison damage and are Incapacitated until the end of the current turn. On a successful save they take half damage and suffer no additional effects.</p>\n<p>A creature immune to poison damage automatically succeeds their saving throw and cannot be Incapacitated by this jutsu.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1456",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1456,
+        "sourceHash": "d68f269efd7294bd84ded4964004af7d40ffcc3ad673ffc045a886e8e668ca2e",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "120 Feet",
+          "duration": "Concentration, up to 1 minute.",
+          "cost": "9 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Medical, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 120 Feet Duration: Concentration, up to 1 minute.\nComponents:  HS, CM, CS Cost: 9 Chakra Keywords: Ninjutsu, Medical, Fuinjutsu Description: You weave together a mixture of summoning seals and summon forth a wall of angry, irrational and non-compromising bees. The wall is 5 feet thick, 10 feet high and up to 30 feet long. The wall must be continuous and at least 5 feet thick along its entire length. You select where the wall of bees appear and the entire length must be within your line of sight and within this jutsu’s range from you.\nA creature that starts within the bee’s wall or that gets within 5 feet of the wall of bees agitates the insects and are swarmed by them and must make a constitution saving throw against their assault. On a failed save they take 4d6 poison damage and are Incapacitated until the end of the current turn. On a successful save they take half damage and suffer no additional effects.\nA creature immune to poison damage automatically succeeds their saving throw and cannot be Incapacitated by this jutsu.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 628,
+            "context": "On a failed save they take 4d6 poison damage and are Incapacitated until the end of the current turn. On a successful save they take half damage and suffer no additional effects.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0359bedeffa2100b"
+}

@@ -1,0 +1,181 @@
+{
+  "_id": "15809446fbb8d238",
+  "_key": "!items!15809446fbb8d238",
+  "name": "Night: Bitter Light",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "night-bitter-light",
+    "description": "<p>You manifest a potent but powerful sense of friendliness or comradery in the form of illusionary chakra, and impose it on a hostile creature you can see in range who is casting a jutsu with range.</p>\n<p>The target creature must make an Intelligence saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s negative effects.</p>\n<p>Success: Affected creature cannot target a single creature and instead must randomly select their target, before the end of the current turn.</p>\n<p>Failure: Affected creatures must select a new target, even if this means they would have to select a creature allied to them. They cannot select the same creature they previously did to trigger this jutsu’s reaction.</p>\n<p>Critical Failure: Same as failure, the target must now select a creature allied to themselves, even if a creature hostile to it is also in range.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3565",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "interrupt",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a hostile creature casts a jutsu that affects a single target."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s negative effects.",
+            "success": "Success: Affected creature cannot target a single creature and instead must randomly select their target, before the end of the current turn.",
+            "failure": "failure, the target must now select a creature allied to themselves, even if a creature hostile to it is also in range.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3565,
+        "sourceHash": "8b30efa388a374f1d13671a27a9b1403d72c4c56b319626e1e5bfad9b1fa7eba",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when a hostile creature casts a jutsu that affects a single target.",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual), Interrupt"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when a hostile creature casts a jutsu that affects a single target. Range: 60 Feet Duration: Instant\nComponents:  HS, CM Cost: 3 Chakra Keywords: Genjutsu (Visual), Interrupt Description: You manifest a potent but powerful sense of friendliness or comradery in the form of illusionary chakra, and impose it on a hostile creature you can see in range who is casting a jutsu with range.\nThe target creature must make an Intelligence saving throw.\nCritical Success: Affected creature is able to resist this jutsu’s negative effects.\nSuccess: Affected creature cannot target a single creature and instead must randomly select their target, before the end of the current turn.\nFailure: Affected creatures must select a new target, even if this means they would have to select a creature allied to them. They cannot select the same creature they previously did to trigger this jutsu’s reaction.\nCritical Failure: Same as failure, the target must now select a creature allied to themselves, even if a creature hostile to it is also in range.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5ecbQOCtW8LIE7D"
+}

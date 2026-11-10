@@ -1,0 +1,189 @@
+{
+  "_id": "4b575a1b61a765c3",
+  "_key": "!items!4b575a1b61a765c3",
+  "name": "Wolves Companionship",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wolves-companionship",
+    "description": "<p>You create an illusory mirage of wolves that follow you as a pack and aid or hinder any creature of your choice when commanded.</p>\n<p>Roll Six d20’s, recording the results. For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3785",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual",
+      "inhaled"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (60-foot radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 30,
+      "text": "30 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Poison Kit or Wolf’s Bane Flower"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "d20",
+        "roll": {
+          "formula": "d20",
+          "note": "Roll Six d20’s, recording the results. For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3785,
+        "sourceHash": "0be84feb71c0e849c521ab09d12b132b2d83f9a31876d10ee22018bcf066f166",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self (60-foot radius)",
+          "duration": "1 Minute",
+          "cost": "30 Chakra",
+          "components": "HS, CM, NT (Poison Kit or Wolf’s Bane Flower)",
+          "keywords": "Genjutsu (Inhale, Visual)"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self (60-foot radius) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit or Wolf’s Bane Flower)\nCost: 30 Chakra Keywords: Genjutsu (Inhale, Visual) Description: You create an illusory mirage of wolves that follow you as a pack and aid or hinder any creature of your choice when commanded.\nRoll Six d20’s, recording the results. For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.",
+        "expressions": [
+          {
+            "expression": "d20",
+            "offset": 137,
+            "context": "Roll Six d20’s, recording the results. For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.",
+            "section": "Base"
+          },
+          {
+            "expression": "d20",
+            "offset": 245,
+            "context": "For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.",
+            "section": "Base"
+          },
+          {
+            "expression": "d20",
+            "offset": 286,
+            "context": "For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.",
+            "section": "Base"
+          },
+          {
+            "expression": "d20",
+            "offset": 330,
+            "context": "For this jutsu’s duration, whenever a creature in this jutsu’s radius rolls a d20 on their turn, you can replace their d20’s result with the result of one of your d20’s.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b43e363ae1f523df"
+}

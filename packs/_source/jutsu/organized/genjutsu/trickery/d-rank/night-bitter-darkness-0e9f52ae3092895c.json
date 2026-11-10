@@ -1,0 +1,183 @@
+{
+  "_id": "0e9f52ae3092895c",
+  "_key": "!items!0e9f52ae3092895c",
+  "name": "Night: Bitter Darkness",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "night-bitter-darkness",
+    "description": "<p>You manifest a potent but powerful sense of loneliness and solitude in the form of illusionary chakra, and impose it on a hostile creature you can see in range who is casting a jutsu with range.</p>\n<p>The target creature must make an Intelligence saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s negative effects.</p>\n<p>Success: Affected creature gains 1 rank of Dazzled until the end of the current turn.</p>\n<p>Failure: Affected creatures jutsu they are casting has its shape size reduced by a set size. Sphere/Radius, Cube, Cone, Line: 10 feet, and Cylinder: 5 Feet width, 10 feet height, down to a minimum of 5 feet for any effect area.</p>\n<p>Critical Failure: Same as failure, but the targets jutsu effect area size is reduce by an additional 10 feet.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the jutsu’s effect area size reduction by 5 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3547",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "interrupt",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a hostile creature casts a jutsu that affects an area."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s negative effects.",
+            "success": "Success: Affected creature gains 1 rank of Dazzled until the end of the current turn.",
+            "failure": "failure, but the targets jutsu effect area size is reduce by an additional 10 feet.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the jutsu’s effect area size reduction by 5 feet.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3547,
+        "sourceHash": "d186ee61fe55d45fd8f2a74c57df527a482f86ba1cf3b13ddf70c300b3e3e95f",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when a hostile creature casts a jutsu that affects an area.",
+          "range": "90 Feet",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual), Interrupt"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when a hostile creature casts a jutsu that affects an area. Range: 90 Feet Duration: Instant\nComponents:  HS, CM Cost: 4 Chakra Keywords: Genjutsu (Visual), Interrupt Description: You manifest a potent but powerful sense of loneliness and solitude in the form of illusionary chakra, and impose it on a hostile creature you can see in range who is casting a jutsu with range.\nThe target creature must make an Intelligence saving throw.\nCritical Success: Affected creature is able to resist this jutsu’s negative effects.\nSuccess: Affected creature gains 1 rank of Dazzled until the end of the current turn.\nFailure: Affected creatures jutsu they are casting has its shape size reduced by a set size. Sphere/Radius, Cube, Cone, Line: 10 feet, and Cylinder: 5 Feet width, 10 feet height, down to a minimum of 5 feet for any effect area.\nCritical Failure: Same as failure, but the targets jutsu effect area size is reduce by an additional 10 feet.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the jutsu’s effect area size reduction by 5 feet.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5ecbQOCtW8LIE7D"
+}

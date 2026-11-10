@@ -1,0 +1,214 @@
+{
+  "_id": "a886bc2729111b15",
+  "_key": "!items!a886bc2729111b15",
+  "name": "Psionics: Weapons of Darkness",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "psionics-weapons-of-darkness",
+    "description": "<p>You conjure illusionary weapons made of darkness and fear that can rend through a creature’s mental defense.</p>\n<p>You manifest a weapon of your description that you are proficient in that lasts for the duration called a Shadow Blade. If you lose possession of it, it disappears but can be evoked again at no action cost on your turn. This weapon is an illusion but feel real to their targets. You can use this special weapon as an Action on your turn.</p>\n<p>Shadow Blade. Make a melee or ranged Genjutsu attack against a target creature. Each attack type deals its listed damage, its listed range and has a +1 bonus to their critical threat range.</p>\n<p>Melee. Range of 5 feet, and on a hit, you deal 3d6 psychic damage. On a critical hit the affected creature must make a Wisdom saving throw.</p>\n<p>Ranged. Range of 60 feet and on a hit, you deal 2d6 psychic damage.  On a critical hit the affected creature must make an Intelligence saving throw.</p>\n<p>Success: Affected creature resists this Jutsu’s effect.</p>\n<p>Failure: Affected creatures gains 1 rank of Demoralized or Shaken.</p>\n<p>Critical Failure: Affect creatures gain 1 rank of both Demoralized or Shaken.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, you can add your Genjutsu ability modifier to the Shadow Blades damage. If this jutsu is cast at B-Rank, you can make two attacks instead of one. If this jutsu is cast at A-Rank or higher, attacks with the Shadow Blade gain an additional +1 bonus to its critical threat range. If this jutsu is cast at S-Rank, you can make three attacks instead of one.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3836",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature resists this Jutsu’s effect.",
+            "failure": "Failure: Affected creatures gains 1 rank of Demoralized or Shaken.",
+            "critFailure": "Critical Failure: Affect creatures gain 1 rank of both Demoralized or Shaken."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Range of 5 feet, and on a hit, you deal 3d6 psychic damage. On a critical hit the affected creature must make a Wisdom saving throw."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "Range of 60 feet and on a hit, you deal 2d6 psychic damage.  On a critical hit the affected creature must make an Intelligence saving throw."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, you can add your Genjutsu ability modifier to the Shadow Blades damage. If this jutsu is cast at B-Rank, you can make two attacks instead of one. If this jutsu is cast at A-Rank or higher, attacks with the Shadow Blade gain an additional +1 bonus to its critical threat range. If this jutsu is cast at S-Rank, you can make three attacks instead of one.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3836,
+        "sourceHash": "3f43c83779fc1514a95d11353fb9e59c5445534a236a8ef1644392966bf44f03",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 5 Chakra Keywords: Genjutsu (Visual, Tactile)  Description: You conjure illusionary weapons made of darkness and fear that can rend through a creature’s mental defense.\nYou manifest a weapon of your description that you are proficient in that lasts for the duration called a Shadow Blade. If you lose possession of it, it disappears but can be evoked again at no action cost on your turn. This weapon is an illusion but feel real to their targets. You can use this special weapon as an Action on your turn.\nShadow Blade. Make a melee or ranged Genjutsu attack against a target creature. Each attack type deals its listed damage, its listed range and has a +1 bonus to their critical threat range.\nMelee. Range of 5 feet, and on a hit, you deal 3d6 psychic damage. On a critical hit the affected creature must make a Wisdom saving throw.\nRanged. Range of 60 feet and on a hit, you deal 2d6 psychic damage.  On a critical hit the affected creature must make an Intelligence saving throw.\nSuccess: Affected creature resists this Jutsu’s effect.\nFailure: Affected creatures gains 1 rank of Demoralized or Shaken.\nCritical Failure: Affect creatures gain 1 rank of both Demoralized or Shaken.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is Cast at C-Rank or higher, you can add your Genjutsu ability modifier to the Shadow Blades damage. If this jutsu is cast at B-Rank, you can make two attacks instead of one. If this jutsu is cast at A-Rank or higher, attacks with the Shadow Blade gain an additional +1 bonus to its critical threat range. If this jutsu is cast at S-Rank, you can make three attacks instead of one.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 684,
+            "context": "Range of 5 feet, and on a hit, you deal 3d6 psychic damage. On a critical hit the affected creature must make a Wisdom saving throw.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d6",
+            "offset": 825,
+            "context": "Range of 60 feet and on a hit, you deal 2d6 psychic damage.  On a critical hit the affected creature must make an Intelligence saving throw.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "550eef5129fc0d02"
+}

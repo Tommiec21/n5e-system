@@ -1,0 +1,161 @@
+{
+  "_id": "8e3b43b4ebc43b15",
+  "_key": "!items!8e3b43b4ebc43b15",
+  "name": "Monkey Kings Arrogance",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "monkey-kings-arrogance",
+    "description": "<p>You spin your weapon around yourself with enough force to create updrafts and powerful winds. But all of the weapon spinning is mostly for show as you then use your weapon to launch your allies like missiles towards a creature of your choice helping them crash into them.</p>\n<p>Select up to two allied and willing creatures within your weapons range. They are thrown up to 30 feet, into a space of their choice. If they would end this movement within 5 feet of a hostile creature, they can spend their reaction to cast a Jutsu that requires a melee attack, that has a casting time of 1 Action, targeting the hostile creature.</p>\n<p>At Higher Ranks: For each rank you cast above C-rank, increase the cost by 3 and the distance you can throw them by +10 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6604",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast above C-rank, increase the cost by 3 and the distance you can throw them by +10 feet.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6604,
+        "sourceHash": "ebd56299c58654db133f6bf9ff843c0f8be2e62bc0a4b643827b3c0a2722a281",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "8 Chakra",
+          "components": "W (Any Power), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: Weapons Range\nDuration: Instant\nComponents: W (Any Power), M Cost: 8 Chakra Keywords: Bukijutsu, Chain Description: You spin your weapon around yourself with enough force to create updrafts and powerful winds. But all of the weapon spinning is mostly for show as you then use your weapon to launch your allies like missiles towards a creature of your choice helping them crash into them.\nSelect up to two allied and willing creatures within your weapons range. They are thrown up to 30 feet, into a space of their choice. If they would end this movement within 5 feet of a hostile creature, they can spend their reaction to cast a Jutsu that requires a melee attack, that has a casting time of 1 Action, targeting the hostile creature.\nAt Higher Ranks: For each rank you cast above C-rank, increase the cost by 3 and the distance you can throw them by +10 feet.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ff1cfb282039b6a7"
+}

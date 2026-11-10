@@ -1,0 +1,182 @@
+{
+  "_id": "772364e3a270f3cf",
+  "_key": "!items!772364e3a270f3cf",
+  "name": "Corruption: Audacity",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "corruption-audacity",
+    "description": "<p>You collect and build illusionary chakra, attempting to inject a sense of harshness towards allies, in your foes.</p>\n<p>Select one creature you can see within range, forcing them to make a Charisma saving throw.</p>\n<p>Critical Success: Affected creature is able to resist most of this jutsu’s effects.</p>\n<p>Success: Affected creature reduces the number of damage die they roll by 1. If multiple damage dice of different sizes are rolled, remove one of the largest until the end of their next turn.</p>\n<p>Failure: If an affected creature attacks a creature you are allied with, they are mentally forced to hold back, reducing the damage they deal by 1 damage die for the duration..</p>\n<p>Critical Failure: Same as failure, but the damage die reduction becomes 2.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the damage die reduction by +1. If this jutsu is cast at S-Rank, increase the damage die reduction by +2.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3100",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
+            "success": "Success: Affected creature reduces the number of damage die they roll by 1. If multiple damage dice of different sizes are rolled, remove one of the largest until the end of their next turn.",
+            "failure": "failure, but the damage die reduction becomes 2.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the damage die reduction by +1. If this jutsu is cast at S-Rank, increase the damage die reduction by +2.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3100,
+        "sourceHash": "8638d3cb04a4753ccbac04102c25d37fba03a8f53378ac3be6e571366142ecfa",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory, Unaware)."
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 feet Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 4 Chakra Keywords: Genjutsu (Auditory, Unaware). Description: You collect and build illusionary chakra, attempting to inject a sense of harshness towards allies, in your foes.\nSelect one creature you can see within range, forcing them to make a Charisma saving throw.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature reduces the number of damage die they roll by 1. If multiple damage dice of different sizes are rolled, remove one of the largest until the end of their next turn.\nFailure: If an affected creature attacks a creature you are allied with, they are mentally forced to hold back, reducing the damage they deal by 1 damage die for the duration..\nCritical Failure: Same as failure, but the damage die reduction becomes 2.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, increase the damage die reduction by +1. If this jutsu is cast at S-Rank, increase the damage die reduction by +2.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ce2ca0a8e089b9d2"
+}

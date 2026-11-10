@@ -1,0 +1,189 @@
+{
+  "_id": "fece21bf5f70af41",
+  "_key": "!items!fece21bf5f70af41",
+  "name": "Cause Fear",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "cause-fear",
+    "description": "<p>You awaken a sense of mortality in one creature you can see within range after releasing some potent aromas from incents you spread and use as the catalyst for your Genjutsu. A construct or undead is immune to this effect. The target must make a Wisdom saving throw.</p>\n<p>Success: Affected creature resists this jutsu’s effect.</p>\n<p>Failure: Affected creatures gains a rank of Shaken, for this jutsu’s duration.</p>\n<p>Critical Failure: Same as failure, but gains 2 ranks of Shaken.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at C-Rank or higher, a creature Shaken by this jutsu must spend its movement and Action to move away from the caster, to the best of its ability. If this jutsu is cast at B-Rank or higher, increase the ranks of Shaken inflicted by +1. If this jutsu is cast at A-Rank or higher, Shaken creatures take 4d6 Psychic damage at the end of each of their turns. If this jutsu is cast at S-Rank, increase the ranks of Shaken inflicted by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3065",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "inhaled"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature resists this jutsu’s effect.",
+            "failure": "failure, but gains 2 ranks of Shaken.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at C-Rank or higher, a creature Shaken by this jutsu must spend its movement and Action to move away from the caster, to the best of its ability. If this jutsu is cast at B-Rank or higher, increase the ranks of Shaken inflicted by +1. If this jutsu is cast at A-Rank or higher, Shaken creatures take 4d6 Psychic damage at the end of each of their turns. If this jutsu is cast at S-Rank, increase the ranks of Shaken inflicted by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3065,
+        "sourceHash": "3b49fbe8670c307ef11da3794198b332d28ea2d8ef2b0692b88c0d049d007ca5",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 Feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Inhale, Tactile)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 Feet Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 4 Chakra Keywords: Genjutsu (Inhale, Tactile) Description: You awaken a sense of mortality in one creature you can see within range after releasing some potent aromas from incents you spread and use as the catalyst for your Genjutsu. A construct or undead is immune to this effect. The target must make a Wisdom saving throw.\nSuccess: Affected creature resists this jutsu’s effect.\nFailure: Affected creatures gains a rank of Shaken, for this jutsu’s duration.\nCritical Failure: Same as failure, but gains 2 ranks of Shaken.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If this jutsu is cast at C-Rank or higher, a creature Shaken by this jutsu must spend its movement and Action to move away from the caster, to the best of its ability. If this jutsu is cast at B-Rank or higher, increase the ranks of Shaken inflicted by +1. If this jutsu is cast at A-Rank or higher, Shaken creatures take 4d6 Psychic damage at the end of each of their turns. If this jutsu is cast at S-Rank, increase the ranks of Shaken inflicted by +1.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 940,
+            "context": "If this jutsu is cast at A-Rank or higher, Shaken creatures take 4d6 Psychic damage at the end of each of their turns. If this jutsu is cast at S-Rank, increase the ranks of Shaken inflicted by +1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ce2ca0a8e089b9d2"
+}

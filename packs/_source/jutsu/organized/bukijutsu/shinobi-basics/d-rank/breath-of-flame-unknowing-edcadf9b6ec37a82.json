@@ -1,0 +1,244 @@
+{
+  "_id": "edcadf9b6ec37a82",
+  "_key": "!items!edcadf9b6ec37a82",
+  "name": "Breath of Flame: Unknowing",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-flame-unknowing",
+    "description": "<p>You begin to collect Fire release chakra until it transforms into gouts of flame that erupt from your weapon. You then dash towards your target and perform a single powerful swipe attempting to decapitate them in one strike.</p>\n<p>Select a creature you can see that you could reach using your full movement.  Move into a space adjacent to the target creature within your movement range and make a single melee taijutsu attack against one creature you can see. On a hit, you deal your weapons damage +4d6 Fire damage.</p>\n<p>Chain 1: This attacks critical threat range increases by +1.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher you can target a second creature moving again into a space adjacent to that creature and making another attack with this jutsu’s effect.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5216",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "fireRelease",
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher you can target a second creature moving again into a space adjacent to that creature and making another attack with this jutsu’s effect.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: This attacks critical threat range increases by +1.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5216,
+        "sourceHash": "49155d4ae9f9211e833f6ac28241aaae174837b2357f39c5c171ce8b292f573d",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Special",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "CM, W (Any melee), M",
+          "keywords": "Bukijutsu, Fire Release, Chain, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Special Duration: Instant\nComponents: CM, W (Any melee), M Cost: 4 Chakra Keywords: Bukijutsu, Fire Release, Chain, Clash Description: You begin to collect Fire release chakra until it transforms into gouts of flame that erupt from your weapon. You then dash towards your target and perform a single powerful swipe attempting to decapitate them in one strike.\nSelect a creature you can see that you could reach using your full movement.  Move into a space adjacent to the target creature within your movement range and make a single melee taijutsu attack against one creature you can see. On a hit, you deal your weapons damage +4d6 Fire damage.\nChain 1: This attacks critical threat range increases by +1.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher you can target a second creature moving again into a space adjacent to that creature and making another attack with this jutsu’s effect.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 494,
+            "context": "On a hit, you deal your weapons damage +4d6 Fire damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 687,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and damage by 1d6. If this jutsu is cast at B-Rank or higher you can target a second creature moving again into a space adjacent to that creature and making another attack with this jutsu’s effect.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "damage",
+              "label": "Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "1b8bbde86064544a"
+}

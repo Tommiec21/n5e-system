@@ -1,0 +1,162 @@
+{
+  "_id": "5c24ba8759602a24",
+  "_key": "!items!5c24ba8759602a24",
+  "name": "Mental Shield",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "mental-shield",
+    "description": "<p>You manifest an armor of illusory chakra that shields and protects you from assaults of other psychic based attacks or effects.</p>\n<p>You reduce all incoming psychic damage by 6, if you would reduce psychic damage to 0 while gaining the benefits of this jutsu, and the hostile jutsu or effect would also attempt to inflict an effect or condition, you ignore that effect or condition.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the psychic damage reduction by 4. If this jutsu is cast at B-Rank or higher, you can target another creature, other than yourself, to benefit from this jutsu. If this jutsu is cast at A-Rank or higher, for the duration, the affected creature cannot have its mind detected or read or telepathically communicated with unless the target allows it. If this jutsu is cast at S-Rank or higher, the affected creature has advantage on saving throws it makes against a Genjutsu once per round.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3933",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the psychic damage reduction by 4. If this jutsu is cast at B-Rank or higher, you can target another creature, other than yourself, to benefit from this jutsu. If this jutsu is cast at A-Rank or higher, for the duration, the affected creature cannot have its mind detected or read or telepathically communicated with unless the target allows it. If this jutsu is cast at S-Rank or higher, the affected creature has advantage on saving throws it makes against a Genjutsu once per round.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3933,
+        "sourceHash": "d98f4a26fb2c9d94dd142a5301dbb33a0143638afb20952715bd356a3adad60a",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "C",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Tactile)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 8 Chakra Keywords: Genjutsu (Tactile) Description: You manifest an armor of illusory chakra that shields and protects you from assaults of other psychic based attacks or effects.\nYou reduce all incoming psychic damage by 6, if you would reduce psychic damage to 0 while gaining the benefits of this jutsu, and the hostile jutsu or effect would also attempt to inflict an effect or condition, you ignore that effect or condition.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the psychic damage reduction by 4. If this jutsu is cast at B-Rank or higher, you can target another creature, other than yourself, to benefit from this jutsu. If this jutsu is cast at A-Rank or higher, for the duration, the affected creature cannot have its mind detected or read or telepathically communicated with unless the target allows it. If this jutsu is cast at S-Rank or higher, the affected creature has advantage on saving throws it makes against a Genjutsu once per round.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6a663b31d79aed95"
+}

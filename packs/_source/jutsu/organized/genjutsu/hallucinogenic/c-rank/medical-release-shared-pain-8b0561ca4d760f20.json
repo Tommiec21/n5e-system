@@ -1,0 +1,164 @@
+{
+  "_id": "8b0561ca4d760f20",
+  "_key": "!items!8b0561ca4d760f20",
+  "name": "Medical Release: Shared Pain",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-shared-pain",
+    "description": "<p>You manifest a self-sustaining illusion designed to help soothe the mental scars of battle.</p>\n<p>Select one willing allied creature within range. You share your pain with them, reducing the damage you take by half, and inflicting psychic damage on the target ally equal to the damage you took.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of allies you can target by +1. You instead divide the damage you take, by the number of allied creatures you target with this jutsu.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4150",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "genjutsu",
+      "medical"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 6,
+      "text": "6 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of allies you can target by +1. You instead divide the damage you take, by the number of allied creatures you target with this jutsu.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4150,
+        "sourceHash": "447f59adfaa225bc006ebc8ebe57b4b20c17fd73e65e8f2be53c503264a88dc8",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when you would take damage",
+          "range": "60 feet",
+          "duration": "Instant",
+          "cost": "6 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile), Medical"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Reaction, which you take when you would take damage Range: 60 feet Duration: Instant\nComponents:  HS, CM Cost: 6 Chakra Keywords: Genjutsu (Visual, Tactile), Medical  Description: You manifest a self-sustaining illusion designed to help soothe the mental scars of battle.\nSelect one willing allied creature within range. You share your pain with them, reducing the damage you take by half, and inflicting psychic damage on the target ally equal to the damage you took.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of allies you can target by +1. You instead divide the damage you take, by the number of allied creatures you target with this jutsu.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b7e33102dfc09350"
+}

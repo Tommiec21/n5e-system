@@ -1,0 +1,188 @@
+{
+  "_id": "eacc504f585d764d",
+  "_key": "!items!eacc504f585d764d",
+  "name": "Lightning Release: Lightning King’s Mantle",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-lightning-kings-mantle",
+    "description": "<p>You radiate a powerful aura of lightning energy in an aura with a radius centered on you, enhancing the combat potential in yourself and friendly creatures.</p>\n<p>The aura moves with you. While in the aura, whenever a creature of your choice would deal their [Weapons damage], they add +1d6 Lightning damage to the result.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and increase the radius by 10 feet. If this jutsu is cast at B-Rank or higher, their [Weapon damage], Penetrates 4 DR. Additionally, if you score a critical hit with a weapon enhanced by this jutsu, the target creature gains +1 rank of Shocked.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2882",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (10-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and increase the radius by 10 feet. If this jutsu is cast at B-Rank or higher, their [Weapon damage], Penetrates 4 DR. Additionally, if you score a critical hit with a weapon enhanced by this jutsu, the target creature gains +1 rank of Shocked.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2882,
+        "sourceHash": "a83c63205f2d3b9ccbd87a9dfd30cbb0e887c568ebc37185eca8ab519c3422e7",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Bonus Action",
+          "range": "Self (10-foot radius sphere)",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Stable"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Bonus Action Range: Self (10-foot radius sphere) Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Lightning Release, Stable Description: You radiate a powerful aura of lightning energy in an aura with a radius centered on you, enhancing the combat potential in yourself and friendly creatures.\nThe aura moves with you. While in the aura, whenever a creature of your choice would deal their [Weapons damage], they add +1d6 Lightning damage to the result.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and increase the radius by 10 feet. If this jutsu is cast at B-Rank or higher, their [Weapon damage], Penetrates 4 DR. Additionally, if you score a critical hit with a weapon enhanced by this jutsu, the target creature gains +1 rank of Shocked.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 253,
+            "context": "While in the aura, whenever a creature of your choice would deal their [Weapons damage], they add +1d6 Lightning damage to the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 281,
+            "context": "While in the aura, whenever a creature of your choice would deal their [Weapons damage], they add +1d6 Lightning damage to the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapon damage]",
+            "offset": 504,
+            "context": "If this jutsu is cast at B-Rank or higher, their [Weapon damage], Penetrates 4 DR. Additionally, if you score a critical hit with a weapon enhanced by this jutsu, the target creature gains +1 rank of Shocked.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "5a30ed7096cb7ea2"
+}

@@ -1,0 +1,178 @@
+{
+  "_id": "53c6fd25eda24bbd",
+  "_key": "!items!53c6fd25eda24bbd",
+  "name": "Sealing Art: Impure World Destruction",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-impure-world-destruction",
+    "description": "<p>You infuse chakra into chakra seals as you attempt to tear into the underworld with the seal of the consecration.</p>\n<p>You summon a coffin to act as a gateway to the underworld. The coffin springs open, as shadow tendril-like hands launch forward piercing the body a creature you can see within range. Make a ranged ninjutsu attack. On a hit, you deal 10d10 necrotic damage.</p>\n<p>If this jutsu reduces a creature to 0 Hit points, their soul is torn from their body as it is Sealed within the coffin.</p>\n<p>Moving forward, until there is not a soul bound to the coffin, whenever you would cast this jutsu, you instead summon an undead construct of the creature you originally killed using this jutsu. The construct acts at the end of your turn, and follows your command. It can speak freely but cannot willingly act in a way counter to any action you provide it. The construct has half as many hit points it had in life, can cast jutsu and use clan features it had in life using your chakra instead.</p>\n<p>A construct summoned this way can only remain summoned for 1 minute before being pulled back into the coffin at the end of the duration to be saved for later use.</p>\n<p>A construct that is killed while summoned does not return to the coffin, instead relinquishing the soul that was bound to it.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1205",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "fullTurn",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 foot"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 45,
+      "text": "45 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1205,
+        "sourceHash": "796ff6eaee611f181ea53824b678a29753d4004b60dfb9f82e73dd5b05396831",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "S",
+          "time": "1 Full Turn Action",
+          "range": "30 foot",
+          "duration": "Instant",
+          "cost": "45 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Full Turn Action Range: 30 foot Duration: Instant\nComponents: HS, CM, CS  Cost: 45 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You infuse chakra into chakra seals as you attempt to tear into the underworld with the seal of the consecration.\nYou summon a coffin to act as a gateway to the underworld. The coffin springs open, as shadow tendril-like hands launch forward piercing the body a creature you can see within range. Make a ranged ninjutsu attack. On a hit, you deal 10d10 necrotic damage.\nIf this jutsu reduces a creature to 0 Hit points, their soul is torn from their body as it is Sealed within the coffin.\nMoving forward, until there is not a soul bound to the coffin, whenever you would cast this jutsu, you instead summon an undead construct of the creature you originally killed using this jutsu. The construct acts at the end of your turn, and follows your command. It can speak freely but cannot willingly act in a way counter to any action you provide it. The construct has half as many hit points it had in life, can cast jutsu and use clan features it had in life using your chakra instead.\nA construct summoned this way can only remain summoned for 1 minute before being pulled back into the coffin at the end of the duration to be saved for later use.\nA construct that is killed while summoned does not return to the coffin, instead relinquishing the soul that was bound to it.",
+        "expressions": [
+          {
+            "expression": "10d10",
+            "offset": 347,
+            "context": "On a hit, you deal 10d10 necrotic damage.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "359c019795b66652"
+}

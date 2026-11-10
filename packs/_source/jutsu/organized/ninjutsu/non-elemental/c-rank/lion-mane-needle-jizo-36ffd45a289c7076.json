@@ -1,0 +1,186 @@
+{
+  "_id": "36ffd45a289c7076",
+  "_key": "!items!36ffd45a289c7076",
+  "name": "Lion Mane: Needle Jizo",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lion-mane-needle-jizo",
+    "description": "<p>You activate the roots of your hair causing your hair to grow at a heightened rate and granting you full control over your hairs movements.</p>\n<p>For the duration of this jutsu you can use the following abilities granted by this jutsu.</p>\n<p>1 Action.</p>\n<p>Wrap. You command your hair to lash out grabbing a creature you can see within 15 feet of you. Make a melee ninjutsu attack. On a success, you restrain them. A Restrained creature makes strength saving throw, escaping on a success. On your turn, as a Bonus action, you can move the Restrained creature anywhere within 15 feet of you as if you were dragging them.</p>\n<p>1 Reaction.</p>\n<p>Needle Cap. As a reaction to taking damage your hair wraps around your body and harden with spiked, needle-like hair armor. Each time the triggering creature and each creature thereafter makes a melee attack against you while within 10 feet of you, they take 3d6 piercing damage, until the beginning of your next turn.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage of Needle Cap by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of creatures you can target with Wrap by +2 and creatures who take damage a result of Needle Cap gains a rank of Bleed. If this jutsu is cast at A-Rank or higher, increase the range of Wrap to 30 feet and Needle Cap now affects all creature within a 10-foot radius centered on you each time you are targeted by a melee attack.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 935",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage of Needle Cap by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of creatures you can target with Wrap by +2 and creatures who take damage a result of Needle Cap gains a rank of Bleed. If this jutsu is cast at A-Rank or higher, increase the range of Wrap to 30 feet and Needle Cap now affects all creature within a 10-foot radius centered on you each time you are targeted by a melee attack.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 935,
+        "sourceHash": "02b2fce3340c4ec84e9caf0c9e82dc7cb31a98b0eef6531ac4a45c1c2c73bfeb",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "C",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Stable"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, Up to 1 minute\nComponents:  HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Stable Description: You activate the roots of your hair causing your hair to grow at a heightened rate and granting you full control over your hairs movements.\nFor the duration of this jutsu you can use the following abilities granted by this jutsu.\n1 Action.\nWrap. You command your hair to lash out grabbing a creature you can see within 15 feet of you. Make a melee ninjutsu attack. On a success, you restrain them. A Restrained creature makes strength saving throw, escaping on a success. On your turn, as a Bonus action, you can move the Restrained creature anywhere within 15 feet of you as if you were dragging them.\n1 Reaction.\nNeedle Cap. As a reaction to taking damage your hair wraps around your body and harden with spiked, needle-like hair armor. Each time the triggering creature and each creature thereafter makes a melee attack against you while within 10 feet of you, they take 3d6 piercing damage, until the beginning of your next turn.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage of Needle Cap by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of creatures you can target with Wrap by +2 and creatures who take damage a result of Needle Cap gains a rank of Bleed. If this jutsu is cast at A-Rank or higher, increase the range of Wrap to 30 feet and Needle Cap now affects all creature within a 10-foot radius centered on you each time you are targeted by a melee attack.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 874,
+            "context": "Each time the triggering creature and each creature thereafter makes a melee attack against you while within 10 feet of you, they take 3d6 piercing damage, until the beginning of your next turn.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1068,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage of Needle Cap by 1d6. If this jutsu is cast at B-Rank or higher, increase the number of creatures you can target with Wrap by +2 and creatures who take damage a result of Needle Cap gains a rank of Bleed. If this jutsu is cast at A-Rank or higher, increase the range of Wrap to 30 feet and Needle Cap now affects all creature within a 10-foot radius centered on you each time you are targeted by a melee attack.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "cfa6ae1d0e387079"
+}

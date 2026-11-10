@@ -1,0 +1,177 @@
+{
+  "_id": "11c526c80c0f045d",
+  "_key": "!items!11c526c80c0f045d",
+  "name": "Medical Release: Twisted Healing",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-twisted-healing",
+    "description": "<p>You begin to generate a surge of twisted medical release chakra designed to reverse the effects of healing, even making it detrimental to do so.</p>\n<p>When you see a creature begin to mend their wounds, or have their wounds mended by another within range, you can swiftly prevent it. Roll 4d6, you reduce the amount of hit points regained by the result.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of targets by +1, and the healing prevented by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1339",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you see a creature regain hit points."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "Roll 4d6, you reduce the amount of hit points regained by the result."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of targets by +1, and the healing prevented by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1339,
+        "sourceHash": "e06cae02024608cad03856dd0a3e3d2492f0c1e81a43db4e5b37817738d9494f",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you see a creature regain hit points.",
+          "range": "60 Feet",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you see a creature regain hit points. Range: 60 Feet Duration: Instant\nComponents:  HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Medical Description: You begin to generate a surge of twisted medical release chakra designed to reverse the effects of healing, even making it detrimental to do so.\nWhen you see a creature begin to mend their wounds, or have their wounds mended by another within range, you can swiftly prevent it. Roll 4d6, you reduce the amount of hit points regained by the result.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of targets by +1, and the healing prevented by 1d6.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 283,
+            "context": "Roll 4d6, you reduce the amount of hit points regained by the result.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 509,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of targets by +1, and the healing prevented by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c44c91ecdf316b93"
+}

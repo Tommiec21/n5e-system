@@ -1,0 +1,349 @@
+{
+  "_id": "6d29d8f8b52ef0eb",
+  "_key": "!items!6d29d8f8b52ef0eb",
+  "name": "Frenzy: Mind Burst",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "frenzy-mind-burst",
+    "description": "<p>You reach into the mind of one creature you can see within range. Make a ranged genjutsu Attack as you launch a psychic lance into the mind of the target. On a hit, the target takes 5d8 psychic damage and must make a Wisdom saving throw.</p>\n<p>Success: Affected creature is able to resist this Genjutsu’s effects.</p>\n<p>Failure: They become Berserked.</p>\n<p>Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the number of targets by +1. If this jutsu is cast at S-Rank or higher, increase the number of targets by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3266",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "tactile",
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "gen",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
+            "failure": "Failure: They become Berserked.",
+            "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the number of targets by +1. If this jutsu is cast at S-Rank or higher, increase the number of targets by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3266,
+        "sourceHash": "96240afe10974ab43efef952390e78d9fd66955cfc16a78c9f5df39cadb2d8c9",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "C",
+          "time": "1 action",
+          "range": "60 Feet",
+          "duration": "1 minute",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual, Tactile)"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 action Range: 60 Feet Duration: 1 minute\nComponents: HS, CM Cost: 9 Chakra Keywords: Genjutsu (Visual, Tactile) Description: You reach into the mind of one creature you can see within range. Make a ranged genjutsu Attack as you launch a psychic lance into the mind of the target. On a hit, the target takes 5d8 psychic damage and must make a Wisdom saving throw.\nSuccess: Affected creature is able to resist this Genjutsu’s effects.\nFailure: They become Berserked.\nCritical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the number of targets by +1. If this jutsu is cast at S-Rank or higher, increase the number of targets by +1.",
+        "expressions": [
+          {
+            "expression": "5d8",
+            "offset": 182,
+            "context": "On a hit, the target takes 5d8 psychic damage and must make a Wisdom saving throw.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 579,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the number of targets by +1. If this jutsu is cast at S-Rank or higher, increase the number of targets by +1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
+                  "failure": "Failure: They become Berserked.",
+                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
+                  "failure": "Failure: They become Berserked.",
+                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
+                  "failure": "Failure: They become Berserked.",
+                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "68fe90231eaf9f92"
+}

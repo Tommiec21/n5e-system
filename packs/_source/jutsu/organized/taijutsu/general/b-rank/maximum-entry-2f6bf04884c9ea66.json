@@ -1,0 +1,189 @@
+{
+  "_id": "2f6bf04884c9ea66",
+  "_key": "!items!2f6bf04884c9ea66",
+  "name": "Maximum Entry",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "maximum-entry",
+    "description": "<p>You move at remarkable speeds vanishing like the wind. Choose up to 5 creatures you can see within range. Make a melee taijutsu attack against each target. On a hit, a target takes your [Unarmed damage] + 4d8 and becomes Bruised. You then teleport to an unoccupied space you can see within 5 feet of one of your targets you hit or missed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4894",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "combo"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 45,
+        "long": null,
+        "text": "45 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4894,
+        "sourceHash": "ede001c8936ee1a6acedd4f9d6d56ebe528e50cb4bca943d53f4bdb5d5828e55",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "45 feet",
+          "duration": "Instant",
+          "cost": "13 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Combo"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 45 feet Duration: Instant\nComponents: M Cost: 13 Chakra Keywords: Taijutsu, Combo Description: You move at remarkable speeds vanishing like the wind. Choose up to 5 creatures you can see within range. Make a melee taijutsu attack against each target. On a hit, a target takes your [Unarmed damage] + 4d8 and becomes Bruised. You then teleport to an unoccupied space you can see within 5 feet of one of your targets you hit or missed.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 186,
+            "context": "On a hit, a target takes your [Unarmed damage] + 4d8 and becomes Bruised. You then teleport to an unoccupied space you can see within 5 feet of one of your targets you hit or missed.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d8",
+            "offset": 205,
+            "context": "On a hit, a target takes your [Unarmed damage] + 4d8 and becomes Bruised. You then teleport to an unoccupied space you can see within 5 feet of one of your targets you hit or missed.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

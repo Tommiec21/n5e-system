@@ -1,0 +1,205 @@
+{
+  "_id": "976697055d572253",
+  "_key": "!items!976697055d572253",
+  "name": "Earth Release: Bottomless Swamp",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-bottomless-swamp",
+    "description": "<p>You select a point you can see within range as a swamp-like pool begins to form, filling a 60 ft Cube. This mud pool is difficult terrain, cannot be traversed using water walking techniques, and prevents creatures from dashing or jumping. Creatures caught in the radius when this jutsu is cast, enters the radius for the first time on their turns, or begins their turns there must make a Strength saving throw and additional Strength saving throws at the beginning of each of their turns for the duration.</p>\n<p>Each consecutive failure imposes additional penalties and effects on the target creature(s). On a success a creature removes one of the failure conditions in the reverse order they received them. Each failed save deals 4d8 Earth damage to the affected creature.</p>\n<p>1st failure. Their movement speed is reduced by 20-feet and they cannot gain bonuses movement speed for the duration.</p>\n<p>2nd failure. Half of the creature's body is submerged and are Restrained by the thick untraversable mud.</p>\n<p>3rd failure. They are dragged below the surface and counted as suffocating. They can survive a number of their turns equal to their constitution modifier, after which they begin Dying. If this jutsu ends while a creature is submerged, they are forced to the surface as the Swamp hardens over again.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1811",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet, (60 Foot Cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 60,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "suffocating",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Suffocating"
+          },
+          {
+            "key": "dying",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Dying"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1811,
+        "sourceHash": "8768fd27655bf0ff00978f8c326faa4045a485bf02a42a69666666c0a341a884",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "120 Feet, (60 Foot Cube)",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "13 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 120 Feet, (60 Foot Cube) Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 13 Chakra Keywords: Ninjutsu, Earth Release Description: You select a point you can see within range as a swamp-like pool begins to form, filling a 60 ft Cube. This mud pool is difficult terrain, cannot be traversed using water walking techniques, and prevents creatures from dashing or jumping. Creatures caught in the radius when this jutsu is cast, enters the radius for the first time on their turns, or begins their turns there must make a Strength saving throw and additional Strength saving throws at the beginning of each of their turns for the duration.\nEach consecutive failure imposes additional penalties and effects on the target creature(s). On a success a creature removes one of the failure conditions in the reverse order they received them. Each failed save deals 4d8 Earth damage to the affected creature.\n1st failure. Their movement speed is reduced by 20-feet and they cannot gain bonuses movement speed for the duration.\n2nd failure. Half of the creature's body is submerged and are Restrained by the thick untraversable mud.\n3rd failure. They are dragged below the surface and counted as suffocating. They can survive a number of their turns equal to their constitution modifier, after which they begin Dying. If this jutsu ends while a creature is submerged, they are forced to the surface as the Swamp hardens over again.",
+        "expressions": [
+          {
+            "expression": "4d8",
+            "offset": 725,
+            "context": "Each failed save deals 4d8 Earth damage to the affected creature.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b7e6162521e0f78f"
+}

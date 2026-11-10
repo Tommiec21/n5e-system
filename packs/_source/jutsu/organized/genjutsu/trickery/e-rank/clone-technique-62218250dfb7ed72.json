@@ -1,0 +1,185 @@
+{
+  "_id": "62218250dfb7ed72",
+  "_key": "!items!62218250dfb7ed72",
+  "name": "Clone Technique",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "clone-technique",
+    "description": "<p>The most basic clone technique that is taught in most academies across the ninja world. You create 2 illusory duplicates of yourself. The clones stay near you and disappear when attacked. The clones appear by your side and appear almost like layered duplicates occupying the same space. The duplicates look like the you, but cannot speak or perform any action that requires interacting with something physically.</p>\n<p>If cast as an Action, you summon a flurry of duplicates that last until the beginning of your next turn. The next two times you take damage from an attack targeting you of your choice, the attacker suffers a d4 penalty to their attacks, which could cause the triggering attack to miss. After which this jutsu ends.</p>\n<p>If cast as a Reaction, you summon just enough duplicates to potentially avoid damage. The triggering attack suffers a 1d6 penalty to its attack.</p>\n<p>Any creature using a Jutsu with the Sensory Keyword or has chakra sight are not immune by this jutsu.</p>\n<p>At Higher Levels: This Jutsu’s proficiency increases as you increase in level. The Action Version of this jutsu increases in proficiency. When you reach 5th level this jutsu can trigger three (3) times, 11th level (4 times), 17th level (5 times).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3433",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "E",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Action or 1 Reaction, which you take when you take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "none",
+      "value": 0,
+      "text": "None"
+    },
+    "components": {
+      "hs": true,
+      "cm": false,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "d4",
+        "roll": {
+          "formula": "d4",
+          "note": "The next two times you take damage from an attack targeting you of your choice, the attacker suffers a d4 penalty to their attacks, which could cause the triggering attack to miss. After which this jutsu ends."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "The triggering attack suffers a 1d6 penalty to its attack."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3433,
+        "sourceHash": "2a6cdd0d8eee6c1157c23aed4f520f6a86a48401a10d7744cc13fea7bb3f1ec2",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "E",
+          "time": "1 Action or 1 Reaction, which you take when you take damage.",
+          "range": "Self",
+          "duration": "Special",
+          "cost": "None",
+          "components": "HS",
+          "keywords": "Genjutsu (Visual)"
+        },
+        "sourceText": "Rank: E-Rank Casting Time: 1 Action or 1 Reaction, which you take when you take damage. Range: Self\nDuration: Special\nComponents: HS Cost: None Keywords: Genjutsu (Visual) Description: The most basic clone technique that is taught in most academies across the ninja world. You create 2 illusory duplicates of yourself. The clones stay near you and disappear when attacked. The clones appear by your side and appear almost like layered duplicates occupying the same space. The duplicates look like the you, but cannot speak or perform any action that requires interacting with something physically.\nIf cast as an Action, you summon a flurry of duplicates that last until the beginning of your next turn. The next two times you take damage from an attack targeting you of your choice, the attacker suffers a d4 penalty to their attacks, which could cause the triggering attack to miss. After which this jutsu ends.\nIf cast as a Reaction, you summon just enough duplicates to potentially avoid damage. The triggering attack suffers a 1d6 penalty to its attack.\nAny creature using a Jutsu with the Sensory Keyword or has chakra sight are not immune by this jutsu.\nAt Higher Levels: This Jutsu’s proficiency increases as you increase in level. The Action Version of this jutsu increases in proficiency. When you reach 5th level this jutsu can trigger three (3) times, 11th level (4 times), 17th level (5 times).",
+        "expressions": [
+          {
+            "expression": "d4",
+            "offset": 621,
+            "context": "The next two times you take damage from an attack targeting you of your choice, the attacker suffers a d4 penalty to their attacks, which could cause the triggering attack to miss. After which this jutsu ends.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 846,
+            "context": "The triggering attack suffers a 1d6 penalty to its attack.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eYVmSH40pmstdX"
+}

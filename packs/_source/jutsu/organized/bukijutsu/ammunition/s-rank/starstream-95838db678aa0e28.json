@@ -1,0 +1,228 @@
+{
+  "_id": "95838db678aa0e28",
+  "_key": "!items!95838db678aa0e28",
+  "name": "Starstream",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "starstream",
+    "description": "<p>A delicate and precise technique, the caster must carefully plan the arrangement of the shuriken, and carefully string them up with battle wire before swinging them precisely into a star-shaped pattern around them, warding off attacks and providing a deadly flourish of steel.</p>\n<p>When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit.</p>\n<p>While concentrating on this jutsu, any hostile creature entering this radius for the first time on a turn or beginning or ending their turn within its radius must make a Dexterity saving throw, taking your [Weapons damage] + [Weapons damage] + [Weapons damage] on a failure, or half as much on a success save.</p>\n<p>Chain 3: For the duration, yourself and any allied creature of your choice within the radius of this jutsu, are considered to have Partial Cover against ranged attacks</p>\n<p>At Higher Ranks: For each rank you cast this above A-Rank, increase the cost by 3, and the attacks damage by 1d6</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 7182",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-Feet radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 24,
+      "text": "24 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this above A-Rank, increase the cost by 3, and the attacks damage by 1d6</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": "<p>Chain 3: For the duration, yourself and any allied creature of your choice within the radius of this jutsu, are considered to have Partial Cover against ranged attacks</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 7182,
+        "sourceHash": "c766d8b7f3ce785cd4811a20321eb66a31e8ea214c2200f943c921f3373205e0",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self (15-Feet radius)",
+          "duration": "Concentration, 1 Minute",
+          "cost": "24 Chakra",
+          "components": "W (Any Thrown), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: S-Rank\nCasting Time: 1 Action\nRange: Self (15-Feet radius)\nDuration: Concentration, 1 Minute\nComponents: W (Any Thrown), M\nCost: 24 Chakra\nKeywords: Bukijutsu, Chain\nDescription: A delicate and precise technique, the caster must carefully plan the arrangement of the shuriken, and carefully string them up with battle wire before swinging them precisely into a star-shaped pattern around them, warding off attacks and providing a deadly flourish of steel.\nWhen this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit.\nWhile concentrating on this jutsu, any hostile creature entering this radius for the first time on a turn or beginning or ending their turn within its radius must make a Dexterity saving throw, taking your [Weapons damage] + [Weapons damage] + [Weapons damage] on a failure, or half as much on a success save.\nChain 3: For the duration, yourself and any allied creature of your choice within the radius of this jutsu, are considered to have Partial Cover against ranged attacks\nAt Higher Ranks: For each rank you cast this above A-Rank, increase the cost by 3, and the attacks damage by 1d6",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 419,
+            "context": "When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 438,
+            "context": "When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "4d6",
+            "offset": 457,
+            "context": "When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 677,
+            "context": "While concentrating on this jutsu, any hostile creature entering this radius for the first time on a turn or beginning or ending their turn within its radius must make a Dexterity saving throw, taking your [Weapons damage] + [Weapons damage] + [Weapons damage] on a failure, or half as much on a success save.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 696,
+            "context": "While concentrating on this jutsu, any hostile creature entering this radius for the first time on a turn or beginning or ending their turn within its radius must make a Dexterity saving throw, taking your [Weapons damage] + [Weapons damage] + [Weapons damage] on a failure, or half as much on a success save.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 715,
+            "context": "While concentrating on this jutsu, any hostile creature entering this radius for the first time on a turn or beginning or ending their turn within its radius must make a Dexterity saving throw, taking your [Weapons damage] + [Weapons damage] + [Weapons damage] on a failure, or half as much on a success save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1058,
+            "context": "At Higher Ranks: For each rank you cast this above A-Rank, increase the cost by 3, and the attacks damage by 1d6",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a8010b352a59571c"
+}

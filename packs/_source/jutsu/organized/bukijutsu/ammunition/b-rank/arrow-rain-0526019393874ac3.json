@@ -1,0 +1,232 @@
+{
+  "_id": "0526019393874ac3",
+  "_key": "!items!0526019393874ac3",
+  "name": "Arrow Rain",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "arrow-rain",
+    "description": "<p>When you cast this jutsu you must spend one ammunition die that is at least a d4 in size or greater.</p>\n<p>You prep as many shots as you desire and Fire them in an arc that then begin to rain down overwhelming all within range.</p>\n<p>Select a point you can see within range. All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition.</p>\n<p>Chain 2: You instead reduce your ammunition die size by 1 step, instead of spending the whole die.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 7031",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range (10-Foot Radius)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 11,
+      "text": "11 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any ranged/Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "d4",
+        "roll": {
+          "formula": "d4",
+          "note": "When you cast this jutsu you must spend one ammunition die that is at least a d4 in size or greater."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "2d8",
+        "roll": {
+          "formula": "2d8",
+          "note": "All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: You instead reduce your ammunition die size by 1 step, instead of spending the whole die.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 7031,
+        "sourceHash": "07a46c6634f9aae33b1d4fbb88ae091a97f3ab36ea6cd8b802f86287907fa31f",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapon Range (10-Foot Radius)",
+          "duration": "Instant",
+          "cost": "11 Chakra",
+          "components": "W (Any ranged/Thrown), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Weapon Range (10-Foot Radius) Duration: Instant\nComponents: W (Any ranged/Thrown), M Cost: 11 Chakra Keywords: Bukijutsu, Chain Description: When you cast this jutsu you must spend one ammunition die that is at least a d4 in size or greater.\nYou prep as many shots as you desire and Fire them in an arc that then begin to rain down overwhelming all within range.\nSelect a point you can see within range. All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition.\nChain 2: You instead reduce your ammunition die size by 1 step, instead of spending the whole die.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "d4",
+            "offset": 78,
+            "context": "When you cast this jutsu you must spend one ammunition die that is at least a d4 in size or greater.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapons damage]",
+            "offset": 369,
+            "context": "All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8",
+            "offset": 388,
+            "context": "All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 886,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a7edbe01a9022231"
+}

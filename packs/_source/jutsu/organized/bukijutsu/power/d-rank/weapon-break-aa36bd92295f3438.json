@@ -1,0 +1,198 @@
+{
+  "_id": "aa36bd92295f3438",
+  "_key": "!items!aa36bd92295f3438",
+  "name": "Weapon Break",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "weapon-break",
+    "description": "<p>You quickly react to being hit by using your weapon to catch the attacking weapon at a vulnerable angle. The creature who triggered this reaction must make a Dexterity saving throw, having their weapon break on a failed save. If the triggering creatures’ weapon has Weapon Seals, it can only be broken by a weapon which has an equal or greater bonus to attack and/or damage rolls or an equal or greater ranked weapon enhancement seal.</p>\n<p>Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6513",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you take damage from a melee attack."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "Chain 1: 2d8",
+        "roll": {
+          "formula": "2d8",
+          "note": "Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6513,
+        "sourceHash": "e9d9f2a57f78e38f6570403197db3d82a237c92d4ecf8dc34c6dbd35b544962f",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "D",
+          "time": "1 Reaction, which you take when you take damage from a melee attack.",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "W (Any Power), M",
+          "keywords": "Bukijutsu, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Reaction, which you take when you take damage from a melee attack. Range: Self Duration: Instant\nComponents: W (Any Power), M Cost: 5 Chakra Keywords: Bukijutsu, Clash Description: You quickly react to being hit by using your weapon to catch the attacking weapon at a vulnerable angle. The creature who triggered this reaction must make a Dexterity saving throw, having their weapon break on a failed save. If the triggering creatures’ weapon has Weapon Seals, it can only be broken by a weapon which has an equal or greater bonus to attack and/or damage rolls or an equal or greater ranked weapon enhancement seal.\nChain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 562,
+            "context": "Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit.",
+            "section": "Chain 1"
+          },
+          {
+            "expression": "2d8",
+            "offset": 581,
+            "context": "Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit.",
+            "section": "Chain 1"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c0a6a06641c5a7be"
+}

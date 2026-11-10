@@ -1,0 +1,211 @@
+{
+  "_id": "a53e332a2fcbdb05",
+  "_key": "!items!a53e332a2fcbdb05",
+  "name": "Violent Leaf Adamantine-Strength Whirlwind",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "violent-leaf-adamantine-strength-whirlwind",
+    "description": "<p>As a part of casting this jutsu, you must currently have at least the 4th Gate: Pain from the 8 Inner Gates: Seimon Taijutsu Feat.</p>\n<p>When you first enter at least the 4th gate, you can cast this jutsu, immediately moving up to 30 feet towards any hostile creature you can see. If you end your movement within 5 feet of the them, you perform powerful roundhouse kick.</p>\n<p>Make a melee taijutsu attack. On a hit you deal five times your [Unarmed damage] and the target must make a strength saving throw. On a failed save they are thrown back a number of feet equal to your strength modifier times 20.  If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5085",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "kinjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "6d6",
+        "roll": {
+          "formula": "6d6",
+          "note": "If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5085,
+        "sourceHash": "8f67cff5c43b2ff6159be0b15d377b4095286799ad1a32e2f9437a869fbe1ff7",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "A",
+          "time": "Special",
+          "range": "5 Feet",
+          "duration": "Instant",
+          "cost": "18 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Kinjutsu"
+        },
+        "sourceText": "Rank: A-Rank\nCasting Time: Special\nRange: 5 Feet\nDuration: Instant\nComponents: CM, M\nCost: 18 Chakra\nKeywords: Taijutsu, Kinjutsu\nDescription: As a part of casting this jutsu, you must currently have at least the 4th Gate: Pain from the 8 Inner Gates: Seimon Taijutsu Feat.\nWhen you first enter at least the 4th gate, you can cast this jutsu, immediately moving up to 30 feet towards any hostile creature you can see. If you end your movement within 5 feet of the them, you perform powerful roundhouse kick.\nMake a melee taijutsu attack. On a hit you deal five times your [Unarmed damage] and the target must make a strength saving throw. On a failed save they are thrown back a number of feet equal to your strength modifier times 20.  If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 429,
+            "context": "On a hit you deal five times your [Unarmed damage] and the target must make a strength saving throw. On a failed save they are thrown back a number of feet equal to your strength modifier times 20.  If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through.",
+            "section": "Base"
+          },
+          {
+            "expression": "6d6",
+            "offset": 752,
+            "context": "If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ee1379d61e3505ec"
+}

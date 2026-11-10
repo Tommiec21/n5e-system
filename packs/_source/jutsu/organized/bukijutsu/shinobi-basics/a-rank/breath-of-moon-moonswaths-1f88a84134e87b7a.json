@@ -1,0 +1,224 @@
+{
+  "_id": "1f88a84134e87b7a",
+  "_key": "!items!1f88a84134e87b7a",
+  "name": "Breath of Moon: Moonswaths",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "breath-of-moon-moonswaths",
+    "description": "<p>You collect and manifest a dark chakra until it laces the striking portion of your weapon, curving it like a crescent moon. Each swing creates distortions in the area, manifesting into crescent moons that bombard an area with reckless abandon.</p>\n<p>Select up to 4 points you can see within range. All creatures within 5 feet of each point, must make a Dexterity saving throw, taking 4d12 slashing damage on a failed save or half as much on a success. A creature can only be affected by this jutsu once per casting.</p>\n<p>Chain 2: Creatures who fail their saving throw gains 3 ranks of Bleed.</p>\n<p>Chain 3: Until the end of your next turn, you can cast a Breath of Moon Bukijutsu using either your Action, Bonus Action or Reaction, ignoring its listed casting time.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5621",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 18,
+      "text": "18 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: Creatures who fail their saving throw gains 3 ranks of Bleed.</p>",
+      "3": "<p>Chain 3: Until the end of your next turn, you can cast a Breath of Moon Bukijutsu using either your Action, Bonus Action or Reaction, ignoring its listed casting time.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5621,
+        "sourceHash": "d43ced19adaf698458b3f2fc018516225bcb3c2a26de0b7642eeea458544fc1f",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "60 feet",
+          "duration": "Instant",
+          "cost": "18 Chakra",
+          "components": "W (Any melee), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: A-Rank\nCasting Time: 1 Action\nRange: 60 feet\nDuration: Instant\nComponents: W (Any melee), M Cost: 18 Chakra Keywords: Bukijutsu, Chain, Clash Description: You collect and manifest a dark chakra until it laces the striking portion of your weapon, curving it like a crescent moon. Each swing creates distortions in the area, manifesting into crescent moons that bombard an area with reckless abandon.\nSelect up to 4 points you can see within range. All creatures within 5 feet of each point, must make a Dexterity saving throw, taking 4d12 slashing damage on a failed save or half as much on a success. A creature can only be affected by this jutsu once per casting.\nChain 2: Creatures who fail their saving throw gains 3 ranks of Bleed.\nChain 3: Until the end of your next turn, you can cast a Breath of Moon Bukijutsu using either your Action, Bonus Action or Reaction, ignoring its listed casting time.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d12.",
+        "expressions": [
+          {
+            "expression": "4d12",
+            "offset": 378,
+            "context": "All creatures within 5 feet of each point, must make a Dexterity saving throw, taking 4d12 slashing damage on a failed save or half as much on a success. A creature can only be affected by this jutsu once per casting.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 868,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (1d12)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "7116760d98edc24e"
+}

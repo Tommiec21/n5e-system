@@ -1,0 +1,187 @@
+{
+  "_id": "e45ef185a656a4e6",
+  "_key": "!items!e45ef185a656a4e6",
+  "name": "Memory Domination",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "memory-domination",
+    "description": "<p>You attempt to reshape another creature’s memories. One creature that you touch must make an Intelligence saving throw. If you are fighting the creature, it has advantage on the saving throw. On a failed save, the target becomes Charmed by you for 1 minute. The Charmed target is Incapacitated and unaware of its surroundings, though it can still hear you. If it takes any damage or is targeted by another jutsu, this jutsu ends, and none of the target’s memories are modified. While this charm lasts, you can affect the target’s memory of an event that it experienced within the last 12 Months and that lasted no more than 1 Day.</p>\n<p>You can Temporarily overwrite all memory of the event, allow the target to recall the event with perfect clarity and exacting detail, change its memory of the details of the event, or create a memory of some other event.</p>\n<p>You must speak to the target to describe how its memories are affected and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the jutsu ends before you have finished describing the modified memories, the creature’s memory isn’t altered.</p>\n<p>The modified memories take hold when the jutsu ends. A modified memory doesn’t necessarily affect how a creature behaves, particularly if the memory contradicts the creature’s natural inclinations, allegiance, or beliefs. An illogical modified memory is dismissed, perhaps as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature in a significant manner.</p>\n<p>A Genjutsu Break or Greater Restorative Jutsu cast on the target, specifically intended to restore the creature’s true memory will restore the memory.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3969",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "psionic",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Until Restored"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "charmed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Charmed"
+          },
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3969,
+        "sourceHash": "161e2d681cb6a0fd385dabb454e24d9fdc63fc1e7aa570d61e7a1873eb54a795",
+        "discipline": "Genjutsu",
+        "group": "Psionic",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Until Restored",
+          "cost": "14 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Genjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Touch Duration: Until Restored\nComponents: HS, CM, CS Cost: 14 Chakra Keywords: Genjutsu, Fuinjutsu Description: You attempt to reshape another creature’s memories. One creature that you touch must make an Intelligence saving throw. If you are fighting the creature, it has advantage on the saving throw. On a failed save, the target becomes Charmed by you for 1 minute. The Charmed target is Incapacitated and unaware of its surroundings, though it can still hear you. If it takes any damage or is targeted by another jutsu, this jutsu ends, and none of the target’s memories are modified. While this charm lasts, you can affect the target’s memory of an event that it experienced within the last 12 Months and that lasted no more than 1 Day.\nYou can Temporarily overwrite all memory of the event, allow the target to recall the event with perfect clarity and exacting detail, change its memory of the details of the event, or create a memory of some other event.\nYou must speak to the target to describe how its memories are affected and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the jutsu ends before you have finished describing the modified memories, the creature’s memory isn’t altered.\nThe modified memories take hold when the jutsu ends. A modified memory doesn’t necessarily affect how a creature behaves, particularly if the memory contradicts the creature’s natural inclinations, allegiance, or beliefs. An illogical modified memory is dismissed, perhaps as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature in a significant manner.\nA Genjutsu Break or Greater Restorative Jutsu cast on the target, specifically intended to restore the creature’s true memory will restore the memory.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "66c252f59e0fc3c9"
+}

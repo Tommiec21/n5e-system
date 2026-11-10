@@ -1,0 +1,230 @@
+{
+  "_id": "8412bb0dfd3a0838",
+  "_key": "!items!8412bb0dfd3a0838",
+  "name": "Lightning Release: Lightning Claw",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-lightning-claw",
+    "description": "<p>You conjure your lightning release chakra to generate claws of Lightning around your hands.</p>\n<p>For the duration, in place of an Attack made when you take the Attack action, you can make a Thunder Punch attack or as a Reaction to taking damage from a melee attack, make a Lightning Cross reaction.</p>\n<p>Overcharge. For the duration, you can also take the Panther Claw attack in the same way you would use Thunder Punch.</p>\n<p>Thunder Punch. Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack.</p>\n<p>Lightning Cross. As a reaction to taking damage from a melee attack, you can strike out at lightning speed with a powerful cross jab. Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit.</p>\n<p>Panther Claw. Make a melee ninjutsu attack. If the target has 2 or more ranks of Shocked, this attack is made with advantage and has a +1 bonus to its critical threat range. On a hit, you deal 6d6 Lightning damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase each abilities damage by 1d6. If this Jutsu is cast at B-Rank or higher, Thunder Punch and Lightning Cross each makes +1 additional attack as part of their ability. If this jutsu is cast at A-Rank or higher, increase each abilities damage by 1d6. If this jutsu is cast at S-Rank, abilities this jutsu has gain a +2 bonus to its critical threat range.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2794",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "efficient",
+      "ninjutsu",
+      "taijutsu",
+      "stable",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "overcharge-parsed1",
+        "type": "attack",
+        "label": "Overcharge: Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "Overcharge: 4d6",
+        "roll": {
+          "formula": "4d6",
+          "note": "Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "Overcharge: 5d6",
+        "roll": {
+          "formula": "5d6",
+          "note": "Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "Overcharge: 6d6",
+        "roll": {
+          "formula": "6d6",
+          "note": "On a hit, you deal 6d6 Lightning damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase each abilities damage by 1d6. If this Jutsu is cast at B-Rank or higher, Thunder Punch and Lightning Cross each makes +1 additional attack as part of their ability. If this jutsu is cast at A-Rank or higher, increase each abilities damage by 1d6. If this jutsu is cast at S-Rank, abilities this jutsu has gain a +2 bonus to its critical threat range.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": "<p>Overcharge. For the duration, you can also take the Panther Claw attack in the same way you would use Thunder Punch.</p>\n<p>Thunder Punch. Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack.</p>\n<p>Lightning Cross. As a reaction to taking damage from a melee attack, you can strike out at lightning speed with a powerful cross jab. Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit.</p>\n<p>Panther Claw. Make a melee ninjutsu attack. If the target has 2 or more ranks of Shocked, this attack is made with advantage and has a +1 bonus to its critical threat range. On a hit, you deal 6d6 Lightning damage.</p>"
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2794,
+        "sourceHash": "6ea3ab9dab74d904d81a16b4aecd2bed9625932783eb1fd37905bb471c16acdc",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM, M",
+          "keywords": "Ninjutsu, Lightning Release, Taijutsu, Stable, Efficient, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self Duration:  Concentration, up to 1 minute\nComponents: HS, CM, M Cost: 4 Chakra Keywords: Ninjutsu, Lightning Release, Taijutsu, Stable, Efficient, Clash Description: You conjure your lightning release chakra to generate claws of Lightning around your hands.\nFor the duration, in place of an Attack made when you take the Attack action, you can make a Thunder Punch attack or as a Reaction to taking damage from a melee attack, make a Lightning Cross reaction.\nOvercharge. For the duration, you can also take the Panther Claw attack in the same way you would use Thunder Punch.\nThunder Punch. Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack.\nLightning Cross. As a reaction to taking damage from a melee attack, you can strike out at lightning speed with a powerful cross jab. Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit.\nPanther Claw. Make a melee ninjutsu attack. If the target has 2 or more ranks of Shocked, this attack is made with advantage and has a +1 bonus to its critical threat range. On a hit, you deal 6d6 Lightning damage.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, increase each abilities damage by 1d6. If this Jutsu is cast at B-Rank or higher, Thunder Punch and Lightning Cross each makes +1 additional attack as part of their ability. If this jutsu is cast at A-Rank or higher, increase each abilities damage by 1d6. If this jutsu is cast at S-Rank, abilities this jutsu has gain a +2 bonus to its critical threat range.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 463,
+            "context": "Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack.",
+            "section": "Overcharge"
+          },
+          {
+            "expression": "5d6",
+            "offset": 731,
+            "context": "Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit.",
+            "section": "Overcharge"
+          },
+          {
+            "expression": "6d6",
+            "offset": 955,
+            "context": "On a hit, you deal 6d6 Lightning damage.",
+            "section": "Overcharge"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1157,
+            "context": "If this jutsu is cast at C-Rank or higher, increase each abilities damage by 1d6. If this Jutsu is cast at B-Rank or higher, Thunder Punch and Lightning Cross each makes +1 additional attack as part of their ability. If this jutsu is cast at A-Rank or higher, increase each abilities damage by 1d6. If this jutsu is cast at S-Rank, abilities this jutsu has gain a +2 bonus to its critical threat range.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1374,
+            "context": "If this jutsu is cast at A-Rank or higher, increase each abilities damage by 1d6. If this jutsu is cast at S-Rank, abilities this jutsu has gain a +2 bonus to its critical threat range.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8ebb04f9de7c596b"
+}

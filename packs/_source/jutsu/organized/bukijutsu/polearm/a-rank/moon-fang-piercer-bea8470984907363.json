@@ -1,0 +1,205 @@
+{
+  "_id": "bea8470984907363",
+  "_key": "!items!bea8470984907363",
+  "name": "Moon-Fang Piercer",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "moon-fang-piercer",
+    "description": "<p>You Stab your weapon through the air, creating shockwave after shockwave of force.</p>\n<p>Select one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success.</p>\n<p>Chain 2: A creature that failed their saving throw cannot maintain concentration on Jutsu until the end of their next turn.</p>\n<p>Chain 3: You strike out and twirl your weapon defensively immediately after. Until the beginning of your next turn, you gain +6 DR.</p>\n<p>At Higher Ranks: For each rank above A-rank, increase the cost of this jutsu by 3, and the damage by 1d12.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6453",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60ft"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 15,
+      "text": "15 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "2d12",
+        "roll": {
+          "formula": "2d12",
+          "note": "Select one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank above A-rank, increase the cost of this jutsu by 3, and the damage by 1d12.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: A creature that failed their saving throw cannot maintain concentration on Jutsu until the end of their next turn.</p>",
+      "3": "<p>Chain 3: You strike out and twirl your weapon defensively immediately after. Until the beginning of your next turn, you gain +6 DR.</p>"
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6453,
+        "sourceHash": "2879e8a8febfc1bcba377260ef70d6edb2868d845d1673f31831bdcf38781321",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "A",
+          "time": "1 action",
+          "range": "60ft",
+          "duration": "instant",
+          "cost": "15 Chakra",
+          "components": "CM, M, W (Any Polearm).",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: A-rank Casting Time: 1 action Range: 60ft Duration: instant Components: CM, M, W (Any Polearm). Cost: 15 Chakra Keywords: Bukijutsu, Chain, Clash Description: You Stab your weapon through the air, creating shockwave after shockwave of force.\nSelect one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success.\nChain 2: A creature that failed their saving throw cannot maintain concentration on Jutsu until the end of their next turn.\nChain 3: You strike out and twirl your weapon defensively immediately after. Until the beginning of your next turn, you gain +6 DR.\nAt Higher Ranks: For each rank above A-rank, increase the cost of this jutsu by 3, and the damage by 1d12.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 206,
+            "context": "Select one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d12",
+            "offset": 225,
+            "context": "Select one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d12",
+            "offset": 679,
+            "context": "At Higher Ranks: For each rank above A-rank, increase the cost of this jutsu by 3, and the damage by 1d12.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "405991324385ff7a"
+}

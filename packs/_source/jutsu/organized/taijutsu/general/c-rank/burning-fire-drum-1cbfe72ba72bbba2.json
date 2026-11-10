@@ -1,0 +1,226 @@
+{
+  "_id": "1cbfe72ba72bbba2",
+  "_key": "!items!1cbfe72ba72bbba2",
+  "name": "Burning Fire: Drum",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "burning-fire-drum",
+    "description": "<p>You reach your hand out and attempt to beat the left lung of a hostile creature.</p>\n<p>Make a melee taijutsu attack against the triggering creature. On a hit, their lung swells. For the next minute, when the affected creature casts a Jutsu with the Mobility (M) component, they take 2d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points, as their lung swells more.</p>\n<p>A creature who would trigger this Jutsu's damaging effect 5 or more times while under its effects has their lung rupture, dealing 10d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points and they gain 2 ranks of Exhaustion for the next 24 hours, this jutsu then immediately ends.</p>\n<p>A creature can spend their action to make a Constitution Saving throw to end this jutsu’s effects on them. Alternatively, a creature can end this effect with any Jutsu with the Medical Keyword, that removes conditions of C-Rank or lower.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If cast at A-Rank or higher, when a creature lung ruptures, they instead take 15d6 Necrotic damage. If cast at S-Rank, creatures make their saving throw to end this jutsu’s effects, at disadvantage.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4496",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when a creature within 5 feet of you deals damage with a melee attack against yourself or an allied creature."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "For the next minute, when the affected creature casts a Jutsu with the Mobility (M) component, they take 2d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points, as their lung swells more."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "10d6",
+        "roll": {
+          "formula": "10d6",
+          "note": "A creature who would trigger this Jutsu's damaging effect 5 or more times while under its effects has their lung rupture, dealing 10d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points and they gain 2 ranks of Exhaustion for the next 24 hours, this jutsu then immediately ends."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If cast at A-Rank or higher, when a creature lung ruptures, they instead take 15d6 Necrotic damage. If cast at S-Rank, creatures make their saving throw to end this jutsu’s effects, at disadvantage.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4496,
+        "sourceHash": "55aff3c52a6891731dfcfa6e9950007217754a288b7c5e4c358e9191d60aa247",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when a creature within 5 feet of you deals damage with a melee attack against yourself or an allied creature.",
+          "range": "5 Feet",
+          "duration": "1 Minute",
+          "cost": "9 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Reaction, which you take when a creature within 5 feet of you deals damage with a melee attack against yourself or an allied creature.\nRange: 5 Feet\nDuration: 1 Minute\nComponents: M\nCost: 9 Chakra\nKeywords: Taijutsu\nDescription: You reach your hand out and attempt to beat the left lung of a hostile creature.\nMake a melee taijutsu attack against the triggering creature. On a hit, their lung swells. For the next minute, when the affected creature casts a Jutsu with the Mobility (M) component, they take 2d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points, as their lung swells more.\nA creature who would trigger this Jutsu's damaging effect 5 or more times while under its effects has their lung rupture, dealing 10d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points and they gain 2 ranks of Exhaustion for the next 24 hours, this jutsu then immediately ends.\nA creature can spend their action to make a Constitution Saving throw to end this jutsu’s effects on them. Alternatively, a creature can end this effect with any Jutsu with the Medical Keyword, that removes conditions of C-Rank or lower.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3 and the number of creatures you can target by +1. If cast at A-Rank or higher, when a creature lung ruptures, they instead take 15d6 Necrotic damage. If cast at S-Rank, creatures make their saving throw to end this jutsu’s effects, at disadvantage.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 277,
+            "context": "For the next minute, when the affected creature casts a Jutsu with the Mobility (M) component, they take 2d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points, as their lung swells more.",
+            "section": "Base"
+          },
+          {
+            "expression": "10d6",
+            "offset": 539,
+            "context": "A creature who would trigger this Jutsu's damaging effect 5 or more times while under its effects has their lung rupture, dealing 10d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points and they gain 2 ranks of Exhaustion for the next 24 hours, this jutsu then immediately ends.",
+            "section": "Base"
+          },
+          {
+            "expression": "15d6",
+            "offset": 1204,
+            "context": "If cast at A-Rank or higher, when a creature lung ruptures, they instead take 15d6 Necrotic damage. If cast at S-Rank, creatures make their saving throw to end this jutsu’s effects, at disadvantage.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

@@ -1,0 +1,172 @@
+{
+  "_id": "091e61b1c236c51f",
+  "_key": "!items!091e61b1c236c51f",
+  "name": "Lightning Release: Lightning Buckler",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-lightning-buckler",
+    "description": "<p>You conjure your lightning release chakra and mold it around a chakra seal until you form a shield made of Lightning. This jutsu cannot be ended as a result of a damage.</p>\n<p>The lightning shields you manifest sits on your arm and has a design of your description and grants you the Jolted Buckler reaction, which can only be take when you take damage.</p>\n<p>Jolted Buckler. You use your lightning Shield to deflect some damage you take. Reduce the damage you would take by 3d6. If the damage is reduced to 0, the triggering creature gains 1 rank of Shocked.</p>\n<p>If the triggering damage type is wind, reduce the amount of damage reduction by 1 dice.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage reduction by +4.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2786",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Reduce the damage you would take by 3d6. If the damage is reduced to 0, the triggering creature gains 1 rank of Shocked."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage reduction by +4.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2786,
+        "sourceHash": "807619a26606ba700d786dd55a37e910cbbebc5158120328708936c32f1b6546",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: Self\nDuration: Concentration, Up to 1 minute\nComponents: HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Lightning Release, Clash Description: You conjure your lightning release chakra and mold it around a chakra seal until you form a shield made of Lightning. This jutsu cannot be ended as a result of a damage.\nThe lightning shields you manifest sits on your arm and has a design of your description and grants you the Jolted Buckler reaction, which can only be take when you take damage.\nJolted Buckler. You use your lightning Shield to deflect some damage you take. Reduce the damage you would take by 3d6. If the damage is reduced to 0, the triggering creature gains 1 rank of Shocked.\nIf the triggering damage type is wind, reduce the amount of damage reduction by 1 dice.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage reduction by +4.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 463,
+            "context": "Reduce the damage you would take by 3d6. If the damage is reduced to 0, the triggering creature gains 1 rank of Shocked.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8ebb04f9de7c596b"
+}

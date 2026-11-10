@@ -1,0 +1,284 @@
+{
+  "_id": "4904f8b88a187263",
+  "_key": "!items!4904f8b88a187263",
+  "name": "Medical Release: Vampiric Touch",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-vampiric-touch",
+    "description": "<p>Your hands glow with a shadowy aura of chakra. Make a melee ninjutsu attack against a creature within your reach. On a hit, the target takes 4d10 necrotic damage and you regain hit points equal to half the amount of necrotic damage dealt. Until the jutsu ends, you can make the attack again on each of your turns as an action.       At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1449",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "kinjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "nin",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d10",
+        "roll": {
+          "formula": "1d10",
+          "note": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1449,
+        "sourceHash": "0e80656e4b9bfde33130abed96bded02a4565f04c5028b4e98bb1288bb712cb5",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical, Kinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Medical, Kinjutsu Description: Your hands glow with a shadowy aura of chakra. Make a melee ninjutsu attack against a creature within your reach. On a hit, the target takes 4d10 necrotic damage and you regain hit points equal to half the amount of necrotic damage dealt. Until the jutsu ends, you can make the attack again on each of your turns as an action.       At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.",
+        "expressions": [
+          {
+            "expression": "4d10",
+            "offset": 141,
+            "context": "On a hit, the target takes 4d10 necrotic damage and you regain hit points equal to half the amount of necrotic damage dealt. Until the jutsu ends, you can make the attack again on each of your turns as an action.       At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d10",
+            "offset": 453,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sourceRoll2",
+              "type": "roll",
+              "label": "1d10",
+              "roll": {
+                "formula": "1d10",
+                "note": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (2d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sourceRoll2",
+              "type": "roll",
+              "label": "1d10",
+              "roll": {
+                "formula": "1d10",
+                "note": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "nin",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (3d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sourceRoll2",
+              "type": "roll",
+              "label": "1d10",
+              "roll": {
+                "formula": "1d10",
+                "note": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0359bedeffa2100b"
+}

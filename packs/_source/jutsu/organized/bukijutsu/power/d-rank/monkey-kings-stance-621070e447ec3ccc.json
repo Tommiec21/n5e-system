@@ -1,0 +1,223 @@
+{
+  "_id": "621070e447ec3ccc",
+  "_key": "!items!621070e447ec3ccc",
+  "name": "Monkey King’s Stance",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "monkey-kings-stance",
+    "description": "<p>You channel the energy from the strike into your weapon and hold that energy in a passive state as it builds up, much like the Monkey King himself. You can cast this jutsu when you deal damage with your weapon to take the stance, and its effects change depending on the circumstances you release the jutsu. You can only maintain this jutsu until the end of your next turn, after which, it ends.</p>\n<p>Action: You leap up and bring your weapon down on the head of your enemy. Make a melee Taijutsu Attack against a creature in your weapons range. On a hit, you deal your weapon's damage +3d8 and the target creature must make a Strength saving throw, becoming Concussed on a failed save.</p>\n<p>Bonus Action: You dash to the side and make a wide strike at the legs of your opponent. A target creature within 10 feet of you must make a Strength Saving throw, being knocked Prone on a failure.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Action damage 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6526",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "power",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Power"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d8",
+        "roll": {
+          "formula": "3d8",
+          "note": "On a hit, you deal your weapon's damage +3d8 and the target creature must make a Strength saving throw, becoming Concussed on a failed save."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Action damage 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6526,
+        "sourceHash": "4f009cb8a046da2947f30645051eb3b6e53e4575fb9f436f859bb6e0a4625c1b",
+        "discipline": "Bukijutsu",
+        "group": "Power",
+        "header": {
+          "rank": "D",
+          "time": "Special (When you deal damage with a bludgeoning weapon)",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "W (Any Power), M",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: Special (When you deal damage with a bludgeoning weapon) Range: Self Duration: Instant\nComponents: W (Any Power), M Cost: 4 Chakra Keywords: Bukijutsu Description: You channel the energy from the strike into your weapon and hold that energy in a passive state as it builds up, much like the Monkey King himself. You can cast this jutsu when you deal damage with your weapon to take the stance, and its effects change depending on the circumstances you release the jutsu. You can only maintain this jutsu until the end of your next turn, after which, it ends.\nAction: You leap up and bring your weapon down on the head of your enemy. Make a melee Taijutsu Attack against a creature in your weapons range. On a hit, you deal your weapon's damage +3d8 and the target creature must make a Strength saving throw, becoming Concussed on a failed save.\nBonus Action: You dash to the side and make a wide strike at the legs of your opponent. A target creature within 10 feet of you must make a Strength Saving throw, being knocked Prone on a failure.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Action damage 1d8.",
+        "expressions": [
+          {
+            "expression": "3d8",
+            "offset": 581,
+            "context": "On a hit, you deal your weapon's damage +3d8 and the target creature must make a Strength saving throw, becoming Concussed on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 1002,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the Action damage 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c0a6a06641c5a7be"
+}

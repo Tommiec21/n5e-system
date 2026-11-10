@@ -1,0 +1,254 @@
+{
+  "_id": "609da67c0dfe4723",
+  "_key": "!items!609da67c0dfe4723",
+  "name": "Earth Release: Moon fall",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-moon-fall",
+    "description": "<p>Upon Competition of your Jutsu's Hand Seals you manifest a single super huge Earthen Artifact 1 mile in the air. Spend chakra in multiples of 40 up to twice. For every 40 Chakra spent this way, the Gargantuan Moon like structure you manifest grows in size and affects a larger area when dropped. You cannot reduce the cost of this jutsu by any means.</p>\n<p>40 Chakra: The Moon like structure falls on a point you can see within range crushing a space equal to a 30-foot sphere. Each creature within the affected area and could escape the area this jutsu effects either by movement, or a jutsu they know, makes a Dexterity saving throw. Creatures with no way to escape the affected area, instead makes a Constitution saving throw.</p>\n<p>Dexterity Saving throw. On a successful save, they are able to use their movement or a jutsu which could allow them to escape the sphere. On a failed save they take 14d6 earth damage.</p>\n<p>Constitution Saving Throw. On a successful save they take the result. On a failed save, they take double the result of 14d6 earth damage.</p>\n<p>All creatures who are within 30 feet of the sphere, excluding creatures who succeeded the previous saving throw must make a Strength saving throw as the shockwave from such a massive impact deals significant damage to the area. A creature takes 7d6 Bludgeoning &amp; 7d6 Earth damage on a failed save or half as much damage on a successful one.</p>\n<p>80 Chakra: The Moon like structure falls on a point you can see within range crushing a space equal to a 60-foot sphere. Each creature within the affected area and could escape the area this jutsu effects either by movement, or a jutsu they know, makes a Dexterity saving throw. Creatures with no way to escape the affected area, instead makes a Constitution saving throw.</p>\n<p>Dexterity Saving throw. On a successful save, they are able to use their movement or a jutsu which could allow them to escape the sphere. On a failed save they take 28d6 earth damage.</p>\n<p>Constitution Saving Throw. On a successful save they take the result. On a failed save, they take double the result of 28d6 earth damage.</p>\n<p>All creatures who are within 60 feet of the sphere, including creatures who succeeded the previous saving throw must make a Strength saving throw as the shockwave from such a massive impact deals significant damage to the area. A creature takes 14d6 Bludgeoning &amp; 14d6 Earth damage on a failed save or half as much damage on a successful one.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1896",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "ninjutsu",
+      "kinjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "fullTurn",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "miles",
+        "value": 1,
+        "long": null,
+        "text": "1 Mile"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 0,
+      "text": "Special"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "14d6",
+        "roll": {
+          "formula": "14d6",
+          "note": "On a failed save they take 14d6 earth damage."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "7d6",
+        "roll": {
+          "formula": "7d6",
+          "note": "A creature takes 7d6 Bludgeoning & 7d6 Earth damage on a failed save or half as much damage on a successful one."
+        }
+      },
+      {
+        "id": "sourceRoll5",
+        "type": "roll",
+        "label": "28d6",
+        "roll": {
+          "formula": "28d6",
+          "note": "On a failed save they take 28d6 earth damage."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1896,
+        "sourceHash": "a8c94f1aa88f57e28614723e324401ec3257164395277b7672ea21752294b94e",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Full Turn Action",
+          "range": "1 Mile",
+          "duration": "Special",
+          "cost": "Special",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release, Kinjutsu, Clash"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Full Turn Action Range: 1 Mile Duration: Special\nComponents:  HS, CM Cost: Special Keywords: Ninjutsu, Earth Release, Kinjutsu, Clash Description: Upon Competition of your Jutsu's Hand Seals you manifest a single super huge Earthen Artifact 1 mile in the air. Spend chakra in multiples of 40 up to twice. For every 40 Chakra spent this way, the Gargantuan Moon like structure you manifest grows in size and affects a larger area when dropped. You cannot reduce the cost of this jutsu by any means.\n40 Chakra: The Moon like structure falls on a point you can see within range crushing a space equal to a 30-foot sphere. Each creature within the affected area and could escape the area this jutsu effects either by movement, or a jutsu they know, makes a Dexterity saving throw. Creatures with no way to escape the affected area, instead makes a Constitution saving throw.\nDexterity Saving throw. On a successful save, they are able to use their movement or a jutsu which could allow them to escape the sphere. On a failed save they take 14d6 earth damage.\nConstitution Saving Throw. On a successful save they take the result. On a failed save, they take double the result of 14d6 earth damage.\nAll creatures who are within 30 feet of the sphere, excluding creatures who succeeded the previous saving throw must make a Strength saving throw as the shockwave from such a massive impact deals significant damage to the area. A creature takes 7d6 Bludgeoning & 7d6 Earth damage on a failed save or half as much damage on a successful one.\n80 Chakra: The Moon like structure falls on a point you can see within range crushing a space equal to a 60-foot sphere. Each creature within the affected area and could escape the area this jutsu effects either by movement, or a jutsu they know, makes a Dexterity saving throw. Creatures with no way to escape the affected area, instead makes a Constitution saving throw.\nDexterity Saving throw. On a successful save, they are able to use their movement or a jutsu which could allow them to escape the sphere. On a failed save they take 28d6 earth damage.\nConstitution Saving Throw. On a successful save they take the result. On a failed save, they take double the result of 28d6 earth damage.\nAll creatures who are within 60 feet of the sphere, including creatures who succeeded the previous saving throw must make a Strength saving throw as the shockwave from such a massive impact deals significant damage to the area. A creature takes 14d6 Bludgeoning & 14d6 Earth damage on a failed save or half as much damage on a successful one.",
+        "expressions": [
+          {
+            "expression": "14d6",
+            "offset": 889,
+            "context": "On a failed save they take 14d6 earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "14d6",
+            "offset": 1027,
+            "context": "On a failed save, they take double the result of 14d6 earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "7d6",
+            "offset": 1291,
+            "context": "A creature takes 7d6 Bludgeoning & 7d6 Earth damage on a failed save or half as much damage on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "7d6",
+            "offset": 1309,
+            "context": "A creature takes 7d6 Bludgeoning & 7d6 Earth damage on a failed save or half as much damage on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "28d6",
+            "offset": 1925,
+            "context": "On a failed save they take 28d6 earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "28d6",
+            "offset": 2063,
+            "context": "On a failed save, they take double the result of 28d6 earth damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "14d6",
+            "offset": 2327,
+            "context": "A creature takes 14d6 Bludgeoning & 14d6 Earth damage on a failed save or half as much damage on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "14d6",
+            "offset": 2346,
+            "context": "A creature takes 14d6 Bludgeoning & 14d6 Earth damage on a failed save or half as much damage on a successful one.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically."
+        ],
+        "activitiesByRank": {},
+        "manualCost": true
+      }
+    }
+  },
+  "folder": "9f7ae423e38646ef"
+}

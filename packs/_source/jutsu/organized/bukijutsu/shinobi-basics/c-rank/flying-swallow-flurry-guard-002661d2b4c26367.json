@@ -1,0 +1,265 @@
+{
+  "_id": "002661d2b4c26367",
+  "_key": "!items!002661d2b4c26367",
+  "name": "Flying Swallow: Flurry Guard",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "flying-swallow-flurry-guard",
+    "description": "<p>As a part of the activation of this jutsu, you must have a weapon in both hands that meet this Bukijutsu’ s component requirements.</p>\n<p>You raise both of your weapons blocking an incoming flurry of attacks in a powerful guarded stance.</p>\n<p>You gain a +4 bonus DR vs damage you take from the triggering creature. Each additional time the triggering would deal damage to you before the beginning of your next turn, you gain an additional +2 DR.</p>\n<p>When the triggering creature’s attacks or Jutsu concludes, you send all of that built up defense back at them. Make two melee taijutsu attacks, one with each weapon. On a hit, you deal your [Weapons damage] + 1d6 + Total DR bonus gained as a result of this jutsu.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5419",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Reaction, which you take when you would take damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapon Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 7,
+      "text": "7 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": true,
+        "text": "Any Dual Wield"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "1d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5419,
+        "sourceHash": "4347c94d43212e0a3af670615c77967e5fb9c75ce1e6fe0f10937b04685fce12",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "C",
+          "time": "1 Reaction, which you take when you would take damage.",
+          "range": "Weapon Range",
+          "duration": "1 Round",
+          "cost": "7 Chakra",
+          "components": "W (Any Dual Wield), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Reaction, which you take when you would take damage.\nRange: Weapon Range\nDuration: 1 Round\nComponents: W (Any Dual Wield), M\nCost: 7 Chakra\nKeywords: Bukijutsu, Chain\nDescription: As a part of the activation of this jutsu, you must have a weapon in both hands that meet this Bukijutsu’ s component requirements.\nYou raise both of your weapons blocking an incoming flurry of attacks in a powerful guarded stance.\nYou gain a +4 bonus DR vs damage you take from the triggering creature. Each additional time the triggering would deal damage to you before the beginning of your next turn, you gain an additional +2 DR.\nWhen the triggering creature’s attacks or Jutsu concludes, you send all of that built up defense back at them. Make two melee taijutsu attacks, one with each weapon. On a hit, you deal your [Weapons damage] + 1d6 + Total DR bonus gained as a result of this jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 625,
+            "context": "On a hit, you deal your [Weapons damage] + 1d6 + Total DR bonus gained as a result of this jutsu.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 644,
+            "context": "On a hit, you deal your [Weapons damage] + 1d6 + Total DR bonus gained as a result of this jutsu.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 818,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(1d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(1d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "tai",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(1d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0032efe7c08875b9"
+}

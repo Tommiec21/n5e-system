@@ -1,0 +1,182 @@
+{
+  "_id": "91dea86d3fcf64b0",
+  "_key": "!items!91dea86d3fcf64b0",
+  "name": "Water Release: Drown",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-drown",
+    "description": "<p>You manipulate your water release chakra molding it until you reach a level of control so much so that you are able to forcibly turn air into water and vice versa as it is inhaled by other creatures.</p>\n<p>Select up to 7 creatures you can see within range. Each creature makes a Constitution saving throw. On a Failed save for the duration if they can breathe air, they instead can only breathe water. If they can breathe water, they can instead only breathe air.</p>\n<p>A creature who is currently in an environment in which they cannot breathe normally, they begin to Drown.</p>\n<p>While drowning this way, it can survive for a number of rounds equal to its constitution modifier (minimum of 1 round). At the start of its first turn after these rounds, it drops to 0 hit points and is dying. A creature who begins their turn dying after falling to 0 hit points as a result of this jutsu, they die. While drowning they cannot speak.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2739",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "kinjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "fullTurn",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 30,
+      "text": "30 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "dying",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Dying"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2739,
+        "sourceHash": "24a90bb211861c99a1235f0a94801c8fc5d5c38179d720d5bf4d842dbe7dac8a",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Full Turn Action",
+          "range": "120 feet",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "30 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Kinjutsu"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Full Turn Action Range: 120 feet Duration: Concentration, Up to 1 minute\nComponents: HS, CM Cost: 30 Chakra Keywords: Ninjutsu, Water Release, Kinjutsu Description: You manipulate your water release chakra molding it until you reach a level of control so much so that you are able to forcibly turn air into water and vice versa as it is inhaled by other creatures.\nSelect up to 7 creatures you can see within range. Each creature makes a Constitution saving throw. On a Failed save for the duration if they can breathe air, they instead can only breathe water. If they can breathe water, they can instead only breathe air.\nA creature who is currently in an environment in which they cannot breathe normally, they begin to Drown.\nWhile drowning this way, it can survive for a number of rounds equal to its constitution modifier (minimum of 1 round). At the start of its first turn after these rounds, it drops to 0 hit points and is dying. A creature who begins their turn dying after falling to 0 hit points as a result of this jutsu, they die. While drowning they cannot speak.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "e7a143830c8c5356"
+}

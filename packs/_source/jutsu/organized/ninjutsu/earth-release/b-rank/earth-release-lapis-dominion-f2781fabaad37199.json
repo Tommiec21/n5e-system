@@ -1,0 +1,183 @@
+{
+  "_id": "f2781fabaad37199",
+  "_key": "!items!f2781fabaad37199",
+  "name": "Earth Release: Lapis Dominion",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-lapis-dominion",
+    "description": "<p>You release earth release chakra from your body touching everything within a 90-foot cube originating from you.</p>\n<p>When you cast this jutsu you erect walls of Lapis made of Earth Release chakra 30 feet high and 10 feet thick on the outside edges of this jutsu’s range. These walls have a 20 AC, 60 hit points, and 8 DR. These walls cannot be traversed with wall walking abilities.</p>\n<p>Earth Release Jutsu you cast while within your jutsu’s radius cost 2 chakra less to cast.</p>\n<p>When you cast this jutsu, select a number of creatures within your jutsu’s range. Those creatures are immune to this jutsu effects.</p>\n<p>All other creatures who begin their turns in this jutsu’s area or enter its area for the first time must make a Strength saving throw. On a failed save, they are affected by a shift in gravity, as they gain 1 rank of Weakened and become unable to maintain concentration on a Jutsu that does not have the Earth release keyword until the end of their next turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1836",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "fuinjutsu",
+      "efficient",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (90-foot cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 90,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1836,
+        "sourceHash": "c46e4f673bf80b98db3afcaa9619b079d719dd8b50c9d6222bf2df29cd3ea936",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self (90-foot cube)",
+          "duration": "Concentration, Up to 1 minute",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Earth Release, Fuinjutsu, Efficient"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self (90-foot cube) Duration: Concentration, Up to 1 minute\nComponents:  HS, CM Cost: 14 Chakra Keywords: Ninjutsu, Earth Release, Fuinjutsu, Efficient Description: You release earth release chakra from your body touching everything within a 90-foot cube originating from you.\nWhen you cast this jutsu you erect walls of Lapis made of Earth Release chakra 30 feet high and 10 feet thick on the outside edges of this jutsu’s range. These walls have a 20 AC, 60 hit points, and 8 DR. These walls cannot be traversed with wall walking abilities.\nEarth Release Jutsu you cast while within your jutsu’s radius cost 2 chakra less to cast.\nWhen you cast this jutsu, select a number of creatures within your jutsu’s range. Those creatures are immune to this jutsu effects.\nAll other creatures who begin their turns in this jutsu’s area or enter its area for the first time must make a Strength saving throw. On a failed save, they are affected by a shift in gravity, as they gain 1 rank of Weakened and become unable to maintain concentration on a Jutsu that does not have the Earth release keyword until the end of their next turn.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b7e6162521e0f78f"
+}

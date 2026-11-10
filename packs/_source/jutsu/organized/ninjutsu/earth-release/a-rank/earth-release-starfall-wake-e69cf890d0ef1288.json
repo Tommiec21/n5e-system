@@ -1,0 +1,224 @@
+{
+  "_id": "e69cf890d0ef1288",
+  "_key": "!items!e69cf890d0ef1288",
+  "name": "Earth Release: Starfall Wake",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "earth-release-starfall-wake",
+    "description": "<p>You manifest a series of shimmering shards of earth 300 feet in the air that floats above you until the end of your turn.</p>\n<p>As an Action or Reaction on your turn you can call down these shards to bombard a space you can see within range. A creature within 10 feet of the selected space must make a Dexterity saving throw taking 6d8 Earth damage on a failed save or half as much on a successful one.</p>\n<p>Once you cast this jutsu on your turn, you do not need to cast it again to use its effects with a different action.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1880",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "earth",
+    "keywords": [
+      "earthRelease",
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 300,
+        "long": null,
+        "text": "300 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 19,
+      "text": "19 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1880,
+        "sourceHash": "dfcc71e49e9405d04922bf80bc2759f994852790ecd549f7544c7606f7358169",
+        "discipline": "Ninjutsu",
+        "group": "Earth Release",
+        "header": {
+          "rank": "A",
+          "time": "Special",
+          "range": "300 Feet",
+          "duration": "Instant",
+          "cost": "19 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Earth Release, Fuinjutsu"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: Special Range: 300 Feet Duration: Instant\nComponents:  HS, CM, CS Cost: 19 Chakra Keywords: Ninjutsu, Earth Release, Fuinjutsu Description: You manifest a series of shimmering shards of earth 300 feet in the air that floats above you until the end of your turn.\nAs an Action or Reaction on your turn you can call down these shards to bombard a space you can see within range. A creature within 10 feet of the selected space must make a Dexterity saving throw taking 6d8 Earth damage on a failed save or half as much on a successful one.\nOnce you cast this jutsu on your turn, you do not need to cast it again to use its effects with a different action.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "6d8",
+            "offset": 326,
+            "context": "A creature within 10 feet of the selected space must make a Dexterity saving throw taking 6d8 Earth damage on a failed save or half as much on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 633,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "688ec94a2e0f524a"
+}

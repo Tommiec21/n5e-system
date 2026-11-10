@@ -1,0 +1,198 @@
+{
+  "_id": "60ab6f4eca59e8ff",
+  "_key": "!items!60ab6f4eca59e8ff",
+  "name": "Water Release: Heavenly Mirror of Pain",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-heavenly-mirror-of-pain",
+    "description": "<p>You manifest a ring of water that creates a reflective film similar to that of a mirror. You first seal your reflection into the mirror, then select one creature whom you can see who is not obscured in any way within range. When you do, the target must make a Charisma saving throw, having their reflection bound to the mirror on a failed save. You can only have one instance of this jutsu active at a time.</p>\n<p>A creature whose reflection is bound to the mirror casts no reflection onto any reflective surface for the duration. For this jutsu’s duration, when one creature whose reflection is bound to the mirror take damage, suffer a condition, or regain hit points, the other creature whose reflection is bound to the mirror takes half of the damage dealt, Half of hit points healed and Suffer the same conditions.</p>\n<p>A creature who is resistant or Immune to a damage type does not share this resistance or immunity to the other creature. (For Ex. If you have resistance to Lightning damage and would take 10 lightning damage, the other creature whose reflection is bound in the mirror takes 5 damage. You then apply your resistance to the Lightning damage reducing it by half down to 5.)</p>\n<p>This mirror solidifies and becomes a physical mirror for this jutsu’s duration. Has 1 Hit Point with 10 AC. In order for this jutsu to persist a creature must be holding it, occupying one hand at all times, which cannot be used to hold other items or weapons. Once the mirror is broken or you dismiss this jutsu as a bonus action. If you do neither creature reflection remains Sealed into the mirror. Any Conditions that remains after the mirror is broken or is dispelled.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2600",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": false,
+      "text": "1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "10",
+        "roll": {
+          "formula": "10",
+          "note": "If you have resistance to Lightning damage and would take 10 lightning damage, the other creature whose reflection is bound in the mirror takes 5 damage. You then apply your resistance to the Lightning damage reducing it by half down to 5.)"
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2600,
+        "sourceHash": "59ecf7d11b6d5864ee7155cf9228c6b80e15c9b1c13f5a03571fe8b84f00d532",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action.",
+          "range": "120 Feet",
+          "duration": "1 minute.",
+          "cost": "9 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Water Release, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action. Range: 120 Feet  Duration: 1 minute.\nComponents: HS, CM, CS Cost: 9 Chakra Keywords: Ninjutsu, Water Release, Fuinjutsu  Description: You manifest a ring of water that creates a reflective film similar to that of a mirror. You first seal your reflection into the mirror, then select one creature whom you can see who is not obscured in any way within range. When you do, the target must make a Charisma saving throw, having their reflection bound to the mirror on a failed save. You can only have one instance of this jutsu active at a time.\nA creature whose reflection is bound to the mirror casts no reflection onto any reflective surface for the duration. For this jutsu’s duration, when one creature whose reflection is bound to the mirror take damage, suffer a condition, or regain hit points, the other creature whose reflection is bound to the mirror takes half of the damage dealt, Half of hit points healed and Suffer the same conditions.\nA creature who is resistant or Immune to a damage type does not share this resistance or immunity to the other creature. (For Ex. If you have resistance to Lightning damage and would take 10 lightning damage, the other creature whose reflection is bound in the mirror takes 5 damage. You then apply your resistance to the Lightning damage reducing it by half down to 5.)\nThis mirror solidifies and becomes a physical mirror for this jutsu’s duration. Has 1 Hit Point with 10 AC. In order for this jutsu to persist a creature must be holding it, occupying one hand at all times, which cannot be used to hold other items or weapons. Once the mirror is broken or you dismiss this jutsu as a bonus action. If you do neither creature reflection remains Sealed into the mirror. Any Conditions that remains after the mirror is broken or is dispelled.",
+        "expressions": [
+          {
+            "expression": "10",
+            "offset": 1002,
+            "context": "If you have resistance to Lightning damage and would take 10 lightning damage, the other creature whose reflection is bound in the mirror takes 5 damage. You then apply your resistance to the Lightning damage reducing it by half down to 5.)",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c43a048cce4a087"
+}

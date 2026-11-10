@@ -1,0 +1,204 @@
+{
+  "_id": "914b18cfaa0f208f",
+  "_key": "!items!914b18cfaa0f208f",
+  "name": "Wind Release: Cherishing Breezes",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-cherishing-breezes",
+    "description": "<p>You inhale once, filling your lungs with Air that you mix medical release chakra. You then attempt to pass this air from your lungs into the lungs of another who have either died within the last minute or are dying. This can be done in a number of ways such as CPR, a kiss, simply manipulating the air to exit your lungs and enter the downed creatures.</p>\n<p>When you do, the dead or dying creature makes a Constitution Saving throw adding 2d4 to their roll vs a DC 15 + 1 for each round they have been dead. On a Success, they immediately end the dead or dying condition regaining consciousness with 1 Hit Point and a number of Temporary Hit points equal to three times their level. These Temporary hit points last for 10 minutes.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2113",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "dead",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Dead"
+          },
+          {
+            "key": "dying",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Dying"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d4",
+        "roll": {
+          "formula": "2d4",
+          "note": "When you do, the dead or dying creature makes a Constitution Saving throw adding 2d4 to their roll vs a DC 15 + 1 for each round they have been dead. On a Success, they immediately end the dead or dying condition regaining consciousness with 1 Hit Point and a number of Temporary Hit points equal to three times their level. These Temporary hit points last for 10 minutes."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2113,
+        "sourceHash": "b8023e753b4f8b1038689505a1dd7794422662cd10e8b8817938dbdfb5e2890d",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Instant",
+          "cost": "12 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release, Medical"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Touch Duration: Instant\nComponents: HS, CM Cost: 12 Chakra Keywords: Ninjutsu, Wind Release, Medical Description: You inhale once, filling your lungs with Air that you mix medical release chakra. You then attempt to pass this air from your lungs into the lungs of another who have either died within the last minute or are dying. This can be done in a number of ways such as CPR, a kiss, simply manipulating the air to exit your lungs and enter the downed creatures.\nWhen you do, the dead or dying creature makes a Constitution Saving throw adding 2d4 to their roll vs a DC 15 + 1 for each round they have been dead. On a Success, they immediately end the dead or dying condition regaining consciousness with 1 Hit Point and a number of Temporary Hit points equal to three times their level. These Temporary hit points last for 10 minutes.",
+        "expressions": [
+          {
+            "expression": "2d4",
+            "offset": 434,
+            "context": "When you do, the dead or dying creature makes a Constitution Saving throw adding 2d4 to their roll vs a DC 15 + 1 for each round they have been dead. On a Success, they immediately end the dead or dying condition regaining consciousness with 1 Hit Point and a number of Temporary Hit points equal to three times their level. These Temporary hit points last for 10 minutes.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "df8acb8c158b687b"
+}

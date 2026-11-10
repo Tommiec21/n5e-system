@@ -1,0 +1,211 @@
+{
+  "_id": "a314a615647c5d70",
+  "_key": "!items!a314a615647c5d70",
+  "name": "Frenzy: Yellow",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "frenzy-yellow",
+    "description": "<p>You collect and build illusionary chakra, attempting to infuse a target within range, with an aspect of your madness, causing their eyes to glow green.</p>\n<p>Select one creature you are aware of, that can hear you within range, forcing them to make a Wisdom saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature is able to resist most of this jutsu’s effects, instead only becoming Concussed until the end of the next turn.</p>\n<p>Failure: Affected creatures succumbs to your aspect of madness. For the duration, if they would attempt to cast a Jutsu with a casting time of a Bonus Action, they must roll a 1d4. On a roll of 1 or 2, they fail to cast it as they lose focus with constant mutterings. At the end of each of their turns, they remake their saving throw to end this jutsu’s effects, while still unaware it is affected by this Genjutsu.</p>\n<p>Critical Failure: Same as failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3176",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+            "success": "Success: Affected creature is able to resist most of this jutsu’s effects, instead only becoming Concussed until the end of the next turn.",
+            "failure": "failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d4",
+        "roll": {
+          "formula": "1d4",
+          "note": "For the duration, if they would attempt to cast a Jutsu with a casting time of a Bonus Action, they must roll a 1d4. On a roll of 1 or 2, they fail to cast it as they lose focus with constant mutterings. At the end of each of their turns, they remake their saving throw to end this jutsu’s effects, while still unaware it is affected by this Genjutsu."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "Critical Failure: Same as failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3176,
+        "sourceHash": "423ccdbebe0e99050e32eae90e99aa79ce082418c8b7840fba7758c3ffb40ffb",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "D",
+          "time": "1 Action.",
+          "range": "30 feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory, Unaware)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action. Range: 30 feet Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 5 Chakra Keywords: Genjutsu (Auditory, Unaware) Description: You collect and build illusionary chakra, attempting to infuse a target within range, with an aspect of your madness, causing their eyes to glow green.\nSelect one creature you are aware of, that can hear you within range, forcing them to make a Wisdom saving throw.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is able to resist most of this jutsu’s effects, instead only becoming Concussed until the end of the next turn.\nFailure: Affected creatures succumbs to your aspect of madness. For the duration, if they would attempt to cast a Jutsu with a casting time of a Bonus Action, they must roll a 1d4. On a roll of 1 or 2, they fail to cast it as they lose focus with constant mutterings. At the end of each of their turns, they remake their saving throw to end this jutsu’s effects, while still unaware it is affected by this Genjutsu.\nCritical Failure: Same as failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower.",
+        "expressions": [
+          {
+            "expression": "1d4",
+            "offset": 657,
+            "context": "For the duration, if they would attempt to cast a Jutsu with a casting time of a Bonus Action, they must roll a 1d4. On a roll of 1 or 2, they fail to cast it as they lose focus with constant mutterings. At the end of each of their turns, they remake their saving throw to end this jutsu’s effects, while still unaware it is affected by this Genjutsu.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 961,
+            "context": "Critical Failure: Same as failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "ce2ca0a8e089b9d2"
+}

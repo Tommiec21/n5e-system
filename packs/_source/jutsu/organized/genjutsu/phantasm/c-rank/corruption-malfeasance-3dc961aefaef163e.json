@@ -1,0 +1,199 @@
+{
+  "_id": "3dc961aefaef163e",
+  "_key": "!items!3dc961aefaef163e",
+  "name": "Corruption: Malfeasance",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "corruption-malfeasance",
+    "description": "<p>You collect and build illusionary chakra, corrupting the thoughts of your targets, forming a psychological tumor in the back of their mind.</p>\n<p>Select one creature you can see within range, forcing them to make a Charisma saving throw.</p>\n<p>Success: Affected creature is able to resist most of this jutsu’s effects.</p>\n<p>Failure: Affected creatures, for the duration begins to experience a growing mass of mental energy. At the beginning of each of their turns, they gain 2 Psychic Malignance, up to a maximum of 20. When this jutsu ends as a result of a successful saving throw or the duration expiring, all Psychic Malignance a creature has detonates, dealing 1d10 psychic damage for each Psychic Malignance a creature has when it detonates. A creature can choose to remake their saving throw, once on each of its turns, ending this jutsu on a success. Psychic Malignance is treated as a Mental Condition for its duration.</p>\n<p>Critical Failure: Same as failure, but creatures instead gain 3 Psychic Malignance.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3249",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "fuinjutsu",
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "tactile"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "success": "on a success. Psychic Malignance is treated as a Mental Condition for its duration.",
+            "failure": "failure, but creatures instead gain 3 Psychic Malignance.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "1d10",
+        "roll": {
+          "formula": "1d10",
+          "note": "When this jutsu ends as a result of a successful saving throw or the duration expiring, all Psychic Malignance a creature has detonates, dealing 1d10 psychic damage for each Psychic Malignance a creature has when it detonates. A creature can choose to remake their saving throw, once on each of its turns, ending this jutsu on a success. Psychic Malignance is treated as a Mental Condition for its duration."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3249,
+        "sourceHash": "84ff764a7cdbcda9ce5a4344b09e7bc2923d43f215921a388582bcb6e108d22a",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "C",
+          "time": "1 Action.",
+          "range": "90 feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory, Tactile), Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action. Range: 90 feet Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 9 Chakra Keywords: Genjutsu (Auditory, Tactile), Fuinjutsu Description: You collect and build illusionary chakra, corrupting the thoughts of your targets, forming a psychological tumor in the back of their mind.\nSelect one creature you can see within range, forcing them to make a Charisma saving throw.\nSuccess: Affected creature is able to resist most of this jutsu’s effects.\nFailure: Affected creatures, for the duration begins to experience a growing mass of mental energy. At the beginning of each of their turns, they gain 2 Psychic Malignance, up to a maximum of 20. When this jutsu ends as a result of a successful saving throw or the duration expiring, all Psychic Malignance a creature has detonates, dealing 1d10 psychic damage for each Psychic Malignance a creature has when it detonates. A creature can choose to remake their saving throw, once on each of its turns, ending this jutsu on a success. Psychic Malignance is treated as a Mental Condition for its duration.\nCritical Failure: Same as failure, but creatures instead gain 3 Psychic Malignance.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1.",
+        "expressions": [
+          {
+            "expression": "1d10",
+            "offset": 648,
+            "context": "When this jutsu ends as a result of a successful saving throw or the duration expiring, all Psychic Malignance a creature has detonates, dealing 1d10 psychic damage for each Psychic Malignance a creature has when it detonates. A creature can choose to remake their saving throw, once on each of its turns, ending this jutsu on a success. Psychic Malignance is treated as a Mental Condition for its duration.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "68fe90231eaf9f92"
+}

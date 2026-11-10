@@ -1,0 +1,202 @@
+{
+  "_id": "e6993be106de76d3",
+  "_key": "!items!e6993be106de76d3",
+  "name": "Wind Release: Thumb of Destruction",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-thumb-of-destruction",
+    "description": "<p>You generate a tornado that touches down on a point you can see within range. This Tornado is 120 feet tall and 30 feet wide.</p>\n<p>When this jutsu is cast, if its affected area overlaps with a creature, they must make a Strength saving throw, taking 8d8 wind damage on a failed save.</p>\n<p>All creatures, objects and structures, excluding casters of this jutsu, within the tornado’s area make a Strength saving throw being sucked into the eye of this storm. On a failed save they are thrown to the top of this tornado for but a moment before the tornado compresses and fires all creatures within directly into the ground at sound breaking speeds.</p>\n<p>All creatures, objects and structures are immediately blasted into the ground taking triple falling damage as if they fell from 120 feet.</p>\n<p>Combination: Increases the damage dealt by 1d8 and the height of tornado 10-feet, for every additional creature aiding in casting this jutsu, beyond the first two.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2132",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "combination",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "fullTurn",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 120,
+        "long": null,
+        "text": "120 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 56,
+      "text": "Special (56 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d8",
+              "type": "wind"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d8",
+        "roll": {
+          "formula": "1d8",
+          "note": "Combination: Increases the damage dealt by 1d8 and the height of tornado 10-feet, for every additional creature aiding in casting this jutsu, beyond the first two."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2132,
+        "sourceHash": "49851ac133a842e4fd782964b83e09c4fb9b7d11d71072933f843f3b6c782823",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "B",
+          "time": "Full Turn Action",
+          "range": "120 Feet",
+          "duration": "Instant",
+          "cost": "Special (56 Chakra)",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Wind Release, Combination"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: Full Turn Action Range: 120 Feet Duration: Instant\nComponents: HS, CM, CS Cost: Special (56 Chakra) Keywords: Ninjutsu, Wind Release, Combination  Description: You generate a tornado that touches down on a point you can see within range. This Tornado is 120 feet tall and 30 feet wide.\nWhen this jutsu is cast, if its affected area overlaps with a creature, they must make a Strength saving throw, taking 8d8 wind damage on a failed save.\nAll creatures, objects and structures, excluding casters of this jutsu, within the tornado’s area make a Strength saving throw being sucked into the eye of this storm. On a failed save they are thrown to the top of this tornado for but a moment before the tornado compresses and fires all creatures within directly into the ground at sound breaking speeds.\nAll creatures, objects and structures are immediately blasted into the ground taking triple falling damage as if they fell from 120 feet.\nCombination: Increases the damage dealt by 1d8 and the height of tornado 10-feet, for every additional creature aiding in casting this jutsu, beyond the first two.",
+        "expressions": [
+          {
+            "expression": "8d8",
+            "offset": 245,
+            "context": "When this jutsu is cast, if its affected area overlaps with a creature, they must make a Strength saving throw, taking 8d8 wind damage on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 817,
+            "context": "Combination: Increases the damage dealt by 1d8 and the height of tornado 10-feet, for every additional creature aiding in casting this jutsu, beyond the first two.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "df8acb8c158b687b"
+}

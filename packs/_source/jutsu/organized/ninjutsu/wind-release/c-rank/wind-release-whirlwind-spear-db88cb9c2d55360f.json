@@ -1,0 +1,252 @@
+{
+  "_id": "db88cb9c2d55360f",
+  "_key": "!items!db88cb9c2d55360f",
+  "name": "Wind Release: Whirlwind Spear",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-whirlwind-spear",
+    "description": "<p>You create a molded construct of wind release chakra that floats next to you. This construct can take the shape of any spear or piercing like object such as an arrow, lance, sword or anything you prefer. You then launch this construct in a straight line, piercing through all creatures in a 5-foot wide, 120-foot longline originating from you.</p>\n<p>All creatures in range must make a Dexterity Saving throw taking 5d6 wind damage on a failed Save or half as much on a successful one.</p>\n<p>The first creature your construct would pass through that has the Burned, Chilled, Corroded, Shocked or Envenomed condition has that condition exacerbated. That creature takes 2d10 Fire damage if they are Burned, cold damage if they are Chilled, acid damage if they are Corroded, lightning damage if they are Shocked or poison damage if they are Envenomed. On a successful save no additional damage is done.</p>\n<p>Swirl. Creatures who would fail their saving throw, spreads all Elemental conditions currently affecting them around to all creatures, excluding the caster within 5 feet of them. Hostile creatures within 5 feet of the failing one gains 1 rank of all elemental conditions currently affecting it.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and 1d10, respectively.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2096",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (120-foot line)"
+      },
+      "area": {
+        "shape": "line",
+        "size": 120,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          },
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          },
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          },
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "5d6",
+        "roll": {
+          "formula": "5d6",
+          "note": "All creatures in range must make a Dexterity Saving throw taking 5d6 wind damage on a failed Save or half as much on a successful one."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "2d10",
+        "roll": {
+          "formula": "2d10",
+          "note": "That creature takes 2d10 Fire damage if they are Burned, cold damage if they are Chilled, acid damage if they are Corroded, lightning damage if they are Shocked or poison damage if they are Envenomed. On a successful save no additional damage is done."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and 1d10, respectively.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2096,
+        "sourceHash": "f9b6714922d64e12e80f6c0325f718cf60888c8c6b6ea09e1ea66a363cdd4465",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (120-foot line)",
+          "duration": "Instant",
+          "cost": "9 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release, Clash"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (120-foot line) Duration: Instant\nComponents: HS, CM Cost: 9 Chakra Keywords: Ninjutsu, Wind Release, Clash Description: You create a molded construct of wind release chakra that floats next to you. This construct can take the shape of any spear or piercing like object such as an arrow, lance, sword or anything you prefer. You then launch this construct in a straight line, piercing through all creatures in a 5-foot wide, 120-foot longline originating from you.\nAll creatures in range must make a Dexterity Saving throw taking 5d6 wind damage on a failed Save or half as much on a successful one.\nThe first creature your construct would pass through that has the Burned, Chilled, Corroded, Shocked or Envenomed condition has that condition exacerbated. That creature takes 2d10 Fire damage if they are Burned, cold damage if they are Chilled, acid damage if they are Corroded, lightning damage if they are Shocked or poison damage if they are Envenomed. On a successful save no additional damage is done.\nSwirl. Creatures who would fail their saving throw, spreads all Elemental conditions currently affecting them around to all creatures, excluding the caster within 5 feet of them. Hostile creatures within 5 feet of the failing one gains 1 rank of all elemental conditions currently affecting it.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and 1d10, respectively.",
+        "expressions": [
+          {
+            "expression": "5d6",
+            "offset": 409,
+            "context": "All creatures in range must make a Dexterity Saving throw taking 5d6 wind damage on a failed Save or half as much on a successful one.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d10",
+            "offset": 655,
+            "context": "That creature takes 2d10 Fire damage if they are Burned, cold damage if they are Chilled, acid damage if they are Corroded, lightning damage if they are Shocked or poison damage if they are Envenomed. On a successful save no additional damage is done.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1302,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and 1d10, respectively.",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "1d10",
+            "offset": 1310,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and 1d10, respectively.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c316a04b2e905f38"
+}

@@ -1,0 +1,343 @@
+{
+  "_id": "6b7695fbbe1503c5",
+  "_key": "!items!6b7695fbbe1503c5",
+  "name": "Wind Release: Blades of the Wind",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-blades-of-the-wind",
+    "description": "<p>You generate a strong breeze of slicing wind from swiping one of your limbs. A wave is created in a 20-foot cone originating from you. Creatures in range must make a Dexterity saving throw, taking 2d8 Wind damage, and gaining 1 rank of Bleed on a failed save, and only half damage on a successful save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at C-Rank or higher, affected creatures must first make a Strength saving throw, being pushed back 20 feet in a straight line on a failed save. If this jutsu is cast at B-Rank or higher, this jutsu’s duration can become Concentration, up to 1 minute and its range becomes Self (20-Foot Radius Sphere). All who enter for the first time on a turn or begins their turn in this radius must remake their saving throws being affected by this jutsu as listed above.</p>\n<p>Additionally, creatures in range who fail their saving throws are thrown in a direction of your choice. If this jutsu is cast at A-Rank or higher, you can increase the size of this jutsu’s Cone to 60-Foot Cone or the size of the Sphere to 30-Foot Radius Sphere. If this jutsu is cast at S-Rank, a creature who fails their saving throw doubles the distance moved to 40-feet and increases the ranks of Bleed they gain to 3 ranks.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1930",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (20-Foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 20,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at C-Rank or higher, affected creatures must first make a Strength saving throw, being pushed back 20 feet in a straight line on a failed save. If this jutsu is cast at B-Rank or higher, this jutsu’s duration can become Concentration, up to 1 minute and its range becomes Self (20-Foot Radius Sphere). All who enter for the first time on a turn or begins their turn in this radius must remake their saving throws being affected by this jutsu as listed above.</p>\n<p>Additionally, creatures in range who fail their saving throws are thrown in a direction of your choice. If this jutsu is cast at A-Rank or higher, you can increase the size of this jutsu’s Cone to 60-Foot Cone or the size of the Sphere to 30-Foot Radius Sphere. If this jutsu is cast at S-Rank, a creature who fails their saving throw doubles the distance moved to 40-feet and increases the ranks of Bleed they gain to 3 ranks.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1930,
+        "sourceHash": "9d1df86f3ea3d03f808eaaccba07d2c3b8c4d5348c0a3925cbaf5e568fbf809c",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (20-Foot Cone)",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (20-Foot Cone) Duration: Instant\nComponents: HS, CM Cost: 4 Chakra Keywords: Ninjutsu, Wind Release, Clash Description: You generate a strong breeze of slicing wind from swiping one of your limbs. A wave is created in a 20-foot cone originating from you. Creatures in range must make a Dexterity saving throw, taking 2d8 Wind damage, and gaining 1 rank of Bleed on a failed save, and only half damage on a successful save.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at C-Rank or higher, affected creatures must first make a Strength saving throw, being pushed back 20 feet in a straight line on a failed save. If this jutsu is cast at B-Rank or higher, this jutsu’s duration can become Concentration, up to 1 minute and its range becomes Self (20-Foot Radius Sphere). All who enter for the first time on a turn or begins their turn in this radius must remake their saving throws being affected by this jutsu as listed above.\nAdditionally, creatures in range who fail their saving throws are thrown in a direction of your choice. If this jutsu is cast at A-Rank or higher, you can increase the size of this jutsu’s Cone to 60-Foot Cone or the size of the Sphere to 30-Foot Radius Sphere. If this jutsu is cast at S-Rank, a creature who fails their saving throw doubles the distance moved to 40-feet and increases the ranks of Bleed they gain to 3 ranks.",
+        "expressions": [
+          {
+            "expression": "2d8",
+            "offset": 197,
+            "context": "Creatures in range must make a Dexterity saving throw, taking 2d8 Wind damage, and gaining 1 rank of Bleed on a failed save, and only half damage on a successful save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d8",
+            "offset": 424,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, and the damage by 1d8. If this jutsu is cast at C-Rank or higher, affected creatures must first make a Strength saving throw, being pushed back 20 feet in a straight line on a failed save. If this jutsu is cast at B-Rank or higher, this jutsu’s duration can become Concentration, up to 1 minute and its range becomes Self (20-Foot Radius Sphere). All who enter for the first time on a turn or begins their turn in this radius must remake their saving throws being affected by this jutsu as listed above.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "20268cc1727cd95c"
+}

@@ -1,0 +1,239 @@
+{
+  "_id": "a6f3f29d7e1a670a",
+  "_key": "!items!a6f3f29d7e1a670a",
+  "name": "Tendon Shot",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "tendon-shot",
+    "description": "<p>You take a quick assessment of the enemies’ movements, their fighting styles, do they use kicks? Punches? Weapons? All of them can be disabled if you know where to strike, and you do. Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks.</p>\n<p>Chain 2: A creature instead becomes Petrified if they fail by 5 or more.</p>\n<p>At Higher Ranks: For Rank you cast this jutsu above B-rank, increase the cost of this jutsu by 3, the die size of the 1d4+1 by 1, and the damage by 1d4</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 7086",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 10,
+      "text": "10 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any ranged/Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "8d4",
+        "roll": {
+          "formula": "8d4",
+          "note": "Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "1d4+1",
+        "roll": {
+          "formula": "1d4+1",
+          "note": "On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For Rank you cast this jutsu above B-rank, increase the cost of this jutsu by 3, the die size of the 1d4+1 by 1, and the damage by 1d4</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "<p>Chain 2: A creature instead becomes Petrified if they fail by 5 or more.</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 7086,
+        "sourceHash": "d74c5fe6dbd9681640b291d23f87a65fa54d54c6b06fece2b3fd560569c51898",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Weapons Range",
+          "duration": "Instant",
+          "cost": "10 Chakra",
+          "components": "W (Any ranged/Thrown), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: B-Rank\nCasting Time 1 Action\nRange Weapons Range\nDuration: Instant\nComponents: W (Any ranged/Thrown), M\nCost: 10 Chakra\nKeywords: Bukijutsu, Chain\nDescription: You take a quick assessment of the enemies’ movements, their fighting styles, do they use kicks? Punches? Weapons? All of them can be disabled if you know where to strike, and you do. Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks.\nChain 2: A creature instead becomes Petrified if they fail by 5 or more.\nAt Higher Ranks: For Rank you cast this jutsu above B-rank, increase the cost of this jutsu by 3, the die size of the 1d4+1 by 1, and the damage by 1d4",
+        "expressions": [
+          {
+            "expression": "[Weapons damage Die]",
+            "offset": 263,
+            "context": "Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks.",
+            "section": "Base"
+          },
+          {
+            "expression": "8d4",
+            "offset": 286,
+            "context": "Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d4+1",
+            "offset": 441,
+            "context": "On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d4+1",
+            "offset": 723,
+            "context": "At Higher Ranks: For Rank you cast this jutsu above B-rank, increase the cost of this jutsu by 3, the die size of the 1d4+1 by 1, and the damage by 1d4",
+            "section": "At Higher Ranks"
+          },
+          {
+            "expression": "1d4",
+            "offset": 753,
+            "context": "At Higher Ranks: For Rank you cast this jutsu above B-rank, increase the cost of this jutsu by 3, the die size of the 1d4+1 by 1, and the damage by 1d4",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Weapon-die-only expression is retained; no full weapon/modifier substitution is assumed.",
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "a7edbe01a9022231"
+}

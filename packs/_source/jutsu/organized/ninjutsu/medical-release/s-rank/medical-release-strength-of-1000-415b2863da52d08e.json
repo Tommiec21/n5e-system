@@ -1,0 +1,213 @@
+{
+  "_id": "415b2863da52d08e",
+  "_key": "!items!415b2863da52d08e",
+  "name": "Medical Release: Strength of 1000",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-strength-of-1000",
+    "description": "<p>In order to cast this jutsu you must currently be under the effects of ‘Medical Release: Strength of 100’</p>\n<p>You have perfected the chakra control needed to go beyond the limits of Strength of 100, and found the most efficient way to enhance your physical strength beyond normal limits.</p>\n<p>When you cast this jutsu, its duration is for the remainder of “Medical Release: Strength of 100” and you no longer need to maintain concentration on Medical Release: Strength of 100. For the duration you gain the following benefits;</p>\n<p>Your [Unarmed damage Die] becomes 3d8.</p>\n<p>You regenerate hit points equal to 2d4+8 at the start of each of your turns.</p>\n<p>You gain the Distortion Impact and Critical Break abilities, which can be used once per turn each, in place of an attack granted by the Attack Action or used once in addition to a melee Taijutsu attack.</p>\n<p>Distortion Impact:  As part of a melee Unarmed or Taijutsu attack, on a hit, all creatures of your choice within 20 feet of the target creature (excluding that creature) must make a Dexterity saving throw vs your Taijutsu (or Ninjutsu, your choice) save DC. On a failed save, they take your unarmed damage as the shockwave from the force of your impact echoes outward, or half as much on a success.</p>\n<p>Critical Break: As part of a melee Unarmed or Taijutsu attack, you strike with intense focus, making the triggering attack have a +2 bonus to its critical threat range. If you score a critical hit with this attack, you instead triple your unarmed damage dice.</p>\n<p>When this jutsu ends or you deactivate this jutsu, your body experiences a massive shock as you cannot recast this jutsu or jutsu with both the Medical keyword that requires concentration until you complete a Full-Rest.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1570",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "efficient",
+      "ninjutsu",
+      "medical",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "special",
+      "concentration": false,
+      "text": "Special"
+    },
+    "cost": {
+      "mode": "special",
+      "value": 20,
+      "text": "Special (20 Chakra)"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d8",
+        "roll": {
+          "formula": "3d8",
+          "note": "Your [Unarmed damage Die] becomes 3d8."
+        }
+      },
+      {
+        "id": "sourceRoll3",
+        "type": "roll",
+        "label": "2d4+8",
+        "roll": {
+          "formula": "2d4+8",
+          "note": "You regenerate hit points equal to 2d4+8 at the start of each of your turns."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1570,
+        "sourceHash": "a844fb4c4af0d54e8d6b74f4b81fcad1a54b982d8744633232d2c7faa6178d42",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "S",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Special",
+          "cost": "Special (20 Chakra)",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical, Stable, Efficient"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Bonus Action Range: Self Duration:  Special\nComponents:  HS, CM Cost: Special (20 Chakra)  Keywords: Ninjutsu, Medical, Stable, Efficient Description: In order to cast this jutsu you must currently be under the effects of ‘Medical Release: Strength of 100’\nYou have perfected the chakra control needed to go beyond the limits of Strength of 100, and found the most efficient way to enhance your physical strength beyond normal limits.\nWhen you cast this jutsu, its duration is for the remainder of “Medical Release: Strength of 100” and you no longer need to maintain concentration on Medical Release: Strength of 100. For the duration you gain the following benefits;\nYour [Unarmed damage Die] becomes 3d8.\nYou regenerate hit points equal to 2d4+8 at the start of each of your turns.\nYou gain the Distortion Impact and Critical Break abilities, which can be used once per turn each, in place of an attack granted by the Attack Action or used once in addition to a melee Taijutsu attack.\nDistortion Impact:  As part of a melee Unarmed or Taijutsu attack, on a hit, all creatures of your choice within 20 feet of the target creature (excluding that creature) must make a Dexterity saving throw vs your Taijutsu (or Ninjutsu, your choice) save DC. On a failed save, they take your unarmed damage as the shockwave from the force of your impact echoes outward, or half as much on a success.\nCritical Break: As part of a melee Unarmed or Taijutsu attack, you strike with intense focus, making the triggering attack have a +2 bonus to its critical threat range. If you score a critical hit with this attack, you instead triple your unarmed damage dice.\nWhen this jutsu ends or you deactivate this jutsu, your body experiences a massive shock as you cannot recast this jutsu or jutsu with both the Medical keyword that requires concentration until you complete a Full-Rest.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage Die]",
+            "offset": 523,
+            "context": "Your [Unarmed damage Die] becomes 3d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d8",
+            "offset": 552,
+            "context": "Your [Unarmed damage Die] becomes 3d8.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d4+8",
+            "offset": 592,
+            "context": "You regenerate hit points equal to 2d4+8 at the start of each of your turns.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "b0d365bba0d080fc"
+}

@@ -1,0 +1,194 @@
+{
+  "_id": "f61749a52fd37a9e",
+  "_key": "!items!f61749a52fd37a9e",
+  "name": "Fire Release: Wildfire",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-wildfire",
+    "description": "<p>You manifest a multicolored flame and Fire a stream of it towards a creature you can see within range. Target creature must make a Dexterity saving throw. On a failed save they gain 2 ranks of the Burned condition, and take 1d12+1 Fire damage. On a successful save they gain 1 rank of burned and no further effects.</p>\n<p>If the target already had the Burned condition, on a failed save, you trigger the Burned conditions damage effect as if it were the start of that creature turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2293",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 45,
+        "long": null,
+        "text": "45 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12+1",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2293,
+        "sourceHash": "3cc8631ea52bd9f5e85966c0d231f09290e2cc4692e5c0aa4885bc936a6b9654",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "45 Feet",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release, Clash"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 45 Feet Duration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Fire Release, Clash\nDescription: You manifest a multicolored flame and Fire a stream of it towards a creature you can see within range. Target creature must make a Dexterity saving throw. On a failed save they gain 2 ranks of the Burned condition, and take 1d12+1 Fire damage. On a successful save they gain 1 rank of burned and no further effects.\nIf the target already had the Burned condition, on a failed save, you trigger the Burned conditions damage effect as if it were the start of that creature turn.",
+        "expressions": [
+          {
+            "expression": "1d12+1",
+            "offset": 224,
+            "context": "On a failed save they gain 2 ranks of the Burned condition, and take 1d12+1 Fire damage. On a successful save they gain 1 rank of burned and no further effects.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eegPtnn07turpr"
+}

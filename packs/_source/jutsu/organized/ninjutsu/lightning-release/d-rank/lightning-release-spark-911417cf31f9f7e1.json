@@ -1,0 +1,178 @@
+{
+  "_id": "911417cf31f9f7e1",
+  "_key": "!items!911417cf31f9f7e1",
+  "name": "Lightning Release: Spark",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-spark",
+    "description": "<p>You conjure your lightning release chakra to generate a spark of willpower from within a creature.</p>\n<p>A Creature you touch gains 1 Hit point and a number of temporary hit points equal to 2d6 + Your Ninjutsu ability Modifier. These Temporary hit points last for 1 minute.</p>\n<p>Additionally, the creature gains resistance to Lightning damage so long as they have Temporary hit points granted by this jutsu.</p>\n<p>Overcharge. The first time you would take lightning damage while benefiting from temporary hit points (THP) as a result of this jutsu, you instead gain bonus THP equal to half the damage dealt.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary Hit points by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2833",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "touch",
+        "value": null,
+        "long": null,
+        "text": "Touch"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "2d6",
+        "roll": {
+          "formula": "2d6",
+          "note": "A Creature you touch gains 1 Hit point and a number of temporary hit points equal to 2d6 + Your Ninjutsu ability Modifier. These Temporary hit points last for 1 minute."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary Hit points by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": "<p>Overcharge. The first time you would take lightning damage while benefiting from temporary hit points (THP) as a result of this jutsu, you instead gain bonus THP equal to half the damage dealt.</p>"
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2833,
+        "sourceHash": "3582ffd5a72d048004c522eda1c728491f33de49b47c0ae2fb623e38424bf92b",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Touch",
+          "duration": "Instant",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release, Medical"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Touch Duration: Instant\nComponents: HS, CM Cost: 3 Chakra Keywords: Ninjutsu, Lightning Release, Medical  Description: You conjure your lightning release chakra to generate a spark of willpower from within a creature.\nA Creature you touch gains 1 Hit point and a number of temporary hit points equal to 2d6 + Your Ninjutsu ability Modifier. These Temporary hit points last for 1 minute.\nAdditionally, the creature gains resistance to Lightning damage so long as they have Temporary hit points granted by this jutsu.\nOvercharge. The first time you would take lightning damage while benefiting from temporary hit points (THP) as a result of this jutsu, you instead gain bonus THP equal to half the damage dealt.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary Hit points by 1d6.",
+        "expressions": [
+          {
+            "expression": "2d6",
+            "offset": 184,
+            "context": "A Creature you touch gains 1 Hit point and a number of temporary hit points equal to 2d6 + Your Ninjutsu ability Modifier. These Temporary hit points last for 1 minute.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 725,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary Hit points by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8ebb04f9de7c596b"
+}

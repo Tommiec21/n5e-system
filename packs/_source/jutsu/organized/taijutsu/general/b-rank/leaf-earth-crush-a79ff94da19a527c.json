@@ -1,0 +1,186 @@
+{
+  "_id": "a79ff94da19a527c",
+  "_key": "!items!a79ff94da19a527c",
+  "name": "Leaf Earth Crush",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "leaf-earth-crush",
+    "description": "<p>You slam your feet into the ground with the Passion of Youth TM, fragmenting and shattering the earth.</p>\n<p>All creature in in range must make a dexterity saving throw to dodge and avoid the spears of stone, metal or whatever materials the ground is made of. On a failed save, creatures take 3d8 piercing damage and are knocked 25 feet into the air, becoming airborne until the end of the current turn.</p>\n<p>The affected area becomes difficult terrain until cleared or restored.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4871",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "combo"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-Foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 13,
+      "text": "13 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4871,
+        "sourceHash": "e9cc1d57fa27672c43a75606ef01f3c87dd475038f3ea8d00aa4a725e310ea29",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "Self (30-Foot Cone)",
+          "duration": "Instant",
+          "cost": "13 Chakra",
+          "components": "CM, M",
+          "keywords": "Taijutsu, Combo"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Self (30-Foot Cone)\nDuration: Instant\nComponents: CM, M Cost: 13 Chakra Keywords: Taijutsu, Combo Description: You slam your feet into the ground with the Passion of Youth TM, fragmenting and shattering the earth.\nAll creature in in range must make a dexterity saving throw to dodge and avoid the spears of stone, metal or whatever materials the ground is made of. On a failed save, creatures take 3d8 piercing damage and are knocked 25 feet into the air, becoming airborne until the end of the current turn.\nThe affected area becomes difficult terrain until cleared or restored.",
+        "expressions": [
+          {
+            "expression": "3d8",
+            "offset": 287,
+            "context": "On a failed save, creatures take 3d8 piercing damage and are knocked 25 feet into the air, becoming airborne until the end of the current turn.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

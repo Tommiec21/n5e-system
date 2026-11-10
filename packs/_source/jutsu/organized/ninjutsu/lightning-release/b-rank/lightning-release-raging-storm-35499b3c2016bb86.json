@@ -1,0 +1,175 @@
+{
+  "_id": "35499b3c2016bb86",
+  "_key": "!items!35499b3c2016bb86",
+  "name": "Lightning Release: Raging Storm",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lightning-release-raging-storm",
+    "description": "<p>You manifest lightning until it covering the body of an allied creature that is not yourself. The target creature is engulfed in a raging torrent of lightning. For this duration, damage they deal adds an additional 2d8 lightning damage, twice per turn. They also gain resistance to Earth and Lightning damage and a +20 bonus to their speed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of targets this jutsu can affect by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2970",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "lightning",
+    "keywords": [
+      "lightningRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of targets this jutsu can affect by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2970,
+        "sourceHash": "b23117fb23ef24824ae2fe06d6d54cba6005faabc075539d89b881c08b8fc0d0",
+        "discipline": "Ninjutsu",
+        "group": "Lightning Release",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "60 feet",
+          "duration": "Concentration, Up to 1 Minute",
+          "cost": "12 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Lightning Release"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 60 feet  Duration: Concentration, Up to 1 Minute\nComponents: HS, CM Cost: 12 Chakra Keywords: Ninjutsu, Lightning Release  Description: You manifest lightning until it covering the body of an allied creature that is not yourself. The target creature is engulfed in a raging torrent of lightning. For this duration, damage they deal adds an additional 2d8 lightning damage, twice per turn. They also gain resistance to Earth and Lightning damage and a +20 bonus to their speed.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the number of targets this jutsu can affect by +1.",
+        "expressions": [
+          {
+            "expression": "2d8",
+            "offset": 215,
+            "context": "For this duration, damage they deal adds an additional 2d8 lightning damage, twice per turn. They also gain resistance to Earth and Lightning damage and a +20 bonus to their speed.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "acabc40e90c929b8"
+}

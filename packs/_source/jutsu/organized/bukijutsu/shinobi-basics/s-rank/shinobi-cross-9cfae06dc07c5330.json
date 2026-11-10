@@ -1,0 +1,158 @@
+{
+  "_id": "9cfae06dc07c5330",
+  "_key": "!items!9cfae06dc07c5330",
+  "name": "Shinobi Cross",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "shinobi-cross",
+    "description": "<p>You take a Powerful stance with no openings for attack. After activating this jutsu, attacks against you allows you to use a Bukijutsu with the casting time of 1 action, as a reaction.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5701",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "S",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 20,
+      "text": "20 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "melee",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any melee Weapon"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5701,
+        "sourceHash": "b7f10477f7e5594e2b8f94c1132b8b19fae27082baec8b9996a38de1ac5c4da1",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "S",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "20 Chakra",
+          "components": "W (Any melee Weapon), M",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self\nDuration: Concentration, up to 1 Minute\nComponents: W (Any melee Weapon), M Cost: 20 Chakra Keywords: Bukijutsu Description: You take a Powerful stance with no openings for attack. After activating this jutsu, attacks against you allows you to use a Bukijutsu with the casting time of 1 action, as a reaction.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "8a9c91a8d73fad43"
+}

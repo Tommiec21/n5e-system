@@ -1,0 +1,176 @@
+{
+  "_id": "5335f5d81af757a0",
+  "_key": "!items!5335f5d81af757a0",
+  "name": "Detect Intention",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "detect-intention",
+    "description": "<p>Select a creature you can see within range. If the target is not aware of your presence roll your Illusion Skill vs their passive Deception. On a success you know what the creatures most immediate intention is based on the following groupings as described by the GM:</p>\n<p>Hostile: The creatures has intents to cause physical harm.</p>\n<p>Antagonistic. The creature has intents to cause emotional harm or damage public opinion.</p>\n<p>Neutral. The creatures currently has no intents positive or negative.</p>\n<p>Helpful. The creature has intents to aid in any non-combative way possible.</p>\n<p>This does not explain why they are trying to do whatever it is they are trying to do just what it is they want to do.</p>\n<p>If the target is aware of your presence, they make a Wisdom saving throw. On a failure you gain the same information as you would if they weren’t aware of your presence. On a success you are unable to discern their intention at all.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3490",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu",
+      "sensory"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3490,
+        "sourceHash": "870f796f5b6712a01ec41ade7e30c0db27a8198ecb1b3fb572f036ed217ef5ac",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "30 Feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "3 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Visual), Sensory"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 Feet Duration: Concentration, up to 1 minute\nComponents: HS, CM Cost: 3 Chakra Keywords: Genjutsu (Visual), Sensory Description: Select a creature you can see within range. If the target is not aware of your presence roll your Illusion Skill vs their passive Deception. On a success you know what the creatures most immediate intention is based on the following groupings as described by the GM:\nHostile: The creatures has intents to cause physical harm.\nAntagonistic. The creature has intents to cause emotional harm or damage public opinion.\nNeutral. The creatures currently has no intents positive or negative.\nHelpful. The creature has intents to aid in any non-combative way possible.\nThis does not explain why they are trying to do whatever it is they are trying to do just what it is they want to do.\nIf the target is aware of your presence, they make a Wisdom saving throw. On a failure you gain the same information as you would if they weren’t aware of your presence. On a success you are unable to discern their intention at all.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5ecbQOCtW8LIE7D"
+}

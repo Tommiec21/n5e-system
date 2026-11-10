@@ -148,7 +148,7 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
 /** The cast card: what was spent, the rules text, and activity buttons. */
 export async function postCastCard(actor, item, plan) {
   const j = item.system;
-  const activities = effectiveActivities(item);
+  const activities = effectiveActivities(item, { rank: plan.rank });
   const spent = [plan.costMode === "chakra" ? `${plan.cost} CP` : plan.costMode === "none" ? "No cost" : "Special cost",
     ...Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`)].join(" · ");
   // Moldings that change the card's buttons: Precise (attack advantage), Heightened (first save at

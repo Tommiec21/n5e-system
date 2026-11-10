@@ -1,0 +1,281 @@
+{
+  "_id": "eb9030210a37d92e",
+  "_key": "!items!eb9030210a37d92e",
+  "name": "One Man Front Lotus",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "one-man-front-lotus",
+    "description": "<p>As part of the requirements of this jutsu, you must have at least the 1st Gate: Opening from the 8 Inner Gates: Seimon class feature active.</p>\n<p>You leap into the air before beginning to spin turning yourself into a drill with enough force to create spiraling wind and dust that trails you as you come crashing down into a target of your choice that you can see within range. Make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 5d6. All creatures within 10 feet of the target must make a Strength saving throw to avoid being thrown back 10 feet from the force.</p>\n<p>Finisher: you instead make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 8d6. Additionally, all creatures within 10 feet of the target must make a Strength saving throw, being knocked back 20 feet from the force, becoming Dazed from the force and falling Prone.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4898",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "finisher",
+      "kinjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 45,
+        "long": null,
+        "text": "45 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "5d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "finisher-parsed1",
+        "type": "attack",
+        "label": "Finisher: Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 8d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "finisher-parsed2",
+        "type": "save",
+        "label": "Finisher: Save",
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": "<p>Finisher: you instead make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 8d6. Additionally, all creatures within 10 feet of the target must make a Strength saving throw, being knocked back 20 feet from the force, becoming Dazed from the force and falling Prone.</p>"
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4898,
+        "sourceHash": "15bad9b57d27f1ab6cd0cd063233c800ca99c9c02cad3c7aad3039bf19a59e48",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "45 feet",
+          "duration": "Instant",
+          "cost": "14 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Finisher, Kinjutsu"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 45 feet Duration: Instant\nComponents: M Cost: 14 Chakra Keywords: Taijutsu, Finisher, Kinjutsu Description: As part of the requirements of this jutsu, you must have at least the 1st Gate: Opening from the 8 Inner Gates: Seimon class feature active.\nYou leap into the air before beginning to spin turning yourself into a drill with enough force to create spiraling wind and dust that trails you as you come crashing down into a target of your choice that you can see within range. Make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 5d6. All creatures within 10 feet of the target must make a Strength saving throw to avoid being thrown back 10 feet from the force.\nFinisher: you instead make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 8d6. Additionally, all creatures within 10 feet of the target must make a Strength saving throw, being knocked back 20 feet from the force, becoming Dazed from the force and falling Prone.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 434,
+            "context": "Make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 5d6. All creatures within 10 feet of the target must make a Strength saving throw to avoid being thrown back 10 feet from the force.",
+            "section": "Base"
+          },
+          {
+            "expression": "5d6",
+            "offset": 453,
+            "context": "Make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 5d6. All creatures within 10 feet of the target must make a Strength saving throw to avoid being thrown back 10 feet from the force.",
+            "section": "Base"
+          },
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 670,
+            "context": "Finisher: you instead make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 8d6. Additionally, all creatures within 10 feet of the target must make a Strength saving throw, being knocked back 20 feet from the force, becoming Dazed from the force and falling Prone.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "8d6",
+            "offset": 689,
+            "context": "Finisher: you instead make a melee taijutsu attack against the target, dealing your [Unarmed damage] + 8d6. Additionally, all creatures within 10 feet of the target must make a Strength saving throw, being knocked back 20 feet from the force, becoming Dazed from the force and falling Prone.",
+            "section": "Finisher"
+          },
+          {
+            "expression": "1d8",
+            "offset": 998,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d8.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "64b78902f2631880"
+}

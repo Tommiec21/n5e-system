@@ -1,0 +1,189 @@
+{
+  "_id": "d73a5b70c8c5436e",
+  "_key": "!items!d73a5b70c8c5436e",
+  "name": "Fire Release: Blazing Fervor",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "fire-release-blazing-fervor",
+    "description": "<p>You pump Fire Release Chakra through your veins, muscles, and even blood. When you do, for the duration, your Strength &amp; Dexterity becomes 20. If either of these ability scores are already 20, they instead gain a +2 bonus.</p>\n<p>melee attacks that strike you deals 12 Fire damage to all creatures within 10 feet of you as you release a mass of heat from your body in response. Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2411",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "A",
+    "discipline": "nin",
+    "section": "fire",
+    "keywords": [
+      "fireRelease",
+      "ninjutsu",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 15,
+      "text": "15 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8+2",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "12",
+        "roll": {
+          "formula": "12",
+          "note": "melee attacks that strike you deals 12 Fire damage to all creatures within 10 feet of you as you release a mass of heat from your body in response. Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2411,
+        "sourceHash": "17861fb1ba09d5ccc174923788d53b16472344e865695e78310567e080dd904c",
+        "discipline": "Ninjutsu",
+        "group": "Fire Release",
+        "header": {
+          "rank": "A",
+          "time": "1 Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "15 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Fire Release, Stable"
+        },
+        "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: Self\nDuration: Concentration, up to 1 Minute\nComponents: HS, CM Cost: 15 Chakra Keywords: Ninjutsu, Fire Release, Stable Description: You pump Fire Release Chakra through your veins, muscles, and even blood. When you do, for the duration, your Strength & Dexterity becomes 20. If either of these ability scores are already 20, they instead gain a +2 bonus.\nmelee attacks that strike you deals 12 Fire damage to all creatures within 10 feet of you as you release a mass of heat from your body in response. Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any.",
+        "expressions": [
+          {
+            "expression": "12",
+            "offset": 259,
+            "context": "melee attacks that strike you deals 12 Fire damage to all creatures within 10 feet of you as you release a mass of heat from your body in response. Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any.",
+            "section": "Base"
+          },
+          {
+            "expression": "2d8+2",
+            "offset": 437,
+            "context": "Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any.",
+            "section": "Base"
+          }
+        ],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "6d60386b2f6cb7c3"
+}

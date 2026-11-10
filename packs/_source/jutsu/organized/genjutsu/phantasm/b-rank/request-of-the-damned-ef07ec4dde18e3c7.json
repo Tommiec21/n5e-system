@@ -1,0 +1,182 @@
+{
+  "_id": "ef07ec4dde18e3c7",
+  "_key": "!items!ef07ec4dde18e3c7",
+  "name": "Request of the Damned",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "request-of-the-damned",
+    "description": "<p>You issue a single command, no longer than 25 words, directed at a single creature whom you can see who’s name you include in your command. If the creature can hear you, they must make a Charisma saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature becomes overcome with conflicting desires, becoming Confused, until the end of their next turn.</p>\n<p>Failure: Affected creature must commit their Action in an attempt to complete this task. The command must be something that can be completed within the next minute, otherwise this jutsu ends. Affected creature remakes their saving throw at the end of each of their turns, ending this effect on a success.</p>\n<p>Critical Failure: Same as failure, but they instead only remake their saving throw when they take damage.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the number of creature you can target with this jutsu by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3339",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "B",
+    "discipline": "gen",
+    "section": "phantasm",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 90,
+        "long": null,
+        "text": "90 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+            "success": "on a success.",
+            "failure": "failure, but they instead only remake their saving throw when they take damage.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the number of creature you can target with this jutsu by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3339,
+        "sourceHash": "d34018a3a7a29df731dccb59c4b3c5585259b3e6c02bb092a1a074e5f6e99d35",
+        "discipline": "Genjutsu",
+        "group": "Phantasm",
+        "header": {
+          "rank": "B",
+          "time": "1 Action",
+          "range": "90 feet",
+          "duration": "Concentration, Up to 1 minute.",
+          "cost": "14 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory)"
+        },
+        "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 90 feet Duration: Concentration, Up to 1 minute.\nComponents: HS, CM\nCost: 14 Chakra Keywords: Genjutsu (Auditory) Description: You issue a single command, no longer than 25 words, directed at a single creature whom you can see who’s name you include in your command. If the creature can hear you, they must make a Charisma saving throw.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature becomes overcome with conflicting desires, becoming Confused, until the end of their next turn.\nFailure: Affected creature must commit their Action in an attempt to complete this task. The command must be something that can be completed within the next minute, otherwise this jutsu ends. Affected creature remakes their saving throw at the end of each of their turns, ending this effect on a success.\nCritical Failure: Same as failure, but they instead only remake their saving throw when they take damage.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3 and the number of creature you can target with this jutsu by +1.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "779eb1d0d06757f5"
+}

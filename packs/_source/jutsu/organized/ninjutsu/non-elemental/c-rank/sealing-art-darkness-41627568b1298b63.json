@@ -1,0 +1,159 @@
+{
+  "_id": "41627568b1298b63",
+  "_key": "!items!41627568b1298b63",
+  "name": "Sealing Art: Darkness",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "sealing-art-darkness",
+    "description": "<p>You imbue your chakra seal to conjure a field of darkness. You throw your seal at a point you choose within range. The chakra-based darkness spreads from the seal, to fill a 15-foot radius sphere for the duration. The darkness spreads around corners. A creature with Darkvision or Chakra Sight can’t see through this darkness, and light created using an effect or jutsu of C-Rank or lower cannot illuminate it.</p>\n<p>If the point you choose is on an object you are holding or one that isn’t being worn or carried, the darkness emanates from it and moves with it. If any of this jutsu’s area overlaps with an area of light created by a jutsu of B-Rank or higher this darkness is dispelled.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 931",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "fuinjutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (15-foot radius sphere)"
+      },
+      "area": {
+        "shape": "sphere",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 10 minutes."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 9,
+      "text": "9 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "none",
+      "costPerRank": null,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": ""
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 931,
+        "sourceHash": "0a98adca90aedd23269a5d7142525298c9e5370a2eec6c3b5aa38fca28e35e19",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "60 feet (15-foot radius sphere)",
+          "duration": "Concentration, up to 10 minutes.",
+          "cost": "9 Chakra",
+          "components": "HS, CM, CS",
+          "keywords": "Ninjutsu, Fuinjutsu"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 60 feet (15-foot radius sphere) Duration: Concentration, up to 10 minutes.\nComponents:  HS, CM, CS Cost: 9 Chakra Keywords: Ninjutsu, Fuinjutsu Description: You imbue your chakra seal to conjure a field of darkness. You throw your seal at a point you choose within range. The chakra-based darkness spreads from the seal, to fill a 15-foot radius sphere for the duration. The darkness spreads around corners. A creature with Darkvision or Chakra Sight can’t see through this darkness, and light created using an effect or jutsu of C-Rank or lower cannot illuminate it.\nIf the point you choose is on an object you are holding or one that isn’t being worn or carried, the darkness emanates from it and moves with it. If any of this jutsu’s area overlaps with an area of light created by a jutsu of B-Rank or higher this darkness is dispelled.",
+        "expressions": [],
+        "manual": [],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "cfa6ae1d0e387079"
+}

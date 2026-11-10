@@ -1,0 +1,160 @@
+{
+  "_id": "7377bf8dcc23c25a",
+  "_key": "!items!7377bf8dcc23c25a",
+  "name": "Achilles Heel",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "achilles-heel",
+    "description": "<p>You aim to hinder your enemy from harming your allies, so they instead target you. Select one creature you can see in range and take a combative stance meant to taunt them. Select creature gains disadvantage on attacks targeting creatures other than you until the end of their next turn.</p>\n<p>This jutsu ends early when you would deal damage, force a save to a creature other than the target or would use this jutsu again on another creature.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you can deal damage to or force other creatures to make saving throws without this jutsu ending on the original target, so long as they would also be affected by the damage or also forced to make the same save.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6237",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "polearm",
+    "keywords": [
+      "bukijutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "round",
+      "concentration": false,
+      "text": "1 Round"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 3,
+      "text": "3 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Polearm"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you can deal damage to or force other creatures to make saving throws without this jutsu ending on the original target, so long as they would also be affected by the damage or also forced to make the same save.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6237,
+        "sourceHash": "e914bec930e795a03d3d6e43e8c1dce37e4764be7a3c9126683a721b3ee1397b",
+        "discipline": "Bukijutsu",
+        "group": "Polearm",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "30 feet",
+          "duration": "1 Round",
+          "cost": "3 Chakra",
+          "components": "W (Any Polearm), M",
+          "keywords": "Bukijutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: 30 feet Duration: 1 Round\nComponents: W (Any Polearm), M Cost: 3 Chakra Keywords: Bukijutsu Description: You aim to hinder your enemy from harming your allies, so they instead target you. Select one creature you can see in range and take a combative stance meant to taunt them. Select creature gains disadvantage on attacks targeting creatures other than you until the end of their next turn.\nThis jutsu ends early when you would deal damage, force a save to a creature other than the target or would use this jutsu again on another creature.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank or higher, you can deal damage to or force other creatures to make saving throws without this jutsu ending on the original target, so long as they would also be affected by the damage or also forced to make the same save.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "204c67326d5fa509"
+}

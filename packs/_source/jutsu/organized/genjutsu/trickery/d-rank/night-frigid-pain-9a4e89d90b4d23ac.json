@@ -1,0 +1,399 @@
+{
+  "_id": "9a4e89d90b4d23ac",
+  "_key": "!items!9a4e89d90b4d23ac",
+  "name": "Night: Frigid Pain",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "night-frigid-pain",
+    "description": "<p>You manifest a blade of chilling illusionary chakra to strike through a target’s senses, impeding them temporarily.</p>\n<p>Make a melee Genjutsu attack again a creature you can see within range. On a hit, you deal 4d6 psychic damage and force them to make an Intelligence saving throw.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.</p>\n<p>Failure: Affected creatures’ senses are damaged. They gain 1 rank of Concussed and lose access to special senses they have until the end of their next turn (Ex. Darkvision, Chakra Sight, Tremor Sense etc.)</p>\n<p>Critical Failure: Same as failure, but they instead gain 2 ranks of Concussed.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the number of targets by +1.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3581",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "trickery",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "auditory",
+      "tactile"
+    ],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 15,
+        "long": null,
+        "text": "15 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "gen",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+            "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
+            "failure": "failure, but they instead gain 2 ranks of Concussed.",
+            "critFailure": "Critical Failure: Same as"
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the number of targets by +1.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 3581,
+        "sourceHash": "527ef7342446465b9485bf8aa43c1e0e499e2e1c8d0f530da015dd6d40855585",
+        "discipline": "Genjutsu",
+        "group": "Trickery",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "15 feet",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "HS, CM",
+          "keywords": "Genjutsu (Auditory, Tactile)"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 15 feet\nDuration: Instant\nComponents:  HS, CM Cost: 4 Chakra Keywords: Genjutsu (Auditory, Tactile)  Description: You manifest a blade of chilling illusionary chakra to strike through a target’s senses, impeding them temporarily.\nMake a melee Genjutsu attack again a creature you can see within range. On a hit, you deal 4d6 psychic damage and force them to make an Intelligence saving throw.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.\nFailure: Affected creatures’ senses are damaged. They gain 1 rank of Concussed and lose access to special senses they have until the end of their next turn (Ex. Darkvision, Chakra Sight, Tremor Sense etc.)\nCritical Failure: Same as failure, but they instead gain 2 ranks of Concussed.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the number of targets by +1.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 207,
+            "context": "On a hit, you deal 4d6 psychic damage and force them to make an Intelligence saving throw.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 881,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d6 and the number of targets by +1.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
+                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
+                  "critFailure": "Critical Failure: Same as"
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
+                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
+                  "critFailure": "Critical Failure: Same as"
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
+                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
+                  "critFailure": "Critical Failure: Same as"
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "attack",
+              "label": "Attack",
+              "attack": {
+                "discipline": "gen",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "parsed2",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [],
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
+                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
+                  "critFailure": "Critical Failure: Same as"
+                },
+                "resave": false
+              },
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5ecbQOCtW8LIE7D"
+}

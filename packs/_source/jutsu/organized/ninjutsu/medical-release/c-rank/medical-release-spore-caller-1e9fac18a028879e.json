@@ -1,0 +1,307 @@
+{
+  "_id": "1e9fac18a028879e",
+  "_key": "!items!1e9fac18a028879e",
+  "name": "Medical Release: Spore caller",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-spore-caller",
+    "description": "<p>You begin to generate poisonous medical chakra and release it like an aura permeating from your skin.</p>\n<p>All creatures, excluding the caster, who would begin their turns in or first enter your, poisonous aura of spores, must make a constitution saving throw taking 4d6 poison damage and having the spores nest in their eyes blinding them until the end of their next turn. A creature who would be Blinded by this jutsu while already Blinded has the duration of the Blinded condition extended by 1 round.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, once per turn, a creature Blinded as a result of this jutsu who takes Bludgeoning, piercing or Slashing damage must make a Constitution saving throw, being Envenomed on a failed save. If this jutsu is cast at A-Rank or higher you can choose which creatures you want to be excluded from this jutsu’s effects and also release it into a different shape, turning its duration into Instant and its range into a Self (30-Foot Cone). If this jutsu is cast at S-Rank, creatures who fail their saving throw become Blinded for 1 minute. Remaking their saving throw at the end of each of their turns.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1439",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (15-Feet)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, once per turn, a creature Blinded as a result of this jutsu who takes Bludgeoning, piercing or Slashing damage must make a Constitution saving throw, being Envenomed on a failed save. If this jutsu is cast at A-Rank or higher you can choose which creatures you want to be excluded from this jutsu’s effects and also release it into a different shape, turning its duration into Instant and its range into a Self (30-Foot Cone). If this jutsu is cast at S-Rank, creatures who fail their saving throw become Blinded for 1 minute. Remaking their saving throw at the end of each of their turns.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1439,
+        "sourceHash": "8a6a5134e656ca166dff9f46a4751c3618391b605a634635b5e47049830759ae",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "Self (15-Feet)",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Medical"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: Self (15-Feet) Duration: Concentration, up to 1 minute\nComponents:  HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Medical Description: You begin to generate poisonous medical chakra and release it like an aura permeating from your skin.\nAll creatures, excluding the caster, who would begin their turns in or first enter your, poisonous aura of spores, must make a constitution saving throw taking 4d6 poison damage and having the spores nest in their eyes blinding them until the end of their next turn. A creature who would be Blinded by this jutsu while already Blinded has the duration of the Blinded condition extended by 1 round.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, once per turn, a creature Blinded as a result of this jutsu who takes Bludgeoning, piercing or Slashing damage must make a Constitution saving throw, being Envenomed on a failed save. If this jutsu is cast at A-Rank or higher you can choose which creatures you want to be excluded from this jutsu’s effects and also release it into a different shape, turning its duration into Instant and its range into a Self (30-Foot Cone). If this jutsu is cast at S-Rank, creatures who fail their saving throw become Blinded for 1 minute. Remaking their saving throw at the end of each of their turns.",
+        "expressions": [
+          {
+            "expression": "4d6",
+            "offset": 262,
+            "context": "All creatures, excluding the caster, who would begin their turns in or first enter your, poisonous aura of spores, must make a constitution saving throw taking 4d6 poison damage and having the spores nest in their eyes blinding them until the end of their next turn. A creature who would be Blinded by this jutsu while already Blinded has the duration of the Blinded condition extended by 1 round.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 620,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If this jutsu is cast at B-Rank or higher, once per turn, a creature Blinded as a result of this jutsu who takes Bludgeoning, piercing or Slashing damage must make a Constitution saving throw, being Envenomed on a failed save. If this jutsu is cast at A-Rank or higher you can choose which creatures you want to be excluded from this jutsu’s effects and also release it into a different shape, turning its duration into Instant and its range into a Self (30-Foot Cone). If this jutsu is cast at S-Rank, creatures who fail their saving throw become Blinded for 1 minute. Remaking their saving throw at the end of each of their turns.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "parsed1",
+              "type": "save",
+              "label": "Save",
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "fourTier": false,
+                "tiers": {},
+                "resave": false
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0359bedeffa2100b"
+}

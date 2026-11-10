@@ -1,0 +1,212 @@
+{
+  "_id": "d517ead642fffbe1",
+  "_key": "!items!d517ead642fffbe1",
+  "name": "Medical Release: Corrupted Weapon",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "medical-release-corrupted-weapon",
+    "description": "<p>You touch a weapon, coating it in a vile poison. For the duration, [Weapon damage] this weapon deals becomes either Poison or Acid which you decide when this jutsu is cast.</p>\n<p>Additionally, this weapon deals +1d6 damage twice per turn. Once per turn a creature damaged by this weapon must make a Constitution saving throw gaining a rank of Envenomed on a failed save.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you can choose to instead inflict Corroded in place of Envenomed.  If this jutsu is cast at B-Rank or Higher, increase the bonus damage by 1d6.  If this jutsu is cast at A-Rank or Higher, when cast its range becomes Self (15-Foot radius) and all willing creatures can select one weapon they have to be affected by this jutsu’s benefits. If this jutsu is cast at S-Rank increase the ranks of Envenomed to 2.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1279",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "medical",
+    "keywords": [
+      "ninjutsu",
+      "medical",
+      "stable"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "bonus",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "Additionally, this weapon deals +1d6 damage twice per turn. Once per turn a creature damaged by this weapon must make a Constitution saving throw gaining a rank of Envenomed on a failed save."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you can choose to instead inflict Corroded in place of Envenomed.  If this jutsu is cast at B-Rank or Higher, increase the bonus damage by 1d6.  If this jutsu is cast at A-Rank or Higher, when cast its range becomes Self (15-Foot radius) and all willing creatures can select one weapon they have to be affected by this jutsu’s benefits. If this jutsu is cast at S-Rank increase the ranks of Envenomed to 2.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 1279,
+        "sourceHash": "0e428f753f350828cda63e43e0dee63c967a8fba42d60057ef3ebfd78a0fe964",
+        "discipline": "Ninjutsu",
+        "group": "Medical Release",
+        "header": {
+          "rank": "D",
+          "time": "1 Bonus Action",
+          "range": "Self",
+          "duration": "Concentration, up to 1 Minute",
+          "cost": "5 Chakra",
+          "components": "HS, CM, W (Any)",
+          "keywords": "Ninjutsu, Medical, Stable"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: Self Duration: Concentration, up to 1 Minute\nComponents:  HS, CM, W (Any) Cost: 5 Chakra Keywords: Ninjutsu, Medical, Stable Description: You touch a weapon, coating it in a vile poison. For the duration, [Weapon damage] this weapon deals becomes either Poison or Acid which you decide when this jutsu is cast.\nAdditionally, this weapon deals +1d6 damage twice per turn. Once per turn a creature damaged by this weapon must make a Constitution saving throw gaining a rank of Envenomed on a failed save.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, you can choose to instead inflict Corroded in place of Envenomed.  If this jutsu is cast at B-Rank or Higher, increase the bonus damage by 1d6.  If this jutsu is cast at A-Rank or Higher, when cast its range becomes Self (15-Foot radius) and all willing creatures can select one weapon they have to be affected by this jutsu’s benefits. If this jutsu is cast at S-Rank increase the ranks of Envenomed to 2.",
+        "expressions": [
+          {
+            "expression": "[Weapon damage]",
+            "offset": 67,
+            "context": "For the duration, [Weapon damage] this weapon deals becomes either Poison or Acid which you decide when this jutsu is cast.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 206,
+            "context": "Additionally, this weapon deals +1d6 damage twice per turn. Once per turn a creature damaged by this weapon must make a Constitution saving throw gaining a rank of Envenomed on a failed save.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 650,
+            "context": "If this jutsu is cast at B-Rank or Higher, increase the bonus damage by 1d6.  If this jutsu is cast at A-Rank or Higher, when cast its range becomes Self (15-Foot radius) and all willing creatures can select one weapon they have to be affected by this jutsu’s benefits. If this jutsu is cast at S-Rank increase the ranks of Envenomed to 2.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "c44c91ecdf316b93"
+}

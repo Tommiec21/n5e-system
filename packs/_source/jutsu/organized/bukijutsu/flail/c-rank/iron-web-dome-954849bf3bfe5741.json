@@ -1,0 +1,181 @@
+{
+  "_id": "954849bf3bfe5741",
+  "_key": "!items!954849bf3bfe5741",
+  "name": "Iron Web Dome",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "iron-web-dome",
+    "description": "<p>You whip your weapon around at high speeds, creating a dome to defend against attacks. You can set the radius of this dome up to your weapons range. The Dome has an AC equal to your Taijutsu Save DC and hit points equal to twice your [Weapons damage] and intercepts all damage originating outside the dome. A creature who hits the dome with a melee attack and fails to break it takes damage equal to your [Weapon's damage].</p>\n<p>Chain 1: An allied creature within the radius of the dome can spend their reaction on their turn to reinforce the dome, restoring a number of hit points equal to their [Weapon damage].</p>\n<p>Chain 2: Hostile creatures that trigger a clash and succeeds, takes twice your [Weapons Damagte].</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points of the dome by +4. If this jutsu is cast at B-Rank or higher, the damage a creature takes increases by 1d8. If this jutsu is cast at A-Rank or higher, if the dome is broken, all creatures of your choice within 5 feet of the domes walls takes twice your weapons damage.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6090",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "buki",
+    "section": "flail",
+    "keywords": [
+      "bukijutsu",
+      "chain",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 reaction to you or ally in range takes damage"
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Weapons Range (Radius Sphere)"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Flail"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points of the dome by +4. If this jutsu is cast at B-Rank or higher, the damage a creature takes increases by 1d8. If this jutsu is cast at A-Rank or higher, if the dome is broken, all creatures of your choice within 5 feet of the domes walls takes twice your weapons damage.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: An allied creature within the radius of the dome can spend their reaction on their turn to reinforce the dome, restoring a number of hit points equal to their [Weapon damage].</p>",
+      "2": "<p>Chain 2: Hostile creatures that trigger a clash and succeeds, takes twice your [Weapons Damagte].</p>",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6090,
+        "sourceHash": "c5cb84c10c871a78e78b4e2b537b01dc9e915b7e3d31b07d7a64c8d5d81539f5",
+        "discipline": "Bukijutsu",
+        "group": "Flail",
+        "header": {
+          "rank": "C",
+          "time": "1 reaction to you or ally in range takes damage",
+          "range": "Weapons Range (Radius Sphere)",
+          "duration": "instant",
+          "cost": "8 Chakra",
+          "components": "W (Any Flail), M",
+          "keywords": "Bukijutsu, Chain, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 reaction to you or ally in range takes damage Range: Weapons Range (Radius Sphere)\nDuration:  instant\nComponents: W (Any Flail), M\nCost: 8 Chakra\nKeywords: Bukijutsu, Chain, Clash\nDescription: You whip your weapon around at high speeds, creating a dome to defend against attacks. You can set the radius of this dome up to your weapons range. The Dome has an AC equal to your Taijutsu Save DC and hit points equal to twice your [Weapons damage] and intercepts all damage originating outside the dome. A creature who hits the dome with a melee attack and fails to break it takes damage equal to your [Weapon's damage].\nChain 1: An allied creature within the radius of the dome can spend their reaction on their turn to reinforce the dome, restoring a number of hit points equal to their [Weapon damage].\nChain 2: Hostile creatures that trigger a clash and succeeds, takes twice your [Weapons Damagte].\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points of the dome by +4. If this jutsu is cast at B-Rank or higher, the damage a creature takes increases by 1d8. If this jutsu is cast at A-Rank or higher, if the dome is broken, all creatures of your choice within 5 feet of the domes walls takes twice your weapons damage.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 234,
+            "context": "The Dome has an AC equal to your Taijutsu Save DC and hit points equal to twice your [Weapons damage] and intercepts all damage originating outside the dome. A creature who hits the dome with a melee attack and fails to break it takes damage equal to your [Weapon's damage].",
+            "section": "Base"
+          },
+          {
+            "expression": "[Weapon damage]",
+            "offset": 592,
+            "context": "Chain 1: An allied creature within the radius of the dome can spend their reaction on their turn to reinforce the dome, restoring a number of hit points equal to their [Weapon damage].",
+            "section": "Chain 1"
+          },
+          {
+            "expression": "1d8",
+            "offset": 931,
+            "context": "If this jutsu is cast at B-Rank or higher, the damage a creature takes increases by 1d8. If this jutsu is cast at A-Rank or higher, if the dome is broken, all creatures of your choice within 5 feet of the domes walls takes twice your weapons damage.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0e415a5f84ce5a5f"
+}

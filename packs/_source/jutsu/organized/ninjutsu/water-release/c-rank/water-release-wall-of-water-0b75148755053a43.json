@@ -1,0 +1,189 @@
+{
+  "_id": "0b75148755053a43",
+  "_key": "!items!0b75148755053a43",
+  "name": "Water Release: Wall of Water",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "water-release-wall-of-water",
+    "description": "<p>You conjure up a wall of water on the ground at a point you can see within range. You can make the wall up to 30 feet long, 10 feet high, and 5 feet thick in any shape you want so long as each piece of wall is connected to another piece. The wall deforms and becomes a mass of water when the Jutsu ends, filling each space it occupied with water that can be used as a Source of water for Ninjutsu with the Water release keyword, once each. The wall’s space is difficult terrain if creatures attempt to pass through it. The water wall intercepts all attacks, or jutsu that would target a creature on the other side of it. The wall has a 5d6 Hit points, with resistance to bludgeoning, slashing and Fire damage. The Wall has immunity to Cold damage and Vulnerability to Earth and Piercing damage.</p>\n<p>If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to instead make creatures attempting to pass through the wall take 5d6 cold damage for every 5 feet they move through.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points it has by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2641",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "nin",
+    "section": "water",
+    "keywords": [
+      "waterRelease",
+      "ninjutsu",
+      "barrier",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "reaction",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": "1 Action, 1 Reaction, which you take when you or an allied creature in range takes damage."
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 30,
+        "long": null,
+        "text": "30 Feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "damage",
+        "label": "Damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points it has by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2641,
+        "sourceHash": "516c43071b36c7a3dc56c15258dffe06e6c31accb9b51d4a96fa3598810753e4",
+        "discipline": "Ninjutsu",
+        "group": "Water Release",
+        "header": {
+          "rank": "C",
+          "time": "1 Action, 1 Reaction, which you take when you or an allied creature in range takes damage.",
+          "range": "30 Feet",
+          "duration": "Concentration, up to 1 minute",
+          "cost": "8 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Water Release, Barrier, Clash"
+        },
+        "sourceText": "Rank: C-Rank Casting Time: 1 Action, 1 Reaction, which you take when you or an allied creature in range takes damage. Range: 30 Feet Duration:  Concentration, up to 1 minute\nComponents: HS, CM Cost: 8 Chakra Keywords: Ninjutsu, Water Release, Barrier, Clash Description: You conjure up a wall of water on the ground at a point you can see within range. You can make the wall up to 30 feet long, 10 feet high, and 5 feet thick in any shape you want so long as each piece of wall is connected to another piece. The wall deforms and becomes a mass of water when the Jutsu ends, filling each space it occupied with water that can be used as a Source of water for Ninjutsu with the Water release keyword, once each. The wall’s space is difficult terrain if creatures attempt to pass through it. The water wall intercepts all attacks, or jutsu that would target a creature on the other side of it. The wall has a 5d6 Hit points, with resistance to bludgeoning, slashing and Fire damage. The Wall has immunity to Cold damage and Vulnerability to Earth and Piercing damage.\nIf used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to instead make creatures attempting to pass through the wall take 5d6 cold damage for every 5 feet they move through.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points it has by 1d6.",
+        "expressions": [
+          {
+            "expression": "5d6",
+            "offset": 636,
+            "context": "The wall has a 5d6 Hit points, with resistance to bludgeoning, slashing and Fire damage. The Wall has immunity to Cold damage and Vulnerability to Earth and Piercing damage.",
+            "section": "Base"
+          },
+          {
+            "expression": "5d6",
+            "offset": 965,
+            "context": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to instead make creatures attempting to pass through the wall take 5d6 cold damage for every 5 feet they move through.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 1148,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the hit points it has by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "0c43a048cce4a087"
+}

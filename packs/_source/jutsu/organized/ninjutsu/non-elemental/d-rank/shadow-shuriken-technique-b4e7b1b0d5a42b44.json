@@ -1,0 +1,204 @@
+{
+  "_id": "b4e7b1b0d5a42b44",
+  "_key": "!items!b4e7b1b0d5a42b44",
+  "name": "Shadow Shuriken Technique",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "shadow-shuriken-technique",
+    "description": "<p>You throw a single weapon, when you do, you quickly multiply it, creating dozens copies of it while in transit. Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If you cast this jutsu at C-Rank or higher, you can choose to attach a paper bomb to the weapon before cloning it. If you do, change the damage type to Fire and all affected creatures make their saving throw with a -1 penalty. If using a paper bomb of Greater quality or higher, the damage die increases by 1 step, and constructs and structures treats this damage as if they were vulnerable to it.</p>\n<p>If this jutsu is cast at A-Rank or higher while using a paper bomb, the save penalty becomes -2 and creatures who fail are also Dazed.</p>\n<p>If this jutsu is cast at S-Rank while using a paper bomb, the save penalty becomes -3 and if using a paper bomb of superior quality or higher, the damage die increases by 2 steps, and constructs and structures makes their saves at disadvantage, if any.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 898",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "nonElemental",
+    "keywords": [
+      "bukijutsu",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self (30-foot Cone)"
+      },
+      "area": {
+        "shape": "cone",
+        "size": 30,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": true,
+        "any": false,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Thrown"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If you cast this jutsu at C-Rank or higher, you can choose to attach a paper bomb to the weapon before cloning it. If you do, change the damage type to Fire and all affected creatures make their saving throw with a -1 penalty. If using a paper bomb of Greater quality or higher, the damage die increases by 1 step, and constructs and structures treats this damage as if they were vulnerable to it.</p>\n<p>If this jutsu is cast at A-Rank or higher while using a paper bomb, the save penalty becomes -2 and creatures who fail are also Dazed.</p>\n<p>If this jutsu is cast at S-Rank while using a paper bomb, the save penalty becomes -3 and if using a paper bomb of superior quality or higher, the damage die increases by 2 steps, and constructs and structures makes their saves at disadvantage, if any.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 898,
+        "sourceHash": "dff8baded2fd14477b60228917a7a30734497c303d30e30c1555cde6ef320520",
+        "discipline": "Ninjutsu",
+        "group": "Non-Elemental",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "Self (30-foot Cone)",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM, W (Thrown)",
+          "keywords": "Ninjutsu, Bukijutsu"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (30-foot Cone) Duration: Instant\nComponents:  HS, CM, W (Thrown) Cost: 5 Chakra Keywords: Ninjutsu, Bukijutsu Description: You throw a single weapon, when you do, you quickly multiply it, creating dozens copies of it while in transit. Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If you cast this jutsu at C-Rank or higher, you can choose to attach a paper bomb to the weapon before cloning it. If you do, change the damage type to Fire and all affected creatures make their saving throw with a -1 penalty. If using a paper bomb of Greater quality or higher, the damage die increases by 1 step, and constructs and structures treats this damage as if they were vulnerable to it.\nIf this jutsu is cast at A-Rank or higher while using a paper bomb, the save penalty becomes -2 and creatures who fail are also Dazed.\nIf this jutsu is cast at S-Rank while using a paper bomb, the save penalty becomes -3 and if using a paper bomb of superior quality or higher, the damage die increases by 2 steps, and constructs and structures makes their saves at disadvantage, if any.",
+        "expressions": [
+          {
+            "expression": "[Weapons damage]",
+            "offset": 201,
+            "context": "Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "3d6",
+            "offset": 220,
+            "context": "Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "1d6",
+            "offset": 392,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d6. If you cast this jutsu at C-Rank or higher, you can choose to attach a paper bomb to the weapon before cloning it. If you do, change the damage type to Fire and all affected creatures make their saving throw with a -1 penalty. If using a paper bomb of Greater quality or higher, the damage die increases by 1 step, and constructs and structures treats this damage as if they were vulnerable to it.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eDpY0QdrV0NfEW"
+}

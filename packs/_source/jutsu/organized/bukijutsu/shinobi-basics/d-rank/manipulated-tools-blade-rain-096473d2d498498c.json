@@ -1,0 +1,213 @@
+{
+  "_id": "096473d2d498498c",
+  "_key": "!items!096473d2d498498c",
+  "name": "Manipulated Tools: Blade Rain",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "manipulated-tools-blade-rain",
+    "description": "<p>You unravel your weapon scroll in the air, and reflexively summon forth a series of swords, knives and spears that rain down bombarding a space you can see within range. All creatures in a 10-foot cube originating from a point you can see within range, must make a Dexterity saving throw. On a failed save, they take 3d6 in piercing damage or half as much on a success.</p>\n<p>Chain 1: The affected area becomes difficult terrain until the end of your next turn. The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5300",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "shinobiBasics",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet (10-foot Cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 10,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 4,
+      "text": "4 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "Weapon Scroll"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll1",
+        "type": "roll",
+        "label": "3d6",
+        "roll": {
+          "formula": "3d6",
+          "note": "On a failed save, they take 3d6 in piercing damage or half as much on a success."
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "Chain 1: 4",
+        "roll": {
+          "formula": "4",
+          "note": "The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: The affected area becomes difficult terrain until the end of your next turn. The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 5300,
+        "sourceHash": "b9528b4eea464e61e3f6dea12b16732825192f15c028618837d4092e03cb8f0c",
+        "discipline": "Bukijutsu",
+        "group": "Shinobi Basics",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 feet (10-foot Cube)",
+          "duration": "Instant",
+          "cost": "4 Chakra",
+          "components": "W (Weapon Scroll), M",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 feet (10-foot Cube) Duration: Instant\nComponents: W (Weapon Scroll), M Cost: 4 Chakra Keywords: Bukijutsu, Chain Description: You unravel your weapon scroll in the air, and reflexively summon forth a series of swords, knives and spears that rain down bombarding a space you can see within range. All creatures in a 10-foot cube originating from a point you can see within range, must make a Dexterity saving throw. On a failed save, they take 3d6 in piercing damage or half as much on a success.\nChain 1: The affected area becomes difficult terrain until the end of your next turn. The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+        "expressions": [
+          {
+            "expression": "3d6",
+            "offset": 317,
+            "context": "On a failed save, they take 3d6 in piercing damage or half as much on a success.",
+            "section": "Base"
+          },
+          {
+            "expression": "4",
+            "offset": 531,
+            "context": "The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground.",
+            "section": "Chain 1"
+          },
+          {
+            "expression": "1d6",
+            "offset": 724,
+            "context": "At Higher Ranks: For each rank you cast this jutsu above D-Rank increase the cost of this jutsu by 3 and the damage by 1d6.",
+            "section": "At Higher Ranks"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "1b8bbde86064544a"
+}

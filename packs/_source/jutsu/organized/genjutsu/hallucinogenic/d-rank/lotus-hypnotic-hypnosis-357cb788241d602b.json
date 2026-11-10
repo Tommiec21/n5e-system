@@ -1,0 +1,182 @@
+{
+  "_id": "357cb788241d602b",
+  "_key": "!items!357cb788241d602b",
+  "name": "Lotus: Hypnotic Hypnosis",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lotus-hypnotic-hypnosis",
+    "description": "<p>You manifest a collection of sheep wool in the form of pollen as you attempt to lull a creature into a deep sleep.</p>\n<p>Select a point you can see in range as you fill the affected area with the pollen like wool. All creatures in range must make a Wisdom saving throw. A creature who is currently in combat is immune to this jutsu’s effects.</p>\n<p>Critical Success: Affected creature is able to resist this jutsu’s effects.</p>\n<p>Success: Affected creature is Slowed until the end of the next turn as they are only slightly drowsy.</p>\n<p>Failure: Affected creature begins to daydream. They become blind and Deafened to all events and happenings that is further than 5 feet away from them. Anything that would affect them or the area within 5 feet of them would break them from this day dream.</p>\n<p>Critical Failure: Affected creature falls into a hypnotic dream rending them functionally unconscious for the next 10 minutes. While in this hypnotic dream a creature can be awoken by yells, screams or loud sounds or by being physically shaken or taking damage of any type. They can also respond to only you and your questions answering truthfully.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, affected creatures become Deafened to all sounds further than 5 feet away from them. If this jutsu is cast at B-Rank or higher, creatures who fail can also respond to you answering truthfully. If this jutsu is cast at A-Rank or higher, you can select a second point to generate a second 15-foot cube affecting all creatures in the chosen area.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4101",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "gen",
+    "section": "hallucinogenic",
+    "keywords": [
+      "genjutsu"
+    ],
+    "stimuli": [
+      "visual"
+    ],
+    "unaware": true,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 Feet (15-Foot Cube)"
+      },
+      "area": {
+        "shape": "cube",
+        "size": 15,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, up to 1 minute."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": true,
+        "kit": "",
+        "charges": 0,
+        "text": "Poison Kit, 1 Charges"
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
+            "success": "Success: Affected creature is Slowed until the end of the next turn as they are only slightly drowsy.",
+            "failure": "Failure: Affected creature begins to daydream. They become blind and Deafened to all events and happenings that is further than 5 feet away from them. Anything that would affect them or the area within 5 feet of them would break them from this day dream.",
+            "critFailure": "Critical Failure: Affected creature falls into a hypnotic dream rending them functionally unconscious for the next 10 minutes. While in this hypnotic dream a creature can be awoken by yells, screams or loud sounds or by being physically shaken or taking damage of any type. They can also respond to only you and your questions answering truthfully."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, affected creatures become Deafened to all sounds further than 5 feet away from them. If this jutsu is cast at B-Rank or higher, creatures who fail can also respond to you answering truthfully. If this jutsu is cast at A-Rank or higher, you can select a second point to generate a second 15-foot cube affecting all creatures in the chosen area.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4101,
+        "sourceHash": "98717cdb28054224c1811802e06bc78a8cfbfde124a609c7fdaa1b636ea13479",
+        "discipline": "Genjutsu",
+        "group": "Hallucinogenic",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 Feet (15-Foot Cube)",
+          "duration": "Concentration, up to 1 minute.",
+          "cost": "5 Chakra",
+          "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+          "keywords": "Genjutsu (Visual), Unaware"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 Feet (15-Foot Cube) Duration: Concentration, up to 1 minute.\nComponents:  HS, CM, NT (Poison Kit, 1 Charges) Cost: 5 Chakra Keywords: Genjutsu (Visual), Unaware  Description: You manifest a collection of sheep wool in the form of pollen as you attempt to lull a creature into a deep sleep.\nSelect a point you can see in range as you fill the affected area with the pollen like wool. All creatures in range must make a Wisdom saving throw. A creature who is currently in combat is immune to this jutsu’s effects.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is Slowed until the end of the next turn as they are only slightly drowsy.\nFailure: Affected creature begins to daydream. They become blind and Deafened to all events and happenings that is further than 5 feet away from them. Anything that would affect them or the area within 5 feet of them would break them from this day dream.\nCritical Failure: Affected creature falls into a hypnotic dream rending them functionally unconscious for the next 10 minutes. While in this hypnotic dream a creature can be awoken by yells, screams or loud sounds or by being physically shaken or taking damage of any type. They can also respond to only you and your questions answering truthfully.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, affected creatures become Deafened to all sounds further than 5 feet away from them. If this jutsu is cast at B-Rank or higher, creatures who fail can also respond to you answering truthfully. If this jutsu is cast at A-Rank or higher, you can select a second point to generate a second 15-foot cube affecting all creatures in the chosen area.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "n5eerYeblcK91isN"
+}

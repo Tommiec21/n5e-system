@@ -1,0 +1,219 @@
+{
+  "_id": "c4ef357b7909f0f0",
+  "_key": "!items!c4ef357b7909f0f0",
+  "name": "Lagging",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "lagging",
+    "description": "<p>You open your hand and angle your fingers until your hand looks more like a claw as you attempt to slam your hand into the joints of your enemies to delay their actions.</p>\n<p>Make a melee taijutsu attack. On a hit, you deal your [Unarmed damage] and the target must make a Strength saving throw. On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, reduce the die roll result to 9 or higher to delay the action. If this jutsu is cast at A-Rank, reduce the die roll result to 7 or higher to delay the action. If this jutsu is cast at S-Rank, reduce the die roll result to 5 or higher.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 4626",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "C",
+    "discipline": "tai",
+    "section": "taijutsu",
+    "keywords": [
+      "taijutsu",
+      "clash"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 5,
+        "long": null,
+        "text": "5 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant."
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 8,
+      "text": "8 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "attack",
+        "label": "Attack",
+        "attack": {
+          "discipline": "tai",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "parsed2",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {},
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "sourceRoll2",
+        "type": "roll",
+        "label": "d20",
+        "roll": {
+          "formula": "d20",
+          "note": "On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends."
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, reduce the die roll result to 9 or higher to delay the action. If this jutsu is cast at A-Rank, reduce the die roll result to 7 or higher to delay the action. If this jutsu is cast at S-Rank, reduce the die roll result to 5 or higher.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 4626,
+        "sourceHash": "2860ee6a6f22614c0a26f655735232b9a4fcd1b6dbd2bb0cd7dcdf8b1a791382",
+        "discipline": "Taijutsu",
+        "group": "Taijutsu",
+        "header": {
+          "rank": "C",
+          "time": "1 Action",
+          "range": "5 feet",
+          "duration": "Instant.",
+          "cost": "8 Chakra",
+          "components": "M",
+          "keywords": "Taijutsu, Clash"
+        },
+        "sourceText": "Rank: C-Rank\nCasting Time: 1 Action\nRange: 5 feet\nDuration: Instant.\nComponents: M\nCost: 8 Chakra\nKeywords: Taijutsu, Clash\nDescription: You open your hand and angle your fingers until your hand looks more like a claw as you attempt to slam your hand into the joints of your enemies to delay their actions.\nMake a melee taijutsu attack. On a hit, you deal your [Unarmed damage] and the target must make a Strength saving throw. On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank increase the cost of this jutsu by 3. If this jutsu is cast at B-Rank, reduce the die roll result to 9 or higher to delay the action. If this jutsu is cast at A-Rank, reduce the die roll result to 7 or higher to delay the action. If this jutsu is cast at S-Rank, reduce the die roll result to 5 or higher.",
+        "expressions": [
+          {
+            "expression": "[Unarmed damage]",
+            "offset": 224,
+            "context": "On a hit, you deal your [Unarmed damage] and the target must make a Strength saving throw. On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends.",
+            "section": "Base"
+          },
+          {
+            "expression": "d20",
+            "offset": 431,
+            "context": "On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends.",
+            "section": "Base"
+          }
+        ],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "aee26bc2434fe738"
+}

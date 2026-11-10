@@ -1,0 +1,179 @@
+{
+  "_id": "bcd01d1d0b33236b",
+  "_key": "!items!bcd01d1d0b33236b",
+  "name": "Falling Heaven: Storm",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "falling-heaven-storm",
+    "description": "<p>You launch your weapons that are lined with your battle wires surrounding a target creature before you pull back snapping the wire, constricting them. Target creature must make a Strength saving throw, being Restrained for the duration, on a failure. Affected creature remakes their saving throw at the end of each of their turns, breaking free on a success.</p>\n<p>Chain 1: You treat the target creature(s) as the center of a 5-foot radius assault. All creatures within the affected radius must make their saving throw against this jutsu’s effects.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6794",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "buki",
+    "section": "ammunition",
+    "keywords": [
+      "bukijutsu",
+      "chain"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 60,
+        "long": null,
+        "text": "60 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minute",
+      "concentration": true,
+      "text": "Concentration, Up to 1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": false,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": true,
+        "any": true,
+        "groups": [],
+        "range": "ranged",
+        "count": 1,
+        "dualWield": false,
+        "text": "Any Thrown & Battle Wire"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "parsed1",
+        "type": "save",
+        "label": "Save",
+        "inflicts": [],
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "fourTier": false,
+          "tiers": {
+            "failure": "on a failure. Affected creature remakes their saving throw at the end of each of their turns, breaking free",
+            "success": "on a success."
+          },
+          "resave": false
+        },
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1</p>"
+    },
+    "chainEffects": {
+      "1": "<p>Chain 1: You treat the target creature(s) as the center of a 5-foot radius assault. All creatures within the affected radius must make their saving throw against this jutsu’s effects.</p>",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 6794,
+        "sourceHash": "4d5300ea12a3d5d1b610a801869a6054c5a554d3f4a09630ec01c00fc9529f3d",
+        "discipline": "Bukijutsu",
+        "group": "Ammunition",
+        "header": {
+          "rank": "D",
+          "time": "1 Action",
+          "range": "60 feet",
+          "duration": "Concentration, Up to 1 Minute",
+          "cost": "5 Chakra",
+          "components": "M, W (Any Thrown & Battle Wire)",
+          "keywords": "Bukijutsu, Chain"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 feet Duration: Concentration, Up to 1 Minute\nComponents: M, W (Any Thrown & Battle Wire) Cost: 5 Chakra Keywords: Bukijutsu, Chain Description: You launch your weapons that are lined with your battle wires surrounding a target creature before you pull back snapping the wire, constricting them. Target creature must make a Strength saving throw, being Restrained for the duration, on a failure. Affected creature remakes their saving throw at the end of each of their turns, breaking free on a success.\nChain 1: You treat the target creature(s) as the center of a 5-foot radius assault. All creatures within the affected radius must make their saving throw against this jutsu’s effects.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "4dbff179bff78120"
+}

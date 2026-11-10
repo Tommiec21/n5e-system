@@ -1,0 +1,161 @@
+{
+  "_id": "982278b6d03fc74d",
+  "_key": "!items!982278b6d03fc74d",
+  "name": "Wind Release: Supporting Gale",
+  "type": "jutsu",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "identifier": "wind-release-supporting-gale",
+    "description": "<p>You create a compressed blast of air assisting you in with either a physical tasks or to disperse a hazardous mist or gas.</p>\n<p>When making a Strength, Dexterity or Constitution skill check or saving throw you can cast this jutsu to grant yourself a Rank of Master to the check or save.</p>\n<p>Alternatively, you can cast this jutsu to instantly dispel a gas or mist within 10 feet of you of a rank equal to or less than the rank this jutsu is cast at.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you can instead gain 2 ranks of Mastery to the Check. If cast at S-Rank, you instead gain 3 ranks of mastery to the check.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2011",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "rank": "D",
+    "discipline": "nin",
+    "section": "wind",
+    "keywords": [
+      "windRelease",
+      "ninjutsu"
+    ],
+    "stimuli": [],
+    "unaware": false,
+    "activation": {
+      "type": "special",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "self",
+        "value": null,
+        "long": null,
+        "text": "Self"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 5,
+      "text": "5 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": false,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "any": false,
+        "groups": [],
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": ""
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": ""
+      }
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "per": "",
+      "staminaEligible": false
+    },
+    "activities": [
+      {
+        "id": "sourceUtility",
+        "type": "utility",
+        "label": "Jutsu",
+        "text": "Resolve the jutsu’s source instructions."
+      }
+    ],
+    "featureType": "active",
+    "ability": "",
+    "upcast": {
+      "preset": "custom",
+      "costPerRank": 3,
+      "perRank": [],
+      "thresholds": {
+        "B": "",
+        "A": "",
+        "S": ""
+      },
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you can instead gain 2 ranks of Mastery to the Check. If cast at S-Rank, you instead gain 3 ranks of mastery to the check.</p>"
+    },
+    "chainEffects": {
+      "1": "",
+      "2": "",
+      "3": ""
+    },
+    "finisher": {
+      "only": false,
+      "text": ""
+    },
+    "overcharge": {
+      "text": ""
+    },
+    "riders": [],
+    "hijutsu": {
+      "clan": "",
+      "branch": ""
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "jutsuBookImport": {
+        "version": 1,
+        "sourceLine": 2011,
+        "sourceHash": "bfaf94ef32bbe79fb7e1ea162c7419221e3675803b7d47278f1ee7e81879fd9c",
+        "discipline": "Ninjutsu",
+        "group": "Wind Release",
+        "header": {
+          "rank": "D",
+          "time": "Special",
+          "range": "Self",
+          "duration": "Instant",
+          "cost": "5 Chakra",
+          "components": "HS, CM",
+          "keywords": "Ninjutsu, Wind Release"
+        },
+        "sourceText": "Rank: D-Rank Casting Time: Special Range: Self\nDuration: Instant\nComponents: HS, CM Cost: 5 Chakra Keywords: Ninjutsu, Wind Release Description:  You create a compressed blast of air assisting you in with either a physical tasks or to disperse a hazardous mist or gas.\nWhen making a Strength, Dexterity or Constitution skill check or saving throw you can cast this jutsu to grant yourself a Rank of Master to the check or save.\nAlternatively, you can cast this jutsu to instantly dispel a gas or mist within 10 feet of you of a rank equal to or less than the rank this jutsu is cast at.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If cast at B-Rank or higher, you can instead gain 2 ranks of Mastery to the Check. If cast at S-Rank, you instead gain 3 ranks of mastery to the check.",
+        "expressions": [],
+        "manual": [
+          "Conditional rider instructions are preserved; choose the applicable source activity manually."
+        ],
+        "activitiesByRank": {},
+        "manualCost": false
+      }
+    }
+  },
+  "folder": "20268cc1727cd95c"
+}
