@@ -2,9 +2,9 @@
 
 Updated November 9, 2026. This is the separate context file the user authorized when the original OneDrive N5e-Context.md could not be written. Read the current snapshot and coordination rules before the historical ledger. The original was preserved.
 
-Current release: 0.13.0-alpha.13 published: compact native Foundry damage dice and minimal application cards; verbose diagnostic chat removed. GitHub only; local installation unchanged.
+Current release: 0.13.0-alpha.14 published: all 968 Jiraiya jutsu in core, organized Discipline / Group / Rank. GitHub only; local installation unchanged.
 
-Current stage: CHAT1 published; automated gates passed. No live verification; user acceptance remains.
+Current stage: JUTSU1 published; 285 automated tests passed, 2 skipped. Complex clauses remain manual; no live verification. User acceptance remains.
 
 ## 13. Codex implementation ledger and agent coordination
 
@@ -246,3 +246,7 @@ Core content committed to main: f4a12ac13, regression fixture corrections 03475b
 
 ### JUTSU1 user-authorized retry
 User explicitly said Retry after explanation of the stopped condition scenario. One additional CI attempt reserved; no local repeated tests or live testing. Correct the existing compendium condition check to use effectiveActivities (the runtime authored-activity selector), preserving the normal Concussed-only assertion and adding the distinct Finisher Concussed+Prone assertion. No jutsu rules/content or fallback parser changed. Historical failures remain counted; authorization applies only to this additional attempt.
+
+
+### JUTSU1 published after explicit retry
+User-authorized single additional attempt succeeded: CI 42735885181 (commit 7018c42e2), 285 passed, 0 failed, 2 existing skipped. Release 42735936572 succeeded using the verified artifact; v0.13.0-alpha.14 publicly published with n5e.zip (3,579,016 bytes) and system.json (5,161 bytes). https://github.com/Tommiec21/n5e-system/releases/tag/v0.13.0-alpha.14 . Corrected check uses effectiveActivities, retains normal Concussed-only and separately verifies Finisher Concussed+Prone. No imported mechanics changed in retry. Prior stop is historical/resolved by explicit user authorization, not a reset of attempt counts. No additional tests, live verification, or local installation. Complete core content import published; manual/complex source clauses remain as documented.
