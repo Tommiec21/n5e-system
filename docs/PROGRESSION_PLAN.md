@@ -51,7 +51,7 @@ N5e-Context.md Section 12 holds the full text. This is the short form.
   - Identical Half/Double sources apply once; opposites cancel.
   - DR protects HP and CP independently, in the creature's chosen type order. Deflection is rolled DR.
   - Reaction timeout 60 s by default; 0 disables it.
-  - **Multiplayer parity (King 2026-11-13):** player interactions with NPCs must do everything dnd5e and PF2e do, with no exceptions. See Section 7.
+  - **Multiplayer parity (King 2026-11-13):** everything works exactly as in dnd5e and PF2e, with no GM relay for player → NPC changes. The one addition is **Allied NPCs**, which players control and can add to the world. See Section 7.
   - ~~Remote requests need GM review until sender authentication exists.~~ Superseded by King 2026-11-13: no GM approval on anything; routed requests execute on the GM client automatically.
   - Clan Feats removed; don't restore them.
 - **Attack model.**
@@ -81,7 +81,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 
 | # | Batch | Scope | Closes | Depends | State | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| 0 | OPS1 multiplayer parity (priority one) + user-reported bugs | Make player ↔ NPC interaction match dnd5e 5.3.3 and PF2e with no exceptions (King 2026-11-13; spec in Section 7). This removes every GM review dialog. Audit both engines' source first, then rebuild the routed workflows to the parity spec, then fix the ActorDelta duplicate items and the missing embedded Kunai | R1–R3 | Q5 | ready, priority one; starts when King approves the next batch | — |
+| 0 | OPS1 multiplayer parity (priority one) + user-reported bugs | Make player ↔ NPC interaction match dnd5e 5.3.3 and PF2e exactly (King 2026-11-13; spec in Section 7). This removes every GM review dialog and the GM relay for player → NPC changes. It adds Allied NPCs: player-summoned and player-controlled creatures, the only exception. Audit both engines' source first, then rebuild the routed workflows to the parity spec, then fix the ActorDelta duplicate items and the missing embedded Kunai | R1–R3 | — | ready, priority one; starts when King approves the next batch | — |
 | 1 | TURN1 turn engine | Forward-only turn/round events: one dispatcher replaces both `combatTurnChange` hooks and ignores rewinds and repeats. Per-period uses and pool recovery (turn, round, encounter). Upkeep prompt per the ruling | R4–R7 | — | ready | — |
 | 2 | EXPIRE1 effect expiry | Timed generic effects expire on turn boundaries in combat and on `updateWorldTime` outside it. Conditions' 1-minute default works outside combat | R8–R9 | TURN1 | ready after 1 | — |
 | 3 | DMG1 damage numbers | Apply Bruised (+4 taken), Weakened (−4/rank dealt), Petrified (resist all). Exhaustion −1 on damage and healing rolls. Falling/environment flag skips DR | R10–R12 | — | ready | — |
@@ -165,7 +165,7 @@ No fixes were made in the review. Severity: **H** gives wrong results in play, *
 - Q2. Feature kinds: should Background Feature stay as a kind? Should general feats keep their categories (skill, taijutsu, ninjutsu) or become a kind?
 - Q3. Clash ties: what happens? The book only says contests are "tie = status quo".
 - Q4. Necrotic "halves HP regained until the end of the next turn" appears in CTX but not in the Ch8 text. Is it in or out?
-- Q5. Parity consequence (Section 7): in dnd5e and PF2e a player cannot apply damage or effects to an NPC. Those buttons only work on tokens the clicking user owns, and the GM applies results to NPCs. Copying them with no exceptions means removing N5e's GM relay that currently lets players' clicks change NPCs. Confirm, or keep the relay running automatically as one N5e addition.
+- Q5. **Answered by King 2026-11-13:** exact parity. Remove the GM relay: players apply damage and effects only to what they own, and the GM applies to NPCs. The one addition is Allied NPCs (Section 7).
 
 ## 7. Multiplayer parity spec (King 2026-11-13: copy dnd5e and PF2e, no exceptions)
 
@@ -209,4 +209,13 @@ Every player-facing interaction with an NPC must work as it does in dnd5e 5.3.3 
 
 **N5e mechanics that dnd5e and PF2e don't have**
 Reactions offered to an NPC's owner, Clash, Deflection and DR order prompts have no equivalent in either engine. They follow the same model: the prompt goes to the owning user, which is the GM for NPCs. They run with no approval step.
+
+**Allied NPCs (King 2026-11-13: the only exception to parity)**
+- An Allied NPC is a class of NPC that players control. Examples are creatures summoned by jutsu or class features: summons, clones, companions.
+- **Players can add them to the world.** Casting a summon jutsu or using a summoning feature places the creature's token and gives the summoning player owner permission over it, with no GM step and no approval.
+- If the player lacks Foundry's core permission to create actors or tokens, creation runs automatically on the GM's client. It is the only routed operation left, and it has no dialog.
+- Today `workflow/automation.mjs summonTokens` and `dismissSummons` are GM-only. They become player-usable for Allied NPCs.
+- **Players can control them.** The summoner owns the token and actor, so Allied NPCs follow the same ownership rules as player characters. The player moves them, rolls for them, applies damage and effects to them, and makes their saves. Their turns and reactions prompt their owning player.
+- **Storage.** NPC data gets an allied marker linking it to the summoner (the existing `template` summon/clone/companion and `summoner` fields extend to cover this). Dismissal, concentration end and duration end remove the token as they do now.
+- **Everything else matches dnd5e and PF2e.** Allied NPCs never give a player authority over non-allied NPCs.
 

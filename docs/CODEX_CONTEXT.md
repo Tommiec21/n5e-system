@@ -259,3 +259,6 @@ GM approval on everything is removed. This supersedes the "GM review mandatory f
 
 ## Decision — King, 2026-11-13 (recorded by Claude)
 Multiplayer parity: player interactions with NPCs must do everything dnd5e and PF2e do, with no exceptions. This widens OPS1 (priority one) into a parity rebuild. The spec is `docs/PROGRESSION_PLAN.md` Section 7. Start with a source audit of dnd5e 5.3.3 and PF2e. Open question Q5: both engines let players apply damage and effects only to tokens they own, so strict parity removes the GM relay for player-to-NPC changes. Wait for King's answer before building that part.
+
+## Decision — King, 2026-11-13 (recorded by Claude)
+Q5 answered: exact dnd5e/PF2e parity. Remove the GM relay for player → NPC changes; players apply damage and effects only to what they own. The only exception is **Allied NPCs**: player-controlled NPCs that players can add to the world, such as summons from jutsu or class features. The summoner owns them; creation is routed to the GM client automatically, with no dialog, only when core permissions block the player. Spec: `docs/PROGRESSION_PLAN.md` Section 7. OPS1 is unblocked and remains priority one, pending King's approval of the next batch.
