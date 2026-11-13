@@ -256,3 +256,6 @@ Owner Claude. Docs-only; no runtime code, content or version change, so no relea
 
 ## Decision — King, 2026-11-13 (recorded by Claude)
 GM approval on everything is removed. This supersedes the "GM review mandatory for unauthenticated remote requests" rule in this ledger and in MULTIPLAYER.md. Routed requests keep running on the active GM's client for permissions, but they execute automatically with no review dialog. Receipts, replay protection and payload validation stay. This is batch OPS1 in `docs/PROGRESSION_PLAN.md`: priority one, and it starts when King approves the next development batch. Nothing is claimed yet.
+
+## Decision — King, 2026-11-13 (recorded by Claude)
+Multiplayer parity: player interactions with NPCs must do everything dnd5e and PF2e do, with no exceptions. This widens OPS1 (priority one) into a parity rebuild. The spec is `docs/PROGRESSION_PLAN.md` Section 7. Start with a source audit of dnd5e 5.3.3 and PF2e. Open question Q5: both engines let players apply damage and effects only to tokens they own, so strict parity removes the GM relay for player-to-NPC changes. Wait for King's answer before building that part.

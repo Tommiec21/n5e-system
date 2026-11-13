@@ -51,6 +51,7 @@ N5e-Context.md Section 12 holds the full text. This is the short form.
   - Identical Half/Double sources apply once; opposites cancel.
   - DR protects HP and CP independently, in the creature's chosen type order. Deflection is rolled DR.
   - Reaction timeout 60 s by default; 0 disables it.
+  - **Multiplayer parity (King 2026-11-13):** player interactions with NPCs must do everything dnd5e and PF2e do, with no exceptions. See Section 7.
   - ~~Remote requests need GM review until sender authentication exists.~~ Superseded by King 2026-11-13: no GM approval on anything; routed requests execute on the GM client automatically.
   - Clan Feats removed; don't restore them.
 - **Attack model.**
@@ -80,7 +81,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 
 | # | Batch | Scope | Closes | Depends | State | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| 0 | OPS1 remove GM approval (priority one) + user-reported bugs | Remove the GM review dialog from every routed request (King 2026-11-13, Q1). Privileged work still runs on the active GM's client so players can affect what they don't own, but it executes immediately with no confirmation. Keep receipts, replay protection and payload validation. Remove the review UI and the "GM review mandatory" rule from code, settings and MULTIPLAYER.md. Then ActorDelta duplicate items and missing embedded Kunai | R1–R3 | — | ready, priority one; starts when King approves the next batch | — |
+| 0 | OPS1 multiplayer parity (priority one) + user-reported bugs | Make player ↔ NPC interaction match dnd5e 5.3.3 and PF2e with no exceptions (King 2026-11-13; spec in Section 7). This removes every GM review dialog. Audit both engines' source first, then rebuild the routed workflows to the parity spec, then fix the ActorDelta duplicate items and the missing embedded Kunai | R1–R3 | Q5 | ready, priority one; starts when King approves the next batch | — |
 | 1 | TURN1 turn engine | Forward-only turn/round events: one dispatcher replaces both `combatTurnChange` hooks and ignores rewinds and repeats. Per-period uses and pool recovery (turn, round, encounter). Upkeep prompt per the ruling | R4–R7 | — | ready | — |
 | 2 | EXPIRE1 effect expiry | Timed generic effects expire on turn boundaries in combat and on `updateWorldTime` outside it. Conditions' 1-minute default works outside combat | R8–R9 | TURN1 | ready after 1 | — |
 | 3 | DMG1 damage numbers | Apply Bruised (+4 taken), Weakened (−4/rank dealt), Petrified (resist all). Exhaustion −1 on damage and healing rolls. Falling/environment flag skips DR | R10–R12 | — | ready | — |
@@ -160,7 +161,52 @@ No fixes were made in the review. Severity: **H** gives wrong results in play, *
 
 ## 6. Questions for the user (King)
 
-- Q1. **Answered by King 2026-11-13:** remove GM approval on everything. Routed requests run on the GM's client without a review dialog. This is priority one in the next approved batch (OPS1).
+- Q1. **Answered by King 2026-11-13:** remove GM approval on everything, then match dnd5e/PF2e multiplayer behaviour exactly (Section 7). Routed requests run on the GM's client without a review dialog. This is priority one in the next approved batch (OPS1).
 - Q2. Feature kinds: should Background Feature stay as a kind? Should general feats keep their categories (skill, taijutsu, ninjutsu) or become a kind?
 - Q3. Clash ties: what happens? The book only says contests are "tie = status quo".
 - Q4. Necrotic "halves HP regained until the end of the next turn" appears in CTX but not in the Ch8 text. Is it in or out?
+- Q5. Parity consequence (Section 7): in dnd5e and PF2e a player cannot apply damage or effects to an NPC. Those buttons only work on tokens the clicking user owns, and the GM applies results to NPCs. Copying them with no exceptions means removing N5e's GM relay that currently lets players' clicks change NPCs. Confirm, or keep the relay running automatically as one N5e addition.
+
+## 7. Multiplayer parity spec (King 2026-11-13: copy dnd5e and PF2e, no exceptions)
+
+Every player-facing interaction with an NPC must work as it does in dnd5e 5.3.3 and PF2e. OPS1 starts with a line-by-line audit of both source trees. The dnd5e source is on King's PC under `dnd5src`; PF2e 7.12.2 has to be fetched. Each behaviour below gets a test. Items marked *verify* come from earlier reading and are confirmed against the PF2e source in OPS1.
+
+**Authority model (both engines)**
+- dnd5e 5.3.3 has no system socket at all. PF2e uses its socket only for a few GM-side chores, such as moving items between actors the player doesn't own (*verify* the full list).
+- Each user changes only documents they own. Players roll for their characters; the GM's client rolls and changes NPCs.
+- No approval dialogs exist anywhere.
+
+**Attacks and targeting**
+- The player targets tokens with Foundry targeting and rolls the attack on their own client.
+- The chat card lists the targets, with hit/miss (dnd5e) or degree of success (PF2e) against each target's AC.
+- How much of that players see is set by GM settings:
+  - dnd5e: `attackRollVisibility` (all / hide AC / none; default none).
+  - PF2e: metagame "show results" and "show DCs" (*verify*).
+- dnd5e: "select targets" appears on attack cards.
+
+**Damage and healing**
+- Damage cards carry apply controls: dnd5e has the damage-application tray and context menu (full, half, double, healing, temp HP); PF2e has full, half, double, healing and shield block (*verify*).
+- The controls appear for controlled or targeted tokens, and the list shows only actors the clicking user owns (dnd5e `damage-application.mjs`: `if (!actor?.isOwner) return`).
+- The GM applies damage to NPCs. Players apply it to their own characters.
+
+**Saves and checks**
+- Save and check buttons on cards and in text links roll for the clicking user's own controlled tokens. The GM rolls NPC saves.
+- dnd5e: GMs get a "request roll" link that posts a roll request to chat. Each player sees only their own entries (`request-message-data.mjs`).
+- DC visibility: dnd5e `challengeVisibility` (all / player / none; default player). PF2e: metagame "show DCs" (*verify*).
+
+**Effects and conditions**
+- Apply-effect controls work only on tokens the clicking user owns, or any token for the GM (dnd5e `effect-application.mjs` throws an ownership warning otherwise).
+- An effect that depends on the caster's concentration can be applied only by the GM or by the concentration's owner.
+- Applied effects are tagged `dependentOn` the concentration, so they end when it ends.
+
+**Other parity points**
+- **Summoning (dnd5e):** needs the core "create tokens" permission plus the GM's `allowSummoning` setting. Summons are placed by the player.
+- **Initiative:** players roll their own combatants; the GM rolls all NPCs (dnd5e `Combat5e`).
+- **Health display:** dnd5e has a `bloodied` setting (all / player / none) that controls who sees the Bloodied state. PF2e uses token name visibility and hidden damage settings (*verify*).
+- **Item descriptions:** dnd5e `concealItemDescriptions` hides NPC item text from players.
+- **Rests, recharge, death saves and concentration:** each runs on the owner's client. The GM handles NPCs.
+- **Rulers and templates:** core Foundry permissions apply; there is no system relay.
+
+**N5e mechanics that dnd5e and PF2e don't have**
+Reactions offered to an NPC's owner, Clash, Deflection and DR order prompts have no equivalent in either engine. They follow the same model: the prompt goes to the owning user, which is the GM for NPCs. They run with no approval step.
+
