@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /** Shared validated resource payment for activities and feature use. */
 import { withActorLock } from "./commands.mjs";
@@ -14,11 +13,7 @@ import { esc } from "../view-models/common.mjs";
  *   choose: ask the player how many to spend (Pyroclasm's Detonate)
  * @returns {Promise<{roll: number|null, amount: number}|null>}  roll: the pool die total, when rolled
  */
-export async function payPoolCost(actor, cost, { locked = false, authoritative = false } = {}) {
-  if ( !locked && shouldCoordinate(authoritative) ) {
-    const chosen = cost.choose ? await choosePoolCost(actor, cost) : cost;
-    return chosen ? submitWorkflow("resource", { actorUuid: actor.uuid, cost: chosen }) : null;
-  }
+export async function payPoolCost(actor, cost, { locked = false } = {}) {
   if ( !locked ) return withActorLock(actor, () => payPoolCost(actor, cost, { locked: true }));
   let pool = actor.system.resources?.[cost.pool];
   let amount = cost.amount ?? 1;

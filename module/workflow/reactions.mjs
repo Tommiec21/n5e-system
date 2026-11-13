@@ -1,12 +1,16 @@
-/** Private, persisted reaction windows. Player socket replies are suggestions requiring GM review. */
+/**
+ * Reaction prompts. When the user applying damage owns the reacting creature, they are asked
+ * directly. When the GM applies it to a player's creature, a whispered window asks the owner, whose
+ * choice reaches the GM's client as an owner intent and is applied automatically (no review).
+ */
 import { reactionDeadline, reactionPhase, decideReaction } from "../rules/reactions.mjs";
 import { rule } from "../rules-settings.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
+import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
 
 const timers = new Map(), prompted = new Set();
 const prompts = new Map();
-const CHANNEL = "system.n5e";
 const current = message => message.getFlag("n5e", "reactionWindow");
 const activeGM = () => !!game.users?.activeGM?.isSelf;
 
@@ -88,26 +92,29 @@ async function sendDecision(message, decision) {
   const window = current(message), actor = await fromUuid(window.actorUuid);
   decideReaction(window, decision, { userId: game.user.id });
   if ( !actor?.testUserPermission(game.user, "OWNER") ) throw new Error("You no longer own the reacting actor.");
-  game.socket.emit(CHANNEL, { reactionResponse: { messageId: message.id, decision, userId: game.user.id } });
-  ui.notifications.info("Reaction choice sent for GM review; no resource has been spent.");
+  return submitIntent(actor, "reactionDecision", { messageId: message.id, decision });
 }
 
-async function receive(data) {
-  if ( !activeGM() || !data?.reactionResponse ) return;
-  const { messageId, decision, userId } = data.reactionResponse;
+/** GM side of a player's choice: the owner is verified by the intent; applied with no dialog. */
+async function receiveDecision(actor, { messageId, decision }, user) {
   const message = game.messages.get(messageId), window = message && current(message);
-  try {
-    if ( !window || !message.author?.isGM ) throw new Error("Unknown reaction window.");
-    decideReaction(window, decision, { userId });
-    const actor = await fromUuid(window.actorUuid), user = game.users.get(userId);
-    if ( !user || !actor?.testUserPermission(user, "OWNER") ) throw new Error("The suggested responder is no longer an eligible owner.");
-    // Socket identity is not authenticated. The claimed player name is advisory, never authority.
-    const accepted = await foundry.applications.api.DialogV2.confirm({ window: { title: "Review reaction choice" },
-      content: `<p>Unverified player response for ${esc(window.label)}: <b>${esc(decision)}</b>.</p><p>Claimed responder: ${esc(user.name)}. Confirm this decision with the player before approving it.</p>`, rejectClose: false });
-    if ( !accepted ) return;
-    if ( reactionPhase(current(message)) !== "pending" ) throw new Error("The player window ended; use the GM controls to resolve it.");
-    await resolveReactionWindow(message, decision);
-  } catch (error) { ui.notifications.warn(error.message); }
+  if ( !window || !message.author?.isGM || window.actorUuid !== actor.uuid ) throw new Error("Unknown reaction window.");
+  decideReaction(window, decision, { userId: user.id });
+  if ( reactionPhase(window) !== "pending" ) throw new Error("The reaction window has ended.");
+  return resolveReactionWindow(message, decision).then(next => next.state);
+}
+
+/**
+ * Ask the user applying the damage, who owns the reacting creature. Resolves "accepted" or
+ * "declined"; the reaction timeout (0 = none) declines an unanswered prompt.
+ */
+export async function askReactionLocally(actor, item, { label = item?.name, trigger = "Use this reaction?" } = {}) {
+  const seconds = Number(rule("reactionTimeoutSeconds"));
+  const prompt = foundry.applications.api.DialogV2.wait({ window: { title: label }, content: `<p>${esc(trigger)}</p>`,
+    buttons: [{ action: "accepted", label: "Accept" }, { action: "declined", label: "Decline", default: true }], rejectClose: false })
+    .then(choice => choice === "accepted" ? "accepted" : "declined");
+  if ( !(seconds > 0) ) return prompt;
+  return Promise.race([prompt, new Promise(resolve => setTimeout(() => resolve("declined"), seconds * 1000))]);
 }
 
 function schedule(message) {
@@ -131,7 +138,7 @@ function schedule(message) {
 }
 
 export function registerReactionWindows() {
-  game.socket?.on(CHANNEL, receive);
+  registerIntentHandler("reactionDecision", receiveDecision);
   const resume = () => game.messages?.forEach(schedule);
   Hooks.on("updateUser", resume);
   Hooks.on("createChatMessage", schedule);

@@ -1,3 +1,14 @@
+## 0.14.0-alpha.1 — Multiplayer parity with dnd5e/PF2e and Allied NPCs (OPS1a)
+
+- No GM approval dialogs anywhere, and no GM relay for player → NPC changes (King 2026-11-13). Each user changes only what they own, as in dnd5e and PF2e; the GM applies results to NPCs.
+- Casts, attacks, rolls, rests, feature uses, resources, healing, Will of Fire, death saves and tracker buttons run on the clicking user's client.
+- Apply buttons act on owned recipients and name the rest ("The GM applies this to: …").
+- Effects on creatures you don't own go on an Apply card for their owner. Effects tied to concentration end with it.
+- "Successful hit" reactions run for owned recipients without a confirmation dialog. A player's choice on a GM's reaction window applies automatically.
+- **Allied NPCs.** Summons, clones and companions are placed for the summoning player, who owns and controls them. They join combat beside the caster. New world rule "Players may summon Allied NPCs" (default on).
+- **Owner intents.** Allied NPC placement, party rations and reaction choices finish on the GM's client from an authenticated flag on the player's own actor, with no socket and no dialog.
+- **Removed:** `module/socket.mjs`, `automation/multiplayer.mjs`, the `multiplayerCoordination` rule and the manifest socket.
+
 ## 0.13.0-alpha.14 — Complete Jiraiya jutsu content import (JUTSU1)
 
 - Import all 968 source-book jutsu into the core Jutsu compendium: 403 Ninjutsu, 167 Genjutsu, 146 Taijutsu and 252 Bukijutsu.

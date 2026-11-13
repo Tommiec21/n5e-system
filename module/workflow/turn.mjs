@@ -18,7 +18,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  *   - Combat automation (turn hooks, token movement) runs once, on the active GM's client
  *     (game.users.activeGM?.isSelf), so every change happens exactly once.
  *   - Buttons check ownership (actor.isOwner) before changing an actor; changes to creatures the
- *     user doesn't own go through the GM relay (module/socket.mjs asGM).
+ *     user doesn't own are applied by their owner (the GM for NPCs) from an Apply card, as in dnd5e.
  *   - Chat cards carry what their buttons need in flags.n5e (damage instances, actor uuids).
  */
 import { turnStartPlan } from "../rules/turn-start.mjs";
@@ -71,9 +71,7 @@ async function onTurnStart(combat) {
 
 /** End concentration from a turn card (free). */
 /** End concentration from a turn card (free): drop the jutsu id and its recorded paid cost. */
-export async function endConcentration(actor, id, { authoritative = false } = {}) {
-  const { shouldCoordinate, submitWorkflow } = await import("../automation/multiplayer.mjs");
-  if ( shouldCoordinate(authoritative) ) return submitWorkflow("endConcentration", { actorUuid: actor.uuid, itemId: id });
+export async function endConcentration(actor, id) {
   const keep = (actor.system.combat?.concentrating ?? []).filter(x => x !== id);
   return actor.update({ "system.combat.concentrating": keep, [`flags.n5e.concentrationPaid.-=${id}`]: null });
 }

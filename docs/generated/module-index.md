@@ -16,16 +16,15 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 108 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData` |
+| `api.mjs` | 113 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData` |
 | `rules-settings.mjs` | 26 | Read a rule setting. | `rule` |
 | `settings.mjs` | 52 | World settings. | `registerSettings` |
-| `socket.mjs` | 114 | Privileged requests. | `validateEffectRequest`, `asGM`, `registerSocket` |
 
 ## module/applications/actor
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-sheet.mjs` | 701 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 695 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `npc-sheet.mjs` | 48 | NPC sheet: the character sheet's tabs, rolls, casting and Combat tab, with a stat-block header (level, rank, role, creature type, template; stat-block HP/CP ... | `NPCSheet` |
 
 ## module/applications/browser
@@ -74,10 +73,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `authority.mjs` | 45 | Who may change what (dnd5e/PF2e parity, King 2026-11-13). | `canModify`, `ownedRecipients`, `skippedNotice`, `isAllied`, `alliedOwnerId` |
 | `commands.mjs` | 23 | GM-local extension boundary, never a socket endpoint or authorization from a claimed user ID. | `coordinateCommand` |
 | `effect-services.mjs` | 166 |  | `registerAppearanceProvider`, `refreshEffectAppearances`, `approveEffectMacros`, `emitEffectEvent`, `registerEffectServices` |
 | `history.mjs` | 24 | Explicit GM reconciliation/archive. | `requestHistory`, `archiveRequestHistory` |
-| `multiplayer.mjs` | 205 | Typed action routing. | `shouldCoordinate`, `clickData`, `targetSnapshot`, `storedButton`, `buttonIndex`, `sourceStamp`, `submitWorkflow`, `prepareWorkflow` |
+| `owner-intents.mjs` | 145 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
 | `receipts.mjs` | 72 | Durable, serialized GM receipts. | `requestFingerprint`, `createReceiptCoordinator` |
 
 ## module/canvas
@@ -121,7 +121,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
 | `creature.mjs` | 581 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
-| `npc.mjs` | 76 | NPCs, adversaries, summons, clones, and companions. | `NPCData` |
+| `npc.mjs` | 78 | NPCs, adversaries, summons, clones, and companions. | `NPCData` |
 
 ## module/data/effect
 
@@ -150,7 +150,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `d20.mjs` | 116 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 264 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 269 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -231,27 +231,29 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `activity-buttons.mjs` | 435 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 415 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
+| `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
-| `apply-damage.mjs` | 281 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
+| `apply-damage.mjs` | 310 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
-| `attack.mjs` | 113 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `attackWithWeapon`, `strikeAttack` |
-| `automation.mjs` | 100 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
+| `attack.mjs` | 111 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `attackWithWeapon`, `strikeAttack` |
+| `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 99 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 141 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
-| `cast.mjs` | 195 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
+| `cast.mjs` | 193 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
 | `clan.mjs` | 84 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `conditions.mjs` | 102 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
-| `health.mjs` | 21 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
-| `reaction-adapters.mjs` | 64 |  | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
+| `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
+| `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
+| `reaction-adapters.mjs` | 74 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
 | `reaction-dispatch.mjs` | 83 | Trusted system/module adapters. | `createReactionDispatcher` |
-| `reactions.mjs` | 174 | Private, persisted reaction windows. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `registerReactionWindows` |
-| `resources.mjs` | 79 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
-| `rest.mjs` | 135 | Rest dialogs (Foundry side). | `spendRations`, `restDialog`, `takeRest` |
-| `trackers.mjs` | 426 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
-| `turn.mjs` | 131 | Turn start (Foundry side). | `endConcentration`, `registerTurnHooks`, `onRenderTurnCard` |
-| `use-feature.mjs` | 55 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |
+| `reactions.mjs` | 181 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
+| `resources.mjs` | 74 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
+| `rest.mjs` | 150 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
+| `trackers.mjs` | 415 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `turn.mjs` | 129 | Turn start (Foundry side). | `endConcentration`, `registerTurnHooks`, `onRenderTurnCard` |
+| `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |

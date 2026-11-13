@@ -22,12 +22,12 @@ export const ruleGroups = {
 export const rules = {
   effectMacros: { group: "casting", type: "boolean", default: false, label: "Effect world Macro execution", hint: "Execute only saved bindings explicitly approved by the active GM. Trusted world Macros run with GM privileges; foreign scripts remain inert." },
   effectAppearanceProviders: { group: "casting", type: "boolean", default: true, label: "Effect token appearance providers", hint: "Reversible client-side effect visuals. Built-in filter and optional registered providers; no token data is overwritten." },
-  multiplayerCoordination: { group: "casting", type: "boolean", default: true, label: "Coordinate multiplayer actions through the active GM",
-    hint: "Serialize casts, attacks, activities, resources, healing, rests and damage on the active GM. Player requests require GM review. Disable for the manual owner-local workflow." },
+  alliedSummoning: { group: "casting", type: "boolean", default: true, label: "Players may summon Allied NPCs",
+    hint: "Summons, clones and companions from jutsu or class features are placed for the summoning player, who owns and controls them (the dnd5e Allow Summoning equivalent)." },
   coordinatedDamage: { group: "casting", type: "boolean", default: false, label: "Coordinated GM damage and reactions (pilot)",
     hint: "Active GM applies each damage-card/target once. Requires reaction windows. Base Deflection, visibility-checked Uncanny Dodge and configured damage reactions; unsupported geometry remains manual." },
   reactionWindows: { group: "casting", type: "boolean", default: false, label: "Reaction decision windows (pilot)",
-    hint: "Ask players about eligible successful-hit or damage reactions; GM reviews responses. Configured resolutions recheck costs before application." },
+    hint: "Ask the reacting creature's owner about eligible successful-hit or damage reactions; their choice is applied automatically. Configured resolutions recheck costs before application." },
   reactionTimeoutSeconds: { group: "casting", type: "number", default: 60, min: 0, label: "Reaction player timeout (seconds)",
     hint: "After this many seconds the GM resolves unanswered prompts. Set 0 to disable the timer. Existing windows keep their original deadline." },
   // Rolls

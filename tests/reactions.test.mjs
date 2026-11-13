@@ -1,3 +1,4 @@
+import { processIntent } from "../module/automation/owner-intents.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { reactionDeadline, reactionPhase, decideReaction } from "../module/rules/reactions.mjs";
@@ -28,18 +29,18 @@ test("only eligible owners decide, terminal decisions cannot be overwritten and 
   assert.throws(() => decideReaction(result, "accept", { gm: true }), /resolved/);
 });
 
-test("private windows preserve actor resources and require GM review of advisory player choices", async () => {
+test("private windows preserve actor resources; an owner's choice applies automatically with no GM review", async () => {
   const gm = { id: "gm", isGM: true, active: true }, player = { id: "p", name: "Player", isGM: false, active: true }, outsider = { id: "x", isGM: false, active: true };
   const users = [gm, player, outsider]; users.activeGM = { isSelf: true }; users.get = id => users.find(u => u.id === id);
-  const messages = new Map(), handlers = new Map(); let receiver, approved = false, reviews = 0, mutations = 0;
-  globalThis.game = { user: gm, users, messages, settings: { get: (scope, key) => key === "reactionWindows" ? true : key === "reactionTimeoutSeconds" ? 0 : undefined }, socket: { on: (channel, callback) => { receiver = callback; } } };
+  const messages = new Map(), handlers = new Map(); let reviews = 0, flagWrites = 0;
+  globalThis.game = { user: gm, users, messages, settings: { get: (scope, key) => key === "reactionWindows" ? true : key === "reactionTimeoutSeconds" ? 0 : undefined } };
   const actor = { documentName: "Actor", uuid: "Actor.a", system: { resources: { discipline: { value: 2 } } },
-    testUserPermission: user => user.id === player.id, items: new Map(), update: async () => { mutations++; } };
+    testUserPermission: user => user.id === player.id, items: new Map(), update: async () => { flagWrites++; } };
   const item = { id: "dodge", name: "Test reaction", actor }; actor.items.set(item.id, item);
   globalThis.fromUuid = async () => actor;
   globalThis.ui = { notifications: { warn() {}, info() {} } };
   globalThis.Hooks = { on: (name, callback) => handlers.set(name, callback), callAll() {} };
-  globalThis.foundry = { applications: { api: { DialogV2: { confirm: async () => { reviews++; return approved; } } } } };
+  globalThis.foundry = { applications: { api: { DialogV2: { confirm: async () => { reviews++; return true; } } } } };
   globalThis.CONFIG = { ChatMessage: { documentClass: { create: async data => {
     const message = { ...data, id: "window", author: gm, getFlag: () => message.flags.n5e.reactionWindow,
       update: async update => { message.flags.n5e.reactionWindow = update["flags.n5e.reactionWindow"]; message.content = update.content; } };
@@ -51,15 +52,18 @@ test("private windows preserve actor resources and require GM review of advisory
   let closed = 0;
   handlers.get("renderDialogV2")({ id: "n5e-reaction-prompt-window", close: async () => closed++ });
   assert.equal(closed, 0, "a live owner prompt remains open");
-  await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "x" } });
-  assert.equal(reviews, 0);
-  await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "p" } });
-  assert.equal(message.getFlag().state, "pending"); assert.equal(reviews, 1);
-  approved = true;
-  await receiver({ reactionResponse: { messageId: message.id, decision: "accept", userId: "p" } });
+  const outsiderTry = await processIntent(actor, "i1", { type: "reactionDecision", data: { messageId: message.id, decision: "accept" } }, "x");
+  assert.equal(outsiderTry.ok, false);
+  assert.equal(message.getFlag().state, "pending");
+  const owner = await processIntent(actor, "i2", { type: "reactionDecision", data: { messageId: message.id, decision: "accept" } }, "p");
+  assert.equal(owner.ok, true);
   assert.equal(message.getFlag().state, "accepted");
+  assert.equal(reviews, 0, "no GM review dialog");
+  const repeat = await processIntent(actor, "i2", { type: "reactionDecision", data: { messageId: message.id, decision: "decline" } }, "p");
+  assert.equal(repeat, null, "an intent id runs once");
   handlers.get("updateChatMessage")(message);
   assert.equal(closed, 1, "resolved decisions close the owner's stale prompt without a second response");
   await assert.rejects(resolveReactionWindow(message, "decline"), /resolved/);
-  assert.equal(actor.system.resources.discipline.value, 2); assert.equal(mutations, 0);
+  assert.equal(actor.system.resources.discipline.value, 2);
+  assert.equal(flagWrites, 2, "only the two processed intents wrote their results");
 });

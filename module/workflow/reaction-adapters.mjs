@@ -1,5 +1,5 @@
 import { createReactionDispatcher } from "./reaction-dispatch.mjs";
-import { openReactionWindow, waitForReactionWindow } from "./reactions.mjs";
+import { openReactionWindow, waitForReactionWindow, askReactionLocally } from "./reactions.mjs";
 import { deflectionOffer } from "../rules/deflection.mjs";
 import { uncannyDodgeOffer } from "../rules/uncanny-dodge.mjs";
 import { damageSourceVisibility } from "../canvas/visibility.mjs";
@@ -9,9 +9,19 @@ import { authoredReactionOffers } from "../rules/authored-reactions.mjs";
 import { createReactionChain } from "./reaction-chain.mjs";
 
 const combatStamp = () => game.combat?.started ? `${game.combat.id}:${game.combat.round}:${game.combat.turn}` : null;
+/**
+ * Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their
+ * characters). An owner applying to their own creature is asked directly; the GM applying to a
+ * player's creature opens a whispered window for that player.
+ */
+const askOwner = (actor, item, options) => {
+  const playerOwned = game.users.some(u => !u.isGM && u.active && actor.testUserPermission(u, "OWNER"));
+  if ( game.user.isGM && game.users.activeGM?.isSelf && playerOwned ) return openReactionWindow(actor, item, options);
+  return { local: askReactionLocally(actor, item, options) };
+};
 const dispatcher = createReactionDispatcher({
-  authority: () => !!game.users.activeGM?.isSelf,
-  stamp: combatStamp, open: openReactionWindow, wait: waitForReactionWindow
+  authority: () => true,
+  stamp: combatStamp, open: askOwner, wait: window => window.local ?? waitForReactionWindow(window)
 });
 
 dispatcher.register("uncanny-dodge", {

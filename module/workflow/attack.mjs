@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData } from "../automation/multiplayer.mjs";
 /**
  * Weapon and unarmed attacks (pure spec + Foundry roll).
  *
@@ -71,8 +70,7 @@ export function weaponAttackSpec(actor, weapon = null) {
  * Attack with a weapon (or unarmed when weapon is null): attack card with damage buttons, then the
  * Ammunition Die for weapons that use one.
  */
-export async function attackWithWeapon(actor, weapon = null, { event, authoritative = false, targetActors } = {}) {
-  if ( shouldCoordinate(authoritative) ) return submitWorkflow("attack", { actorUuid: actor.uuid, itemId: weapon?.id, event: clickData(event), ...targetSnapshot() });
+export async function attackWithWeapon(actor, weapon = null, { event, targetActors } = {}) {
   const spec = weaponAttackSpec(actor, weapon);
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }], { abilityMod: spec.abilityMod, weapon: true, weaponId: weapon?.id })}</div></div>`;

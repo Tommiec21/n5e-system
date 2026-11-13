@@ -52,6 +52,8 @@ function coordinatedFixture({ uncanny = false, visible = true, missingSource = f
   globalThis.fromUuid = async () => actor;
   globalThis.ui = { notifications: { info() {}, warn() {} } };
   globalThis.Hooks = { callAll() {} };
+  // The GM owns this creature, so the GM is asked directly (dnd5e parity): accept the reaction.
+  globalThis.foundry = { ...(globalThis.foundry ?? {}), applications: { api: { DialogV2: { wait: async () => "accepted", confirm: async () => true } } } };
   globalThis.Roll = class { async evaluate() { rolls++; this.total = 6; return this; } async toMessage() {} };
   globalThis.CONFIG = { Canvas: { detectionModes: { basicSight: { testVisibility: () => visible } } }, ChatMessage: { documentClass: { getSpeaker: () => ({}), create: async data => {
     const message = { ...data, id: String(messages.size), author: gm, getFlag: (scope, key) => message.flags?.n5e?.[key] };

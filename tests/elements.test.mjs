@@ -75,14 +75,14 @@ test("coatings expire at the boundary and spend once; authored weapon data stays
   await assert.rejects(setRuleElements({ isOwner: false }, []));
 });
 
-test("summoning uses unlinked template tokens; cleanup deletes only expired summons, not the actor", async () => {
+test("summons are Allied NPCs: unlinked tokens owned by the summoner; cleanup deletes only expired summons", async () => {
   const created = [];
   const removed = [];
   const a = actor([]);
   const i = { id: "j", uuid: "Actor.a.Item.j", actor: a };
   const scene = { tokens: [], createEmbeddedDocuments: async (kind, data) => { created.push(...data); return data; },
     deleteEmbeddedDocuments: async (kind, ids) => removed.push(...ids) };
-  globalThis.game = { user: { isGM: true }, time: { worldTime: 10 }, users: { activeGM: { isSelf: true } }, scenes: [scene] };
+  globalThis.game = { user: { id: "gm1", isGM: true }, time: { worldTime: 10 }, users: { activeGM: { isSelf: true } }, scenes: [scene] };
   globalThis.canvas = { ready: true, scene, dimensions: { size: 100 }, tokens: { controlled: [], placeables: [] } };
   globalThis.Hooks = { callAll() {} };
   globalThis.fromUuid = async () => ({ documentName: "Actor", prototypeToken: { width: 1 },
@@ -92,12 +92,17 @@ test("summoning uses unlinked template tokens; cleanup deletes only expired summ
   assert.equal(created[0].actorLink, false);
   assert.equal(created[1].x, 200);
   assert.equal(created[0]._id, undefined);
+  assert.equal(created[0].delta.ownership.gm1, 3);
+  assert.equal(created[0].delta.system.allied, true);
+  assert.equal(created[0].disposition, 1);
+  assert.deepEqual(created[0].flags.n5e.allied, { ownerId: "gm1", casterUuid: a.uuid, itemId: "j" });
   scene.tokens = [{ id: "expired", flags: { n5e: { summon: { expires: 5 } } } }, { id: "normal" },
     { id: "live", flags: { n5e: { summon: { expires: 90 } } } }];
   await cleanupSummons();
   assert.deepEqual(removed, ["expired"]);
   game.user.isGM = false;
-  await assert.rejects(summonTokens(a, i, { uuid: "Actor.template" }), /GM/);
+  a.testUserPermission = () => false;
+  await assert.rejects(summonTokens(a, i, { uuid: "Actor.template" }), /own the summoner/);
 });
 
 test("live roll pipeline shows sources, selects only the matching save tier and persists its result", async () => {

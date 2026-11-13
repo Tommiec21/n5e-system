@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "./n5e-roll.mjs";
 /**
  * Rolling d20s from the sheet and posting them to chat (Foundry side). The rules live in dice/d20.mjs.
@@ -56,7 +55,6 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
  * @returns {Promise<ChatMessage|null>}
  */
 export async function rollD20(actor, type, key, options = {}) {
-  if ( shouldCoordinate(options.authoritative) ) return submitWorkflow("roll", { actorUuid: actor.uuid, rollType: type, key, event: clickData(options.event), ...targetSnapshot() });
   const spec = rollSpec(actor, type, key);
   if ( !spec ) return null;
   return rollWithSpec(actor, spec, { ...options, ...(options.targetActors ? { target: options.targetActors.length === 1 ? options.targetActors[0] : null } : {}) });
@@ -138,8 +136,7 @@ async function awardWillOfFire(actor, result) {
  * @param {ChatMessage} message
  * @param {"reroll"|"advantage"} how
  */
-export async function spendWillOfFire(message, how, { authoritative = false } = {}) {
-  if ( shouldCoordinate(authoritative) ) return submitWorkflow("willOfFire", { messageUuid: message.uuid, how });
+export async function spendWillOfFire(message, how) {
   const data = message.getFlag("n5e", "roll");
   const actor = data?.actorUuid ? await fromUuid(data.actorUuid) : null;
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the roller's owner can spend their Will of Fire.");
@@ -218,6 +215,14 @@ export function onRenderChatMessage(message, html) {
     btn.addEventListener("click", ev => {
       ev.preventDefault();
       import("../workflow/trackers.mjs").then(m => (btn.dataset.n5eResave ? m.rollResave(btn, ev, { message }) : m.onTrackerClick(message, btn)));
+    });
+  }
+  // Effect-application cards: the owner of each recipient applies (workflow/effect-application.mjs).
+  for ( const btn of html.querySelectorAll("[data-n5e-effect-apply]") ) {
+    btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      import("../workflow/effect-application.mjs").then(m => m.applyEffectFromCard(message, btn.dataset.n5eEffectApply))
+        .catch(error => ui.notifications.warn(error.message));
     });
   }
   // Place a jutsu's area on the map (workflow/areas.mjs).

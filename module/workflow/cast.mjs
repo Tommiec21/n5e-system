@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow, targetSnapshot } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card.
@@ -120,7 +119,6 @@ export async function castJutsu(actor, item, { skipDialog = false } = {}) {
     });
     if ( !sel ) return null;
   }
-  if ( shouldCoordinate(false) ) return submitWorkflow("cast", { actorUuid: actor.uuid, itemId: item.id, selection: sel, ...targetSnapshot() });
   return executeCast(actor, item, sel);
 }
 

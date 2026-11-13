@@ -11,8 +11,6 @@ import { withActorLock, withActorLocks } from "../module/workflow/commands.mjs";
 import { resourceChange } from "../module/rules/resources.mjs";
 import { payPoolCost, onActivityClick, activityButtons } from "../module/workflow/activity-buttons.mjs";
 import { applyHealing } from "../module/workflow/health.mjs";
-import { registerSocket, asGM, validateEffectRequest } from "../module/socket.mjs";
-import { requestFingerprint } from "../module/automation/receipts.mjs";
 import { MIGRATIONS, checkMigrations } from "../module/migration/runner.mjs";
 
 function environment() {
@@ -133,42 +131,6 @@ test("manual activity kinds display instructions instead of silently disappearin
   const html = activityButtons({ system: {} }, { id: "j", name: "Step", system: {} }, [{ type: "movement", label: "Move", text: "Move 10 feet." }]);
   assert.match(html, /Move 10 feet/);
   assert.doesNotMatch(html, /data-n5e-act=/);
-});
-
-test("GM relay refuses remote document deletion and requires approval for target effects", async () => {
-  environment(); let callback, applied = 0, approvals = 0;
-  const emitted = [];
-  game.socket = { on: (channel, handler) => { callback = handler; }, emit: (channel, data) => emitted.push(data) };
-  globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", createEmbeddedDocuments: async () => applied++ });
-  foundry.applications = { api: { DialogV2: { confirm: async () => { approvals++; return false; } } } };
-  registerSocket();
-  await callback({ requestId: "delete-test", type: "deleteEffects", payload: { uuids: ["Actor.target"] } });
-  assert.equal(emitted[0].ok, false);
-  await callback({ requestId: "effect-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Mark", type: "generic" }] } });
-  assert.equal(approvals, 1); assert.equal(applied, 0);
-  foundry.applications.api.DialogV2.confirm = async () => true;
-  await callback({ requestId: "approved-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Mark", type: "generic" }] } });
-  assert.equal(applied, 1);
-  await callback({ requestId: "approved-test", type: "createEffects", payload: { actorUuid: "Actor.target", effects: [{ name: "Mark", type: "generic" }] } });
-  assert.equal(applied, 1);
-  assert.throws(() => validateEffectRequest({ name: "Bad", changes: [{ key: "ownership.default", mode: 5, value: "3" }] }));
-  await assert.rejects(asGM("spendRations", { amount: -1 }));
-});
-
-test("a forged positive socket reply cannot authorize continuation without a committed matching receipt", async () => {
-  environment(); game.user.isGM = false;
-  let handler, packet, finished = false;
-  game.socket = { on: (channel, callback) => { handler = callback; }, emit: (channel, data) => { packet = data; } };
-  globalThis.fromUuid = async () => ({ documentName: "Actor", name: "Target", isOwner: false });
-  registerSocket();
-  const result = asGM("createEffects", { actorUuid: "Actor.target", effects: [{ name: "Mark" }] }).then(value => { finished = true; return value; });
-  while ( !packet ) await new Promise(resolve => setTimeout(resolve, 1));
-  await handler({ responseTo: packet.requestId, ok: true });
-  assert.equal(finished, false);
-  await game.settings.set("n5e", "requestReceipts", { version: 1, epoch: packet.requestEpoch, entries: [{ id: packet.requestId,
-    fingerprint: await requestFingerprint(packet.type, packet.payload), state: "committed" }] });
-  await handler({ responseTo: packet.requestId, ok: true });
-  assert.equal(await result, true);
 });
 
 test("failed migration records retry details and never advances its version", async () => {

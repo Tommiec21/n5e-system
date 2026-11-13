@@ -1,10 +1,9 @@
 import { emitEffectEvent } from "../automation/effect-services.mjs";
-import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Rest dialogs (Foundry side). Short: choose Hit Dice and Chakra Dice to spend (rolled together,
  * + Con per die). Long: with or without food and drink. Full: confirm. Each shows the limit or ration
- * check first, applies the plan, spends rations (through the GM when a player rests), and posts a card.
+ * check first, applies the plan, spends rations (a player's spend finishes on the GM's client as an owner intent), and posts a card.
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
@@ -12,11 +11,28 @@ import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.m
 import { rule } from "../rules-settings.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
-import { asGM } from "../socket.mjs";
+import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
 
-/** Spend rations (GM writes the world setting; players ask the GM over the socket). */
-export async function spendRations(amount) {
-  if ( amount ) return asGM("spendRations", { amount });
+/** GM side: take rations from the party pool (a world setting). */
+async function takeRations(amount) {
+  return withActorLock({ uuid: "world:n5e:rations" }, async () => {
+    const current = Number(rule("rationPool"));
+    if ( amount > current ) throw new Error("Not enough party rations.");
+    await game.settings.set("n5e", "rationPool", current - amount);
+    return current - amount;
+  });
+}
+
+/** Spend rations: the GM writes the pool; a player's spend reaches the GM as an owner intent on the resting actor. */
+export async function spendRations(amount, actor = null) {
+  if ( !amount ) return;
+  if ( game.user.isGM ) return takeRations(amount);
+  if ( !actor ) throw new Error("Choose the resting character.");
+  return submitIntent(actor, "spendRations", { amount });
+}
+
+export function registerRestIntents() {
+  registerIntentHandler("spendRations", (actor, { amount }) => takeRations(amount));
 }
 
 /**
@@ -90,7 +106,7 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   const check = restCheck(actor, type, { now: game.time.worldTime });
   if ( !check.ok ) return ui.notifications.warn(check.reason);
   if ( check.rationCost ) {
-    try { await spendRations(check.rationCost); }
+    try { await spendRations(check.rationCost, actor); }
     catch (error) {
       ui.notifications.warn(`No rest: ${error.message}`);
       return null;
@@ -128,7 +144,6 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
 }
 
 /** Recheck limits inside the queue; await GM ration approval before granting benefits. */
-export function takeRest(actor, type, choice, { authoritative = false } = {}) {
-  if ( shouldCoordinate(authoritative) ) return submitWorkflow("rest", { actorUuid: actor.uuid, restType: type, choice });
+export function takeRest(actor, type, choice) {
   return withActorLock(actor, () => executeRest(actor, type, choice));
 }

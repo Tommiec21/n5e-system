@@ -4,7 +4,6 @@ import { damageRollTrace, damageFromMessage, damageApplicationTrace } from "../m
 import { damageRollHTML, renderDamageRolls } from "../module/view-models/damage-trace.mjs";
 import { damagePlan } from "../module/rules/damage.mjs";
 import { resolveDamageReaction, applyToSelected } from "../module/workflow/apply-damage.mjs";
-import { buttonIndex, storedButton, sourceStamp } from "../module/automation/multiplayer.mjs";
 
 const roll = () => ({ formula: "2d6 + 4", total: 16, dice: [{ formula: "2d6", results: [{ result: 6, active: true }, { result: 6, active: true }, { result: 1, discarded: true }] }] });
 function source() {
@@ -71,17 +70,6 @@ test("damage application uses the saved roll without evaluating again and persis
   assert.match(applied.content, /data-n5e-source="ChatMessage.damage"/);
   assert.doesNotMatch(applied.content, /2d6|Applied calculation|damage input|Coordinated application|GM reconciliation|Undo is disabled/);
   assert.deepEqual(applied.whisper, ["gm"]); assert.equal(applied.blind, true);
-});
-
-test("flavor-backed attack buttons resolve while action tampering remains rejected", async () => {
-  const dataset = { n5eAct: "damage", parts: "original" };
-  globalThis.DOMParser = class { parseFromString(text) { return { querySelectorAll: () => text.includes("flavor-button") ? [{ dataset }] : [] }; } };
-  const message = { content: "dice", flavor: "flavor-button", getFlag: () => undefined };
-  assert.equal(buttonIndex(message, { dataset: { ...dataset, tooltipText: "rendered hint" } }, "[data-n5e-act]"), 0);
-  assert.equal(storedButton(message, "[data-n5e-act]", 0).dataset.parts, "original");
-  assert.throws(() => buttonIndex(message, { dataset: { ...dataset, crit: "1" } }, "[data-n5e-act]"), /does not match/);
-  const stamp = await sourceStamp(message); message.flavor = "changed";
-  assert.notEqual(await sourceStamp(message), stamp);
 });
 
 test("native damage rendering uses only the actual saved roll without prose or rerolling", async () => {

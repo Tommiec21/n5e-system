@@ -41,7 +41,10 @@ import { registerHelpers } from "./module/applications/helpers.mjs";
 import { registerSettings } from "./module/settings.mjs";
 import * as dice from "./module/dice/roll.mjs";
 import { registerTurnHooks, onRenderTurnCard } from "./module/workflow/turn.mjs";
-import { registerSocket } from "./module/socket.mjs";
+import { registerOwnerIntents } from "./module/automation/owner-intents.mjs";
+import { registerAlliedIntents } from "./module/workflow/allied.mjs";
+import { registerRestIntents } from "./module/workflow/rest.mjs";
+import { registerEffectApplication } from "./module/workflow/effect-application.mjs";
 import { registerReactionWindows } from "./module/workflow/reactions.mjs";
 import { registerPartyOverview } from "./module/applications/gm/party-overview.mjs";
 import * as d20 from "./module/dice/d20.mjs";
@@ -147,8 +150,12 @@ registerCompendiumBrowser();
 Hooks.once("ready", async () => {
   // Clan-scoped conditions and keywords from world clan items (compendium clans load in Phase 6).
   for ( const item of game.items.filter(i => i.type === "clan") ) api.registerClanData(item);
-  // The GM relay (players asking the GM to change things they don't own; module/socket.mjs).
-  registerSocket();
+  // dnd5e/PF2e parity: each user changes what they own. Owner intents finish the few N5e actions
+  // (Allied NPCs, rations, reaction choices) on the GM's client (module/automation/owner-intents.mjs).
+  registerOwnerIntents();
+  registerAlliedIntents();
+  registerRestIntents();
+  registerEffectApplication();
   registerReactionWindows();
   registerEffectServices();
   // Data migrations the world hasn't run yet (GM only; module/migration/runner.mjs).

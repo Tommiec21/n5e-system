@@ -1,6 +1,5 @@
 import { damageRollTrace } from "../rules/damage-trace.mjs";
 import { renderDamageRolls } from "../view-models/damage-trace.mjs";
-import { shouldCoordinate, submitWorkflow, targetSnapshot, clickData, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Chat card buttons for activities, and what happens when they're clicked.
@@ -274,7 +273,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
   // One case per data-n5e-act value written by activityButtons()/damageButtons().
   switch ( d.n5eAct ) {
     case "summon": {
-      if ( !game.user.isGM ) return fail("info", "Ask the GM to use the Summon button on this card.");
+      if ( !caster?.isOwner ) return fail("warn", "Only the summoner's owner can summon from this card.");
       const { summonTokens } = await import("./automation.mjs");
       try {
         return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration });
@@ -411,24 +410,5 @@ function fail(level, message) {
 
 /** All activity kinds share validation, turn limits, resource refund and hook handling. */
 export async function onActivityClick(message, button, event, options = {}) {
-  if ( shouldCoordinate(options.authoritative) ) {
-    try {
-      if ( button.disabled ) return null;
-      button.disabled = true;
-      const index = buttonIndex(message, button, "[data-n5e-act]");
-      const cost = JSON.parse(button.dataset.cost ?? "null");
-      let resourceAmount;
-      if ( cost?.choose ) {
-        const uuid = message.getFlag("n5e", "cast")?.actorUuid ?? message.getFlag("n5e", "roll")?.actorUuid ?? message.getFlag("n5e", "actorUuid");
-        const actor = await fromUuid(uuid);
-        const chosen = await (await import("./resources.mjs")).choosePoolCost(actor, cost);
-        if ( !chosen ) return null;
-        resourceAmount = chosen.amount;
-      }
-      return await submitWorkflow("activity", { messageUuid: message.uuid, buttonIndex: index, resourceAmount, event: clickData(event), ...targetSnapshot() });
-    }
-    catch (error) { return fail("warn", error.message); }
-    finally { button.disabled = false; }
-  }
   return executeActivity(message, button, event, executeActivityClick, targetsOrSelf, options);
 }

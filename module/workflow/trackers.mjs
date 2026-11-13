@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow, targetSnapshot, buttonIndex } from "../automation/multiplayer.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Phase 6 trackers (Foundry side); rules in rules/trackers.mjs.
@@ -26,20 +25,19 @@ import { applyButtons } from "./activity-buttons.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { esc } from "../view-models/common.mjs";
-import { asGM } from "../socket.mjs";
+import { applyOrOffer } from "./effect-application.mjs";
 import { rule } from "../rules-settings.mjs";
 import { abilities } from "../config/core.mjs";
 
 /**
- * Put effects on a creature the user may not own, through the GM. A declined or timed-out request
- * is reported and the loop carries on with the other targets. Resolves true when applied.
+ * Put effects on a creature: directly when this user owns it, otherwise on an Apply card for its
+ * owner (dnd5e/PF2e parity: the GM applies effects to NPCs). Resolves true when applied now.
  */
-async function requestEffects(payload) {
-  try { return await asGM("createEffects", payload); }
-  catch (error) {
-    ui.notifications.warn(error.message);
-    return false;
-  }
+async function requestEffects({ actorUuid, effects }, source = null) {
+  const actor = await fromUuid(actorUuid);
+  if ( !actor ) return false;
+  const result = await applyOrOffer(source, [actor], effects);
+  return result.applied.length > 0;
 }
 
 // Small helpers shared by every tracker below.
@@ -103,7 +101,7 @@ export async function placeMarks(actor, itemId, targetActors = null) {
   }
   for ( const t of targets ) {
     const data = trackerEffectData("mark", mark, { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime });
-    await requestEffects({ actorUuid: t.uuid, effects: [data] });
+    await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor);
   }
   return say(actor, `<b>${esc(actor.name)}</b> Marks ${esc(targets.map(t => t.name).join(", "))}: ${esc(mark.label)} (${esc(mark.jutsu)})${ammo ? `. ${esc(ammo.name)} ammo die steps down.` : ""}`);
 }
@@ -120,15 +118,11 @@ export function trackerButtons(actor, item) {
 
 /**
  * Click on a cast card's Mark / Brand / Amp button ([data-n5e-track], wired in dice/roll.mjs).
- * Effects on creatures the player doesn't own go through the GM (asGM in module/socket.mjs).
+ * Effects on creatures the player doesn't own go on an Apply card for their owner (effect-application.mjs).
  * @param {ChatMessage} message  the cast card (flags.n5e.cast.actorUuid names the caster)
  * @param {HTMLElement} btn      data-n5e-track = mark|branded|amp, data-item = the jutsu's id
  */
-export async function onTrackerClick(message, btn, { authoritative = false, targetActors = null } = {}) {
-  if ( shouldCoordinate(authoritative) ) {
-    try { return submitWorkflow("tracker", { messageUuid: message.uuid, buttonIndex: buttonIndex(message, btn, "[data-n5e-track]"), ...targetSnapshot() }); }
-    catch (error) { ui.notifications.warn(error.message); return null; }
-  }
+export async function onTrackerClick(message, btn, { targetActors = null } = {}) {
   const casterUuid = message.getFlag("n5e", "cast")?.actorUuid;
   const actor = casterUuid ? await fromUuid(casterUuid) : null;
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the caster's owner can use this.");
@@ -142,7 +136,7 @@ export async function onTrackerClick(message, btn, { authoritative = false, targ
     if ( !targets.length ) return ui.notifications.info("Target the creatures to Brand (T over a token).");
     for ( const t of targets ) {
       await requestEffects({ actorUuid: t.uuid, effects: [trackerEffectData("branded", defs.branded,
-        { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime })] });
+        { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime })] }, actor);
     }
     return say(actor, `${esc(targets.map(t => t.name).join(", "))}: ${esc(defs.branded.label)}`);
   }
@@ -156,7 +150,7 @@ export async function onTrackerClick(message, btn, { authoritative = false, targ
       await requestEffects({ actorUuid: t.uuid, effects: [{ name: defs.amp.label, type: "amp", img: item.img,
         origin: item.uuid, description: `<p>From ${esc(actor.name)}'s ${esc(item.name)}: see the jutsu for its bonus.</p>`,
         system: { ampType: defs.amp.ampType, sourceUuid: actor.uuid },
-        duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null } }] });
+        duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null } }] }, actor);
     }
     return say(actor, `${esc(who.map(t => t.name).join(", "))}: ${esc(defs.amp.label)}`);
   }
@@ -313,12 +307,7 @@ export async function trackersTurnEnd(combat, actor, now) {
 }
 
 /** Resave button: success ends the effect. */
-export async function rollResave(btn, event, { authoritative = false, message } = {}) {
-  if ( shouldCoordinate(authoritative) && message ) {
-    try { return submitWorkflow("resave", { actorUuid: btn.dataset.actor, messageUuid: message.uuid,
-      buttonIndex: buttonIndex(message, btn, "[data-n5e-resave]"), event: { altKey: !!event?.altKey, shiftKey: !!event?.shiftKey, ctrlKey: !!event?.ctrlKey, metaKey: !!event?.metaKey } }); }
-    catch (error) { ui.notifications.warn(error.message); return null; }
-  }
+export async function rollResave(btn, event, { message } = {}) {
   const actor = await fromUuid(btn.dataset.actor);
   const effect = actor?.effects.get(btn.dataset.n5eResave);
   if ( !actor?.isOwner || !effect ) return ui.notifications.warn("Only the owner rolls this save.");
@@ -397,7 +386,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
     if ( changes.length || eff.expires || eff.state || eff.ampType ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
-      else await requestEffects({ actorUuid: t.uuid, effects: [data] });
+      else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor);
     }
     if ( eff.tempHp ) {
       const roll = await createN5eRoll(sub(eff.tempHp)).evaluate();

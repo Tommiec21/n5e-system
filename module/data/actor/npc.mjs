@@ -39,6 +39,8 @@ export default class NPCData extends CreatureData {
     schema.cpMax = S.num(null, { min: 0 });
     schema.jutsuSlots = S.resourcePool({ label: "Jutsu Slots", recoveryOn: "lr" });
     schema.diesAtZero = S.bool(true);
+    /** Allied NPC (King 2026-11-13): player-summoned and player-controlled. Set on the summon's token delta. */
+    schema.allied = S.bool(false);
     return schema;
   }
 

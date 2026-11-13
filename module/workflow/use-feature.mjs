@@ -1,4 +1,3 @@
-import { shouldCoordinate, submitWorkflow } from "../automation/multiplayer.mjs";
 /**
  * Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice),
  * then post its card. Refuses (with the reason) when the character can't pay.
@@ -48,7 +47,6 @@ async function executeFeature(actor, item) {
 }
 
 /** Features re-read costs after earlier actions finish. */
-export function useFeature(actor, item, { authoritative = false } = {}) {
-  if ( shouldCoordinate(authoritative) ) return submitWorkflow("feature", { actorUuid: actor.uuid, itemId: item.id });
+export function useFeature(actor, item) {
   return withActorLock(actor, () => executeFeature(actor, item));
 }

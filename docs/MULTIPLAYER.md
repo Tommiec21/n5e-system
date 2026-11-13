@@ -1,4 +1,19 @@
-# Multiplayer batches
+# Multiplayer
+
+## Current model (0.14.0-alpha.1, OPS1a, King 2026-11-13): dnd5e/PF2e parity plus Allied NPCs
+
+This supersedes every earlier section below; those remain as history.
+
+- **Each user changes only what they own.** The GM owns NPCs. Players roll their own attacks, saves and checks, and apply damage, healing, conditions and effects only to creatures they own. There is no GM relay for player → NPC changes, and no approval dialog anywhere (`module/socket.mjs` and `automation/multiplayer.mjs` are removed, and so is the `multiplayerCoordination` rule).
+- **Apply controls** (damage, half, double, heal, inflict, undo, concentration check, successful-hit reactions) act on owned recipients only. Others are named in a notice: "The GM applies this to: …" (`automation/authority.mjs`).
+- **Effects on someone you don't own** (Marks, Branded, Amps, activity effects) are posted on an effect-application card. That creature's owner, the GM for NPCs, presses Apply (`workflow/effect-application.mjs`). Effects tied to a concentration jutsu carry `flags.n5e.dependentOn`. The active GM deletes them when that concentration ends, as dnd5e does with dependents.
+- **Reactions** are resolved by whoever applies the damage. An owner applying to their own creature is asked directly. When the GM applies to a player's creature, a whispered window asks that player, and their choice is applied automatically.
+- **Owner intents** (`automation/owner-intents.mjs`). Four N5e actions finish on the GM's client: Allied NPC placement and dismissal, party ration spending (a world setting), and a player's reaction choice. Item transfer is a reserved type, not yet wired. The player writes the request into `flags.n5e.intents.<id>` on an actor they own. The active GM's `updateActor` hook checks the server-verified user is an owner, runs it once with no dialog, and writes `flags.n5e.intentResults.<id>`. Requests pending at a reload are refused, not guessed.
+- **Allied NPCs** (`workflow/allied.mjs`) are the one exception to parity. Summons, clones and companions from jutsu or class features are placed for the summoning player. Each token is unlinked, friendly, has `system.allied = true`, `flags.n5e.allied = {ownerId, casterUuid, itemId}`, and OWNER for the summoner on its actor delta. If the caster is in combat, the summons join it, matching the caster's initiative by default. World rule "Players may summon Allied NPCs" (`alliedSummoning`, default on). Duration, concentration end and dismissal remove the tokens and their combatants.
+- **Coordinated damage** (pilot rule). Run by the active GM, it keeps one durable receipt per card and target, so a repeated click never applies twice. An owner applying to their own creature resolves the same reactions locally.
+- **Lifecycle automation** (turn start, condition expiry, summon cleanup, concentration dependents) runs once on the active GM's client from document hooks, as in dnd5e.
+
+## History (superseded)
 
 ## MP1: existing privileged relay receipts
 
