@@ -1,6 +1,6 @@
 # OPS1 function spec: multiplayer parity and Allied NPCs
 
-Status: **proposed 2026-11-13. Awaiting King's approval. No code written.**
+Status: **approved by King 2026-11-13; in progress (Claude).**
 
 Decisions this spec implements (King, 2026-11-13; `PROGRESSION_PLAN.md` Sections 3 and 7):
 - Copy dnd5e 5.3.3 and PF2e exactly for player ↔ NPC interaction.
