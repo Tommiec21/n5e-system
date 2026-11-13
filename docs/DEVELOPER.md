@@ -71,16 +71,22 @@ module/
   advancement/              level-up steps (pure) and applying/reverting a level
   chat/card.mjs             item chat cards
   migration/                V3.1 → 4.0 mapping and the world migration runner
+  automation/               GM-coordinated workflows (multiplayer.mjs), receipts and history, effect services
+  testing/smoke.mjs         optional in-world smoke check (game.n5e.api.runSmokeTests)
   api.mjs, settings.mjs, socket.mjs, rules-settings.mjs
 templates/                  Handlebars templates (each starts with a comment naming its data)
 styles/sheet.css            all sheet styles, scoped under .n5e-v2
 lang/en.json                labels
 packs/_source/<pack>/       compendium sources, one JSON per document (the source of truth)
-tools/                      pack, unpack, release, check, install-local, comments-only
-tools/content/              build_content.py (books → JSON), automation.py (automation data)
+tools/                      pack, unpack, release, check, install-local, comments-only, report-* (audits; report-modules.mjs
+                            regenerates docs/generated/module-index.md)
+tools/content/              build-backgrounds/-class-expansion/-clans/-jutsu.mjs (current builders), sources/ (checked-in
+                            source snapshots), build_content.py and automation.py (legacy pipeline)
 tests/                      node:test suites; helpers/ fakes Foundry's data layer
-docs/                       this guide, RULES_MAP.md (rule → code), DATA_REFERENCE.md (every stored field and flag),
-                            TEXT_SHORTCUTS.md ([[/save]], @Condition[] and the other text links)
+docs/                       this guide, PROGRESSION_PLAN.md (shared Claude/Codex roadmap and handoff rules: read first),
+                            CODEX_CONTEXT.md (batch ledger), RULES_MAP.md (rule → code), DATA_REFERENCE.md (stored fields),
+                            generated/module-index.md (every file and export), MULTIPLAYER.md, EFFECT_EDITOR.md,
+                            EFFECT_SERVICES.md, DAMAGE_TRACE.md, JUTSU_IMPORT.md, TEXT_SHORTCUTS.md
 ```
 
 ## 3. Everyday commands

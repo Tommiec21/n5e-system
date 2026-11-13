@@ -62,3 +62,32 @@
 - Legacy retry and activity-field repair: migration 2 in `migration/runner.mjs`.
 - Live client smoke check: `testing/smoke.mjs`.
 
+
+# Coordination, reactions, effects and content additions (0.13.0-alpha.1 – alpha.14)
+
+| Rule / capability | Code | Source |
+| --- | --- | --- |
+| GM-reviewed privileged requests; durable receipts, epochs, replay protection | `socket.mjs`, `automation/receipts.mjs`, `automation/history.mjs`, `applications/gm/automation-recovery.mjs` | MULTIPLAYER.md |
+| Typed multiplayer workflows routed to the active GM (cast, attack, activity, resource, healing, rest, damage, hit, tracker, death save, Will of Fire...) | `automation/multiplayer.mjs`, `automation/commands.mjs` | MULTIPLAYER.md |
+| Arithmetic precedence: + and − before × and ÷ (King 2026-11-09) | `rules/formula.mjs`, `dice/roll.mjs` | CODEX_CONTEXT 13.4 |
+| Identical Half/Double sources apply once; opposites cancel | `rules/damage.mjs damagePlan` | King 2026-11-09 |
+| DR protects HP and CP independently; damaged creature chooses type order | `rules/damage.mjs`, `workflow/apply-damage.mjs chooseDROrder` | King 2026-11-09 |
+| Deflection = rolled DR with the same rules | `rules/deflection.mjs`, `workflow/reaction-adapters.mjs` | King 2026-11-09 |
+| Reaction windows (successful hit, before damage), owned offers, 60 s default timeout, nested chains deferred | `workflow/reactions.mjs`, `workflow/reaction-dispatch.mjs`, `workflow/reaction-chain.mjs`, `rules/authored-reactions.mjs`, `applications/item/reaction-editor.mjs` | RX1–RX3, MP3 |
+| Uncanny Dodge (optional registered ability; Blindsight counts as seeing) | `rules/uncanny-dodge.mjs`, `canvas/visibility.mjs` | VIS1 |
+| Coordinated damage (pilot) and retargeting rolled damage | `workflow/coordinated-damage.mjs`, `workflow/apply-damage.mjs retargetDamage` | MP3 |
+| Damage roll lineage and per-recipient application trace (internal) | `rules/damage-trace.mjs`, `view-models/damage-trace.mjs` | DT1, CHAT1 |
+| Effect editor catalog, validation, presets, import/export | `rules/effect-authoring.mjs`, `applications/effect/effect-config.mjs` | EFFECT_EDITOR.md |
+| Effect services: dynamic numeric changes, event expiration, approved world Macros, appearance providers | `rules/effect-services.mjs`, `automation/effect-services.mjs` | EFFECT_SERVICES.md |
+| Backgrounds (16), classes to 20 (7 + 42 subclasses), clans (44), jutsu (968) builders | `tools/content/build-*.mjs` | JUTSU_IMPORT.md, CODEX_CONTEXT 13.3 |
+
+# Known gaps (review 2026-11-13; see PROGRESSION_PLAN.md for the batch that closes each)
+
+| Gap | Where it would live |
+| --- | --- |
+| Turn events fire on rewinds; no round/encounter recovery | `workflow/turn.mjs`, `automation/effect-services.mjs` |
+| Timed generic effects never expire; conditions only expire in combat | `workflow/trackers.mjs`, `workflow/conditions.mjs` |
+| Bruised/Weakened/Petrified damage numbers shown but not applied; Exhaustion not on damage dice | `rules/damage.mjs`, `rules/conditions.mjs` |
+| No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
+| Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
+| Incapacitated does not end concentration; upkeep auto-pays (no prompt) | `rules/turn-start.mjs` |
