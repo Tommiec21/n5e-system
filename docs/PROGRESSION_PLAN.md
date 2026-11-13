@@ -51,7 +51,7 @@ N5e-Context.md Section 12 holds the full text. This is the short form.
   - Identical Half/Double sources apply once; opposites cancel.
   - DR protects HP and CP independently, in the creature's chosen type order. Deflection is rolled DR.
   - Reaction timeout 60 s by default; 0 disables it.
-  - Remote requests need GM review until sender authentication exists.
+  - ~~Remote requests need GM review until sender authentication exists.~~ Superseded by King 2026-11-13: no GM approval on anything; routed requests execute on the GM client automatically.
   - Clan Feats removed; don't restore them.
 - **Attack model.**
   - Two attack kinds:
@@ -80,7 +80,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 
 | # | Batch | Scope | Closes | Depends | State | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| 0 | OPS1 user-reported bugs | GM approval policy (needs Q1 answer), ActorDelta duplicate items, missing embedded Kunai | R1–R3 | Q1 | blocked on Q1 | — |
+| 0 | OPS1 remove GM approval (priority one) + user-reported bugs | Remove the GM review dialog from every routed request (King 2026-11-13, Q1). Privileged work still runs on the active GM's client so players can affect what they don't own, but it executes immediately with no confirmation. Keep receipts, replay protection and payload validation. Remove the review UI and the "GM review mandatory" rule from code, settings and MULTIPLAYER.md. Then ActorDelta duplicate items and missing embedded Kunai | R1–R3 | — | ready, priority one; starts when King approves the next batch | — |
 | 1 | TURN1 turn engine | Forward-only turn/round events: one dispatcher replaces both `combatTurnChange` hooks and ignores rewinds and repeats. Per-period uses and pool recovery (turn, round, encounter). Upkeep prompt per the ruling | R4–R7 | — | ready | — |
 | 2 | EXPIRE1 effect expiry | Timed generic effects expire on turn boundaries in combat and on `updateWorldTime` outside it. Conditions' 1-minute default works outside combat | R8–R9 | TURN1 | ready after 1 | — |
 | 3 | DMG1 damage numbers | Apply Bruised (+4 taken), Weakened (−4/rank dealt), Petrified (resist all). Exhaustion −1 on damage and healing rolls. Falling/environment flag skips DR | R10–R12 | — | ready | — |
@@ -105,7 +105,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 No fixes were made in the review. Severity: **H** gives wrong results in play, **M** is missing enforcement, **L** is consistency or docs.
 
 **User-reported, still open (Codex ledger)**
-- R1 **H**. With multiplayer coordination on (the default), every player cast, attack, activity, resource spend and roll opens a GM review dialog (`socket.mjs` registerSocket → `DialogV2.confirm`). Owned actors are not exempt, because a socket sender cannot be authenticated. This needs a policy decision (Q1).
+- R1 **H**. With multiplayer coordination on (the default), every player cast, attack, activity, resource spend and roll opens a GM review dialog (`socket.mjs` registerSocket → `DialogV2.confirm`). Owned actors are not exempt, because a socket sender cannot be authenticated. King 2026-11-13: remove it entirely (OPS1, priority one).
 - R2 **H**. ActorDelta duplicate item report (unlinked tokens). Not yet investigated.
 - R3 **M**. Missing embedded Kunai item report. Not yet investigated.
 
@@ -160,10 +160,7 @@ No fixes were made in the review. Severity: **H** gives wrong results in play, *
 
 ## 6. Questions for the user (King)
 
-- Q1. GM approval policy for player actions on their own actors. Options:
-  - (a) Keep review for everything (current).
-  - (b) Auto-approve casts, attacks and rolls on actors the requesting user's character owns, and review only actions that touch other actors. Spoofing risk is accepted because the sender can't be authenticated.
-  - (c) Turn coordination off by default and use it only for cross-actor actions.
+- Q1. **Answered by King 2026-11-13:** remove GM approval on everything. Routed requests run on the GM's client without a review dialog. This is priority one in the next approved batch (OPS1).
 - Q2. Feature kinds: should Background Feature stay as a kind? Should general feats keep their categories (skill, taijutsu, ninjutsu) or become a kind?
 - Q3. Clash ties: what happens? The book only says contests are "tie = status quo".
 - Q4. Necrotic "halves HP regained until the end of the next turn" appears in CTX but not in the Ch8 text. Is it in or out?
