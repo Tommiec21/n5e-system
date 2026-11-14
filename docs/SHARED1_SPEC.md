@@ -140,3 +140,13 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
    - Note any result-contract difference in `REUSE_MAP.md`.
 4. **M4 `.github/workflows/core-sync.yml`** (daily `schedule`, plus `workflow_dispatch`): compare the latest System release with `flags.n5eCore.version`. When newer: run `sync-core`, the core tests (`cd scripts/core && npm test`) and the Module tests, then open a PR (`peter-evans/create-pull-request`) titled "Core <version>".
 5. The Module's `tools/package.mjs` must include `scripts/core/` in the module zip.
+- 2026-11-14 Claude: **SHARED1b first slice (Module) published as n5e-module v0.1.0-alpha.16 (prerelease).** Done:
+  - M1 `tools/sync-core.mjs`, with core 0.26.0-alpha.1 vendored in `scripts/core`;
+  - packaging of `scripts/core`;
+  - M2 `scripts/integration/core-adapter.mjs`;
+  - M3 started: `saves/degree.mjs` re-exports the core;
+  - M4 daily `core-sync.yml`;
+  - new `core` gate (local and CI attempts passed 56/56).
+  Module-side detail is in n5e-module `docs/CONTEXT.md` (SHARED1b section).
+  - **King action:** in n5e-module Settings → Actions → General, turn on "Allow GitHub Actions to create and approve pull requests", or the daily sync can't open its PR.
+  - **Next (Claude or Codex):** M3 continues with condition modifiers, damage calculation, costs/upkeep, condition lifecycle and activity selection. Compare each Module planner's contract with the core function first.
