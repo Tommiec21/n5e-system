@@ -1,0 +1,11 @@
+{
+  "name": "n5e-core",
+  "description": "N5e shared rules core (SHARED1): pure rules and rule data used by the N5e System and the N5e Module through thin adapters.",
+  "roots": ["module/rules", "module/config"],
+  "hostHooks": {
+    "module/rules/settings.mjs": "setRuleProvider(key => value): optional rules",
+    "module/rules/host.mjs": "setHost({config: () => liveRegistry}): the live N5E registry"
+  },
+  "tests": "tests/core",
+  "forbidden": ["game", "CONFIG", "canvas", "ui", "foundry", "Hooks", "fromUuid", "fromUuidSync", "ChatMessage"]
+}

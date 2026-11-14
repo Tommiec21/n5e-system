@@ -85,3 +85,9 @@ Each entry: what was done, the exact files, how it was checked, and the next ste
   - New `module/adapters/system.mjs` loads `rules-settings.mjs` (the rule provider) and sets the host config to `CONFIG.N5E`. It is the first import in `n5e.mjs`, and `tests/setup.mjs` now loads it.
   - Checked: `grep globalThis.(game|CONFIG|canvas|ui|foundry|Hooks|fromUuid) module/rules` finds nothing; lint and suite pass (362).
   - **Next:** F3 + F4. Write `core.json` (core = `module/rules/**` + `module/config/**`, plus public entry points) and `tools/check-core.mjs` (no host globals, no imports leaving the core), and add it to `npm run check`.
+- 2026-11-14 Claude: **F3 + F4 done.**
+  - New `core.json` at the repo root: name `n5e-core`, roots `module/rules` + `module/config`, host hooks (`rules/settings.mjs`, `rules/host.mjs`), tests folder `tests/core`, forbidden host names.
+  - New `tools/check-core.mjs`: `codeOnly(src)` strips comments and strings; `checkFile(file, src)` flags package or out-of-core imports (static and dynamic) and host globals, bare (`game.`, `CONFIG.`, `fromUuid(`) or through `globalThis`.
+  - `npm run check` now runs it after `tools/check.mjs`, so CI enforces it.
+  - Checked: 66 core files pass. Spot checks catch `game.settings`, `globalThis.CONFIG`, a `../workflow/` import, and ignore comments, strings and `obj.game`.
+  - **Next:** F6. Move the tests that import only core files into `tests/core/`, and add `npm run test:core`. Then F5: `tools/build-core.mjs` → `dist/n5e-core/` and attach `n5e-core.zip` in `release.yml`.

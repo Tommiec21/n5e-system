@@ -8,7 +8,7 @@
     "verify": "npm run lint && npm test && npm run check",
     "test": "node --import ./tests/setup.mjs --test \"tests/**/*.test.mjs\"",
     "lint": "eslint module n5e.mjs tools tests",
-    "check": "node tools/check.mjs",
+    "check": "node tools/check.mjs && node tools/check-core.mjs",
     "pack": "node tools/pack.mjs",
     "unpack": "node tools/unpack.mjs",
     "release": "node tools/release.mjs",
