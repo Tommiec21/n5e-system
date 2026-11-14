@@ -1,0 +1,45 @@
+# RES1 function spec: per-target resolution
+
+Status: **in progress (King: "Start again", 2026-11-14, continuing the plan).** Release target `0.19.0-alpha.1`.
+
+Plan row 11: one damage roll for many targets, automatic per-target save results, hit vs AC per target.
+
+Rules (KB 03 and 04):
+- One damage roll covers every target.
+- A single attack against several creatures is one roll compared to each AC; each hit counts as its own attack, and target-specific advantage, disadvantage and bonuses don't apply.
+- Saves are rolled by each target.
+
+Already in place before RES1:
+- Attack cards list each target with Hit / Miss / Critical against its AC (OPS1, `rules/parity.mjs attackTargetRows`, with the `attackRollVisibility` world rule).
+- With several targets, no target's facts are used for advantage.
+- The save button rolls one save per selected target.
+- Apply buttons can already apply to a fixed target (`flags.n5e.damage.targetUuid`).
+
+Missing (what RES1 adds): damage doesn't know which targets were hit or saved, so every Apply is manual on selected tokens.
+
+## Functions
+
+After each function, add a line to the progress log and push.
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| F1 | `targetOutcomes({attack, saves})` | `rules/resolution.mjs` (new, pure) | Per target `{uuid, name, outcome, mode}`. Attack: Hit or Critical → `full`, Miss or natural 1 → `none`. Save: failure (or critical failure) → `full`; success → `half` when the save says half on success, else `none` (four-tier: critical success → `none`). A target that was hit and also saved takes the save's mode. Targets with neither stay out. |
+| F2 | `rollWithSpec({source})` | `dice/roll.mjs` | Attack and save rolls made from a card's buttons store `flags.n5e.roll.source` (the card's message id). Save rolls also store `onSuccess` (`half` or `none`). |
+| F3 | Card buttons pass the source | `workflow/activity-buttons.mjs` | The attack and save buttons pass `source: message.id` and the save's `onSuccess` (new `data-on-success`). |
+| F4 | `linkedOutcomes(damageMessage)` | `workflow/resolution.mjs` (new) | Reads the damage card's origin card. Its attack is the origin itself if it is an attack card, else the latest attack roll whose `source` is the origin. Its saves are the latest save per creature with that `source`. Returns `targetOutcomes(...)`. |
+| F5 | Per-target rows on the damage card | `workflow/resolution.mjs`, `dice/roll.mjs renderParityParts` | Each viewer sees a row per linked target they may change (the GM sees all): name, outcome, and **Apply** (full or half) or "No damage". |
+| F6 | Per-target Apply | `workflow/apply-damage.mjs onApplyClick` | `data-n5e-apply` + `data-target`: applies to that creature through the normal path (coordinated reactions, Undo), the same as a fixed target. |
+| F7 | Live refresh | `workflow/resolution.mjs` hook | When a linked attack or save roll is created, damage cards from the same origin re-render, so rows appear as saves come in. |
+
+## Not in RES1
+
+The single combined action card (CARD1) and placing areas from cards.
+
+## Tests
+
+`tests/resolution.test.mjs`: outcomes for hits, misses, crits, natural 1; half / none on success; four-tier; hit plus save; linking from flags (pure part of F4).
+
+## Progress log
+
+- 2026-11-14 Claude: spec written; starting F1.
+- 2026-11-14 Claude: **F1 done.** New `rules/resolution.mjs`: `saveMode(degree, {onSuccess, fourTier})`, `targetOutcomes({attack, saves})`, plus `pickLinkedRolls(origin, linked)` (the pure selection step of F4: the origin attack card or the latest linked attack, and the latest save per creature). Next: F2 + F3 (store `source` and `onSuccess` on rolls).
