@@ -178,7 +178,9 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }],
     { abilityMod: spec.abilityMod, weapon: true, weaponId: weapon?.id, critExtra: spec.damage.critExtra })}</div></div>`;
   let natural = null;
-  const message = await rollWithSpec(actor, spec, { event, onResult: r => { natural = r.natural; },
+  // Single action card (CARD1): the attack roll is the card; its damage roll links back to it.
+  const card = (await import("./action-card.mjs")).cardFlag({ kind: "attack", actor, item: weapon });
+  const message = await rollWithSpec(actor, spec, { event, card, onResult: r => { natural = r.natural; },
     ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
   if ( !message ) return message;
   if ( actor.isOwner ) {
@@ -267,7 +269,8 @@ export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll
     const one = { ...spec, label: `${label}${n > 1 ? ` (${i + 1}/${n})` : ""}` };
     one.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons([{ formula, type: spec.damage.types[0] ?? "" }],
       { abilityMod: mod, weapon: true, weaponId: weapon?.id, pierce: s.pierce || 0, critExtra: spec.damage.critExtra })}</div></div>`;
-    last = await rollWithSpec(actor, one, { event, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
+    const card = (await import("./action-card.mjs")).cardFlag({ kind: "attack", actor, item: weapon });
+    last = await rollWithSpec(actor, one, { event, card, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     if ( !last ) return null;
     if ( weapon && spec.rollsAmmo ) await rollAmmo(weapon);
   }

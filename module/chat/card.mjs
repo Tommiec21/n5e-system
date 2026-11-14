@@ -63,18 +63,21 @@ export function itemCardData(item, { rank } = {}) {
 export async function postItemCard(item, options = {}) {
   const data = itemCardData(item, options);
   if ( options.spent ) data.stats.unshift({ label: "Spent", value: options.spent });
+  let card;
   if ( item.actor ) {
     const { effectiveActivities } = await import("../rules/activity-parse.mjs");
     const { activityButtons } = await import("../workflow/activity-buttons.mjs");
     const acts = effectiveActivities(item);
     data.acts = acts.length ? activityButtons(item.actor, item, acts) : "";
+    // Single action card (CARD1) for items with activities.
+    if ( acts.length ) card = (await import("../workflow/action-card.mjs")).cardFlag({ kind: "feature", actor: item.actor, item, activities: acts, rank: options.rank ?? null });
   }
   const content = await foundry.applications.handlebars.renderTemplate(CARD_TEMPLATE, data);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({
     speaker: ChatMessageCls.getSpeaker({ actor: item.actor }),
     content,
-    flags: { n5e: { itemUuid: item.uuid, rank: options.rank ?? null, actorUuid: item.actor?.uuid ?? null } }
+    flags: { n5e: { itemUuid: item.uuid, rank: options.rank ?? null, actorUuid: item.actor?.uuid ?? null, ...(card ? { card } : {}) } }
   });
 }
 

@@ -22,6 +22,8 @@ export const ruleGroups = {
 export const rules = {
   effectMacros: { group: "casting", type: "boolean", default: false, label: "Effect world Macro execution", hint: "Execute only saved bindings explicitly approved by the active GM. Trusted world Macros run with GM privileges; foreign scripts remain inert." },
   effectAppearanceProviders: { group: "casting", type: "boolean", default: true, label: "Effect token appearance providers", hint: "Reversible client-side effect visuals. Built-in filter and optional registered providers; no token data is overwritten." },
+  actionCard: { group: "casting", type: "boolean", default: true, label: "Single action card",
+    hint: "One card per attack, jutsu or feature: rolls made from it fill in its sections, with per-target results and Apply/Undo. Off: the older separate cards (existing messages keep their look)." },
   attackRollVisibility: { group: "casting", type: "choice", default: "none", label: "Attack results shown to players",
     choices: { all: "Hit/miss and target AC", hideAC: "Hit/miss only", none: "Nothing (GM only)" },
     hint: "Per-target results on attack cards, as dnd5e's Attack Roll Visibility. The GM always sees them." },

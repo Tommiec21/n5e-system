@@ -124,3 +124,11 @@ Still to confirm with the approval: the `actionCard` setting's default. Proposed
     - `sectionStates`.
   - Small fix in `workflow/apply-damage.mjs` `onApplyClick`: the damage message's uuid now travels as `rollTrace.sourceUuid`. Before, only the coordinated path set it, so "View damage roll" on ordinary apply cards had nothing to open.
   - Next: A4 (setting, card flags at the three entry points), A4b (`cardResult` intent).
+- 2026-11-14 Claude: **A4 done.**
+  - New world rule `actionCard` (casting group, default on).
+  - New `workflow/action-card.mjs`, with `cardFlag()`: card data, or undefined when the setting is off.
+  - **Card flags added at the entry points:**
+    - `postCastCard` (kind jutsu: area from `areaOf`, concentration from the plan, rank, cast discipline);
+    - `postItemCard` (kind feature, when the item has activities);
+    - `attackWithWeapon` and `strikeAttack` (kind attack: the attack roll message is the card, through a new `card` option on `rollWithSpec`).
+  - With the setting off, the flags and content are unchanged. Next: A4b `cardResult` intent.

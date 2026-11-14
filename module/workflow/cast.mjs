@@ -19,6 +19,7 @@ import { areaOf } from "../rules/area.mjs";
 import { withActorLock } from "./commands.mjs";
 import { rule } from "../rules-settings.mjs";
 import { castableDisciplines, castDisciplineOf } from "../rules/cast-discipline.mjs";
+import { cardFlag } from "./action-card.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 // {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
@@ -202,9 +203,12 @@ export async function postCastCard(actor, item, plan) {
     ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;
+  // Single action card (CARD1): this cast card collects the rolls made from its buttons.
+  const card = cardFlag({ kind: "jutsu", actor, item, activities, area: !!areaOf(j, { rank: plan.rank }),
+    concentration: !!plan.concentration, rank: plan.rank, discipline: castAs });
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,
-    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs } } } });
+    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs }, ...(card ? { card } : {}) } } });
 }
 
 export { RANKS };
