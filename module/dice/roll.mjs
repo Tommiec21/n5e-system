@@ -64,7 +64,14 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
 export async function rollD20(actor, type, key, options = {}) {
   const spec = rollSpec(actor, type, key);
   if ( !spec ) return null;
-  return rollWithSpec(actor, spec, { ...options, ...(options.targetActors ? { target: options.targetActors.length === 1 ? options.targetActors[0] : null } : {}) });
+  const message = await rollWithSpec(actor, spec, { ...options, ...(options.targetActors ? { target: options.targetActors.length === 1 ? options.targetActors[0] : null } : {}) });
+  // Skill actions against one target: passive, fixed DC or contest resolution (SKILL1).
+  if ( message && type === "skillAction" ) {
+    const targets = options.targetActors ?? Array.from(globalThis.game?.user?.targets ?? []).map(t => t.actor).filter(Boolean);
+    await import("../workflow/skill-actions.mjs").then(m => m.resolveSkillAction(actor, key, message, targets))
+      .catch(error => ui.notifications.warn(error.message));
+  }
+  return message;
 }
 
 /**
@@ -314,6 +321,11 @@ export function onRenderChatMessage(message, html) {
   addRollModeButtons(html);
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
+  for ( const btn of html.querySelectorAll("[data-n5e-contest], [data-n5e-skill-apply]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    import("../workflow/skill-actions.mjs").then(m => (btn.dataset.n5eContest ? m.onContestClick(message, btn, ev) : m.onSkillApplyClick(btn)))
+      .catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-terrain-save]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/environment.mjs").then(m => m.onTerrainSaveClick(btn, ev)).catch(error => ui.notifications.warn(error.message));
