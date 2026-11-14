@@ -1,6 +1,6 @@
 # NPC sheet review: dnd5e and PF2e against N5e's two NPC sheets
 
-Status: **review for King (2026-11-14). Nothing built. Proposed follow-up: NPC1c (below), needs a spec and approval.**
+Status: **review for King (2026-11-14). King: everything relevant that is missing goes into a batch. Items 1–11 are specified in `docs/NPC1C_SPEC.md` (awaiting approval).**
 
 Sources: dnd5e 6.1.0 (`applications/actor/npc-sheet.mjs`, `templates/actors/npc-*.hbs`, `embeds/npc-embed.hbs`, `data/actor/npc.mjs`); PF2e 8.7.0 (`actor/npc/sheet.ts`, `reset-batch.ts`, `skills-editor`); N5e 0.30.0-alpha.2 (tabbed NPC sheet, simple NPC sheet). N5e's sheets have not been opened in a running world.
 
