@@ -213,7 +213,7 @@ export async function spendWillOfFire(message, how) {
     return roll.toMessage({ speaker: ChatMessageCls.getSpeaker({ actor }),
       flavor: `<div class="n5e-roll-card ${result.crit ? "crit" : result.fumble ? "fumble" : ""}"><header><b>${esc(data.label)}</b>
         <span class="mode">Will of Fire reroll</span></header>${resolved.html}</div>`,
-      flags: { n5e: { roll: { ...data, natural: result.natural, degree: resolved.degree } } } });
+      flags: { n5e: { roll: { ...data, natural: result.natural, degree: resolved.degree, total: roll.total, rerollOf: message.id, ...(message.flags?.n5e?.card ? { source: message.id } : {}) } } } });
   }
   // Advantage after the fact: one more d20, keep the higher natural.
   const extraDie = await createN5eRoll("1d20").evaluate();
@@ -225,7 +225,7 @@ export async function spendWillOfFire(message, how) {
     flavor: `<div class="n5e-roll-card ${kept >= (data.threshold ?? 20) ? "crit" : ""}"><header><b>${esc(data.label)}</b>
       <span class="mode">Will of Fire advantage</span></header>
       <div class="note">First d20 ${data.natural}, second ${extraDie.total}: keeps ${kept}.</div>${resolved.html}</div>`,
-    flags: { n5e: { roll: { ...data, natural: kept, degree: resolved.degree } } } });
+    flags: { n5e: { roll: { ...data, natural: kept, degree: resolved.degree, total: total.total, rerollOf: message.id, ...(message.flags?.n5e?.card ? { source: message.id } : {}) } } } });
 }
 
 /**
@@ -331,7 +331,7 @@ export function onRenderChatMessage(message, html) {
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
   // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
   actionCardModule?.renderActionCard(message, html);
-  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });

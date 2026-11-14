@@ -7,10 +7,10 @@ const targets = [{ uuid: "A", name: "Ana", ac: 14 }, { uuid: "B", name: "Bo", ac
 const attackFlags = { roll: { kind: "attack", total: 16, natural: 9, threshold: 20, targets } };
 
 test("sections for each kind of action, in fixed order", () => {
-  assert.deepEqual(cardSections({ kind: "attack" }), ["attack", "damage"]);
+  assert.deepEqual(cardSections({ kind: "attack" }), ["attack", "damage", "reactions"]);
   assert.deepEqual(cardSections({ kind: "jutsu", activities: [{ type: "save" }, { type: "damage" }], area: true, concentration: true }),
-    ["area", "saves", "damage", "effects", "concentration"]);
-  assert.deepEqual(cardSections({ kind: "jutsu", activities: [{ type: "attack" }] }), ["attack", "damage"]);
+    ["area", "saves", "damage", "effects", "reactions", "concentration"]);
+  assert.deepEqual(cardSections({ kind: "jutsu", activities: [{ type: "attack" }] }), ["attack", "damage", "reactions"]);
   assert.deepEqual(cardSections({ kind: "feature", activities: [{ type: "heal" }] }), []);
 });
 

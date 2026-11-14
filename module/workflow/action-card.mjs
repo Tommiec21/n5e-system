@@ -157,6 +157,8 @@ const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage:
 const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
 const MODE_LABELS = { full: "Applied", half: "Applied half", double: "Applied double", heal: "Healed" };
 
+const wofButtons = (kind, uuid) => ["reroll", "advantage"].map(how =>
+  `<button type="button" data-n5e-card-wof="${kind}" data-how="${how}"${uuid ? ` data-target="${esc(uuid)}"` : ""}>Will of Fire: ${how === "reroll" ? "reroll" : "keep higher"}</button>`).join("");
 const parse = v => { try { return JSON.parse(v || "null") ?? []; } catch { return []; } };
 const hasPlayerOwner = actor => !!actor && (globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
 const saveLabel = d => `Roll ${globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""} save`.replace(/\s+/g, " ");
@@ -205,6 +207,12 @@ export function renderActionCard(message, html) {
     if ( mine && canDamage && !r.applied ) ["full", "half"].forEach(m =>
       controls.push(`<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`));
     if ( r.applied ) facts.push(MODE_LABELS[r.applied.mode] ?? "Applied");
+    // C1: the reaction the creature took against this damage.
+    if ( r.applied?.reaction ) facts.push(`${r.applied.reaction.label}${r.applied.reaction.reduction ? ` (−${r.applied.reaction.reduction})` : ""}${r.applied.reaction.multiplier !== 1 ? ` (×${r.applied.reaction.multiplier})` : ""}`);
+    // C2: Will of Fire on this creature's save (its owner).
+    if ( mine && r.saveMessage && (actor?.system?.willOfFire?.value ?? 0) > 0 ) controls.push(wofButtons("save", r.uuid));
+    // C3: the concentration check the damage called for (that creature's owner).
+    if ( mine && r.applied?.concentration ) controls.push(`<button type="button" data-n5e-card-concheck="${esc(r.uuid)}">Concentration check DC ${r.applied.concentration.dc}</button>`);
     // Undo (Q-CD4): the damage and the conditions/effects applied to this creature from the card.
     if ( mine && (r.applied || r.effectMessages.length) ) controls.push(`<button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`);
     return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">${esc(facts.join(" · "))}</span>${controls.join("")}</div>`;
@@ -212,7 +220,17 @@ export function renderActionCard(message, html) {
   const box = document.createElement("div");
   box.className = "n5e-action-card";
   box.dataset.n5eActionCard = "1";
+  // C1/C2: attack-level controls for the caster's owner: Will of Fire on the attack, successful-hit reactions.
+  const caster = globalThis.fromUuidSync?.(card.actorUuid);
+  const attackControls = [];
+  if ( results.attack && results.attack.messageId !== message.id && caster?.isOwner && (caster.system?.willOfFire?.value ?? 0) > 0 ) attackControls.push(wofButtons("attack", ""));
+  if ( results.attack && results.attack.messageId !== message.id ) attackControls.push('<button type="button" data-n5e-card-hit="1">Successful hit: reactions</button>');
+  // C3: is the caster still concentrating on this jutsu?
+  const item = globalThis.fromUuidSync?.(card.itemUuid);
+  const concLine = card.sections.includes("concentration") && caster && item
+    ? `<div class="note">Concentration: ${(caster.system?.combat?.concentrating ?? []).includes(item.id) ? `${esc(caster.name)} is concentrating on ${esc(item.name)}` : "ended"}${results.effects ? "; effects applied from this card end with it" : ""}.</div>` : "";
   box.innerHTML = `<div class="n5e-card-sections">${card.sections.map(s => `<span class="n5e-card-section ${states[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
+    ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}
     ${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
     ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
   (html.querySelector(".message-content") ?? html).append(box);
@@ -308,6 +326,32 @@ export async function onActionCardClick(message, btn, event) {
   if ( d.n5eCardUndo ) {
     btn.disabled = true;
     return undoTarget(message, results, d.n5eCardUndo, event);
+  }
+  if ( d.n5eCardWof ) {
+    // C2: spend Will of Fire on the recorded roll; the reroll replaces it on the card.
+    const id = d.n5eCardWof === "attack" ? results.attack?.messageId : results.saves?.[d.target]?.messageId;
+    const roll = id ? messages()?.get(id) : null;
+    if ( !roll ) return ui.notifications.info("Nothing to reroll.");
+    btn.disabled = true;
+    const { spendWillOfFire } = await import("../dice/roll.mjs");
+    return spendWillOfFire(roll, d.how === "advantage" ? "advantage" : "reroll");
+  }
+  if ( d.n5eCardHit ) {
+    // C1: successful-hit reactions, through the attack roll's own button.
+    const roll = results.attack ? messages()?.get(results.attack.messageId) : null;
+    if ( !roll ) return ui.notifications.info("Roll the attack first.");
+    const { onApplyClick } = await import("./apply-damage.mjs");
+    return onApplyClick(roll, { dataset: { n5eHit: "1" } }, event);
+  }
+  if ( d.n5eCardConcheck ) {
+    // C3: the concentration check the damage called for, through the damage summary's own button.
+    const applied = results.applied?.[d.n5eCardConcheck];
+    const summary = applied ? messages()?.get(applied.messageId) : null;
+    const conc = applied?.concentration;
+    if ( !summary || !conc ) return null;
+    btn.disabled = true;
+    const { onApplyClick } = await import("./apply-damage.mjs");
+    return onApplyClick(summary, { dataset: { n5eConcheck: String(conc.dc), actor: d.n5eCardConcheck, jutsu: JSON.stringify(conc.jutsu) } }, event);
   }
   if ( !target ) return ui.notifications.warn("That creature is no longer available.");
   const acts = cardActivities(message);

@@ -196,3 +196,20 @@ Published `v0.27.0-alpha.2`. B1–B3 were built as specified, and Undo now cover
   - An effect applied to a creature the caster's user doesn't own goes out as the existing offer card and isn't recorded on the action card.
   - A player who may apply a condition to their own creature can infer a failed save from the Apply button, even when DCs are hidden. dnd5e's save cards behave the same way.
   - Not tested in Foundry (no live testing).
+- 2026-11-14 Claude: **CARD1c approved by King ("Yes"); C1–C3 done. C4 (Undo of damage and effects) already shipped in CARD1b.**
+  - **Rules:**
+    - a reactions section wherever there is damage;
+    - Will of Fire rerolls (`roll.rerollOf`) replace the attack or save they reroll;
+    - applied results carry the damage reaction (label, rolled reduction, multiplier) and the concentration check (DC and jutsu);
+    - reactions and concentration section states.
+  - **C1:**
+    - each row shows the reaction a creature took against the damage, from the application trace;
+    - the card has "Successful hit: reactions", which goes through the attack roll's own button, except on weapon-attack cards, where the roll already has it.
+  - **C2:**
+    - Will of Fire "reroll" / "keep higher" on the card for the attack (caster's owner) and on each save (that creature's owner);
+    - `spendWillOfFire` marks `rerollOf`, and a reroll of a weapon-attack card links back to it.
+  - **C3:**
+    - the card says whether the caster still concentrates on the jutsu;
+    - rows offer the concentration check the damage called for (that creature's owner), through the damage summary's own button;
+    - `applyToSelected` records the check in its trace.
+  - Next: tests.

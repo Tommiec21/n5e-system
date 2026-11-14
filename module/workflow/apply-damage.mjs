@@ -136,6 +136,8 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const concBtn = conc ? `<button type="button" data-n5e-concheck="${conc.dc}" data-actor="${actor.uuid}"
       data-jutsu='${esc(JSON.stringify(conc.atRisk.map(j => j.id)))}'>Concentration check DC ${conc.dc} (${esc(conc.atRisk.map(j => j.name).join(", "))})</button>` : "";
     const trace = damageApplicationTrace(actor, data, mode, plan, before, reaction);
+    // The concentration check this damage calls for, so an action card can offer it (CARD1c).
+    if ( conc ) trace.concentration = { dc: conc.dc, jutsu: conc.atRisk.map(j => j.id), names: conc.atRisk.map(j => j.name) };
     applications.push(trace);
     const taken = [plan.health ? `${plan.health} damage${plan.tempHpLost ? ` (${plan.tempHpLost} to temp HP)` : ""}` : "",
       plan.chakra ? `${plan.chakra} Chakra damage${plan.tempCpLost ? ` (${plan.tempCpLost} to temp CP)` : ""}` : ""].filter(Boolean).join(", ") || "no damage";

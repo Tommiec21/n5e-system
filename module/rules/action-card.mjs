@@ -36,7 +36,8 @@ export function cardSections({ kind, activities = [], area = false, concentratio
     saves: types.has("save"),
     damage: kind === "attack" || types.has("damage") || types.has("attack") || types.has("strike"),
     effects: types.has("effect") || types.has("save"),
-    reactions: false,
+    // CARD1c: reactions to the hit or the damage are shown wherever damage is.
+    reactions: kind === "attack" || types.has("damage") || types.has("attack") || types.has("strike"),
     concentration: !!concentration
   };
   return SECTION_ORDER.filter(s => has[s]);
@@ -53,10 +54,10 @@ export function resultsFromLinked(flags = {}, messageId = "") {
   const roll = flags.roll;
   if ( roll?.kind === "attack" ) {
     out.push({ section: "attack", result: { total: roll.total, natural: roll.natural, threshold: roll.threshold ?? 20,
-      targets: list(roll.targets), messageId } });
+      targets: list(roll.targets), messageId, replaces: roll.rerollOf ?? null } });
   } else if ( roll?.kind === "save" && roll.dc != null && roll.actorUuid ) {
     out.push({ section: "saves", targetUuid: roll.actorUuid, result: { degree: roll.degree, fourTier: !!roll.fourTier,
-      onSuccess: roll.onSuccess ?? "none", name: roll.name ?? "", messageId } });
+      onSuccess: roll.onSuccess ?? "none", name: roll.name ?? "", messageId, replaces: roll.rerollOf ?? null } });
   }
   const damage = flags.damage;
   if ( damage ) out.push({ section: "damage", result: { total: damage.total, crit: !!damage.crit, messageId } });
@@ -64,7 +65,10 @@ export function resultsFromLinked(flags = {}, messageId = "") {
   if ( applied ) {
     for ( const r of list(applied.recipients) ) {
       const uuid = r?.actorUuid ?? r?.targetUuid ?? r?.uuid;
-      if ( uuid ) out.push({ section: "applied", targetUuid: uuid, result: { mode: applied.mode, messageId, undone: !!flags.undone } });
+      if ( uuid ) out.push({ section: "applied", targetUuid: uuid, result: { mode: applied.mode, messageId, undone: !!flags.undone,
+        // CARD1c: the damage reaction the creature took (Deflection, Uncanny Dodge...) and its concentration check.
+        reaction: r.reaction ? { label: r.reaction, reduction: r.rolledReduction ?? 0, multiplier: r.reactionMultiplier ?? 1 } : null,
+        concentration: r.concentration ?? null } });
     }
   }
   const effects = flags.cardEffects;
@@ -97,6 +101,8 @@ export function addCardResult(card, { section, targetUuid = null, result } = {})
     if ( !sections.includes(section) ) throw new Error(`This card has no ${section} section.`);
     if ( results[section] ) {
       if ( results[section].messageId === result?.messageId ) return results;
+      // A Will of Fire reroll replaces the roll it rerolled.
+      if ( result?.replaces && results[section].messageId === result.replaces ) { results[section] = result; return results; }
       throw new Error(`This card's ${section} is already rolled.`);
     }
     results[section] = result;
@@ -123,6 +129,7 @@ export function addCardResult(card, { section, targetUuid = null, result } = {})
       if ( section === "applied" && result?.undone && !prior.undone ) bucket[targetUuid] = { ...prior, undone: true };
       return results;
     }
+    if ( prior && section === "saves" && result?.replaces && prior.messageId === result.replaces ) { bucket[targetUuid] = result; return results; }
     if ( prior && !(section === "applied" && prior.undone) ) throw new Error("That target's result is already recorded.");
     bucket[targetUuid] = result;
     return results;
@@ -175,7 +182,9 @@ export function cardTargetRows(card, results = card?.results ?? {}, { visibility
       // Conditions on a failed save; known to whoever may change the creature (they apply them).
       saveFailed: !!save && save.degree < 2,
       share: hidden ? null : share,
-      applied: applied && !applied.undone ? { mode: applied.mode, messageId: applied.messageId } : null,
+      applied: applied && !applied.undone ? { mode: applied.mode, messageId: applied.messageId, reaction: applied.reaction ?? null,
+        concentration: applied.concentration ?? null } : null,
+      saveMessage: save?.messageId ?? null,
       effects: effects.flatMap(e => e.effects.map(x => x.label)),
       effectMessages: effects.map(e => e.messageId)
     };
@@ -198,6 +207,8 @@ export function sectionStates(card, results = card?.results ?? {}) {
     else if ( s === "damage" ) states[s] = results.damage ? "done" : sections.includes("attack") && !results.attack ? "waiting" : "ready";
     else if ( s === "saves" ) states[s] = targets.length && targets.every(t => results.saves?.[t.uuid]) ? "done" : "ready";
     else if ( s === "area" ) states[s] = card.areaPlaced ? "done" : "ready";
+    else if ( s === "reactions" ) states[s] = Object.values(results.applied ?? {}).some(a => a?.reaction && !a.undone) ? "done" : "ready";
+    else if ( s === "concentration" ) states[s] = card.concentrationEnded ? "done" : "ready";
     else if ( s === "effects" ) states[s] = Object.values(results.effects ?? {}).some(l => list(l).some(e => !e.undone)) ? "done" : "ready";
     else states[s] = "ready";
   }
