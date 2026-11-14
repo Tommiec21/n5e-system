@@ -57,3 +57,4 @@ After each function, add a line to the progress log and push.
   - `chooseReaction` returns nothing while Surprised and not done. Opportunity Attack watchers count that as a used Reaction (`surpriseBlocksReaction`).
   - Movement isn't tracked as economy, so "no move" is the turn-card warning only.
   - Suite green. Next: F8 (Dodge at speed 0), then tests.
+- 2026-11-14 Claude: **F8 done.** `rules/advantage.mjs`: Dodging gives nothing while Grappled or Restrained, as well as while incapacitated (`dodgeLost`). Applies to both attack disadvantage and the Dex-save advantage. Suite green. Next: tests (`tests/positioning.test.mjs`), then release 0.20.0-alpha.1.
