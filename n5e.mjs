@@ -154,6 +154,8 @@ registerTurnHooks();
 registerPartyOverview();
 // Per-target rows on damage cards (RES1).
 void dice.registerResolution().catch(error => console.error("n5e | resolution", error));
+// Opportunity Attack reminders (POS1).
+void import("./module/workflow/positioning.mjs").then(m => m.registerPositioningHooks());
 // Jutsu areas: concentration areas leave the map when concentration ends (workflow/areas.mjs).
 registerAreaHooks();
 // Compendium Browser buttons in the Compendium and Items sidebars (applications/browser/).

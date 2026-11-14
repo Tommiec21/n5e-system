@@ -156,7 +156,7 @@ export function attackGeometry(actor, targetToken) {
  * buttons, the Action (or Bonus Action) marked used, the Ammunition Die on thrown and ranged attacks,
  * and Volatile backfires (the weapon jams until an Action unjams it).
  * @param {object} [o]
- * @param {string} [o.mode]         "thrown", "twoHanded", "bonus" or "light" from the Combat tab entry
+ * @param {string} [o.mode]         "thrown", "twoHanded", "bonus", "light" (Combat tab) or "opportunity" (Reaction, POS1)
  */
 export async function attackWithWeapon(actor, weapon = null, { event, targetActors, mode = "" } = {}) {
   if ( isUnarmedStrike(weapon) ) weapon = null;
@@ -169,7 +169,8 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
     const block = lightAttackBlock({ inCombat: inActiveCombat(actor), economy: actor.flags?.n5e?.economy ?? {} });
     if ( block ) return ui.notifications.warn(block);
   }
-  const geometry = attackGeometry(actor, targets.length === 1 ? targets[0] : null);
+  // An Opportunity Attack happens before the target leaves reach: no range check from where it ended.
+  const geometry = mode === "opportunity" ? { distance: null, closeHostiles: 0 } : attackGeometry(actor, targets.length === 1 ? targets[0] : null);
   const spec = weaponAttackSpec(actor, weapon, { mode: mode === "thrown" ? "thrown" : "", twoHanded: mode === "twoHanded",
     bonusAction: mode === "bonus", light: mode === "light", ...geometry });
   if ( spec.refuse ) return ui.notifications.warn(spec.refuse);
@@ -185,6 +186,7 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
     // Light extra attack itself (no action of its own).
     const used = mode === "bonus" ? { "flags.n5e.economy.bonus": true }
       : mode === "light" ? { "flags.n5e.economy.lightAttack": true }
+        : mode === "opportunity" ? { "flags.n5e.economy.reaction": true }
         : { "flags.n5e.economy.action": true, "flags.n5e.economy.attackAction": true };
     await actor.update({ ...used, "flags.n5e.economy.attackOrJutsu": true });
   }
@@ -197,6 +199,9 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
     return message;
   }
   if ( weapon && spec.rollsAmmo ) await rollAmmo(weapon);
+  // Engaged (POS1): a melee attack against one creature engages both.
+  const single = targetActors?.length === 1 ? targetActors[0] : targets.length === 1 ? targets[0].actor : null;
+  if ( spec.mode === "melee" && single ) await import("./positioning.mjs").then(m => m.recordEngagement(actor, single));
   return message;
 }
 

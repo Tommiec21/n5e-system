@@ -114,6 +114,8 @@ export function actionCardData(kind, key, actor) {
 export async function postActionCard(actor, kind, key) {
   const data = actionCardData(kind, key, actor);
   if ( !data ) return null;
+  // Disengage and Dodge take effect when used (POS1).
+  if ( kind === "core" && ["disengage", "dodge"].includes(key) ) await import("../workflow/positioning.mjs").then(m => m.onCoreAction(actor, key));
   const content = await foundry.applications.handlebars.renderTemplate(CARD_TEMPLATE, data);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,

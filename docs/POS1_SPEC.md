@@ -41,3 +41,12 @@ After each function, add a line to the progress log and push.
   - `creature.mjs` adds the highest cover to `system.ac` (a breakdown part) and to the Dex save, and records `system.cover`.
   - The suite is green after adding the rules text that the enrichers test requires. Next: F2 (Total cover refuses attacks).
 - 2026-11-14 Claude: **F2 done.** `rollWithSpec` refuses any attack roll whose single target or user targets include a creature with Total cover: it warns and returns null before rolling. That covers weapon attacks, jutsu attack buttons and strikes. Suite green. Next: F3/F4 (Opportunity Attack reminder) and F5 (Disengage flag).
+- 2026-11-14 Claude: **F3–F6 done.**
+  - New `workflow/positioning.mjs`:
+    - `meleeReach(actor)`: the longest reach and the weapon that has it, else unarmed 5 ft.
+    - `onMoveForOpportunity` (active GM, `moveToken`, in combat): measures each hostile combatant's distance to the mover's start and end. `opportunityReminders` skips Disengaged movers, teleport and forced moves, used Reactions, incapacitated, Surprised and Blinded watchers. Provoked creatures' owners and the GM get a whispered card.
+    - `onOpportunityClick`: the owner makes the attack with `mode: "opportunity"`. That spends the Reaction and skips the range check, since the attack happens before the target leaves.
+    - `onCoreAction`: the Disengage card spends the Action and sets `flags.n5e.economy.disengaged`, reset at turn start. The Dodge card spends the Action and turns on Dodging.
+    - `recordEngagement` / `engagedWith`: a melee attack against a single target writes `flags.n5e.engaged.<otherId> = round` on both creatures the user owns.
+  - `registerPositioningHooks()` is called from `n5e.mjs`. The `[data-n5e-oa]` button is bound in `onRenderChatMessage`.
+  - Suite green. Next: F7 (Surprised) and F8 (Dodge at speed 0).
