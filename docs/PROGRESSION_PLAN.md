@@ -98,7 +98,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 | 13 | CLASH1 | Clash contested workflow, rank bonus, best of 3, elemental advantage (Q3) | — | RES1 | Tier 2 | — |
 | 14 | ENV1 | Hostile terrain as Region behaviours, falling, suffocation | — | TURN1 | ENV1a published v0.21.0-alpha.1 (`docs/ENV1_SPEC.md`), **shipped without prior approval, awaiting King's review**; falling waits on Q-C11 | Claude 2026-11-14 |
 | 15 | SKILL1 | Executable skill actions (Grapple, Shove, Hide/Search, Stabilize...) | — | ADV1 | published v0.22.0-alpha.1 (`docs/SKILL1_SPEC.md`), **shipped without prior approval, awaiting King's review**; ability DCs wait on Q-S1 | Claude 2026-11-14 |
-| 16 | GEN1 | Genjutsu stimuli immunity, Unaware, sense-based targeting | — | ADV1 | waits on Q-G1: does Truesight make a creature immune to a Visual-only Genjutsu (KB 04 says yes, KB 10 says only Blindness)? | — |
+| 16 | GEN1 | Genjutsu stimuli immunity, Unaware, sense-based targeting | — | ADV1 | Q-G1 answered (King 2026-11-14: Truesight counts, as KB 04 says); spec needs King's approval | — |
 | 17 | SHARED1 | Extract `module/rules` into the shared core; System adapter; Module adapter against dnd5e 5.3.3; CI propagation | — | Tier 1 | after Tier 1 | — |
 | 18+ | Tier 3 | Rule-element expansion, stacking policy, Will of Fire spends, ailments, item mechanics (charges, ammo, scrolls, Fortified), interception/constructs/dispels, table procedures, NPC feature kinds with the Bingo Book | — | — | later | — |
 
@@ -222,3 +222,18 @@ Reactions offered to an NPC's owner, Clash, Deflection and DR order prompts have
 - Q6. **Answered by King 2026-11-13:** out of combat they end immediately, unless applied manually (dragged effect, sheet, GM tools). Published 0.15.0-alpha.3.
 - Q7. **Taken as approved (King said "Start" on the spec):** keywords are stored as text `key` / `key:value`.
 - Q8. Clan stance categories: Claude proposes the mapping for approval, or King provides it?
+
+## King's answers, 2026-11-14
+
+- **Q3, Clash ties.** Answered in Jiraiya's Jutsu Compendium, "Clashing Jutsu Examples":
+  - A **Draw** dispels both jutsu, and no one suffers any effects.
+  - If both clashers use features that make them win automatically, the clash is a Draw.
+  - The winner applies its jutsu's effects; the loser's jutsu is dispelled and the loser gains 1 Concussed and Dazed.
+  - Two jutsu of B-Rank or higher clash best of 3.
+  - +1 Mastery rank to the check for each rank higher.
+  - Elemental Advantage: Fire > Wind > Lightning > Earth > Water > Fire. The superior element rolls at advantage.
+- **Q-C11, falling.** Option A: damage only if you fall farther than your Str score in feet (or your max high-jump height), 1d6 bludgeoning per 10 ft, max 100d6, land Prone unless you avoid the damage. DR doesn't reduce it.
+- **Q-S1, ability DC.** Shinobi Handbook Chapter 6, "Standard DCs": the target's named statistic or bonus + 10. Level DC = level + 10, Strength Save DC = Str save bonus + 10, Athletics DC = Athletics bonus + 10. So "Strength DC" = the Strength check bonus + 10, and "Wisdom DC" = the Wisdom check bonus + 10.
+- **Q-G1, Genjutsu Visual stimulus.** Truesight counts: Blindness or Truesight makes a creature immune to a Visual-only Genjutsu.
+
+Each unblocked batch (CLASH1, ENV1b falling, SKILL1b ability DCs, GEN1) needs its spec approved by King before building.

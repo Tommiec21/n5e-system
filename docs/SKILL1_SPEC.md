@@ -31,6 +31,8 @@ After each function, add a line to the progress log and push.
 
 - **Q-S1. Ability DC.** Shove is "Athletics vs the target's Strength DC" and Request is "vs the target's Wisdom DC". The book doesn't define a creature's ability DC. Should it be 8 + proficiency + that ability's modifier, the passive ability check (10 + modifier), or something else?
 
+**Q-S1 answered (King 2026-11-14):** the Standard DC (Shinobi Handbook Chapter 6) is the target's named statistic + 10, so Strength DC = the Strength check bonus + 10.
+
 ## Progress log
 
 - 2026-11-14 Claude: **F1–F3 done.**

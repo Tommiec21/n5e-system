@@ -31,6 +31,8 @@ After each function, add a line to the progress log and push.
   - (b) Environment section: 1d6 per 10 ft from any height, max 50d6, Prone, and you fall 500 ft per round.
   Which one applies, or a mix (for example (a)'s threshold with (b)'s cap and fall speed)? Both agree DR doesn't reduce it.
 
+**Q-C11 answered (King 2026-11-14): Option A.** Threshold = Str score (or max high-jump height), 1d6 per 10 ft, max 100d6, Prone; DR doesn't reduce it.
+
 ## Progress log
 
 - 2026-11-14 Claude: **F1–F4 done** (written before this file):
