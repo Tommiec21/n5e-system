@@ -85,7 +85,6 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| Incapacitated does not end concentration | `rules/turn-start.mjs` |
 
 # Multiplayer parity (0.14.0-alpha.1–2, OPS1)
 
@@ -137,3 +136,11 @@
 | Conditions, components, ability requirement and rank cap block casting | `rules/cast-checks.mjs`, `workflow/cast-plan.mjs` |
 | Shocked: one attack or one jutsu per turn | `rules/cast-checks.mjs`, `workflow/attack.mjs shockedBlock`, economy `attackOrJutsu` |
 | Sheet roll-mode toggle (until switched off) and per-roll Adv/Dis buttons | `applications/actor/character-sheet.mjs`, `dice/advantaged.mjs addSheetToggle`, `dice/roll.mjs addRollModeButtons` |
+
+# Concentration (0.15.0-alpha.9, CONC1)
+
+| Rule | Code |
+| --- | --- |
+| Incapacitation ends all concentration | `rules/concentration.mjs`, `workflow/concentration.mjs checkConcentration` |
+| Effects of concentration jutsu end with the concentration | `workflow/trackers.mjs` (`dependentOn`), `workflow/effect-application.mjs removeDependents` |
+| Ready a jutsu: pay and hold with concentration, release with the Reaction, lost at the next turn start or when concentration breaks | `workflow/cast-plan.mjs`, `workflow/cast.mjs`, `workflow/concentration.mjs` |

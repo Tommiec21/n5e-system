@@ -1,3 +1,13 @@
+## 0.15.0-alpha.9 — Concentration (CONC1)
+
+- An incapacitated creature loses all concentration at once (Incapacitated, Stunned, Unconscious, Dying, Dead, Petrified). A card lists what ended. The jutsu's areas, summons and dependent effects end with it.
+- Effects from a concentration jutsu now end when that concentration ends, including effects placed directly on owned creatures (activity effects, Amps, Branded), not only those applied from Apply cards.
+- **Ready a jutsu (KB 03).**
+  - The cast dialog offers "Ready it" for 1-Action jutsu, with an optional trigger. The chakra is paid and held with concentration, and a Readied card is posted.
+  - **Release (Reaction)** on that card spends the Reaction and posts the normal cast card.
+  - If the concentration breaks, or the jutsu isn't released before the creature's next turn starts, it is lost and the chakra stays spent.
+  - A readied jutsu has no upkeep.
+
 ## 0.15.0-alpha.8 — Roll modes per group in the Effects tab (King 2026-11-13)
 
 - The sheet's Advantage toggle moved from the header to a "Roll modes" section at the top of each character and NPC sheet's Effects tab.

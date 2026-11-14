@@ -31,6 +31,7 @@ import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from 
 import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
 import { recoverCombatUses } from "./recovery.mjs";
 import { expireInCombat, expireEffects } from "./expiry.mjs";
+import { expireReadied } from "./concentration.mjs";
 import { beginUpkeep, finishUpkeep, renderUpkeep } from "./upkeep.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 
@@ -63,6 +64,8 @@ export async function turnStartPipeline(combat, combatant) {
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   if ( plan.focusGained ) lines.push("Flow: +1 Focus");
   if ( recovered.length ) lines.push(`Recovered: ${esc(recovered.join(", "))}`);
+  const lostReady = await expireReadied(actor);
+  if ( lostReady.length ) lines.push(`<span class="warn">Readied ${esc(lostReady.join(", "))} lost (not released before this turn)</span>`);
   lines.push(...await beginUpkeep(actor, combat));
   for ( const id of actor.system.combat?.concentrating ?? [] ) {
     if ( actor.flags?.n5e?.upkeepPending?.ids?.includes(id) ) continue;

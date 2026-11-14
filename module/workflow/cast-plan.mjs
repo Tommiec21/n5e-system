@@ -87,7 +87,10 @@ export function castPlan(actor, item, sel = {}) {
 
   // Concentration.
   const concentrating = list(sys.combat?.concentrating);
-  const isConc = !!j.duration?.concentration;
+  // Ready a jutsu (KB 03): 1-Action casting time; chakra is paid and held; concentrate until released.
+  const ready = sel.ready ? { trigger: String(sel.ready.trigger ?? "").slice(0, 200) } : null;
+  if ( ready && j.activation?.type !== "action" ) problems.push("Only a jutsu with a casting time of 1 Action can be readied");
+  const isConc = !!j.duration?.concentration || !!ready;
   let concentration = null;
   if ( isConc ) {
     const max = sys.concentration?.max ?? 2;
@@ -110,6 +113,7 @@ export function castPlan(actor, item, sel = {}) {
     update[`flags.n5e.concentrationPaid.${item.id}`] = spendsChakra ? cost.cost : 0;
     if ( concentration.ending ) update[`flags.n5e.concentrationPaid.-=${concentration.ending}`] = null;
   }
+  if ( ready ) update[`flags.n5e.readied.${item.id}`] = { trigger: ready.trigger, rank, cost: cost.cost, readiedAt: now };
   Object.assign(update, castUpdates(actor, item) ?? {});
   for ( const [k, v] of Object.entries(fx.update) ) update[k] = v === "@now" ? now : v;
   const pyro = pyroclasmGain(actor, item, now);
@@ -138,7 +142,7 @@ export function castPlan(actor, item, sel = {}) {
     choices: cost.choices ?? {}, cpAfter: spendsChakra ? Math.max(0, cp - cost.cost) : cp,
     pools, options: [...used.map(o => ({ id: o.id, name: o.name })), ...fx.names.map(name => ({ id: "", name }))], concentration,
     featureOptions: available, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes,
-    pyroclasm: !!pyro,
+    pyroclasm: !!pyro, ready,
     problems, warnings, ok: problems.length === 0, update
   };
 }

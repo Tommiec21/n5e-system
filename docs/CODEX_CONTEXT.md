@@ -289,3 +289,6 @@ Owner Claude; ownership released. Published v0.15.0-alpha.7. Pre-cast checks are
 
 ## Roll-mode tweak — Claude, 2026-11-13
 King: the sheet toggle has per-group settings (D20, Damage, Healing, Other) and lives in the Effects tab. Published v0.15.0-alpha.8. `flags.n5e.rollMode` is now an object keyed by group. Use `dice/advantaged.mjs rollGroup/sheetRollMode/addSheetToggle(sources, actor, group)`. Tests: 311 pass, 2 skipped.
+
+## CONC1 — Claude, 2026-11-13
+Owner Claude; ownership released. Published v0.15.0-alpha.9. Incapacitation ends concentration (`workflow/concentration.mjs checkConcentration`, active GM, hooks). Effects of concentration jutsu carry `dependentOn`. Ready a jutsu: `sel.ready` in `castPlan`, a Readied card, Release with the Reaction, lost at turn start or when concentration breaks. Spec, limits and results: `docs/CONC1_SPEC.md`. Tests: 314 pass, 2 skipped, on the first attempt. Tier 1 is complete. Next per plan: DATA1 (waits on Q2, feature kinds), or King's choice.

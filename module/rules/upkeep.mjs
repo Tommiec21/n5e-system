@@ -11,7 +11,9 @@ const kw = item => (item.system?.keywords instanceof Set ? item.system.keywords 
 export function upkeepOptions(actor) {
   const paid = actor.flags?.n5e?.concentrationPaid ?? {};
   const jutsu = [];
+  const readied = new Set(Object.keys(actor.flags?.n5e?.readied ?? {}));
   for ( const id of list(actor.system?.combat?.concentrating) ) {
+    if ( readied.has(id) ) continue;
     const item = actor.items?.get?.(id) ?? list(actor.items).find(i => i.id === id);
     if ( !item ) continue;
     const cost = kw(item).has("efficient") ? 0 : Math.floor((paid[id] ?? item.system?.live?.cost ?? 0) / 2);

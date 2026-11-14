@@ -33,10 +33,11 @@ import { abilities } from "../config/core.mjs";
  * Put effects on a creature: directly when this user owns it, otherwise on an Apply card for its
  * owner (dnd5e/PF2e parity: the GM applies effects to NPCs). Resolves true when applied now.
  */
-async function requestEffects({ actorUuid, effects }, source = null) {
+async function requestEffects({ actorUuid, effects }, source = null, item = null) {
   const actor = await fromUuid(actorUuid);
   if ( !actor ) return false;
-  const result = await applyOrOffer(source, [actor], effects);
+  const concentrationItemId = item?.system?.duration?.concentration ? item.id : null;
+  const result = await applyOrOffer(source, [actor], effects, { concentrationItemId });
   return result.applied.length > 0;
 }
 
@@ -136,7 +137,7 @@ export async function onTrackerClick(message, btn, { targetActors = null } = {})
     if ( !targets.length ) return ui.notifications.info("Target the creatures to Brand (T over a token).");
     for ( const t of targets ) {
       await requestEffects({ actorUuid: t.uuid, effects: [trackerEffectData("branded", defs.branded,
-        { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime })] }, actor);
+        { sourceUuid: actor.uuid, sourceName: actor.name, now: nowTurn(), worldTime: game.time.worldTime })] }, actor, item);
     }
     return say(actor, `${esc(targets.map(t => t.name).join(", "))}: ${esc(defs.branded.label)}`);
   }
@@ -150,7 +151,7 @@ export async function onTrackerClick(message, btn, { targetActors = null } = {})
       await requestEffects({ actorUuid: t.uuid, effects: [{ name: defs.amp.label, type: "amp", img: item.img,
         origin: item.uuid, description: `<p>From ${esc(actor.name)}'s ${esc(item.name)}: see the jutsu for its bonus.</p>`,
         system: { ampType: defs.amp.ampType, sourceUuid: actor.uuid },
-        duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null } }] }, actor);
+        duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null } }] }, actor, item);
     }
     return say(actor, `${esc(who.map(t => t.name).join(", "))}: ${esc(defs.amp.label)}`);
   }
@@ -374,7 +375,9 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
     duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
-      state: eff.state || null, exclusive: eff.exclusive || null } } };
+      state: eff.state || null, exclusive: eff.exclusive || null,
+      // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
+      dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
   if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
   const notes = [];
   for ( const t of targets ) {
@@ -386,7 +389,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
     if ( changes.length || eff.expires || eff.state || eff.ampType ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
-      else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor);
+      else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor, item);
     }
     if ( eff.tempHp ) {
       const roll = await createN5eRoll(sub(eff.tempHp)).evaluate();

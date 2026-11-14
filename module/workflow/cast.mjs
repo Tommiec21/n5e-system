@@ -54,6 +54,8 @@ function dialogContent(actor, item, plan) {
       : `<label class="opt${o.used ? " used" : ""}"><input type="checkbox" name="fopt" value="${o.id}" ${o.auto && !o.used ? "checked" : ""} ${o.used ? "disabled" : ""}> ${esc(o.label)}${o.used ? " (used this turn)" : ""}</label>`).join("")}</fieldset>` : ""}
     ${plan.concentration?.atLimit ? `<label>End concentration on <select name="endConcentration">${conc.map(c =>
       `<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select></label>` : ""}
+    ${j.activation?.type === "action" ? `<fieldset><legend>Ready</legend><label class="opt"><input type="checkbox" name="ready"> Ready it: pay now, hold it with concentration, release it with your Reaction</label>
+      <label>Trigger <input type="text" name="readyTrigger" placeholder="When…" maxlength="200"></label></fieldset>` : ""}
     <div class="preview" data-preview></div>
   </div>`;
 }
@@ -68,6 +70,7 @@ function readSelection(form) {
     divisorChoice: val("divisorChoice") != null ? Number(val("divisorChoice")) : undefined,
     options: [...form.querySelectorAll('input[name="opt"]:checked')].map(i => i.value),
     endConcentration: val("endConcentration") || undefined,
+    ready: f.ready?.checked ? { trigger: val("readyTrigger") || "" } : undefined,
     featureOptions: [...[...form.querySelectorAll('input[name="fopt"]:checked')].map(i => ({ id: i.value })),
       ...[...form.querySelectorAll('input[name^="famt-"]')].map(i => ({ id: i.name.slice(5), amount: Number(i.value) || 0 })).filter(o => o.amount > 0)],
     now: nowTurn()
@@ -136,6 +139,8 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
       return null;
     }
     await actor.update(plan.update);
+    // Ready (KB 03): the chakra is spent and held; the cast card comes when it is released.
+    if ( plan.ready ) return (await import("./concentration.mjs")).postReadyCard(actor, item, plan);
     const message = await postCastCard(actor, item, plan);
     // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
     if ( areaPrompt && rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });

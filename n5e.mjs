@@ -28,6 +28,7 @@ import N5eActiveEffect from "./module/documents/active-effect.mjs";
 import N5eTokenDocument from "./module/documents/token.mjs";
 import N5eCombat from "./module/documents/combat.mjs";
 import { registerExpiryHooks } from "./module/workflow/expiry.mjs";
+import { registerConcentrationHooks, onRenderReadyCard } from "./module/workflow/concentration.mjs";
 import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
@@ -64,6 +65,8 @@ import * as elements from "./module/rules/elements.mjs";
 registerAutomationHooks();
 // Timed effects end out of combat when world time advances (workflow/expiry.mjs; EXPIRE1).
 registerExpiryHooks();
+// Incapacitation ends concentration; readied jutsu are held by it (workflow/concentration.mjs; CONC1).
+registerConcentrationHooks();
 
 Hooks.once("init", () => {
   console.log("N5e | Initializing N5e 4.0 system");
@@ -143,6 +146,7 @@ Hooks.once("init", () => {
 Hooks.on("renderChatMessageHTML", (message, html) => {
   dice.onRenderChatMessage(message, html);
   onRenderTurnCard(message, html);
+  onRenderReadyCard(message, html);
 });
 // Combat turn flow (upkeep, resets, condition damage and decay, trackers, Chilled movement, Amp
 // limits) and the GM's Party Overview button on the token controls.

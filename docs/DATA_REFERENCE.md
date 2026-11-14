@@ -277,3 +277,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- | --- |
 | `flags.n5e.rollMode = {d20, damage, healing, other}` (each `advantage` / `disadvantage`; missing = Normal) | Actor | Roll modes from the Effects tab (0.15.0-alpha.8). A single string from alpha.7 applies to all groups. |
 | `flags.n5e.economy.attackOrJutsu` | Actor | An attack or jutsu happened this turn (Shocked); reset at turn start |
+
+## Added in 0.15.0-alpha.9 (CONC1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.readied.<itemId> = {trigger, rank, cost, readiedAt}` | Actor | A readied jutsu, held in `system.combat.concentrating` |
+| `flags.n5e.dependentOn` | ActiveEffect | Now also set by activity effects, Amps and Branded from concentration jutsu |
