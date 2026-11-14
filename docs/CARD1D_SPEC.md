@@ -1,6 +1,6 @@
 # CARD1d plan: feature riders infused into the action card
 
-Status: **plan for King's approval (2026-11-14). Nothing is built. Questions Q-CD5–Q-CD10 below.**
+Status: **King answered Q-CD5–Q-CD10 and the one-save ruling on 2026-11-14. Awaiting King's go-ahead to build CARD1d-a. Nothing is built.**
 
 King (2026-11-14): features and effects that stack need a clear path to plug into the action card as additional fixtures. Example: a player casts a jutsu that forces a save and also uses a feature that says "on a failed save, also apply X". That rider belongs on the same card.
 
@@ -71,7 +71,7 @@ A feature declares `flags.n5e.riders` (a list), next to the existing `castOption
 | `arm` | `cast`: chosen in the cast dialog and paid there, the "as part of casting / when you cast… you can spend" wording. `trigger`: offered on the card when its trigger happens, the "when you hit / when a creature fails / when you deal damage" wording. `passive`: always on, nothing to pay |
 | `when` | the card moment it acts on: `hit`, `crit`, `failedSave`, `saveRolled`, `damageRolled`, `damageDealt`, `cast` |
 | `appliesTo` | the same filter as cast options (discipline, keywords, activation, requiresDamage), plus `kind` (jutsu, attack, feature), `inflictsCondition` (the action can inflict a condition), `damageType` (Spirit Siphon: chakra), `margin` (Brutish Momentum: 5) |
-| `target` | `each` (every qualifying target), `one` (the user picks one row), or `chosen` (Menacing Assault: creatures of your choice). Optional `requires: {state: "combatRival", from: "caster"}` for Specialized maneuvers |
+| `target` | `each` (every qualifying target), `one` (the user picks one row), or `chosen` (Menacing Assault: creatures of your choice). Optional `requires: {state: "combatRival", from: "caster"}` for Specialized maneuvers: offered on every row, with a "not your Combat Rival" warning on rows that aren't (Q-CD7) |
 | `cost` | as cast options: `{pool, amount, choose, roll}`. With `roll`, the pool die is rolled once and is `@poolRoll` in the effects |
 | `oncePerTurn`, `limit` | as cast options; `limit` for Static's mark count |
 | `effects` | an ordered list from the vocabulary below |
@@ -81,7 +81,7 @@ A feature declares `flags.n5e.riders` (a list), next to the existing `castOption
 | Effect | Example | What the card does |
 | --- | --- | --- |
 | `addRanks {amount}` | Amplified Force `1`, Elemental Malady `floor(@poolRoll/2)` | Raises the ranks on the action's own "Apply <condition>" buttons for qualifying targets |
-| `inflict {choose: [conditions]}` | Authoritative Strike, Superior Suppression | Adds "Apply X" buttons to qualifying rows; the caster picks the condition when using the rider |
+| `inflict {choose: [conditions]}` | Authoritative Strike, Superior Suppression | Adds "Apply X" buttons to qualifying rows. The caster picks the condition once when using the rider, and it applies to every affected creature (Q-CD8) |
 | `save {ability, dc, inflicts, damage, disadvantageIf}` | Arresting Strike, Menacing Assault, Spirit Siphon, Tempest Pressure | **One save per event (King's ruling):** the rider's effects apply on a failure of the event's save. Its own ability and DC are used only when the source forces no save and the player picks this rider as the event's save. The `inflicts` and `damage` become Apply buttons on rows that failed the event save |
 | `effect {changes, seconds}` | Gale Fracture, Crimson Kindling, Tsunami, Static | Adds "Apply <effect>" to qualifying rows (the CARD1b effect path) |
 | `damage {formula, type}` | Warfare, Tempest Pressure | An extra damage part on the card's damage |
@@ -120,7 +120,7 @@ Per target, in this fixed order:
 2. The action's outcome: hit/miss, the event save's tier, damage share.
 3. Riders that change the action's own results (`addRanks`, `damage`), in the order the user armed or used them.
 4. Riders that add their own results (`inflict`, `save`, `effect`, `note`, `resource`).
-5. Modifiers of riders (Willpower Surge: a maneuver's condition is at least 2 ranks).
+5. Modifiers of riders (Willpower Surge). **Q-CD5:** rank increases from every source stack as additive ranks, and none overrides another. Willpower Surge's "2 ranks instead" therefore counts as its difference (+1 over the maneuver's 1 rank), added like the others.
 6. The condition's rank cap from the registry.
 
 The pure function `riderOutcome(card, target)` computes this list. The card draws from it, and tests pin it down.
@@ -168,6 +168,17 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
 ## Questions for King
 
 - **One save per event:** answered by King 2026-11-14 (see the ruling above). The source's save wins, including its ability and DC. With no source save the player picks one rider save. The rule is universal.
+## King's answers (2026-11-14)
+
+- **Q-CD5:** if a player can apply several of these in one casting (King doubts they can), they stack as additive ranks of the condition.
+- **Q-CD6:** agreed. "As part of casting / when you cast… you can spend" is paid in the cast dialog. "When you hit / fail / deal damage" is offered on the card after the outcome.
+- **Q-CD7:** (b). Specialized maneuvers are offered on any row, with a "not your Combat Rival" warning.
+- **Q-CD8:** (a). One choice of condition applies to every affected creature, made when the rider is used.
+- **Q-CD9:** (a). The caster's player pays on the card; the target's owner gets "Reroll (take lower)" on their row.
+- **Q-CD10:** keep deployments lean. Target-side reaction features go to a later reactions batch.
+
+## Questions as asked
+
 - **Q-CD5: stacking rank increases.** Amplified Force (+1), Elemental Malady (+half the Superiority Die) and Willpower Surge ("inflicts 2 ranks instead") can all hit the same Burned. Proposed: the base ranks, then the additions summed, then "at least 2", then the condition's cap. Is that right, or does each feature apply separately?
 - **Q-CD6: when a rider is paid.** Proposed: follow the wording.
   - "As part of casting / when you cast… you can spend" is chosen and paid in the cast dialog. The cost is spent even if nobody ends up failing.
@@ -185,3 +196,4 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
 - 2026-11-14 Claude: **King's ruling added: one save per event.**
   - Rider saves fold into the triggering source's save, with its ability and DC. With no source save, the player picks one rider save. The rule applies universally.
   - The design is updated: the event save (2b) replaces separate rider saves, `eventSave` goes on the card, the stacking order is adjusted, and new tests are listed.
+- 2026-11-14 Claude: King answered Q-CD5 (additive ranks), Q-CD6 (agreed), Q-CD7 (b, warning), Q-CD8 (a, one choice), Q-CD9 (a, owner rerolls) and Q-CD10 (reactions later; keep deployments lean). Plan updated; awaiting the go-ahead for CARD1d-a.
