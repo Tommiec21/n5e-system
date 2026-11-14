@@ -1,6 +1,6 @@
 # CARD1d plan: feature riders infused into the action card
 
-Status: **CARD1d-a published `0.28.0-alpha.1` (King: "Start Card1d"). CARD1d-b needs King's go-ahead.**
+Status: **CARD1d-a published `0.28.0-alpha.1` (King: "Start Card1d"). CARD1d-b is folded into STD1/STD2 (King Q-STD1, `docs/STD_SPEC.md`).**
 
 King (2026-11-14): features and effects that stack need a clear path to plug into the action card as additional fixtures. Example: a player casts a jutsu that forces a save and also uses a feature that says "on a failed save, also apply X". That rider belongs on the same card.
 
@@ -237,3 +237,4 @@ Published `v0.28.0-alpha.1`. Built: the rider engine, one save per event, and th
   - Menacing Assault's "creatures of your choice" are picked from the card's targets.
   - Rider uses are written straight onto the card by its author or a GM, not through a linked note.
   - Not tested in Foundry (no live testing).
+- 2026-11-14 Claude: King Q-STD1: CARD1d-b is folded into STD1 (rule elements v2) and STD2 (action effects); its mechanics won't be built in the rider format.

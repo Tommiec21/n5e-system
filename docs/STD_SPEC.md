@@ -1,6 +1,6 @@
 # STD plan: full system standardization (no hard-coded effects)
 
-Status: **plan for a later push (King, 2026-11-14). One of the final passes. Nothing is built. Questions Q-STD1–Q-STD6 below.**
+Status: **plan for a later push (King, 2026-11-14). One of the final passes. King answered Q-STD1–Q-STD6 on 2026-11-14. Nothing is built.**
 
 King (2026-11-14): every effect from features, jutsu and feats must interact with the system in a way that can be reviewed in game and is not hard-coded. What can be built with Active Effects should be. Heightened must not be hard-coded: it runs through the Active Effects system, and that system must be robust enough to force advantage or disadvantage on saves without naming a feature in code. This covers all classes, all jutsu, all clans and all feats.
 
@@ -10,7 +10,7 @@ King (2026-11-14): every effect from features, jutsu and feats must interact wit
 2. **Every mechanical effect is data a GM can open in game.** Effects are Active Effects on the item, with N5e rule elements, viewed and edited in the effect editor. Buttons are authored activities, and riders and action effects are visible on the item.
 3. **Text is display only.** No mechanic is guessed from a description at play time.
 4. **Every number on a card names its source.** Bonuses, advantage and disadvantage, rerolls, added ranks and DR changes all list where they came from.
-5. **What can't be automated is still data:** a recorded `note` element with the reason, shown on the card. It is never silent.
+5. **What can't be automated is still data:** a recorded `note` element with the reason, shown on the item's **Notes tab** (King Q-STD6). Notes never go into the feature's effect text, and the description is never edited for automation.
 
 ## Where we are (0.28.0-alpha.1)
 
@@ -57,7 +57,7 @@ Every source (feature, jutsu, clan trait, feat, stance, condition, item) express
 | **Activities** | Buttons the source has: attack, save, damage, heal, effect, summon, check, roll | `system.activities` |
 | **Action effects** | Effects that exist for one action only (Moldings, Maneuvers, cast options, riders) | An Active Effect on the feature marked `applyTo: "action"`, copied onto the action card when chosen |
 | **Trigger elements** | "When X happens, do Y": initiative, turn start/end, hit, failed save, damage dealt or taken, reaching 0 HP | Rule elements with an `on` event, dispatched by TURN1 and the action card |
-| **Notes** | What stays at the table, with the reason | A `note` rule element, shown on the card |
+| **Notes** | What stays at the table, with the reason | A `note` rule element, shown on the item's Notes tab (never in its effect text) |
 
 ### Rule elements v2 (the engine change)
 
@@ -89,6 +89,7 @@ The existing format gains fields. Every addition is generic, validated, and edit
 
 ### Reviewable in game
 
+- **Item sheets get a Notes tab** for `note` elements (what stays at the table and why), apart from the effect text (King Q-STD6).
 - **Item sheets get an Automation tab:** every channel above in one list, with plain-language summaries generated from the data ("Disadvantage on one target's first save against this cast"), its status (automated / partial / note) and a link to edit.
 - **The effect editor supports every element field:** validated, with a catalog, examples and the predicate builder.
 - **A GM Automation Audit window** lists world and compendium items by status, and items whose text mentions mechanics no element covers. It is the in-game counterpart of the coverage reports.
@@ -106,29 +107,31 @@ The existing format gains fields. Every addition is generic, validated, and edit
 | # | Batch | Scope | Depends |
 | --- | --- | --- | --- |
 | STD0 | **Audit and contract** | Complete inventory of hard-coded branches, text-parse paths and per-content coverage; the contract written up for King's approval; the no-hard-coding gate with its starting allowlist; coverage reports per content type | — |
-| STD1 | **Rule elements v2** | The new keys and fields (`direction`, `scope`, `uses`, `targets`); the three-direction roll pipeline; `uses` counted on the card; editor and validation support; tests per key | STD0 |
+| STD1 | **Rule elements v2** (absorbs CARD1d-b, King Q-STD1) | The new keys and fields (`direction`, `scope`, `uses`, `targets`), including CARD1d-b's rerolls (take the lower), maximize dice, resources, extra damage and rider modifiers; the three-direction roll pipeline; `uses` counted on the card; editor and validation support; tests per key | STD0 |
 | STD2 | **Action effects** | `applyTo: "action"` effects chosen in the cast dialog and copied onto the card. Moldings, Maneuvers, cast options and CARD1d riders become action effects. Precise, Heightened and Piercing are rebuilt as data, and their code is removed | STD1 |
 | STD3 | **Conditions and states as data** | Condition mechanics as elements on the condition definitions; states as Active Effects; `advantage.mjs`, `damagePlan` and the cast checks read elements; the named condition and state branches are removed | STD1 |
 | STD4 | **Trigger elements** | `on` events dispatched by TURN1 and the action card (initiative, turn start/end, damage taken, 0 HP, hit, failed save). Uncanny Dodge, Deflection, Extra Attack, Adaptive Initiative and Binding Fury are rebuilt as data, and their code is removed | STD1, STD2 |
 | STD5 | **In-game review** | The Automation tab, the generated summaries, the GM Automation Audit window, full breakdowns on cards | STD1–STD4 |
-| STD6a | **Classes** (final pass, one class per release; this is FEATAUTO1 under the contract) | Every class feature and option: review table for King, then data. Text fallback off per class once reviewed | STD1–STD5 |
-| STD6b | **Jutsu** (final pass, by discipline and release section) | Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King | STD1–STD5 |
-| STD6c | **Clans** (final pass, a few clans per release) | Clan traits, hijutsu, clan conditions and keywords as data. `workflow/clan.mjs` name branches removed | STD1–STD5 |
-| STD6d | **Feats** (final pass) | Every feat as data (needs the full feat list imported, Q-STD4) | STD1–STD5 |
-| STD6e | **Stances and items** | Stances, weapon properties, coatings, equipment: anything still coded | STD1–STD5 |
-| STD7 | **Cleanup and lock** | Text-parse fallback removed for all content; legacy fields retired (`castOption` damage/heal/effect/roll/note and the CARD1d rider shape, migrated into action effects); allowlist empty, so the gate allows no content names; world migration (Q-STD5) | STD6a–e |
+| STD6a | **Items** (final pass; King's order, least to most) | Weapon properties, coatings, equipment and anything else still coded | STD1–STD5 |
+| STD6b | **Stances** | Every stance as data | STD1–STD5 |
+| STD6c | **Feats** | Every feat as data, from the final feat list King will provide (Q-STD4) | STD1–STD5 |
+| STD6d | **Classes** (one class per release; this is FEATAUTO1 under the contract, King Q-STD2) | Every class feature and option: a review table for King, then data. Text fallback off per class once reviewed | STD1–STD5 |
+| STD6e | **Clans** (a few clans per release) | Clan traits, hijutsu, clan conditions and keywords as data; `workflow/clan.mjs` name branches removed | STD1–STD5 |
+| STD6f | **Jutsu** (by discipline and release section) | Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King | STD1–STD5 |
+| STD7 | **Cleanup and lock** | Text-parse fallback removed for all content; legacy fields retired (`castOption` damage/heal/effect/roll/note and the CARD1d rider shape, migrated into action effects); allowlist empty, so the gate allows no content names. No world migration: a new world will be made (King Q-STD5) | STD6a–f |
 
 Each batch follows the usual rule: a spec, King's approval, build, tests, release, log.
 
-## Questions for King
+## King's answers (2026-11-14)
 
-- **Q-STD1: CARD1d-b.** Build it now as planned (rerolls, maximize dice, resources, extra damage, rider modifiers in the rider format)? Or fold it into STD1/STD2 so those mechanics are born as rule elements and action effects? Proposed: fold, since STD2 would replace CARD1d-b's format anyway.
-- **Q-STD2: FEATAUTO1.** Run it as STD6a under this contract (proposed), instead of as a separate earlier release?
-- **Q-STD3: order of the final content passes.** Classes, jutsu, clans, feats, then stances and items (proposed)? Or another order?
-- **Q-STD4: feats.** Only 4 feats are imported. Import the full feat list (from the feat balancing pass) before STD6d, as its own step?
-- **Q-STD5: existing worlds.** After each content pass, should a GM-run migration update the copies of changed items already on actors (with a report of what changed)? Or do GMs re-drag items themselves?
-- **Q-STD6: effects that can't be automated.** Record them as `note` elements shown on the card with the reason (proposed)?
+- **Q-STD1:** fold CARD1d-b into STD1/STD2. CARD1d-b won't be built in the rider format.
+- **Q-STD2:** yes. FEATAUTO1 runs as the class pass (now STD6d) under this contract.
+- **Q-STD3:** content passes from least to most: Items, Stances, Feats, Classes, Clans, then Jutsu (STD6a–f).
+- **Q-STD4:** King will provide the final feat list when it's ready; STD6c waits for it.
+- **Q-STD5:** no migration. A new world will be made.
+- **Q-STD6:** effects that can't be automated are recorded on a Notes tab, never in the feature's effect text.
 
 ## Progress log
 
 - 2026-11-14 Claude: plan written from a survey of the current code and content. Nothing built.
+- 2026-11-14 Claude: King answered Q-STD1–Q-STD6. Content passes reordered (Items, Stances, Feats, Classes, Clans, Jutsu); CARD1d-b folded into STD1/STD2; FEATAUTO1 becomes STD6d; Notes tab for non-automatable effects; no world migration.
