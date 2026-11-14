@@ -10,6 +10,8 @@ import { MODES, clickMode, critThreshold, rollSpec, readD20, willOfFireAward } f
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
 import { contextualSpec } from "../rules/elements.mjs";
+import { rule } from "../rules-settings.mjs";
+import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
 
@@ -33,6 +35,7 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
       <span class="bonus" ${tip ? `data-tooltip-html="${esc(tip)}"` : ""}>${signed(spec.bonus)}${bonusText ? ` ${esc(bonusText)}` : ""}</span></header>
     ${tip ? `<details class="n5e-roll-breakdown"><summary>Roll breakdown</summary>${tip}</details>` : ""}
     ${spec.note ? `<div class="note">${esc(spec.note)}</div>` : ""}
+    ${spec.dcLine ? `<div class="note n5e-dc" data-n5e-dc>${esc(spec.dcLine)}</div>` : ""}
     ${spec.roll ? `<div class="vs"><b>Roll:</b> ${esc(spec.roll)}</div>` : ""}
     ${spec.outcome ? `<div class="outcome">${esc(spec.outcome)}</div>` : ""}
     ${result.crit ? `<div class="flag crit">${spec.kind === "attack" ? "Critical hit" : "Natural 20"}</div>` : ""}
@@ -103,17 +106,19 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     degree = d.degree;
     const outcomeKey = fourTier ? d.key : d.degree >= 2 ? "success" : "failure";
     const labels = ["Critical Failure", "Failure", "Success", "Critical Success"];
-    spec = { ...spec, note: [spec.note, `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`].filter(Boolean).join(" · "),
+    spec = { ...spec, dcLine: `vs DC ${dc}: ${fourTier ? labels[d.degree] : (d.degree >= 2 ? "Success" : "Failure")}`,
       // Buttons that only matter on a failure (apply a condition, etc.).
       footer: `${spec.footer ?? ""}${tiers?.[outcomeKey] ? `<div class="n5e-save-outcome"><b>Result</b>: ${esc(tiers[outcomeKey])}</div>` : ""}${degree < 2 && onFail && !Object.values(tiers ?? {}).some(Boolean) ? onFail : ""}` };
   }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
-    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }) + (spec.kind === "attack" ? '<button type="button" data-n5e-hit="1">Successful hit: reactions</button>' : ""),
+    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }) + (spec.kind === "attack"
+      ? '<div class="n5e-attack-targets" data-n5e-attack-targets></div><button type="button" data-n5e-hit="1">Successful hit: reactions</button>' : ""),
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
-      dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null } } }
+      dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null,
+      total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined } } }
   });
   await awardWillOfFire(actor, result);
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
@@ -186,7 +191,43 @@ export async function spendWillOfFire(message, how) {
  * A new kind of card button: pick a new data-n5e-* attribute and add a loop here. The handlers are
  * imported on click so loading the chat log stays cheap.
  */
+/** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
+function attackTargetSnapshot() {
+  return [...(globalThis.game?.user?.targets ?? [])].filter(t => t.actor).slice(0, 20)
+    .map(t => ({ uuid: t.actor.uuid, name: t.name ?? t.actor.name, ac: Number(t.actor.system?.ac?.value ?? t.actor.system?.attributes?.ac?.value) }));
+}
+
+/** Does a non-GM user own this actor? (dnd5e "player" challenge visibility) */
+const hasPlayerOwner = actor => !!actor && (globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
+
+/**
+ * Per-viewer parts of a card: attack target rows, DC visibility, concealed NPC descriptions.
+ * Cards are shared HTML; each client hides what its user may not see (dnd5e parity).
+ */
+export async function renderParityParts(message, html) {
+  const roll = message.getFlag?.("n5e", "roll");
+  const user = game.user;
+  const box = html.querySelector("[data-n5e-attack-targets]");
+  if ( box && roll?.targets?.length ) {
+    const rows = attackTargetRows({ total: roll.total ?? message.rolls?.[0]?.total, natural: roll.natural, threshold: roll.threshold },
+      roll.targets, { visibility: rule("attackRollVisibility"), isGM: user.isGM });
+    box.innerHTML = rows.map(r => `<div class="n5e-target-row ${r.result ?? ""}"><span>${esc(r.name)}</span>${r.ac != null ? `<span class="ac">AC ${r.ac}</span>` : ""}${r.result ? `<b>${esc(ATTACK_RESULT_LABELS[r.result])}</b>` : ""}</div>`).join("");
+  }
+  if ( roll?.dc != null && html.querySelector("[data-n5e-dc]") ) {
+    const actor = roll.actorUuid ? await fromUuid(roll.actorUuid) : null;
+    if ( !challengeVisible(rule("challengeVisibility"), user, hasPlayerOwner(actor)) ) {
+      for ( const el of html.querySelectorAll("[data-n5e-dc], .n5e-save-outcome") ) el.remove();
+    }
+  }
+  const actor = message.speakerActor;
+  if ( actor && html.querySelector(".desc") && !descriptionVisible(rule("concealItemDescriptions"), user, { isNPC: actor.type === "npc", isOwner: actor.isOwner }) ) {
+    for ( const el of html.querySelectorAll(".desc") ) el.remove();
+  }
+}
+
 export function onRenderChatMessage(message, html) {
+  if ( message.getFlag?.("n5e", "rollRequest") ) import("../workflow/roll-request.mjs").then(m => m.renderRollRequest(message, html));
+  void renderParityParts(message, html).catch(error => console.warn("n5e | card visibility", error));
   for ( const button of html.querySelectorAll("[data-n5e-source]") ) button.addEventListener("click", async event => {
     event.preventDefault();
     try {

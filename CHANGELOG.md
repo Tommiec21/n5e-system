@@ -1,3 +1,12 @@
+## 0.14.0-alpha.2 — dnd5e-parity chat visibility and roll requests (OPS1b)
+
+- Attack cards list every target with Hit / Miss / Critical hit / Natural 1. The new rule "Attack results shown to players" (all / hit-miss only / GM only; default GM only) matches dnd5e's Attack Roll Visibility. The GM always sees results and AC.
+- New rule "DCs and pass/fail shown to players" (everyone / player-owned rolls only / GM only; default player-owned), matching dnd5e's Challenge Visibility.
+- New rule "Conceal NPC item descriptions", matching dnd5e's setting of the same name.
+- GM roll requests: a request icon next to [[/save]] and [[/check]] links posts a request card for the selected tokens, or for anyone. Each player sees and rolls only for creatures they own.
+- Effect-application cards (from OPS1a) are wired to chat: the owner of each recipient presses Apply.
+- Not included: a Bloodied visibility setting. N5e has no on-token Bloodied marker yet, so the setting would control nothing.
+
 ## 0.14.0-alpha.1 — Multiplayer parity with dnd5e/PF2e and Allied NPCs (OPS1a)
 
 - No GM approval dialogs anywhere, and no GM relay for player → NPC changes (King 2026-11-13). Each user changes only what they own, as in dnd5e and PF2e; the GM applies results to NPCs.

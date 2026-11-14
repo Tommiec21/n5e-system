@@ -101,3 +101,31 @@ test("parity: no module imports the removed relay, and no request path opens a G
   const manifest = JSON.parse(readFileSync(new URL("../system.json", import.meta.url), "utf8"));
   assert.equal(manifest.socket, undefined);
 });
+
+test("attack target rows follow dnd5e attack visibility; the GM always sees results and AC", async () => {
+  const { attackTargetRows } = await import("../module/rules/parity.mjs");
+  const targets = [{ uuid: "A", name: "Ogre", ac: 15 }, { uuid: "B", name: "Bandit", ac: 20 }];
+  const roll = { total: 17, natural: 12, threshold: 20 };
+  assert.deepEqual(attackTargetRows(roll, targets, { visibility: "none" }).map(r => [r.result, r.ac]), [[null, null], [null, null]]);
+  assert.deepEqual(attackTargetRows(roll, targets, { visibility: "hideAC" }).map(r => [r.result, r.ac]), [["hit", null], ["miss", null]]);
+  assert.deepEqual(attackTargetRows(roll, targets, { visibility: "all" }).map(r => [r.result, r.ac]), [["hit", 15], ["miss", 20]]);
+  assert.deepEqual(attackTargetRows(roll, targets, { isGM: true }).map(r => r.ac), [15, 20]);
+  assert.equal(attackTargetRows({ total: 3, natural: 20, threshold: 20 }, targets, { visibility: "all" })[1].result, "crit");
+  assert.equal(attackTargetRows({ total: 30, natural: 1 }, targets, { visibility: "all" })[0].result, "fumble");
+});
+
+test("challenge and description visibility and roll-request entries follow dnd5e", async () => {
+  const { challengeVisible, descriptionVisible, visibleRequestEntries } = await import("../module/rules/parity.mjs");
+  const p = { isGM: false }, g = { isGM: true };
+  assert.equal(challengeVisible("none", g, false), true);
+  assert.equal(challengeVisible("player", p, true), true);
+  assert.equal(challengeVisible("player", p, false), false);
+  assert.equal(challengeVisible("none", p, true), false);
+  assert.equal(challengeVisible("all", p, false), true);
+  assert.equal(descriptionVisible(true, p, { isNPC: true, isOwner: false }), false);
+  assert.equal(descriptionVisible(true, p, { isNPC: false, isOwner: false }), true);
+  assert.equal(descriptionVisible(false, p, { isNPC: true, isOwner: false }), true);
+  const entries = [{ uuid: "A" }, { uuid: "B" }];
+  assert.deepEqual(visibleRequestEntries(entries, u => u === "B").map(e => e.uuid), ["B"]);
+  assert.equal(visibleRequestEntries(entries, () => false, true).length, 2);
+});

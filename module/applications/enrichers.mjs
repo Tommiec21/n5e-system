@@ -48,6 +48,19 @@ function linkElement(spec, custom, source) {
   if ( source ) a.dataset.sourceUuid = source.uuid;
   if ( spec.text ) a.dataset.tooltip = `${spec.label}: ${spec.text}${spec.ends ? `. Ends: ${spec.ends}` : ""}`;
   a.innerHTML = `<i class="fa-solid ${ICONS[spec.kind] ?? "fa-link"}"></i> ${esc(custom || spec.label)}`;
+  // GMs get a request icon on saves and checks (dnd5e createRequestLink): post a roll request card.
+  if ( globalThis.game?.user?.isGM && (spec.kind === "save" || spec.kind === "check") && (spec.dc != null || spec.kind === "check") ) {
+    const span = document.createElement("span");
+    span.classList.add("n5e-link-group");
+    const req = document.createElement("a");
+    req.classList.add("n5e-request-link");
+    req.dataset.n5eRequest = JSON.stringify({ type: spec.kind === "save" ? "save" : spec.type === "ability" ? "check" : spec.type,
+      key: spec.kind === "save" ? spec.ability : spec.key, dc: spec.dc ?? null, label: custom || spec.label });
+    req.dataset.tooltip = "Request this roll from players";
+    req.innerHTML = '<i class="fa-solid fa-comment-dots"></i>';
+    span.append(a, req);
+    return span;
+  }
   return a;
 }
 
@@ -77,6 +90,15 @@ export function registerEnrichers() {
     }
   );
   globalThis.document?.addEventListener("click", event => {
+    const request = event.target?.closest?.("a.n5e-request-link[data-n5e-request]");
+    if ( request ) {
+      event.preventDefault();
+      event.stopPropagation();
+      const actors = (canvas?.tokens?.controlled ?? []).map(t => t.actor).filter(Boolean);
+      import("../workflow/roll-request.mjs").then(m => m.postRollRequest({ ...JSON.parse(request.dataset.n5eRequest), actors }))
+        .catch(error => ui.notifications.warn(error.message));
+      return;
+    }
     const link = event.target?.closest?.("a.n5e-link[data-n5e-link]");
     if ( !link ) return;
     event.preventDefault();
