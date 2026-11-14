@@ -97,7 +97,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 | 12 | POS1 positioning | Opportunity attacks and reach, Engaged, Surprise, Dodge, cover (+2/+4) | — | ADV1 | published v0.20.0-alpha.1 (`docs/POS1_SPEC.md`) | Claude 2026-11-14 |
 | 13 | CLASH1 | Clash contested workflow, rank bonus, best of 3, elemental advantage (Q3) | — | RES1 | Tier 2 | — |
 | 14 | ENV1 | Hostile terrain as Region behaviours, falling, suffocation | — | TURN1 | ENV1a published v0.21.0-alpha.1 (`docs/ENV1_SPEC.md`); falling waits on Q-C11 | Claude 2026-11-14 |
-| 15 | SKILL1 | Executable skill actions (Grapple, Shove, Hide/Search, Stabilize...) | — | ADV1 | in progress (`docs/SKILL1_SPEC.md`) | Claude 2026-11-14 |
+| 15 | SKILL1 | Executable skill actions (Grapple, Shove, Hide/Search, Stabilize...) | — | ADV1 | published v0.22.0-alpha.1 (`docs/SKILL1_SPEC.md`); ability DCs wait on Q-S1 | Claude 2026-11-14 |
 | 16 | GEN1 | Genjutsu stimuli immunity, Unaware, sense-based targeting | — | ADV1 | Tier 2 | — |
 | 17 | SHARED1 | Extract `module/rules` into the shared core; System adapter; Module adapter against dnd5e 5.3.3; CI propagation | — | Tier 1 | after Tier 1 | — |
 | 18+ | Tier 3 | Rule-element expansion, stacking policy, Will of Fire spends, ailments, item mechanics (charges, ammo, scrolls, Fortified), interception/constructs/dispels, table procedures, NPC feature kinds with the Bingo Book | — | — | later | — |

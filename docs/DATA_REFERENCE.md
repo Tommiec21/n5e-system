@@ -377,3 +377,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | RegionBehavior type `hostileTerrain` `{terrain, rank}` | Region | Hostile terrain: extremeHeat, extremeCold, toxic, chakraResistant; rank D–S |
 | `flags.n5e.terrain` | Chat message | The Direct Exposure card: `{actorUuid, dc, damage, damageType, label}` |
 | `flags.n5e.breath` | Actor | Turns of breath left while Suffocating (combat) |
+
+## Added in 0.22.0-alpha.1 (SKILL1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.contest` | Contest card | `{key, initiatorUuid, targetUuid, total}` |
+| `flags.n5e.skillOutcome` | Outcome card | `{key, result, margin, targetUuid, statuses}` |
+| `data-n5e-contest`, `data-n5e-skill-apply` | Chat buttons | Defender's contest roll; apply a status to the target |

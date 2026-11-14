@@ -157,7 +157,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 74 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 117 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 406 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 418 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -227,6 +227,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `rest.mjs` | 175 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
 | `senses.mjs` | 77 | Senses → token vision (pure). | `SENSE_MODES`, `visionFromSenses`, `movementCost`, `speedBand` |
 | `skill-actions.mjs` | 22 | Skill-action attempt penalty (Core Ch6; King 2026-11-07: penalties don't stack). | `skillActionPenalty` |
+| `skill-resolution.mjs` | 74 | Skill-action resolution (pure; SKILL1, KB 02 and Chapter 6). | `parseVs`, `passiveScore`, `fixedDC`, `contestOutcome`, `checkOutcome`, `SKILL_RESULTS`, `skillActionEffects` |
 | `trackers.mjs` | 244 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `bindingFuryTrigger`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
 | `turn-start.mjs` | 64 | Start of a combatant's turn (pure). | `parseRecharge`, `turnStartPlan`, `economySlot` |
 | `unarmed.mjs` | 86 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepDie`, `resolveFormula` |
@@ -285,6 +286,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `resources.mjs` | 74 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
 | `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `roll-request.mjs` | 62 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
+| `skill-actions.mjs` | 84 | Skill actions against one target (SKILL1). | `resolveSkillAction`, `onContestClick`, `onSkillApplyClick` |
 | `trackers.mjs` | 420 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `turn.mjs` | 161 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `unarmed.mjs` | 14 | The Unarmed Strike item (DATA2). | `ensureUnarmedStrike` |

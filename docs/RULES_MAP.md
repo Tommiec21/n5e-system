@@ -48,6 +48,7 @@
 | Weapons (Ch5 tables: 55 weapons, properties with ranks, ranges, groups, Bulk) | `packs/_source/equipment`, `tools/content/build-weapons.mjs` | 08 |
 | Unarmed Strike item on every character and NPC (can't be removed or unequipped) | `config/equipment.mjs unarmedStrike`, `documents/actor.mjs`, `documents/item.mjs`, `rules/unarmed.mjs` | 03 |
 | Weapon attacks: bonuses/effects/Mastery, Critical X, Deadly X, Heavy, Volatile (jam/unjam), Versatile, Multiattack bonus attack, reach, thrown, long range, ranged in melee, Returning, ammo die only on ranged/thrown | `rules/weapon-properties.mjs`, `workflow/attack.mjs` | 03, 08 |
+| Skill actions vs one target: passive scores, fixed DCs, contests (tie = no change), outcome Apply buttons (Prone, Grappled/Restrained, Suffocating) | `rules/skill-resolution.mjs`, `workflow/skill-actions.mjs` | 02 |
 | Hostile Terrain region behaviour (turn-start Con save, damage ignoring DR); Suffocating breath countdown in combat | `rules/environment.mjs`, `workflow/environment.mjs`, `data/region/hostile-terrain.mjs` | 06 |
 | Cover statuses (+2/+4 AC and Dex saves, Total refuses attacks); Opportunity Attack reminders (reach, Disengage, teleport/forced exempt); Disengage/Dodge effects; Engaged; Surprised round 1; Dodge lost at speed 0 | `rules/positioning.mjs`, `workflow/positioning.mjs`, `rules/advantage.mjs` | 03, 05 |
 | One damage roll, per-target shares: hit/miss by each AC, per-target save results (fail full, success half/none), per-target Apply | `rules/resolution.mjs`, `workflow/resolution.mjs` | 03, 04 |

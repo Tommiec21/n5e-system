@@ -334,3 +334,6 @@ Published v0.20.0-alpha.1. Positioning rules are in `rules/positioning.mjs`; the
 
 ## ENV1a — Claude, 2026-11-14
 Published v0.21.0-alpha.1. Hostile terrain is a system RegionBehavior (`hostileTerrain`, declared in system.json). The GM turn pipeline reads the regions a token is in (`terrainsAt`) and posts the exposure card. Suffocating counts `flags.n5e.breath`. Falling waits on King's answer to Q-C11 (`docs/ENV1_SPEC.md`). Next per plan: SKILL1, GEN1. CLASH1 waits on Q3.
+
+## SKILL1 — Claude, 2026-11-14
+Published v0.22.0-alpha.1. Skill actions with one target resolve through `workflow/skill-actions.mjs` (called by `rollD20` for `skillAction`). Add a status result by extending `SKILL_RESULTS` in `rules/skill-resolution.mjs`. `dc:<ability>` waits on King's Q-S1. Next per plan: GEN1 (stimuli, Unaware, sense targeting, Hide/Search). CLASH1 waits on Q3; falling on Q-C11.

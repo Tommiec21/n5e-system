@@ -1,6 +1,6 @@
 # SKILL1 function spec: executable skill actions
 
-Status: **in progress (continuing the plan after ENV1a, 2026-11-14).** Release target `0.22.0-alpha.1`.
+Status: **published `0.22.0-alpha.1` (2026-11-14). Ability-DC actions wait on Q-S1.**
 
 Plan row 15: executable skill actions (Grapple, Shove, Hide/Search, Stabilize...).
 
@@ -39,3 +39,12 @@ After each function, add a line to the progress log and push.
   - The `[data-n5e-contest]` and `[data-n5e-skill-apply]` buttons are bound in `onRenderChatMessage`.
   - Every `SKILL_RESULTS` key exists in `CONFIG.N5E.skillActions`. Suite green (350).
   - Next: tests (`tests/skill-actions.test.mjs`), then release.
+- 2026-11-14 Claude: **Tests done.** New `tests/skill-actions.test.mjs` (3 tests) passed on the first attempt: 353 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+Published `v0.22.0-alpha.1`. F1–F3 were built as specified.
+- **Limits.**
+  - Size limits (disadvantage one size larger, impossible two or more) and "while grappling" prerequisites are shown in the action text but not enforced.
+  - Escape attempts use the same contest by hand.
+  - Hide, Search and the relational states are left for GEN1.

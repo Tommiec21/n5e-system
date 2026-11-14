@@ -1,3 +1,12 @@
+## 0.22.0-alpha.1 — Skill actions against a target (SKILL1)
+
+- With one target, skill actions now resolve themselves:
+  - against a **passive score** (Lie, Create Diversion...): compared at once;
+  - against a **fixed DC** (Calm Animal, Tame Animal...): the target's level sets it;
+  - **contests** (Trip, Grapple, Disarm, Pin, Takedown, Muffle, Choke, Feint, Blend In...): the target's owner gets a private card to roll their side. The higher total wins, and a tie changes nothing.
+- The outcome card shows the result and margin. When a success applies a status, there's a button for the target's owner or the GM: Trip and Takedown → Prone; Grapple → Grappled, or Restrained when beating by 10 with Athletics Mastery; Pin → Restrained; Choke → Suffocating.
+- Shove ("the target's Strength DC") and other ability-DC actions stay manual until King defines an ability DC (Q-S1).
+
 ## 0.21.0-alpha.1 — Hostile terrain and suffocation (ENV1a)
 
 - **Hostile Terrain region behaviour.**
