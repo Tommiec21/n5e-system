@@ -189,7 +189,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `ac.mjs` | 71 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC` |
-| `action-card.mjs` | 169 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `cardSections`, `resultsFromLinked`, `addCardResult`, `mergedResults`, `cardTargetRows`, `sectionStates` |
+| `action-card.mjs` | 206 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `sectionStates` |
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 154 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
@@ -267,13 +267,13 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `action-card.mjs` | 247 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `renderActionCard`, `onActionCardClick`, `registerActionCardHooks` |
+| `action-card.mjs` | 373 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `renderActionCard`, `onActionCardClick`, `registerActionCardHooks` |
 | `activity-buttons.mjs` | 474 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
 | `apply-damage.mjs` | 319 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
-| `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
+| `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 280 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |

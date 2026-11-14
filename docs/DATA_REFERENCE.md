@@ -421,3 +421,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.undone` | Damage-applied summary | Set by its author (or a GM) when Undo is used |
 | Owner intent `cardResult` | Actor | `{cardMessageId, linkedMessageId, undoneTarget}`: the GM records another user's linked result after checking the linked message |
 | Rule `actionCard` | World setting | Single action card on (default) or off |
+
+## Added in 0.27.0-alpha.2 (CARD1b)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.card.areaPlaced` | Action card | An area was placed from the card; its covered tokens were added to `targets` |
+| `flags.n5e.card.results.effects` | Action card | `{[actorUuid]: [{messageId, effects: [{uuid, label}], undone}]}` |
+| `flags.n5e.cardEffects` | Effect note | `{sourceUuid: <action card uuid>, recipients: [{actorUuid, effects: [{uuid, label}]}]}`; `flags.n5e.undone` once undone |

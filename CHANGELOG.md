@@ -1,3 +1,14 @@
+## 0.27.0-alpha.2 — Single action card, part 2 (CARD1b; King 2026-11-14)
+
+- **Areas.** Placing a jutsu's area from its card adds the tokens it covers to the card's targets. The Area chip turns done.
+- **Saves from the card.** Each target's row has "Roll X save" for that creature's owner (the GM for NPCs). It is the card's own save, so Genjutsu Stimuli immunity, condition resistance and Heightened work as before. Heightened's disadvantage applies only to the first save made against the cast. Save results show as the "DCs and pass/fail shown to players" setting allows.
+- **Conditions and effects per target.**
+  - A failed save offers "Apply <condition>" on that creature's row; a resave is remembered as on the save card.
+  - Effects the jutsu puts on its targets get a per-target "Apply" for the caster's owner. Effects with a cost, a use limit or an action keep only their original button.
+  - Each application posts a small linked note that the card records and collapses.
+- **Undo** on a row now restores the damage and removes the conditions and effects applied to that creature from the card. It works for the user who applied them, or the GM.
+- Reactions, Will of Fire and concentration on the card come in CARD1c.
+
 ## 0.27.0-alpha.1 — Single action card, part 1 (CARD1a; King 2026-11-14)
 
 - **One card per action.** A jutsu cast, a feature use, or a weapon attack or strike posts a card that collects the rolls made from its buttons.

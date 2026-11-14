@@ -42,3 +42,18 @@ test("the GM refuses results from another user, another card, or for creatures t
   world({ owner: false });
   await assert.rejects(receiveCardResult(null, { cardMessageId: "card1", linkedMessageId: "save1" }, { id: "u2", isGM: false }), /Nothing to record/);
 });
+
+test("CARD1b: an effect summary links to its card and is recorded for that creature", async () => {
+  const { receiveCardResult, cardOfLinked } = await import("../module/workflow/action-card.mjs");
+  const { card } = world();
+  card.uuid = "ChatMessage.card1";
+  card.flags.n5e.card.sections.push("effects");
+  const note = { id: "note1", author: { id: "u2" }, flags: { n5e: { cardEffects: { sourceUuid: "ChatMessage.card1",
+    recipients: [{ actorUuid: "Actor.a", effects: [{ uuid: "Actor.a.ActiveEffect.e1", label: "Burned" }] }] } } } };
+  globalThis.game.messages.contents.push(note);
+  const get = globalThis.game.messages.get;
+  globalThis.game.messages.get = id => (id === "note1" ? note : get(id));
+  assert.equal(cardOfLinked(note)?.id, "card1");
+  assert.equal(await receiveCardResult(null, { cardMessageId: "card1", linkedMessageId: "note1" }, { id: "u2", isGM: false }), true);
+  assert.deepEqual(card.flags.n5e.card.results.effects["Actor.a"][0].effects.map(e => e.label), ["Burned"]);
+});

@@ -1,6 +1,6 @@
 # CARD1 function spec: single action card
 
-Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). CARD1a published `0.27.0-alpha.1`; CARD1b next.**
+Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). CARD1a published `0.27.0-alpha.1`; CARD1b published `0.27.0-alpha.2`; CARD1c next (needs King's go-ahead).**
 
 Plan row 10b (King 2026-11-13). One chat card per attack, jutsu or feature. Its sections fill in as buttons are pressed, SW5e style:
 - attack, with hit or miss per target;
@@ -184,3 +184,15 @@ Published `v0.27.0-alpha.1`. A1–A6 and A4b were built as specified, plus two s
     - each application posts a small linked summary that the card records.
   - **Undo** now covers damage plus the conditions/effects applied from the card (Q-CD4), each by the user who applied it or the GM.
   - Next: tests.
+- 2026-11-14 Claude: **CARD1b tests done.**
+  - Added 3 core tests and 1 intent test. First attempt passed: full suite 378 passed, 2 skipped; core 55/55. Lint and check pass.
+  - Release 0.27.0-alpha.2.
+
+## Final results (CARD1b)
+
+Published `v0.27.0-alpha.2`. B1–B3 were built as specified, and Undo now covers effects (Q-CD4).
+- **Limits.**
+  - One save per creature per card: a jutsu with two different save activities records only the first save each creature rolls.
+  - An effect applied to a creature the caster's user doesn't own goes out as the existing offer card and isn't recorded on the action card.
+  - A player who may apply a condition to their own creature can infer a failed save from the Apply button, even when DCs are hidden. dnd5e's save cards behave the same way.
+  - Not tested in Foundry (no live testing).

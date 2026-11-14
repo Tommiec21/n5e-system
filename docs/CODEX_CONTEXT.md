@@ -366,3 +366,9 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Recording:** the author (or a GM) writes into the card; anyone else submits owner intent `cardResult`, which the GM checks against the linked message. With no GM, the linked message stays a separate card, and the card merges it for display (`mergedResults`).
 - **Pure rules** are in `rules/action-card.mjs` (shared core).
 - **CARD1b and CARD1c**, per `docs/CARD1_SPEC.md`, add sections, not new storage paths.
+
+## CARD1b — Claude, 2026-11-14 (published 0.27.0-alpha.2)
+- **Areas:** placing an area from the card adds the covered tokens (`addAreaTargets`).
+- **Row buttons** reuse the card's own activity buttons: a save rolls for one creature through `onActivityClick` with `selectedActors`; an effect applies to one creature with `targetActors`.
+- **Recording:** conditions/effects applied from the card post a linked note (`flags.n5e.cardEffects`), recorded like any linked result.
+- **Undo** per row covers the damage and those effects.

@@ -72,3 +72,37 @@ test("section states move from waiting to ready to done", () => {
   assert.deepEqual(sectionStates(card, results), { attack: "done", saves: "done", damage: "done" });
   assert.equal(sectionStates({ sections: ["damage"], targets }).damage, "ready", "no attack section: damage is ready");
 });
+
+test("CARD1b: area targets merge without duplicates; the area section completes", async () => {
+  const { mergeTargets } = await import("../../module/rules/action-card.mjs");
+  const merged = mergeTargets(targets, [{ uuid: "B", name: "Bo again" }, { uuid: "C", name: "Cy" }]);
+  assert.deepEqual(merged.map(t => [t.uuid, t.name]), [["A", "Ana"], ["B", "Bo"], ["C", "Cy"]]);
+  assert.equal(mergeTargets([], Array.from({ length: 50 }, (_, i) => ({ uuid: `T${i}` }))).length, 40);
+  assert.equal(sectionStates({ sections: ["area"], targets }).area, "ready");
+  assert.equal(sectionStates({ sections: ["area"], targets, areaPlaced: true }).area, "done");
+});
+
+test("CARD1b: applied effects are listed per target, and undone ones drop out", () => {
+  const card = { sections: ["saves", "effects"], targets, results: {} };
+  const first = resultsFromLinked({ cardEffects: { recipients: [{ actorUuid: "A", effects: [{ uuid: "E1", label: "Burned" }] }] } }, "n1");
+  const second = resultsFromLinked({ cardEffects: { recipients: [{ actorUuid: "A", effects: [{ uuid: "E2", label: "Prone" }] }] } }, "n2");
+  let results = mergedResults(card, [...first, ...second]);
+  assert.deepEqual(cardTargetRows(card, results, { isGM: true })[0].effects, ["Burned", "Prone"]);
+  assert.equal(sectionStates(card, results).effects, "done");
+  const undone = resultsFromLinked({ cardEffects: { recipients: [{ actorUuid: "A", effects: [{ uuid: "E1", label: "Burned" }] }] }, undone: true }, "n1");
+  results = addCardResult({ ...card, results }, undone[0]);
+  const row = cardTargetRows(card, results, { isGM: true })[0];
+  assert.deepEqual([row.effects, row.effectMessages], [["Prone"], ["n2"]]);
+});
+
+test("CARD1b: save rows say who failed; hidden saves stay hidden", () => {
+  const card = { sections: ["saves", "damage"], targets, results: {} };
+  const results = mergedResults(card, [
+    ...resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A", onSuccess: "half" } }, "s1"),
+    ...resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "B", onSuccess: "half" } }, "s2")]);
+  const shown = cardTargetRows(card, results, { isGM: false });
+  assert.deepEqual(shown.map(r => [r.save, r.saveFailed, r.share]), [["Failure", true, "full"], ["Success", false, "half"]]);
+  const hidden = cardTargetRows(card, results, { isGM: false, canSeeSave: uuid => uuid !== "B" });
+  assert.deepEqual(hidden.map(r => [r.save, r.share, r.saved]), [["Failure", "full", true], [null, null, true]]);
+  assert.deepEqual(cardTargetRows(card, results, { isGM: true, canSeeSave: () => false }).map(r => r.save), ["Failure", "Success"], "the GM sees all");
+});
