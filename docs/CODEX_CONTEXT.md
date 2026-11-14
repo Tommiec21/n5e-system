@@ -292,3 +292,6 @@ King: the sheet toggle has per-group settings (D20, Damage, Healing, Other) and 
 
 ## CONC1 — Claude, 2026-11-13
 Owner Claude; ownership released. Published v0.15.0-alpha.9. Incapacitation ends concentration (`workflow/concentration.mjs checkConcentration`, active GM, hooks). Effects of concentration jutsu carry `dependentOn`. Ready a jutsu: `sel.ready` in `castPlan`, a Readied card, Release with the Reaction, lost at turn start or when concentration breaks. Spec, limits and results: `docs/CONC1_SPEC.md`. Tests: 314 pass, 2 skipped, on the first attempt. Tier 1 is complete. Next per plan: DATA1 (waits on Q2, feature kinds), or King's choice.
+
+## Q2 ruling and DATA1 spec — Claude, 2026-11-13
+King: background features become clan features. All feats form one Feats group, with their old categories kept as keywords. `docs/DATA1_SPEC.md` is proposed for approval with open questions Q7 (keyword text storage) and Q8 (clan stance mapping). Do not start DATA1 until King approves.
