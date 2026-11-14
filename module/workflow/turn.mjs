@@ -48,6 +48,8 @@ export async function turnStartPipeline(combat, combatant) {
   // Jutsu areas: timed ones that ran out go; lasting ones this creature starts in get a GM card.
   await areasTurnStart(combat, actor);
   await postConditionDamage(actor);
+  // Dodge lasts until the start of the creature's next turn (ADV1).
+  if ( actor.statuses?.has("dodging") ) await actor.toggleStatusEffect("dodging", { active: false });
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
   const recovered = await recoverCombatUses(actor, ["turn"]);

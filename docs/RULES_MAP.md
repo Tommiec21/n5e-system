@@ -85,7 +85,6 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
 | Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
 | Incapacitated does not end concentration | `rules/turn-start.mjs` |
 
@@ -122,3 +121,11 @@
 | Weakened −4/rank and Exhaustion −1/rank on dealt damage (first type first, floor 0), stored on the card | `rules/damage.mjs dealtDamagePenalty/reduceInstances`, `workflow/activity-buttons.mjs` |
 | Petrified resistance to all damage | `rules/damage.mjs damagePlan` (`conditionPenalties.flags.resistAll`) |
 | Exhaustion on healing and Short Rest dice | `rules/damage.mjs exhaustedRollTotal`, `workflow/activity-buttons.mjs`, `workflow/rest.mjs` |
+
+# Advantage engine (0.15.0-alpha.5, ADV1)
+
+| Rule | Code |
+| --- | --- |
+| Count advantage and disadvantage sources from conditions and states; any of each cancel; the click counts as one | `rules/advantage.mjs`, `dice/roll.mjs rollWithSpec` |
+| Auto-fail saves: Petrified and Stunned (Str/Dex), Unconscious (all) | same |
+| Dodging (until the start of the next turn) and Helped (the next attack or check) | `config/conditions.mjs states`, `workflow/turn.mjs` |

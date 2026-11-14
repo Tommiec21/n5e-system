@@ -36,10 +36,12 @@ export function weaponAttackSpec(actor, weapon = null) {
   let extra = unarmed.extra;
   let types = [unarmed.type];
   let scope = "unarmed";
+  let isRanged = false;
   if ( weapon ) {
     const w = weapon.system;
     const props = w.properties ?? {};
     const ranged = w.weaponType === "ranged";
+    isRanged = ranged;
     ability = ("finesse" in props || "thrown" in props) ? (mod("dex") > mod("str") ? "dex" : "str") : (ranged ? "dex" : "str");
     label = weapon.name;
     proficient = w.proficient !== false;
@@ -56,7 +58,7 @@ export function weaponAttackSpec(actor, weapon = null) {
   for ( const p of [...(pen.allDice ?? []), ...(pen.d20Physical ?? []), ...(pen.checksAndAttacks ?? [])] ) b.add(p.label, p.value);
   const abilityMod = mod(ability);
   return {
-    type: "weaponAttack", key: weapon?.id ?? "unarmed", kind: "attack", scope, label: `${label} attack`,
+    type: "weaponAttack", key: weapon?.id ?? "unarmed", kind: "attack", scope, label: `${label} attack`, ranged: isRanged,
     bonus: b.total, breakdown: b.toJSON(), ability, abilityMod,
     damage: { formula: `${die}${extra.map(x => ` + ${x}`).join("")}${abilityMod ? ` ${abilityMod < 0 ? "-" : "+"} ${Math.abs(abilityMod)}` : ""}`, die, extra, types },
     ammo: weapon?.system.ammo?.usesDie ? weapon.system.ammo : null,

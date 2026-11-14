@@ -12,6 +12,8 @@ import { degreeOfSuccess } from "../rules/degree.mjs";
 import { contextualSpec } from "../rules/elements.mjs";
 import { rule } from "../rules-settings.mjs";
 import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
+import { advantageSources, resolveMode, sourcesNote } from "../rules/advantage.mjs";
+import { skills as skillConfig } from "../config/core.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
 
@@ -87,7 +89,13 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const key = spec.key ?? "";
   const click = clickMode(event);
   const dialog = click.dialog;
-  let mode = forced ?? click.mode;
+  // Advantage engine (ADV1): conditions and states on the roller and its single target are counted
+  // with the click (or a forced mode); any advantage and any disadvantage cancel.
+  const sources = advantageSources({ roller: rollFacts(actor), target: target ? rollFacts(target) : null,
+    kind: spec.kind === "attack" ? "attack" : spec.kind === "save" ? "save" : "check", ability: rollAbility(spec), ranged: !!spec.ranged });
+  let mode = resolveMode(sources, forced ?? click.mode);
+  const sourceNote = sourcesNote(sources);
+  if ( sourceNote ) spec = { ...spec, note: [spec.note, sourceNote].filter(Boolean).join(" · ") };
   let extra = "";
   if ( dialog ) {
     const res = await rollDialog(`${actor.name}: ${spec.label}`, mode);
@@ -103,6 +111,11 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   let degree = null;
   if ( dc != null ) {
     const d = degreeOfSuccess(roll.total, dc, { natural: result.natural, isSave: spec.kind === "save", shift: spec.degreeShift });
+    // Automatic failure (Petrified/Stunned Str and Dex, Unconscious all): a plain Failure.
+    if ( sources.autoFail && spec.kind === "save" ) {
+      if ( d.degree > 1 ) Object.assign(d, { degree: 1, key: "failure" });
+      spec = { ...spec, note: [spec.note, `Automatic failure: ${sources.autoFail}`].filter(Boolean).join(" · ") };
+    }
     degree = d.degree;
     const outcomeKey = fourTier ? d.key : d.degree >= 2 ? "success" : "failure";
     const labels = ["Critical Failure", "Failure", "Success", "Critical Success"];
@@ -120,6 +133,10 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
       dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null,
       total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined } } }
   });
+  // Help is spent by the roll it helped.
+  if ( sources.consume.includes("helped") && actor.isOwner && actor.statuses?.has("helped") ) {
+    await actor.toggleStatusEffect?.("helped", { active: false });
+  }
   await awardWillOfFire(actor, result);
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
   return message;
@@ -191,6 +208,19 @@ export async function spendWillOfFire(message, how) {
  * A new kind of card button: pick a new data-n5e-* attribute and add a loop here. The handlers are
  * imported on click so loading the chat log stays cheap.
  */
+/** Plain facts the advantage rules read (rules/advantage.mjs). */
+function rollFacts(actor) {
+  return { flags: actor?.system?.conditionPenalties?.flags ?? {}, statuses: actor?.statuses ?? new Set(), senses: actor?.system?.senses ?? {} };
+}
+
+/** The ability a roll uses: attack ability, save key, or a skill's ability. */
+function rollAbility(spec) {
+  if ( spec.ability ) return spec.ability;
+  if ( spec.kind === "save" || spec.type === "ability" ) return spec.key;
+  if ( spec.type === "skill" ) return skillConfig[spec.key]?.ability ?? null;
+  return null;
+}
+
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
   return [...(globalThis.game?.user?.targets ?? [])].filter(t => t.actor).slice(0, 20)

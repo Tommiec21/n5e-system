@@ -177,6 +177,10 @@ export const states = {
   stabilized: { label: "Stabilized", type: "encounter", icon: "icons/svg/regen.svg", includes: ["unconscious"] },
   dying: { label: "Dying", type: "encounter", icon: "icons/svg/skull.svg", includes: ["unconscious"] },
   dead: { label: "Dead", type: "encounter", icon: "icons/svg/skull.svg" },
+  /** Dodge action (KB 03): attacks against it have disadvantage, advantage on Dex saves; ends at the start of its next turn (ADV1). */
+  dodging: { label: "Dodging", type: "encounter", icon: "icons/svg/wing.svg" },
+  /** Help action (KB 03): advantage on its next attack or check, then it ends (ADV1). */
+  helped: { label: "Helped", type: "circumstantial", icon: "icons/svg/upgrade.svg" },
   /** Fury (Power Bukijutsu): red mist until the end of the turn after gaining it. */
   furious: { label: "Furious", type: "encounter", icon: "icons/svg/explosion.svg" }
 };

@@ -174,5 +174,7 @@ export const conditionText = {
     "ends": ""
   },
   "dead": { "text": "dead", "ends": "" },
+  "dodging": { "text": "Dodge action: attacks against you have disadvantage if you can see the attacker, and you have advantage on Dex saves; lost while incapacitated or at speed 0", "ends": "start of your next turn" },
+  "helped": { "text": "Help action: advantage on your next ability check or attack roll", "ends": "after that roll" },
   "furious": { "text": "Fury: gained the first time each turn you deal Weapon damage (Binding Fury Stance); kept until the end of the turn after gaining it; spent by Bukijutsu that call for it", "ends": "end of the turn after it was gained" }
 };

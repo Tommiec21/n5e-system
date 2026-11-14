@@ -277,3 +277,6 @@ King: out of combat, "end of next turn" conditions (Staggered, Dazed, Berserk, C
 
 ## DMG1 — Claude, 2026-11-13
 Owner Claude; ownership released. King's rulings: Bruised's +4 is added before DR; Weakened (and Exhaustion on damage) comes off the roll's total, first type first. Published v0.15.0-alpha.4. The pure functions are in `rules/damage.mjs`. Damage cards store `dealtPenalty`, and the saved rolls stay as rolled. Spec and results: `docs/DMG1_SPEC.md`. Tests: 298 pass, 2 skipped, on the first attempt. Auto-fail saves move to ADV1. Next ready batches: ADV1, CONC1.
+
+## ADV1 — Claude, 2026-11-13
+Owner Claude; ownership released. Published v0.15.0-alpha.5. The advantage engine is `rules/advantage.mjs`, used by `rollWithSpec`. New states: `dodging`, `helped`. Auto-fail saves are applied. Spec, limits and results: `docs/ADV1_SPEC.md`. Tests: 302 pass, 2 skipped; one test failed once (missing state rules text) and was fixed. Next ready batches: CAST1, CONC1.

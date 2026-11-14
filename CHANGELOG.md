@@ -1,3 +1,24 @@
+## 0.15.0-alpha.5 — Advantage engine and automatic save failures (ADV1)
+
+- Rolls now count advantage and disadvantage sources from conditions and states, dnd5e-style. Any advantage and any disadvantage cancel; the click (Alt/Ctrl) or a forced mode counts as one source. The sources are listed on the card.
+- **Attacks by the creature:**
+  - Blinded: disadvantage, unless it has Blindsight, Tremor Sense or Chakra Sensing.
+  - Restrained or Prone: disadvantage.
+  - Invisible: advantage, unless the target has True Sight or Chakra Sight.
+  - Staggered: disadvantage on Str/Dex/Con attacks, saves and checks.
+  - Dazzled: can't gain advantage.
+- **Attacks against the creature:**
+  - Petrified, Blinded, Stunned, Unconscious or Restrained: advantage.
+  - Prone: melee advantage, ranged disadvantage.
+  - Invisible: disadvantage, unless the attacker has True Sight or Chakra Sight.
+  - Dodging: disadvantage.
+- **Saves:**
+  - Petrified and Stunned automatically fail Str/Dex saves; Unconscious fails all saves.
+  - Blinded: disadvantage on Dex/Int/Wis saves.
+  - Dodging: advantage on Dex saves.
+- **New states:** Dodging ends at the start of the creature's next turn. Helped gives advantage on the next attack or check, then ends.
+- Weapon attacks know whether they are ranged.
+
 ## 0.15.0-alpha.4 — Damage numbers (DMG1)
 
 - **Bruised:** the creature takes +4 damage from every source, added to the first HP damage type before DR (King 2026-11-13).
