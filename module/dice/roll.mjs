@@ -64,11 +64,20 @@ function cardHTML(spec, { mode, result, bonusText, wof }) {
 export async function rollD20(actor, type, key, options = {}) {
   const spec = rollSpec(actor, type, key);
   if ( !spec ) return null;
+  // FIN2a: size limits, "while grappling" and Escape are checked before the roll.
+  let skillTargets = null;
+  if ( type === "skillAction" ) {
+    const chosen = options.targetActors ?? Array.from(globalThis.game?.user?.targets ?? []).map(t => t.actor).filter(Boolean);
+    const gate = await import("../workflow/skill-actions.mjs").then(m => m.prepareSkillAction(actor, key, chosen));
+    if ( gate.refuse ) { ui.notifications.warn(`${spec.label}: ${gate.refuse}`); return null; }
+    skillTargets = gate.targets;
+    if ( gate.disadvantage.length ) spec.disadvantageSources = [...(spec.disadvantageSources ?? []), ...gate.disadvantage];
+  }
   const message = await rollWithSpec(actor, spec, { ...options, ...(options.targetActors ? { target: options.targetActors.length === 1 ? options.targetActors[0] : null } : {}) });
   // Skill actions against one target: passive, fixed DC or contest resolution (SKILL1).
   if ( message && type === "skillAction" ) {
-    const targets = options.targetActors ?? Array.from(globalThis.game?.user?.targets ?? []).map(t => t.actor).filter(Boolean);
-    await import("../workflow/skill-actions.mjs").then(m => m.resolveSkillAction(actor, key, message, targets))
+    const targets = skillTargets ?? [];
+    await import("../workflow/skill-actions.mjs").then(m => m.resolveSkillAction(actor, key, message, targets, { weaponId: options.weaponId ?? "" }))
       .catch(error => ui.notifications.warn(error.message));
   }
   return message;
@@ -341,9 +350,10 @@ export function onRenderChatMessage(message, html) {
     const run = m => (d.n5eClashRoll ? m.rollClash(message, d.n5eClashRoll, ev) : d.n5eClashLose ? m.applyClashLoss(d.n5eClashLose) : m.startClash(message));
     import("../workflow/clash.mjs").then(run).catch(error => ui.notifications.warn(error.message));
   });
-  for ( const btn of html.querySelectorAll("[data-n5e-contest], [data-n5e-skill-apply]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-contest], [data-n5e-skill-apply], [data-n5e-skill-release]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
-    import("../workflow/skill-actions.mjs").then(m => (btn.dataset.n5eContest ? m.onContestClick(message, btn, ev) : m.onSkillApplyClick(btn)))
+    import("../workflow/skill-actions.mjs").then(m => (btn.dataset.n5eContest ? m.onContestClick(message, btn, ev)
+      : btn.dataset.n5eSkillRelease ? m.onSkillReleaseClick(btn) : m.onSkillApplyClick(btn)))
       .catch(error => ui.notifications.warn(error.message));
   });
   for ( const btn of html.querySelectorAll("[data-n5e-terrain-save]") ) btn.addEventListener("click", ev => {

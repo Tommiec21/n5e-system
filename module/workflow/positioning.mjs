@@ -130,6 +130,8 @@ export async function endSurprise(combat) {
 }
 
 export function registerPositioningHooks() {
+  // FIN2a: holds end past 5 ft.
+  Hooks.on("moveToken", token => void import("./skill-actions.mjs").then(m => m.onMoveForHolds(token)).catch(error => console.warn("n5e | holds", error)));
   Hooks.on("moveToken", (token, movement) => void onMoveForOpportunity(token, movement)
     .catch(error => console.warn("n5e | opportunity attacks", error)));
 }

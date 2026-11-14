@@ -387,3 +387,10 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Transfer:** `workflow/transfer.mjs transferItem(item, target, {quantity})`; sheets call `transferFromDrop`; tokens through `dropCanvasData`. Receivers are limited by `rules/transfer.mjs canReceive` (extend there for LOOT1).
 - **Grant guards** use `rules/item-audit.mjs existingCopy` (clan, background, browser) and the compendium source id (level-ups). Keep new grant paths behind one of them.
 - **`npm run check`** now also runs `tools/check-grants.mjs` (pack links).
+
+## FIN2a — Claude, 2026-11-14 (published 0.29.0-alpha.2)
+- **Gate:** `rules/skill-resolution.mjs skillActionGate(key, {actorSize, targetSize, holding, held})` returns `{refuse, disadvantage}`; `workflow/skill-actions.mjs prepareSkillAction` gathers the facts and `dice/roll.mjs rollD20` applies them before rolling. Widen the size rule by adding keys to `SIZE_GATED`.
+- **Holds:** `flags.n5e.heldBy` on the Grappled/Restrained effect; `holdsOn(actor)`; `onSkillReleaseClick`; `onMoveForHolds` (hooked in `workflow/positioning.mjs`).
+- **Weapon skill actions:** `WEAPON_SKILL_ACTIONS`; pills built in `view-models/combat.mjs` with mode `skill:<key>`; the sheet's `#onUseItem` routes them to `rollD20(actor, "skillAction", key, {weaponId})`.
+- **Open readings:** Q-F4–Q-F7 in `docs/FIN2_SPEC.md`. FIN2b (Read the Enemy, Identify, Suppress Chakra, tags) not started.
+

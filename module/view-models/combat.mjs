@@ -15,6 +15,8 @@ import { coreActions, activationTypes } from "../config/combat.mjs";
 import { skillActions, skillActionTiers } from "../config/character.mjs";
 import { esc, glyph, pips, signed } from "./common.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
+import { WEAPON_SKILL_ACTIONS } from "../rules/skill-resolution.mjs";
+const weaponPropLabel = p => p.charAt(0).toUpperCase() + p.slice(1);
 import { rankValue } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
 import { unarmedSpec, isUnarmedStrike } from "../rules/unarmed.mjs";
@@ -116,6 +118,13 @@ function basicCombat(actor) {
       activation: "action", sub: thrownRange, tip: tip(["Thrown", thrownRange, `${s.damage?.die ?? ""} ${types}`.trim()]) }));
     if ( s.damage?.versatile ) strikes.push(pill({ kind: "item", id: w.id, mode: "twoHanded", name: `${w.name} (two hands)`,
       activation: "action", sub: s.damage.versatile, tip: tip(["Versatile", `${s.damage.versatile} ${types}`.trim()]) }));
+    // FIN2a: Disarm and Trip properties replace one attack with a skill action.
+    for ( const [prop, keys] of Object.entries(WEAPON_SKILL_ACTIONS) ) {
+      if ( !(prop in props) ) continue;
+      for ( const k of keys ) strikes.push(pill({ kind: "item", id: w.id, mode: `skill:${k}`, name: `${w.name} (${skillActions[k]?.label ?? k})`,
+        activation: "action", sub: s.damage?.die ?? "", tip: tip([weaponPropLabel(prop), "In place of one attack"],
+          `<p>Replace one attack with ${esc(skillActions[k]?.label ?? k)}. On a success, also deal the weapon's damage die.</p>`) }));
+    }
     if ( lightPair && "light" in props ) strikes.push(pill({ kind: "item", id: w.id, mode: "light", name: `${w.name} (Light extra attack)`,
       activation: "free", sub: s.damage?.die ?? "", tip: tip(["Light", "Once per turn, with the Attack action"],
         "<p>While dual-wielding Light weapons, make one extra attack with your off-hand weapon once per turn when you take the Attack action.</p>") }));

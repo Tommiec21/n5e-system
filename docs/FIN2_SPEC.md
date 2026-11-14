@@ -54,3 +54,13 @@ Rules used (Shinobi Handbook Ch3 skill actions, Ch5 equipment; `N5e-Rules-KB` 02
 ## Progress log
 
 - 2026-11-14 Claude: spec written from the KB. Nothing built.
+- 2026-11-14 Claude: **FIN2a started (King: "Approved").** Q-F4–Q-F7 were not answered one by one, so the build uses the book's literal text and each reading stays open for King:
+  - Q-F4: the size rule applies to Trip only (`SIZE_GATED = ["trip"]`; add keys there to widen it).
+  - Q-F5: weapon Disarm and Trip roll the weapon's damage die alone, no ability modifier.
+  - Q-F7: the escaping creature chooses Athletics (`escape`) or Acrobatics (`escapeAcrobatics`) against the holder's Athletics.
+  - Q-F9: FIN2a first, FIN2b after.
+- 2026-11-14 Claude: A1–A2 done: `sizeGate`, `skillActionGate` (pure); `rollD20` refuses or adds disadvantage before the roll.
+- 2026-11-14 Claude: A3–A6 done: `flags.n5e.heldBy` on Grappled/Restrained effects applied from Grapple and Pin; `holdsOn`; prerequisites for Pin, Takedown, Choke, Muffle; Escape actions with "End the hold"; `onMoveForHolds` on `moveToken`.
+- 2026-11-14 Claude: A7 done: weapon pills `skill:<key>` on the Combat tab; damage-die button on success. Not done: counting it as one of the attacks of the Attack action; nothing in the system counts attacks.
+- 2026-11-14 Claude: tests attempt 1 passed: `npm test` 409 pass, 2 skipped; core 77/77; lint and check clean. Test files are `tests/core/skill-holds.test.mjs` and `tests/skill-actions-hold.test.mjs` (the spec's `skill-size` name was merged into the first).
+- 2026-11-14 Claude: **FIN2a published `0.29.0-alpha.2`.** FIN2b not started.

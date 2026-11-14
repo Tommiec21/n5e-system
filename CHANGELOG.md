@@ -1,3 +1,14 @@
+## 0.29.0-alpha.2 — Grapples, trips and disarms (FIN2a; King 2026-11-14)
+
+- **Holds.** Applying Grappled or Restrained from Grapple or Pin now records who is holding.
+  - **Pin, Takedown, Choke and Muffle** are refused unless you are holding the target.
+  - **Escape** (Athletics) and **Escape (Acrobatics)** are new skill actions for a held creature. They target the holder automatically, contest the holder's Athletics, and roll at disadvantage when the hold also restrains. On success the card offers **End the hold**.
+  - A hold ends, with a chat line, when holder and held are more than 5 ft apart after either moves.
+- **Size.** Trip is refused against a target two or more sizes larger, and rolls at disadvantage against one a size larger.
+- **Weapon Disarm and Trip.** A weapon with the Disarm property offers Disarm and Grapple on the Combat tab; one with Trip offers Trip and Shove. On a success the card has a button for the weapon's damage die.
+- **Readings to confirm (Q-F4–Q-F7).** Built on the book's literal text: the size rule is on Trip only; the weapon die is rolled alone, with no ability modifier; the escaping creature picks Athletics or Acrobatics against the holder's Athletics.
+- Not tracked: these weapon actions are not counted against the attacks of the Attack action (nothing in the system counts attacks yet).
+
 ## 0.29.0-alpha.1 — Item transfer and item integrity (FIN1; King 2026-11-14)
 
 - **Giving items.** Drop a physical item from a creature you own onto another creature's token or sheet to give it, not copy it. A stack asks "how many?" once. The item arrives unequipped and merges into a matching stack. A chat line records who gave what.

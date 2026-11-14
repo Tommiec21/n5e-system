@@ -456,3 +456,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- | --- |
 | Owner intent `transferItem` | Actor (the giver) | `{itemId, targetUuid, quantity}`: the GM moves the item after re-checking ownership, quantity and the receiver |
 | World migration 7 | World | Unarmed Strike for unlinked tokens |
+
+## Added in 0.29.0-alpha.2 (FIN2a)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.heldBy` | ActiveEffect (Grappled or Restrained) | UUID of the actor holding the creature; set when the status is applied from Grapple or Pin. Read by `holdsOn(actor)` |
+| `flags.n5e.actorUuid` | ChatMessage (skill action outcome) | The acting creature, for the hold and weapon buttons |
+| Skill actions `escape`, `escapeAcrobatics` | `config/character.mjs` | Athletics or Acrobatics vs the holder's Athletics; result `release` |
+| Attack mode `skill:<key>` | Combat tab weapon pill | Runs skill action `<key>` with the weapon (Disarm/Trip properties) |

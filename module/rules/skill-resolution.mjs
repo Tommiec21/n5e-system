@@ -65,6 +65,8 @@ export const SKILL_RESULTS = Object.freeze({
   choke: { statuses: ["suffocating"], note: "can't speak; 0 HP from it means Unconscious, not Dying" },
   muffle: { statuses: [], note: "can't speak until the start of your next turn" },
   disarm: { statuses: [], note: "item lands within 5 ft (10 ft if beat by 10)" },
+  escape: { statuses: [], release: true, note: "the hold ends" },
+  escapeAcrobatics: { statuses: [], release: true, note: "the hold ends" },
   blendIn: { statuses: [], note: "hidden in the crowd while seen" },
   feint: { statuses: [], note: "+1d4 to your next melee attack against it this turn" }
 });
@@ -78,3 +80,49 @@ export function skillActionEffects(key, { result, margin = 0, mastery = 0, profi
   if ( up && margin >= up.margin && mastery >= (up.mastery ?? 0) && (!up.proficient || proficient) ) return { statuses: [...up.statuses], notes: [up.note] };
   return { statuses: [...def.statuses], notes: def.note ? [def.note] : [] };
 }
+
+/* ---- FIN2a: sizes, holds, weapon Disarm and Trip (King 2026-11-14) ---- */
+
+export const SIZE_ORDER = Object.freeze(["tiny", "small", "medium", "large", "huge", "gargantuan"]);
+/** Actions the book gives the size rule for (Ch3: Trip). */
+export const SIZE_GATED = Object.freeze(["trip"]);
+/** Actions that start or tighten a hold, and those usable only on a creature you hold. */
+export const HOLD_ACTIONS = Object.freeze(["grapple", "pin"]);
+export const REQUIRES_HOLD = Object.freeze(["pin", "takedown", "choke", "muffle"]);
+export const ESCAPE_ACTIONS = Object.freeze(["escape", "escapeAcrobatics"]);
+/** Weapon properties that replace one attack with a skill action (Ch5). */
+export const WEAPON_SKILL_ACTIONS = Object.freeze({ disarm: ["disarm", "grapple"], trip: ["trip", "shove"] });
+
+/** normal | disadvantage (target 1 size larger) | impossible (2 or more larger). */
+export function sizeGate(attackerSize, targetSize) {
+  const a = SIZE_ORDER.indexOf(attackerSize), t = SIZE_ORDER.indexOf(targetSize);
+  if ( a < 0 || t < 0 ) return "normal";
+  return t - a >= 2 ? "impossible" : t - a === 1 ? "disadvantage" : "normal";
+}
+
+/**
+ * May this skill action be attempted, and with what?
+ * @param {string} key
+ * @param {object} f
+ * @param {string} f.actorSize, f.targetSize
+ * @param {boolean} f.holding            the actor holds the target
+ * @param {{by: string|null, restrained: boolean}} f.held   the actor's own hold (for Escape)
+ * @returns {{refuse: string|null, disadvantage: string[]}}
+ */
+export function skillActionGate(key, { actorSize, targetSize, holding = false, held = { by: null, restrained: false } } = {}) {
+  const out = { refuse: null, disadvantage: [] };
+  if ( SIZE_GATED.includes(key) ) {
+    const gate = sizeGate(actorSize, targetSize);
+    if ( gate === "impossible" ) out.refuse = "The target is two or more sizes larger.";
+    else if ( gate === "disadvantage" ) out.disadvantage.push("Target one size larger");
+  }
+  if ( REQUIRES_HOLD.includes(key) && !holding ) out.refuse = "You must be grappling the target.";
+  if ( ESCAPE_ACTIONS.includes(key) ) {
+    if ( !held.by ) out.refuse = "You aren't being held.";
+    else if ( held.restrained ) out.disadvantage.push("Restrained by the hold");
+  }
+  return out;
+}
+
+/** A hold ends when holder and held are more than 5 ft apart (edge to edge). */
+export const holdBroken = gapFeet => Number(gapFeet) > 5;

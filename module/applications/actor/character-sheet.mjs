@@ -471,6 +471,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     // Jutsu cast (dialog; Alt+click casts at base rank), weapons attack, features pay their cost.
     if ( item.type === "jutsu" ) return castJutsu(this.actor, item, { skipDialog: event.altKey });
     if ( item.type === "weapon" && target.dataset.attackMode === "unjam" ) return unjamWeapon(this.actor, item);
+    // FIN2a: a weapon's Disarm or Trip property runs the skill action in place of an attack.
+    if ( item.type === "weapon" && target.dataset.attackMode?.startsWith("skill:") ) {
+      return rollD20(this.actor, "skillAction", target.dataset.attackMode.slice(6), { event, weaponId: item.id });
+    }
     if ( item.type === "weapon" ) return attackWithWeapon(this.actor, item, { event, mode: target.dataset.attackMode ?? "" });
     if ( item.type === "feat" ) return useFeature(this.actor, item);
     await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
