@@ -41,3 +41,4 @@ After each function, add a line to the progress log and push.
   - Save button: immune owned targets get an "immune to <jutsu>" card with the reasons instead of a roll. (Correction: an earlier version of this line said a no-roll warning was suppressed; there is no such warning. When nothing is rolled, the handler returns null quietly, so no change was needed.)
   - Attack button: every target immune → refused with the reasons; some → an info notice naming them.
   - Suite green. Next: F4 (Unaware note), then tests.
+- 2026-11-14 Claude: **F4 done.** `postCastCard` adds an Unaware note to the card's extras (rendered with the buttons) when the jutsu is cast as Genjutsu and `system.unaware` is set. Suite green. Next: tests.
