@@ -1,6 +1,6 @@
 # ENV1 function spec: environment
 
-Status: **ENV1a in progress (continuing the plan after POS1, 2026-11-14).** Release target `0.21.0-alpha.1`. Falling waits on King (Q-C11).
+Status: **ENV1a published `0.21.0-alpha.1` (2026-11-14). Falling (ENV1b) waits on King (Q-C11).**
 
 Plan row 14: hostile terrain as Region behaviours, falling, suffocation.
 
@@ -39,3 +39,17 @@ After each function, add a line to the progress log and push.
   - `workflow/environment.mjs`, called from `turnStartPipeline` after the Surprised line.
   - The `[data-n5e-terrain-save]` button is bound in `onRenderChatMessage`.
   - Suite green (346). Next: tests (`tests/environment.test.mjs`), then release ENV1a.
+- 2026-11-14 Claude: **Tests done.**
+  - New `tests/environment.test.mjs` (4 tests).
+  - Attempt 1: the new test file imported the data models before the Foundry stand-in in `tests/helpers/actor.mjs` loaded. Fixed by importing the helper first.
+  - Attempt 2 passed: 350 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+### ENV1a: published `v0.21.0-alpha.1`
+- F1–F4 were built as specified. F5 (falling) waits on Q-C11.
+- **Differs from the spec:** the exposure check runs from the GM's turn pipeline, not from Region events, so it is forward-only and runs once per turn like every other turn-start step.
+- **Limits.**
+  - Indirect Exposure (hourly Survival checks) and Chakra Resistant's effects are table procedures.
+  - Out-of-combat breath (minutes) isn't counted.
+  - A choke (Suffocating with 0 HP meaning Unconscious, not Dying) still needs the GM to set Unconscious by hand.

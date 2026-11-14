@@ -331,3 +331,6 @@ Published v0.19.0-alpha.1. Damage cards draw per-target rows from the rolls link
 
 ## POS1 — Claude, 2026-11-14
 Published v0.20.0-alpha.1. Positioning rules are in `rules/positioning.mjs`; the hooks are in `workflow/positioning.mjs` (moveToken Opportunity Attack reminders, Disengage/Dodge effects, Engaged, Surprised). Cover is a token status, read in `creature.mjs` (AC, Dex save) and in `rollWithSpec` (Total cover refusal). Reactions: `chooseReaction` returns nothing while Surprised. Next per plan: CLASH1 (needs Q3, Clash ties, from King), ENV1, SKILL1, GEN1.
+
+## ENV1a — Claude, 2026-11-14
+Published v0.21.0-alpha.1. Hostile terrain is a system RegionBehavior (`hostileTerrain`, declared in system.json). The GM turn pipeline reads the regions a token is in (`terrainsAt`) and posts the exposure card. Suffocating counts `flags.n5e.breath`. Falling waits on King's answer to Q-C11 (`docs/ENV1_SPEC.md`). Next per plan: SKILL1, GEN1. CLASH1 waits on Q3.

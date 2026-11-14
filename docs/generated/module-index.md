@@ -113,7 +113,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `_index.mjs` | 59 | Registers every TypeDataModel with CONFIG. | `actorModels`, `itemModels`, `effectModels`, `registerDataModels` |
+| `_index.mjs` | 67 | Registers every TypeDataModel with CONFIG. | `actorModels`, `regionBehaviorModels`, `itemModels`, `effectModels`, `registerDataModels` |
 
 ## module/data/actor
 
@@ -144,6 +144,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu.mjs` | 190 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
 
+## module/data/region
+
+| File | Lines | Purpose | Exports |
+| --- | ---: | --- | --- |
+| `hostile-terrain.mjs` | 22 | Hostile Terrain region behaviour (ENV1, KB 06). | `HostileTerrainBehavior` |
+
 ## module/dice
 
 | File | Lines | Purpose | Exports |
@@ -151,7 +157,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 74 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 117 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 402 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 406 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -204,6 +210,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 128 | Contextual rule elements. | `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
+| `environment.mjs` | 43 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `breathTurns`, `suffocationStep` |
 | `expiry.mjs` | 41 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
@@ -265,6 +272,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `conditions.mjs` | 102 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
+| `environment.mjs` | 86 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `breathTurnStart`, `onTerrainSaveClick` |
 | `expiry.mjs` | 57 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
 | `positioning.mjs` | 136 | Positioning workflows (POS1). | `meleeReach`, `onMoveForOpportunity`, `onOpportunityClick`, `onCoreAction`, `recordEngagement`, `engagedWith`, `surprisedTurnStart`, `surprisedTurnEnd`, `endSurprise`, `registerPositioningHooks` |
@@ -278,7 +286,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `roll-request.mjs` | 62 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `trackers.mjs` | 420 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
-| `turn.mjs` | 159 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
+| `turn.mjs` | 161 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `unarmed.mjs` | 14 | The Unarmed Strike item (DATA2). | `ensureUnarmedStrike` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |
 | `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |

@@ -369,3 +369,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.surpriseDone` | Actor | A Surprised creature's first turn has ended (Reactions allowed); cleared at round 2 |
 | `flags.n5e.opportunity` | Chat message | `{attackerUuid, targetUuid}` on an Opportunity Attack reminder |
 | `mode: "opportunity"` | `attackWithWeapon` | Spends the Reaction; no range check |
+
+## Added in 0.21.0-alpha.1 (ENV1a)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| RegionBehavior type `hostileTerrain` `{terrain, rank}` | Region | Hostile terrain: extremeHeat, extremeCold, toxic, chakraResistant; rank D–S |
+| `flags.n5e.terrain` | Chat message | The Direct Exposure card: `{actorUuid, dc, damage, damageType, label}` |
+| `flags.n5e.breath` | Actor | Turns of breath left while Suffocating (combat) |

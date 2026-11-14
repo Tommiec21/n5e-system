@@ -1,3 +1,12 @@
+## 0.21.0-alpha.1 — Hostile terrain and suffocation (ENV1a)
+
+- **Hostile Terrain region behaviour.**
+  - Draw a Region and add **Hostile Terrain** with its type (Extreme Heat, Extreme Cold, Toxic Environment, Chakra Resistant) and rank (D–S).
+  - A creature that starts its turn inside it gets a Direct Exposure card. Its owner rolls the Con save (DC 18–25 by rank); a failure rolls the terrain's damage (3d6–9d6 fire, cold or poison) onto a damage card for that creature, ignoring DR.
+  - D-Rank terrain deals no direct damage. Chakra Resistant adds its rules as a turn-card note. Overlapping terrains use the highest DC.
+- **Suffocating** in combat: the creature holds its breath for its Con modifier in turns (min 1), counted on its turn card. When it runs out, it drops to 0 HP and is Dying.
+- Falling damage waits on King's choice between the two Chapter 7 rules.
+
 ## 0.20.0-alpha.1 — Positioning (POS1)
 
 - **Cover.**
