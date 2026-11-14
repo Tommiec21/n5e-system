@@ -352,3 +352,9 @@ Published v0.25.0-alpha.1. Clash rules are in `rules/clash.mjs`; the card is in 
 
 ## SHARED1a — Claude, 2026-11-14 (King: one repo; both agents; Module checks daily)
 Published v0.26.0-alpha.1. `module/rules` + `module/config` are the shared core; `npm run check` enforces the boundary (`tools/check-core.mjs`). Never read `game`/`CONFIG`/`canvas`... inside `module/rules`: use `rule()` from `rules/settings.mjs` and `n5eConfig()` from `rules/host.mjs`. Tests that import only the core go in `tests/core/`. SHARED1b handoff steps: `docs/SHARED1_SPEC.md` "Handoff".
+
+## SHARED1b — Claude, 2026-11-14 (complete)
+n5e-module v0.1.0-alpha.16–.20. The Module vendors the core in `scripts/core/` (never edit it; `tools/sync-core.mjs` updates it, and the daily `core-sync.yml` opens a PR).
+- **From the core:** degree, condition modifiers, damage/heal/death saves, cost/upkeep/concentration DC, and condition removal (through an adapter that keeps the Module record shape).
+- **Module-native by design:** condition timing, activity selection (authored only), and `concentrationOnDamage`.
+- When you change a `module/rules` function the Module uses, its behaviour reaches the Module through the next core sync, so keep result contracts stable or note the change in the release notes.

@@ -1,6 +1,6 @@
 # SHARED1 function spec: shared rules core
 
-Status: **King answered Q-SH1–Q-SH3 on 2026-11-14. SHARED1a published `0.26.0-alpha.1`. SHARED1b (Module) next: Claude or Codex, from the handoff below.**
+Status: **King answered Q-SH1–Q-SH3 on 2026-11-14. SHARED1a published `0.26.0-alpha.1`. SHARED1b complete: n5e-module `v0.1.0-alpha.16`–`.20`.**
 
 Plan row 17 and Section 2 (King, 2026-11-13): one shared rules core used by the N5e System and the N5e Module (the dnd5e 5.3.3 add-on), each with a thin adapter. Shared tests run against the core. A System release triggers a Module rebuild against the pinned dnd5e version. Rules and mechanics are shared; worlds are not.
 
@@ -171,3 +171,10 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
   - Only `removalResult` moved to the core, through an adapter that keeps the Module record shape. A parity test checks it against the old formula. Turn-start damage, durations and decay stay Module-native.
   - Gate `coreRemoval` passed locally (64/64) and in CI (run 43600442333). Published n5e-module `v0.1.0-alpha.20`.
   - Next: activity selection, the last M3 swap.
+- 2026-11-14 Claude: **SHARED1b complete.**
+  - Activity selection was compared and not swapped. The Module uses only authored dnd5e activities and never parses text, while the core's `effectiveActivities` falls back to parsing the description. Adopting it would change behaviour.
+  - M1–M4 and packaging are done. The Module's vendored core is 0.26.0-alpha.1, the latest System release.
+  - **Open for King:**
+    - Module damage doesn't apply Bruised or Petrified. Turning them on is a behaviour change, so it needs approval.
+    - The Module casting test fails on main (no `ChatMessage` stub; Codex bfc2711).
+    - The Actions setting "Allow GitHub Actions to create and approve pull requests" is needed for the daily core-sync PR.
