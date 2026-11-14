@@ -8,6 +8,7 @@ import * as jutsu from "./jutsu.mjs";
 import * as combat from "./combat.mjs";
 import * as equipment from "./equipment.mjs";
 import * as character from "./character.mjs";
+import * as adversary from "./adversary.mjs";
 
 export const N5E = {
   ...core,
@@ -16,6 +17,7 @@ export const N5E = {
   ...combat,
   ...equipment,
   ...character,
+  ...adversary,
   /** Clan-scoped conditions and keywords registered at runtime: {key: {...def, scope: "clan:<id>"}}. */
   clanConditions: {},
   uniqueKeywords: {}

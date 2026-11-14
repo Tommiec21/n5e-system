@@ -1,3 +1,20 @@
+## 0.30.0-alpha.1 — Adversary math (NPC1a; King 2026-11-14)
+
+The engine for Bingo Book adversaries. **Nothing changes on the sheet yet**: the Build tab and stat-block sheet that use it come with NPC1b, and every existing NPC stays player-style.
+
+- **Adversary build** (`system.details.build: "adversary"`): the profile (level, class, role, rank, Iconic/Epic, armor type, assigned ability modifiers, party size) gives every number.
+  - Proficiency and the baseline modifier lines from the Base Adversary Statistics by Level table, levels 1–30. Adversaries hold modifiers, not scores.
+  - Hit and Chakra Points from the book's formula (Elite ×1.25, Solo ×(1.5 + 0.5 per player), Iconic ×1.5, Epic ×2, both ×2.5, rounded down) or the Lazy GM tables.
+  - AC and DR from the table by level and armor type; equipped armor doesn't change them.
+  - Saves: 2 fully proficient at levels 1–7, 3 at 8–16, 4 at 17+, the rest half; the highest modifiers unless the GM picks.
+  - Attack bonuses and save DCs per discipline, plus a Weapon/Freeform line with any ability.
+  - Role, class and classification modifiers on AC, DR, saves, initiative, DCs, attacks, skills and speed.
+  - Minions: HP 10 + level, no Chakra pool, AC −2, initiative −2, saving throws fail automatically.
+  - Optional Rank bonus (ability points equal to Rank), off to start.
+- **Overrides:** any computed number can be replaced by a stated one; effects and conditions still apply on top, and the baseline is kept for the sheet.
+- **New rule setting:** "Party size for Solo adversaries" (count the players' characters, or typed on each adversary).
+- **NPC header:** the Minion/Standard/Elite/Solo field is now Class (`details.class`); `details.role` holds Striker, Defender, Lurker, Controller or Supporter. Migration 8 saves the change for existing NPCs.
+
 ## 0.29.0-alpha.3 — Reading and countering jutsu (FIN2b; King 2026-11-14)
 
 - **Read the Enemy** and **Identify** buttons on every jutsu's cast card. Select your token (not the caster) and click.

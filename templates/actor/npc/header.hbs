@@ -8,7 +8,7 @@
       <div class="npc-fields">
         <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
         <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-        <label>Role <select name="system.details.role">{{#each npc.roleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>Class <select name="system.details.class">{{#each npc.roleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
         <label>Type <input type="text" name="system.details.creatureType" value="{{npc.creatureType}}"></label>
         <label>Template <select name="system.details.template">{{#each npc.templateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
         <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>

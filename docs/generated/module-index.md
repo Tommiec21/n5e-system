@@ -106,15 +106,16 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
+| `adversary.mjs` | 86 | Adversary tables (the Bingo Book, "The Adversary Profile" to "Final Calculation(s)"; NPC1). | `adversaryClasses`, `adversaryRoles`, `adversaryArmor`, `adversaryBuilds`, `hpSources`, `proficiencyByLevel`, `statLines`, `rankTable`, `armorTable`, `classModifiers`, `roleModifiers`, `classifications`, `fullSavesByLevel`, `lazyPerLevel`, `lazySoloPlayers`, `suggested`, `adversaryDisciplineAbility` |
 | `character.mjs` | 159 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
-| `combat.mjs` | 238 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
+| `combat.mjs` | 239 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 201 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 160 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
-| `index.mjs` | 41 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
+| `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
-| `rules.mjs` | 144 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 147 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 
 ## module/data
 
@@ -127,8 +128,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 609 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
-| `npc.mjs` | 78 | NPCs, adversaries, summons, clones, and companions. | `NPCData` |
+| `creature.mjs` | 632 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `npc.mjs` | 245 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
 
 ## module/data/effect
 
@@ -164,7 +165,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 74 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 117 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 452 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 454 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -182,7 +183,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `atk1.mjs` | 16 | ATK1 migration (pure, used by the world runner and tools/migrate-packs.mjs): a Thrown weapon without the Ammunition property carries a d4 Ammunition Die (Cha... | `migrateThrownAmmo` |
 | `data1.mjs` | 100 | Data model update (pure; DATA1, King 2026-11-13). | `migrateJutsuDisciplines`, `migrateKeywords`, `FEATURE_KIND_MAP`, `migrateFeatureKind`, `migrateItemData1`, `migrateWeaponKeywords`, `migrateClassWeaponGrants`, `migrateItemData1b` |
-| `runner.mjs` | 267 | World migration runner. | `SETTING`, `MIGRATIONS`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
+| `runner.mjs` | 285 | World migration runner. | `SETTING`, `MIGRATIONS`, `migrateNpcProfile`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
 | `v31.mjs` | 538 | V3.1 (n5e 0.6.x, dnd5e-derived data) -> N5e 4.0 data mapping. | `isV31Item`, `isV31Actor`, `guessRank`, `migrateV31Item`, `migrateV31Actor` |
 
 ## module/rules
@@ -194,10 +195,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 154 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
+| `adversary.mjs` | 154 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 183 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `authored-reactions.mjs` | 32 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
-| `breakdown.mjs` | 47 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
+| `breakdown.mjs` | 58 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
 | `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
 | `cast-checks.mjs` | 67 | Pre-cast checks (pure; CAST1). | `jutsuComponents`, `castBlockers` |
 | `cast-discipline.mjs` | 99 | Multi-discipline jutsu (pure; MDISC1, King 2026-11-13, N5e-Context.md decisions 11, 14 and 15). | `castableDisciplines`, `defaultCastDiscipline`, `castDisciplineOf`, `resolveCastDiscipline`, `countsAsDiscipline`, `knowsJutsuOf`, `sameTypeForSwap`, `disciplineAllowed`, `defenseSkillFor`, `genjutsuRidersApply`, `caughtBy` |

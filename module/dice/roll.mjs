@@ -129,6 +129,8 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   // Sources the caller worked out (weapon properties and range, ATK1).
   sources.advantage.push(...(spec.advantageSources ?? []));
   sources.disadvantage.push(...(spec.disadvantageSources ?? []));
+  // Minions automatically fail saving throws (Bingo Book; NPC1).
+  if ( spec.kind === "save" && actor.system?.autoFailSaves && !sources.autoFail ) sources.autoFail = "Minion";
   addSheetToggle(sources, actor, "d20");
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? click.mode);

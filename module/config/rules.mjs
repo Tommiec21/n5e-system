@@ -138,6 +138,9 @@ export const rules = {
     hint: "Darkvision, Blindsight, Tremor Sense, True Sight, Chakra Sight and Chakra Sensing on the sheet become token vision and detection modes." },
   movementCosts: { group: "map", type: "boolean", default: true, label: "Climb, swim and crawl cost extra",
     hint: "+1 ft per ft without a climb or swim speed, and while crawling (KB 03, 06)." },
+  adversaryPartySize: { group: "casting", type: "choice", default: "auto", label: "Party size for Solo adversaries",
+    choices: { auto: "Count the players' characters", manual: "Typed on each adversary" },
+    hint: "A Solo's Hit and Chakra Points are multiplied by 1.5 + 0.5 per player (Bingo Book). Automatic counts the characters assigned to players." },
   rulerSpeed: { group: "map", type: "boolean", default: true, label: "Color the ruler by speed",
     hint: "Movement within your speed shows normally, up to double (Dash) in yellow, beyond in red." }
 };

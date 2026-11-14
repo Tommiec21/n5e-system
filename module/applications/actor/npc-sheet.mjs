@@ -35,9 +35,9 @@ export default class NPCSheet extends CharacterSheet {
         level: src.details.level, hpMax: src.hpMax ?? "", cpMax: src.cpMax ?? "", hitDie: src.hitDie, chakraDie: src.chakraDie,
         creatureType: src.details.creatureType,
         rankOptions: opts(Object.fromEntries(rankOrder.map(r => [r, ranks[r].label])), src.details.rank),
-        roleOptions: opts(npcRoles, src.details.role),
+        roleOptions: opts(npcRoles, src.details.class),
         templateOptions: opts(npcTemplates, src.details.template),
-        summary: [`Level ${sys.level}`, ranks[src.details.rank]?.label, npcRoles[src.details.role],
+        summary: [`Level ${sys.level}`, ranks[src.details.rank]?.label, npcRoles[src.details.class],
           src.details.creatureType ? src.details.creatureType[0].toUpperCase() + src.details.creatureType.slice(1) : "",
           src.details.template !== "none" ? npcTemplates[src.details.template] : ""].filter(Boolean).join(" · ")
       };

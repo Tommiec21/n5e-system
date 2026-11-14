@@ -69,5 +69,14 @@ None open.
 
 ## Progress log
 
+- 2026-11-14 Claude: **NPC1a started (King: "Approved").**
+- 2026-11-14 Claude: A2 done: `config/adversary.mjs` (tables parsed from the book's text, not retyped). A3–A6, A8–A11, A14 done: `rules/adversary.mjs` (pure). Checked against the book: 60 / 75 / 210 / 315 / 420 / 525 HP; Lazy GM rows at levels 3, 5, 27, 30; AC rows 1, 2, 3, 13, 30.
+  - Lazy GM tables are printed rounded up and with a Solo at 4 players; the code follows the printed tables. The formula rounds down (Q-N16).
+- 2026-11-14 Claude: A1, A12, A13, A15 done: `data/actor/npc.mjs`; hooks `_statParts`, `_statOverride`, `_baseAC` in `data/actor/creature.mjs`; `Breakdown.override`. The adversary inputs live under `system.adversary` (mods, fullSaves, armor, hpSource, partySize, rankBonus, freeformAbility, overrides), not under `details` as the table above says. HP and CP overrides are the existing `hpMax` / `cpMax`.
+- 2026-11-14 Claude: A7 done: rule `adversaryPartySize` (auto counts characters assigned to players; falls back to the typed size when none). A9 Minion auto-fail goes through the existing automatic-failure path in `dice/roll.mjs`. A16 done: `NPCData.migrateData` and world migration 8.
+  - **Difference from A16:** new NPCs still start player-style in this release, because the Build tab that edits an adversary arrives with NPC1b. NPC1b switches the default.
+- 2026-11-14 Claude: tests attempt 1 failed (8): the schema used a field class the test stand-in and `tools/check` don't have. Changed the skill overrides to `TypedObjectField`. Attempt 2 passed: `npm test` 432 pass, 2 skipped; core 91/91; lint and check clean. Files: `tests/core/adversary.test.mjs`, `tests/npc-adversary.test.mjs`.
+- 2026-11-14 Claude: **NPC1a published `0.30.0-alpha.1`.** NPC1b next.
+
 - 2026-11-14 Claude: first draft (stored or calculated modes). King answered Q-N7–Q-N14.
 - 2026-11-14 Claude: King pointed out the first draft's modes don't match the book. Bingo Book re-read ("The Adversary Profile" to "Final Calculation(s)", Cultist examples). Spec rewritten on the book's model: profile in, book math out, GM overrides. King: Rank bonus equals Rank and is suggested; stat lines are the baseline. Noted: the Avenger and Bishop (level 5) show three full saves against the rule's two, which the GM's freedom to adjust covers. Noted: the Sasuke example's level 13 line (+6, +4, +2, +1, +1, +0) differs from the table's Elite line at 13; the table is used. Nothing built.

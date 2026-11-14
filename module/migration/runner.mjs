@@ -28,8 +28,26 @@ export const MIGRATIONS = [
   { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons },
   { id: 5, label: "Unarmed Strike item for every character and NPC", run: addUnarmedStrikes },
   { id: 6, label: "Thrown weapons without Ammunition get a d4 Ammunition Die", run: migrateThrownWeapons },
-  { id: 7, label: "Unarmed Strike item for unlinked tokens", run: addUnarmedStrikesToTokens }
+  { id: 7, label: "Unarmed Strike item for unlinked tokens", run: addUnarmedStrikesToTokens },
+  { id: 8, label: "NPCs: class (Minion to Solo) moves out of role; existing NPCs stay player-style", run: migrateNpcProfile }
 ];
+
+/**
+ * Migration 8 (NPC1): details.role held the adversary class. NPCData.migrateData already converts it in
+ * memory (class, role "none", build "character"); this saves the converted fields.
+ */
+export async function migrateNpcProfile(log) {
+  const failures = [];
+  const unlinked = game.scenes.contents.flatMap(sc => sc.tokens.contents.filter(t => !t.actorLink && t.actor).map(t => t.actor));
+  for ( const actor of [...game.actors, ...unlinked].filter(a => a.type === "npc") ) {
+    const d = actor._source.system.details;
+    try {
+      await actor.update({ "system.details.class": d.class, "system.details.role": d.role, "system.details.build": d.build }, { diff: false, n5eMigration: true });
+      log.push(`NPC profile: ${actor.uuid}`);
+    } catch (error) { failures.push({ uuid: actor.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some NPCs could not be updated."); error.failures = failures; throw error; }
+}
 
 /** Migration 7 (FIN1): unlinked tokens were skipped by migration 5. */
 async function addUnarmedStrikesToTokens(log) {

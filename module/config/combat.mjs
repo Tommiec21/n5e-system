@@ -149,6 +149,7 @@ export const rechargeDice = { "3-4": "d4", "5-6": "d6", "7-8": "d8", "9-10": "d1
 export const dieSteps = [4, 6, 8, 10, 12];
 
 /** NPC roles (KB 03: most adversaries die at 0 HP). */
+/** Adversary classes (the Bingo Book). The Roles (Striker...) are adversaryRoles in config/adversary.mjs. */
 export const npcRoles = { minion: "Minion", standard: "Standard", elite: "Elite", solo: "Solo" };
 export const npcTemplates = { none: "None", summon: "Summon", clone: "Clone", companion: "Companion" };
 export const summonRoles = {

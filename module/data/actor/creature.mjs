@@ -150,6 +150,21 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.breakdowns = {};
   }
 
+  /** Extra labelled parts for a statistic ("save", "initiative", "attack", "dc", "dr", "skill.<key>"). Adversaries add theirs (NPC1). */
+  _statParts(_kind) {
+    return [];
+  }
+
+  /** A stated value that replaces a statistic's computed base ("save.str", "attack.nin", "dc.gen", "skill.ath", "initiative", "dr", "speed", "passive.prc"), or null. */
+  _statOverride(_key) {
+    return null;
+  }
+
+  /** A complete base Armor Class ({value, base, calc, parts}) that replaces computeAC, or null. */
+  _baseAC(_context) {
+    return null;
+  }
+
   /** Overridden by character (class levels) and NPC (stored level). */
   _computeLevel() {
     return 1;
@@ -264,7 +279,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       save.isProficient = save.proficient || grants.saves.has(key);
       save.mastery = this.masteryFor(`save.${key}`).rank;
       const b = B(`save.${key}`, `${abilities[key].label} save`).base(abbr(key), mod(key))
-        .add(save.isProficient ? "Proficiency" : "Half proficiency", save.isProficient ? this.prof : Math.floor(this.prof / 2));
+        .add(save.isProficient ? "Proficiency" : "Half proficiency", save.isProficient ? this.prof : Math.floor(this.prof / 2))
+        .addAll(this._statParts("save")).override(this._statOverride(`save.${key}`));
       addMastery(b, `save.${key}`).add("Bonuses", this.bonuses.save).addAll(d20Parts(key));
       // Cover adds to Dex saves too (POS1).
       if ( key === "dex" ) { const c = coverFrom(this.parent?.statuses); if ( c?.bonus ) b.add(c.label, c.bonus); }
@@ -284,11 +300,13 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       skill.mod = mod(skill.ability);
       skill.mastery = this.masteryFor(`skill.${key}`).rank;
       const b = B(`skill.${key}`, skills[key]?.label ?? key).base(abbr(skill.ability), skill.mod)
-        .add("Proficiency", skill.isProficient ? this.prof : 0);
+        .add("Proficiency", skill.isProficient ? this.prof : 0)
+        .addAll(this._statParts(`skill.${key}`)).override(this._statOverride(`skill.${key}`));
       addMastery(b, `skill.${key}`).add("Skill bonus", evaluateFormula(skill.bonus, rollData, 0))
         .add("Bonuses", this.bonuses.check).addAll(d20Parts(skill.ability)).addAll(P("checksAndAttacks"));
       skill.total = b.total;
-      const pb = B(`passive.${key}`, `Passive ${skills[key]?.label ?? key}`).base("Base", 10).add("Skill", skill.total);
+      const pb = B(`passive.${key}`, `Passive ${skills[key]?.label ?? key}`).base("Base", 10).add("Skill", skill.total)
+        .override(this._statOverride(`passive.${key}`));
       if ( key === "prc" ) pb.addAll(P("perception"));
       skill.passive = pb.total;
     }
@@ -298,7 +316,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     }
 
     // Initiative: Dex + floor(prof / 2) + Mastery.
-    const ib = B("initiative", "Initiative").base("Dex", mod("dex")).add("Half proficiency", Math.floor(this.prof / 2));
+    const ib = B("initiative", "Initiative").base("Dex", mod("dex")).add("Half proficiency", Math.floor(this.prof / 2))
+      .addAll(this._statParts("initiative")).override(this._statOverride("initiative"));
     addMastery(ib, "initiative").add("Bonuses", this.bonuses.initiative)
       .add("Initiative bonus", evaluateFormula(this.attributes.init.bonus, rollData, 0)).addAll(d20Parts("dex"));
     this.initiative = { total: ib.total };
@@ -310,11 +329,13 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       disc.ability = mods.disciplineAbility[key] ?? disc.ability;
       disc.mod = mod(disc.ability);
       const ab = B(`${key}.attack`, `${label} attack`).base(abbr(disc.ability), disc.mod).add("Proficiency", this.prof)
+        .addAll(this._statParts("attack")).override(this._statOverride(`attack.${key}`))
         .add("Bonuses", this.bonuses.attack[key]).add("Effects", mods.attack[key] ?? 0);
       addMastery(ab, `attack.${key}`).addAll(P("allDice", "checksAndAttacks"));
       disc.attack = ab.total;
       const db = B(`${key}.dc`, `${label} save DC`).base("Base", dcTables.jutsuSaveBase).add(abbr(disc.ability), disc.mod)
-        .add("Proficiency", this.prof).add("Bonuses", this.bonuses.saveDC[key])
+        .add("Proficiency", this.prof).addAll(this._statParts("dc")).override(this._statOverride(`dc.${key}`))
+        .add("Bonuses", this.bonuses.saveDC[key])
         .add("Effects", (mods.saveDC[key] ?? 0) + (mods.saveDC.all ?? 0)).addAll(P("saveDC"));
       disc.dc = db.total;
     }
@@ -331,11 +352,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     // Titan Fist Stance (n5e.reinforced): Reinforced = Taijutsu modifier without it, or armor's +2.
     let reinforced = grants.reinforced;
     if ( mods.reinforced ) reinforced = reinforced > 0 ? reinforced + mods.reinforced : Math.max(0, this.disciplines?.tai?.mod ?? 0);
-    const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).add(grants.reinforced ? "Reinforced armor" : "Reinforced", reinforced)
+    const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).addAll(this._statParts("dr")).override(this._statOverride("dr"))
+      .add(grants.reinforced ? "Reinforced armor" : "Reinforced", reinforced)
       .add("Effects", mods.dr).addAll(P("dr"));
     this.dr = Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
-    const ac = computeAC({
+    const ac = this._baseAC({ bonus: this.bonuses.ac, penalty: pen.ac }) ?? computeAC({
       calc: this.attributes.ac.calc, dexMod: mod("dex"), prof: this.prof, armor: grants.armor,
       flat: this.attributes.ac.flat, formula: this.attributes.ac.formula, rollData,
       blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac
@@ -371,7 +393,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.speed = {};
     for ( const [k, v] of Object.entries(this.traits.speed) ) {
       if ( k === "hover" ) continue;
-      const base = (k === "walk" && grants.speed) ? grants.speed : v;
+      const stated = k === "walk" ? this._statOverride("speed") : null;
+      const base = stated ?? ((k === "walk" && grants.speed) ? grants.speed : v);
       this.speed[k] = Math.floor((base + (base ? this.bonuses.speed : 0)) * speedMult);
     }
     // States computed from numbers (never stored; the sheet and rules read them here).

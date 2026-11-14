@@ -29,6 +29,17 @@ export class Breakdown {
     return this;
   }
 
+  /**
+   * Replace everything so far with one stated value (a GM override on an adversary, NPC1). The value the
+   * parts gave is kept as `baseline`. Parts added afterwards (effects, conditions) still apply.
+   */
+  override(value, label = "Override") {
+    if ( value == null || value === "" || !Number.isFinite(Number(value)) ) return this;
+    this.baseline = this.total;
+    this.parts = [{ label, value: Number(value), base: true }];
+    return this;
+  }
+
   get total() {
     return this.parts.reduce((sum, p) => sum + p.value, 0);
   }
