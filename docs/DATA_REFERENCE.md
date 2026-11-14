@@ -337,3 +337,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Strike data `weapon: {keywords, groups, properties}` | Activity `strike` | Optional: which equipped weapons the strike can use |
 | `data-attack-mode="light"` | Combat-tab pill | The Light extra attack |
 | Removed: `CONFIG.N5E.coreActions.offhand` | Config | King: Chapter 5 Light instead of the Chapter 8 Bonus Action off-hand attack |
+
+## Added in 0.18.0-alpha.1 (MDISC1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `system.liveByDiscipline.<nin|tai|gen>` (derived) | Jutsu | `{discipline, ability, attack, dc, meetsRequirement, cost, ...}` per listed discipline; `system.live` is the default discipline's |
+| `JutsuData#liveAs(discipline)` | Jutsu | The live numbers when cast as that discipline |
+| `flags.n5e.castDiscipline.<itemId>` | Actor | The discipline a concentration jutsu was cast as; honoured while it is concentrated |
+| `flags.n5e.cast.discipline` | Cast chat message | The discipline the jutsu was cast as |
+| `castPlan(..., {discipline})` → `plan.discipline` | Workflow | Cast-as choice |

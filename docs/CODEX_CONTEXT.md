@@ -322,3 +322,6 @@ Published v0.17.0-alpha.1. King's rulings: Light = the Chapter 5 extra attack in
 
 ## ATK1b — Claude, 2026-11-13
 Published v0.17.0-alpha.2. ATK1 is complete (R23–R25 closed). Light is a Combat-tab weapon entry (mode "light"), not a core action; `offhand` is gone. Weapon strikes use `pickWeapon(actor, s.weapon)`; stance data has no `weapon` needs yet (King's stance update). Evocation reads `system.evocation`. Next per plan: MDISC1 (multi-discipline casting) or CARD1 (single action card), King to choose.
+
+## MDISC1 — Claude, 2026-11-13
+Published v0.18.0-alpha.1. Use `rules/cast-discipline.mjs` for anything that asks "what discipline is this jutsu": `castDisciplineOf(actor, item)` for cast-time and concentration effects (locked while concentrating), `countsAsDiscipline` / `knowsJutsuOf` / `sameTypeForSwap` / `disciplineAllowed` for known lists, and `defenseSkillFor` / `genjutsuRidersApply` / `caughtBy` for defenses (CLASH1, GEN1). Jutsu numbers per discipline: `item.system.liveAs(d)`. Don't read `system.discipline` for cast-time decisions. Next per plan: CARD1 (spec for King's approval) or Tier 2 (RES1...).

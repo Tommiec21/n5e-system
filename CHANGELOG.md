@@ -1,3 +1,13 @@
+## 0.18.0-alpha.1 — Multi-discipline casting (MDISC1, King 2026-11-13)
+
+- **Cast as.**
+  - A jutsu that lists several disciplines (for example Ninjutsu + Genjutsu) has a "Cast as" choice in the cast dialog.
+  - The attack bonus, save DC and ability requirement (B 16 / A 18 / S 20) use the chosen discipline's ability.
+  - Moldings only apply when cast as Ninjutsu. The Inner Gates block applies when cast as Ninjutsu or Genjutsu. Sealed's cost increase and feature cast options follow the chosen discipline.
+- **Locked while concentrating.** A concentration jutsu keeps the discipline it was cast as for its whole duration. Recasting can't change it, and Flow's Ninjutsu advantage and the Inner Gates read it.
+- **Cast card.** It names the cast discipline. Its psychic damage ignores DR only when cast as Genjutsu.
+- **Known lists.** A multi-discipline jutsu counts as each of its disciplines for known-list checks, swaps, prerequisites and learning limits. These are shared helpers for the features that check them.
+
 ## 0.17.0-alpha.2 — Light, weapon choice for strikes, Evocation (ATK1b, King 2026-11-13)
 
 - **Light extra attack (Chapter 5).**

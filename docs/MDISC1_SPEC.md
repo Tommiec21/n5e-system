@@ -1,6 +1,6 @@
 # MDISC1 function spec: multi-discipline casting
 
-Status: **in progress (King: "Begin the work", 2026-11-13).** Release target `0.18.0-alpha.1`.
+Status: **published `0.18.0-alpha.1` (King: "Begin the work", 2026-11-13).**
 
 Closes plan finding R26: there is no cast-discipline choice for multi-discipline jutsu.
 
@@ -62,3 +62,11 @@ Work through these in order. After each one, add a line to the progress log at t
   - Attempt 1: 1 failure, a setup error in the new test. The level-1 actor caps at D-Rank, so the B-Rank plan was refused before the discipline logic ran. The test now sets `grants.maxRank = "S"`.
   - Attempt 2 passed: 337 pass, 2 skipped. Lint and check pass.
   Next: release 0.18.0-alpha.1 (version, CHANGELOG, plan, rules map, data reference, ledger, module index, N5e-Context.md).
+
+## Final results
+
+Published `v0.18.0-alpha.1`. All of F1–F9 were built as specified. The progress log above lists each one.
+- **Differs from the spec.**
+  - The lock is read lazily. `castDisciplineOf` honours `flags.n5e.castDiscipline.<id>` only while the jutsu is still concentrated, so the many places that end concentration don't need to clear it, and a stale value is overwritten by the next cast.
+  - F7–F9 have no callers yet: no data defines learning limits, and stance requirements are King's update. Identify, Read the Enemy, Clash, Chakra Suppression and Counter Tags are in later batches.
+- **Tests:** attempt 2 passed (337 pass, 2 skipped).
