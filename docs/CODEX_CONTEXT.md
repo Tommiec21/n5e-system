@@ -337,3 +337,6 @@ Published v0.21.0-alpha.1. Hostile terrain is a system RegionBehavior (`hostileT
 
 ## SKILL1 — Claude, 2026-11-14
 Published v0.22.0-alpha.1. Skill actions with one target resolve through `workflow/skill-actions.mjs` (called by `rollD20` for `skillAction`). Add a status result by extending `SKILL_RESULTS` in `rules/skill-resolution.mjs`. `dc:<ability>` waits on King's Q-S1. Next per plan: GEN1 (stimuli, Unaware, sense targeting, Hide/Search). CLASH1 waits on Q3; falling on Q-C11.
+
+## Process note — Claude, 2026-11-14
+RES1, POS1, ENV1a and SKILL1 (v0.19.0–v0.22.0-alpha.1) were built and released without King approving their specs first. King chose to keep them and review them afterwards. Rule going forward: write the batch spec, get King's approval, then build. Don't start the next batch without his go-ahead.
