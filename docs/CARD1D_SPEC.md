@@ -50,6 +50,15 @@ Read from all 271 Ninjutsu Specialist (84) and Scout-Nin (187) feature and optio
 
 **Not caster riders (left out of CARD1d, see Q-CD10).** These are reactions by the creature being hit or saving: Staggering Will, Phantom Avoidance, Transverse Defense, Clone Tactics, Who Decided That!?. The following are table procedures with no card data to change: Swap Spots (movement), Synchronization Technique and Tag-Team (summons).
 
+## King's ruling: one save per event (2026-11-14)
+
+All effects that trigger from the same source (a jutsu cast, a damage instance, a heal, and so on) are one event. **Each target makes one saving throw per event.**
+
+- **The triggering source forces a save:** that save is the event's save. Every rider that would force its own save uses the source's result instead, with the source's ability and DC. Example: Arresting Strike used with a Ninjutsu that forces a Dex save applies its effects on a failed Dex save vs the Ninjutsu DC, not on its own Str save vs Taijutsu DC.
+- **The triggering source forces no save:** the player picks one of the riders' saves (its ability and DC) to be the event's save, and every other rider resolves off it.
+- **The rule is universal.** Feature text that spells it out (Gale Fracture, Tsunami: "those who fail the jutsu's save, or if the jutsu doesn't force a save, a … save") needs no special handling, and no feature text has to state it.
+- **Purpose:** however many class, clan and feat effects are layered on one action, the target makes exactly one save: the source's, or the one rider save the player chose.
+
 ## Design
 
 ### 1. A rider is a fixture on a feature
@@ -73,7 +82,7 @@ A feature declares `flags.n5e.riders` (a list), next to the existing `castOption
 | --- | --- | --- |
 | `addRanks {amount}` | Amplified Force `1`, Elemental Malady `floor(@poolRoll/2)` | Raises the ranks on the action's own "Apply <condition>" buttons for qualifying targets |
 | `inflict {choose: [conditions]}` | Authoritative Strike, Superior Suppression | Adds "Apply X" buttons to qualifying rows; the caster picks the condition when using the rider |
-| `save {ability, dc, inflicts, damage, disadvantageIf}` | Arresting Strike, Menacing Assault, Spirit Siphon, Tempest Pressure | Adds a rider save to each qualifying row, rolled by that creature's owner and recorded per rider. Then its own Apply buttons |
+| `save {ability, dc, inflicts, damage, disadvantageIf}` | Arresting Strike, Menacing Assault, Spirit Siphon, Tempest Pressure | **One save per event (King's ruling):** the rider's effects apply on a failure of the event's save. Its own ability and DC are used only when the source forces no save and the player picks this rider as the event's save. The `inflicts` and `damage` become Apply buttons on rows that failed the event save |
 | `effect {changes, seconds}` | Gale Fracture, Crimson Kindling, Tsunami, Static | Adds "Apply <effect>" to qualifying rows (the CARD1b effect path) |
 | `damage {formula, type}` | Warfare, Tempest Pressure | An extra damage part on the card's damage |
 | `rollMod {reroll: "lower", maximizeDice: 3, disadvantage: "first"}` | Superior Suppression, Potent, Heightened | Acts on a recorded roll through a linked reroll (the CARD1c Will of Fire path) |
@@ -87,18 +96,28 @@ A feature declares `flags.n5e.riders` (a list), next to the existing `castOption
   - For `arm: trigger` riders, the card shows **"Use <rider> (cost)"** for the caster's owner on each qualifying row, or once for a whole-card rider, as soon as the trigger has happened (the attack hit, the save failed, damage was dealt).
   - Using it pays the cost and posts a small linked note (`flags.n5e.cardRider`), recorded like every other card result.
 - **On each qualifying row** the rider's effects become buttons for whoever acts:
-  - the target's owner (the GM for NPCs) rolls rider saves and applies conditions and effects to their own creature;
+  - the target's owner (the GM for NPCs) rolls the event's one save and applies conditions and effects to their own creature;
   - the caster's owner applies extra damage and resources.
 
   This keeps the CARD1 ownership model; no new authority is added.
 - **Undo** (Q-CD4) also removes what riders applied. A rider's spent cost is refunded only if the rider is undone before any of its effects were applied.
 
+### 2b. The event save
+
+- **The source forces a save** (the action has a `save` activity): the card's existing save row is the event save, and every armed or used rider with a `save` effect attaches to it.
+- **The source forces no save, but a rider has one:**
+  - When the first such rider is armed or used, the caster's owner picks which rider save is the event save. With only one, it is picked automatically.
+  - The card then shows one "Roll X save" per target with that ability and DC, and the other riders attach to it.
+  - The choice is stored on the card (`flags.n5e.card.eventSave = {riderId, ability, dc}`) and can't change once any target has rolled.
+- **A rider used after targets have already saved** (an `arm: trigger` rider such as Authoritative Strike after a failed save) reads the result already on the card. No new roll.
+- **Disadvantage riders** (Heightened, Elemental Chakra-Strike, Spirit Siphon's Mental-condition clause) modify the event save, since that is the only save.
+
 ### 3. Stacking order (the clear path)
 
 Per target, in this fixed order:
 
-1. The action's own roll and its roll modifiers (`rollMod`: advantage/disadvantage, forced rerolls, maximized dice).
-2. The action's outcome: hit/miss, save tier, damage share.
+1. The action's own roll, the one event save, and their roll modifiers (`rollMod`: advantage/disadvantage, forced rerolls, maximized dice).
+2. The action's outcome: hit/miss, the event save's tier, damage share.
 3. Riders that change the action's own results (`addRanks`, `damage`), in the order the user armed or used them.
 4. Riders that add their own results (`inflict`, `save`, `effect`, `note`, `resource`).
 5. Modifiers of riders (Willpower Surge: a maneuver's condition is at least 2 ranks).
@@ -111,16 +130,17 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
 - `rules/riders.mjs` (new, pure, shared core):
   - `availableRiders(actor, action, now)`: the arm filter, like `availableCastOptions`;
   - `riderQualifies(rider, row, card)`: the trigger, target filter, margin and Combat Rival checks;
-  - `riderOutcome(card, targetUuid)`: the stacking order above;
+  - `eventSave(card, riders)`: the event's one save (the source's, or the chosen rider's ability and DC);
+  - `riderOutcome(card, targetUuid)`: the stacking order above, with every rider read off the event save;
   - `resolveAmounts(rider, poolRoll)`.
 - `workflow/riders.mjs` (new):
   - the cast-dialog list;
   - "Use rider" (pay, then post the linked rider note);
-  - rider saves (`rollWithSpec` with `source` = the card and `riderId`);
+  - the event-save choice when the source forces none, and the event save's "Roll X save" per target (`rollWithSpec` with `source` = the card);
   - the hooks into `renderActionCard`.
 - `rules/action-card.mjs`:
   - `results.riders` (uses, per target where it applies);
-  - `results.riderSaves[riderId][uuid]`, so a rider save never collides with the jutsu's own save.
+  - `eventSave` on the card. There are no separate rider-save results: every rider reads `results.saves`, the event save.
 - **Data:** `riders` authored on the starter features listed below. Heightened, Precise and Piercing move from the hard-coded checks in `postCastCard` to riders, with the same behaviour.
 
 ### 5. Releases
@@ -138,10 +158,16 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
 - triggers per row (hit, crit, failed save, margin of 5, damage type);
 - the stacking order: Amplified Force + Elemental Malady + Willpower Surge on one Burned target, and the rank cap;
 - `@poolRoll` amounts;
-- rider saves keyed apart from the jutsu's own save.
+- the event save:
+  - a source save always wins over rider saves (Arresting Strike rides a Ninjutsu Dex save);
+  - with no source save, the chosen rider save is used and the others ride on it;
+  - one rider: chosen automatically;
+  - the choice locks once a target has rolled;
+  - a target never gets a second save in one event.
 
 ## Questions for King
 
+- **One save per event:** answered by King 2026-11-14 (see the ruling above). The source's save wins, including its ability and DC. With no source save the player picks one rider save. The rule is universal.
 - **Q-CD5: stacking rank increases.** Amplified Force (+1), Elemental Malady (+half the Superiority Die) and Willpower Surge ("inflicts 2 ranks instead") can all hit the same Burned. Proposed: the base ranks, then the additions summed, then "at least 2", then the condition's cap. Is that right, or does each feature apply separately?
 - **Q-CD6: when a rider is paid.** Proposed: follow the wording.
   - "As part of casting / when you cast… you can spend" is chosen and paid in the cast dialog. The cost is spent even if nobody ends up failing.
@@ -156,3 +182,6 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
 ## Progress log
 
 - 2026-11-14 Claude: survey of Ninjutsu Specialist and Scout-Nin riders done; plan written for approval.
+- 2026-11-14 Claude: **King's ruling added: one save per event.**
+  - Rider saves fold into the triggering source's save, with its ability and DC. With no source save, the player picks one rider save. The rule applies universally.
+  - The design is updated: the event save (2b) replaces separate rider saves, `eventSave` goes on the card, the stacking order is adjusted, and new tests are listed.
