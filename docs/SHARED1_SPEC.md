@@ -160,3 +160,9 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
   - Gate `coreDamage` passed locally (58/58) and in CI (run 43600007116). Published n5e-module `v0.1.0-alpha.18`.
   - **Open for King:** turning Bruised and Petrified on in Module damage is a behaviour change, so it waits for approval.
   - Next: costs/upkeep.
+- 2026-11-14 Claude: **SHARED1b slice 4 (Module): costs/upkeep.**
+  - `scripts/integration/cost.mjs` and `scripts/concentration/calculation.mjs` re-export the core `computeJutsuCost`, `upkeepCost` and `concentrationDC`. The bodies were identical.
+  - Gate `coreCost`: attempt 1 failed on a casting test that already fails on Module main, not on this change (Codex bfc2711; the test's `globals()` lacks a `ChatMessage` stub). That test was dropped from this gate. Attempt 2 passed locally (59/59) and attempt 3 in CI (run 43600240034).
+  - Published n5e-module `v0.1.0-alpha.19`.
+  - **Open:** the casting test failure needs Codex or King.
+  - Next: condition lifecycle, then activity selection.
