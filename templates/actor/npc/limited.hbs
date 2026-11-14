@@ -1,0 +1,7 @@
+{{!-- What a player with Limited permission sees of an NPC: name, portrait, blurb and public notes. Data: limited = {name, img, blurb, publicHTML}. --}}
+<section class="n5e-npc-limited">
+  <img src="{{limited.img}}" alt="" width="96" height="96">
+  <h1>{{limited.name}}</h1>
+  {{#if limited.blurb}}<div class="blurb">{{limited.blurb}}</div>{{/if}}
+  <div class="bio-text">{{{limited.publicHTML}}}</div>
+</section>

@@ -39,7 +39,8 @@ import { registerEnrichers } from "./module/applications/enrichers.mjs";
 import CompendiumBrowser, { registerCompendiumBrowser } from "./module/applications/browser/compendium-browser.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
 import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
-import NPCSheet from "./module/applications/actor/npc-sheet.mjs";
+import NPCSheet, { NPC_TEMPLATE_PATHS } from "./module/applications/actor/npc-sheet.mjs";
+import NPCSimpleSheet from "./module/applications/actor/npc-simple-sheet.mjs";
 import EffectConfig from "./module/applications/effect/effect-config.mjs";
 import ItemSheet, { ITEM_TEMPLATE_PATHS } from "./module/applications/item/item-sheet.mjs";
 import { registerHelpers } from "./module/applications/helpers.mjs";
@@ -130,6 +131,7 @@ Hooks.once("init", () => {
   const { Actors, Items } = foundry.documents.collections;
   Actors.registerSheet("n5e", CharacterSheet, { types: ["character"], makeDefault: true, label: "N5E.SheetCharacter" });
   Actors.registerSheet("n5e", NPCSheet, { types: ["npc"], makeDefault: true, label: "N5E.SheetNPC" });
+  Actors.registerSheet("n5e", NPCSimpleSheet, { types: ["npc"], makeDefault: false, label: "N5E.SheetNPCSimple" });
   Actors.registerSheet("n5e", N5eActorSheet, { types: ["character", "npc"], makeDefault: false, label: "N5E.SheetPlaceholder" });
   Items.registerSheet("n5e", ItemSheet, { makeDefault: true, label: "N5E.SheetItem" });
   foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "n5e", EffectConfig,
@@ -141,7 +143,7 @@ Hooks.once("init", () => {
   registerHelpers();
   // Shortcuts in text: [[/save]], [[/check]], [[/damage]], [[/heal]], @Condition[], @State[] (applications/enrichers.mjs).
   registerEnrichers();
-  foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS, ...ITEM_TEMPLATE_PATHS])]);
+  foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS, ...NPC_TEMPLATE_PATHS, ...ITEM_TEMPLATE_PATHS])]);
 });
 
 // Chat card buttons. Cards are plain HTML with data-n5e-* attributes; each render wires the buttons

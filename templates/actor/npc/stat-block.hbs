@@ -1,0 +1,37 @@
+{{!-- The stat block in the Bingo Book's layout. Data: block = statBlockVM(actor) (view-models/npc.mjs). Shared by the NPC header, the simple sheet and the limited view. --}}
+<div class="n5e-stat-block">
+  {{#if block.blurb}}<div class="blurb">{{block.blurb}}</div>{{/if}}
+  <div class="identity-line">{{block.identity}}</div>
+  <div class="sb-line"><span><b>Level</b> {{block.level}}</span><span><b>Proficiency</b> {{block.prof}}</span></div>
+  <div class="sb-line">
+    <span data-tooltip-html="{{block.ac.tip}}"><b>Armor Class</b> {{block.ac.value}}</span>
+    <span data-tooltip-html="{{block.dr.tip}}"><b>DR</b> {{block.dr.value}}</span>
+  </div>
+  <div class="sb-line">
+    <span data-tooltip-html="{{block.hp.tip}}"><b>Hit Points</b> {{block.hp.value}} / {{block.hp.max}}</span>
+    {{#if block.cp.none}}<span><b>Chakra Points</b> none</span>{{else}}<span data-tooltip-html="{{block.cp.tip}}"><b>Chakra Points</b> {{block.cp.value}} / {{block.cp.max}}</span>{{/if}}
+  </div>
+  <div class="sb-line">
+    <span><b>Speed</b> {{block.speed}}</span>
+    <span data-tooltip-html="{{block.initiative.tip}}"><b>Initiative</b> <a class="rollable" data-action="roll" data-roll="initiative">{{block.initiative.value}}</a></span>
+  </div>
+  <table class="sb-abilities">
+    <thead><tr><th></th><th>Mod</th><th>Save</th></tr></thead>
+    <tbody>
+      {{#each block.abilities}}
+        <tr>
+          <th data-tooltip="{{label}}">{{abbr}}</th>
+          <td><a class="rollable" data-action="roll" data-roll="ability" data-key="{{key}}">{{mod}}</a></td>
+          <td data-tooltip-html="{{saveTip}}"><a class="rollable {{#if full}}full{{/if}}" data-action="roll" data-roll="save" data-key="{{key}}">{{save}}</a></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{#if block.autoFailSaves}}<div class="sb-note">Minion: saving throws fail automatically.</div>{{/if}}
+  {{#if block.skills.length}}
+    <div class="sb-line wrap"><b>Skills</b>
+      {{#each block.skills}}<a class="rollable" data-action="roll" data-roll="skill" data-key="{{key}}" data-tooltip-html="{{tip}}">{{label}} {{total}}</a>{{/each}}
+    </div>
+  {{/if}}
+  <div class="sb-line"><span><b>Senses</b> passive Perception {{block.passivePerception}}</span></div>
+</div>

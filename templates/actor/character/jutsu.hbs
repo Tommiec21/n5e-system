@@ -1,5 +1,6 @@
 {{!-- Jutsu tab. Data: vm = jutsuVM(actor, sheet state). The search box re-renders only this part (character-sheet.mjs _onRender). Keep rows one line (King). --}}
 <section class="tab n5e-tab jutsu {{tab.cssClass}}" data-tab="jutsu" data-group="primary">
+  {{#if npcLines}}{{> "systems/n5e/templates/actor/npc/casting-lines.hbs" block=npcLines which="jutsu"}}{{/if}}
   <div class="toolbar">
     <label class="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
       <input type="search" data-jutsu-search value="{{vm.search}}" placeholder="Search jutsu or keyword" aria-label="Search jutsu"></label>

@@ -40,7 +40,7 @@ export default class NPCData extends CreatureData {
       publicNotes: S.html(),
       /** Shown to GMs only. */
       privateNotes: S.html(),
-      build: S.str({ initial: "character" }),      // CONFIG.N5E.adversaryBuilds
+      build: S.str({ initial: "adversary" }),      // CONFIG.N5E.adversaryBuilds; saved NPCs without it stay "character" (migrateData)
       level: S.int(1, { min: 0, max: 30 }),
       rank: S.str({ initial: "D" }),
       class: S.str({ initial: "standard" }),       // CONFIG.N5E.adversaryClasses

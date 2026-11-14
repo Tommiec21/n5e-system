@@ -1,3 +1,19 @@
+## 0.30.0-alpha.2 — Adversary sheets (NPC1b; King 2026-11-14)
+
+- **New NPCs are adversaries.** A new NPC uses the Bingo Book build. NPCs saved before this release stay player-style until switched on the Build tab; summons, clones and companions are player-style.
+- **Build tab** on the NPC sheet:
+  - Build (Adversary or Player-style), level, class, role, rank, clan or species, affiliation, armor type, HP source (formula or Lazy GM), Iconic, Epic, the optional Rank bonus, and party size for a Solo.
+  - The six ability modifiers with the baseline line for the level and class, a "Use baseline" button, and "Assigned X of Y" against the budget. Going over or under is shown, never blocked.
+  - Saves with a tick for each fully proficient one, against the baseline count for the level.
+  - Every number (proficiency, AC, DR, HP, CP, initiative, speed, passive Perception, saves, attack bonuses and save DCs for each discipline and the Weapon/Freeform line, skills) with its breakdown on hover and an override box. A blank box means the computed number; an overridden one shows its baseline.
+  - Suggested traits, jutsu known, Freeform slots and Multiattack for the class and level.
+- **Stat-block header** in the book's layout: identity line, level and proficiency, AC and DR, HP and CP, speed and initiative, the six abilities with Mod and Save, trained skills, passive Perception. Numbers roll on click.
+- **Casting lines** above the Jutsu tab ("Ninjutsu. +3 to hit, save DC 11") and the Weapon/Freeform line above the Combat tab.
+- **Notes tab** in place of Biography: public notes, private notes (GMs only), biography.
+- **Simple sheet** ("N5e NPC Sheet (simple stat block)" in the sheet menu): the whole stat block on one page with traits, jutsu by discipline and rank, and attacks. The tabbed sheet stays the default.
+- **Limited permission** shows only the name, portrait, blurb and public notes.
+- Not checked in a running Foundry world: these sheets are covered by template and view-model tests only.
+
 ## 0.30.0-alpha.1 — Adversary math (NPC1a; King 2026-11-14)
 
 The engine for Bingo Book adversaries. **Nothing changes on the sheet yet**: the Build tab and stat-block sheet that use it come with NPC1b, and every existing NPC stays player-style.

@@ -482,7 +482,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 | Path | Meaning |
 | --- | --- |
-| `system.details.build` | `adversary` (Bingo Book math) or `character` (player-style; the default until NPC1b) |
+| `system.details.build` | `adversary` (Bingo Book math; the default for new NPCs since 0.30.0-alpha.2) or `character` (player-style; saved NPCs without the field) |
 | `system.details.class` | minion, standard, elite, solo (was `details.role`) |
 | `system.details.role` | none, striker, defender, lurker, controller, supporter |
 | `system.details.clan`, `.affiliation`, `.iconic`, `.epic`, `.blurb`, `.publicNotes`, `.privateNotes` | Profile and notes |

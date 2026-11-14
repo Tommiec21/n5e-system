@@ -3,15 +3,10 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import fs from "node:fs";
-import path from "node:path";
-import Handlebars from "handlebars";
 import { makeActor, baseAbilities, load } from "./helpers/actor.mjs";
 import { turnStartPlan, parseRecharge, economySlot } from "../module/rules/turn-start.mjs";
 import { upkeepOptions, validateUpkeepChoice, upkeepMode, autoKeep } from "../module/rules/upkeep.mjs";
-import { headerVM } from "../module/view-models/character.mjs";
 import { combatVM } from "../module/view-models/combat.mjs";
-import { registerHelpers } from "../module/applications/helpers.mjs";
 
 const J = (id, name, cost, kw = ["ninjutsu"]) => ({ _id: id.padEnd(16, "0"), name, type: "jutsu", system: { discipline: "nin", rank: "D",
   keywords: kw, cost: { mode: "chakra", value: cost }, duration: { unit: "minute", value: 1, concentration: true } } });
@@ -77,16 +72,3 @@ test("combat tab shows the action economy", () => {
   assert.ok(eco.find(e => e.key === "bonus").used);
 });
 
-test("NPC header renders the stat-block summary and edit fields", () => {
-  const hbs = Handlebars.create();
-  registerHelpers(hbs);
-  const tpl = hbs.compile(fs.readFileSync(path.join(import.meta.dirname, "..", "templates/actor/npc/header.hbs"), "utf8"));
-  const a = makeActor({ type: "npc", system: { ...structuredClone(baseAbilities), details: { level: 6, rank: "C", role: "elite" }, hpMax: 55 } });
-  const npc = { summary: "Level 6 · C-Rank · Elite", level: 6, hpMax: 55, rankOptions: [], roleOptions: [], templateOptions: [] };
-  const play = tpl({ vm: headerVM(a), npc, editable: true, editMode: false });
-  assert.match(play, /Level 6 · C-Rank · Elite/);
-  assert.match(play, /data-roll="ability"/);
-  const edit = tpl({ vm: headerVM(a), npc, editable: true, editMode: true });
-  assert.match(edit, /name="system.hpMax" value="55"/);
-  assert.equal(a.system.hp.max, 55, "stat-block HP override");
-});

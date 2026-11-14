@@ -1,6 +1,6 @@
 # NPC1 function spec: adversary model, the book's math, and sheets
 
-Status: **approved by King 2026-11-14. NPC1a published `0.30.0-alpha.1`; NPC1b next.**
+Status: **approved by King 2026-11-14. Complete: NPC1a `0.30.0-alpha.1`, NPC1b `0.30.0-alpha.2`.**
 
 Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" through "Final Calculation(s)" and the Cultist examples.
 
@@ -76,7 +76,13 @@ None open.
 - 2026-11-14 Claude: A7 done: rule `adversaryPartySize` (auto counts characters assigned to players; falls back to the typed size when none). A9 Minion auto-fail goes through the existing automatic-failure path in `dice/roll.mjs`. A16 done: `NPCData.migrateData` and world migration 8.
   - **Difference from A16:** new NPCs still start player-style in this release, because the Build tab that edits an adversary arrives with NPC1b. NPC1b switches the default.
 - 2026-11-14 Claude: tests attempt 1 failed (8): the schema used a field class the test stand-in and `tools/check` don't have. Changed the skill overrides to `TypedObjectField`. Attempt 2 passed: `npm test` 432 pass, 2 skipped; core 91/91; lint and check clean. Files: `tests/core/adversary.test.mjs`, `tests/npc-adversary.test.mjs`.
-- 2026-11-14 Claude: **NPC1a published `0.30.0-alpha.1`.** NPC1b next.
+- 2026-11-14 Claude: **NPC1a published `0.30.0-alpha.1`.**
+- 2026-11-14 Claude: **NPC1b started.** B1–B5 done: `view-models/npc.mjs` (`statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`); templates `actor/npc/` (`stat-block`, `casting-lines`, `header`, `build`, `notes`, `simple`, `limited`); `applications/actor/npc-sheet.mjs` (Build tab, Notes tab, limited view, actions `npcApplyStatLine`, `npcToggleFullSave`, `npcToggleSkill`); `applications/actor/npc-simple-sheet.mjs`.
+  - Level, class, role, rank and the modifiers are edited on the Build tab only. The header's edit mode keeps blurb, type and template for adversaries, so no field is in the form twice.
+  - New NPCs now start as `adversary` (A16); saved NPCs without the field stay `character`.
+  - The Main tab's save-proficiency ticks have no effect on an adversary (its full saves are picked on the Build tab). Left as is.
+- 2026-11-14 Claude: tests. Attempt 1 failed (2): a wrong import in the new view model stopped the sheet tests and the entry test. Attempt 2 failed (1): the entry test counts registered sheets (5), and the simple sheet is a sixth, by design. Attempt 3 passed: `npm test` 435 pass, 2 skipped; core 91/91; lint and check clean. The old NPC header test in `tests/turn.test.mjs` moved to `tests/npc-sheet.test.mjs`.
+- 2026-11-14 Claude: **NPC1b published `0.30.0-alpha.2`. NPC1 is complete.** Not checked in a running Foundry world.
 
 - 2026-11-14 Claude: first draft (stored or calculated modes). King answered Q-N7–Q-N14.
 - 2026-11-14 Claude: King pointed out the first draft's modes don't match the book. Bingo Book re-read ("The Adversary Profile" to "Final Calculation(s)", Cultist examples). Spec rewritten on the book's model: profile in, book math out, GM overrides. King: Rank bonus equals Rank and is suggested; stat lines are the baseline. Noted: the Avenger and Bishop (level 5) show three full saves against the rule's two, which the GM's freedom to adjust covers. Noted: the Sasuke example's level 13 line (+6, +4, +2, +1, +1, +0) differs from the table's Elite line at 13; the table is used. Nothing built.

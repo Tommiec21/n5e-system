@@ -1,0 +1,104 @@
+{{!-- Build tab (NPC1b). Data: vm = npcBuildVM(actor). The profile gives every number (rules/adversary.mjs); each can be overridden here. Blank override = the computed number. --}}
+<section class="tab n5e-tab npc-build {{tab.cssClass}}" data-tab="build" data-group="primary">
+  <div class="build-row">
+    <label>Build <select name="system.details.build" {{#unless editable}}disabled{{/unless}}>{{#each vm.buildOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    {{#unless vm.isAdversary}}<span class="hint">Player-style: the numbers come from ability scores, level, dice and equipment, as for a character.</span>{{/unless}}
+  </div>
+  {{#if vm.isAdversary}}
+    {{#each vm.warnings}}<div class="build-note">{{this}}</div>{{/each}}
+    <div class="section-head"><h2>Profile</h2></div>
+    <div class="build-grid">
+      <label>Level <input type="number" name="system.details.level" value="{{vm.level}}" min="1" max="30"></label>
+      <label>Class <select name="system.details.class">{{#each vm.classOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Role <select name="system.details.role">{{#each vm.roleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Rank <select name="system.details.rank">{{#each vm.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Clan or species <input type="text" name="system.details.clan" value="{{vm.clan}}"></label>
+      <label>Affiliation <input type="text" name="system.details.affiliation" value="{{vm.affiliation}}"></label>
+      <label>Armor <select name="system.adversary.armor">{{#each vm.armorOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>HP and CP from <select name="system.adversary.hpSource">{{#each vm.hpSourceOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label class="check"><input type="checkbox" name="system.details.iconic" {{#if vm.iconic}}checked{{/if}}> Iconic</label>
+      <label class="check"><input type="checkbox" name="system.details.epic" {{#if vm.epic}}checked{{/if}}> Epic</label>
+      <label class="check" data-tooltip="Suggested ability points equal to Rank: D 1, C 2, B 3, A 4, S 5"><input type="checkbox" name="system.adversary.rankBonus" {{#if vm.rankBonus}}checked{{/if}}> Rank bonus</label>
+      {{#if vm.showPartySize}}
+        {{#if vm.partyManual}}<label>Players <input type="number" name="system.adversary.partySize" value="{{vm.partySize}}" min="0" max="12"></label>
+        {{else}}<span class="hint">Party size: {{vm.players}} (counted; a rule setting switches to typing it here)</span>{{/if}}
+      {{/if}}
+    </div>
+
+    <div class="section-head"><h2>Ability modifiers</h2>
+      <span class="budget {{#if vm.overBudget}}over{{/if}} {{#if vm.underBudget}}under{{/if}}" data-tooltip="{{vm.budgetParts}}">Assigned {{vm.assigned}} of {{vm.budget}}</span>
+    </div>
+    <div class="hint">Baseline line for this level and class: <b>{{vm.statLine}}</b>{{#if vm.statLineMissing}} (no Elite/Solo line at this level; the Standard line is shown){{/if}}. Assign and adjust as the adversary needs.
+      {{#if editable}}<button type="button" data-action="npcApplyStatLine" data-tooltip="Sets the six modifiers to the baseline line, highest to lowest in the order shown">Use baseline</button>{{/if}}</div>
+    <div class="build-abilities">
+      {{#each vm.abilities}}
+        <label data-tooltip="{{label}}">{{abbr}} <input type="number" name="system.adversary.mods.{{key}}" value="{{assigned}}" min="-5" max="20"><span class="final">{{final}}</span></label>
+      {{/each}}
+    </div>
+
+    <div class="section-head"><h2>Saves</h2>
+      <span class="budget">{{vm.fullCount}} fully proficient; baseline {{vm.fullSuggested}}{{#unless vm.savesPicked}} (highest modifiers){{/unless}}</span>
+    </div>
+    {{#if vm.autoFailSaves}}<div class="build-note">Minion: saving throws fail automatically.</div>{{/if}}
+    <table class="build-table">
+      <thead><tr><th>Save</th><th>Full</th><th>Total</th><th>Baseline</th><th>Override</th></tr></thead>
+      <tbody>
+        {{#each vm.saves}}
+          <tr>
+            <td>{{label}}</td>
+            <td><input type="checkbox" data-action="npcToggleFullSave" data-key="{{key}}" {{#if full}}checked{{/if}} {{#unless @root.editable}}disabled{{/unless}} aria-label="{{label}} fully proficient"></td>
+            <td data-tooltip-html="{{tip}}"><b>{{final}}</b></td>
+            <td>{{#if overridden}}{{baseline}}{{/if}}</td>
+            <td><input type="number" name="{{path}}" value="{{stated}}" placeholder="—"></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="section-head"><h2>Statistics</h2></div>
+    <table class="build-table">
+      <thead><tr><th>Statistic</th><th>Total</th><th>Baseline</th><th>Override</th></tr></thead>
+      <tbody>
+        {{#each vm.stats}}
+          <tr><td>{{label}}</td><td data-tooltip-html="{{tip}}"><b>{{final}}</b></td><td>{{#if overridden}}{{baseline}}{{/if}}</td>
+            <td><input type="number" name="{{path}}" value="{{stated}}" placeholder="—"></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="section-head"><h2>Attack bonuses and save DCs</h2>
+      <label>Weapon/Freeform ability <select name="system.adversary.freeformAbility">{{#each vm.freeformOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    </div>
+    <table class="build-table">
+      <thead><tr><th></th><th>Attack</th><th>Override</th><th>Save DC</th><th>Override</th></tr></thead>
+      <tbody>
+        {{#each vm.lines}}
+          <tr><td>{{label}}</td>
+            <td data-tooltip-html="{{attack.tip}}"><b>{{attack.final}}</b>{{#if attack.overridden}} <span class="was">({{attack.baseline}})</span>{{/if}}</td>
+            <td><input type="number" name="{{attack.path}}" value="{{attack.stated}}" placeholder="—"></td>
+            <td data-tooltip-html="{{dc.tip}}"><b>{{dc.final}}</b>{{#if dc.overridden}} <span class="was">({{dc.baseline}})</span>{{/if}}</td>
+            <td><input type="number" name="{{dc.path}}" value="{{dc.stated}}" placeholder="—"></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="section-head"><h2>Skills</h2><span class="budget">A skill that isn't trained rolls its ability modifier alone.</span></div>
+    <table class="build-table skills">
+      <thead><tr><th>Skill</th><th>Trained</th><th>Total</th><th>Override</th></tr></thead>
+      <tbody>
+        {{#each vm.skills}}
+          <tr><td>{{label}}</td>
+            <td><input type="checkbox" data-action="npcToggleSkill" data-key="{{key}}" {{#if proficient}}checked{{/if}} {{#unless @root.editable}}disabled{{/unless}} aria-label="{{label}} trained"></td>
+            <td data-tooltip-html="{{tip}}"><b>{{total}}</b></td>
+            <td><input type="number" name="system.adversary.overrides.skills.{{key}}" value="{{stated}}" placeholder="—"></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="section-head"><h2>Suggested for this class and level</h2></div>
+    <div class="build-suggested">
+      <span><b>{{vm.suggested.traits}}</b> traits</span><span><b>{{vm.suggested.jutsu}}</b> jutsu known</span>
+      <span><b>{{vm.suggested.freeformSlots}}</b> Freeform slots</span><span><b>{{vm.suggested.multiattack}}</b> attacks with Multiattack</span>
+    </div>
+  {{/if}}
+</section>

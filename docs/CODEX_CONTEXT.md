@@ -406,3 +406,10 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - `details.role` now means Striker…Supporter; the old meaning is `details.class`. Don't write class names into `role`.
 - New NPCs are still player-style until NPC1b ships the Build tab. NPC2 is now only the builder window; NPC3 Freeform reads `roleModifiers.striker.damageLevel` and `suggested.freeformSlots`.
 
+## NPC1b — Claude, 2026-11-14 (published 0.30.0-alpha.2)
+- NPC sheet parts: `header` (stat block), `build`, `biography` (rendered by `npc/notes.hbs`), `limited`. View models in `view-models/npc.mjs`; `statBlockVM` is the one source for the header, the simple sheet and the casting lines.
+- **One form, one name:** anything on the Build tab must not also be an input in the header or another tab. `tests/npc-sheet.test.mjs` checks header + Build for repeats. Use a `data-action` for a second control on the same field (see `npcToggleSkill`).
+- Breakdown tooltips are HTML: use `data-tooltip-html`.
+- `NPCSimpleSheet` extends `NPCSheet` with one part; registered as a non-default sheet. Not verified in a live world.
+- `details.build` now defaults to `adversary`; `NPCData.migrateData` keeps saved NPCs without it as `character`.
+

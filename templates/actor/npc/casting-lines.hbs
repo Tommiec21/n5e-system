@@ -1,0 +1,8 @@
+{{!-- "Ninjutsu. +4 to hit, save DC 12" lines, as a stat block prints them. Data: block = statBlockVM(actor); which = "jutsu" or "attacks". --}}
+<div class="n5e-casting-lines">
+  {{#if (n5eEq which "attacks")}}
+    {{#if block.freeform}}<span><b>{{block.freeform.label}}</b> ({{block.freeform.ability}}). <span data-tooltip-html="{{block.freeform.attackTip}}">{{block.freeform.attack}} to hit</span>, <span data-tooltip-html="{{block.freeform.dcTip}}">save DC {{block.freeform.dc}}</span></span>{{/if}}
+  {{else}}
+    {{#each block.lines}}<span><b>{{label}}.</b> <span data-tooltip-html="{{attackTip}}">{{attack}} to hit</span>, <span data-tooltip-html="{{dcTip}}">save DC {{dc}}</span></span>{{/each}}
+  {{/if}}
+</div>

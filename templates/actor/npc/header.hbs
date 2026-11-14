@@ -1,4 +1,4 @@
-{{!-- NPC header (replaces the character header on the NPC sheet). Data: vm = headerVM(actor) and npc (npc-sheet.mjs). --}}
+{{!-- NPC header: the stat block (play mode) or the identity fields (edit mode). Data: vm = headerVM(actor), npc = npcHeaderVM(actor) (view-models/npc.mjs). Adversary numbers are edited on the Build tab. --}}
 <header class="n5e-head npc-head">
   <div class="identity">
     <div class="name-row">
@@ -6,18 +6,23 @@
     </div>
     {{#if editMode}}
       <div class="npc-fields">
-        <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
-        <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-        <label>Class <select name="system.details.class">{{#each npc.roleOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label class="wide">Blurb <input type="text" name="system.details.blurb" value="{{npc.blurb}}" placeholder="One line under the name"></label>
         <label>Type <input type="text" name="system.details.creatureType" value="{{npc.creatureType}}"></label>
         <label>Template <select name="system.details.template">{{#each npc.templateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-        <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>
-        <label data-tooltip="Blank = from level and Chakra Die">CP max <input type="number" name="system.cpMax" value="{{npc.cpMax}}" min="0"></label>
-        <label>Hit Die <input type="text" name="system.hitDie" value="{{npc.hitDie}}"></label>
-        <label>Chakra Die <input type="text" name="system.chakraDie" value="{{npc.chakraDie}}"></label>
+        {{#if npc.isAdversary}}
+          <span class="hint">Level, class, role, rank, modifiers and every number: the Build tab.</span>
+        {{else}}
+          <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
+          <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>
+          <label data-tooltip="Blank = from level and Chakra Die">CP max <input type="number" name="system.cpMax" value="{{npc.cpMax}}" min="0"></label>
+          <label>Hit Die <input type="text" name="system.hitDie" value="{{npc.hitDie}}"></label>
+          <label>Chakra Die <input type="text" name="system.chakraDie" value="{{npc.chakraDie}}"></label>
+        {{/if}}
       </div>
     {{else}}
       <span class="npc-summary">{{npc.summary}}</span>
+      {{> "systems/n5e/templates/actor/npc/stat-block.hbs" block=npc.block}}
     {{/if}}
   </div>
   <div class="head-right">
@@ -27,18 +32,18 @@
           data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit stat block{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
       {{/if}}
     </div>
-    <div class="ability-strip">
-      {{#each vm.abilities}}
-        <div class="ab-tile" data-tooltip="{{label}}">
-          <span class="abbr">{{abbr}}</span>
-          <b class="mod rollable" data-action="roll" data-roll="ability" data-key="{{key}}">{{mod}}</b>
-          {{#if @root.editMode}}
-            <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
-          {{else}}
-            <span class="score">{{value}}</span>
-          {{/if}}
+    {{#if editMode}}
+      {{#unless npc.isAdversary}}
+        <div class="ability-strip">
+          {{#each vm.abilities}}
+            <div class="ab-tile" data-tooltip="{{label}}">
+              <span class="abbr">{{abbr}}</span>
+              <b class="mod rollable" data-action="roll" data-roll="ability" data-key="{{key}}">{{mod}}</b>
+              <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
+            </div>
+          {{/each}}
         </div>
-      {{/each}}
-    </div>
+      {{/unless}}
+    {{/if}}
   </div>
 </header>
