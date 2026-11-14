@@ -31,7 +31,7 @@ foundry.applications = {
   apps: { FilePicker: { implementation: class {} },
     DocumentSheetConfig: { registerSheet: (doc, ns, cls, o) => registered.sheets.push(["ActiveEffect", ns, o.makeDefault]) } }
 };
-foundry.documents = { TokenDocument: class extends Doc {}, collections: {
+foundry.documents = { TokenDocument: class extends Doc {}, Combat: class extends Doc {}, collections: {
   Actors: { registerSheet: (ns, cls, o) => registered.sheets.push(["Actor", ns, o.makeDefault]) },
   Items: { registerSheet: (ns, cls, o) => registered.sheets.push(["Item", ns, o.makeDefault]) }
 } };

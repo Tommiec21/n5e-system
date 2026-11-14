@@ -26,6 +26,7 @@ import N5eActor from "./module/documents/actor.mjs";
 import N5eItem from "./module/documents/item.mjs";
 import N5eActiveEffect from "./module/documents/active-effect.mjs";
 import N5eTokenDocument from "./module/documents/token.mjs";
+import N5eCombat from "./module/documents/combat.mjs";
 import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
@@ -100,6 +101,8 @@ Hooks.once("init", () => {
 
   // Initiative: d20 + Dex + floor(prof / 2) + Mastery (computed as @init).
   CONFIG.Combat.initiative = { formula: "1d20 + @init", decimals: 2 };
+  // Turn automation runs only when combat moves forward (documents/combat.mjs; TURN1).
+  CONFIG.Combat.documentClass = N5eCombat;
 
   // Conditions and States on the token HUD. Every condition is listed; States only when they are
   // toggled by hand (derived ones like Bloodied and relational ones like Hidden-from are computed).

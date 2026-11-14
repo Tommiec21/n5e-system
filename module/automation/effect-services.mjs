@@ -152,14 +152,6 @@ export function registerEffectServices() {
     for ( const entry of entries?.values() ?? [] ) Promise.resolve(entry.provider.remove(document.object, entry.handle)).catch(warn);
     visuals.delete(document.uuid);
   });
-  const turn = (actor, event, combat, suffix) => emitEffectEvent(actor, event, { id: `${combat.id}:${combat.round}:${combat.turn}:${suffix}` }).catch(warn);
-  Hooks.on("combatTurnChange", (combat, prior) => {
-    if ( prior?.combatantId ) turn(combat.combatants.get(prior.combatantId)?.actor, "turnEnd", combat, prior.combatantId);
-    turn(combat.combatant?.actor, "turnStart", combat, combat.combatant?.id);
-  });
-  Hooks.on("combatStart", combat => turn(combat.combatant?.actor, "turnStart", combat, combat.combatant?.id));
-  Hooks.on("deleteCombat", combat => {
-    for ( const actor of new Set([...combat.combatants].map(c => c.actor).filter(Boolean)) ) turn(actor, "combatEnd", combat, actor.uuid);
-  });
+  // Turn start/end and combat end events come from N5eCombat (documents/combat.mjs, workflow/turn.mjs).
   refresh();
 }

@@ -8,7 +8,7 @@ import { makeActor, baseAbilities, load } from "./helpers/actor.mjs";
 import { advancementSteps, validate } from "../module/advancement/steps.mjs";
 import { resourceCost } from "../module/rules/resource-cost.mjs";
 import { restPlan } from "../module/rules/rest.mjs";
-import { turnStartPlan } from "../module/rules/turn-start.mjs";
+import { combatRecoveryPlan } from "../module/rules/recovery.mjs";
 import { attacksPerAction } from "../module/rules/features.mjs";
 
 const settings = {};
@@ -67,7 +67,7 @@ test("class pools: Actualization, Domain Charges (by level), Martial Dice (per t
   const tai = withClass("taijutsu-specialist", 5, ["martial-adept"]);
   assert.equal(tai.system.resources.martialDice.maxValue, 2, "2 Martial Dice at 5th");
   tai.system.resources.martialDice.value = 0;
-  const plan = turnStartPlan(tai, {});
+  const plan = combatRecoveryPlan(tai, ["turn"]);
   assert.equal(plan.update["system.resources.martialDice.value"], 2, "refilled at turn start");
   const ws = withClass("weapon-specialist", 1, ["discipline-n5e"]);
   assert.equal(ws.system.resources.discipline.die, "d12");

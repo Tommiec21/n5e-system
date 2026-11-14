@@ -1,6 +1,6 @@
 # TURN1 function spec: turn engine (forward-only events, per-period recovery, upkeep prompt)
 
-Status: **proposed 2026-11-13. Awaiting King's approval. No code written.**
+Status: **approved by King 2026-11-13 (Q1: unanswered upkeep ends; Q2: NPC upkeep automatic by default, world rule allows Prompt or Manual). Published 0.15.0-alpha.1.**
 
 Closes plan findings:
 - R4: turn start reruns on rewind, and two separate hooks run it.
@@ -73,8 +73,8 @@ The `turn.mjs` header, `RULES_MAP.md` rows plus removing R4–R6 from Known gaps
 
 ## Questions for King
 
-- Q1. If the owner hasn't answered the upkeep prompt by the end of their turn, should the system maintain what chakra allows, in listed order, or end the unanswered jutsu?
-- Q2. Should NPC concentration upkeep be automatic by default (world rule, GM can turn it off), or should the GM be asked like players?
+- Q1. **Answered:** an unanswered upkeep prompt ends those jutsu at the end of the turn.
+- Q2. **Answered:** NPC upkeep is automatic by default. The world rule `npcUpkeep` offers Automatic, Ask the GM each turn, or Manual tracking.
 
 ## Final results
 

@@ -4,7 +4,9 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  * whose turn begins: concentration upkeep, Chain/Combo resets, action economy, recharge rolls; then
  * posts one short summary card (with End buttons for each jutsu still concentrated on).
  *
- * Order when the turn passes from A to B (combatTurnChange):
+ * Turn events come from N5eCombat (documents/combat.mjs): Foundry calls them only when combat moves
+ * forward, on the active GM's client, so rewinding a turn re-runs nothing (TURN1).
+ * Order when the turn passes from A to B:
  *   1. end of A's turn: condition decay/endings (conditions.mjs), Fury and Mark expiry, effects that
  *      end at the end of A's turn, resave prompts (trackers.mjs);
  *   2. start of B's turn: effects that end at the start of B's turn, Burned/Bleed damage card, then
@@ -27,11 +29,17 @@ import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
 import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
+import { recoverCombatUses } from "./recovery.mjs";
+import { beginUpkeep, finishUpkeep, renderUpkeep } from "./upkeep.mjs";
+import { emitEffectEvent } from "../automation/effect-services.mjs";
 
-/** Start of the current combatant's turn (also called when combat starts, for the first combatant). */
-async function onTurnStart(combat) {
+const effectEvent = (actor, event, combat, suffix) => actor && emitEffectEvent(actor, event, { id: `${combat.id}:${combat.round}:${combat.turn}:${suffix}` })
+  .catch(error => console.warn("n5e | effect event", error));
+
+/** Start of a combatant's turn (N5eCombat._onStartTurn; active GM, forward only). */
+export async function turnStartPipeline(combat, combatant) {
   if ( !game.users.activeGM?.isSelf ) return;
-  const actor = combat.combatant?.actor;
+  const actor = combatant?.actor;
   if ( !actor ) return;
   await expireSourceEffects(combat, actor, "turnStart", { round: combat.round, turn: combat.turn });
   // Jutsu areas: timed ones that ran out go; lasting ones this creature starts in get a GM card.
@@ -39,7 +47,7 @@ async function onTurnStart(combat) {
   await postConditionDamage(actor);
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
-
+  const recovered = await recoverCombatUses(actor, ["turn"]);
   const lines = [];
   for ( const r of plan.recharges ) {
     const roll = await createN5eRoll(`1d${r.die}`).evaluate();
@@ -47,21 +55,21 @@ async function onTurnStart(combat) {
     if ( ok ) await actor.items.get(r.id)?.update({ "system.uses.spent": 0 });
     lines.push(`${esc(r.name)}: recharge d${r.die} rolled ${roll.total}${ok ? " (recharged)" : ""}`);
   }
-  if ( plan.paid.length ) {
-    lines.push(`Upkeep paid: <b>${plan.upkeep} CP</b>`);
-    for ( const p of plan.paid ) {
-      lines.push(`<span class="conc">${esc(p.name)} (${p.upkeep} CP) <button type="button" data-n5e-end-conc="${p.id}">End</button></span>`);
-    }
-  }
-  for ( const e of plan.ended ) lines.push(`<span class="warn">${esc(e.name)} ends: couldn't pay ${e.upkeep} CP upkeep</span>`);
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   if ( plan.focusGained ) lines.push("Flow: +1 Focus");
-  if ( plan.refilled?.length ) lines.push(`Refilled: ${plan.refilled.join(", ")}`);
+  if ( recovered.length ) lines.push(`Recovered: ${esc(recovered.join(", "))}`);
+  lines.push(...await beginUpkeep(actor, combat));
+  for ( const id of actor.system.combat?.concentrating ?? [] ) {
+    if ( actor.flags?.n5e?.upkeepPending?.ids?.includes(id) ) continue;
+    const item = actor.items.get(id);
+    if ( item ) lines.push(`<span class="conc">${esc(item.name)} <button type="button" data-n5e-end-conc="${id}">End</button></span>`);
+  }
   // Death saves at the start of the turn while at 0 HP (characters; not stable or dead).
   const statuses = actor.statuses ?? new Set();
   if ( rule("deathSaves") && actor.type === "character" && actor.system.hp.value <= 0 && !statuses.has("dead") && !statuses.has("stabilized") ) {
     lines.push(`<span class="conc warn">At 0 HP: roll a death save <button type="button" data-n5e-deathsave="${actor.uuid}">Death save</button></span>`);
   }
+  effectEvent(actor, "turnStart", combat, combatant.id);
   if ( !lines.length ) return;
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   await ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }),
@@ -76,46 +84,54 @@ export async function endConcentration(actor, id) {
   return actor.update({ "system.combat.concentrating": keep, [`flags.n5e.concentrationPaid.-=${id}`]: null });
 }
 
-/** Called once at module load (n5e.mjs). Every combat-related hook the system uses is here. */
+/** End of a combatant's turn (N5eCombat._onEndTurn; active GM, forward only). */
+export async function turnEndPipeline(combat, combatant) {
+  if ( !game.users.activeGM?.isSelf ) return;
+  const actor = combatant?.actor;
+  if ( !actor ) return;
+  const now = { round: combat.round, turn: combat.turn };
+  await processConditionTurnEnd(actor, now);
+  await trackersTurnEnd(combat, actor, now);
+  await areasTurnEnd(combat, actor);
+  effectEvent(actor, "turnEnd", combat, combatant.id);
+  const ended = await finishUpkeep(actor);
+  if ( ended?.length ) {
+    const names = ended.map(id => actor.items.get(id)?.name ?? id).join(", ");
+    const ChatMessageCls = CONFIG.ChatMessage.documentClass;
+    await ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }),
+      content: `<div class="n5e-turn-card"><b>${esc(actor.name)}</b>: no upkeep decision; ${esc(names)} end.</div>`, flags: { n5e: { actorUuid: actor.uuid } } });
+  }
+}
+
+/** Combat deleted (N5eCombat._onDelete): Combat Rival ends, encounter uses recover, combatEnd effect events. */
+export async function combatEndPipeline(combat) {
+  if ( !game.users.activeGM?.isSelf ) return;
+  const actors = new Set([...combat.combatants].map(c => c.actor).filter(Boolean));
+  for ( const actor of actors ) {
+    const ids = actor.effects.filter(e => e.flags?.n5e?.state === "combatRival").map(e => e.id);
+    if ( ids.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+    if ( actor.flags?.n5e?.upkeepPending ) await actor.update({ "flags.n5e.-=upkeepPending": null });
+    await recoverCombatUses(actor, ["encounter"]);
+    void emitEffectEvent(actor, "combatEnd", { id: `${combat.id}:${actor.uuid}:combatEnd` }).catch(error => console.warn("n5e | effect event", error));
+  }
+}
+
 /**
- * Hooks this module listens to (registered once from n5e.mjs):
- *   combatTurnChange(combat, prior)  end of the prior combatant's turn, then start of the new one
- *   combatStart(combat)              start of the first combatant's turn
+ * Hooks this module still listens to (registered once from n5e.mjs). Turn start/end, round start
+ * and combat end are N5eCombat methods (documents/combat.mjs), not hooks.
  *   moveToken(token, movement)       Chilled movement damage (workflow/trackers.mjs onTokenMove)
  *   createActiveEffect(effect)       Amp limit enforcement (workflow/trackers.mjs onAmpCreated)
- *   deleteCombat(combat)             Combat Rival markers end with the combat
- * Each handler returns early unless this client is the active GM (createActiveEffect: the creating user).
  */
 export function registerTurnHooks() {
-  // prior = {round, turn, combatantId} of the turn that just ended.
-  Hooks.on("combatTurnChange", async (combat, prior) => {
-    if ( game.users.activeGM?.isSelf && prior?.combatantId ) {
-      const ending = combat.combatants.get(prior.combatantId)?.actor;
-      if ( ending ) {
-        await processConditionTurnEnd(ending, { round: prior.round, turn: prior.turn });
-        await trackersTurnEnd(combat, ending, { round: prior.round, turn: prior.turn });
-        await areasTurnEnd(combat, ending);
-      }
-    }
-    return onTurnStart(combat);
-  });
-  Hooks.on("combatStart", combat => onTurnStart(combat));
   // Chilled: damage when a Chilled creature moves (trackers.mjs onTokenMove).
   Hooks.on("moveToken", (token, movement) => onTokenMove(token, movement));
-  // Combat Rival (Brutish Momentum) lasts until combat ends.
-  Hooks.on("deleteCombat", async combat => {
-    if ( !game.users.activeGM?.isSelf ) return;
-    for ( const c of combat.combatants ) {
-      const ids = c.actor?.effects.filter(e => e.flags?.n5e?.state === "combatRival").map(e => e.id) ?? [];
-      if ( ids.length ) await c.actor.deleteEmbeddedDocuments("ActiveEffect", ids);
-    }
-  });
   // Optional Amp limit: a new Amp may switch older ones off.
   Hooks.on("createActiveEffect", (effect, options, userId) => onAmpCreated(effect, options, userId));
 }
 
 /** Chat buttons on turn cards. */
 export function onRenderTurnCard(message, html) {
+  if ( html.querySelector("[data-n5e-upkeep]") ) void renderUpkeep(message, html).catch(error => ui.notifications.warn(error.message));
   for ( const btn of html.querySelectorAll("[data-n5e-end-conc]") ) {
     btn.addEventListener("click", async ev => {
       ev.preventDefault();

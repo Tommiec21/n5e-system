@@ -8,6 +8,7 @@ import path from "node:path";
 import Handlebars from "handlebars";
 import { makeActor, baseAbilities, load } from "./helpers/actor.mjs";
 import { turnStartPlan, parseRecharge, economySlot } from "../module/rules/turn-start.mjs";
+import { upkeepOptions, validateUpkeepChoice, upkeepMode, autoKeep } from "../module/rules/upkeep.mjs";
 import { headerVM } from "../module/view-models/character.mjs";
 import { combatVM } from "../module/view-models/combat.mjs";
 import { registerHelpers } from "../module/applications/helpers.mjs";
@@ -15,17 +16,30 @@ import { registerHelpers } from "../module/applications/helpers.mjs";
 const J = (id, name, cost, kw = ["ninjutsu"]) => ({ _id: id.padEnd(16, "0"), name, type: "jutsu", system: { discipline: "nin", rank: "D",
   keywords: kw, cost: { mode: "chakra", value: cost }, duration: { unit: "minute", value: 1, concentration: true } } });
 
-test("upkeep: pay in order, end what can't be paid, Efficient is free", () => {
+test("upkeep options: half the paid cost, Efficient free; auto mode keeps in order; choices over budget are refused", () => {
   const a = makeActor({ system: structuredClone(baseAbilities), items: [J("a", "Mist", 9), J("b", "Veil", 8), J("c", "Calm", 6, ["genjutsu", "efficient"])] });
   a.system.combat.concentrating = ["a000000000000000", "b000000000000000", "c000000000000000"];
   a.flags = { n5e: { concentrationPaid: { a000000000000000: 9, b000000000000000: 8, c000000000000000: 6 } } };
   a.system.cp.value = 5;
-  const p = turnStartPlan(a);
-  assert.deepEqual(p.paid.map(x => [x.name, x.upkeep]), [["Mist", 4], ["Calm", 0]]);
-  assert.deepEqual(p.ended.map(x => x.name), ["Veil"], "4 CP upkeep can't be paid from 1 CP left");
-  assert.equal(p.update["system.cp.value"], 1);
-  assert.deepEqual(p.update["system.combat.concentrating"], ["a000000000000000", "c000000000000000"]);
-  assert.equal(p.update["flags.n5e.concentrationPaid.-=b000000000000000"], null);
+  const o = upkeepOptions(a);
+  assert.deepEqual(o.jutsu.map(x => [x.name, x.cost]), [["Mist", 4], ["Veil", 4], ["Calm", 0]]);
+  assert.equal(o.noneAffordable, false);
+  assert.deepEqual(autoKeep(o), ["a000000000000000", "c000000000000000"], "4 CP for Veil can't be paid from 1 CP left");
+  assert.equal(validateUpkeepChoice(o, ["b000000000000000", "c000000000000000"]), 4, "the owner may keep Veil instead of Mist");
+  assert.throws(() => validateUpkeepChoice(o, ["a000000000000000", "b000000000000000"]), /Not enough chakra/);
+  assert.throws(() => validateUpkeepChoice(o, ["zzzz"]), /not waiting/);
+  a.system.cp.value = 3;
+  a.system.combat.concentrating = ["a000000000000000", "b000000000000000"];
+  assert.equal(upkeepOptions(a).noneAffordable, true, "chakra for none: all end");
+});
+
+test("upkeep mode: players are asked; NPCs follow the world rule; Allied NPCs are asked; rule off skips", () => {
+  assert.equal(upkeepMode({ type: "character" }, { npcUpkeep: "auto" }), "prompt");
+  assert.equal(upkeepMode({ type: "npc", system: {} }, { npcUpkeep: "auto" }), "auto");
+  assert.equal(upkeepMode({ type: "npc", system: {} }, { npcUpkeep: "manual" }), "manual");
+  assert.equal(upkeepMode({ type: "npc", system: {} }, { npcUpkeep: "prompt" }), "prompt");
+  assert.equal(upkeepMode({ type: "npc", system: { allied: true } }, { npcUpkeep: "auto" }), "prompt");
+  assert.equal(upkeepMode({ type: "character" }, { upkeepRule: false }), "off");
 });
 
 test("Chain resets unless touched; Combo clears; economy resets", () => {

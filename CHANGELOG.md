@@ -1,3 +1,14 @@
+## 0.15.0-alpha.1 — Turn engine (TURN1)
+
+- Turn start, turn end, round start and combat start/end now come from a new N5e Combat class, using Foundry's forward-only turn methods (as dnd5e does). Rewinding a turn or round no longer re-runs upkeep, condition damage, decay, recharge or effect events. The duplicate turn hooks are gone.
+- Uses and resource pools marked per turn, per round or per encounter now recover: turn at the creature's turn start, round at each round start, encounter at combat start and end. What recovered is listed on the turn card.
+- **Concentration upkeep prompt (King 2026-11-13).**
+  - At the start of each turn, the owner ticks which concentration jutsu to maintain. A running CP total stops them choosing more than they can pay.
+  - If chakra covers none, all end automatically.
+  - An unanswered prompt ends those jutsu at the end of the turn.
+  - Jutsu that are dropped lose their areas, summons and dependent effects.
+- New world rule "NPC concentration upkeep": Automatic (default; maintain while chakra allows), Ask the GM each turn, or Manual tracking. Allied NPCs are asked like players.
+
 ## 0.14.0-alpha.2 — dnd5e-parity chat visibility and roll requests (OPS1b)
 
 - Attack cards list every target with Hit / Miss / Critical hit / Natural 1. The new rule "Attack results shown to players" (all / hit-miss only / GM only; default GM only) matches dnd5e's Attack Roll Visibility. The GM always sees results and AC.
