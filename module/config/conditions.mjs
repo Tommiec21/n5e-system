@@ -181,6 +181,10 @@ export const states = {
   dodging: { label: "Dodging", type: "encounter", icon: "icons/svg/wing.svg" },
   /** Help action (KB 03): advantage on its next attack or check, then it ends (ADV1). */
   helped: { label: "Helped", type: "circumstantial", icon: "icons/svg/upgrade.svg" },
+  /** Cover (KB 03, POS1): the GM marks it on the token; only the highest applies. */
+  coverPartial: { label: "Partial Cover (+2)", type: "circumstantial", icon: "icons/svg/shield.svg" },
+  coverHalf: { label: "Half Cover (+4)", type: "circumstantial", icon: "icons/svg/castle.svg" },
+  coverTotal: { label: "Total Cover", type: "circumstantial", icon: "icons/svg/door-closed.svg" },
   /** Fury (Power Bukijutsu): red mist until the end of the turn after gaining it. */
   furious: { label: "Furious", type: "encounter", icon: "icons/svg/explosion.svg" }
 };

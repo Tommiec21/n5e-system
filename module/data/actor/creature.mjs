@@ -29,6 +29,7 @@
  *   2. an ADD to system.bonuses.* (AC, speed, saves, checks, attack/saveDC per discipline),
  *   3. a core change on a stored field (e.g. Forceful Bull UPGRADEs abilities.str.value to 18).
  */
+import { coverFrom } from "../../rules/positioning.mjs";
 import * as S from "../fields/shared.mjs";
 import { abilities, skills, toolkits, castingDisciplines, disciplines, dcTables } from "../../config/core.mjs";
 import { critRangeCap } from "../../config/combat.mjs";
@@ -265,6 +266,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       const b = B(`save.${key}`, `${abilities[key].label} save`).base(abbr(key), mod(key))
         .add(save.isProficient ? "Proficiency" : "Half proficiency", save.isProficient ? this.prof : Math.floor(this.prof / 2));
       addMastery(b, `save.${key}`).add("Bonuses", this.bonuses.save).addAll(d20Parts(key));
+      // Cover adds to Dex saves too (POS1).
+      if ( key === "dex" ) { const c = coverFrom(this.parent?.statuses); if ( c?.bonus ) b.add(c.label, c.bonus); }
       save.total = b.total;
     }
 
@@ -337,9 +340,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       flat: this.attributes.ac.flat, formula: this.attributes.ac.formula, rollData,
       blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac
     });
-    this.ac = ac;
+    // Cover (POS1): +2 or +4 to AC from the token's cover status (the highest only).
+    const cover = coverFrom(this.parent?.statuses);
+    this.ac = cover?.bonus ? { ...ac, value: ac.value + cover.bonus, parts: [...ac.parts, { label: cover.label, value: cover.bonus }] } : ac;
+    this.cover = cover?.key ?? null;
     const acb = B("ac", "Armor Class");
-    acb.parts.push(...ac.parts);
+    acb.parts.push(...this.ac.parts);
     acb.addAll(P("ac"));
     // Concentration: 2 jutsu at once (+ effects), checks with Chakra Control (Con if missing).
     this.concentration = {

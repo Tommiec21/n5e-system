@@ -176,5 +176,8 @@ export const conditionText = {
   "dead": { "text": "dead", "ends": "" },
   "dodging": { "text": "Dodge action: attacks against you have disadvantage if you can see the attacker, and you have advantage on Dex saves; lost while incapacitated or at speed 0", "ends": "start of your next turn" },
   "helped": { "text": "Help action: advantage on your next ability check or attack roll", "ends": "after that roll" },
+  "coverPartial": { "text": "Partial cover: +2 to AC and Dex saves (low walls, large furniture, narrow obstacles); only the highest cover applies", "ends": "when the GM removes it" },
+  "coverHalf": { "text": "Half cover: +4 to AC and Dex saves (mid-height walls, thick trunks, crouching behind low obstacles); only the highest cover applies", "ends": "when the GM removes it" },
+  "coverTotal": { "text": "Total cover: can't be targeted directly by attacks or jutsu; an area may still reach it", "ends": "when the GM removes it" },
   "furious": { "text": "Fury: gained the first time each turn you deal Weapon damage (Binding Fury Stance); kept until the end of the turn after gaining it; spent by Bukijutsu that call for it", "ends": "end of the turn after it was gained" }
 };
