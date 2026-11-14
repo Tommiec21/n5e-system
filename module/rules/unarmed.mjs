@@ -7,6 +7,22 @@
 /** True for the built-in Unarmed Strike item (DATA2). */
 export const isUnarmedStrike = item => item?.type === "weapon" && (item.system?.identifier === "unarmedStrike" || !!item.flags?.n5e?.unarmedStrike);
 
+/**
+ * Unarmed Strike ability (KB 03, ATK1): Str, or the better of Str and Dex when the creature casts its
+ * Taijutsu with Dex ("If you can cast all Taijutsu using Dexterity").
+ */
+export function unarmedAbility(actor) {
+  const a = actor?.system?.abilities ?? {};
+  if ( actor?.system?.disciplines?.tai?.ability !== "dex" ) return "str";
+  return (a.dex?.mod ?? 0) > (a.str?.mod ?? 0) ? "dex" : "str";
+}
+
+/** Finesse for features, feats and jutsu: Finesse weapons and the Unarmed Strike (weapon null or the item). */
+export function hasFinesse(weapon) {
+  if ( !weapon || isUnarmedStrike(weapon) ) return true;
+  return "finesse" in (weapon.system?.properties ?? {});
+}
+
 /** Equipped weapons other than the Unarmed Strike item. */
 export const equippedWeapons = actor => [...(actor?.items ?? [])].filter(i => i.type === "weapon" && i.system?.equipped && !isUnarmedStrike(i));
 
@@ -34,9 +50,10 @@ export function unarmedSpec(actor) {
   }
   const type = st.unarmedType || "bludgeoning";
   const extra = [...(sys.modifiers?.unarmedDice ?? [])];
-  const mod = sys.abilities?.str?.mod ?? 0;
+  const ability = unarmedAbility(actor);
+  const mod = sys.abilities?.[ability]?.mod ?? 0;
   const formula = `${die}${extra.map(d => ` + ${d}`).join("")}${mod ? ` ${mod < 0 ? "-" : "+"} ${Math.abs(mod)}` : ""}`;
-  return { die, type, extra, mod, ability: "str", formula, source: stance && die !== "1" ? stance.name : "" };
+  return { die, type, extra, mod, ability, formula, source: stance && die !== "1" ? stance.name : "" };
 }
 
 /** Die ladder for stepping: d4 > d6 > d8 > d10 > d12 (capped at both ends). */

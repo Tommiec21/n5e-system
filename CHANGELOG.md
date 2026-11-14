@@ -1,3 +1,22 @@
+## 0.17.0-alpha.1 — Weapon attacks (ATK1a, King 2026-11-13)
+
+- **Bonuses.** Weapon and unarmed attacks now include flat bonuses (`system.bonuses.attack.weapon` / `.unarmed`, `system.bonuses.damage.weapon` / `.unarmed`), the new effect keys `n5e.attack.weapon|unarmed` and `n5e.damage.weapon|unarmed`, and Mastery on `attack.weapon` / `attack.unarmed`. They all show in the attack's breakdown.
+- **Unarmed Strike** uses Dex instead of Str when your Taijutsu use Dex and Dex is higher. It counts as Finesse for features.
+- **Weapon properties in attacks.**
+  - Critical X adds crit range (still capped at +3). Deadly X adds X weapon dice to the Critical damage button.
+  - Heavy: disadvantage below Str 16, and half the Str modifier is added to damage on top of the normal modifier.
+  - Volatile X: no ability modifier on damage. A natural roll at or below X backfires: no damage, and the weapon is jammed until **Unjam** (an Action) on the Combat tab.
+  - Versatile weapons get a "(two hands)" entry with the larger die.
+  - Multiattack weapons get a "(bonus action)" entry: one attack that spends the Bonus Action, with no ability modifier on damage.
+- **Range and throwing.**
+  - Melee weapons that can be thrown get a "(thrown)" entry. Targeting a creature beyond your reach throws automatically.
+  - Beyond normal range: disadvantage. Beyond long range: the attack is refused.
+  - A ranged or thrown attack with a hostile within 5 ft (one that can see you and isn't incapacitated) has disadvantage.
+  - Finesse or Thrown weapons use the better of Str and Dex.
+  - The Ammunition Die is rolled only on thrown and ranged attacks, never on a melee swing.
+  - Thrown weapons without the Ammunition property now carry a d4 Ammunition Die. A Returning weapon thrown within 60 ft is caught, so its die isn't rolled.
+- **Migration.** World migration 6 gives existing thrown weapons their d4 die.
+
 ## 0.16.0-alpha.3 — All weapons and the Unarmed Strike item (DATA2, King 2026-11-13)
 
 - **Weapons compendium.** All 55 weapons from the Chapter 5 tables are in the Equipment compendium, in Simple, Martial and Exotic folders: cost, damage die and type, properties with ranks, thrown and ranged ranges, Versatile dice, groups, Bulk and their base keyword.

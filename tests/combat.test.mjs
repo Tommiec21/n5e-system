@@ -67,7 +67,9 @@ test("combat: action groups", () => {
   assert.ok(!v.basic.sections.some(s => s.skill), "skill actions moved out of Basic Combat");
   assert.ok(sec("core").pills.some(p => p.name === "Dodge"));
   assert.ok(sec("core").pills.some(p => p.name === "Opportunity Attack" && p.economy === "reaction"));
-  assert.deepEqual(sec("strikes").pills.map(p => p.name), ["Unarmed Strike", "Kunai"]);
+  // ATK1: the Kunai can also be thrown and, with Multiattack, used as a bonus-action attack.
+  assert.deepEqual(sec("strikes").pills.map(p => p.name), ["Unarmed Strike", "Kunai", "Kunai (thrown)", "Kunai (bonus action)"]);
+  assert.equal(sec("strikes").pills.find(p => p.name === "Kunai (bonus action)").economy, "bonus");
   assert.equal(sec("strikes").pills[0].sub, "1d6 +3", "stance sets the unarmed die to d6");
   const grapple = sec("skills").pills.find(p => p.name === "Grapple");
   assert.match(grapple.tip, /contested Athletics/);

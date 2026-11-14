@@ -1,12 +1,18 @@
 /**
- * Apply the DATA1 data-model update (module/migration/data1.mjs) to every compendium source in
+ * Apply the pure item migrations (module/migration/data1.mjs, atk1.mjs) to every compendium source in
  * packs/_source, so compendiums match migrated worlds. Idempotent. Usage: node tools/migrate-packs.mjs
  */
 import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { migrateItemData1, migrateItemData1b } from "../module/migration/data1.mjs";
+import { migrateThrownAmmo } from "../module/migration/atk1.mjs";
 
-const migrateAll = d => { const a = migrateItemData1(d) ?? d; const b = migrateItemData1b(a); return b ?? (a === d ? null : a); };
+/** Every pure item migration in order; null when nothing changed. */
+const migrateAll = d => {
+  let cur = d;
+  for ( const fn of [migrateItemData1, migrateItemData1b, migrateThrownAmmo] ) cur = fn(cur) ?? cur;
+  return cur === d ? null : cur;
+};
 
 const root = new URL("../packs/_source", import.meta.url).pathname;
 const files = [];

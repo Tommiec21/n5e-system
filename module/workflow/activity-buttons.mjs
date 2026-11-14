@@ -83,13 +83,14 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
  * @param {boolean} [o.weapon]      weapon/Bukijutsu damage (Binding Fury Stance watches for it)
  * @param {number} [o.pierce]       extra Pierce on top of the actor's (Raiding Strike)
  * @param {object|null} [o.cost]    pool cost paid when clicked
+ * @param {string} [o.critExtra]   dice a crit adds after doubling (Deadly X, ATK1)
  */
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
-  piercing = false, weaponId = "", activity = null, itemId = "" } = {}) {
+  piercing = false, weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
   const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
-  const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}`;
+  const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}${attr("crit-extra", critExtra)}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
@@ -322,26 +323,27 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
       if ( modifiers.bonus && parts.length ) parts[0] = { ...parts[0], formula: `(${parts[0].formula}) + (${modifiers.bonus})` };
       const crit = !!d.crit;
-      const strMod = actor?.system.abilities?.str?.mod ?? 0;
       const instances = [];
       const rolls = [], rollMetadata = [], advNotes = [];
-      for ( const p of parts ) {
+      for ( const [index, p] of parts.entries() ) {
         let formula = level(p.formula);
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
         if ( formula.includes("@unarmed") ) {
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
           p.type = unarmedSpec(actor).type;
-          abilityMod = abilityMod ?? strMod;
+          abilityMod = abilityMod ?? unarmedSpec(actor).mod;
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
-        const rolled = await rollDice(actor, crit ? critFormula(formula, abilityMod) : formula,
+        // Deadly X: a crit adds the weapon's own dice after doubling (first part only).
+        const critText = `${critFormula(formula, abilityMod)}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}`;
+        const rolled = await rollDice(actor, crit ? critText : formula,
           { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null,
             base: clickMode(event).mode });
         const roll = rolled.roll;
         const note = advantageNote(rolled, p.type || "Damage");
         if ( note ) advNotes.push(note);
         rolls.push(roll);
-        rollMetadata.push({ formula: crit ? critFormula(formula, abilityMod) : formula, normalFormula: formula, abilityMod });
+        rollMetadata.push({ formula: crit ? critText : formula, normalFormula: formula, abilityMod });
         instances.push({ amount: roll.total, type: p.type });
       }
       const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };

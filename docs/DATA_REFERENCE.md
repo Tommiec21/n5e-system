@@ -313,3 +313,16 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `CONFIG.N5E.weaponGroups.unarmed` | Config | Group label for the Unarmed Strike |
 | Weapons compendium | `packs/_source/equipment` | 55 Chapter 5 weapons in Simple / Martial / Exotic Weapons folders; `system.target.range` is reach for melee weapons, the range for ranged ones |
 | Migration 5 `addUnarmedStrikes` | World | Adds the Unarmed Strike to existing characters and NPCs |
+
+## Added in 0.17.0-alpha.1 (ATK1a)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `system.bonuses.attack.weapon` / `.unarmed` | Character, NPC | Flat attack bonus for weapon / unarmed attacks (AE target) |
+| `system.bonuses.damage.weapon` / `.unarmed` | Character, NPC | Flat damage bonus |
+| `system.weaponBonuses.{weapon,unarmed}` (derived) | Character, NPC | `{attack: [{label, value}], damage}`: bonuses, `n5e.attack/damage.*` effects and Mastery (`attack.weapon`, `attack.unarmed`) |
+| `n5e.damage.<weapon|unarmed>` | Active Effect change key | + damage on weapon or unarmed attacks |
+| `flags.n5e.jammed` | Weapon | A Volatile weapon that backfired; cleared by Unjam (Action) |
+| `flags.n5e.backfired` | Chat message | The attack backfired; no damage |
+| `system.ammo` on Thrown weapons without Ammunition | Weapon | d4 Ammunition Die, steps `[4, 1, 0]` (migration 6) |
+| `data-attack-mode` | Combat-tab pill | `thrown`, `twoHanded`, `bonus` or `unjam` |

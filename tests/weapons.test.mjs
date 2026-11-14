@@ -26,13 +26,15 @@ test("the Chapter 5 tables parse into 55 weapons, all in the compendium", () => 
   assert.throws(() => parseProperty("Grapple"), /Unknown weapon property/);
 });
 
-test("every weapon has its base keyword, known properties, groups and an ammunition die only with Ammunition", () => {
+test("every weapon has its base keyword, known properties, groups, and an ammunition die with Ammunition (d8) or Thrown (d4)", () => {
   for ( const w of weapons ) {
     const s = w.system;
     assert.deepEqual(s.keywords, [s.identifier], w.name);
     for ( const k of Object.keys(s.properties) ) assert.ok(k in weaponProperties, `${w.name}: ${k}`);
     assert.ok(s.groups.length >= 1 && s.groups.length <= 2, w.name);
-    assert.equal(s.ammo.usesDie, "ammunition" in s.properties, w.name);
+    // ATK1: Thrown weapons without Ammunition carry a d4 die.
+    assert.equal(s.ammo.usesDie, "ammunition" in s.properties || "thrown" in s.properties, w.name);
+    if ( s.ammo.usesDie ) assert.deepEqual(s.ammo.steps, "ammunition" in s.properties ? [8, 6, 4, 1, 0] : [4, 1, 0], w.name);
   }
   const by = n => weapons.find(w => w.name === n).system;
   assert.equal(weapons.find(w => w.name === "Kunai")._id, "n5eKunaiWeapon01", "Kunai keeps its id");

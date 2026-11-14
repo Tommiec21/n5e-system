@@ -1,6 +1,6 @@
 # ATK1 function spec: weapon attacks
 
-Status: **awaiting King's approval and answers to Q1–Q3.**
+Status: **Q1–Q3 answered by King 2026-11-13. ATK1a published 0.17.0-alpha.1; ATK1b next.**
 
 Closes plan findings:
 - R23: weapon attacks add only ability + proficiency + condition penalties.
@@ -92,7 +92,13 @@ Note: crits double the dice and the ability modifier (King's ruling). Deadly add
 - `tests/weapon-attacks.test.mjs`: bonuses, effects and Mastery in the Breakdown; Unarmed Str/Dex; Critical and Deadly; Heavy below Str 16 and its damage; Volatile backfire and jam; Versatile die; reach, long range, beyond long range, ranged in melee; thrown mode and the thrown d4 die; Returning; Multiattack damage without the modifier; `pickWeapon` with zero, one and several matches; Evocation bonus and dice by level.
 - Existing attack tests stay as they are.
 
-## Questions for King
+## Questions for King (answered 2026-11-13)
+
+- **Q1 answer:** Chapter 5's Light property. One extra off-hand attack inside the Attack action, once per turn, and it adds the ability modifier to damage. Chapter 8's Bonus Action off-hand attack is not used.
+- **Q2 answer:** thrown attacks use the better of Str and Dex.
+- **Q3 answer:** Heavy adds half the Str modifier on top of the normal ability modifier.
+
+Original questions:
 
 - **Q1. Light weapons.** The rules text gives two different versions:
   - Chapter 5, Light property: "While dual-wielding light weapons, you may make one extra attack with your off-hand weapon once per turn, when you take the Attack action." This reads as an extra attack inside the Attack action, with no Bonus Action.
@@ -100,3 +106,31 @@ Note: crits double the dice and the ability modifier (King's ruling). Deadly add
   Which one applies? If it's the Chapter 5 one, does that extra attack add the ability modifier to damage?
 - **Q2. Thrown ability.** Chapter 5's Thrown property says thrown attacks use Strength for attack and damage. Chapter 8 says Finesse or Thrown weapons can use either Str or Dex. Should throwing use Strength only, or the better of the two? (Kunai, Sai and other Finesse throwing weapons can use Dex either way.)
 - **Q3. Heavy damage.** "Creatures add half of their Strength modifier to this [Weapons Damage] rolls." Is that half added on top of the normal ability modifier (Str +4 → damage + 4 + 2), or in place of it (+2 only)?
+
+## Final results
+
+### ATK1a: published `v0.17.0-alpha.1`
+- **Built.**
+  - `rules/weapon-properties.mjs` (pure): `weaponCritBonus`, `deadlyDice`, `heavyPenalty`, `heavyDamage`, `volatileRank`, `backfires`, `reachOf`, `attackMode`, `attackRange`, `rangeSources`, `rollsAmmo`, `thrownAmmo`.
+  - `rules/unarmed.mjs`: `unarmedAbility`, `hasFinesse`; `unarmedSpec` uses the chosen ability.
+  - `creature.mjs`:
+    - `bonuses.attack.weapon` / `.unarmed` and `bonuses.damage.weapon` / `.unarmed`;
+    - derived `weaponBonuses.{weapon,unarmed} = {attack: parts, damage}` (bonuses, effects, Mastery).
+  - `change-keys.mjs`: `n5e.damage.<weapon|unarmed>`; catalog entries for the weapon attack and damage keys.
+  - `dice/d20.mjs critThreshold(actor, scope, extra)`.
+  - `dice/roll.mjs`: specs may carry `advantageSources`, `disadvantageSources` and `critBonus`.
+  - `activity-buttons.mjs damageButtons({critExtra})`: the dice a crit adds after doubling.
+  - `workflow/attack.mjs`: `weaponAttackSpec(actor, weapon, {mode, distance, closeHostiles, twoHanded, bonusAction})`, `attackGeometry`, `attackWithWeapon({mode})`, `unjamWeapon`.
+  - Combat tab: "(thrown)", "(two hands)", "(bonus action)" and "Unjam" entries (`data-attack-mode`).
+  - `migration/atk1.mjs migrateThrownAmmo`; runner migration 6; `tools/migrate-packs.mjs` runs every pure item migration; the weapon builder writes the d4 dice.
+- **Differs from the spec.**
+  - The Multiattack bonus-action attack moved from ATK1b into ATK1a.
+  - Volatile and the Multiattack attack drop the ability modifier entirely, as the text says, including a negative one.
+  - Finesse or Thrown weapons use the better of Str and Dex for every attack, including ranged throws such as the Boomerang.
+  - "Can see you" is approximated as not Blinded. Hostility comes from token disposition, so neutral tokens don't count.
+- **Tests.**
+  - New `tests/weapon-attacks.test.mjs` (5 tests).
+  - Attempt 1 had 4 failures, all in tests:
+    - two expectations changed on purpose by ATK1: the Combat-tab strike list, and thrown weapons now having a d4 die;
+    - the new test's weapon loader matched "shuriken-" and found Fuma-Shuriken.
+  - Attempt 2 passed: 330 pass, 2 skipped. Lint and check pass.

@@ -8,6 +8,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { migrateItemData1, migrateItemData1b } from "../../module/migration/data1.mjs";
 import { baseWeaponKey } from "../../module/rules/proficiency.mjs";
+import { thrownAmmo } from "../../module/rules/weapon-properties.mjs";
 import { weaponProperties } from "../../module/config/equipment.mjs";
 
 const migrateAll = d => migrateItemData1b(migrateItemData1(d) ?? d) ?? migrateItemData1(d);
@@ -147,7 +148,8 @@ export function weaponItem(row, folderId) {
       category: row.category, weaponType: row.weaponType, groups: row.groups,
       damage: { die: row.die, types: row.types, versatile },
       properties, range,
-      ammo: { ...AMMO, usesDie: "ammunition" in properties },
+      // Ammunition: a d8 die. Thrown without Ammunition: a d4 die (d4 > 1 > gone).
+      ammo: { ...AMMO, usesDie: "ammunition" in properties, ...(thrownAmmo({ properties, ammo: { usesDie: "ammunition" in properties } }) ?? {}) },
       proficient: true, seals: [], extraSealSlots: 0, keywords: [key]
     },
     _key: `!items!${_id}`, flags: {}, folder: folderId, sort: 0, ownership: { default: 0 }, effects: [],

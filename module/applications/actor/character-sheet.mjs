@@ -30,7 +30,7 @@ import LevelUpDialog from "../level-up.mjs";
 import { rollD20, rollInitiative } from "../../dice/roll.mjs";
 import { stepAmmo } from "../../workflow/ammo.mjs";
 import { castJutsu } from "../../workflow/cast.mjs";
-import { attackWithWeapon } from "../../workflow/attack.mjs";
+import { attackWithWeapon, unjamWeapon } from "../../workflow/attack.mjs";
 import { useFeature } from "../../workflow/use-feature.mjs";
 import { rollDeathSave } from "../../workflow/apply-damage.mjs";
 import { restDialog } from "../../workflow/rest.mjs";
@@ -465,7 +465,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !item ) return;
     // Jutsu cast (dialog; Alt+click casts at base rank), weapons attack, features pay their cost.
     if ( item.type === "jutsu" ) return castJutsu(this.actor, item, { skipDialog: event.altKey });
-    if ( item.type === "weapon" ) return attackWithWeapon(this.actor, item, { event });
+    if ( item.type === "weapon" && target.dataset.attackMode === "unjam" ) return unjamWeapon(this.actor, item);
+    if ( item.type === "weapon" ) return attackWithWeapon(this.actor, item, { event, mode: target.dataset.attackMode ?? "" });
     if ( item.type === "feat" ) return useFeature(this.actor, item);
     await postItemCard(item, { rank: this.#jutsu.castRank[item.id] });
   }

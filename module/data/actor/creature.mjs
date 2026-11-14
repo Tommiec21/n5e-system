@@ -124,7 +124,9 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       bonuses: S.obj({
         ac: S.int(0), initiative: S.int(0), hpMax: S.int(0), cpMax: S.int(0),
         hpPerLevel: S.int(0), cpPerLevel: S.int(0), inventorySlots: S.int(0), speed: S.int(0),
-        attack: discNumbers(), saveDC: discNumbers(), save: S.int(0), check: S.int(0)
+        attack: S.obj({ nin: S.int(0), tai: S.int(0), gen: S.int(0), weapon: S.int(0), unarmed: S.int(0) }),
+        damage: S.obj({ weapon: S.int(0), unarmed: S.int(0) }),
+        saveDC: discNumbers(), save: S.int(0), check: S.int(0)
       }),
       details: S.obj({ biography: S.html() })
     };
@@ -241,6 +243,19 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       return b;
     };
     const abbr = key => abilities[key]?.abbr ?? key;
+
+    // Weapon and unarmed attacks (ATK1): flat bonuses, n5e.attack/n5e.damage effects and Mastery. The
+    // ability, proficiency and weapon properties are added per attack (workflow/attack.mjs).
+    this.weaponBonuses = {};
+    for ( const scope of ["weapon", "unarmed"] ) {
+      const parts = [["Bonuses", this.bonuses.attack[scope] ?? 0], ["Effects", mods.attack[scope] ?? 0]];
+      const mm = this.masteryFor(`attack.${scope}`);
+      if ( mm.rank ) parts.push([`Mastery ${mm.rank}`, mm.bonus]);
+      this.weaponBonuses[scope] = {
+        attack: parts.filter(([, v]) => v).map(([label, value]) => ({ label, value })),
+        damage: (this.bonuses.damage?.[scope] ?? 0) + (mods.damage?.[scope] ?? 0)
+      };
+    }
 
     // Saves: mod + prof (or half prof if not proficient) + Mastery.
     for ( const key of Object.keys(abilities) ) {

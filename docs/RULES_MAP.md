@@ -47,6 +47,8 @@
 | Feat proficiency grants (Mastery when already proficient) | `creature.mjs _collectItemGrants` | 09 |
 | Weapons (Ch5 tables: 55 weapons, properties with ranks, ranges, groups, Bulk) | `packs/_source/equipment`, `tools/content/build-weapons.mjs` | 08 |
 | Unarmed Strike item on every character and NPC (can't be removed or unequipped) | `config/equipment.mjs unarmedStrike`, `documents/actor.mjs`, `documents/item.mjs`, `rules/unarmed.mjs` | 03 |
+| Weapon attacks: bonuses/effects/Mastery, Critical X, Deadly X, Heavy, Volatile (jam/unjam), Versatile, Multiattack bonus attack, reach, thrown, long range, ranged in melee, Returning, ammo die only on ranged/thrown | `rules/weapon-properties.mjs`, `workflow/attack.mjs` | 03, 08 |
+| Unarmed Strike: Dex when Taijutsu use Dex; counts as Finesse | `rules/unarmed.mjs unarmedAbility/hasFinesse` | 03 |
 | Weapon proficiency by `category:group` pair or base weapon; any one group of a multi-group weapon; Kunai, Shuriken, Senbon and Unarmed Strike for everyone | `rules/proficiency.mjs`, `creature.mjs grants.weaponProf`, `workflow/attack.mjs` | 05 |
 | Optional rules (every toggle) | `config/rules.mjs`, `rules-settings.mjs`, `applications/settings/rules-config.mjs` | various |
 | Per-item automation for imported content | `tools/content/automation.py` | 09, 12, 13 |

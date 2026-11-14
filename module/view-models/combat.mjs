@@ -90,17 +90,34 @@ function basicCombat(actor) {
   // Strikes: unarmed always, plus each equipped weapon.
   const u = unarmedSpec(actor);
   const attacks = attacksPerAction(actor);
-  const strMod = sys.abilities?.str?.mod ?? 0;
+  const strMod = u.mod; // Str, or Dex when Taijutsu use Dex (ATK1)
   const strikes = [pill({ kind: "core", key: "unarmed", name: "Unarmed Strike", activation: "action",
     sub: `${u.die}${u.extra.map(d => `+${d}`).join("")} ${signed(strMod)}${attacks.base > 1 ? ` · ×${attacks.base}` : ""}`,
     tip: tipHTML({ title: "Unarmed Strike", meta: ["Attack", "Always proficient"],
       body: esc(`${u.formula} ${u.type}${u.source ? ` (${u.source})` : ""}. Counts as finesse for features; may use Dex if you can cast all Taijutsu with Dex.${attacks.text ? ` ${attacks.text}` : ""}`) }) })];
+  // Each equipped weapon, plus its other ways to attack (ATK1): thrown, two hands (Versatile),
+  // bonus action (Multiattack). A jammed Volatile weapon shows only Unjam.
   for ( const w of equippedWeapons ) {
     const s = w.system;
-    const dmg = `${s.damage?.die ?? ""} ${[...(s.damage?.types ?? [])].join("/")}`.trim();
-    const range = s.range?.normal ? `${s.range.normal}${s.range.long ? `/${s.range.long}` : ""} ft` : "Melee";
+    const props = s.properties ?? {};
+    const types = [...(s.damage?.types ?? [])].join("/");
+    const ranged = s.weaponType === "ranged";
+    const reach = 5 + 5 * (Number(props.reach) || 0);
+    const thrownRange = s.range?.normal ? `${s.range.normal}${s.range.long ? `/${s.range.long}` : ""} ft` : "";
+    const tip = (meta, extra = "") => tipHTML({ title: w.name, meta: ["Attack", ...meta], body: `${extra}${s.description ?? ""}` });
+    if ( w.flags?.n5e?.jammed ) {
+      strikes.push(pill({ kind: "item", id: w.id, mode: "unjam", name: `Unjam ${w.name}`, activation: "action", sub: "jammed", warn: "warn",
+        tip: tip(["Volatile"], "<p>Backfired: spend an Action to unjam it before attacking again.</p>") }));
+      continue;
+    }
     strikes.push(pill({ kind: "item", id: w.id, name: w.name, activation: "action", sub: s.damage?.die ?? "",
-      tip: tipHTML({ title: w.name, meta: ["Attack", range, dmg], body: s.description ?? "" }) }));
+      tip: tip([ranged ? thrownRange : `Reach ${reach} ft`, `${s.damage?.die ?? ""} ${types}`.trim()]) }));
+    if ( !ranged && "thrown" in props ) strikes.push(pill({ kind: "item", id: w.id, mode: "thrown", name: `${w.name} (thrown)`,
+      activation: "action", sub: thrownRange, tip: tip(["Thrown", thrownRange, `${s.damage?.die ?? ""} ${types}`.trim()]) }));
+    if ( s.damage?.versatile ) strikes.push(pill({ kind: "item", id: w.id, mode: "twoHanded", name: `${w.name} (two hands)`,
+      activation: "action", sub: s.damage.versatile, tip: tip(["Versatile", `${s.damage.versatile} ${types}`.trim()]) }));
+    if ( "multiattack" in props ) strikes.push(pill({ kind: "item", id: w.id, mode: "bonus", name: `${w.name} (bonus action)`,
+      activation: "bonus", sub: s.damage?.die ?? "", tip: tip(["Multiattack", "No ability modifier on damage"]) }));
   }
 
   // Skill actions usable in a fight (action, bonus, reaction, move), with tier penalties.

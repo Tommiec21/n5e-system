@@ -16,6 +16,7 @@
  */
 import { isV31Actor, isV31Item, migrateV31Actor, migrateV31Item } from "./v31.mjs";
 import { migrateItemData1, migrateItemData1b } from "./data1.mjs";
+import { migrateThrownAmmo } from "./atk1.mjs";
 
 export const SETTING = "migrationVersion";
 
@@ -25,8 +26,23 @@ export const MIGRATIONS = [
   { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation },
   { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel },
   { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons },
-  { id: 5, label: "Unarmed Strike item for every character and NPC", run: addUnarmedStrikes }
+  { id: 5, label: "Unarmed Strike item for every character and NPC", run: addUnarmedStrikes },
+  { id: 6, label: "Thrown weapons without Ammunition get a d4 Ammunition Die", run: migrateThrownWeapons }
 ];
+
+/** Migration 6 (ATK1): Thrown weapons without the Ammunition property carry a d4 Ammunition Die. */
+async function migrateThrownWeapons(log) {
+  const failures = [];
+  const unlinked = game.scenes.contents.flatMap(sc => sc.tokens.contents.filter(t => !t.actorLink && t.actor).map(t => t.actor));
+  const items = [...game.items, ...[...game.actors, ...unlinked].flatMap(a => [...a.items])];
+  for ( const item of items ) {
+    const next = migrateThrownAmmo(item.toObject());
+    if ( !next ) continue;
+    try { await item.update({ "system.ammo": next.system.ammo }, { n5eMigration: true }); log.push(`Thrown weapon: ${item.uuid}`); }
+    catch (error) { failures.push({ uuid: item.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some thrown weapons could not be updated."); error.failures = failures; throw error; }
+}
 
 /** Migration 5 (DATA2): every world character and NPC gets the Unarmed Strike item. */
 async function addUnarmedStrikes(log) {

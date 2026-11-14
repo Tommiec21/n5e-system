@@ -25,9 +25,10 @@ export function clickMode(event = {}) {
 }
 
 /** Lowest natural d20 that crits for a scope (all + scope bonuses, capped at +3: 17-20). */
-export function critThreshold(actor, scope = "") {
+export function critThreshold(actor, scope = "", extra = 0) {
   const cr = actor.system.critRange ?? {};
-  const bonus = Math.min(rule("critRangeCap") ?? critRangeCap, (cr.all ?? 0) + (scope ? cr[scope] ?? 0 : 0));
+  // extra: a weapon's Critical X (ATK1). The total stays under the cap.
+  const bonus = Math.min(rule("critRangeCap") ?? critRangeCap, (cr.all ?? 0) + (scope ? cr[scope] ?? 0 : 0) + (Number(extra) || 0));
   return 20 - bonus;
 }
 

@@ -10,7 +10,8 @@
  *   n5e.cost.<scope>              cost change: number (+/-), "*0.5" multiplier, "/2" divisor;
  *                                 scope all|nin|tai|gen|buki|keyword.<k>|rank.<R>
  *   n5e.saveDC.<disc|all>         +save DC
- *   n5e.attack.<disc>             +attack bonus
+ *   n5e.attack.<disc>             +attack bonus (disc, or weapon | unarmed for weapon and unarmed attacks)
+ *   n5e.damage.<weapon|unarmed>   +damage on weapon or unarmed attacks
  *   n5e.disciplineAbility.<disc>  sets the discipline's ability (value: ability key)
  *   n5e.saveTier.shift            moves four-tier results by N steps (+/-)
  *   n5e.concentration.max         +max concentration jutsu
@@ -36,7 +37,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
  */
 export function emptyModifiers() {
   return {
-    mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, disciplineAbility: {},
+    mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {},
     saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, reinforced: 0, unknown: []
   };
 }
@@ -86,6 +87,11 @@ export function parseN5eChanges(changes) {
       case "attack": {
         const scope = sub || "all";
         out.attack[scope] = (out.attack[scope] ?? 0) + num(change.value);
+        break;
+      }
+      case "damage": {
+        const scope = sub || "weapon";
+        out.damage[scope] = (out.damage[scope] ?? 0) + num(change.value);
         break;
       }
       case "disciplineAbility": if ( sub ) out.disciplineAbility[sub] = String(change.value); break;
@@ -143,6 +149,10 @@ export function changeKeyCatalog(N5E) {
   for ( const d of ["nin", "tai", "gen"] ) {
     add("Discipline", `n5e.attack.${d}`, `${discLabel(d)} attack: + number`);
     add("Discipline", `n5e.disciplineAbility.${d}`, `${discLabel(d)} ability: value = str|dex|con|int|wis|cha`);
+  }
+  for ( const s of ["weapon", "unarmed"] ) {
+    add("Weapons", `n5e.attack.${s}`, `${s === "weapon" ? "Weapon" : "Unarmed"} attacks: + number`);
+    add("Weapons", `n5e.damage.${s}`, `${s === "weapon" ? "Weapon" : "Unarmed"} damage: + number`);
   }
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
   add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");

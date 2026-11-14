@@ -98,6 +98,9 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const authored = contextualAdvantage(actor, spec, target);
   sources.advantage.push(...authored.advantage);
   sources.disadvantage.push(...authored.disadvantage);
+  // Sources the caller worked out (weapon properties and range, ATK1).
+  sources.advantage.push(...(spec.advantageSources ?? []));
+  sources.disadvantage.push(...(spec.disadvantageSources ?? []));
   addSheetToggle(sources, actor, "d20");
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? click.mode);
@@ -112,7 +115,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   }
   const formula = `${MODES[mode]} + @bonus${extra ? ` + ${extra}` : ""}`;
   const roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
-  const threshold = critThreshold(actor, spec.scope);
+  const threshold = critThreshold(actor, spec.scope, spec.critBonus);
   const result = readD20(roll, threshold);
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
   let degree = null;
