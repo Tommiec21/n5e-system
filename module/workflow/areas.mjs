@@ -83,7 +83,10 @@ export function areaButton(item, { rank } = {}) {
 export async function onAreaClick(message, button) {
   const item = await fromUuid(button.dataset.n5eArea);
   if ( !item?.actor ) return ui.notifications.warn("The jutsu is no longer on its actor.");
-  return placeArea(item.actor, item, { rank: button.dataset.rank || undefined });
+  const created = await placeArea(item.actor, item, { rank: button.dataset.rank || undefined });
+  // Single action card (CARD1b): the covered tokens become the card's targets.
+  if ( created && message?.flags?.n5e?.card ) await import("./action-card.mjs").then(m => m.addAreaTargets(message, tokensInArea(created)));
+  return created;
 }
 
 // ------------------------------------------------------------------------------------------------ //

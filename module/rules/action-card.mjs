@@ -4,7 +4,7 @@
  *
  *   Data         flags.n5e.card = {version, kind, actorUuid, itemUuid, rank, discipline, targets,
  *                sections, results}. results = {attack, saves: {[uuid]: save}, damage,
- *                applied: {[uuid]: application}}.
+ *                applied: {[uuid]: application}, effects: {[uuid]: [application]}}.
  *   Who writes   The card's author writes their own results. Results rolled by other users reach
  *                the card through the active GM (owner intent "cardResult", Q-CD1). With no GM, the
  *                linked roll stays a separate card and is merged in for display only.
@@ -67,7 +67,21 @@ export function resultsFromLinked(flags = {}, messageId = "") {
       if ( uuid ) out.push({ section: "applied", targetUuid: uuid, result: { mode: applied.mode, messageId, undone: !!flags.undone } });
     }
   }
+  const effects = flags.cardEffects;
+  if ( effects ) {
+    for ( const r of list(effects.recipients) ) {
+      if ( r?.actorUuid ) out.push({ section: "effects", targetUuid: r.actorUuid,
+        result: { messageId, effects: list(r.effects).map(e => ({ uuid: e.uuid, label: e.label })), undone: !!flags.undone } });
+    }
+  }
   return out;
+}
+
+/** The card's targets plus newly covered ones (an area), without duplicates, at most 40. */
+export function mergeTargets(existing = [], added = []) {
+  const out = new Map();
+  for ( const t of [...list(existing), ...list(added)] ) if ( t?.uuid && !out.has(t.uuid) ) out.set(t.uuid, t);
+  return [...out.values()].slice(0, 40);
 }
 
 /**
@@ -86,6 +100,18 @@ export function addCardResult(card, { section, targetUuid = null, result } = {})
       throw new Error(`This card's ${section} is already rolled.`);
     }
     results[section] = result;
+    return results;
+  }
+  if ( section === "effects" ) {
+    if ( !targetUuid ) throw new Error("A target is required.");
+    const bucket = results.effects ??= {};
+    const entries = bucket[targetUuid] ??= [];
+    const prior = entries.find(e => e.messageId === result?.messageId);
+    if ( prior ) {
+      if ( result?.undone ) prior.undone = true;
+      return results;
+    }
+    entries.push(result);
     return results;
   }
   if ( section === "saves" || section === "applied" ) {
@@ -117,9 +143,10 @@ export function mergedResults(card, linked = []) {
  * One row per target: attack outcome, save outcome, the share of damage, and whether it was applied.
  * @param {object} card
  * @param {object} results              mergedResults(card, linked)
- * @param {{visibility?: string, isGM?: boolean}} [viewer]
+ * @param {{visibility?: string, isGM?: boolean, canSeeSave?: (uuid: string) => boolean}} [viewer]
+ *   canSeeSave: challengeVisibility for that creature's save (default: visible)
  */
-export function cardTargetRows(card, results = card?.results ?? {}, { visibility = "none", isGM = false } = {}) {
+export function cardTargetRows(card, results = card?.results ?? {}, { visibility = "none", isGM = false, canSeeSave = () => true } = {}) {
   const attack = results.attack ?? null;
   const saves = Object.entries(results.saves ?? {}).map(([actorUuid, s]) => ({ ...s, actorUuid }));
   const named = new Map();
@@ -135,14 +162,22 @@ export function cardTargetRows(card, results = card?.results ?? {}, { visibility
     const attackVisible = !!view?.result;
     // Hidden hit/miss stays hidden: the share is only suggested when the viewer may see why.
     const share = shares.get(t.uuid) ?? null;
-    const saveText = save ? (save.fourTier ? SAVE_LABELS[save.degree] : save.degree >= 2 ? "Success" : "Failure") : null;
+    const saveVisible = !!save && (isGM || canSeeSave(t.uuid));
+    const saveText = saveVisible ? (save.fourTier ? SAVE_LABELS[save.degree] : save.degree >= 2 ? "Success" : "Failure") : null;
     const applied = results.applied?.[t.uuid];
+    const effects = list(results.effects?.[t.uuid]).filter(e => !e.undone);
+    const hidden = (attack && !attackVisible && !saveVisible) || (!attack && save && !saveVisible);
     return {
       uuid: t.uuid, name: t.name ?? "", ac: view?.ac ?? null,
       attack: attackVisible ? ATTACK_RESULT_LABELS[view.result] : null,
       save: saveText,
-      share: attack && !attackVisible && !save ? null : share,
-      applied: applied && !applied.undone ? { mode: applied.mode, messageId: applied.messageId } : null
+      saved: !!save,
+      // Conditions on a failed save; known to whoever may change the creature (they apply them).
+      saveFailed: !!save && save.degree < 2,
+      share: hidden ? null : share,
+      applied: applied && !applied.undone ? { mode: applied.mode, messageId: applied.messageId } : null,
+      effects: effects.flatMap(e => e.effects.map(x => x.label)),
+      effectMessages: effects.map(e => e.messageId)
     };
   });
 }
@@ -162,6 +197,8 @@ export function sectionStates(card, results = card?.results ?? {}) {
     if ( s === "attack" ) states[s] = results.attack ? "done" : "ready";
     else if ( s === "damage" ) states[s] = results.damage ? "done" : sections.includes("attack") && !results.attack ? "waiting" : "ready";
     else if ( s === "saves" ) states[s] = targets.length && targets.every(t => results.saves?.[t.uuid]) ? "done" : "ready";
+    else if ( s === "area" ) states[s] = card.areaPlaced ? "done" : "ready";
+    else if ( s === "effects" ) states[s] = Object.values(results.effects ?? {}).some(l => list(l).some(e => !e.undone)) ? "done" : "ready";
     else states[s] = "ready";
   }
   return states;

@@ -170,3 +170,17 @@ Published `v0.27.0-alpha.1`. A1–A6 and A4b were built as specified, plus two s
   - The card's targets are the Foundry targets when the card was posted (the attack's own snapshot adds to them). Area targets come in CARD1b.
   - Undo from the card restores everything on that summary. Applying from the card is always one target, but a summary made with the old "apply to selected tokens" can hold several.
   - Not tested in Foundry (no live testing); behaviour follows the existing Apply and Undo paths.
+- 2026-11-14 Claude: **CARD1b approved by King ("Yes"); B1–B3 done.**
+  - **Rules (`rules/action-card.mjs`):**
+    - `mergeTargets`;
+    - effect summaries (`flags.n5e.cardEffects`) become an `effects` section, a list per target that can be marked undone;
+    - rows gain `saved`, `saveFailed`, effect labels and `canSeeSave` (challengeVisibility);
+    - area and effects section states.
+  - **B1:** `onAreaClick` adds the covered tokens to the card's targets (`addAreaTargets`, author or GM) and marks the area done.
+  - **B2:** per-target "Roll X save" for the target's owner (GM for NPCs). It runs the card's own save button for that one creature, so stimuli immunity, condition resistance and Heightened work as before. Heightened's disadvantage is dropped once any save is recorded.
+  - **B3:**
+    - per-target "Apply <condition>" on a failed save, for the target's owner or GM; a resave is remembered as on the save card;
+    - per-target "Apply <effect>" for target effects, for the caster's owner, only for effects with no cost, use limit or activation, since one click per creature mustn't charge again;
+    - each application posts a small linked summary that the card records.
+  - **Undo** now covers damage plus the conditions/effects applied from the card (Q-CD4), each by the user who applied it or the GM.
+  - Next: tests.

@@ -331,7 +331,7 @@ export function onRenderChatMessage(message, html) {
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
   // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
   actionCardModule?.renderActionCard(message, html);
-  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });

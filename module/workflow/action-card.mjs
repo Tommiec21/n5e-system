@@ -15,17 +15,29 @@
  *   Setting    rule("actionCard") off: nothing here runs and cards look as they did (Q-CD3).
  */
 import { rule } from "../rules-settings.mjs";
-import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates } from "../rules/action-card.mjs";
+import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets } from "../rules/action-card.mjs";
+import { challengeVisible } from "../rules/parity.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { esc } from "../view-models/common.mjs";
 
 export const actionCardOn = () => !!rule("actionCard");
 
-/** Foundry targets of the current user when the card is posted: {uuid, name, img, ac}. */
-function currentTargets() {
-  return [...(globalThis.game?.user?.targets ?? [])].filter(t => t.actor).slice(0, 20).map(t => ({
-    uuid: t.actor.uuid, name: t.name ?? t.actor.name, img: t.document?.texture?.src ?? t.actor.img ?? "",
-    ac: Number(t.actor.system?.ac?.value ?? t.actor.system?.attributes?.ac?.value) }));
+/** {uuid, name, img, ac} for tokens. */
+const targetData = tokens => tokens.filter(t => t.actor).slice(0, 40).map(t => ({
+  uuid: t.actor.uuid, name: t.name ?? t.actor.name, img: t.document?.texture?.src ?? t.actor.img ?? "",
+  ac: Number(t.actor.system?.ac?.value ?? t.actor.system?.attributes?.ac?.value) }));
+
+/** Foundry targets of the current user when the card is posted. */
+const currentTargets = () => targetData([...(globalThis.game?.user?.targets ?? [])]).slice(0, 20);
+
+/**
+ * B1: an area placed from the card adds the tokens it covers to the card's targets (author or GM;
+ * covered tokens are those the placing user can see).
+ */
+export async function addAreaTargets(message, tokens) {
+  const card = message?.flags?.n5e?.card;
+  if ( !card || !actionCardOn() || !(message.isAuthor || globalThis.game.user.isGM) ) return null;
+  return message.update({ "flags.n5e.card.targets": mergeTargets(card.targets, targetData(tokens)), "flags.n5e.card.areaPlaced": true });
 }
 
 /**
@@ -49,7 +61,8 @@ const idOf = uuid => (typeof uuid === "string" ? uuid.split(".").pop() : null);
 export function cardOfLinked(message) {
   const f = message?.flags?.n5e ?? {};
   let origin = null;
-  if ( f.roll?.source ) origin = messages()?.get(f.roll.source);
+  if ( f.cardEffects?.sourceUuid ) origin = messages()?.get(idOf(f.cardEffects.sourceUuid));
+  else if ( f.roll?.source ) origin = messages()?.get(f.roll.source);
   else if ( f.damage?.originUuid ) origin = messages()?.get(idOf(f.damage.originUuid));
   else if ( f.damageApplication?.sourceUuid ) {
     const damage = messages()?.get(idOf(f.damageApplication.sourceUuid));
@@ -144,6 +157,19 @@ const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage:
 const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
 const MODE_LABELS = { full: "Applied", half: "Applied half", double: "Applied double", heal: "Healed" };
 
+const parse = v => { try { return JSON.parse(v || "null") ?? []; } catch { return []; } };
+const hasPlayerOwner = actor => !!actor && (globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
+const saveLabel = d => `Roll ${globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""} save`.replace(/\s+/g, " ");
+
+/** The card's own save buttons and target-effect buttons, as plain datasets, in order. */
+function cardActivities(message) {
+  const doc = new DOMParser().parseFromString(message.content ?? "", "text/html");
+  const data = sel => [...doc.querySelectorAll(sel)].map(b => ({ ...b.dataset }));
+  return { saves: data('[data-n5e-act="save"]'), effects: data('[data-n5e-act="effect"]')
+    // Per-target only when one click per creature costs nothing extra (no pool cost, use limit or action).
+    .filter(d => parse(d.effect)?.target === "targets" && !d.cost && !d.once && !d.activation) };
+}
+
 /** The card's sections and per-target rows (A5). Synchronous: listeners are bound right after. */
 export function renderActionCard(message, html) {
   if ( !actionCardOn() ) return;
@@ -154,20 +180,34 @@ export function renderActionCard(message, html) {
   const entries = linkedEntries(message);
   const results = mergedResults(card, entries);
   const states = sectionStates(card, results);
-  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM });
+  const setting = rule("challengeVisibility");
+  const canSeeSave = uuid => challengeVisible(setting, game.user, hasPlayerOwner(globalThis.fromUuidSync?.(uuid)));
+  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave });
   const pending = entries.some(e => !recordedIn(message, e.result.messageId) && e.result.messageId !== message.id);
   const canDamage = !!results.damage;
+  const acts = cardActivities(message);
+  const casterOwner = !!globalThis.fromUuidSync?.(card.actorUuid)?.isOwner;
   const row = r => {
     const actor = globalThis.fromUuidSync?.(r.uuid);
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
-    const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "", r.share && mine ? SHARE_LABELS[r.share] : ""].filter(Boolean);
-    let controls = "";
-    if ( mine && canDamage ) {
-      controls = r.applied
-        ? `<span class="sub">${esc(MODE_LABELS[r.applied.mode] ?? "Applied")}</span><button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`
-        : ["full", "half"].map(m => `<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`).join("");
-    }
-    return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">${esc(facts.join(" · "))}</span>${controls}</div>`;
+    const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "", r.share && mine ? SHARE_LABELS[r.share] : "",
+      ...r.effects].filter(Boolean);
+    const controls = [];
+    // B2: the target's owner (GM for NPCs) rolls its save from the card.
+    if ( mine && !r.saved && card.sections.includes("saves") ) acts.saves.forEach((d, i) =>
+      controls.push(`<button type="button" data-n5e-card-save="${i}" data-target="${esc(r.uuid)}">${esc(saveLabel(d))}</button>`));
+    // B3: conditions on a failed save (applied by whoever may change the creature).
+    if ( mine && r.saveFailed ) acts.saves.forEach((d, i) => parse(d.inflicts).forEach((x, j) =>
+      controls.push(`<button type="button" data-n5e-card-inflict="${i}:${j}" data-target="${esc(r.uuid)}">Apply ${esc(x.label)}${x.kind === "condition" ? ` ${x.ranks}` : ""}</button>`)));
+    // B3: effects the jutsu puts on its targets (the caster's owner applies; others get the offer card).
+    if ( casterOwner ) acts.effects.forEach((d, i) =>
+      controls.push(`<button type="button" data-n5e-card-effect="${i}" data-target="${esc(r.uuid)}">Apply ${esc(d.label || parse(d.effect).name || "effect")}</button>`));
+    if ( mine && canDamage && !r.applied ) ["full", "half"].forEach(m =>
+      controls.push(`<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`));
+    if ( r.applied ) facts.push(MODE_LABELS[r.applied.mode] ?? "Applied");
+    // Undo (Q-CD4): the damage and the conditions/effects applied to this creature from the card.
+    if ( mine && (r.applied || r.effectMessages.length) ) controls.push(`<button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`);
+    return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">${esc(facts.join(" · "))}</span>${controls.join("")}</div>`;
   };
   const box = document.createElement("div");
   box.className = "n5e-action-card";
@@ -196,25 +236,111 @@ function collapseLinked(message, html) {
   (html.querySelector(".message-content") ?? html).before(note);
 }
 
-/** Per-target Apply / Half / Undo on the card (A6), through the damage card's own Apply. */
+/** Post the small linked summary that records conditions/effects applied from the card (B3). */
+async function postEffectSummary(message, actor, created) {
+  if ( !created.length ) return null;
+  const ChatMessageCls = CONFIG.ChatMessage.documentClass;
+  return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }),
+    content: `<div class="n5e-roll-card"><b>${esc(actor.name)}</b>: ${esc(created.map(e => e.name).join(", "))} applied.</div>`,
+    flags: { n5e: { cardEffects: { sourceUuid: message.uuid, recipients: [{ actorUuid: actor.uuid, effects: created.map(e => ({ uuid: e.uuid, label: e.name })) }] } } } });
+}
+
+/** A condition or state from a failed save, as the save card's own Apply does (resave remembered). */
+async function inflict(actor, x, save) {
+  let effect;
+  if ( x.kind === "state" ) {
+    await actor.toggleStatusEffect(x.key, { active: true });
+    effect = actor.effects.find(e => e.statuses?.has(x.key));
+  } else effect = await actor.addCondition(x.key, Number(x.ranks) || 1);
+  if ( save.resave && effect?.setFlag ) {
+    const game = globalThis.game;
+    const now = game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null;
+    await effect.setFlag("n5e", "resave", { ability: save.ability, dc: Number(save.dc), label: save.label, applied: now });
+  }
+  return effect ?? null;
+}
+
+/** Undo everything applied to one creature from the card: damage (A6) and conditions/effects (B3). */
+async function undoTarget(message, results, uuid, event) {
+  const game = globalThis.game;
+  const { onApplyClick } = await import("./apply-damage.mjs");
+  let done = 0;
+  const applied = results.applied?.[uuid];
+  const summary = applied && !applied.undone ? messages()?.get(applied.messageId) : null;
+  if ( summary && !summary.flags?.n5e?.undone ) {
+    if ( !summary.isAuthor && !game.user.isGM ) ui.notifications.info("Only the user who applied this damage, or the GM, can undo it.");
+    else { await onApplyClick(summary, { dataset: { n5eUndo: "1" } }, event); done++; }
+  }
+  for ( const entry of results.effects?.[uuid] ?? [] ) {
+    if ( entry.undone ) continue;
+    const note = messages()?.get(entry.messageId);
+    if ( !note || note.flags?.n5e?.undone ) continue;
+    if ( !note.isAuthor && !game.user.isGM ) { ui.notifications.info("Only the user who applied these effects, or the GM, can undo them."); continue; }
+    for ( const e of entry.effects ) {
+      const effect = globalThis.fromUuidSync?.(e.uuid);
+      if ( effect && canModify(game.user, effect.parent ?? effect) ) await effect.delete();
+    }
+    await note.setFlag("n5e", "undone", true);
+    done++;
+  }
+  if ( !done ) ui.notifications.info("Nothing to undo.");
+  return done;
+}
+
+/**
+ * Card buttons: per-target Apply / Half (A6, through the damage card's own Apply), Roll save (B2,
+ * through the card's own save button for that one creature), Apply condition/effect (B3), Undo.
+ */
 export async function onActionCardClick(message, btn, event) {
   const card = message.flags?.n5e?.card;
   if ( !card ) return null;
+  const game = globalThis.game;
+  const d = btn.dataset;
   const results = mergedResults(card, linkedEntries(message));
-  const { onApplyClick } = await import("./apply-damage.mjs");
-  if ( btn.dataset.n5eCardApply ) {
+  const target = d.target ? await fromUuid(d.target) : null;
+  if ( d.n5eCardApply ) {
     const damage = results.damage ? messages()?.get(results.damage.messageId) : null;
     if ( !damage ) return ui.notifications.info("Roll the damage first.");
     btn.disabled = true;
-    return onApplyClick(damage, { dataset: { n5eApply: btn.dataset.n5eCardApply, target: btn.dataset.target } }, event);
+    const { onApplyClick } = await import("./apply-damage.mjs");
+    return onApplyClick(damage, { dataset: { n5eApply: d.n5eCardApply, target: d.target } }, event);
   }
-  if ( btn.dataset.n5eCardUndo ) {
-    const applied = results.applied?.[btn.dataset.n5eCardUndo];
-    const summary = applied ? messages()?.get(applied.messageId) : null;
-    if ( !summary || summary.flags?.n5e?.undone ) return ui.notifications.info("Nothing to undo.");
-    if ( !summary.isAuthor && !globalThis.game.user.isGM ) return ui.notifications.info("Only the user who applied this damage, or the GM, can undo it.");
+  if ( d.n5eCardUndo ) {
     btn.disabled = true;
-    return onApplyClick(summary, { dataset: { n5eUndo: "1" } }, event);
+    return undoTarget(message, results, d.n5eCardUndo, event);
+  }
+  if ( !target ) return ui.notifications.warn("That creature is no longer available.");
+  const acts = cardActivities(message);
+  const { onActivityClick } = await import("./activity-buttons.mjs");
+  if ( d.n5eCardSave != null ) {
+    if ( !canModify(game.user, target) ) return ui.notifications.warn("Only that creature's owner (the GM for NPCs) rolls its save.");
+    const save = acts.saves[Number(d.n5eCardSave)];
+    if ( !save ) return null;
+    // Heightened: only the first save made against this cast is at disadvantage.
+    const dataset = { ...save };
+    if ( Object.keys(results.saves ?? {}).length ) delete dataset.dis;
+    btn.disabled = true;
+    return onActivityClick(message, { dataset, disabled: false }, event, { selectedActors: [target] });
+  }
+  if ( d.n5eCardInflict ) {
+    if ( !canModify(game.user, target) ) return ui.notifications.warn("Only that creature's owner (the GM for NPCs) applies this.");
+    const [i, j] = d.n5eCardInflict.split(":").map(Number);
+    const save = acts.saves[i];
+    const x = parse(save?.inflicts)[j];
+    if ( !x ) return null;
+    btn.disabled = true;
+    const effect = await inflict(target, x, save);
+    return postEffectSummary(message, target, effect ? [effect] : []);
+  }
+  if ( d.n5eCardEffect != null ) {
+    const act = acts.effects[Number(d.n5eCardEffect)];
+    if ( !act ) return null;
+    btn.disabled = true;
+    const before = new Set(target.effects.map(e => e.id));
+    await onActivityClick(message, { dataset: act, disabled: false }, event, { targetActors: [target] });
+    // Recorded when this user could create the effect; otherwise the owner gets the offer card.
+    const created = canModify(game.user, target) ? target.effects.filter(e => !before.has(e.id)) : [];
+    return postEffectSummary(message, target, created);
   }
   return null;
 }
