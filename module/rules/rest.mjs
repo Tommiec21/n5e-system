@@ -16,6 +16,7 @@
  * restCheck decides whether the rest is allowed and gives its benefits; restPlan lists every change.
  * workflow/rest.mjs shows the dialog, rolls the dice and applies the plan.
  */
+import { n5eConfig } from "./host.mjs";
 import { rule } from "./settings.mjs";
 import { recoveryAllowed } from "./features.mjs";
 import { resolveFormula } from "./unarmed.mjs";
@@ -134,7 +135,7 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
       "system.hitDice.spent": 0, "system.chakraDice.spent": 0 });
     lines.push("All HP, CP, Hit Dice and Chakra Dice restored");
     const persisting = list(actor.effects).filter(e => e.type === "condition" && !e.disabled
-      && (globalThis.CONFIG?.N5E?.conditions?.[e.system?.key]?.persists ?? e.system?.persists));
+      && (n5eConfig().conditions?.[e.system?.key]?.persists ?? e.system?.persists));
     for ( const e of persisting ) conditions.push({ key: e.system.key, ranks: "all" });
     if ( persisting.length ) lines.push(`Removed: ${persisting.map(e => e.name).join(", ")}`);
   }

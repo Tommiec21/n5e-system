@@ -1,3 +1,5 @@
+// The rules core adapter (SHARED1): rule provider and host hooks, before anything uses the core.
+import "./module/adapters/system.mjs";
 import { registerEffectServices } from "./module/automation/effect-services.mjs";
 /**
  * N5e 4.0 game system for Foundry VTT v13 — entry point.

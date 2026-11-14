@@ -10,13 +10,14 @@
  * Removal: an Action check against the listed DC; Bleed removes 1 more rank per 2 the check beats the DC
  *   by; a failed check against Sealed raises its DC by 4.
  */
+import { n5eConfig } from "./host.mjs";
 import { conditions as coreConditions, defaultConditionDuration } from "../config/conditions.mjs";
 import { abilities, skills } from "../config/core.mjs";
 import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const active = actor => list(actor.effects).filter(e => e.type === "condition" && !e.disabled);
-const defOf = (key, registry) => registry[key] ?? globalThis.CONFIG?.N5E?.clanConditions?.[key];
+const defOf = (key, registry) => registry[key] ?? n5eConfig().clanConditions?.[key];
 
 /** Duration data for a newly applied condition (none for [Persists] or turn-end conditions). */
 export function defaultDuration(key, registry = coreConditions) {

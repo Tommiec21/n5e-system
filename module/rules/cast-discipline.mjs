@@ -12,6 +12,8 @@
  *                Chakra Suppression and Counter Tags catch it by any listed discipline.
  */
 
+import { n5eConfig } from "./host.mjs";
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const norm = d => (d === "buki" ? "tai" : d);
 
@@ -82,7 +84,7 @@ export function disciplineAllowed(item, allowed = []) {
 }
 
 /** Identify, Read the Enemy and Clash: the skill for the cast discipline (skills with a matching clash key). */
-export function defenseSkillFor(discipline, skills = globalThis.CONFIG?.N5E?.skills ?? {}) {
+export function defenseSkillFor(discipline, skills = n5eConfig().skills ?? {}) {
   const d = norm(discipline);
   return Object.entries(skills).find(([, s]) => s.clash === d)?.[0] ?? null;
 }

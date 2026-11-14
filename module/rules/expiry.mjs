@@ -9,11 +9,12 @@
  * out of combat they expire here, and "until the end of its next turn" conditions applied by game
  * effects (flags.n5e.applied = "auto") end at once; deliberate ones (sheet, GM tools, dragged) stay.
  */
+import { n5eConfig } from "./host.mjs";
 import { conditions as coreConditions } from "../config/conditions.mjs";
 import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
-const defOf = (key, registry) => registry[key] ?? globalThis.CONFIG?.N5E?.clanConditions?.[key];
+const defOf = (key, registry) => registry[key] ?? n5eConfig().clanConditions?.[key];
 
 /** Foundry's own duration check: a timed duration with nothing remaining. */
 export const durationExpired = e => !!e.duration?.type && e.duration.type !== "none" && Number.isFinite(e.duration.remaining) && e.duration.remaining <= 0;

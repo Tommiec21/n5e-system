@@ -17,6 +17,7 @@
  * Improving the parser: add the phrasing here and a case to tests/casting.test.mjs, which runs the
  * parser over every imported jutsu.
  */
+import { n5eConfig } from "./host.mjs";
 import { unarmedSpec } from "./unarmed.mjs";
 import { hasResave } from "./trackers.mjs";
 import { abilities } from "../config/core.mjs";
@@ -29,8 +30,8 @@ import { conditions as CONDITIONS, states as STATES } from "../config/conditions
  */
 function effectNames() {
   const out = {};
-  for ( const [k, v] of Object.entries({ ...CONDITIONS, ...(globalThis.CONFIG?.N5E?.conditions ?? {}), ...(globalThis.CONFIG?.N5E?.clanConditions ?? {}) }) ) out[v.label.replace(/^Compelled:\s*/, "").toLowerCase()] = { key: k, kind: "condition" };
-  for ( const [k, v] of Object.entries({ ...STATES, ...(globalThis.CONFIG?.N5E?.states ?? {}) }) ) if ( !v.derived && !v.relational ) out[v.label.toLowerCase()] = { key: k, kind: "state" };
+  for ( const [k, v] of Object.entries({ ...CONDITIONS, ...(n5eConfig().conditions ?? {}), ...(n5eConfig().clanConditions ?? {}) }) ) out[v.label.replace(/^Compelled:\s*/, "").toLowerCase()] = { key: k, kind: "condition" };
+  for ( const [k, v] of Object.entries({ ...STATES, ...(n5eConfig().states ?? {}) }) ) if ( !v.derived && !v.relational ) out[v.label.toLowerCase()] = { key: k, kind: "state" };
   out.bleeding = out.bleed;
   return out;
 }
@@ -61,7 +62,7 @@ export function parseInflicted(text) {
 const strip = html => String(html ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 const ABILITY_BY_NAME = Object.fromEntries(Object.entries(abilities).map(([k, v]) => [v.label.toLowerCase(), k]));
 const DISC = { ninjutsu: "nin", taijutsu: "tai", genjutsu: "gen", bukijutsu: "tai" };
-const damageTypePattern = () => Object.keys({ ...damageTypes, ...(globalThis.CONFIG?.N5E?.damageTypes ?? {}) }).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+const damageTypePattern = () => Object.keys({ ...damageTypes, ...(n5eConfig().damageTypes ?? {}) }).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
 
 /**
  * @param {string} html

@@ -1,2 +1,2 @@
-/** Preloaded by `npm test`: registers the System's rule provider (SHARED1), as Foundry's init does. */
-import "../module/rules-settings.mjs";
+/** Preloaded by `npm test`: registers the System adapter for the rules core (SHARED1), as n5e.mjs does. */
+import "../module/adapters/system.mjs";

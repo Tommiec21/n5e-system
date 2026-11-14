@@ -74,3 +74,14 @@ Each entry: what was done, the exact files, how it was checked, and the next ste
   - New `tests/setup.mjs` loads the System adapter. `npm test` preloads it (`node --import ./tests/setup.mjs`), so tests that stub `game.settings.get` still work. CI runs `npm run verify`, which uses `npm test`.
   - Checked: lint and the full suite pass (362).
   - **Next:** F2. Route the guarded globals in `activity-parse`, `cast-discipline`, `condition-lifecycle`, `expiry`, `rest` and the `CONFIG` read in `change-keys` through a new `module/rules/host.mjs` (`setHost` / `host()`), registered by the System adapter.
+- 2026-11-14 Claude: **F2 + F7 done.**
+  - New core file `module/rules/host.mjs`: `setHost({config})` and `n5eConfig()`, which returns the host's live registry or the static `config/index.mjs` N5E.
+  - Replaced every `globalThis.CONFIG.N5E` read in the core:
+    - `activity-parse` (conditions, clan conditions, states, damage types);
+    - `cast-discipline` (`defenseSkillFor` default skills);
+    - `condition-lifecycle` and `expiry` (clan conditions);
+    - `rest` (condition `persists`).
+  - `change-keys` only mentions CONFIG in a comment, so no change.
+  - New `module/adapters/system.mjs` loads `rules-settings.mjs` (the rule provider) and sets the host config to `CONFIG.N5E`. It is the first import in `n5e.mjs`, and `tests/setup.mjs` now loads it.
+  - Checked: `grep globalThis.(game|CONFIG|canvas|ui|foundry|Hooks|fromUuid) module/rules` finds nothing; lint and suite pass (362).
+  - **Next:** F3 + F4. Write `core.json` (core = `module/rules/**` + `module/config/**`, plus public entry points) and `tools/check-core.mjs` (no host globals, no imports leaving the core), and add it to `npm run check`.
