@@ -328,3 +328,6 @@ Published v0.18.0-alpha.1. Use `rules/cast-discipline.mjs` for anything that ask
 
 ## RES1 — Claude, 2026-11-14
 Published v0.19.0-alpha.1. Damage cards draw per-target rows from the rolls linked to their origin card: pass `source: message.id` to `rollWithSpec` for any new attack or save button on a card, and `onSuccess` for saves. Outcome rules live in `rules/resolution.mjs`; drawing and refresh are in `workflow/resolution.mjs`, loaded at startup by `dice.registerResolution()`. CARD1 (single action card) can build on `linkedOutcomes`. Next per plan: POS1 (positioning).
+
+## POS1 — Claude, 2026-11-14
+Published v0.20.0-alpha.1. Positioning rules are in `rules/positioning.mjs`; the hooks are in `workflow/positioning.mjs` (moveToken Opportunity Attack reminders, Disengage/Dodge effects, Engaged, Surprised). Cover is a token status, read in `creature.mjs` (AC, Dex save) and in `rollWithSpec` (Total cover refusal). Reactions: `chooseReaction` returns nothing while Surprised. Next per plan: CLASH1 (needs Q3, Clash ties, from King), ENV1, SKILL1, GEN1.

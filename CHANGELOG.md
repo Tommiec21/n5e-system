@@ -1,3 +1,18 @@
+## 0.20.0-alpha.1 — Positioning (POS1)
+
+- **Cover.**
+  - New token statuses: Partial Cover (+2), Half Cover (+4) and Total Cover. The GM sets them, and only the highest applies.
+  - Partial and Half add to AC and Dex saves (shown in the breakdowns).
+  - Attacks against a creature in Total cover are refused.
+- **Opportunity Attacks.**
+  - In combat, when a creature leaves a hostile's reach, that hostile's owner (and the GM) gets a private card with an **Opportunity Attack** button. The button uses the hostile's longest-reach melee weapon, or an unarmed strike.
+  - The attack uses the Reaction. Nothing is rolled automatically.
+  - No reminder for: teleports, forced movement, a Disengaged mover, a creature that already used its Reaction, or one that is incapacitated or Blinded.
+- **Disengage and Dodge** now take effect when used from the Actions list: Disengage stops Opportunity Attacks for the rest of the turn; Dodge turns on Dodging.
+- **Engaged.** A melee attack against a single creature engages both, until a full round passes without one.
+- **Surprised.** On its round-1 turn a Surprised creature's Action and Bonus Action are spent (the turn card says so). It can't take Reactions until that turn ends, and Surprised ends at the start of round 2.
+- **Dodge** is lost at speed 0 (Grappled, Restrained) as well as while incapacitated.
+
 ## 0.19.0-alpha.1 — Per-target resolution (RES1)
 
 - **Damage cards resolve each target.** A damage card rolled from an attack or a jutsu card gets a "Per target" box with one row per creature:

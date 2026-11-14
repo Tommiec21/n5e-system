@@ -92,7 +92,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `card.mjs` | 122 | Item chat cards (dnd5e-style card with PF2e trait chips). | `CARD_TEMPLATE`, `itemCardData`, `postItemCard`, `actionCardData`, `postActionCard` |
+| `card.mjs` | 124 | Item chat cards (dnd5e-style card with PF2e trait chips). | `CARD_TEMPLATE`, `itemCardData`, `postItemCard`, `actionCardData`, `postActionCard` |
 
 ## module/config
 
@@ -101,8 +101,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
 | `character.mjs` | 157 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
 | `combat.mjs` | 238 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
-| `condition-text.mjs` | 181 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
-| `conditions.mjs` | 197 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
+| `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
+| `conditions.mjs` | 201 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 160 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
 | `index.mjs` | 41 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
@@ -120,7 +120,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 603 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 609 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `npc.mjs` | 78 | NPCs, adversaries, summons, clones, and companions. | `NPCData` |
 
 ## module/data/effect
@@ -151,7 +151,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 74 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 117 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 388 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 402 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -159,7 +159,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 89 | N5e ActiveEffect document. | `N5eActiveEffect` |
 | `actor.mjs` | 160 | N5e Actor document. | `N5eActor` |
-| `combat.mjs` | 40 | N5e Combat (TURN1). | `N5eCombat` |
+| `combat.mjs` | 42 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
 
@@ -179,7 +179,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `ac.mjs` | 71 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC` |
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 153 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
-| `advantage.mjs` | 92 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
+| `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
 | `area.mjs` | 183 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `authored-reactions.mjs` | 32 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
@@ -209,6 +209,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
+| `positioning.mjs` | 81 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 95 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
 | `reactions.mjs` | 18 | Reaction decisions only: accepting a window never applies an effect or spends a resource. | `reactionDeadline`, `reactionPhase`, `decideReaction` |
@@ -253,7 +254,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
 | `apply-damage.mjs` | 313 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
-| `attack.mjs` | 272 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
+| `attack.mjs` | 277 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 157 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
@@ -266,7 +267,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
 | `expiry.mjs` | 57 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
-| `reaction-adapters.mjs` | 74 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
+| `positioning.mjs` | 136 | Positioning workflows (POS1). | `meleeReach`, `onMoveForOpportunity`, `onOpportunityClick`, `onCoreAction`, `recordEngagement`, `engagedWith`, `surprisedTurnStart`, `surprisedTurnEnd`, `endSurprise`, `registerPositioningHooks` |
+| `reaction-adapters.mjs` | 76 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
 | `reaction-dispatch.mjs` | 83 | Trusted system/module adapters. | `createReactionDispatcher` |
 | `reactions.mjs` | 181 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
@@ -276,7 +278,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `roll-request.mjs` | 62 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `trackers.mjs` | 420 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
-| `turn.mjs` | 155 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
+| `turn.mjs` | 159 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `unarmed.mjs` | 14 | The Unarmed Strike item (DATA2). | `ensureUnarmedStrike` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |
 | `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |

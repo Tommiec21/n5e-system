@@ -357,3 +357,15 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.roll.name` | Roll message | The roller's name (per-target rows) |
 | `data-on-success` | Save button | From the save activity's `onSuccess` |
 | `data-target` on `data-n5e-apply` | Damage card per-target row | Apply to that creature (sets `targetUuid`) |
+
+## Added in 0.20.0-alpha.1 (POS1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| Statuses `coverPartial`, `coverHalf`, `coverTotal` | Token / actor | Cover set by the GM; the highest applies |
+| `system.cover` (derived) | Character, NPC | The cover that applies, or null |
+| `flags.n5e.economy.disengaged` | Actor | Disengage used this turn (reset at turn start) |
+| `flags.n5e.engaged.<otherActorId>` | Actor | Round of the last melee attack between the two |
+| `flags.n5e.surpriseDone` | Actor | A Surprised creature's first turn has ended (Reactions allowed); cleared at round 2 |
+| `flags.n5e.opportunity` | Chat message | `{attackerUuid, targetUuid}` on an Opportunity Attack reminder |
+| `mode: "opportunity"` | `attackWithWeapon` | Spends the Reaction; no range check |

@@ -1,6 +1,6 @@
 # POS1 function spec: positioning
 
-Status: **in progress (continuing the plan after RES1, 2026-11-14).** Release target `0.20.0-alpha.1`.
+Status: **published `0.20.0-alpha.1` (continuing the plan after RES1, 2026-11-14).**
 
 Plan row 12: opportunity attacks and reach, Engaged, Surprise, Dodge, cover (+2/+4).
 
@@ -59,3 +59,16 @@ After each function, add a line to the progress log and push.
   - Suite green. Next: F8 (Dodge at speed 0), then tests.
 - 2026-11-14 Claude: **F8 done.** `rules/advantage.mjs`: Dodging gives nothing while Grappled or Restrained, as well as while incapacitated (`dodgeLost`). Applies to both attack disadvantage and the Dex-save advantage. Suite green. Next: tests (`tests/positioning.test.mjs`), then release 0.20.0-alpha.1.
 - 2026-11-14 Claude: **Correction:** the F8 code change above failed to apply in commit a96cc9f (a wrong assertion count), though the log said done. It was applied in the next commit; `dodgeLost` is now in `rules/advantage.mjs`.
+- 2026-11-14 Claude: **Tests done.** New `tests/positioning.test.mjs` (4 tests) passed on the first attempt: 346 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+Published `v0.20.0-alpha.1`. F1–F8 were built; the progress log lists each one, including the F8 correction.
+- **Differs from the spec.**
+  - Disengage and Dodge became core-action effects (Dodge was a card only before).
+  - Movement isn't tracked as economy, so Surprised's "no move" is a turn-card warning.
+  - Total cover is checked in `rollWithSpec` for every attack roll, not only weapon attacks.
+- **Limits.**
+  - Opportunity Attack reach is measured centre to centre, and only between combatants.
+  - "Can see you" is approximated as not Blinded.
+  - Engaged is recorded only on creatures the attacking user owns (the GM owns both sides for NPCs).
