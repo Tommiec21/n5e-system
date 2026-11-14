@@ -17,6 +17,8 @@ export default class N5eCombat extends foundry.documents.Combat {
   async _onStartRound(context) {
     await super._onStartRound(context);
     await recoverForCombat(this, ["round"]);
+    // Surprised ends at the end of round 1 (POS1).
+    if ( game.users.activeGM?.isSelf ) await import("../workflow/positioning.mjs").then(m => m.endSurprise(this));
   }
 
   /** @override */

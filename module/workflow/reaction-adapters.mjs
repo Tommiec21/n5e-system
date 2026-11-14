@@ -68,6 +68,8 @@ export const listReactions = () => dispatcher.list();
 export async function chooseReaction(actor, event, context) {
   if ( !["beforeDamage", "successfulHit"].includes(event) ) throw new Error("This reaction timing is manual. Automation supports successful hits and rolled damage only.");
   if ( !rule("reactionWindows") ) return null;
+  // Surprised: no Reactions until the end of its first turn (POS1).
+  if ( actor?.statuses?.has("surprised") && !actor.flags?.n5e?.surpriseDone ) return null;
   return dispatcher.choose(actor, event, context);
 }
 export const resolveReactionChain = createReactionChain({ choose: chooseReaction, authority: () => !!game.users.activeGM?.isSelf });

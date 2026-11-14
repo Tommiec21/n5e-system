@@ -35,7 +35,7 @@ export const coverBonus = statuses => coverFrom(statuses)?.bonus ?? 0;
 /** True when the creature can't be targeted directly (Total cover). */
 export const untargetable = statuses => !!coverFrom(statuses)?.untargetable;
 
-const NO_REACTION = ["incapacitated", "stunned", "unconscious", "petrified", "dead", "dying", "surprised"];
+const NO_REACTION = ["incapacitated", "stunned", "unconscious", "petrified", "dead", "dying"];
 const BLIND = ["blinded"];
 
 /** Movement that never provokes (teleport and forced movement). */
@@ -69,6 +69,9 @@ export function surprisedEconomy(statuses, round) {
   if ( round !== 1 || !has(statuses, "surprised") ) return null;
   return { action: true, bonus: true, move: true, reaction: true };
 }
+
+/** Surprised blocks Reactions until the end of the creature's first turn (flags.n5e.surpriseDone). */
+export const surpriseBlocksReaction = (statuses, surpriseDone = false) => has(statuses, "surprised") && !surpriseDone;
 
 /** Dodge works only while the creature isn't incapacitated and has speed (not Grappled or Restrained). */
 export function dodgeActive(statuses) {

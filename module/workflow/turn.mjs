@@ -53,6 +53,8 @@ export async function turnStartPipeline(combat, combatant) {
   if ( actor.statuses?.has("dodging") ) await actor.toggleStatusEffect("dodging", { active: false });
   const plan = turnStartPlan(actor);
   await actor.update(plan.update);
+  const { surprisedTurnStart } = await import("./positioning.mjs");
+  const surprisedLine = await surprisedTurnStart(actor, combat.round);
   const recovered = await recoverCombatUses(actor, ["turn"]);
   const lines = [];
   for ( const r of plan.recharges ) {
@@ -61,6 +63,7 @@ export async function turnStartPipeline(combat, combatant) {
     if ( ok ) await actor.items.get(r.id)?.update({ "system.uses.spent": 0 });
     lines.push(`${esc(r.name)}: recharge d${r.die} rolled ${roll.total}${ok ? " (recharged)" : ""}`);
   }
+  if ( surprisedLine ) lines.push(`<span class="warn">${esc(surprisedLine)}</span>`);
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   if ( plan.focusGained ) lines.push("Flow: +1 Focus");
   if ( recovered.length ) lines.push(`Recovered: ${esc(recovered.join(", "))}`);
@@ -102,6 +105,7 @@ export async function turnEndPipeline(combat, combatant) {
   await trackersTurnEnd(combat, actor, now);
   await areasTurnEnd(combat, actor);
   effectEvent(actor, "turnEnd", combat, combatant.id);
+  await import("./positioning.mjs").then(m => m.surprisedTurnEnd(actor));
   const ended = await finishUpkeep(actor);
   if ( ended?.length ) {
     const names = ended.map(id => actor.items.get(id)?.name ?? id).join(", ");

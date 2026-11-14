@@ -50,3 +50,10 @@ After each function, add a line to the progress log and push.
     - `recordEngagement` / `engagedWith`: a melee attack against a single target writes `flags.n5e.engaged.<otherId> = round` on both creatures the user owns.
   - `registerPositioningHooks()` is called from `n5e.mjs`. The `[data-n5e-oa]` button is bound in `onRenderChatMessage`.
   - Suite green. Next: F7 (Surprised) and F8 (Dodge at speed 0).
+- 2026-11-14 Claude: **F7 done.** Surprised:
+  - `surprisedTurnStart` (from `turnStartPipeline`) spends the Action and Bonus Action in round 1 and adds a turn-card warning.
+  - `surprisedTurnEnd` (from `turnEndPipeline`) sets `flags.n5e.surpriseDone`, so Reactions are allowed again.
+  - `endSurprise` (`N5eCombat._onStartRound`, round 2+) removes Surprised and the flag from every combatant.
+  - `chooseReaction` returns nothing while Surprised and not done. Opportunity Attack watchers count that as a used Reaction (`surpriseBlocksReaction`).
+  - Movement isn't tracked as economy, so "no move" is the turn-card warning only.
+  - Suite green. Next: F8 (Dodge at speed 0), then tests.

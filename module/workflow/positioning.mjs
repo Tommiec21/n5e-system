@@ -7,7 +7,7 @@
  *   Disengage / Dodge             Using the Action marks it and sets the flag or state.
  *   Engaged                       A melee attack against one target records the round on both.
  */
-import { opportunityReminders, isEngaged } from "../rules/positioning.mjs";
+import { opportunityReminders, isEngaged, surpriseBlocksReaction, surprisedEconomy } from "../rules/positioning.mjs";
 import { reachOf } from "../rules/weapon-properties.mjs";
 import { equippedWeapons } from "../rules/unarmed.mjs";
 import { esc } from "../view-models/common.mjs";
@@ -46,7 +46,8 @@ export async function onMoveForOpportunity(tokenDoc, movement) {
     .map(t => {
       const { reach, weapon } = meleeReach(t.actor);
       return { token: t, actor: t.actor, weapon, name: t.name, reach, from: measure(t.center, from), to: measure(t.center, to),
-        statuses: t.actor.statuses, reactionUsed: !!t.actor.flags?.n5e?.economy?.reaction };
+        statuses: t.actor.statuses,
+        reactionUsed: !!t.actor.flags?.n5e?.economy?.reaction || surpriseBlocksReaction(t.actor.statuses, t.actor.flags?.n5e?.surpriseDone) };
     });
   const provoked = opportunityReminders(watchers, {
     disengaged: !!mover.flags?.n5e?.economy?.disengaged,
@@ -99,6 +100,33 @@ export async function recordEngagement(attacker, target) {
 export function engagedWith(actor, other) {
   const round = game.combat?.started ? game.combat.round : null;
   return isEngaged(actor?.flags?.n5e?.engaged?.[other?.id], round);
+}
+
+/**
+ * Surprised (KB 05), turn start: in round 1 its move, Action and Bonus Action are spent.
+ * @returns {string|null} a turn-card line
+ */
+export async function surprisedTurnStart(actor, round) {
+  const spent = surprisedEconomy(actor.statuses, round);
+  if ( !spent ) return null;
+  await actor.update({ "flags.n5e.economy.action": true, "flags.n5e.economy.bonus": true });
+  return "Surprised: no movement, Action or Bonus Action this turn; no Reactions until it ends";
+}
+
+/** Surprised, turn end: Reactions are allowed again (the state lasts until the end of round 1). */
+export async function surprisedTurnEnd(actor) {
+  if ( actor.statuses?.has("surprised") && !actor.flags?.n5e?.surpriseDone ) await actor.update({ "flags.n5e.surpriseDone": true });
+}
+
+/** Start of round 2 and later: Surprised ends for every combatant. */
+export async function endSurprise(combat) {
+  if ( combat.round < 2 ) return;
+  for ( const c of combat.combatants ) {
+    const actor = c.actor;
+    if ( !actor ) continue;
+    if ( actor.statuses?.has("surprised") ) await actor.toggleStatusEffect("surprised", { active: false });
+    if ( actor.flags?.n5e?.surpriseDone ) await actor.update({ "flags.n5e.-=surpriseDone": null });
+  }
 }
 
 export function registerPositioningHooks() {
