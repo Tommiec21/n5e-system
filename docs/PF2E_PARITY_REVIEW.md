@@ -1,6 +1,6 @@
 # PF2e functionality review and comparison
 
-Status: **review for King (2026-11-14). No code changed.**
+Status: **review for King (2026-11-14); King answered Q-PF1–Q-PF4 the same day. No code changed.**
 
 King (2026-11-14): do a full review of PF2e's functionality from top to bottom (its tiered success system, spell scrolls, magic items, its active effect system), compare it to what we have, and verify we emulate all of its functionality.
 
@@ -147,13 +147,14 @@ Most gaps are the same work as the standardization plan, which was already aimed
 | Stacking by modifier type | King's stacking ruling (Tier 3 "stacking policy") |
 | Reroll damage; damage dialog with per-part toggles | Tier 3 |
 
-## Questions for King
+## King's answers (2026-11-14)
 
-- **Q-PF1:** Are the additions to STD1 and STD5 listed above approved as part of those batches' scope (they will still come back in each batch's spec)?
-- **Q-PF2:** Should AURA1 (auras) and SCROLL1 (jutsu scrolls) be added to the plan as their own batches?
-- **Q-PF3:** Does N5e want loot piles, merchants and a party stash (LOOT1), or only item transfer between creatures (FIN1)?
-- **Q-PF4:** Items marked N/A (wands, precious materials, flanking, investment limits, hazards, vehicles, crafting): confirm none of these have an N5e rule that should be built.
+- **Q-PF1:** yes. The listed additions are in scope for STD1 and STD5.
+- **Q-PF2:** yes. AURA1 (auras) and SCROLL1 (jutsu scrolls) are their own batches.
+- **Q-PF3:** yes. N5e wants loot piles, merchants and a party stash (LOOT1).
+- **Q-PF4:** wands, flanking, hazards, vehicles and crafting should all be built, emulating PF2e for now; King will finalize N5e's versions later. (Precious materials and investment limits were not asked for.)
 
 ## Progress log
 
 - 2026-11-14 Claude: review written from PF2e 8.7.0 source and the N5e code at 0.28.0-alpha.1. Nothing built.
+- 2026-11-14 Claude: King's answers recorded. New batches: AURA1, SCROLL1, LOOT1, and PF2E1 (wands, flanking, hazards, vehicles, crafting, emulating PF2e).
