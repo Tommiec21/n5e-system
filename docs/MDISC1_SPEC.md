@@ -46,3 +46,12 @@ Work through these in order. After each one, add a line to the progress log at t
   - `computeCost({discipline})`: the Sealed base-cost penalty;
   - `availableCastOptions(..., {discipline})`: `appliesTo.discipline` matches the cast discipline or the jutsu's group.
   Concentration casts write the lock `flags.n5e.castDiscipline.<id>`. Existing suite still green (333). Next: F4 (dialog) + F5 (card/buttons).
+- 2026-11-13 Claude: **F4 + F5 done.**
+  - The cast dialog has a "Cast as" select for multi-discipline jutsu. It defaults to `castDisciplineOf` and is disabled while concentrating on the jutsu. `readSelection` passes `discipline`.
+  - Moldings show when the jutsu can be cast as Ninjutsu.
+  - `postCastCard` uses `castAs = plan.discipline || castDisciplineOf(...)` for:
+    - the subtitle ("(cast as)");
+    - `flags.n5e.cast.discipline`;
+    - `activityButtons({discipline})`, which takes the attack/DC from `liveAs` and the Genjutsu damage flag only when cast as Genjutsu;
+    - the feature extra-damage Genjutsu flag.
+  - A released Ready jutsu reads the lock. Suite still green. Next: F6 (lock readers: Flow, Inner Gates).

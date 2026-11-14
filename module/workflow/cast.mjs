@@ -18,6 +18,7 @@ import { areaButton, placeArea } from "./areas.mjs";
 import { areaOf } from "../rules/area.mjs";
 import { withActorLock } from "./commands.mjs";
 import { rule } from "../rules-settings.mjs";
+import { castableDisciplines, castDisciplineOf } from "../rules/cast-discipline.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 // {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
@@ -30,7 +31,7 @@ const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: 
 function castOptions(actor, item) {
   return actor.items.filter(i => {
     const tags = i.system.tags instanceof Set ? i.system.tags : new Set(i.system.tags ?? []);
-    if ( tags.has("nin-molding") ) return item.system.discipline === "nin";
+    if ( tags.has("nin-molding") ) return castableDisciplines(item).includes("nin");
     return tags.has("assault-maneuver") || tags.has("scout-maneuver");
   });
 }
@@ -43,7 +44,13 @@ function dialogContent(actor, item, plan) {
   const conc = (actor.system.combat?.concentrating ?? []).map(id => actor.items.get(id)).filter(Boolean);
   const choice = (label, name, values) => `<label>${label} <select name="${name}">${values.map((v, i) =>
     `<option value="${i}">${typeof v === "number" ? (v < 1 ? `×${v}` : `×${v}`) : esc(v)}</option>`).join("")}</select></label>`;
+  // Cast as (MDISC1): shown for multi-discipline jutsu; locked while concentrating on it.
+  const discs = castableDisciplines(item);
+  const current = castDisciplineOf(actor, item);
+  const locked = (actor.system.combat?.concentrating ?? []).includes(item.id) && !!actor.flags?.n5e?.castDiscipline?.[item.id];
+  const label = d => CONFIG.N5E.disciplines?.[d]?.label ?? d;
   return `<div class="n5e-cast">
+    ${discs.length > 1 ? `<label>Cast as <select name="discipline" ${locked ? "disabled" : ""}>${discs.map(d => `<option value="${d}" ${d === current ? "selected" : ""}>${esc(label(d))}</option>`).join("")}</select>${locked ? ' <span class="sub">(locked while concentrating)</span>' : ""}</label>` : ""}
     ${ranks.length > 1 ? `<label>Cast at <select name="rank">${ranks.map(r => `<option value="${r}">${r}-Rank${r === j.rank ? " (base)" : ""}</option>`).join("")}</select></label>` : ""}
     ${plan.choices?.multipliers ? choice("Cost multiplier (pick one)", "multiplierChoice", plan.choices.multipliers) : ""}
     ${plan.choices?.divisors ? choice("Cost divisor (pick one)", "divisorChoice", plan.choices.divisors.map(d => `/${d}`)) : ""}
@@ -66,6 +73,7 @@ function readSelection(form) {
   const val = n => f[n]?.value;
   return {
     rank: val("rank") || undefined,
+    discipline: val("discipline") || undefined,
     multiplierChoice: val("multiplierChoice") != null ? Number(val("multiplierChoice")) : undefined,
     divisorChoice: val("divisorChoice") != null ? Number(val("divisorChoice")) : undefined,
     options: [...form.querySelectorAll('input[name="opt"]:checked')].map(i => i.value),
@@ -161,7 +169,8 @@ export async function postCastCard(actor, item, plan) {
     piercing: usedIds.has("piercing-ninjutsu") };
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
   const extras = [];
-  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: j.discipline === "gen", piercing: moldingFlags.piercing })}</div>`);
+  const castAs = plan.discipline || castDisciplineOf(actor, item);
+  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen", piercing: moldingFlags.piercing })}</div>`);
   // Healing a feature adds (Channeled Healing, Talented Support's temporary HP).
   if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
@@ -181,17 +190,17 @@ export async function postCastCard(actor, item, plan) {
   const desc = await TextEditor.enrichHTML(j.description ?? "", { relativeTo: item, rollData: actor.getRollData() });
   const content = `<div class="n5e-cast-card" data-actor-uuid="${actor.uuid}" data-item-uuid="${item.uuid}">
     <header><img src="${item.img}" alt="" width="36" height="36"><div><b>${esc(item.name)}</b>
-      <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[j.group ?? j.discipline]?.label ?? ""}`)}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
+      <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[castableDisciplines(item).length > 1 ? castAs : (j.group ?? j.discipline)]?.label ?? ""}`)}${castableDisciplines(item).length > 1 ? " (cast as)" : ""}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
     ${areaButton(item, { rank: plan.rank })}
-    ${activityButtons(actor, item, activities, { rank: plan.rank, flags: moldingFlags })}
+    ${activityButtons(actor, item, activities, { rank: plan.rank, flags: moldingFlags, discipline: castAs })}
     ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,
-    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost } } } });
+    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs } } } });
 }
 
 export { RANKS };
