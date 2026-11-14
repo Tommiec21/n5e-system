@@ -8,7 +8,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -46,6 +46,9 @@ export function validateIntent(type, data = {}) {
     case "reactionDecision":
       if ( !isId(data.messageId) || typeof data.decision !== "string" || data.decision.length > 100 ) throw new Error("Invalid reaction decision.");
       return { messageId: data.messageId, decision: data.decision };
+    case "cardResult":
+      if ( !isId(data.cardMessageId) || !isId(data.linkedMessageId) || (data.undoneTarget != null && !isUuid(data.undoneTarget)) ) throw new Error("Invalid card result.");
+      return { cardMessageId: data.cardMessageId, linkedMessageId: data.linkedMessageId, undoneTarget: data.undoneTarget ?? null };
     case "transferItem": {
       const quantity = Number(data.quantity ?? 1);
       if ( !isId(data.itemId) || !isUuid(data.targetUuid) || !Number.isSafeInteger(quantity) || quantity < 1 ) throw new Error("Invalid item transfer.");

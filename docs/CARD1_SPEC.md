@@ -132,3 +132,12 @@ Still to confirm with the approval: the `actionCard` setting's default. Proposed
     - `postItemCard` (kind feature, when the item has activities);
     - `attackWithWeapon` and `strikeAttack` (kind attack: the attack roll message is the card, through a new `card` option on `rollWithSpec`).
   - With the setting off, the flags and content are unchanged. Next: A4b `cardResult` intent.
+- 2026-11-14 Claude: **A4b done.**
+  - New owner intent `cardResult` (`{cardMessageId, linkedMessageId, undoneTarget}`), validated in `owner-intents.mjs`.
+  - **`workflow/action-card.mjs` additions:**
+    - `cardOfLinked`: roll source, damage origin, or application → damage → card.
+    - `recordLinked`: the author or a GM writes directly; anyone else submits the intent. With no GM, the result stays a separate linked card.
+    - `receiveCardResult`, the GM handler. It checks the linked message itself: its author is the requesting user, it links to this card, and per-target entries are only for creatures that user may change.
+    - `syncCards`: the GM records results that arrived while no GM was connected.
+  - **Undo** is read from the application summary (`flags.n5e.undone`, set by its author). It holds without a GM, and Undo can't be pressed twice.
+  - Next: A5 render + refresh, A6 buttons.

@@ -64,7 +64,7 @@ export function resultsFromLinked(flags = {}, messageId = "") {
   if ( applied ) {
     for ( const r of list(applied.recipients) ) {
       const uuid = r?.actorUuid ?? r?.targetUuid ?? r?.uuid;
-      if ( uuid ) out.push({ section: "applied", targetUuid: uuid, result: { mode: applied.mode, messageId, undone: false } });
+      if ( uuid ) out.push({ section: "applied", targetUuid: uuid, result: { mode: applied.mode, messageId, undone: !!flags.undone } });
     }
   }
   return out;
