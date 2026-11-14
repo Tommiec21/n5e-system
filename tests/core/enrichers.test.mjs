@@ -3,8 +3,8 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import N5E from "../module/config/index.mjs";
-import { parseRollLink, parseConditionLink, splitArgs, parseInflicts } from "../module/rules/enrichers.mjs";
+import N5E from "../../module/config/index.mjs";
+import { parseRollLink, parseConditionLink, splitArgs, parseInflicts } from "../../module/rules/enrichers.mjs";
 
 const ctx = {
   abilities: N5E.abilities, skills: N5E.skills, toolkits: N5E.toolkits, damageTypes: N5E.damageTypes,

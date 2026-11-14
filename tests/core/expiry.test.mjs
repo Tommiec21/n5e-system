@@ -1,7 +1,7 @@
 /** EXPIRE1: timed effects end in and out of combat. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { expiredEffects, durationExpired } from "../module/rules/expiry.mjs";
+import { expiredEffects, durationExpired } from "../../module/rules/expiry.mjs";
 
 const settings = { conditionDurations: true };
 globalThis.game = { settings: { get: (s, k) => settings[k] } };
@@ -36,7 +36,7 @@ test("workflow: the active GM deletes expired effects and posts one card; other 
   globalThis.CONFIG = { ChatMessage: { documentClass: { create: async d => { cards.push(d); return d; } } } };
   globalThis.game = { settings: { get: (s, k) => settings[k] }, users: Object.assign([{ id: "gm", isGM: true }], { activeGM: { isSelf: false } }),
     combats: [], actors: [actor], scenes: { contents: [] } };
-  const { expireOutOfCombat, expireInCombat } = await import("../module/workflow/expiry.mjs");
+  const { expireOutOfCombat, expireInCombat } = await import("../../module/workflow/expiry.mjs");
   assert.equal(await expireOutOfCombat(), null);
   assert.deepEqual(deleted, []);
   game.users.activeGM.isSelf = true;

@@ -1,7 +1,7 @@
 /** ADV1: advantage/disadvantage sources and automatic save failures. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { advantageSources, resolveMode, sourcesNote } from "../module/rules/advantage.mjs";
+import { advantageSources, resolveMode, sourcesNote } from "../../module/rules/advantage.mjs";
 
 const who = ({ flags = {}, statuses = [], senses = {} } = {}) => ({ flags, statuses: new Set(statuses), senses });
 

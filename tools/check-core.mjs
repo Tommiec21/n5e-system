@@ -46,12 +46,32 @@ function walk(dir) {
   });
 }
 
+/** Core tests may import only the core and their own folder (they ship with the core bundle). */
+export function checkTestFile(file, src, testsDir) {
+  const problems = [];
+  for ( const m of src.matchAll(/(?:import|export)\s[^;]*?from\s+["']([^"']+)["']|import\s+["']([^"']+)["']|import\(\s*["']([^"']+)["']\s*\)/g) ) {
+    const spec = m[1] ?? m[2] ?? m[3];
+    if ( !spec.startsWith(".") ) {
+      if ( !spec.startsWith("node:") ) problems.push(`imports package "${spec}"`);
+      continue;
+    }
+    const target = path.resolve(path.dirname(file), spec);
+    if ( !inCore(target) && !target.startsWith(testsDir + path.sep) ) problems.push(`imports "${spec}" from outside the core`);
+  }
+  return problems;
+}
+
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   const files = roots.flatMap(walk);
-  const all = files.flatMap(f => checkFile(f, fs.readFileSync(f, "utf8")).map(p => `${path.relative(root, f)}: ${p}`));
+  const testsDir = path.join(root, core.tests);
+  const tests = fs.existsSync(testsDir) ? walk(testsDir) : [];
+  const all = [
+    ...files.flatMap(f => checkFile(f, fs.readFileSync(f, "utf8")).map(p => `${path.relative(root, f)}: ${p}`)),
+    ...tests.flatMap(f => checkTestFile(f, fs.readFileSync(f, "utf8"), testsDir).map(p => `${path.relative(root, f)}: ${p}`))
+  ];
   if ( all.length ) {
     console.error(`✗ shared core boundary (${all.length} problem${all.length === 1 ? "" : "s"}):\n  ${all.join("\n  ")}`);
     process.exit(1);
   }
-  console.log(`✓ shared core: ${files.length} files, no host globals, no imports leaving the core`);
+  console.log(`✓ shared core: ${files.length} files and ${tests.length} core test files, no host globals, no imports leaving the core`);
 }

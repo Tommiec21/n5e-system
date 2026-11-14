@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { evaluateFormula } from "../module/rules/formula.mjs";
-import { damagePlan } from "../module/rules/damage.mjs";
+import { evaluateFormula } from "../../module/rules/formula.mjs";
+import { damagePlan } from "../../module/rules/damage.mjs";
 
 test("N5e numeric formulas prioritize addition/subtraction and retain explicit grouping", () => {
   assert.equal(evaluateFormula("10 - 2 * 3"), 24);

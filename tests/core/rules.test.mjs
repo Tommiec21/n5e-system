@@ -7,13 +7,13 @@ import assert from "node:assert/strict";
 import {
   proficiencyForLevel, masteryCap, masteryRank, masteryBonus, poolMax, inventorySlots, maxRankForLevel,
   upcastRanks, rankForLevel, asiCount, abilityMod, stepRank
-} from "../module/rules/progression.mjs";
-import { computeJutsuCost, upkeepCost, concentrationDC } from "../module/rules/cost.mjs";
-import { aggregatePenalties } from "../module/rules/conditions.mjs";
-import { degreeOfSuccess } from "../module/rules/degree.mjs";
-import { resolveChainCast, chainTurnStart, newChainState } from "../module/rules/chain.mjs";
-import { computeAC } from "../module/rules/ac.mjs";
-import { evaluateFormula, dieFaces, stepDie } from "../module/rules/formula.mjs";
+} from "../../module/rules/progression.mjs";
+import { computeJutsuCost, upkeepCost, concentrationDC } from "../../module/rules/cost.mjs";
+import { aggregatePenalties } from "../../module/rules/conditions.mjs";
+import { degreeOfSuccess } from "../../module/rules/degree.mjs";
+import { resolveChainCast, chainTurnStart, newChainState } from "../../module/rules/chain.mjs";
+import { computeAC } from "../../module/rules/ac.mjs";
+import { evaluateFormula, dieFaces, stepDie } from "../../module/rules/formula.mjs";
 
 test("proficiency by level (KB 01)", () => {
   const expected = { 1: 3, 3: 3, 4: 4, 6: 4, 7: 5, 9: 5, 10: 6, 12: 6, 13: 7, 15: 7, 16: 8, 18: 8, 19: 9, 20: 9 };
@@ -197,7 +197,7 @@ test("formula evaluator", () => {
 });
 
 test("skill action penalties don't stack (Core Ch6 + King 2026-11-07)", async () => {
-  const { skillActionPenalty } = await import("../module/rules/skill-actions.mjs");
+  const { skillActionPenalty } = await import("../../module/rules/skill-actions.mjs");
   assert.equal(skillActionPenalty("np", { proficient: false, masteryRank: 0 }), 0);
   assert.equal(skillActionPenalty("p", { proficient: false, masteryRank: 0 }), -3);
   assert.equal(skillActionPenalty("p", { proficient: true, masteryRank: 0 }), 0);

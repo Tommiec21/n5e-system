@@ -1,8 +1,8 @@
 /** SKILL1: skill actions against one target (KB 02, Chapter 6). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseVs, passiveScore, fixedDC, contestOutcome, checkOutcome, skillActionEffects, SKILL_RESULTS } from "../module/rules/skill-resolution.mjs";
-import { skillActions } from "../module/config/character.mjs";
+import { parseVs, passiveScore, fixedDC, contestOutcome, checkOutcome, skillActionEffects, SKILL_RESULTS } from "../../module/rules/skill-resolution.mjs";
+import { skillActions } from "../../module/config/character.mjs";
 
 test("vs forms parse", () => {
   assert.deepEqual(parseVs("contest:ath|acr"), { kind: "contest", skills: ["ath", "acr"] });
@@ -39,7 +39,7 @@ test("results: Grapple upgrades to Restrained by 10 with Mastery; ties and failu
 });
 
 /* SKILL1b */
-import { standardDC } from "../module/rules/skill-resolution.mjs";
+import { standardDC } from "../../module/rules/skill-resolution.mjs";
 
 test("Standard DC: the named statistic + 10; Shove knocks Prone only for a proficient user beating by 10", () => {
   assert.equal(standardDC(3), 13);

@@ -1,7 +1,7 @@
 /** GEN1: Genjutsu Stimuli immunity (KB 04, KB 10; King 2026-11-14: Truesight counts). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { immuneToStimulus, genjutsuImmunity, creatureFacts } from "../module/rules/stimuli.mjs";
+import { immuneToStimulus, genjutsuImmunity, creatureFacts } from "../../module/rules/stimuli.mjs";
 
 const facts = ({ statuses = [], senses = {}, conditionImmune = [], damageImmune = [] } = {}) =>
   ({ statuses: new Set(statuses), senses, conditionImmune: new Set(conditionImmune), damageImmune: new Set(damageImmune) });

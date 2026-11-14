@@ -1,8 +1,8 @@
 /** CLASH1: Jutsu Clash rules (Jiraiya's Jutsu Compendium; King 2026-11-14). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { clashSkill, rankMastery, releaseOf, elementalAdvantage, contestCount, clashResult } from "../module/rules/clash.mjs";
-import { skills } from "../module/config/core.mjs";
+import { clashSkill, rankMastery, releaseOf, elementalAdvantage, contestCount, clashResult } from "../../module/rules/clash.mjs";
+import { skills } from "../../module/config/core.mjs";
 
 test("the triggering jutsu's discipline sets the skill for both sides", () => {
   assert.equal(clashSkill("nin", skills), "nin");

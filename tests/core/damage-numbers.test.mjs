@@ -1,7 +1,7 @@
 /** DMG1: Bruised, Weakened, Petrified and Exhaustion change the damage numbers (King 2026-11-13). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { damagePlan, reduceInstances, dealtDamagePenalty, exhaustedRollTotal } from "../module/rules/damage.mjs";
+import { damagePlan, reduceInstances, dealtDamagePenalty, exhaustedRollTotal } from "../../module/rules/damage.mjs";
 
 globalThis.game = { settings: { get: () => false } };
 const target = (pen = {}, extra = {}) => ({ type: "character", system: { hp: { value: 50, temp: 0, max: 50 }, cp: { value: 20, temp: 0 }, dr: 0, traits: {},

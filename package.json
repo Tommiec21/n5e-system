@@ -5,8 +5,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "verify": "npm run lint && npm test && npm run check",
+    "verify": "npm run lint && npm test && npm run test:core && npm run check",
     "test": "node --import ./tests/setup.mjs --test \"tests/**/*.test.mjs\"",
+    "test:core": "node --import ./tests/core/setup.mjs --test \"tests/core/**/*.test.mjs\"",
     "lint": "eslint module n5e.mjs tools tests",
     "check": "node tools/check.mjs && node tools/check-core.mjs",
     "pack": "node tools/pack.mjs",

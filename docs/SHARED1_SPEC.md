@@ -91,3 +91,17 @@ Each entry: what was done, the exact files, how it was checked, and the next ste
   - `npm run check` now runs it after `tools/check.mjs`, so CI enforces it.
   - Checked: 66 core files pass. Spot checks catch `game.settings`, `globalThis.CONFIG`, a `../workflow/` import, and ignore comments, strings and `obj.game`.
   - **Next:** F6. Move the tests that import only core files into `tests/core/`, and add `npm run test:core`. Then F5: `tools/build-core.mjs` → `dist/n5e-core/` and attach `n5e-core.zip` in `release.yml`.
+- 2026-11-14 Claude: **F6 done.**
+  - Moved 11 core-only tests to `tests/core/` (`git mv`, import paths now `../../module/...`): advantage, arithmetic, clash, concentration, damage-numbers, dice-advantage, enrichers, expiry, rules, skill-actions, stimuli.
+  - New `tests/core/setup.mjs`: registers a test rule provider that reads a stubbed `game.settings`, through the core API only.
+  - New `npm run test:core` (58 pass), now part of `npm run verify` (CI).
+  - `tools/check-core.mjs` also checks `tests/core`: only the core, `node:` and their own folder may be imported.
+  - Checked: `npm test` 362 pass; `test:core` 58 pass; check-core reports 66 core files and 12 core test files clean.
+  - **Next:** F5. `tools/build-core.mjs` writes `dist/n5e-core/`:
+    - `core.json`'s roots copied under `module/`;
+    - `tests/core`;
+    - `index.mjs` re-exporting each `module/rules/*.mjs` as a namespace, plus `config`, `setRuleProvider`, `setHost`;
+    - `package.json` with the System version;
+    - `CORE_API.md`;
+    - `n5e-core.zip`.
+    Then add the zip to the CI artifact and `release.yml` `files`.
