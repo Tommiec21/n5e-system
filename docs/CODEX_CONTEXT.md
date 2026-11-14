@@ -295,3 +295,16 @@ Owner Claude; ownership released. Published v0.15.0-alpha.9. Incapacitation ends
 
 ## Q2 ruling and DATA1 spec — Claude, 2026-11-13
 King: background features become clan features. All feats form one Feats group, with their old categories kept as keywords. `docs/DATA1_SPEC.md` is proposed for approval with open questions Q7 (keyword text storage) and Q8 (clan stance mapping). Do not start DATA1 until King approves.
+
+## Handoff: DATA1a stopped — Claude, 2026-11-13
+King said "Start" on `docs/DATA1_SPEC.md`. Q7 taken as the proposed text storage (`key` / `key:value`); Q8 not needed until DATA2. All work is on branch `wip/data1a`, not merged and not released:
+- `rules/keywords.mjs`, `migration/data1.mjs`, migration 3 and `tools/migrate-packs.mjs`; the packs are migrated (2682 files; idempotent).
+- Jutsu `disciplines`/`group`/`castingDisciplines`.
+- Feature kinds and the Feats group across view-models, advancement and the browser.
+- Builders emit the migrated shape.
+
+Tests:
+- Attempt 1: 5 failures, all old-model expectations. Four were rewritten and now pass.
+- `tests/jutsu-import.test.mjs` "whole jutsu book … discipline totals" failed on attempt 1 and attempt 2, so per the testing rule the process is **stopped** awaiting King's direction.
+- Diagnosis, without rerunning: 4 Ninjutsu-section jutsu also carry the Bukijutsu keyword in the source. The `group` getter (and the test's grouping) counts any `bukijutsu` keyword as the Bukijutsu group (403 Nin becomes 399 + 4 Buki).
+- Proposed fix: the display group is Bukijutsu only when the default discipline is Taijutsu, and those 4 stay Ninjutsu with the Bukijutsu keyword (castable as Nin or Tai). This needs King's go-ahead to run a third attempt.
