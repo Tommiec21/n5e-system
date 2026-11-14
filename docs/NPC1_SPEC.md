@@ -25,7 +25,7 @@ Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" throu
 | A6 | Hit and Chakra Points | same | 10 + (Level × Con) + (Level × per-level value for Rank), same value for both. Elite ×1.25; Solo ×(1.5 + 0.5 per player); Iconic ×1.5, Epic ×2, both ×2.5. Rounding per Q-N16. Alternative source per NPC: the Lazy GM table (Low, Medium, High). Minion: HP 10 + Level, no Chakra pool. |
 | A7 | Party size | `rules-settings.mjs` | World setting (King Q-N3): automatic (player characters in the active party) or manual (the NPC's `details.partySize`). |
 | A8 | Armor Class and DR | `rules/adversary.mjs` | AC from the table by level and armor type; DR +3 Medium, +6 Heavy. Defender +1 AC and +2 DR; Elite +1 AC; Solo +2; Iconic +1; Epic +2; Minion −2. Equipped armor items do not change it (King Q-N8). |
-| A9 | Saves | same | Three grades by the order of the assigned modifiers: best; second and third; last three (values per Q-N15). Elite +1, Solo +2, Supporter +1. A Minion's save reports an automatic failure (King Q-N9). |
+| A9 | Saves | same | Every save has proficiency, half or full (King Q-N15). Fully proficient saves: 2 at levels 1–7, 3 at 8–16, 4 at 17+; the rest are half (rounded down). Defaults to the highest assigned modifiers; the GM picks which saves are full on the Build tab, and the count is shown against the suggested number, never blocked. Save = modifier + proficiency (or half). Elite +1, Solo +2, Supporter +1. A Minion's save reports an automatic failure (King Q-N9). |
 | A10 | Attack bonuses and save DCs | same | Proficiency + ability, and 8 + proficiency + ability: Intelligence for Ninjutsu, Wisdom for Genjutsu, Strength for Taijutsu; a Weapon/Freeform line with an ability the GM picks (any, including Constitution). Controller +1 save DCs; Iconic or Epic +1 to both. |
 | A11 | Initiative, speed, skills | same | Initiative: the player formula plus Striker +2, Elite +2, Solo +3, Iconic +1, Epic +2, Minion −2. Speed 30, Lurker +20. Skills: ability modifier alone unless the GM adds the skill, then modifier + proficiency (King Q-N11). Lurker +2 Stealth, Controller +2 Chakra Control, Supporter +2 Perception. |
 | A12 | Overrides | `data/actor/npc.mjs` | `system.overrides.<statistic>`: a number replaces the computed one for that statistic only (AC, DR, HP, CP, proficiency, each save, each attack and DC, initiative, speed, each skill, passive Perception). Clearing it returns to the baseline. |
@@ -58,15 +58,15 @@ Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" throu
 
 - **Q-N7:** modifiers only. **Q-N8:** effects, rule elements and conditions change the numbers; equipped armor does not. **Q-N9:** Minion rules where they fit (A6, A8, A9, A11). **Q-N11:** ability modifier alone; the GM can add skills. **Q-N12:** private notes GM only. **Q-N13:** tabbed sheet is the default. **Q-N14:** NPC1a then NPC1b.
 - **Q-N10** is withdrawn: there is one adversary method, not two modes.
+- **Q-N15:** every creature's saves are half or fully proficient. Adversaries have 2 full saves at levels 1–7, 3 at 8–16, 4 at 17+. Players have 3 full and 3 half.
 - **Rank bonus:** suggested, equal to Rank (D 1, C 2, B 3, A 4, S 5). **Stat lines:** the assumed baseline; the GM adjusts up or down.
 
 ## Questions for King
 
-- **Q-N15: save grades.** The book names three grades (best stat; 2nd and 3rd; last three) but I found no values. The Avenger and Bishop show modifier + proficiency on their top three saves and modifier + half proficiency on the other three. Use that (best and average both + proficiency, worst + half), or does the best grade get more?
 - **Q-N16: rounding.** Elite ×1.25 and the other multipliers can give fractions. Round down, as elsewhere in the system?
 - **Q-N17: Rank bonus default.** On for new adversaries, with the switch to turn it off?
 
 ## Progress log
 
 - 2026-11-14 Claude: first draft (stored or calculated modes). King answered Q-N7–Q-N14.
-- 2026-11-14 Claude: King pointed out the first draft's modes don't match the book. Bingo Book re-read ("The Adversary Profile" to "Final Calculation(s)", Cultist examples). Spec rewritten on the book's model: profile in, book math out, GM overrides. King: Rank bonus equals Rank and is suggested; stat lines are the baseline. Noted: the Sasuke example's level 13 line (+6, +4, +2, +1, +1, +0) differs from the table's Elite line at 13; the table is used. Nothing built.
+- 2026-11-14 Claude: King pointed out the first draft's modes don't match the book. Bingo Book re-read ("The Adversary Profile" to "Final Calculation(s)", Cultist examples). Spec rewritten on the book's model: profile in, book math out, GM overrides. King: Rank bonus equals Rank and is suggested; stat lines are the baseline. Noted: the Avenger and Bishop (level 5) show three full saves against the rule's two, which the GM's freedom to adjust covers. Noted: the Sasuke example's level 13 line (+6, +4, +2, +1, +1, +0) differs from the table's Elite line at 13; the table is used. Nothing built.
