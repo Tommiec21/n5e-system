@@ -1,67 +1,72 @@
-# NPC1 function spec: adversary data model and sheets
+# NPC1 function spec: adversary model, the book's math, and sheets
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-N7–Q-N14 below.**
+Status: **revised draft for King's approval (2026-11-14, second version). Nothing is built. Open: Q-N15–Q-N17.**
 
-Plan: `docs/NPC1_PLAN.md` (King's answers Q-N1–Q-N6). First of NPC1–NPC3, which come before standardization.
+Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" through "Final Calculation(s)" and the Cultist examples.
 
-Sources: the Bingo Book's stat-block layout (the worked Cultist examples) and steps 1–8 of its builder; PF2e 8.7.0 `actor/npc`; N5e `data/actor/npc.mjs` (a stopgap by its own header).
+**Why this was rewritten (King, 2026-11-14).** The first draft offered "stored" numbers (typed in) or "calculated" numbers (the player's formulas). Neither is the book. Adversaries have their own math: a stat line by level and class, and formulas and tables for every other number. Each stat line is the assumed baseline for that class and level, and the GM adjusts up or down to fit the table. Rank bonuses are suggested, not guaranteed.
 
-## What NPC1 does and doesn't do
+## The model
 
-- **Does:** gives an NPC the adversary profile, stored statistics the GM types in or edits, the stat-block sheet, a simple sheet, and notes.
-- **Doesn't:** the book's tables and the step-by-step builder (NPC2); Freeform Strikes, Jutsu and Abilities (NPC3); Tenacity, Elite Actions, Minion groups (NPC4); phases (NPC5); traits as content (NPC6).
+1. **The profile is the input:** Level, Class, Role, Rank, Iconic/Epic, armor type, the assigned ability modifiers, party size (Solos).
+2. **The book's math computes every number** from the profile.
+3. **The GM adjusts.** Any computed number can be overridden; the sheet marks it and shows the baseline beside it.
+4. **Friendly NPCs** can be built this way or as a player-style creature (the book's Allies section; King Q-N2). Summons, clones and companions keep the player-style build they use today.
 
-## NPC1a: data model and calculation
+## NPC1a: data and math
 
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
-| A1 | Profile fields | `data/actor/npc.mjs`, `config/combat.mjs` | `details.class` (Minion, Standard, Elite, Solo; today's `details.role` is renamed to this), `details.role` (Striker, Defender, Lurker, Controller, Supporter, or none), `details.rank` (E–S, exists), `details.clan` (clan or species, free text until NPC6), `details.affiliation`, `details.iconic`, `details.epic`. Level 0–30 (exists). |
-| A2 | Statistics mode | same | `details.statMode`: `stored` or `calculated` (Q-N2). Calculated is today's behaviour, unchanged. Summons, clones and companions stay calculated unless the GM switches them. |
-| A3 | Stored statistics | same | `system.stored`: proficiency bonus; six ability **modifiers**; six saves; AC; DR; HP max; CP max; speed; initiative; skills (only the ones listed); passive Perception; per discipline (Ninjutsu, Taijutsu, Genjutsu) and a Weapon/Freeform line: attack bonus and save DC. An empty field falls back to the calculated value. |
-| A4 | Stored values feed the same engines | `data/actor/creature.mjs`, `data/actor/npc.mjs` | In stored mode each statistic's breakdown starts from "Stat block" with the stored number, then adds Active Effects, rule elements and condition penalties as for characters. Class, armor items and ability-derived parts are not added again. Rolls, the action card, riders and damage read the same paths as today (`system.ac.value`, `system.saves.*.total`, `system.disciplines.*.attack/dc`…). |
-| A5 | Ability scores from modifiers | same | In stored mode the score shown is 10 + 2 × modifier, so anything that reads a score still works. |
-| A6 | Copy from calculated | `applications/actor/npc-sheet.mjs` | A "Fill from calculated values" button writes the current calculated numbers into the stored fields, as a starting point. NPC2 replaces it with "Calculate from the tables". |
-| A7 | Migration | `migration/runner.mjs` | World migration 8: `details.role` (minion…solo) moves to `details.class`; existing NPCs become `calculated` so nothing changes for them. |
-| A8 | Notes | `data/actor/npc.mjs` | `details.publicNotes`, `details.privateNotes` (GM only on the sheets), `details.blurb` (one line under the name). `details.biography` stays. |
+| A1 | Profile fields | `data/actor/npc.mjs`, `config/adversary.mjs` | `details.build`: `adversary` or `character` (player-style, today's behaviour). `details.class` (Minion, Standard, Elite, Solo; today's `details.role` is renamed), `details.role` (Striker, Defender, Lurker, Controller, Supporter, none), `details.rank` (E–S), `details.clan`, `details.affiliation`, `details.iconic`, `details.epic`, `details.armor` (light, medium, heavy), `details.partySize`. Level 1–30; Elite from 3, Solo from 5 (a warning, not a block). |
+| A2 | Tables as data | `config/adversary.mjs` | Base Adversary Statistics by Level (proficiency; the Minion/Standard and Elite/Solo modifier lines); AC by Level and armor type; HP/CP per level by Rank; the Role, Class, Iconic and Epic modifiers; the Lazy GM HP/CP tables. |
+| A3 | Ability modifiers | `rules/adversary.mjs` | Adversaries hold **modifiers only** (King Q-N7). `statLine(level, class)` gives the baseline six values and their sum. The GM assigns them to abilities and may change any of them. The sheet shows the assigned total against the budget: the line's sum, plus the Rank bonus when used (A5), plus Iconic +2 or Epic +4. Over or under budget is shown, never blocked. |
+| A4 | Proficiency | same | From the table by level. |
+| A5 | Rank bonus | same | Suggested ability points equal to Rank: E 0, D 1, C 2, B 3, A 4, S 5 (King). A switch on the NPC, on by default (Q-N17); it only raises the budget in A3. |
+| A6 | Hit and Chakra Points | same | 10 + (Level × Con) + (Level × per-level value for Rank), same value for both. Elite ×1.25; Solo ×(1.5 + 0.5 per player); Iconic ×1.5, Epic ×2, both ×2.5. Rounding per Q-N16. Alternative source per NPC: the Lazy GM table (Low, Medium, High). Minion: HP 10 + Level, no Chakra pool. |
+| A7 | Party size | `rules-settings.mjs` | World setting (King Q-N3): automatic (player characters in the active party) or manual (the NPC's `details.partySize`). |
+| A8 | Armor Class and DR | `rules/adversary.mjs` | AC from the table by level and armor type; DR +3 Medium, +6 Heavy. Defender +1 AC and +2 DR; Elite +1 AC; Solo +2; Iconic +1; Epic +2; Minion −2. Equipped armor items do not change it (King Q-N8). |
+| A9 | Saves | same | Three grades by the order of the assigned modifiers: best; second and third; last three (values per Q-N15). Elite +1, Solo +2, Supporter +1. A Minion's save reports an automatic failure (King Q-N9). |
+| A10 | Attack bonuses and save DCs | same | Proficiency + ability, and 8 + proficiency + ability: Intelligence for Ninjutsu, Wisdom for Genjutsu, Strength for Taijutsu; a Weapon/Freeform line with an ability the GM picks (any, including Constitution). Controller +1 save DCs; Iconic or Epic +1 to both. |
+| A11 | Initiative, speed, skills | same | Initiative: the player formula plus Striker +2, Elite +2, Solo +3, Iconic +1, Epic +2, Minion −2. Speed 30, Lurker +20. Skills: ability modifier alone unless the GM adds the skill, then modifier + proficiency (King Q-N11). Lurker +2 Stealth, Controller +2 Chakra Control, Supporter +2 Perception. |
+| A12 | Overrides | `data/actor/npc.mjs` | `system.overrides.<statistic>`: a number replaces the computed one for that statistic only (AC, DR, HP, CP, proficiency, each save, each attack and DC, initiative, speed, each skill, passive Perception). Clearing it returns to the baseline. |
+| A13 | Same engines | `data/actor/creature.mjs` | The result lands on the paths rolls already read (`system.ac.value`, `system.saves.*.total`, `system.disciplines.*.attack/dc`…). Active Effects, rule elements and conditions apply on top (King Q-N8). Each breakdown lists its parts: table value, role, class, classification, override. |
+| A14 | Suggested counts | `rules/adversary.mjs` | Shown on the sheet, not enforced: traits (Solo 3, Elite 2, Standard 1, Minion 0; +1 at levels 1–5, +2 at 6–11, +3 at 12–17, +4 at 18+), jutsu known (4, 6, 8, 10 by level band), Freeform slots by class and level, multiattack count. |
+| A15 | Notes | `data/actor/npc.mjs` | `details.publicNotes`, `details.privateNotes` (GM only, King Q-N12), `details.blurb`. |
+| A16 | Migration | `migration/runner.mjs` | Migration 8: `details.role` (minion…solo) moves to `details.class`; existing NPCs become `build: character`, so nothing changes for them. New NPCs start as `adversary`; summons, clones and companions as `character`. |
 
 ## NPC1b: sheets
 
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
-| B1 | Stat-block header | `templates/actor/npc/header.hbs`, `npc-sheet.mjs` | The book's layout: name and blurb; class, size, Rank, Role, clan/species, affiliation; Level and Proficiency; AC and DR; HP and CP; Speed and Initiative; the six abilities each with Mod and Save; Skills; Senses and passive Perception; resistances and condition vulnerabilities. Every number is clickable to roll, and editable in edit mode. |
-| B2 | Statistics tab | `templates/actor/npc/statistics.hbs` | In stored mode: the stored fields in one form, each showing its final value after effects, with the breakdown on hover. The mode switch and the A6 button are here. |
-| B3 | Casting lines | Jutsu and Combat tabs | Each discipline's attack bonus and save DC shown at the head of its jutsu list, as in the stat block ("Ninjutsu. +4 to hit, save DC 12"), and the Weapon/Freeform line above attacks. |
-| B4 | Simple sheet | `applications/actor/npc-simple-sheet.mjs`, `templates/actor/npc/simple.hbs` | One page, the whole stat block top to bottom in the book's order: header (B1), traits (features), jutsu by discipline and rank with cost, attacks. Read-first: names roll or post their card; HP, CP and conditions are editable. Chosen per NPC through Foundry's sheet picker; the full sheet stays the default. |
-| B5 | Notes tab | `templates/actor/npc/notes.hbs` | Public notes, private notes (shown only to GMs), biography. |
-| B6 | Limited view | `npc-sheet.mjs` | A user with Limited permission sees name, portrait, blurb and public notes only. |
+| B1 | Stat-block header | `templates/actor/npc/header.hbs` | The book's layout: name and blurb; class, size, Rank, Role, clan, affiliation; Level and Proficiency; AC and DR; HP and CP; Speed and Initiative; six abilities each with Mod and Save; Skills; Senses and passive Perception. Numbers roll on click. |
+| B2 | Build tab | `templates/actor/npc/build.hbs` | The profile choices; the modifier line with its budget; armor type; HP source (formula or Lazy GM); every computed statistic with its baseline, an override box and a reset. |
+| B3 | Casting lines | Jutsu and Combat tabs | "Ninjutsu. +4 to hit, save DC 12" above each discipline's jutsu; the Weapon/Freeform line above attacks. |
+| B4 | Simple sheet | `applications/actor/npc-simple-sheet.mjs` | The whole stat block on one page in the book's order. The tabbed sheet is the default (King Q-N13). |
+| B5 | Notes tab, limited view | `npc-sheet.mjs` | Public and private notes, biography. Limited permission sees name, portrait, blurb, public notes. |
+
+**Releases:** NPC1a, then NPC1b (King Q-N14: whatever fits the system; the sheets read the new model).
+
+**Moves out of NPC2:** the tables and the math, which are now here. NPC2 becomes the step-by-step builder window (the book's steps 1–8).
 
 ## Tests
 
-`tests/core/npc-stored.test.mjs` (stored value as the base, effects and condition penalties on top, empty field falls back), `tests/npc-model.test.mjs` (profile fields, mode switch, score from modifier, fill from calculated, migration 8), `tests/view-models.test.mjs` additions (stat-block header and simple sheet context).
+- `tests/core/adversary.test.mjs`: every table row spot-checked; the book's worked numbers (level 5 C-Rank Standard, Con +2 = 60; Elite 75; Solo with 4 players 210; Iconic 315, Epic 420, both 525); the Avenger (AC 15, DR 6, HP 40, Taijutsu +8, DC 16) and Bishop (AC 17, DR 3) profiles; budgets; role and class modifiers; Minion rules.
+- `tests/npc-model.test.mjs`: overrides, effects on top, migration 8, party size setting.
+- `tests/view-models.test.mjs`: header, Build tab and simple sheet context.
+
+## King's answers
+
+- **Q-N7:** modifiers only. **Q-N8:** effects, rule elements and conditions change the numbers; equipped armor does not. **Q-N9:** Minion rules where they fit (A6, A8, A9, A11). **Q-N11:** ability modifier alone; the GM can add skills. **Q-N12:** private notes GM only. **Q-N13:** tabbed sheet is the default. **Q-N14:** NPC1a then NPC1b.
+- **Q-N10** is withdrawn: there is one adversary method, not two modes.
+- **Rank bonus:** suggested, equal to Rank (D 1, C 2, B 3, A 4, S 5). **Stat lines:** the assumed baseline; the GM adjusts up or down.
 
 ## Questions for King
 
-- **Q-N7: abilities.** The book's stat blocks give a modifier and a save for each ability, no score. Store modifiers only, and show the score as 10 + 2 × modifier where something needs one?
-- **Q-N8: what still changes a stored number.** Proposed: Active Effects, rule elements and conditions do (a Weakened adversary still takes the penalty); equipped armor and weapons items do not change AC or DR, because the stored AC already includes them. Agreed?
-- **Q-N9: Minions.** The book says a Minion has no Chakra pool and automatically fails saving throws. Build both into NPC1 (a Minion's save buttons report an automatic failure; its CP is 0), or leave them for NPC2 with the rest of the class rules?
-- **Q-N10: default mode.** New NPCs start as `stored` (adversary) and the GM switches to `calculated` when wanted? Summons, clones and companions keep starting as `calculated`.
-- **Q-N11: skills.** A stat block lists only a few skills. For a skill not listed, roll the ability modifier alone, or the ability modifier plus proficiency?
-- **Q-N12: private notes.** GM only, even for a player who owns the NPC (an Allied NPC, a companion)?
-- **Q-N13: simple sheet.** Is a one-page read-first stat block what you want from it, or should it be the default sheet with the tabbed one as the alternative?
-- **Q-N14: releases.** NPC1a (model and calculation) as one release, then NPC1b (sheets)?
-
-## King's answers (2026-11-14)
-
-- **Q-N7:** for adversaries only modifiers matter. Stored mode keeps modifiers; no score is shown.
-- **Q-N8:** agreed. Effects, rule elements and conditions change stored numbers; equipped armor and weapons do not change AC or DR.
-- **Q-N9:** include the Minion rules where they fit the system. Claude's placement: NPC1a, with the class field and the save path (CP 0; saves report an automatic failure).
-- **Q-N10:** King asked what the difference is; explained, answer pending.
-- **Q-N11:** an unlisted skill rolls the ability modifier alone. The GM can add skill proficiencies.
-- **Q-N12:** private notes are GM only.
-- **Q-N13:** the tabbed sheet is the default; the simple sheet is the alternative.
-- **Q-N14:** whatever fits the system. Claude's placement: NPC1a (model and calculation) first, then NPC1b (sheets), because the sheets read the new model.
+- **Q-N15: save grades.** The book names three grades (best stat; 2nd and 3rd; last three) but I found no values. The Avenger and Bishop show modifier + proficiency on their top three saves and modifier + half proficiency on the other three. Use that (best and average both + proficiency, worst + half), or does the best grade get more?
+- **Q-N16: rounding.** Elite ×1.25 and the other multipliers can give fractions. Round down, as elsewhere in the system?
+- **Q-N17: Rank bonus default.** On for new adversaries, with the switch to turn it off?
 
 ## Progress log
 
-- 2026-11-14 Claude: King's answers Q-N7–Q-N9, Q-N11–Q-N14 recorded; Q-N10 pending. Not yet approved to build.
-- 2026-11-14 Claude: spec written from `docs/NPC1_PLAN.md`, the Bingo Book's stat blocks and the current NPC model. Nothing built.
+- 2026-11-14 Claude: first draft (stored or calculated modes). King answered Q-N7–Q-N14.
+- 2026-11-14 Claude: King pointed out the first draft's modes don't match the book. Bingo Book re-read ("The Adversary Profile" to "Final Calculation(s)", Cultist examples). Spec rewritten on the book's model: profile in, book math out, GM overrides. King: Rank bonus equals Rank and is suggested; stat lines are the baseline. Noted: the Sasuke example's level 13 line (+6, +4, +2, +1, +1, +0) differs from the table's Elite line at 13; the table is used. Nothing built.

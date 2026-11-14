@@ -131,6 +131,10 @@ NPC1–NPC3 can come before standardization. NPC4–NPC6 lean on STD1–STD4 (au
 - **Q-N5:** yes. NPC1–NPC3 before standardization; NPC4–NPC6 after STD4.
 - **Q-N6:** skip importing the adversaries from the chapters after "Maybe I want to live?".
 
+## Correction (King, 2026-11-14)
+
+The "stored values" framing in Part 3 and Q-N1 is superseded. Adversaries use the Bingo Book's own math: the profile computes every number, stat lines are the assumed baseline, and the GM adjusts. The tables and math move from NPC2 into NPC1; NPC2 is the builder window. See `docs/NPC1_SPEC.md`.
+
 ## Progress log
 
 - 2026-11-14 Claude: PF2e NPC source and the Bingo Book's rules section read; plan written. Nothing built.
