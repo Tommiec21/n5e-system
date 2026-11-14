@@ -1,6 +1,6 @@
 # CARD1 function spec: single action card
 
-Status: **draft, awaiting King's approval. Nothing is built until King approves this spec and answers Q-CD1–Q-CD4.**
+Status: **King answered Q-CD1–Q-CD4 on 2026-11-14. Awaiting King's approval of the spec before any build.**
 
 Plan row 10b (King 2026-11-13). One chat card per attack, jutsu or feature. Its sections fill in as buttons are pressed, SW5e style:
 - attack, with hit or miss per target;
@@ -46,9 +46,14 @@ Parity (OPS1, Section 7) is unchanged:
 - `kind`: `jutsu | attack | feature`; `actorUuid`, `itemUuid`; `castId`; and for jutsu, `rank` and `discipline` as cast.
 - `targets`: `[{uuid, name, img}]`, the Foundry targets when the card was posted. Area targets are added when the template is placed.
 - `sections`: the ordered sections this action has, from `cardSections`. Each section is `{key, state: "waiting" | "ready" | "done"}`.
-- `applied`: `{[targetUuid]: {damage?: undoSnapshot, effects?: [effectUuid]}}`, for per-target Undo.
+- `applied`: `{[targetUuid]: {damage?: undoSnapshot, effects?: [effectUuid]}}`, for per-target Undo. Undo restores HP and CP and removes the conditions and effects applied from the card (Q-CD4).
+- `results`: `{[section]: {[targetUuid]: result}}`, written by the author or by the GM from a `cardResult` intent.
 
-Results that another user rolls (a target owner's save, an NPC's reaction) are stored as Q-CD1 decides.
+Results rolled by another user, such as a target owner's save or an NPC's reaction (Q-CD1 = A, owner intent):
+- The rolling user's client submits a new owner intent, `cardResult`, on the actor they own (`automation/owner-intents.mjs`), carrying `{messageId, section, targetUuid, result}`.
+- The active GM's client validates it: the user must own the target, the section must exist, and each target can record its result only once. The GM then writes the result into `flags.n5e.card.results`.
+- No dialog is shown at any point.
+- **No GM connected:** the result posts as a separate small card linked to the action card (`flags.n5e.roll.source`). The action card shows these linked results until a GM connects. The GM's client then copies them into the card once.
 
 ## Functions
 
@@ -61,7 +66,8 @@ After each function, add a line to the progress log and push.
 | A1 | `cardSections(action)` | `rules/action-card.mjs` (new, pure, shared core) | From the cast plan / attack spec / feature activities: which sections the card has, in fixed order (attack, area, saves, damage, effects, reactions, concentration). |
 | A2 | `targetRows(card, linked)` | same | Per target: hit/miss/crit against AC, save tier, damage share, applied or not. Built on `targetOutcomes` (RES1). Hides AC and DC per the visibility rules for non-GM viewers. |
 | A3 | `sectionState(card, linked)` | same | Waiting, ready or done for each section, so buttons appear in order: for example, damage is ready once the attack is rolled. |
-| A4 | `postActionCard(actor, action)` | `workflow/action-card.mjs` (new) | Posts the one card for a jutsu cast, weapon attack/strike or feature use (Q-CD2 decides which in CARD1a). |
+| A4 | `postActionCard(actor, action)` | `workflow/action-card.mjs` (new) | Posts the one card for jutsu casts, weapon attacks and strikes, and feature uses, all in CARD1a (Q-CD2). The world setting `actionCard` (Q-CD3) chooses between this card and the old cards; existing messages render as they are. |
+| A4b | `cardResult` intent | `automation/owner-intents.mjs` | New intent type: validation (owner of the target, section exists, one result per target) and the GM handler that writes into the card. When no GM is active, falls back to a linked result card (Q-CD1). |
 | A5 | `renderActionCard(message, html)` + refresh hook | same | Draws the sections and per-target rows from the card data and its linked results. Re-renders when a linked roll or result arrives (the RES1/CLASH1 pattern). |
 | A6 | Attack and damage buttons | same | Roll the attack and the damage into the card. Per-target Apply / Apply half / Undo use `applyToSelected` and the existing undo snapshot. |
 
@@ -80,7 +86,7 @@ After each function, add a line to the progress log and push.
 | C1 | Reactions section | same | Reaction windows opened by this action (Deflection, Uncanny Dodge, successful-hit reactions) show their decision and result in the card. |
 | C2 | Will of Fire | same | Rerolls happen inside the section that holds the d20 roll; the card updates the row. |
 | C3 | Concentration section | same | Concentration started by this cast; the damage check button for targets who took damage; effects that end with it. |
-| C4 | Undo | same | Per-target Undo covers what Q-CD4 decides. |
+| C4 | Undo | same | Per-target Undo restores HP and CP and removes the conditions and effects applied from the card (Q-CD4). |
 
 ## Tests
 
@@ -92,15 +98,16 @@ After each function, add a line to the progress log and push.
 - half and none damage;
 - AC and DC hidden under each visibility setting.
 
-## Questions for King
+## King's answers (2026-11-14)
 
-- **Q-CD1: where results rolled by another user are stored.** Examples are a target's owner rolling a save, or the GM's NPC reacting.
-  - **(A) Owner intent, as the plan row says.** The other user's client sends the result to the GM's client through an owner intent, and the GM writes it into the card. With no GM connected, the result posts as a separate card.
-  - **(B) Linked roll messages, as RES1 and CLASH1 do now.** Each user's roll is its own small message tied to the card, which reads them and fills in its rows. This works the same with or without a GM. The linked messages can be shown collapsed in the log ("Save for *Fireball* — see card").
-- **Q-CD2: which actions use the new card in CARD1a.** All three (jutsu casts, weapon attacks and strikes, feature uses), or jutsu casts first with the others in CARD1b?
-- **Q-CD3: the old cards.** Once CARD1 ships, do new actions always post the new card, with old messages still rendering as they are? Or is there a world setting to keep posting the old cards?
-- **Q-CD4: what Undo restores.** Damage and healing only, as today, or also conditions and effects applied from the card?
+- **Q-CD1:** owner intent (A). The GM writes other users' results into the card; with no GM connected, they post as a separate linked card.
+- **Q-CD2:** all three (jutsu casts, weapon attacks and strikes, feature uses) in CARD1a.
+- **Q-CD3:** a world setting chooses the new card or the old cards.
+- **Q-CD4:** Undo restores damage and also removes the conditions and effects applied from the card.
+
+Still to confirm with the approval: the `actionCard` setting's default. Proposed default: the new card.
 
 ## Progress log
 
 - 2026-11-14 Claude: spec written; awaiting King's approval and answers to Q-CD1–Q-CD4.
+- 2026-11-14 Claude: King answered Q-CD1 (A), Q-CD2 (all three), Q-CD3 (world setting) and Q-CD4 (damage and effects); the spec is updated. Awaiting approval to build.
