@@ -1,6 +1,6 @@
 # FEATAUTO1 plan: class features automated from authored data, not effect text
 
-Status: **plan for a later release (King, 2026-11-14). Nothing is built. Questions Q-FA1–Q-FA6 below.**
+Status: **plan for a later release (King, 2026-11-14). Nothing is built. Questions Q-FA1–Q-FA6 below. Proposed to run as STD6a, the class pass, under the system standardization contract `docs/STD_SPEC.md` (Q-STD2).**
 
 King (2026-11-14): plan a later release to review class features specifically, and build them so their functionality is automated directly in the system instead of being based on their effect text.
 
