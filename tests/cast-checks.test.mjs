@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { castBlockers, jutsuComponents } from "../module/rules/cast-checks.mjs";
-import { addSheetToggle } from "../module/dice/advantaged.mjs";
+import { addSheetToggle, sheetRollMode, rollGroup } from "../module/dice/advantaged.mjs";
 import { resolveMode } from "../module/rules/advantage.mjs";
 
 const jutsu = (components = {}, extra = {}) => ({ name: "Test", system: { rank: "D", keywords: [], description: "", components, live: {}, ...extra } });
@@ -45,4 +45,14 @@ test("sheet toggle counts as one source until switched off; a per-roll Dis cance
   assert.equal(resolveMode(adv), "advantage");
   assert.equal(resolveMode(adv, "disadvantage"), "normal");
   assert.deepEqual(addSheetToggle({ advantage: [], disadvantage: [] }, { flags: {} }), { advantage: [], disadvantage: [] });
+});
+
+test("sheet roll modes per group: d20, damage, healing, other; a legacy single value covers all", () => {
+  const actor = { flags: { n5e: { rollMode: { damage: "advantage", healing: "disadvantage" } } } };
+  assert.equal(sheetRollMode(actor, "d20"), "normal");
+  assert.equal(sheetRollMode(actor, "damage"), "advantage");
+  assert.deepEqual(addSheetToggle({ advantage: [], disadvantage: [] }, actor, "healing").disadvantage, ["Sheet toggle"]);
+  assert.deepEqual(addSheetToggle({ advantage: [], disadvantage: [] }, actor, "d20"), { advantage: [], disadvantage: [] });
+  assert.equal(sheetRollMode({ flags: { n5e: { rollMode: "advantage" } } }, "other"), "advantage");
+  assert.deepEqual(["attack", "save", "check", "damage", "healing", "recovery", "dice"].map(rollGroup), ["d20", "d20", "d20", "damage", "healing", "other", "other"]);
 });

@@ -32,3 +32,16 @@ King's additions (2026-11-13):
 `tests/cast-checks.test.mjs` has 4 tests.
 - `turn.test.mjs`: the economy reset now expects `attackOrJutsu` (attempt 1 failed on that expectation; attempt 2 passed).
 - Final: 310 pass, 2 skipped. Lint and check pass.
+
+## Tweak (King 2026-11-13), published 0.15.0-alpha.8: roll modes per group in the Effects tab
+
+| Function | File | Behaviour |
+| --- | --- | --- |
+| `ROLL_GROUPS` | `dice/advantaged.mjs` | `d20`, `damage`, `healing`, `other`. |
+| `rollGroup(kind)` | same | attack/save/check → d20; damage → damage; healing → healing; anything else (recovery, dice) → other. |
+| `sheetRollMode(actor, group)` | same | Reads `flags.n5e.rollMode.<group>`. A legacy single string from alpha.7 covers every group. |
+| `addSheetToggle(sources, actor, group)` (changed) | same | The source applies only to its group. `rollWithSpec` passes `d20`; `rollDice` passes `rollGroup(kind)`. |
+| `#onSetRollMode` (changed) | `applications/actor/character-sheet.mjs` | Takes `data-group`; stores only the groups that aren't Normal, in one update. |
+| Templates | `templates/actor/character/effects.hbs` (the NPC sheet shares it); headers | The "Roll modes" section moved to the top of the Effects tab; the header toggle was removed. |
+
+Tests: one more in `tests/cast-checks.test.mjs`, which passed on the first attempt. Final: 311 pass, 2 skipped.

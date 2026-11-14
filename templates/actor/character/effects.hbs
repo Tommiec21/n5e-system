@@ -1,5 +1,19 @@
 {{!-- Effects tab. Data: vm = effectsVM(actor): every Active Effect, grouped. --}}
 <section class="tab n5e-tab effects {{tab.cssClass}}" data-tab="effects" data-group="primary">
+  {{!-- Roll modes (King 2026-11-13): Advantage/Disadvantage per roll group until switched back to Normal. --}}
+  <div class="effect-group roll-modes">
+    <div class="section-head"><h2>Roll modes</h2></div>
+    {{#each rollModes}}
+      <div class="roll-mode-row" data-group="{{group}}">
+        <span class="name">{{label}}</span>
+        <span class="roll-mode" role="group" aria-label="{{label}}: roll mode">
+          <button type="button" class="{{#if dis}}on{{/if}}" data-action="setRollMode" data-group="{{group}}" data-mode="disadvantage" aria-pressed="{{#if dis}}true{{else}}false{{/if}}" {{#unless @root.editable}}disabled{{/unless}}>Dis</button>
+          <button type="button" class="{{#if normal}}on{{/if}}" data-action="setRollMode" data-group="{{group}}" data-mode="normal" aria-pressed="{{#if normal}}true{{else}}false{{/if}}" {{#unless @root.editable}}disabled{{/unless}}>Normal</button>
+          <button type="button" class="{{#if adv}}on{{/if}}" data-action="setRollMode" data-group="{{group}}" data-mode="advantage" aria-pressed="{{#if adv}}true{{else}}false{{/if}}" {{#unless @root.editable}}disabled{{/unless}}>Adv</button>
+        </span>
+      </div>
+    {{/each}}
+  </div>
   {{#each vm.groups}}
     <div class="effect-group">
       <div class="section-head"><h2>{{label}}</h2></div>

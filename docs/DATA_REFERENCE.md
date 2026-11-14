@@ -275,5 +275,5 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 | Field / flag | On | Meaning |
 | --- | --- | --- |
-| `flags.n5e.rollMode` = `advantage` / `disadvantage` | Actor | Sheet roll-mode toggle; absent means Normal |
+| `flags.n5e.rollMode = {d20, damage, healing, other}` (each `advantage` / `disadvantage`; missing = Normal) | Actor | Roll modes from the Effects tab (0.15.0-alpha.8). A single string from alpha.7 applies to all groups. |
 | `flags.n5e.economy.attackOrJutsu` | Actor | An attack or jutsu happened this turn (Shocked); reset at turn start |

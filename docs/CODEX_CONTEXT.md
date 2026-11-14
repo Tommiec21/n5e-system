@@ -286,3 +286,6 @@ King: advantage applies to any dice roll. The whole roll is rerolled, keeping th
 
 ## CAST1 — Claude, 2026-11-13
 Owner Claude; ownership released. Published v0.15.0-alpha.7. Pre-cast checks are in `rules/cast-checks.mjs`; Shocked is tracked through `economy.attackOrJutsu`. King's additions: a Dis/Normal/Adv toggle on every sheet (`flags.n5e.rollMode`, lasts until switched off), and Adv/Dis buttons beside every roll button on cards (that roll only). Any new roll button should use a selector covered by `dice/roll.mjs ROLL_BUTTONS` and read the click's modifier keys. Spec, limits and results: `docs/CAST1_SPEC.md`. Tests: 310 pass, 2 skipped; one expectation was updated after an intended economy change. Next ready batch: CONC1.
+
+## Roll-mode tweak — Claude, 2026-11-13
+King: the sheet toggle has per-group settings (D20, Damage, Healing, Other) and lives in the Effects tab. Published v0.15.0-alpha.8. `flags.n5e.rollMode` is now an object keyed by group. Use `dice/advantaged.mjs rollGroup/sheetRollMode/addSheetToggle(sources, actor, group)`. Tests: 311 pass, 2 skipped.

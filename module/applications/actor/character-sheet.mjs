@@ -37,6 +37,7 @@ import { restDialog } from "../../workflow/rest.mjs";
 import { tryEndCondition } from "../../workflow/conditions.mjs";
 import { changeFury, openNextGate, closeGates, placeMarks } from "../../workflow/trackers.mjs";
 import { revertLevel, removeClass, freshClassData } from "../../advancement/manager.mjs";
+import { ROLL_GROUPS, sheetRollMode } from "../../dice/advantaged.mjs";
 import { ruleToggles } from "../../rules/elements.mjs";
 import { addBackground } from "../../workflow/background.mjs";
 import { addClan } from "../../workflow/clan.mjs";
@@ -168,11 +169,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     context.editMode = this.editMode;
     context.editable = this.isEditable;
     context.isNPC = this.actor.type === "npc";
-    // Sheet roll-mode toggle (CAST1): Advantage/Disadvantage on every roll until switched off.
-    context.rollMode = this.actor.flags?.n5e?.rollMode ?? "normal";
-    context.rollAdv = context.rollMode === "advantage";
-    context.rollDis = context.rollMode === "disadvantage";
-    context.rollNormal = context.rollMode === "normal";
+    // Roll modes per group (Effects tab): Advantage/Disadvantage until switched back to Normal.
+    context.rollModes = Object.entries(ROLL_GROUPS).map(([group, label]) => {
+      const mode = sheetRollMode(this.actor, group);
+      return { group, label, adv: mode === "advantage", dis: mode === "disadvantage", normal: mode === "normal" };
+    });
     context.ruleToggles = ruleToggles(this.actor);
     context.tabs = this._prepareTabs("primary");
     return context;
@@ -425,11 +426,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   }
 
   /** Pencil toggle: edit mode shows editable fields, delete buttons and the raw field editor. */
-  /** Sheet roll-mode toggle: Advantage or Disadvantage on every roll until set back to Normal (King 2026-11-13). */
+  /** Roll-mode toggle for one group (d20, damage, healing, other), until set back to Normal (King 2026-11-13). */
   static async #onSetRollMode(event, target) {
-    const mode = target.dataset.mode;
-    if ( !["normal", "advantage", "disadvantage"].includes(mode) ) return;
-    await this.actor.update(mode === "normal" ? { "flags.n5e.-=rollMode": null } : { "flags.n5e.rollMode": mode });
+    const { mode, group } = target.dataset;
+    if ( !["normal", "advantage", "disadvantage"].includes(mode) || !(group in ROLL_GROUPS) ) return;
+    const current = Object.fromEntries(Object.keys(ROLL_GROUPS).map(g => [g, sheetRollMode(this.actor, g)]));
+    current[group] = mode;
+    const stored = Object.fromEntries(Object.entries(current).filter(([, m]) => m !== "normal"));
+    await this.actor.update(Object.keys(stored).length ? { "flags.n5e.==rollMode": stored } : { "flags.n5e.-=rollMode": null });
   }
 
   static #onToggleMode() {

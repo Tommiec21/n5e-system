@@ -98,7 +98,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const authored = contextualAdvantage(actor, spec, target);
   sources.advantage.push(...authored.advantage);
   sources.disadvantage.push(...authored.disadvantage);
-  addSheetToggle(sources, actor);
+  addSheetToggle(sources, actor, "d20");
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? click.mode);
   const sourceNote = sourcesNote(sources);

@@ -1,3 +1,13 @@
+## 0.15.0-alpha.8 — Roll modes per group in the Effects tab (King 2026-11-13)
+
+- The sheet's Advantage toggle moved from the header to a "Roll modes" section at the top of each character and NPC sheet's Effects tab.
+- It has four groups, each set separately to Dis / Normal / Adv until switched back:
+  - D20 rolls (attacks, saves, checks);
+  - Damage;
+  - Healing;
+  - Other dice (pool and feature dice, Short Rest dice).
+- A value set on 0.15.0-alpha.7 still applies to all four groups until changed.
+
 ## 0.15.0-alpha.7 — Pre-cast checks and roll-mode controls (CAST1)
 
 - **Casting is blocked, with the reason, when:**

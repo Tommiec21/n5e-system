@@ -29,19 +29,37 @@ export async function rollAdvantaged(formula, data = {}, mode = "normal") {
  */
 export async function rollDice(actor, formula, { target = null, data = null, base = "normal", ...spec } = {}) {
   const sources = actor ? contextualAdvantage(actor, { type: spec.kind, ...spec }, target) : { advantage: [], disadvantage: [] };
-  addSheetToggle(sources, actor);
+  addSheetToggle(sources, actor, rollGroup(spec.kind));
   // `base` is this roll's own choice (the card's Adv/Dis buttons, or Alt/Ctrl); it counts as one source.
   const mode = resolveMode(sources, base);
   const result = await rollAdvantaged(formula, data ?? actor?.getRollData?.() ?? {}, mode);
   return { ...result, sources };
 }
 
+/** Sheet roll-mode groups (King 2026-11-13), set in each sheet's Effects tab. */
+export const ROLL_GROUPS = Object.freeze({ d20: "D20 rolls", damage: "Damage", healing: "Healing", other: "Other dice" });
+
+/** Which group a roll belongs to. */
+export function rollGroup(kind) {
+  if ( !kind || ["attack", "save", "check", "d20"].includes(kind) ) return "d20";
+  if ( kind === "damage" ) return "damage";
+  if ( kind === "healing" ) return "healing";
+  return "other";
+}
+
+/** The sheet toggle for one group: "normal" | "advantage" | "disadvantage". A legacy single value covers every group. */
+export function sheetRollMode(actor, group) {
+  const stored = actor?.flags?.n5e?.rollMode;
+  const mode = typeof stored === "string" ? stored : stored?.[group];
+  return ["advantage", "disadvantage"].includes(mode) ? mode : "normal";
+}
+
 /**
- * The sheet's roll-mode toggle (King 2026-11-13): Advantage or Disadvantage on every roll until it is
- * switched back to Normal. Counts as one source.
+ * The sheet's roll-mode toggle for this roll's group (King 2026-11-13): Advantage or Disadvantage on
+ * every roll of that group until switched back to Normal. Counts as one source.
  */
-export function addSheetToggle(sources, actor) {
-  const mode = actor?.flags?.n5e?.rollMode;
+export function addSheetToggle(sources, actor, group = "d20") {
+  const mode = sheetRollMode(actor, group);
   if ( mode === "advantage" ) sources.advantage.push("Sheet toggle");
   else if ( mode === "disadvantage" ) sources.disadvantage.push("Sheet toggle");
   return sources;
