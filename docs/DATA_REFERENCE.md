@@ -293,3 +293,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `system.keywords` | Jutsu, clan, feat | Canonical camelCase keys; a keyword with a value is stored as `key:value` |
 | `system.category` | Feat item | Feature kind (`classFeature`, `classFeatureOption`, `clanFeature`, `clanFeatureOption`, `npc…`) or `feat` |
 | `system.keywords` (new) | Feat item | Feats: group keywords (`general`, `skill`, `chakra`, `ninjutsu`, `genjutsu`, `taijutsu`, `critical`, `clan`, `class`, `archetype`, `rare`) |
+
+## Changed in 0.16.0-alpha.2 (DATA1b)
+
+| Field | On | Meaning |
+| --- | --- | --- |
+| `system.keywords` (new) | Weapon | Includes the weapon's base keyword (`kunai`, `battleWire`) |
+| `system.weaponProficiencies` | Class | `category:group` pairs (`simple:blade`) or base weapon keys; whole categories are written out as every group. Free-choice text ("one exotic") is kept as text |
+| `system.grants.weaponProf` (derived) | Character, NPC | Every weapon pair and base key granted by classes and feats (feat entries `weapon.<pair or key>`) |
+| `system.proficient` | Weapon | `false` is now a manual override; otherwise proficiency is decided from `grants.weaponProf` |
+| Migration 4 `migrateWeapons` | World | Adds weapon base keywords and expands class weapon grants |

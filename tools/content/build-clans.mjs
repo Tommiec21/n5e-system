@@ -1,6 +1,7 @@
 /** Batched, deterministic clan packages from the user's Tsunade source transcription. */
 import fs from "node:fs";
-import { migrateItemData1 } from "../../module/migration/data1.mjs";
+import { migrateItemData1, migrateItemData1b } from "../../module/migration/data1.mjs";
+const migrateAll = d => migrateItemData1b(migrateItemData1(d) ?? d) ?? migrateItemData1(d);
 import path from "node:path";
 import crypto from "node:crypto";
 import { skills, abilities } from "../../module/config/core.mjs";
@@ -323,7 +324,7 @@ do {
 } while ( pruned );
 for ( const { data, file } of records.values() ) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, `${JSON.stringify(migrateItemData1(data) ?? data, null, 2)}\n`);
+  fs.writeFileSync(file, `${JSON.stringify(migrateAll(data) ?? data, null, 2)}\n`);
 }
 fs.writeFileSync(path.join(out, "roster.json"), `${JSON.stringify(roster.map(({ name, nation, line, batch }) => ({ name, nation, line, batch })), null, 2)}\n`);
 fs.writeFileSync(path.join(out, `batch-${batch}.json`), `${JSON.stringify({ batch, summary, issues }, null, 2)}\n`);

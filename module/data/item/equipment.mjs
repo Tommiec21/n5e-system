@@ -36,6 +36,7 @@ export class WeaponData extends TDM() {
       category: S.str({ initial: "simple" }),        // simple | martial | exotic
       weaponType: S.str({ initial: "melee" }),       // melee | ranged
       groups: S.set(),
+      keywords: S.set(),                             // base weapon keyword and other keywords (DATA1b)
       damage: S.obj({ die: S.str({ initial: "1d4" }), types: S.set(), versatile: S.str() }),
       properties: propertyMap(),
       range: S.obj({ normal: S.num(null, { min: 0 }), long: S.num(null, { min: 0 }) }),

@@ -1,3 +1,13 @@
+## 0.16.0-alpha.2 — Weapon proficiency (DATA1b, King 2026-11-13)
+
+- **Base weapon keywords.** Every weapon carries its own base keyword (`kunai`, `battleWire`, `fumaShuriken`...).
+- **Proficiency by category + group.** Classes and feats grant `category:group` pairs (`simple:blade`, `martial:power`) or a base weapon. Whole-category grants ("Simple") are written out as every group of that category.
+- A weapon with several groups needs only one matching pair. A weapon with no groups is matched by category alone.
+- Everyone is proficient with Kunai, Shuriken, Senbon and the Unarmed Strike. NPCs are always proficient.
+- Attack proficiency is now worked out from the actor's grants (`system.grants.weaponProf`). A weapon stored as not proficient stays that way as a manual override.
+- "One exotic weapon"-style choices stay as text for now.
+- **Migration.** World migration 4 adds the base keywords and expands class grants when the GM loads the world; the compendiums were updated the same way (8 files).
+
 ## 0.16.0-alpha.1 — Data model update (DATA1a, King 2026-11-13)
 
 - **Jutsu disciplines.**

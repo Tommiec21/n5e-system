@@ -15,7 +15,7 @@
  *   4. add a test in tests/migration.test.mjs.
  */
 import { isV31Actor, isV31Item, migrateV31Actor, migrateV31Item } from "./v31.mjs";
-import { migrateItemData1 } from "./data1.mjs";
+import { migrateItemData1, migrateItemData1b } from "./data1.mjs";
 
 export const SETTING = "migrationVersion";
 
@@ -23,8 +23,26 @@ export const SETTING = "migrationVersion";
 export const MIGRATIONS = [
   { id: 1, label: "V3.1 world actors and items -> 4.0", run: migrateWorldV31 },
   { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation },
-  { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel }
+  { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel },
+  { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons }
 ];
+
+/** Migration 4 (DATA1b): base weapon keywords; class weapon proficiencies as category + group pairs. */
+async function migrateWeapons(log) {
+  const failures = [];
+  const unlinked = game.scenes.contents.flatMap(sc => sc.tokens.contents.filter(t => !t.actorLink && t.actor).map(t => t.actor));
+  const items = [...game.items, ...[...game.actors, ...unlinked].flatMap(a => [...a.items])];
+  for ( const item of items ) {
+    const next = migrateItemData1b(item.toObject());
+    if ( !next ) continue;
+    const update = {};
+    if ( item.type === "weapon" ) update["system.keywords"] = next.system.keywords;
+    if ( item.type === "class" ) update["system.weaponProficiencies"] = next.system.weaponProficiencies;
+    try { await item.update(update, { n5eMigration: true }); log.push(`Weapons: ${item.uuid}`); }
+    catch (error) { failures.push({ uuid: item.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some weapons or classes could not be updated."); error.failures = failures; throw error; }
+}
 
 /**
  * Migration 3 (DATA1, King 2026-11-13). World items, actor items and unlinked token items:

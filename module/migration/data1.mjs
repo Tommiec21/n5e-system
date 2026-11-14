@@ -4,6 +4,7 @@
  * nothing. Used by world migration 3 and by tools/migrate-packs.mjs for the compendium sources.
  */
 import { canonicalKeywordList, keywordKey } from "../rules/keywords.mjs";
+import { baseWeaponKey, expandGrants } from "../rules/proficiency.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const DISCIPLINE_KEYWORDS = { ninjutsu: "nin", taijutsu: "tai", genjutsu: "gen" };
@@ -61,6 +62,36 @@ export function migrateFeatureKind(source) {
 export function migrateItemData1(source) {
   let out = source, changed = false;
   for ( const fn of [migrateJutsuDisciplines, migrateKeywords, migrateFeatureKind] ) {
+    const next = fn(out);
+    if ( next ) { out = next; changed = true; }
+  }
+  return changed ? out : null;
+}
+
+/** DATA1b: every weapon carries its base weapon keyword (Kunai → kunai, Battle Wire → battleWire). */
+export function migrateWeaponKeywords(source) {
+  if ( source?.type !== "weapon" ) return null;
+  const sys = source.system ?? {};
+  const base = baseWeaponKey(sys.identifier || source.name);
+  const keywords = list(sys.keywords);
+  if ( !base || keywords.includes(base) ) return null;
+  return { ...source, system: { ...sys, keywords: [...keywords, base] } };
+}
+
+/** DATA1b: class weapon proficiencies as category + group pairs (whole categories written out) or base weapons. */
+export function migrateClassWeaponGrants(source) {
+  if ( source?.type !== "class" ) return null;
+  const sys = source.system ?? {};
+  const before = list(sys.weaponProficiencies);
+  const after = expandGrants(before);
+  if ( same(before, after) ) return null;
+  return { ...source, system: { ...sys, weaponProficiencies: after } };
+}
+
+/** All DATA1b changes for one item source; null when nothing changes. */
+export function migrateItemData1b(source) {
+  let out = source, changed = false;
+  for ( const fn of [migrateWeaponKeywords, migrateClassWeaponGrants] ) {
     const next = fn(out);
     if ( next ) { out = next; changed = true; }
   }

@@ -310,3 +310,6 @@ Tests:
 - Proposed fix: the display group is Bukijutsu only when the default discipline is Taijutsu, and those 4 stay Ninjutsu with the Bukijutsu keyword (castable as Nin or Tai). This needs King's go-ahead to run a third attempt.
 ## DATA1a — Claude, 2026-11-13
 King approved the group fix and a third test attempt, which passed. Published v0.16.0-alpha.1 from `wip/data1a`, merged into main. Do not reintroduce `discipline: "buki"`, kebab-case keywords, `combination`, or the old feat categories as kinds. Use `rules/keywords.mjs` helpers. Content builders run `migrateItemData1`. Spec results: `docs/DATA1_SPEC.md`. Next: DATA1b (weapon base keywords and category + group proficiency).
+
+## DATA1b — Claude, 2026-11-13
+Published v0.16.0-alpha.2. Weapon proficiency is decided by `rules/proficiency.mjs isProficientWith` against `system.grants.weaponProf` (class and feat grants as `category:group` pairs or base keys). Don't store whole-category grants; use `expandGrants`. Content builders run `migrateItemData1` then `migrateItemData1b`. Next: DATA2 (Unarmed Strike item, clan stance recategorization: needs Q8 from King).

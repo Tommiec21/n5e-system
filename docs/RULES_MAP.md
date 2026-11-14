@@ -45,6 +45,7 @@
 | Stance effects only while active | `documents/active-effect.mjs isSuppressed` | 09 |
 | Feature choices, Extra Attack, Superior Assault crit, recovery requirements | `rules/features.mjs` | 12 |
 | Feat proficiency grants (Mastery when already proficient) | `creature.mjs _collectItemGrants` | 09 |
+| Weapon proficiency by `category:group` pair or base weapon; any one group of a multi-group weapon; Kunai, Shuriken, Senbon and Unarmed Strike for everyone | `rules/proficiency.mjs`, `creature.mjs grants.weaponProf`, `workflow/attack.mjs` | 05 |
 | Optional rules (every toggle) | `config/rules.mjs`, `rules-settings.mjs`, `applications/settings/rules-config.mjs` | various |
 | Per-item automation for imported content | `tools/content/automation.py` | 09, 12, 13 |
 | Areas: shapes, sizes from item/range/text, upcast growth, coverage, lifetimes | `rules/area.mjs`, `workflow/areas.mjs` | 04 |

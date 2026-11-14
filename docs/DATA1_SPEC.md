@@ -1,6 +1,6 @@
 # DATA1 function spec: data model update (disciplines, keywords, feature kinds, feats, weapon proficiency)
 
-Status: **King said "Start" (2026-11-13). DATA1a published 0.16.0-alpha.1. DATA1b and DATA2 to follow.**
+Status: **King said "Start" (2026-11-13). DATA1a published 0.16.0-alpha.1; DATA1b published 0.16.0-alpha.2. DATA2 to follow (needs Q8).**
 
 Implements King's 2026-11-13 data decisions (N5e-Context.md Section 12, "Data structure decisions" and the canonical keyword list), plus the rulings below.
 
@@ -114,3 +114,18 @@ One world migration (id 3) and a pack rewrite per release. Existing worlds updat
   - "Whole jutsu book … discipline totals" failed on attempts 1 and 2, so the process stopped. The work was saved to `wip/data1a` and a handoff written.
   - King approved the group fix and a third attempt, which passed.
   - New `tests/data1.test.mjs` (4 tests) passed on its first attempt. Final: 318 pass, 2 skipped. Lint and check pass.
+
+### DATA1b: published `v0.16.0-alpha.2`
+- **Built.**
+  - `rules/proficiency.mjs` (pure): `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith`.
+  - `WeaponData`: `keywords`.
+  - `creature.mjs _collectItemGrants`: `grants.weaponProf` collects class `weaponProficiencies` and feat `grants.proficiencies` entries starting `weapon.`, expanded to pairs.
+  - `workflow/attack.mjs`: proficiency comes from `isProficientWith`; a stored `proficient: false` still wins.
+  - `migration/data1.mjs`: `migrateWeaponKeywords`, `migrateClassWeaponGrants`, `migrateItemData1b`; runner migration 4 `migrateWeapons`; `tools/migrate-packs.mjs` and the content builders apply it.
+- **Differs from the spec.**
+  - The grants live in `system.grants.weaponProf` (derived), not a stored `system.traits.weaponProf`, beside the other derived grants.
+  - Proficiency is decided when attacking (`isProficientWith`) rather than written onto the weapon, so a stored `false` stays a manual override.
+  - A weapon with no groups is matched by category alone. NPCs are always proficient.
+  - Free choices such as "one exotic weapon" stay as text until a later batch adds the choice.
+  - The packs hold only one weapon item (Kunai); the Chapter 5 tables are not imported, so their base keywords arrive when they are.
+- **Tests.** New `tests/proficiency.test.mjs` (3 tests). One full-suite run, which passed on the first attempt: 321 pass, 2 skipped. Lint and check pass.

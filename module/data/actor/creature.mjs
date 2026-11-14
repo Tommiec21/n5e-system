@@ -44,6 +44,7 @@ import { staminaPool } from "../../rules/trackers.mjs";
 import { featureCritRange } from "../../rules/features.mjs";
 import { resolveFormula } from "../../rules/unarmed.mjs";
 import { rule } from "../../rules-settings.mjs";
+import { expandGrants } from "../../rules/proficiency.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 
 const F = () => foundry.data.fields;
@@ -390,7 +391,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       saves: new Set(), skills: new Set(), tools: new Set(), affinities: new Set(), keywordAccess: new Set(),
       mastery: [], hitDie: "", chakraDie: "", speed: 0, hijutsuAbilities: [], armor: null, reinforced: 0,
       blocking: 0, containerSlots: 0, bulk: 0, classItem: null, clanItem: null, backgroundItem: null,
-      maxRank: null, subclassItems: [], pools: [], scale: {}, profGrants: []
+      maxRank: null, subclassItems: [], pools: [], scale: {}, profGrants: [], weaponProf: new Set()
     };
     const containersSeen = new Set();
     const level = this.level;
@@ -407,6 +408,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           for ( const t of sys.tools?.fixed ?? [] ) g.tools.add(t);
           for ( const t of sys.tools?.chosen ?? [] ) g.tools.add(t);
           g.maxRank = sys.maxRankAt?.(sys.levels) ?? null;
+          // Weapon proficiency as category + group pairs or base weapons (DATA1b).
+          for ( const w of expandGrants(sys.weaponProficiencies) ) g.weaponProf.add(w);
           break;
         case "subclass":
           g.subclassItems.push(item);
@@ -471,7 +474,11 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       // Feats/features granting Mastery directly.
       for ( const target of sys.grants?.mastery ?? [] ) g.mastery.push({ target, source: item.name });
       // Feats granting a proficiency ("skill.ill", "tool.disguise"): Mastery instead when already proficient.
-      for ( const p of sys.grants?.proficiencies ?? [] ) g.profGrants.push({ target: p, source: item.name });
+      for ( const p of sys.grants?.proficiencies ?? [] ) {
+        // "weapon.simple:blade" / "weapon.katana": weapon proficiency (DATA1b); others are skill/tool grants.
+        if ( String(p).startsWith("weapon.") ) { for ( const w of expandGrants([String(p).slice(7)]) ) g.weaponProf.add(w); continue; }
+        g.profGrants.push({ target: p, source: item.name });
+      }
       // Bulk of carried physical items.
       if ( sys.bulk != null && sys.location !== "stored" ) g.bulk += (sys.bulk || 0) * Math.max(1, sys.quantity ?? 1);
     }

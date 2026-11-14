@@ -8,6 +8,7 @@
  * A natural roll in the crit range crits; crit damage doubles dice and the ability mod only.
  * Weapons with an Ammunition Die roll it on each use: 1-2 steps it down; reaching 0 removes the item.
  */
+import { isProficientWith } from "../rules/proficiency.mjs";
 import { breakdownTooltip } from "../view-models/common.mjs";
 import { Breakdown } from "../rules/breakdown.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
@@ -44,7 +45,8 @@ export function weaponAttackSpec(actor, weapon = null) {
     isRanged = ranged;
     ability = ("finesse" in props || "thrown" in props) ? (mod("dex") > mod("str") ? "dex" : "str") : (ranged ? "dex" : "str");
     label = weapon.name;
-    proficient = w.proficient !== false;
+    // Category + group proficiency (DATA1b); a stored false stays a manual override.
+    proficient = w.proficient !== false && isProficientWith(sys.grants?.weaponProf ?? [], { ...w, name: weapon.name }, { npc: actor.type === "npc" });
     die = w.damage?.die || "1d4";
     extra = [];
     // Stance die rules (Great Weapon Stance: reroll 1s and 2s on Heavy weapons' damage die).

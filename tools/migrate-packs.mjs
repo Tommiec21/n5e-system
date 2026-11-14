@@ -4,7 +4,9 @@
  */
 import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { migrateItemData1 } from "../module/migration/data1.mjs";
+import { migrateItemData1, migrateItemData1b } from "../module/migration/data1.mjs";
+
+const migrateAll = d => { const a = migrateItemData1(d) ?? d; const b = migrateItemData1b(a); return b ?? (a === d ? null : a); };
 
 const root = new URL("../packs/_source", import.meta.url).pathname;
 const files = [];
@@ -14,11 +16,11 @@ walk(root);
 const migrateDoc = doc => {
   let changed = false;
   if ( doc.system ) {
-    const next = migrateItemData1(doc);
+    const next = migrateAll(doc);
     if ( next ) { Object.assign(doc, next); changed = true; }
   }
   for ( const item of doc.items ?? [] ) {
-    const next = migrateItemData1(item);
+    const next = migrateAll(item);
     if ( next ) { Object.assign(item, next); changed = true; }
   }
   return changed;

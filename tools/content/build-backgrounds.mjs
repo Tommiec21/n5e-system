@@ -1,6 +1,7 @@
 /** Rebuild organized background content from the checked-in Chapter 3 transcription. */
 import fs from "node:fs";
-import { migrateItemData1 } from "../../module/migration/data1.mjs";
+import { migrateItemData1, migrateItemData1b } from "../../module/migration/data1.mjs";
+const migrateAll = d => migrateItemData1b(migrateItemData1(d) ?? d) ?? migrateItemData1(d);
 import path from "node:path";
 import crypto from "node:crypto";
 
@@ -34,7 +35,7 @@ const packs = {
 };
 function write(dir, name, data) {
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, `${name}.json`), `${JSON.stringify(migrateItemData1(data) ?? data, null, 2)}\n`);
+  fs.writeFileSync(path.join(dir, `${name}.json`), `${JSON.stringify(migrateAll(data) ?? data, null, 2)}\n`);
 }
 function folder(key, name, parent, dir) {
   write(dir, "_folder", { _id: id(key), _key: `!folders!${id(key)}`, name, type: "Item", folder: parent, sorting: "a", sort: 0, color: null });
