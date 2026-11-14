@@ -91,3 +91,14 @@
 | No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
 | Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
 | Incapacitated does not end concentration; upkeep auto-pays (no prompt) | `rules/turn-start.mjs` |
+
+# Multiplayer parity (0.14.0-alpha.1–2, OPS1)
+
+| Rule / capability | Code |
+| --- | --- |
+| Users change only what they own; the GM applies to NPCs (dnd5e/PF2e parity) | `automation/authority.mjs`, `workflow/apply-damage.mjs`, `workflow/effect-application.mjs` |
+| Owner intents: Allied NPCs, rations, reaction choices finish on the GM's client | `automation/owner-intents.mjs` |
+| Allied NPCs: player-summoned, owned and controlled; join combat | `workflow/allied.mjs`, `data/actor/npc.mjs allied` |
+| Concentration-dependent effects end with the concentration | `workflow/effect-application.mjs removeDependents` |
+| Attack target rows, DC visibility, concealed NPC descriptions | `rules/parity.mjs`, `dice/roll.mjs renderParityParts` |
+| GM roll requests | `workflow/roll-request.mjs`, `applications/enrichers.mjs` |

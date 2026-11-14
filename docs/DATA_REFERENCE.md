@@ -237,3 +237,16 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
   Sender claims are not authorization. Remote privileged changes require GM review; remote
   document deletion is unsupported. See [MAINTENANCE.md](MAINTENANCE.md).
 
+
+## Added in 0.14.0 (OPS1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `system.allied` | NPC (usually on a token delta) | Allied NPC: player-summoned and player-controlled |
+| `flags.n5e.allied = {ownerId, casterUuid, itemId}` | Token | Who summoned it and owns it |
+| `flags.n5e.intents.<id> = {type, data, at}` | Actor | A pending owner intent (written by an owner, processed once by the active GM) |
+| `flags.n5e.intentResults.<id> = {ok, result \| error}` | Actor | The intent's result; removed by the requester once read |
+| `flags.n5e.dependentOn = {actorUuid, itemId}` | ActiveEffect | Ends when that actor stops concentrating on that jutsu |
+| `flags.n5e.effectApplication = {effects, recipients, sourceUuid, concentrationItemId}` | ChatMessage | Effect-application card |
+| `flags.n5e.rollRequest = {type, key, dc, label, entries}` | ChatMessage | GM roll request |
+| `flags.n5e.roll.targets = [{uuid, name, ac}]`, `flags.n5e.roll.total` | ChatMessage | Attack target snapshot |

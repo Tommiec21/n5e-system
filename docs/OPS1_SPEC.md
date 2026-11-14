@@ -1,6 +1,6 @@
 # OPS1 function spec: multiplayer parity and Allied NPCs
 
-Status: **approved by King 2026-11-13; in progress (Claude).**
+Status: **approved by King 2026-11-13. OPS1a and OPS1b published; OPS1c needs reproduction steps (see Final results).**
 
 Decisions this spec implements (King, 2026-11-13; `PROGRESSION_PLAN.md` Sections 3 and 7):
 - Copy dnd5e 5.3.3 and PF2e exactly for player ↔ NPC interaction.
@@ -148,4 +148,42 @@ Tests: `tests/attack-targets.test.mjs`, `tests/visibility.test.mjs`, `tests/effe
 
 ## Final results
 
-_(filled in after each release)_
+### OPS1a: published `v0.14.0-alpha.1` (commit 67b60df; CI 43524598475 and Release 43524649994 succeeded)
+- **Built as specified.**
+  - `automation/authority.mjs`: `canModify`, `ownedRecipients`, `skippedNotice`, `isAllied`, `alliedOwnerId`.
+  - `automation/owner-intents.mjs`: `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents`.
+  - `workflow/allied.mjs`: `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents`.
+  - NPC field `system.allied` and rule `alliedSummoning`.
+- **Changed.**
+  - `spendRations` now finishes through an intent; `takeRations` and `registerRestIntents` were added.
+  - `sendDecision` uses an intent; `receiveDecision` and `askReactionLocally` were added. The reaction dispatcher asks whoever applies the damage.
+  - `onApplyClick` gained `hitRecipients` and `successfulHitReaction`, with no confirm dialog. Coordinated damage runs on the GM; an owner applying to their own creature resolves reactions locally through `resolveDamageReaction`.
+  - `summonTokens` and `dismissSummons` now wrap the Allied functions.
+  - `cleanupSummons` also removes combatants.
+  - Tracker effects use `applyOrOffer`.
+- **Removed:** `module/socket.mjs`, `automation/multiplayer.mjs`, every routed call site and `authoritative` option, the `multiplayerCoordination` rule, and the manifest socket.
+- **Built early from OPS1b:** `workflow/effect-application.mjs` (`applyOrOffer`, `effectApplicationCard`, `applyEffectFromCard`, `cleanEffectData`, `tagDependent`, `removeDependents`, `registerEffectApplication`).
+- **Item transfer:** PF2e's socket moves items between actors through the GM. The parity audit found this; `transferItem` is reserved as an intent type with validation, but its handler is not yet wired.
+- **Not built:** the separate `docs/MULTIPLAYER_PARITY.md`. Its findings are recorded in `MULTIPLAYER.md` and `PROGRESSION_PLAN.md` Section 7.
+- **Tests.**
+  - New `tests/parity.test.mjs`.
+  - Rewritten: summon test (`elements`), reaction window test, and the coordinated-damage fixture (the GM is now asked directly).
+  - Deleted with their code: `tests/multiplayer-workflows.test.mjs`, two socket tests in `maintenance`, and one relay test in `damage-trace`.
+  - Full-suite runs: attempt 1 had 9 expected failures from the removed APIs; attempt 2 had 1 failure, fixed with `canModify` falling back to `isOwner`; attempt 3 had 275 passing and 0 failing. A later new-test run passed first time. Final: 283 pass, 2 skipped. Lint and check pass.
+
+### OPS1b: published `v0.14.0-alpha.2` (commit 62dcc07; CI 43532489320 and Release 43532529562 succeeded)
+- **`rules/parity.mjs`:** `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `visibleRequestEntries`, `ATTACK_RESULT_LABELS`.
+- **`dice/roll.mjs`.**
+  - Attack cards snapshot targets and AC (`attackTargetSnapshot`).
+  - `renderParityParts` draws per-viewer target rows, hides DC and pass/fail lines, and conceals NPC descriptions.
+  - DC results moved to their own `dcLine`.
+  - Effect-application and roll-request buttons are wired.
+- **`workflow/roll-request.mjs`:** `postRollRequest`, `renderRollRequest`, `rollForRequest`. `applications/enrichers.mjs` adds a GM request icon to save and check links.
+- **Rules:** `attackRollVisibility` (default none), `challengeVisibility` (default player), `concealItemDescriptions` (default off).
+- **Deferred:** `bloodiedVisibility`. N5e has no on-token Bloodied marker, so the setting would do nothing; it was added to the Tier 3 list.
+- **Tests:** 2 more in `parity.test.mjs`, passing on the first attempt. Final: 285 pass, 2 skipped.
+
+### OPS1c: not reproduced, nothing changed
+- The "The action's item is no longer owned" error came from the GM relay's `prepareWorkflow`, which looked up the item on the GM's client. OPS1a deleted that path, so a player's Kunai attack now resolves its item on their own client.
+- The ActorDelta duplicate-item report could not be reproduced in Node; Foundry's ActorDelta merging can't be simulated faithfully. One candidate was noted: the world migration (`migration/runner.mjs`) migrates world actors only, not unlinked token deltas. Nothing was changed, to avoid guessing.
+- **Needed from King:** the steps that show the duplicate (which token, linked or unlinked, which action) and whether the missing-Kunai error still appears on 0.14.0-alpha.2.
