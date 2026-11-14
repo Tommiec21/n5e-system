@@ -23,7 +23,7 @@ test("whole jutsu book is imported exactly once with stable source identity and 
   assert.equal(new Set(docs.map(d => d._id)).size, 968);
   assert.equal(new Set(docs.map(d => d.system.identifier)).size, 968);
   // DATA1: Bukijutsu is a Taijutsu jutsu with the bukijutsu keyword.
-  const groupOf = d => (d.system.keywords.includes("bukijutsu") ? "buki" : d.system.discipline);
+  const groupOf = d => (d.system.discipline === "tai" && d.system.keywords.includes("bukijutsu") ? "buki" : d.system.discipline);
   for ( const [disc, count] of Object.entries({ nin: 403, gen: 167, tai: 146, buki: 252 }) ) assert.equal(docs.filter(d => groupOf(d) === disc).length, count);
   const sourceLines = new Set();
   for ( const doc of docs ) {

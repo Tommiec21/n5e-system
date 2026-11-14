@@ -60,7 +60,11 @@ export function hasKeyword(item, key, value = undefined) {
 }
 
 /** Bukijutsu is a keyword on a Taijutsu jutsu (King 2026-11-13). */
-export const isBukijutsu = item => hasKeyword(item, "bukijutsu") || item?.system?.discipline === "buki";
+/** Bukijutsu: a Taijutsu with the bukijutsu keyword (King 2026-11-13), or a pre-migration "buki" jutsu. */
+export const isBukijutsu = item => item?.system?.discipline === "buki" || (item?.system?.discipline === "tai" && hasKeyword(item, "bukijutsu"));
+
+/** Display group for a raw source or document: buki for Bukijutsu, otherwise the discipline. */
+export const jutsuGroup = item => (isBukijutsu(item) ? "buki" : item?.system?.discipline ?? "");
 
 /** Feat group keywords (King 2026-11-13: all feats are one Feats group; these keep them apart). */
 export const FEAT_KEYWORDS = Object.freeze(["general", "skill", "chakra", "ninjutsu", "genjutsu", "taijutsu", "critical", "clan", "class", "archetype", "rare"]);

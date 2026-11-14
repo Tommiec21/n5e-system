@@ -59,9 +59,13 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     return this.discipline === "buki" ? "tai" : this.discipline;
   }
 
-  /** Display group: Bukijutsu (a Taijutsu with the bukijutsu keyword) or the discipline. */
+  /**
+   * Display group: Bukijutsu when the main discipline is Taijutsu and it has the bukijutsu keyword
+   * (King 2026-11-13); a Ninjutsu that also lists Bukijutsu stays in the Ninjutsu group.
+   */
   get group() {
-    return this.keywords?.has?.("bukijutsu") || this.discipline === "buki" ? "buki" : this.discipline;
+    if ( this.discipline === "buki" ) return "buki";
+    return this.discipline === "tai" && this.keywords?.has?.("bukijutsu") ? "buki" : this.discipline;
   }
 
   /** Every listed discipline (counts as each for known lists, swaps, prerequisites and learning limits). */

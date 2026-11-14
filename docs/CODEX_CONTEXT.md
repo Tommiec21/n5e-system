@@ -295,3 +295,6 @@ Owner Claude; ownership released. Published v0.15.0-alpha.9. Incapacitation ends
 
 ## Q2 ruling and DATA1 spec — Claude, 2026-11-13
 King: background features become clan features. All feats form one Feats group, with their old categories kept as keywords. `docs/DATA1_SPEC.md` is proposed for approval with open questions Q7 (keyword text storage) and Q8 (clan stance mapping). Do not start DATA1 until King approves.
+
+## DATA1a — Claude, 2026-11-13
+King approved the group fix and a third test attempt, which passed. Published v0.16.0-alpha.1 from `wip/data1a`, merged into main. Do not reintroduce `discipline: "buki"`, kebab-case keywords, `combination`, or the old feat categories as kinds. Use `rules/keywords.mjs` helpers. Content builders run `migrateItemData1`. Spec results: `docs/DATA1_SPEC.md`. Next: DATA1b (weapon base keywords and category + group proficiency).

@@ -7,10 +7,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `clan.mjs` | 78 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
-| `eligibility.mjs` | 52 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
+| `clan.mjs` | 79 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
+| `eligibility.mjs` | 53 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
 | `manager.mjs` | 184 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
-| `steps.mjs` | 211 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
+| `steps.mjs` | 212 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
 
 ## module
 
@@ -45,7 +45,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `enrichers.mjs` | 175 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
-| `level-up.mjs` | 267 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 268 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 57 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `coerceListInputs` |
 | `sheets.mjs` | 205 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 
@@ -99,7 +99,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
-| `character.mjs` | 150 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
+| `character.mjs` | 157 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
 | `combat.mjs` | 239 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
 | `condition-text.mjs` | 181 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 197 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
@@ -139,9 +139,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-options.mjs` | 189 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
+| `character-options.mjs` | 190 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
 | `equipment.mjs` | 145 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
-| `jutsu.mjs` | 155 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
+| `jutsu.mjs` | 171 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
 
 ## module/dice
@@ -167,7 +167,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `runner.mjs` | 184 | World migration runner. | `SETTING`, `MIGRATIONS`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
+| `data1.mjs` | 69 | Data model update (pure; DATA1, King 2026-11-13). | `migrateJutsuDisciplines`, `migrateKeywords`, `FEATURE_KIND_MAP`, `migrateFeatureKind`, `migrateItemData1` |
+| `runner.mjs` | 208 | World migration runner. | `SETTING`, `MIGRATIONS`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
 | `v31.mjs` | 538 | V3.1 (n5e 0.6.x, dnd5e-derived data) -> N5e 4.0 data mapping. | `isV31Item`, `isV31Actor`, `guessRank`, `migrateV31Item`, `migrateV31Actor` |
 
 ## module/rules
@@ -182,12 +183,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `authored-reactions.mjs` | 32 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 47 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
-| `browser.mjs` | 204 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
+| `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
 | `cast-checks.mjs` | 60 | Pre-cast checks (pure; CAST1). | `jutsuComponents`, `castBlockers` |
 | `cast-options.mjs` | 142 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 167 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 169 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
 | `condition-lifecycle.mjs` | 105 | Condition lifecycle (pure). | `defaultDuration`, `conditionTurnStart`, `conditionTurnEnd`, `removalOptions`, `removalResult`, `resistsAny` |
@@ -204,6 +205,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `expiry.mjs` | 41 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
+| `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
 | `progression.mjs` | 95 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
 | `reactions.mjs` | 18 | Reaction decisions only: accepting a window never applies an effect or spends a resource. | `reactionDeadline`, `reactionPhase`, `decideReaction` |
@@ -229,7 +231,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character.mjs` | 548 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
+| `character.mjs` | 550 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 390 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
 | `common.mjs` | 150 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
@@ -240,7 +242,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `activity-buttons.mjs` | 431 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 432 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
@@ -248,7 +250,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 125 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackWithWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
-| `background.mjs` | 99 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
+| `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 149 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 198 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
 | `clan.mjs` | 84 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |

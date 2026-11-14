@@ -1,3 +1,21 @@
+## 0.16.0-alpha.1 — Data model update (DATA1a, King 2026-11-13)
+
+- **Jutsu disciplines.**
+  - A jutsu can list several disciplines (`system.disciplines`).
+  - Bukijutsu jutsu are now Taijutsu jutsu with the Bukijutsu keyword; sheets, cards, level-up and the Compendium Browser still show a Bukijutsu group.
+  - Hijutsu keep every discipline they list.
+  - Four Ninjutsu that also list Bukijutsu stay in the Ninjutsu group.
+- **Keywords.**
+  - One naming style (camelCase, like `fireRelease`): `main-branch` becomes `mainBranch`.
+  - Nine wrongly joined keywords are split, and stimulus forms are plain stimuli (`genjutsu-visual` becomes Visual).
+  - Combination is removed.
+  - Keywords with a value are stored as `key:value` (for example `deadly:1`).
+- **Feature kinds.**
+  - Class Feature, Class Feature Option, Clan Feature, Clan Feature Option, Feat, plus reserved NPC kinds.
+  - Background features are Clan Features.
+  - All feats are one Feats group; their old categories (General, Skill, Ninjutsu…) are keywords that keep them apart in level-up, background feat picks, the Features tab and the browser.
+- **Migration.** World migration 3 updates world items, character items and unlinked tokens when the GM loads the world. The compendiums were updated the same way (2,682 files), and the content import scripts now produce the new shape.
+
 ## 0.15.0-alpha.9 — Concentration (CONC1)
 
 - An incapacitated creature loses all concentration at once (Incapacitated, Stunned, Unconscious, Dying, Dead, Petrified). A card lists what ended. The jutsu's areas, summons and dependent effects end with it.
