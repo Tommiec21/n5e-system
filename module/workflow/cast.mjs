@@ -184,7 +184,18 @@ export async function postCastCard(actor, item, plan) {
     extras.push(`<p class="note"><b>${esc(r.label)}</b>: rolled ${roll.total}. ${esc(r.note)}</p>`);
   }
   for ( const n of plan.notes ?? [] ) extras.push(`<p class="note">${esc(n)}</p>`);
-  for ( const [k, v] of Object.entries(plan.pools) ) {
+  // CARD1d: riders armed in the dialog go onto the card; a rider that rolls its pool die rolls it once
+  // here (its amount is then left out of the generic pool roll below).
+  let riderEntries = [], rolledPools = {};
+  if ( plan.riders?.length ) {
+    const { castRiderEntries } = await import("./riders.mjs");
+    const got = await castRiderEntries(actor, { kind: "jutsu", discipline: castAs }, plan.riders);
+    riderEntries = got.entries;
+    rolledPools = got.rolledPools;
+    for ( const n of got.notes ) extras.push(`<p class="note">${esc(n)}</p>`);
+  }
+  for ( const [k, total] of Object.entries(plan.pools) ) {
+    const v = total - (rolledPools[k] ?? 0);
     const die = actor.system.resources?.[k]?.die;
     if ( !die || !v ) continue;
     const roll = await createN5eRoll(`${v}${die}`).evaluate();
@@ -206,6 +217,11 @@ export async function postCastCard(actor, item, plan) {
   // Single action card (CARD1): this cast card collects the rolls made from its buttons.
   const card = cardFlag({ kind: "jutsu", actor, item, activities, area: !!areaOf(j, { rank: plan.rank }),
     concentration: !!plan.concentration, rank: plan.rank, discipline: castAs });
+  if ( card && riderEntries.length ) {
+    const { withRiderSections } = await import("./riders.mjs");
+    card.riders = riderEntries.map(e => ({ ...e, targetMode: "each" }));
+    card.sections = withRiderSections(card.sections, card.riders, activities.filter(a => a.type === "save").length);
+  }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,
     flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs }, ...(card ? { card } : {}) } } });

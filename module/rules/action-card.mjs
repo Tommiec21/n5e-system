@@ -15,7 +15,7 @@ import { targetOutcomes } from "./resolution.mjs";
 import { attackTargetRows, ATTACK_RESULT_LABELS } from "./parity.mjs";
 
 export const CARD_KINDS = Object.freeze(["jutsu", "attack", "feature"]);
-export const SECTION_ORDER = Object.freeze(["attack", "area", "saves", "damage", "effects", "reactions", "concentration"]);
+export const SECTION_ORDER = Object.freeze(["attack", "area", "saves", "damage", "effects", "riders", "reactions", "concentration"]);
 const SAVE_LABELS = ["Critical Failure", "Failure", "Success", "Critical Success"];
 const list = v => (Array.isArray(v) ? v : []);
 
@@ -75,7 +75,7 @@ export function resultsFromLinked(flags = {}, messageId = "") {
   if ( effects ) {
     for ( const r of list(effects.recipients) ) {
       if ( r?.actorUuid ) out.push({ section: "effects", targetUuid: r.actorUuid,
-        result: { messageId, effects: list(r.effects).map(e => ({ uuid: e.uuid, label: e.label })), undone: !!flags.undone } });
+        result: { messageId, effects: list(r.effects).map(e => ({ uuid: e.uuid, label: e.label, source: e.source ?? "" })), undone: !!flags.undone } });
     }
   }
   return out;
@@ -186,7 +186,9 @@ export function cardTargetRows(card, results = card?.results ?? {}, { visibility
         concentration: applied.concentration ?? null } : null,
       saveMessage: save?.messageId ?? null,
       effects: effects.flatMap(e => e.effects.map(x => x.label)),
-      effectMessages: effects.map(e => e.messageId)
+      effectMessages: effects.map(e => e.messageId),
+      // CARD1b/1d: which buttons were already applied (src:i:j, act:i, rider ids), so each shows once.
+      effectSources: effects.flatMap(e => e.effects.map(x => x.source).filter(Boolean))
     };
   });
 }

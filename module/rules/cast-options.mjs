@@ -15,12 +15,17 @@
  *   effect           an activity effect for the card (Hellrend: targets' DR −2 per Pyroclasm, @amount)
  *   roll             a die rolled when cast, shown with the note (Devastation: 1d6)
  *   note             text on the cast card (@amount and @rankValue are filled in)
+ *   rider            a CARD1d rider armed by this option (rules/riders.mjs): it goes onto the action card
+ *   appliesTo also takes natureRelease (any nature release keyword), inflictsCondition (the jutsu can
+ *   inflict a condition) and inflictsTag (one of its conditions has this tag, e.g. "elemental").
  *   Formulas may use @amount (pool spent), @rankValue (cast rank: D 1 ... S 5), lvl(...) and @level.
  */
 import { rankValue } from "./progression.mjs";
 import { resolveFormula } from "./unarmed.mjs";
 import { choiceOf } from "./features.mjs";
 import { activeStance } from "./unarmed.mjs";
+import { NATURE_RELEASES } from "./riders.mjs";
+import { conditions as CONDITIONS } from "../config/conditions.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const kwSet = j => (j.system.keywords instanceof Set ? j.system.keywords : new Set(j.system.keywords ?? []));
@@ -71,6 +76,11 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null, 
     if ( a.activation && jutsu.system.activation?.type !== a.activation ) continue;
     if ( a.requiresDamage && !hasDamage(jutsu, activities) ) continue;
     if ( a.requiresHealing && !hasHealing(jutsu, activities) ) continue;
+    // CARD1d rider filters.
+    if ( a.natureRelease && !NATURE_RELEASES.some(k => kwSet(jutsu).has(k)) ) continue;
+    const inflicted = activities.flatMap(x => x.inflicts ?? []).filter(x => x?.kind === "condition");
+    if ( a.inflictsCondition && !inflicted.length ) continue;
+    if ( a.inflictsTag && !inflicted.some(x => (CONDITIONS[x.key]?.tags ?? []).includes(a.inflictsTag)) ) continue;
     // Only while in a stance of this category (Paths of Perfection: "while you are in a Taijutsu stance").
     if ( a.stance && !stanceIs(actor, a.stance) ) continue;
     if ( o.requiresState && !hasState(actor, o.requiresState) ) continue;
@@ -98,7 +108,7 @@ export function halveDice(formula) {
  * @param {string} rank         cast rank
  */
 export function applyCastOptions(actor, jutsu, chosen, available, rank) {
-  const res = { subtract: 0, pools: {}, damage: [], heals: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [] };
+  const res = { subtract: 0, pools: {}, damage: [], heals: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [], riders: [] };
   const area = !!jutsu.system.target?.area?.shape;
   for ( const c of chosen ) {
     const opt = available.find(o => o.id === c.id);
@@ -126,6 +136,8 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
       res.effects.push({ label: o.effect.name || opt.label, effect: { ...o.effect,
         changes: (o.effect.changes ?? []).map(ch => ({ ...ch, value: sub(ch.value) })) } });
     }
+    // CARD1d: a rider armed in the cast dialog goes onto the action card (its die is rolled there).
+    if ( o.rider ) res.riders.push({ id: opt.id, label: opt.label, rider: o.rider, cost: o.cost ?? null, amount });
     if ( o.roll ) res.rolls.push({ label: opt.label, formula: o.roll, note: o.note ?? "" });
     else if ( o.note ) res.notes.push(`${opt.label}: ${sub(o.note)}`);
     if ( o.oncePerTurn ) res.update[`flags.n5e.optionTurn.${opt.id}`] = "@now";

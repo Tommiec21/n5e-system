@@ -197,3 +197,23 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
   - Rider saves fold into the triggering source's save, with its ability and DC. With no source save, the player picks one rider save. The rule applies universally.
   - The design is updated: the event save (2b) replaces separate rider saves, `eventSave` goes on the card, the stacking order is adjusted, and new tests are listed.
 - 2026-11-14 Claude: King answered Q-CD5 (additive ranks), Q-CD6 (agreed), Q-CD7 (b, warning), Q-CD8 (a, one choice), Q-CD9 (a, owner rerolls) and Q-CD10 (reactions later; keep deployments lean). Plan updated; awaiting the go-ahead for CARD1d-a.
+- 2026-11-14 Claude: **CARD1d-a started (King: "Start Card1d").**
+  - **King, mid-build:** build a workflow that future rider effects from any class can use, rather than authoring every feature piece by piece. So CARD1d-a delivers the engine plus the authoring workflow: a guide (`docs/RIDERS.md`), a validator, and a coverage report. The seven starter riders serve as worked examples.
+  - **Pure rules** (new `rules/riders.mjs`, shared core):
+    - `riderFits`, `triggerRiders`, `targetFacts`, `triggered`;
+    - `eventSave` (one save per event);
+    - `riderOnTarget` (adds, applications, Specialized warning; chosen targets skip the per-row trigger);
+    - `adjustedInflicts` (Q-CD5 additive, then cap), `riderEntry`, `resolveAmount`;
+    - `validateRider`.
+  - **Cast options** (`rules/cast-options.mjs`): new filters `natureRelease`, `inflictsCondition` and `inflictsTag`; a chosen option with `rider` goes into `plan.riders`.
+  - **Workflow** (new `workflow/riders.mjs`):
+    - cast riders written onto the cast card, rolling their pool die once there;
+    - trigger riders: "Use <rider>", pay, target pick (one/chosen), one condition choice (Q-CD8), once per turn;
+    - Cancel refunds the cost if nothing has been applied;
+    - the event-save choice and the per-target event-save roll;
+    - per-target rider applications (conditions, states and effects with `expires`; limited marks drop the oldest).
+  - **Card (`workflow/action-card.mjs`):**
+    - Riders bar and section;
+    - the action's own "Apply <condition>" shows the riders' added ranks;
+    - every applied button is recorded with its source and shows once (`src:i:j`, `act:i`, rider ids).
+  - **Deviation from the plan:** rider uses are written straight onto the card by its author (or a GM) instead of through a separate linked note. The card is the author's own message, so no relay is needed.

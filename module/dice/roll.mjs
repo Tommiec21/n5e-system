@@ -331,7 +331,7 @@ export function onRenderChatMessage(message, html) {
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
   // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
   actionCardModule?.renderActionCard(message, html);
-  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck], [data-n5e-rider-use], [data-n5e-rider-cancel], [data-n5e-rider-eventsave], [data-n5e-rider-save], [data-n5e-rider-apply]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });
