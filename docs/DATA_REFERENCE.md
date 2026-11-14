@@ -392,3 +392,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- | --- |
 | `game.n5e.api.fall(actor, feet)` | API | Posts the fall damage card (Option A) |
 | `flags.n5e.fall` | Chat message | `{feet, dice}` on a fall damage card |
+
+## Added in 0.25.0-alpha.1 (CLASH1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.clash` | Clash card | `{skill, contests, triggerDiscipline, a, b}`; sides `{actorUuid, name, item, rank, bonus, masteryRanks, advantage}` |
+| Roll `flags.n5e.roll.source` = Clash card id | Clash rolls | Each side's checks, read by the card per actor |
+| `data-n5e-clash`, `data-n5e-clash-roll`, `data-n5e-clash-lose` | Chat buttons | Start a clash; roll a side; apply the loss |

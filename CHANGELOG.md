@@ -1,3 +1,17 @@
+## 0.25.0-alpha.1 — Jutsu Clash (CLASH1; King approved 2026-11-14)
+
+- **Clash button** on cast cards of Clash-keyword jutsu. The defender's owner clicks it with their creature selected and picks one of its Clash jutsu (concentrated ones first).
+- **Clash card.**
+  - Both sides roll the triggering jutsu's discipline skill: Ninjutsu → Ninshou, Taijutsu → Martial Arts, Genjutsu → Illusions.
+  - +1 Mastery rank (up to rank 3) for each rank higher.
+  - The superior Release (Fire > Wind > Lightning > Earth > Water > Fire) rolls at advantage.
+  - Best of 3 when both jutsu are B-Rank or higher.
+  - Each owner rolls only their own side, and the card updates as rolls come in.
+- **Result.**
+  - Win: the winner's jutsu applies, and the loser's is dispelled with an **Apply Concussed 1 + Dazed** button for the loser.
+  - Draw (a tie, or both sides auto-winning): both jutsu are dispelled and no one suffers any effects.
+  - The card reminds that saves wait until the clash is resolved.
+
 ## 0.24.0-alpha.1 — Genjutsu Stimuli and Unaware (GEN1; King approved 2026-11-14)
 
 - **Stimuli immunity.** A creature is immune to a Genjutsu when it is immune to every one of the jutsu's Stimuli:

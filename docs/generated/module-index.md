@@ -157,7 +157,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 74 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 117 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 418 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 429 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -197,6 +197,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
 | `change-keys.mjs` | 179 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
 | `condition-lifecycle.mjs` | 105 | Condition lifecycle (pure). | `defaultDuration`, `conditionTurnStart`, `conditionTurnEnd`, `removalOptions`, `removalResult`, `resistsAny` |
@@ -267,8 +268,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 157 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
-| `cast.mjs` | 209 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
+| `cast.mjs` | 211 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
 | `clan.mjs` | 84 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
+| `clash.mjs` | 137 | Jutsu Clash workflow (CLASH1). | `clashButton`, `startClash`, `renderClash`, `rollClash`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
 | `conditions.mjs` | 102 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |

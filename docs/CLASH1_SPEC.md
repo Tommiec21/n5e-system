@@ -1,6 +1,6 @@
 # CLASH1 function spec: Jutsu Clash
 
-Status: **approved by King 2026-11-14 ("Begin work I approve these"). In progress.** Release target `0.25.0-alpha.1`.
+Status: **approved by King 2026-11-14 ("Begin work I approve these"). Published `0.25.0-alpha.1`.**
 
 Plan row 13: Clash contested workflow, rank bonus, best of 3, elemental advantage (Q3).
 
@@ -49,3 +49,14 @@ After each function, add a line to the progress log and push.
     - `registerClashHooks`: re-renders the card when its rolls arrive.
   - `dice/roll.mjs` renders and binds the buttons and loads the module at startup with the resolution module.
   - Suite green. Next: tests, then release 0.25.0-alpha.1.
+- 2026-11-14 Claude: **Tests done.** New `tests/clash.test.mjs` (4 tests) passed on the first attempt: 362 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+Published `v0.25.0-alpha.1`. F1–F5 were built as specified.
+- **Interpretation to confirm:** in a best of 3 where tied contests leave neither side with two wins (for example 1–0 with two ties), the result is a Draw, since the book says only that two or more wins take the clash.
+- **Limits.**
+  - The defender's jutsu uses its base rank (a concentrated jutsu's upcast rank isn't stored).
+  - Dispelling the losing jutsu and the area-save rules are notes for the table.
+  - Auto-win features are supported by the rules function but have no button yet.
+  - Arts (S-Rank + 1) aren't modelled.

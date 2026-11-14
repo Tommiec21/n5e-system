@@ -346,3 +346,6 @@ Published v0.23.0-alpha.1. `dc:<ability>` skill actions use `standardDC` (the ta
 
 ## GEN1 — Claude, 2026-11-14 (King approved)
 Published v0.24.0-alpha.1. Stimuli immunity: `rules/stimuli.mjs genjutsuImmunity(item.system.stimuli, creatureFacts(actor))`, used by the cast card's save and attack buttons (only cast as Genjutsu). Next (approved): CLASH1.
+
+## CLASH1 — Claude, 2026-11-14 (King approved)
+Published v0.25.0-alpha.1. Clash rules are in `rules/clash.mjs`; the card is in `workflow/clash.mjs` (loaded at startup with the resolution module). All four approved batches (SKILL1b, ENV1b, GEN1, CLASH1) are done. Waiting for King: his review of RES1/POS1/ENV1a/SKILL1, and the next batch choice (CARD1 spec or Tier 3).
