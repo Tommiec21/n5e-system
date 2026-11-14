@@ -1,6 +1,6 @@
 # CARD1 function spec: single action card
 
-Status: **King answered Q-CD1–Q-CD4 on 2026-11-14. Awaiting King's approval of the spec before any build.**
+Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). Building CARD1a.**
 
 Plan row 10b (King 2026-11-13). One chat card per attack, jutsu or feature. Its sections fill in as buttons are pressed, SW5e style:
 - attack, with hit or miss per target;
@@ -111,3 +111,16 @@ Still to confirm with the approval: the `actionCard` setting's default. Proposed
 
 - 2026-11-14 Claude: spec written; awaiting King's approval and answers to Q-CD1–Q-CD4.
 - 2026-11-14 Claude: King answered Q-CD1 (A), Q-CD2 (all three), Q-CD3 (world setting) and Q-CD4 (damage and effects); the spec is updated. Awaiting approval to build.
+- 2026-11-14 Claude: **Approved; building CARD1a.**
+  - **Design for CARD1a:** a layer over the existing handlers, which stay the source of truth for rolls, Dice So Nice, roll modes and Will of Fire.
+    - The action card is the cast card, the feature card, or (weapon attacks and strikes) the attack roll itself, with `flags.n5e.card` added.
+    - Rolls made from its buttons stay linked messages (`roll.source`, `damage.originUuid`, and `damageApplication.sourceUuid` → damage → card).
+    - The author records them in the card; other users go through the GM (`cardResult`). Recorded linked messages collapse to one line.
+- 2026-11-14 Claude: **A1–A3 done.**
+  - New pure `rules/action-card.mjs` (shared core):
+    - `cardSections`, `resultsFromLinked`, `addCardResult` (attack and damage once per card; saves and applications once per target; an undone application can be replaced);
+    - `mergedResults` (display fallback with no GM);
+    - `cardTargetRows` (hidden hit/miss stays hidden, and so does its suggested share);
+    - `sectionStates`.
+  - Small fix in `workflow/apply-damage.mjs` `onApplyClick`: the damage message's uuid now travels as `rollTrace.sourceUuid`. Before, only the coordinated path set it, so "View damage roll" on ordinary apply cards had nothing to open.
+  - Next: A4 (setting, card flags at the three entry points), A4b (`cardResult` intent).

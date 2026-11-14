@@ -239,7 +239,10 @@ export async function onApplyClick(message, btn, event) {
   }
   if ( d.n5eApply ) {
     // A per-target row (RES1) applies to its own creature, like a card with a fixed target.
-    const data = { ...(message.getFlag("n5e", "damage") ?? {}), ...(d.target ? { targetUuid: d.target } : {}) };
+    const flags = message.getFlag("n5e", "damage") ?? {};
+    // The damage card's uuid travels with the application (view-roll button; CARD1 links the summary to its card).
+    const data = { ...flags, ...(flags.rollTrace ? { rollTrace: { ...flags.rollTrace, sourceUuid: flags.rollTrace.sourceUuid ?? message.uuid ?? null } } : {}),
+      ...(d.target ? { targetUuid: d.target } : {}) };
     if ( rule("coordinatedDamage") && d.n5eApply !== "heal" ) {
       const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
       const recipients = fixed ? ownedRecipients([fixed], game.user) : { owned: selectedActors(), skipped: [] };
