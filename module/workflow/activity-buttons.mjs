@@ -53,6 +53,7 @@ import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
+import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
 import { resolveFormula, unarmedSpec } from "../rules/unarmed.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
@@ -335,8 +336,11 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         rollMetadata.push({ formula: crit ? critFormula(formula, abilityMod) : formula, normalFormula: formula, abilityMod });
         instances.push({ amount: roll.total, type: p.type });
       }
-      const total = instances.reduce((t, i) => t + i.amount, 0);
       const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };
+      const total = instances.reduce((t, i) => t + i.amount, 0);
+      // Weakened (−4 per rank) and Exhaustion (−1 per rank, once per roll) on the damage this creature
+      // deals: stored with the card and taken off when applied (rules/damage-trace.mjs damageFromMessage).
+      const dealtPenalty = dealtDamagePenalty(actor);
       if ( coatings.length ) await weapon.update({ "flags.n5e.coatings": spendCoatings(coatings) });
       // Binding Fury Stance: the first weapon damage each turn grants Fury (no-op otherwise).
       if ( d.weapon && actor?.isOwner ) await import("./trackers.mjs").then(m => m.onWeaponDamage(actor));
@@ -350,7 +354,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           </header>
           ${diceHTML}
           ${applyButtons()}</div>`,
-        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
+        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }
     case "save": {
       const dc = Number(d.dc);
@@ -381,11 +385,13 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "heal": {
       const roll = await createN5eRoll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
+      // Exhaustion: −1 per rank once per roll (King A7).
+      const healed = exhaustedRollTotal(roll.total, caster);
       const pool = d.pool || "hp";
       const names = [];
       for ( const t of healingTargets ?? targetsOrSelf(caster) ) {
         if ( !t.isOwner ) continue;
-        const result = await applyHealing(t, roll.total, pool, { locked: true });
+        const result = await applyHealing(t, healed, pool, { locked: true });
         if ( result.blocked ) ui.notifications.warn(`${t.name}: ${result.blocked}`);
         else names.push(t.name);
       }

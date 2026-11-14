@@ -274,3 +274,6 @@ Owner Claude; ownership released. Published v0.15.0-alpha.2. Timed effects expir
 
 ## Q6 ruling — Claude, 2026-11-13
 King: out of combat, "end of next turn" conditions (Staggered, Dazed, Berserk, Confused, Slowed) end immediately unless applied manually (dragged effect, sheet picker, GM tools). Published v0.15.0-alpha.3. `addCondition` has a `manual` option; game-applied conditions carry `flags.n5e.applied = "auto"`. New system code that applies conditions should call `addCondition` without `manual`. Tests: 294 pass, 2 skipped, on the first attempt.
+
+## DMG1 — Claude, 2026-11-13
+Owner Claude; ownership released. King's rulings: Bruised's +4 is added before DR; Weakened (and Exhaustion on damage) comes off the roll's total, first type first. Published v0.15.0-alpha.4. The pure functions are in `rules/damage.mjs`. Damage cards store `dealtPenalty`, and the saved rolls stay as rolled. Spec and results: `docs/DMG1_SPEC.md`. Tests: 298 pass, 2 skipped, on the first attempt. Auto-fail saves move to ADV1. Next ready batches: ADV1, CONC1.

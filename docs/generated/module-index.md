@@ -157,7 +157,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 89 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 139 | N5e Actor document. | `N5eActor` |
+| `actor.mjs` | 151 | N5e Actor document. | `N5eActor` |
 | `combat.mjs` | 40 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 47 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
@@ -190,14 +190,14 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `conditions.mjs` | 76 | Condition rank penalties -> one aggregate object the derived-data pipeline applies (step 7). | `emptyPenalties`, `clampRanks`, `aggregatePenalties` |
 | `cost.mjs` | 89 | Chakra cost calculation (KB 04, 11). | `computeJutsuCost`, `upkeepCost`, `concentrationDC` |
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
-| `damage.mjs` | 170 | Damage, healing, concentration on damage, and death saves (pure). | `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
+| `damage.mjs` | 213 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `deflection.mjs` | 13 | Base Deflection. | `deflectionOffer` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
 | `effect-authoring.mjs` | 150 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 94 | Contextual rule elements. | `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
-| `expiry.mjs` | 38 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
+| `expiry.mjs` | 41 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
@@ -236,11 +236,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `activity-buttons.mjs` | 415 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 421 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
-| `apply-damage.mjs` | 310 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
+| `apply-damage.mjs` | 311 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 111 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `attackWithWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
@@ -260,9 +260,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `reactions.mjs` | 181 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resources.mjs` | 74 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
-| `rest.mjs` | 150 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
+| `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `roll-request.mjs` | 61 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `trackers.mjs` | 415 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
-| `turn.mjs` | 148 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
+| `turn.mjs` | 150 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |
 | `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |

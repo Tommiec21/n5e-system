@@ -9,6 +9,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  */
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";
+import { exhaustedRollTotal } from "../rules/damage.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -123,12 +124,12 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
     if ( hd && sys.hitDice.die ) {
       const r = await createN5eRoll(`${hd}${sys.hitDice.die} + ${con * hd}`).evaluate();
       rolls.push(r);
-      hdRoll = r.total;
+      hdRoll = exhaustedRollTotal(r.total, actor);
     }
     if ( cd && sys.chakraDice.die ) {
       const r = await createN5eRoll(`${cd}${sys.chakraDice.die} + ${con * cd}`).evaluate();
       rolls.push(r);
-      cdRoll = r.total;
+      cdRoll = exhaustedRollTotal(r.total, actor);
     }
   }
   const plan = restPlan(actor, type, { hdSpent: hdRoll ? hd : 0, cdSpent: cdRoll ? cd : 0, hdRoll, cdRoll, food,

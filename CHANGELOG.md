@@ -1,3 +1,12 @@
+## 0.15.0-alpha.4 — Damage numbers (DMG1)
+
+- **Bruised:** the creature takes +4 damage from every source, added to the first HP damage type before DR (King 2026-11-13).
+- **Weakened:** −4 damage dealt per rank.
+- **Exhaustion:** −1 per rank, once per roll, on damage rolls, healing rolls and Short Rest Hit/Chakra Dice (King A7: all dice).
+- Weakened and Exhaustion on damage are taken off the roll's total, first damage type first, never below 0. They are stored on the damage card and taken off when the damage is applied.
+- **Petrified:** resistance to all damage. Immunity still wins, and Half does not stack with it.
+- Each change appears in the applied-damage record.
+
 ## 0.15.0-alpha.3 — "End of next turn" conditions out of combat (King 2026-11-13)
 
 - Out of combat, Staggered, Dazed, Compelled: Berserk, Compelled: Confused and Slowed end immediately when a game effect applies them (failed saves, jutsu text links, trackers).

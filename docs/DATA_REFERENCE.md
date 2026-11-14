@@ -264,3 +264,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Field / flag | On | Meaning |
 | --- | --- | --- |
 | `flags.n5e.applied = "auto"` | Condition effect | Applied by a game effect, not by hand. Out of combat, "end of next turn" conditions with this tag end immediately. |
+
+## Added in 0.15.0-alpha.4 (DMG1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.damage.dealtPenalty` | Damage card | The source's Weakened + Exhaustion penalty, taken off when applied (first type first) |

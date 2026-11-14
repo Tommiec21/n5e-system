@@ -7,7 +7,7 @@
  *   saveDC            your save DCs                    d20Physical  Str/Dex/Con rolls
  *   d20Mental         Int/Wis/Cha rolls                checksAndAttacks  checks and attack rolls
  *   perception        Passive Perception               dr           Damage Reduction
- *   damageTaken / damageDealt  (shown; applied by the damage workflow where noted)
+ *   damageTaken / damageDealt  applied by rules/damage.mjs (Bruised before DR; Weakened on the dealer's card)
  *   baseCost.<disc>   added to a jutsu's base cost (Sealed)
  *   flags             rule switches (noHealing, speedMultiplier, maxComponents...) read by name
  * Adding a new penalty kind: add it to emptyPenalties() and apply it where the number is built.

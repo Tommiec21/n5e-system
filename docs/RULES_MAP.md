@@ -85,7 +85,6 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| Bruised/Weakened/Petrified damage numbers shown but not applied; Exhaustion not on damage dice | `rules/damage.mjs`, `rules/conditions.mjs` |
 | No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
 | Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
 | Incapacitated does not end concentration | `rules/turn-start.mjs` |
@@ -114,3 +113,12 @@
 | Rule / capability | Code |
 | --- | --- |
 | Timed effects end when their duration runs out: in combat at each turn start for every combatant; out of combat when world time advances (non-Persists conditions included) | `rules/expiry.mjs`, `workflow/expiry.mjs`, `workflow/turn.mjs turnStartPipeline` |
+
+# Damage numbers (0.15.0-alpha.4, DMG1)
+
+| Rule | Code |
+| --- | --- |
+| Bruised +4 damage taken, before DR, to the first HP type | `rules/damage.mjs damagePlan` |
+| Weakened −4/rank and Exhaustion −1/rank on dealt damage (first type first, floor 0), stored on the card | `rules/damage.mjs dealtDamagePenalty/reduceInstances`, `workflow/activity-buttons.mjs` |
+| Petrified resistance to all damage | `rules/damage.mjs damagePlan` (`conditionPenalties.flags.resistAll`) |
+| Exhaustion on healing and Short Rest dice | `rules/damage.mjs exhaustedRollTotal`, `workflow/activity-buttons.mjs`, `workflow/rest.mjs` |

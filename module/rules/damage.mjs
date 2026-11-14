@@ -30,12 +30,54 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {boolean} [o.crit]
  * @param {boolean} [o.piercing]      Piercing Ninjutsu: half DR, no resistance, immunity -> resistance
  */
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1 } = {}) {
+/**
+ * Penalties to damage a creature deals (DMG1), taken off the roll's typed parts in order, first type
+ * first, never below 0 (King 2026-11-13): Weakened −4 per rank, plus Exhaustion −1 per rank once per
+ * roll (all dice, King A7). Returns new instances and the amount removed.
+ */
+export function dealtDamagePenalty(attacker) {
+  const pen = attacker?.system?.conditionPenalties ?? {};
+  return Math.max(0, -(pen.damageDealt ?? 0)) + Math.max(0, attacker?.system?.exhaustion ?? 0);
+}
+export function reduceInstances(instances, amount) {
+  let left = Math.max(0, Math.floor(amount || 0));
+  const out = instances.map(i => {
+    const cut = Math.min(left, Math.max(0, i.amount));
+    left -= cut;
+    return cut ? { ...i, amount: i.amount - cut } : { ...i };
+  });
+  return { instances: out, removed: Math.max(0, Math.floor(amount || 0)) - left };
+}
+
+/** Exhaustion on a healing or recovery roll: −1 per rank once per roll (King A7), never below 0. */
+export function exhaustedRollTotal(total, actor) {
+  return Math.max(0, total - Math.max(0, actor?.system?.exhaustion ?? 0));
+}
+
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1, dealtPenalty = 0 } = {}) {
   const sys = target.system;
   const traits = sys.traits ?? {};
   const steps = [];
   let parts = instances.map(i => ({ type: i.type || "", amount: Math.max(0, Math.floor(Number(i.amount) || 0)) }));
   const raw = parts.reduce((t, p) => t + p.amount, 0);
+  const pen = sys.conditionPenalties ?? {};
+
+  // The source's Weakened/Exhaustion penalty, stored on its damage card (first type first, never below 0).
+  if ( dealtPenalty > 0 ) {
+    const reduced = reduceInstances(parts, dealtPenalty);
+    parts = reduced.instances;
+    if ( reduced.removed ) steps.push(`Source Weakened/Exhaustion: −${reduced.removed}`);
+  }
+
+  // Bruised: +4 damage taken from every source, added before DR to the first HP damage type (King 2026-11-13).
+  const taken = Math.floor(pen.damageTaken ?? 0);
+  if ( taken > 0 ) {
+    const i = parts.findIndex(p => p.amount > 0 && p.type !== "chakra");
+    if ( i >= 0 ) {
+      parts[i] = { ...parts[i], amount: parts[i].amount + taken };
+      steps.push(`Bruised: +${taken} damage taken`);
+    }
+  }
 
   // Static and rolled DR share the same rules; one budget independently protects HP and CP.
   if ( !Number.isFinite(flatReduction) || flatReduction < 0 ) throw new Error("Invalid rolled DR.");
@@ -66,7 +108,8 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
       return { ...p, amount: 0 };
     }
     const immunityAsResistance = has(traits.immune, p.type) && piercing;
-    const r = (has(traits.resist, p.type) && !piercing) || immunityAsResistance;
+    // Petrified: resistance to all damage.
+    const r = ((has(traits.resist, p.type) || !!pen.flags?.resistAll) && !piercing) || immunityAsResistance;
     const v = !immunityAsResistance && has(traits.vuln, p.type);
     // Equal sources do not stack; opposite Half/Double sources cancel (King 2026-11-09).
     const factors = new Set([multiplier, reactionMultiplier, ...(r ? [0.5] : []), ...(v ? [2] : [])]);
