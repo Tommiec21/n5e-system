@@ -234,6 +234,13 @@ function rollAbility(spec) {
   return null;
 }
 
+// Loaded once at startup (registerResolution) so damage cards can draw their rows synchronously.
+let resolutionModule = null;
+export async function registerResolution() {
+  resolutionModule = await import("../workflow/resolution.mjs");
+  resolutionModule.registerResolutionHooks();
+}
+
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
   return [...(globalThis.game?.user?.targets ?? [])].filter(t => t.actor).slice(0, 20)
@@ -295,6 +302,8 @@ export function addRollModeButtons(html) {
 
 export function onRenderChatMessage(message, html) {
   addRollModeButtons(html);
+  // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
+  if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
   if ( message.getFlag?.("n5e", "rollRequest") ) import("../workflow/roll-request.mjs").then(m => m.renderRollRequest(message, html));
   void renderParityParts(message, html).catch(error => console.warn("n5e | card visibility", error));
   for ( const button of html.querySelectorAll("[data-n5e-source]") ) button.addEventListener("click", async event => {

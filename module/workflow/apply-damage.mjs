@@ -238,7 +238,8 @@ export async function onApplyClick(message, btn, event) {
     return results;
   }
   if ( d.n5eApply ) {
-    const data = message.getFlag("n5e", "damage") ?? {};
+    // A per-target row (RES1) applies to its own creature, like a card with a fixed target.
+    const data = { ...(message.getFlag("n5e", "damage") ?? {}), ...(d.target ? { targetUuid: d.target } : {}) };
     if ( rule("coordinatedDamage") && d.n5eApply !== "heal" ) {
       const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
       const recipients = fixed ? ownedRecipients([fixed], game.user) : { owned: selectedActors(), skipped: [] };

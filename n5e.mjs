@@ -152,6 +152,8 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
 // limits) and the GM's Party Overview button on the token controls.
 registerTurnHooks();
 registerPartyOverview();
+// Per-target rows on damage cards (RES1).
+void dice.registerResolution().catch(error => console.error("n5e | resolution", error));
 // Jutsu areas: concentration areas leave the map when concentration ends (workflow/areas.mjs).
 registerAreaHooks();
 // Compendium Browser buttons in the Compendium and Items sidebars (applications/browser/).
