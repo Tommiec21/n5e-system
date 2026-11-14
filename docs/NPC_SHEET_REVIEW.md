@@ -39,7 +39,7 @@ Sources: dnd5e 6.1.0 (`applications/actor/npc-sheet.mjs`, `templates/actors/npc-
 | Stat block in a journal page | `@Embed` stat block | — | **no** | — |
 | Reset many NPCs at once | — | batch reset (HP, slots, conditions) | **no** | — |
 | Death saves or dies at 0 | death saves for important NPCs | — | `diesAtZero` works; **switch only in the raw field editor** | — |
-| Rests | short and long rest buttons | — | inherited from the character sheet | no |
+| Rests | short and long rest buttons | — | **no: the rest buttons sit in the character header, which the NPC header replaces** | no |
 | Habitat, treasure, alignment | yes | — | no equivalent in N5e's rules | — |
 
 ## Gaps
@@ -59,6 +59,7 @@ These exist in the data and the damage and condition engines read them. The only
 8. No stat block for journal pages.
 9. No batch reset.
 10. No situational skill variants.
+11. No rest buttons on either NPC sheet (player-style allies and companions need them).
 
 **Already planned:** boss resources (NPC4), phases (NPC5), traits as content (NPC6), strikes with riders (NPC3), loot (LOOT1), the builder window (NPC2).
 
@@ -67,7 +68,7 @@ These exist in the data and the damage and condition engines read them. The only
 ## Proposed NPC1c (needs a spec and King's approval)
 
 - A Defenses and Senses block on the Build tab and in the stat block: resistances, immunities, vulnerabilities, condition immunities and resistances, senses, languages, size, all speeds (items 1–5).
-- `diesAtZero` and Allied on the Build tab (item 5).
+- `diesAtZero` and Allied on the Build tab (item 5); rest buttons (item 11).
 - Simple sheet: attack lines with bonus, reach and damage; conditions; temp HP (items 6–7).
 - Optional, each its own decision: journal stat block (8), batch reset (9), situational skill variants (10).
 
