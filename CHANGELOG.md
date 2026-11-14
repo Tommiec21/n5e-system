@@ -1,3 +1,16 @@
+## 0.24.0-alpha.1 — Genjutsu Stimuli and Unaware (GEN1; King approved 2026-11-14)
+
+- **Stimuli immunity.** A creature is immune to a Genjutsu when it is immune to every one of the jutsu's Stimuli:
+  - Visual: Blinded or True Sight;
+  - Auditory: Deafened;
+  - Inhaled: immune to Envenomed;
+  - Tactile: immune to psychic damage.
+- On a card cast as Genjutsu:
+  - the save button skips immune creatures and posts why ("Blinded (Visual)");
+  - the attack button names immune targets, and refuses when every target is immune.
+- A multi-discipline jutsu cast as something else has no Stimuli immunity.
+- **Unaware.** Genjutsu flagged Unaware say on the cast card that targets don't know they're in it until they succeed on Identify Genjutsu.
+
 ## 0.23.0-alpha.1 — Standard DCs and falling (SKILL1b, ENV1b; King approved 2026-11-14)
 
 - **Standard DCs (Chapter 6):** the target's named statistic + 10.

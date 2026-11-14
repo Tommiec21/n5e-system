@@ -1,6 +1,6 @@
 # GEN1 function spec: Genjutsu stimuli and Unaware
 
-Status: **approved by King 2026-11-14 ("Begin work I approve these"). In progress.** Release target `0.24.0-alpha.1`.
+Status: **approved by King 2026-11-14 ("Begin work I approve these"). Published `0.24.0-alpha.1`.**
 
 Plan row 16: Genjutsu stimuli immunity, Unaware, sense-based targeting.
 
@@ -42,3 +42,11 @@ After each function, add a line to the progress log and push.
   - Attack button: every target immune → refused with the reasons; some → an info notice naming them.
   - Suite green. Next: F4 (Unaware note), then tests.
 - 2026-11-14 Claude: **F4 done.** `postCastCard` adds an Unaware note to the card's extras (rendered with the buttons) when the jutsu is cast as Genjutsu and `system.unaware` is set. Suite green. Next: tests.
+- 2026-11-14 Claude: **Tests done.** New `tests/stimuli.test.mjs` (3 tests) passed on the first attempt: 358 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+Published `v0.24.0-alpha.1`. F1–F4 were built as specified.
+- **Limits.**
+  - Damage cards and RES1 per-target rows don't remove immune creatures. An immune creature shouldn't be applied to (the save card says it's immune).
+  - Identify Genjutsu itself is a skill action (manual for now).

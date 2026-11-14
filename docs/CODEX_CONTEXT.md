@@ -343,3 +343,6 @@ RES1, POS1, ENV1a and SKILL1 (v0.19.0–v0.22.0-alpha.1) were built and released
 
 ## SKILL1b + ENV1b — Claude, 2026-11-14 (King approved)
 Published v0.23.0-alpha.1. `dc:<ability>` skill actions use `standardDC` (the target's ability check bonus + 10). Falling is `game.n5e.api.fall(actor, feet)`. Next (approved): GEN1, then CLASH1.
+
+## GEN1 — Claude, 2026-11-14 (King approved)
+Published v0.24.0-alpha.1. Stimuli immunity: `rules/stimuli.mjs genjutsuImmunity(item.system.stimuli, creatureFacts(actor))`, used by the cast card's save and attack buttons (only cast as Genjutsu). Next (approved): CLASH1.
