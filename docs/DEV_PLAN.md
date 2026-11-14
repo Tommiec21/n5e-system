@@ -88,3 +88,8 @@ Release: `0.29.0-alpha.1` (Part A) and `0.29.0-alpha.2` (Part B), or together if
 ## Progress log
 
 - 2026-11-14 Claude: plan written from the batch specs, `PROGRESSION_PLAN.md` and `N5e-Context.md`. Code read for FIN1; nothing built.
+- 2026-11-14 Claude: **FIN1 started (King: "Start next batch").**
+  - Q-F1–Q-F3 are unanswered, so FIN1 builds only what they don't touch: transfer from an actor you own to a player character or an Allied NPC (the GM may transfer to anything), and all of Part B. Loot and merchant targets, taking from actors you don't own, and ryo wait for King's answers and LOOT1.
+  - **Pure rules done:** `rules/transfer.mjs` (`transferRefusal`, `canReceive`, `transferPlan`: quantity checks, stack merge, resets, grant links dropped) and `rules/item-audit.mjs` (`identityKey`, `existingCopy`, `itemAudit`: duplicates with keep/remove, missing Unarmed Strike).
+  - Found while reading: missing grants already warn (`advancement/manager.mjs`, `advancement/clan.mjs`), so B2 is the duplicate guards only.
+  - Next: workflow (transfer, GM handler, drops), grant guards, migration 7, the GM window, the pack check.
