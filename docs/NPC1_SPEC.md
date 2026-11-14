@@ -50,6 +50,18 @@ Sources: the Bingo Book's stat-block layout (the worked Cultist examples) and st
 - **Q-N13: simple sheet.** Is a one-page read-first stat block what you want from it, or should it be the default sheet with the tabbed one as the alternative?
 - **Q-N14: releases.** NPC1a (model and calculation) as one release, then NPC1b (sheets)?
 
+## King's answers (2026-11-14)
+
+- **Q-N7:** for adversaries only modifiers matter. Stored mode keeps modifiers; no score is shown.
+- **Q-N8:** agreed. Effects, rule elements and conditions change stored numbers; equipped armor and weapons do not change AC or DR.
+- **Q-N9:** include the Minion rules where they fit the system. Claude's placement: NPC1a, with the class field and the save path (CP 0; saves report an automatic failure).
+- **Q-N10:** King asked what the difference is; explained, answer pending.
+- **Q-N11:** an unlisted skill rolls the ability modifier alone. The GM can add skill proficiencies.
+- **Q-N12:** private notes are GM only.
+- **Q-N13:** the tabbed sheet is the default; the simple sheet is the alternative.
+- **Q-N14:** whatever fits the system. Claude's placement: NPC1a (model and calculation) first, then NPC1b (sheets), because the sheets read the new model.
+
 ## Progress log
 
+- 2026-11-14 Claude: King's answers Q-N7–Q-N9, Q-N11–Q-N14 recorded; Q-N10 pending. Not yet approved to build.
 - 2026-11-14 Claude: spec written from `docs/NPC1_PLAN.md`, the Bingo Book's stat blocks and the current NPC model. Nothing built.
