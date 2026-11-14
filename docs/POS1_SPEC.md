@@ -58,3 +58,4 @@ After each function, add a line to the progress log and push.
   - Movement isn't tracked as economy, so "no move" is the turn-card warning only.
   - Suite green. Next: F8 (Dodge at speed 0), then tests.
 - 2026-11-14 Claude: **F8 done.** `rules/advantage.mjs`: Dodging gives nothing while Grappled or Restrained, as well as while incapacitated (`dodgeLost`). Applies to both attack disadvantage and the Dex-save advantage. Suite green. Next: tests (`tests/positioning.test.mjs`), then release 0.20.0-alpha.1.
+- 2026-11-14 Claude: **Correction:** the F8 code change above failed to apply in commit a96cc9f (a wrong assertion count), though the log said done. It was applied in the next commit; `dodgeLost` is now in `rules/advantage.mjs`.

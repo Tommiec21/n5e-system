@@ -13,7 +13,7 @@
  *   Attacks against a Petrified, Blinded, Stunned, Unconscious or Restrained creature: advantage.
  *     Prone target: melee advantage, ranged disadvantage. Invisible target: disadvantage unless the
  *     attacker has True Sight or Chakra Sight. Dodging target: disadvantage (lost while
- *     incapacitated).
+ *     incapacitated or at speed 0: Grappled, Restrained).
  *   Saves: Petrified and Stunned auto-fail Str/Dex; Unconscious auto-fails all. Blinded: disadvantage
  *     on Dex/Int/Wis. Dodging: advantage on Dex saves.
  */
@@ -23,6 +23,8 @@ const has = (who, status) => !!who?.statuses?.has?.(status);
 const flag = (who, key) => who?.flags?.[key];
 const senses = (who, keys) => keys.some(k => (who?.senses?.[k] ?? 0) > 0);
 const incapacitated = who => has(who, "incapacitated") || has(who, "stunned") || has(who, "unconscious") || !!flag(who, "incapacitated");
+// Dodge is lost while incapacitated or at speed 0 (Grappled, Restrained) (KB 03; POS1).
+const dodgeLost = who => incapacitated(who) || has(who, "grappled") || has(who, "restrained");
 
 /**
  * @returns {{advantage: string[], disadvantage: string[], autoFail: string|null, consume: string[]}}
@@ -47,7 +49,7 @@ export function advantageSources({ roller, target = null, kind, ability = null, 
       if ( has(target, "restrained") ) adv.push("Target Restrained");
       if ( has(target, "prone") ) (ranged ? dis : adv).push("Target Prone");
       if ( flag(target, "attackedWithDisadvantage") && !senses(roller, ["trueSight", "chakraSight"]) ) dis.push("Target Invisible");
-      if ( has(target, "dodging") && !incapacitated(target) ) dis.push("Target Dodging");
+      if ( has(target, "dodging") && !dodgeLost(target) ) dis.push("Target Dodging");
     }
     // Dazzled: can't gain advantage on attacks (removes the sources rather than cancelling).
     if ( flag(roller, "noAttackAdvantage") && adv.length ) adv.length = 0;
@@ -59,7 +61,7 @@ export function advantageSources({ roller, target = null, kind, ability = null, 
     else if ( has(roller, "stunned") && PHYSICAL.has(ability) && ability !== "con" ) autoFail = "Stunned";
     else if ( fails.includes(ability) ) autoFail = "Petrified";
     if ( (flag(roller, "disadvantageSaves") ?? []).includes(ability) ) dis.push("Blinded");
-    if ( has(roller, "dodging") && ability === "dex" && !incapacitated(roller) ) adv.push("Dodging");
+    if ( has(roller, "dodging") && ability === "dex" && !dodgeLost(roller) ) adv.push("Dodging");
   }
 
   if ( kind === "check" && has(roller, "helped") ) { adv.push("Helped"); consume.push("helped"); }
