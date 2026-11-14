@@ -10,7 +10,7 @@
  */
 import { conditions as coreConditions } from "../config/conditions.mjs";
 import { marks as markTable, innerGates, gateAccess } from "../config/combat.mjs";
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const plain = html => String(html ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");

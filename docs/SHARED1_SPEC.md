@@ -1,6 +1,6 @@
 # SHARED1 function spec: shared rules core
 
-Status: **spec for King's approval (2026-11-14). Nothing built.**
+Status: **King answered Q-SH1–Q-SH3 on 2026-11-14; SHARED1a in progress.**
 
 Plan row 17 and Section 2 (King, 2026-11-13): one shared rules core used by the N5e System and the N5e Module (the dnd5e 5.3.3 add-on), each with a thin adapter. Shared tests run against the core. A System release triggers a Module rebuild against the pinned dnd5e version. Rules and mechanics are shared; worlds are not.
 
@@ -41,7 +41,7 @@ Plan row 17 and Section 2 (King, 2026-11-13): one shared rules core used by the 
 | M1 | `tools/sync-core.mjs <version>` | Downloads `n5e-core.zip` for a System release into `scripts/core/` and records the version in `module.json` flags. |
 | M2 | dnd5e adapter | Snapshot functions (dnd5e actor/item → core inputs) and the rule provider/host for dnd5e. |
 | M3 | Replace copied planners | Conditions, damage, saves (degree), costs/upkeep, condition lifecycle and activity selection call the core instead of the Module's copies. Module tests keep passing. |
-| M4 | CI propagation | A System release sends `repository_dispatch` to `n5e-module`; the Module workflow syncs that core version, runs the core and Module tests against dnd5e 5.3.3, and opens a PR. |
+| M4 | CI propagation (Q-SH3: daily) | A scheduled daily workflow in `n5e-module` checks the latest System release; when its core version is newer, it syncs it, runs the core and Module tests against dnd5e 5.3.3, and opens a PR. |
 
 ## Not in SHARED1
 
@@ -55,3 +55,22 @@ Plan row 17 and Section 2 (King, 2026-11-13): one shared rules core used by the 
   - (b) A new `n5e-core` repository that both projects depend on.
 - **Q-SH2. Who builds the Module side (SHARED1b).** The Module's `AGENTS.md` makes it Codex's repo with its own work contract. Should Codex do SHARED1b, or should I? If it's me, this session needs push access to `n5e-module`.
 - **Q-SH3. Release propagation.** "A System release triggers a Module rebuild" needs a GitHub token with write access to `n5e-module`, saved as a secret in `n5e-system` (only you can create it). Alternatively the Module checks for a new core on a schedule (daily), which needs no token. Which do you want?
+
+## King's answers (2026-11-14)
+
+- **Q-SH1:** keep it in one repo: the core lives in `n5e-system` and ships as `n5e-core.zip` with each System release.
+- **Q-SH2:** both Claude and Codex work on it. Each works until out of credits; the other picks up from the detailed progress log below. Keep each entry precise enough to resume from.
+- **Q-SH3:** the Module checks once a day for a new core (scheduled workflow, no cross-repo token). M4 becomes a daily scheduled job in `n5e-module`.
+
+## Progress log (handoff point for Claude and Codex)
+
+Each entry: what was done, the exact files, how it was checked, and the next step.
+
+- 2026-11-14 Claude: answers recorded; starting F1 (rule provider).
+- 2026-11-14 Claude: **F1 done.**
+  - New core file `module/rules/settings.mjs`: `setRuleProvider(fn)`; `rule(key)` returns the provider's value, or the `config/rules.mjs` default when the provider is missing, returns undefined, or throws.
+  - `module/rules-settings.mjs` is now the System adapter: it registers `key => game.settings.get("n5e", key)` when loaded and re-exports `rule`, so its 25 non-core importers are unchanged.
+  - The 6 core importers (`condition-lifecycle`, `damage`, `expiry`, `rest`, `trackers`, `turn-start`) import `./settings.mjs`.
+  - New `tests/setup.mjs` loads the System adapter. `npm test` preloads it (`node --import ./tests/setup.mjs`), so tests that stub `game.settings.get` still work. CI runs `npm run verify`, which uses `npm test`.
+  - Checked: lint and the full suite pass (362).
+  - **Next:** F2. Route the guarded globals in `activity-parse`, `cast-discipline`, `condition-lifecycle`, `expiry`, `rest` and the `CONFIG` read in `change-keys` through a new `module/rules/host.mjs` (`setHost` / `host()`), registered by the System adapter.

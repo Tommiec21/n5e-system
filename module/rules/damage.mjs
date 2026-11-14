@@ -14,7 +14,7 @@
  * at 0 HP = 1 death save failure (crit: 2). Most NPCs die at 0 (diesAtZero).
  */
 
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k));

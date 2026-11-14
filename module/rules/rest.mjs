@@ -16,7 +16,7 @@
  * restCheck decides whether the rest is allowed and gives its benefits; restPlan lists every change.
  * workflow/rest.mjs shows the dialog, rolls the dice and applies the plan.
  */
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 import { recoveryAllowed } from "./features.mjs";
 import { resolveFormula } from "./unarmed.mjs";
 

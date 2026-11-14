@@ -13,7 +13,7 @@
  * start of the creature's turn) is done by workflow/conditions.mjs and workflow/trackers.mjs.
  * Each part checks its optional rule, so turning a rule off in N5e Rules only skips that part.
  */
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 

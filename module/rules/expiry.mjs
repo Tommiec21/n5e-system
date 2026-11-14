@@ -10,7 +10,7 @@
  * effects (flags.n5e.applied = "auto") end at once; deliberate ones (sheet, GM tools, dragged) stay.
  */
 import { conditions as coreConditions } from "../config/conditions.mjs";
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const defOf = (key, registry) => registry[key] ?? globalThis.CONFIG?.N5E?.clanConditions?.[key];

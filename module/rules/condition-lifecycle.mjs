@@ -12,7 +12,7 @@
  */
 import { conditions as coreConditions, defaultConditionDuration } from "../config/conditions.mjs";
 import { abilities, skills } from "../config/core.mjs";
-import { rule } from "../rules-settings.mjs";
+import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const active = actor => list(actor.effects).filter(e => e.type === "condition" && !e.disabled);

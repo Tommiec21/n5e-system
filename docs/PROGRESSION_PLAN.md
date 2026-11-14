@@ -99,7 +99,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 | 14 | ENV1 | Hostile terrain as Region behaviours, falling, suffocation | — | TURN1 | ENV1a published v0.21.0-alpha.1 (`docs/ENV1_SPEC.md`), **shipped without prior approval, awaiting King's review**; ENV1b falling published v0.23.0-alpha.1 (approved) | Claude 2026-11-14 |
 | 15 | SKILL1 | Executable skill actions (Grapple, Shove, Hide/Search, Stabilize...) | — | ADV1 | published v0.22.0-alpha.1 (`docs/SKILL1_SPEC.md`), **shipped without prior approval, awaiting King's review**; SKILL1b Standard DCs published v0.23.0-alpha.1 (approved) | Claude 2026-11-14 |
 | 16 | GEN1 | Genjutsu stimuli immunity, Unaware, sense-based targeting | — | ADV1 | published v0.24.0-alpha.1 (`docs/GEN1_SPEC.md`, approved by King 2026-11-14) | Claude 2026-11-14 |
-| 17 | SHARED1 | Extract `module/rules` into the shared core; System adapter; Module adapter against dnd5e 5.3.3; CI propagation | — | Tier 1 | spec `docs/SHARED1_SPEC.md` awaiting King's approval (Q-SH1–Q-SH3) | Claude 2026-11-14 |
+| 17 | SHARED1 | Extract `module/rules` into the shared core; System adapter; Module adapter against dnd5e 5.3.3; CI propagation | — | Tier 1 | SHARED1a in progress (`docs/SHARED1_SPEC.md`; Q-SH1–Q-SH3 answered); Claude and Codex share it via the spec's progress log | Claude 2026-11-14 |
 | 18+ | Tier 3 | Rule-element expansion, stacking policy, Will of Fire spends, ailments, item mechanics (charges, ammo, scrolls, Fortified), interception/constructs/dispels, table procedures, NPC feature kinds with the Bingo Book | — | — | later | — |
 
 ## 5. Review findings (2026-11-13, code at 0.13.0-alpha.14)
