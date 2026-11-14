@@ -258,8 +258,11 @@ export async function registerResolution() {
   resolutionModule.registerResolutionHooks();
   clashModule = await import("../workflow/clash.mjs");
   clashModule.registerClashHooks();
+  actionCardModule = await import("../workflow/action-card.mjs");
+  await actionCardModule.registerActionCardHooks();
 }
 let clashModule = null;
+let actionCardModule = null;
 
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
@@ -326,6 +329,12 @@ export function onRenderChatMessage(message, html) {
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
   // Jutsu Clash cards (CLASH1), drawn before their listeners are bound below.
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
+  // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
+  actionCardModule?.renderActionCard(message, html);
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-clash], [data-n5e-clash-roll], [data-n5e-clash-lose]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     const d = btn.dataset;

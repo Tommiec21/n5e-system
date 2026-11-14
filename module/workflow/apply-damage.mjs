@@ -261,7 +261,10 @@ export async function onApplyClick(message, btn, event) {
   }
   if ( d.n5eUndo ) {
     btn.disabled = true;
-    return undoApply(message);
+    const done = await undoApply(message);
+    // Marked on the summary (its author or a GM) so an action card shows it undone (CARD1).
+    if ( message.isAuthor || game.user.isGM ) await message.setFlag("n5e", "undone", true);
+    return done;
   }
   if ( d.n5eConcheck ) {
     const actor = await fromUuid(d.actor);

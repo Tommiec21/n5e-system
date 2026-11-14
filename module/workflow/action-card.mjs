@@ -126,3 +126,121 @@ export async function syncCards() {
     if ( card ) await writeResults(card, resultsFromLinked(message.flags.n5e, message.id)).catch(() => null);
   }
 }
+
+/** Every result a card's linked messages carry (and the attack card's own roll). */
+function linkedEntries(card) {
+  const own = card.flags.n5e.card.kind === "attack" ? resultsFromLinked({ roll: card.flags.n5e.roll }, card.id).filter(e => e.section === "attack") : [];
+  const linked = messages()?.contents.slice(-200).filter(m => m.id !== card.id && cardOfLinked(m)?.id === card.id) ?? [];
+  return [...own, ...linked.flatMap(m => resultsFromLinked(m.flags.n5e, m.id))];
+}
+
+/** Is this linked message recorded in its card's own results? */
+function recordedIn(card, messageId) {
+  const r = card?.flags?.n5e?.card?.results ?? {};
+  return [r.attack, r.damage, ...Object.values(r.saves ?? {}), ...Object.values(r.applied ?? {})].some(x => x?.messageId === messageId);
+}
+
+const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage: "Damage", effects: "Effects", reactions: "Reactions", concentration: "Concentration" };
+const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
+const MODE_LABELS = { full: "Applied", half: "Applied half", double: "Applied double", heal: "Healed" };
+
+/** The card's sections and per-target rows (A5). Synchronous: listeners are bound right after. */
+export function renderActionCard(message, html) {
+  if ( !actionCardOn() ) return;
+  const card = message?.flags?.n5e?.card;
+  if ( !card ) return collapseLinked(message, html);
+  html.querySelector("[data-n5e-action-card]")?.remove();
+  const game = globalThis.game;
+  const entries = linkedEntries(message);
+  const results = mergedResults(card, entries);
+  const states = sectionStates(card, results);
+  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM });
+  const pending = entries.some(e => !recordedIn(message, e.result.messageId) && e.result.messageId !== message.id);
+  const canDamage = !!results.damage;
+  const row = r => {
+    const actor = globalThis.fromUuidSync?.(r.uuid);
+    const mine = game.user.isGM || (actor && canModify(game.user, actor));
+    const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "", r.share && mine ? SHARE_LABELS[r.share] : ""].filter(Boolean);
+    let controls = "";
+    if ( mine && canDamage ) {
+      controls = r.applied
+        ? `<span class="sub">${esc(MODE_LABELS[r.applied.mode] ?? "Applied")}</span><button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`
+        : ["full", "half"].map(m => `<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`).join("");
+    }
+    return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">${esc(facts.join(" · "))}</span>${controls}</div>`;
+  };
+  const box = document.createElement("div");
+  box.className = "n5e-action-card";
+  box.dataset.n5eActionCard = "1";
+  box.innerHTML = `<div class="n5e-card-sections">${card.sections.map(s => `<span class="n5e-card-section ${states[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
+    ${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
+    ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
+  (html.querySelector(".message-content") ?? html).append(box);
+}
+
+/** A linked message recorded in its card shows as one line, with Show to expand it. */
+function collapseLinked(message, html) {
+  const card = cardOfLinked(message);
+  if ( !card || !recordedIn(card, message.id) || html.querySelector("[data-n5e-linked-note]") ) return;
+  const name = globalThis.fromUuidSync?.(card.flags.n5e.card.itemUuid)?.name ?? "the action";
+  html.classList.add("n5e-linked-collapsed");
+  const note = document.createElement("div");
+  note.className = "n5e-linked-note";
+  note.dataset.n5eLinkedNote = "1";
+  note.innerHTML = `Shown on the ${esc(name)} card <button type="button" data-n5e-linked-toggle>Show</button>`;
+  note.querySelector("button").addEventListener("click", ev => {
+    ev.preventDefault();
+    html.classList.toggle("n5e-linked-collapsed");
+    ev.currentTarget.textContent = html.classList.contains("n5e-linked-collapsed") ? "Show" : "Hide";
+  });
+  (html.querySelector(".message-content") ?? html).before(note);
+}
+
+/** Per-target Apply / Half / Undo on the card (A6), through the damage card's own Apply. */
+export async function onActionCardClick(message, btn, event) {
+  const card = message.flags?.n5e?.card;
+  if ( !card ) return null;
+  const results = mergedResults(card, linkedEntries(message));
+  const { onApplyClick } = await import("./apply-damage.mjs");
+  if ( btn.dataset.n5eCardApply ) {
+    const damage = results.damage ? messages()?.get(results.damage.messageId) : null;
+    if ( !damage ) return ui.notifications.info("Roll the damage first.");
+    btn.disabled = true;
+    return onApplyClick(damage, { dataset: { n5eApply: btn.dataset.n5eCardApply, target: btn.dataset.target } }, event);
+  }
+  if ( btn.dataset.n5eCardUndo ) {
+    const applied = results.applied?.[btn.dataset.n5eCardUndo];
+    const summary = applied ? messages()?.get(applied.messageId) : null;
+    if ( !summary || summary.flags?.n5e?.undone ) return ui.notifications.info("Nothing to undo.");
+    if ( !summary.isAuthor && !globalThis.game.user.isGM ) return ui.notifications.info("Only the user who applied this damage, or the GM, can undo it.");
+    btn.disabled = true;
+    return onApplyClick(summary, { dataset: { n5eUndo: "1" } }, event);
+  }
+  return null;
+}
+
+/**
+ * Hooks (A5): the creator records each new linked message; every client re-draws the card; a card
+ * update re-draws its collapsed linked messages; an undone application is recorded by its author.
+ * The GM records results that arrived while no GM was connected.
+ */
+export async function registerActionCardHooks() {
+  const { registerIntentHandler } = await import("../automation/owner-intents.mjs");
+  registerIntentHandler("cardResult", receiveCardResult);
+  Hooks.on("createChatMessage", (message, options, userId) => {
+    if ( !actionCardOn() ) return;
+    const card = cardOfLinked(message);
+    if ( !card ) return;
+    if ( userId === globalThis.game.user.id ) void recordLinked(message).catch(error => console.warn("n5e | action card", error));
+    ui.chat?.updateMessage?.(card);
+  });
+  Hooks.on("updateChatMessage", (message, change, options, userId) => {
+    if ( !actionCardOn() ) return;
+    if ( change?.flags?.n5e?.undone && userId === globalThis.game.user.id ) void recordLinked(message).catch(error => console.warn("n5e | action card", error));
+    const card = message.flags?.n5e?.card ? message : cardOfLinked(message);
+    if ( !card ) return;
+    if ( card !== message ) ui.chat?.updateMessage?.(card);
+    else for ( const m of messages()?.contents.slice(-200) ?? [] ) if ( cardOfLinked(m)?.id === card.id ) ui.chat?.updateMessage?.(m);
+  });
+  Hooks.once("ready", () => void syncCards().catch(error => console.warn("n5e | action card sync", error)));
+}

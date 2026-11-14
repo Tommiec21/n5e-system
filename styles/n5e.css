@@ -75,3 +75,17 @@
 .n5e-damage-trace li { margin-block: .25rem; }
 
 .n5e-apply-card .n5e-source-roll { float: right; width: 1.6rem; height: 1.4rem; min-height: 0; margin: 0; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Single action card (CARD1) */
+.n5e-action-card { margin-top: .4rem; padding-top: .35rem; border-top: 1px solid var(--color-border-light-primary, #888); }
+.n5e-action-card .n5e-card-sections { display: flex; flex-wrap: wrap; gap: .25rem; margin-bottom: .3rem; }
+.n5e-action-card .n5e-card-section { font-size: .75rem; padding: 0 .35rem; border-radius: 3px; border: 1px solid var(--color-border-light-primary, #888); }
+.n5e-action-card .n5e-card-section.done { background: rgba(60, 140, 60, .18); }
+.n5e-action-card .n5e-card-section.waiting { opacity: .55; }
+.n5e-action-card .n5e-card-target { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin-block: .2rem; }
+.n5e-action-card .n5e-card-target .name { font-weight: 600; }
+.n5e-action-card .n5e-card-target button { flex: 0 0 auto; width: auto; line-height: 1.4; padding-inline: .45rem; }
+.n5e-action-card .n5e-card-target button.suggested { font-weight: 700; border-color: var(--color-border-highlight, #b75c40); }
+.n5e-linked-note { font-size: .8rem; opacity: .8; display: flex; align-items: center; gap: .4rem; }
+.n5e-linked-note button { width: auto; line-height: 1.2; padding-inline: .4rem; }
+.n5e-linked-collapsed .message-content { display: none; }

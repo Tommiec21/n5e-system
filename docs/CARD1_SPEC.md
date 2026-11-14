@@ -141,3 +141,20 @@ Still to confirm with the approval: the `actionCard` setting's default. Proposed
     - `syncCards`: the GM records results that arrived while no GM was connected.
   - **Undo** is read from the application summary (`flags.n5e.undone`, set by its author). It holds without a GM, and Undo can't be pressed twice.
   - Next: A5 render + refresh, A6 buttons.
+- 2026-11-14 Claude: **A5 + A6 done.**
+  - **`renderActionCard`:**
+    - section chips (waiting/ready/done);
+    - per-target rows: AC, hit/miss and save, as visibility allows; the suggested share only for creatures the viewer may change;
+    - Apply / Half (the suggestion highlighted) or "Applied" + Undo;
+    - a note when results are still separate cards waiting for a GM.
+  - Linked messages recorded in a card collapse to one line ("Shown on the X card", Show/Hide).
+  - **Hooks:**
+    - the creator records new linked messages, and every client re-draws the card;
+    - a card update re-draws its linked messages;
+    - an undone application is recorded by its author;
+    - the GM syncs on ready;
+    - the `cardResult` handler is registered.
+  - **`onActionCardClick`:** Apply/Half go through the damage card's own `onApplyClick` (fixed target, coordinated damage and reactions unchanged). Undo goes through the summary's Undo, by its author or a GM.
+  - The summary's Undo now marks the summary `flags.n5e.undone`.
+  - CSS in `styles/n5e.css`; `dice/roll.mjs` loads the module with RES1 and CLASH1 and binds the buttons.
+  - Next: tests.
