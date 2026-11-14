@@ -1,8 +1,8 @@
 /** ADV2: advantage on any dice roll; only the dice a source names (King 2026-11-13). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { contextualAdvantage, keptIndex } from "../../module/rules/elements.mjs";
-import { validateConditionalRules } from "../../module/rules/effect-authoring.mjs";
+import { contextualAdvantage, keptIndex } from "../module/rules/elements.mjs";
+import { validateConditionalRules } from "../module/rules/effect-authoring.mjs";
 
 const actorWith = rules => ({ statuses: new Set(), effects: [], items: [{ name: "Burning Will", type: "feat", flags: { n5e: { rules } }, effects: [] }], system: {} });
 
@@ -34,7 +34,7 @@ test("rollDice rolls twice and keeps one when a source applies", async () => {
   let n = 0;
   globalThis.Roll = class { constructor(f) { this.formula = f; } async evaluate() { this.total = [3, 8][n++ % 2]; return this; } };
   globalThis.CONFIG = { Dice: { rolls: [] } };
-  const { rollDice, advantageNote } = await import("../../module/dice/advantaged.mjs");
+  const { rollDice, advantageNote } = await import("../module/dice/advantaged.mjs");
   const actor = { ...actorWith([{ key: "advantage", selector: "damage" }]), getRollData: () => ({}) };
   const r = await rollDice(actor, "2d6", { kind: "damage", type: "damage", damageType: "fire" });
   assert.equal(r.mode, "advantage"); assert.equal(r.roll.total, 8); assert.equal(r.discarded.total, 3);

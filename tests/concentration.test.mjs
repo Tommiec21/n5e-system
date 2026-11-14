@@ -1,8 +1,8 @@
 /** CONC1: incapacitation ends concentration; readied jutsu are held by concentration. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { concentrationBreaker, lostReadied, readiedIds } from "../../module/rules/concentration.mjs";
-import { upkeepOptions } from "../../module/rules/upkeep.mjs";
+import { concentrationBreaker, lostReadied, readiedIds } from "../module/rules/concentration.mjs";
+import { upkeepOptions } from "../module/rules/upkeep.mjs";
 
 test("what breaks concentration", () => {
   assert.equal(concentrationBreaker({ statuses: new Set(["stunned"]) }), "Stunned");
@@ -33,7 +33,7 @@ test("workflow: the active GM drops all concentration when incapacitated; readie
         const parts = k.split("."); let o = this; for ( const p of parts.slice(0, -1) ) o = o[p] ??= {}; o[parts.at(-1)] = v;
       }
     } };
-  const { checkConcentration } = await import("../../module/workflow/concentration.mjs");
+  const { checkConcentration } = await import("../module/workflow/concentration.mjs");
   await checkConcentration(actor);
   assert.deepEqual(actor.system.combat.concentrating, []);
   assert.deepEqual(actor.flags.n5e.readied, {});

@@ -105,3 +105,9 @@ Each entry: what was done, the exact files, how it was checked, and the next ste
     - `CORE_API.md`;
     - `n5e-core.zip`.
     Then add the zip to the CI artifact and `release.yml` `files`.
+- 2026-11-14 Claude: **F6 correction.**
+  - Commit e47cd6a moved 3 tests into `tests/core/` that also import System code: `concentration` (`workflow/concentration.mjs`), `dice-advantage` (`dice/advantaged.mjs`) and `expiry` (`workflow/expiry.mjs`). My first scan only read static `from` lines.
+  - The new test boundary check caught them, so CI on e47cd6a fails `npm run check`.
+  - Moved them back to `tests/` with their old import paths. `tests/core` now holds 8 files: advantage, arithmetic, clash, damage-numbers, enrichers, rules, skill-actions, stimuli.
+  - Checked: `test:core`, `npm test` (362) and check-core all pass.
+  - **Next:** F5, as in the entry above.
