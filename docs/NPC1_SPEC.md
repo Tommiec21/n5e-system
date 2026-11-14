@@ -21,8 +21,8 @@ Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" throu
 | A2 | Tables as data | `config/adversary.mjs` | Base Adversary Statistics by Level (proficiency; the Minion/Standard and Elite/Solo modifier lines); AC by Level and armor type; HP/CP per level by Rank; the Role, Class, Iconic and Epic modifiers; the Lazy GM HP/CP tables. |
 | A3 | Ability modifiers | `rules/adversary.mjs` | Adversaries hold **modifiers only** (King Q-N7). `statLine(level, class)` gives the baseline six values and their sum. The GM assigns them to abilities and may change any of them. The sheet shows the assigned total against the budget: the line's sum, plus the Rank bonus when used (A5), plus Iconic +2 or Epic +4. Over or under budget is shown, never blocked. |
 | A4 | Proficiency | same | From the table by level. |
-| A5 | Rank bonus | same | Suggested ability points equal to Rank: E 0, D 1, C 2, B 3, A 4, S 5 (King). A switch on the NPC, on by default (Q-N17); it only raises the budget in A3. |
-| A6 | Hit and Chakra Points | same | 10 + (Level × Con) + (Level × per-level value for Rank), same value for both. Elite ×1.25; Solo ×(1.5 + 0.5 per player); Iconic ×1.5, Epic ×2, both ×2.5. Rounding per Q-N16. Alternative source per NPC: the Lazy GM table (Low, Medium, High). Minion: HP 10 + Level, no Chakra pool. |
+| A5 | Rank bonus | same | Suggested ability points equal to Rank: E 0, D 1, C 2, B 3, A 4, S 5 (King). An optional switch on the NPC, off to start (King Q-N17); it only raises the budget in A3. |
+| A6 | Hit and Chakra Points | same | 10 + (Level × Con) + (Level × per-level value for Rank), same value for both. Elite ×1.25; Solo ×(1.5 + 0.5 per player); Iconic ×1.5, Epic ×2, both ×2.5. Fractions round down (King Q-N16). Alternative source per NPC: the Lazy GM table (Low, Medium, High). Minion: HP 10 + Level, no Chakra pool. |
 | A7 | Party size | `rules-settings.mjs` | World setting (King Q-N3): automatic (player characters in the active party) or manual (the NPC's `details.partySize`). |
 | A8 | Armor Class and DR | `rules/adversary.mjs` | AC from the table by level and armor type; DR +3 Medium, +6 Heavy. Defender +1 AC and +2 DR; Elite +1 AC; Solo +2; Iconic +1; Epic +2; Minion −2. Equipped armor items do not change it (King Q-N8). |
 | A9 | Saves | same | Every save has proficiency, half or full (King Q-N15). Fully proficient saves: 2 at levels 1–7, 3 at 8–16, 4 at 17+; the rest are half (rounded down). Defaults to the highest assigned modifiers; the GM picks which saves are full on the Build tab, and the count is shown against the suggested number, never blocked. Save = modifier + proficiency (or half). Elite +1, Solo +2, Supporter +1. A Minion's save reports an automatic failure (King Q-N9). |
@@ -59,12 +59,13 @@ Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" throu
 - **Q-N7:** modifiers only. **Q-N8:** effects, rule elements and conditions change the numbers; equipped armor does not. **Q-N9:** Minion rules where they fit (A6, A8, A9, A11). **Q-N11:** ability modifier alone; the GM can add skills. **Q-N12:** private notes GM only. **Q-N13:** tabbed sheet is the default. **Q-N14:** NPC1a then NPC1b.
 - **Q-N10** is withdrawn: there is one adversary method, not two modes.
 - **Q-N15:** every creature's saves are half or fully proficient. Adversaries have 2 full saves at levels 1–7, 3 at 8–16, 4 at 17+. Players have 3 full and 3 half.
+- **Q-N16:** round down. **Q-N17:** the Rank bonus is optional and off to start.
 - **Rank bonus:** suggested, equal to Rank (D 1, C 2, B 3, A 4, S 5). **Stat lines:** the assumed baseline; the GM adjusts up or down.
 
 ## Questions for King
 
-- **Q-N16: rounding.** Elite ×1.25 and the other multipliers can give fractions. Round down, as elsewhere in the system?
-- **Q-N17: Rank bonus default.** On for new adversaries, with the switch to turn it off?
+None open.
+
 
 ## Progress log
 
