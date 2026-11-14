@@ -50,3 +50,20 @@ Published `v0.22.0-alpha.1`. F1–F3 were built as specified.
   - Size limits (disadvantage one size larger, impossible two or more) and "while grappling" prerequisites are shown in the action text but not enforced.
   - Escape attempts use the same contest by hand.
   - Hide, Search and the relational states are left for GEN1.
+
+## SKILL1b: Standard DCs (King approved 2026-11-14: "Begin work I approve these")
+
+Release target `0.23.0-alpha.1`, together with ENV1b.
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| F4 | `standardDC(statBonus)` | `rules/skill-resolution.mjs` | The named statistic + 10 (Chapter 6). |
+| F5 | `dc:<ability>` resolution | `workflow/skill-actions.mjs` | Shove (Strength DC) and Make an Impression/Request (Wisdom DC) compare to the target's ability check bonus + 10. |
+| F6 | Shove and Request results | `SKILL_RESULTS` | Shove: push note; a proficient Athletics user beating by 10 also knocks the target Prone. Request: agrees (asks nothing if beat by 10). |
+
+### Progress log
+- 2026-11-14 Claude: **F4–F6 done.**
+  - `skillActionEffects` takes `proficient` for upgrades that need it.
+  - The outcome card reads the initiator's Mastery and proficiency in the skill.
+  - Shove's advantage against a creature you grapple or restrain is left to the roller (mode buttons).
+  - Suite green (353). Next: ENV1b falling, then tests.

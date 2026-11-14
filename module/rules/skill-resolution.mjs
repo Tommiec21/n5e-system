@@ -5,8 +5,9 @@
  *   Passive    10 + the check's modifiers (+5 with advantage, -5 with disadvantage). The check
  *              succeeds when it meets or beats the score.
  *   Fixed      fixed:20, fixed:8+level, fixed:12+level (the target's level).
- *   Not automated: "dc:<ability>" (the book never defines a creature's ability DC: Q-S1), jutsu DCs
- *   (need the jutsu), saves, scores and tiered GM tables.
+ *   Standard DC  "dc:<ability>": the target's named statistic + 10 (Shinobi Handbook Ch6, King
+ *              2026-11-14): Strength DC = the Strength check bonus + 10 (SKILL1b).
+ *   Not automated: jutsu DCs (need the jutsu), saves, scores and tiered GM tables.
  *
  * Results that apply a status on a success (to the target), with the "beat by 10" upgrades.
  */
@@ -25,6 +26,9 @@ export function parseVs(vs = "") {
 export function passiveScore(skillTotal, mode = "normal") {
   return 10 + (Number(skillTotal) || 0) + (mode === "advantage" ? 5 : mode === "disadvantage" ? -5 : 0);
 }
+
+/** Standard DC (Chapter 6): the named statistic or bonus + 10. */
+export const standardDC = statBonus => 10 + (Number(statBonus) || 0);
 
 /** A fixed DC for this target, or null when it can't be worked out. */
 export function fixedDC(expr, target = {}) {
@@ -52,6 +56,9 @@ export function checkOutcome(total, dc) {
  */
 export const SKILL_RESULTS = Object.freeze({
   trip: { statuses: ["prone"] },
+  shove: { statuses: [], note: "push 5 ft (10 ft if beat by 10); proficient: push Str mod x 5 ft (min 5)",
+    upgrade: { margin: 10, proficient: true, statuses: ["prone"], note: "pushed (10 ft, or Str mod x 5 ft if proficient) and Prone (proficient, beat by 10)" } },
+  makeImpression: { statuses: [], note: "agrees, but expects something in return (asks nothing if beat by 10)" },
   grapple: { statuses: ["grappled"], upgrade: { margin: 10, mastery: 1, statuses: ["restrained"], note: "Restrained instead (beat by 10 with Mastery)" } },
   pin: { statuses: ["restrained"], note: "can't speak or make hand seals" },
   takedown: { statuses: ["prone"], note: "the grapple holds" },
@@ -63,11 +70,11 @@ export const SKILL_RESULTS = Object.freeze({
 });
 
 /** The statuses and notes a result gives. */
-export function skillActionEffects(key, { result, margin = 0, mastery = 0 } = {}) {
+export function skillActionEffects(key, { result, margin = 0, mastery = 0, proficient = false } = {}) {
   if ( result !== "success" ) return { statuses: [], notes: result === "tie" ? ["Tie: nothing changes"] : [] };
   const def = SKILL_RESULTS[key];
   if ( !def ) return { statuses: [], notes: [] };
   const up = def.upgrade;
-  if ( up && margin >= up.margin && mastery >= up.mastery ) return { statuses: [...up.statuses], notes: [up.note] };
+  if ( up && margin >= up.margin && mastery >= (up.mastery ?? 0) && (!up.proficient || proficient) ) return { statuses: [...up.statuses], notes: [up.note] };
   return { statuses: [...def.statuses], notes: def.note ? [def.note] : [] };
 }

@@ -4,9 +4,10 @@
  *   fixed:...        compared to the DC worked out for the target;
  *   contest:<skills> the target's owner gets a card to roll their side (each listed skill);
  * then an outcome card with buttons the target's owner (or the GM) uses to apply the result.
- * Other forms (dc:<ability>, jutsu DCs, scores, GM tables) stay manual.
+ *   dc:<ability>     the target's Standard DC (ability check bonus + 10, SKILL1b);
+ * Other forms (jutsu DCs, scores, GM tables) stay manual.
  */
-import { parseVs, passiveScore, fixedDC, contestOutcome, checkOutcome, skillActionEffects } from "../rules/skill-resolution.mjs";
+import { parseVs, passiveScore, fixedDC, standardDC, contestOutcome, checkOutcome, skillActionEffects } from "../rules/skill-resolution.mjs";
 import { esc } from "../view-models/common.mjs";
 import { canModify } from "../automation/authority.mjs";
 
@@ -24,6 +25,12 @@ export async function resolveSkillAction(actor, key, message, targets = []) {
   if ( vs.kind === "passive" ) {
     const score = passiveScore(target.system?.skills?.[vs.skill]?.total ?? 0);
     return postOutcome(actor, target, key, { ...checkOutcome(roll.total, score), against: `${target.name}'s passive ${skillLabel(vs.skill)} ${score}` });
+  }
+  // Standard DC (SKILL1b): the target's named ability check bonus + 10.
+  if ( vs.kind === "dc" && target.system?.abilities?.[vs.ability] ) {
+    const dc = standardDC(target.system.abilities[vs.ability].check ?? target.system.abilities[vs.ability].mod);
+    const label = CONFIG.N5E.abilities?.[vs.ability]?.label ?? vs.ability;
+    return postOutcome(actor, target, key, { ...checkOutcome(roll.total, dc), against: `${target.name}'s ${label} DC ${dc}` });
   }
   if ( vs.kind === "fixed" ) {
     const dc = fixedDC(vs.expr, { level: target.system?.level ?? target.system?.details?.level });
@@ -60,8 +67,8 @@ export async function onContestClick(message, button, event) {
 /** Outcome card with Apply buttons for the statuses a success gives. */
 async function postOutcome(actor, target, key, { result, margin, against }) {
   const def = CONFIG.N5E.skillActions[key];
-  const mastery = actor?.system?.skills?.[def.skill]?.mastery ?? 0;
-  const fx = skillActionEffects(key, { result, margin, mastery });
+  const sk = actor?.system?.skills?.[def.skill] ?? {};
+  const fx = skillActionEffects(key, { result, margin, mastery: sk.mastery ?? 0, proficient: !!sk.isProficient });
   const label = { success: "Success", failure: "Failure", tie: "Tie" }[result];
   return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }),
     content: `<div class="n5e-roll-card"><header><b>${esc(def.label)}: ${label}</b></header>
