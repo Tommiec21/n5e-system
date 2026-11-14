@@ -108,7 +108,10 @@ export async function applyLevel(actor, cls, level, steps, sel) {
     }
   }
   if ( Object.keys(updates).length ) await actor.update(updates);
-  if ( create.length ) await actor.createEmbeddedDocuments("Item", create);
+  // FIN1: applying a level twice must not add the same compendium item again.
+  const have = new Set(actor.items.map(i => i.flags?.core?.sourceId ?? i._stats?.compendiumSource).filter(Boolean));
+  const add = create.filter(d => !have.has(d.flags?.core?.sourceId) || d.flags?.n5e?.repeatable);
+  if ( add.length ) await actor.createEmbeddedDocuments("Item", add);
   await recordChoices(cls, level, classChoices);
   await recordChoices(subclass, level, subChoices);
   await recordChoices(clan, steps.find(s => s.origin === "clan")?.advLevel ?? level, clanChoices);

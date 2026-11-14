@@ -304,8 +304,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
    * one clan and one background (replace asks first), no duplicate jutsu, drop on Pinned to pin.
    */
   async _onDropItem(event, item) {
-    if ( !this.actor.isOwner ) return null;
     const actor = this.actor;
+    // FIN1: another creature's physical item dropped here is given, not copied.
+    if ( item.parent instanceof Actor && item.parent !== actor ) {
+      const { transferFromDrop } = await import("../../workflow/transfer.mjs");
+      if ( await transferFromDrop(item, actor) ) return null;
+    }
+    if ( !this.actor.isOwner ) return null;
 
     // Dropping one of our own items on the Pinned strip pins it.
     if ( item.parent === actor ) {

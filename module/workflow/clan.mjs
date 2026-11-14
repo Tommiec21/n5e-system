@@ -1,4 +1,5 @@
 /** Explicit clan setup; source dependencies resolve before replacing any old origin. */
+import { existingCopy } from "../rules/item-audit.mjs";
 import { abilities } from "../config/core.mjs";
 import { clanSetupFields, clanSetupPlan } from "../advancement/clan.mjs";
 import { esc } from "../view-models/common.mjs";
@@ -64,7 +65,12 @@ export async function addClan(actor, item) {
         d.flags ??= {}; d.flags.n5e = { ...d.flags.n5e, clanOrigin: clan.id, clanLevel: level };
         return d;
       });
-      if ( grantData.length ) created.push(...await actor.createEmbeddedDocuments("Item", grantData));
+      // FIN1: never grant a second copy of something the actor already has (the old clan's items are leaving).
+      const leaving = new Set(oldItems.map(d => d._id));
+      const owned = actor.items.filter(i => !leaving.has(i.id) && i.id !== clan.id);
+      const fresh = grantData.filter(d => !existingCopy(owned, d));
+      if ( fresh.length < grantData.length ) console.info(`n5e | ${actor.name} already had ${grantData.length - fresh.length} of ${clan.name}'s grants; not added again.`);
+      if ( fresh.length ) created.push(...await actor.createEmbeddedDocuments("Item", fresh));
       if ( Object.keys(updates).length ) { await actor.update(updates); appliedScores = true; }
       if ( old ) {
         const remove = actor.items.filter(i => i.id === old.id || i.flags?.n5e?.clanOrigin === old.id || i.flags?.n5e?.advancement?.origin === old.id).map(i => i.id);

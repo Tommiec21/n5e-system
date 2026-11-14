@@ -1,6 +1,6 @@
 # Development plan: unfinished work from shipped batches
 
-Status: **plan for King's approval (2026-11-14). Nothing is built. FIN1 is specified below and ready to build on approval; FIN2–FIN4 get their own specs.**
+Status: **FIN1 published `0.29.0-alpha.1` (King: "Start next batch"), without the parts Q-F1–Q-F3 decide. FIN2–FIN4 get their own specs.**
 
 King (2026-11-14): assume the duplicate-item and missing-Kunai bugs can't be reproduced; finalize item transfers; organize every unfinished task from other batches and start a development plan.
 
@@ -93,3 +93,25 @@ Release: `0.29.0-alpha.1` (Part A) and `0.29.0-alpha.2` (Part B), or together if
   - **Pure rules done:** `rules/transfer.mjs` (`transferRefusal`, `canReceive`, `transferPlan`: quantity checks, stack merge, resets, grant links dropped) and `rules/item-audit.mjs` (`identityKey`, `existingCopy`, `itemAudit`: duplicates with keep/remove, missing Unarmed Strike).
   - Found while reading: missing grants already warn (`advancement/manager.mjs`, `advancement/clan.mjs`), so B2 is the duplicate guards only.
   - Next: workflow (transfer, GM handler, drops), grant guards, migration 7, the GM window, the pack check.
+- 2026-11-14 Claude: **FIN1 workflow and Part B done.**
+  - **Transfer:** `workflow/transfer.mjs` (`transferItem`, `receiveTransfer` GM handler with rollback, `transferFromDrop`, `registerTransfer` with the token drop hook); `character-sheet.mjs _onDropItem` gives instead of copying.
+  - **Guards:** clan and background grants and the browser's Add skip items the actor already has; level-ups skip a compendium item already on the actor unless it is repeatable.
+  - **Migration 7:** Unarmed Strike for unlinked tokens.
+  - **GM window:** `applications/gm/item-integrity.mjs` with `templates/apps/item-integrity.hbs`, opened from the token controls.
+  - **Pack check:** `tools/check-grants.mjs` in `npm run check`; all 3,065 links are valid, so a dangling pack link was not the cause of the missing-Kunai report.
+- 2026-11-14 Claude: **Tests.** `tests/core/transfer.test.mjs` (7) and `tests/transfer.test.mjs` (5).
+  - Attempt 1: 401 passed, 1 failed. The clan guard called `toObject` on items, which an existing clan test's stand-in items don't have. The guard never needed it; removed in all three guards.
+  - Attempt 2: 402 passed, 2 skipped; core 72/72. Lint and check pass.
+
+## Final results (FIN1)
+
+Published `v0.29.0-alpha.1`.
+- **Differs from the spec:**
+  - Receivers are player characters and Allied NPCs only (the GM: anything). GM-marked loot and merchant targets, taking, and ryo were left out because Q-F1–Q-F3 are unanswered.
+  - B2 needed no "missing grant" reporting: the grant paths already warn.
+  - The Item Integrity window keeps the copy with choices or spent uses, else the oldest.
+- **Limits.**
+  - A player dropping onto a sheet they can only view depends on Foundry passing the drop to the sheet; dropping on the token always works.
+  - Items inside a container move as plain items; the container link isn't carried.
+  - The duplicate rule goes by type and identifier, so the window lists; the GM decides.
+  - Not tested in Foundry (no live testing).

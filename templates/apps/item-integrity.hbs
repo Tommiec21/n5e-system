@@ -1,0 +1,23 @@
+<section class="n5e-item-integrity-body">
+  <header class="flexrow">
+    <p class="note">{{checked}} creatures checked. Nothing changes until you press a button.</p>
+    <button type="button" data-action="rescan">Check again</button>
+  </header>
+  {{#if clean}}
+  <p>No duplicate or missing items found.</p>
+  {{else}}
+  <div class="rows">
+    {{#each rows}}
+    <div class="row" data-uuid="{{uuid}}">
+      <h4><a data-action="openSheet">{{name}}</a> <span class="sub">{{where}}</span></h4>
+      {{#if missingUnarmed}}
+      <div class="finding flexrow"><span>Unarmed Strike is missing.</span><button type="button" data-action="restoreUnarmed">Restore</button></div>
+      {{/if}}
+      {{#each duplicates}}
+      <div class="finding flexrow"><span>{{name}} ({{type}}): {{count}} copies.</span><button type="button" data-action="removeDuplicate" data-remove="{{remove}}">Remove duplicate</button></div>
+      {{/each}}
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</section>

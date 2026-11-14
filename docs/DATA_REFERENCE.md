@@ -449,3 +449,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.card.eventSave` | Action card | `{key, ability, dc}`: the rider save chosen as the event's one save, when the action forces none |
 | `flags.n5e.cardEffects.recipients[].effects[].source` | Effect note | The button that applied it (`src:i:j`, `act:i`, a rider application id), so it shows once |
 | `flags.n5e.riderFrom` | Active effect | The caster whose rider placed it (limited marks such as Static) |
+
+## Added in 0.29.0-alpha.1 (FIN1)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| Owner intent `transferItem` | Actor (the giver) | `{itemId, targetUuid, quantity}`: the GM moves the item after re-checking ownership, quantity and the receiver |
+| World migration 7 | World | Unarmed Strike for unlinked tokens |

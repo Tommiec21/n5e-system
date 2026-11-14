@@ -27,8 +27,21 @@ export const MIGRATIONS = [
   { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel },
   { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons },
   { id: 5, label: "Unarmed Strike item for every character and NPC", run: addUnarmedStrikes },
-  { id: 6, label: "Thrown weapons without Ammunition get a d4 Ammunition Die", run: migrateThrownWeapons }
+  { id: 6, label: "Thrown weapons without Ammunition get a d4 Ammunition Die", run: migrateThrownWeapons },
+  { id: 7, label: "Unarmed Strike item for unlinked tokens", run: addUnarmedStrikesToTokens }
 ];
+
+/** Migration 7 (FIN1): unlinked tokens were skipped by migration 5. */
+async function addUnarmedStrikesToTokens(log) {
+  const { ensureUnarmedStrike } = await import("../workflow/unarmed.mjs");
+  const failures = [];
+  const unlinked = game.scenes.contents.flatMap(sc => sc.tokens.contents.filter(t => !t.actorLink && t.actor).map(t => t.actor));
+  for ( const actor of unlinked ) {
+    try { if ( await ensureUnarmedStrike(actor) ) log.push(`Unarmed Strike: ${actor.uuid}`); }
+    catch (error) { failures.push({ uuid: actor.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some tokens could not get the Unarmed Strike."); error.failures = failures; throw error; }
+}
 
 /** Migration 6 (ATK1): Thrown weapons without the Ammunition property carry a d4 Ammunition Die. */
 async function migrateThrownWeapons(log) {

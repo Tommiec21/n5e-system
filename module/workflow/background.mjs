@@ -1,3 +1,4 @@
+import { existingCopy } from "../rules/item-audit.mjs";
 import { isFeatItem, featGroups } from "../rules/keywords.mjs";
 /** Set up a background before replacing any existing origin; grants stay linked for replacement. */
 import { skills, toolkits } from "../config/core.mjs";
@@ -87,7 +88,10 @@ export async function addBackground(actor, item) {
           + "<p>Equipment manifest: resolve individual item statistics from Chapter 5. All pack contents are sealed in a Ninja Tool scroll.</p>", quantity: 1, bulk: 0, price: 0,
         source: { book: "Naruto 5e — Full Document", page: "Chapter 5: Equipment Packs", version: "4.0", custom: "" } },
         flags: { n5e: { backgroundOrigin: bg.id } } });
-      created.push(...await actor.createEmbeddedDocuments("Item", grantData));
+      // FIN1: never grant a second copy of something the actor already has (the old background's items are leaving).
+      const owned = actor.items.filter(i => !oldIds.has(i.id) && i.id !== bg.id);
+      const toAdd = grantData.filter(d => !existingCopy(owned, d));
+      if ( toAdd.length ) created.push(...await actor.createEmbeddedDocuments("Item", toAdd));
       if ( oldIds.size ) await actor.deleteEmbeddedDocuments("Item", [...oldIds]);
       return bg;
     } catch (error) {

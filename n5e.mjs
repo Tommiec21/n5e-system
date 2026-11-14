@@ -52,6 +52,7 @@ import { registerRestIntents } from "./module/workflow/rest.mjs";
 import { registerEffectApplication } from "./module/workflow/effect-application.mjs";
 import { registerReactionWindows } from "./module/workflow/reactions.mjs";
 import { registerPartyOverview } from "./module/applications/gm/party-overview.mjs";
+import { registerItemIntegrity } from "./module/applications/gm/item-integrity.mjs";
 import * as d20 from "./module/dice/d20.mjs";
 import { checkMigrations, MIGRATIONS } from "./module/migration/runner.mjs";
 import api from "./module/api.mjs";
@@ -154,6 +155,7 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
 // limits) and the GM's Party Overview button on the token controls.
 registerTurnHooks();
 registerPartyOverview();
+registerItemIntegrity();
 // Per-target rows on damage cards (RES1).
 void dice.registerResolution().catch(error => console.error("n5e | resolution", error));
 // Opportunity Attack reminders (POS1).
@@ -170,6 +172,7 @@ Hooks.once("ready", async () => {
   // (Allied NPCs, rations, reaction choices) on the GM's client (module/automation/owner-intents.mjs).
   registerOwnerIntents();
   registerAlliedIntents();
+  void import("./module/workflow/transfer.mjs").then(m => m.registerTransfer());
   registerRestIntents();
   registerEffectApplication();
   registerReactionWindows();

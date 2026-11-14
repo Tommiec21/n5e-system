@@ -15,7 +15,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `clan.mjs` | 79 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
 | `eligibility.mjs` | 53 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
-| `manager.mjs` | 184 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
+| `manager.mjs` | 187 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
 | `steps.mjs` | 216 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
 
 ## module
@@ -30,14 +30,14 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-sheet.mjs` | 713 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 718 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `npc-sheet.mjs` | 48 | NPC sheet: the character sheet's tabs, rolls, casting and Combat tab, with a stat-block header (level, rank, role, creature type, template; stat-block HP/CP ... | `NPCSheet` |
 
 ## module/applications/browser
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `compendium-browser.mjs` | 255 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
+| `compendium-browser.mjs` | 258 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
 
 ## module/applications/effect
 
@@ -60,6 +60,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
+| `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
 | `party-overview.mjs` | 102 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
 
 ## module/applications/item
@@ -181,7 +182,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `atk1.mjs` | 16 | ATK1 migration (pure, used by the world runner and tools/migrate-packs.mjs): a Thrown weapon without the Ammunition property carries a d4 Ammunition Die (Cha... | `migrateThrownAmmo` |
 | `data1.mjs` | 100 | Data model update (pure; DATA1, King 2026-11-13). | `migrateJutsuDisciplines`, `migrateKeywords`, `FEATURE_KIND_MAP`, `migrateFeatureKind`, `migrateItemData1`, `migrateWeaponKeywords`, `migrateClassWeaponGrants`, `migrateItemData1b` |
-| `runner.mjs` | 254 | World migration runner. | `SETTING`, `MIGRATIONS`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
+| `runner.mjs` | 267 | World migration runner. | `SETTING`, `MIGRATIONS`, `LATEST`, `registerMigrationSetting`, `checkMigrations` |
 | `v31.mjs` | 538 | V3.1 (n5e 0.6.x, dnd5e-derived data) -> N5e 4.0 data mapping. | `isV31Item`, `isV31Actor`, `guessRank`, `migrateV31Item`, `migrateV31Actor` |
 
 ## module/rules
@@ -223,6 +224,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
 | `host.mjs` | 24 | Host hooks for the shared core (SHARED1). | `setHost`, `n5eConfig` |
+| `item-audit.mjs` | 64 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
 | `positioning.mjs` | 81 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
@@ -241,6 +243,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-resolution.mjs` | 81 | Skill-action resolution (pure; SKILL1, KB 02 and Chapter 6). | `parseVs`, `passiveScore`, `standardDC`, `fixedDC`, `contestOutcome`, `checkOutcome`, `SKILL_RESULTS`, `skillActionEffects` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
 | `trackers.mjs` | 244 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `bindingFuryTrigger`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
+| `transfer.mjs` | 70 | Item transfer between actors (pure; FIN1, King 2026-11-14; PF2e parity, no dialogs beyond "how many"). | `PHYSICAL_TYPES`, `transferRefusal`, `canReceive`, `transferPlan` |
 | `turn-start.mjs` | 64 | Start of a combatant's turn (pure). | `parseRecharge`, `turnStartPlan`, `economySlot` |
 | `unarmed.mjs` | 86 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepDie`, `resolveFormula` |
 | `uncanny-dodge.mjs` | 10 | Uncanny Dodge has no inferred visibility fallback or extra resource cost. | `uncannyDodgeOffer` |
@@ -277,10 +280,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 280 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
-| `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
+| `background.mjs` | 104 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 163 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 234 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
-| `clan.mjs` | 84 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
+| `clan.mjs` | 90 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 137 | Jutsu Clash workflow (CLASH1). | `clashButton`, `startClash`, `renderClash`, `rollClash`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
@@ -303,6 +306,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `roll-request.mjs` | 62 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `skill-actions.mjs` | 91 | Skill actions against one target (SKILL1). | `resolveSkillAction`, `onContestClick`, `onSkillApplyClick` |
 | `trackers.mjs` | 420 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `transfer.mjs` | 136 | Item transfer between actors (Foundry side; FIN1). | `transferItem`, `receiveTransfer`, `transferFromDrop`, `registerTransfer` |
 | `turn.mjs` | 161 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `unarmed.mjs` | 14 | The Unarmed Strike item (DATA2). | `ensureUnarmedStrike` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |

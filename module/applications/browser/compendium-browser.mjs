@@ -214,6 +214,9 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     if ( !actor ) return ui.notifications.info("Select a token you own, or set your character, to add items.");
     const doc = await fromUuid(target.closest("[data-uuid]").dataset.uuid);
     if ( !doc ) return;
+    // FIN1: features, feats, jutsu and stances an actor already has aren't added twice.
+    const { existingCopy } = await import("../../rules/item-audit.mjs");
+    if ( existingCopy([...actor.items], doc) ) return ui.notifications.warn(`${actor.name} already has ${doc.name}.`);
     await actor.createEmbeddedDocuments("Item", [doc.toObject()]);
     ui.notifications.info(`Added ${doc.name} to ${actor.name}.`);
   }

@@ -382,3 +382,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Riders are data.** `content/riders/<class>.json` → `npm run riders` → `npm run check` validates them and fails on unapplied tables. Guide: `docs/RIDERS.md`. Coverage: `node tools/report-riders.mjs`.
 - **Do not hard-code features in `workflow/riders.mjs`.** Add an effect type in `rules/riders.mjs` only when the vocabulary can't express a rider.
 - **One save per event** (King): a rider's `save` effects apply on a failure of the action's save; a rider save is the event save only when the action has none.
+
+## FIN1 — Claude, 2026-11-14 (published 0.29.0-alpha.1)
+- **Transfer:** `workflow/transfer.mjs transferItem(item, target, {quantity})`; sheets call `transferFromDrop`; tokens through `dropCanvasData`. Receivers are limited by `rules/transfer.mjs canReceive` (extend there for LOOT1).
+- **Grant guards** use `rules/item-audit.mjs existingCopy` (clan, background, browser) and the compendium source id (level-ups). Keep new grant paths behind one of them.
+- **`npm run check`** now also runs `tools/check-grants.mjs` (pack links).

@@ -1,3 +1,16 @@
+## 0.29.0-alpha.1 — Item transfer and item integrity (FIN1; King 2026-11-14)
+
+- **Giving items.** Drop a physical item from a creature you own onto another creature's token or sheet to give it, not copy it. A stack asks "how many?" once. The item arrives unequipped and merges into a matching stack. A chat line records who gave what.
+  - You can give to player characters and Allied NPCs; the GM can give to anything.
+  - If you don't own the receiver, the GM's client finishes the move with no dialog, and puts the item back if anything fails. With no GM connected, nothing moves.
+  - Classes, features, jutsu and the Unarmed Strike can't be given.
+  - Not in this release (waiting on King): loot piles and merchants, taking from creatures you don't own, and giving ryo.
+- **Duplicate and missing items.** The reported bugs couldn't be reproduced, so each path that could cause them is closed:
+  - Clan and background grants, level-ups and the compendium browser's Add no longer give a second copy of a feature, feat, jutsu or stance the creature already has.
+  - Unlinked tokens placed before 0.16.0 get their Unarmed Strike (world migration 7).
+  - New GM tool **N5e Item Integrity** (token controls): lists duplicate and missing items on every creature and token, with Remove duplicate and Restore buttons. It changes nothing on its own.
+  - The build now fails if any compendium link in the packs points at an item that doesn't exist (all 3,065 links are valid).
+
 ## 0.28.0-alpha.1 — Feature riders on the action card (CARD1d-a; King 2026-11-14)
 
 - **Riders.** Class, clan and feat effects that ride on an attack or jutsu now plug into its action card:
