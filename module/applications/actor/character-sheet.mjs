@@ -272,7 +272,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     this.element.querySelector("[data-add-condition]")?.addEventListener("change", async ev => {
       const key = ev.target.value;
       ev.target.value = "";
-      if ( key ) await this.actor.addCondition(key, 1);
+      if ( key ) await this.actor.addCondition(key, 1, { manual: true });
     });
 
     // Fields that live on an owned item (class levels, Hijutsu choice): update the item, not the actor.

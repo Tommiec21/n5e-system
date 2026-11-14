@@ -30,7 +30,7 @@ import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
 import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
 import { recoverCombatUses } from "./recovery.mjs";
-import { expireInCombat } from "./expiry.mjs";
+import { expireInCombat, expireEffects } from "./expiry.mjs";
 import { beginUpkeep, finishUpkeep, renderUpkeep } from "./upkeep.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 
@@ -115,6 +115,8 @@ export async function combatEndPipeline(combat) {
     if ( ids.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
     if ( actor.flags?.n5e?.upkeepPending ) await actor.update({ "flags.n5e.-=upkeepPending": null });
     await recoverCombatUses(actor, ["encounter"]);
+    // Out of combat now: timed effects and "end of next turn" conditions from game effects end.
+    await expireEffects(actor, { includeConditions: true });
     void emitEffectEvent(actor, "combatEnd", { id: `${combat.id}:${actor.uuid}:combatEnd` }).catch(error => console.warn("n5e | effect event", error));
   }
 }

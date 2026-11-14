@@ -219,4 +219,4 @@ Reactions offered to an NPC's owner, Clash, Deflection and DR order prompts have
 - **Players can control them.** The summoner owns the token and actor, so Allied NPCs follow the same ownership rules as player characters. The player moves them, rolls for them, applies damage and effects to them, and makes their saves. Their turns and reactions prompt their owning player.
 - **Storage.** NPC data gets an allied marker linking it to the summoner (the existing `template` summon/clone/companion and `summoner` fields extend to cover this). Dismissal, concentration end and duration end remove the token as they do now.
 - **Everything else matches dnd5e and PF2e.** Allied NPCs never give a player authority over non-allied NPCs.
-- Q6. Out of combat, should "until the end of its next turn" conditions (Dazed, Staggered, Berserk, Confused, Slowed) end after one round (6 s) of world time? Today they stay until removed by hand.
+- Q6. **Answered by King 2026-11-13:** out of combat they end immediately, unless applied manually (dragged effect, sheet, GM tools). Published 0.15.0-alpha.3.

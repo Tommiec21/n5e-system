@@ -52,3 +52,12 @@ test("workflow: the active GM deletes expired effects and posts one card; other 
   await expireInCombat(game.combats[0]);
   assert.deepEqual(deleted, ["Mark"]);
 });
+
+test("out of combat, 'end of next turn' conditions from game effects end at once; deliberate ones stay", () => {
+  const auto = fx("Dazed", "condition", null, { system: { key: "dazed" }, flags: { n5e: { applied: "auto" } } });
+  const manual = fx("Staggered", "condition", null, { system: { key: "staggered" } });
+  const timed = fx("Bruised", "condition", null, { system: { key: "bruised" }, flags: { n5e: { applied: "auto" } } });
+  const actor = { effects: [auto, manual, timed] };
+  assert.deepEqual(expiredEffects(actor, { includeConditions: true }).map(e => e.name), ["Dazed"]);
+  assert.deepEqual(expiredEffects(actor).map(e => e.name), [], "in combat they wait for the end of the next turn");
+});

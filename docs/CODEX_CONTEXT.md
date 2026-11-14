@@ -271,3 +271,6 @@ Owner Claude; ownership released. King approved `docs/TURN1_SPEC.md` and ruled: 
 
 ## EXPIRE1 — Claude, 2026-11-13
 Owner Claude; ownership released. Published v0.15.0-alpha.2. Timed effects expire: in combat at each turn start for every combatant (`expireInCombat`, called from `turnStartPipeline`); out of combat on `updateWorldTime`, where non-Persists conditions are included. Rules are in `rules/expiry.mjs`. Spec and results: `docs/EXPIRE1_SPEC.md`. Tests: 293 pass, 2 skipped, on the first attempt. Open question Q6 (turn-ending conditions out of combat) is with King. Next ready batches: DMG1, ADV1, CONC1.
+
+## Q6 ruling — Claude, 2026-11-13
+King: out of combat, "end of next turn" conditions (Staggered, Dazed, Berserk, Confused, Slowed) end immediately unless applied manually (dragged effect, sheet picker, GM tools). Published v0.15.0-alpha.3. `addCondition` has a `manual` option; game-applied conditions carry `flags.n5e.applied = "auto"`. New system code that applies conditions should call `addCondition` without `manual`. Tests: 294 pass, 2 skipped, on the first attempt.

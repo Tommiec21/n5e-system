@@ -99,9 +99,15 @@ export default class N5eActor extends Actor {
    * @param {{seconds?: number, rounds?: number}} [o.duration]  overrides the default
    * @returns {Promise<ActiveEffect|null>}
    */
-  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration } = {}) {
+  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
+    // King 2026-11-13: out of combat, "until the end of its next turn" conditions from game effects
+    // end immediately; only a deliberate application (sheet, GM tools, dragged effect) stays.
+    if ( !manual && def.endsAt === "nextTurnEnd" && !this.inStartedCombat ) {
+      ui.notifications?.info(`${def.label ?? key} ends immediately: ${this.name} is not in combat.`);
+      return null;
+    }
     if ( rule("conditionResistance") && this.system.traits?.conditionImmune?.has(key) ) return null;
     const existing = this.getCondition(key);
     if ( existing ) {
@@ -121,11 +127,17 @@ export default class N5eActor extends Actor {
       });
     }
     const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin });
+    if ( !manual ) foundry.utils.setProperty(data, "flags.n5e.applied", "auto");
     const dur = duration ?? defaultDuration(key);
     if ( dur ) data.duration = { seconds: dur.seconds ?? null, rounds: dur.rounds ?? null, startTime: game.time.worldTime,
       startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null };
     else if ( game.combat ) data.duration = { startRound: game.combat.round, startTurn: game.combat.turn };
     return CONFIG.ActiveEffect.documentClass.create(data, { parent: this });
+  }
+
+  /** Is this actor a combatant in a combat that has started? */
+  get inStartedCombat() {
+    return !!game.combats?.some(c => c.started && c.combatants.some(cb => cb.actor?.uuid === this.uuid));
   }
 
   /** Remove ranks (or the whole condition when ranks >= current or ranks = "all"). */

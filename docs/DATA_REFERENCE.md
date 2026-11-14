@@ -258,3 +258,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.upkeepPending = {combatId, round, turn, ids}` | Actor | Open upkeep decision; cleared when the owner answers, at turn end (unanswered jutsu end) or when combat ends |
 | `system.uses.per` = `turn` / `round` / `encounter` | Item | Now recovered in combat (start of own turn / each round / combat start and end) |
 | `system.resources.<id>.recovery[].on` = `turn` / `round` / `encounter` | Actor | Same periods for resource pools |
+
+## Added in 0.15.0-alpha.3
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.applied = "auto"` | Condition effect | Applied by a game effect, not by hand. Out of combat, "end of next turn" conditions with this tag end immediately. |

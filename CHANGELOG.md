@@ -1,3 +1,9 @@
+## 0.15.0-alpha.3 — "End of next turn" conditions out of combat (King 2026-11-13)
+
+- Out of combat, Staggered, Dazed, Compelled: Berserk, Compelled: Confused and Slowed end immediately when a game effect applies them (failed saves, jutsu text links, trackers).
+- Conditions you apply deliberately stay: added from the sheet, the GM Party Overview, or by dragging the condition effect onto the creature.
+- When combat ends, these game-applied conditions end, along with timed effects that have run out.
+
 ## 0.15.0-alpha.2 — Timed effects expire (EXPIRE1)
 
 - Effects with a duration (generic effects, Amps, Marks, activity effects) are removed when their duration runs out.

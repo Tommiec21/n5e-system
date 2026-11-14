@@ -75,7 +75,7 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     const kind = target.dataset.kind;
     if ( kind === "condition" ) {
       const key = row.querySelector("select[name=condition]")?.value;
-      if ( key ) await actor.addCondition(key, 1);
+      if ( key ) await actor.addCondition(key, 1, { manual: true });
       return;
     }
     const amount = Number(row.querySelector("input[name=amount]")?.value) || 0;

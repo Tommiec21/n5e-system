@@ -24,6 +24,16 @@ Status: **King said "start" on 2026-11-13. Published 0.15.0-alpha.2.** Closes R8
 
 One full-suite run passed on the first attempt: 293 pass, 2 skipped. Lint and check pass.
 
-## Open question (Q6)
+## Q6: answered by King (2026-11-13), published 0.15.0-alpha.3
 
-Conditions that end "at the end of the creature's next turn" (Dazed, Staggered, Berserk, Confused, Slowed) have no time duration, so outside combat they stay until removed by hand. Should they end after one round (6 seconds) of world time out of combat?
+Out of combat, "end of next turn" conditions end immediately, unless they were applied manually by dragging the condition effect onto the creature.
+
+| Function | Change |
+| --- | --- |
+| `Actor#addCondition(key, ranks, {manual})` | New `manual` option. A non-manual Staggered, Dazed, Berserk, Confused or Slowed on an actor not in a started combat isn't created ("ends immediately" notice; returns null). Non-manual conditions are tagged `flags.n5e.applied = "auto"`. |
+| `Actor#inStartedCombat` (new getter) | Is the actor a combatant in a combat that has started? |
+| Sheet add-condition picker, GM Party Overview | Pass `{manual: true}`. A dragged condition effect bypasses `addCondition`, so it is never tagged and stays. |
+| `expiredEffects` | Out of combat, "end of next turn" conditions tagged `auto` count as expired. |
+| `combatEndPipeline` | Calls `expireEffects(actor, {includeConditions: true})` for each combatant, so game-applied "end of next turn" conditions and timed effects end with the combat. |
+
+Test added to `tests/expiry.test.mjs`. One full-suite run passed on the first attempt: 294 pass, 2 skipped.
