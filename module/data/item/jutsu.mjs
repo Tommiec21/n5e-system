@@ -88,7 +88,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
    */
   //   noReduction: drop every reduction (Chakra Surge: Crash); subtract: a one-off reduction from a
   //   cast option (Chakra Compression). The cost math itself (order, floors) is rules/cost.mjs.
-  computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice, noReduction = false, subtract = 0 } = {}) {
+  computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice, noReduction = false, subtract = 0, discipline = "" } = {}) {
     const pen = actorSystem?.conditionPenalties;
     const mods = actorSystem?.modifiers;
     const ctx = { discipline: this.discipline, disciplines: this.disciplines, keywords: this.keywords, rank: castRank };
@@ -112,7 +112,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       for ( let i = multipliers.length - 1; i >= 0; i-- ) if ( multipliers[i] < 1 ) multipliers.splice(i, 1);
     }
     // Sealed raises the BASE cost (before reductions and the half-base floor).
-    const baseAdds = [pen?.baseCost?.[this.discipline] ?? 0];
+    const baseAdds = [pen?.baseCost?.[discipline || this.discipline] ?? 0];
     return computeJutsuCost({
       base: this.cost.value,
       mode: this.cost.mode,

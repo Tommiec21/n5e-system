@@ -18,6 +18,7 @@ import { castBlockers } from "../rules/cast-checks.mjs";
 import { rule } from "../rules-settings.mjs";
 import { availableCastOptions, applyCastOptions, hasState, pyroclasmGain } from "../rules/cast-options.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
+import { resolveCastDiscipline } from "../rules/cast-discipline.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 
@@ -32,6 +33,7 @@ const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
  * @param {string} [sel.endConcentration] id of a concentrated jutsu to end (when at the limit)
  * @param {object[]} [sel.featureOptions] [{id, amount}] feature cast options (Chakra Compression, Crash...)
  * @param {{round, turn}} [sel.now]     current combat turn
+ * @param {string} [sel.discipline]    cast as this discipline (multi-discipline jutsu; MDISC1)
  */
 export function castPlan(actor, item, sel = {}) {
   const sys = actor.system;
@@ -39,18 +41,22 @@ export function castPlan(actor, item, sel = {}) {
   const rank = sel.rank ?? j.rank;
   const problems = [];
   const warnings = [];
+  // Cast discipline (MDISC1): one of the listed disciplines; locked while concentrating on it.
+  let discipline;
+  try { discipline = resolveCastDiscipline(actor, item, sel.discipline); }
+  catch (error) { problems.push(error.message); discipline = resolveCastDiscipline(actor, item, ""); }
 
   // Feature cast options.
   const now = sel.now ?? null;
   const crash = hasState(actor, "crash");
-  const available = availableCastOptions(actor, item, effectiveActivities(item), now);
+  const available = availableCastOptions(actor, item, effectiveActivities(item), now, { discipline });
   const chosen = sel.featureOptions ?? available.filter(o => o.auto && !o.used).map(o => ({ id: o.id }));
   const fx = applyCastOptions(actor, item, chosen, available, rank);
   problems.push(...fx.problems);
 
   // Cost.
   const cost = j.computeCost(sys, rank, { multiplierChoice: sel.multiplierChoice, divisorChoice: sel.divisorChoice,
-    noReduction: crash, subtract: crash ? 0 : fx.subtract });
+    noReduction: crash, subtract: crash ? 0 : fx.subtract, discipline });
   if ( crash && fx.subtract > 0 ) warnings.push("Crash: no cost reduction applies");
   const imported = item.flags?.n5e?.jutsuBookImport;
   const spendsChakra = j.cost?.mode === "chakra" || (!!imported && j.cost?.mode === "special" && j.cost.value > 0);
@@ -59,8 +65,8 @@ export function castPlan(actor, item, sel = {}) {
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
   if ( item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
   // Conditions, components, ability requirement and rank cap (rules/cast-checks.mjs; CAST1).
-  problems.push(...castBlockers(actor, item, { rank }));
-  if ( ["nin", "gen"].includes(item.system.discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
+  problems.push(...castBlockers(actor, item, { rank, discipline }));
+  if ( ["nin", "gen"].includes(discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
     problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
   }
 
@@ -76,7 +82,7 @@ export function castPlan(actor, item, sel = {}) {
     if ( rc.pool === "focus" ) moldings++;
     else maneuvers++;
   }
-  if ( moldings && j.discipline !== "nin" ) problems.push("Moldings only work on Ninjutsu");
+  if ( moldings && discipline !== "nin" ) problems.push("Moldings only work on Ninjutsu");
   if ( moldings > 1 && rule("moldingLimit") && !crash ) warnings.push("More than one Molding on a cast needs the Crash state");
   for ( const [id, amount] of Object.entries(fx.pools) ) pools[id] = (pools[id] ?? 0) + amount;
   if ( maneuvers > 1 ) warnings.push("Only one Maneuver per turn");
@@ -112,6 +118,8 @@ export function castPlan(actor, item, sel = {}) {
     update["system.combat.concentrating"] = concentration.list;
     update[`flags.n5e.concentrationPaid.${item.id}`] = spendsChakra ? cost.cost : 0;
     if ( concentration.ending ) update[`flags.n5e.concentrationPaid.-=${concentration.ending}`] = null;
+    // The discipline stays locked for the whole duration (King 2026-11-13, decision 11).
+    update[`flags.n5e.castDiscipline.${item.id}`] = discipline;
   }
   if ( ready ) update[`flags.n5e.readied.${item.id}`] = { trigger: ready.trigger, rank, cost: cost.cost, readiedAt: now };
   Object.assign(update, castUpdates(actor, item) ?? {});
@@ -137,7 +145,7 @@ export function castPlan(actor, item, sel = {}) {
   }
 
   return {
-    rank, upcast: rankValue(rank) - rankValue(j.rank),
+    rank, discipline, upcast: rankValue(rank) - rankValue(j.rank),
     cost: cost.cost, costMode: j.cost?.mode, costText: j.cost?.text ?? "", costBreakdown: cost,
     choices: cost.choices ?? {}, cpAfter: spendsChakra ? Math.max(0, cp - cost.cost) : cp,
     pools, options: [...used.map(o => ({ id: o.id, name: o.name })), ...fx.names.map(name => ({ id: "", name }))], concentration,

@@ -55,7 +55,7 @@ function hasDamage(jutsu, activities) {
  * @param {object[]} activities   the jutsu's effective activities
  * @param {{round, turn}|null} now
  */
-export function availableCastOptions(actor, jutsu, activities = [], now = null) {
+export function availableCastOptions(actor, jutsu, activities = [], now = null, { discipline = "" } = {}) {
   const out = [];
   const entries = list(actor.items).flatMap(f => {
     const n = f.flags?.n5e ?? {};
@@ -64,7 +64,9 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null) 
   });
   for ( const { f, o, id } of entries ) {
     const a = o.appliesTo ?? {};
-    if ( a.discipline && ![jutsu.system.discipline, jutsu.system.group, ...(jutsu.system.disciplines ?? [])].includes(a.discipline) ) continue;
+    // Cast as one discipline (MDISC1): options for a discipline apply when cast as it (or its group).
+    const castAs = discipline ? [discipline, jutsu.system.group] : [jutsu.system.discipline, jutsu.system.group, ...(jutsu.system.disciplines ?? [])];
+    if ( a.discipline && !castAs.includes(a.discipline) ) continue;
     if ( a.keywords?.length && !a.keywords.some(k => kwSet(jutsu).has(k)) ) continue;
     if ( a.activation && jutsu.system.activation?.type !== a.activation ) continue;
     if ( a.requiresDamage && !hasDamage(jutsu, activities) ) continue;

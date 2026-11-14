@@ -31,7 +31,7 @@ export function jutsuComponents(item) {
  * @param {{rank?: string}} [o]  the rank it is cast at
  * @returns {string[]} problems (empty = may cast)
  */
-export function castBlockers(actor, item, { rank } = {}) {
+export function castBlockers(actor, item, { rank, discipline = "" } = {}) {
   const problems = [];
   const statuses = actor.statuses ?? new Set();
   const flags = actor.system?.conditionPenalties?.flags ?? {};
@@ -50,7 +50,8 @@ export function castBlockers(actor, item, { rank } = {}) {
   if ( flags.noTeleportAtRanks && sealed >= flags.noTeleportAtRanks && /\bteleport/i.test(String(item.system?.description ?? "")) ) problems.push(`Sealed ${sealed}: can't teleport`);
   if ( flags.noDojutsu && kw(item).has("dojutsu") ) problems.push("Blinded: can't use Dojutsu");
 
-  const live = item.system?.live ?? {};
+  // Multi-discipline jutsu: the requirement uses the cast discipline's ability (MDISC1).
+  const live = (discipline && item.system?.liveAs?.(discipline)) || item.system?.live || {};
   if ( live.meetsRequirement === false ) problems.push(`Needs ${String(live.ability ?? "").toUpperCase()} ${live.requirement} to cast this rank`);
   const castMax = actor.system?.grants?.maxRank ?? maxRankForLevel(actor.system?.level ?? 1);
   const at = rank ?? item.system?.rank;

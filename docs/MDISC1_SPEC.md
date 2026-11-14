@@ -39,3 +39,10 @@ Work through these in order. After each one, add a line to the progress log at t
 - 2026-11-13 Claude: spec written; starting F1.
 - 2026-11-13 Claude: **F1 done.** `JutsuData#prepareActorDerived` builds `liveByDiscipline` (ability, attack, DC, meetsRequirement per listed discipline, plus the shared cost/access numbers); `live` is the default discipline's entry; `liveAs(d)` and `_liveNumbers(sys, d, requirement)` added. Checked on Merciless Havoc (nin + tai): Tai Str 3/11, Nin Int 6/14. Next: F3 (pure helpers, needed by F2).
 - 2026-11-13 Claude: **F3, F7, F9 done** in new `rules/cast-discipline.mjs` (pure): `castableDisciplines`, `defaultCastDiscipline`, `castDisciplineOf` (lock while concentrating, `flags.n5e.castDiscipline.<id>`), `resolveCastDiscipline` (validates; the lock wins while concentrating), `countsAsDiscipline`, `knowsJutsuOf`, `sameTypeForSwap`, `disciplineAllowed`, `defenseSkillFor` (skills' `clash` key: nin→nin, tai→mar, gen→ill), `genjutsuRidersApply`, `caughtBy`. No callers yet. Next: F2 (cast plan).
+- 2026-11-13 Claude: **F2 done.** `castPlan(sel.discipline)` resolves the cast discipline with `resolveCastDiscipline` (an invalid or lock-breaking choice becomes a plan problem) and returns `plan.discipline`. The cast discipline drives:
+  - `castBlockers({discipline})`: the ability requirement via `liveAs`;
+  - the Inner Gate block;
+  - Moldings (Ninjutsu only);
+  - `computeCost({discipline})`: the Sealed base-cost penalty;
+  - `availableCastOptions(..., {discipline})`: `appliesTo.discipline` matches the cast discipline or the jutsu's group.
+  Concentration casts write the lock `flags.n5e.castDiscipline.<id>`. Existing suite still green (333). Next: F4 (dialog) + F5 (card/buttons).
