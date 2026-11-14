@@ -1,5 +1,6 @@
 /** Complete the seven supported class trees without replacing existing IDs or automation. */
 import fs from "node:fs";
+import { migrateItemData1 } from "../../module/migration/data1.mjs";
 import path from "node:path";
 import crypto from "node:crypto";
 
@@ -257,7 +258,7 @@ for ( const data of all().filter(d => d.type === "feat" && d.system.requirement?
 for ( const { data, file, pack } of records.values() ) {
   if ( !["classes", "features"].includes(pack) ) continue;
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
+  fs.writeFileSync(file, `${JSON.stringify(migrateItemData1(data) ?? data, null, 2)}\n`);
 }
 fs.mkdirSync(path.join(root, "content/classes"), { recursive: true });
 fs.writeFileSync(path.join(root, "content/classes/import-summary.json"), `${JSON.stringify({ summary, generated: generated.length,

@@ -1,3 +1,4 @@
+import { isFeatItem } from "../rules/keywords.mjs";
 /** Pure clan setup choices and grant planning. No document writes. */
 import { abilities, skills } from "../config/core.mjs";
 import { affinities } from "../config/jutsu.mjs";
@@ -20,7 +21,7 @@ export function clanSetupFields(actor, clan, documents) {
   if ( clan.system.branches.size || clan.system.branches.length ) fields.push({ id: "branch", label: "Clan branch", options: list(clan.system.branches).map(value => ({ value, label: value === "main" ? "Main Branch" : "Side Branch" })), kind: "branch", count: 1 });
   for ( const adv of clan.system.advancement ) {
     if ( adv.level > level || !["itemChoice", "featChoice"].includes(adv.type) ) continue;
-    const pool = adv.type === "featChoice" ? documents.filter(d => d.type === "feat" && !["classFeature", "classOption", "clanFeature", "clanOption", "backgroundFeature", "npcFeature"].includes(d.system.category)
+    const pool = adv.type === "featChoice" ? documents.filter(d => d.type === "feat" && isFeatItem(d)
       && (d.system.requirement?.level ?? 0) <= level && (!d.system.requirement?.clan || d.system.requirement.clan === clan.system.identifier)
       && !actor.items.some(i => i.type === "feat" && i.name === d.name)) : list(adv.uuids).map(uuid => documents.find(d => d.uuid === uuid)).filter(Boolean);
     fields.push({ id: adv.id, label: `${adv.title} (level ${adv.level})`, kind: "itemChoice", count: adv.count, level: adv.level, branch: adv.branch,

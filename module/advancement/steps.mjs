@@ -1,3 +1,4 @@
+import { isFeatItem } from "../rules/keywords.mjs";
 /**
  * Level-up steps (pure). Given a class (and its subclass, if chosen) and the level being gained,
  * list everything that level grants or asks for, in book order. The level-up dialog renders these;
@@ -167,7 +168,7 @@ export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords, cl
 export function eligibleFeats(feats, { level, owned, clan = "" }) {
   return feats.filter(f => (f.system.requirement?.level ?? 0) <= level && !owned.has(f.name.toLowerCase())
     && (!f.system.requirement?.clan || f.system.requirement.clan === clan)
-    && !["classFeature", "classOption", "clanFeature", "clanOption", "backgroundFeature", "npcFeature"].includes(f.system.category))
+    && isFeatItem(f))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 

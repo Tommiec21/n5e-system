@@ -144,7 +144,8 @@ export class FeatData extends TDM() {
     return {
       ...baseFields(),
       ...activatableFields(),
-      category: S.str({ initial: "general" }),         // CONFIG.N5E.featCategories
+      category: S.str({ initial: "feat" }),            // feature kind (CONFIG.N5E.featureKinds) or "feat"
+      keywords: S.set(),                                // feats: group keywords (general, skill...); DATA1
       prerequisites: S.arr(S.str()),
       requirement: S.obj({ level: S.int(0, { min: 0 }), class: S.str(), clan: S.str() }),
       tags: S.set(),                                    // e.g. dojutsu

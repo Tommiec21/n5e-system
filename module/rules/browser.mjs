@@ -98,7 +98,8 @@ export function entryFrom(e, { pack = "" } = {}) {
     tab: tabFor(e.type),
     identifier: s.identifier || "",
     rank: s.rank || "",
-    discipline: s.discipline || "",
+    // Bukijutsu: a Taijutsu jutsu with the bukijutsu keyword (DATA1).
+    discipline: arr(s.keywords).includes("bukijutsu") ? "buki" : s.discipline || "",
     section: s.section || "",
     keywords: arr(s.keywords),
     activation: s.activation?.type || "",

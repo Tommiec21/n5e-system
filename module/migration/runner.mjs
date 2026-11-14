@@ -15,14 +15,38 @@
  *   4. add a test in tests/migration.test.mjs.
  */
 import { isV31Actor, isV31Item, migrateV31Actor, migrateV31Item } from "./v31.mjs";
+import { migrateItemData1 } from "./data1.mjs";
 
 export const SETTING = "migrationVersion";
 
 /** Ordered list. Add new entries at the end; never renumber. */
 export const MIGRATIONS = [
   { id: 1, label: "V3.1 world actors and items -> 4.0", run: migrateWorldV31 },
-  { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation }
+  { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation },
+  { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel }
 ];
+
+/**
+ * Migration 3 (DATA1, King 2026-11-13). World items, actor items and unlinked token items:
+ * Bukijutsu → Taijutsu + keyword, the disciplines list, canonical keywords (Combination removed),
+ * feature kinds (background features → Clan Feature) and the Feats group.
+ */
+async function migrateDataModel(log) {
+  const failures = [];
+  const unlinked = game.scenes.contents.flatMap(sc => sc.tokens.contents.filter(t => !t.actorLink && t.actor).map(t => t.actor));
+  const items = [...game.items, ...[...game.actors, ...unlinked].flatMap(a => [...a.items])];
+  for ( const item of items ) {
+    const next = migrateItemData1(item.toObject());
+    if ( !next ) continue;
+    const update = {};
+    for ( const key of ["discipline", "disciplines", "keywords", "category"] ) {
+      if ( key in next.system ) update[`system.${key}`] = next.system[key];
+    }
+    try { await item.update(update, { n5eMigration: true }); log.push(`Data model: ${item.uuid}`); }
+    catch (error) { failures.push({ uuid: item.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some items could not be updated to the new data model."); error.failures = failures; throw error; }
+}
 export const LATEST = MIGRATIONS.at(-1).id;
 
 /** Restore only newly supported booleans from a linked compendium source; preserve all item ids,

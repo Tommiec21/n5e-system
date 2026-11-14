@@ -110,7 +110,9 @@ export function scopeApplies(scope, jutsu) {
   if ( !scope || scope === "all" ) return true;
   if ( scope.startsWith("keyword.") ) return new Set(jutsu.keywords).has(scope.slice(8));
   if ( scope.startsWith("rank.") ) return jutsu.rank === scope.slice(5);
-  return jutsu.discipline === scope;
+  // Bukijutsu is a keyword on a Taijutsu jutsu (DATA1): the "buki" scope matches it.
+  if ( scope === "buki" ) return jutsu.discipline === "buki" || new Set(jutsu.keywords).has("bukijutsu");
+  return jutsu.discipline === scope || [...(jutsu.disciplines ?? [])].includes(scope);
 }
 
 /* -------------------------------------------- */
