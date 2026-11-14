@@ -1,3 +1,4 @@
+import { castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { damageFromMessage, damageApplicationTrace } from "../rules/damage-trace.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { chooseReaction } from "./reaction-adapters.mjs";
@@ -182,7 +183,7 @@ async function concentrationCheck(actor, dc, jutsuIds, event) {
   const spec = { ...rollSpec(actor, "skill", "cha"), label: "Concentration check" };
   // Chakra Surge, Flow: Concentration checks for Ninjutsu at advantage.
   const flow = actor.effects.some(e => !e.disabled && e.flags?.n5e?.state === "flow")
-    && jutsuIds.some(id => actor.items.get(id)?.system.discipline === "nin");
+    && jutsuIds.some(id => { const j = actor.items.get(id); return j && castDisciplineOf(actor, j) === "nin"; }); // locked cast discipline (MDISC1)
   return rollWithSpec(actor, spec, { event, dc, mode: flow ? "advantage" : undefined, onResult: async r => {
     if ( r.success ) return;
     const keep = (actor.system.combat?.concentrating ?? []).filter(id => !jutsuIds.includes(id));

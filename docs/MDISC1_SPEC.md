@@ -55,3 +55,4 @@ Work through these in order. After each one, add a line to the progress log at t
     - `activityButtons({discipline})`, which takes the attack/DC from `liveAs` and the Genjutsu damage flag only when cast as Genjutsu;
     - the feature extra-damage Genjutsu flag.
   - A released Ready jutsu reads the lock. Suite still green. Next: F6 (lock readers: Flow, Inner Gates).
+- 2026-11-13 Claude: **F6 done.** Flow's Ninjutsu advantage on concentration checks (`apply-damage.mjs concentrationCheck`) and the Inner Gates ending Ninjutsu/Genjutsu concentration (`trackers.mjs`) read `castDisciplineOf(actor, jutsu)`, the locked cast discipline. Suite green. Next: F8 (learning limits in `learnableJutsu`).

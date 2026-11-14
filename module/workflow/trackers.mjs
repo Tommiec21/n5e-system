@@ -1,3 +1,4 @@
+import { castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Phase 6 trackers (Foundry side); rules in rules/trackers.mjs.
@@ -212,7 +213,8 @@ export async function openNextGate(actor) {
   if ( gate.tempHp ) update["system.hp.temp"] = Math.max(actor.system.hp.temp ?? 0, gate.tempHp);
   // Ninjutsu and Genjutsu can't be maintained while a gate is open.
   const conc = actor.system.combat?.concentrating ?? [];
-  const keep = conc.filter(id => !["nin", "gen"].includes(actor.items.get(id)?.system.discipline));
+  // Each jutsu by the discipline it was cast as (MDISC1).
+  const keep = conc.filter(id => { const j = actor.items.get(id); return !j || !["nin", "gen"].includes(castDisciplineOf(actor, j)); });
   if ( keep.length !== conc.length ) update["system.combat.concentrating"] = keep;
   if ( Object.keys(update).length ) await actor.update(update);
   return say(actor, `<b>${esc(actor.name)}</b> opens Gate ${gate.n}, ${esc(gate.label)}.${gate.tempHp ? ` +${gate.tempHp} temporary HP.` : ""}${keep.length !== conc.length ? " Ninjutsu and Genjutsu concentration ends." : ""}`);
