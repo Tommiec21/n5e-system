@@ -166,3 +166,8 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
   - Published n5e-module `v0.1.0-alpha.19`.
   - **Open:** the casting test failure needs Codex or King.
   - Next: condition lifecycle, then activity selection.
+- 2026-11-14 Claude: **SHARED1b slice 5 (Module): condition lifecycle.**
+  - The core and Module lifecycles are different models: System effect shapes with Foundry durations, versus native records with stacking policies and world-time expiry.
+  - Only `removalResult` moved to the core, through an adapter that keeps the Module record shape. A parity test checks it against the old formula. Turn-start damage, durations and decay stay Module-native.
+  - Gate `coreRemoval` passed locally (64/64) and in CI (run 43600442333). Published n5e-module `v0.1.0-alpha.20`.
+  - Next: activity selection, the last M3 swap.
