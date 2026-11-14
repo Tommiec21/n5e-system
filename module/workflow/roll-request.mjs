@@ -32,6 +32,7 @@ export function renderRollRequest(message, html) {
   const owns = uuid => { const actor = fromUuidSync(uuid); return canModify(game.user, actor); };
   const entries = request.entries?.length ? visibleRequestEntries(request.entries, owns, game.user.isGM) : [{ uuid: "", name: "Roll for my creature" }];
   box.innerHTML = entries.map(e => `<button type="button" data-n5e-request-roll="${esc(e.uuid)}">${esc(e.name)}</button>`).join("");
+  import("../dice/roll.mjs").then(m => m.addRollModeButtons(box));
   for ( const button of box.querySelectorAll("[data-n5e-request-roll]") ) {
     button.addEventListener("click", event => {
       event.preventDefault();

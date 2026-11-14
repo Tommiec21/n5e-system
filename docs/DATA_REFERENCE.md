@@ -270,3 +270,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Field / flag | On | Meaning |
 | --- | --- | --- |
 | `flags.n5e.damage.dealtPenalty` | Damage card | The source's Weakened + Exhaustion penalty, taken off when applied (first type first) |
+
+## Added in 0.15.0-alpha.7 (CAST1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.rollMode` = `advantage` / `disadvantage` | Actor | Sheet roll-mode toggle; absent means Normal |
+| `flags.n5e.economy.attackOrJutsu` | Actor | An attack or jutsu happened this turn (Shocked); reset at turn start |

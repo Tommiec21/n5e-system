@@ -14,6 +14,7 @@ import { castUpdates } from "../rules/cast-tracking.mjs";
 import { resourceCost } from "../rules/resource-cost.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { economySlot } from "../rules/turn-start.mjs";
+import { castBlockers } from "../rules/cast-checks.mjs";
 import { rule } from "../rules-settings.mjs";
 import { availableCastOptions, applyCastOptions, hasState, pyroclasmGain } from "../rules/cast-options.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
@@ -57,6 +58,8 @@ export function castPlan(actor, item, sel = {}) {
   const cp = sys.cp?.value ?? 0;
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
   if ( item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
+  // Conditions, components, ability requirement and rank cap (rules/cast-checks.mjs; CAST1).
+  problems.push(...castBlockers(actor, item, { rank }));
   if ( ["nin", "gen"].includes(item.system.discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
     problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
   }
@@ -125,6 +128,7 @@ export function castPlan(actor, item, sel = {}) {
   if ( slot && rule("actionEconomy") ) {
     if ( actor.flags?.n5e?.economy?.[slot] ) warnings.push(`Your ${slot === "bonus" ? "Bonus Action" : slot[0].toUpperCase() + slot.slice(1)} is already used this turn`);
     update[`flags.n5e.economy.${slot}`] = true;
+    update["flags.n5e.economy.attackOrJutsu"] = true;
     if ( j.activation?.type === "fullTurn" ) update["flags.n5e.economy.bonus"] = true;
   }
 

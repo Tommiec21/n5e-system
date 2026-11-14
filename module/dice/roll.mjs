@@ -13,6 +13,7 @@ import { contextualSpec, contextualAdvantage } from "../rules/elements.mjs";
 import { rule } from "../rules-settings.mjs";
 import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
 import { advantageSources, resolveMode, sourcesNote } from "../rules/advantage.mjs";
+import { addSheetToggle } from "./advantaged.mjs";
 import { skills as skillConfig } from "../config/core.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
@@ -97,6 +98,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const authored = contextualAdvantage(actor, spec, target);
   sources.advantage.push(...authored.advantage);
   sources.disadvantage.push(...authored.disadvantage);
+  addSheetToggle(sources, actor);
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? click.mode);
   const sourceNote = sourcesNote(sources);
@@ -260,7 +262,33 @@ export async function renderParityParts(message, html) {
   }
 }
 
+/**
+ * Small Adv / Dis buttons beside every roll button on a card (King 2026-11-13). They click the roll
+ * button with Alt (advantage) or Ctrl (disadvantage), so the choice applies to that roll only.
+ */
+export const ROLL_BUTTONS = '[data-n5e-act="attack"], [data-n5e-act="damage"], [data-n5e-act="save"], [data-n5e-act="heal"], '
+  + '[data-n5e-act="roll"], [data-n5e-act="check"], [data-n5e-act="strike"], [data-n5e-resave], [data-n5e-concheck], [data-n5e-request-roll]';
+export function addRollModeButtons(html) {
+  for ( const btn of html.querySelectorAll(ROLL_BUTTONS) ) {
+    if ( btn.nextElementSibling?.classList?.contains("n5e-roll-modes") ) continue;
+    const span = document.createElement("span");
+    span.className = "n5e-roll-modes";
+    for ( const [mode, label, tip] of [["advantage", "Adv", "Roll with advantage"], ["disadvantage", "Dis", "Roll with disadvantage"]] ) {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = label; b.dataset.tooltip = tip; b.setAttribute("aria-label", `${btn.textContent.trim()}: ${tip.toLowerCase()}`);
+      b.addEventListener("click", ev => {
+        ev.preventDefault(); ev.stopPropagation();
+        if ( btn.disabled ) return;
+        btn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, altKey: mode === "advantage", ctrlKey: mode === "disadvantage" }));
+      });
+      span.append(b);
+    }
+    btn.after(span);
+  }
+}
+
 export function onRenderChatMessage(message, html) {
+  addRollModeButtons(html);
   if ( message.getFlag?.("n5e", "rollRequest") ) import("../workflow/roll-request.mjs").then(m => m.renderRollRequest(message, html));
   void renderParityParts(message, html).catch(error => console.warn("n5e | card visibility", error));
   for ( const button of html.querySelectorAll("[data-n5e-source]") ) button.addEventListener("click", async event => {

@@ -283,3 +283,6 @@ Owner Claude; ownership released. Published v0.15.0-alpha.5. The advantage engin
 
 ## ADV2 — Claude, 2026-11-13
 King: advantage applies to any dice roll. The whole roll is rerolled, keeping the higher (or lower) total, and only the dice a source names get it. Published v0.15.0-alpha.6. Rule-element keys `advantage`/`disadvantage` with selectors such as `damage`, `damage:<type>`, `healing`, `recovery`, `dice`, plus d20 selectors. New non-d20 dice rolls should go through `dice/advantaged.mjs rollDice`. Tests: 306 pass, 2 skipped, on the first attempt.
+
+## CAST1 — Claude, 2026-11-13
+Owner Claude; ownership released. Published v0.15.0-alpha.7. Pre-cast checks are in `rules/cast-checks.mjs`; Shocked is tracked through `economy.attackOrJutsu`. King's additions: a Dis/Normal/Adv toggle on every sheet (`flags.n5e.rollMode`, lasts until switched off), and Adv/Dis buttons beside every roll button on cards (that roll only). Any new roll button should use a selector covered by `dice/roll.mjs ROLL_BUTTONS` and read the click's modifier keys. Spec, limits and results: `docs/CAST1_SPEC.md`. Tests: 310 pass, 2 skipped; one expectation was updated after an intended economy change. Next ready batch: CONC1.

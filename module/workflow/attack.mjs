@@ -72,12 +72,20 @@ export function weaponAttackSpec(actor, weapon = null) {
  * Attack with a weapon (or unarmed when weapon is null): attack card with damage buttons, then the
  * Ammunition Die for weapons that use one.
  */
+/** Shocked: at most one attack or one jutsu per turn (CAST1). Returns a problem or null. */
+export function shockedBlock(actor) {
+  return actor.system?.conditionPenalties?.flags?.maxAttackOrJutsuPerTurn && actor.flags?.n5e?.economy?.attackOrJutsu
+    ? "Shocked: already made an attack or cast a jutsu this turn" : null;
+}
+
 export async function attackWithWeapon(actor, weapon = null, { event, targetActors } = {}) {
+  const shocked = shockedBlock(actor);
+  if ( shocked ) return ui.notifications.warn(shocked);
   const spec = weaponAttackSpec(actor, weapon);
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }], { abilityMod: spec.abilityMod, weapon: true, weaponId: weapon?.id })}</div></div>`;
   const message = await rollWithSpec(actor, spec, { event, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
-  if ( message && actor.isOwner ) await actor.update({ "flags.n5e.economy.action": true });
+  if ( message && actor.isOwner ) await actor.update({ "flags.n5e.economy.action": true, "flags.n5e.economy.attackOrJutsu": true });
   if ( message && weapon && spec.ammo ) await rollAmmo(weapon);
   return message;
 }
@@ -91,6 +99,8 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
 export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll = null, targetActors = null } = {}) {
   const weapon = s.kind === "weapon" ? actor.items.find(i => i.type === "weapon" && i.system.equipped) ?? null : null;
   if ( s.kind === "weapon" && !weapon ) return ui.notifications.warn("Equip a weapon for this strike.");
+  const shocked = shockedBlock(actor);
+  if ( shocked ) return ui.notifications.warn(shocked);
   const spec = weaponAttackSpec(actor, weapon);
   let die = stepDie(spec.damage.die, s.dieSteps || 0);
   if ( s.maximize ) die = die.replace(/^(\d*)d(\d+)$/, (m, n, f) => `${n || 1}d${f}min${f}`);
@@ -98,7 +108,8 @@ export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll
     .replace(/@wdie/g, spec.damage.die.replace(/min\d+|r<\d+/g, "")), actor);
   const mod = spec.abilityMod;
   const formula = `${die}${spec.damage.extra.map(x => ` + ${x}`).join("")}${extra ? ` + ${extra}` : ""}${mod ? ` ${mod < 0 ? "-" : "+"} ${Math.abs(mod)}` : ""}`;
-  const n = Math.max(1, Number(resolveFormula(s.attacks || "1", actor)) || 1);
+  // Shocked limits a multi-attack strike to one attack.
+  const n = actor.system?.conditionPenalties?.flags?.maxAttackOrJutsuPerTurn ? 1 : Math.max(1, Number(resolveFormula(s.attacks || "1", actor)) || 1);
   let last = null;
   for ( let i = 0; i < n; i++ ) {
     const one = { ...spec, label: `${label}${n > 1 ? ` (${i + 1}/${n})` : ""}` };
@@ -108,5 +119,6 @@ export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll
     if ( !last ) return null;
     if ( weapon && spec.ammo ) await rollAmmo(weapon);
   }
+  if ( last && actor.isOwner ) await actor.update({ "flags.n5e.economy.attackOrJutsu": true });
   return last;
 }

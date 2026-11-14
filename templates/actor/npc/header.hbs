@@ -23,6 +23,13 @@
   <div class="head-right">
     <div class="buttons">
       {{#if editable}}
+        <span class="roll-mode" role="group" aria-label="Roll mode for every roll">
+          <button type="button" class="{{#if rollDis}}on{{/if}}" data-action="setRollMode" data-mode="disadvantage" aria-pressed="{{#if rollDis}}true{{else}}false{{/if}}" data-tooltip="Disadvantage on every roll until switched off">Dis</button>
+          <button type="button" class="{{#if rollNormal}}on{{/if}}" data-action="setRollMode" data-mode="normal" aria-pressed="{{#if rollNormal}}true{{else}}false{{/if}}" data-tooltip="Normal rolls">Normal</button>
+          <button type="button" class="{{#if rollAdv}}on{{/if}}" data-action="setRollMode" data-mode="advantage" aria-pressed="{{#if rollAdv}}true{{else}}false{{/if}}" data-tooltip="Advantage on every roll until switched off">Adv</button>
+        </span>
+      {{/if}}
+      {{#if editable}}
         <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
           data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit stat block{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
       {{/if}}

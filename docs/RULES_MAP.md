@@ -85,7 +85,6 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
 | Incapacitated does not end concentration | `rules/turn-start.mjs` |
 
 # Multiplayer parity (0.14.0-alpha.1–2, OPS1)
@@ -130,3 +129,11 @@
 | Auto-fail saves: Petrified and Stunned (Str/Dex), Unconscious (all) | same |
 | Dodging (until the start of the next turn) and Helped (the next attack or check) | `config/conditions.mjs states`, `workflow/turn.mjs` |
 | Advantage on any dice roll: whole roll twice, keep higher (or lower); named dice only (ADV2, 0.15.0-alpha.6) | `rules/elements.mjs contextualAdvantage`, `dice/advantaged.mjs` |
+
+# Pre-cast checks and roll-mode controls (0.15.0-alpha.7, CAST1)
+
+| Rule | Code |
+| --- | --- |
+| Conditions, components, ability requirement and rank cap block casting | `rules/cast-checks.mjs`, `workflow/cast-plan.mjs` |
+| Shocked: one attack or one jutsu per turn | `rules/cast-checks.mjs`, `workflow/attack.mjs shockedBlock`, economy `attackOrJutsu` |
+| Sheet roll-mode toggle (until switched off) and per-roll Adv/Dis buttons | `applications/actor/character-sheet.mjs`, `dice/advantaged.mjs addSheetToggle`, `dice/roll.mjs addRollModeButtons` |

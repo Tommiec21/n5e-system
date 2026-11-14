@@ -27,11 +27,24 @@ export async function rollAdvantaged(formula, data = {}, mode = "normal") {
  * @param {{kind: string, type?: string, key?: string, scope?: string, damageType?: string, target?: Actor, data?: object}} spec
  * @returns {Promise<{roll, discarded, mode, sources}>}
  */
-export async function rollDice(actor, formula, { target = null, data = null, ...spec } = {}) {
+export async function rollDice(actor, formula, { target = null, data = null, base = "normal", ...spec } = {}) {
   const sources = actor ? contextualAdvantage(actor, { type: spec.kind, ...spec }, target) : { advantage: [], disadvantage: [] };
-  const mode = resolveMode(sources);
+  addSheetToggle(sources, actor);
+  // `base` is this roll's own choice (the card's Adv/Dis buttons, or Alt/Ctrl); it counts as one source.
+  const mode = resolveMode(sources, base);
   const result = await rollAdvantaged(formula, data ?? actor?.getRollData?.() ?? {}, mode);
   return { ...result, sources };
+}
+
+/**
+ * The sheet's roll-mode toggle (King 2026-11-13): Advantage or Disadvantage on every roll until it is
+ * switched back to Normal. Counts as one source.
+ */
+export function addSheetToggle(sources, actor) {
+  const mode = actor?.flags?.n5e?.rollMode;
+  if ( mode === "advantage" ) sources.advantage.push("Sheet toggle");
+  else if ( mode === "disadvantage" ) sources.disadvantage.push("Sheet toggle");
+  return sources;
 }
 
 /** One-line note for a card: "Advantage (Burning Will): kept 9, not 4". */

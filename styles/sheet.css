@@ -719,3 +719,12 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-browser .b-name .sub { font-size: 0.85em; opacity: 0.75; }
 .n5e-browser .b-row button { width: 28px; }
 .n5e-browser-open { flex: 0 0 100%; margin-top: 4px; }
+
+/* Sheet roll-mode toggle (CAST1) and per-roll Adv/Dis buttons on chat cards. */
+.n5e-v2 .n5e-head .roll-mode { display: inline-flex; gap: 0; margin-right: 6px; }
+.n5e-v2 .n5e-head .roll-mode button { font-size: 11px; padding: 0 6px; border-radius: 0; }
+.n5e-v2 .n5e-head .roll-mode button:first-child { border-radius: 4px 0 0 4px; }
+.n5e-v2 .n5e-head .roll-mode button:last-child { border-radius: 0 4px 4px 0; }
+.n5e-v2 .n5e-head .roll-mode button.on { background: var(--n5e-accent); border-color: var(--n5e-accent); color: #fff; }
+.n5e-roll-modes { display: inline-flex; gap: 2px; margin-left: 2px; vertical-align: middle; }
+.n5e-roll-modes button { flex: 0 0 auto; width: auto; min-width: 0; padding: 0 5px; font-size: 10px; line-height: 18px; }

@@ -24,7 +24,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-sheet.mjs` | 695 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 708 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `npc-sheet.mjs` | 48 | NPC sheet: the character sheet's tabs, rolls, casting and Combat tab, with a stat-block header (level, rank, role, creature type, template; stat-block HP/CP ... | `NPCSheet` |
 
 ## module/applications/browser
@@ -148,10 +148,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `advantaged.mjs` | 43 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `advantageNote` |
+| `advantaged.mjs` | 56 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `addSheetToggle`, `advantageNote` |
 | `d20.mjs` | 116 | d20 roll rules (pure). | `MODES`, `clickMode`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll.mjs` | 345 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `renderParityParts`, `onRenderChatMessage`, `rollInitiative` |
+| `roll.mjs` | 373 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `renderParityParts`, `ROLL_BUTTONS`, `addRollModeButtons`, `onRenderChatMessage`, `rollInitiative` |
 
 ## module/documents
 
@@ -183,6 +183,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 47 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
 | `browser.mjs` | 204 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
+| `cast-checks.mjs` | 60 | Pre-cast checks (pure; CAST1). | `jutsuComponents`, `castBlockers` |
 | `cast-options.mjs` | 142 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
@@ -238,16 +239,16 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `activity-buttons.mjs` | 430 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 431 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
 | `apply-damage.mjs` | 311 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
-| `attack.mjs` | 113 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `attackWithWeapon`, `strikeAttack` |
+| `attack.mjs` | 125 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackWithWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 99 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
-| `cast-plan.mjs` | 141 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
+| `cast-plan.mjs` | 145 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 193 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `RANKS` |
 | `clan.mjs` | 84 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
@@ -263,7 +264,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resources.mjs` | 74 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
 | `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
-| `roll-request.mjs` | 61 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
+| `roll-request.mjs` | 62 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `trackers.mjs` | 415 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `turn.mjs` | 152 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |

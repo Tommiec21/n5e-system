@@ -69,6 +69,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     actions: {
       n5eTab: CharacterSheet.#onTab,
       toggleMode: CharacterSheet.#onToggleMode,
+      setRollMode: CharacterSheet.#onSetRollMode,
       toggleRule: CharacterSheet.#onToggleRule,
       editImage: CharacterSheet.#onEditImage,
       editItem: CharacterSheet.#onEditItem,
@@ -167,6 +168,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     context.editMode = this.editMode;
     context.editable = this.isEditable;
     context.isNPC = this.actor.type === "npc";
+    // Sheet roll-mode toggle (CAST1): Advantage/Disadvantage on every roll until switched off.
+    context.rollMode = this.actor.flags?.n5e?.rollMode ?? "normal";
+    context.rollAdv = context.rollMode === "advantage";
+    context.rollDis = context.rollMode === "disadvantage";
+    context.rollNormal = context.rollMode === "normal";
     context.ruleToggles = ruleToggles(this.actor);
     context.tabs = this._prepareTabs("primary");
     return context;
@@ -419,6 +425,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   }
 
   /** Pencil toggle: edit mode shows editable fields, delete buttons and the raw field editor. */
+  /** Sheet roll-mode toggle: Advantage or Disadvantage on every roll until set back to Normal (King 2026-11-13). */
+  static async #onSetRollMode(event, target) {
+    const mode = target.dataset.mode;
+    if ( !["normal", "advantage", "disadvantage"].includes(mode) ) return;
+    await this.actor.update(mode === "normal" ? { "flags.n5e.-=rollMode": null } : { "flags.n5e.rollMode": mode });
+  }
+
   static #onToggleMode() {
     this.#editMode = !this.#editMode;
     this.render();

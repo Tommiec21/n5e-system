@@ -50,7 +50,7 @@ import { rollDice, advantageNote } from "../dice/advantaged.mjs";
 import { esc, signed } from "../view-models/common.mjs";
 import { unarmedFormula, critFormula } from "../rules/activity-parse.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
-import { rollSpec } from "../dice/d20.mjs";
+import { rollSpec, clickMode } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
@@ -293,7 +293,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "roll": {
       const formula = level(d.formula);
       // Any other dice (pool dice, feature dice): rule-element advantage with selector "dice".
-      const roll = formula ? (await rollDice(caster, formula, { kind: "dice", type: "dice", key: d.pool || "" })).roll : null;
+      const roll = formula ? (await rollDice(caster, formula, { kind: "dice", type: "dice", key: d.pool || "", base: clickMode(event).mode })).roll : null;
       if ( !roll ) return payment;
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
@@ -334,7 +334,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
         const rolled = await rollDice(actor, crit ? critFormula(formula, abilityMod) : formula,
-          { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null });
+          { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null,
+            base: clickMode(event).mode });
         const roll = rolled.roll;
         const note = advantageNote(rolled, p.type || "Damage");
         if ( note ) advNotes.push(note);
@@ -391,7 +392,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       return rolled ? { saves: rolled } : null;
     }
     case "heal": {
-      const rolled = await rollDice(caster, level(d.formula), { kind: "healing", type: "healing", key: d.pool || "hp" });
+      const rolled = await rollDice(caster, level(d.formula), { kind: "healing", type: "healing", key: d.pool || "hp", base: clickMode(event).mode });
       const roll = rolled.roll;
       const healNote = advantageNote(rolled);
       // Exhaustion: −1 per rank once per roll (King A7).

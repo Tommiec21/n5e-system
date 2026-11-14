@@ -1,3 +1,19 @@
+## 0.15.0-alpha.7 — Pre-cast checks and roll-mode controls (CAST1)
+
+- **Casting is blocked, with the reason, when:**
+  - the caster is Incapacitated;
+  - Hand Seals, Chakra Seals or Mobility are needed while Grappled or Restrained;
+  - Hand Seals are needed while Confused;
+  - the caster is Slowed and the jutsu has more than 2 components;
+  - the caster is Shocked and has already attacked or cast this turn;
+  - the caster is Sealed 3+ and the jutsu teleports;
+  - the caster is Blinded and the jutsu is Dojutsu;
+  - the ability score requirement isn't met;
+  - the jutsu (or the upcast rank) is above the highest rank for the caster's level.
+- **Shocked:** limits weapon attacks and strikes too: one attack or one jutsu per turn.
+- **Roll-mode toggle (King 2026-11-13):** every character and NPC sheet has Dis / Normal / Adv in its header. It applies to every roll until switched back to Normal.
+- **Adv / Dis buttons on cards:** every roll button on a chat card (attack, damage, save, healing, checks, strikes, resaves, concentration checks, roll requests) has small Adv / Dis buttons beside it, for that roll only. Alt/Ctrl-click now also works on damage, healing and other dice rolls.
+
 ## 0.15.0-alpha.6 — Advantage on any dice roll (ADV2, King 2026-11-13)
 
 - Advantage and disadvantage now apply to any dice roll, not only d20s: damage, healing, Short Rest Hit/Chakra Dice, and other activity dice (pool and feature dice).
