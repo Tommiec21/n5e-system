@@ -1,6 +1,6 @@
 # CARD1 function spec: single action card
 
-Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). Building CARD1a.**
+Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). CARD1a published `0.27.0-alpha.1`; CARD1b next.**
 
 Plan row 10b (King 2026-11-13). One chat card per attack, jutsu or feature. Its sections fill in as buttons are pressed, SW5e style:
 - attack, with hit or miss per target;
@@ -158,3 +158,15 @@ Still to confirm with the approval: the `actionCard` setting's default. Proposed
   - The summary's Undo now marks the summary `flags.n5e.undone`.
   - CSS in `styles/n5e.css`; `dice/roll.mjs` loads the module with RES1 and CLASH1 and binds the buttons.
   - Next: tests.
+- 2026-11-14 Claude: **Tests done.**
+  - New `tests/core/action-card.test.mjs` (6 tests) and `tests/action-card.test.mjs` (3 tests).
+  - First attempt passed: full suite 374 passed, 2 skipped; core 52/52. Lint and check pass.
+  - Release 0.27.0-alpha.1.
+
+## Final results (CARD1a)
+
+Published `v0.27.0-alpha.1`. A1–A6 and A4b were built as specified, plus two small fixes: the damage source travels with applications, and Undo marks its summary.
+- **Limits.**
+  - The card's targets are the Foundry targets when the card was posted (the attack's own snapshot adds to them). Area targets come in CARD1b.
+  - Undo from the card restores everything on that summary. Applying from the card is always one target, but a summary made with the old "apply to selected tokens" can hold several.
+  - Not tested in Foundry (no live testing); behaviour follows the existing Apply and Undo paths.

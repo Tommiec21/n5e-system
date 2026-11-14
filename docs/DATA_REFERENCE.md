@@ -411,3 +411,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `module/adapters/system.mjs` | System adapter (game.settings, CONFIG.N5E); first import of `n5e.mjs` |
 | Release asset `n5e-core.zip` | The core bundle for the Module (`index.mjs`, `CORE_API.md`, `tests/core`) |
 | `npm run test:core` | Core tests in isolation (part of `verify`) |
+
+## Added in 0.27.0-alpha.1 (CARD1a)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.card` | Cast card, feature card, weapon attack roll | `{version: 1, kind: jutsu\|attack\|feature, actorUuid, itemUuid, rank, discipline, targets: [{uuid, name, img, ac}], sections: [...], results}` |
+| `flags.n5e.card.results` | same | `{attack: {total, natural, threshold, targets, messageId}, damage: {total, crit, messageId}, saves: {[actorUuid]: {degree, fourTier, onSuccess, name, messageId}}, applied: {[actorUuid]: {mode, messageId, undone}}}`. Written by the card's author or the GM |
+| `flags.n5e.undone` | Damage-applied summary | Set by its author (or a GM) when Undo is used |
+| Owner intent `cardResult` | Actor | `{cardMessageId, linkedMessageId, undoneTarget}`: the GM records another user's linked result after checking the linked message |
+| Rule `actionCard` | World setting | Single action card on (default) or off |

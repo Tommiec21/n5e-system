@@ -1,3 +1,16 @@
+## 0.27.0-alpha.1 — Single action card, part 1 (CARD1a; King 2026-11-14)
+
+- **One card per action.** A jutsu cast, a feature use, or a weapon attack or strike posts a card that collects the rolls made from its buttons.
+  - Section chips show what's waiting, ready or done.
+  - Each target gets a row with its AC, hit/miss and save result (as the visibility settings allow), its suggested share of the damage, and **Apply / Half / Undo**.
+- **Linked rolls collapse.** Attack, save and damage rolls and damage summaries still post as their own messages, so rolling, Dice So Nice, roll modes and Will of Fire work as before. Once recorded in the card, each one collapses to a "Shown on the … card" line with Show/Hide.
+- **Other users' results** (a target owner's save, an application by another user) are recorded in the card by the active GM through a checked owner request, with no dialog. With no GM connected they stay separate cards, which the action card still shows; the GM records them on connect.
+- **New world rule "Single action card"** (on by default). Off: cards look and work as before.
+- **Fixes:**
+  - "View damage roll" on ordinary damage-applied cards now opens the roll.
+  - Undo marks its summary as undone, so the action card can't undo it twice.
+- Saves rolled from the card by each target's owner, areas, and conditions and effects come in CARD1b. Reactions, Will of Fire and concentration come in CARD1c.
+
 ## 0.26.0-alpha.1 — Shared rules core (SHARED1a; King 2026-11-14)
 
 - **The rules are now a shared core** (`module/rules` + `module/config`, see `core.json`) that never touches Foundry directly. Hosts plug in through two hooks: `setRuleProvider` (optional rules) and `setHost` (the live registry). The System registers both in `module/adapters/system.mjs`. Nothing changes in play.

@@ -358,3 +358,11 @@ n5e-module v0.1.0-alpha.16–.20. The Module vendors the core in `scripts/core/`
 - **From the core:** degree, condition modifiers, damage/heal/death saves, cost/upkeep/concentration DC, and condition removal (through an adapter that keeps the Module record shape).
 - **Module-native by design:** condition timing, activity selection (authored only), and `concentrationOnDamage`.
 - When you change a `module/rules` function the Module uses, its behaviour reaches the Module through the next core sync, so keep result contracts stable or note the change in the release notes.
+
+## CARD1a — Claude, 2026-11-14 (published 0.27.0-alpha.1)
+The single action card is a layer over the existing handlers. Do not move rolling into the card: rolls stay linked messages.
+- **The card** is the cast card, the feature card, or the weapon attack roll, with `flags.n5e.card` added (`workflow/action-card.mjs cardFlag`; undefined when rule `actionCard` is off).
+- **Links to the card:** `roll.source`, `damage.originUuid`, and `damageApplication.sourceUuid` → damage → card (`cardOfLinked`).
+- **Recording:** the author (or a GM) writes into the card; anyone else submits owner intent `cardResult`, which the GM checks against the linked message. With no GM, the linked message stays a separate card, and the card merges it for display (`mergedResults`).
+- **Pure rules** are in `rules/action-card.mjs` (shared core).
+- **CARD1b and CARD1c**, per `docs/CARD1_SPEC.md`, add sections, not new storage paths.
