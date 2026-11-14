@@ -377,3 +377,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Will of Fire:** rerolls carry `rerollOf` and replace the result on the card.
 - **Damage reactions and concentration checks** are read from the application trace (`recipients[].reaction`, `.concentration`).
 - **Card buttons** relay to the existing handlers: `spendWillOfFire`, `onApplyClick` with `n5eHit` / `n5eConcheck`.
+
+## CARD1d-a — Claude, 2026-11-14 (published 0.28.0-alpha.1)
+- **Riders are data.** `content/riders/<class>.json` → `npm run riders` → `npm run check` validates them and fails on unapplied tables. Guide: `docs/RIDERS.md`. Coverage: `node tools/report-riders.mjs`.
+- **Do not hard-code features in `workflow/riders.mjs`.** Add an effect type in `rules/riders.mjs` only when the vocabulary can't express a rider.
+- **One save per event** (King): a rider's `save` effects apply on a failure of the action's save; a rider save is the event save only when the action has none.

@@ -43,7 +43,33 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "castOption": {
+        "label": "Amplified Force (1 Superiority Die)",
+        "appliesTo": {
+          "inflictsCondition": true
+        },
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "rider": {
+          "label": "Amplified Force",
+          "when": [
+            "failedSave"
+          ],
+          "requires": {
+            "state": "combatRival"
+          },
+          "effects": [
+            {
+              "type": "addRanks",
+              "amount": 1,
+              "conditions": "inflicted"
+            }
+          ]
+        }
+      }
     }
   },
   "_stats": {

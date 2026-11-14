@@ -42,7 +42,36 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "castOption": {
+        "label": "Elemental Malady (1 Superiority Die)",
+        "appliesTo": {
+          "natureRelease": true,
+          "inflictsTag": "elemental"
+        },
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "rider": {
+          "label": "Elemental Malady",
+          "when": [
+            "failedSave",
+            "hit"
+          ],
+          "requires": {
+            "state": "combatRival"
+          },
+          "effects": [
+            {
+              "type": "addRanks",
+              "amount": "halfPoolRoll",
+              "conditions": "elemental"
+            }
+          ]
+        }
+      }
     }
   },
   "ownership": {

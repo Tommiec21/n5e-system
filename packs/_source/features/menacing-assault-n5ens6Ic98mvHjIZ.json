@@ -74,7 +74,42 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "riders": [
+        {
+          "label": "Menacing Assault",
+          "when": [
+            "damageDealt"
+          ],
+          "target": "chosen",
+          "requires": {
+            "state": "combatRival"
+          },
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effects": [
+            {
+              "type": "save",
+              "ability": "wis",
+              "dc": {
+                "source": "action"
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": "halfPoolRoll",
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "creatures of your choice within 20 ft of you or of the original target"
+            }
+          ]
+        }
+      ]
     }
   },
   "_stats": {

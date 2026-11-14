@@ -1,0 +1,51 @@
+{
+  "class": "scout-nin",
+  "note": "CARD1d riders (docs/RIDERS.md). Keyed by feature identifier. Apply with `npm run riders`.",
+  "features": {
+    "amplified-force": {
+      "castRiders": [{
+        "label": "Amplified Force (1 Superiority Die)",
+        "appliesTo": { "inflictsCondition": true },
+        "cost": { "pool": "superiorityDice", "amount": 1 },
+        "rider": { "label": "Amplified Force", "when": ["failedSave"], "requires": { "state": "combatRival" },
+          "effects": [{ "type": "addRanks", "amount": 1, "conditions": "inflicted" }] }
+      }]
+    },
+    "elemental-malady": {
+      "castRiders": [{
+        "label": "Elemental Malady (1 Superiority Die)",
+        "appliesTo": { "natureRelease": true, "inflictsTag": "elemental" },
+        "cost": { "pool": "superiorityDice", "amount": 1, "roll": true },
+        "rider": { "label": "Elemental Malady", "when": ["failedSave", "hit"], "requires": { "state": "combatRival" },
+          "effects": [{ "type": "addRanks", "amount": "halfPoolRoll", "conditions": "elemental" }] }
+      }]
+    },
+    "authoritative-strike": {
+      "riders": [{
+        "label": "Authoritative Strike", "when": ["hit", "failedSave"], "target": "each",
+        "cost": { "pool": "superiorityDice", "amount": 1 },
+        "effects": [{ "type": "inflict", "expires": "turnStart", "choose": [
+          { "key": "demoralized", "kind": "condition", "ranks": 1, "label": "Demoralized" },
+          { "key": "weakened", "kind": "condition", "ranks": 1, "label": "Weakened" }] }]
+      }]
+    },
+    "arresting-strike": {
+      "riders": [{
+        "label": "Arresting Strike", "when": ["hit"], "target": "one",
+        "cost": { "pool": "superiorityDice", "amount": 1 },
+        "effects": [{ "type": "save", "ability": "str", "dc": { "source": "action" },
+          "inflicts": [{ "key": "prone", "kind": "state", "ranks": 1, "label": "Prone" }],
+          "text": "speed halved; standing from Prone also costs its Bonus Action until the end of its next turn" }]
+      }]
+    },
+    "menacing-assault": {
+      "riders": [{
+        "label": "Menacing Assault", "when": ["damageDealt"], "target": "chosen", "requires": { "state": "combatRival" },
+        "cost": { "pool": "superiorityDice", "amount": 1, "roll": true },
+        "effects": [{ "type": "save", "ability": "wis", "dc": { "source": "action" },
+          "inflicts": [{ "key": "demoralized", "kind": "condition", "ranks": "halfPoolRoll", "label": "Demoralized" }],
+          "text": "creatures of your choice within 20 ft of you or of the original target" }]
+      }]
+    }
+  }
+}

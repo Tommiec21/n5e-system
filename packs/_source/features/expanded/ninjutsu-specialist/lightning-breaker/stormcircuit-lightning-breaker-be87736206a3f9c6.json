@@ -39,7 +39,39 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "riders": [
+        {
+          "label": "Stormcircuit: Static",
+          "when": [
+            "failedSave"
+          ],
+          "target": "one",
+          "oncePerTurn": true,
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "lightningRelease"
+            ]
+          },
+          "effects": [
+            {
+              "type": "effect",
+              "name": "Static",
+              "state": "static",
+              "seconds": 60,
+              "limit": {
+                "state": "static",
+                "count": "lvl(2:2,10:3,18:4)"
+              }
+            },
+            {
+              "type": "note",
+              "text": "Linked while two or more are marked within 120 ft; forgoing damage dice for surges is resolved at the table"
+            }
+          ]
+        }
+      ]
     }
   },
   "ownership": {

@@ -31,6 +31,9 @@ const nowTurn = () => (game.combat?.started ? { round: game.combat.round, turn: 
  */
 function castOptions(actor, item) {
   return actor.items.filter(i => {
+    // A maneuver authored as a CARD1d cast rider is offered with the feature options instead (once).
+    const n = i.flags?.n5e ?? {};
+    if ( [n.castOption, ...(n.castOptions ?? [])].some(o => o?.rider) ) return false;
     const tags = i.system.tags instanceof Set ? i.system.tags : new Set(i.system.tags ?? []);
     if ( tags.has("nin-molding") ) return castableDisciplines(item).includes("nin");
     return tags.has("assault-maneuver") || tags.has("scout-maneuver");

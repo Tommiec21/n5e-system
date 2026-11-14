@@ -1,6 +1,6 @@
 # CARD1d plan: feature riders infused into the action card
 
-Status: **King answered Q-CD5–Q-CD10 and the one-save ruling on 2026-11-14. Awaiting King's go-ahead to build CARD1d-a. Nothing is built.**
+Status: **CARD1d-a published `0.28.0-alpha.1` (King: "Start Card1d"). CARD1d-b needs King's go-ahead.**
 
 King (2026-11-14): features and effects that stack need a clear path to plug into the action card as additional fixtures. Example: a player casts a jutsu that forces a save and also uses a feature that says "on a failed save, also apply X". That rider belongs on the same card.
 
@@ -217,3 +217,23 @@ The pure function `riderOutcome(card, target)` computes this list. The card draw
     - the action's own "Apply <condition>" shows the riders' added ranks;
     - every applied button is recorded with its source and shows once (`src:i:j`, `act:i`, rider ids).
   - **Deviation from the plan:** rider uses are written straight onto the card by its author (or a GM) instead of through a separate linked note. The card is the author's own message, so no relay is needed.
+- 2026-11-14 Claude: **Authoring workflow done** (King's mid-build ask: one reusable workflow for future riders).
+  - Rider tables in `content/riders/<class>.json`, kept apart from the content builders so rebuilds can't erase them.
+  - `tools/content/apply-riders.mjs` (`npm run riders`; `--check` in `npm run check`) validates and writes the tables onto the feature sources. It is safe to rerun.
+  - `tools/report-riders.mjs` writes `docs/generated/rider-coverage.md`: 282 rider-like features across the seven classes, 7 authored.
+  - `docs/RIDERS.md` is the guide.
+  - Cast-rider maneuvers leave the generic maneuver checkboxes and still count toward one Maneuver per turn.
+- 2026-11-14 Claude: **Tests done.**
+  - New `tests/core/riders.test.mjs` (8 tests) and `tests/riders-tables.test.mjs` (2 tests).
+  - First attempt passed: 390 passed, 2 skipped; core 65/65. Lint and check pass.
+  - Release 0.28.0-alpha.1.
+
+## Final results (CARD1d-a)
+
+Published `v0.28.0-alpha.1`. Built: the rider engine, one save per event, and the authoring workflow. Authored as examples: Amplified Force, Elemental Malady, Authoritative Strike, Arresting Strike, Menacing Assault, Gale Fracture, Stormcircuit.
+- **Limits.**
+  - Trigger riders appear once at least one target qualifies, so with attack results hidden from players, the "Use" button can reveal that something hit.
+  - Static's Linked surges (forgoing damage dice) are a table note.
+  - Menacing Assault's "creatures of your choice" are picked from the card's targets.
+  - Rider uses are written straight onto the card by its author or a GM, not through a linked note.
+  - Not tested in Foundry (no live testing).

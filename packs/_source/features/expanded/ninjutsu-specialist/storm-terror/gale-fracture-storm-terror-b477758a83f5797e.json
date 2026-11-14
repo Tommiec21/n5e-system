@@ -39,7 +39,54 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "castOption": {
+        "label": "Gale Fracture (2 Focus)",
+        "appliesTo": {
+          "discipline": "nin",
+          "keywords": [
+            "windRelease"
+          ]
+        },
+        "cost": {
+          "pool": "focus",
+          "amount": 2
+        },
+        "rider": {
+          "label": "Gale Fracture",
+          "when": [
+            "failedSave"
+          ],
+          "effects": [
+            {
+              "type": "save",
+              "ability": "dex",
+              "dc": {
+                "source": "nin"
+              },
+              "inflicts": []
+            },
+            {
+              "type": "effect",
+              "name": "Gale Fracture",
+              "seconds": 12,
+              "expires": "turnStart",
+              "changes": [
+                {
+                  "key": "system.bonuses.ac",
+                  "mode": 2,
+                  "value": "-2"
+                },
+                {
+                  "key": "system.bonuses.save",
+                  "mode": 2,
+                  "value": "-1"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "ownership": {

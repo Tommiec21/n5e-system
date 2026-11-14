@@ -1,0 +1,27 @@
+{
+  "class": "ninjutsu-specialist",
+  "note": "CARD1d riders (docs/RIDERS.md). Keyed by feature identifier. Apply with `npm run riders`.",
+  "features": {
+    "stormcircuit-lightning-breaker": {
+      "riders": [{
+        "label": "Stormcircuit: Static", "when": ["failedSave"], "target": "one", "oncePerTurn": true,
+        "appliesTo": { "discipline": "nin", "keywords": ["lightningRelease"] },
+        "effects": [
+          { "type": "effect", "name": "Static", "state": "static", "seconds": 60, "limit": { "state": "static", "count": "lvl(2:2,10:3,18:4)" } },
+          { "type": "note", "text": "Linked while two or more are marked within 120 ft; forgoing damage dice for surges is resolved at the table" }]
+      }]
+    },
+    "gale-fracture-storm-terror": {
+      "castRiders": [{
+        "label": "Gale Fracture (2 Focus)",
+        "appliesTo": { "discipline": "nin", "keywords": ["windRelease"] },
+        "cost": { "pool": "focus", "amount": 2 },
+        "rider": { "label": "Gale Fracture", "when": ["failedSave"],
+          "effects": [
+            { "type": "save", "ability": "dex", "dc": { "source": "nin" }, "inflicts": [] },
+            { "type": "effect", "name": "Gale Fracture", "seconds": 12, "expires": "turnStart",
+              "changes": [{ "key": "system.bonuses.ac", "mode": 2, "value": "-2" }, { "key": "system.bonuses.save", "mode": 2, "value": "-1" }] }] }
+      }]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "n5e-system",
-  "version": "0.27.0-alpha.3",
+  "version": "0.28.0-alpha.1",
   "description": "N5e 4.0 game system for Foundry VTT v13",
   "private": true,
   "type": "module",
@@ -9,11 +9,12 @@
     "test": "node --import ./tests/setup.mjs --test \"tests/**/*.test.mjs\"",
     "test:core": "node --import ./tests/core/setup.mjs --test \"tests/core/**/*.test.mjs\"",
     "lint": "eslint module n5e.mjs tools tests",
-    "check": "node tools/check.mjs && node tools/check-core.mjs",
+    "check": "node tools/check.mjs && node tools/check-core.mjs && node tools/content/apply-riders.mjs --check",
     "pack": "node tools/pack.mjs",
     "unpack": "node tools/unpack.mjs",
     "release": "node tools/release.mjs",
-    "install-local": "node tools/install-local.mjs"
+    "install-local": "node tools/install-local.mjs",
+    "riders": "node tools/content/apply-riders.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

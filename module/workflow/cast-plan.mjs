@@ -85,6 +85,12 @@ export function castPlan(actor, item, sel = {}) {
   if ( moldings && discipline !== "nin" ) problems.push("Moldings only work on Ninjutsu");
   if ( moldings > 1 && rule("moldingLimit") && !crash ) warnings.push("More than one Molding on a cast needs the Crash state");
   for ( const [id, amount] of Object.entries(fx.pools) ) pools[id] = (pools[id] ?? 0) + amount;
+  // CARD1d: a maneuver chosen as a cast rider still counts toward one Maneuver per turn.
+  for ( const r of fx.riders ?? [] ) {
+    const it = actor.items.get?.(String(r.id).split("-")[0]);
+    const tags = it?.system?.tags instanceof Set ? [...it.system.tags] : (it?.system?.tags ?? []);
+    if ( tags.some(t => String(t).endsWith("maneuver")) ) maneuvers++;
+  }
   if ( maneuvers > 1 ) warnings.push("Only one Maneuver per turn");
   for ( const [id, amount] of Object.entries(pools) ) {
     try { resourceChange(sys.resources?.[id], amount); }

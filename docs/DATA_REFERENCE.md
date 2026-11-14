@@ -437,3 +437,15 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.roll.rerollOf` | Will of Fire reroll | Id of the roll it rerolls; on an action card the reroll replaces it. A reroll of a weapon-attack card also gets `roll.source` = that card |
 | `flags.n5e.damageApplication.recipients[].concentration` | Damage-applied summary | `{dc, jutsu: [ids], names}`: the concentration check this damage calls for |
 | `flags.n5e.card.results.applied[uuid].reaction` / `.concentration` | Action card | The damage reaction (`{label, reduction, multiplier}`) and the concentration check, copied from the summary |
+
+## Added in 0.28.0-alpha.1 (CARD1d-a)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.riders` | Feature | Trigger riders (`docs/RIDERS.md`); written from `content/riders/<class>.json` by `npm run riders` |
+| `flags.n5e.castOption(s)[].rider` | Feature | A cast rider: chosen and paid in the cast dialog, then written onto the card |
+| `flags.n5e.riderTurn.<featureId:index>` | Actor | Once-per-turn use of a trigger rider (`{round, turn}`) |
+| `flags.n5e.card.riders` | Action card | `[{key, id, itemUuid, arm, label, when, requires, effects, poolRoll, choice, targets, targetMode, paid, undone}]` |
+| `flags.n5e.card.eventSave` | Action card | `{key, ability, dc}`: the rider save chosen as the event's one save, when the action forces none |
+| `flags.n5e.cardEffects.recipients[].effects[].source` | Effect note | The button that applied it (`src:i:j`, `act:i`, a rider application id), so it shows once |
+| `flags.n5e.riderFrom` | Active effect | The caster whose rider placed it (limited marks such as Static) |

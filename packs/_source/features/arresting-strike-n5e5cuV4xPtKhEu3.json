@@ -74,7 +74,38 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "riders": [
+        {
+          "label": "Arresting Strike",
+          "when": [
+            "hit"
+          ],
+          "target": "one",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effects": [
+            {
+              "type": "save",
+              "ability": "str",
+              "dc": {
+                "source": "action"
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "speed halved; standing from Prone also costs its Bonus Action until the end of its next turn"
+            }
+          ]
+        }
+      ]
     }
   },
   "_stats": {

@@ -1,3 +1,21 @@
+## 0.28.0-alpha.1 — Feature riders on the action card (CARD1d-a; King 2026-11-14)
+
+- **Riders.** Class, clan and feat effects that ride on an attack or jutsu now plug into its action card:
+  - **Cast riders** ("as part of casting, you can spend…") are chosen and paid in the cast dialog, beside the other feature options.
+  - **Trigger riders** ("when you hit / when a creature fails / when you deal damage…") appear on the card as **Use <rider>** for the caster's player once a target qualifies, and are paid then.
+  - Each qualifying target's row gets the rider's buttons for that creature's owner (the GM for NPCs).
+  - A rider can be cancelled, with its cost refunded, until something from it is applied.
+- **One save per event (King's ruling).** A rider never adds a second save. Its effects apply when the target fails the action's save. If the action forces no save, the player picks one rider's save as the event save, and each target rolls it once.
+- **Stacking.**
+  - Rank increases from several riders add together, then the condition's cap applies. The action's own "Apply <condition>" button shows the added ranks.
+  - "Your choice" conditions are chosen once for every affected creature.
+  - Specialized maneuvers are offered on any row, with a "not your Combat Rival" warning.
+- **Starter riders:**
+  - Scout-Nin: Amplified Force, Elemental Malady, Authoritative Strike, Arresting Strike, Menacing Assault.
+  - Ninjutsu Specialist: Gale Fracture, Stormcircuit (Static marks: two, three at 10th, four at 18th; the oldest ends).
+- **For authors:** riders are data. Add an entry to `content/riders/<class>.json`, run `npm run riders`, then `npm run check` (`docs/RIDERS.md`). `node tools/report-riders.mjs` lists every feature whose text reads like a rider: 282 across the seven classes, 7 authored.
+- Each condition and effect applied from the card now shows its Apply button only once per creature.
+
 ## 0.27.0-alpha.3 — Single action card, part 3 (CARD1c; King 2026-11-14)
 
 - **Reactions on the card.**

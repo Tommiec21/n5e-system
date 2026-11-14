@@ -42,7 +42,41 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "riders": [
+        {
+          "label": "Authoritative Strike",
+          "when": [
+            "hit",
+            "failedSave"
+          ],
+          "target": "each",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effects": [
+            {
+              "type": "inflict",
+              "expires": "turnStart",
+              "choose": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   "ownership": {
