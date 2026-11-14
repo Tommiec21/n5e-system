@@ -1,3 +1,12 @@
+## 0.15.0-alpha.2 — Timed effects expire (EXPIRE1)
+
+- Effects with a duration (generic effects, Amps, Marks, activity effects) are removed when their duration runs out.
+  - In combat: checked for every combatant at each turn start.
+  - Out of combat: checked whenever world time advances (rests, travel, the GM's clock).
+- Conditions that don't Persist now expire out of combat after their duration (the 1-minute default). In combat they keep their turn-end processing.
+- Never removed automatically: effects with no duration, [Persists] conditions, and effects tied to their source's turns.
+- What ended is listed on one GM-whispered card.
+
 ## 0.15.0-alpha.1 — Turn engine (TURN1)
 
 - Turn start, turn end, round start and combat start/end now come from a new N5e Combat class, using Foundry's forward-only turn methods (as dnd5e does). Rewinding a turn or round no longer re-runs upkeep, condition damage, decay, recharge or effect events. The duplicate turn hooks are gone.

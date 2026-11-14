@@ -85,7 +85,6 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| Timed generic effects never expire; conditions only expire in combat | `workflow/trackers.mjs`, `workflow/conditions.mjs` |
 | Bruised/Weakened/Petrified damage numbers shown but not applied; Exhaustion not on damage dice | `rules/damage.mjs`, `rules/conditions.mjs` |
 | No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
 | Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
@@ -109,3 +108,9 @@
 | Turn start/end, round start and combat start/end run only when combat moves forward (active GM) | `documents/combat.mjs N5eCombat`, `workflow/turn.mjs turnStartPipeline/turnEndPipeline/combatEndPipeline` |
 | Turn / round / encounter recovery of uses and pools | `rules/recovery.mjs`, `workflow/recovery.mjs` |
 | Upkeep: owner chooses each turn; none affordable → all end; unanswered → end at turn end; NPC auto/prompt/manual | `rules/upkeep.mjs`, `workflow/upkeep.mjs`, rule `npcUpkeep` |
+
+# Effect expiry (0.15.0-alpha.2, EXPIRE1)
+
+| Rule / capability | Code |
+| --- | --- |
+| Timed effects end when their duration runs out: in combat at each turn start for every combatant; out of combat when world time advances (non-Persists conditions included) | `rules/expiry.mjs`, `workflow/expiry.mjs`, `workflow/turn.mjs turnStartPipeline` |

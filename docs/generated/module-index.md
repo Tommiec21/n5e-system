@@ -197,6 +197,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 94 | Contextual rule elements. | `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
+| `expiry.mjs` | 38 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
@@ -251,6 +252,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `conditions.mjs` | 102 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
+| `expiry.mjs` | 57 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
 | `reaction-adapters.mjs` | 74 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
@@ -261,6 +263,6 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `rest.mjs` | 150 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `roll-request.mjs` | 61 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `trackers.mjs` | 415 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
-| `turn.mjs` | 145 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
+| `turn.mjs` | 148 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `upkeep.mjs` | 99 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |
 | `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |

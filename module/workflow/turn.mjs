@@ -30,6 +30,7 @@ import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
 import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
 import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
 import { recoverCombatUses } from "./recovery.mjs";
+import { expireInCombat } from "./expiry.mjs";
 import { beginUpkeep, finishUpkeep, renderUpkeep } from "./upkeep.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 
@@ -42,6 +43,8 @@ export async function turnStartPipeline(combat, combatant) {
   const actor = combatant?.actor;
   if ( !actor ) return;
   await expireSourceEffects(combat, actor, "turnStart", { round: combat.round, turn: combat.turn });
+  // Timed effects whose duration ran out, on every combatant (EXPIRE1).
+  await expireInCombat(combat);
   // Jutsu areas: timed ones that ran out go; lasting ones this creature starts in get a GM card.
   await areasTurnStart(combat, actor);
   await postConditionDamage(actor);

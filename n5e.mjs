@@ -27,6 +27,7 @@ import N5eItem from "./module/documents/item.mjs";
 import N5eActiveEffect from "./module/documents/active-effect.mjs";
 import N5eTokenDocument from "./module/documents/token.mjs";
 import N5eCombat from "./module/documents/combat.mjs";
+import { registerExpiryHooks } from "./module/workflow/expiry.mjs";
 import { registerDetectionModes } from "./module/canvas/detection.mjs";
 import { registerMovement } from "./module/canvas/ruler.mjs";
 import { registerAreaHooks } from "./module/workflow/areas.mjs";
@@ -61,6 +62,8 @@ import * as formula from "./module/rules/formula.mjs";
 import * as elements from "./module/rules/elements.mjs";
 
 registerAutomationHooks();
+// Timed effects end out of combat when world time advances (workflow/expiry.mjs; EXPIRE1).
+registerExpiryHooks();
 
 Hooks.once("init", () => {
   console.log("N5e | Initializing N5e 4.0 system");
