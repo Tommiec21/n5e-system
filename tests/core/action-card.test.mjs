@@ -106,3 +106,31 @@ test("CARD1b: save rows say who failed; hidden saves stay hidden", () => {
   assert.deepEqual(hidden.map(r => [r.save, r.share, r.saved]), [["Failure", "full", true], [null, null, true]]);
   assert.deepEqual(cardTargetRows(card, results, { isGM: true, canSeeSave: () => false }).map(r => r.save), ["Failure", "Success"], "the GM sees all");
 });
+
+test("CARD1c: a Will of Fire reroll replaces the attack or save it rerolls", () => {
+  const card = { sections: ["attack", "saves", "damage"], targets, results: {} };
+  const first = resultsFromLinked(attackFlags, "m1");
+  const reroll = resultsFromLinked({ roll: { ...attackFlags.roll, total: 10, natural: 4, rerollOf: "m1" } }, "m2");
+  let results = mergedResults(card, [...first, ...reroll]);
+  assert.equal(results.attack.messageId, "m2");
+  assert.deepEqual(cardTargetRows(card, results, { isGM: true }).map(r => r.attack), ["Miss", "Miss"]);
+  assert.throws(() => addCardResult({ ...card, results }, resultsFromLinked(attackFlags, "m3")[0]), /already rolled/, "a new roll is not a reroll");
+  const save = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A" } }, "s1");
+  const again = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "A", rerollOf: "s1" } }, "s2");
+  results = mergedResults(card, [...save, ...again]);
+  assert.deepEqual([results.saves.A.messageId, results.saves.A.degree], ["s2", 2]);
+});
+
+test("CARD1c: rows show the damage reaction and the concentration check; sections follow", () => {
+  const card = { sections: ["damage", "reactions", "concentration"], targets, results: {} };
+  const applied = resultsFromLinked({ damageApplication: { mode: "full", recipients: [
+    { actorUuid: "A", reaction: "Deflection", rolledReduction: 7, reactionMultiplier: 1, concentration: { dc: 15, jutsu: ["j1"], names: ["Mist"] } },
+    { actorUuid: "B" }] } }, "a1");
+  const results = mergedResults(card, applied);
+  const rows = cardTargetRows(card, results, { isGM: true });
+  assert.deepEqual(rows[0].applied.reaction, { label: "Deflection", reduction: 7, multiplier: 1 });
+  assert.equal(rows[0].applied.concentration.dc, 15);
+  assert.equal(rows[1].applied.reaction, null);
+  assert.deepEqual(sectionStates(card, results), { damage: "ready", reactions: "done", concentration: "ready" });
+  assert.equal(sectionStates({ ...card, concentrationEnded: true }, results).concentration, "done");
+});

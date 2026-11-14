@@ -181,7 +181,11 @@ export function renderActionCard(message, html) {
   const game = globalThis.game;
   const entries = linkedEntries(message);
   const results = mergedResults(card, entries);
-  const states = sectionStates(card, results);
+  const casterNow = globalThis.fromUuidSync?.(card.actorUuid);
+  const itemNow = globalThis.fromUuidSync?.(card.itemUuid);
+  const concentrationEnded = card.sections.includes("concentration") && !!casterNow && !!itemNow
+    && !(casterNow.system?.combat?.concentrating ?? []).includes(itemNow.id);
+  const states = sectionStates({ ...card, concentrationEnded }, results);
   const setting = rule("challengeVisibility");
   const canSeeSave = uuid => challengeVisible(setting, game.user, hasPlayerOwner(globalThis.fromUuidSync?.(uuid)));
   const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave });

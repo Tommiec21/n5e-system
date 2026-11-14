@@ -1,6 +1,6 @@
 # CARD1 function spec: single action card
 
-Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). CARD1a published `0.27.0-alpha.1`; CARD1b published `0.27.0-alpha.2`; CARD1c next (needs King's go-ahead).**
+Status: **approved by King 2026-11-14 ("Approved"; `actionCard` default = the new card, as proposed). CARD1a published `0.27.0-alpha.1`; CARD1b published `0.27.0-alpha.2`; CARD1c published `0.27.0-alpha.3`. CARD1 complete; CARD1d planned in `docs/CARD1D_SPEC.md`.**
 
 Plan row 10b (King 2026-11-13). One chat card per attack, jutsu or feature. Its sections fill in as buttons are pressed, SW5e style:
 - attack, with hit or miss per target;
@@ -213,3 +213,16 @@ Published `v0.27.0-alpha.2`. B1–B3 were built as specified, and Undo now cover
     - rows offer the concentration check the damage called for (that creature's owner), through the damage summary's own button;
     - `applyToSelected` records the check in its trace.
   - Next: tests.
+- 2026-11-14 Claude: **CARD1c tests done.**
+  - Added 2 core tests; the section-order test was updated for the new reactions section, as designed.
+  - First attempt passed: full suite 380 passed, 2 skipped; core 57/57. Lint and check pass.
+  - The concentration chip now follows the caster's live concentration.
+  - Release 0.27.0-alpha.3.
+
+## Final results (CARD1c)
+
+Published `v0.27.0-alpha.3`. C1–C3 were built; C4 shipped with CARD1b.
+- **Limits.**
+  - GM-opened reaction windows (whispered prompts) aren't linked to a card. Their effect on damage shows through the applied row's reaction.
+  - A rerolled save's conditions already applied from the card stay until undone.
+  - Not tested in Foundry (no live testing).

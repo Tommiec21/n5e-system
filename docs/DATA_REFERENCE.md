@@ -429,3 +429,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.card.areaPlaced` | Action card | An area was placed from the card; its covered tokens were added to `targets` |
 | `flags.n5e.card.results.effects` | Action card | `{[actorUuid]: [{messageId, effects: [{uuid, label}], undone}]}` |
 | `flags.n5e.cardEffects` | Effect note | `{sourceUuid: <action card uuid>, recipients: [{actorUuid, effects: [{uuid, label}]}]}`; `flags.n5e.undone` once undone |
+
+## Added in 0.27.0-alpha.3 (CARD1c)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.roll.rerollOf` | Will of Fire reroll | Id of the roll it rerolls; on an action card the reroll replaces it. A reroll of a weapon-attack card also gets `roll.source` = that card |
+| `flags.n5e.damageApplication.recipients[].concentration` | Damage-applied summary | `{dc, jutsu: [ids], names}`: the concentration check this damage calls for |
+| `flags.n5e.card.results.applied[uuid].reaction` / `.concentration` | Action card | The damage reaction (`{label, reduction, multiplier}`) and the concentration check, copied from the summary |

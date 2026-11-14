@@ -372,3 +372,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Row buttons** reuse the card's own activity buttons: a save rolls for one creature through `onActivityClick` with `selectedActors`; an effect applies to one creature with `targetActors`.
 - **Recording:** conditions/effects applied from the card post a linked note (`flags.n5e.cardEffects`), recorded like any linked result.
 - **Undo** per row covers the damage and those effects.
+
+## CARD1c — Claude, 2026-11-14 (published 0.27.0-alpha.3)
+- **Will of Fire:** rerolls carry `rerollOf` and replace the result on the card.
+- **Damage reactions and concentration checks** are read from the application trace (`recipients[].reaction`, `.concentration`).
+- **Card buttons** relay to the existing handlers: `spendWillOfFire`, `onApplyClick` with `n5eHit` / `n5eConcheck`.

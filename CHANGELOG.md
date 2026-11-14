@@ -1,3 +1,14 @@
+## 0.27.0-alpha.3 — Single action card, part 3 (CARD1c; King 2026-11-14)
+
+- **Reactions on the card.**
+  - Each target's row shows the reaction it took against the damage, such as "Deflection (−7)".
+  - Jutsu cards get a "Successful hit: reactions" button once the attack is rolled. Weapon-attack cards already have one.
+- **Will of Fire on the card.** "Reroll" and "keep higher" buttons appear for the attack (the caster's owner) and for each save (that creature's owner). The new roll replaces the old one on the card, and hit/miss, save results and damage shares update.
+- **Concentration on the card.**
+  - The card shows whether the caster is still concentrating on the jutsu; the Concentration chip turns done when it ends.
+  - A creature that took damage while concentrating gets its "Concentration check DC X" button on its row.
+- Undo for damage plus conditions and effects shipped in 0.27.0-alpha.2. CARD1 (parts 1–3) is complete.
+
 ## 0.27.0-alpha.2 — Single action card, part 2 (CARD1b; King 2026-11-14)
 
 - **Areas.** Placing a jutsu's area from its card adds the tokens it covers to the card's targets. The Area chip turns done.
