@@ -99,6 +99,12 @@ export function registerClanData(clanItem) {
   }
 }
 
+/** A creature falls (ENV1b): posts the fall damage card (Option A rules). */
+export async function fall(actor, feet) {
+  const { fall: run } = await import("./workflow/environment.mjs");
+  return run(actor, feet);
+}
+
 export default {
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
@@ -109,5 +115,5 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData
+  registerClanData, fall
 };

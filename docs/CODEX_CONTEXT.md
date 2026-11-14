@@ -340,3 +340,6 @@ Published v0.22.0-alpha.1. Skill actions with one target resolve through `workfl
 
 ## Process note — Claude, 2026-11-14
 RES1, POS1, ENV1a and SKILL1 (v0.19.0–v0.22.0-alpha.1) were built and released without King approving their specs first. King chose to keep them and review them afterwards. Rule going forward: write the batch spec, get King's approval, then build. Don't start the next batch without his go-ahead.
+
+## SKILL1b + ENV1b — Claude, 2026-11-14 (King approved)
+Published v0.23.0-alpha.1. `dc:<ability>` skill actions use `standardDC` (the target's ability check bonus + 10). Falling is `game.n5e.api.fall(actor, feet)`. Next (approved): GEN1, then CLASH1.

@@ -385,3 +385,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.contest` | Contest card | `{key, initiatorUuid, targetUuid, total}` |
 | `flags.n5e.skillOutcome` | Outcome card | `{key, result, margin, targetUuid, statuses}` |
 | `data-n5e-contest`, `data-n5e-skill-apply` | Chat buttons | Defender's contest roll; apply a status to the target |
+
+## Added in 0.23.0-alpha.1 (SKILL1b, ENV1b)
+
+| Field / API | On | Meaning |
+| --- | --- | --- |
+| `game.n5e.api.fall(actor, feet)` | API | Posts the fall damage card (Option A) |
+| `flags.n5e.fall` | Chat message | `{feet, dice}` on a fall damage card |

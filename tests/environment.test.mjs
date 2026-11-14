@@ -54,3 +54,14 @@ test("Suffocating counts down and ends at 0 HP and Dying", async () => {
   assert.deepEqual(await breathTurnStart(actor), []);
   assert.ok("flags.n5e.-=breath" in updates.at(-1), "cleared when no longer Suffocating");
 });
+
+/* ENV1b */
+import { fallDamage } from "../module/rules/environment.mjs";
+
+test("falling (Option A): nothing within the Str score; 1d6 per 10 ft, max 100d6, Prone", () => {
+  assert.equal(fallDamage(14, 14), null);
+  assert.equal(fallDamage(10, 8).formula, "1d6");
+  assert.deepEqual(fallDamage(35, 12), { dice: 3, formula: "3d6", prone: true });
+  assert.equal(fallDamage(5000, 10).dice, 100);
+  assert.equal(fallDamage(9, 0), null, "under 10 ft rolls no dice");
+});

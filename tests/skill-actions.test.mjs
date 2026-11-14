@@ -37,3 +37,16 @@ test("results: Grapple upgrades to Restrained by 10 with Mastery; ties and failu
   for ( const key of Object.keys(SKILL_RESULTS) ) assert.ok(skillActions[key], key);
   assert.equal(parseVs(skillActions.grapple.vs).kind, "contest");
 });
+
+/* SKILL1b */
+import { standardDC } from "../module/rules/skill-resolution.mjs";
+
+test("Standard DC: the named statistic + 10; Shove knocks Prone only for a proficient user beating by 10", () => {
+  assert.equal(standardDC(3), 13);
+  assert.equal(standardDC(-1), 9);
+  assert.deepEqual(parseVs(skillActions.shove.vs), { kind: "dc", ability: "str" });
+  assert.deepEqual(skillActionEffects("shove", { result: "success", margin: 10, proficient: true }).statuses, ["prone"]);
+  assert.deepEqual(skillActionEffects("shove", { result: "success", margin: 10, proficient: false }).statuses, []);
+  assert.deepEqual(skillActionEffects("shove", { result: "success", margin: 4, proficient: true }).statuses, []);
+  assert.match(skillActionEffects("makeImpression", { result: "success" }).notes[0], /something in return/);
+});

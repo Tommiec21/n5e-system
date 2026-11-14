@@ -7,7 +7,7 @@
  *   Suffocating       Counts down the breath it holds (flags.n5e.breath); out of breath, it drops to
  *                     0 HP and is Dying.
  */
-import { worstExposure, suffocationStep } from "../rules/environment.mjs";
+import { worstExposure, suffocationStep, fallDamage } from "../rules/environment.mjs";
 import { esc } from "../view-models/common.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
 
@@ -82,4 +82,27 @@ export async function onTerrainSaveClick(button, event) {
     content: `<div class="n5e-roll-card damage"><header><b>${esc(button.dataset.label)}</b><span class="bonus">${roll.total}</span></header>
       <div class="note">${esc(button.dataset.damage)} ${esc(type)} · ignores DR</div>${applyButtons()}</div>`,
     flags: { n5e: { damage: { instances: [{ amount: roll.total, type }], total: roll.total, ignoreDR: true, targetUuid: actor.uuid }, actorUuid: actor.uuid } } });
+}
+
+/**
+ * A creature falls (ENV1b; GM macro or API: game.n5e.api.fall(actor, feet)). Posts the fall damage
+ * as a damage card for that creature (bludgeoning, ignoring DR) with a Prone button, or a note when
+ * the fall is within its Strength score.
+ */
+export async function fall(actor, feet) {
+  if ( !actor ) throw new Error("Choose the creature that falls.");
+  const strScore = actor.system.abilities?.str?.value ?? 10;
+  const fx = fallDamage(feet, strScore);
+  const speaker = ChatMessage().getSpeaker({ actor });
+  if ( !fx ) {
+    return ChatMessage().create({ speaker, content: `<div class="n5e-roll-card"><b>${esc(actor.name)} falls ${Number(feet) || 0} ft</b>
+      <div class="note">Within its Strength score (${strScore} ft): no damage.</div></div>` });
+  }
+  const { createN5eRoll } = await import("../dice/n5e-roll.mjs");
+  const roll = await createN5eRoll(fx.formula).evaluate();
+  return ChatMessage().create({ speaker, rolls: [roll],
+    content: `<div class="n5e-roll-card damage"><header><b>${esc(actor.name)} falls ${Number(feet)} ft</b><span class="bonus">${roll.total}</span></header>
+      <div class="note">${fx.formula} bludgeoning · ignores DR · lands Prone</div>${applyButtons()}
+      <div class="n5e-apply"><button type="button" data-n5e-skill-apply="prone" data-target="${esc(actor.uuid)}">Apply Prone to ${esc(actor.name)}</button></div></div>`,
+    flags: { n5e: { damage: { instances: [{ amount: roll.total, type: "bludgeoning" }], total: roll.total, ignoreDR: true, targetUuid: actor.uuid }, actorUuid: actor.uuid, fall: { feet: Number(feet), dice: fx.dice } } } });
 }

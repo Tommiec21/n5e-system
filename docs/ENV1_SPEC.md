@@ -1,6 +1,6 @@
 # ENV1 function spec: environment
 
-Status: **ENV1a published `0.21.0-alpha.1` (2026-11-14). Falling (ENV1b) waits on King (Q-C11).**
+Status: **ENV1a published `0.21.0-alpha.1`. ENV1b (falling) approved by King 2026-11-14 ("Begin work I approve these"), release target `0.23.0-alpha.1` with SKILL1b.**
 
 Plan row 14: hostile terrain as Region behaviours, falling, suffocation.
 
@@ -55,3 +55,14 @@ After each function, add a line to the progress log and push.
   - Indirect Exposure (hourly Survival checks) and Chakra Resistant's effects are table procedures.
   - Out-of-combat breath (minutes) isn't counted.
   - A choke (Suffocating with 0 HP meaning Unconscious, not Dying) still needs the GM to set Unconscious by hand.
+
+## ENV1b: falling (Option A)
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| F5 | `fallDamage(feet, strScore)` | `rules/environment.mjs` | Null within the Str score; otherwise 1d6 per 10 ft fallen, max 100d6, Prone. |
+| F6 | `fall(actor, feet)` | `workflow/environment.mjs`, `api.mjs` (`game.n5e.api.fall`) | GM macro: a damage card for that creature (bludgeoning, ignores DR) with an Apply Prone button, or a "no damage" note. |
+
+### Progress log
+- 2026-11-14 Claude: **F5–F6 done.** The Prone button reuses `data-n5e-skill-apply`, so the target's owner or the GM applies it. Suite green. Next: tests for SKILL1b and ENV1b, then release 0.23.0-alpha.1.
+- 2026-11-14 Claude: **Tests done.** One more test in `tests/environment.test.mjs`; first attempt passed (355 pass, 2 skipped). **Published `v0.23.0-alpha.1`** with SKILL1b.

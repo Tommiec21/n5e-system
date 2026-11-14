@@ -67,3 +67,4 @@ Release target `0.23.0-alpha.1`, together with ENV1b.
   - The outcome card reads the initiator's Mastery and proficiency in the skill.
   - Shove's advantage against a creature you grapple or restrain is left to the roller (mode buttons).
   - Suite green (353). Next: ENV1b falling, then tests.
+- 2026-11-14 Claude: **Tests done.** One more test in `tests/skill-actions.test.mjs`; first attempt passed (355 pass, 2 skipped). **Published `v0.23.0-alpha.1`** with ENV1b.

@@ -1,3 +1,12 @@
+## 0.23.0-alpha.1 — Standard DCs and falling (SKILL1b, ENV1b; King approved 2026-11-14)
+
+- **Standard DCs (Chapter 6):** the target's named statistic + 10.
+  - Shove (vs the target's Strength DC) and Make an Impression/Request (vs the Wisdom DC) now resolve against one target.
+  - A Shove that beats the DC by 10 by an Athletics-proficient user also offers Prone.
+- **Falling (Option A).** GM macro: `game.n5e.api.fall(actor, feet)`.
+  - A fall within the creature's Strength score in feet deals nothing.
+  - Otherwise 1d6 bludgeoning per 10 ft (max 100d6), ignoring DR, posted as a damage card for that creature with an Apply Prone button.
+
 ## 0.22.0-alpha.1 — Skill actions against a target (SKILL1)
 
 - With one target, skill actions now resolve themselves:
