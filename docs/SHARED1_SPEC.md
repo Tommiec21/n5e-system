@@ -1,6 +1,6 @@
 # SHARED1 function spec: shared rules core
 
-Status: **King answered Q-SH1–Q-SH3 on 2026-11-14; SHARED1a in progress.**
+Status: **King answered Q-SH1–Q-SH3 on 2026-11-14. SHARED1a published `0.26.0-alpha.1`. SHARED1b (Module) next: Claude or Codex, from the handoff below.**
 
 Plan row 17 and Section 2 (King, 2026-11-13): one shared rules core used by the N5e System and the N5e Module (the dnd5e 5.3.3 add-on), each with a thin adapter. Shared tests run against the core. A System release triggers a Module rebuild against the pinned dnd5e version. Rules and mechanics are shared; worlds are not.
 
@@ -111,3 +111,32 @@ Each entry: what was done, the exact files, how it was checked, and the next ste
   - Moved them back to `tests/` with their old import paths. `tests/core` now holds 8 files: advantage, arithmetic, clash, damage-numbers, enrichers, rules, skill-actions, stimuli.
   - Checked: `test:core`, `npm test` (362) and check-core all pass.
   - **Next:** F5, as in the entry above.
+- 2026-11-14 Claude: **F5 done.**
+  - New `tools/build-core.mjs` (`buildCore`, `exportedNames`) writes `dist/n5e-core/` and `dist/n5e-core.zip`:
+    - `module/rules`, `module/config` and `tests/core`;
+    - `index.mjs` (`setRuleProvider`, `rule`, `setHost`, `n5eConfig`, `config`, and each rules file as a camelCase namespace);
+    - `CORE_API.md`, `package.json` (`n5e-core`, System version, `npm test` = core tests), `core.json`, `LICENSE`.
+  - `tools/release.mjs` calls it after `n5e.zip`. The CI artifact and the `release.yml` files now include `dist/n5e-core.zip`.
+  - Checked: the local release builds all three assets. Inside `dist/n5e-core`, `node -e import("./index.mjs")` loads all 56 rules files without Foundry, and its `npm test` passes (46).
+- 2026-11-14 Claude: **Tests.**
+  - New `tests/shared-core.test.mjs` (3 tests: boundary check, rule provider and host hooks, export listing).
+  - Attempt 1: 1 failure, my expected export list missed `c`; the code was right. Attempt 2 passed: 365 pass, 2 skipped; `test:core` 46; check clean.
+  - **Published `v0.26.0-alpha.1`.**
+
+## Handoff: SHARED1b (Module side), for Claude or Codex
+
+Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempts per check, bypass records, 600-second slices, no live Foundry. Log each step here **and** in the Module's `docs/CONTEXT.md`.
+
+1. **M1 `tools/sync-core.mjs <version|latest>`.**
+   - Download `https://github.com/Tommiec21/n5e-system/releases/download/v<version>/n5e-core.zip`, or the latest release via the GitHub API, and unpack it to `scripts/core/` (replace the folder).
+   - Record `flags.n5eCore = {version}` in `module.json`.
+   - Never edit files under `scripts/core/`: they come from the System.
+2. **M2 `scripts/integration/core-adapter.mjs`.** At `init`:
+   - `setRuleProvider(key => game.settings.get("n5e-module", key))`, for the rules the Module registers; others fall back to the core defaults;
+   - `setHost({config: () => <the Module's N5E registry, or core config>})`.
+   - Then dnd5e snapshot helpers: the actor/item fields each core function reads. See `CORE_API.md` and the core function JSDoc.
+3. **M3 replace the copied planners, one at a time** (the `docs/REUSE_MAP.md` table): conditions → `core.conditions`; damage → `core.damage`; graded saves → `core.degree`; costs/upkeep → `core.cost` / `core.upkeep`; condition lifecycle → `core.conditionLifecycle`; activity selection → `core.activityParse`.
+   - Keep the Module's tests passing after each one.
+   - Note any result-contract difference in `REUSE_MAP.md`.
+4. **M4 `.github/workflows/core-sync.yml`** (daily `schedule`, plus `workflow_dispatch`): compare the latest System release with `flags.n5eCore.version`. When newer: run `sync-core`, the core tests (`cd scripts/core && npm test`) and the Module tests, then open a PR (`peter-evans/create-pull-request`) titled "Core <version>".
+5. The Module's `tools/package.mjs` must include `scripts/core/` in the module zip.

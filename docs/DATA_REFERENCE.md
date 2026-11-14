@@ -400,3 +400,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.clash` | Clash card | `{skill, contests, triggerDiscipline, a, b}`; sides `{actorUuid, name, item, rank, bonus, masteryRanks, advantage}` |
 | Roll `flags.n5e.roll.source` = Clash card id | Clash rolls | Each side's checks, read by the card per actor |
 | `data-n5e-clash`, `data-n5e-clash-roll`, `data-n5e-clash-lose` | Chat buttons | Start a clash; roll a side; apply the loss |
+
+## Added in 0.26.0-alpha.1 (SHARED1a)
+
+| File / API | Meaning |
+| --- | --- |
+| `core.json` | Shared-core manifest: roots, host hooks, tests folder, forbidden host names |
+| `module/rules/settings.mjs` `setRuleProvider`, `rule` | Optional rules for the core; hosts provide the values |
+| `module/rules/host.mjs` `setHost`, `n5eConfig` | The live N5E registry for the core; static config fallback |
+| `module/adapters/system.mjs` | System adapter (game.settings, CONFIG.N5E); first import of `n5e.mjs` |
+| Release asset `n5e-core.zip` | The core bundle for the Module (`index.mjs`, `CORE_API.md`, `tests/core`) |
+| `npm run test:core` | Core tests in isolation (part of `verify`) |

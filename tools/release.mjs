@@ -6,7 +6,8 @@
  *   npm run release -- 0.1.0-alpha.2     -> bump system.json + package.json first
  *   GITHUB_REPOSITORY=owner/repo npm run release   (CI sets this) -> fills manifest/download URLs
  *
- * Output: dist/system.json and dist/n5e.zip (the two assets Foundry needs for auto-update).
+ * Output: dist/system.json and dist/n5e.zip (the two assets Foundry needs for auto-update), plus
+ * dist/n5e-core.zip (the shared rules core, SHARED1).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -68,3 +69,7 @@ for ( const pack of system.packs ) {
 await zip.finalize();
 await new Promise(r => output.on("close", r));
 console.log(`dist/n5e.zip (${(zip.pointer() / 1024).toFixed(0)} KB) and dist/system.json ready for v${system.version}`);
+
+// The shared rules core ships with every System release (SHARED1): dist/n5e-core.zip.
+const { buildCore } = await import("./build-core.mjs");
+await buildCore();

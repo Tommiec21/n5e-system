@@ -1,3 +1,11 @@
+## 0.26.0-alpha.1 — Shared rules core (SHARED1a; King 2026-11-14)
+
+- **The rules are now a shared core** (`module/rules` + `module/config`, see `core.json`) that never touches Foundry directly. Hosts plug in through two hooks: `setRuleProvider` (optional rules) and `setHost` (the live registry). The System registers both in `module/adapters/system.mjs`. Nothing changes in play.
+- **Every release ships `n5e-core.zip`** beside `n5e.zip`: the core, its tests, an `index.mjs` of every rules file, `CORE_API.md` and a `package.json` with the System version. The N5e Module will check for a new core once a day.
+- **Guard rails.**
+  - `npm run check` fails if a core file touches a Foundry global or imports from outside the core.
+  - The core tests (`tests/core`) run on their own (`npm run test:core`), in CI and inside the bundle.
+
 ## 0.25.0-alpha.1 — Jutsu Clash (CLASH1; King approved 2026-11-14)
 
 - **Clash button** on cast cards of Clash-keyword jutsu. The defender's owner clicks it with their creature selected and picks one of its Clash jutsu (concentrated ones first).

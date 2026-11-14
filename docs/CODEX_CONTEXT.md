@@ -349,3 +349,6 @@ Published v0.24.0-alpha.1. Stimuli immunity: `rules/stimuli.mjs genjutsuImmunity
 
 ## CLASH1 — Claude, 2026-11-14 (King approved)
 Published v0.25.0-alpha.1. Clash rules are in `rules/clash.mjs`; the card is in `workflow/clash.mjs` (loaded at startup with the resolution module). All four approved batches (SKILL1b, ENV1b, GEN1, CLASH1) are done. Waiting for King: his review of RES1/POS1/ENV1a/SKILL1, and the next batch choice (CARD1 spec or Tier 3).
+
+## SHARED1a — Claude, 2026-11-14 (King: one repo; both agents; Module checks daily)
+Published v0.26.0-alpha.1. `module/rules` + `module/config` are the shared core; `npm run check` enforces the boundary (`tools/check-core.mjs`). Never read `game`/`CONFIG`/`canvas`... inside `module/rules`: use `rule()` from `rules/settings.mjs` and `n5eConfig()` from `rules/host.mjs`. Tests that import only the core go in `tests/core/`. SHARED1b handoff steps: `docs/SHARED1_SPEC.md` "Handoff".
