@@ -101,3 +101,47 @@ test("Unarmed Strike: Str, or Dex when Taijutsu use Dex; finesse for features", 
   assert.equal(hasFinesse(structuredClone(unarmedStrike)), true);
   assert.equal(hasFinesse({ system: { properties: { light: 1 } } }), false);
 });
+
+/* ATK1b */
+import { canDualWieldLight, lightAttackBlock, matchingWeapons, needText, evocationDice, evocationDie, evocationEcho } from "../module/rules/weapon-properties.mjs";
+
+test("Light extra attack: two Light weapons, after the Attack action, once per turn, with the modifier", () => {
+  assert.equal(canDualWieldLight([W("Tanto"), W("Gunsen")]), true);
+  assert.equal(canDualWieldLight([W("Tanto"), W("Katana")]), false);
+  assert.equal(lightAttackBlock({ inCombat: false }), null, "outside combat nothing is tracked");
+  assert.match(lightAttackBlock({ inCombat: true, economy: {} }), /Attack action first/);
+  assert.equal(lightAttackBlock({ inCombat: true, economy: { attackAction: true } }), null);
+  assert.match(lightAttackBlock({ inCombat: true, economy: { attackAction: true, lightAttack: true } }), /once per turn/);
+  const a = actorWith([W("Tanto"), W("Gunsen")]);
+  const spec = weaponAttackSpec(a, weaponOf(a, "Gunsen"), { light: true });
+  assert.equal(spec.abilityMod, 3, "adds the modifier (King 2026-11-13)");
+  assert.match(spec.label, /Light extra attack/);
+});
+
+test("strikes choose their weapon by keyword, group or property", () => {
+  const weapons = [W("Katana"), W("Shuriken"), W("Naginata")];
+  assert.deepEqual(matchingWeapons(weapons, null).map(w => w.name), ["Katana", "Shuriken", "Naginata"]);
+  assert.deepEqual(matchingWeapons(weapons, { groups: ["polearm"] }).map(w => w.name), ["Naginata"]);
+  assert.deepEqual(matchingWeapons(weapons, { groups: ["blade"], properties: ["reach"] }).map(w => w.name), ["Naginata"]);
+  assert.deepEqual(matchingWeapons(weapons, { keywords: ["shuriken"] }).map(w => w.name), ["Shuriken"]);
+  assert.deepEqual(matchingWeapons(weapons, { properties: ["heavy", "finesse"] }), []);
+  assert.equal(needText({ groups: ["blade", "polearm"], properties: ["reach"] }), "blade or polearm weapon with reach");
+});
+
+test("Evocation: sealed echo bonus and type, no modifier, dice by level, half die for Bukijutsu", () => {
+  assert.deepEqual([1, 4, 5, 10, 11, 17, 20].map(evocationDice), [1, 1, 2, 2, 3, 4, 4]);
+  const scroll = W("Combat Scroll");
+  assert.equal(evocationEcho(scroll), null, "nothing sealed yet");
+  assert.equal(evocationDie(scroll, 11), "3d8");
+  assert.equal(evocationDie(W("Giant Combat Scroll"), 1, { bukijutsu: true }), "1d6");
+  scroll.system.evocation = { discipline: "nin", type: "fire" };
+  const a = actorWith([scroll], { system: { level: 5 } });
+  const item = weaponOf(a, "Combat Scroll");
+  const spec = weaponAttackSpec(a, item);
+  assert.equal(spec.bonus, a.system.disciplines.nin.attack, "Ninjutsu attack bonus");
+  assert.equal(spec.damage.formula, `${evocationDie(item, a.system.level)}`, "no ability modifier");
+  assert.deepEqual(spec.damage.types, ["fire"]);
+  assert.match(spec.note, /1 attack/);
+  const empty = actorWith([W("Combat Scroll")]);
+  assert.match(weaponAttackSpec(empty, weaponOf(empty, "Combat Scroll")).refuse, /Seal an echo/);
+});

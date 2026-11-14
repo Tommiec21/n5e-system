@@ -34,7 +34,7 @@ export function parseRecharge(text) {
 export function turnStartPlan(actor) {
   const sys = actor.system;
   const flags = actor.flags?.n5e ?? {};
-  const update = { "flags.n5e.economy": { action: false, bonus: false, reaction: false, special: false, object: false, attackOrJutsu: false } };
+  const update = { "flags.n5e.economy": { action: false, bonus: false, reaction: false, special: false, object: false, attackOrJutsu: false, attackAction: false, lightAttack: false } };
   const chain = sys.combat?.chain ?? {};
   const chainReset = rule("chainReset") && (chain.value > 0 || chain.active) && !flags.chainTouched;
   if ( chainReset ) {

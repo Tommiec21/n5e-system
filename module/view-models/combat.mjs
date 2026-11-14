@@ -18,6 +18,7 @@ import { skillActionPenalty } from "../rules/skill-actions.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
 import { unarmedSpec, isUnarmedStrike } from "../rules/unarmed.mjs";
+import { canDualWieldLight } from "../rules/weapon-properties.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates, ampTypes } from "../config/combat.mjs";
@@ -80,10 +81,8 @@ function basicCombat(actor) {
   const sys = actor.system;
   // The Unarmed Strike item is shown by the Unarmed Strike pill below, not as a weapon.
   const equippedWeapons = ofType(actor, "weapon").filter(w => w.system.equipped && !isUnarmedStrike(w));
-  const hasLight = equippedWeapons.some(w => w.system.properties?.light);
 
   const core = Object.entries(coreActions)
-    .filter(([, a]) => a.requires !== "lightWeapon" || hasLight)
     .map(([key, a]) => pill({ kind: "core", key, name: a.label, activation: a.activation,
       tip: tipHTML({ title: a.label, meta: [activationTypes[a.activation]], body: esc(a.text) }) }));
 
@@ -97,6 +96,7 @@ function basicCombat(actor) {
       body: esc(`${u.formula} ${u.type}${u.source ? ` (${u.source})` : ""}. Counts as finesse for features; may use Dex if you can cast all Taijutsu with Dex.${attacks.text ? ` ${attacks.text}` : ""}`) }) })];
   // Each equipped weapon, plus its other ways to attack (ATK1): thrown, two hands (Versatile),
   // bonus action (Multiattack). A jammed Volatile weapon shows only Unjam.
+  const lightPair = canDualWieldLight(equippedWeapons);
   for ( const w of equippedWeapons ) {
     const s = w.system;
     const props = s.properties ?? {};
@@ -116,6 +116,9 @@ function basicCombat(actor) {
       activation: "action", sub: thrownRange, tip: tip(["Thrown", thrownRange, `${s.damage?.die ?? ""} ${types}`.trim()]) }));
     if ( s.damage?.versatile ) strikes.push(pill({ kind: "item", id: w.id, mode: "twoHanded", name: `${w.name} (two hands)`,
       activation: "action", sub: s.damage.versatile, tip: tip(["Versatile", `${s.damage.versatile} ${types}`.trim()]) }));
+    if ( lightPair && "light" in props ) strikes.push(pill({ kind: "item", id: w.id, mode: "light", name: `${w.name} (Light extra attack)`,
+      activation: "free", sub: s.damage?.die ?? "", tip: tip(["Light", "Once per turn, with the Attack action"],
+        "<p>While dual-wielding Light weapons, make one extra attack with your off-hand weapon once per turn when you take the Attack action.</p>") }));
     if ( "multiattack" in props ) strikes.push(pill({ kind: "item", id: w.id, mode: "bonus", name: `${w.name} (bonus action)`,
       activation: "bonus", sub: s.damage?.die ?? "", tip: tip(["Multiattack", "No ability modifier on damage"]) }));
   }

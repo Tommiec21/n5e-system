@@ -21,7 +21,7 @@ import { damageButtons } from "./activity-buttons.mjs";
 import { rollAmmo } from "./ammo.mjs";
 import { unarmedSpec, stepDie, resolveFormula, activeStance, isUnarmedStrike, equippedWeapons } from "../rules/unarmed.mjs";
 import { weaponCritBonus, deadlyDice, heavyPenalty, heavyDamage, volatileRank, backfires, attackMode, attackRange,
-  rangeSources, rollsAmmo } from "../rules/weapon-properties.mjs";
+  rangeSources, rollsAmmo, lightAttackBlock, matchingWeapons, needText, evocationDie, evocationEcho } from "../rules/weapon-properties.mjs";
 
 const signedPart = n => (n ? ` ${n < 0 ? "-" : "+"} ${Math.abs(n)}` : "");
 
@@ -37,12 +37,13 @@ const signedPart = n => (n ? ` ${n < 0 ? "-" : "+"} ${Math.abs(n)}` : "");
  * @param {number} [o.closeHostiles]   hostiles within 5 ft that can see the attacker
  * @param {boolean} [o.twoHanded]      Versatile weapon used with two hands
  * @param {boolean} [o.bonusAction]    Multiattack bonus-action attack (no ability mod on damage)
+ * @param {boolean} [o.light]          the Light extra attack (adds the ability mod, King 2026-11-13)
  * @returns {object} spec: {type, key, kind, scope, label, bonus, breakdown, ability, abilityMod, mode,
  *   damage: {formula, die, extra, types, critExtra, flat}, ammo, rollsAmmo, critBonus,
  *   disadvantageSources, refuse, volatile, tooltip}
  */
 export function weaponAttackSpec(actor, weapon = null, { mode: requested = "", distance = null, closeHostiles = 0,
-  twoHanded = false, bonusAction = false } = {}) {
+  twoHanded = false, bonusAction = false, light = false } = {}) {
   if ( isUnarmedStrike(weapon) ) weapon = null; // the Unarmed Strike item rolls as an unarmed strike
   const sys = actor.system;
   const mod = k => sys.abilities?.[k]?.mod ?? 0;
@@ -87,12 +88,31 @@ export function weaponAttackSpec(actor, weapon = null, { mode: requested = "", d
     refuse = ranged.refuse;
   }
   if ( bonusAction ) { noMod = true; label += " (bonus action)"; }
+  if ( light ) label += " (Light extra attack)";
+  // Evocation (Combat Scrolls): the sealed echo's discipline attack bonus and damage type, no ability
+  // modifier, and the die grows with level.
+  const echo = weapon ? evocationEcho(weapon) : null;
+  if ( weapon && "evocation" in (weapon.system.properties ?? {}) ) {
+    if ( !echo ) refuse ??= `Seal an echo into ${weapon.name} first (item sheet, Evocation).`;
+    else {
+      die = evocationDie(weapon, sys.level);
+      types = echo.type ? [echo.type] : [];
+      noMod = true;
+      critExtra = deadlyDice(weapon, die);
+      flat = 0;
+    }
+  }
   const bonuses = sys.weaponBonuses?.[scope] ?? { attack: [], damage: 0 };
-  flat += bonuses.damage ?? 0;
-  const b = new Breakdown(`${label} attack`).base(ability.toUpperCase(), mod(ability))
-    .add("Proficiency", proficient ? sys.prof : 0);
-  for ( const p of bonuses.attack ?? [] ) b.add(p.label, p.value);
-  for ( const p of [...(pen.allDice ?? []), ...(pen.d20Physical ?? []), ...(pen.checksAndAttacks ?? [])] ) b.add(p.label, p.value);
+  if ( !echo ) flat += bonuses.damage ?? 0;
+  let b;
+  if ( echo ) {
+    const discLabel = { nin: "Ninjutsu", gen: "Genjutsu", tai: "Taijutsu" }[echo.discipline] ?? echo.discipline;
+    b = new Breakdown(`${label} attack`).base(`${discLabel} attack (sealed echo)`, sys.disciplines?.[echo.discipline]?.attack ?? 0);
+  } else {
+    b = new Breakdown(`${label} attack`).base(ability.toUpperCase(), mod(ability)).add("Proficiency", proficient ? sys.prof : 0);
+    for ( const p of bonuses.attack ?? [] ) b.add(p.label, p.value);
+    for ( const p of [...(pen.allDice ?? []), ...(pen.d20Physical ?? []), ...(pen.checksAndAttacks ?? [])] ) b.add(p.label, p.value);
+  }
   // Volatile and the Multiattack bonus attack add no ability modifier to damage.
   const abilityMod = noMod ? 0 : mod(ability);
   return {
@@ -103,6 +123,7 @@ export function weaponAttackSpec(actor, weapon = null, { mode: requested = "", d
     rollsAmmo: weapon ? rollsAmmo(weapon, mode, distance) : false,
     critBonus, disadvantageSources: disadvantage, refuse,
     volatile: weapon ? volatileRank(weapon) : 0,
+    note: echo ? "Evocation: no more than 1 attack with it per Attack action." : undefined,
     tooltip: breakdownTooltip(b)
   };
 }
@@ -135,7 +156,7 @@ export function attackGeometry(actor, targetToken) {
  * buttons, the Action (or Bonus Action) marked used, the Ammunition Die on thrown and ranged attacks,
  * and Volatile backfires (the weapon jams until an Action unjams it).
  * @param {object} [o]
- * @param {string} [o.mode]         "thrown", "twoHanded" or "bonus" from the Combat tab entry
+ * @param {string} [o.mode]         "thrown", "twoHanded", "bonus" or "light" from the Combat tab entry
  */
 export async function attackWithWeapon(actor, weapon = null, { event, targetActors, mode = "" } = {}) {
   if ( isUnarmedStrike(weapon) ) weapon = null;
@@ -144,9 +165,13 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
   if ( weapon?.getFlag?.("n5e", "jammed") ) return ui.notifications.warn(`${weapon.name} is jammed. Spend an Action to unjam it.`);
   const targets = targetActors ? targetActors.map(a => a.getActiveTokens?.()[0]).filter(Boolean)
     : Array.from(game.user?.targets ?? []);
+  if ( mode === "light" ) {
+    const block = lightAttackBlock({ inCombat: inActiveCombat(actor), economy: actor.flags?.n5e?.economy ?? {} });
+    if ( block ) return ui.notifications.warn(block);
+  }
   const geometry = attackGeometry(actor, targets.length === 1 ? targets[0] : null);
   const spec = weaponAttackSpec(actor, weapon, { mode: mode === "thrown" ? "thrown" : "", twoHanded: mode === "twoHanded",
-    bonusAction: mode === "bonus", ...geometry });
+    bonusAction: mode === "bonus", light: mode === "light", ...geometry });
   if ( spec.refuse ) return ui.notifications.warn(spec.refuse);
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }],
@@ -156,8 +181,12 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
     ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
   if ( !message ) return message;
   if ( actor.isOwner ) {
-    await actor.update(mode === "bonus" ? { "flags.n5e.economy.bonus": true, "flags.n5e.economy.attackOrJutsu": true }
-      : { "flags.n5e.economy.action": true, "flags.n5e.economy.attackOrJutsu": true });
+    // Attack action (marks it for the Light extra attack), the Bonus Action (Multiattack), or the
+    // Light extra attack itself (no action of its own).
+    const used = mode === "bonus" ? { "flags.n5e.economy.bonus": true }
+      : mode === "light" ? { "flags.n5e.economy.lightAttack": true }
+        : { "flags.n5e.economy.action": true, "flags.n5e.economy.attackAction": true };
+    await actor.update({ ...used, "flags.n5e.economy.attackOrJutsu": true });
   }
   if ( weapon && backfires(weapon, natural) ) {
     await weapon.setFlag("n5e", "jammed", true);
@@ -169,6 +198,30 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
   }
   if ( weapon && spec.rollsAmmo ) await rollAmmo(weapon);
   return message;
+}
+
+/** True when the actor is a combatant in a started combat (turn economy is tracked). */
+export function inActiveCombat(actor) {
+  const combat = globalThis.game?.combat;
+  return !!combat?.started && combat.combatants.some(c => c.actorId === actor.id || c.actor === actor);
+}
+
+/**
+ * The weapon for a strike (ATK1b): equipped weapons that meet the strike's need ({keywords, groups,
+ * properties}). One match is used; several open a chooser; none warns with what's needed.
+ * @returns {Promise<Item|null>}
+ */
+export async function pickWeapon(actor, need = null) {
+  const candidates = matchingWeapons(equippedWeapons(actor), need);
+  if ( !candidates.length ) {
+    ui.notifications.warn(`Equip ${needText(need)} for this strike.`);
+    return null;
+  }
+  if ( candidates.length === 1 ) return candidates[0];
+  const buttons = candidates.map((w, i) => ({ action: w.id, label: w.name, default: i === 0 }));
+  const choice = await foundry.applications.api.DialogV2.wait({ window: { title: "Strike with which weapon?" },
+    content: `<p>${actor.name}: choose the weapon for this strike.</p>`, buttons, rejectClose: false });
+  return candidates.find(w => w.id === choice) ?? null;
 }
 
 /** Spend an Action to unjam a Volatile weapon (Chapter 5). */
@@ -185,11 +238,13 @@ export async function unjamWeapon(actor, weapon) {
  * A stance or feature strike (Bleeding Edge, Wolf Fang Fist, Raiding Strike...): an unarmed or weapon
  * attack with a stepped die, extra dice, Pierce, a maximized die, or several attacks.
  * @param {Actor} actor
- * @param {{kind, dieSteps, extraDice, pierce, maximize, attacks}} s
+ * @param {{kind, dieSteps, extraDice, pierce, maximize, attacks, weapon}} s   weapon: optional need
+ *   {keywords, groups, properties} used to choose the weapon (pickWeapon)
  */
 export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll = null, targetActors = null } = {}) {
-  const weapon = s.kind === "weapon" ? equippedWeapons(actor)[0] ?? null : null;
-  if ( s.kind === "weapon" && !weapon ) return ui.notifications.warn("Equip a weapon for this strike.");
+  // The strike's weapon need, if it names one (s.weapon = {keywords, groups, properties}).
+  const weapon = s.kind === "weapon" ? await pickWeapon(actor, s.weapon ?? null) : null;
+  if ( s.kind === "weapon" && !weapon ) return undefined; // nothing rolled: the caller refunds the cost
   const shocked = shockedBlock(actor);
   if ( shocked ) return ui.notifications.warn(shocked);
   if ( weapon?.getFlag?.("n5e", "jammed") ) return ui.notifications.warn(`${weapon.name} is jammed. Spend an Action to unjam it.`);

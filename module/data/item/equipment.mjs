@@ -43,7 +43,9 @@ export class WeaponData extends TDM() {
       ammo: S.obj({ usesDie: S.bool(), ...S.resourcePoolFields({ label: "Ammunition Die" }) }),
       proficient: S.bool(true),
       seals: S.arr(S.obj(sealFields())),
-      extraSealSlots: S.int(0, { min: 0 })
+      extraSealSlots: S.int(0, { min: 0 }),
+      // Combat Scrolls (Evocation): the sealed echo. discipline nin | gen | tai (a Weapon echo uses Taijutsu).
+      evocation: S.obj({ discipline: S.str(), type: S.str() })
     };
   }
 

@@ -326,3 +326,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.backfired` | Chat message | The attack backfired; no damage |
 | `system.ammo` on Thrown weapons without Ammunition | Weapon | d4 Ammunition Die, steps `[4, 1, 0]` (migration 6) |
 | `data-attack-mode` | Combat-tab pill | `thrown`, `twoHanded`, `bonus` or `unjam` |
+
+## Added in 0.17.0-alpha.2 (ATK1b)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `system.evocation = {discipline, type}` | Weapon (Evocation) | The sealed echo: `nin`, `gen` or `tai` (Weapon echo), and its damage type |
+| `flags.n5e.economy.attackAction` | Actor | Took the Attack action this turn (reset at turn start) |
+| `flags.n5e.economy.lightAttack` | Actor | Used the Light extra attack this turn (reset at turn start) |
+| Strike data `weapon: {keywords, groups, properties}` | Activity `strike` | Optional: which equipped weapons the strike can use |
+| `data-attack-mode="light"` | Combat-tab pill | The Light extra attack |
+| Removed: `CONFIG.N5E.coreActions.offhand` | Config | King: Chapter 5 Light instead of the Chapter 8 Bonus Action off-hand attack |

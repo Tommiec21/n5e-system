@@ -169,7 +169,8 @@ export const masteryTargets = {
 
 /**
  * KB 03 "Actions in combat" (Ch8): the core actions every creature has, for the Combat tab.
- * requires: "lightWeapon" = shown only with a light weapon equipped.
+ * The Light extra attack (Chapter 5, King 2026-11-13) is a weapon entry on the Combat tab, not a
+ * core action: the Chapter 8 Bonus Action off-hand attack is not used.
  */
 export const coreActions = {
   attack: { label: "Attack", activation: "action",
@@ -185,9 +186,7 @@ export const coreActions = {
     text: "Pick a trigger and a response; use your Reaction when it happens. A readied jutsu must take 1 Action to cast: its chakra is spent now and held with concentration, and broken concentration dispels it." },
   useObject: { label: "Use an Object", activation: "action", text: "Interact with a second object this turn (the first interaction each turn is free), or use an item that takes an Action." },
   opportunityAttack: { label: "Opportunity Attack", activation: "reaction",
-    text: "When a hostile you can see leaves your reach, make one melee attack against it before it leaves. One per movement; not triggered by teleport or forced movement." },
-  offhand: { label: "Off-hand Attack", activation: "bonus", requires: "lightWeapon",
-    text: "After taking the Attack action with a light weapon, attack with a different light weapon in your other hand. No ability modifier to damage unless it's negative." }
+    text: "When a hostile you can see leaves your reach, make one melee attack against it before it leaves. One per movement; not triggered by teleport or forced movement." }
 };
 
 /**

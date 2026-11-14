@@ -49,7 +49,7 @@ test("Chain resets unless touched; Combo clears; economy resets", () => {
   let p = turnStartPlan(a);
   assert.ok(p.chainReset && p.comboCleared);
   assert.equal(p.update["system.combat.chain.value"], 0);
-  assert.deepEqual(p.update["flags.n5e.economy"], { action: false, bonus: false, reaction: false, special: false, object: false, attackOrJutsu: false });
+  assert.deepEqual(p.update["flags.n5e.economy"], { action: false, bonus: false, reaction: false, special: false, object: false, attackOrJutsu: false, attackAction: false, lightAttack: false });
   a.flags.n5e.chainTouched = true;
   p = turnStartPlan(a);
   assert.ok(!p.chainReset, "a Chain jutsu raised or maintained it since last turn");

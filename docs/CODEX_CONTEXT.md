@@ -319,3 +319,6 @@ Published v0.16.0-alpha.3. All 55 Chapter 5 weapons come from `tools/content/bui
 
 ## ATK1a — Claude, 2026-11-13
 Published v0.17.0-alpha.1. King's rulings: Light = the Chapter 5 extra attack inside the Attack action (adds the modifier; no Chapter 8 Bonus Action off-hand attack); thrown = the better of Str and Dex; Heavy = half the Str modifier on top. Weapon property rules live in `rules/weapon-properties.mjs`; `weaponAttackSpec` takes `{mode, distance, closeHostiles, twoHanded, bonusAction}`. Roll specs can carry `advantageSources`/`disadvantageSources`/`critBonus`. Don't roll the Ammunition Die on melee swings (`spec.rollsAmmo`). Next: ATK1b (Light extra attack replacing the `offhand` core action, `pickWeapon` for strikes, Evocation).
+
+## ATK1b — Claude, 2026-11-13
+Published v0.17.0-alpha.2. ATK1 is complete (R23–R25 closed). Light is a Combat-tab weapon entry (mode "light"), not a core action; `offhand` is gone. Weapon strikes use `pickWeapon(actor, s.weapon)`; stance data has no `weapon` needs yet (King's stance update). Evocation reads `system.evocation`. Next per plan: MDISC1 (multi-discipline casting) or CARD1 (single action card), King to choose.

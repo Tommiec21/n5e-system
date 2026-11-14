@@ -12,7 +12,7 @@ import { abilities, ranks, rankOrder, disciplines, skills, toolkits } from "../c
 import { keywords, jutsuSections, upcastPresets, stimuli } from "../config/jutsu.mjs";
 import { activationTypes, rangeTypes, areaShapes, durationUnits, recoveryPeriods, damageTypes } from "../config/combat.mjs";
 import {
-  weaponCategories, weaponProperties, armorCategories, armorProperties, consumableTypes, containerTypes
+  weaponCategories, weaponGroups, weaponProperties, armorCategories, armorProperties, consumableTypes, containerTypes
 } from "../config/equipment.mjs";
 import { featCategories, featureKinds, jutsuTiers } from "../config/character.mjs";
 import { keywordChip, componentChips, propertyChips, glyph, signed } from "./common.mjs";
@@ -150,7 +150,12 @@ const DETAILS = {
       F.check(src, "proficient", "Proficient")
     ]),
     section("Damage types", [F.tags(src, "damage.types", "", Object.fromEntries(Object.entries(damageTypes).map(([k, v]) => [k, v.label])))]),
+    section("Groups", [F.tags(src, "groups", "", weaponGroups)]),
     section("Properties", [F.props(src, "properties", "", weaponProperties)]),
+    "evocation" in (get(src, "properties") ?? {}) ? section("Evocation: sealed echo", [
+      F.select(src, "evocation.discipline", "Echo", { "": "None sealed", nin: "Ninjutsu", gen: "Genjutsu", tai: "Weapon (Taijutsu)" }),
+      F.select(src, "evocation.type", "Damage type", { "": "—", ...Object.fromEntries(Object.entries(damageTypes).map(([k, v]) => [k, v.label])) })
+    ]) : null,
     section("Ammunition Die", [F.check(src, "ammo.usesDie", "Uses an Ammunition Die")]),
     physical(src)
   ],

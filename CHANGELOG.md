@@ -1,3 +1,20 @@
+## 0.17.0-alpha.2 — Light, weapon choice for strikes, Evocation (ATK1b, King 2026-11-13)
+
+- **Light extra attack (Chapter 5).**
+  - With two Light weapons equipped, each gets a "(Light extra attack)" entry: one extra off-hand attack once per turn, after you take the Attack action, adding the ability modifier.
+  - In combat it checks that the Attack action was taken and the extra attack is unused. Outside combat nothing is tracked.
+  - The Chapter 8 Bonus Action "Off-hand Attack" is removed.
+- **Strikes choose their weapon.**
+  - Stance and feature strikes no longer use the first equipped weapon. A strike may name what it needs (`weapon: {keywords, groups, properties}`).
+  - One match is used. Several open a chooser. With none, the strike says what to equip and refunds its cost.
+  - Strikes that name no need offer every equipped weapon. Stance data is unchanged (King's own update).
+- **Evocation (Combat Scrolls).**
+  - The item sheet has an "Evocation: sealed echo" section: Ninjutsu, Genjutsu or Weapon (Taijutsu), plus the damage type.
+  - Attacks use that discipline's attack bonus and the echo's type, with no ability modifier. The die grows to 2d/3d/4d at levels 5/11/17.
+  - The card notes the 1-attack-per-Attack-action limit.
+  - An empty scroll asks you to seal an echo first.
+- The weapon item sheet can now edit weapon groups.
+
 ## 0.17.0-alpha.1 — Weapon attacks (ATK1a, King 2026-11-13)
 
 - **Bonuses.** Weapon and unarmed attacks now include flat bonuses (`system.bonuses.attack.weapon` / `.unarmed`, `system.bonuses.damage.weapon` / `.unarmed`), the new effect keys `n5e.attack.weapon|unarmed` and `n5e.damage.weapon|unarmed`, and Mastery on `attack.weapon` / `attack.unarmed`. They all show in the attack's breakdown.

@@ -100,7 +100,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
 | `character.mjs` | 157 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
-| `combat.mjs` | 239 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
+| `combat.mjs` | 238 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
 | `condition-text.mjs` | 181 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 197 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 160 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
@@ -140,7 +140,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-options.mjs` | 190 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
-| `equipment.mjs` | 146 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
+| `equipment.mjs` | 148 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
 | `jutsu.mjs` | 171 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
 
@@ -222,7 +222,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `unarmed.mjs` | 86 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepDie`, `resolveFormula` |
 | `uncanny-dodge.mjs` | 10 | Uncanny Dodge has no inferred visibility fallback or extra resource cost. | `uncannyDodgeOffer` |
 | `upkeep.mjs` | 57 | Concentration upkeep choice (pure). | `upkeepOptions`, `validateUpkeepChoice`, `upkeepMode`, `autoKeep` |
-| `weapon-properties.mjs` | 111 | Weapon properties in attacks (pure; ATK1, Chapter 5 "Weapon Properties" and Chapter 8 "Making an Attack"). | `weaponCritBonus`, `deadlyDice`, `heavyPenalty`, `heavyDamage`, `volatileRank`, `backfires`, `reachOf`, `attackMode`, `attackRange`, `rangeSources`, `rollsAmmo`, `thrownAmmo` |
+| `weapon-properties.mjs` | 179 | Weapon properties in attacks (pure; ATK1, Chapter 5 "Weapon Properties" and Chapter 8 "Making an Attack"). | `weaponCritBonus`, `deadlyDice`, `heavyPenalty`, `heavyDamage`, `volatileRank`, `backfires`, `reachOf`, `attackMode`, `attackRange`, `rangeSources`, `rollsAmmo`, `thrownAmmo`, `canDualWieldLight`, `lightAttackBlock`, `matchingWeapons`, `needText`, `evocationDice`, `evocationDie`, `evocationEcho` |
 
 ## module/testing
 
@@ -235,10 +235,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 550 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
-| `combat.mjs` | 408 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
+| `combat.mjs` | 411 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
 | `common.mjs` | 150 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
-| `item.mjs` | 428 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `item.mjs` | 433 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
 
 ## module/workflow
@@ -251,7 +251,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
 | `apply-damage.mjs` | 311 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 283 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
-| `attack.mjs` | 217 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `unjamWeapon`, `strikeAttack` |
+| `attack.mjs` | 272 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 100 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 149 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |

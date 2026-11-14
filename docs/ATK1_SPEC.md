@@ -1,6 +1,6 @@
 # ATK1 function spec: weapon attacks
 
-Status: **Q1–Q3 answered by King 2026-11-13. ATK1a published 0.17.0-alpha.1; ATK1b next.**
+Status: **Q1–Q3 answered by King 2026-11-13. ATK1a published 0.17.0-alpha.1; ATK1b published 0.17.0-alpha.2.**
 
 Closes plan findings:
 - R23: weapon attacks add only ability + proficiency + condition penalties.
@@ -134,3 +134,25 @@ Original questions:
     - two expectations changed on purpose by ATK1: the Combat-tab strike list, and thrown weapons now having a d4 die;
     - the new test's weapon loader matched "shuriken-" and found Fuma-Shuriken.
   - Attempt 2 passed: 330 pass, 2 skipped. Lint and check pass.
+
+### ATK1b: published `v0.17.0-alpha.2`
+- **Built.**
+  - `rules/weapon-properties.mjs`: `canDualWieldLight`, `lightAttackBlock`, `matchingWeapons`, `needText`, `evocationDice`, `evocationDie` (with `bukijutsu` for half the die), `evocationEcho`.
+  - `WeaponData.evocation = {discipline, type}`; the item sheet edits it (and weapon groups).
+  - `workflow/attack.mjs`:
+    - `weaponAttackSpec({light})` and Evocation;
+    - `attackWithWeapon({mode: "light"})`;
+    - `inActiveCombat`, `pickWeapon`;
+    - `strikeAttack` uses `pickWeapon(actor, s.weapon)`.
+  - Economy flags: `attackAction` (set by attacks that use the Action) and `lightAttack`, both reset at turn start.
+  - The Combat tab has "(Light extra attack)" entries. The `offhand` core action is removed.
+- **Differs from the spec.**
+  - Stance strikes don't name a weapon need yet: stance data is King's own update. Without a need, the strike offers every equipped weapon (chooser when several).
+  - Evocation attacks don't add weapon attack/damage bonuses: they use the discipline's attack bonus as the rules say.
+  - Half-die Evocation for a Bukijutsu's [Weapon Damage] is available as `evocationDie(weapon, level, {bukijutsu: true})`. No caster reads [Weapon Damage] from items yet (CARD1).
+- **Tests.**
+  - 3 more tests in `tests/weapon-attacks.test.mjs`.
+  - Attempt 1 had 2 failures:
+    - the turn-reset expectation, which now includes the two new economy flags;
+    - a strike with no weapon returned `null` instead of `undefined`, which the cost-refund path relies on. That was fixed in the code.
+  - Attempt 2 passed: 333 pass, 2 skipped. Lint and check pass.
