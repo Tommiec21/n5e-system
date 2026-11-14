@@ -40,3 +40,4 @@ After each function, add a line to the progress log and push.
   - States `coverPartial`, `coverHalf`, `coverTotal` are on the token HUD, with rules text.
   - `creature.mjs` adds the highest cover to `system.ac` (a breakdown part) and to the Dex save, and records `system.cover`.
   - The suite is green after adding the rules text that the enrichers test requires. Next: F2 (Total cover refuses attacks).
+- 2026-11-14 Claude: **F2 done.** `rollWithSpec` refuses any attack roll whose single target or user targets include a creature with Total cover: it warns and returns null before rolling. That covers weapon attacks, jutsu attack buttons and strikes. Suite green. Next: F3/F4 (Opportunity Attack reminder) and F5 (Disengage flag).

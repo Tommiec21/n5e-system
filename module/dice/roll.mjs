@@ -1,3 +1,4 @@
+import { untargetable } from "../rules/positioning.mjs";
 import { createN5eRoll } from "./n5e-roll.mjs";
 /**
  * Rolling d20s from the sheet and posting them to chat (Foundry side). The rules live in dice/d20.mjs.
@@ -86,6 +87,15 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   if ( target === undefined ) {
     const targets = Array.from(globalThis.game?.user?.targets ?? []);
     target = targets.length === 1 ? targets[0].actor : null;
+  }
+  // Total cover (POS1): a creature behind it can't be targeted directly by an attack.
+  if ( spec.kind === "attack" ) {
+    const aimed = target ? [target] : Array.from(globalThis.game?.user?.targets ?? []).map(t => t.actor).filter(Boolean);
+    const covered = aimed.filter(a => untargetable(a.statuses));
+    if ( covered.length ) {
+      ui.notifications.warn(`Total cover: ${covered.map(a => a.name).join(", ")} can't be targeted directly.`);
+      return null;
+    }
   }
   spec = contextualSpec(actor, spec, target);
   const type = spec.type ?? "custom";
