@@ -248,6 +248,26 @@ function targetsOrSelf(fallback) {
 }
 
 /**
+ * Genjutsu Stimuli immunity for a cast card (GEN1): the creatures among these that are immune, with
+ * reasons. Only when the card's jutsu was cast as Genjutsu (MDISC1 decision 15).
+ * @returns {Promise<Map<Actor, string[]>>}
+ */
+async function stimuliImmune(message, actors) {
+  const cast = message?.getFlag?.("n5e", "cast");
+  const out = new Map();
+  if ( !cast?.itemUuid || !actors?.length ) return out;
+  const item = await fromUuid(cast.itemUuid);
+  const discipline = cast.discipline ?? item?.system?.discipline;
+  if ( item?.type !== "jutsu" || discipline !== "gen" ) return out;
+  const { genjutsuImmunity, creatureFacts } = await import("../rules/stimuli.mjs");
+  for ( const a of actors ) {
+    const r = genjutsuImmunity(item.system.stimuli, creatureFacts(a));
+    if ( r.immune ) out.set(a, r.reasons);
+  }
+  return out;
+}
+
+/**
  * Handle a click on a [data-n5e-act] button.
  * The caster is whoever the card belongs to: cast cards store flags.n5e.cast.actorUuid, roll cards
  * flags.n5e.roll.actorUuid, item and damage cards flags.n5e.actorUuid; else the message speaker.
@@ -310,6 +330,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "attack": {
       if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");
+      // Genjutsu Stimuli (GEN1): immune targets are named; with every target immune, nothing is rolled.
+      const aimed = targetActors ?? Array.from(game.user?.targets ?? []).map(t => t.actor).filter(Boolean);
+      const immune = await stimuliImmune(message, aimed);
+      if ( immune.size ) {
+        const text = [...immune].map(([a, why]) => `${a.name} (${why.join(", ")})`).join("; ");
+        if ( immune.size === aimed.length ) return fail("warn", `Immune to this Genjutsu: ${text}.`);
+        ui.notifications.info(`Immune to this Genjutsu: ${text}.`);
+      }
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
         { event, mode: d.adv ? "advantage" : undefined, source: message?.id ?? "",
           ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
@@ -377,8 +405,15 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       if ( !targets.length ) return fail("info", "Select the tokens that roll the save.");
       let first = true;
       let rolled = 0;
+      // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.
+      const immune = await stimuliImmune(message, targets);
       for ( const t of targets ) {
         if ( !t.isOwner ) continue;
+        if ( immune.has(t) ) {
+          await CONFIG.ChatMessage.documentClass.create({ speaker: speaker({ actor: t }),
+            content: `<div class="n5e-roll-card"><b>${esc(t.name)}: immune to ${esc(d.label)}</b><div class="note">${esc(immune.get(t).join(", "))}</div></div>` });
+          continue;
+        }
         const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
         // What a failure inflicts becomes Apply buttons on the save card (not automatic: many jutsu
         // only inflict under conditions in their text). With a resave, the applied condition remembers

@@ -36,3 +36,8 @@ After each function, add a line to the progress log and push.
 
 - 2026-11-14 Claude: spec written; starting F1.
 - 2026-11-14 Claude: **F1 done.** New `rules/stimuli.mjs`: `creatureFacts(actor)` (statuses, `traits.senses`, `traits.conditionImmune`, `traits.immune`), `immuneToStimulus`, `genjutsuImmunity` (all Stimuli must be covered; reasons like "Blinded (Visual)"). Next: F2/F3 (save and attack buttons).
+- 2026-11-14 Claude: **F2 + F3 done.**
+  - `stimuliImmune(message, actors)` in `workflow/activity-buttons.mjs` reads the cast card's jutsu and cast discipline (only `gen`).
+  - Save button: immune owned targets get an "immune to <jutsu>" card with the reasons instead of a roll. The "only creatures you own" warning is skipped when every target was immune.
+  - Attack button: every target immune → refused with the reasons; some → an info notice naming them.
+  - Suite green. Next: F4 (Unaware note), then tests.
