@@ -96,7 +96,7 @@ Order: first fix user-reported problems, then Tier 1 (core rules correctness), t
 | 11 | RES1 per-target resolution | One damage roll for many targets, automatic per-target save tiers, hit vs AC per target | — | ADV1 | published v0.19.0-alpha.1 (`docs/RES1_SPEC.md`) | Claude 2026-11-14 |
 | 12 | POS1 positioning | Opportunity attacks and reach, Engaged, Surprise, Dodge, cover (+2/+4) | — | ADV1 | published v0.20.0-alpha.1 (`docs/POS1_SPEC.md`) | Claude 2026-11-14 |
 | 13 | CLASH1 | Clash contested workflow, rank bonus, best of 3, elemental advantage (Q3) | — | RES1 | Tier 2 | — |
-| 14 | ENV1 | Hostile terrain as Region behaviours, falling, suffocation | — | TURN1 | Tier 2 | — |
+| 14 | ENV1 | Hostile terrain as Region behaviours, falling, suffocation | — | TURN1 | ENV1a in progress (`docs/ENV1_SPEC.md`); falling waits on Q-C11 | Claude 2026-11-14 |
 | 15 | SKILL1 | Executable skill actions (Grapple, Shove, Hide/Search, Stabilize...) | — | ADV1 | Tier 2 | — |
 | 16 | GEN1 | Genjutsu stimuli immunity, Unaware, sense-based targeting | — | ADV1 | Tier 2 | — |
 | 17 | SHARED1 | Extract `module/rules` into the shared core; System adapter; Module adapter against dnd5e 5.3.3; CI propagation | — | Tier 1 | after Tier 1 | — |

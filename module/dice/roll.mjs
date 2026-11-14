@@ -314,6 +314,10 @@ export function onRenderChatMessage(message, html) {
   addRollModeButtons(html);
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
+  for ( const btn of html.querySelectorAll("[data-n5e-terrain-save]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    import("../workflow/environment.mjs").then(m => m.onTerrainSaveClick(btn, ev)).catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-oa]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/positioning.mjs").then(m => m.onOpportunityClick(btn, ev)).catch(error => ui.notifications.warn(error.message));

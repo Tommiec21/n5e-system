@@ -15,6 +15,7 @@
  * `npm run check`, which reports anything missing.
  */
 import CharacterData from "./actor/character.mjs";
+import HostileTerrainBehavior from "./region/hostile-terrain.mjs";
 import NPCData from "./actor/npc.mjs";
 import JutsuData from "./item/jutsu.mjs";
 import { WeaponData, ArmorData, ConsumableData, ToolkitData, ContainerData, LootData } from "./item/equipment.mjs";
@@ -24,6 +25,7 @@ import {
 } from "./effect/effects.mjs";
 
 export const actorModels = { character: CharacterData, npc: NPCData };
+export const regionBehaviorModels = { hostileTerrain: HostileTerrainBehavior };
 
 export const itemModels = {
   jutsu: JutsuData,
@@ -55,4 +57,10 @@ export function registerDataModels() {
   Object.assign(CONFIG.Actor.dataModels, actorModels);
   Object.assign(CONFIG.Item.dataModels, itemModels);
   Object.assign(CONFIG.ActiveEffect.dataModels, effectModels);
+  // Region behaviours (ENV1): Hostile Terrain.
+  if ( CONFIG.RegionBehavior ) {
+    Object.assign(CONFIG.RegionBehavior.dataModels, regionBehaviorModels);
+    CONFIG.RegionBehavior.typeIcons ??= {};
+    CONFIG.RegionBehavior.typeIcons.hostileTerrain = "fa-solid fa-volcano";
+  }
 }

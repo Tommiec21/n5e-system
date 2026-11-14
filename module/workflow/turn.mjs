@@ -64,6 +64,8 @@ export async function turnStartPipeline(combat, combatant) {
     lines.push(`${esc(r.name)}: recharge d${r.die} rolled ${roll.total}${ok ? " (recharged)" : ""}`);
   }
   if ( surprisedLine ) lines.push(`<span class="warn">${esc(surprisedLine)}</span>`);
+  // Hostile terrain and Suffocating (ENV1).
+  lines.push(...await import("./environment.mjs").then(m => m.environmentTurnStart(actor, combatant)));
   if ( plan.chainReset ) lines.push("Chain resets to 0 (not raised or maintained)");
   if ( plan.focusGained ) lines.push("Flow: +1 Focus");
   if ( recovered.length ) lines.push(`Recovered: ${esc(recovered.join(", "))}`);
