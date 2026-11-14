@@ -150,3 +150,7 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
   Module-side detail is in n5e-module `docs/CONTEXT.md` (SHARED1b section).
   - **King action:** in n5e-module Settings → Actions → General, turn on "Allow GitHub Actions to create and approve pull requests", or the daily sync can't open its PR.
   - **Next (Claude or Codex):** M3 continues with condition modifiers, damage calculation, costs/upkeep, condition lifecycle and activity selection. Compare each Module planner's contract with the core function first.
+- 2026-11-14 Claude: **SHARED1b slice 2 (Module): condition modifiers.**
+  - `scripts/conditions/modifiers.mjs` now uses the core `emptyPenalties`, `clampRanks` and `aggregatePenalties`, with the module registry as the default.
+  - Gate `coreConditions` passed locally (61/61) and in CI (run 43599554235).
+  - Published n5e-module `v0.1.0-alpha.17`. Next: damage calculation (compare contracts first).
