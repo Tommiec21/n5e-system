@@ -4,6 +4,12 @@
  * (Iron Fist: d8 with Combat Bracers if Str is your Taijutsu ability; Silent Killing: d8 with Iron
  * Claws). Effects add dice (n5e.unarmed.dice, e.g. the Inner Gates).
  */
+/** True for the built-in Unarmed Strike item (DATA2). */
+export const isUnarmedStrike = item => item?.type === "weapon" && (item.system?.identifier === "unarmedStrike" || !!item.flags?.n5e?.unarmedStrike);
+
+/** Equipped weapons other than the Unarmed Strike item. */
+export const equippedWeapons = actor => [...(actor?.items ?? [])].filter(i => i.type === "weapon" && i.system?.equipped && !isUnarmedStrike(i));
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 
 /** The actor's active stance item (system.combat.activeStance holds its id), or null. */

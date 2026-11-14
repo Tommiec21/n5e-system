@@ -24,8 +24,20 @@ export const MIGRATIONS = [
   { id: 1, label: "V3.1 world actors and items -> 4.0", run: migrateWorldV31 },
   { id: 2, label: "Retry legacy documents and restore dropped automation fields", run: repairAutomation },
   { id: 3, label: "Data model 2026-11-13: jutsu disciplines, keywords, feature kinds and the Feats group", run: migrateDataModel },
-  { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons }
+  { id: 4, label: "Weapons: base weapon keywords and category + group proficiency", run: migrateWeapons },
+  { id: 5, label: "Unarmed Strike item for every character and NPC", run: addUnarmedStrikes }
 ];
+
+/** Migration 5 (DATA2): every world character and NPC gets the Unarmed Strike item. */
+async function addUnarmedStrikes(log) {
+  const { ensureUnarmedStrike } = await import("../workflow/unarmed.mjs");
+  const failures = [];
+  for ( const actor of game.actors ) {
+    try { if ( await ensureUnarmedStrike(actor) ) log.push(`Unarmed Strike: ${actor.uuid}`); }
+    catch (error) { failures.push({ uuid: actor.uuid, error: error.message }); }
+  }
+  if ( failures.length ) { const error = new Error("Some creatures could not get the Unarmed Strike."); error.failures = failures; throw error; }
+}
 
 /** Migration 4 (DATA1b): base weapon keywords; class weapon proficiencies as category + group pairs. */
 async function migrateWeapons(log) {

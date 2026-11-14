@@ -3,6 +3,7 @@
  * class holds the document-level behavior: V3.1 data conversion, auto-equip, and roll data.
  */
 import { isV31Item, migrateV31Item } from "../migration/v31.mjs";
+import { isUnarmedStrike } from "../rules/unarmed.mjs";
 
 export default class N5eItem extends Item {
 
@@ -20,6 +21,8 @@ export default class N5eItem extends Item {
   async _preCreate(data, options, user) {
     if ( (await super._preCreate(data, options, user)) === false ) return false;
     const actor = this.parent;
+    // One Unarmed Strike per creature (DATA2): a dropped copy is ignored.
+    if ( actor && isUnarmedStrike(this) && actor.items.some(i => isUnarmedStrike(i)) ) return false;
     // Only characters, only equippable types, only if it isn't equipped already.
     if ( actor?.type !== "character" || !("equipped" in (this.system ?? {})) || this.system.equipped ) return;
     let equip = false;
@@ -30,6 +33,23 @@ export default class N5eItem extends Item {
         && i.system.containerType === this.system.containerType);
     }
     if ( equip ) this.updateSource({ "system.equipped": true });
+  }
+
+  /** @override  The Unarmed Strike item can't be removed from its creature (DATA2). */
+  async _preDelete(options, user) {
+    if ( (await super._preDelete(options, user)) === false ) return false;
+    if ( this.parent && isUnarmedStrike(this) && !options.n5eForce ) {
+      globalThis.ui?.notifications?.info("The Unarmed Strike can't be removed.");
+      return false;
+    }
+  }
+
+  /** @override  The Unarmed Strike item stays equipped (DATA2). */
+  async _preUpdate(changes, options, user) {
+    if ( (await super._preUpdate(changes, options, user)) === false ) return false;
+    if ( isUnarmedStrike(this) && foundry.utils.getProperty(changes, "system.equipped") === false ) {
+      foundry.utils.setProperty(changes, "system.equipped", true);
+    }
   }
 
   /**

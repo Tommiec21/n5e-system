@@ -21,6 +21,15 @@ import { rule } from "../rules-settings.mjs";
 
 export default class N5eActor extends Actor {
 
+  /** @override  Every character and NPC gets the Unarmed Strike item when created (DATA2). */
+  async _preCreate(data, options, user) {
+    if ( (await super._preCreate(data, options, user)) === false ) return false;
+    if ( !["character", "npc"].includes(this.type) ) return;
+    const items = this._source.items ?? [];
+    if ( items.some(i => i.type === "weapon" && (i.system?.identifier === "unarmedStrike" || i.flags?.n5e?.unarmedStrike)) ) return;
+    this.updateSource({ items: [...items, foundry.utils.deepClone(CONFIG.N5E.unarmedStrike)] });
+  }
+
   /** @override  V3.1 data is converted in memory on every load (persisted by the migration runner). */
   static migrateData(source) {
     if ( isV31Actor(source) ) {

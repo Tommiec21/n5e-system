@@ -9,8 +9,29 @@ export const startingWealth = { fixed: 500, roll: "5d6 * 30" };
 
 export const weaponCategories = { simple: "Simple", martial: "Martial", exotic: "Exotic" };
 export const weaponGroups = {
-  blade: "Blade", flail: "Flail", polearm: "Polearm", power: "Power", ammunition: "Ammunition", thrown: "Thrown"
+  blade: "Blade", flail: "Flail", polearm: "Polearm", power: "Power", ammunition: "Ammunition", thrown: "Thrown", unarmed: "Unarmed"
 };
+/**
+ * The Unarmed Strike item every character and NPC carries (DATA2, KB 03): always proficient, 0 Bulk,
+ * can't be dropped or unequipped. Attacking with it uses rules/unarmed.mjs (1 + Str bludgeoning, or
+ * the active stance's die and type, plus effect dice).
+ */
+export const unarmedStrike = Object.freeze({
+  name: "Unarmed Strike",
+  type: "weapon",
+  img: "icons/svg/combat.svg",
+  system: {
+    identifier: "unarmedStrike",
+    description: "<p>A punch, kick, headbutt or similar strike. Always proficient. Deals 1 + your Strength modifier bludgeoning damage, or your Taijutsu stance's [Unarmed Damage]. Treated as finesse for features, feats and jutsu; uses Dexterity instead of Strength if you can cast all Taijutsu with Dexterity.</p>",
+    source: { book: "Naruto 5e Core", page: "", version: "4.0", custom: "" },
+    quantity: 1, bulk: 0, price: 0, equipped: true, location: "carried",
+    category: "simple", weaponType: "melee", groups: ["unarmed"], keywords: ["unarmedStrike"],
+    damage: { die: "1", types: ["bludgeoning"], versatile: "" },
+    properties: { unarmed: 1 }, proficient: true
+  },
+  flags: { n5e: { unarmedStrike: true } }
+});
+
 export const weaponRangeTypes = { melee: "Melee", ranged: "Ranged" };
 
 /**

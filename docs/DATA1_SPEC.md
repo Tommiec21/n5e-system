@@ -1,6 +1,6 @@
 # DATA1 function spec: data model update (disciplines, keywords, feature kinds, feats, weapon proficiency)
 
-Status: **King said "Start" (2026-11-13). DATA1a published 0.16.0-alpha.1; DATA1b published 0.16.0-alpha.2. DATA2 to follow (needs Q8).**
+Status: **King said "Start" (2026-11-13). DATA1a published 0.16.0-alpha.1; DATA1b published 0.16.0-alpha.2; DATA2 published 0.16.0-alpha.3.**
 
 Implements King's 2026-11-13 data decisions (N5e-Context.md Section 12, "Data structure decisions" and the canonical keyword list), plus the rulings below.
 
@@ -16,7 +16,7 @@ One world migration (id 3) and a pack rewrite per release. Existing worlds updat
 | --- | --- |
 | DATA1a `0.16.0-alpha.1` | Jutsu disciplines, the Bukijutsu move, keyword normalization, feature kinds, Feats group |
 | DATA1b `0.16.0-alpha.2` | Weapon base keywords, weapon proficiency by category + group pairs, universal Kunai/Shuriken/Senbon |
-| DATA2 `0.16.0-alpha.3` | Unarmed Strike item for every creature, stance recategorization (clan stances become Taijutsu, Bukijutsu or Chakra), content rebuild check |
+| DATA2 `0.16.0-alpha.3` | Unarmed Strike item for every creature, all Chapter 5 weapons imported, content rebuild check (stance recategorization: King's own update) |
 
 ## DATA1a
 
@@ -129,3 +129,20 @@ One world migration (id 3) and a pack rewrite per release. Existing worlds updat
   - Free choices such as "one exotic weapon" stay as text until a later batch adds the choice.
   - The packs hold only one weapon item (Kunai); the Chapter 5 tables are not imported, so their base keywords arrive when they are.
 - **Tests.** New `tests/proficiency.test.mjs` (3 tests). One full-suite run, which passed on the first attempt: 321 pass, 2 skipped. Lint and check pass.
+
+### DATA2: published `v0.16.0-alpha.3`
+- **King's direction (2026-11-13).** Import all weapons as part of DATA2. Stances: no suggestions; King recategorizes them in his own updates (Q8 closed).
+- **Built.**
+  - `tools/content/sources/weapons.md`: the Chapter 5 weapon tables, copied from the rules KB source.
+  - `tools/content/build-weapons.mjs`: `parseProperty`, `parseWeaponTables`, `weaponItem`; writes 55 weapons in Simple/Martial/Exotic folders under Weapons. The Kunai keeps id `n5eKunaiWeapon01`.
+  - `config/equipment.mjs`: `unarmedStrike` item data; weapon group `unarmed`.
+  - `rules/unarmed.mjs`: `isUnarmedStrike`, `equippedWeapons`.
+  - `N5eActor#_preCreate` adds the Unarmed Strike to new characters and NPCs. `N5eItem` refuses a second copy, deletion (unless `n5eForce`) and unequipping.
+  - `workflow/unarmed.mjs`: `ensureUnarmedStrike`; runner migration 5 `addUnarmedStrikes`.
+  - `weaponAttackSpec` rolls the item as the unarmed strike. Weapon strikes, the Combat tab and feature checks ignore it.
+- **Differs from the spec.**
+  - The item is added on the creating client in `_preCreate`, not by a GM-side hook, and the migration is id 5, not 4.
+  - No stance recategorization (King's call).
+  - Unarmed Strike Str/Dex/Finesse and thrown-weapon d4 ammunition dice are left to ATK1: thrown weapons without the Ammunition property don't roll an Ammunition Die yet, because the attack can't yet tell a throw from a melee swing.
+  - The content rebuild check: `tools/migrate-packs.mjs` changed 0 of 4,170 files, so every builder already writes the DATA1 shape.
+- **Tests.** New `tests/weapons.test.mjs` (4 tests). One full-suite run, which passed on the first attempt: 325 pass, 2 skipped. Lint and check pass.

@@ -28,7 +28,7 @@ export function attacksPerAction(actor) {
   const general = !!featureById(actor, "general-technique");
   const base = extra ? 2 : 1;
   const implementsN = scoutExtra ? 3 : general ? Math.max(base, 2) : base;
-  const weapons = list(actor.items).filter(i => i.type === "weapon" && i.system.equipped);
+  const weapons = list(actor.items).filter(i => i.type === "weapon" && i.system.equipped && i.system.identifier !== "unarmedStrike");
   const usingImplements = weapons.some(w => SHINOBI_IMPLEMENTS.test(w.name));
   const text = [extra ? "Extra Attack: two attacks per Attack action" : "",
     implementsN > base ? `${implementsN} with Kunai, Shuriken or Senbon${general && !extra ? " (then no Bonus Action attack with them this turn)" : ""}` : ""]

@@ -303,3 +303,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `system.grants.weaponProf` (derived) | Character, NPC | Every weapon pair and base key granted by classes and feats (feat entries `weapon.<pair or key>`) |
 | `system.proficient` | Weapon | `false` is now a manual override; otherwise proficiency is decided from `grants.weaponProf` |
 | Migration 4 `migrateWeapons` | World | Adds weapon base keywords and expands class weapon grants |
+
+## Added in 0.16.0-alpha.3 (DATA2)
+
+| Field / data | On | Meaning |
+| --- | --- | --- |
+| Unarmed Strike item (`system.identifier = "unarmedStrike"`, `flags.n5e.unarmedStrike = true`, group `unarmed`) | Character, NPC | Added on create and by migration 5; can't be deleted (unless `options.n5eForce`), unequipped or duplicated |
+| `CONFIG.N5E.unarmedStrike` | Config | The item data |
+| `CONFIG.N5E.weaponGroups.unarmed` | Config | Group label for the Unarmed Strike |
+| Weapons compendium | `packs/_source/equipment` | 55 Chapter 5 weapons in Simple / Martial / Exotic Weapons folders; `system.target.range` is reach for melee weapons, the range for ranged ones |
+| Migration 5 `addUnarmedStrikes` | World | Adds the Unarmed Strike to existing characters and NPCs |

@@ -313,3 +313,6 @@ King approved the group fix and a third test attempt, which passed. Published v0
 
 ## DATA1b — Claude, 2026-11-13
 Published v0.16.0-alpha.2. Weapon proficiency is decided by `rules/proficiency.mjs isProficientWith` against `system.grants.weaponProf` (class and feat grants as `category:group` pairs or base keys). Don't store whole-category grants; use `expandGrants`. Content builders run `migrateItemData1` then `migrateItemData1b`. Next: DATA2 (Unarmed Strike item, clan stance recategorization: needs Q8 from King).
+
+## DATA2 — Claude, 2026-11-13
+Published v0.16.0-alpha.3. All 55 Chapter 5 weapons come from `tools/content/build-weapons.mjs` (source `tools/content/sources/weapons.md`); rerun it rather than hand-editing weapon JSON. Every character and NPC carries the Unarmed Strike item: use `isUnarmedStrike` / `equippedWeapons` from `rules/unarmed.mjs` when picking "the equipped weapon". King handles stance recategorization himself: don't change stance categories. Next per plan: ATK1 (weapon attacks: property effects such as Heavy, Multiattack, Volatile, Light, thrown-vs-melee and the thrown d4 Ammunition Die, Unarmed Strike Str/Dex/Finesse).

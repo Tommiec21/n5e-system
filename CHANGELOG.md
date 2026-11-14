@@ -1,3 +1,13 @@
+## 0.16.0-alpha.3 — All weapons and the Unarmed Strike item (DATA2, King 2026-11-13)
+
+- **Weapons compendium.** All 55 weapons from the Chapter 5 tables are in the Equipment compendium, in Simple, Martial and Exotic folders: cost, damage die and type, properties with ranks, thrown and ranged ranges, Versatile dice, groups, Bulk and their base keyword.
+  - Weapons with two damage types list both; the Combat Scrolls take the sealed echo's type.
+  - Battle Wire and Hiya Taihou carry their Special rules text; the Combat Scrolls carry the Evocation note.
+  - Weapons with the Ammunition property use the Ammunition Die.
+- **Unarmed Strike item.** Every new character and NPC gets an Unarmed Strike weapon item (0 Bulk, always proficient). It can't be deleted, unequipped or added twice. Attacking with it is the same as the Unarmed Strike action: 1 + Str bludgeoning, or your stance's [Unarmed Damage]. Equipped-weapon features and weapon strikes ignore it.
+- **Migration.** World migration 5 adds the Unarmed Strike to existing characters and NPCs when the GM loads the world.
+- Clan stance categories are left for King's own update.
+
 ## 0.16.0-alpha.2 — Weapon proficiency (DATA1b, King 2026-11-13)
 
 - **Base weapon keywords.** Every weapon carries its own base keyword (`kunai`, `battleWire`, `fumaShuriken`...).

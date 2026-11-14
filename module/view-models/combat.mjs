@@ -17,7 +17,7 @@ import { esc, glyph, pips, signed } from "./common.mjs";
 import { skillActionPenalty } from "../rules/skill-actions.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
-import { unarmedSpec } from "../rules/unarmed.mjs";
+import { unarmedSpec, isUnarmedStrike } from "../rules/unarmed.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates, ampTypes } from "../config/combat.mjs";
@@ -78,7 +78,8 @@ function byEconomy(pills) {
  */
 function basicCombat(actor) {
   const sys = actor.system;
-  const equippedWeapons = ofType(actor, "weapon").filter(w => w.system.equipped);
+  // The Unarmed Strike item is shown by the Unarmed Strike pill below, not as a weapon.
+  const equippedWeapons = ofType(actor, "weapon").filter(w => w.system.equipped && !isUnarmedStrike(w));
   const hasLight = equippedWeapons.some(w => w.system.properties?.light);
 
   const core = Object.entries(coreActions)

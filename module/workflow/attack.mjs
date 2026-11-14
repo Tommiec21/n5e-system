@@ -14,7 +14,7 @@ import { Breakdown } from "../rules/breakdown.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
 import { damageButtons } from "./activity-buttons.mjs";
 import { rollAmmo } from "./ammo.mjs";
-import { unarmedSpec, stepDie, resolveFormula, activeStance } from "../rules/unarmed.mjs";
+import { unarmedSpec, stepDie, resolveFormula, activeStance, isUnarmedStrike, equippedWeapons } from "../rules/unarmed.mjs";
 
 /**
  * Attack spec for a weapon (or null for unarmed): everything rollWithSpec() needs (bonus with its
@@ -26,6 +26,7 @@ import { unarmedSpec, stepDie, resolveFormula, activeStance } from "../rules/una
  *   damage: {formula, die, extra, types}, ammo, tooltip}
  */
 export function weaponAttackSpec(actor, weapon = null) {
+  if ( isUnarmedStrike(weapon) ) weapon = null; // the Unarmed Strike item rolls as an unarmed strike
   const sys = actor.system;
   const mod = k => sys.abilities?.[k]?.mod ?? 0;
   const pen = sys.conditionPenalties?.sources ?? {};
@@ -99,7 +100,7 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
  * @param {{kind, dieSteps, extraDice, pierce, maximize, attacks}} s
  */
 export async function strikeAttack(actor, s, { event, label = "Strike", poolRoll = null, targetActors = null } = {}) {
-  const weapon = s.kind === "weapon" ? actor.items.find(i => i.type === "weapon" && i.system.equipped) ?? null : null;
+  const weapon = s.kind === "weapon" ? equippedWeapons(actor)[0] ?? null : null;
   if ( s.kind === "weapon" && !weapon ) return ui.notifications.warn("Equip a weapon for this strike.");
   const shocked = shockedBlock(actor);
   if ( shocked ) return ui.notifications.warn(shocked);
