@@ -146,7 +146,7 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     if ( !a.save?.abilities || ![...a.save.abilities].length ) return "";
     const ab = [...a.save.abilities][0];
     const dc = dcFor(a);
-    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
+    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("on-success", a.save?.onSuccess || "")}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
       ${attr("label", a.label || item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
       DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>`;
   };
@@ -221,7 +221,7 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
       const ab = [...(a.save?.abilities ?? [])][0];
       const dc = dcFor(a);
       rows.push(`<div class="act-row">${payButton(a)}<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
-        ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
+        ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("on-success", a.save?.onSuccess || "")}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
         DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: castGen, weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);
     } else if ( a.type === "damage" ) {
@@ -311,7 +311,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "attack": {
       if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
-        { event, mode: d.adv ? "advantage" : undefined, ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
+        { event, mode: d.adv ? "advantage" : undefined, source: message?.id ?? "",
+          ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     }
     case "damage": {
       // Roll each part on its own so every damage type keeps its amount (the damage pipeline needs
@@ -392,7 +393,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         const dis = d.dis && first;
         first = false;
         const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
-        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}") });
+        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}"),
+          source: message?.id ?? "", onSuccess: d.onSuccess || "" });
         rolled++;
       }
       return rolled ? { saves: rolled } : null;

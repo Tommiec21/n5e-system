@@ -43,3 +43,4 @@ The single combined action card (CARD1) and placing areas from cards.
 
 - 2026-11-14 Claude: spec written; starting F1.
 - 2026-11-14 Claude: **F1 done.** New `rules/resolution.mjs`: `saveMode(degree, {onSuccess, fourTier})`, `targetOutcomes({attack, saves})`, plus `pickLinkedRolls(origin, linked)` (the pure selection step of F4: the origin attack card or the latest linked attack, and the latest save per creature). Next: F2 + F3 (store `source` and `onSuccess` on rolls).
+- 2026-11-14 Claude: **F2 + F3 done.** `rollWithSpec({source, onSuccess})` stores `flags.n5e.roll.source`, `.onSuccess` and `.name` (the roller). Card attack and save buttons pass `source: message.id`. Save buttons carry `data-on-success` (from `save.onSuccess`) and pass it. Suite green. Next: F4 + F5 (linked outcomes, rows on the damage card).

@@ -75,11 +75,13 @@ export async function rollD20(actor, type, key, options = {}) {
  * @param {string} [options.mode]        force normal | advantage | disadvantage (e.g. condition resistance)
  * @param {number} [options.dc]          compare against a DC (saves from a card)
  * @param {boolean} [options.fourTier]   report Genjutsu four-tier results
+ * @param {string} [options.source]      id of the card whose button made this roll (RES1 per-target resolution)
+ * @param {string} [options.onSuccess]   a save's share on success: half | none (RES1)
  * @param {string} [options.onFail]      HTML added to the card only on a failure (Apply-condition buttons)
  * @param {Function} [options.onResult]  called with {natural, crit, fumble, degree, success, message}
  */
 export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null,
-  target = undefined, tiers = null } = {}) {
+  target = undefined, tiers = null, source = "", onSuccess = "" } = {}) {
   // Multiple targets can have different defenses: never borrow the first target's facts for all.
   if ( target === undefined ) {
     const targets = Array.from(globalThis.game?.user?.targets ?? []);
@@ -141,7 +143,8 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
       dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null,
-      total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined } } }
+      total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined,
+      source: source || undefined, onSuccess: onSuccess || undefined, name: actor.name } } }
   });
   // Help is spent by the roll it helped.
   if ( sources.consume.includes("helped") && actor.isOwner && actor.statuses?.has("helped") ) {
