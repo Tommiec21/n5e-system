@@ -56,10 +56,11 @@ function validatePredicate(value, depth = 0) {
 export function validateConditionalRules(rules) {
   if ( !Array.isArray(rules) || rules.length > 50 ) throw new Error("Conditional rules must be an array of at most 50 entries.");
   for ( const r of rules ) {
-    if ( !r || !["modifier", "degreeShift"].includes(r.key) || r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value))
-      || (r.key === "degreeShift" && !Number.isInteger(Number(r.value))) ) throw new Error("Conditional rules need modifier/degreeShift and a numeric value.");
+    const mode = r && ["advantage", "disadvantage"].includes(r.key);
+    if ( !r || (!mode && (!["modifier", "degreeShift"].includes(r.key) || r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value))
+      || (r.key === "degreeShift" && !Number.isInteger(Number(r.value))))) ) throw new Error("Conditional rules need modifier/degreeShift with a numeric value, or advantage/disadvantage.");
     const selectors = Array.isArray(r.selector) ? r.selector : [r.selector];
-    if ( !selectors.length || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, save or skill:ste.");
+    if ( !selectors.length || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, damage:fire, healing, save or skill:ste.");
     if ( r.predicate !== undefined ) validatePredicate(r.predicate);
     if ( Object.keys(r).some(k => !["key", "selector", "label", "value", "predicate"].includes(k)) ) throw new Error("Unsupported conditional rule property.");
   }

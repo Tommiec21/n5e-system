@@ -280,3 +280,6 @@ Owner Claude; ownership released. King's rulings: Bruised's +4 is added before D
 
 ## ADV1 — Claude, 2026-11-13
 Owner Claude; ownership released. Published v0.15.0-alpha.5. The advantage engine is `rules/advantage.mjs`, used by `rollWithSpec`. New states: `dodging`, `helped`. Auto-fail saves are applied. Spec, limits and results: `docs/ADV1_SPEC.md`. Tests: 302 pass, 2 skipped; one test failed once (missing state rules text) and was fixed. Next ready batches: CAST1, CONC1.
+
+## ADV2 — Claude, 2026-11-13
+King: advantage applies to any dice roll. The whole roll is rerolled, keeping the higher (or lower) total, and only the dice a source names get it. Published v0.15.0-alpha.6. Rule-element keys `advantage`/`disadvantage` with selectors such as `damage`, `damage:<type>`, `healing`, `recovery`, `dice`, plus d20 selectors. New non-d20 dice rolls should go through `dice/advantaged.mjs rollDice`. Tests: 306 pass, 2 skipped, on the first attempt.

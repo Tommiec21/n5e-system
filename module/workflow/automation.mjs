@@ -11,7 +11,7 @@ export async function setRuleElements(source, rules, toggle = null) {
   if ( !source?.isOwner ) throw new Error("You must own the rule source.");
   if ( !Array.isArray(rules) ) throw new Error("Rules must be an array.");
   for ( const r of rules ) {
-    if ( !r || !["modifier", "degreeShift"].includes(r.key) || !Number.isFinite(Number(r.value)) ) throw new Error("Invalid rule element.");
+    if ( !r || !(["advantage", "disadvantage"].includes(r.key) || (["modifier", "degreeShift"].includes(r.key) && Number.isFinite(Number(r.value)))) ) throw new Error("Invalid rule element.");
   }
   return source.update({ "flags.n5e.rules": rules,
     "flags.n5e.ruleToggle": toggle ? { label: String(toggle.label || source.name), enabled: toggle.enabled !== false } : null });

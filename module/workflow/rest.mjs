@@ -1,5 +1,4 @@
 import { emitEffectEvent } from "../automation/effect-services.mjs";
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Rest dialogs (Foundry side). Short: choose Hit Dice and Chakra Dice to spend (rolled together,
  * + Con per die). Long: with or without food and drink. Full: confirm. Each shows the limit or ration
@@ -10,6 +9,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";
 import { exhaustedRollTotal } from "../rules/damage.mjs";
+import { rollDice } from "../dice/advantaged.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -122,12 +122,12 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   cd = Math.min(Math.max(0, Math.floor(cd)), shortRestDice(sys.chakraDice));
   if ( type === "short" && check.benefit ) {
     if ( hd && sys.hitDice.die ) {
-      const r = await createN5eRoll(`${hd}${sys.hitDice.die} + ${con * hd}`).evaluate();
+      const r = (await rollDice(actor, `${hd}${sys.hitDice.die} + ${con * hd}`, { kind: "recovery", type: "recovery", key: "hitDice" })).roll;
       rolls.push(r);
       hdRoll = exhaustedRollTotal(r.total, actor);
     }
     if ( cd && sys.chakraDice.die ) {
-      const r = await createN5eRoll(`${cd}${sys.chakraDice.die} + ${con * cd}`).evaluate();
+      const r = (await rollDice(actor, `${cd}${sys.chakraDice.die} + ${con * cd}`, { kind: "recovery", type: "recovery", key: "chakraDice" })).roll;
       rolls.push(r);
       cdRoll = exhaustedRollTotal(r.total, actor);
     }

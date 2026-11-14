@@ -82,6 +82,40 @@ export function contextualModifiers(actor, spec, target = null) {
   return { parts, bonus: parts.reduce((sum, p) => sum + p.value, 0), shift };
 }
 
+/**
+ * Advantage and disadvantage from rule elements ({key: "advantage"|"disadvantage", selector,
+ * predicate, label}). Advantage applies to any dice roll (King 2026-11-13): d20s, damage, healing,
+ * recovery and other dice. Selectors use the same matching as modifiers, plus "<kind>:<damage type>"
+ * for named damage dice ("damage:fire"): only the dice a source names get it.
+ * @returns {{advantage: string[], disadvantage: string[]}}
+ */
+export function contextualAdvantage(actor, spec, target = null) {
+  const options = rollOptions(actor, spec, target);
+  const out = { advantage: [], disadvantage: [] };
+  const names = ["all", spec.kind, spec.type, `${spec.type}:${spec.key}`, spec.scope && `${spec.kind}:${spec.scope}`,
+    spec.damageType && `${spec.kind}:${spec.damageType}`].filter(Boolean);
+  for ( const source of ruleSources(actor) ) {
+    if ( source.flags?.n5e?.ruleToggle?.enabled === false ) continue;
+    const sourceOptions = new Set(options);
+    if ( source.system?.equipped ) sourceOptions.add("item:equipped");
+    if ( source.type ) sourceOptions.add(`item:type:${source.type}`);
+    for ( const element of Array.isArray(source.flags?.n5e?.rules) ? source.flags.n5e.rules : [] ) {
+      if ( !element || !["advantage", "disadvantage"].includes(element.key) ) continue;
+      const selectors = Array.isArray(element.selector) ? element.selector : [element.selector];
+      if ( !selectors.some(s => typeof s === "string" && s.length && names.includes(s)) ) continue;
+      if ( !testPredicate(element.predicate, sourceOptions) ) continue;
+      out[element.key].push(element.label || source.name);
+    }
+  }
+  return out;
+}
+
+/** Keep the higher total with advantage, the lower with disadvantage (King: reroll the whole roll). */
+export function keptIndex(totals, mode) {
+  if ( totals.length < 2 || mode === "normal" ) return 0;
+  return mode === "advantage" ? (totals[1] > totals[0] ? 1 : 0) : (totals[1] < totals[0] ? 1 : 0);
+}
+
 /** Copy a spec; never mutate prepared actor data or count a contextual modifier twice. */
 export function contextualSpec(actor, spec, target = null) {
   const modifiers = contextualModifiers(actor, spec, target);

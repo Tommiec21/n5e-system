@@ -6,6 +6,7 @@ import { summonAllied, dismissAllied } from "./workflow/allied.mjs";
 import { submitIntent } from "./automation/owner-intents.mjs";
 import { canModify, ownedRecipients, isAllied } from "./automation/authority.mjs";
 import { effectApplicationCard } from "./workflow/effect-application.mjs";
+import { rollDice } from "./dice/advantaged.mjs";
 import { requestHistory, archiveRequestHistory } from "./automation/history.mjs";
 import { openReactionWindow, resolveReactionWindow } from "./workflow/reactions.mjs";
 import { observerVisibility } from "./canvas/visibility.mjs";
@@ -106,7 +107,7 @@ export default {
   requestHistory, archiveRequestHistory,
   runSmokeTests,
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
-  summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
+  rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
   registerClanData
 };

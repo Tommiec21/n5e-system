@@ -9,7 +9,7 @@ import { createN5eRoll } from "./n5e-roll.mjs";
 import { MODES, clickMode, critThreshold, rollSpec, readD20, willOfFireAward } from "./d20.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
-import { contextualSpec } from "../rules/elements.mjs";
+import { contextualSpec, contextualAdvantage } from "../rules/elements.mjs";
 import { rule } from "../rules-settings.mjs";
 import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
 import { advantageSources, resolveMode, sourcesNote } from "../rules/advantage.mjs";
@@ -93,6 +93,11 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   // with the click (or a forced mode); any advantage and any disadvantage cancel.
   const sources = advantageSources({ roller: rollFacts(actor), target: target ? rollFacts(target) : null,
     kind: spec.kind === "attack" ? "attack" : spec.kind === "save" ? "save" : "check", ability: rollAbility(spec), ranged: !!spec.ranged });
+  // Rule-element advantage on d20 rolls too (any dice roll, King 2026-11-13).
+  const authored = contextualAdvantage(actor, spec, target);
+  sources.advantage.push(...authored.advantage);
+  sources.disadvantage.push(...authored.disadvantage);
+  if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? click.mode);
   const sourceNote = sourcesNote(sources);
   if ( sourceNote ) spec = { ...spec, note: [spec.note, sourceNote].filter(Boolean).join(" · ") };

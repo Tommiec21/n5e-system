@@ -1,6 +1,6 @@
 import { damageRollTrace } from "../rules/damage-trace.mjs";
 import { renderDamageRolls } from "../view-models/damage-trace.mjs";
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
+import { rollDice, advantageNote } from "../dice/advantaged.mjs";
 /**
  * Chat card buttons for activities, and what happens when they're clicked.
  *
@@ -292,7 +292,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "roll": {
       const formula = level(d.formula);
-      const roll = formula ? await createN5eRoll(formula, caster?.getRollData?.() ?? {}).evaluate() : null;
+      // Any other dice (pool dice, feature dice): rule-element advantage with selector "dice".
+      const roll = formula ? (await rollDice(caster, formula, { kind: "dice", type: "dice", key: d.pool || "" })).roll : null;
       if ( !roll ) return payment;
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
@@ -322,7 +323,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const crit = !!d.crit;
       const strMod = actor?.system.abilities?.str?.mod ?? 0;
       const instances = [];
-      const rolls = [], rollMetadata = [];
+      const rolls = [], rollMetadata = [], advNotes = [];
       for ( const p of parts ) {
         let formula = level(p.formula);
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
@@ -331,7 +332,12 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           p.type = unarmedSpec(actor).type;
           abilityMod = abilityMod ?? strMod;
         }
-        const roll = await createN5eRoll(crit ? critFormula(formula, abilityMod) : formula, actor?.getRollData?.() ?? {}).evaluate();
+        // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
+        const rolled = await rollDice(actor, crit ? critFormula(formula, abilityMod) : formula,
+          { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null });
+        const roll = rolled.roll;
+        const note = advantageNote(rolled, p.type || "Damage");
+        if ( note ) advNotes.push(note);
         rolls.push(roll);
         rollMetadata.push({ formula: crit ? critFormula(formula, abilityMod) : formula, normalFormula: formula, abilityMod });
         instances.push({ amount: roll.total, type: p.type });
@@ -353,6 +359,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         content: `<div class="n5e-roll-card damage"><header><b>${crit ? "Critical damage" : "Damage"}</b>
           </header>
           ${diceHTML}
+          ${advNotes.length ? `<div class="note">${esc(advNotes.join(" · "))}</div>` : ""}
           ${applyButtons()}</div>`,
         flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
     }
@@ -384,7 +391,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       return rolled ? { saves: rolled } : null;
     }
     case "heal": {
-      const roll = await createN5eRoll(level(d.formula), caster?.getRollData?.() ?? {}).evaluate();
+      const rolled = await rollDice(caster, level(d.formula), { kind: "healing", type: "healing", key: d.pool || "hp" });
+      const roll = rolled.roll;
+      const healNote = advantageNote(rolled);
       // Exhaustion: −1 per rank once per roll (King A7).
       const healed = exhaustedRollTotal(roll.total, caster);
       const pool = d.pool || "hp";
@@ -398,7 +407,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const what = { tempHp: "temporary HP", tempCp: "temporary CP", cp: "CP", hp: "HP" }[pool];
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card heal"><header><b>${esc(what)}</b></header>
-          <div class="note">${names.length ? `Applied to ${esc(names.join(", "))}${pool.startsWith("temp") ? " (temporary HP doesn't stack: keeps the higher)" : ""}` : "Not applied (no owned target)"}</div></div>` });
+          ${healNote ? `<div class="note">${esc(healNote)}</div>` : ""}<div class="note">${names.length ? `Applied to ${esc(names.join(", "))}${pool.startsWith("temp") ? " (temporary HP doesn't stack: keeps the higher)" : ""}` : "Not applied (no owned target)"}</div></div>` });
     }
     default:
       return null;
