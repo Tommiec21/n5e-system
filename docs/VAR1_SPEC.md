@@ -1,6 +1,6 @@
 # VAR1 plan: PF2e optional rules ported to N5e
 
-Status: **plan for King's approval (2026-11-14). Nothing is built. Questions Q-V1–Q-V4 below.**
+Status: **King answered Q-V1–Q-V4 on 2026-11-14. Awaiting King's go-ahead to build VAR1a. Nothing is built.**
 
 King (2026-11-14): review PF2e's optional rules and port over as many as possible within the scope of our system, as its own batch.
 
@@ -50,7 +50,7 @@ Source: PF2e 8.7.0 (`system/settings/variant-rules.ts`, `automation.ts`, `metaga
 
 **VAR1a** (settings only, no new engines): critical damage rule, apply resistances automatically, remove expired effects automatically, show NPC roll breakdowns, hide NPC damage taken, hide NPC condition messages, hide NPC names, secret checks, shared party vision, party stats visible, scale tokens by size, defeated marker, encumbrance automation.
 
-**VAR1b** (character-build variants): gradual ability increases, free feat track, flat proficiency, automatic gear progression, Vigor.
+**VAR1b** (character-build variants): gradual ability increases, free feat track, flat proficiency. Automatic gear progression, Vigor (PF2e Stamina) and Mythic rules are dropped (King Q-V1–Q-V3: ignore).
 
 **VAR1c:** crit and fumble table, homebrew elements, world clock.
 
@@ -58,13 +58,14 @@ Flanking goes with the PF2e-emulation work King approved (Q-PF4). Lootable NPCs 
 
 Each option is a world rule, off by default so existing play doesn't change, and is recorded in `docs/RULES_MAP.md`.
 
-## Questions for King
+## King's answers (2026-11-14)
 
-- **Q-V1:** Automatic gear progression needs a level table for N5e (which bonuses, at which levels). Will you provide it, or should I propose one from the High Quality and seal bonuses?
-- **Q-V2:** PF2e's Stamina clashes with the existing N5e rule named Stamina. Is "Vigor" acceptable as the name, and is "half of max HP, back on a Short Rest" the intent, or do you want PF2e's exact numbers?
-- **Q-V3:** Skip Mythic rules?
-- **Q-V4:** Are the three sub-batches and their contents right?
+- **Q-V1:** ignore. Automatic gear progression is not ported.
+- **Q-V2:** ignore. PF2e's Stamina (Vigor) is not ported.
+- **Q-V3:** ignore. Mythic rules are not ported.
+- **Q-V4:** yes. The three sub-batches are right, minus the dropped rules.
 
 ## Progress log
 
 - 2026-11-14 Claude: plan written from the PF2e source. Nothing built.
+- 2026-11-14 Claude: King's answers recorded; automatic gear progression, Vigor and Mythic dropped from VAR1.
