@@ -400,3 +400,9 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Chakra spending:** call `endSuppression(actor)` wherever a new path spends CP or a `countsAsChakraSpend` pool.
 - **Known limits** are listed in the CHANGELOG entry. FIN2 is complete; next specs: NPC1, FIN3, FIN4.
 
+## NPC1a — Claude, 2026-11-14 (published 0.30.0-alpha.1)
+- **Adversaries use the Bingo Book's math, not the player formulas and not typed-in stat blocks** (King's correction). Tables: `config/adversary.mjs`. Pure math: `rules/adversary.mjs`. Model: `data/actor/npc.mjs`.
+- **Pipeline hooks** in `CreatureData`: `_statParts(kind)`, `_statOverride(key)`, `_baseAC(ctx)`; `Breakdown.override(value)` keeps `baseline`. Use these for any new statistic an adversary should derive or override.
+- `details.role` now means Striker…Supporter; the old meaning is `details.class`. Don't write class names into `role`.
+- New NPCs are still player-style until NPC1b ships the Build tab. NPC2 is now only the builder window; NPC3 Freeform reads `roleModifiers.striker.damageLevel` and `suggested.freeformSlots`.
+

@@ -477,3 +477,19 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.readEnemy {cardId, discipline, jutsu, readerUuid, used}` | ChatMessage (Read the Enemy result) | The benefit buttons read it |
 | `flags.n5e.counterTag {cardId, targetUuid}` | ChatMessage | The jutsu on that card was absorbed for that creature |
 | Activity `save.dc.source: "fixed"` | Item activities | The DC is the number in `save.dc.formula` (tools with their own DC) |
+
+## Added in 0.30.0-alpha.1 (NPC1a): NPC actors
+
+| Path | Meaning |
+| --- | --- |
+| `system.details.build` | `adversary` (Bingo Book math) or `character` (player-style; the default until NPC1b) |
+| `system.details.class` | minion, standard, elite, solo (was `details.role`) |
+| `system.details.role` | none, striker, defender, lurker, controller, supporter |
+| `system.details.clan`, `.affiliation`, `.iconic`, `.epic`, `.blurb`, `.publicNotes`, `.privateNotes` | Profile and notes |
+| `system.adversary.mods.<ability>` | Assigned ability modifiers (the score is derived as 10 + 2 × modifier) |
+| `system.adversary.fullSaves` | Fully proficient saves the GM picked; empty = the highest modifiers |
+| `system.adversary.armor`, `.hpSource`, `.partySize`, `.rankBonus`, `.freeformAbility` | Armor type; formula or Lazy GM; Solo party size; Rank bonus switch; Weapon/Freeform ability |
+| `system.adversary.overrides` | `prof`, `ac`, `dr`, `initiative`, `speed`, `passivePerception`, `saves.<ability>`, `attack.<nin, tai, gen, freeform>`, `dc.<same>`, `skills.<key>`; null = computed |
+| `system.hpMax`, `system.cpMax` | Stated pool maximums (the HP and CP overrides) |
+| Derived `system.adversaryBuild` | `profile`, `statLine`, `budget`, `fullSaves`, `suggested`, `warnings`, `baselines`, `freeform {ability, attack, dc}`; null for player-style NPCs |
+| Derived `system.autoFailSaves` | true for Minions |

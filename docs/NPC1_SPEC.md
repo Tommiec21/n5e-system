@@ -1,6 +1,6 @@
 # NPC1 function spec: adversary model, the book's math, and sheets
 
-Status: **revised draft for King's approval (2026-11-14, second version). Nothing is built. Open: Q-N15–Q-N17.**
+Status: **approved by King 2026-11-14. NPC1a published `0.30.0-alpha.1`; NPC1b next.**
 
 Plan: `docs/NPC1_PLAN.md`. Source: the Bingo Book, "The Adversary Profile" through "Final Calculation(s)" and the Cultist examples.
 
