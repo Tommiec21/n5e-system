@@ -17,7 +17,10 @@ async function keepOnly(actor, keepIds, cost) {
   const update = { "system.combat.concentrating": current.filter(id => keepIds.includes(id)), "flags.n5e.-=upkeepPending": null };
   for ( const id of current ) if ( !keepIds.includes(id) ) update[`flags.n5e.concentrationPaid.-=${id}`] = null;
   if ( cost ) update["system.cp.value"] = (actor.system.cp?.value ?? 0) - cost;
-  return actor.update(update);
+  const updated = await actor.update(update);
+  // FIN2b: paying upkeep spends chakra and ends Suppress Chakra.
+  if ( cost > 0 ) await (await import("./jutsu-defense.mjs")).endSuppression(actor);
+  return updated;
 }
 
 /**

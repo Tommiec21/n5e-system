@@ -8,10 +8,13 @@
  *   - Shocked: at most one attack or one jutsu per turn.
  *   - Sealed 3+ ranks: can't teleport (jutsu whose text says it teleports).
  *   - Blinded: no [Dojutsu].
+ *   - Chakra Suppression Tag (FIN2b): no Ninjutsu or Genjutsu below the tag's rank (any listed discipline).
  *   - Ability score requirement (B 16 / A 18 / S 20; not Hijutsu) and the highest rank for the level.
  */
 import { rankOrder } from "../config/core.mjs";
 import { maxRankForLevel } from "./progression.mjs";
+import { caughtBy } from "./cast-discipline.mjs";
+import { tagsOn, suppressionBlocks } from "./jutsu-defense.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const kw = item => (item.system?.keywords instanceof Set ? item.system.keywords : new Set(item.system?.keywords ?? []));
@@ -55,6 +58,9 @@ export function castBlockers(actor, item, { rank, discipline = "" } = {}) {
   if ( live.meetsRequirement === false ) problems.push(`Needs ${String(live.ability ?? "").toUpperCase()} ${live.requirement} to cast this rank`);
   const castMax = actor.system?.grants?.maxRank ?? maxRankForLevel(actor.system?.level ?? 1);
   const at = rank ?? item.system?.rank;
+  // Chakra Suppression Tag (KB 08): caught by any listed discipline (MDISC1).
+  const tag = tagsOn(actor, "suppressionTag").find(t => suppressionBlocks({ tagRank: t.rank, castRank: at, ninOrGen: caughtBy(item, ["nin", "gen"]) }));
+  if ( tag ) problems.push(`Chakra Suppression Tag (${tag.rank}-Rank): can't cast Ninjutsu or Genjutsu below ${tag.rank}-Rank`);
   if ( castMax && rankOrder.indexOf(at) > rankOrder.indexOf(castMax) ) problems.push(`${at}-Rank is above the highest rank you can cast (${castMax})`);
   return problems;
 }

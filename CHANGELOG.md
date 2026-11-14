@@ -1,3 +1,14 @@
+## 0.29.0-alpha.3 — Reading and countering jutsu (FIN2b; King 2026-11-14)
+
+- **Read the Enemy** and **Identify** buttons on every jutsu's cast card. Select your token (not the caster) and click.
+  - The roll uses the skill for the discipline the jutsu was cast as. Read the Enemy rolls against the caster's save DC and uses the creature's Reaction in combat; Identify rolls against the jutsu's save DC + 5.
+  - The result is whispered to the creature's owners and the GM. A successful Read names the jutsu, its rank and targets, then offers one benefit for one creature (select its token; otherwise the reader): +1 to saves and AC, or the discipline's option (Genjutsu: Blinded; Taijutsu: interpose; Ninjutsu: move 10 ft). A successful Identify shows the jutsu's text.
+- **Suppress Chakra** now gives a "Chakra Suppressed" effect holding the Suppression Score for 10 minutes. A reattempt in a row is reduced by 2 each time. It ends when the creature casts with chakra, pays upkeep, or spends a chakra-like resource.
+- **Counter Tag** (D–A) and **Chakra Suppression Tag** (C–A) are in the Equipment compendium, under Sealing Tools.
+  - Counter Tag: target a creature and use Affix. A jutsu of the tag's rank or lower aimed at that creature alone shows **Counter Tag absorbs this** on its card row; using it burns the tag out and the card shows no effect for that creature.
+  - Chakra Suppression Tag: roll its Charisma save (DC 15/17/19), then apply the suppression. The cast dialog refuses Ninjutsu and Genjutsu below the tag's rank and says why.
+- **Limits.** The +1 from Read the Enemy lasts 1 round and applies to every save and attack in that time, not only the jutsu that was read. Range to the ally is not checked. The tag's attack roll, and removing a tag as an action, are done by hand. Identify works from cast cards only. Other ninja tools are not in the compendium yet.
+
 ## 0.29.0-alpha.2 — Grapples, trips and disarms (FIN2a; King 2026-11-14)
 
 - **Holds.** Applying Grappled or Restrained from Grapple or Pin now records who is holding.

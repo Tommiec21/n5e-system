@@ -1,6 +1,6 @@
 # FIN2 function spec: combat actions
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-F4–Q-F9 below.**
+Status: **approved by King 2026-11-14. FIN2a published `0.29.0-alpha.2` and FIN2b `0.29.0-alpha.3`, on literal readings (Q-F4–Q-F7 still to confirm).**
 
 Plan: `docs/DEV_PLAN.md` batch 2. Finishes the combat actions that earlier batches left as text or by hand (ATK1, SKILL1, MDISC1, GEN1).
 
@@ -63,4 +63,11 @@ Rules used (Shinobi Handbook Ch3 skill actions, Ch5 equipment; `N5e-Rules-KB` 02
 - 2026-11-14 Claude: A3–A6 done: `flags.n5e.heldBy` on Grappled/Restrained effects applied from Grapple and Pin; `holdsOn`; prerequisites for Pin, Takedown, Choke, Muffle; Escape actions with "End the hold"; `onMoveForHolds` on `moveToken`.
 - 2026-11-14 Claude: A7 done: weapon pills `skill:<key>` on the Combat tab; damage-die button on success. Not done: counting it as one of the attacks of the Attack action; nothing in the system counts attacks.
 - 2026-11-14 Claude: tests attempt 1 passed: `npm test` 409 pass, 2 skipped; core 77/77; lint and check clean. Test files are `tests/core/skill-holds.test.mjs` and `tests/skill-actions-hold.test.mjs` (the spec's `skill-size` name was merged into the first).
-- 2026-11-14 Claude: **FIN2a published `0.29.0-alpha.2`.** FIN2b not started.
+- 2026-11-14 Claude: **FIN2a published `0.29.0-alpha.2`.**
+- 2026-11-14 Claude: **FIN2b started.** Q-F8: Chapter 5 text for both tags read in full (`N5e-Rules-KB/_source`); no gap, so B5 and B6 are built. Q-F6 unanswered: built on the text "you or an ally within range", one creature.
+  - Found: the Equipment pack holds weapons, one armor and one container only; no ninja tools exist as items. B5/B6 therefore add the two tags (7 consumables, `tools/content/build-tags.mjs`); the rest of the ninja tools stay with the Items pass (STD6a).
+- 2026-11-14 Claude: B1–B3 done: `rules/jutsu-defense.mjs` (`defenseAction`, `identifyDC`, `readEnemyChoices`); `workflow/jutsu-defense.mjs` (`onDefenseClick`, `onReadChoiceClick`); buttons drawn by `renderActionCard`. Differences from the spec: Identify is on cast cards only (no ongoing-effect card exists to put it on); the +1 benefit is an Active Effect (`system.bonuses.ac`, `system.bonuses.save`) lasting 1 round, so it also applies to other saves and attacks in that round.
+- 2026-11-14 Claude: B4 done: `applySuppression` (effect state `chakraSuppressed`, `flags.n5e.suppression {score, reattempts}`); `endSuppression` called from casting (`spendsChakra`), upkeep and `payPoolCost` for pools with `countsAsChakraSpend`. A reattempt counts as "in a row" while the previous effect is still on the creature.
+- 2026-11-14 Claude: B5–B6 done: tags are effects with `flags.n5e.state` `suppressionTag:<rank>` / `counterTag:<rank>`; `castBlockers` refuses; `counterTagFor`, `onCounterTagClick`, `counteredOn`. Save activities accept `dc.source: "fixed"`.
+- 2026-11-14 Claude: tests attempt 1 passed: `npm test` 418 pass, 2 skipped; core 83/83; lint and check clean. Test files: `tests/core/jutsu-defense.test.mjs`, `tests/jutsu-defense.test.mjs`.
+- 2026-11-14 Claude: **FIN2b published `0.29.0-alpha.3`. FIN2 is complete**, with Q-F4–Q-F7 still to confirm.

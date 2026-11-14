@@ -340,7 +340,7 @@ export function onRenderChatMessage(message, html) {
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
   // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
   actionCardModule?.renderActionCard(message, html);
-  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck], [data-n5e-rider-use], [data-n5e-rider-cancel], [data-n5e-rider-eventsave], [data-n5e-rider-save], [data-n5e-rider-apply]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck], [data-n5e-card-defense], [data-n5e-card-counter], [data-n5e-rider-use], [data-n5e-rider-cancel], [data-n5e-rider-eventsave], [data-n5e-rider-save], [data-n5e-rider-apply]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });
@@ -349,6 +349,10 @@ export function onRenderChatMessage(message, html) {
     const d = btn.dataset;
     const run = m => (d.n5eClashRoll ? m.rollClash(message, d.n5eClashRoll, ev) : d.n5eClashLose ? m.applyClashLoss(d.n5eClashLose) : m.startClash(message));
     import("../workflow/clash.mjs").then(run).catch(error => ui.notifications.warn(error.message));
+  });
+  for ( const btn of html.querySelectorAll("[data-n5e-read-choice]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    import("../workflow/jutsu-defense.mjs").then(m => m.onReadChoiceClick(message, btn)).catch(error => ui.notifications.warn(error.message));
   });
   for ( const btn of html.querySelectorAll("[data-n5e-contest], [data-n5e-skill-apply], [data-n5e-skill-release]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();

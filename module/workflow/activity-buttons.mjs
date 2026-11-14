@@ -133,6 +133,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
   const dcFor = a => {
     if ( item.type === "jutsu" ) return live.dc;
     const src = a.save?.dc?.source;
+    // A tool's own DC (FIN2b, Chakra Suppression Tag DC 15/17/19): source "fixed", the number in formula.
+    if ( src === "fixed" ) return Number(a.save.dc.formula) || 0;
     const disc = ["nin", "tai", "gen"].includes(src) ? src : (item.system.discipline || featureDiscipline(item));
     return actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.dc;
   };

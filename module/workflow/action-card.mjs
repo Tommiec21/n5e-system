@@ -18,6 +18,7 @@ import { rule } from "../rules-settings.mjs";
 import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets } from "../rules/action-card.mjs";
 import { challengeVisible } from "../rules/parity.mjs";
 import { riderView, onRiderClick } from "./riders.mjs";
+import { castFacts, counteredOn, counterTagFor, onDefenseClick, onCounterTagClick } from "./jutsu-defense.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { esc } from "../view-models/common.mjs";
 
@@ -197,9 +198,12 @@ export function renderActionCard(message, html) {
   // CARD1d: riders (feature fixtures) — the caster's bar, the event save, per-row controls.
   const appliedSources = new Set(rows.flatMap(r => r.effectSources.map(src => `${r.uuid}|${src}`)));
   const riders = riderView(message, results, acts, appliedSources);
+  // FIN2b: Counter Tags (single-target casts) and the creatures the jutsu was absorbed for.
+  const countered = card.kind === "jutsu" ? counteredOn(message) : new Set();
   const row = r => {
     const actor = globalThis.fromUuidSync?.(r.uuid);
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
+    if ( countered.has(r.uuid) ) return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">Absorbed by a Counter Tag: no effect</span></div>`;
     const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "", r.share && mine ? SHARE_LABELS[r.share] : "",
       ...r.effects].filter(Boolean);
     const controls = [];
@@ -215,6 +219,8 @@ export function renderActionCard(message, html) {
       controls.push(`<button type="button" data-n5e-card-inflict="${i}:${j}" data-target="${esc(r.uuid)}">Apply ${esc(x.label)}${x.kind === "condition" ? ` ${adj.ranks}` : ""}${adj.added ? ` (+${adj.added} riders)` : ""}</button>`);
     }));
     controls.push(...riderRow.controls);
+    // FIN2b: a Counter Tag of the jutsu's rank or higher on the only target absorbs it.
+    if ( mine && card.kind === "jutsu" && counterTagFor(message, actor, rows.length) ) controls.unshift(`<button type="button" data-n5e-card-counter="1" data-count="${rows.length}" data-target="${esc(r.uuid)}">Counter Tag absorbs this</button>`);
     facts.push(...riderRow.notes);
     // B3: effects the jutsu puts on its targets (the caster's owner applies; others get the offer card).
     if ( casterOwner ) acts.effects.forEach((d, i) => appliedSources.has(`${r.uuid}|act:${i}`) ||
@@ -244,10 +250,13 @@ export function renderActionCard(message, html) {
   const item = globalThis.fromUuidSync?.(card.itemUuid);
   const concLine = card.sections.includes("concentration") && caster && item
     ? `<div class="note">Concentration: ${(caster.system?.combat?.concentrating ?? []).includes(item.id) ? `${esc(caster.name)} is concentrating on ${esc(item.name)}` : "ended"}${results.effects ? "; effects applied from this card end with it" : ""}.</div>` : "";
+  // FIN2b: Read the Enemy and Identify, for users acting with a creature other than the caster.
+  const defense = castFacts(message)?.casterDC != null
+    ? '<div class="n5e-card-defense"><button type="button" data-n5e-card-defense="read">Read the Enemy</button><button type="button" data-n5e-card-defense="identify">Identify</button></div>' : "";
   const shown = riders.bar.length && !card.sections.includes("riders") ? [...card.sections, "riders"] : card.sections;
   const shownStates = { ...states, riders: riders.entries.length ? "done" : "ready" };
   box.innerHTML = `<div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
-    ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}
+    ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
     ${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
     ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
@@ -337,6 +346,8 @@ export async function onActionCardClick(message, btn, event) {
   if ( d.n5eRiderUse || d.n5eRiderCancel || d.n5eRiderEventsave || d.n5eRiderSave || d.n5eRiderApply ) {
     return onRiderClick(message, btn, event, { results, acts: cardActivities(message) });
   }
+  if ( d.n5eCardDefense ) return onDefenseClick(message, d.n5eCardDefense, event);
+  if ( d.n5eCardCounter ) return onCounterTagClick(message, btn);
   const target = d.target ? await fromUuid(d.target) : null;
   if ( d.n5eCardApply ) {
     const damage = results.damage ? messages()?.get(results.damage.messageId) : null;
@@ -425,6 +436,9 @@ export async function registerActionCardHooks() {
   registerIntentHandler("cardResult", receiveCardResult);
   Hooks.on("createChatMessage", (message, options, userId) => {
     if ( !actionCardOn() ) return;
+    // FIN2b: a Counter Tag note re-draws the card it absorbed.
+    const absorbed = messages()?.get(message.flags?.n5e?.counterTag?.cardId);
+    if ( absorbed ) ui.chat?.updateMessage?.(absorbed);
     const card = cardOfLinked(message);
     if ( !card ) return;
     if ( userId === globalThis.game.user.id ) void recordLinked(message).catch(error => console.warn("n5e | action card", error));

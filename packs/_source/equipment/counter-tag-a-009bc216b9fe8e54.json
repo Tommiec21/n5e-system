@@ -1,0 +1,50 @@
+{
+  "_id": "009bc216b9fe8e54",
+  "name": "Counter Tag (A-Rank)",
+  "type": "consumable",
+  "img": "icons/sundries/scrolls/scroll-runed-brown-purple.webp",
+  "system": {
+    "identifier": "counter-tag-a",
+    "description": "<p>A reactive sealing tag that absorbs and nullifies an incoming jutsu before it can take effect. As a bonus action, affix a Counter Tag to a creature within reach or to any surface. When the next jutsu of A-Rank or lower that specifically targets the tagged creature or surface is cast, the Counter Tag absorbs it entirely, negating all of its effects. The tag then burns out. The Counter Tag does not activate against area effects that include the tagged target as one of multiple creatures. The placer can deactivate the tag as a bonus action within 30 feet.</p><p><em>Target the creature, then use Affix. The jutsu's card offers \"Counter Tag absorbs this\" to that creature's owner.</em></p>",
+    "source": {
+      "book": "Naruto 5e Core",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "quantity": 1,
+    "bulk": 1,
+    "price": 1000,
+    "rank": "A",
+    "equipped": false,
+    "location": "carried",
+    "subtype": "tag",
+    "activities": [
+      {
+        "id": "affix",
+        "type": "effect",
+        "label": "Affix Counter Tag",
+        "activation": "bonus",
+        "effect": {
+          "name": "Counter Tag (A-Rank)",
+          "target": "targets",
+          "state": "counterTag:A",
+          "seconds": 86400
+        }
+      }
+    ],
+    "destroyOnEmpty": true
+  },
+  "_key": "!items!009bc216b9fe8e54",
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "folder": "c84cbc1a3e123d7d",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "effects": []
+}

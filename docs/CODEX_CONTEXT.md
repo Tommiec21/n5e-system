@@ -394,3 +394,9 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Weapon skill actions:** `WEAPON_SKILL_ACTIONS`; pills built in `view-models/combat.mjs` with mode `skill:<key>`; the sheet's `#onUseItem` routes them to `rollD20(actor, "skillAction", key, {weaponId})`.
 - **Open readings:** Q-F4–Q-F7 in `docs/FIN2_SPEC.md`. FIN2b (Read the Enemy, Identify, Suppress Chakra, tags) not started.
 
+## FIN2b — Claude, 2026-11-14 (published 0.29.0-alpha.3)
+- **Cast card defenses:** `workflow/jutsu-defense.mjs`: `castFacts(message)` (caster, jutsu, cast discipline, both DCs), `onDefenseClick(message, "read"|"identify", event)`, `onReadChoiceClick`. Buttons carry `data-n5e-card-defense` and go through `onActionCardClick`.
+- **Tags are effect states**, read by `rules/jutsu-defense.mjs tagsOn(actor, kind)`. Any item can place one with an effect activity whose `state` is `counterTag:<rank>` or `suppressionTag:<rank>`. The 7 pack items come from `tools/content/build-tags.mjs`.
+- **Chakra spending:** call `endSuppression(actor)` wherever a new path spends CP or a `countsAsChakraSpend` pool.
+- **Known limits** are listed in the CHANGELOG entry. FIN2 is complete; next specs: NPC1, FIN3, FIN4.
+

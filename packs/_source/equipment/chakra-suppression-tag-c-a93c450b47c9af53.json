@@ -1,0 +1,64 @@
+{
+  "_id": "a93c450b47c9af53",
+  "name": "Chakra Suppression Tag (C-Rank)",
+  "type": "consumable",
+  "img": "icons/sundries/scrolls/scroll-runed-brown-purple.webp",
+  "system": {
+    "identifier": "chakra-suppression-tag-c",
+    "description": "<p>Strips of sealing paper embedded with chakra-disrupting formulae designed to interfere with a target's ability to channel jutsu mid-combat.</p><p><strong>Applying the Tag.</strong> As an action, you can apply a Chakra Suppression Tag to a willing creature automatically. Against an unwilling creature, make an unarmed attack or a ranged weapon attack roll (range 20/60 ft). On a hit the tag adheres to the target and they must make a Charisma saving throw (DC 15). On a failed save the suppression activates. On a successful save the tag is destroyed with no effect.</p><p><strong>Suppression Effect.</strong> While the tag is active the target cannot cast Ninjutsu or Genjutsu of any rank lower than C-Rank. This effect lasts for 1 minute.</p><p><strong>Removing the Tag.</strong> While suppressed, the target may spend an action to make a Charisma saving throw (DC 15). On a success they break the seal's hold and the effect ends. Another creature within 5 feet may spend an action to remove the tag automatically, immediately ending the effect.</p><p><em>Roll the attack yourself, then use the save button; on a failure, target the creature and use Suppression activates. The cast dialog then refuses the blocked jutsu.</em></p>",
+    "source": {
+      "book": "Naruto 5e Core",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "quantity": 1,
+    "bulk": 1,
+    "price": 250,
+    "rank": "C",
+    "equipped": false,
+    "location": "carried",
+    "subtype": "tag",
+    "activities": [
+      {
+        "id": "save",
+        "type": "save",
+        "label": "Chakra Suppression Tag",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "fixed",
+            "formula": "15"
+          },
+          "onSuccess": "none"
+        }
+      },
+      {
+        "id": "suppress",
+        "type": "effect",
+        "label": "Suppression activates",
+        "effect": {
+          "name": "Chakra Suppression Tag (C-Rank)",
+          "target": "targets",
+          "state": "suppressionTag:C",
+          "seconds": 60
+        }
+      }
+    ],
+    "destroyOnEmpty": true
+  },
+  "_key": "!items!a93c450b47c9af53",
+  "flags": {
+    "n5e": {
+      "generated": true
+    }
+  },
+  "folder": "c84cbc1a3e123d7d",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "effects": []
+}

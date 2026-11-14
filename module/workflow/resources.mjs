@@ -51,6 +51,8 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
     return null;
   }
   await actor.update({ [`system.resources.${cost.pool}.value`]: nextValue });
+  // FIN2b: a chakra-like resource (White Chakra, Calories, Sage Chakra...) ends Suppress Chakra.
+  if ( pool.countsAsChakraSpend && amount > 0 ) await (await import("./jutsu-defense.mjs")).endSuppression(actor);
   if ( !cost.roll || !pool.die || !amount ) return { roll: null, amount };
   const roll = await createN5eRoll(`${amount}${pool.die}`).evaluate();
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),

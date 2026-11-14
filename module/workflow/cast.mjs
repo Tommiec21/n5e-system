@@ -150,7 +150,10 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
       ui.notifications.warn(plan.problems[0]);
       return null;
     }
+    // FIN2b: spending Chakra Points or a chakra-like pool ends Suppress Chakra.
+    const spent = spendsChakra(actor, plan.update);
     await actor.update(plan.update);
+    if ( spent ) await (await import("./jutsu-defense.mjs")).endSuppression(actor);
     // Ready (KB 03): the chakra is spent and held; the cast card comes when it is released.
     if ( plan.ready ) return (await import("./concentration.mjs")).postReadyCard(actor, item, plan);
     const message = await postCastCard(actor, item, plan);
@@ -231,3 +234,13 @@ export async function postCastCard(actor, item, plan) {
 }
 
 export { RANKS };
+
+/** Does this actor update spend Chakra Points or a pool that counts as chakra (FIN2b)? */
+export function spendsChakra(actor, update = {}) {
+  return Object.entries(update).some(([path, value]) => {
+    if ( path === "system.cp.value" ) return value < (actor.system?.cp?.value ?? 0);
+    const id = path.match(/^system\.resources\.([^.]+)\.value$/)?.[1];
+    const pool = id ? actor.system?.resources?.[id] : null;
+    return !!pool?.countsAsChakraSpend && value < (pool.value ?? 0);
+  });
+}

@@ -43,6 +43,8 @@ export async function prepareSkillAction(actor, key, targets = []) {
 export async function resolveSkillAction(actor, key, message, targets = [], { weaponId = "" } = {}) {
   const def = CONFIG.N5E.skillActions?.[key];
   const roll = message?.flags?.n5e?.roll;
+  // FIN2b: Suppress Chakra has no target; its result is the Suppression Score.
+  if ( def && roll && key === "suppressChakra" ) return (await import("./jutsu-defense.mjs")).applySuppression(actor, roll.total);
   if ( !def || !roll || targets.length !== 1 ) return null;
   const target = targets[0];
   const vs = parseVs(def.vs);

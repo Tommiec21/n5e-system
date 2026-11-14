@@ -465,3 +465,15 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.actorUuid` | ChatMessage (skill action outcome) | The acting creature, for the hold and weapon buttons |
 | Skill actions `escape`, `escapeAcrobatics` | `config/character.mjs` | Athletics or Acrobatics vs the holder's Athletics; result `release` |
 | Attack mode `skill:<key>` | Combat tab weapon pill | Runs skill action `<key>` with the weapon (Disarm/Trip properties) |
+
+## Added in 0.29.0-alpha.3 (FIN2b)
+
+| Path | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.state` = `counterTag:<rank>` | ActiveEffect | A Counter Tag on the creature; absorbs the next single-target jutsu of that rank or lower |
+| `flags.n5e.state` = `suppressionTag:<rank>` | ActiveEffect | Chakra Suppression Tag; `castBlockers` refuses Ninjutsu and Genjutsu below that rank |
+| `flags.n5e.state` = `chakraSuppressed`, `flags.n5e.suppression {score, reattempts}` | ActiveEffect | Suppress Chakra, 10 minutes |
+| `flags.n5e.state` = `readEnemy`, `flags.n5e.readEnemy {cardId}` | ActiveEffect | The +1 saves and AC benefit, 1 round |
+| `flags.n5e.readEnemy {cardId, discipline, jutsu, readerUuid, used}` | ChatMessage (Read the Enemy result) | The benefit buttons read it |
+| `flags.n5e.counterTag {cardId, targetUuid}` | ChatMessage | The jutsu on that card was absorbed for that creature |
+| Activity `save.dc.source: "fixed"` | Item activities | The DC is the number in `save.dc.formula` (tools with their own DC) |
