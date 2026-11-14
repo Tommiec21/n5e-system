@@ -170,6 +170,8 @@ export async function postCastCard(actor, item, plan) {
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
   const extras = [];
   const castAs = plan.discipline || castDisciplineOf(actor, item);
+  // Clash keyword (CLASH1): the defender's owner can start a Jutsu Clash from this card.
+  extras.push((await import("./clash.mjs")).clashButton(item));
   // Unaware Genjutsu (GEN1, KB 10): its targets don't know they're in it until they identify it.
   if ( castAs === "gen" && j.unaware ) extras.push('<div class="note">Unaware: targets don\'t know they are in this Genjutsu until they succeed on Identify Genjutsu.</div>');
   for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen", piercing: moldingFlags.piercing })}</div>`);

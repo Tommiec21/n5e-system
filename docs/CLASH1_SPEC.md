@@ -39,3 +39,13 @@ After each function, add a line to the progress log and push.
 
 - 2026-11-14 Claude: spec written; starting F1.
 - 2026-11-14 Claude: **F1 done.** New `rules/clash.mjs`: `clashSkill`, `rankMastery` (Mastery ranks and bonus gained, capped at rank 3), `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` (auto-win on both sides = Draw). Checked: S vs C with Mastery 1 gives +2 ranks (+4); B vs A is best of 3; Fire beats Wind. Next: F2–F5 (workflow).
+- 2026-11-14 Claude: **F2–F5 done.**
+  - New `workflow/clash.mjs`:
+    - `clashButton(item)`: added to cast-card extras for Clash-keyword jutsu.
+    - `startClash(message)`: the defender is the clicking user's selected owned token or their character, but not the caster. It picks a Clash jutsu (concentrated first; a chooser when several) and posts the Clash card. `flags.n5e.clash = {skill, contests, a, b, triggerDiscipline}`, and each side carries `{actorUuid, name, item, rank, bonus, masteryRanks, advantage}`.
+    - `rollClash(card, side)`: rolls the side's remaining checks with `source` = the card, the rank Mastery bonus, and element advantage.
+    - `renderClash`: reads the linked rolls per actor and shows the result (Draw, or the winner plus the loser's Apply button).
+    - `applyClashLoss`: adds Concussed 1 and Dazed.
+    - `registerClashHooks`: re-renders the card when its rolls arrive.
+  - `dice/roll.mjs` renders and binds the buttons and loads the module at startup with the resolution module.
+  - Suite green. Next: tests, then release 0.25.0-alpha.1.

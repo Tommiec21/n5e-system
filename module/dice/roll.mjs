@@ -256,7 +256,10 @@ let resolutionModule = null;
 export async function registerResolution() {
   resolutionModule = await import("../workflow/resolution.mjs");
   resolutionModule.registerResolutionHooks();
+  clashModule = await import("../workflow/clash.mjs");
+  clashModule.registerClashHooks();
 }
+let clashModule = null;
 
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
@@ -321,6 +324,14 @@ export function onRenderChatMessage(message, html) {
   addRollModeButtons(html);
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
+  // Jutsu Clash cards (CLASH1), drawn before their listeners are bound below.
+  if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
+  for ( const btn of html.querySelectorAll("[data-n5e-clash], [data-n5e-clash-roll], [data-n5e-clash-lose]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    const d = btn.dataset;
+    const run = m => (d.n5eClashRoll ? m.rollClash(message, d.n5eClashRoll, ev) : d.n5eClashLose ? m.applyClashLoss(d.n5eClashLose) : m.startClash(message));
+    import("../workflow/clash.mjs").then(run).catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-contest], [data-n5e-skill-apply]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/skill-actions.mjs").then(m => (btn.dataset.n5eContest ? m.onContestClick(message, btn, ev) : m.onSkillApplyClick(btn)))
