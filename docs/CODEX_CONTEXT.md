@@ -325,3 +325,6 @@ Published v0.17.0-alpha.2. ATK1 is complete (R23–R25 closed). Light is a Comba
 
 ## MDISC1 — Claude, 2026-11-13
 Published v0.18.0-alpha.1. Use `rules/cast-discipline.mjs` for anything that asks "what discipline is this jutsu": `castDisciplineOf(actor, item)` for cast-time and concentration effects (locked while concentrating), `countsAsDiscipline` / `knowsJutsuOf` / `sameTypeForSwap` / `disciplineAllowed` for known lists, and `defenseSkillFor` / `genjutsuRidersApply` / `caughtBy` for defenses (CLASH1, GEN1). Jutsu numbers per discipline: `item.system.liveAs(d)`. Don't read `system.discipline` for cast-time decisions. Next per plan: CARD1 (spec for King's approval) or Tier 2 (RES1...).
+
+## RES1 — Claude, 2026-11-14
+Published v0.19.0-alpha.1. Damage cards draw per-target rows from the rolls linked to their origin card: pass `source: message.id` to `rollWithSpec` for any new attack or save button on a card, and `onSuccess` for saves. Outcome rules live in `rules/resolution.mjs`; drawing and refresh are in `workflow/resolution.mjs`, loaded at startup by `dice.registerResolution()`. CARD1 (single action card) can build on `linkedOutcomes`. Next per plan: POS1 (positioning).

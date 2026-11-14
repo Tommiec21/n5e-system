@@ -48,6 +48,7 @@
 | Weapons (Ch5 tables: 55 weapons, properties with ranks, ranges, groups, Bulk) | `packs/_source/equipment`, `tools/content/build-weapons.mjs` | 08 |
 | Unarmed Strike item on every character and NPC (can't be removed or unequipped) | `config/equipment.mjs unarmedStrike`, `documents/actor.mjs`, `documents/item.mjs`, `rules/unarmed.mjs` | 03 |
 | Weapon attacks: bonuses/effects/Mastery, Critical X, Deadly X, Heavy, Volatile (jam/unjam), Versatile, Multiattack bonus attack, reach, thrown, long range, ranged in melee, Returning, ammo die only on ranged/thrown | `rules/weapon-properties.mjs`, `workflow/attack.mjs` | 03, 08 |
+| One damage roll, per-target shares: hit/miss by each AC, per-target save results (fail full, success half/none), per-target Apply | `rules/resolution.mjs`, `workflow/resolution.mjs` | 03, 04 |
 | Multi-discipline jutsu: Cast as choice; attack/DC/requirement by the cast discipline; locked while concentrating; Genjutsu riders only as Genjutsu; counts as every listed discipline for known lists | `rules/cast-discipline.mjs`, `JutsuData#liveAs`, `workflow/cast-plan.mjs`, `workflow/cast.mjs` | 04 |
 | Light extra attack (Chapter 5: once per turn with the Attack action, adds the modifier; no Bonus Action off-hand attack) | `rules/weapon-properties.mjs lightAttackBlock`, `workflow/attack.mjs`, Combat tab | 08 |
 | Strikes choose their weapon by keyword, group or property | `rules/weapon-properties.mjs matchingWeapons`, `workflow/attack.mjs pickWeapon` | 03 |

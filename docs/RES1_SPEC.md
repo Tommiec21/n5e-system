@@ -1,6 +1,6 @@
 # RES1 function spec: per-target resolution
 
-Status: **in progress (King: "Start again", 2026-11-14, continuing the plan).** Release target `0.19.0-alpha.1`.
+Status: **published `0.19.0-alpha.1` (King: "Start again", 2026-11-14, continuing the plan).**
 
 Plan row 11: one damage roll for many targets, automatic per-target save results, hit vs AC per target.
 
@@ -52,3 +52,12 @@ The single combined action card (CARD1) and placing areas from cards.
   - `dice/roll.mjs`: `registerResolution()` loads the module at startup, so rows draw synchronously in `onRenderChatMessage` before the listeners are bound. `n5e.mjs` calls it.
   - `onApplyClick`: a `data-target` on an Apply button sets `targetUuid`, so the normal fixed-target path runs (coordinated reactions, Undo).
   - Suite green. Next: tests (`tests/resolution.test.mjs`), then release 0.19.0-alpha.1.
+- 2026-11-14 Claude: **Tests done.** New `tests/resolution.test.mjs` (5 tests) passed on the first attempt: 342 pass, 2 skipped. Lint and check pass.
+
+## Final results
+
+Published `v0.19.0-alpha.1`. F1–F7 were built as specified; the progress log lists each one.
+- **Differs from the spec:** none in behaviour. `pickLinkedRolls` was split out of F4 as a pure function so it is tested in Node.
+- **Limits.**
+  - Targets with no AC (no automatic hit result) and saves rolled outside the card's button get no row; Apply on selected tokens still works for them.
+  - The rows are drawn for damage cards created from now on; older cards have no linked rolls.

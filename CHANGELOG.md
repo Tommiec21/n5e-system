@@ -1,3 +1,13 @@
+## 0.19.0-alpha.1 — Per-target resolution (RES1)
+
+- **Damage cards resolve each target.** A damage card rolled from an attack or a jutsu card gets a "Per target" box with one row per creature:
+  - from the attack (one roll compared to each AC): Hit or Critical hit takes full damage, Miss or natural 1 takes none;
+  - from that card's saves: Failure takes full damage, Success takes half (when the save says half on success) or none, four-tier Critical Success takes none;
+  - a creature that was hit and also saved takes the save's share.
+- Each row has its own **Apply** / **Apply half** button. It goes through the normal damage path (reactions, Undo), so one damage roll covers every target.
+- Rows appear as the saves come in. Each player sees rows only for their own creatures; the GM sees all.
+- Attack and save rolls made from a card's buttons now record that card, and saves record whether success halves the damage.
+
 ## 0.18.0-alpha.1 — Multi-discipline casting (MDISC1, King 2026-11-13)
 
 - **Cast as.**

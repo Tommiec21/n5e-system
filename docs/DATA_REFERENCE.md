@@ -347,3 +347,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.castDiscipline.<itemId>` | Actor | The discipline a concentration jutsu was cast as; honoured while it is concentrated |
 | `flags.n5e.cast.discipline` | Cast chat message | The discipline the jutsu was cast as |
 | `castPlan(..., {discipline})` → `plan.discipline` | Workflow | Cast-as choice |
+
+## Added in 0.19.0-alpha.1 (RES1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.roll.source` | Attack / save roll message | Id of the card whose button made the roll |
+| `flags.n5e.roll.onSuccess` | Save roll message | `half` or `none`: the damage share on a success |
+| `flags.n5e.roll.name` | Roll message | The roller's name (per-target rows) |
+| `data-on-success` | Save button | From the save activity's `onSuccess` |
+| `data-target` on `data-n5e-apply` | Damage card per-target row | Apply to that creature (sets `targetUuid`) |
