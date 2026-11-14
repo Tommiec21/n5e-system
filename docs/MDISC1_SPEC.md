@@ -37,3 +37,4 @@ Work through these in order. After each one, add a line to the progress log at t
 ## Progress log
 
 - 2026-11-13 Claude: spec written; starting F1.
+- 2026-11-13 Claude: **F1 done.** `JutsuData#prepareActorDerived` builds `liveByDiscipline` (ability, attack, DC, meetsRequirement per listed discipline, plus the shared cost/access numbers); `live` is the default discipline's entry; `liveAs(d)` and `_liveNumbers(sys, d, requirement)` added. Checked on Merciless Havoc (nin + tai): Tai Str 3/11, Nin Int 6/14. Next: F3 (pure helpers, needed by F2).

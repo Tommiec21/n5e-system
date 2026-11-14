@@ -125,20 +125,6 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
   /** Step 10: numbers for this actor, shown on sheets and cards. */
   prepareActorDerived(actor) {
     const sys = actor.system;
-    const disc = sys.disciplines?.[this.castingDiscipline];
-    let abilityKey = this.ability || disc?.ability;
-    // Hijutsu Flexibility: the higher of the clan's two abilities by default; players may pick one
-    // when the world setting allows it (King 2026-11-07).
-    const flex = sys.grants?.hijutsuAbilities ?? [];
-    if ( this.isHijutsu && !this.ability && flex.length ) {
-      const choice = sys.grants?.hijutsuChoice;
-      const allowPick = globalThis.game?.settings?.get?.("n5e", "hijutsuFlexibilityPick") ?? true;
-      if ( allowPick && choice && flex.includes(choice) ) abilityKey = choice;
-      else abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
-    }
-    // The discipline's attack and DC already include its ability; shift them when this jutsu uses another.
-    const abilityMod = sys.abilities?.[abilityKey]?.mod ?? 0;
-    const delta = abilityMod - (disc?.mod ?? 0);
     const requirement = this.isHijutsu ? null : abilityRequirement(this.rank);
     const castMax = sys.grants?.maxRank ?? maxRankForLevel(sys.level ?? 1);
     const cost = this.computeCost(sys);
@@ -154,17 +140,50 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       if ( !def?.affinity || this.isHijutsu ) continue;
       if ( !sys.grants?.affinities?.has(def.affinity) ) missingAccess.push(kw);
     }
-    this.live = {
-      ability: abilityKey,
-      attack: (disc?.attack ?? 0) + delta,
-      dc: (disc?.dc ?? 0) + delta,
+    const shared = {
       cost: cost.cost,
       costBreakdown: cost,
       requirement,
-      meetsRequirement: requirement == null || (sys.abilities?.[abilityKey]?.value ?? 0) >= requirement,
       upcastRanks: this.upcast.preset === "none" ? [] : upcastRanks(this.rank, castMax),
       missingAccess,
       castable: missingAccess.length === 0
+    };
+    // Numbers per listed discipline (MDISC1): a multi-discipline jutsu is cast as one of them, and its
+    // ability requirement is checked against that discipline's ability (King 2026-11-13, decision 11).
+    this.liveByDiscipline = {};
+    for ( const d of new Set([this.castingDiscipline, ...this.castingDisciplines]) ) {
+      this.liveByDiscipline[d] = { discipline: d, ...this._liveNumbers(sys, d, requirement), ...shared };
+    }
+    this.live = this.liveByDiscipline[this.castingDiscipline];
+  }
+
+  /** The live numbers when cast as this discipline (falls back to the default discipline's). */
+  liveAs(discipline) {
+    const d = discipline === "buki" ? "tai" : discipline;
+    return this.liveByDiscipline?.[d] ?? this.live;
+  }
+
+  /** Ability, attack, DC and requirement check for one discipline. */
+  _liveNumbers(sys, discipline, requirement) {
+    const disc = sys.disciplines?.[discipline === "buki" ? "tai" : discipline];
+    let abilityKey = this.ability || disc?.ability;
+    // Hijutsu Flexibility: the higher of the clan's two abilities by default; players may pick one
+    // when the world setting allows it (King 2026-11-07).
+    const flex = sys.grants?.hijutsuAbilities ?? [];
+    if ( this.isHijutsu && !this.ability && flex.length ) {
+      const choice = sys.grants?.hijutsuChoice;
+      const allowPick = globalThis.game?.settings?.get?.("n5e", "hijutsuFlexibilityPick") ?? true;
+      if ( allowPick && choice && flex.includes(choice) ) abilityKey = choice;
+      else abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
+    }
+    // The discipline's attack and DC already include its ability; shift them when this jutsu uses another.
+    const abilityMod = sys.abilities?.[abilityKey]?.mod ?? 0;
+    const delta = abilityMod - (disc?.mod ?? 0);
+    return {
+      ability: abilityKey,
+      attack: (disc?.attack ?? 0) + delta,
+      dc: (disc?.dc ?? 0) + delta,
+      meetsRequirement: requirement == null || (sys.abilities?.[abilityKey]?.value ?? 0) >= requirement
     };
   }
 }
