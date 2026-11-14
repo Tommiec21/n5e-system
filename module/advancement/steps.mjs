@@ -8,6 +8,7 @@ import { isFeatItem } from "../rules/keywords.mjs";
  *   - Jutsu Known increases are learned from the jutsu list, up to the class's highest rank.
  */
 import { skills, toolkits, abilities, progression, castingDisciplines, disciplines } from "../config/core.mjs";
+import { disciplineAllowed } from "../rules/cast-discipline.mjs";
 import { advancementAvailable } from "./eligibility.mjs";
 
 const dieMax = die => Number(String(die ?? "").replace(/^\D*/, "")) || 0;
@@ -145,13 +146,16 @@ const RANKS = ["E", "D", "C", "B", "A", "S"];
  * @param {Set<string>} o.affinities   the character's affinities, including any gained this level
  * @param {Set<string>} o.known        names (lowercase) already known
  * @param {object} o.keywords          CONFIG.N5E.keywords
+ * @param {string[]} [o.allowedDisciplines]  learning limit: learnable when any one listed discipline is
+ *   allowed (multi-discipline jutsu, King 2026-11-13 decision 14); empty = no limit
  */
-export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords, clan = "", branch = "" }) {
+export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords, clan = "", branch = "", allowedDisciplines = [] }) {
   const max = RANKS.indexOf(maxRank ?? "D");
   return jutsu.filter(j => {
     const s = j.system;
     if ( RANKS.indexOf(s.rank) > max ) return false;
     if ( known.has(j.name.toLowerCase()) ) return false;
+    if ( !disciplineAllowed(j, allowedDisciplines) ) return false;
     const hijutsu = !!s.hijutsu?.clan || list(s.keywords).includes("hijutsu");
     if ( hijutsu && (!clan || s.hijutsu?.clan !== clan || (s.hijutsu.branch && s.hijutsu.branch !== branch)) ) return false;
     for ( const kw of list(s.keywords) ) {

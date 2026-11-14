@@ -56,3 +56,4 @@ Work through these in order. After each one, add a line to the progress log at t
     - the feature extra-damage Genjutsu flag.
   - A released Ready jutsu reads the lock. Suite still green. Next: F6 (lock readers: Flow, Inner Gates).
 - 2026-11-13 Claude: **F6 done.** Flow's Ninjutsu advantage on concentration checks (`apply-damage.mjs concentrationCheck`) and the Inner Gates ending Ninjutsu/Genjutsu concentration (`trackers.mjs`) read `castDisciplineOf(actor, jutsu)`, the locked cast discipline. Suite green. Next: F8 (learning limits in `learnableJutsu`).
+- 2026-11-13 Claude: **F8 done.** `learnableJutsu({allowedDisciplines})` filters with `disciplineAllowed` (any one listed discipline; empty = no limit). No caller passes a limit yet: no class or feature data defines one. Next: tests (`tests/mdisc.test.mjs`), then release 0.18.0-alpha.1.
