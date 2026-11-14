@@ -85,12 +85,11 @@
 
 | Gap | Where it would live |
 | --- | --- |
-| Turn events fire on rewinds; no round/encounter recovery | `workflow/turn.mjs`, `automation/effect-services.mjs` |
 | Timed generic effects never expire; conditions only expire in combat | `workflow/trackers.mjs`, `workflow/conditions.mjs` |
 | Bruised/Weakened/Petrified damage numbers shown but not applied; Exhaustion not on damage dice | `rules/damage.mjs`, `rules/conditions.mjs` |
 | No advantage/disadvantage source engine; no auto-fail saves | `dice/d20.mjs`, `dice/roll.mjs` |
 | Components, ability requirement and rank cap not enforced when casting | `workflow/cast-plan.mjs`, `config/jutsu.mjs components` |
-| Incapacitated does not end concentration; upkeep auto-pays (no prompt) | `rules/turn-start.mjs` |
+| Incapacitated does not end concentration | `rules/turn-start.mjs` |
 
 # Multiplayer parity (0.14.0-alpha.1–2, OPS1)
 
@@ -102,3 +101,11 @@
 | Concentration-dependent effects end with the concentration | `workflow/effect-application.mjs removeDependents` |
 | Attack target rows, DC visibility, concealed NPC descriptions | `rules/parity.mjs`, `dice/roll.mjs renderParityParts` |
 | GM roll requests | `workflow/roll-request.mjs`, `applications/enrichers.mjs` |
+
+# Turn engine (0.15.0-alpha.1, TURN1)
+
+| Rule / capability | Code |
+| --- | --- |
+| Turn start/end, round start and combat start/end run only when combat moves forward (active GM) | `documents/combat.mjs N5eCombat`, `workflow/turn.mjs turnStartPipeline/turnEndPipeline/combatEndPipeline` |
+| Turn / round / encounter recovery of uses and pools | `rules/recovery.mjs`, `workflow/recovery.mjs` |
+| Upkeep: owner chooses each turn; none affordable → all end; unanswered → end at turn end; NPC auto/prompt/manual | `rules/upkeep.mjs`, `workflow/upkeep.mjs`, rule `npcUpkeep` |

@@ -250,3 +250,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.effectApplication = {effects, recipients, sourceUuid, concentrationItemId}` | ChatMessage | Effect-application card |
 | `flags.n5e.rollRequest = {type, key, dc, label, entries}` | ChatMessage | GM roll request |
 | `flags.n5e.roll.targets = [{uuid, name, ac}]`, `flags.n5e.roll.total` | ChatMessage | Attack target snapshot |
+
+## Added in 0.15.0 (TURN1)
+
+| Field / flag | On | Meaning |
+| --- | --- | --- |
+| `flags.n5e.upkeepPending = {combatId, round, turn, ids}` | Actor | Open upkeep decision; cleared when the owner answers, at turn end (unanswered jutsu end) or when combat ends |
+| `system.uses.per` = `turn` / `round` / `encounter` | Item | Now recovered in combat (start of own turn / each round / combat start and end) |
+| `system.resources.<id>.recovery[].on` = `turn` / `round` / `encounter` | Actor | Same periods for resource pools |

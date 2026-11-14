@@ -78,4 +78,21 @@ The `turn.mjs` header, `RULES_MAP.md` rows plus removing R4–R6 from Known gaps
 
 ## Final results
 
-_(filled in after release)_
+Published `v0.15.0-alpha.1`: commit 0303a11; CI 43535530033 and Release 43535579481 succeeded; the release has n5e.zip and system.json.
+
+- **Built as specified.**
+  - `documents/combat.mjs`: `N5eCombat` with `startCombat`, `_onStartRound`, `_onStartTurn`, `_onEndTurn` and `_onDelete`, registered as `CONFIG.Combat.documentClass`.
+  - `rules/recovery.mjs`: `COMBAT_PERIODS`, `combatRecoveryPlan`.
+  - `workflow/recovery.mjs`: `recoverCombatUses`, `recoverForCombat`.
+  - `rules/upkeep.mjs`: `upkeepOptions`, `validateUpkeepChoice`, `upkeepMode`, `autoKeep`.
+  - `workflow/upkeep.mjs`: `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep`.
+  - `workflow/turn.mjs`: `turnStartPipeline`, `turnEndPipeline`, `combatEndPipeline`; `registerTurnHooks` now keeps only `moveToken` and `createActiveEffect`.
+- **Rule:** `npcUpkeep` (auto / prompt / manual; default auto). `concentrationUpkeep` hint updated.
+- **Removed:** the `combatTurnChange`, `combatStart` and `deleteCombat` hooks in `turn.mjs` and `effect-services.mjs`. `turnStartPlan` no longer pays upkeep or refills per-turn pools.
+- **Differs from the spec:** the spec named the optional rule `autoUpkeep`. King's answer (Automatic / Prompt / Manual) made it the three-way choice `npcUpkeep`.
+- **Tests.**
+  - New `tests/turn-engine.test.mjs`: recovery periods, forward-only methods with no rewind hooks, and the upkeep cycle (begin, owner pays, over budget refused, unanswered ends, none affordable).
+  - `turn.test.mjs`: the upkeep tests were rewritten and an upkeep-mode test was added.
+  - `classes.test.mjs`: the Martial Dice refill now goes through `combatRecoveryPlan`.
+  - One full-suite run, which passed on the first attempt: 289 pass, 2 skipped. Lint and check pass.
+- No live testing and no local install.
