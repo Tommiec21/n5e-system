@@ -181,7 +181,7 @@ export async function postCastCard(actor, item, plan) {
   const desc = await TextEditor.enrichHTML(j.description ?? "", { relativeTo: item, rollData: actor.getRollData() });
   const content = `<div class="n5e-cast-card" data-actor-uuid="${actor.uuid}" data-item-uuid="${item.uuid}">
     <header><img src="${item.img}" alt="" width="36" height="36"><div><b>${esc(item.name)}</b>
-      <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[j.discipline]?.label ?? ""}`)}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
+      <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[j.group ?? j.discipline]?.label ?? ""}`)}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
     ${areaButton(item, { rank: plan.rank })}

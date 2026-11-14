@@ -1,6 +1,6 @@
 # DATA1 function spec: data model update (disciplines, keywords, feature kinds, feats, weapon proficiency)
 
-Status: **proposed 2026-11-13. Awaiting King's approval. No code written.**
+Status: **King said "Start" (2026-11-13). DATA1a published 0.16.0-alpha.1. DATA1b and DATA2 to follow.**
 
 Implements King's 2026-11-13 data decisions (N5e-Context.md Section 12, "Data structure decisions" and the canonical keyword list), plus the rulings below.
 
@@ -89,4 +89,28 @@ One world migration (id 3) and a pack rewrite per release. Existing worlds updat
 
 ## Final results
 
-_(filled in after each release)_
+### DATA1a: published `v0.16.0-alpha.1`
+- **Q7.** Taken as approved when King said "Start": keywords are stored as text, `key` or `key:value`.
+- **Built.**
+  - `rules/keywords.mjs`: `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups`.
+  - `migration/data1.mjs`: `migrateJutsuDisciplines`, `migrateKeywords`, `FEATURE_KIND_MAP`, `migrateFeatureKind`, `migrateItemData1`.
+  - `migration/runner.mjs`: migration 3 `migrateDataModel`.
+  - `tools/migrate-packs.mjs`.
+  - `JutsuData`: `disciplines`, plus the `group` and `castingDisciplines` getters.
+  - `FeatData`: `keywords`; the default category is `feat`.
+  - `CONFIG.N5E.featureKinds`.
+- **Changed.**
+  - Jutsu grouping and labels use `group`: character and combat view-models, item view-model, chat card, cast card, level-up, browser index.
+  - `isBukijutsu` replaces the `discipline === "buki"` checks.
+  - `scopeApplies` matches the buki scope by keyword and listed disciplines.
+  - Cast options match by discipline, group or listed discipline.
+  - Feature and feat filters in eligibility, clan, steps, background, the Features tab, the item sheet ("Kind") and the browser.
+  - The content builders apply `migrateItemData1` before writing.
+- **Differs from the spec.**
+  - The display group is Bukijutsu only when the main discipline is Taijutsu, so the 4 Ninjutsu that also list Bukijutsu stay Ninjutsu (castable as Ninjutsu or Taijutsu).
+  - `jutsuGroup(item)` was added for raw sources.
+- **Tests.**
+  - Attempt 1: 5 old-model expectations failed. Four were rewritten to the new model.
+  - "Whole jutsu book … discipline totals" failed on attempts 1 and 2, so the process stopped. The work was saved to `wip/data1a` and a handoff written.
+  - King approved the group fix and a third attempt, which passed.
+  - New `tests/data1.test.mjs` (4 tests) passed on its first attempt. Final: 318 pass, 2 skipped. Lint and check pass.

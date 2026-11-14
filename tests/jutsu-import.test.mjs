@@ -1,3 +1,4 @@
+import { migrateItemData1 } from "../module/migration/data1.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -21,7 +22,9 @@ test("whole jutsu book is imported exactly once with stable source identity and 
   assert.equal(book.entries.length, 968); assert.equal(docs.length, 968);
   assert.equal(new Set(docs.map(d => d._id)).size, 968);
   assert.equal(new Set(docs.map(d => d.system.identifier)).size, 968);
-  for ( const [disc, count] of Object.entries({ nin: 403, gen: 167, tai: 146, buki: 252 }) ) assert.equal(docs.filter(d => d.system.discipline === disc).length, count);
+  // DATA1: Bukijutsu is a Taijutsu jutsu with the bukijutsu keyword.
+  const groupOf = d => (d.system.discipline === "tai" && d.system.keywords.includes("bukijutsu") ? "buki" : d.system.discipline);
+  for ( const [disc, count] of Object.entries({ nin: 403, gen: 167, tai: 146, buki: 252 }) ) assert.equal(docs.filter(d => groupOf(d) === disc).length, count);
   const sourceLines = new Set();
   for ( const doc of docs ) {
     const flag = doc.flags.n5e.jutsuBookImport, source = book.entries.find(e => e.line === flag.sourceLine);
@@ -45,7 +48,9 @@ test("each jutsu is filed Discipline / Nature or Group / Rank with complete fold
 test("all source keywords and stimuli survive normalization without inventing missing labels", () => {
   for ( const doc of docs ) {
     const expected = parseKeywords(doc.flags.n5e.jutsuBookImport.header.keywords);
-    assert.deepEqual(doc.system.keywords, expected.keywords); assert.deepEqual(doc.system.stimuli, expected.stimuli); assert.equal(doc.system.unaware, expected.unaware);
+    // Stored keywords are the source keywords after the DATA1 model update (canonical keys, Bukijutsu keyword).
+    const migrated = migrateItemData1({ type: "jutsu", system: { discipline: { Ninjutsu: "nin", Genjutsu: "gen", Taijutsu: "tai", Bukijutsu: "buki" }[doc.flags.n5e.jutsuBookImport.discipline] ?? "nin", keywords: expected.keywords } });
+    assert.deepEqual(doc.system.keywords, migrated ? migrated.system.keywords : expected.keywords); assert.deepEqual(doc.system.stimuli, expected.stimuli); assert.equal(doc.system.unaware, expected.unaware);
   }
   assert.deepEqual(parseKeywords("Genjutsu (Visual, Inhale, Unaware)"), { keywords: ["genjutsu"], stimuli: ["visual", "inhaled"], unaware: true });
   assert.ok(parseKeywords("Taijutsu Water Release").keywords.includes("waterRelease"));

@@ -16,6 +16,13 @@ export const featCategories = {
   rare: "Rare", classFeature: "Class Feature", classOption: "Class Option", clanFeature: "Clan Feature", clanOption: "Clan Option", backgroundFeature: "Background Feature", npcFeature: "NPC Feature"
 };
 
+/** Feature kinds and the Feats group (King 2026-11-13; DATA1). Feat categories above are now feat keywords. */
+export const featureKinds = {
+  feat: "Feat", classFeature: "Class Feature", classFeatureOption: "Class Feature Option",
+  clanFeature: "Clan Feature", clanFeatureOption: "Clan Feature Option",
+  npcTraits: "NPC Traits", npcAbilities: "NPC Abilities", npcStrikes: "NPC Strikes", npcRole: "NPC Role", npcClass: "NPC Class", npcFreeform: "NPC Freeform"
+};
+
 /** KB 12: class jutsu tiers (High/Medium/Low = 0/1/2-3 extra resources). */
 export const jutsuTiers = { high: "High", medium: "Medium", low: "Low" };
 

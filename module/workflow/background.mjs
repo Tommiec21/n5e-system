@@ -1,3 +1,4 @@
+import { isFeatItem, featGroups } from "../rules/keywords.mjs";
 /** Set up a background before replacing any existing origin; grants stay linked for replacement. */
 import { skills, toolkits } from "../config/core.mjs";
 import { backgroundPacks, backgroundSkillSlots, validateBackgroundSelection } from "../rules/backgrounds.mjs";
@@ -21,7 +22,7 @@ export async function addBackground(actor, item) {
     const slots = backgroundSkillSlots(item, proficient);
     const pack = game.packs.get("n5e.feats");
     const feats = [...(pack ? await pack.getDocuments() : []), ...game.items].filter(f => f.type === "feat"
-      && ["general", "skill"].includes(f.system.category) && (f.system.requirement?.level ?? 0) <= actor.system.level
+      && isFeatItem(f) && featGroups(f).some(g => ["general", "skill"].includes(g)) && (f.system.requirement?.level ?? 0) <= actor.system.level
       && !owned.some(i => !oldIds.has(i.id) && i.system.identifier && i.system.identifier === f.system.identifier));
     const select = (name, label, options) => `<label>${esc(label)}<select name="${name}">${options.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("")}</select></label>`;
     const originalTools = item.system.tool ? [item.system.tool] : config.toolChoices;

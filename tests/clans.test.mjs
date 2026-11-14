@@ -1,3 +1,4 @@
+import { isFeatItem } from "../module/rules/keywords.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -125,7 +126,7 @@ test("Non-Clan supports three different +1s, three skills, Self-Taught mastery a
   assert.equal(plan.selectedSkills.length, 3);
   assert.deepEqual(plan.increments, { str: 1, dex: 1, wis: 1 });
   assert.equal(plan.mastery.length, 2);
-  assert.ok(plan.grants.some(g => g.doc.type === "feat" && ["general", "skill", "taijutsu", "ninjutsu"].includes(g.doc.system.category)));
+  assert.ok(plan.grants.some(g => g.doc.type === "feat" && isFeatItem(g.doc)));
 });
 
 test("clan features participate in level-up once, branches are respected and clan feats are excluded", () => {

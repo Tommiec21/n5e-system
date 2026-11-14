@@ -1,5 +1,6 @@
 /** Reproducible whole-book import. No gameplay engine; emits the existing Jutsu/Activity schema. */
 import fs from "node:fs";
+import { migrateItemData1 } from "../../module/migration/data1.mjs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -275,7 +276,7 @@ export function buildJutsuPack(book, { write = true } = {}) {
   const all = [...folders.values(), ...records];
   const ids = new Set(); for ( const record of all ) { if ( ids.has(record.data._id) ) throw new Error("Duplicate output ID"); ids.add(record.data._id); }
   if ( write ) {
-    for ( const record of all ) { fs.mkdirSync(path.dirname(record.file), { recursive: true }); fs.writeFileSync(record.file, JSON.stringify(record.data, null, 2) + "\n"); }
+    for ( const record of all ) { fs.mkdirSync(path.dirname(record.file), { recursive: true }); fs.writeFileSync(record.file, JSON.stringify(migrateItemData1(record.data) ?? record.data, null, 2) + "\n"); }
     const destinations = new Set(all.map(r => r.file));
     for ( const row of old ) if ( !destinations.has(row.file) && path.resolve(row.file).startsWith(PACK + path.sep) ) fs.unlinkSync(row.file);
   }

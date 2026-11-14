@@ -1,3 +1,4 @@
+import { isFeatItem } from "../module/rules/keywords.mjs";
 /**
  * Level-up steps against the imported content: Scout-Nin (Assault Scout) and Ninjutsu Specialist
  * (Blaze Walker), levels 1-5. Choices are applied the way the manager does it, then the actor is
@@ -112,7 +113,7 @@ test("content: both classes, subclasses, options, stances, feats, jutsu imported
   assert.ok(Object.values(all).filter(d => d.system.tags?.includes?.("nin-molding")).length === 15);
   assert.ok(Object.values(all).filter(d => d.system.tags?.includes?.("assault-maneuver")).length >= 10);
   assert.equal(Object.values(all).filter(d => d.system.tags?.includes?.("scout-path")).length, 6);
-  assert.equal(Object.values(all).filter(d => d.type === "feat" && ["general", "skill", "ninjutsu", "taijutsu", "genjutsu"].includes(d.system.category)).length, 4);
+  assert.equal(Object.values(all).filter(d => d.type === "feat" && isFeatItem(d)).length, 4);
   const gen = Object.values(all).filter(d => d.flags?.n5e?.generated && d.type === "jutsu");
   assert.deepEqual(["nin", "tai", "gen"].map(k => gen.filter(j => j.system.discipline === k).length), [4, 3, 3]);
   for ( const d of Object.values(all) ) {
@@ -147,7 +148,7 @@ test("Scout-Nin 1-5 with Assault Scout", () => {
   assert.equal(sys.resources.superiorityDice.maxValue, 4, "Superiority Dice column at 5th");
   assert.equal(sys.resources.superiorityDice.value, 4);
   assert.equal(sys.abilities.int.value, 11, "ASI +1");
-  assert.equal(actor.items.filter(i => i.type === "skill" || (i.type === "feat" && ["general", "skill", "ninjutsu", "taijutsu", "genjutsu"].includes(i.system.category))).length, 1, "ASI feat");
+  assert.equal(actor.items.filter(i => i.type === "skill" || (i.type === "feat" && isFeatItem(i))).length, 1, "ASI feat");
   const featSkills = actor.items.filter(i => i.type === "feat").flatMap(i => [...(i.system.grants?.proficiencies ?? [])])
     .filter(p => p.startsWith("skill.")).length;
   assert.equal([...sys.grants.skills].length, 4 + featSkills, "class skills + skills granted by the ASI feat");

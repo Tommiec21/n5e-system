@@ -1,3 +1,4 @@
+import { isFeatItem } from "../rules/keywords.mjs";
 /** Structured class-option requirements. Unstructured source prerequisites remain visible to players. */
 const list = value => Array.from(value ?? []);
 
@@ -37,7 +38,7 @@ export async function validateItemChoices(actor, level, steps, selections, resol
     for ( const uuid of picked ) {
       if ( step.type !== "featChoice" && !step.uuids.includes(uuid) ) { errors.push(`${step.title}: item is outside the permitted list.`); continue; }
       const doc = await resolve(uuid);
-      if ( step.type === "featChoice" && (doc?.type !== "feat" || ["classFeature", "classOption", "clanFeature", "clanOption", "backgroundFeature", "npcFeature"].includes(doc.system.category)) ) {
+      if ( step.type === "featChoice" && (doc?.type !== "feat" || !isFeatItem(doc)) ) {
         errors.push(`${step.title}: choose a feat, not a feature.`); continue;
       }
       if ( !doc || !itemChoiceAllowed(doc, { actor, level, owned, key: step.key }) ) { errors.push(`${step.title}: requirements are not met.`); continue; }

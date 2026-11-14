@@ -284,3 +284,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- | --- |
 | `flags.n5e.readied.<itemId> = {trigger, rank, cost, readiedAt}` | Actor | A readied jutsu, held in `system.combat.concentrating` |
 | `flags.n5e.dependentOn` | ActiveEffect | Now also set by activity effects, Amps and Branded from concentration jutsu |
+
+## Changed in 0.16.0-alpha.1 (DATA1a)
+
+| Field | On | Meaning |
+| --- | --- | --- |
+| `system.disciplines` (set of `nin`/`tai`/`gen`) | Jutsu | Every listed discipline; `system.discipline` is the default cast discipline. `buki` is no longer stored: Bukijutsu = `tai` + keyword `bukijutsu`. |
+| `system.keywords` | Jutsu, clan, feat | Canonical camelCase keys; a keyword with a value is stored as `key:value` |
+| `system.category` | Feat item | Feature kind (`classFeature`, `classFeatureOption`, `clanFeature`, `clanFeatureOption`, `npc…`) or `feat` |
+| `system.keywords` (new) | Feat item | Feats: group keywords (`general`, `skill`, `chakra`, `ninjutsu`, `genjutsu`, `taijutsu`, `critical`, `clan`, `class`, `archetype`, `rare`) |

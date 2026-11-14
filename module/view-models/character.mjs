@@ -21,6 +21,7 @@ import { usesStamina } from "../rules/trackers.mjs";
 import { jutsuSections } from "../config/jutsu.mjs";
 import { containerTypes, consumableTypes } from "../config/equipment.mjs";
 import { featCategories } from "../config/character.mjs";
+import { featureKind, isFeatItem, featGroups } from "../rules/keywords.mjs";
 import {
   signed, breakdownTooltip, glyph, keywordChip, componentChips, propertyChips, conditionSummary, pips
 } from "./common.mjs";
@@ -273,14 +274,14 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
   const all = ofType(actor, "jutsu");
   const q = search.trim().toLowerCase();
   const shown = all.filter(i => {
-    if ( discipline && i.system.discipline !== discipline ) return false;
+    if ( discipline && (i.system.group ?? i.system.discipline) !== discipline ) return false;
     if ( !q ) return true;
     const hay = [i.name, ...i.system.keywords].join(" ").toLowerCase();
     return hay.includes(q);
   });
   const order = ["nin", "tai", "gen", "buki"];
   const groups = order.map(dKey => {
-    const items = shown.filter(i => i.system.discipline === dKey);
+    const items = shown.filter(i => (i.system.group ?? i.system.discipline) === dKey);
     if ( !items.length ) return null;
     const castKey = dKey === "buki" ? "tai" : dKey;
     const ranks = rankOrder.map(r => {
@@ -464,20 +465,22 @@ export function featuresVM(actor) {
   const byLevel = (a, b) => (Number(a.level) || 0) - (Number(b.level) || 0) || a.name.localeCompare(b.name);
 
   // Class: core features, subclass features, then one sub-group per option type.
-  const classFeats = feats.filter(i => ["classFeature", "class", "classOption"].includes(i.system.category));
-  const options = classFeats.filter(i => i.system.category === "classOption");
+  const kind = i => featureKind(i);
+  const classFeats = feats.filter(i => ["classFeature", "classFeatureOption"].includes(kind(i)) || i.system.category === "class");
+  const options = classFeats.filter(i => kind(i) === "classFeatureOption");
   const optionTags = [...new Set(options.map(i => tagsOf(i)[0] ?? "option"))];
   const classSubs = [
-    sub("core", "Core features", classFeats.filter(i => i.system.category !== "classOption" && !fromSubclass(i)).map(featRow).sort(byLevel)),
-    ...(subclass ? [sub("subclass", subclass.name, classFeats.filter(i => i.system.category !== "classOption" && fromSubclass(i)).map(featRow).sort(byLevel))] : []),
+    sub("core", "Core features", classFeats.filter(i => kind(i) !== "classFeatureOption" && !fromSubclass(i)).map(featRow).sort(byLevel)),
+    ...(subclass ? [sub("subclass", subclass.name, classFeats.filter(i => kind(i) !== "classFeatureOption" && fromSubclass(i)).map(featRow).sort(byLevel))] : []),
     ...optionTags.map(t => sub(t, OPTION_GROUPS[t] ?? titleCase(t), options.filter(i => (tagsOf(i)[0] ?? "option") === t).map(featRow)
       .sort((a, b) => a.name.localeCompare(b.name))))
   ].filter(g => !g.empty || g.key === "core");
 
-  // Feats by category.
-  const general = feats.filter(i => !["classFeature", "class", "classOption", "clanFeature", "clanOption", "clan", "backgroundFeature"].includes(i.system.category));
-  const cats = [...new Set(general.map(i => i.system.category))];
-  const featSubs = cats.map(c => sub(c, featCategories[c] ?? titleCase(c), general.filter(i => i.system.category === c).map(featRow)
+  // Feats: one group, sub-grouped by their group keyword (King 2026-11-13).
+  const general = feats.filter(i => isFeatItem(i) && !["class", "clan"].includes(i.system.category));
+  const groupOf = i => featGroups(i)[0] ?? "general";
+  const cats = [...new Set(general.map(groupOf))];
+  const featSubs = cats.map(c => sub(c, featCategories[c] ?? titleCase(c), general.filter(i => groupOf(i) === c).map(featRow)
     .sort((a, b) => a.name.localeCompare(b.name))));
 
   return {
@@ -493,10 +496,9 @@ export function featuresVM(actor) {
     groups: [
       { key: "class", label: cls?.name ?? "Class features", subgroups: classSubs },
       { key: "clan", label: clan?.name ?? "Clan features", clan: true,
-        subgroups: [sub("clan", "Clan features and options", feats.filter(i => ["clanFeature", "clanOption", "clan"].includes(i.system.category)).map(featRow).sort(byLevel))] },
-      { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] },
-      { key: "background", label: bg?.name ?? "Background features", subgroups: [sub("background", "Background features",
-        feats.filter(i => i.system.category === "backgroundFeature").map(featRow))] }
+        // Background features are Clan Features (King 2026-11-13).
+        subgroups: [sub("clan", "Clan features and options", feats.filter(i => ["clanFeature", "clanFeatureOption"].includes(kind(i)) || i.system.category === "clan").map(featRow).sort(byLevel))] },
+      { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] }
     ]
   };
 }

@@ -29,7 +29,7 @@ export function itemCardData(item, { rank } = {}) {
     const castRank = rank && s.live?.upcastRanks?.includes(rank) ? rank : s.rank;
     const cost = typeof s.computeCost === "function" && actorSys ? s.computeCost(actorSys, castRank).cost : s.cost.value;
     const types = new Set((s.activities ?? []).map(a => a.type));
-    data.subtitle = `${N5E.ranks?.[castRank]?.label ?? castRank} ${N5E.disciplines?.[s.discipline]?.label ?? ""}`
+    data.subtitle = `${N5E.ranks?.[castRank]?.label ?? castRank} ${N5E.disciplines?.[s.group ?? s.discipline]?.label ?? ""}`
       + (castRank !== s.rank ? ` (upcast from ${s.rank})` : "");
     data.chips = [...[...s.keywords].map(k => keywordChip(k)), ...componentChips(s.components)];
     data.stats.push({ label: "Cost", value: s.cost.mode === "none" ? "None" : `${cost} CP` });

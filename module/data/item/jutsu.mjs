@@ -21,7 +21,8 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       ...baseFields(),
       ...activatableFields(),
       rank: S.rank("D"),
-      discipline: S.str({ initial: "nin" }),     // nin | tai | gen | buki
+      discipline: S.str({ initial: "nin" }),     // nin | tai | gen: the default cast discipline (Bukijutsu = tai + keyword)
+      disciplines: S.set(),                      // every discipline the jutsu lists (DATA1; King 2026-11-13)
       section: S.str(),                           // CONFIG.N5E.jutsuSections
       keywords: S.set(),
       stimuli: S.set(),
@@ -58,6 +59,21 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     return this.discipline === "buki" ? "tai" : this.discipline;
   }
 
+  /**
+   * Display group: Bukijutsu when the main discipline is Taijutsu and it has the bukijutsu keyword
+   * (King 2026-11-13); a Ninjutsu that also lists Bukijutsu stays in the Ninjutsu group.
+   */
+  get group() {
+    if ( this.discipline === "buki" ) return "buki";
+    return this.discipline === "tai" && this.keywords?.has?.("bukijutsu") ? "buki" : this.discipline;
+  }
+
+  /** Every listed discipline (counts as each for known lists, swaps, prerequisites and learning limits). */
+  get castingDisciplines() {
+    const list = [...(this.disciplines ?? [])];
+    return list.length ? list : [this.castingDiscipline];
+  }
+
   /** Upcast cost per rank from the preset or the item. */
   get costPerRank() {
     if ( this.upcast.costPerRank != null ) return this.upcast.costPerRank;
@@ -75,7 +91,7 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
   computeCost(actorSystem, castRank = this.rank, { multiplierChoice, divisorChoice, noReduction = false, subtract = 0 } = {}) {
     const pen = actorSystem?.conditionPenalties;
     const mods = actorSystem?.modifiers;
-    const ctx = { discipline: this.discipline, keywords: this.keywords, rank: castRank };
+    const ctx = { discipline: this.discipline, disciplines: this.disciplines, keywords: this.keywords, rank: castRank };
     const additions = [];
     const subtractions = [];
     const multipliers = [];

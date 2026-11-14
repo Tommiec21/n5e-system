@@ -190,10 +190,11 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
             clan: clan?.system.identifier ?? "", branch: clan?.system.branch ?? "" });
           const groups = {};
           for ( const j of learnable ) {
-            const g = groups[j.system.discipline] ??= { label: CONFIG.N5E.disciplines[j.system.discipline]?.label ?? j.system.discipline, options: [] };
+            const gk = j.system.group ?? j.system.discipline;
+            const g = groups[gk] ??= { label: CONFIG.N5E.disciplines[gk]?.label ?? gk, options: [] };
             g.options.push({ value: j.uuid, name: j.name, img: j.img, rank: j.system.rank, selected: chosen.has(j.uuid),
               sub: `${j.system.rank}-Rank · ${j.system.cost?.mode === "chakra" ? `${j.system.cost.value} CP` : "No cost"}`,
-              tip: this.#tip(j, `${j.system.rank}-Rank ${CONFIG.N5E.disciplines[j.system.discipline]?.label ?? ""}`) });
+              tip: this.#tip(j, `${j.system.rank}-Rank ${CONFIG.N5E.disciplines[j.system.group ?? j.system.discipline]?.label ?? ""}`) });
           }
           view.groups = ["nin", "gen", "tai", "buki"].filter(k => groups[k]).map(k => groups[k]);
           poolSizes[st.id] = learnable.length;

@@ -187,7 +187,7 @@ function jutsuPill(actor, i, { comboReady }) {
   if ( s.duration?.concentration ) badges.push({ key: "conc", label: "Conc." });
   const cp = actor.system.cp?.value ?? 0;
   const affordable = s.cost?.mode !== "chakra" || cost <= cp;
-  const disc = disciplines[s.discipline]?.label ?? s.discipline;
+  const disc = disciplines[s.group ?? s.discipline]?.label ?? s.discipline;
   const hit = live.attack != null ? `${signed(live.attack)} hit · DC ${live.dc}` : "";
   const rider = (label, html) => (html ? `<p><b>${esc(label)}.</b></p>${html}` : "");
   const chainHTML = [1, 2, 3].map(n => rider(`Chain ${n}`, s.chainEffects?.[n])).join("");
@@ -217,7 +217,7 @@ function jutsuGroups(actor, state) {
   const all = ofType(actor, "jutsu").sort((a, b) =>
     (rankOrder.indexOf(a.system.rank) - rankOrder.indexOf(b.system.rank)) || a.name.localeCompare(b.name));
   return [["nin", "Ninjutsu"], ["gen", "Genjutsu"], ["tai", "Taijutsu"], ["buki", "Bukijutsu"]].map(([key, label]) => {
-    const pills = all.filter(i => i.system.discipline === key).map(i => jutsuPill(actor, i, state));
+    const pills = all.filter(i => (i.system.group ?? i.system.discipline) === key).map(i => jutsuPill(actor, i, state));
     const castKey = key === "buki" ? "tai" : key;
     const d = actor.system.disciplines?.[castKey];
     return { key, label, sub: d ? `${signed(d.attack)} hit · DC ${d.dc}` : "", rows: byEconomy(pills), empty: !pills.length };

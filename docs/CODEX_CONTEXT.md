@@ -308,3 +308,5 @@ Tests:
 - `tests/jutsu-import.test.mjs` "whole jutsu book … discipline totals" failed on attempt 1 and attempt 2, so per the testing rule the process is **stopped** awaiting King's direction.
 - Diagnosis, without rerunning: 4 Ninjutsu-section jutsu also carry the Bukijutsu keyword in the source. The `group` getter (and the test's grouping) counts any `bukijutsu` keyword as the Bukijutsu group (403 Nin becomes 399 + 4 Buki).
 - Proposed fix: the display group is Bukijutsu only when the default discipline is Taijutsu, and those 4 stay Ninjutsu with the Bukijutsu keyword (castable as Nin or Tai). This needs King's go-ahead to run a third attempt.
+## DATA1a — Claude, 2026-11-13
+King approved the group fix and a third test attempt, which passed. Published v0.16.0-alpha.1 from `wip/data1a`, merged into main. Do not reintroduce `discipline: "buki"`, kebab-case keywords, `combination`, or the old feat categories as kinds. Use `rules/keywords.mjs` helpers. Content builders run `migrateItemData1`. Spec results: `docs/DATA1_SPEC.md`. Next: DATA1b (weapon base keywords and category + group proficiency).

@@ -53,6 +53,7 @@ import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec, clickMode } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
+import { isBukijutsu } from "../rules/keywords.mjs";
 import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
 import { resolveFormula, unarmedSpec } from "../rules/unarmed.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
@@ -211,17 +212,17 @@ export function activityButtons(actor, item, activities, { flags = {} } = {}) {
       const bonus = item.type === "jutsu" ? live.attack : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}${castAttrs.attack}
         ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}${flags.precise ? " (advantage)" : ""}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen" || disc === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
+        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen" || disc === "gen", weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);
     } else if ( a.type === "save" ) {
       const ab = [...(a.save?.abilities ?? [])][0];
       const dc = dcFor(a);
       rows.push(`<div class="act-row">${payButton(a)}<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
         ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
         DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki", ...castAttrs.damage })}</div>`);
+        ${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);
     } else if ( a.type === "damage" ) {
       // Authored damage keeps its own name on the button ("Lethal Attack", "Take Life").
-      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: item.system.discipline === "buki",
+      rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: item.system.discipline === "gen", weapon: isBukijutsu(item),
         activity: a, itemId: item.id, label: a.label && a.label !== "Damage" ? a.label : "Damage" })}${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     } else if ( a.type === "heal" ) {
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="heal"${attr("formula", a.heal?.formula)}${attr("pool", a.heal?.pool)}${a.cost?.pool ? attr("cost", JSON.stringify(a.cost)) : ""}>

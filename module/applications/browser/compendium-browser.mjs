@@ -86,7 +86,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
       case "cls": return classNames.get(value) ?? titleCase(value);
       case "categories": return N.stanceCategories?.[value] ?? titleCase(value);
       case "groups": return N.weaponGroups?.[value] ?? titleCase(value);
-      case "category": return N.featCategories?.[value] ?? N.weaponCategories?.[value] ?? titleCase(value);
+      case "category": return N.featureKinds?.[value] ?? N.featCategories?.[value] ?? N.weaponCategories?.[value] ?? titleCase(value);
       case "type": return game.i18n.localize(CONFIG.Item.typeLabels?.[value] ?? "") || titleCase(value);
       default: return String(value);
     }

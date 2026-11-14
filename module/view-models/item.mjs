@@ -14,7 +14,7 @@ import { activationTypes, rangeTypes, areaShapes, durationUnits, recoveryPeriods
 import {
   weaponCategories, weaponProperties, armorCategories, armorProperties, consumableTypes, containerTypes
 } from "../config/equipment.mjs";
-import { featCategories, jutsuTiers } from "../config/character.mjs";
+import { featCategories, featureKinds, jutsuTiers } from "../config/character.mjs";
 import { keywordChip, componentChips, propertyChips, glyph, signed } from "./common.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -193,7 +193,7 @@ const DETAILS = {
   loot: src => [physical(src)],
   feat: src => [
     section("Feature", [
-      F.select(src, "category", "Category", featCategories),
+      F.select(src, "category", "Kind", featureKinds),
       F.select(src, "featureType", "Kind", { active: "Active", passive: "Passive" }),
       F.num(src, "requirement.level", "Level", { small: true }),
       F.text(src, "requirement.class", "Class", { placeholder: "identifier" }),
@@ -264,7 +264,7 @@ function summary(item) {
   switch ( item.type ) {
     case "jutsu": {
       const live = s.live ?? {};
-      subtitle = `${ranks[s.rank]?.label ?? s.rank} ${disciplines[s.discipline]?.label ?? ""}${s.section ? ` · ${jutsuSections[s.section]?.label ?? s.section}` : ""}`;
+      subtitle = `${ranks[s.rank]?.label ?? s.rank} ${disciplines[s.group ?? s.discipline]?.label ?? ""}${s.section ? ` · ${jutsuSections[s.section]?.label ?? s.section}` : ""}`;
       add("Cost", s.cost?.mode === "chakra" ? `${live.cost ?? s.cost.value} CP` : (s.cost?.mode === "none" ? "None" : s.cost?.text || "Special"));
       add("Time", glyph(s.activation)?.label ?? activationTypes[s.activation?.type]);
       add("Range", s.target?.range?.type === "feet" ? `${s.target.range.value} ft` : rangeTypes[s.target?.range?.type] ?? "");
@@ -306,7 +306,7 @@ function summary(item) {
       subtitle = "Loot"; add("Quantity", s.quantity); add("Price", s.price ? `${s.price} Ryo` : "");
       break;
     case "feat":
-      subtitle = `${featCategories[s.category] ?? s.category}${s.requirement?.level ? ` · Level ${s.requirement.level}` : ""}`;
+      subtitle = `${featureKinds[s.category] ?? featCategories[s.category] ?? s.category}${s.requirement?.level ? ` · Level ${s.requirement.level}` : ""}`;
       add("Kind", s.featureType === "passive" ? "Passive" : (glyph(s.activation)?.label ?? "Active"));
       if ( s.uses?.max ) add("Uses", `${s.uses.max}${s.uses.per ? ` / ${recoveryPeriods[s.uses.per] ?? s.uses.per}` : ""}`);
       for ( const p of list(s.prerequisites) ) add("Prerequisite", p);

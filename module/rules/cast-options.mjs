@@ -64,7 +64,7 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null) 
   });
   for ( const { f, o, id } of entries ) {
     const a = o.appliesTo ?? {};
-    if ( a.discipline && jutsu.system.discipline !== a.discipline ) continue;
+    if ( a.discipline && ![jutsu.system.discipline, jutsu.system.group, ...(jutsu.system.disciplines ?? [])].includes(a.discipline) ) continue;
     if ( a.keywords?.length && !a.keywords.some(k => kwSet(jutsu).has(k)) ) continue;
     if ( a.activation && jutsu.system.activation?.type !== a.activation ) continue;
     if ( a.requiresDamage && !hasDamage(jutsu, activities) ) continue;
