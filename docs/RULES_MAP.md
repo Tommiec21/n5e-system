@@ -129,3 +129,4 @@
 | Count advantage and disadvantage sources from conditions and states; any of each cancel; the click counts as one | `rules/advantage.mjs`, `dice/roll.mjs rollWithSpec` |
 | Auto-fail saves: Petrified and Stunned (Str/Dex), Unconscious (all) | same |
 | Dodging (until the start of the next turn) and Helped (the next attack or check) | `config/conditions.mjs states`, `workflow/turn.mjs` |
+| Advantage on any dice roll: whole roll twice, keep higher (or lower); named dice only (ADV2, 0.15.0-alpha.6) | `rules/elements.mjs contextualAdvantage`, `dice/advantaged.mjs` |

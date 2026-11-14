@@ -1,3 +1,15 @@
+## 0.15.0-alpha.6 — Advantage on any dice roll (ADV2, King 2026-11-13)
+
+- Advantage and disadvantage now apply to any dice roll, not only d20s: damage, healing, Short Rest Hit/Chakra Dice, and other activity dice (pool and feature dice).
+- With advantage the whole roll is made twice and the higher total is kept; disadvantage keeps the lower; both cancel. The card shows both totals.
+- Only the dice a source names get it. New rule-element keys `advantage` and `disadvantage` use the existing selectors:
+  - `damage`: every damage part;
+  - `damage:fire`: only fire damage dice;
+  - `healing`, `recovery`, `dice`;
+  - and any d20 selector, such as `attack`, `save` or `skill:ste`.
+- Predicates work as for modifiers. The effect editor accepts these rules.
+- `game.n5e.api.rollDice(actor, formula, {kind, type, key, damageType})` rolls any other dice through the same sources.
+
 ## 0.15.0-alpha.5 — Advantage engine and automatic save failures (ADV1)
 
 - Rolls now count advantage and disadvantage sources from conditions and states, dnd5e-style. Any advantage and any disadvantage cancel; the click (Alt/Ctrl) or a forced mode counts as one source. The sources are listed on the card.
