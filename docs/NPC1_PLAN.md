@@ -1,6 +1,6 @@
 # NPC review: PF2e's NPC handling, the Bingo Book's adversary design, and a plan
 
-Status: **review and plan for King (2026-11-14). Nothing is built. Questions Q-N1–Q-N6 below.**
+Status: **King answered Q-N1–Q-N6 on 2026-11-14. Each batch still needs its own spec and King's approval. Nothing is built.**
 
 King (2026-11-14): review how PF2e handles NPCs, because N5e's NPCs will be closer to them; break down the Bingo Book to understand the structure of NPC design. Everything needed from the Bingo Book ends after the section "Maybe I want to live?".
 
@@ -116,21 +116,22 @@ Adversaries don't need named techniques. Three build-your-own tools, each with s
 | **NPC3** Freeform | Strike, Freeform Jutsu and Freeform Ability items; the strike and jutsu damage tables; the Damage Penalty and Effects & Conditions tables; multiattack |
 | **NPC4** Elite machinery | Tenacity (pool, regain, spends); Elite Actions in the turn order; Minion groups (Individuals, Collective Turn, Mob); Command |
 | **NPC5** phases | Health Gates, phase transitions, Healing Surge, Transformations and Rule Breaks, Battlefield Domains as a combatant |
-| **NPC6** content | The 150 Role Traits, the clan/species and affiliation traits, the Elite Abilities, then the book's adversaries as a compendium (through the standardization contract: data, no content named in code) |
+| **NPC6** content | The 150 Role Traits, the clan/species and affiliation traits and the Elite Abilities (through the standardization contract: data, no content named in code). The book's adversary stat blocks are **not** imported (King Q-N6) |
 | **MISSION1** | Mission rank, tier, XP budget and encounter purchasing; rewards |
 | **SOCIAL1** | Social encounters: attitudes, agreement and frustration, patience |
 
 NPC1–NPC3 can come before standardization. NPC4–NPC6 lean on STD1–STD4 (auras, triggers, imposed effects), so they fit best after those.
 
-## Questions for King
+## King's answers (2026-11-14)
 
-- **Q-N1:** Stored or derived? Proposed, as PF2e does: an adversary's statistics are stored values filled in by the builder and editable by hand. Characters stay derived.
-- **Q-N2:** Friendly NPCs built "as a PC with average HP/CP" (the book's first Allies option): should those be character actors, with adversary-style NPCs as the NPC actor type?
-- **Q-N3:** Solo HP depends on party size (×(1.5 + 0.5 per player)). Should the sheet take a party-size number per adversary, or read the active party?
-- **Q-N4:** The book's tables run to level 30. NPC2 would carry all 30 levels. Should NPC levels above 20 be allowed from the start?
-- **Q-N5:** Is the batch order right, with NPC1–NPC3 before standardization and NPC4–NPC6 after STD4?
-- **Q-N6:** The book's chapters after "Maybe I want to live?" (the nations, clans, Jinchūriki, unaffiliated and legendary adversaries) hold the actual stat blocks. You said everything needed ends before them. Does that mean NPC6 should not import those adversaries, or only that the *rules* end there?
+- **Q-N1:** yes. Adversary statistics are stored values that the builder fills in and the GM can edit. Characters stay calculated.
+- **Q-N2:** optional. A friendly NPC can be built either way, as a character actor or as an adversary-style NPC; the GM chooses.
+- **Q-N3:** an optional setting. Solo HP's party size is either automated (read from the active party) or entered by hand.
+- **Q-N4:** yes. NPC levels up to 30 from the start.
+- **Q-N5:** yes. NPC1–NPC3 before standardization; NPC4–NPC6 after STD4.
+- **Q-N6:** skip importing the adversaries from the chapters after "Maybe I want to live?".
 
 ## Progress log
 
 - 2026-11-14 Claude: PF2e NPC source and the Bingo Book's rules section read; plan written. Nothing built.
+- 2026-11-14 Claude: King's answers recorded.
