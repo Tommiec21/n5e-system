@@ -154,3 +154,9 @@ Repo `Tommiec21/n5e-module` (dnd5e 5.3.3). Follow its `AGENTS.md`: three attempt
   - `scripts/conditions/modifiers.mjs` now uses the core `emptyPenalties`, `clampRanks` and `aggregatePenalties`, with the module registry as the default.
   - Gate `coreConditions` passed locally (61/61) and in CI (run 43599554235).
   - Published n5e-module `v0.1.0-alpha.17`. Next: damage calculation (compare contracts first).
+- 2026-11-14 Claude: **SHARED1b slice 3 (Module): damage calculation.**
+  - `scripts/damage/calculation.mjs` re-exports the core `damagePlan`, `healPlan` and `deathSaveResult`.
+  - Results are unchanged: the Module snapshot passes no condition penalties, so Bruised, Petrified and the source penalty stay off. `concentrationOnDamage` stays off there, as before.
+  - Gate `coreDamage` passed locally (58/58) and in CI (run 43600007116). Published n5e-module `v0.1.0-alpha.18`.
+  - **Open for King:** turning Bruised and Petrified on in Module damage is a behaviour change, so it waits for approval.
+  - Next: costs/upkeep.
