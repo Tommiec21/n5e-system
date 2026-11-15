@@ -12,10 +12,16 @@ test("size: disadvantage one size larger, impossible two or more", () => {
 });
 
 test("the size rule applies to Trip only (the book states it there)", () => {
-  assert.deepEqual(SIZE_GATED, ["trip"]);
+  assert.deepEqual(SIZE_GATED, ["trip", "grapple", "shove", "pin", "disarm"]);
   assert.match(skillActionGate("trip", { actorSize: "small", targetSize: "large" }).refuse, /two or more sizes larger/);
   assert.deepEqual(skillActionGate("trip", { actorSize: "medium", targetSize: "large" }), { refuse: null, disadvantage: ["Target one size larger"] });
-  assert.deepEqual(skillActionGate("grapple", { actorSize: "small", targetSize: "huge" }), { refuse: null, disadvantage: [] });
+  // FIN5 (King Q-F4): Grapple, Shove, Pin and Disarm too.
+  for ( const key of ["grapple", "shove", "disarm"] ) {
+    assert.match(skillActionGate(key, { actorSize: "small", targetSize: "huge" }).refuse, /two or more sizes larger/);
+    assert.deepEqual(skillActionGate(key, { actorSize: "medium", targetSize: "large" }).disadvantage, ["Target one size larger"]);
+  }
+  assert.deepEqual(skillActionGate("pin", { actorSize: "medium", targetSize: "large", holding: true }).disadvantage, ["Target one size larger"]);
+  assert.deepEqual(skillActionGate("hide", { actorSize: "small", targetSize: "huge" }), { refuse: null, disadvantage: [] });
 });
 
 test("Pin, Takedown, Choke and Muffle need a hold on the target", () => {

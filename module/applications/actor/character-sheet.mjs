@@ -69,6 +69,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     // level-up, toggles, small setters. Every handler is defined in the Actions section below.
     actions: {
       n5eTab: CharacterSheet.#onTab,
+      giveRyo: CharacterSheet.#onGiveRyo,
       toggleMode: CharacterSheet.#onToggleMode,
       setRollMode: CharacterSheet.#onSetRollMode,
       toggleRule: CharacterSheet.#onToggleRule,
@@ -427,6 +428,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /** The Browse button (Jutsu tab): the Compendium Browser on that tab. */
   static #onOpenBrowser(event, target) {
     game.n5e.browser(target.dataset.browserTab);
+  }
+
+  /** FIN5: give ryo to another player character or Allied NPC (King Q-F3). */
+  static async #onGiveRyo() {
+    if ( !this.isEditable ) return null;
+    const { promptGiveRyo } = await import("../../workflow/transfer.mjs");
+    return promptGiveRyo(this.actor);
   }
 
   static #onTab(event, target) {

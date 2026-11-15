@@ -40,6 +40,18 @@ export function canReceive(target, user = {}) {
 }
 
 /**
+ * FIN5 (King Q-F3): giving ryo. Whole ryo from 1 up to what the giver has.
+ * @returns {{amount: number, giverLeft: number, receiverHas: number}|{error: string}}
+ */
+export function ryoPlan(have, amount, receiverHas = 0) {
+  const n = Math.floor(Number(amount));
+  const h = Math.max(0, Math.floor(Number(have) || 0));
+  if ( !Number.isSafeInteger(n) || n < 1 ) return { error: "Choose an amount of at least 1 ryo." };
+  if ( n > h ) return { error: `You have ${h} ryo.` };
+  return { amount: n, giverLeft: h - n, receiverHas: Math.max(0, Math.floor(Number(receiverHas) || 0)) + n };
+}
+
+/**
  * Plan a transfer.
  * @param {object} item            the source item (plain data: _id, name, type, system, flags)
  * @param {object[]} targetItems   the target's items (plain data)

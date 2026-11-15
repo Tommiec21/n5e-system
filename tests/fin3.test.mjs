@@ -48,3 +48,9 @@ test("FIN3b: the dispel intent is validated", async () => {
   assert.deepEqual(validateIntent("dispelJutsu", { itemId: "abc123", messageId: "msg1", side: "b" }), { itemId: "abc123", messageId: "msg1", side: "b" });
   assert.throws(() => validateIntent("dispelJutsu", { itemId: "abc123", messageId: "msg1", side: "c" }), /Invalid dispel/);
 });
+
+test("FIN5: the ryo transfer intent is validated", async () => {
+  const { validateIntent } = await import("../module/automation/owner-intents.mjs");
+  assert.deepEqual(validateIntent("transferRyo", { targetUuid: "Actor.abc123", amount: 50 }), { targetUuid: "Actor.abc123", amount: 50 });
+  assert.throws(() => validateIntent("transferRyo", { targetUuid: "Actor.abc123", amount: 0 }), /Invalid ryo transfer/);
+});

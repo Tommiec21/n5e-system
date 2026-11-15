@@ -219,3 +219,11 @@
 | --- | --- |
 | Opportunity Attack only from a creature that can see the mover; unchecked sight still reminds (King Q-F17) | `rules/positioning.mjs opportunityReminders`, `canvas/visibility.mjs observerVisibility`, `workflow/positioning.mjs` |
 | Reach measured edge to edge | `rules/positioning.mjs nearestCells`, `edgeGap`; `workflow/positioning.mjs edgeDistance` |
+
+## Ryo, size rule, weapon Disarm/Trip (FIN5, 0.33.0-alpha.7)
+
+| Rule | Code |
+| --- | --- |
+| Ryo can be given like items (King Q-F3) | `rules/transfer.mjs ryoPlan`, `workflow/transfer.mjs transferRyo` |
+| Size rule for Trip, Grapple, Shove, Pin and Disarm (King Q-F4) | `rules/skill-resolution.mjs SIZE_GATED`, `skillActionGate` |
+| Weapon Disarm/Trip success: full weapon damage (King Q-F5) | `workflow/skill-actions.mjs` |

@@ -8,7 +8,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -55,6 +55,11 @@ export function validateIntent(type, data = {}) {
     case "learnEntry":
       if ( !isId(data.messageId) || typeof data.entryId !== "string" || !/^[A-Za-z0-9]{1,64}$/.test(data.entryId) ) throw new Error("Invalid pick.");
       return { messageId: data.messageId, entryId: data.entryId };
+    case "transferRyo": {
+      const amount = Number(data.amount);
+      if ( !isUuid(data.targetUuid) || !Number.isSafeInteger(amount) || amount < 1 ) throw new Error("Invalid ryo transfer.");
+      return { targetUuid: data.targetUuid, amount };
+    }
     case "transferItem": {
       const quantity = Number(data.quantity ?? 1);
       if ( !isId(data.itemId) || !isUuid(data.targetUuid) || !Number.isSafeInteger(quantity) || quantity < 1 ) throw new Error("Invalid item transfer.");

@@ -1,6 +1,6 @@
 # FIN5 function spec: King's answers to Q-F1–Q-F7, and ROLL2 closed
 
-Status: **spec written 2026-11-15. Awaiting King's approval.**
+Status: **approved by King 2026-11-15 ("Approved") and published `0.33.0-alpha.7`.**
 
 ## ROLL2: closed with no change (King 2026-11-15)
 
@@ -35,3 +35,4 @@ One small release.
 ## Progress log
 
 - 2026-11-15 Claude: spec written from King's answers; ROLL2 closed with no change; Q-F1, Q-F2, Q-F6 and Q-F7 already match the system.
+- 2026-11-15 Claude: **built and published 0.33.0-alpha.7.** F1: `rules/transfer.mjs ryoPlan`; `workflow/transfer.mjs transferRyo`, `receiveRyo`, `promptGiveRyo`; owner intent `transferRyo {targetUuid, amount}`; sheet action `giveRyo` on the Inventory tab. F2: `SIZE_GATED` adds grapple, shove, pin, disarm. F3: `skill-actions.mjs` builds the damage from `weaponAttackSpec(actor, weapon).damage`. Tests: core +2 (size gate for each action, ryo plan), `tests/fin3.test.mjs` +1 (intent). Suites: 504 and 120 pass.

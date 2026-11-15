@@ -97,15 +97,18 @@ async function postOutcome(actor, target, key, { result, margin, against, weapon
   const fx = skillActionEffects(key, { result, margin, mastery: sk.mastery ?? 0, proficient: !!sk.isProficient });
   const label = { success: "Success", failure: "Failure", tie: "Tie" }[result];
   const won = result === "success";
-  // FIN2a: a hold records its holder; Escape releases; a weapon's Disarm or Trip property adds its damage die.
+  // FIN2a: a hold records its holder; Escape releases. FIN5 (King Q-F5): a weapon's Disarm or Trip
+  // property deals the weapon's full damage on a success.
   const holder = HOLD_ACTIONS.includes(key) ? ` data-holder="${esc(actor.uuid)}"` : key === "choke" ? ` data-choke="${esc(actor?.uuid ?? "")}"` : "";
   const release = won && SKILL_RESULTS[key]?.release
     ? `<div class="n5e-apply"><button type="button" data-n5e-skill-release="${esc(target.uuid)}" data-target="${esc(actor.uuid)}">End the hold on ${esc(actor.name)}</button></div>` : "";
   let damage = "";
   const weapon = weaponId ? actor?.items?.get(weaponId) : null;
   if ( won && weapon?.system?.damage?.die ) {
-    const { damageButtons } = await import("./activity-buttons.mjs");
-    damage = damageButtons([{ formula: weapon.system.damage.die, type: [...(weapon.system.damage.types ?? [])][0] ?? "" }], { label: `${weapon.name} die` });
+    const [{ damageButtons }, { weaponAttackSpec }] = await Promise.all([import("./activity-buttons.mjs"), import("./attack.mjs")]);
+    const spec = weaponAttackSpec(actor, weapon);
+    damage = damageButtons([{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }],
+      { label: `${weapon.name} damage`, abilityMod: spec.abilityMod, weapon: true, weaponId: weapon.id, critExtra: spec.damage.critExtra });
   }
   return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }),
     content: `<div class="n5e-roll-card"><header><b>${esc(def.label)}: ${label}</b></header>

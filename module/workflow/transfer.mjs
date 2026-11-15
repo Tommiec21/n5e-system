@@ -9,7 +9,7 @@
  *   Drops         An owned actor's physical item dropped on another actor's sheet or token is a
  *                 transfer, not a copy (sheets call transferFromDrop; dropCanvasData for tokens).
  */
-import { transferPlan, transferRefusal, canReceive } from "../rules/transfer.mjs";
+import { transferPlan, transferRefusal, canReceive, ryoPlan } from "../rules/transfer.mjs";
 import { canModify, isAllied } from "../automation/authority.mjs";
 import { esc } from "../view-models/common.mjs";
 
@@ -118,10 +118,74 @@ export async function transferFromDrop(item, target) {
   return true;
 }
 
+/* ---- FIN5 (King Q-F3): ryo moves the same way ---- */
+
+const ryoOf = actor => Number(actor?.system?.currency?.ryo ?? 0);
+
+function checkRyo(user, source, target, amount) {
+  if ( !source || !target || target === source ) throw new Error("Choose another creature to give ryo to.");
+  if ( !canModify(user, source) ) throw new Error("You can only give ryo from a creature you own.");
+  if ( !canReceive(facts(target), { isGM: !!user?.isGM }) ) throw new Error(`${target.name} can't be given ryo. Ask the GM.`);
+  if ( !("currency" in (target.system ?? {})) ) throw new Error(`${target.name} has no ryo purse.`);
+  const plan = ryoPlan(ryoOf(source), amount, ryoOf(target));
+  if ( plan.error ) throw new Error(plan.error);
+  return plan;
+}
+
+async function moveRyo(source, target, plan) {
+  await source.update({ "system.currency.ryo": plan.giverLeft });
+  try { await target.update({ "system.currency.ryo": plan.receiverHas }); } catch (error) {
+    await source.update({ "system.currency.ryo": plan.giverLeft + plan.amount });
+    throw error;
+  }
+  const ChatMessageCls = CONFIG.ChatMessage.documentClass;
+  await ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor: source }),
+    content: `<div class="n5e-roll-card"><b>${esc(source.name)}</b> gave <b>${plan.amount} ryo</b> to <b>${esc(target.name)}</b>.</div>` });
+}
+
+/** Give ryo to another actor (directly, or through the active GM). */
+export async function transferRyo(source, target, amount) {
+  const user = globalThis.game.user;
+  const plan = checkRyo(user, source, target, amount);
+  if ( canModify(user, target) ) return moveRyo(source, target, plan);
+  const { submitIntent } = await import("../automation/owner-intents.mjs");
+  await submitIntent(source, "transferRyo", { targetUuid: target.uuid, amount: plan.amount });
+  return true;
+}
+
+/** Active GM: finish a player's ryo transfer after re-checking it. */
+export async function receiveRyo(source, { targetUuid, amount }, user) {
+  const target = await fromUuid(targetUuid);
+  const actor = target?.actor ?? target;
+  await moveRyo(source, actor, checkRyo(user, source, actor, amount));
+  return true;
+}
+
+/** The sheet's "Give ryo": pick a recipient (player characters and Allied NPCs) and an amount. */
+export async function promptGiveRyo(source) {
+  const game = globalThis.game;
+  const options = game.actors.filter(a => a !== source && "currency" in (a.system ?? {}) && canReceive(facts(a), { isGM: game.user.isGM }));
+  if ( !options.length ) return ui.notifications.info("There is no one to give ryo to.");
+  const have = ryoOf(source);
+  if ( have < 1 ) return ui.notifications.info(`${source.name} has no ryo.`);
+  const picked = await foundry.applications.api.DialogV2.prompt({ window: { title: `${source.name}: give ryo` },
+    content: `<label>To <select name="to">${options.map(a => `<option value="${esc(a.uuid)}">${esc(a.name)}</option>`).join("")}</select></label>
+      <label>Ryo (you have ${have}) <input type="number" name="amount" min="1" max="${have}" step="1" value="1" autofocus></label>`,
+    ok: { label: "Give", callback: (event, button) => ({ to: button.form.elements.to.value, amount: Number(button.form.elements.amount.value) }) },
+    rejectClose: false });
+  if ( !picked ) return null;
+  try {
+    return await transferRyo(source, await fromUuid(picked.to), picked.amount);
+  } catch (error) {
+    return ui.notifications.warn(error.message);
+  }
+}
+
 /** Register the GM handler and token drops. */
 export async function registerTransfer() {
   const { registerIntentHandler } = await import("../automation/owner-intents.mjs");
   registerIntentHandler("transferItem", receiveTransfer);
+  registerIntentHandler("transferRyo", receiveRyo);
   Hooks.on("dropCanvasData", (canvas, data) => {
     if ( data?.type !== "Item" || !data.uuid ) return undefined;
     const item = globalThis.fromUuidSync?.(data.uuid);

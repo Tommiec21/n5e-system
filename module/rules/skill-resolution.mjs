@@ -84,8 +84,8 @@ export function skillActionEffects(key, { result, margin = 0, mastery = 0, profi
 /* ---- FIN2a: sizes, holds, weapon Disarm and Trip (King 2026-11-14) ---- */
 
 export const SIZE_ORDER = Object.freeze(["tiny", "small", "medium", "large", "huge", "gargantuan"]);
-/** Actions the book gives the size rule for (Ch3: Trip). */
-export const SIZE_GATED = Object.freeze(["trip"]);
+/** Actions the size rule covers (Ch3: Trip; King Q-F4, 2026-11-15: also Grapple, Shove, Pin and Disarm). */
+export const SIZE_GATED = Object.freeze(["trip", "grapple", "shove", "pin", "disarm"]);
 /** Actions that start or tighten a hold, and those usable only on a creature you hold. */
 export const HOLD_ACTIONS = Object.freeze(["grapple", "pin"]);
 export const REQUIRES_HOLD = Object.freeze(["pin", "takedown", "choke", "muffle"]);

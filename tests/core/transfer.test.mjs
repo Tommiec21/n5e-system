@@ -1,7 +1,7 @@
 /** FIN1: item transfer plans and the item audit (pure). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { transferPlan, transferRefusal, canReceive } from "../../module/rules/transfer.mjs";
+import { transferPlan, transferRefusal, canReceive, ryoPlan } from "../../module/rules/transfer.mjs";
 import { itemAudit, existingCopy, identityKey } from "../../module/rules/item-audit.mjs";
 
 const kunai = (q, extra = {}) => ({ _id: "k1", name: "Kunai", type: "weapon", system: { identifier: "kunai", quantity: q, equipped: true, location: "stored", bulk: 1, ...extra },
@@ -65,4 +65,12 @@ test("grant guards: an item the actor already has is found; gear and repeatables
   assert.equal(existingCopy(owned, { name: "Body Flicker", type: "jutsu", system: { identifier: "body-flicker" } })._id, "a");
   assert.equal(existingCopy(owned, { name: "Kunai", type: "weapon", system: { identifier: "kunai" } }), null);
   assert.equal(identityKey({ type: "feat", name: "X", system: {}, flags: { n5e: { repeatable: true } } }), null);
+});
+
+test("FIN5: giving ryo: whole ryo, at least 1, no more than the giver has", () => {
+  assert.deepEqual(ryoPlan(120, 50, 10), { amount: 50, giverLeft: 70, receiverHas: 60 });
+  assert.deepEqual(ryoPlan(120, 120), { amount: 120, giverLeft: 0, receiverHas: 120 });
+  assert.match(ryoPlan(120, 121).error, /You have 120 ryo/);
+  assert.match(ryoPlan(120, 0).error, /at least 1/);
+  assert.equal(ryoPlan(120, 7.9).amount, 7);
 });

@@ -1,3 +1,11 @@
+## 0.33.0-alpha.7 — Ryo, the size rule and weapon Disarm/Trip damage (FIN5; King 2026-11-15)
+
+- **Give ryo:** "Give ryo" next to Ryo on the Inventory tab. Pick another player character or Allied NPC and an amount up to what you have; the ryo moves (through the GM's client when you don't own the receiver) and chat says "A gave 50 ryo to B" (King Q-F3).
+- **Size rule:** Grapple, Shove, Pin and Disarm now follow the same rule as Trip: disadvantage against a target one size larger, impossible against two or more sizes larger (King Q-F4).
+- **Weapon Disarm and Trip:** a success deals the weapon's full damage (its die, extra dice, ability modifier and flat bonuses), with Damage and Critical buttons, instead of the die alone (King Q-F5).
+- ROLL2 closed with no change: the rolls the system makes on its own (condition damage at turn start, Chilled, recharge, the ammunition die, hazard and falling damage) keep rolling without a dialog (King).
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.6 — Opportunity Attacks: sight and reach (FIN4c; King 2026-11-15)
 
 - **"Can see you" from token vision:** a creature gets the Opportunity Attack reminder only if it can see the mover with its own token vision (sight and detection modes, walls, darkness, Hidden and Undetected), the same check Uncanny Dodge uses. When that can't be checked (no vision set up on the token, different elevations, a hidden token), the reminder is still sent, marked "Sight not checked" (King Q-F17). Blinded still blocks it.

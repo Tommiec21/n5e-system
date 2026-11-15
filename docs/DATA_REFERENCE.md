@@ -568,3 +568,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | `flags.n5e.indirectExposure {dc, note, actors[]}` (ChatMessage) | An Indirect Exposure check the GM posted |
 | `game.n5e.api.indirectExposure()`; token control `n5eExposure` | Open the GM's Indirect Exposure dialog |
+
+## Added in 0.33.0-alpha.7 (FIN5)
+
+| Path | Meaning |
+| --- | --- |
+| Owner intent `transferRyo {targetUuid, amount}` | A player's ryo gift, finished by the active GM |
+| Sheet action `giveRyo` (Inventory tab) | Give ryo to a player character or Allied NPC |

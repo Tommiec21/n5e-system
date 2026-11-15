@@ -47,6 +47,7 @@
   {{/each}}
 
   <div class="ryo"><b>Ryo</b>
-    {{#if editable}}<input type="number" name="system.currency.ryo" value="{{vm.ryo}}" min="0" aria-label="Ryo">{{else}}{{vm.ryo}}{{/if}}
+    {{#if editable}}<input type="number" name="system.currency.ryo" value="{{vm.ryo}}" min="0" aria-label="Ryo">
+    <button type="button" data-action="giveRyo"><i class="fa-solid fa-hand-holding-dollar"></i> Give ryo</button>{{else}}{{vm.ryo}}{{/if}}
   </div>
 </section>
