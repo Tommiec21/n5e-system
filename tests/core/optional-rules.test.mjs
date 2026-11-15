@@ -70,3 +70,12 @@ test("A15–A19: free feat track, proficiency modes, homebrew, world clock, tabl
   assert.equal(rules.flatProficiency.default, "book");
   assert.equal(rules.worldClock.default, false);
 });
+
+test("A14 gradual ability increases: +1 ability at 2/6/10/14/18; feat and Mastery at 4/8/12/16/19 (King Q-P12, Q-P14)", async () => {
+  const { asiParts } = await import("../../module/rules/progression.mjs");
+  assert.deepEqual(asiParts(4, false), { ability: true, feat: true, mastery: true });
+  assert.equal(asiParts(2, false), null);
+  assert.deepEqual(asiParts(2, true), { ability: true, feat: false, mastery: false });
+  assert.deepEqual(asiParts(19, true), { ability: false, feat: true, mastery: true });
+  assert.equal(asiParts(5, true), null);
+});

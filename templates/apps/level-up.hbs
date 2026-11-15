@@ -53,6 +53,7 @@
           <div class="lu-chips">{{#each options}}
             <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}">{{label}}</button>
           {{else}}<p class="muted small">No proficient skills or toolkits.</p>{{/each}}</div>
+          {{/if}}
         {{/if}}
         {{#if (n5eEq type "trait")}}
           <div class="lu-chips">{{#each options}}
@@ -61,10 +62,13 @@
         {{/if}}
 
         {{#if (n5eEq type "asi")}}
+          {{#if parts.ability}}
           <h4>+1 to an ability</h4>
           <div class="lu-chips">{{#each abilityOptions}}
             <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="ability" data-value="{{value}}" {{#if capped}}disabled{{/if}}>{{label}} {{score}}</button>
           {{/each}}</div>
+          {{/if}}
+          {{#if parts.feat}}
           <h4>Feat</h4>
           <div class="lu-cards">{{#each feats}}
             <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="feat" data-value="{{value}}" data-tooltip-html="{{tip}}">

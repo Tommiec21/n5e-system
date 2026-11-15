@@ -77,6 +77,8 @@ export const progression = {
   proficiency: [[1, 3], [4, 4], [7, 5], [10, 6], [13, 7], [16, 8], [19, 9]],
   /** ASI + feat + one Mastery rank (universal rule, King 2026-11-06). */
   asiLevels: [4, 8, 12, 16, 19],
+  /** Gradual ability increases (optional rule, King Q-P12): the +1 to an ability moves to these levels. */
+  gradualAbilityLevels: [2, 6, 10, 14, 18],
   /** The ASI Mastery rank goes to a skill or toolkit only (King 2026-11-07); saves/initiative need a feature. */
   asiMasteryTargets: ["skill", "tool"],
   clanFeatureLevels: [1, 3, 7, 11, 15],

@@ -53,6 +53,17 @@ export function masteryRank(sources, level) {
 }
 export const masteryBonus = rank => progression.mastery.bonusByRank[rank] ?? 0;
 
+/**
+ * What the Ability Score Improvement step gives at a level, or null (PRESTD1 A14; King Q-P12, Q-P14).
+ * Book: +1 ability, a feat and one Mastery rank together at 4, 8, 12, 16, 19. Gradual: the +1 ability
+ * alone at 2, 6, 10, 14, 18; the feat and the Mastery rank at 4, 8, 12, 16, 19.
+ */
+export function asiParts(level, gradual = false) {
+  if ( gradual && (progression.gradualAbilityLevels ?? []).includes(level) ) return { ability: true, feat: false, mastery: false };
+  if ( progression.asiLevels.includes(level) ) return { ability: !gradual, feat: true, mastery: true };
+  return null;
+}
+
 /** Number of ASI levels reached (each grants +1 ability, a feat, and one Mastery rank). */
 export function asiCount(level) {
   return progression.asiLevels.filter(l => level >= l).length;

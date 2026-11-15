@@ -1,3 +1,8 @@
+## 0.41.0-alpha.1 — Gradual ability increases (PRESTD1 A14; King 2026-11-15)
+
+- **New optional rule** in N5e Rules (off by default): **Gradual ability increases.** The level-up step's +1 to an ability comes at levels 2, 6, 10, 14 and 18; the feat and its Mastery rank stay at 4, 8, 12, 16 and 19 (King Q-P12, Q-P14). Off, all three come together at 4, 8, 12, 16 and 19 as before. The level-up dialog shows only the parts due at that level, and undoing a level removes what that level gave.
+- Not checked in a running Foundry world.
+
 ## 0.40.0-alpha.3 — NPC sheet tab fix (King 2026-11-15)
 
 - **Fixed:** on the NPC sheet the Stat Block tab stayed visible under every other tab (Build, Inventory, Effects, Notes), so the two overlapped. Its layout rule overrode Foundry's rule that hides inactive tabs; it now applies only to the active tab, and a sheet-wide rule keeps every inactive N5e tab hidden.

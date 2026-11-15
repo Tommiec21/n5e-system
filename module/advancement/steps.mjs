@@ -7,9 +7,11 @@ import { isFeatItem } from "../rules/keywords.mjs";
  *   - ASI levels (4/8/12/16/19) give +1 ability, a feat, and a Mastery rank (skill or toolkit).
  *   - Jutsu Known increases are learned from the jutsu list, up to the class's highest rank.
  */
-import { skills, toolkits, abilities, progression, castingDisciplines, disciplines } from "../config/core.mjs";
+import { skills, toolkits, abilities, castingDisciplines, disciplines } from "../config/core.mjs";
 import { disciplineAllowed } from "../rules/cast-discipline.mjs";
 import { advancementAvailable } from "./eligibility.mjs";
+import { asiParts } from "../rules/progression.mjs";
+import { rule } from "../rules/settings.mjs";
 
 const dieMax = die => Number(String(die ?? "").replace(/^\D*/, "")) || 0;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -109,9 +111,11 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
     steps.push(...advancementSteps(subclass, level, "subclass"));
   }
 
-  // Ability Score Improvement / Feat / Mastery.
-  if ( (progression.asiLevels ?? [4, 8, 12, 16, 19]).includes(level) ) {
-    steps.push({ id: "class:asi", type: "asi", title: "Ability Score Improvement / Feat",
+  // Ability Score Improvement / Feat / Mastery (split by the Gradual ability increases rule).
+  const parts = asiParts(level, !!rule("gradualAbility"));
+  if ( parts ) {
+    steps.push({ id: "class:asi", type: "asi", parts,
+      title: parts.ability && parts.feat ? "Ability Score Improvement / Feat" : parts.ability ? "Ability Score Improvement" : "Feat and Mastery",
       abilities: Object.entries(abilities).map(([k, a]) => ({ value: k, label: a.label,
         score: actor.system.abilities?.[k]?.value ?? 10, capped: (actor.system.abilities?.[k]?.value ?? 10) >= 20 })) });
   }
@@ -204,9 +208,10 @@ export function validate(steps, sel, poolSizes = {}) {
       if ( got > (st.count ?? 0) ) problems.push(`${st.title}: too many chosen`);
     } else if ( st.type === "asi" ) {
       const a = sel[st.id] ?? {};
-      if ( !a.ability ) problems.push("Ability Score Improvement: pick an ability");
-      if ( !a.mastery && (poolSizes[`${st.id}:mastery`] ?? 1) > 0 ) problems.push("Ability Score Improvement: pick a Mastery target");
-      if ( !a.feat && (poolSizes[`${st.id}:feat`] ?? 0) > 0 ) problems.push("Ability Score Improvement: pick a feat");
+      const parts = st.parts ?? { ability: true, feat: true, mastery: true };
+      if ( parts.ability && !a.ability ) problems.push("Ability Score Improvement: pick an ability");
+      if ( parts.mastery && !a.mastery && (poolSizes[`${st.id}:mastery`] ?? 1) > 0 ) problems.push(`${st.title}: pick a Mastery target`);
+      if ( parts.feat && !a.feat && (poolSizes[`${st.id}:feat`] ?? 0) > 0 ) problems.push(`${st.title}: pick a feat`);
     }
   }
   return problems;

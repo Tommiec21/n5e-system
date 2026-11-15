@@ -302,3 +302,9 @@
 | Attitudes, starting points, Patience; Motivations and Pitfalls (hidden) | `config/social.mjs`, `rules/social.mjs socialSetup`, `workflow/social.mjs startSocialEncounter` |
 | Primary arguments vs Standard DCs (King Q-P10), Argument Results, Motivation bonus, Pitfall −4, Coerce in Diplomatic | `rules/social.mjs primaryPoints`, `workflow/social.mjs receiveSocial` |
 | Support (Perform, Sense Motive, Recall Knowledge), See Through Lies, NPC actions, type risks, resolution | `workflow/social.mjs`, `rules/social.mjs socialOutcome` |
+
+## Gradual ability increases (PRESTD1 A14, 0.41.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Optional: +1 ability at 2, 6, 10, 14, 18; feat and its Mastery rank at 4, 8, 12, 16, 19 (King Q-P12, Q-P14) | `rules/progression.mjs asiParts`, `advancement/steps.mjs`, `templates/apps/level-up.hbs` |

@@ -634,3 +634,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Client setting `n5e.npcSheetView {legend, hidden}` | Each user's NPC sheet toggles: the jutsu color key, hidden disciplines (`nin`, `tai`, `gen`) |
 | `CONFIG`-free table `config/jutsu-colors.mjs jutsuColors` | Keyword colors for jutsu pills (disciplines and Release keywords) |
+
+## Added in 0.41.0-alpha.1 (PRESTD1 A14)
+
+| Path | Meaning |
+| --- | --- |
+| Rule `gradualAbility` (boolean, off) | Gradual ability increases: +1 ability at 2, 6, 10, 14, 18; feat and Mastery at 4, 8, 12, 16, 19 |
+| `progression.gradualAbilityLevels` | [2, 6, 10, 14, 18] |

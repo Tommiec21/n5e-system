@@ -53,6 +53,8 @@ export const rules = {
     hint: "Extra feats at these character levels (comma-separated). Empty: off. The sheet shows how many have been earned." },
   freeFeatGroup: { group: "optional", type: "text", default: "", label: "Free feat track: feat group", placeholder: "General",
     hint: "Which feats the free track takes (for example a feat category), shown with the count." },
+  gradualAbility: { group: "optional", type: "boolean", default: false, label: "Gradual ability increases",
+    hint: "The +1 to an ability comes at levels 2, 6, 10, 14 and 18; the feat and its Mastery rank stay at 4, 8, 12, 16 and 19 (King Q-P12, Q-P14). Off: all three come together at 4, 8, 12, 16 and 19." },
   flatProficiency: { group: "optional", type: "choice", default: "book", label: "Proficiency bonus",
     choices: { book: "By level (the book: +3 to +9)", fixed: "Fixed (the number below)", slow: "Slower curve (+2 at 1, +3 at 5, +4 at 11, +5 at 17)" },
     hint: "Characters' proficiency bonus, and everything built on it. Bingo Book adversaries keep their own tables." },
