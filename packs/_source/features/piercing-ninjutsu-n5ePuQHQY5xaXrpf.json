@@ -34,7 +34,45 @@
     "resourcePools": [],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e781cugGiu7Mqq",
+      "name": "Piercing Ninjutsu",
+      "type": "generic",
+      "img": "icons/svg/lightning.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "damageHandling",
+              "selector": "damage",
+              "direction": "self",
+              "scope": "action",
+              "ignoreResistance": true,
+              "immunityAsResistance": true,
+              "drMultiplier": 0.5,
+              "label": "Piercing Ninjutsu"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ePuQHQY5xaXrpf.n5e781cugGiu7Mqq"
+    }
+  ],
   "folder": "n5e3afQXYUJOLznu",
   "sort": 0,
   "ownership": {

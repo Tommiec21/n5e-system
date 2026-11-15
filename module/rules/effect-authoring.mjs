@@ -2,6 +2,7 @@ import { resolveEffectFormula, validateServiceConfig, effectFormulaData } from "
 /** Effect authoring contracts. No document writes, evaluated scripts or independent effect engine. */
 import { changeKeyCatalog, parseN5eChanges } from "./change-keys.mjs";
 import { getPath } from "./formula.mjs";
+import { ELEMENT_KEYS, ELEMENT_DIRECTIONS, ELEMENT_SCOPES, ELEMENT_TARGETS, ELEMENT_EVENTS } from "./elements.mjs";
 
 export function effectFieldCatalog(config) {
   return changeKeyCatalog(config).map(field => {
@@ -53,16 +54,44 @@ function validatePredicate(value, depth = 0) {
   for ( const v of Object.values(value) ) { if ( !Array.isArray(v) ) throw new Error("Predicate groups must be arrays."); validatePredicate(v, depth + 1); }
 }
 
+/**
+ * Rule elements v2 (STD1). Every key and field is checked; anything unknown is refused.
+ * Numeric keys need a number; the others carry their own fields.
+ */
+const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks"]);
+const FIELDS = {
+  common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on"],
+  modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"],
+  advantage: [], disadvantage: [], autoFail: [], autoSucceed: [],
+  reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier"],
+  inflict: ["condition", "ranks"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
+};
 export function validateConditionalRules(rules) {
   if ( !Array.isArray(rules) || rules.length > 50 ) throw new Error("Conditional rules must be an array of at most 50 entries.");
   for ( const r of rules ) {
-    const mode = r && ["advantage", "disadvantage"].includes(r.key);
-    if ( !r || (!mode && (!["modifier", "degreeShift"].includes(r.key) || r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value))
-      || (r.key === "degreeShift" && !Number.isInteger(Number(r.value))))) ) throw new Error("Conditional rules need modifier/degreeShift with a numeric value, or advantage/disadvantage.");
-    const selectors = Array.isArray(r.selector) ? r.selector : [r.selector];
-    if ( !selectors.length || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, damage:fire, healing, save or skill:ste.");
+    if ( !r || typeof r !== "object" || !ELEMENT_KEYS.includes(r.key) ) throw new Error(`Rule elements use a known key: ${ELEMENT_KEYS.join(", ")}.`);
+    const allowed = new Set([...FIELDS.common, ...(FIELDS[r.key] ?? [])]);
+    const extra = Object.keys(r).filter(k => !allowed.has(k));
+    if ( extra.length ) throw new Error(`Unsupported property for ${r.key}: ${extra.join(", ")}.`);
+    if ( NUMERIC.has(r.key) ) {
+      if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
+      if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);
+    }
+    const noSelector = ["note", "inflict", "effect", "resource"].includes(r.key);
+    const selectors = r.selector === undefined && noSelector ? [] : (Array.isArray(r.selector) ? r.selector : [r.selector]);
+    if ( (!noSelector && !selectors.length) || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, damage:fire, healing, save or skill:ste.");
     if ( r.predicate !== undefined ) validatePredicate(r.predicate);
-    if ( Object.keys(r).some(k => !["key", "selector", "label", "value", "predicate"].includes(k)) ) throw new Error("Unsupported conditional rule property.");
+    if ( r.direction !== undefined && !ELEMENT_DIRECTIONS.includes(r.direction) ) throw new Error(`direction is ${ELEMENT_DIRECTIONS.join(", ")}.`);
+    if ( r.scope !== undefined && !ELEMENT_SCOPES.includes(r.scope) ) throw new Error(`scope is ${ELEMENT_SCOPES.join(", ")}.`);
+    if ( r.targets !== undefined && !ELEMENT_TARGETS.includes(r.targets) ) throw new Error(`targets is ${ELEMENT_TARGETS.join(", ")}.`);
+    if ( r.on !== undefined && !ELEMENT_EVENTS.includes(r.on) ) throw new Error(`on is one of ${ELEMENT_EVENTS.join(", ")}.`);
+    if ( r.uses !== undefined && (!Number.isInteger(Number(r.uses)) || Number(r.uses) < 1 || Number(r.uses) > 99) ) throw new Error("uses is a whole number from 1 to 99.");
+    if ( r.key === "reroll" && !["lower", "higher", "keep"].includes(r.mode) ) throw new Error("reroll mode is lower, higher or keep.");
+    if ( r.key === "damage" && !/^[\d\sd+\-*/()@a-zA-Z.]{1,100}$/.test(String(r.formula ?? "")) ) throw new Error("damage needs a dice formula, such as 1d6.");
+    if ( r.key === "damageHandling" && r.drMultiplier !== undefined && !(Number(r.drMultiplier) >= 0 && Number(r.drMultiplier) <= 1) ) throw new Error("drMultiplier is between 0 and 1.");
+    if ( r.key === "inflict" && (typeof r.condition !== "string" || !/^[\w-]{1,60}$/.test(r.condition)) ) throw new Error("inflict names a condition key.");
+    if ( r.key === "note" && (typeof r.text !== "string" || !r.text.trim() || r.text.length > 2000) ) throw new Error("A note needs its text (up to 2000 characters).");
+    if ( r.label !== undefined && (typeof r.label !== "string" || r.label.length > 120) ) throw new Error("label is text of at most 120 characters.");
   }
   return rules;
 }
@@ -72,6 +101,10 @@ export function editorFlags(input, original = {}) {
   const min = Number(input.min || 0), max = Number(input.max || 0);
   if ( !Number.isSafeInteger(min) || !Number.isSafeInteger(max) || min < 0 || max < 0 || (max && min > max) ) throw new Error("Check the minimum and maximum effect levels.");
   if ( min !== (original.levels?.min ?? 0) || max !== (original.levels?.max ?? 0) ) patch.levels = { ...original.levels, min, max };
+  // STD2: an action effect acts only on the action it is chosen for (copied onto its card).
+  const applyTo = input.applyTo ?? (original.applyTo ?? "");
+  if ( !["", "action"].includes(applyTo) ) throw new Error("applyTo is blank or action.");
+  if ( applyTo !== (original.applyTo ?? "") ) patch.applyTo = applyTo || null;
   for ( const [key, value] of [["requiresStance", input.stance ?? ""], ["exclusive", input.exclusive ?? ""], ["state", input.state ?? ""]] ) {
     if ( typeof value !== "string" || value.length > 120 ) throw new Error("Effect flag text is too long.");
     if ( value !== (original[key] ?? "") ) patch[key] = value;
@@ -124,7 +157,7 @@ export function effectPreview(original, draft, actor) {
 export function portableEffect(source) {
   const out = Object.fromEntries(["name", "img", "type", "system", "changes", "duration", "statuses", "transfer", "disabled", "description"].filter(k => k in source).map(k => [k, structuredClone(source[k])]));
   const flags = source.flags?.n5e ?? {};
-  out.flags = { n5e: Object.fromEntries(["levels", "requiresStance", "exclusive", "state", "rules", "ruleToggle"].filter(k => k in flags).map(k => [k, structuredClone(flags[k])])) };
+  out.flags = { n5e: Object.fromEntries(["levels", "requiresStance", "exclusive", "state", "rules", "ruleToggle", "applyTo"].filter(k => k in flags).map(k => [k, structuredClone(flags[k])])) };
   if ( flags.services ) { const services = validateServiceConfig(flags.services); out.flags.n5e.services = { ...services, macros: [] }; }
   return { format: "n5e-effect", version: 1, effect: out };
 }

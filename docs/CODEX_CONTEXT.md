@@ -448,3 +448,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## NPCUI1 — Claude, 2026-11-15 (published 0.40.0-alpha.1)
 - The NPC sheet still extends CharacterSheet for its actions, but its PARTS are its own: header, tabs, statblock, build, inventory, effects, biography (Notes), limited. A new character tab does not appear on NPCs; add NPC parts in npc-sheet.mjs.
 - Jutsu pill colors come from `config/jutsu-colors.mjs` through `rules/jutsu-colors.mjs`; Bukijutsu jutsu group under Taijutsu (`sheetGroup`).
+
+## STD0–STD2 — Claude, 2026-11-15 (published 0.42.0-alpha.1)
+- `npm run check` runs `tools/check-hardcoding.mjs`: never add a pack identifier as a string literal in `module/`. Model the behaviour as data (rule elements, action effects) instead. The allowlist only shrinks.
+- Rule elements v2: an element acts from the actor only when `actsFromActor` (direction self, scope not action, no `on`). Card elements reach rolls through `rollWithSpec(..., { source })` → `workflow/action-effects.mjs cardActionContext`.
+- `damagePlan` takes `handling` (not `piercing`).

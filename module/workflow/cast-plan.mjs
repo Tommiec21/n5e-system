@@ -161,7 +161,7 @@ export function castPlan(actor, item, sel = {}) {
     cost: scroll ? 0 : cost.cost, costMode: scroll ? "none" : j.cost?.mode, scroll, costText: j.cost?.text ?? "", costBreakdown: cost,
     choices: cost.choices ?? {}, cpAfter: spendsChakra ? Math.max(0, cp - cost.cost) : cp,
     pools, options: [...used.map(o => ({ id: o.id, name: o.name })), ...fx.names.map(name => ({ id: "", name }))], concentration,
-    featureOptions: available, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes, riders: fx.riders ?? [],
+    featureOptions: available, chosenFeatureOptions: chosen, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes, riders: fx.riders ?? [],
     pyroclasm: !!pyro, ready,
     problems, warnings, ok: problems.length === 0, update
   };

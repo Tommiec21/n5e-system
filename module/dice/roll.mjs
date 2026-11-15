@@ -13,7 +13,9 @@ import { d20Parts, situationalParts, composeD20, groupParts } from "../rules/rol
 import { dialogs, wantsDialog } from "./roll-dialog.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
-import { contextualSpec, contextualAdvantage } from "../rules/elements.mjs";
+import { contextualSpec, contextualAdvantage, contextualRoll, gatherElements } from "../rules/elements.mjs";
+import { spentBy } from "../rules/action-effects.mjs";
+import { cardActionContext } from "../workflow/action-effects.mjs";
 import { rule } from "../rules-settings.mjs";
 import { flankingEffect } from "../rules/pf2e-emulation.mjs";
 import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
@@ -114,7 +116,15 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
       return null;
     }
   }
-  spec = contextualSpec(actor, spec, target);
+  // STD1/STD2: elements from the card this roll is made from (action effects: "self" for the acting
+  // creature, "imposed" for everyone else), with their uses.
+  const cardCtx = cardActionContext(source, actor);
+  spec = contextualSpec(actor, spec, target, cardCtx.extra);
+  const extraFx = contextualRoll(actor, spec, target, cardCtx.extra);
+  if ( extraFx.critRange ) spec = { ...spec, critBonus: (Number(spec.critBonus) || 0) + extraFx.critRange };
+  if ( extraFx.notes.length ) spec = { ...spec, note: [spec.note, ...extraFx.notes].filter(Boolean).join(" · ") };
+  const usedOnCard = gatherElements(actor, spec, target, cardCtx.extra).filter(g => cardCtx.extra.some(x => x.element === g.element))
+    .map(g => cardCtx.extra.find(x => x.element === g.element));
   const type = spec.type ?? "custom";
   const key = spec.key ?? "";
   // Advantage engine (ADV1): conditions and states on the roller and its single target are counted
@@ -122,7 +132,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const sources = advantageSources({ roller: rollFacts(actor), target: target ? rollFacts(target) : null,
     kind: spec.kind === "attack" ? "attack" : spec.kind === "save" ? "save" : "check", ability: rollAbility(spec), ranged: !!spec.ranged });
   // Rule-element advantage on d20 rolls too (any dice roll, King 2026-11-13).
-  const authored = contextualAdvantage(actor, spec, target);
+  const authored = contextualAdvantage(actor, spec, target, cardCtx.extra);
   sources.advantage.push(...authored.advantage);
   sources.disadvantage.push(...authored.disadvantage);
   // Sources the caller worked out (weapon properties and range, ATK1).
@@ -144,6 +154,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   sources.disadvantage.push(...(spec.disadvantageSources ?? []));
   // Minions automatically fail saving throws (Bingo Book; NPC1).
   if ( spec.kind === "save" && actor.system?.autoFailSaves && !sources.autoFail ) sources.autoFail = "Minion";
+  if ( extraFx.autoFail.length && !sources.autoFail ) sources.autoFail = extraFx.autoFail.join(", ");
   addSheetToggle(sources, actor, "d20");
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
   let mode = resolveMode(sources, forced ?? "normal");
@@ -171,7 +182,15 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     edited = composed.edited;
   }
   const formula = `${MODES[mode]} + @bonus${extra ? ` + ${extra}` : ""}`;
-  const roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
+  let roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
+  // STD1 reroll element: roll again and keep the lower, the higher, or the new result.
+  if ( extraFx.reroll ) {
+    const again = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
+    const first = roll.total;
+    const m = extraFx.reroll.mode;
+    roll = m === "lower" ? (again.total < roll.total ? again : roll) : m === "higher" ? (again.total > roll.total ? again : roll) : again;
+    spec = { ...spec, note: [spec.note, `Reroll (${extraFx.reroll.label}): ${first} and ${again.total}, kept ${roll.total}`].filter(Boolean).join(" · ") };
+  }
   const threshold = critThreshold(actor, spec.scope, spec.critBonus);
   const result = readD20(roll, threshold);
   const wof = (actor.system.willOfFire?.value ?? 0) > 0;
@@ -182,6 +201,9 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     if ( sources.autoFail && spec.kind === "save" ) {
       if ( d.degree > 1 ) Object.assign(d, { degree: 1, key: "failure" });
       spec = { ...spec, note: [spec.note, `Automatic failure: ${sources.autoFail}`].filter(Boolean).join(" · ") };
+    } else if ( extraFx.autoSucceed.length ) {
+      if ( d.degree < 2 ) Object.assign(d, { degree: 2, key: "success" });
+      spec = { ...spec, note: [spec.note, `Automatic success: ${extraFx.autoSucceed.join(", ")}`].filter(Boolean).join(" · ") };
     }
     degree = d.degree;
     const outcomeKey = fourTier ? d.key : d.degree >= 2 ? "success" : "failure";
@@ -200,7 +222,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
       dc, degree, fourTier, tiers, degreeShift: spec.degreeShift, breakdown: spec.breakdown, targetUuid: target?.uuid ?? null,
       total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined,
-      source: source || undefined, onSuccess: onSuccess || undefined, effect: effect !== "" && effect != null ? String(effect) : undefined, name: actor.name }, ...(card ? { card } : {}) } }
+      source: source || undefined, consumed: usedOnCard.length ? spentBy(usedOnCard, actor.uuid) : undefined, onSuccess: onSuccess || undefined, effect: effect !== "" && effect != null ? String(effect) : undefined, name: actor.name }, ...(card ? { card } : {}) } }
   });
   // Help is spent by the roll it helped.
   if ( sources.consume.includes("helped") && actor.isOwner && actor.statuses?.has("helped") ) {

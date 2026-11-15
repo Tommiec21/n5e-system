@@ -64,7 +64,9 @@ import { activityKinds } from "../config/activities.mjs";
 import { payPoolCost } from "./resources.mjs";
 export { payPoolCost } from "./resources.mjs";
 import { applyHealing } from "./health.mjs";
-import { contextualModifiers } from "../rules/elements.mjs";
+import { contextualModifiers, contextualRoll, shapeDice } from "../rules/elements.mjs";
+import { describeElement } from "../rules/action-effects.mjs";
+import { cardActionContext } from "./action-effects.mjs";
 
 // A data-* attribute, or nothing when the value is empty. Buttons carry everything their click needs
 // in these attributes (JSON for parts/costs/effects), because chat cards are stored as plain HTML.
@@ -87,11 +89,11 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
  * @param {string} [o.critExtra]   dice a crit adds after doubling (Deadly X, ATK1)
  */
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
-  piercing = false, weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
+  weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
   const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
-  const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("piercing", piercing ? 1 : "")}${attr("crit-extra", critExtra)}`;
+  const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("crit-extra", critExtra)}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
 }
@@ -124,10 +126,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
   // damage (psychic ignores DR) only when cast as Genjutsu.
   const live = (discipline && item.system.liveAs?.(discipline)) || item.system.live || {};
   const castGen = item.type === "jutsu" && discipline ? discipline === "gen" : item.system.discipline === "gen";
-  // Cast-time flags from the Moldings chosen (workflow/cast.mjs): Precise = advantage on the attack,
-  // Heightened = the first target's save at disadvantage, Piercing = damage ignores resistance and half DR.
-  const castAttrs = { attack: flags.precise ? attr("adv", 1) : "", save: flags.heightened ? attr("dis", 1) : "",
-    damage: flags.piercing ? { piercing: true } : {} };
+  // What an action changes about its rolls (Moldings and the like) is not written into the buttons: it
+  // travels as action effects on the card (STD2, workflow/action-effects.mjs) and acts when they roll.
   const rows = [];
   const level = actor?.system?.level ?? 0;
   // Save DC: a jutsu's own; otherwise the discipline the activity names ("Taijutsu save DC"), else the item's.
@@ -149,7 +149,7 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     if ( !a.save?.abilities || ![...a.save.abilities].length ) return "";
     const ab = [...a.save.abilities][0];
     const dc = dcFor(a);
-    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("on-success", a.save?.onSuccess || "")}${attr("resave", a.save?.resave ? 1 : "")}${castAttrs.save}
+    return `<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("on-success", a.save?.onSuccess || "")}${attr("resave", a.save?.resave ? 1 : "")}
       ${attr("label", a.label || item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
       DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>`;
   };
@@ -220,16 +220,16 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
       const own = disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
         : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
       const bonus = (item.type === "jutsu" ? live.attack : own) + (Number(a.attack?.bonus) || 0);
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}${castAttrs.attack}
-        ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}${flags.precise ? " (advantage)" : ""}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: castGen || (item.type !== "jutsu" && disc === "gen"), weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}
+        ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}</button>
+        ${damageButtons(a.damage?.parts, { genjutsu: castGen || (item.type !== "jutsu" && disc === "gen"), weapon: isBukijutsu(item) })}</div>`);
     } else if ( a.type === "save" ) {
       const ab = [...(a.save?.abilities ?? [])][0];
       const dc = dcFor(a);
-      rows.push(`<div class="act-row">${payButton(a)}<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}${castAttrs.save}
+      rows.push(`<div class="act-row">${payButton(a)}<button type="button" data-n5e-act="save"${attr("ability", ab)}${attr("dc", dc)}
         ${attr("four", a.save?.fourTier ? 1 : "")}${attr("tiers", JSON.stringify(a.save?.tiers ?? {}))}${attr("on-success", a.save?.onSuccess || "")}${attr("resave", a.save?.resave ? 1 : "")}${attr("label", item.name)}${attr("inflicts", a.inflicts?.length ? JSON.stringify(a.inflicts) : "")}><i class="fa-solid fa-shield-halved"></i>
-        DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}${flags.heightened ? " (first target: disadvantage)" : ""}</button>
-        ${damageButtons(a.damage?.parts, { genjutsu: castGen, weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);
+        DC ${dc} ${esc(abilities[ab]?.label ?? ab)} save${a.save?.onSuccess === "half" ? " (half on success)" : ""}${a.save?.fourTier ? " · four-tier" : ""}${a.inflicts?.length ? ` · ${esc(a.inflicts.map(i => i.label).join(", "))}` : ""}</button>
+        ${damageButtons(a.damage?.parts, { genjutsu: castGen, weapon: isBukijutsu(item) })}</div>`);
     } else if ( a.type === "damage" ) {
       // Authored damage keeps its own name on the button ("Lethal Attack", "Take Life").
       rows.push(`<div class="act-row">${damageButtons(a.damage?.parts, { genjutsu: castGen, weapon: isBukijutsu(item),
@@ -350,7 +350,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         ui.notifications.info(`Immune to this Genjutsu: ${text}.`);
       }
       return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
-        { event, mode: d.adv ? "advantage" : undefined, source: message?.id ?? "",
+        { event, source: message?.id ?? "",
           ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     }
     case "damage": {
@@ -363,7 +363,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       if ( coatings.length && !weapon.isOwner ) return fail("warn", "Only the weapon owner can roll coated damage.");
       parts.push(...coatings.flatMap(c => c.parts.map(p => ({ ...p, abilityMod: 0 }))));
       const targets = targetActors ? targetActors.map(actor => ({ actor })) : Array.from(game.user?.targets ?? []);
-      const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
+      // STD1/STD2: elements on this damage roll, the actor's own and the card's action effects: extra
+      // damage, dice changes, damage handling (resistance, immunity, DR) for when it is applied.
+      const dmgSpec = { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" };
+      const oneTarget = targets.length === 1 ? targets[0].actor : null;
+      const cardCtx = cardActionContext(message?.id, actor);
+      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0 };
+      parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
+      const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
       // Critical (preset from the attack) and the mode. Flat modifiers fold into the first part.
       const modParts = modifiers.parts?.length ? modifiers.parts : (modifiers.bonus ? [{ label: "Effects", value: modifiers.bonus }] : []);
@@ -378,6 +385,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const rolls = [], rollMetadata = [], advNotes = [];
       for ( const [index, p] of parts.entries() ) {
         let formula = level(p.formula);
+        if ( index === 0 && (shaped.maximizeDice || shaped.minimumDie) ) formula = shapeDice(formula, { maximize: shaped.maximizeDice, minimum: shaped.minimumDie });
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
         if ( formula.includes("@unarmed") ) {
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
@@ -415,14 +423,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           </header>
           ${diceHTML}
           ${advNotes.length ? `<div class="note">${esc(advNotes.join(" · "))}</div>` : ""}
+          ${shaped.handling ? `<div class="note">${esc(`${shaped.sources.join(", ")}: ${describeElement({ key: "damageHandling", ...shaped.handling })}`)}</div>` : ""}
           ${applyButtons()}</div>`,
-        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing, effect: d.effect ?? null }, actorUuid: actor?.uuid ?? null } } });
+        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, handling: shaped.handling, effect: d.effect ?? null }, actorUuid: actor?.uuid ?? null } } });
     }
     case "save": {
       const dc = Number(d.dc);
       const targets = selectedActors ?? targetsOrSelf(null);
       if ( !targets.length ) return fail("info", "Select the tokens that roll the save.");
-      let first = true;
       let rolled = 0;
       // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.
       const immune = await stimuliImmune(message, targets);
@@ -447,12 +455,10 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           `<button type="button" data-n5e-inflict="${esc(i.key)}" data-kind="${esc(i.kind)}" data-ranks="${i.ranks}"${d.resave ? ` data-resave="${esc(JSON.stringify({ ability: d.ability, dc, label: d.label }))}"` : ""}>Apply ${esc(i.label)}${i.kind === "condition" ? ` ${i.ranks}` : ""}</button>`).join("")}</div>` : "";
         // Condition resistance (optional rule): advantage on saves against a condition you resist.
         const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition").map(i => i.key));
-        if ( resisted ) spec.note = [spec.note, "Advantage: resists the condition"].filter(Boolean).join(" · ");
-        // Heightened Ninjutsu: the first target rolls at disadvantage (resistance cancels it out).
-        const dis = d.dis && first;
-        first = false;
-        const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
-        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}"),
+        // Resisting the condition is one more advantage source; disadvantage from the action (an action
+        // effect "imposed" on its targets' saves, STD2) cancels it in the advantage engine.
+        if ( resisted ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];
+        await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, target: caster, tiers: JSON.parse(d.tiers || "{}"),
           source: message?.id ?? "", onSuccess: d.onSuccess || "", prepared: prepared ?? null, effect: d.effect ?? "" });
         rolled++;
       }

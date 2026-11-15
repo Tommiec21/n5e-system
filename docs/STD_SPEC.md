@@ -1,6 +1,6 @@
 # STD plan: full system standardization (no hard-coded effects)
 
-Status: **plan for a later push (King, 2026-11-14). One of the final passes. King answered Q-STD1–Q-STD6 on 2026-11-14. Nothing is built.**
+Status: **plan for a later push (King, 2026-11-14). One of the final passes. King answered Q-STD1–Q-STD6 on 2026-11-14. King approved and asked for STD0–STD2 together (2026-11-15); **STD0–STD2 published 0.42.0-alpha.1.**
 
 King (2026-11-14): every effect from features, jutsu and feats must interact with the system in a way that can be reviewed in game and is not hard-coded. What can be built with Active Effects should be. Heightened must not be hard-coded: it runs through the Active Effects system, and that system must be robust enough to force advantage or disadvantage on saves without naming a feature in code. This covers all classes, all jutsu, all clans and all feats.
 
@@ -135,3 +135,9 @@ Each batch follows the usual rule: a spec, King's approval, build, tests, releas
 
 - 2026-11-14 Claude: plan written from a survey of the current code and content. Nothing built.
 - 2026-11-14 Claude: King answered Q-STD1–Q-STD6. Content passes reordered (Items, Stances, Feats, Classes, Clans, Jutsu); CARD1d-b folded into STD1/STD2; FEATAUTO1 becomes STD6d; Notes tab for non-automatable effects; no world migration.
+- 2026-11-15 Claude: **STD0–STD2 built and published 0.42.0-alpha.1** (King: "Approved. You can work on STD 0 - 2 all together.").
+  - STD0: `tools/check-hardcoding.mjs` (every pack identifier as a string literal in `module/` fails `npm run check` unless in `tools/hardcoding-allowlist.json`: 25 names in 11 files after STD2); `tools/report-std-audit.mjs` → `docs/generated/std-audit.md` (allowlist, name/description tests, state and condition names in engines, text fallback, coverage per pack).
+  - STD1: `rules/elements.mjs` v2 (`ELEMENT_KEYS`, directions, scopes, targets, events; `actsFromActor`, `gatherElements` (self + against + extra), `contextualRoll`, `mergeHandling`, `shapeDice`); `contextualModifiers`/`contextualAdvantage`/`contextualSpec` take the card's elements; `dice/roll.mjs` applies autoFail, autoSucceed, reroll, critRange and notes, and records spent uses on the roll (`flags.n5e.roll.consumed`); the card damage roll adds extra damage, dice shaping and damage handling (`flags.n5e.damage.handling`, read by `rules/damage.mjs damagePlan({handling})`); `rules/effect-authoring.mjs validateConditionalRules` checks every key and field.
+  - STD2: `rules/action-effects.mjs` (`actionEffectsOf`, `cardElements`, `spentBy`, `describeElement`), `workflow/action-effects.mjs` (`cardActionContext`, `consumedOn`); effects with `flags.n5e.applyTo: "action"` (transfer off); the cast card stores `flags.n5e.actionEffects` from the chosen Moldings/Maneuvers and feature cast options (`plan.chosenFeatureOptions`) and lists them. Precise, Heightened and Piercing Ninjutsu authored as action effects in the features pack; their identifiers, the molding flags and the `adv`/`dis`/`piercing` button attributes removed from `cast.mjs` and `activity-buttons.mjs`.
+  - Readings: inflict, effect and resource keys are validated and described but not yet run from action effects (STD4 triggers and STD5 authoring); damage-roll uses are not counted (no damage element uses `uses` yet); reroll applies to d20 rolls.
+  - Tests: `tests/core/elements-v2.test.mjs` +5. Suites: 545 and 155 pass.

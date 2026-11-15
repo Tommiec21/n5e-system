@@ -28,7 +28,7 @@ const has = (set, k) => (set instanceof Set ? set.has(k) : list(set).includes(k)
  * @param {boolean} [o.ignoreDR]      condition/environment damage, or effects that say so
  * @param {boolean} [o.genjutsu]      source is a Genjutsu (its psychic damage ignores DR)
  * @param {boolean} [o.crit]
- * @param {boolean} [o.piercing]      Piercing Ninjutsu: half DR, no resistance, immunity -> resistance
+ * @param {object} [o.handling]       damageHandling rule elements (STD1): {ignoreResistance, immunityAsResistance, drMultiplier}
  */
 /**
  * Penalties to damage a creature deals (DMG1), taken off the roll's typed parts in order, first type
@@ -54,7 +54,7 @@ export function exhaustedRollTotal(total, actor) {
   return Math.max(0, total - Math.max(0, actor?.system?.exhaustion ?? 0));
 }
 
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1, dealtPenalty = 0, ignoreTraits = false } = {}) {
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, handling = null, flatReduction = 0, drOrder, reactionMultiplier = 1, dealtPenalty = 0, ignoreTraits = false } = {}) {
   const sys = target.system;
   // PRESTD1 A2 (optional rule applyResistances off): resistance, immunity and vulnerability are
   // skipped, and the ones that would have applied are listed for the GM.
@@ -87,7 +87,8 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   // Static and rolled DR share the same rules; one budget independently protects HP and CP.
   if ( !Number.isFinite(flatReduction) || flatReduction < 0 ) throw new Error("Invalid rolled DR.");
   const totalDR = (sys.dr ?? 0) + Math.floor(flatReduction);
-  const dr = Math.max(0, piercing ? Math.floor((totalDR - pierce) / 2) : totalDR - pierce);
+  const drMultiplier = Number.isFinite(Number(handling?.drMultiplier)) ? Math.max(0, Math.min(1, Number(handling.drMultiplier))) : 1;
+  const dr = Math.max(0, drMultiplier !== 1 ? Math.floor((totalDR - pierce) * drMultiplier) : totalDR - pierce);
   const eligibleTypes = [...new Set(parts.filter(p => p.amount > 0 && !(genjutsu && p.type === "psychic")).map(p => p.type))];
   const healthTypes = eligibleTypes.filter(t => t !== "chakra");
   const requiresDROrder = !ignoreDR && dr > 0 && healthTypes.length > 1 && drOrder === undefined;
@@ -108,13 +109,13 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
   // Resistance / vulnerability / immunity per type.
   parts = parts.map(p => {
     if ( !p.amount ) return p;
-    if ( has(traits.immune, p.type) && !piercing ) {
+    if ( has(traits.immune, p.type) && !handling?.immunityAsResistance ) {
       steps.push(`Immune to ${p.type}: −${p.amount}`);
       return { ...p, amount: 0 };
     }
-    const immunityAsResistance = has(traits.immune, p.type) && piercing;
+    const immunityAsResistance = has(traits.immune, p.type) && !!handling?.immunityAsResistance;
     // Petrified: resistance to all damage.
-    const r = ((has(traits.resist, p.type) || !!pen.flags?.resistAll) && !piercing) || immunityAsResistance;
+    const r = ((has(traits.resist, p.type) || !!pen.flags?.resistAll) && !handling?.ignoreResistance) || immunityAsResistance;
     const v = !immunityAsResistance && has(traits.vuln, p.type);
     // Equal sources do not stack; opposite Half/Double sources cancel (King 2026-11-09).
     const factors = new Set([multiplier, reactionMultiplier, ...(r ? [0.5] : []), ...(v ? [2] : [])]);

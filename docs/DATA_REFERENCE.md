@@ -641,3 +641,15 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Rule `gradualAbility` (boolean, off) | Gradual ability increases: +1 ability at 2, 6, 10, 14, 18; feat and Mastery at 4, 8, 12, 16, 19 |
 | `progression.gradualAbilityLevels` | [2, 6, 10, 14, 18] |
+
+## Added in 0.42.0-alpha.1 (STD0–STD2)
+
+| Path | Meaning |
+| --- | --- |
+| Rule element fields `direction` (self, imposed, against), `scope` (always, action, turn, round), `uses`, `targets` (all, one, chosen), `on` | Rule elements v2 |
+| Rule element keys `autoFail`, `autoSucceed`, `reroll {mode}`, `critRange`, `maximizeDice`, `minimumDie`, `damage {formula, damageType}`, `damageHandling {ignoreResistance, immunityAsResistance, drMultiplier}`, `addRanks`, `inflict {condition, ranks}`, `effect`, `resource {pool, amount}`, `note {text}` | New keys |
+| ActiveEffect `flags.n5e.applyTo: "action"` | An action effect: copied onto the action's card, never applied to the actor |
+| ChatMessage `flags.n5e.actionEffects [{id, origin, label, rules}]` | The action effects on a card |
+| ChatMessage `flags.n5e.roll.consumed [{elementId, rollerUuid}]` | Uses a roll spent from its card |
+| ChatMessage `flags.n5e.damage.handling` | Damage handling for when the damage is applied (replaces `piercing`) |
+| `tools/hardcoding-allowlist.json` | Content names still in engine code (to be emptied by STD batches) |

@@ -107,7 +107,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const immuneWhy = immuneToOrigin(data.rollTrace?.originUuid, actor);
     const reaction = !immuneWhy && beforePlan ? await beforePlan(actor) : {};
     const damageOptions = { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
-      piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0, reactionMultiplier: reaction.multiplier ?? 1,
+      handling: data.handling ?? null, flatReduction: reaction.flatReduction ?? 0, reactionMultiplier: reaction.multiplier ?? 1,
       dealtPenalty: Number(data.dealtPenalty) || 0, ignoreTraits: !rule("applyResistances") };
     let plan = damagePlan(actor, immuneWhy ? [] : data.instances, damageOptions);
     if ( plan.requiresDROrder && !immuneWhy ) {

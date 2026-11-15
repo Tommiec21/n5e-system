@@ -308,3 +308,10 @@
 | Rule | Code |
 | --- | --- |
 | Optional: +1 ability at 2, 6, 10, 14, 18; feat and its Mastery rank at 4, 8, 12, 16, 19 (King Q-P12, Q-P14) | `rules/progression.mjs asiParts`, `advancement/steps.mjs`, `templates/apps/level-up.hbs` |
+
+## Standardization STD0–STD2 (0.42.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Precise Ninjutsu (advantage on the cast's attack), Heightened (one target, first save at disadvantage), Piercing (no resistance, immunity as resistance, half DR) | data: action effects in the features pack; engine: `rules/action-effects.mjs`, `rules/elements.mjs`, `rules/damage.mjs damagePlan({handling})` |
+| Rule elements v2 (directions, uses, targets, new keys) | `rules/elements.mjs`, `rules/effect-authoring.mjs` |

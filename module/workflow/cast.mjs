@@ -8,6 +8,7 @@
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
+import { actionEffectsOf, describeElement } from "../rules/action-effects.mjs";
 import { trackerButtons } from "./trackers.mjs";
 import { castPlan } from "./cast-plan.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
@@ -168,11 +169,10 @@ export async function postCastCard(actor, item, plan) {
   const activities = effectiveActivities(item, { rank: plan.rank });
   const spent = [plan.costMode === "chakra" ? `${plan.cost} CP` : plan.costMode === "none" ? "No cost" : "Special cost",
     ...Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`)].join(" · ");
-  // Moldings that change the card's buttons: Precise (attack advantage), Heightened (first save at
-  // disadvantage), Piercing (damage: half DR, no resistance).
-  const usedIds = new Set((plan.options ?? []).map(o => actor.items.get(o.id)?.system.identifier).filter(Boolean));
-  const moldingFlags = { precise: usedIds.has("precise-ninjutsu"), heightened: usedIds.has("heightened-ninjutsu"),
-    piercing: usedIds.has("piercing-ninjutsu") };
+  // STD2: what the chosen Moldings, Maneuvers and feature cast options change about this cast's rolls
+  // is their action effects (Active Effects with applyTo "action"), copied onto the card.
+  const chosenItems = [...(plan.options ?? []), ...(plan.chosenFeatureOptions ?? [])].map(o => actor.items.get(String(o.id).split("-")[0])).filter(Boolean);
+  const actionEffects = actionEffectsOf([...new Set(chosenItems)]);
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
   const extras = [];
   const castAs = plan.discipline || castDisciplineOf(actor, item);
@@ -180,7 +180,7 @@ export async function postCastCard(actor, item, plan) {
   extras.push((await import("./clash.mjs")).clashButton(item));
   // Unaware Genjutsu (GEN1, KB 10): its targets don't know they're in it until they identify it.
   if ( castAs === "gen" && j.unaware ) extras.push('<div class="note">Unaware: targets don\'t know they are in this Genjutsu until they succeed on Identify Genjutsu.</div>');
-  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen", piercing: moldingFlags.piercing })}</div>`);
+  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen" })}</div>`);
   // Healing a feature adds (Channeled Healing, Talented Support's temporary HP).
   if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
@@ -215,7 +215,8 @@ export async function postCastCard(actor, item, plan) {
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
     ${areaButton(item, { rank: plan.rank })}
-    ${activityButtons(actor, item, activities, { rank: plan.rank, flags: moldingFlags, discipline: castAs })}
+    ${actionEffects.length ? `<div class="n5e-action-effects">${actionEffects.map(fx => `<div class="note"><b>${esc(fx.label)}</b>: ${esc(fx.rules.map(describeElement).filter(Boolean).join("; "))}</div>`).join("")}</div>` : ""}
+    ${activityButtons(actor, item, activities, { rank: plan.rank, discipline: castAs })}
     ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;
@@ -229,7 +230,8 @@ export async function postCastCard(actor, item, plan) {
   }
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   return ChatMessageCls.create({ speaker: ChatMessageCls.getSpeaker({ actor }), content,
-    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs }, ...(card ? { card } : {}) } } });
+    flags: { n5e: { cast: { itemUuid: item.uuid, actorUuid: actor.uuid, rank: plan.rank, cost: plan.cost, discipline: castAs },
+      ...(actionEffects.length ? { actionEffects } : {}), ...(card ? { card } : {}) } } });
 }
 
 export { RANKS };

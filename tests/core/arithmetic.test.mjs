@@ -28,7 +28,7 @@ test("damage flat subtraction precedes multipliers; identical factors apply once
   assert.equal(damagePlan(hit({ vuln: ["fire"] }), damage, { multiplier: 0.5 }).health, 16);
   assert.equal(damagePlan(hit({ resist: ["fire"] }), damage, { multiplier: 2 }).health, 16);
   assert.equal(damagePlan(hit({ immune: ["fire"] }), damage, { multiplier: 2 }).health, 0);
-  assert.equal(damagePlan(hit({ immune: ["fire"] }), damage, { piercing: true, multiplier: 0.5 }).health, 9);
+  assert.equal(damagePlan(hit({ immune: ["fire"] }), damage, { handling: { ignoreResistance: true, immunityAsResistance: true, drMultiplier: 0.5 }, multiplier: 0.5 }).health, 9);
   assert.equal(damagePlan(actor, damage, { flatReduction: 6, multiplier: 0.5 }).health, 5);
   assert.equal(damagePlan(actor, damage, { flatReduction: 6, pierce: 3 }).health, 13);
 });

@@ -34,7 +34,44 @@
     "resourcePools": [],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e8Kr0XQi62dLPF",
+      "name": "Heightened Ninjutsu",
+      "type": "generic",
+      "img": "icons/svg/lightning.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "disadvantage",
+              "selector": "save",
+              "direction": "imposed",
+              "scope": "action",
+              "targets": "one",
+              "uses": 1,
+              "label": "Heightened Ninjutsu"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eaobOBLMLtFClj.n5e8Kr0XQi62dLPF"
+    }
+  ],
   "folder": "n5e3afQXYUJOLznu",
   "sort": 0,
   "ownership": {
