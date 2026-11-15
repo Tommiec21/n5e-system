@@ -38,10 +38,21 @@ Plan: `docs/NPC1_PLAN.md` ("How adversaries fight: Freeform"). Source: the Bingo
 
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
-| C1 | Builder step 7 | `applications/npc/adversary-builder.mjs`, `templates/apps/adversary-builder.hbs` | The "Coming with NPC3" section becomes three builders. **Strike:** the five decisions (range, counts-as, rider and its save, damage type, name), with the table's damage shown as you choose. **Jutsu:** offensive, defensive or support, then the book's steps for that kind, with the effective level and damage (or focus value) shown live. **Ability:** cost, rank, timing, text, or start from a book example. The jutsu count includes Freeform Jutsu against the limit. Slots used against the suggested Freeform slots for the class and level. |
+| C1 | Builder step 7 | `applications/npc/adversary-builder.mjs`, `templates/apps/adversary-builder.hbs` | The "Coming with NPC3" section becomes the list of Strikes and Freeform Jutsu, added and edited through the NPC3d windows (originally three inline builders). **Strike:** the five decisions (range, counts-as, rider and its save, damage type, name), with the table's damage shown as you choose. **Jutsu:** offensive, defensive or support, then the book's steps for that kind, with the effective level and damage (or focus value) shown live. **Ability:** cost, rank, timing, text, or start from a book example. The jutsu count includes Freeform Jutsu against the limit. Slots used against the suggested Freeform slots for the class and level. |
 | C2 | Draft and save | `rules/adversary-builder.mjs` | Freeform entries in the draft (`freeform: [{kind, …choices}]`); `draftToUpdate` creates or updates their items from the choices; `draftFromActor` reads them back from `flags.n5e.freeform`. |
 | C3 | After building | the NPC sheet | Freeform items are ordinary items on the sheet (Combat, Jutsu, Features tabs) and can be edited there. "Rebuild in the builder" opens step 7 on that item. |
 | C4 | Level changes | `rules/freeform.mjs` | When the adversary's level changes, its Freeform items are recalculated from their choices (damage, DC, values), so a level 9 adversary taken to 12 hits like a level 12 one. A hand-edited formula is kept and marked (Q-N38's sibling: the GM's edit wins). |
+
+## NPC3d: the creation windows (King 2026-11-14)
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| D1 | Freeform Jutsu window | `applications/npc/freeform-jutsu.mjs`, `templates/apps/freeform-jutsu.hbs` | A pop-up for one jutsu, the book's steps in order: kind (offensive, defensive, support); rank (with the class and level suggestion); keywords; range; single target (attack or save) or area and shape; extra effects with their tier and recovery (offensive up to two, defensive one); defensive or support focus. The effective level, damage or focus value, and chakra cost update live. Save creates or updates the jutsu on the NPC. |
+| D2 | Freeform Strike window | `applications/npc/freeform-strike.mjs`, `templates/apps/freeform-strike.hbs` | A pop-up for one Strike, the five decisions: range (melee reach, or ranged 60 ft); counts as (weapon, Ninjutsu, Genjutsu or Taijutsu), which sets the attack line; optional rider with its tier, save and DC; damage type; single attack with combined damage, or one attack per Multiattack. The damage from the table updates live. Save creates or updates the Strike. |
+| D3 | Where they open | builder step 7; the NPC sheet | "Add Freeform Jutsu" and "Add Freeform Strike" in the Builder's step 7; "New Freeform Jutsu" on any NPC's Jutsu tab and "New Freeform Strike" on its Combat tab; "Edit" on an existing Freeform item reopens its window with its choices. |
+| D4 | One source of choices | `rules/freeform.mjs` | Both windows, the Builder and the recalculation on level change read and write the same `flags.n5e.freeform` choices, so an item edited in either place stays the same item. |
+
+C1 changes: the Builder's step 7 lists the adversary's Strikes and Freeform Jutsu with Edit and Remove, and opens D1 and D2 to add or edit; it no longer holds the three builders inline. C3's "Rebuild in the builder" becomes "Edit", which opens D1 or D2.
 
 ## Tests
 
@@ -73,5 +84,6 @@ Plan: `docs/NPC1_PLAN.md` ("How adversaries fight: Freeform"). Source: the Bingo
 
 ## Progress log
 
+- 2026-11-14 Claude: King: a pop-up creation window for Freeform Jutsu and one for Strikes (NPC3d).
 - 2026-11-14 Claude: King answered Q-N33–Q-N41. Abilities moved to NPC4.
 - 2026-11-14 Claude: spec written from the Bingo Book's "Adversary Combat" chapter and the core book's chakra cost ranges. Nothing built.
