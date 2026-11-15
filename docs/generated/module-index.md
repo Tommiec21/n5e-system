@@ -22,7 +22,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 142 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll` |
+| `api.mjs` | 147 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
 | `settings.mjs` | 59 | World settings. | `registerSettings` |
 
@@ -61,6 +61,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `automation-audit.mjs` | 76 | GM Automation Audit (STD5; docs/STD_SPEC.md "Reviewable in game"). | `AutomationAudit`, `auditLabel` |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
 | `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
@@ -71,7 +72,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `item-sheet.mjs` | 176 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
+| `item-sheet.mjs` | 182 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
 | `reaction-editor.mjs` | 31 |  | `editReaction` |
 
 ## module/applications/npc
@@ -214,7 +215,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `ac.mjs` | 71 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC` |
 | `action-card.mjs` | 360 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `savesOf`, `damagesOf`, `appliedOf`, `allApplied`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
-| `action-effects.mjs` | 83 | Action effects (STD2; docs/STD_SPEC.md). | `actionEffectsOf`, `cardElements`, `spentBy`, `describeElement` |
+| `action-effects.mjs` | 100 | Action effects (STD2; docs/STD_SPEC.md). | `actionEffectsOf`, `cardElements`, `spentBy`, `describeElement`, `summarizeElement` |
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 161 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 41 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
@@ -222,6 +223,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 183 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `authored-reactions.mjs` | 38 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
+| `automation-summary.mjs` | 49 | What an item does, read from its data (STD5; docs/STD_SPEC.md "Reviewable in game"): every channel (activities, Active Effects and their changes, rule elemen... | `automationOf`, `STATUS_LABELS` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 58 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
 | `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
@@ -241,7 +243,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
-| `effect-authoring.mjs` | 189 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
+| `effect-authoring.mjs` | 190 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 281 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `selectorNames`, `gatherElements`, `contextualRoll`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
@@ -335,7 +337,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |
 | `effect-application.mjs` | 120 | Effect-application cards (dnd5e effect-application parity). | `withCardLink`, `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
-| `environment.mjs` | 275 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
+| `environment.mjs` | 278 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
 | `expiry.mjs` | 67 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |

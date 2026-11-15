@@ -1,0 +1,6 @@
+{{!-- Notes tab (STD5; King Q-STD6): what stays at the table and why, kept apart from the item's text. Data: auto.notes. --}}
+<section class="n5e-item-tab notes {{tab.cssClass}}" data-tab="notes">
+  <div class="section-head"><h2>Notes</h2></div>
+  {{#each auto.notes}}<div class="auto-note"><b>{{label}}.</b> {{text}}</div>
+  {{else}}<p class="muted">No notes. A note is a rule element <code>{"key": "note", "text": "…"}</code> on the item or one of its effects.</p>{{/each}}
+</section>

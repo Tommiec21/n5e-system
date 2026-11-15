@@ -673,3 +673,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Actor `flags.n5e.triggerTurn {stamp, keys}` | Once-per-turn triggers already fired |
 | Class column `deflectionDice` (Weapon Specialist) | Deflection dice by level |
 | Predicate option `self:stance:<id>` | The active stance |
+
+## Added in 0.45.0-alpha.1 (STD5)
+
+| Path | Meaning |
+| --- | --- |
+| `game.n5e.api.automationAudit()` | The GM Automation Audit window |
+| `rules/automation-summary.mjs automationOf(item)` | {channels, notes, status, mentions} for the Automation tab and the audit |

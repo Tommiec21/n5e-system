@@ -4,6 +4,7 @@
  * Advancement (classes, subclasses, clans) and Effects. Details are typed fields per item type from
  * the item view model, so one template serves every type.
  */
+import { automationOf, STATUS_LABELS } from "../../rules/automation-summary.mjs";
 import { itemVM } from "../../view-models/item.mjs";
 import { editReaction } from "./reaction-editor.mjs";
 
@@ -42,7 +43,9 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     description: { template: T("description"), scrollable: [""] },
     details: { template: T("details"), scrollable: [""] },
     advancement: { template: T("advancement"), scrollable: [""] },
-    effects: { template: T("effects"), scrollable: [""] }
+    effects: { template: T("effects"), scrollable: [""] },
+    automation: { template: T("automation"), scrollable: [""] },
+    notes: { template: T("notes"), scrollable: [""] }
   };
 
   /** Current tab (kept across re-renders). */
@@ -79,11 +82,14 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       { id: "description", label: "Description" },
       { id: "details", label: "Details" },
       ...(vm.advancement ? [{ id: "advancement", label: item.type === "class" ? "Progression" : "Advancement" }] : []),
-      { id: "effects", label: "Effects" }
+      { id: "effects", label: "Effects" },
+      { id: "automation", label: "Automation" },
+      { id: "notes", label: "Notes" }
     ];
     if ( !tabs.some(t => t.id === this.#tab) ) this.#tab = "description";
     return Object.assign(context, {
       vm, item, editable: this.isEditable, canConfigureReaction: this.isEditable && game.user.isGM,
+      auto: (({ channels, notes, status, mentions }) => ({ channels, notes, status, mentions, statusLabel: STATUS_LABELS[status] }))(automationOf(item)),
       typeLabel: game.i18n.localize(CONFIG.Item.typeLabels?.[item.type] ?? item.type),
       tabs: tabs.map(t => ({ ...t, active: t.id === this.#tab }))
     });

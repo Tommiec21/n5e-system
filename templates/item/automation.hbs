@@ -1,0 +1,11 @@
+{{!-- Automation tab (STD5): every mechanic this item carries as data, in plain words, with its status. Data: auto = automationOf(item). --}}
+<section class="n5e-item-tab automation {{tab.cssClass}}" data-tab="automation">
+  <div class="section-head"><h2>Automation</h2><span class="auto-status {{auto.status}}">{{auto.statusLabel}}</span></div>
+  {{#if auto.channels.length}}
+    <table class="n5e-table auto-table">
+      <tr><th>Kind</th><th>Source</th><th>What it does</th></tr>
+      {{#each auto.channels}}<tr><td>{{kind}}</td><td>{{label}}</td><td>{{summary}}</td></tr>{{/each}}
+    </table>
+  {{else}}<p class="muted">Nothing on this item is automated.{{#if auto.mentions}} Its text names mechanics: review it.{{/if}}</p>{{/if}}
+  <p class="hint">Edit activities on the Details tab and effects (with their rule elements) on the Effects tab.{{#if canConfigureReaction}} The damage reaction is under Effects → Configure damage reaction.{{/if}}</p>
+</section>

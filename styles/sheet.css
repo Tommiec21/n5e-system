@@ -936,3 +936,15 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 
 /* An inactive tab never shows, whatever display a tab's own rule sets (NPCUI1 fix: the Stat Block showed under Build). */
 .n5e-v2 .window-content .n5e-tab:not(.active) { display: none; }
+
+/* STD5: Automation and Notes tabs, Automation Audit. */
+.n5e-v2 .auto-status { font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 10px; background: #E7DECF; }
+.n5e-v2 .auto-status.automated { background: #CFE8CC; }
+.n5e-v2 .auto-status.partial { background: #F3E2B0; }
+.n5e-v2 .auto-status.note { background: #DCE3F0; }
+.n5e-v2 .auto-table td { vertical-align: top; }
+.n5e-v2 .auto-note { margin-bottom: 6px; line-height: 1.45; }
+.n5e-audit .audit-filters { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+.n5e-audit .audit-filters button { width: auto; flex: none; }
+.n5e-audit .audit-filters button.active { background: var(--n5e-ink); color: var(--n5e-paper); }
+.n5e-audit .audit-rows { overflow-y: auto; max-height: 520px; }

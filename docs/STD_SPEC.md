@@ -143,3 +143,4 @@ Each batch follows the usual rule: a spec, King's approval, build, tests, releas
   - Tests: `tests/core/elements-v2.test.mjs` +5. Suites: 545 and 155 pass.
 - 2026-11-15 Claude: **STD3 published 0.43.0-alpha.1** (`docs/STD3_SPEC.md`).
 - 2026-11-15 Claude: **STD4 published 0.44.0-alpha.1** (`docs/STD4_SPEC.md`).
+- 2026-11-15 Claude: **STD5 published 0.45.0-alpha.1** (`docs/STD5_SPEC.md`).

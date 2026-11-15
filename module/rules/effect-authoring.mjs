@@ -107,7 +107,8 @@ export function editorFlags(input, original = {}) {
   if ( !Number.isSafeInteger(min) || !Number.isSafeInteger(max) || min < 0 || max < 0 || (max && min > max) ) throw new Error("Check the minimum and maximum effect levels.");
   if ( min !== (original.levels?.min ?? 0) || max !== (original.levels?.max ?? 0) ) patch.levels = { ...original.levels, min, max };
   // STD2: an action effect acts only on the action it is chosen for (copied onto its card).
-  const applyTo = input.applyTo ?? (original.applyTo ?? "");
+  // The editor's checkbox submits true/false; data may give "action" or "".
+  const applyTo = input.applyTo === true ? "action" : input.applyTo === false ? "" : (input.applyTo ?? (original.applyTo ?? ""));
   if ( !["", "action"].includes(applyTo) ) throw new Error("applyTo is blank or action.");
   if ( applyTo !== (original.applyTo ?? "") ) patch.applyTo = applyTo || null;
   for ( const [key, value] of [["requiresStance", input.stance ?? ""], ["exclusive", input.exclusive ?? ""], ["state", input.state ?? ""]] ) {

@@ -32,7 +32,7 @@ export default class EffectConfig extends Base {
     return Object.assign(context, { catalog: this.catalog, presets: EFFECT_PRESETS, canApproveMacros: !!globalThis.game?.user?.isGM, expirationChoices: { "": "None", turnStart: "Start of source turn", turnEnd: "End of source turn", nextTurnEnd: "End of next source turn" },
       guidance: { min: flags.levels?.min ?? 0, max: flags.levels?.max ?? 0, stance: flags.requiresStance ?? "",
         exclusive: flags.exclusive ?? "", state: flags.state ?? "", expires: flags.expires?.at ?? "", sourceUuid: flags.expires?.sourceUuid ?? "",
-        rules: JSON.stringify(flags.rules ?? [], null, 2), services: JSON.stringify(flags.services ?? {}, null, 2) },
+        applyTo: flags.applyTo === "action", rules: JSON.stringify(flags.rules ?? [], null, 2), services: JSON.stringify(flags.services ?? {}, null, 2) },
       raw: JSON.stringify(this.#draft, null, 2), timing: JSON.stringify({ origin: this.#draft.origin ?? null,
         disabled: this.#draft.disabled, transfer: this.#draft.transfer, configuredDuration: this.#draft.duration ?? {},
         sourceTurn: flags.expires ?? null, currentCoreDuration: this.document.duration ?? null }, null, 2),

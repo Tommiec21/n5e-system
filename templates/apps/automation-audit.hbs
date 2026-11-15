@@ -1,0 +1,15 @@
+{{!-- GM Automation Audit (STD5). Data: rows [{uuid, name, type, status, statusLabel, channelCount, noteCount, mentions}], sources, filters. --}}
+<section class="n5e-automation-audit">
+  <label>Source <select name="auditSource">{{#each sources}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+  <nav class="audit-filters">{{#each filters}}<button type="button" class="{{#if active}}active{{/if}}" data-action="auditFilter" data-filter="{{key}}">{{label}}</button>{{/each}}</nav>
+  <div class="audit-rows">
+    <table class="n5e-table">
+      <tr><th>Item</th><th>Type</th><th>Status</th><th>Channels</th><th>Notes</th></tr>
+      {{#each rows}}
+        <tr data-uuid="{{uuid}}"><td><a data-action="auditOpen">{{name}}</a>{{#if mentions}} <span class="warn" data-tooltip="Its text names a mechanic nothing authored covers">⚑</span>{{/if}}</td>
+          <td>{{type}}</td><td class="auto-status {{status}}">{{statusLabel}}</td><td>{{channelCount}}</td><td>{{noteCount}}</td></tr>
+      {{else}}<tr><td colspan="5" class="muted">Nothing here.</td></tr>{{/each}}
+    </table>
+    {{#if truncated}}<p class="hint">Showing the first 500; filter to narrow.</p>{{/if}}
+  </div>
+</section>

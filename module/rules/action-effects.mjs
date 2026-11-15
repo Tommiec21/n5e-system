@@ -77,6 +77,23 @@ export function describeElement(e = {}) {
     case "addRanks": return `+${Number(e.value) || 0} rank on conditions inflicted`;
     case "inflict": return `Inflicts ${e.condition ?? ""}${e.ranks ? ` ${e.ranks}` : ""}`;
     case "note": return e.text ?? "";
+    case "noAdvantage": return `Can't gain advantage on ${what}`;
+    case "costReduction": return Number(e.value) === 0 ? "No cost reduction on casts" : `Cost reduction at most ${e.value}`;
+    case "attacks": return `${Number(e.value) || 1} attacks per Attack action${e.implementsOnly ? " with Kunai, Shuriken or Senbon" : ""}${e.text ? ` (${e.text})` : ""}`;
+    case "initiativeOptions": return `May roll ${(e.skills ?? []).join(", ")} instead of Initiative${e.text ? `: ${e.text}` : ""}`;
+    case "resource": return `${Number(e.amount) >= 0 ? "+" : ""}${Number(e.amount) || 0} ${e.pool ?? ""}`.trim();
     default: return e.key ?? "";
   }
+}
+
+const EVENT_TEXT = { initiative: "rolling initiative", turnStart: "the start of its turn", turnEnd: "the end of its turn", hit: "it hits",
+  miss: "it misses", failedSave: "it fails a save", succeededSave: "it succeeds on a save", damageDealt: "it deals damage",
+  damageTaken: "it takes damage", zeroHP: "it drops to 0 HP" };
+
+/** The full plain-language line: trigger, action binding and the element (STD5 Automation tab). */
+export function summarizeElement(e = {}) {
+  const base = e.key === "inflict" ? `${e.who === "target" ? "The target gains" : "Gains"} ${e.condition ?? ""}${Number(e.ranks) > 1 ? ` ${e.ranks}` : ""}` : describeElement(e);
+  const when = e.on ? `When ${EVENT_TEXT[e.on] ?? e.on}${e.oncePerTurn ? " (once per turn)" : ""}: ` : "";
+  const bound = e.scope === "action" ? " (on the action it is chosen for)" : "";
+  return `${when}${base}${bound}`.trim();
 }

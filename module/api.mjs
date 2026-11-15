@@ -106,6 +106,11 @@ export async function fall(actor, feet) {
 }
 
 /** FIN4b: the GM's Indirect Exposure dialog (King Q-F14: an option; the GM decides). */
+/** STD5: the GM Automation Audit window. */
+export async function automationAudit() {
+  return (await import("./applications/gm/automation-audit.mjs")).default.open();
+}
+
 /** PRESTD1 Part F: start a social encounter with the selected NPC token (GM). */
 export async function socialEncounter() {
   return (await import("./workflow/social.mjs")).startSocialEncounter();
@@ -137,5 +142,5 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter
+  registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter, automationAudit
 };

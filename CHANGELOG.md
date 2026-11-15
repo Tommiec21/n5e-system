@@ -1,3 +1,11 @@
+## 0.45.0-alpha.1 — STD5: in-game review (King 2026-11-15: "Build out the next 3 batches")
+
+- **Automation tab** on every item sheet: each thing the item does as data (activities, effects, rule elements, action effects, triggers, its damage reaction, riders) in plain words, e.g. "Disadvantage on one target's first save (on the action it is chosen for)", and a status: Automated, Partly automated, Notes only, Nothing authored.
+- **Notes tab** on every item sheet: what stays at the table and why (note elements), kept apart from the item's text.
+- **Effect editor:** the rule-element help lists every key and field with examples, and an "Apply to the action" box makes an action effect.
+- **GM Automation Audit** (checklist button in the token controls, or `game.n5e.api.automationAudit()`): the world's items or any N5e compendium, by status, with the items whose text names a mechanic nothing authored covers. Click a row to open it.
+- Not checked in a running Foundry world.
+
 ## 0.44.0-alpha.1 — STD4: trigger elements (King 2026-11-15: "Build out the next 3 batches")
 
 No rule changes: five coded features are now data.
