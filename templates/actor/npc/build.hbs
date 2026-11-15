@@ -1,5 +1,32 @@
 {{!-- Build tab (NPC1b, NPC1c). Data: vm = npcBuildVM(actor), defenses = npcDefensesVM(actor), knowledge = npcKnowledgeVM(actor). The profile gives every number (rules/adversary.mjs); each can be overridden here. Blank override = the computed number. --}}
 <section class="tab n5e-tab npc-build {{tab.cssClass}}" data-tab="build" data-group="primary">
+  <div class="section-head"><h2>Identity</h2></div>
+  <div class="build-grid">
+    <label>Name <input type="text" name="name" value="{{actor.name}}"></label>
+    <label class="wide">Blurb <input type="text" name="system.details.blurb" value="{{npc.blurb}}" placeholder="One line under the name"></label>
+    <label>Type <input type="text" name="system.details.creatureType" value="{{npc.creatureType}}"></label>
+    <label>Template <select name="system.details.template">{{#each npc.templateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <span class="hint">Size, speeds, senses and languages: Defenses, senses and movement below.</span>
+  </div>
+  {{#unless npc.isAdversary}}
+    <div class="section-head"><h2>Player-style numbers</h2></div>
+    <div class="build-grid">
+      <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
+      <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>
+      <label data-tooltip="Blank = from level and Chakra Die">CP max <input type="number" name="system.cpMax" value="{{npc.cpMax}}" min="0"></label>
+      <label data-tooltip="Used only to work out HP max">Hit Die <input type="text" name="system.hitDie" value="{{npc.hitDie}}"></label>
+      <label data-tooltip="Used only to work out CP max">Chakra Die <input type="text" name="system.chakraDie" value="{{npc.chakraDie}}"></label>
+    </div>
+    <div class="build-abilities">
+      {{#each scores}}<label data-tooltip="{{label}}">{{abbr}} <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30"><span class="final">{{mod}}</span></label>{{/each}}
+    </div>
+  {{/unless}}
+  {{#if isGM}}
+    <div class="build-row gm-tools">
+      <button type="button" data-action="npcLeaveLoot"><i class="fa-solid fa-sack-dollar"></i> Leave loot</button>
+    </div>
+  {{/if}}
   {{#if vm.concept}}<div class="build-concept"><b>Concept</b> (GM only): {{vm.concept}}</div>{{/if}}
   <div class="build-row">
     {{#if editable}}<button type="button" data-action="npcOpenBuilder"><i class="fa-solid fa-user-ninja"></i> Open builder</button>{{/if}}

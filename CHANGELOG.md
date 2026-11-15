@@ -1,3 +1,15 @@
+## 0.40.0-alpha.1 — The new NPC sheet (NPCUI1; King 2026-11-15)
+
+The NPC sheet is no longer the character sheet with a stat block on top: every number shows once.
+- **Header:** portrait, name, "Level · Rank · Class Role", the blurb line (template, size, clan), Short Rest, Long Rest and edit mode; Hit Point and Chakra trackers (current, max, temp, bar, Bloodied/Drained) and the conditions (add, ranks, remove). No Hit or Chakra Dice.
+- **Tabs:** Stat Block, Build (GM only), Inventory, Effects, Notes. Hazards and vehicles keep their tab after Stat Block.
+- **Stat Block tab:** a panel with AC, DR, Initiative (rolls), Speed, Proficiency and Passive Perception on the left, a divider, and the six abilities on the right, each in its own box with a labelled MOD and SAVE (dark save = proficient); every value rolls through the roll dialog. Then skills, disciplines (attack rolls), defenses, senses and languages; Strikes with an Attack button and "+ Freeform Strike"; Jutsu; Features and Reactions with Use.
+- **Jutsu pills:** grouped by discipline (Ninjutsu, Taijutsu with the Bukijutsu jutsu, Genjutsu; an empty discipline isn't shown), then by rank from E/D up to S. Each pill shows the jutsu's action symbol, name and cost on a light gradient through its keyword colors in order (Ninjutsu blue, Taijutsu green, Genjutsu purple, Bukijutsu smoke gray, Earth brown, Wind silver, Fire ruby red, Water turquoise, Lightning gold). Hover shows the full jutsu; click casts; right-click opens the usual menu. "Hide color key" and each discipline's Hide/Show are remembered per user.
+- **Build tab (GM):** identity (name, blurb, type, template) moved here from the old header's edit mode, plus the player-style numbers for player-style NPCs, Leave loot, and everything it had before.
+- **Players** who don't own an NPC see its name, a condition word (Unhurt, Hurt, Bloodied, Down), what the party has learned and the public notes; no numbers.
+- **Removed:** the simple NPC sheet, and the character-only parts on NPCs (Mastery/ASI banner, Will of Fire, Pinned bar, Hit and Chakra Dice).
+- Not checked in a running Foundry world.
+
 ## 0.39.0-alpha.2 — Compendium sidebar fix (King 2026-11-15)
 
 - **Fixed:** the "N5e Browser" button in the Compendium sidebar stretched to the sidebar's full height and sat behind the pack folders as a large orange block. It now sits in the header's button row (created when Foundry leaves it out), one line high, as it does in the Items sidebar.

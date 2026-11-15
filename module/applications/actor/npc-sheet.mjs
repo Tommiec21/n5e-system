@@ -1,16 +1,20 @@
 /**
- * NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with
- *   - a stat-block header in the Bingo Book's layout (templates/actor/npc/header.hbs);
- *   - a Build tab: the adversary profile, the modifier budget, and every computed number with its
- *     baseline and an override (templates/actor/npc/build.hbs; the math is rules/adversary.mjs);
- *   - a Notes tab in place of Biography (public notes, GM-only private notes, biography);
- *   - a limited view (name, portrait, blurb, public notes) for users with Limited permission.
- * Everything else is inherited, so changes to the character sheet apply here too.
- * NPCSimpleSheet (npc-simple-sheet.mjs) is the one-page alternative.
+ * NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). Its own layout:
+ *   - header: identity, HP and CP trackers, conditions (templates/actor/npc/header.hbs);
+ *   - Stat Block: the core panel (six statistics | six abilities with MOD and SAVE), the stat-block
+ *     lines, strikes, jutsu pills by discipline then rank with keyword colors, features and reactions
+ *     (templates/actor/npc/statblock.hbs, view-models/npc-statblock.mjs);
+ *   - Build (GM only): identity, the adversary profile, every number with its baseline and override;
+ *   - Inventory and Effects (the character sheet's), Notes;
+ *   - a player who doesn't own the NPC sees only its name, a condition word, what the party has
+ *     learned and the public notes.
+ * Rolls, casting, item handling and the context menu come from CharacterSheet (inherited actions);
+ * none of its tab templates are drawn here.
  */
 import CharacterSheet from "./character-sheet.mjs";
 import { headerVM } from "../../view-models/character.mjs";
-import { npcHeaderVM, npcBuildVM, statBlockVM, npcDefensesVM, npcKnowledgeVM, learnedVM } from "../../view-models/npc.mjs";
+import { npcHeaderVM, npcBuildVM, npcDefensesVM, npcKnowledgeVM } from "../../view-models/npc.mjs";
+import { npcSheetHeaderVM, npcStatBlockVM, npcPlayerVM } from "../../view-models/npc-statblock.mjs";
 import { statLine, ABILITY_KEYS, fullSaves } from "../../rules/adversary.mjs";
 import { rule } from "../../rules/settings.mjs";
 import { buildRows } from "../schema-form.mjs";
@@ -21,9 +25,11 @@ export const NPC_TEMPLATE_PATHS = [T("stat-block"), T("casting-lines"), T("embed
 
 export default class NPCSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
-    classes: ["n5e", "sheet", "actor", "character", "npc", "n5e-v2"],
-    position: { width: 860, height: 900 },
+    classes: ["n5e", "sheet", "actor", "character", "npc", "npc-v3", "n5e-v2"],
+    position: { width: 760, height: 900 },
     actions: {
+      npcToggleLegend: NPCSheet.#onToggleLegend,
+      npcToggleDiscipline: NPCSheet.#onToggleDiscipline,
       npcApplyStatLine: NPCSheet.#onApplyStatLine,
       npcToggleFullSave: NPCSheet.#onToggleFullSave,
       npcToggleSkill: NPCSheet.#onToggleSkill,
@@ -42,56 +48,73 @@ export default class NPCSheet extends CharacterSheet {
   };
 
   static PARTS = {
-    ...CharacterSheet.PARTS,
     header: { template: T("header") },
+    tabs: { template: "systems/n5e/templates/actor/character/tabs.hbs" },
+    statblock: { template: T("statblock"), scrollable: [""] },
     build: { template: T("build"), scrollable: [""] },
+    inventory: { template: "systems/n5e/templates/actor/character/inventory.hbs", scrollable: [""] },
+    effects: { template: "systems/n5e/templates/actor/character/effects.hbs", scrollable: [""] },
     biography: { template: T("notes"), scrollable: [""] },
-    limited: { template: T("limited") }
+    limited: { template: T("limited"), scrollable: [""] }
   };
 
   static TABS = {
     primary: {
       tabs: [
-        { id: "main", label: "Main" },
+        { id: "statblock", label: "Stat Block" },
         { id: "build", label: "Build" },
-        { id: "combat", label: "Combat" },
-        { id: "jutsu", label: "Jutsu" },
         { id: "inventory", label: "Inventory" },
-        { id: "features", label: "Features" },
         { id: "effects", label: "Effects" },
         { id: "biography", label: "Notes" }
       ],
-      initial: "main"
+      initial: "statblock"
     }
   };
 
-  /** The Freeform buttons at the top of the Jutsu and Combat tabs (an editable sheet only). */
-  #addFreeformButtons() {
-    if ( !this.isEditable || this.isLimitedView ) return;
-    for ( const [tab, kind, label] of [["jutsu", "jutsu", "New Freeform Jutsu"], ["combat", "strike", "New Freeform Strike"]] ) {
-      const section = this.element.querySelector(`section.tab[data-tab="${tab}"]`);
-      if ( !section || section.querySelector("[data-n5e-new-freeform]") ) continue;
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "n5e-new-freeform";
-      button.dataset.action = "npcNewFreeform";
-      button.dataset.kind = kind;
-      button.dataset.n5eNewFreeform = kind;
-      button.innerHTML = `<i class="fa-solid fa-wand-sparkles"></i> ${label}`;
-      section.prepend(button);
+  /** The user's own toggles (color key, hidden disciplines), kept per user (client setting). */
+  get view() {
+    try {
+      const v = game.settings.get("n5e", "npcSheetView") ?? {};
+      return { legend: v.legend !== false, hidden: Array.isArray(v.hidden) ? v.hidden : [] };
+    } catch {
+      return { legend: true, hidden: [] };
     }
   }
 
-  /** A user with Limited permission (and no more) sees the limited view only. */
+  async #setView(change) {
+    await game.settings.set("n5e", "npcSheetView", { ...this.view, ...change });
+    return this.render({ parts: ["statblock"] });
+  }
+
+  static #onToggleLegend() {
+    return this.#setView({ legend: !this.view.legend });
+  }
+
+  static #onToggleDiscipline(event, target) {
+    const key = target.dataset.key;
+    const hidden = new Set(this.view.hidden);
+    if ( hidden.has(key) ) hidden.delete(key); else hidden.add(key);
+    return this.#setView({ hidden: [...hidden] });
+  }
+
+  /** A player who doesn't own the NPC sees the player view only. */
   get isLimitedView() {
-    return !game.user.isGM && this.actor.limited;
+    return !game.user.isGM && !this.actor.isOwner;
+  }
+
+  /** @override  The Build tab is the GM's. */
+  _prepareTabs(group) {
+    const tabs = super._prepareTabs(group);
+    if ( !game.user.isGM ) delete tabs.build;
+    return tabs;
   }
 
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if ( this.isLimitedView ) options.parts = ["limited"];
-    else options.parts = (options.parts ?? Object.keys(this.constructor.PARTS)).filter(p => p !== "limited");
+    else options.parts = (options.parts ?? Object.keys(this.constructor.PARTS))
+      .filter(p => p !== "limited" && (p !== "build" || game.user.isGM) && p in this.constructor.PARTS);
   }
 
   /** @override */
@@ -100,28 +123,33 @@ export default class NPCSheet extends CharacterSheet {
     const actor = this.actor;
     const d = actor.system.details;
     if ( partId === "limited" ) {
-      const learned = learnedVM(actor);
-      for ( const e of learned ) e.text = await TextEditor.enrichHTML(e.text ?? "", { relativeTo: actor });
-      context.limited = { name: actor.name, img: actor.img, blurb: d.blurb, learned,
-        publicHTML: await TextEditor.enrichHTML(d.publicNotes ?? "", { relativeTo: actor }) };
+      const vm = npcPlayerVM(actor);
+      for ( const e of vm.learned ) e.text = await TextEditor.enrichHTML(e.text ?? "", { relativeTo: actor });
+      context.limited = { ...vm, publicHTML: await TextEditor.enrichHTML(d.publicNotes ?? "", { relativeTo: actor }) };
       return context;
     }
     context = await super._preparePartContext(partId, context, options);
     switch ( partId ) {
-      case "header":
-        context.vm = headerVM(actor);
-        context.npc = npcHeaderVM(actor);
+      case "header": {
+        const registry = { ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions };
+        context.head = npcSheetHeaderVM(actor, registry);
+        context.conditionChoices = Object.entries(registry).map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
         break;
+      }
+      case "statblock": {
+        context.tab = context.tabs.statblock;
+        context.sb = npcStatBlockVM(actor, this.view);
+        for ( const f of [...context.sb.features, ...context.sb.reactions] ) f.text = await TextEditor.enrichHTML(f.text ?? "", { relativeTo: actor });
+        break;
+      }
       case "build":
         context.tab = context.tabs.build;
         context.vm = npcBuildVM(actor, { partyManual: rule("adversaryPartySize") === "manual" });
+        context.npc = npcHeaderVM(actor);
+        context.scores = headerVM(actor).abilities;
+        context.isGM = game.user.isGM;
         context.defenses = npcDefensesVM(actor);
         context.knowledge = npcKnowledgeVM(actor);
-        break;
-      case "jutsu":
-      case "combat":
-        // "Ninjutsu. +4 to hit, save DC 12" above the lists, as a stat block prints them.
-        context.npcLines = statBlockVM(actor);
         break;
       case "biography":
         context.notes = {
@@ -188,7 +216,6 @@ export default class NPCSheet extends CharacterSheet {
   /** @override  The learnable list takes items dragged from this sheet (NPC1c C4). */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.#addFreeformButtons();
     const zone = this.element.querySelector("[data-n5e-learn-drop]");
     if ( !zone || !this.isEditable ) return;
     zone.addEventListener("dragover", ev => { ev.preventDefault(); zone.classList.add("over"); });

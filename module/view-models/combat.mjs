@@ -203,7 +203,7 @@ function itemPill(i, extra = {}) {
  * armed —, Chain, Clash, Conc.), dimmed when it can't be cast now (not enough CP, missing affinity).
  * The tooltip carries the full text plus Chain 1-3, Finisher and Overcharge riders.
  */
-function jutsuPill(actor, i, { comboReady }) {
+export function jutsuPill(actor, i, { comboReady } = {}) {
   const s = i.system;
   const live = s.live ?? {};
   const kw = s.keywords instanceof Set ? s.keywords : new Set(s.keywords ?? []);

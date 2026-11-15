@@ -21,6 +21,8 @@ export function registerSettings() {
     name: "Roll without the dialog", scope: "client", config: true, type: Boolean, default: false,
     hint: "Rolls happen at once with the numbers the system worked out. Off: every roll shows its math first, where you can untick parts, add modifiers and pick advantage."
   });
+  // NPCUI1: each user's NPC sheet toggles (the jutsu color key, hidden disciplines).
+  game.settings.register("n5e", "npcSheetView", { scope: "client", config: false, type: Object, default: { legend: true, hidden: [] } });
   game.settings.register("n5e", "effectMacroApprovals", { scope: "world", config: false, type: Object, default: {} });
   game.settings.registerMenu("n5e", "automationRecovery", { name: "N5e Automation Recovery", label: "Review automation requests",
     hint: "Inspect interrupted actions, reconcile targets, and export/archive request history.", icon: "fa-solid fa-clock-rotate-left", type: AutomationRecovery, restricted: true });

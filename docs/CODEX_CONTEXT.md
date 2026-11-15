@@ -444,3 +444,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - New actor types: `loot`, `hazard`, `vehicle`. Hazards and vehicles extend NPCData; where code means "an NPC-like actor", test `["npc", "hazard", "vehicle"].includes(type)` (`rules/hazards.mjs isNpcLike`), not `type === "npc"`.
 - Hidden jutsu copies: scrolls (`flags.n5e.scrollCopy`) and wands (`flags.n5e.wandCopy`). Keep both out of any jutsu list.
 - New owner intents: `transferRyo`, `lootTake`, `lootBuy`, `lootSell`, `socialResult`. Social encounter secrets live only in the GM-whispered card (`flags.n5e.socialGM`); never copy them to the public tracker.
+
+## NPCUI1 — Claude, 2026-11-15 (published 0.40.0-alpha.1)
+- The NPC sheet still extends CharacterSheet for its actions, but its PARTS are its own: header, tabs, statblock, build, inventory, effects, biography (Notes), limited. A new character tab does not appear on NPCs; add NPC parts in npc-sheet.mjs.
+- Jutsu pill colors come from `config/jutsu-colors.mjs` through `rules/jutsu-colors.mjs`; Bukijutsu jutsu group under Taijutsu (`sheetGroup`).

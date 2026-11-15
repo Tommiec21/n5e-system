@@ -1,51 +1,44 @@
-{{!-- NPC header: the stat block (play mode) or the identity fields (edit mode). Data: vm = headerVM(actor), npc = npcHeaderVM(actor) (view-models/npc.mjs). Adversary numbers are edited on the Build tab. --}}
-<header class="n5e-head npc-head">
-  <div class="identity">
-    <div class="name-row">
-      {{#if editMode}}<input class="name-input" type="text" name="name" value="{{vm.name}}" aria-label="Name">{{else}}<h1 class="name">{{vm.name}}</h1>{{/if}}
+{{!-- NPC header (NPCUI1): identity and live trackers only; no number the Stat Block repeats. Data: head = npcSheetHeaderVM(actor), conditionChoices. --}}
+<header class="n5e-head npc-head2">
+  <div class="npc-id">
+    <img class="npc-token" src="{{head.img}}" alt="" width="56" height="56" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    <div class="npc-names">
+      <div class="npc-title"><h1 class="name">{{head.name}}</h1><span class="npc-summary">{{head.summary}}</span></div>
+      {{#if head.blurb}}<div class="npc-blurb">{{head.blurb}}</div>{{/if}}
     </div>
-    {{#if editMode}}
-      <div class="npc-fields">
-        <label class="wide">Blurb <input type="text" name="system.details.blurb" value="{{npc.blurb}}" placeholder="One line under the name"></label>
-        <label>Type <input type="text" name="system.details.creatureType" value="{{npc.creatureType}}"></label>
-        <label>Template <select name="system.details.template">{{#each npc.templateOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-        {{#if npc.isAdversary}}
-          <span class="hint">Level, class, role, rank, modifiers and every number: the Build tab.</span>
-        {{else}}
-          <label>Level <input type="number" name="system.details.level" value="{{npc.level}}" min="0" max="30"></label>
-          <label>Rank <select name="system.details.rank">{{#each npc.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-          <label data-tooltip="Blank = from level and Hit Die">HP max <input type="number" name="system.hpMax" value="{{npc.hpMax}}" min="0"></label>
-          <label data-tooltip="Blank = from level and Chakra Die">CP max <input type="number" name="system.cpMax" value="{{npc.cpMax}}" min="0"></label>
-          <label>Hit Die <input type="text" name="system.hitDie" value="{{npc.hitDie}}"></label>
-          <label>Chakra Die <input type="text" name="system.chakraDie" value="{{npc.chakraDie}}"></label>
-        {{/if}}
-      </div>
-    {{else}}
-      <span class="npc-summary">{{npc.summary}}</span>
-      {{> "systems/n5e/templates/actor/npc/stat-block.hbs" block=npc.block}}
-    {{/if}}
-  </div>
-  <div class="head-right">
-    <div class="buttons">
-      {{#if editable}}
-        <button type="button" class="rest" data-action="rest" data-rest="short" data-tooltip="1 hour: spend Hit and Chakra Dice">Short Rest</button>
+    {{#if editable}}
+      <div class="buttons">
+        <button type="button" class="rest" data-action="rest" data-rest="short" data-tooltip="1 hour">Short Rest</button>
         <button type="button" class="rest" data-action="rest" data-rest="long" data-tooltip="8 hours">Long Rest</button>
         <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
-          data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit stat block{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
-      {{/if}}
-    </div>
-    {{#if editMode}}
-      {{#unless npc.isAdversary}}
-        <div class="ability-strip">
-          {{#each vm.abilities}}
-            <div class="ab-tile" data-tooltip="{{label}}">
-              <span class="abbr">{{abbr}}</span>
-              <b class="mod rollable" data-action="roll" data-roll="ability" data-key="{{key}}">{{mod}}</b>
-              <input type="number" name="system.abilities.{{key}}.value" value="{{value}}" min="0" max="30" aria-label="{{label}} score">
-            </div>
-          {{/each}}
-        </div>
-      {{/unless}}
+          data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit mode (notes, items){{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
+      </div>
     {{/if}}
+  </div>
+  <div class="npc-trackers">
+    <div class="trk hp" data-tooltip-html="{{head.hp.tip}}">
+      <div class="trk-head"><span class="lbl">Hit Points</span>{{#if head.hp.bloodied}}<span class="state">Bloodied</span>{{/if}}</div>
+      <div class="trk-val"><input type="number" name="system.hp.value" value="{{head.hp.value}}" aria-label="Current HP" {{#unless editable}}disabled{{/unless}}><span>/ {{head.hp.max}}</span>
+        <label class="temp">temp <input type="number" name="system.hp.temp" value="{{head.hp.temp}}" aria-label="Temporary HP" {{#unless editable}}disabled{{/unless}}></label></div>
+      <div class="track"><div class="fill" style="width: {{head.hp.pct}}%"></div></div>
+    </div>
+    <div class="trk cp" data-tooltip-html="{{head.cp.tip}}">
+      <div class="trk-head"><span class="lbl">Chakra</span>{{#if head.cp.drained}}<span class="state">Drained</span>{{/if}}</div>
+      {{#if head.noChakra}}<div class="trk-val"><span>none</span></div>{{else}}
+      <div class="trk-val"><input type="number" name="system.cp.value" value="{{head.cp.value}}" aria-label="Current CP" {{#unless editable}}disabled{{/unless}}><span>/ {{head.cp.max}}</span>
+        <label class="temp">temp <input type="number" name="system.cp.temp" value="{{head.cp.temp}}" aria-label="Temporary CP" {{#unless editable}}disabled{{/unless}}></label></div>
+      <div class="track"><div class="fill" style="width: {{head.cp.pct}}%"></div></div>{{/if}}
+    </div>
+    <div class="trk conds">
+      <div class="trk-head"><span class="lbl">Conditions</span>
+        {{#if editable}}<select data-add-condition aria-label="Add a condition"><option value="">+ Add</option>{{#each conditionChoices}}<option value="{{key}}">{{label}}</option>{{/each}}</select>{{/if}}</div>
+      <div class="chips">
+        {{#each head.conditions}}
+          <span class="cond {{#if disabled}}off{{/if}}" data-effect-id="{{id}}" data-tooltip-text="{{summary}}">{{label}}{{#if ranked}} {{ranks}}{{/if}}
+            {{#if @root.editable}}{{#if ranked}}<a class="ctl" data-action="changeRanks" data-delta="-1" aria-label="Lower rank">−</a><a class="ctl" data-action="changeRanks" data-delta="1" aria-label="Raise rank">+</a>{{else}}<a class="ctl" data-action="deleteEffect" aria-label="Remove {{label}}"><i class="fa-solid fa-xmark"></i></a>{{/if}}{{/if}}
+          </span>
+        {{else}}<span class="muted small">None</span>{{/each}}
+      </div>
+    </div>
   </div>
 </header>

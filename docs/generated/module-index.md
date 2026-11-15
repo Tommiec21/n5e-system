@@ -24,7 +24,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `api.mjs` | 142 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
-| `settings.mjs` | 57 | World settings. | `registerSettings` |
+| `settings.mjs` | 59 | World settings. | `registerSettings` |
 
 ## module/applications/actor
 
@@ -33,14 +33,13 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `character-sheet.mjs` | 759 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
-| `npc-sheet.mjs` | 314 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
-| `npc-simple-sheet.mjs` | 34 | Simple NPC sheet (NPC1b): the whole stat block on one page, in the Bingo Book's order (header, traits, jutsu by discipline and rank, attacks). | `NPCSimpleSheet` |
+| `npc-sheet.mjs` | 341 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 
 ## module/applications/browser
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `compendium-browser.mjs` | 258 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
+| `compendium-browser.mjs` | 268 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
 
 ## module/applications/effect
 
@@ -130,6 +129,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
+| `jutsu-colors.mjs` | 19 | Jutsu keyword colors (NPCUI1; King 2026-11-15). | `jutsuColors`, `jutsuPillPaper` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
 | `rules.mjs` | 219 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
@@ -252,6 +252,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `hazards.mjs` | 77 | Hazards and vehicles (PRESTD1 Part D-ii; King Q-PF4: PF2e emulation, Q-P8: their own actor types). | `NPC_TYPES`, `isNpcLike`, `HAZARD_KINDS`, `checkShortcut`, `saveShortcut`, `damageShortcut`, `checkChoices`, `hazardLines`, `hasSeat`, `board`, `leave`, `vehicleLines` |
 | `host.mjs` | 24 | Host hooks for the shared core (SHARED1). | `setHost`, `n5eConfig` |
 | `item-audit.mjs` | 64 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
+| `jutsu-colors.mjs` | 38 | Jutsu pill colors (NPCUI1; King 2026-11-15): a light left-to-right gradient through the colors of the jutsu's keywords, in the order the jutsu lists them. | `colorKeys`, `pillGradient`, `sheetGroup` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
@@ -299,11 +300,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
 | `character.mjs` | 559 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
-| `combat.mjs` | 420 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
+| `combat.mjs` | 420 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
 | `item.mjs` | 433 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 274 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
 

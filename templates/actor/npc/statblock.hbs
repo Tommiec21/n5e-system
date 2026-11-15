@@ -1,0 +1,90 @@
+{{!-- NPC Stat Block tab (NPCUI1). Data: sb = npcStatBlockVM(actor, view). Every number shows once and rolls through the roll dialog. --}}
+<section class="tab n5e-tab npc-statblock {{tab.cssClass}}" data-tab="statblock" data-group="primary">
+  <div class="sb-core">
+    <div class="sb-stats">
+      {{#each sb.core.stats}}
+        {{#if roll}}<button type="button" class="sb-stat rollable" data-action="rollInit" data-tooltip-html="{{tip}}"><span class="lbl">{{label}}</span><b>{{value}}</b></button>
+        {{else}}<div class="sb-stat" data-tooltip-html="{{tip}}"><span class="lbl">{{label}}</span><b>{{value}}</b></div>{{/if}}
+      {{/each}}
+    </div>
+    <div class="sb-divider" aria-hidden="true"></div>
+    <div class="sb-abilities2">
+      {{#each sb.core.abilities}}
+        <div class="sb-ab">
+          <b class="abbr" data-tooltip="{{label}}">{{abbr}}</b>
+          <div class="pair">
+            <button type="button" class="mod" data-action="roll" data-roll="ability" data-key="{{key}}" aria-label="{{label}} check {{mod}}"><span class="lbl">Mod</span><b>{{mod}}</b></button>
+            <button type="button" class="save {{#if full}}full{{/if}}" data-action="roll" data-roll="save" data-key="{{key}}" data-tooltip-html="{{saveTip}}" aria-label="{{label}} save {{save}}{{#if full}}, proficient{{/if}}"><span class="lbl">Save</span><b>{{save}}</b></button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  {{#if sb.block.autoFailSaves}}<div class="sb-note">Minion: saving throws fail automatically.</div>{{/if}}
+
+  <div class="sb-lines">
+    {{#if sb.block.skills.length}}<div><b>Skills</b> {{#each sb.block.skills}}<a class="rollable" data-action="roll" data-roll="skill" data-key="{{key}}" data-tooltip-html="{{tip}}">{{label}} {{total}}{{#if situational}} ({{situational}}){{/if}}</a>{{#unless @last}}, {{/unless}}{{/each}}</div>{{/if}}
+    <div><b>Disciplines</b> {{#each sb.block.lines}}<a class="rollable" data-action="roll" data-roll="attack" data-key="{{key}}" data-tooltip-html="{{attackTip}}">{{label}} {{attack}}</a> <span data-tooltip-html="{{dcTip}}">(DC {{dc}})</span>{{#unless @last}} · {{/unless}}{{/each}}</div>
+    {{#each sb.block.defenses}}<div><b>{{label}}</b> {{value}}</div>{{/each}}
+    <div><b>Senses</b> {{sb.block.senses}}{{#if sb.block.languages}} · <b>Languages</b> {{sb.block.languages}}{{/if}}</div>
+  </div>
+
+  <div class="sb-section">
+    <h2>Strikes {{#if editable}}<button type="button" class="link" data-action="npcNewFreeform" data-kind="strike">+ Freeform Strike</button>{{/if}}</h2>
+    {{#each sb.strikes}}
+      <div class="sb-strike n5e-row" data-item-id="{{id}}">
+        <div class="txt"><b>{{name}}.</b> {{text}}</div>
+        <button type="button" class="go" data-action="useItem">Attack</button>
+      </div>
+    {{else}}<p class="muted small">No strikes.</p>{{/each}}
+  </div>
+
+  <div class="sb-section">
+    <h2>Jutsu
+      <span class="h-actions">
+        <button type="button" class="link muted" data-action="npcToggleLegend" aria-pressed="{{sb.legendOn}}">{{#if sb.legendOn}}Hide color key{{else}}Show color key{{/if}}</button>
+        {{#if editable}}<button type="button" class="link" data-action="npcNewFreeform" data-kind="jutsu">+ Freeform Jutsu</button>
+        <button type="button" class="link" data-action="openBrowser" data-browser-tab="jutsu">Browse</button>{{/if}}
+      </span>
+    </h2>
+    {{#if sb.legend}}
+      <div class="jutsu-key">
+        <div class="row">{{#each sb.legend.actions}}<span>{{{svg}}} {{label}}</span>{{/each}}</div>
+        <div class="row">{{#each sb.legend.colors}}<span><i class="sw" style="background: {{color}}"></i>{{label}}</span>{{/each}}</div>
+      </div>
+    {{/if}}
+    {{#each sb.jutsu}}
+      <div class="jutsu-group">
+        <div class="jg-head"><i class="dot" style="background: {{color}}"></i><b>{{label}}</b><span class="muted">{{numbers}}</span>
+          <span class="count">{{count}} jutsu</span>
+          <button type="button" class="link muted" data-action="npcToggleDiscipline" data-key="{{key}}" aria-pressed="{{hidden}}">{{#if hidden}}Show{{else}}Hide{{/if}}</button></div>
+        {{#if shown}}
+          {{#each ranks}}
+            <div class="jg-rank"><span class="rk">{{label}}</span>
+              <div class="pills">
+                {{#each pills}}
+                  <span class="npc-pill n5e-row {{#if dim}}dim{{/if}}" data-item-id="{{id}}" data-tooltip-html="{{tip}}" data-tooltip-direction="UP" style="{{style}}">
+                    <a class="pill-main" data-action="useItem">{{{glyph}}}<span class="nm">{{name}}</span>{{#if cost}}<span class="cost">{{cost}}</span>{{/if}}</a>
+                  </span>
+                {{/each}}
+              </div>
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
+    {{else}}<p class="muted small">No jutsu.</p>{{/each}}
+  </div>
+
+  <div class="sb-section">
+    <h2>Features</h2>
+    {{#each sb.features}}
+      <div class="sb-feat n5e-row" data-item-id="{{id}}"><b>{{{glyph}}}{{name}}.</b> <span class="text">{{{text}}}</span>{{#if usable}} <button type="button" class="link" data-action="useItem">Use</button>{{/if}}</div>
+    {{else}}<p class="muted small">No features.</p>{{/each}}
+    {{#if sb.reactions.length}}
+      <h2>Reactions</h2>
+      {{#each sb.reactions}}
+        <div class="sb-feat n5e-row" data-item-id="{{id}}"><b>{{{glyph}}}{{name}}.</b> <span class="text">{{{text}}}</span> <button type="button" class="link" data-action="useItem">Use</button></div>
+      {{/each}}
+    {{/if}}
+  </div>
+</section>

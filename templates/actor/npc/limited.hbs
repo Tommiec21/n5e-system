@@ -1,11 +1,12 @@
-{{!-- What a player with Limited permission sees of an NPC: name, portrait, blurb and public notes. Data: limited = {name, img, blurb, publicHTML, learned} (learned: what the party knows, NPC1c C6). --}}
+{{!-- What a player who doesn't own an NPC sees (NPCUI1): no numbers. Data: limited = npcPlayerVM(actor) + publicHTML; learned entries carry enriched text. --}}
 <section class="n5e-npc-limited">
-  <img src="{{limited.img}}" alt="" width="96" height="96">
-  <h1>{{limited.name}}</h1>
-  {{#if limited.blurb}}<div class="blurb">{{limited.blurb}}</div>{{/if}}
-  <div class="bio-text">{{{limited.publicHTML}}}</div>
-  {{#if limited.learned.length}}
-    <h2>What the party has learned</h2>
-    {{#each limited.learned}}<div class="learned-entry"><b>{{label}}.</b> <span class="text">{{{text}}}</span>{{#if note}} <em>{{note}}</em>{{/if}}</div>{{/each}}
-  {{/if}}
+  <header class="npc-player-head">
+    <img src="{{limited.img}}" alt="" width="64" height="64">
+    <div><h1>{{limited.name}}</h1>{{#if limited.blurb}}<div class="blurb">{{limited.blurb}}</div>{{/if}}</div>
+    <div class="cond-word"><span class="lbl">Condition</span><b>{{limited.condition}}</b></div>
+  </header>
+  <h2>What you know</h2>
+  {{#each limited.learned}}<div class="learned-entry"><b>{{label}}.</b> <span class="text">{{{text}}}</span>{{#if note}} <em>{{note}}</em>{{/if}}</div>
+  {{else}}<p class="muted">Nothing learned yet.</p>{{/each}}
+  {{#if limited.publicHTML}}<h2>Public notes</h2><div class="bio-text">{{{limited.publicHTML}}}</div>{{/if}}
 </section>

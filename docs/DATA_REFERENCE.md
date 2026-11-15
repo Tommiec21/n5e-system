@@ -627,3 +627,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | ChatMessage (GM whisper) `flags.n5e.socialGM {motivations, pitfalls [{text, revealed}], pitfallRound, recallDC, trackerId}` | The hidden half, GM only |
 | Owner intent `socialResult {messageId, action, total, motivation, usedPerform}` | A player's social roll, applied by the active GM |
 | `game.n5e.api.socialEncounter()` | Start one with the selected NPC token |
+
+## Added in 0.40.0-alpha.1 (NPCUI1)
+
+| Path | Meaning |
+| --- | --- |
+| Client setting `n5e.npcSheetView {legend, hidden}` | Each user's NPC sheet toggles: the jutsu color key, hidden disciplines (`nin`, `tai`, `gen`) |
+| `CONFIG`-free table `config/jutsu-colors.mjs jutsuColors` | Keyword colors for jutsu pills (disciplines and Release keywords) |

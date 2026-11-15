@@ -1,6 +1,6 @@
 # NPCUI1 function spec: the NPC sheet redesign
 
-Status: **spec written 2026-11-15 (King: "Design a better NPC Sheet"; layout settled on the design canvas "N5e NPC Sheet Redesign"). Awaiting approval.**
+Status: **spec written 2026-11-15 (King: "Design a better NPC Sheet"; layout settled on the design canvas "N5e NPC Sheet Redesign"). King: "Deploy this. This is perfect." (2026-11-15). Built and published `0.40.0-alpha.1` (a–c in one release).**
 
 Why: NPC1b made the NPC sheet a subclass of the character sheet with a stat-block header on top, so every number showed twice and character-only parts (the Mastery/ASI banner, Will of Fire, the Pinned bar, Hit and Chakra Dice) appeared on adversaries.
 
@@ -51,3 +51,7 @@ Why: NPC1b made the NPC sheet a subclass of the character sheet with a stat-bloc
 ## Progress log
 
 - 2026-11-15 Claude: spec written from the design canvas. Awaiting answers and approval.
+- 2026-11-15 Claude: **built and published 0.40.0-alpha.1.** King said "Deploy this" with Q-U1–Q-U3 open; built with the proposals: the color key starts shown (Q-U1), the players' Combat tab is unchanged (Q-U2, later), a jutsu is listed once under its main discipline (Q-U3).
+  - Readings: U1 kept `NPCSheet extends CharacterSheet` for its actions (rolls, casting, items, context menu) but draws none of its tab templates (PARTS replaced), which gives the same result with less risk; the pencil stays as edit mode (it still edits notes and items), and identity moved to the Build tab; the player view is for any non-owner (it was Limited only); Build's GM tools are Leave loot and the existing builder (no new tools invented).
+  - Files: `config/jutsu-colors.mjs`, `rules/jutsu-colors.mjs` (`colorKeys`, `pillGradient`, `sheetGroup`), `view-models/npc-statblock.mjs` (`npcSheetHeaderVM`, `npcStatBlockVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcPlayerVM`), `templates/actor/npc/header.hbs` (rewritten), `statblock.hbs` (new), `limited.hbs` (rewritten), `build.hbs` (identity, player-style numbers, GM tools); client setting `npcSheetView`; `combat.mjs jutsuPill` exported; removed `npc-simple-sheet.mjs` and `simple.hbs` (`npcSimpleVM` stays for the journal stat block).
+  - Tests: `tests/core/jutsu-colors.test.mjs` +3, `tests/npc-sheet.test.mjs` +2 (and header, Build and player-view tests rewritten), `tests/entry.test.mjs` 8 sheets. Suites: 539 and 149 pass.

@@ -48,7 +48,7 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 9, "character, NPC, simple NPC, loot, hazard, vehicle, raw-data placeholder, item, effect");
+  assert.equal(registered.sheets.length, 8, "character, NPC, loot, hazard, vehicle, raw-data placeholder, item, effect");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
   assert.ok(registered.settings.includes("n5e.restLimit"));

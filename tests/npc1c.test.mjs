@@ -7,6 +7,7 @@ import Handlebars from "handlebars";
 import { makeActor } from "./helpers/actor.mjs";
 import { headerVM } from "../module/view-models/character.mjs";
 import { registerHelpers } from "../module/applications/helpers.mjs";
+import { npcSheetHeaderVM } from "../module/view-models/npc-statblock.mjs";
 import { statBlockVM, npcHeaderVM, npcBuildVM, npcSimpleVM, npcDefensesVM, npcKnowledgeVM, knowledgeEntryView, learnedVM, attackLine } from "../module/view-models/npc.mjs";
 import { resetPlan, RESET_OPTIONS } from "../module/rules/npc-reset.mjs";
 import { rollSpec } from "../module/dice/d20.mjs";
@@ -53,12 +54,12 @@ test("Build tab: defenses, switches, situational bonuses and the learnable list,
   assert.deepEqual(d.sets[0].chips, [{ key: "fire", label: "Fire" }]);
   assert.ok(!d.sets[0].options.some(o => o.value === "fire"), "a chosen type isn't offered again");
   assert.equal(d.sets.at(-1).custom, true, "languages take a typed name");
-  const ctx = { vm: npcBuildVM(a), defenses: d, knowledge: npcKnowledgeVM(a), editable: true, tab: {} };
+  const ctx = { vm: npcBuildVM(a), npc: npcHeaderVM(a), scores: headerVM(a).abilities, defenses: d, knowledge: npcKnowledgeVM(a), editable: true, tab: {} };
   const build = tpl("build")(ctx);
   assert.match(build, /name="system.diesAtZero" checked/);
   assert.match(build, /name="system.situational.0.when" value="in forests"/);
   assert.match(build, /data-action="npcToggleLearned" data-id="k1"/);
-  const header = tpl("header")({ vm: headerVM(a), npc: npcHeaderVM(a), editable: true, editMode: true });
+  const header = tpl("header")({ head: npcSheetHeaderVM(a, {}), editable: true, conditionChoices: [] });
   const names = html => [...html.matchAll(/name="([^"]+)"/g)].map(m => m[1]);
   const all = [...names(header), ...names(build)];
   assert.deepEqual(all.filter((n, i) => all.indexOf(n) !== i), []);
@@ -68,12 +69,12 @@ test("Build tab: defenses, switches, situational bonuses and the learnable list,
 
 test("rest buttons on every NPC header", () => {
   const a = npc();
-  const html = tpl("header")({ vm: headerVM(a), npc: npcHeaderVM(a), editable: true, editMode: false });
+  const html = tpl("header")({ head: npcSheetHeaderVM(a, {}), editable: true, conditionChoices: [] });
   assert.match(html, /data-action="rest" data-rest="short"/);
   assert.match(html, /data-action="rest" data-rest="long"/);
 });
 
-test("simple sheet: attack lines, Multiattack, conditions, temporary HP and CP, uses", () => {
+test("journal stat block view model: attack lines, Multiattack, conditions, temporary HP and CP, uses", () => {
   const a = npc({ details: { build: "adversary", level: 6, rank: "D", class: "standard", role: "none" } }, [spear,
     { _id: "trait00000000001", name: "Ambush", type: "feat", system: { uses: { max: "2", spent: 1 } } }]);
   a.system.hp.temp = 5;
@@ -84,10 +85,6 @@ test("simple sheet: attack lines, Multiattack, conditions, temporary HP and CP, 
   assert.equal(vm.multiattack, "Multiattack. The Bandit makes 2 attacks.");
   assert.equal(vm.traits[0].uses, "1/2");
   assert.equal(vm.temp.hp, 5);
-  const html = tpl("simple")({ vm, editable: true });
-  assert.match(html, /name="system.hp.temp" value="5"/);
-  assert.match(html, /Ambush \(1\/2\)\./);
-  assert.match(html, /Multiattack\. The Bandit makes 2 attacks\./);
 });
 
 test("journal stat block: the stat block, traits and attacks; never private notes", () => {
