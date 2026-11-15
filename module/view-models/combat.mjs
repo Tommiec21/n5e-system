@@ -10,6 +10,7 @@
  * A new tracker: write a xxxVM(actor) function next to the others, add it to combatVM's return,
  * and add its block to the trackers section of combat.hbs, shown with {{#if vm.xxx.show}}.
  */
+import { triggersFor } from "../rules/triggers.mjs";
 import { abilities, skills, toolkits, disciplines, ranks as rankDefs, dcTables } from "../config/core.mjs";
 import { coreActions, activationTypes } from "../config/combat.mjs";
 import { skillActions, skillActionTiers } from "../config/character.mjs";
@@ -351,7 +352,8 @@ function furyVM(actor) {
   const max = furyMax(actor);
   const stance = list(actor.items).find(i => i.id === actor.system.combat?.activeStance);
   return { show: value > 0 || mentions(actor, /\bfury\b/i), value, max, boxes: pips(value, max),
-    binding: !!stance && /binding fury/i.test(stance.name) };
+    // STD6a: "gains Fury on weapon damage" is a trigger element on the active stance (STD4), not its name.
+    binding: !!stance && triggersFor(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } }).some(t => t.element.pool === "fury") };
 }
 
 /**

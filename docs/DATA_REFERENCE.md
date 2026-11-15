@@ -680,3 +680,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | `game.n5e.api.automationAudit()` | The GM Automation Audit window |
 | `rules/automation-summary.mjs automationOf(item)` | {channels, notes, status, mentions} for the Automation tab and the audit |
+
+## Added in 0.46.0-alpha.1 (STD6a)
+
+| Path | Meaning |
+| --- | --- |
+| Weapon `flags.n5e.implement` | A basic Shinobi implement (Kunai, Shuriken, Senbon) for "attacks with implements" |

@@ -24,7 +24,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/applications/browser/compendium-browser.mjs:184`
 - `module/applications/browser/compendium-browser.mjs:185`
 - `module/rules/trackers.mjs:156`
-- `module/view-models/combat.mjs:346`
+- `module/view-models/combat.mjs:347`
 
 ### State checks named in code (1)
 

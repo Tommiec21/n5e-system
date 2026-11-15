@@ -1,3 +1,10 @@
+## 0.46.0-alpha.1 — STD6a: items (King 2026-11-15: "Build out the next 3 batches")
+
+- The equipment compendium's weapons, consumables, armor and containers already carry their mechanics as data; two things were still found by name and now aren't:
+  - **Basic Shinobi implements** for Scout-Nin's third attack are marked on the weapon (a flag), not matched by name. The seven weapons the old name match caught are marked, so nothing changes yet (question for King: which should count).
+  - **Binding Fury Stance's** Fury note on the Combat tab is read from its trigger, not its name.
+- Not checked in a running Foundry world.
+
 ## 0.45.0-alpha.1 — STD5: in-game review (King 2026-11-15: "Build out the next 3 batches")
 
 - **Automation tab** on every item sheet: each thing the item does as data (activities, effects, rule elements, action effects, triggers, its damage reaction, riders) in plain words, e.g. "Disadvantage on one target's first save (on the action it is chosen for)", and a status: Automated, Partly automated, Notes only, Nothing authored.

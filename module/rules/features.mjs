@@ -8,7 +8,6 @@
  */
 import { attackElements } from "./elements.mjs";
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
-const SHINOBI_IMPLEMENTS = /kunai|shuriken|senbon/i;
 
 /** The owned item with this identifier (class features are matched by identifier, not name). */
 export const featureById = (actor, identifier) => list(actor.items).find(i => i.system?.identifier === identifier) ?? null;
@@ -26,7 +25,8 @@ export function attacksPerAction(actor) {
   // STD4: attacks per Attack action are data ("attacks" elements on Extra Attack, General Technique...).
   const { base, implements: implementsN, notes } = attackElements(actor);
   const weapons = list(actor.items).filter(i => i.type === "weapon" && i.system.equipped && i.system.identifier !== "unarmedStrike");
-  const usingImplements = weapons.some(w => SHINOBI_IMPLEMENTS.test(w.name));
+  // STD6a: a basic Shinobi implement (Kunai, Shuriken, Senbon) is marked on the weapon: flags.n5e.implement.
+  const usingImplements = weapons.some(w => !!w.flags?.n5e?.implement);
   const text = [base > 1 ? `Extra Attack: ${base === 2 ? "two" : base} attacks per Attack action` : "",
     implementsN > base ? `${implementsN} with Kunai, Shuriken or Senbon${notes.length ? ` (${notes.join("; ")})` : ""}` : ""]
     .filter(Boolean).join("; ");
