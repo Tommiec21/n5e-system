@@ -1,3 +1,7 @@
+## 0.39.0-alpha.2 — Compendium sidebar fix (King 2026-11-15)
+
+- **Fixed:** the "N5e Browser" button in the Compendium sidebar stretched to the sidebar's full height and sat behind the pack folders as a large orange block. It now sits in the header's button row (created when Foundry leaves it out), one line high, as it does in the Items sidebar.
+
 ## 0.39.0-alpha.1 — Social encounters (PRESTD1 Part F; King 2026-11-15)
 
 - **Start (GM):** select the NPC's token and press the speech-bubbles button in the token controls (or `game.n5e.api.socialEncounter()`). Pick the type (Diplomatic, Intrigue, Hostile), the attitude (Hostile to Helpful: it sets the starting points and the Patience of 2, 3 or 4 rounds), the 2–3 Motivations and 1–2 Pitfalls (the book's lists, or typed), and the Recall Knowledge DC.

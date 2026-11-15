@@ -237,8 +237,18 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
 export function registerCompendiumBrowser() {
   const addButton = (app, html) => {
     const root = html instanceof HTMLElement ? html : html?.[0];
-    const header = root?.querySelector(".header-actions, .directory-header .action-buttons, .directory-header");
-    if ( !header || header.querySelector(".n5e-browser-open") ) return;
+    if ( !root || root.querySelector(".n5e-browser-open") ) return;
+    // Always inside the header's action row. Some v13 builds render the Compendium sidebar without
+    // one; make it (as dnd5e does) rather than dropping the button into a column container, where
+    // it stretched to the sidebar's full height behind the pack list.
+    let header = root.querySelector(".header-actions");
+    if ( !header ) {
+      const top = root.querySelector(":scope > header, .directory-header");
+      if ( !top ) return;
+      header = document.createElement("div");
+      header.className = "header-actions action-buttons flexrow";
+      top.insertAdjacentElement("afterbegin", header);
+    }
     const b = document.createElement("button");
     b.type = "button";
     b.className = "n5e-browser-open";
