@@ -70,8 +70,8 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/activity-parse.mjs:128`
 - `module/rules/activity-parse.mjs:134`
 - `module/workflow/areas.mjs:267`
-- `module/workflow/cast-plan.mjs:54`
-- `module/workflow/cast.mjs:171`
+- `module/workflow/cast-plan.mjs:55`
+- `module/workflow/cast.mjs:172`
 
 ## 3. Coverage per pack
 
@@ -82,6 +82,6 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 141 | 21 | 106 | 91 | 6 |
+| features | 700 | 141 | 24 | 106 | 91 | 9 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |

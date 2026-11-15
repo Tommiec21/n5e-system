@@ -56,7 +56,7 @@ export function parseArea(text) {
  * @param {string} [o.rank] cast rank (upcast area growth); defaults to the item's rank
  * @returns {{shape, size, width?, source: "item"|"range"|"text", self: boolean}|null}
  */
-export function areaOf(system, { rank } = {}) {
+export function areaOf(system, { rank, grow = null } = {}) {
   const t = system?.target ?? {};
   let area = null;
   let source = "item";
@@ -74,6 +74,8 @@ export function areaOf(system, { rank } = {}) {
     const n = Number(String(p.value).replace(/[^\d.-]/g, ""));
     if ( Number.isFinite(n) ) area.size += n * steps;
   }
+  // ENG1b: a Molding or option that widens it (grow: {all, shapes}; a line grows in length).
+  if ( grow ) area.size += (Number(grow.all) || 0) + (Number(grow.shapes?.[area.shape]) || 0);
   area.source = source;
   area.self = t.range?.type === "self" || /^\s*self\b/i.test(t.range?.text ?? "");
   return area;

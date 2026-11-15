@@ -34,11 +34,12 @@ export function jutsuComponents(item) {
  * @param {{rank?: string}} [o]  the rank it is cast at
  * @returns {string[]} problems (empty = may cast)
  */
-export function castBlockers(actor, item, { rank, discipline = "", scroll = false } = {}) {
+export function castBlockers(actor, item, { rank, discipline = "", scroll = false, ignore = [] } = {}) {
   const problems = [];
   const statuses = actor.statuses ?? new Set();
   const flags = actor.system?.conditionPenalties?.flags ?? {};
-  const comps = jutsuComponents(item);
+  // ENG1b: components an action effect removes (Subtle Ninjutsu: no hand seals).
+  const comps = jutsuComponents(item).filter(c => !ignore.includes(c));
 
   // STD3: casting limits are data on each condition and state (config/conditions.mjs `cast`).
   problems.push(...conditionCastProblems({ statuses }, comps));

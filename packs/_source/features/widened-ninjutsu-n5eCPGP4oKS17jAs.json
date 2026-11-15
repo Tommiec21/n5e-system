@@ -34,7 +34,47 @@
     "resourcePools": [],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eTSCIwDGqYvFn9",
+      "name": "Widened Ninjutsu",
+      "type": "generic",
+      "img": "icons/svg/lightning.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "areaSize",
+              "shapes": {
+                "sphere": 5,
+                "cube": 5,
+                "cone": 10,
+                "line": 10,
+                "cylinder": 10
+              },
+              "label": "Widened Ninjutsu"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eCPGP4oKS17jAs.n5eTSCIwDGqYvFn9"
+    }
+  ],
   "folder": "n5e3afQXYUJOLznu",
   "sort": 0,
   "ownership": {
@@ -47,7 +87,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Larger area: line +5 ft wide or +10 ft long; cube or sphere +5 ft radius; cone +10 ft; cylinder +10 ft radius or height."
+          "text": "The placed area grows: sphere or cube +5 ft, cone +10 ft, line +10 ft long, cylinder +10 ft radius. A line can be 5 ft wider instead, and a cylinder 10 ft taller: adjust the template by hand."
         }
       ]
     }

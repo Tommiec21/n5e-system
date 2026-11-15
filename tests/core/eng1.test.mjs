@@ -38,3 +38,19 @@ test("ENG1a: formulas read the target's condition ranks and states; marks carry 
   assert.equal(curse.limit, "lvl(2:1,18:2)");
   assert.equal(table("medical-nin")["toxic-chakra"].activities.find(a => a.label === "Septic Detonation").damage.parts[0].formula, "(@target.ranks.envenomed)d12");
 });
+
+test("ENG1b: Widened, Dragwind and Subtle change the jutsu as cast", async () => {
+  const { castShaping } = await import("../../module/rules/elements.mjs");
+  const { areaOf } = await import("../../module/rules/area.mjs");
+  const { jutsuComponents } = await import("../../module/rules/cast-checks.mjs");
+  const nin = table("ninjutsu-specialist");
+  const fx = (entry, name) => ({ rules: entry.effects.find(e => e.name === name).rules });
+  const widened = castShaping([fx(nin["widened-ninjutsu"], "Widened Ninjutsu")]);
+  const cone = { target: { area: { shape: "cone", size: 15 } } };
+  assert.equal(areaOf(cone, { grow: widened.grow }).size, 25);
+  assert.equal(areaOf({ target: { area: { shape: "sphere", size: 10 } } }, { grow: widened.grow }).size, 15);
+  const drag = castShaping([fx(nin["tempest-pressure-storm-terror"], "Dragwind")], 10);
+  assert.equal(areaOf(cone, { grow: drag.grow }).size, 25, "+10 ft at 10th level");
+  assert.deepEqual(castShaping([fx(nin["subtle-ninjutsu"], "Subtle Ninjutsu")]).ignore, ["hs"]);
+  assert.deepEqual(jutsuComponents({ system: { components: { hs: true, cm: true } } }).filter(c => !["hs"].includes(c)), ["cm"]);
+});

@@ -70,7 +70,41 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eAuyLOpx3pZ4wf",
+      "name": "Dragwind",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "areaSize",
+              "value": "lvl(2:5,10:10,18:15)",
+              "label": "Dragwind"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!445b74bbde86257c.n5eAuyLOpx3pZ4wf"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
@@ -125,7 +159,8 @@
             "pool": "pressure",
             "amount": 1
           },
-          "note": "Area +5 ft (+10 at 10th, +15 at 18th). 10th level, 1 Focus: creatures with a Physical or Elemental condition get no jutsu bonuses to the save."
+          "note": "10th level, 1 Focus: creatures with a Physical or Elemental condition get no jutsu bonuses to the save.",
+          "actionEffect": "Dragwind"
         }
       ]
     }

@@ -17,6 +17,8 @@
  *   rerollBelow (STD6b) damage dice showing the value or less are rerolled once, keeping the new result
  *   critAbilityMod (STD6b fix) a critical hit adds the ability modifier this many more times
  *   maximizeAfter (STD6d) after the damage roll, this many of its dice (the lowest) count as their maximum
+ *   areaSize / ignoreComponent (ENG1b, action effects) the cast's area grows by value (or by shape:
+ *              shapes {sphere, cube, cone, line, cylinder}); a component (hs, cm, cs, m) isn't needed
  *   heal / resave (ENG1a, triggers only) heal {formula, pool, who}; resave {ability, dc}: roll the save,
  *              and on a success the effect carrying it ends. damage with `on` posts a damage card
  *              {formula, damageType, who, unreducible}.
@@ -33,7 +35,9 @@ export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvanta
   // STD6b: reroll low damage dice once.
   "rerollBelow", "critAbilityMod", "maximizeAfter",
   // ENG1a: trigger outcomes that heal, or end the effect on a successful save.
-  "heal", "resave"];
+  "heal", "resave",
+  // ENG1b: action effects that change the jutsu as cast (area size, components).
+  "areaSize", "ignoreComponent"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
@@ -46,6 +50,24 @@ export const actsFromActor = e => (e.direction ?? "self") === "self" && (e.scope
 export function levelValue(table, level) {
   let out = 0;
   for ( const [, l, v] of String(table).matchAll(/(\d+)\s*:\s*(-?\d+)/g) ) if ( level >= Number(l) ) out = Number(v);
+  return out;
+}
+
+/**
+ * ENG1b: what the cast's action effects change about the jutsu itself: {grow: {all, shapes}, ignore: [components]}.
+ * Level-scaled values read the caster's level.
+ */
+export function castShaping(actionEffects = [], level = 0) {
+  const out = { grow: { all: 0, shapes: {} }, ignore: [] };
+  const val = v => (typeof v === "string" && v.startsWith("lvl(") ? levelValue(v, level) : Number(v) || 0);
+  for ( const fx of actionEffects ) {
+    for ( const e of fx.rules ?? [] ) {
+      if ( e.key === "areaSize" ) {
+        out.grow.all += val(e.value ?? 0);
+        for ( const [shape, v] of Object.entries(e.shapes ?? {}) ) out.grow.shapes[shape] = (out.grow.shapes[shape] ?? 0) + val(v);
+      } else if ( e.key === "ignoreComponent" && e.component && !out.ignore.includes(e.component) ) out.ignore.push(e.component);
+    }
+  }
   return out;
 }
 

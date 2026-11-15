@@ -87,6 +87,8 @@ export function describeElement(e = {}) {
     case "costReduction": return Number(e.value) === 0 ? "No cost reduction on casts" : `Cost reduction at most ${e.value}`;
     case "attacks": return `${Number(e.value) || 1} attacks per Attack action${e.implementsOnly ? " with Kunai, Shuriken or Senbon" : ""}${e.text ? ` (${e.text})` : ""}`;
     case "initiativeOptions": return `May roll ${(e.skills ?? []).join(", ")} instead of Initiative${e.text ? `: ${e.text}` : ""}`;
+    case "areaSize": return `Area larger: ${[e.value ? `+${e.value} ft` : "", ...Object.entries(e.shapes ?? {}).map(([s, v]) => `${s} +${v} ft`)].filter(Boolean).join(", ")}`;
+    case "ignoreComponent": return `Cast without ${({ hs: "hand seals", cm: "chakra molding", cs: "chakra seals", m: "mobility" })[e.component] ?? e.component}`;
     case "heal": return `${e.who === "target" ? "The target regains" : "Regains"} ${e.formula ?? ""} ${({ cp: "CP", tempHp: "temporary HP", tempCp: "temporary CP" })[e.pool] ?? "HP"}`;
     case "resave": return `${String(e.ability ?? "").toUpperCase()} save (DC ${e.dc ?? "?"}); a success ends it`;
     case "resource": return `${Number(e.amount) >= 0 ? "+" : ""}${Number(e.amount) || 0} ${e.pool ?? ""}`.trim();

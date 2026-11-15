@@ -1,6 +1,6 @@
 # ENG1 function spec: the missing capabilities
 
-Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1.**
+Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1; ENG1b 0.51.0-alpha.1.**
 
 Why: the STD6d class review left most class features as notes, but not because they are judgment calls. A handful of general capabilities was missing, and the same ones recur across classes, clans and jutsu. Each is built once, generically, as data the effects use (no class or feature named in code). Then the reviewed classes are redone and the class pass continues with the fuller toolkit (`docs/STD6d_SPEC.md`).
 
@@ -31,6 +31,22 @@ Each batch: spec section here, build, tests, release, log. King said to build th
   - **Ninjutsu Specialist:** Overheat and Burnout (fire damage to you each turn).
 - Also in this release (STD6d answers): Toxic Tongue gives immunity to Envenomed (King Q-D1).
 
+## ENG1b (0.51.0-alpha.1)
+
+- **New action-effect elements:** `areaSize {value | shapes: {sphere, cube, cone, line, cylinder}}` grows the cast's area; `ignoreComponent {component}` removes a component from the cast checks.
+- **Where they act:**
+  - `rules/elements.mjs castShaping` collects them from the chosen Moldings and options.
+  - `workflow/cast-plan.mjs` passes them to `castBlockers(..., {ignore})` and keeps `plan.shaping`.
+  - `areaOf(system, {grow})`, `placeArea` and the card's Place area button size the template.
+  - `namedActionEffects` (in `rules/cast-options.mjs`) is shared by the plan and the card.
+- **Data:**
+  - **Widened Ninjutsu:** sphere and cube +5 ft, cone and line (length) +10 ft, cylinder +10 ft radius.
+  - **Subtle Ninjutsu:** no hand seals.
+  - **Dragwind:** +5/+10/+15 ft by level, now an action effect of its option.
+- **Not automated, with notes:** Distant (range isn't enforced anywhere, so +30 ft changes nothing to check), Doubled and Careful (the caster picks the targets), and the alternative Widened choices (a line 5 ft wider, a cylinder 10 ft taller).
+- **Question Q-E1:** Widened says a cube's "radius" grows 5 ft. The template's cube size is its side. I add 5 ft to the side. Should it be 10 (5 on each side)?
+
 ## Progress log
 
 - 2026-11-15 Claude: plan written from the STD6d review; ENG1a built and published 0.50.0-alpha.1. Tests: `tests/core/eng1.test.mjs`.
+- 2026-11-15 Claude: ENG1b built and published 0.51.0-alpha.1.

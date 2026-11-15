@@ -366,3 +366,4 @@
 | Effects that heal, damage or force a save each turn | `rules/triggers.mjs triggerOutcomes`, `workflow/triggers.mjs fireTriggers` |
 | Formulas reading the target's condition ranks | `rules/target-formula.mjs`; `workflow/activity-buttons.mjs` damage |
 | Marks (one or N per caster) | effect activity `limit`; `workflow/trackers.mjs applyActivityEffect` |
+| Widened, Dragwind (area), Subtle (no hand seals) | data: `areaSize`, `ignoreComponent`; `rules/elements.mjs castShaping`, `rules/area.mjs areaOf`, `rules/cast-checks.mjs castBlockers` |

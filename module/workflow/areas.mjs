@@ -72,10 +72,10 @@ function setTargets(tokens) {
 // ------------------------------------------------------------------------------------------------ //
 
 /** The "Place area" button for a cast card, or "" when the item has no area. */
-export function areaButton(item, { rank } = {}) {
-  const area = areaOf(item.system, { rank });
+export function areaButton(item, { rank, grow = null } = {}) {
+  const area = areaOf(item.system, { rank, grow });
   if ( !area ) return "";
-  return `<div class="act-row"><button type="button" data-n5e-area="${esc(item.uuid)}" data-rank="${esc(rank ?? "")}">
+  return `<div class="act-row"><button type="button" data-n5e-area="${esc(item.uuid)}" data-rank="${esc(rank ?? "")}"${grow ? ` data-grow="${esc(JSON.stringify(grow))}"` : ""}>
     <i class="fa-solid fa-draw-polygon"></i> Place area (${esc(areaLabel(area))})</button></div>`;
 }
 
@@ -83,7 +83,7 @@ export function areaButton(item, { rank } = {}) {
 export async function onAreaClick(message, button) {
   const item = await fromUuid(button.dataset.n5eArea);
   if ( !item?.actor ) return ui.notifications.warn("The jutsu is no longer on its actor.");
-  const created = await placeArea(item.actor, item, { rank: button.dataset.rank || undefined });
+  const created = await placeArea(item.actor, item, { rank: button.dataset.rank || undefined, grow: button.dataset.grow ? JSON.parse(button.dataset.grow) : null });
   // Single action card (CARD1b): the covered tokens become the card's targets.
   if ( created && message?.flags?.n5e?.card ) await import("./action-card.mjs").then(m => m.addAreaTargets(message, tokensInArea(created)));
   return created;
@@ -101,8 +101,8 @@ export async function onAreaClick(message, button) {
  * @param {object} [o]
  * @param {string} [o.rank]  cast rank (upcast area growth)
  */
-export async function placeArea(actor, item, { rank } = {}) {
-  const area = areaOf(item.system, { rank });
+export async function placeArea(actor, item, { rank, grow = null } = {}) {
+  const area = areaOf(item.system, { rank, grow });
   if ( !area || !canvas?.ready || !canvas.scene ) return null;
   const caster = actor.getActiveTokens(true)[0] ?? null;
   const fromSelf = area.self && !!caster;

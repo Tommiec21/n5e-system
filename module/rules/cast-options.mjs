@@ -105,6 +105,22 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null, 
   return out;
 }
 
+/**
+ * Which action effects each chosen feature option brings (STD6d `actionEffect`): Map itemId → [names].
+ * @param {object[]} chosen     [{id, def?}]
+ * @param {object[]} available  from availableCastOptions
+ */
+export function namedActionEffects(chosen = [], available = []) {
+  const named = new Map();
+  for ( const o of chosen ) {
+    const def = o.def ?? available.find(f => f.id === o.id)?.def;
+    if ( !def?.actionEffect ) continue;
+    const itemId = String(o.id).split("-")[0];
+    named.set(itemId, [...(named.get(itemId) ?? []), def.actionEffect]);
+  }
+  return named;
+}
+
 /** The rank a "lvl(level:rank,...)" table gives at this level ("lvl(2:D,10:C,18:B)"). */
 export function levelRank(table, level) {
   let out = "";

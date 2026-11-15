@@ -1,3 +1,11 @@
+## 0.51.0-alpha.1 — ENG1b: Moldings that change the jutsu
+
+- **Widened Ninjutsu** makes the placed area larger: sphere or cube +5 ft, cone or line +10 ft, cylinder +10 ft.
+- **Dragwind** grows the area by +5 ft (+10 at 10th, +15 at 18th).
+- **Subtle Ninjutsu** lets you cast without hand seals, so conditions that stop hand seals don't block that cast.
+- For authors: action-effect elements `areaSize` and `ignoreComponent`.
+- Not checked in a running Foundry world.
+
 ## 0.50.0-alpha.1 — ENG1a: effects that act each turn, target-aware formulas, marks (King: "Do that immediately")
 
 - **Effects can heal, deal damage or force a save each turn.** Damage goes on a card for the GM to apply, like condition damage. A successful save ends the effect.

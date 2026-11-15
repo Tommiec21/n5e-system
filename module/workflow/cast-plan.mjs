@@ -10,14 +10,15 @@ import { resourceChange } from "../rules/resources.mjs";
  *     limit, one current jutsu must end.
  *   - Chain and Combo/Finisher update (rules/cast-tracking).
  */
-import { costReductionAllowed } from "../rules/elements.mjs";
+import { costReductionAllowed, castShaping } from "../rules/elements.mjs";
+import { actionEffectsOf } from "../rules/action-effects.mjs";
 import { castUpdates } from "../rules/cast-tracking.mjs";
 import { resourceCost } from "../rules/resource-cost.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { economySlot } from "../rules/turn-start.mjs";
 import { castBlockers } from "../rules/cast-checks.mjs";
 import { rule } from "../rules-settings.mjs";
-import { availableCastOptions, applyCastOptions, pyroclasmGain } from "../rules/cast-options.mjs";
+import { availableCastOptions, applyCastOptions, pyroclasmGain, namedActionEffects } from "../rules/cast-options.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
 import { resolveCastDiscipline } from "../rules/cast-discipline.mjs";
 
@@ -73,14 +74,17 @@ export function castPlan(actor, item, sel = {}) {
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
   if ( (!scroll || wand) && item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
   // Conditions, components, ability requirement and rank cap (rules/cast-checks.mjs; CAST1).
-  problems.push(...castBlockers(actor, item, { rank, discipline, scroll: scroll && !wand }));
+  const used = list(sel.options).map(id => actor.items.get?.(id) ?? list(actor.items).find(i => i.id === id)).filter(Boolean);
+  // ENG1b: what the chosen Moldings and options change about the jutsu (area, components).
+  const shapingItems = [...used, ...chosen.map(c => actor.items.get?.(String(c.id).split("-")[0])).filter(Boolean)];
+  const shaping = castShaping(actionEffectsOf([...new Set(shapingItems)], { only: namedActionEffects(chosen, available) }), sys.level ?? 0);
+  problems.push(...castBlockers(actor, item, { rank, discipline, scroll: scroll && !wand, ignore: shaping.ignore }));
   if ( ["nin", "gen"].includes(discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
     problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
   }
 
   // Moldings and maneuvers.
   const pools = {};
-  const used = list(sel.options).map(id => actor.items.get?.(id) ?? list(actor.items).find(i => i.id === id)).filter(Boolean);
   let moldings = 0;
   let maneuvers = 0;
   for ( const opt of used ) {
@@ -165,7 +169,7 @@ export function castPlan(actor, item, sel = {}) {
     cost: scroll ? 0 : cost.cost, costMode: scroll ? "none" : j.cost?.mode, scroll, costText: j.cost?.text ?? "", costBreakdown: cost,
     choices: cost.choices ?? {}, cpAfter: spendsChakra ? Math.max(0, cp - cost.cost) : cp,
     pools, options: [...used.map(o => ({ id: o.id, name: o.name })), ...fx.names.map(name => ({ id: "", name }))], concentration,
-    featureOptions: available, chosenFeatureOptions: chosen, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes, riders: fx.riders ?? [],
+    featureOptions: available, chosenFeatureOptions: chosen, shaping, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes, riders: fx.riders ?? [],
     pyroclasm: !!pyro, ready,
     problems, warnings, ok: problems.length === 0, update
   };

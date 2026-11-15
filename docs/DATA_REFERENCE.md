@@ -735,3 +735,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Effect activity element fields with `@scale.…`, `@dc.<disc>`, `@level` | The caster's values, fixed when the effect is applied |
 | Effect activity `limit` (number or `lvl(...)`) | Mark: at most that many from one caster (`flags.n5e.mark`); the oldest ends |
 | Damage formula `@target.ranks.<condition>`, `@target.state.<state>` | The one target's ranks, or 1/0 for the state |
+
+## Added in 0.51.0-alpha.1 (ENG1b)
+
+| Path | Meaning |
+| --- | --- |
+| Action-effect element `areaSize` {value, shapes} | The cast's area grows (all shapes, or per shape) |
+| Action-effect element `ignoreComponent` {component} | The cast doesn't need hs, cm, cs or m |
+| `plan.shaping` {grow, ignore}; area button `data-grow` | The cast's shaping, used by area placement |

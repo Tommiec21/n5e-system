@@ -21,6 +21,7 @@ import { rule } from "../rules-settings.mjs";
 import { castableDisciplines, castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { cardFlag } from "./action-card.mjs";
 import { resolveRankValues } from "../rules/jutsu-facts.mjs";
+import { namedActionEffects } from "../rules/cast-options.mjs";
 import { rankValue } from "../rules/progression.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
@@ -160,7 +161,7 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
     if ( plan.ready ) return (await import("./concentration.mjs")).postReadyCard(actor, item, plan);
     const message = await postCastCard(actor, item, plan);
     // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
-    if ( areaPrompt && rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank }) ) placeArea(actor, item, { rank: plan.rank });
+    if ( areaPrompt && rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank, grow: plan.shaping?.grow }) ) placeArea(actor, item, { rank: plan.rank, grow: plan.shaping?.grow });
     return message;
   });
 }
@@ -177,13 +178,7 @@ export async function postCastCard(actor, item, plan) {
   // STD6d: "@rankValue" in their element values is the cast rank (Preserve Life: rank dice maximized).
   // A cast option naming its effect (actionEffect) brings only that one: one feature can carry several
   // options with their own effects (Medical Domain: Preserve Life, Take Life).
-  const named = new Map();
-  for ( const o of plan.chosenFeatureOptions ?? [] ) {
-    const def = o.def ?? (plan.featureOptions ?? []).find(f => f.id === o.id)?.def;
-    if ( !def?.actionEffect ) continue;
-    const itemId = String(o.id).split("-")[0];
-    named.set(itemId, [...(named.get(itemId) ?? []), def.actionEffect]);
-  }
+  const named = namedActionEffects(plan.chosenFeatureOptions ?? [], plan.featureOptions ?? []);
   const actionEffects = actionEffectsOf([...new Set(chosenItems)], { only: named })
     .map(fx => ({ ...fx, rules: resolveRankValues(fx.rules, rankValue(plan.rank)) }));
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
@@ -227,14 +222,14 @@ export async function postCastCard(actor, item, plan) {
       <span class="sub">${esc(`${plan.rank}-Rank ${CONFIG.N5E.disciplines[castableDisciplines(item).length > 1 ? castAs : (j.group ?? j.discipline)]?.label ?? ""}`)}${castableDisciplines(item).length > 1 ? " (cast as)" : ""}${plan.upcast > 0 ? " (upcast)" : ""}</span></div></header>
     <div class="spent">${esc(spent)}${plan.options.length ? ` · ${plan.options.map(o => esc(o.name)).join(", ")}` : ""}</div>
     <details><summary>Rules text</summary><div class="desc">${desc}</div></details>
-    ${areaButton(item, { rank: plan.rank })}
+    ${areaButton(item, { rank: plan.rank, grow: plan.shaping?.grow })}
     ${actionEffects.length ? `<div class="n5e-action-effects">${actionEffects.map(fx => `<div class="note"><b>${esc(fx.label)}</b>: ${esc(fx.rules.map(describeElement).filter(Boolean).join("; "))}</div>`).join("")}</div>` : ""}
     ${activityButtons(actor, item, activities, { rank: plan.rank, discipline: castAs })}
     ${extras.join("")}
     ${trackerButtons(actor, item)}
   </div>`;
   // Single action card (CARD1): this cast card collects the rolls made from its buttons.
-  const card = cardFlag({ kind: "jutsu", actor, item, activities, area: !!areaOf(j, { rank: plan.rank }),
+  const card = cardFlag({ kind: "jutsu", actor, item, activities, area: !!areaOf(j, { rank: plan.rank, grow: plan.shaping?.grow }),
     concentration: !!plan.concentration, rank: plan.rank, discipline: castAs });
   if ( card && riderEntries.length ) {
     const { withRiderSections } = await import("./riders.mjs");
