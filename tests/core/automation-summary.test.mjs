@@ -32,7 +32,8 @@ test("statuses: automated, partial, notes only, nothing authored (with mechanic 
 
 test("STD6a: basic Shinobi implements are marked on the weapons, not found by name", async () => {
   const { attacksPerAction } = await import("../../module/rules/features.mjs");
-  const kunai = pack("equipment", "kunai-");
+  const kunai = pack("equipment", "kunai-n5eKunai");
+  assert.equal(pack("equipment", "ballistic-kunai").flags?.n5e?.implement, undefined, "weapons that only mention them do not count (King Q-I1)");
   assert.equal(kunai.flags.n5e.implement, true);
   const actor = { system: {}, statuses: new Set(), effects: [], items: [{ ...kunai, id: "k", system: { ...kunai.system, equipped: true } },
     { id: "e", name: "Extra Attack", type: "feat", flags: { n5e: { rules: [{ key: "attacks", value: 2 }, { key: "attacks", value: 3, implementsOnly: true }] } } }] };
