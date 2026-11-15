@@ -1,6 +1,6 @@
 # NPC1c function spec: closing the NPC sheet gaps
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Q-N18–Q-N20 answered; Q-N21 open.**
+Status: **draft for King's approval (2026-11-14). Nothing is built. Q-N18–Q-N21 answered; Q-N22–Q-N24 open. Comes after ROLL1 (King).**
 
 King (2026-11-14): anything missing from the NPC sheets that is relevant goes into a batch for future inclusion. Source: `docs/NPC_SHEET_REVIEW.md` (dnd5e 6.1.0 and PF2e 8.7.0 against N5e 0.30.0-alpha.2), items 1–11. Items already owned by a planned batch stay there (boss resources NPC4, strikes NPC3, loot LOOT1, trait content NPC6).
 
@@ -33,9 +33,16 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 | C2 | Batch reset | `applications/gm/npc-reset.mjs` | A GM tool: pick NPCs (selected tokens, or a folder) and reset HP, CP and temp to full, clear conditions, restore limited uses and pools. A confirmation lists what will change; each option can be unticked. |
 | C3 | Situational skill bonuses | `data/actor/npc.mjs`, `view-models/npc.mjs` | A list on the Build tab: skill, bonus, and when it applies ("+2 Stealth in forests"). Shown in the stat block's Skills line and offered as a tick in the roll dialog for that skill. Nothing applies by itself (Q-N20). |
 
+## NPC1c-d: what the players can learn (King Q-N21)
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| C4 | Learnable list | `data/actor/npc.mjs`, `templates/actor/npc/build.hbs` | A "What the players can learn" list on the Build tab. The GM drags in features, traits, jutsu and items from the sheet, and statistics (AC, a save, a resistance, HP, the stat block lines) from a picker. Each entry can be reordered, removed, and given a short note. |
+| C5 | Reveal | `workflow/jutsu-defense.mjs`, `workflow/npc-knowledge.mjs` (new) | On a successful Read the Enemy against the NPC, the chosen entries are revealed (Q-N22, Q-N23): the player gets a whispered card with each one, and the NPC keeps a record of what each player has learned. |
+| C6 | What a player knows | `templates/actor/npc/limited.hbs` | The limited view adds the entries that player has learned, so they can look them up later. |
+
 ## Not in this batch
 
-- Per-NPC identification DCs (PF2e's Recall Knowledge): N5e identifies through Read the Enemy and Identify on cast cards (FIN2b). Q-N21 asks whether you want anything more.
 - CR and XP, habitat, treasure tags, alignment, rolled HP, hardness, rarity: no equivalent in N5e's rules.
 
 ## Tests
@@ -47,14 +54,19 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 - **Q-N18: rest buttons.** Show Short and Long Rest on every NPC, or only on player-style and Allied NPCs (proposed)? The book gives adversaries no rest rules that I found.
 - **Q-N19: releases.** Three small releases (a, b, c), or one?
 - **Q-N20: situational skill bonuses.** Is a tick in the roll dialog right, or should some apply by themselves from the scene (a later batch, since nothing yet knows terrain)?
-- **Q-N21: identification.** Do you want a per-NPC "what the players can learn" entry (a DC and the text revealed on success), or is Read the Enemy and Identify enough?
+
+## Questions for King (C4–C6)
+
+- **Q-N22: who picks.** On a success, does the GM pick which entries to reveal (a dialog listing the learnable entries), or does the player pick from them? And how many: one per success, or more on a higher result?
+- **Q-N23: which Read the Enemy.** The book's Read the Enemy is a reaction on seeing a jutsu cast, against the caster's save DC (FIN2b). Is this the same action, used against the creature as well as its jutsu, or a separate use (an action spent studying a creature)? What DC: the creature's highest save DC, or a set number?
+- **Q-N24: party knowledge.** Is what one player learns known to the whole party, or only to that player?
 
 ## King's answers (2026-11-14)
 
 - **Q-N18:** rest buttons on all NPCs.
 - **Q-N19:** one release.
 - **Q-N20:** King's standing direction is that every roll opens a dialog showing the roll's math, where the player can add modifiers, as dnd5e and PF2e do. That is not how N5e works today (see ROLL1 in `docs/PROGRESSION_PLAN.md`). C3's situational bonuses will be modifiers the ROLL1 dialog lists and lets the roller switch on; until ROLL1 ships they are shown in the stat block only.
-- **Q-N21:** open.
+- **Q-N21:** add a "What the players can learn" field. The GM drags features, traits, statistics and other fields into it; when a player uses Read the Enemy, aspects from it are revealed. Built as C4 below; open points in Q-N22–Q-N24.
 
 ## Progress log
 

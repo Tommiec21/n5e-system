@@ -1,0 +1,58 @@
+# ROLL1 function spec: a roll dialog for every roll
+
+Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-R1–Q-R6 below.**
+
+King (2026-11-14): every roll opens a dialog where players see the current roll math and can edit it by adding modifiers, as dnd5e and PF2e do (his original direction). Shift-click must never be the way in: "the options need to be in the user's face and not hidden behind a combination key." ROLL1 comes before NPC1c.
+
+## What happens today (0.30.0-alpha.2)
+
+- **d20 rolls** (`dice/roll.mjs rollWithSpec`, which every d20 goes through): a plain click rolls at once. Shift-click opens a dialog with one "Situational bonus" box and Advantage/Normal/Disadvantage. Alt-click rolls with advantage, Ctrl-click with disadvantage. The math is shown afterwards on the chat card.
+- **Damage, healing and other dice** (`dice/advantaged.mjs rollDice`): no dialog. The card's Adv and Dis buttons fake an Alt/Ctrl click.
+- **Initiative in combat** (`rollInitiative`): no dialog; Alt/Ctrl only.
+- **Other hidden keys:** Alt-click on a jutsu casts at base rank without the cast dialog; Shift-click on a condition link removes instead of adds.
+
+## ROLL1a: the d20 roll dialog
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| A1 | Modifier list | `dice/roll-dialog.mjs` (new), `templates/apps/roll-dialog.hbs` | Every d20 roll opens a dialog listing each part of the bonus from its breakdown, in order: label, value, and a tick (on by default). The total updates as parts are ticked or unticked. |
+| A2 | Add a modifier | same | A row to add a modifier: label (optional) and value, a number or dice ("2", "1d4", "-1"). Any number of rows. |
+| A3 | Situational modifiers | same | Modifiers the system knows about but can't apply by itself are listed unticked, with where they come from: an NPC's situational skill bonuses (NPC1c C3), and any future source. Ticking one adds it. |
+| A4 | Advantage | same | Three buttons: Advantage, Normal, Disadvantage. The one the system worked out is preselected, and the sources it counted are listed ("Advantage: Target Prone. Disadvantage: Restrained"), so the roller sees why. |
+| A5 | The DC and what's at stake | same | When the roll has a DC or a target, the dialog says so ("vs DC 15", "vs Kisame's AC" when players may see it under the visibility rule). Automatic failures (Minions, Stunned) are stated. |
+| A6 | Roll | same | A Roll button, focused so Enter rolls. Closing the dialog cancels the roll. |
+| A7 | The card records it | `dice/roll.mjs` | The chat card's breakdown shows unticked parts struck through and added ones labelled "Added". |
+| A8 | One path | `dice/roll.mjs`, `dice/d20.mjs` | `rollWithSpec` always opens the dialog unless the caller passes `dialog: false` (system rolls with no choice to make: Will of Fire rerolls, Q-R4). `clickMode` and the Alt, Ctrl and Shift handling are removed from rolls. |
+| A9 | Initiative | `dice/roll.mjs rollInitiative` | Initiative in combat opens the same dialog, then passes the chosen formula to the combat tracker. Adaptive Initiative's skill choice moves into this dialog as a select. |
+
+## ROLL1b: damage, healing and dice
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| B1 | Damage dialog | `dice/roll-dialog.mjs`, `dice/advantaged.mjs` | Every damage, healing and pool-dice roll opens a dialog: the formula split into its parts with labels (weapon die, ability, jutsu dice, riders), each with a tick; added modifiers (dice or numbers, with a damage type for damage); Advantage/Normal/Disadvantage for dice that use it (King 2026-11-13); and Critical, preset from the attack. |
+| B2 | Cards | `dice/roll.mjs addRollModeButtons` | The card's separate Adv and Dis buttons are removed; the damage button opens the dialog, where the choice is made. |
+
+## ROLL1c: no hidden keys anywhere
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| C1 | Casting | `applications/actor/character-sheet.mjs`, `workflow/cast.mjs` | Alt-click no longer skips the cast dialog. The cast dialog always opens. |
+| C2 | Condition links | `applications/enrichers.mjs` | Shift-click no longer removes; the link opens a small choice: Add, Remove. |
+| C3 | Audit | `tools/check.mjs` | A check fails the build if `altKey`, `ctrlKey`, `metaKey` or `shiftKey` decide behaviour in a roll, cast or chat handler. Area rotation on the map (Shift/Ctrl to snap the angle while placing a template) is exempt, as Foundry's own placement works that way. |
+
+## Tests
+
+`tests/roll-dialog.test.mjs`: the dialog lists every breakdown part; unticking a part and adding "1d4" give the right formula and total; preselected mode and listed sources match the advantage engine; a cancelled dialog makes no roll and no message; the card shows struck and added parts; damage parts, added typed damage and Critical. Updates to existing roll tests that relied on Alt, Ctrl or Shift. The audit in C3.
+
+## Questions for King
+
+- **Q-R1: a fast path.** Should there be any way to roll without the dialog? Proposed: a per-user setting, "Roll without the dialog", off by default and visible in the settings menu (as dnd5e and PF2e both have). No key combination.
+- **Q-R2: the GM rolling for many creatures.** When the GM rolls saves for several NPCs from one card (six Minions in an area), one dialog for the whole group (proposed: the parts every creature shares, plus added modifiers applied to all), or one dialog per creature?
+- **Q-R3: what can be unticked.** Any part of the bonus, including ability and proficiency, as PF2e allows (proposed); or only bonuses from effects and situational sources?
+- **Q-R4: rolls with no choice.** Will of Fire rerolls repeat the original roll's math with no dialog (proposed). Concentration checks and death saves open the dialog like any other roll?
+- **Q-R5: what other users see.** The chat card shows what was unticked or added to everyone who can see the roll (proposed), or to the GM only?
+- **Q-R6: releases.** ROLL1a, ROLL1b and ROLL1c as one release, or a then b then c?
+
+## Progress log
+
+- 2026-11-14 Claude: spec written. Current roll paths read in `dice/roll.mjs`, `dice/d20.mjs`, `dice/advantaged.mjs`, `workflow/cast.mjs`, `applications/enrichers.mjs`. Nothing built.
