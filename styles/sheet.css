@@ -66,12 +66,14 @@
   background: #FFFFFF; color: var(--n5e-ink); border: 1px solid var(--n5e-line); border-radius: 4px; font-family: var(--n5e-body);
 }
 .n5e-v2 input[type="number"] { text-align: center; }
-.n5e-v2 button {
+/* Content buttons only: the window header's own controls (menu, minimize, close) are Font Awesome
+   icon buttons; restyling them with our font turned their icons into empty boxes. */
+.n5e-v2 .window-content button {
   font-family: var(--n5e-body); font-size: 12px; line-height: 1; height: 30px; padding: 0 12px; border-radius: 6px;
   border: 1px solid var(--n5e-line); background: var(--n5e-card); color: var(--n5e-ink); cursor: pointer; width: auto;
 }
-.n5e-v2 button:hover:not(:disabled) { border-color: var(--n5e-accent); }
-.n5e-v2 button:disabled { opacity: .55; cursor: default; }
+.n5e-v2 .window-content button:hover:not(:disabled) { border-color: var(--n5e-accent); }
+.n5e-v2 .window-content button:disabled { opacity: .55; cursor: default; }
 .n5e-v2 .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
   border-bottom: 2px solid var(--n5e-ink); padding-bottom: 4px; margin: 14px 0 6px; }
 .n5e-v2 .empty-state { padding: 24px; text-align: center; color: var(--n5e-muted); border: 1px dashed var(--n5e-faint); border-radius: 8px; margin: 16px 0; }

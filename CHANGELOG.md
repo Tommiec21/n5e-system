@@ -1,3 +1,7 @@
+## 0.40.0-alpha.2 — Window header icons (King 2026-11-15)
+
+- **Fixed:** the menu, minimize and close buttons at the top right of every N5e window showed empty boxes. Our sheet button style (font and cream background) was also applied to Foundry's own header controls, which draw their icons with Font Awesome; it now applies only to buttons inside the window content, so Foundry's icons show again.
+
 ## 0.40.0-alpha.1 — The new NPC sheet (NPCUI1; King 2026-11-15)
 
 The NPC sheet is no longer the character sheet with a stat block on top: every number shows once.
