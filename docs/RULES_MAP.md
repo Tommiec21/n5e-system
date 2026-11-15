@@ -190,3 +190,12 @@
 | Immune to a Genjutsu's stimuli: damage applies as 0, conditions and effects end at once (King Q-F12) | `workflow/action-card.mjs immuneTargets`, `workflow/apply-damage.mjs applyToSelected` |
 | Effects offered to another owner's creature are recorded on the card when applied | `workflow/effect-application.mjs withCardLink`, `applyEffectFromCard` |
 | Reaction windows shown on the card | `rules/action-card.mjs cardReactionWindows`, `workflow/reactions.mjs openReactionWindow` |
+
+## Damage per effect and the Clash (FIN3b, 0.33.0-alpha.3)
+
+| Rule | Code |
+| --- | --- |
+| Several damage rolls on one card, each with its own share and Apply | `rules/action-card.mjs damagesOf`, `appliedOf`, `cardTargetRows`; `workflow/action-card.mjs` |
+| A concentrated jutsu clashes at the rank it was cast at | `workflow/cast-plan.mjs` (`concentrationRank`), `workflow/clash.mjs clashRank` |
+| GM decides a clash automatically (King Q-F8) | `workflow/clash.mjs decideClash`, `rules/clash.mjs clashResult` |
+| A dispelled jutsu ends at once with every effect it put out (King Q-F10) | `workflow/clash.mjs dispelSide`, `endEffectsOf` |

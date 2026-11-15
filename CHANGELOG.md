@@ -1,3 +1,12 @@
+## 0.33.0-alpha.3 — Several damage rolls on one card, and the Clash (FIN3b; King 2026-11-15)
+
+- **Several damage rolls on one card:** a jutsu with more than one damage (Cherry Blossom Impact's strike and its Finisher) keeps every roll on the action card. Each creature's row shows each effect's share ("Strike: Full damage · Finisher: Half damage", from that effect's own save) with its own Apply and Half buttons; the row's Undo removes all of them. The Damage section is done once every effect's damage is rolled. Concentration checks and reactions show per application.
+- **Clash at the rank it was cast at:** a jutsu its caster is concentrating on clashes at the rank it was cast at; the chooser shows it ("Fireball (B, cast at S)").
+- **GM auto-win:** before a result, the GM sees "<name> wins automatically" for each side. Pressing it decides the clash; the card says the GM decided it.
+- **Dispelling ends the jutsu:** the loser's button dispels its jutsu (its concentration ends and every effect the jutsu put out ends at once) and applies Concussed 1 and Dazed. On a Draw, "Dispel both" (each owner for their side, or the GM) does the same for both jutsu without the conditions. A player's dispel reaches the GM to end effects on creatures the player doesn't own.
+- Cards posted before this version read their single damage roll and applications as before.
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.2 — Card and resolution limits (FIN3a; King 2026-11-14)
 
 - **One save per effect:** a jutsu with several saves (Cherry Blossom Impact's strike and its Finisher, Abyssal Aura...) now keeps every save on the action card. Each creature's row lists its saves ("Con Failure, Dex Success"), has a Roll button for each save it still owes, and applies only the conditions of the save it failed. "Roll … for all" appears per save. Will of Fire rerolls the save you pick.

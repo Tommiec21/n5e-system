@@ -15,7 +15,7 @@
  *   Setting    rule("actionCard") off: nothing here runs and cards look as they did (Q-CD3).
  */
 import { rule } from "../rules-settings.mjs";
-import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets, savesOf, allSaves, cardReactionWindows } from "../rules/action-card.mjs";
+import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets, savesOf, allSaves, cardReactionWindows, damagesOf, appliedOf, allApplied } from "../rules/action-card.mjs";
 import { genjutsuImmunity, creatureFacts } from "../rules/stimuli.mjs";
 import { challengeVisible } from "../rules/parity.mjs";
 import { riderView, onRiderClick } from "./riders.mjs";
@@ -153,7 +153,7 @@ function linkedEntries(card) {
 /** Is this linked message recorded in its card's own results? */
 function recordedIn(card, messageId) {
   const r = card?.flags?.n5e?.card?.results ?? {};
-  return [r.attack, r.damage, ...allSaves(r), ...Object.values(r.applied ?? {})].some(x => x?.messageId === messageId);
+  return [r.attack, ...Object.values(damagesOf(r)), ...allSaves(r), ...allApplied(r)].some(x => x?.messageId === messageId);
 }
 
 const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage: "Damage", effects: "Effects", riders: "Riders", reactions: "Reactions", concentration: "Concentration" };
@@ -171,7 +171,10 @@ function cardActivities(message) {
   const doc = new DOMParser().parseFromString(message.content ?? "", "text/html");
   const data = sel => [...doc.querySelectorAll(sel)].map(b => ({ ...b.dataset }));
   // FIN3: each save belongs to one effect (its row's key); cards posted before FIN3 number them in order.
-  return { saves: data('[data-n5e-act="save"]').map((d, i) => ({ ...d, effect: d.effect ?? String(i) })), effects: data('[data-n5e-act="effect"]')
+  // FIN3b: each effect's damage button (not the Critical one), with its label.
+  const damages = [...doc.querySelectorAll('[data-n5e-act="damage"]:not([data-crit])')].map(b => ({ effect: b.dataset.effect ?? "",
+    label: (b.textContent ?? "").split(":")[0].trim() }));
+  return { damages, saves: data('[data-n5e-act="save"]').map((d, i) => ({ ...d, effect: d.effect ?? String(i) })), effects: data('[data-n5e-act="effect"]')
     // Per-target only when one click per creature costs nothing extra (no pool cost, use limit or action).
     .filter(d => parse(d.effect)?.target === "targets" && !d.cost && !d.once && !d.activation) };
 }
@@ -193,7 +196,7 @@ export function immuneTargets(message, uuids) {
 
 /** FIN3: the reaction windows this user can see that were opened for the card, its attack or its damage. */
 function windowsFor(message, results) {
-  const ids = new Set([message.id, results.attack?.messageId, results.damage?.messageId].filter(Boolean));
+  const ids = new Set([message.id, results.attack?.messageId, ...Object.values(damagesOf(results)).map(d => d.messageId)].filter(Boolean));
   return (messages()?.contents.slice(-200) ?? []).map(m => m.flags?.n5e?.reactionWindow).filter(w => w?.sourceMessageId && ids.has(w.sourceMessageId));
 }
 
@@ -221,8 +224,13 @@ function offersFrom(message) {
 }
 
 /** The card's save effect keys and their short labels ("Con", "Dex"). */
-const saveEffectsOf = acts => ({ saveEffects: acts.saves.map(d => d.effect),
-  saveLabels: Object.fromEntries(acts.saves.map(d => [d.effect, globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""])) });
+const saveEffectsOf = acts => {
+  const damageEffects = [...new Set(acts.damages.map(d => d.effect))];
+  return { saveEffects: acts.saves.map(d => d.effect),
+    saveLabels: Object.fromEntries(acts.saves.map(d => [d.effect, globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""])),
+    // FIN3b: labels only matter when the card has more than one damage roll.
+    damageEffects, damageLabels: damageEffects.length > 1 ? Object.fromEntries(acts.damages.map(d => [d.effect, d.label])) : {} };
+};
 
 /** The card's sections and per-target rows (A5). Synchronous: listeners are bound right after. */
 export function renderActionCard(message, html) {
@@ -245,7 +253,6 @@ export function renderActionCard(message, html) {
   const immune = immuneTargets(message, (card.targets ?? []).map(t => t.uuid));
   const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave, ...keys, immune });
   const pending = entries.some(e => !recordedIn(message, e.result.messageId) && e.result.messageId !== message.id);
-  const canDamage = !!results.damage;
   const casterOwner = !!globalThis.fromUuidSync?.(card.actorUuid)?.isOwner;
   // CARD1d: riders (feature fixtures) — the caster's bar, the event save, per-row controls.
   const appliedSources = new Set(rows.flatMap(r => r.effectSources.map(src => `${r.uuid}|${src}`)));
@@ -267,7 +274,10 @@ export function renderActionCard(message, html) {
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
     if ( countered.has(r.uuid) ) return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">Absorbed by a Counter Tag: no effect</span></div>`;
     const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "",
-      r.immune ? `Immune (${r.immune.join(", ")})` : r.share && mine ? SHARE_LABELS[r.share] : "", ...r.effects].filter(Boolean);
+      r.immune ? `Immune (${r.immune.join(", ")})` : "", ...r.effects].filter(Boolean);
+    // FIN3b: each effect's damage share ("Finisher: Half damage").
+    if ( mine ) for ( const dm of r.damages ) if ( dm.share && !dm.applied && !r.immune ) facts.push(`${dm.label ? `${dm.label}: ` : ""}${SHARE_LABELS[dm.share]}`);
+    if ( mine && !r.damages.length && r.share && !r.immune ) facts.push(SHARE_LABELS[r.share]);
     const controls = [];
     // B2: the target's owner (GM for NPCs) rolls its save from the card.
     // FIN3: one button per effect's save not yet rolled.
@@ -293,19 +303,23 @@ export function renderActionCard(message, html) {
       if ( offered.has(`${r.uuid}|act:${i}`) ) return facts.push(`${name} offered to ${offered.get(`${r.uuid}|act:${i}`)}`);
       controls.push(`<button type="button" data-n5e-card-effect="${i}" data-target="${esc(r.uuid)}">Apply ${esc(name)}</button>`);
     });
-    if ( mine && canDamage && !r.applied ) ["full", "half"].forEach(m =>
-      controls.push(`<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`));
-    if ( r.applied ) facts.push(MODE_LABELS[r.applied.mode] ?? "Applied");
+    // FIN3b: Apply and Half per effect's damage.
+    for ( const dm of r.damages ) {
+      const name = dm.label ? `${dm.label}: ` : "";
+      if ( mine && !dm.applied ) ["full", "half"].forEach(m => controls.push(`<button type="button" data-n5e-card-apply="${m}" data-effect="${esc(dm.effect)}" data-target="${esc(r.uuid)}"${dm.share === m ? ' class="suggested"' : ""}>${esc(name)}${m === "full" ? "Apply" : "Half"}</button>`));
+      if ( dm.applied ) facts.push(`${name}${MODE_LABELS[dm.applied.mode] ?? "Applied"}`);
+      // C1: the reaction the creature took against this damage.
+      const rx = dm.applied?.reaction;
+      if ( rx ) facts.push(`${rx.label}${rx.reduction ? ` (−${rx.reduction})` : ""}${rx.multiplier !== 1 ? ` (×${rx.multiplier})` : ""}`);
+    }
     facts.push(...(windows.get(r.uuid) ?? []));
-    // C1: the reaction the creature took against this damage.
-    if ( r.applied?.reaction ) facts.push(`${r.applied.reaction.label}${r.applied.reaction.reduction ? ` (−${r.applied.reaction.reduction})` : ""}${r.applied.reaction.multiplier !== 1 ? ` (×${r.applied.reaction.multiplier})` : ""}`);
     // C2: Will of Fire on this creature's save (its owner).
     if ( mine && r.saves.length && (actor?.system?.willOfFire?.value ?? 0) > 0 ) r.saves.forEach(sv =>
       controls.push(wofButtons("save", r.uuid, sv.effect, r.saves.length > 1 ? sv.label : "")));
     // C3: the concentration check the damage called for (that creature's owner).
-    if ( mine && r.applied?.concentration ) controls.push(`<button type="button" data-n5e-card-concheck="${esc(r.uuid)}">Concentration check DC ${r.applied.concentration.dc}</button>`);
+    for ( const dm of r.damages ) if ( mine && dm.applied?.concentration ) controls.push(`<button type="button" data-n5e-card-concheck="${esc(r.uuid)}" data-effect="${esc(dm.effect)}">Concentration check DC ${dm.applied.concentration.dc}</button>`);
     // Undo (Q-CD4): the damage and the conditions/effects applied to this creature from the card.
-    if ( mine && (r.applied || r.effectMessages.length) ) controls.push(`<button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`);
+    if ( mine && (r.damages.some(dm => dm.applied) || r.effectMessages.length) ) controls.push(`<button type="button" data-n5e-card-undo="${esc(r.uuid)}">Undo</button>`);
     return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">${esc(facts.join(" · "))}</span>${controls.join("")}</div>`;
   };
   const box = document.createElement("div");
@@ -380,9 +394,10 @@ async function undoTarget(message, results, uuid, event) {
   const game = globalThis.game;
   const { onApplyClick } = await import("./apply-damage.mjs");
   let done = 0;
-  const applied = results.applied?.[uuid];
-  const summary = applied && !applied.undone ? messages()?.get(applied.messageId) : null;
-  if ( summary && !summary.flags?.n5e?.undone ) {
+  // FIN3b: every effect's damage applied to this creature.
+  for ( const applied of Object.values(appliedOf(results, uuid)) ) {
+    const summary = applied && !applied.undone ? messages()?.get(applied.messageId) : null;
+    if ( !summary || summary.flags?.n5e?.undone ) continue;
     if ( !summary.isAuthor && !game.user.isGM ) ui.notifications.info("Only the user who applied this damage, or the GM, can undo it.");
     else { await onApplyClick(summary, { dataset: { n5eUndo: "1" } }, event); done++; }
   }
@@ -434,7 +449,9 @@ export async function onActionCardClick(message, btn, event) {
   }
   const target = d.target ? await fromUuid(d.target) : null;
   if ( d.n5eCardApply ) {
-    const damage = results.damage ? messages()?.get(results.damage.messageId) : null;
+    const rolled = damagesOf(results);
+    const pick = rolled[d.effect ?? ""] ?? Object.values(rolled)[0];
+    const damage = pick ? messages()?.get(pick.messageId) : null;
     if ( !damage ) return ui.notifications.info("Roll the damage first.");
     btn.disabled = true;
     const { onApplyClick } = await import("./apply-damage.mjs");
@@ -463,7 +480,8 @@ export async function onActionCardClick(message, btn, event) {
   }
   if ( d.n5eCardConcheck ) {
     // C3: the concentration check the damage called for, through the damage summary's own button.
-    const applied = results.applied?.[d.n5eCardConcheck];
+    const byEffect = appliedOf(results, d.n5eCardConcheck);
+    const applied = byEffect[d.effect ?? ""] ?? Object.values(byEffect).find(a => a?.concentration);
     const summary = applied ? messages()?.get(applied.messageId) : null;
     const conc = applied?.concentration;
     if ( !summary || !conc ) return null;

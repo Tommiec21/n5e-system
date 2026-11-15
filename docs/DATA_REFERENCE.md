@@ -544,3 +544,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.roll.effect`, `flags.n5e.damage.effect` | The effect a save or damage roll belongs to |
 | `flags.n5e.effectApplication.card {messageId, source}` | The action card and button an effect offer came from |
 | `flags.n5e.reactionWindow.sourceMessageId` | The attack or damage message a reaction window was opened for |
+
+## Added in 0.33.0-alpha.3 (FIN3b)
+
+| Path | Meaning |
+| --- | --- |
+| `flags.n5e.card.results.damage[effect]`, `.applied[uuid][effect]` | One damage roll per effect and one application per creature per effect (old cards read as their own effect) |
+| `flags.n5e.damageApplication.effect` | The effect whose damage was applied |
+| `flags.n5e.concentrationRank[itemId]` (Actor) | The rank a concentration jutsu was cast at |
+| `flags.n5e.clash.auto` (`a` or `b`), `.dispelled[]`, side `itemId` | GM decision, dispelled sides, the clashing jutsu |
+| Owner intent `dispelJutsu {itemId, messageId, side}` | A player's dispel, finished by the active GM |

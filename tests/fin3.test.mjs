@@ -32,3 +32,19 @@ test("an offer card made while an action card applies an effect remembers that c
   assert.deepEqual(created[0].flags.n5e.effectApplication.card, { messageId: "card1", source: "act:0" });
   assert.equal(created[1].flags.n5e.effectApplication.card, undefined, "the link ends with the card's click");
 });
+
+test("FIN3b: a concentrated jutsu clashes at its cast rank", async () => {
+  const { clashRank } = await import("../module/workflow/clash.mjs");
+  const item = { id: "j1", system: { rank: "B" } };
+  const caster = conc => ({ system: { combat: { concentrating: conc } }, flags: { n5e: { concentrationRank: { j1: "S" } } } });
+  assert.equal(clashRank(caster(["j1"]), item), "S");
+  assert.equal(clashRank(caster([]), item), "B", "not concentrating: its own rank");
+  assert.equal(clashRank({ system: { combat: { concentrating: ["j1"] } }, flags: {} }, item), "B");
+});
+
+test("FIN3b: the dispel intent is validated", async () => {
+  const { validateIntent, INTENT_TYPES } = await import("../module/automation/owner-intents.mjs");
+  assert.ok(INTENT_TYPES.includes("dispelJutsu"));
+  assert.deepEqual(validateIntent("dispelJutsu", { itemId: "abc123", messageId: "msg1", side: "b" }), { itemId: "abc123", messageId: "msg1", side: "b" });
+  assert.throws(() => validateIntent("dispelJutsu", { itemId: "abc123", messageId: "msg1", side: "c" }), /Invalid dispel/);
+});

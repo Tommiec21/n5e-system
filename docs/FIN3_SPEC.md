@@ -1,6 +1,6 @@
 # FIN3 function spec: card and resolution limits
 
-Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F13. Split into FIN3a (card) and FIN3b (Clash). FIN3a approved by King 2026-11-14 ("Approved") and published `0.33.0-alpha.2`. FIN3b (Clash) needs its own go-ahead.**
+Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F13. Split into FIN3a (card) and FIN3b (Clash). FIN3a approved by King 2026-11-14 ("Approved") and published `0.33.0-alpha.2`. FIN3b approved by King 2026-11-15 ("Approved") and published `0.33.0-alpha.3`. FIN3 is complete (Arts post-launch).**
 
 Plan: `docs/DEV_PLAN.md` row 3. It closes the limits that CARD1, GEN1 and CLASH1 recorded when they shipped. NPC4–NPC6 wait for STD4 (King Q-N2), so FIN3 is the next batch in order.
 
@@ -73,3 +73,9 @@ After each function, add a line to the progress log and push.
   - Limit: a second damage roll on one card (the Finisher's 6d6) is still applied from its own damage card, whose per-target rows follow its own save; the action card records the first damage roll.
   - Tests: core +4 (per-effect saves, legacy cards, immune row, reaction windows), `tests/fin3.test.mjs` (effect keys on buttons, offer link). Suites: 493 and 117 pass.
 - 2026-11-15 Claude: King asked to resolve the two-damage-roll limit in the next batch: added as F9 in FIN3b.
+- 2026-11-15 Claude: **FIN3b built and published 0.33.0-alpha.3.**
+  - F9: `rules/action-card.mjs damagesOf`, `appliedOf`, `allApplied`; `results.damage[effect]` and `results.applied[uuid][effect]`; rows `damages[{effect, label, share, applied}]`; `sectionStates` takes `damageEffects`. Damage applications carry `damageApplication.effect`. The card reads its damage buttons (`cardActivities().damages`) for labels and keys; Apply, Half and concentration checks carry `data-effect`; Undo covers every application.
+  - F5: `cast-plan.mjs` stores `flags.n5e.concentrationRank[itemId]`; `clash.mjs clashRank`.
+  - F6: `flags.n5e.clash.auto` set by `decideClash` (GM only); `clashResult` reads it.
+  - F8: `dispelSide` ends the jutsu's concentration and every effect whose origin is the jutsu (`endEffectsOf`, active GM; players through owner intent `dispelJutsu`); `flags.n5e.clash.dispelled`; the loser's button dispels and applies the conditions; Draw: "Dispel both". Clash sides now store `itemId`.
+  - Tests: core +2 (per-effect damage, legacy cards), `tests/fin3.test.mjs` +2 (cast rank, dispel intent). Suites: 497 and 119 pass.

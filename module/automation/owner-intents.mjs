@@ -8,7 +8,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -49,6 +49,9 @@ export function validateIntent(type, data = {}) {
     case "cardResult":
       if ( !isId(data.cardMessageId) || !isId(data.linkedMessageId) || (data.undoneTarget != null && !isUuid(data.undoneTarget)) ) throw new Error("Invalid card result.");
       return { cardMessageId: data.cardMessageId, linkedMessageId: data.linkedMessageId, undoneTarget: data.undoneTarget ?? null };
+    case "dispelJutsu":
+      if ( !isId(data.itemId) || !isId(data.messageId) || !["a", "b"].includes(data.side) ) throw new Error("Invalid dispel.");
+      return { itemId: data.itemId, messageId: data.messageId, side: data.side };
     case "learnEntry":
       if ( !isId(data.messageId) || typeof data.entryId !== "string" || !/^[A-Za-z0-9]{1,64}$/.test(data.entryId) ) throw new Error("Invalid pick.");
       return { messageId: data.messageId, entryId: data.entryId };

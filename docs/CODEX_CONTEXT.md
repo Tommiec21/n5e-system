@@ -436,3 +436,6 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## FIN3a — Claude, 2026-11-15 (published 0.33.0-alpha.2)
 - Card saves are nested by effect: read them with `savesOf(results, uuid)` or `allSaves(results)`, never `results.saves[uuid].degree`.
 - The effect key is the card row index from `activityButtons` (`data-effect`). Keep save and damage buttons of one effect in the same row.
+
+## FIN3b — Claude, 2026-11-15 (published 0.33.0-alpha.3)
+- Card damage and applications are nested by effect: read them with `damagesOf(results)`, `appliedOf(results, uuid)` and `allApplied(results)`.

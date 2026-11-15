@@ -34,9 +34,9 @@ test("results are recorded once; an undone application can be replaced", () => {
   results = addCardResult({ ...card, results }, { section: "applied", targetUuid: "A", result: { mode: "full", messageId: "s1", undone: false } });
   assert.throws(() => addCardResult({ ...card, results }, { section: "applied", targetUuid: "A", result: { mode: "half", messageId: "s2" } }), /already recorded/);
   results = addCardResult({ ...card, results }, { section: "applied", targetUuid: "A", result: { mode: "full", messageId: "s1", undone: true } });
-  assert.equal(results.applied.A.undone, true);
+  assert.equal(results.applied.A[""].undone, true);
   results = addCardResult({ ...card, results }, { section: "applied", targetUuid: "A", result: { mode: "half", messageId: "s2", undone: false } });
-  assert.equal(results.applied.A.messageId, "s2");
+  assert.equal(results.applied.A[""].messageId, "s2");
   assert.deepEqual(card.results, {}, "input unchanged");
 });
 
@@ -186,4 +186,36 @@ test("FIN3: reaction windows opened for the card show per creature", async () =>
   assert.deepEqual(map.get("A"), ["Deflection: pending (25 s left)", "Uncanny Dodge: taken"]);
   assert.deepEqual(map.get("B"), ["Deflection: waiting for the GM"]);
   assert.deepEqual(map.get("C"), ["Deflection: withdrawn"]);
+});
+
+test("FIN3b: one damage roll per effect; each row has each effect's share and application", async () => {
+  const { damagesOf, appliedOf } = await import("../../module/rules/action-card.mjs");
+  const card = { sections: ["saves", "damage"], targets, results: {} };
+  const saves = [
+    ...resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A", effect: "0", onSuccess: "none" } }, "s1"),
+    ...resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "A", effect: "1", onSuccess: "half" } }, "s2")];
+  const strike = resultsFromLinked({ damage: { total: 30, effect: "0" } }, "d0");
+  const finisher = resultsFromLinked({ damage: { total: 21, effect: "1" } }, "d1");
+  let results = mergedResults(card, [...saves, ...strike, ...finisher]);
+  assert.deepEqual(Object.keys(damagesOf(results)), ["0", "1"]);
+  assert.throws(() => addCardResult({ ...card, results }, resultsFromLinked({ damage: { total: 5, effect: "1" } }, "d9")[0]), /already rolled/);
+  const opts = { isGM: true, saveEffects: ["0", "1"], damageEffects: ["0", "1"], damageLabels: { 0: "Strike", 1: "Finisher" } };
+  let row = cardTargetRows(card, results, opts)[0];
+  assert.deepEqual(row.damages.map(d => [d.label, d.share]), [["Strike", "full"], ["Finisher", "half"]]);
+  // An application to the Finisher only.
+  results = mergedResults({ ...card, results }, resultsFromLinked({ damageApplication: { mode: "half", effect: "1", recipients: [{ actorUuid: "A" }] } }, "a1"));
+  row = cardTargetRows(card, results, opts)[0];
+  assert.deepEqual(row.damages.map(d => !!d.applied), [false, true]);
+  assert.deepEqual(Object.keys(appliedOf(results, "A")), ["1"]);
+  assert.equal(sectionStates(card, results, { damageEffects: ["0", "1"] }).damage, "done");
+  assert.equal(sectionStates(card, mergedResults(card, strike), { damageEffects: ["0", "1"] }).damage, "ready", "the Finisher isn't rolled yet");
+});
+
+test("FIN3b: a card from before reads its single damage roll and application", async () => {
+  const { damagesOf, appliedOf } = await import("../../module/rules/action-card.mjs");
+  const legacy = { damage: { total: 9, messageId: "d1" }, applied: { A: { mode: "full", messageId: "a1" } } };
+  assert.deepEqual(Object.keys(damagesOf(legacy)), [""]);
+  assert.equal(appliedOf(legacy, "A")[""].messageId, "a1");
+  const row = cardTargetRows({ sections: ["damage"], targets, results: legacy }, legacy, { isGM: true })[0];
+  assert.equal(row.damages[0].applied.mode, "full");
 });

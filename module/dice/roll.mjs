@@ -304,7 +304,7 @@ export async function registerResolution() {
   resolutionModule = await import("../workflow/resolution.mjs");
   resolutionModule.registerResolutionHooks();
   clashModule = await import("../workflow/clash.mjs");
-  clashModule.registerClashHooks();
+  clashModule.registerClashHooks().catch(error => console.warn("n5e | clash hooks", error));
   actionCardModule = await import("../workflow/action-card.mjs");
   await actionCardModule.registerActionCardHooks();
 }
@@ -362,10 +362,16 @@ export function onRenderChatMessage(message, html) {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });
-  for ( const btn of html.querySelectorAll("[data-n5e-clash], [data-n5e-clash-roll], [data-n5e-clash-lose]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-clash], [data-n5e-clash-roll], [data-n5e-clash-lose], [data-n5e-clash-auto], [data-n5e-clash-dispel]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     const d = btn.dataset;
-    const run = m => (d.n5eClashRoll ? m.rollClash(message, d.n5eClashRoll, ev) : d.n5eClashLose ? m.applyClashLoss(d.n5eClashLose) : m.startClash(message));
+    const run = async m => {
+      if ( d.n5eClashRoll ) return m.rollClash(message, d.n5eClashRoll, ev);
+      if ( d.n5eClashLose ) return m.applyClashLoss(d.n5eClashLose, message, d.side ?? null);
+      if ( d.n5eClashAuto ) return m.decideClash(message, d.n5eClashAuto);
+      if ( d.n5eClashDispel ) { for ( const k of d.n5eClashDispel.split(",") ) await m.dispelSide(message, k); return true; }
+      return m.startClash(message);
+    };
     import("../workflow/clash.mjs").then(run).catch(error => ui.notifications.warn(error.message));
   });
   // NPC1c C5: what the party can learn from a Read the Enemy success.

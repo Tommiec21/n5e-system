@@ -126,6 +126,8 @@ export function castPlan(actor, item, sel = {}) {
     if ( concentration.ending ) update[`flags.n5e.concentrationPaid.-=${concentration.ending}`] = null;
     // The discipline stays locked for the whole duration (King 2026-11-13, decision 11).
     update[`flags.n5e.castDiscipline.${item.id}`] = discipline;
+    // FIN3b: the rank it was cast at, for a Clash while it lasts.
+    update[`flags.n5e.concentrationRank.${item.id}`] = rank;
   }
   if ( ready ) update[`flags.n5e.readied.${item.id}`] = { trigger: ready.trigger, rank, cost: cost.cost, readiedAt: now };
   Object.assign(update, castUpdates(actor, item) ?? {});

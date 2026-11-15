@@ -153,7 +153,8 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       ${data.rollTrace?.sourceUuid ? `<button type="button" class="n5e-source-roll inline-control icon fa-solid fa-dice" data-n5e-source="${esc(data.rollTrace.sourceUuid)}" title="View damage roll" aria-label="View damage roll"></button>` : ""}
       ${rows.join("")}${coordinated ? "" : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
     ...(data.sourceVisibility ?? {}),
-    flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications } } }
+    flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications,
+      effect: data.effect ?? null } } }
   });
 }
 
