@@ -78,3 +78,11 @@ test("PRESTD1 A: Stealth, Insight and identify checks start secret", async () =>
   assert.equal(secretByDefault({ type: "skill", key: "ath" }), false);
   assert.equal(secretByDefault({ type: "skill", key: "ill", label: "Identify Genjutsu" }), true);
 });
+
+test("PRESTD1 B: a cast from a scroll costs no chakra and ignores the rank cap", async () => {
+  const { castBlockers } = await import("../module/rules/cast-checks.mjs");
+  const actor = { statuses: new Set(), system: { level: 1, conditionPenalties: { flags: {} } }, flags: {}, effects: [] };
+  const item = { system: { rank: "A", live: { meetsRequirement: false }, components: [] } };
+  assert.ok(castBlockers(actor, item, { rank: "A" }).length >= 1);
+  assert.deepEqual(castBlockers(actor, item, { rank: "A", scroll: true }), []);
+});

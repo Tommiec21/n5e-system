@@ -111,6 +111,11 @@ export async function indirectExposure() {
   return indirectExposureCheck();
 }
 
+/** PRESTD1 Part B: the GM makes a jutsu scroll ({rank, identified, actor}). */
+export async function makeScroll(jutsu, options = {}) {
+  return (await import("./workflow/scrolls.mjs")).makeScroll(jutsu, options);
+}
+
 export default {
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
@@ -121,5 +126,5 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData, fall, indirectExposure
+  registerClanData, fall, indirectExposure, makeScroll
 };

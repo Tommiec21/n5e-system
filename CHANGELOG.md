@@ -1,3 +1,10 @@
+## 0.35.0-alpha.1 — Jutsu scrolls (PRESTD1 Part B; King 2026-11-15)
+
+- **Make a scroll (GM):** right-click a Ninjutsu or Genjutsu on a sheet, "Make a scroll": pick the rank and whether it starts identified. The scroll is a consumable that holds the jutsu (`game.n5e.api.makeScroll(jutsu, {rank, identified, actor})` too). No Taijutsu or Bukijutsu scrolls.
+- **Cast from scroll:** right-click the scroll. Anyone can try, with no chakra (King Q-P3): a Ninshou (Ninjutsu) or Illusions (Genjutsu) check against the rank's identify DC (D 12, C 15, B 18, A 21, S 24; Q-P11), within the skill's tier (non-proficient D-Rank or lower, proficient B or lower, Mastery any). On a success the jutsu is cast through the normal cast dialog and card, using the scroll's own attack and save DC for its rank (D +6 / DC 14 … S +14 / DC 22), with no ability requirement or rank cap; the scroll is used up. On a failure nothing happens and the scroll is kept.
+- **Identify scroll:** an unidentified scroll shows "Unidentified scroll (C-Rank)". Only the matching skill can identify it (Q-P4), against the identify DC; success shows its jutsu.
+- Not checked in a running Foundry world.
+
 ## 0.34.0-alpha.3 — Optional rules, part 3 (PRESTD1 A-iii/iv; King 2026-11-15)
 
 More world rules in the N5e Rules panel, which now also has text fields. Defaults keep play as it was.

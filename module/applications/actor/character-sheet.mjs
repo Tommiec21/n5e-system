@@ -20,6 +20,7 @@
  * The NPC sheet (npc-sheet.mjs) extends this class, so new tabs and actions appear there too
  * unless it removes them.
  */
+import { scrollContextOptions } from "../../workflow/scrolls.mjs";
 import {
   headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
 } from "../../view-models/character.mjs";
@@ -385,6 +386,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const item = li => this.actor.items.get(li.dataset.itemId);
     const owner = () => this.actor.isOwner;
     return [
+      // PRESTD1 Part B: jutsu scrolls.
+      ...scrollContextOptions(item, owner),
       { name: "Edit in Freeform window", icon: "<i class=\"fa-solid fa-wand-sparkles\"></i>",
         condition: li => owner() && !!item(li)?.flags?.n5e?.freeform,
         callback: li => import("../npc/freeform-window.mjs").then(m => m.default.openFor(item(li))) },

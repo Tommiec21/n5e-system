@@ -582,3 +582,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | `flags.n5e.expired` (ActiveEffect) | Ran out while "Remove expired effects automatically" is off |
 | Roll dialog field `secret` | Secret roll (GM only) |
+
+## Added in 0.35.0-alpha.1 (PRESTD1 Part B)
+
+| Path | Meaning |
+| --- | --- |
+| Consumable `system.subtype: "scroll"` with `flags.n5e.scroll {jutsu, rank, discipline, identified}` | A jutsu scroll |
+| `flags.n5e.scrollCopy {scrollId, numbers {attack, dc}}` (jutsu) | The hidden copy a scroll casts through; off the Jutsu tab |

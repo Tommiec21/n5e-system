@@ -59,13 +59,15 @@ export function castPlan(actor, item, sel = {}) {
     noReduction: crash, subtract: crash ? 0 : fx.subtract, discipline });
   if ( crash && fx.subtract > 0 ) warnings.push("Crash: no cost reduction applies");
   const imported = item.flags?.n5e?.jutsuBookImport;
-  const spendsChakra = j.cost?.mode === "chakra" || (!!imported && j.cost?.mode === "special" && j.cost.value > 0);
-  if ( imported?.manualCost ) problems.push("This jutsu has a source-defined cost. Resolve it manually; automatic casting cannot assume a free cost.");
+  // PRESTD1 Part B (King Q-P3): a scroll costs no chakra.
+  const scroll = !!sel.scroll;
+  const spendsChakra = !scroll && (j.cost?.mode === "chakra" || (!!imported && j.cost?.mode === "special" && j.cost.value > 0));
+  if ( imported?.manualCost && !scroll ) problems.push("This jutsu has a source-defined cost. Resolve it manually; automatic casting cannot assume a free cost.");
   const cp = sys.cp?.value ?? 0;
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
-  if ( item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
+  if ( !scroll && item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
   // Conditions, components, ability requirement and rank cap (rules/cast-checks.mjs; CAST1).
-  problems.push(...castBlockers(actor, item, { rank, discipline }));
+  problems.push(...castBlockers(actor, item, { rank, discipline, scroll }));
   if ( ["nin", "gen"].includes(discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
     problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
   }
@@ -154,7 +156,7 @@ export function castPlan(actor, item, sel = {}) {
 
   return {
     rank, discipline, upcast: rankValue(rank) - rankValue(j.rank),
-    cost: cost.cost, costMode: j.cost?.mode, costText: j.cost?.text ?? "", costBreakdown: cost,
+    cost: scroll ? 0 : cost.cost, costMode: scroll ? "none" : j.cost?.mode, scroll, costText: j.cost?.text ?? "", costBreakdown: cost,
     choices: cost.choices ?? {}, cpAfter: spendsChakra ? Math.max(0, cp - cost.cost) : cp,
     pools, options: [...used.map(o => ({ id: o.id, name: o.name })), ...fx.names.map(name => ({ id: "", name }))], concentration,
     featureOptions: available, extraDamage: fx.damage, extraHeals: fx.heals, extraEffects: fx.effects, extraRolls: fx.rolls, notes: fx.notes, riders: fx.riders ?? [],

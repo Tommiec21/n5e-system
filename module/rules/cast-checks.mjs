@@ -34,7 +34,7 @@ export function jutsuComponents(item) {
  * @param {{rank?: string}} [o]  the rank it is cast at
  * @returns {string[]} problems (empty = may cast)
  */
-export function castBlockers(actor, item, { rank, discipline = "" } = {}) {
+export function castBlockers(actor, item, { rank, discipline = "", scroll = false } = {}) {
   const problems = [];
   const statuses = actor.statuses ?? new Set();
   const flags = actor.system?.conditionPenalties?.flags ?? {};
@@ -55,12 +55,13 @@ export function castBlockers(actor, item, { rank, discipline = "" } = {}) {
 
   // Multi-discipline jutsu: the requirement uses the cast discipline's ability (MDISC1).
   const live = (discipline && item.system?.liveAs?.(discipline)) || item.system?.live || {};
-  if ( live.meetsRequirement === false ) problems.push(`Needs ${String(live.ability ?? "").toUpperCase()} ${live.requirement} to cast this rank`);
+  // PRESTD1 Part B: a scroll has no ability requirement or rank cap (its skill tier limits the rank).
+  if ( !scroll && live.meetsRequirement === false ) problems.push(`Needs ${String(live.ability ?? "").toUpperCase()} ${live.requirement} to cast this rank`);
   const castMax = actor.system?.grants?.maxRank ?? maxRankForLevel(actor.system?.level ?? 1);
   const at = rank ?? item.system?.rank;
   // Chakra Suppression Tag (KB 08): caught by any listed discipline (MDISC1).
   const tag = tagsOn(actor, "suppressionTag").find(t => suppressionBlocks({ tagRank: t.rank, castRank: at, ninOrGen: caughtBy(item, ["nin", "gen"]) }));
   if ( tag ) problems.push(`Chakra Suppression Tag (${tag.rank}-Rank): can't cast Ninjutsu or Genjutsu below ${tag.rank}-Rank`);
-  if ( castMax && rankOrder.indexOf(at) > rankOrder.indexOf(castMax) ) problems.push(`${at}-Rank is above the highest rank you can cast (${castMax})`);
+  if ( !scroll && castMax && rankOrder.indexOf(at) > rankOrder.indexOf(castMax) ) problems.push(`${at}-Rank is above the highest rank you can cast (${castMax})`);
   return problems;
 }

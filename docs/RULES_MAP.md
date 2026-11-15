@@ -258,3 +258,10 @@
 | `critTable`, `fumbleTable` | `rules/variants.mjs tableFor`, `workflow/variant-tools.mjs renderTableButton` |
 | `homebrewKeywords`, `homebrewWeaponGroups`, `homebrewDamageTypes`, `homebrewLanguages` | `rules/variants.mjs parseHomebrew`, `mergeHomebrew`; `workflow/variant-tools.mjs applyHomebrew` |
 | `worldClock` | `rules/variants.mjs worldTimeParts`, `workflow/variant-tools.mjs WorldClock` |
+
+## Jutsu scrolls (PRESTD1 Part B, 0.35.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Ninjutsu and Genjutsu scrolls; casting check vs the identify DC within the skill tier; no chakra; the scroll's numbers (King Q-P3, Q-P11) | `rules/scrolls.mjs`, `workflow/scrolls.mjs castFromScroll`, `workflow/cast-plan.mjs` (`sel.scroll`), `rules/cast-checks.mjs` |
+| Identify with the matching skill only (King Q-P4) | `workflow/scrolls.mjs identifyScroll` |

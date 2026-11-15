@@ -155,6 +155,9 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       this.liveByDiscipline[d] = { discipline: d, ...this._liveNumbers(sys, d, requirement), ...shared };
     }
     this.live = this.liveByDiscipline[this.castingDiscipline];
+    // PRESTD1 Part B: a jutsu cast from a scroll uses the scroll's attack and save DC.
+    const fixed = this.parent?.flags?.n5e?.scrollCopy?.numbers;
+    if ( fixed ) for ( const live of Object.values(this.liveByDiscipline) ) Object.assign(live, { attack: fixed.attack, dc: fixed.dc, meetsRequirement: true, castable: true });
   }
 
   /** The live numbers when cast as this discipline (falls back to the default discipline's). */
