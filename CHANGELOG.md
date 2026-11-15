@@ -1,3 +1,7 @@
+## 0.40.0-alpha.3 — NPC sheet tab fix (King 2026-11-15)
+
+- **Fixed:** on the NPC sheet the Stat Block tab stayed visible under every other tab (Build, Inventory, Effects, Notes), so the two overlapped. Its layout rule overrode Foundry's rule that hides inactive tabs; it now applies only to the active tab, and a sheet-wide rule keeps every inactive N5e tab hidden.
+
 ## 0.40.0-alpha.2 — Window header icons (King 2026-11-15)
 
 - **Fixed:** the menu, minimize and close buttons at the top right of every N5e window showed empty boxes. Our sheet button style (font and cream background) was also applied to Foundry's own header controls, which draw their icons with Font Awesome; it now applies only to buttons inside the window content, so Foundry's icons show again.

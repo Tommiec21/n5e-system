@@ -879,7 +879,7 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2.npc-v3 .trk .cond.off { opacity: .55; }
 .n5e-v2.npc-v3 .trk .cond .ctl { color: inherit; opacity: .8; }
 
-.n5e-v2.npc-v3 .npc-statblock { display: flex; flex-direction: column; gap: 12px; }
+.n5e-v2.npc-v3 .npc-statblock.active { display: flex; flex-direction: column; gap: 12px; }
 .n5e-v2.npc-v3 .sb-core { display: flex; gap: 14px; align-items: stretch; background: var(--n5e-card); border: 1px solid var(--n5e-line); border-radius: 10px; padding: 10px; }
 .n5e-v2.npc-v3 .sb-stats { flex: 0 0 228px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; align-content: center; }
 .n5e-v2.npc-v3 .sb-stat { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 5px 2px; background: #FFFAF1; border: 1px solid var(--n5e-line); border-radius: 8px; color: var(--n5e-ink); }
@@ -933,3 +933,6 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-npc-limited .cond-word { display: flex; flex-direction: column; align-items: flex-end; }
 .n5e-npc-limited .cond-word .lbl { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: .7; }
 .n5e-v2.npc-v3 .n5e-npc-limited { grid-column: 1 / -1; grid-row: 1 / -1; padding: 16px 20px; overflow-y: auto; }
+
+/* An inactive tab never shows, whatever display a tab's own rule sets (NPCUI1 fix: the Stat Block showed under Build). */
+.n5e-v2 .window-content .n5e-tab:not(.active) { display: none; }
