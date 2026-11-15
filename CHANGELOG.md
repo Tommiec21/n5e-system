@@ -1,3 +1,10 @@
+## 0.33.0-alpha.6 — Opportunity Attacks: sight and reach (FIN4c; King 2026-11-15)
+
+- **"Can see you" from token vision:** a creature gets the Opportunity Attack reminder only if it can see the mover with its own token vision (sight and detection modes, walls, darkness, Hidden and Undetected), the same check Uncanny Dodge uses. When that can't be checked (no vision set up on the token, different elevations, a hidden token), the reminder is still sent, marked "Sight not checked" (King Q-F17). Blinded still blocks it.
+- **Reach edge to edge:** reach is measured from the nearest square of the watcher to the nearest square of the mover, with the scene's diagonal rule, so Large and bigger creatures reach as far as their size gives them. Gridless scenes subtract half of each token's size from the centre distance; hex grids still measure centre to centre.
+- FIN4 is complete.
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.5 — Indirect Exposure as a GM option (FIN4b; King 2026-11-15)
 
 - **Indirect Exposure (GM):** "N5e Indirect Exposure" on the token controls (and `game.n5e.api.indirectExposure()`) opens a dialog listing the selected tokens, or every creature in a Hostile Terrain region on the scene. You tick who checks, set the Survival DC (the highest terrain DC is filled in: D 18, C 20, B 21, A 23, S 25) and type what a failure does. Creatures with the terrain's Release (Fire for Extreme Heat, Water for Extreme Cold, Medical for Toxic) are marked "may be immune" and start unticked. Chakra Resistant has no check.

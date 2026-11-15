@@ -1,6 +1,6 @@
 # FIN4 function spec: rules corrections
 
-Status: **spec written 2026-11-15 (King: "Next batch"). King answered Q-F14–Q-F18 (2026-11-15). Split into FIN4a, FIN4b and FIN4c. FIN4a approved 2026-11-15 ("Approved") and published `0.33.0-alpha.4`; FIN4b approved 2026-11-15 and published `0.33.0-alpha.5`; FIN4c needs a go-ahead.**
+Status: **spec written 2026-11-15 (King: "Next batch"). King answered Q-F14–Q-F18 (2026-11-15). Split into FIN4a, FIN4b and FIN4c. FIN4a approved 2026-11-15 ("Approved") and published `0.33.0-alpha.4`; FIN4b approved 2026-11-15 and published `0.33.0-alpha.5`; FIN4c approved 2026-11-15 and published `0.33.0-alpha.6`. FIN4 is complete.**
 
 Plan: `docs/DEV_PLAN.md` row 4. It closes the limits ENV1 and POS1 recorded when they shipped.
 
@@ -64,3 +64,4 @@ After each function, add a line to the progress log and push.
   - F2: `rules/environment.mjs breathSeconds`, `breathState`; `flags.n5e.breath` is turns (combat) or `{until}` (world time); `workflow/environment.mjs startBreathTime`, `breathClock` (updateWorldTime), `setBreath` (GM dialog), `registerEnvironmentHooks` (createActiveEffect starts the count and posts the GM card; deleteCombat restarts it fresh; deleteActiveEffect clears it).
   - Tests: `tests/environment.test.mjs` +2. Suites: 499 and 119 pass.
 - 2026-11-15 Claude: **FIN4b built and published 0.33.0-alpha.5.** `rules/environment.mjs indirectExposure`, `mayBeImmune`; `workflow/environment.mjs indirectExposureCheck` (GM dialog: creatures, DC, failure note), `onExposureRollClick`; token-controls button `n5eExposure`; API `indirectExposure()`; card flag `flags.n5e.indirectExposure {dc, note, actors}`. Tests: `tests/environment.test.mjs` +1. Suites: 500 and 119 pass.
+- 2026-11-15 Claude: **FIN4c built and published 0.33.0-alpha.6.** `rules/positioning.mjs nearestCells`, `edgeGap`; `opportunityReminders` skips `sees: false`; `workflow/positioning.mjs edgeDistance` (square grids: nearest cells; gridless: centre less half-sizes; hex: centre) and `observerVisibility` for each watcher; "Sight not checked" on the card when unknown. Tests: `tests/positioning.test.mjs` +2. Suites: 502 and 119 pass. Limit: hex grids still measure centre to centre.

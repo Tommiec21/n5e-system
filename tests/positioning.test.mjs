@@ -68,3 +68,24 @@ test("Dodge is lost while incapacitated or at speed 0", () => {
   assert.deepEqual(save(S("dodging")), ["Dodging"]);
   assert.deepEqual(save(S("dodging", "restrained")), []);
 });
+
+/* FIN4c */
+import { nearestCells, edgeGap, opportunityReminders as reminders } from "../module/rules/positioning.mjs";
+
+test("FIN4c: reach edge to edge: nearest cells of 1x1 and 2x2 tokens", () => {
+  // Adjacent Medium creatures.
+  assert.deepEqual(nearestCells({ x: 0, y: 0, w: 1, h: 1 }, { x: 1, y: 0, w: 1, h: 1 }), [{ x: 0, y: 0 }, { x: 1, y: 0 }]);
+  // A Large creature (2x2 at 0,0) and a Medium one diagonally next to its far corner.
+  assert.deepEqual(nearestCells({ x: 0, y: 0, w: 2, h: 2 }, { x: 2, y: 2, w: 1, h: 1 }), [{ x: 1, y: 1 }, { x: 2, y: 2 }]);
+  // Two squares away beside the Large creature's side.
+  assert.deepEqual(nearestCells({ x: 0, y: 0, w: 2, h: 2 }, { x: 3, y: 1, w: 1, h: 1 }), [{ x: 1, y: 1 }, { x: 3, y: 1 }]);
+  // Overlapping rows: same row on both.
+  assert.deepEqual(nearestCells({ x: 0, y: 0, w: 2, h: 2 }, { x: 2, y: 0, w: 1, h: 1 })[0], { x: 1, y: 0 });
+  assert.equal(edgeGap(15, 10, 5), 7.5);
+  assert.equal(edgeGap(5, 10, 5), 0);
+});
+
+test("FIN4c: a watcher that can't see the mover gets no reminder; unchecked sight still does", () => {
+  const w = sees => ({ name: "W", reach: 5, from: 5, to: 10, statuses: new Set(), reactionUsed: false, sees });
+  assert.deepEqual(reminders([w(true), w(false), w(null)], { action: "walk" }).map(x => x.sees), [true, null]);
+});

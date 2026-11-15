@@ -7,7 +7,8 @@
  *   Disengage / Dodge             Using the Action marks it and sets the flag or state.
  *   Engaged                       A melee attack against one target records the round on both.
  */
-import { opportunityReminders, isEngaged, surpriseBlocksReaction, surprisedEconomy } from "../rules/positioning.mjs";
+import { opportunityReminders, isEngaged, surpriseBlocksReaction, surprisedEconomy, nearestCells, edgeGap } from "../rules/positioning.mjs";
+import { observerVisibility } from "../canvas/visibility.mjs";
 import { reachOf } from "../rules/weapon-properties.mjs";
 import { equippedWeapons } from "../rules/unarmed.mjs";
 import { esc } from "../view-models/common.mjs";
@@ -31,22 +32,43 @@ function centreAt(doc, pos) {
   return { x: (pos?.x ?? doc.x) + (doc.width * size) / 2, y: (pos?.y ?? doc.y) + (doc.height * size) / 2 };
 }
 
+/**
+ * FIN4c: distance between two tokens edge to edge (nearest squares, with the scene's diagonal rule).
+ * Gridless: centre distance less half of each token's size. Hex grids keep centre to centre.
+ */
+function edgeDistance(aDoc, aPos, bDoc, bPos) {
+  const grid = canvas.grid;
+  const centre = (doc, pos) => centreAt(doc, pos);
+  if ( grid.isHexagonal ) return grid.measurePath([centre(aDoc, aPos), centre(bDoc, bPos)]).distance;
+  if ( grid.isGridless || !grid.getOffset ) {
+    const d = grid.measurePath([centre(aDoc, aPos), centre(bDoc, bPos)]).distance;
+    return edgeGap(d, aDoc.width * grid.distance, bDoc.width * grid.distance);
+  }
+  const rect = (doc, pos) => {
+    const o = grid.getOffset({ x: (pos?.x ?? doc.x) + 1, y: (pos?.y ?? doc.y) + 1 });
+    return { x: o.j, y: o.i, w: Math.max(1, Math.round(doc.width)), h: Math.max(1, Math.round(doc.height)) };
+  };
+  const [ca, cb] = nearestCells(rect(aDoc, aPos), rect(bDoc, bPos));
+  const point = c => grid.getCenterPoint({ i: c.y, j: c.x });
+  return grid.measurePath([point(ca), point(cb)]).distance;
+}
+
 /** Active GM, moveToken hook: whisper Opportunity Attack reminders. */
 export async function onMoveForOpportunity(tokenDoc, movement) {
   if ( !game.users.activeGM?.isSelf || !game.combat?.started || movement?.method === "undo" ) return;
   const mover = tokenDoc.actor;
   if ( !mover || !canvas?.grid?.measurePath ) return;
   const waypoints = movement?.passed?.waypoints ?? [];
-  const from = centreAt(tokenDoc, movement?.origin);
-  const to = centreAt(tokenDoc, movement?.destination);
-  const measure = (a, b) => canvas.grid.measurePath([a, b]).distance;
   const side = tokenDoc.disposition;
   const watchers = (canvas.tokens?.placeables ?? []).filter(t => t.document !== tokenDoc && t.actor && side !== 0
     && t.document.disposition !== 0 && t.document.disposition !== side && game.combat.combatants.some(c => c.tokenId === t.id))
     .map(t => {
       const { reach, weapon } = meleeReach(t.actor);
-      return { token: t, actor: t.actor, weapon, name: t.name, reach, from: measure(t.center, from), to: measure(t.center, to),
-        statuses: t.actor.statuses,
+      // FIN4c: reach edge to edge; "can see you" from the watcher's own vision (King Q-F17).
+      const sight = tokenDoc.object ? observerVisibility(t, tokenDoc.object) : { visible: null };
+      return { token: t, actor: t.actor, weapon, name: t.name, reach,
+        from: edgeDistance(t.document, null, tokenDoc, movement?.origin), to: edgeDistance(t.document, null, tokenDoc, movement?.destination),
+        sees: sight.visible, statuses: t.actor.statuses,
         reactionUsed: !!t.actor.flags?.n5e?.economy?.reaction || surpriseBlocksReaction(t.actor.statuses, t.actor.flags?.n5e?.surpriseDone) };
     });
   const provoked = opportunityReminders(watchers, {
@@ -59,6 +81,7 @@ export async function onMoveForOpportunity(tokenDoc, movement) {
     await ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor: w.actor }), whisper,
       content: `<div class="n5e-roll-card"><header><b>Opportunity Attack</b></header>
         <div class="note">${esc(mover.name)} leaves ${esc(w.name)}'s reach (${w.reach} ft). One melee attack with your Reaction, before it leaves.</div>
+        ${w.sees == null ? '<div class="note">Sight not checked: only if it can see the mover.</div>' : ""}
         <button type="button" data-n5e-oa="${esc(w.actor.uuid)}" data-target="${esc(mover.uuid)}" data-weapon="${esc(w.weapon?.id ?? "")}">
           Opportunity Attack${w.weapon ? `: ${esc(w.weapon.name)}` : " (unarmed)"}</button></div>`,
       flags: { n5e: { opportunity: { attackerUuid: w.actor.uuid, targetUuid: mover.uuid } } } });

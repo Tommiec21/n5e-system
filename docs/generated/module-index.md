@@ -246,7 +246,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
-| `positioning.mjs` | 81 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
+| `positioning.mjs` | 105 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `nearestCells`, `edgeGap`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 95 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
 | `reactions.mjs` | 18 | Reaction decisions only: accepting a window never applies an effect or spends a resource. | `reactionDeadline`, `reactionPhase`, `decideReaction` |
@@ -319,7 +319,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
 | `jutsu-defense.mjs` | 156 | Reading and countering jutsu (Foundry side; FIN2b). | `actingActor`, `castFacts`, `onDefenseClick`, `onReadChoiceClick`, `applySuppression`, `endSuppression`, `counteredOn`, `counterTagFor`, `onCounterTagClick` |
 | `npc-knowledge.mjs` | 95 | What the players can learn (NPC1c C5; King Q-N21-Q-N24). | `unknownEntries`, `learnSectionHTML`, `onLearnOffer`, `onLearnPick`, `learnEntry`, `registerNpcKnowledge` |
-| `positioning.mjs` | 138 | Positioning workflows (POS1). | `meleeReach`, `onMoveForOpportunity`, `onOpportunityClick`, `onCoreAction`, `recordEngagement`, `engagedWith`, `surprisedTurnStart`, `surprisedTurnEnd`, `endSurprise`, `registerPositioningHooks` |
+| `positioning.mjs` | 161 | Positioning workflows (POS1). | `meleeReach`, `onMoveForOpportunity`, `onOpportunityClick`, `onCoreAction`, `recordEngagement`, `engagedWith`, `surprisedTurnStart`, `surprisedTurnEnd`, `endSurprise`, `registerPositioningHooks` |
 | `reaction-adapters.mjs` | 75 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
 | `reaction-dispatch.mjs` | 83 | Trusted system/module adapters. | `createReactionDispatcher` |

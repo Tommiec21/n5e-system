@@ -212,3 +212,10 @@
 | Rule | Code |
 | --- | --- |
 | Indirect Exposure: Survival vs the terrain DC, Release immunity suggested; the GM decides and applies (King Q-F14) | `rules/environment.mjs indirectExposure`, `mayBeImmune`; `workflow/environment.mjs indirectExposureCheck` |
+
+## Opportunity Attacks: sight and reach (FIN4c, 0.33.0-alpha.6)
+
+| Rule | Code |
+| --- | --- |
+| Opportunity Attack only from a creature that can see the mover; unchecked sight still reminds (King Q-F17) | `rules/positioning.mjs opportunityReminders`, `canvas/visibility.mjs observerVisibility`, `workflow/positioning.mjs` |
+| Reach measured edge to edge | `rules/positioning.mjs nearestCells`, `edgeGap`; `workflow/positioning.mjs edgeDistance` |
