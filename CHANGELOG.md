@@ -1,3 +1,10 @@
+## 0.37.0-alpha.1 — Wands, flanking and crafting (PRESTD1 D-i; King 2026-11-15)
+
+- **Wands (GM makes them):** right-click a Ninjutsu or Genjutsu, "Make a wand". The wand holds the jutsu at its rank. "Use wand" (right-click) casts it once a day with the holder's own attack and DC and no chakra, within the holder's own limits. A second use that day overcharges it: the jutsu is cast, then a d20 flat check (DC 10) or the wand breaks. Overcharging it again, or using a broken wand, destroys it and casts nothing (you're asked first). A Long or Full Rest recharges wands; broken ones stay broken.
+- **Flanking (optional rule, off by default):** in the N5e Rules panel choose −2 AC against the flankers (PF2e) or advantage on their melee attacks (5e). A melee attack against one target is flanking when an ally (same disposition, not incapacitated) is on the opposite side, both within melee reach; the bonus shows in the roll's breakdown.
+- **Crafting:** a "Craft" button on the Inventory tab. Pick an item from the Equipment compendium, its rank (when the item has none) and a toolkit; the toolkit check goes against the rank's DC. Success pays price × materials and makes the item after the rank's days; a critical (DC + 10) halves the days; a failure spends nothing; a critical failure (DC − 10) loses half the materials. DCs (D 12, C 15, B 18, A 21, S 24), days (1, 2, 4, 7, 14) and materials (half the price) are in the new Crafting group of the N5e Rules panel (King Q-P7).
+- Not checked in a running Foundry world.
+
 ## 0.36.0-alpha.1 — Loot piles, merchants and the party stash (PRESTD1 Part C; King 2026-11-15)
 
 - **New actor type: Loot**, with three kinds (set by the GM on its sheet): a **loot pile**, a **merchant** and the **party stash**. Each holds items and ryo.

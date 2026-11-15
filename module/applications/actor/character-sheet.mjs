@@ -21,6 +21,7 @@
  * unless it removes them.
  */
 import { scrollContextOptions } from "../../workflow/scrolls.mjs";
+import { wandContextOptions } from "../../workflow/wands.mjs";
 import {
   headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
 } from "../../view-models/character.mjs";
@@ -71,6 +72,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     actions: {
       n5eTab: CharacterSheet.#onTab,
       giveRyo: CharacterSheet.#onGiveRyo,
+      craft: CharacterSheet.#onCraft,
       toggleMode: CharacterSheet.#onToggleMode,
       setRollMode: CharacterSheet.#onSetRollMode,
       toggleRule: CharacterSheet.#onToggleRule,
@@ -400,6 +402,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return [
       // PRESTD1 Part B: jutsu scrolls.
       ...scrollContextOptions(item, owner),
+      ...wandContextOptions(item, owner),
       { name: "Edit in Freeform window", icon: "<i class=\"fa-solid fa-wand-sparkles\"></i>",
         condition: li => owner() && !!item(li)?.flags?.n5e?.freeform,
         callback: li => import("../npc/freeform-window.mjs").then(m => m.default.openFor(item(li))) },
@@ -450,6 +453,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !this.isEditable ) return null;
     const { promptGiveRyo } = await import("../../workflow/transfer.mjs");
     return promptGiveRyo(this.actor);
+  }
+
+  /** PRESTD1 Part D: craft an item from the Equipment compendium with a toolkit check. */
+  static async #onCraft() {
+    if ( !this.isEditable ) return null;
+    const { promptCraft } = await import("../../workflow/crafting.mjs");
+    return promptCraft(this.actor);
   }
 
   static #onTab(event, target) {

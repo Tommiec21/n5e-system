@@ -61,13 +61,15 @@ export function castPlan(actor, item, sel = {}) {
   const imported = item.flags?.n5e?.jutsuBookImport;
   // PRESTD1 Part B (King Q-P3): a scroll costs no chakra.
   const scroll = !!sel.scroll;
+  // A wand (PRESTD1 Part D) costs no chakra but keeps the holder's own limits and numbers.
+  const wand = !!sel.wand;
   const spendsChakra = !scroll && (j.cost?.mode === "chakra" || (!!imported && j.cost?.mode === "special" && j.cost.value > 0));
   if ( imported?.manualCost && !scroll ) problems.push("This jutsu has a source-defined cost. Resolve it manually; automatic casting cannot assume a free cost.");
   const cp = sys.cp?.value ?? 0;
   if ( spendsChakra && cost.cost > cp ) problems.push(`Not enough chakra (${cp} / ${cost.cost} CP)`);
-  if ( !scroll && item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
+  if ( (!scroll || wand) && item.system.live?.castable === false ) problems.push("Missing the affinity for this jutsu's Release");
   // Conditions, components, ability requirement and rank cap (rules/cast-checks.mjs; CAST1).
-  problems.push(...castBlockers(actor, item, { rank, discipline, scroll }));
+  problems.push(...castBlockers(actor, item, { rank, discipline, scroll: scroll && !wand }));
   if ( ["nin", "gen"].includes(discipline) && list(actor.effects).some(e => e.flags?.n5e?.gates && !e.disabled) ) {
     problems.push("Can't cast Ninjutsu or Genjutsu while an Inner Gate is open");
   }

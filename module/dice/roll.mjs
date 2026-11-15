@@ -15,6 +15,7 @@ import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
 import { contextualSpec, contextualAdvantage } from "../rules/elements.mjs";
 import { rule } from "../rules-settings.mjs";
+import { flankingEffect } from "../rules/pf2e-emulation.mjs";
 import { attackTargetRows, challengeVisible, descriptionVisible, ATTACK_RESULT_LABELS } from "../rules/parity.mjs";
 import { advantageSources, resolveMode, sourcesNote } from "../rules/advantage.mjs";
 import { addSheetToggle } from "./advantaged.mjs";
@@ -126,6 +127,20 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   sources.disadvantage.push(...authored.disadvantage);
   // Sources the caller worked out (weapon properties and range, ATK1).
   sources.advantage.push(...(spec.advantageSources ?? []));
+  // PRESTD1 Part D (rule flanking; King Q-P6): a melee attack on a flanked target.
+  if ( spec.kind === "attack" && !spec.ranged && target && rule("flanking") !== "off" ) {
+    const effect = flankingEffect(rule("flanking"));
+    const attackerToken = actor.getActiveTokens?.()[0];
+    const targetToken = Array.from(globalThis.game?.user?.targets ?? []).find(t => t.actor === target) ?? target.getActiveTokens?.()[0];
+    const ally = effect ? await (await import("../canvas/flanking.mjs")).flankingAlly(attackerToken, targetToken).catch(() => null) : null;
+    if ( ally ) {
+      if ( effect.advantage ) sources.advantage.push(`${effect.advantage} with ${ally.name}`);
+      if ( effect.bonus ) {
+        const parts = [...(spec.breakdown?.parts ?? d20Parts(spec).map(p => ({ label: p.label, value: p.value }))), { label: `${effect.label} with ${ally.name}`, value: effect.bonus }];
+        spec = { ...spec, bonus: (Number(spec.bonus) || 0) + effect.bonus, breakdown: { ...(spec.breakdown ?? {}), parts } };
+      }
+    }
+  }
   sources.disadvantage.push(...(spec.disadvantageSources ?? []));
   // Minions automatically fail saving throws (Bingo Book; NPC1).
   if ( spec.kind === "save" && actor.system?.autoFailSaves && !sources.autoFail ) sources.autoFail = "Minion";

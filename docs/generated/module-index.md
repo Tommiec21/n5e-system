@@ -30,7 +30,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-sheet.mjs` | 749 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 759 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 314 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 | `npc-simple-sheet.mjs` | 34 | Simple NPC sheet (NPC1b): the whole stat block on one page, in the Bingo Book's order (header, traits, jutsu by discipline and rank, attacks). | `NPCSimpleSheet` |
@@ -104,6 +104,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `detection.mjs` | 25 | The N5e detection mode: Chakra Sensing (KB 06). | `registerDetectionModes` |
+| `flanking.mjs` | 36 | PRESTD1 Part D: flanking on the canvas (rule flanking; King Q-P6). | `flankingAlly` |
 | `ruler.mjs` | 44 | Movement on the map (Foundry v13 movement actions): - costs: climbing/swimming without that speed and crawling cost +1 ft per ft (movementCosts rule); - the ... | `registerMovement` |
 | `visibility.mjs` | 49 | Observer-specific Foundry13 detection. | `observerVisibility`, `damageSourceVisibility` |
 
@@ -128,7 +129,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
-| `rules.mjs` | 203 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 219 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 
 ## module/data
 
@@ -180,7 +181,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `d20.mjs` | 113 | d20 roll rules (pure). | `MODES`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
 | `roll-dialog.mjs` | 166 | The roll dialog (ROLL1; King 2026-11-14): every roll shows its math before it is rolled. | `wantsDialog`, `addedRowHTML`, `d20DialogHTML`, `diceDialogHTML`, `dialogs`, `chosenMode` |
-| `roll.mjs` | 552 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
+| `roll.mjs` | 567 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
 
 ## module/documents
 
@@ -249,6 +250,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
+| `pf2e-emulation.mjs` | 78 | PRESTD1 Part D (King Q-PF4: "emulating PF2e for now"): wands, flanking and crafting. | `wandAction`, `overchargeHolds`, `segmentHitsRect`, `flanks`, `flankingEffect`, `CRAFT_RANKS`, `craftNumbers`, `craftOutcome` |
 | `positioning.mjs` | 105 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `nearestCells`, `edgeGap`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 112 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `SLOW_PROFICIENCY`, `proficiencyFor`, `freeFeatCount`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
@@ -310,7 +312,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `attack.mjs` | 280 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 104 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
-| `cast-plan.mjs` | 167 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
+| `cast-plan.mjs` | 169 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 246 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
 | `clan.mjs` | 90 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 216 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
@@ -318,6 +320,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
 | `conditions.mjs` | 103 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
+| `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |
 | `effect-application.mjs` | 120 | Effect-application cards (dnd5e effect-application parity). | `withCardLink`, `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
 | `environment.mjs` | 269 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
 | `expiry.mjs` | 67 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
@@ -335,7 +338,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resolution.mjs` | 66 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |
 | `resources.mjs` | 76 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
-| `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
+| `rest.mjs` | 153 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `riders.mjs` | 311 | Feature riders on the action card (Foundry side; CARD1d). | `conditionTags`, `riderDC`, `actionOf`, `castRiderEntries`, `withRiderSections`, `riderView`, `onRiderClick`, `validateRider` |
 | `roll-request.mjs` | 64 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `scrolls.mjs` | 140 | Jutsu scrolls (PRESTD1 Part B; King 2026-11-15, Q-P3, Q-P4, Q-P11). | `scrollData`, `makeScroll`, `promptMakeScroll`, `castFromScroll`, `identifyScroll`, `scrollContextOptions`, `isScroll` |
@@ -348,3 +351,4 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `upkeep.mjs` | 102 | Concentration upkeep at the start of a turn (King 2026-11-13; rules/upkeep.mjs). | `beginUpkeep`, `resolveUpkeep`, `finishUpkeep`, `renderUpkeep` |
 | `use-feature.mjs` | 53 | Using a feature or class option from the sheet: pay its cost (a use, Focus, Superiority Dice), then post its card. | `useFeature` |
 | `variant-tools.mjs` | 80 | PRESTD1 A-iv (King 2026-11-15): the crit and fumble tables, homebrew elements and the World Clock. | `applyHomebrew`, `renderTableButton`, `WorldClock`, `registerVariantTools` |
+| `wands.mjs` | 88 | Wands (PRESTD1 Part D; King Q-PF4: emulating PF2e for now). | `isWand`, `wandData`, `makeWand`, `useWand`, `rechargeWands`, `wandContextOptions` |

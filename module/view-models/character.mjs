@@ -280,7 +280,7 @@ function rangeLabel(target) {
 export function jutsuVM(actor, { discipline = "", search = "", expanded = new Set(), castRank = {} } = {}) {
   const sys = actor.system;
   // PRESTD1: the copies scrolls cast through stay off the Jutsu tab.
-  const all = ofType(actor, "jutsu").filter(i => !i.flags?.n5e?.scrollCopy);
+  const all = ofType(actor, "jutsu").filter(i => !i.flags?.n5e?.scrollCopy && !i.flags?.n5e?.wandCopy);
   const q = search.trim().toLowerCase();
   const shown = all.filter(i => {
     if ( discipline && (i.system.group ?? i.system.discipline) !== discipline ) return false;

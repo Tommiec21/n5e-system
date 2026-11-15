@@ -596,3 +596,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Actor type `loot`: `system.mode` (pile, merchant, stash), `system.currency.ryo`, `system.buyRate`, `system.sellRate`, `system.description` | Loot piles, merchants and the party stash |
 | Owner intents `lootTake`, `lootBuy`, `lootSell {lootUuid, itemId, quantity}` | A player's take, purchase or sale, finished by the active GM |
+
+## Added in 0.37.0-alpha.1 (PRESTD1 D-i)
+
+| Path | Meaning |
+| --- | --- |
+| Consumable `system.subtype: "wand"`, `flags.n5e.wand {jutsu, rank, used, overcharged, broken}` | A wand and its state today |
+| Jutsu `flags.n5e.wandCopy {wandId}` | The hidden copy a wand casts through (left out of jutsu lists) |
+| Rules `flanking` (off, ac, advantage), `craftDCD`–`craftDCS`, `craftDaysD`–`craftDaysS`, `craftMaterials` | Flanking effect and crafting numbers (GM-editable) |

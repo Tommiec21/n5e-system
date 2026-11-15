@@ -85,7 +85,7 @@ export const armorProperties = {
 export const sealSlots = { base: 3, highQualityBonus: 1 };
 
 export const consumableTypes = {
-  pill: "Pill", tag: "Tag", bomb: "Bomb", poison: "Poison", cure: "Cure / Antidote", scroll: "Scroll",
+  pill: "Pill", tag: "Tag", bomb: "Bomb", poison: "Poison", cure: "Cure / Antidote", scroll: "Scroll", wand: "Wand",
   elixir: "Elixir", meal: "Meal", trap: "Trap", gear: "Gear", ammo: "Ammunition"
 };
 

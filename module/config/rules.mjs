@@ -18,7 +18,8 @@ export const ruleGroups = {
   character: "Character options",
   map: "Map: areas, senses and movement",
   optional: "Optional rules (PF2e variants)",
-  privacy: "What players see"
+  privacy: "What players see",
+  crafting: "Crafting (PF2e, for now)"
 };
 
 export const rules = {
@@ -71,6 +72,21 @@ export const rules = {
     hint: "Added to the languages (comma-separated). Reload after changing." },
   worldClock: { group: "optional", type: "boolean", default: false, label: "World clock",
     hint: "A World Clock button on the token controls: the world's day and time for everyone, with buttons for the GM to move it on (which runs breath, effect expiry and the like)." },
+  craftDCD: { group: "crafting", type: "number", default: 12, min: 0, max: 60, label: "Crafting DC: D-Rank items" },
+  craftDCC: { group: "crafting", type: "number", default: 15, min: 0, max: 60, label: "Crafting DC: C-Rank items" },
+  craftDCB: { group: "crafting", type: "number", default: 18, min: 0, max: 60, label: "Crafting DC: B-Rank items" },
+  craftDCA: { group: "crafting", type: "number", default: 21, min: 0, max: 60, label: "Crafting DC: A-Rank items" },
+  craftDCS: { group: "crafting", type: "number", default: 24, min: 0, max: 60, label: "Crafting DC: S-Rank items" },
+  craftDaysD: { group: "crafting", type: "number", default: 1, min: 0, max: 365, label: "Crafting days: D-Rank items" },
+  craftDaysC: { group: "crafting", type: "number", default: 2, min: 0, max: 365, label: "Crafting days: C-Rank items" },
+  craftDaysB: { group: "crafting", type: "number", default: 4, min: 0, max: 365, label: "Crafting days: B-Rank items" },
+  craftDaysA: { group: "crafting", type: "number", default: 7, min: 0, max: 365, label: "Crafting days: A-Rank items" },
+  craftDaysS: { group: "crafting", type: "number", default: 14, min: 0, max: 365, label: "Crafting days: S-Rank items" },
+  craftMaterials: { group: "crafting", type: "number", default: 0.5, min: 0, max: 5, label: "Crafting materials (share of the price)",
+    hint: "Materials cost this share of the item's price; a critical failure loses half of them." },
+  flanking: { group: "optional", type: "choice", default: "off", label: "Flanking",
+    choices: { off: "Off", ac: "Flanked: −2 AC against the flankers (PF2e)", advantage: "Flankers have advantage on melee attacks (5e)" },
+    hint: "A creature is flanked when an attacker and an ally are on opposite sides of it, both within melee reach (King Q-P6: the GM chooses the effect)." },
   secretChecks: { group: "privacy", type: "boolean", default: false, label: "Secret checks",
     hint: "The roll dialog gets a Secret box (ticked for Stealth, Insight and identify checks); a secret roll goes to the GM only." },
   effectMacros: { group: "casting", type: "boolean", default: false, label: "Effect world Macro execution", hint: "Execute only saved bindings explicitly approved by the active GM. Trusted world Macros run with GM privileges; foreign scripts remain inert." },

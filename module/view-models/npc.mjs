@@ -154,7 +154,7 @@ function usesText(item) {
 export function npcSimpleVM(actor) {
   const items = [...(actor.items ?? [])];
   const byName = (x, y) => x.name.localeCompare(y.name);
-  const jutsu = items.filter(i => i.type === "jutsu" && !i.flags?.n5e?.scrollCopy);
+  const jutsu = items.filter(i => i.type === "jutsu" && !i.flags?.n5e?.scrollCopy && !i.flags?.n5e?.wandCopy);
   const groups = [];
   for ( const [key, label] of [...DISC, ["buki", "Bukijutsu"]] ) {
     const mine = jutsu.filter(j => j.system.discipline === key);

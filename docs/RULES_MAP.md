@@ -272,3 +272,11 @@
 | --- | --- |
 | Take from piles and the stash; buy at price × buy rate, sell at price × sell rate (King Q-P5) | `rules/loot.mjs`, `workflow/loot.mjs` |
 | No taking from sheets you don't own (King Q-F2); the GM leaves an NPC's items as a pile | `applications/actor/character-sheet.mjs _onDropItem`, `workflow/loot.mjs leaveLoot` |
+
+## Wands, flanking, crafting (PRESTD1 D-i, 0.37.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Wand: once a day, overcharge with a DC 10 flat check, destroyed when overcharged again or broken; recharges on a Long Rest | `rules/pf2e-emulation.mjs wandAction`, `workflow/wands.mjs` |
+| Flanking: opposite sides, both in melee reach; −2 AC or advantage (King Q-P6) | `rules/pf2e-emulation.mjs flanks`, `canvas/flanking.mjs`, `dice/roll.mjs rollWithSpec` |
+| Crafting: toolkit check vs rank DC; critical halves days, critical failure loses half the materials (King Q-P7) | `rules/pf2e-emulation.mjs craftOutcome`, `workflow/crafting.mjs` |
