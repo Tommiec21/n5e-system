@@ -30,7 +30,7 @@ test("the GM records another user's save, checked against the linked message", a
   const { card, updates } = world();
   assert.equal(await receiveCardResult(null, { cardMessageId: "card1", linkedMessageId: "save1" }, { id: "u2", isGM: false }), true);
   assert.equal(updates.length, 1);
-  assert.equal(card.flags.n5e.card.results.saves["Actor.a"].degree, 1);
+  assert.equal(card.flags.n5e.card.results.saves["Actor.a"]["0"].degree, 1);
 });
 
 test("the GM refuses results from another user, another card, or for creatures the user can't change", async () => {

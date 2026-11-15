@@ -23,6 +23,7 @@ import { withActorLock } from "./commands.mjs";
 import { applyHealing } from "./health.mjs";
 import { rule } from "../rules-settings.mjs";
 import { coordinateDamage } from "./coordinated-damage.mjs";
+import { immuneTargets } from "./action-card.mjs";
 import { canModify, ownedRecipients, skippedNotice } from "../automation/authority.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
@@ -101,12 +102,14 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       return;
     }
     const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
-    const reaction = beforePlan ? await beforePlan(actor) : {};
+    // FIN3 (King Q-F12): a creature immune to the Genjutsu's stimuli takes 0 from it.
+    const immuneWhy = immuneToOrigin(data.rollTrace?.originUuid, actor);
+    const reaction = !immuneWhy && beforePlan ? await beforePlan(actor) : {};
     const damageOptions = { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
       piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0, reactionMultiplier: reaction.multiplier ?? 1,
       dealtPenalty: Number(data.dealtPenalty) || 0 };
-    let plan = damagePlan(actor, data.instances, damageOptions);
-    if ( plan.requiresDROrder ) {
+    let plan = damagePlan(actor, immuneWhy ? [] : data.instances, damageOptions);
+    if ( plan.requiresDROrder && !immuneWhy ) {
       const revision = actor._stats?.modifiedTime;
       const drOrder = await chooseDROrder(actor, plan.eligibleTypes);
       if ( !drOrder ) return null;
@@ -120,7 +123,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     if ( Object.keys(update).length ) await actor.update(update);
     if ( reaction.roll ) await reaction.roll.toMessage({ speaker: ChatMessage().getSpeaker({ actor }), flavor: reaction.label ?? "Reaction" });
     undo.push(before);
-    const notes = [];
+    const notes = immuneWhy ? [`immune (${immuneWhy.join(", ")})`] : [];
     const isNPC = actor.type === "npc";
     if ( plan.instantDeath || (isNPC && rule("npcDieAtZero") && actor.system.diesAtZero && plan.dropsToZero)
       || (rule("deathSaves") && update["system.deathSaves.failure"] === 3) ) {
@@ -152,6 +155,12 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     ...(data.sourceVisibility ?? {}),
     flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications } } }
   });
+}
+
+/** FIN3: why this creature is immune to the jutsu its damage came from (stimuli, cast as Genjutsu), or null. */
+function immuneToOrigin(originUuid, actor) {
+  const origin = originUuid ? globalThis.fromUuidSync?.(originUuid) : null;
+  return origin ? immuneTargets(origin, [actor.uuid]).get(actor.uuid) ?? null : null;
 }
 
 /** Owner chooses directly, or the GM records the damaged creature's choice. */
@@ -285,6 +294,10 @@ export async function onApplyClick(message, btn, event) {
     const actor = uuid ? await fromUuid(uuid) : null;
     if ( !actor?.isOwner ) return ui.notifications.warn("Only the owner of the creature that failed can apply this.");
     btn.disabled = true;
+    // FIN3 (King Q-F12): immune to the jutsu's stimuli: the effect ends on it at once.
+    const origin = game.messages.get(message.getFlag("n5e", "roll")?.source ?? "");
+    const why = origin ? immuneTargets(origin, [actor.uuid]).get(actor.uuid) : null;
+    if ( why ) return ui.notifications.info(`${actor.name} is immune (${why.join(", ")}): the effect ends at once.`);
     let effect;
     if ( d.kind === "state" ) {
       await actor.toggleStatusEffect(d.n5eInflict, { active: true });

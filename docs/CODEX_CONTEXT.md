@@ -432,3 +432,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - Freeform items are built only by `rules/freeform.mjs buildStrike` and `buildJutsu` from `flags.n5e.freeform.choices`. The windows (`applications/npc/freeform-*.mjs`), the builder and `workflow/freeform.mjs` all go through them; change the math there, not on the items.
 - A window opened from the builder hands choices back through `onSave` (nothing written until the builder saves); opened from a sheet it writes the item.
 - NPC4 (Elite Actions): Defensive Freeform Jutsu of an Elite or Solo should end at its next Elite Action; today they end at the start of its next turn (`effect.expires: "turnStart"`). Freeform Abilities (Tenacity) belong in NPC4.
+
+## FIN3a — Claude, 2026-11-15 (published 0.33.0-alpha.2)
+- Card saves are nested by effect: read them with `savesOf(results, uuid)` or `allSaves(results)`, never `results.saves[uuid].degree`.
+- The effect key is the card row index from `activityButtons` (`data-effect`). Keep save and damage buttons of one effect in the same row.

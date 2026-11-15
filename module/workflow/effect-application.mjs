@@ -9,6 +9,17 @@ import { esc } from "../view-models/common.mjs";
 
 const MAX_EFFECTS = 10;
 
+/**
+ * FIN3: while an action card applies an effect, offer cards made for creatures the user doesn't own
+ * remember the card ({messageId, source}), so the owner's Apply is recorded on it.
+ */
+let cardLink = null;
+export async function withCardLink(link, fn) {
+  const prior = cardLink;
+  cardLink = link;
+  try { return await fn(); } finally { cardLink = prior; }
+}
+
 /** Effect source data that is safe to copy onto another actor (pure). */
 export function cleanEffectData(data) {
   if ( !data || typeof data.name !== "string" ) throw new Error("Invalid effect.");
@@ -48,7 +59,7 @@ export async function effectApplicationCard(source, effects, { recipients = [], 
       ${names ? `<div class="note">For: ${names}</div>` : ""}
       <div class="n5e-apply">${list.map((e, i) => `<button type="button" data-n5e-effect-apply="${i}">Apply ${esc(e.name)}</button>`).join("")}</div></div>`,
     flags: { n5e: { effectApplication: { effects: list, recipients: recipients.map(a => a.uuid),
-      sourceUuid: source?.uuid ?? null, concentrationItemId } } }
+      sourceUuid: source?.uuid ?? null, concentrationItemId, ...(cardLink ? { card: { ...cardLink } } : {}) } } }
   });
 }
 
@@ -68,9 +79,15 @@ export async function applyEffectFromCard(message, index) {
   if ( card.concentrationItemId && source && !concentrating(source, card.concentrationItemId) ) {
     return ui.notifications.warn("The caster is no longer concentrating on this jutsu.");
   }
+  const origin = card.card?.messageId ? game.messages.get(card.card.messageId) : null;
   for ( const t of owned ) {
     if ( !canModify(game.user, t) ) continue;
-    await t.createEmbeddedDocuments("ActiveEffect", [tagDependent(cleanEffectData(data), source, card.concentrationItemId)]);
+    const created = await t.createEmbeddedDocuments("ActiveEffect", [tagDependent(cleanEffectData(data), source, card.concentrationItemId)]);
+    // FIN3: recorded on the action card the offer came from (its Effects section and Undo).
+    if ( origin?.flags?.n5e?.card && created?.length ) {
+      const { postEffectSummary } = await import("./action-card.mjs");
+      await postEffectSummary(origin, t, created, card.card.source ?? "");
+    }
   }
   ui.notifications.info(`${data.name}: applied to ${owned.map(a => a.name).join(", ")}.`);
   return owned.length;

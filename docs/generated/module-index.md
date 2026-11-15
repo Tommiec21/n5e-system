@@ -178,7 +178,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `d20.mjs` | 113 | d20 roll rules (pure). | `MODES`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
 | `roll-dialog.mjs` | 165 | The roll dialog (ROLL1; King 2026-11-14): every roll shows its math before it is rolled. | `wantsDialog`, `addedRowHTML`, `d20DialogHTML`, `diceDialogHTML`, `dialogs`, `chosenMode` |
-| `roll.mjs` | 518 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
+| `roll.mjs` | 519 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
 
 ## module/documents
 
@@ -204,7 +204,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `ac.mjs` | 71 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC` |
-| `action-card.mjs` | 219 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `sectionStates` |
+| `action-card.mjs` | 306 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `savesOf`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 154 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
@@ -251,11 +251,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `progression.mjs` | 95 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
 | `reactions.mjs` | 18 | Reaction decisions only: accepting a window never applies an effect or spends a resource. | `reactionDeadline`, `reactionPhase`, `decideReaction` |
 | `recovery.mjs` | 37 | Combat recovery periods (pure; dnd5e Combat5e._recoverUses pattern). | `COMBAT_PERIODS`, `combatRecoveryPlan` |
-| `resolution.mjs` | 62 | Per-target resolution (pure; RES1, KB 03 and 04). | `saveMode`, `targetOutcomes`, `pickLinkedRolls` |
+| `resolution.mjs` | 63 | Per-target resolution (pure; RES1, KB 03 and 04). | `saveMode`, `targetOutcomes`, `pickLinkedRolls` |
 | `resource-cost.mjs` | 75 | What using a feature or option costs from the character's pools (pure). | `resourceCost`, `cannotPay` |
 | `resources.mjs` | 14 | Positive integer costs only; explicit zero is a free operation, never an implicit spend of one. | `resourceChange` |
 | `rest.mjs` | 176 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
-| `riders.mjs` | 225 | Feature riders on the action card (pure; CARD1d, King 2026-11-14; plan docs/CARD1D_SPEC.md). | `NATURE_RELEASES`, `riderFits`, `triggerRiders`, `targetFacts`, `triggered`, `saveEffect`, `eventSave`, `resolveAmount`, `riderOnTarget`, `adjustedInflicts`, `riderEntry`, `validateRider` |
+| `riders.mjs` | 227 | Feature riders on the action card (pure; CARD1d, King 2026-11-14; plan docs/CARD1D_SPEC.md). | `NATURE_RELEASES`, `riderFits`, `triggerRiders`, `targetFacts`, `triggered`, `saveEffect`, `eventSave`, `resolveAmount`, `riderOnTarget`, `adjustedInflicts`, `riderEntry`, `validateRider` |
 | `roll-math.mjs` | 152 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
 | `senses.mjs` | 77 | Senses → token vision (pure). | `SENSE_MODES`, `visionFromSenses`, `movementCost`, `speedBand` |
 | `settings.mjs` | 22 | Optional-rule lookup for the shared core (SHARED1). | `setRuleProvider`, `rule` |
@@ -294,12 +294,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `action-card.mjs` | 475 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
-| `activity-buttons.mjs` | 495 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `action-card.mjs` | 556 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
+| `activity-buttons.mjs` | 498 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
-| `apply-damage.mjs` | 327 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
+| `apply-damage.mjs` | 340 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 280 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
@@ -312,7 +312,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
 | `conditions.mjs` | 102 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
-| `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
+| `effect-application.mjs` | 120 | Effect-application cards (dnd5e effect-application parity). | `withCardLink`, `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
 | `environment.mjs` | 109 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `breathTurnStart`, `onTerrainSaveClick`, `fall` |
 | `expiry.mjs` | 57 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
@@ -323,9 +323,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `reaction-adapters.mjs` | 75 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
 | `reaction-dispatch.mjs` | 83 | Trusted system/module adapters. | `createReactionDispatcher` |
-| `reactions.mjs` | 181 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
+| `reactions.mjs` | 183 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
-| `resolution.mjs` | 63 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |
+| `resolution.mjs` | 66 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |
 | `resources.mjs` | 76 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
 | `rest.mjs` | 151 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `riders.mjs` | 311 | Feature riders on the action card (Foundry side; CARD1d). | `conditionTags`, `riderDC`, `actionOf`, `castRiderEntries`, `withRiderSections`, `riderView`, `onRiderClick`, `validateRider` |

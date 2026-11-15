@@ -1,3 +1,13 @@
+## 0.33.0-alpha.2 — Card and resolution limits (FIN3a; King 2026-11-14)
+
+- **One save per effect:** a jutsu with several saves (Cherry Blossom Impact's strike and its Finisher, Abyssal Aura...) now keeps every save on the action card. Each creature's row lists its saves ("Con Failure, Dex Success"), has a Roll button for each save it still owes, and applies only the conditions of the save it failed. "Roll … for all" appears per save. Will of Fire rerolls the save you pick.
+- **Half damage follows its own save:** each save halves only its own effect's damage, for the creature that rolled it; damage with no save of its own follows the jutsu's one save. The damage card's per-target rows follow the same rule.
+- **Offered effects are recorded:** when the caster's player applies an effect to a creature they don't own, the card shows "<effect> offered to <owner>". When the owner applies it from the offer card, it appears in the card's Effects section and the card's Undo removes it.
+- **Reaction windows on the card:** a reaction window the GM opens for a player's creature (Deflection, Uncanny Dodge...) shows on that creature's row: pending with the time left, waiting for the GM, taken, declined or withdrawn.
+- **Immune creatures:** a creature immune to a Genjutsu's stimuli shows "Immune (reason)" on its row. Apply stays, and its damage is reduced to 0 (the summary says why). A condition or effect from that jutsu ends on it at once.
+- A card posted before this version reads its single save as the first effect's.
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.1 — Freeform Strikes and Freeform Jutsu (NPC3; King 2026-11-14)
 
 - **Freeform Strike window:** the Bingo Book's five decisions in one pop-up: range (melee with the reach you set, or ranged 60 ft); what it counts as (Weapon/Freeform, Ninjutsu, Taijutsu or Genjutsu), which picks the attack line; an optional rider from the Effects table with its save and recovery; damage type; and one attack with the damage of all, or one attack per Multiattack. The table's damage, the attack count and the rider DC (Minion lowest, Standard middle, Elite and Solo highest jutsu save DC) update as you choose. A Strike is set when built; reopen it to rebuild.

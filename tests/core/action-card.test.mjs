@@ -68,7 +68,7 @@ test("hidden attack results stay hidden, and so does the suggested share", () =>
 test("section states move from waiting to ready to done", () => {
   const card = { sections: ["attack", "saves", "damage"], targets, results: {} };
   assert.deepEqual(sectionStates(card), { attack: "ready", saves: "ready", damage: "waiting" });
-  const results = { attack: { messageId: "m1" }, saves: { A: {}, B: {} }, damage: { messageId: "d1" } };
+  const results = { attack: { messageId: "m1" }, saves: { A: { 0: { degree: 2 } }, B: { degree: 1 } }, damage: { messageId: "d1" } };
   assert.deepEqual(sectionStates(card, results), { attack: "done", saves: "done", damage: "done" });
   assert.equal(sectionStates({ sections: ["damage"], targets }).damage, "ready", "no attack section: damage is ready");
 });
@@ -118,7 +118,7 @@ test("CARD1c: a Will of Fire reroll replaces the attack or save it rerolls", () 
   const save = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A" } }, "s1");
   const again = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "A", rerollOf: "s1" } }, "s2");
   results = mergedResults(card, [...save, ...again]);
-  assert.deepEqual([results.saves.A.messageId, results.saves.A.degree], ["s2", 2]);
+  assert.deepEqual([results.saves.A["0"].messageId, results.saves.A["0"].degree], ["s2", 2]);
 });
 
 test("CARD1c: rows show the damage reaction and the concentration check; sections follow", () => {
@@ -133,4 +133,57 @@ test("CARD1c: rows show the damage reaction and the concentration check; section
   assert.equal(rows[1].applied.reaction, null);
   assert.deepEqual(sectionStates(card, results), { damage: "ready", reactions: "done", concentration: "ready" });
   assert.equal(sectionStates({ ...card, concentrationEnded: true }, results).concentration, "done");
+});
+
+test("FIN3: one save per effect: two saves per creature, each its own conditions; done when all are in", async () => {
+  const { savesOf, savesForDamage, allSaves } = await import("../../module/rules/action-card.mjs");
+  const card = { sections: ["saves", "damage"], targets, results: {} };
+  const con = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A", effect: "0" } }, "s1");
+  const dex = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "A", effect: "1", onSuccess: "half" } }, "s2");
+  const bCon = resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 2, actorUuid: "B", effect: "0" } }, "s3");
+  let results = mergedResults(card, [...con, ...dex, ...bCon]);
+  assert.deepEqual(Object.keys(savesOf(results, "A")), ["0", "1"]);
+  assert.throws(() => addCardResult({ ...card, results }, resultsFromLinked({ roll: { kind: "save", dc: 14, degree: 1, actorUuid: "A", effect: "1" } }, "s9")[0]), /already recorded/);
+  const opts = { isGM: true, saveEffects: ["0", "1"], saveLabels: { 0: "Con", 1: "Dex" } };
+  const [a, b] = cardTargetRows(card, results, opts);
+  assert.equal(a.save, "Con Failure, Dex Success");
+  assert.deepEqual(a.failedEffects, ["0"]);
+  assert.equal(a.saved, true);
+  assert.equal(b.saved, false, "B still owes the Dex save");
+  assert.deepEqual(b.savedEffects, ["0"]);
+  assert.equal(sectionStates(card, results, { saveEffects: ["0", "1"] }).saves, "ready");
+  // Q-F11: the Finisher's damage (effect 1) is halved by the Dex save only.
+  results = mergedResults({ ...card, results }, resultsFromLinked({ damage: { total: 21, effect: "1" } }, "d1"));
+  assert.equal(cardTargetRows(card, results, opts)[0].share, "half");
+  assert.equal(savesForDamage(allSaves(results), "1", ["0", "1"]).length, 1);
+  assert.equal(savesForDamage(allSaves(results), "7", ["0"]).every(sv => sv.effect === "0"), true, "a damage with no save of its own follows the action's save");
+});
+
+test("FIN3: a card written before FIN3 reads its single save as effect 0", async () => {
+  const { savesOf } = await import("../../module/rules/action-card.mjs");
+  const legacy = { saves: { A: { degree: 1, messageId: "s1" } } };
+  assert.deepEqual(Object.keys(savesOf(legacy, "A")), ["0"]);
+  const card = { sections: ["saves"], targets, results: legacy };
+  assert.equal(cardTargetRows(card, legacy, { isGM: true })[0].saveFailed, true);
+});
+
+test("FIN3: an immune creature shows Immune and takes no share", () => {
+  const card = { sections: ["saves", "damage"], targets, results: {} };
+  const results = mergedResults(card, [...resultsFromLinked({ damage: { total: 9 } }, "d1")]);
+  const rows = cardTargetRows(card, results, { isGM: true, immune: new Map([["A", ["Blind: immune to Sight"]]]) });
+  assert.deepEqual(rows[0].immune, ["Blind: immune to Sight"]);
+  assert.equal(rows[0].share, "none");
+});
+
+test("FIN3: reaction windows opened for the card show per creature", async () => {
+  const { cardReactionWindows } = await import("../../module/rules/action-card.mjs");
+  const now = 1_000_000;
+  const map = cardReactionWindows([
+    { actorUuid: "A", label: "Deflection", state: "pending", deadline: now + 25_000 },
+    { actorUuid: "A", label: "Uncanny Dodge", state: "accepted", deadline: null },
+    { actorUuid: "B", label: "Deflection", state: "pending", deadline: now - 1 },
+    { actorUuid: "C", label: "Deflection", state: "declined", deadline: null, retired: true }], now);
+  assert.deepEqual(map.get("A"), ["Deflection: pending (25 s left)", "Uncanny Dodge: taken"]);
+  assert.deepEqual(map.get("B"), ["Deflection: waiting for the GM"]);
+  assert.deepEqual(map.get("C"), ["Deflection: withdrawn"]);
 });

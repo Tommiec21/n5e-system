@@ -9,6 +9,7 @@
  * linked attack or save roll is posted.
  */
 import { targetOutcomes, pickLinkedRolls } from "../rules/resolution.mjs";
+import { savesForDamage } from "../rules/action-card.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { esc } from "../view-models/common.mjs";
 
@@ -22,7 +23,9 @@ export function linkedOutcomes(damageMessage) {
   const originUuid = damageMessage?.flags?.n5e?.damage?.originUuid;
   const origin = originUuid ? globalThis.fromUuidSync?.(originUuid) : null;
   if ( !origin ) return [];
-  return targetOutcomes(pickLinkedRolls(origin.flags?.n5e?.roll ?? null, linkedRolls(origin.id)));
+  const picked = pickLinkedRolls(origin.flags?.n5e?.roll ?? null, linkedRolls(origin.id));
+  // FIN3 (King Q-F11): each save halves only its own effect's damage.
+  return targetOutcomes({ ...picked, saves: savesForDamage(picked.saves, damageMessage.flags.n5e.damage.effect ?? null) });
 }
 
 const MODE_TEXT = { full: "Apply", half: "Apply half" };

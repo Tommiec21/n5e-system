@@ -1,6 +1,6 @@
 # FIN3 function spec: card and resolution limits
 
-Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F13. Split into FIN3a (card) and FIN3b (Clash). Awaiting approval.**
+Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F13. Split into FIN3a (card) and FIN3b (Clash). FIN3a approved by King 2026-11-14 ("Approved") and published `0.33.0-alpha.2`. FIN3b (Clash) needs its own go-ahead.**
 
 Plan: `docs/DEV_PLAN.md` row 3. It closes the limits that CARD1, GEN1 and CLASH1 recorded when they shipped. NPC4–NPC6 wait for STD4 (King Q-N2), so FIN3 is the next batch in order.
 
@@ -64,3 +64,10 @@ After each function, add a line to the progress log and push.
 
 - 2026-11-14 Claude: answers recorded; F7 moved to post-launch; split into FIN3a and FIN3b. Found: Cherry Blossom Impact's first save carries the strike's damage, where the text makes it an attack whose hit deals the damage (import fix candidate for STD6).
 - 2026-11-14 Claude: spec written from the CARD1b, CARD1c, GEN1 and CLASH1 limits; 17 jutsu with more than one save found in the compendium. Awaiting answers and approval.
+- 2026-11-15 Claude: **FIN3a built and published 0.33.0-alpha.2.**
+  - F1: `rules/action-card.mjs` `savesOf`, `allSaves`, `savesForDamage`; results.saves per target per effect; rows `saves`, `savedEffects`, `failedEffects`; `sectionStates` takes `saveEffects`. Buttons in `activity-buttons.mjs` carry `data-effect` (row index); save rolls carry `flags.n5e.roll.effect`, damage rolls `flags.n5e.damage.effect`. `rules/resolution.mjs pickLinkedRolls` keeps the latest save per creature per effect; damage cards filter by `savesForDamage`. `rules/riders.mjs targetFacts` reads every save.
+  - F2: `effect-application.mjs withCardLink`, offer flag `effectApplication.card {messageId, source}`; the owner's Apply posts the linked effect summary (recorded through `cardResult`); rows show "offered to".
+  - F3: reaction windows store `sourceMessageId` (dispatcher passes the damage or attack message); `cardReactionWindows`; cards re-draw when a window changes. Only viewers who can see the whispered window see its status.
+  - F4: `immuneTargets(message, uuids)` (sync GEN1 check); `applyToSelected` applies 0 with the reason; card and save-card condition/effect buttons end the effect at once on an immune creature.
+  - Limit: a second damage roll on one card (the Finisher's 6d6) is still applied from its own damage card, whose per-target rows follow its own save; the action card records the first damage roll.
+  - Tests: core +4 (per-effect saves, legacy cards, immune row, reaction windows), `tests/fin3.test.mjs` (effect keys on buttons, offer link). Suites: 493 and 117 pass.

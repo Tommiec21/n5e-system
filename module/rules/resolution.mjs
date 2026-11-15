@@ -56,6 +56,7 @@ export function pickLinkedRolls(origin, linked = []) {
   const attacks = linked.filter(r => r?.kind === "attack");
   const attack = origin?.kind === "attack" ? origin : attacks.at(-1) ?? null;
   const latest = new Map();
-  for ( const r of linked ) if ( r?.kind === "save" && r.dc != null && r.actorUuid ) latest.set(r.actorUuid, r);
+  // FIN3: one save per creature per effect (the latest roll of each, so a reroll replaces it).
+  for ( const r of linked ) if ( r?.kind === "save" && r.dc != null && r.actorUuid ) latest.set(`${r.actorUuid}|${r.effect ?? "0"}`, { ...r, effect: String(r.effect ?? "0") });
   return { attack, saves: [...latest.values()] };
 }

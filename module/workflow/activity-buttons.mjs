@@ -238,7 +238,10 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
         <i class="fa-solid fa-heart"></i> ${esc(a.label)}: ${esc(String(a.heal?.formula ?? "").replace(/lvl\(([^)]*)\)/g, "…"))}${costNote(a)}</button>${a.text ? `<span class="hint">${esc(a.text)}</span>` : ""}</div>`);
     }
   }
-  return rows.length ? `<div class="n5e-acts">${rows.join("")}</div>` : `<p class="hint">No rollable parts found in the text.</p>`;
+  // FIN3: each row is one effect; its save and damage buttons carry the row's key, so a save halves
+  // only its own effect's damage and the card keeps one save per effect.
+  const tagged = rows.map((r, i) => r.replace(/data-n5e-act="(save|damage)"/g, `data-n5e-act="$1" data-effect="${i}"`));
+  return tagged.length ? `<div class="n5e-acts">${tagged.join("")}</div>` : `<p class="hint">No rollable parts found in the text.</p>`;
 }
 
 /**
@@ -412,7 +415,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           ${diceHTML}
           ${advNotes.length ? `<div class="note">${esc(advNotes.join(" · "))}</div>` : ""}
           ${applyButtons()}</div>`,
-        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing }, actorUuid: actor?.uuid ?? null } } });
+        flags: { n5e: { damage: { instances, crit, total, pierce, rollTrace, dealtPenalty, originUuid: message.uuid ?? null, genjutsu: !!d.gen, piercing: !!d.piercing, effect: d.effect ?? null }, actorUuid: actor?.uuid ?? null } } });
     }
     case "save": {
       const dc = Number(d.dc);
@@ -449,7 +452,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         first = false;
         const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
         await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}"),
-          source: message?.id ?? "", onSuccess: d.onSuccess || "", prepared: prepared ?? null });
+          source: message?.id ?? "", onSuccess: d.onSuccess || "", prepared: prepared ?? null, effect: d.effect ?? "" });
         rolled++;
       }
       return rolled ? { saves: rolled } : null;

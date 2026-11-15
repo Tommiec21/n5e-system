@@ -534,3 +534,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Change keys `n5e.resist`, `n5e.immune` (value: damage type), `n5e.attack.all` | Resistance and immunity from effects; a bonus to every attack line (Weapon/Freeform included) |
 | Builder draft `freeform[] {id?, kind, name, choices, dirty?}`; `draftToUpdate().freeform {create, edit}` | Freeform entries, built after the save from the saved adversary |
 | Config `config/freeform.mjs` | Strike and jutsu damage tables, Damage Penalties, Effects & Conditions, shapes, ranges, rank levels, cost, DR, focus values |
+
+## Added in 0.33.0-alpha.2 (FIN3a)
+
+| Path | Meaning |
+| --- | --- |
+| `flags.n5e.card.results.saves[uuid][effect]` | One save per creature per effect (was one per creature; old cards read as effect `"0"`) |
+| Button attribute `data-effect` on `[data-n5e-act="save"]` and `[data-n5e-act="damage"]` | The card row (effect) the button belongs to |
+| `flags.n5e.roll.effect`, `flags.n5e.damage.effect` | The effect a save or damage roll belongs to |
+| `flags.n5e.effectApplication.card {messageId, source}` | The action card and button an effect offer came from |
+| `flags.n5e.reactionWindow.sourceMessageId` | The attack or damage message a reaction window was opened for |

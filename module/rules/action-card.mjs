@@ -3,8 +3,10 @@
  * sections fill in as buttons are pressed.
  *
  *   Data         flags.n5e.card = {version, kind, actorUuid, itemUuid, rank, discipline, targets,
- *                sections, results}. results = {attack, saves: {[uuid]: save}, damage,
+ *                sections, results}. results = {attack, saves: {[uuid]: {[effect]: save}}, damage,
  *                applied: {[uuid]: application}, effects: {[uuid]: [application]}}.
+ *                FIN3: one save per effect. `effect` is the key of the card's row that holds the save
+ *                (its data-effect); a card written before FIN3 has one save per target, read as "0".
  *   Who writes   The card's author writes their own results. Results rolled by other users reach
  *                the card through the active GM (owner intent "cardResult", Q-CD1). With no GM, the
  *                linked roll stays a separate card and is merged in for display only.
@@ -13,11 +15,43 @@
  */
 import { targetOutcomes } from "./resolution.mjs";
 import { attackTargetRows, ATTACK_RESULT_LABELS } from "./parity.mjs";
+import { reactionPhase } from "./reactions.mjs";
 
 export const CARD_KINDS = Object.freeze(["jutsu", "attack", "feature"]);
 export const SECTION_ORDER = Object.freeze(["attack", "area", "saves", "damage", "effects", "riders", "reactions", "concentration"]);
 const SAVE_LABELS = ["Critical Failure", "Failure", "Success", "Critical Success"];
 const list = v => (Array.isArray(v) ? v : []);
+
+/**
+ * One creature's saves on a card, by effect key (FIN3). A pre-FIN3 entry (a single save) reads as
+ * its own key, or "0".
+ * @returns {Object<string, object>}
+ */
+export function savesOf(results, uuid) {
+  const entry = results?.saves?.[uuid];
+  if ( !entry || typeof entry !== "object" ) return {};
+  if ( "degree" in entry ) return { [entry.effect ?? "0"]: entry };
+  return entry;
+}
+
+/** Every save on a card as a flat list, with its creature and effect. */
+export function allSaves(results) {
+  return Object.keys(results?.saves ?? {}).flatMap(uuid => Object.entries(savesOf(results, uuid)).map(([effect, s]) => ({ ...s, actorUuid: uuid, effect })));
+}
+
+/**
+ * The saves that decide a damage roll's share (FIN3, King Q-F11: one save per effect). The save of
+ * the damage's own effect; a damage with no save of its own follows the action's one save (or, if a
+ * card ever has several, the first).
+ * @param {object[]} saves   flat saves ({actorUuid, effect, degree...})
+ * @param {string|null} damageEffect
+ * @param {string[]} [saveEffects]  the card's save effect keys in order
+ */
+export function savesForDamage(saves, damageEffect = null, saveEffects = []) {
+  const keys = saveEffects.length ? saveEffects : [...new Set(saves.map(s => s.effect))];
+  const own = damageEffect != null && keys.includes(String(damageEffect)) ? String(damageEffect) : keys[0];
+  return own == null ? saves : saves.filter(s => s.effect === own);
+}
 
 /**
  * The sections a card has, in fixed order.
@@ -57,10 +91,10 @@ export function resultsFromLinked(flags = {}, messageId = "") {
       targets: list(roll.targets), messageId, replaces: roll.rerollOf ?? null } });
   } else if ( roll?.kind === "save" && roll.dc != null && roll.actorUuid ) {
     out.push({ section: "saves", targetUuid: roll.actorUuid, result: { degree: roll.degree, fourTier: !!roll.fourTier,
-      onSuccess: roll.onSuccess ?? "none", name: roll.name ?? "", messageId, replaces: roll.rerollOf ?? null } });
+      onSuccess: roll.onSuccess ?? "none", name: roll.name ?? "", effect: roll.effect ?? "0", messageId, replaces: roll.rerollOf ?? null } });
   }
   const damage = flags.damage;
-  if ( damage ) out.push({ section: "damage", result: { total: damage.total, crit: !!damage.crit, messageId } });
+  if ( damage ) out.push({ section: "damage", result: { total: damage.total, crit: !!damage.crit, effect: damage.effect ?? null, messageId } });
   const applied = flags.damageApplication;
   if ( applied ) {
     for ( const r of list(applied.recipients) ) {
@@ -120,17 +154,29 @@ export function addCardResult(card, { section, targetUuid = null, result } = {})
     entries.push(result);
     return results;
   }
-  if ( section === "saves" || section === "applied" ) {
+  if ( section === "saves" ) {
     if ( !targetUuid ) throw new Error("A target is required.");
-    if ( section === "saves" && !sections.includes("saves") ) throw new Error("This card has no saves section.");
+    if ( !sections.includes("saves") ) throw new Error("This card has no saves section.");
+    // FIN3: one save per creature per effect.
+    const key = String(result?.effect ?? "0");
+    const bucket = results.saves ??= {};
+    const mine = bucket[targetUuid] = { ...savesOf(results, targetUuid) };
+    const prior = mine[key];
+    if ( prior?.messageId === result?.messageId ) return results;
+    if ( prior && result?.replaces && prior.messageId === result.replaces ) { mine[key] = result; return results; }
+    if ( prior ) throw new Error("That target's save is already recorded.");
+    mine[key] = result;
+    return results;
+  }
+  if ( section === "applied" ) {
+    if ( !targetUuid ) throw new Error("A target is required.");
     const bucket = results[section] ??= {};
     const prior = bucket[targetUuid];
     if ( prior?.messageId === result?.messageId ) {
-      if ( section === "applied" && result?.undone && !prior.undone ) bucket[targetUuid] = { ...prior, undone: true };
+      if ( result?.undone && !prior.undone ) bucket[targetUuid] = { ...prior, undone: true };
       return results;
     }
-    if ( prior && section === "saves" && result?.replaces && prior.messageId === result.replaces ) { bucket[targetUuid] = result; return results; }
-    if ( prior && !(section === "applied" && prior.undone) ) throw new Error("That target's result is already recorded.");
+    if ( prior && !prior.undone ) throw new Error("That target's result is already recorded.");
     bucket[targetUuid] = result;
     return results;
   }
@@ -153,38 +199,53 @@ export function mergedResults(card, linked = []) {
  * @param {{visibility?: string, isGM?: boolean, canSeeSave?: (uuid: string) => boolean}} [viewer]
  *   canSeeSave: challengeVisibility for that creature's save (default: visible)
  */
-export function cardTargetRows(card, results = card?.results ?? {}, { visibility = "none", isGM = false, canSeeSave = () => true } = {}) {
+export function cardTargetRows(card, results = card?.results ?? {}, { visibility = "none", isGM = false, canSeeSave = () => true, saveEffects = [], saveLabels = {}, immune = new Map() } = {}) {
   const attack = results.attack ?? null;
-  const saves = Object.entries(results.saves ?? {}).map(([actorUuid, s]) => ({ ...s, actorUuid }));
+  const saves = allSaves(results);
+  const keys = saveEffects.length ? saveEffects.map(String) : [...new Set(saves.map(s => s.effect))];
   const named = new Map();
   for ( const t of [...list(card?.targets), ...list(attack?.targets)] ) if ( t?.uuid && !named.has(t.uuid) ) named.set(t.uuid, t);
   for ( const s of saves ) if ( !named.has(s.actorUuid) ) named.set(s.actorUuid, { uuid: s.actorUuid, name: s.name });
   const shown = new Map(attack ? attackTargetRows(attack, [...named.values()].map(t => ({ ...t, ac: Number(t.ac) })), { visibility, isGM })
     .map(r => [r.uuid, r]) : []);
-  const shares = new Map(targetOutcomes({ attack: attack ? { ...attack, targets: [...named.values()].map(t => ({ ...t, ac: Number(t.ac) })) } : null, saves })
+  // FIN3 (Q-F11): the damage share follows the save of the damage's own effect.
+  const shareSaves = savesForDamage(saves, results.damage?.effect ?? null, keys);
+  const shares = new Map(targetOutcomes({ attack: attack ? { ...attack, targets: [...named.values()].map(t => ({ ...t, ac: Number(t.ac) })) } : null, saves: shareSaves })
     .map(r => [r.uuid, r.mode]));
+  const text = s => (s.fourTier ? SAVE_LABELS[s.degree] : s.degree >= 2 ? "Success" : "Failure");
   return [...named.values()].map(t => {
     const view = shown.get(t.uuid);
-    const save = saves.find(s => s.actorUuid === t.uuid);
+    const mine = savesOf(results, t.uuid);
     const attackVisible = !!view?.result;
     // Hidden hit/miss stays hidden: the share is only suggested when the viewer may see why.
-    const share = shares.get(t.uuid) ?? null;
-    const saveVisible = !!save && (isGM || canSeeSave(t.uuid));
-    const saveText = saveVisible ? (save.fourTier ? SAVE_LABELS[save.degree] : save.degree >= 2 ? "Success" : "Failure") : null;
+    const immuneReasons = immune.get(t.uuid) ?? null;
+    const share = immuneReasons ? "none" : shares.get(t.uuid) ?? null;
+    const saveVisible = Object.keys(mine).length > 0 && (isGM || canSeeSave(t.uuid));
+    // One line per save, in the card's order ("Con Failure · Dex Success").
+    const perSave = [...new Set([...keys, ...Object.keys(mine)])].filter(k => mine[k]).map(k => ({ effect: k, label: saveLabels[k] ?? "",
+      text: saveVisible ? text(mine[k]) : null, failed: mine[k].degree < 2, messageId: mine[k].messageId }));
+    const saveText = saveVisible ? perSave.map(p => (perSave.length > 1 && p.label ? `${p.label} ${p.text}` : p.text)).join(", ") : null;
     const applied = results.applied?.[t.uuid];
     const effects = list(results.effects?.[t.uuid]).filter(e => !e.undone);
-    const hidden = (attack && !attackVisible && !saveVisible) || (!attack && save && !saveVisible);
+    const any = perSave.length > 0;
+    const hidden = (attack && !attackVisible && !saveVisible) || (!attack && any && !saveVisible);
+    const first = perSave[0] ?? null;
     return {
       uuid: t.uuid, name: t.name ?? "", ac: view?.ac ?? null,
       attack: attackVisible ? ATTACK_RESULT_LABELS[view.result] : null,
       save: saveText,
-      saved: !!save,
+      // Every save of the card is in (each effect's own save).
+      saved: keys.length ? keys.every(k => mine[k]) : any,
+      savedEffects: Object.keys(mine),
       // Conditions on a failed save; known to whoever may change the creature (they apply them).
-      saveFailed: !!save && save.degree < 2,
+      saveFailed: perSave.some(p => p.failed),
+      failedEffects: perSave.filter(p => p.failed).map(p => p.effect),
+      saves: perSave,
+      immune: immuneReasons,
       share: hidden ? null : share,
       applied: applied && !applied.undone ? { mode: applied.mode, messageId: applied.messageId, reaction: applied.reaction ?? null,
         concentration: applied.concentration ?? null } : null,
-      saveMessage: save?.messageId ?? null,
+      saveMessage: first?.messageId ?? null,
       effects: effects.flatMap(e => e.effects.map(x => x.label)),
       effectMessages: effects.map(e => e.messageId),
       // CARD1b/1d: which buttons were already applied (src:i:j, act:i, rider ids), so each shows once.
@@ -194,20 +255,46 @@ export function cardTargetRows(card, results = card?.results ?? {}, { visibility
 }
 
 /**
+ * FIN3: reaction windows opened for this card's attack or damage, per creature, as short status text.
+ * @param {object[]} windows   flags.n5e.reactionWindow of the linked windows
+ * @param {number} [now]
+ * @returns {Map<string, string[]>}  actorUuid -> ["Deflection: pending (25 s left)", ...]
+ */
+export function cardReactionWindows(windows = [], now = Date.now()) {
+  const out = new Map();
+  for ( const w of list(windows) ) {
+    if ( !w?.actorUuid ) continue;
+    const phase = reactionPhase(w, now);
+    const left = w.deadline != null ? Math.max(0, Math.ceil((w.deadline - now) / 1000)) : null;
+    const status = phase === "pending" ? (left != null ? `pending (${left} s left)` : "pending")
+      : phase === "gm" ? "waiting for the GM" : phase === "accepted" ? "taken" : w.retired ? "withdrawn" : "declined";
+    const lines = out.get(w.actorUuid) ?? [];
+    lines.push(`${w.label ?? "Reaction"}: ${status}`);
+    out.set(w.actorUuid, lines);
+  }
+  return out;
+}
+
+/**
  * Waiting, ready or done for each section, so buttons show in order.
  *   attack   ready, done once rolled
  *   damage   waiting until the attack is rolled (when the card has one), then ready, done once rolled
- *   saves    ready, done once every target has a save
+ *   saves    ready, done once every target has every effect's save (FIN3)
  *   others   ready (their own buttons; filled in by CARD1b and CARD1c)
  */
-export function sectionStates(card, results = card?.results ?? {}) {
+export function sectionStates(card, results = card?.results ?? {}, { saveEffects = [] } = {}) {
   const sections = list(card?.sections);
   const targets = list(card?.targets);
   const states = {};
+  // FIN3: done once every target has every effect's save.
+  const allIn = uuid => {
+    const mine = savesOf(results, uuid);
+    return saveEffects.length ? saveEffects.every(k => mine[String(k)]) : Object.keys(mine).length > 0;
+  };
   for ( const s of sections ) {
     if ( s === "attack" ) states[s] = results.attack ? "done" : "ready";
     else if ( s === "damage" ) states[s] = results.damage ? "done" : sections.includes("attack") && !results.attack ? "waiting" : "ready";
-    else if ( s === "saves" ) states[s] = targets.length && targets.every(t => results.saves?.[t.uuid]) ? "done" : "ready";
+    else if ( s === "saves" ) states[s] = targets.length && targets.every(t => allIn(t.uuid)) ? "done" : "ready";
     else if ( s === "area" ) states[s] = card.areaPlaced ? "done" : "ready";
     else if ( s === "reactions" ) states[s] = Object.values(results.applied ?? {}).some(a => a?.reaction && !a.undone) ? "done" : "ready";
     else if ( s === "concentration" ) states[s] = card.concentrationEnded ? "done" : "ready";

@@ -22,6 +22,7 @@
  * Rank increases from several riders stack additively, then the condition's cap (Q-CD5).
  */
 import { attackTargetRows } from "./parity.mjs";
+import { savesOf } from "./action-card.mjs";
 
 const list = v => (Array.isArray(v) ? v : v == null ? [] : [...v]);
 export const NATURE_RELEASES = Object.freeze(["fireRelease", "windRelease", "waterRelease", "earthRelease", "lightningRelease"]);
@@ -70,10 +71,11 @@ export function targetFacts(card, results = card?.results ?? {}) {
     .map(r => [r.uuid, r.result]) : []);
   const facts = new Map();
   for ( const uuid of named.keys() ) {
-    const save = results.saves?.[uuid];
+    // FIN3: a creature's saves by effect; any failed save triggers "failedSave".
+    const saves = Object.values(savesOf(results, uuid));
     const applied = results.applied?.[uuid];
     const r = hits.get(uuid);
-    facts.set(uuid, { hit: r === "hit" || r === "crit", crit: r === "crit", saved: !!save, saveFailed: !!save && save.degree < 2,
+    facts.set(uuid, { hit: r === "hit" || r === "crit", crit: r === "crit", saved: saves.length > 0, saveFailed: saves.some(sv => sv.degree < 2),
       damaged: !!applied && !applied.undone });
   }
   return facts;

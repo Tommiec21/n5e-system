@@ -15,7 +15,8 @@
  *   Setting    rule("actionCard") off: nothing here runs and cards look as they did (Q-CD3).
  */
 import { rule } from "../rules-settings.mjs";
-import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets } from "../rules/action-card.mjs";
+import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets, savesOf, allSaves, cardReactionWindows } from "../rules/action-card.mjs";
+import { genjutsuImmunity, creatureFacts } from "../rules/stimuli.mjs";
 import { challengeVisible } from "../rules/parity.mjs";
 import { riderView, onRiderClick } from "./riders.mjs";
 import { castFacts, counteredOn, counterTagFor, onDefenseClick, onCounterTagClick } from "./jutsu-defense.mjs";
@@ -152,15 +153,15 @@ function linkedEntries(card) {
 /** Is this linked message recorded in its card's own results? */
 function recordedIn(card, messageId) {
   const r = card?.flags?.n5e?.card?.results ?? {};
-  return [r.attack, r.damage, ...Object.values(r.saves ?? {}), ...Object.values(r.applied ?? {})].some(x => x?.messageId === messageId);
+  return [r.attack, r.damage, ...allSaves(r), ...Object.values(r.applied ?? {})].some(x => x?.messageId === messageId);
 }
 
 const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage: "Damage", effects: "Effects", riders: "Riders", reactions: "Reactions", concentration: "Concentration" };
 const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
 const MODE_LABELS = { full: "Applied", half: "Applied half", double: "Applied double", heal: "Healed" };
 
-const wofButtons = (kind, uuid) => ["reroll", "advantage"].map(how =>
-  `<button type="button" data-n5e-card-wof="${kind}" data-how="${how}"${uuid ? ` data-target="${esc(uuid)}"` : ""}>Will of Fire: ${how === "reroll" ? "reroll" : "keep higher"}</button>`).join("");
+const wofButtons = (kind, uuid, effect = null, label = "") => ["reroll", "advantage"].map(how =>
+  `<button type="button" data-n5e-card-wof="${kind}" data-how="${how}"${uuid ? ` data-target="${esc(uuid)}"` : ""}${effect != null ? ` data-effect="${esc(effect)}"` : ""}>Will of Fire${label ? ` (${esc(label)})` : ""}: ${how === "reroll" ? "reroll" : "keep higher"}</button>`).join("");
 const parse = v => { try { return JSON.parse(v || "null") ?? []; } catch { return []; } };
 const hasPlayerOwner = actor => !!actor && (globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
 const saveLabel = d => `Roll ${globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""} save`.replace(/\s+/g, " ");
@@ -169,10 +170,59 @@ const saveLabel = d => `Roll ${globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.a
 function cardActivities(message) {
   const doc = new DOMParser().parseFromString(message.content ?? "", "text/html");
   const data = sel => [...doc.querySelectorAll(sel)].map(b => ({ ...b.dataset }));
-  return { saves: data('[data-n5e-act="save"]'), effects: data('[data-n5e-act="effect"]')
+  // FIN3: each save belongs to one effect (its row's key); cards posted before FIN3 number them in order.
+  return { saves: data('[data-n5e-act="save"]').map((d, i) => ({ ...d, effect: d.effect ?? String(i) })), effects: data('[data-n5e-act="effect"]')
     // Per-target only when one click per creature costs nothing extra (no pool cost, use limit or action).
     .filter(d => parse(d.effect)?.target === "targets" && !d.cost && !d.once && !d.activation) };
 }
+
+/** FIN3 / GEN1: the targets immune to this card's jutsu (cast as Genjutsu), with reasons, by uuid. */
+export function immuneTargets(message, uuids) {
+  const out = new Map();
+  const cast = message?.flags?.n5e?.cast;
+  const item = cast?.itemUuid ? globalThis.fromUuidSync?.(cast.itemUuid) : null;
+  if ( item?.type !== "jutsu" || (cast.discipline ?? item.system?.discipline) !== "gen" ) return out;
+  for ( const uuid of uuids ) {
+    const actor = globalThis.fromUuidSync?.(uuid);
+    if ( !actor ) continue;
+    const r = genjutsuImmunity(item.system.stimuli, creatureFacts(actor));
+    if ( r.immune ) out.set(uuid, r.reasons);
+  }
+  return out;
+}
+
+/** FIN3: the reaction windows this user can see that were opened for the card, its attack or its damage. */
+function windowsFor(message, results) {
+  const ids = new Set([message.id, results.attack?.messageId, results.damage?.messageId].filter(Boolean));
+  return (messages()?.contents.slice(-200) ?? []).map(m => m.flags?.n5e?.reactionWindow).filter(w => w?.sourceMessageId && ids.has(w.sourceMessageId));
+}
+
+/** FIN3: the action card a reaction window belongs to (its source is the card or a message linked to it). */
+function cardOfWindow(message) {
+  const id = message?.flags?.n5e?.reactionWindow?.sourceMessageId;
+  const source = id ? messages()?.get(id) : null;
+  if ( !source ) return null;
+  return source.flags?.n5e?.card ? source : cardOfLinked(source);
+}
+
+/** FIN3: "uuid|source" → owner names, for effect offers made from this card. */
+function offersFrom(message) {
+  const out = new Map();
+  for ( const m of messages()?.contents.slice(-200) ?? [] ) {
+    const offer = m.flags?.n5e?.effectApplication;
+    if ( offer?.card?.messageId !== message.id ) continue;
+    for ( const uuid of offer.recipients ?? [] ) {
+      const actor = globalThis.fromUuidSync?.(uuid);
+      const owners = (globalThis.game?.users ?? []).filter(u => !u.isGM && actor?.testUserPermission?.(u, "OWNER")).map(u => u.name);
+      out.set(`${uuid}|${offer.card.source}`, owners.join(", ") || "the GM");
+    }
+  }
+  return out;
+}
+
+/** The card's save effect keys and their short labels ("Con", "Dex"). */
+const saveEffectsOf = acts => ({ saveEffects: acts.saves.map(d => d.effect),
+  saveLabels: Object.fromEntries(acts.saves.map(d => [d.effect, globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""])) });
 
 /** The card's sections and per-target rows (A5). Synchronous: listeners are bound right after. */
 export function renderActionCard(message, html) {
@@ -187,40 +237,49 @@ export function renderActionCard(message, html) {
   const itemNow = globalThis.fromUuidSync?.(card.itemUuid);
   const concentrationEnded = card.sections.includes("concentration") && !!casterNow && !!itemNow
     && !(casterNow.system?.combat?.concentrating ?? []).includes(itemNow.id);
-  const states = sectionStates({ ...card, concentrationEnded }, results);
+  const acts = cardActivities(message);
+  const keys = saveEffectsOf(acts);
+  const states = sectionStates({ ...card, concentrationEnded }, results, keys);
   const setting = rule("challengeVisibility");
   const canSeeSave = uuid => challengeVisible(setting, game.user, hasPlayerOwner(globalThis.fromUuidSync?.(uuid)));
-  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave });
+  const immune = immuneTargets(message, (card.targets ?? []).map(t => t.uuid));
+  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave, ...keys, immune });
   const pending = entries.some(e => !recordedIn(message, e.result.messageId) && e.result.messageId !== message.id);
   const canDamage = !!results.damage;
-  const acts = cardActivities(message);
   const casterOwner = !!globalThis.fromUuidSync?.(card.actorUuid)?.isOwner;
   // CARD1d: riders (feature fixtures) — the caster's bar, the event save, per-row controls.
   const appliedSources = new Set(rows.flatMap(r => r.effectSources.map(src => `${r.uuid}|${src}`)));
+  // FIN3: effects offered to another user's creature from this card, until its owner applies them.
+  const offered = offersFrom(message);
+  // FIN3: reaction windows opened for this card's attack or damage.
+  const windows = cardReactionWindows(windowsFor(message, results));
   const riders = riderView(message, results, acts, appliedSources);
   // FIN2b: Counter Tags (single-target casts) and the creatures the jutsu was absorbed for.
   const countered = card.kind === "jutsu" ? counteredOn(message) : new Set();
   // ROLL1 (King Q-R2): one button rolls every pending save this user may roll, through one dialog.
-  const pendingSaves = card.sections.includes("saves") ? rows.filter(r => !r.saved && !countered.has(r.uuid)
-    && (game.user.isGM || canModify(game.user, globalThis.fromUuidSync?.(r.uuid)))) : [];
-  const saveAll = pendingSaves.length > 1 ? `<div class="n5e-card-saveall">${acts.saves.map((d, i) =>
-    `<button type="button" data-n5e-card-saveall="${i}">${esc(saveLabel(d))} for all ${pendingSaves.length}</button>`).join("")}</div>` : "";
+  const mayRoll = r => !countered.has(r.uuid) && (game.user.isGM || canModify(game.user, globalThis.fromUuidSync?.(r.uuid)));
+  const pendingFor = d => (card.sections.includes("saves") ? rows.filter(r => !r.savedEffects.includes(d.effect) && mayRoll(r)) : []);
+  const saveAll = acts.saves.map((d, i) => [d, i, pendingFor(d).length]).filter(([, , n]) => n > 1);
+  const saveAllBar = saveAll.length ? `<div class="n5e-card-saveall">${saveAll.map(([d, i, n]) =>
+    `<button type="button" data-n5e-card-saveall="${i}">${esc(saveLabel(d))} for all ${n}</button>`).join("")}</div>` : "";
   const row = r => {
     const actor = globalThis.fromUuidSync?.(r.uuid);
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
     if ( countered.has(r.uuid) ) return `<div class="n5e-card-target"><span class="name">${esc(r.name)}</span><span class="sub">Absorbed by a Counter Tag: no effect</span></div>`;
-    const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "", r.share && mine ? SHARE_LABELS[r.share] : "",
-      ...r.effects].filter(Boolean);
+    const facts = [r.ac != null ? `AC ${r.ac}` : "", r.attack ?? "", r.save ? `save ${r.save}` : "",
+      r.immune ? `Immune (${r.immune.join(", ")})` : r.share && mine ? SHARE_LABELS[r.share] : "", ...r.effects].filter(Boolean);
     const controls = [];
     // B2: the target's owner (GM for NPCs) rolls its save from the card.
-    if ( mine && !r.saved && card.sections.includes("saves") ) acts.saves.forEach((d, i) =>
+    // FIN3: one button per effect's save not yet rolled.
+    if ( mine && card.sections.includes("saves") ) acts.saves.forEach((d, i) => r.savedEffects.includes(d.effect) ||
       controls.push(`<button type="button" data-n5e-card-save="${i}" data-target="${esc(r.uuid)}">${esc(saveLabel(d))}</button>`));
     // B3: conditions on a failed save (applied by whoever may change the creature), with rider ranks added (CARD1d).
     const riderRow = riders.row(r.uuid, mine);
     let k = 0;
+    // FIN3: each failed save applies its own effect's conditions.
     if ( mine && r.saveFailed ) acts.saves.forEach((d, i) => parse(d.inflicts).forEach((x, j) => {
       const adj = riderRow.inflicts[k++] ?? x;
-      if ( appliedSources.has(`${r.uuid}|src:${i}:${j}`) ) return;
+      if ( !r.failedEffects.includes(d.effect) || appliedSources.has(`${r.uuid}|src:${i}:${j}`) ) return;
       controls.push(`<button type="button" data-n5e-card-inflict="${i}:${j}" data-target="${esc(r.uuid)}">Apply ${esc(x.label)}${x.kind === "condition" ? ` ${adj.ranks}` : ""}${adj.added ? ` (+${adj.added} riders)` : ""}</button>`);
     }));
     controls.push(...riderRow.controls);
@@ -228,15 +287,21 @@ export function renderActionCard(message, html) {
     if ( mine && card.kind === "jutsu" && counterTagFor(message, actor, rows.length) ) controls.unshift(`<button type="button" data-n5e-card-counter="1" data-count="${rows.length}" data-target="${esc(r.uuid)}">Counter Tag absorbs this</button>`);
     facts.push(...riderRow.notes);
     // B3: effects the jutsu puts on its targets (the caster's owner applies; others get the offer card).
-    if ( casterOwner ) acts.effects.forEach((d, i) => appliedSources.has(`${r.uuid}|act:${i}`) ||
-      controls.push(`<button type="button" data-n5e-card-effect="${i}" data-target="${esc(r.uuid)}">Apply ${esc(d.label || parse(d.effect).name || "effect")}</button>`));
+    if ( casterOwner ) acts.effects.forEach((d, i) => {
+      if ( appliedSources.has(`${r.uuid}|act:${i}`) ) return;
+      const name = d.label || parse(d.effect).name || "effect";
+      if ( offered.has(`${r.uuid}|act:${i}`) ) return facts.push(`${name} offered to ${offered.get(`${r.uuid}|act:${i}`)}`);
+      controls.push(`<button type="button" data-n5e-card-effect="${i}" data-target="${esc(r.uuid)}">Apply ${esc(name)}</button>`);
+    });
     if ( mine && canDamage && !r.applied ) ["full", "half"].forEach(m =>
       controls.push(`<button type="button" data-n5e-card-apply="${m}" data-target="${esc(r.uuid)}"${r.share === m ? ' class="suggested"' : ""}>${m === "full" ? "Apply" : "Half"}</button>`));
     if ( r.applied ) facts.push(MODE_LABELS[r.applied.mode] ?? "Applied");
+    facts.push(...(windows.get(r.uuid) ?? []));
     // C1: the reaction the creature took against this damage.
     if ( r.applied?.reaction ) facts.push(`${r.applied.reaction.label}${r.applied.reaction.reduction ? ` (−${r.applied.reaction.reduction})` : ""}${r.applied.reaction.multiplier !== 1 ? ` (×${r.applied.reaction.multiplier})` : ""}`);
     // C2: Will of Fire on this creature's save (its owner).
-    if ( mine && r.saveMessage && (actor?.system?.willOfFire?.value ?? 0) > 0 ) controls.push(wofButtons("save", r.uuid));
+    if ( mine && r.saves.length && (actor?.system?.willOfFire?.value ?? 0) > 0 ) r.saves.forEach(sv =>
+      controls.push(wofButtons("save", r.uuid, sv.effect, r.saves.length > 1 ? sv.label : "")));
     // C3: the concentration check the damage called for (that creature's owner).
     if ( mine && r.applied?.concentration ) controls.push(`<button type="button" data-n5e-card-concheck="${esc(r.uuid)}">Concentration check DC ${r.applied.concentration.dc}</button>`);
     // Undo (Q-CD4): the damage and the conditions/effects applied to this creature from the card.
@@ -263,7 +328,7 @@ export function renderActionCard(message, html) {
   box.innerHTML = `<div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
     ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
-    ${saveAll}${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
+    ${saveAllBar}${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
     ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
   (html.querySelector(".message-content") ?? html).append(box);
 }
@@ -357,8 +422,9 @@ export async function onActionCardClick(message, btn, event) {
   if ( d.n5eCardSaveall != null ) {
     const save = cardActivities(message).saves[Number(d.n5eCardSaveall)];
     if ( !save ) return null;
-    const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave: () => true });
-    const actors = (await Promise.all(rows.filter(r => !r.saved).map(r => fromUuid(r.uuid)))).filter(a => a && canModify(game.user, a));
+    const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave: () => true,
+      ...saveEffectsOf(cardActivities(message)) });
+    const actors = (await Promise.all(rows.filter(r => !r.savedEffects.includes(save.effect)).map(r => fromUuid(r.uuid)))).filter(a => a && canModify(game.user, a));
     if ( !actors.length ) return null;
     const dataset = { ...save };
     if ( Object.keys(results.saves ?? {}).length ) delete dataset.dis;
@@ -380,7 +446,8 @@ export async function onActionCardClick(message, btn, event) {
   }
   if ( d.n5eCardWof ) {
     // C2: spend Will of Fire on the recorded roll; the reroll replaces it on the card.
-    const id = d.n5eCardWof === "attack" ? results.attack?.messageId : results.saves?.[d.target]?.messageId;
+    const mineSaves = savesOf(results, d.target);
+    const id = d.n5eCardWof === "attack" ? results.attack?.messageId : (mineSaves[d.effect] ?? Object.values(mineSaves)[0])?.messageId;
     const roll = id ? messages()?.get(id) : null;
     if ( !roll ) return ui.notifications.info("Nothing to reroll.");
     btn.disabled = true;
@@ -424,6 +491,9 @@ export async function onActionCardClick(message, btn, event) {
     const x = parse(save?.inflicts)[j];
     if ( !x ) return null;
     btn.disabled = true;
+    // FIN3 (King Q-F12): an immune creature: the effect ends on it at once.
+    const why = immuneTargets(message, [target.uuid]).get(target.uuid);
+    if ( why ) return ui.notifications.info(`${target.name} is immune (${why.join(", ")}): ${x.label} ends at once.`);
     // CARD1d: the action's own condition with the riders' added ranks (Q-CD5: additive, then the cap).
     const { riderView: view } = await import("./riders.mjs");
     const flat = acts.saves.flatMap((s2, a) => parse(s2.inflicts).map((_, b) => `${a}:${b}`));
@@ -435,8 +505,13 @@ export async function onActionCardClick(message, btn, event) {
     const act = acts.effects[Number(d.n5eCardEffect)];
     if ( !act ) return null;
     btn.disabled = true;
+    const why = immuneTargets(message, [target.uuid]).get(target.uuid);
+    if ( why ) return ui.notifications.info(`${target.name} is immune (${why.join(", ")}): the effect ends at once.`);
     const before = new Set(target.effects.map(e => e.id));
-    await onActivityClick(message, { dataset: act, disabled: false }, event, { targetActors: [target] });
+    // FIN3: an offer card made for another user's creature remembers this card and button.
+    const { withCardLink } = await import("./effect-application.mjs");
+    await withCardLink({ messageId: message.id, source: `act:${d.n5eCardEffect}` },
+      () => onActivityClick(message, { dataset: act, disabled: false }, event, { targetActors: [target] }));
     // Recorded when this user could create the effect; otherwise the owner gets the offer card.
     const created = canModify(game.user, target) ? target.effects.filter(e => !before.has(e.id)) : [];
     return postEffectSummary(message, target, created, `act:${d.n5eCardEffect}`);
@@ -457,6 +532,9 @@ export async function registerActionCardHooks() {
     // FIN2b: a Counter Tag note re-draws the card it absorbed.
     const absorbed = messages()?.get(message.flags?.n5e?.counterTag?.cardId);
     if ( absorbed ) ui.chat?.updateMessage?.(absorbed);
+    // FIN3: a new reaction window or effect offer re-draws its card.
+    const related = cardOfWindow(message) ?? messages()?.get(message.flags?.n5e?.effectApplication?.card?.messageId ?? "");
+    if ( related ) ui.chat?.updateMessage?.(related);
     const card = cardOfLinked(message);
     if ( !card ) return;
     if ( userId === globalThis.game.user.id ) void recordLinked(message).catch(error => console.warn("n5e | action card", error));
@@ -464,6 +542,9 @@ export async function registerActionCardHooks() {
   });
   Hooks.on("updateChatMessage", (message, change, options, userId) => {
     if ( !actionCardOn() ) return;
+    // FIN3: a reaction window or an effect offer re-draws its card.
+    const windowCard = cardOfWindow(message);
+    if ( windowCard ) return ui.chat?.updateMessage?.(windowCard);
     if ( change?.flags?.n5e?.undone && userId === globalThis.game.user.id ) void recordLinked(message).catch(error => console.warn("n5e | action card", error));
     const card = message.flags?.n5e?.card ? message : cardOfLinked(message);
     if ( !card ) return;

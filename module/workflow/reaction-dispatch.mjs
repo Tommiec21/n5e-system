@@ -37,7 +37,7 @@ export function createReactionDispatcher({ authority, stamp, open, wait }) {
         for ( const raw of (Array.isArray(offered) ? offered : [offered]) ) {
         const initial = checkOffer(actor, raw);
         if ( !initial ) continue;
-        const window = await open(actor, initial.offer.item, { label: initial.offer.label ?? initial.offer.item.name, trigger: initial.offer.trigger ?? "Use this reaction?", requestId: context.requestId });
+        const window = await open(actor, initial.offer.item, { label: initial.offer.label ?? initial.offer.item.name, trigger: initial.offer.trigger ?? "Use this reaction?", requestId: context.requestId, sourceMessageId: context.message?.id ?? null });
         const decision = await wait(window);
         requireAuthority();
         if ( decision !== "accepted" ) continue;

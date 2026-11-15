@@ -37,13 +37,15 @@ async function store(message, window) {
 }
 
 /** GM-authored eligibility/trigger; later ability adapters will produce these inputs. */
-export async function openReactionWindow(actor, item, { label = item?.name, trigger = "Reaction opportunity", requestId } = {}) {
+export async function openReactionWindow(actor, item, { label = item?.name, trigger = "Reaction opportunity", requestId, sourceMessageId = null } = {}) {
   if ( !activeGM() ) throw new Error("The active GM opens reaction windows.");
   if ( !rule("reactionWindows") ) throw new Error("Reaction windows are disabled in N5e Rules.");
   if ( actor?.documentName !== "Actor" || item?.actor?.uuid !== actor.uuid || !label || label.length > 160 || trigger.length > 400 ) throw new Error("Choose an owned ability and a valid reaction description.");
   const owners = game.users.filter(u => !u.isGM && u.active && actor.testUserPermission(u, "OWNER")).map(u => u.id);
   const window = { version: 1, actorUuid: actor.uuid, itemId: item.id, label, trigger, owners,
-    state: owners.length ? "pending" : "gm", openedAt: Date.now(), deadline: reactionDeadline(Number(rule("reactionTimeoutSeconds"))) };
+    state: owners.length ? "pending" : "gm", openedAt: Date.now(), deadline: reactionDeadline(Number(rule("reactionTimeoutSeconds"))),
+    // FIN3: the attack or damage message it was opened for, so its action card can show it.
+    ...(typeof sourceMessageId === "string" && sourceMessageId ? { sourceMessageId } : {}) };
   if ( requestId !== undefined ) {
     if ( typeof requestId !== "string" || !/^[A-Za-z0-9_-]{1,100}$/.test(requestId) ) throw new Error("Invalid reaction command identity.");
     window.requestId = requestId;

@@ -181,3 +181,12 @@
 | Defensive and Support focus values; C and A use the rank below | `rules/freeform.mjs defensiveValue`, `supportValue`, `stepValue` |
 | Effects & Conditions: conditions on a failed save, penalties and disadvantage as Active Effects, the rest as card notes; recovery by save, rounds or action | `rules/freeform.mjs effectActivity` |
 | Freeform Jutsu follow level, class and role; Strikes are set when built; hand-edited damage kept | `rules/freeform.mjs recalculate`, `workflow/freeform.mjs` |
+
+## Card and resolution limits (FIN3a, 0.33.0-alpha.2)
+
+| Rule | Code |
+| --- | --- |
+| One save per effect; each save halves only its own effect's damage, for the creature that rolled it (King Q-F11) | `rules/action-card.mjs savesOf`, `savesForDamage`, `cardTargetRows`; `rules/resolution.mjs pickLinkedRolls`; `workflow/resolution.mjs linkedOutcomes` |
+| Immune to a Genjutsu's stimuli: damage applies as 0, conditions and effects end at once (King Q-F12) | `workflow/action-card.mjs immuneTargets`, `workflow/apply-damage.mjs applyToSelected` |
+| Effects offered to another owner's creature are recorded on the card when applied | `workflow/effect-application.mjs withCardLink`, `applyEffectFromCard` |
+| Reaction windows shown on the card | `rules/action-card.mjs cardReactionWindows`, `workflow/reactions.mjs openReactionWindow` |
