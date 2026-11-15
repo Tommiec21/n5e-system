@@ -206,3 +206,9 @@
 | --- | --- |
 | A choke's out-of-breath is Unconscious, not Dying; it ends with the hold (King Q-F15) | `rules/environment.mjs outOfBreathStatus`, `workflow/environment.mjs runOutOfBreath`, `registerEnvironmentHooks` |
 | Breath outside combat: Con mod minutes (min 30 s); fresh count across combat; GM sets it (King Q-F16) | `rules/environment.mjs breathSeconds`, `breathState`; `workflow/environment.mjs breathClock`, `setBreath` |
+
+## Indirect Exposure (FIN4b, 0.33.0-alpha.5)
+
+| Rule | Code |
+| --- | --- |
+| Indirect Exposure: Survival vs the terrain DC, Release immunity suggested; the GM decides and applies (King Q-F14) | `rules/environment.mjs indirectExposure`, `mayBeImmune`; `workflow/environment.mjs indirectExposureCheck` |

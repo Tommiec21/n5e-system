@@ -105,6 +105,12 @@ export async function fall(actor, feet) {
   return run(actor, feet);
 }
 
+/** FIN4b: the GM's Indirect Exposure dialog (King Q-F14: an option; the GM decides). */
+export async function indirectExposure() {
+  const { indirectExposureCheck } = await import("./workflow/environment.mjs");
+  return indirectExposureCheck();
+}
+
 export default {
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
@@ -115,5 +121,5 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData, fall
+  registerClanData, fall, indirectExposure
 };

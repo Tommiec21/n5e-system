@@ -1,6 +1,6 @@
 # FIN4 function spec: rules corrections
 
-Status: **spec written 2026-11-15 (King: "Next batch"). King answered Q-F14–Q-F18 (2026-11-15). Split into FIN4a, FIN4b and FIN4c. FIN4a approved 2026-11-15 ("Approved") and published `0.33.0-alpha.4`; FIN4b and FIN4c each need a go-ahead.**
+Status: **spec written 2026-11-15 (King: "Next batch"). King answered Q-F14–Q-F18 (2026-11-15). Split into FIN4a, FIN4b and FIN4c. FIN4a approved 2026-11-15 ("Approved") and published `0.33.0-alpha.4`; FIN4b approved 2026-11-15 and published `0.33.0-alpha.5`; FIN4c needs a go-ahead.**
 
 Plan: `docs/DEV_PLAN.md` row 4. It closes the limits ENV1 and POS1 recorded when they shipped.
 
@@ -63,3 +63,4 @@ After each function, add a line to the progress log and push.
   - F1: the Choke outcome's Apply carries `data-choke` (the choker); the Suffocating effect gets `flags.n5e.choke {holder}`; out of breath uses `outOfBreathStatus` (Unconscious for a choke); deleting the holder's last hold effect deletes the choke's Suffocating (active GM).
   - F2: `rules/environment.mjs breathSeconds`, `breathState`; `flags.n5e.breath` is turns (combat) or `{until}` (world time); `workflow/environment.mjs startBreathTime`, `breathClock` (updateWorldTime), `setBreath` (GM dialog), `registerEnvironmentHooks` (createActiveEffect starts the count and posts the GM card; deleteCombat restarts it fresh; deleteActiveEffect clears it).
   - Tests: `tests/environment.test.mjs` +2. Suites: 499 and 119 pass.
+- 2026-11-15 Claude: **FIN4b built and published 0.33.0-alpha.5.** `rules/environment.mjs indirectExposure`, `mayBeImmune`; `workflow/environment.mjs indirectExposureCheck` (GM dialog: creatures, DC, failure note), `onExposureRollClick`; token-controls button `n5eExposure`; API `indirectExposure()`; card flag `flags.n5e.indirectExposure {dc, note, actors}`. Tests: `tests/environment.test.mjs` +1. Suites: 500 and 119 pass.

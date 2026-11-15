@@ -561,3 +561,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | `flags.n5e.choke {holder}` (Suffocating effect) | Suffocating from a Choke: Unconscious when breath runs out; ends with the holder's hold |
 | `flags.n5e.breath` (Actor) | Turns of breath left (combat) or `{until}` world time (outside combat) |
+
+## Added in 0.33.0-alpha.5 (FIN4b)
+
+| Path | Meaning |
+| --- | --- |
+| `flags.n5e.indirectExposure {dc, note, actors[]}` (ChatMessage) | An Indirect Exposure check the GM posted |
+| `game.n5e.api.indirectExposure()`; token control `n5eExposure` | Open the GM's Indirect Exposure dialog |

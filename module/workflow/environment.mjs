@@ -9,10 +9,12 @@
  *   FIN4a (King 2026-11-15)
  *     Choke           Suffocating from a Choke (flags.n5e.choke on the effect) runs out into Unconscious,
  *                     not Dying, and ends at once when the hold ends (Q-F15).
+ *   FIN4b: Indirect Exposure is a GM option (Q-F14): the GM opens it, picks creatures, DC and the
+ *          consequence note; owners roll Survival from the card; the GM applies any consequence.
  *     Outside combat  Breath is Con modifier minutes (at least 30 s) of world time ({until}); the count
  *                     starts fresh when combat starts or ends (Q-F16). The GM can set it (Set breath).
  */
-import { worstExposure, suffocationStep, fallDamage, breathSeconds, breathState, outOfBreathStatus } from "../rules/environment.mjs";
+import { worstExposure, suffocationStep, fallDamage, breathSeconds, breathState, outOfBreathStatus, indirectExposure, mayBeImmune } from "../rules/environment.mjs";
 import { esc } from "../view-models/common.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
 
@@ -157,6 +159,14 @@ export function registerEnvironmentHooks() {
     for ( const c of combat.combatants ) if ( c.actor?.statuses?.has("suffocating") ) void startBreathTime(c.actor);
   });
   Hooks.on("updateWorldTime", () => void breathClock().catch(error => console.warn("n5e | breath clock", error)));
+  // FIN4b: the GM's Indirect Exposure button on the token controls.
+  Hooks.on("getSceneControlButtons", controls => {
+    if ( !game.user.isGM ) return;
+    const tokens = controls.tokens ?? controls.token;
+    if ( !tokens?.tools ) return;
+    tokens.tools.n5eExposure = { name: "n5eExposure", title: "N5e Indirect Exposure", icon: "fa-solid fa-temperature-half", button: true,
+      order: Object.keys(tokens.tools).length + 1, onChange: () => void indirectExposureCheck().catch(error => ui.notifications.warn(error.message)) };
+  });
 }
 
 /** Direct Exposure card button: the owner rolls the Con save; a failure rolls the damage. */
@@ -200,4 +210,59 @@ export async function fall(actor, feet) {
       <div class="note">${fx.formula} bludgeoning · ignores DR · lands Prone</div>${applyButtons()}
       <div class="n5e-apply"><button type="button" data-n5e-skill-apply="prone" data-target="${esc(actor.uuid)}">Apply Prone to ${esc(actor.name)}</button></div></div>`,
     flags: { n5e: { damage: { instances: [{ amount: roll.total, type: "bludgeoning" }], total: roll.total, ignoreDR: true, targetUuid: actor.uuid }, actorUuid: actor.uuid, fall: { feet: Number(feet), dice: fx.dice } } } });
+}
+
+
+/* ---- FIN4b: Indirect Exposure (King Q-F14: a GM option; the GM decides) ---- */
+
+const RELEASE_LABEL = { fire: "Fire Release", water: "Water Release", medical: "Medical Release" };
+
+/** The creatures to check: the selected tokens, else every token in a Hostile Terrain region on the scene. */
+function exposureCandidates() {
+  const selected = canvas?.tokens?.controlled ?? [];
+  const tokens = selected.length ? selected : (canvas?.tokens?.placeables ?? []).filter(t => terrainsAt(t.document).length);
+  return tokens.filter(t => t.actor).map(t => {
+    const terrains = terrainsAt(t.document);
+    return { token: t, actor: t.actor, terrains, exposure: indirectExposure(terrains) };
+  });
+}
+
+/** GM: open the Indirect Exposure dialog and post the check card. */
+export async function indirectExposureCheck() {
+  if ( !game.user.isGM ) return ui.notifications.warn("Only the GM runs Indirect Exposure.");
+  const rows = exposureCandidates();
+  if ( !rows.length ) return ui.notifications.info("Select tokens, or place tokens in a Hostile Terrain region.");
+  const dc = Math.max(...rows.map(r => r.exposure?.dc ?? 0)) || 18;
+  const label = [...new Set(rows.map(r => r.exposure?.label).filter(Boolean))].join(", ") || "Hostile terrain";
+  const list = rows.map((r, i) => {
+    const immune = mayBeImmune(r.actor.system?.grants?.affinities, r.exposure?.releases ?? []);
+    return `<label class="check"><input type="checkbox" name="c${i}" ${immune.length ? "" : "checked"}> ${esc(r.actor.name)}
+      ${immune.length ? `<span class="hint">may be immune (${esc(immune.map(x => RELEASE_LABEL[x] ?? x).join(", "))})</span>` : ""}</label>`;
+  }).join("");
+  const picked = await foundry.applications.api.DialogV2.prompt({ window: { title: "Indirect Exposure" },
+    content: `<p class="hint">${esc(label)}. You decide who checks, the DC and what a failure does.</p>${list}
+      <label>Survival DC <input type="number" name="dc" value="${dc}" min="1"></label>
+      <label>On a failure <input type="text" name="note" placeholder="what happens (you apply it)"></label>`,
+    ok: { label: "Post checks", callback: (event, button) => {
+      const f = button.form.elements;
+      return { dc: Number(f.dc.value) || dc, note: f.note.value, chosen: rows.filter((r, i) => f[`c${i}`]?.checked) };
+    } }, rejectClose: false });
+  if ( !picked?.chosen?.length ) return null;
+  return ChatMessage().create({ speaker: { alias: "Indirect Exposure" },
+    content: `<div class="n5e-roll-card"><header><b>Indirect Exposure: ${esc(label)}</b></header>
+      <div class="note">Survival check DC ${picked.dc}.${picked.note ? ` On a failure: ${esc(picked.note)}` : ""}</div>
+      ${picked.chosen.map(r => `<div class="n5e-target-row"><span>${esc(r.actor.name)}</span>
+        <button type="button" data-n5e-exposure-roll="${esc(r.actor.uuid)}" data-dc="${picked.dc}">Roll Survival DC ${picked.dc}</button></div>`).join("")}</div>`,
+    flags: { n5e: { indirectExposure: { dc: picked.dc, note: picked.note, actors: picked.chosen.map(r => r.actor.uuid) } } } });
+}
+
+/** The creature's owner rolls its Survival check from the card. */
+export async function onExposureRollClick(button, event) {
+  const actor = await fromUuid(button.dataset.n5eExposureRoll);
+  if ( !actor?.isOwner ) return ui.notifications.warn("Only the creature's owner rolls this check.");
+  const [{ rollWithSpec }, { rollSpec }] = await Promise.all([import("../dice/roll.mjs"), import("../dice/d20.mjs")]);
+  const spec = { ...rollSpec(actor, "skill", "sur"), label: "Survival: Indirect Exposure" };
+  const message = await rollWithSpec(actor, spec, { event, dc: Number(button.dataset.dc) });
+  if ( message ) button.disabled = true;
+  return message;
 }

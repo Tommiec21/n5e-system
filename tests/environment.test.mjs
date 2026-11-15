@@ -91,3 +91,16 @@ test("FIN4a: a choked creature runs out of breath into Unconscious, not Dying; a
   assert.match((await breathTurnStart(actor))[0], /Unconscious \(choked, not Dying\)/);
   assert.deepEqual(toggles, [["unconscious", true]]);
 });
+
+/* FIN4b */
+import { indirectExposure, mayBeImmune } from "../module/rules/environment.mjs";
+
+test("FIN4b: Indirect Exposure suggests the highest terrain DC and the Releases that may make a creature immune", () => {
+  assert.deepEqual(indirectExposure([{ type: "extremeHeat", rank: "D" }]), { dc: 18, skill: "sur", label: "Extreme Heat", releases: ["fire"] });
+  const two = indirectExposure([{ type: "extremeCold", rank: "C" }, { type: "toxic", rank: "A" }]);
+  assert.equal(two.dc, 23);
+  assert.deepEqual(two.releases, ["water", "medical"]);
+  assert.equal(indirectExposure([{ type: "chakraResistant", rank: "S" }]), null, "Chakra Resistant has no check");
+  assert.deepEqual(mayBeImmune(new Set(["fire", "wind"]), ["fire"]), ["fire"]);
+  assert.deepEqual(mayBeImmune(["earth"], ["fire"]), []);
+});

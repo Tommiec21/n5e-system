@@ -1,3 +1,9 @@
+## 0.33.0-alpha.5 — Indirect Exposure as a GM option (FIN4b; King 2026-11-15)
+
+- **Indirect Exposure (GM):** "N5e Indirect Exposure" on the token controls (and `game.n5e.api.indirectExposure()`) opens a dialog listing the selected tokens, or every creature in a Hostile Terrain region on the scene. You tick who checks, set the Survival DC (the highest terrain DC is filled in: D 18, C 20, B 21, A 23, S 25) and type what a failure does. Creatures with the terrain's Release (Fire for Extreme Heat, Water for Extreme Cold, Medical for Toxic) are marked "may be immune" and start unticked. Chakra Resistant has no check.
+- The card lists each creature with "Roll Survival DC X" for its owner; you apply any consequence yourself. Nothing runs on its own (King Q-F14).
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.4 — Choke and breath (FIN4a; King 2026-11-15)
 
 - **Choke:** Suffocating applied from a Choke outcome remembers it. Out of breath, a choked creature drops to 0 HP and is Unconscious, not Dying. The choke's Suffocating ends at once when the hold ends (let go, escaped, or more than 5 ft apart).

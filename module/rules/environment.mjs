@@ -28,6 +28,25 @@ export function worstExposure(terrains = []) {
   return list.sort((a, b) => b.dc - a.dc)[0] ?? null;
 }
 
+/**
+ * FIN4b: Indirect Exposure for a set of terrains (King Q-F14: a GM option; the GM has the final say).
+ * The suggested DC is the highest terrain DC; the Release that may make a creature immune per terrain.
+ * Chakra Resistant has no check. Returns null when no terrain calls for one.
+ * @param {{type: string, rank: string}[]} terrains
+ * @returns {{dc: number, skill: string, label: string, releases: string[]}|null}
+ */
+export function indirectExposure(terrains = []) {
+  const checked = terrains.map(t => ({ ...t, def: terrainTypes[t.type], rank: hostileTerrain[t.rank] }))
+    .filter(t => t.def?.indirectCheck && t.rank);
+  if ( !checked.length ) return null;
+  const worst = checked.reduce((a, b) => (b.rank.dc > a.rank.dc ? b : a));
+  return { dc: worst.rank.dc, skill: worst.def.indirectCheck, label: [...new Set(checked.map(t => t.def.label))].join(", "),
+    releases: [...new Set(checked.map(t => t.def.immuneIndirect).filter(Boolean))] };
+}
+
+/** FIN4b: does a creature's affinity list hold a Release that may make it immune? */
+export const mayBeImmune = (affinities, releases = []) => releases.filter(r => (affinities instanceof Set ? affinities : new Set(affinities ?? [])).has(r));
+
 /** FIN4a: breath held outside combat, in seconds: the Con modifier in minutes, at least 30 seconds. */
 export const breathSeconds = conMod => Math.max(30, (Number(conMod) || 0) * 60);
 
