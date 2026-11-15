@@ -331,3 +331,14 @@
 | Extra Attack, General Technique | data: `attacks` elements; `rules/features.mjs attacksPerAction` via `rules/elements.mjs attackElements` |
 | Adaptive Initiative | data: `initiativeOptions`; `dice/roll.mjs rollInitiative` via `initiativeChoices` |
 | Binding Fury Stance | data: trigger element; `rules/triggers.mjs`, `workflow/triggers.mjs` |
+
+## Stances (STD6b, 0.47.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Stance weapons (Ronin, Reaper, Lance, Raid, Berserker, Stalwart, Bullseye, Dancer, Assassin) | data: stance `flags.n5e.qualifies`; `rules/stance-weapons.mjs` |
+| Blade: advantage on Opportunity Attacks; Bleeding on a critical hit | data: advantage element and `criticalHit` triggers on the stance |
+| Great Weapon: reroll 1s and 2s on weapon damage dice | data: `rerollBelow`; `rules/elements.mjs shapeDice`, `workflow/activity-buttons.mjs` |
+| Guardian: Dodging gives advantage on Str and Dex saves | data: advantage element on the stance |
+| Power: Bruised on a critical hit | data: `criticalHit` trigger on the stance |
+| Everything else the stances do | notes on each stance's Notes tab (King Q-S3) |

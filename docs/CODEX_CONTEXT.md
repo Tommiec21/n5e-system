@@ -456,3 +456,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 
 ## STD3 — Claude, 2026-11-15 (published 0.43.0-alpha.1)
 - A condition's or state's effect on rolls, damage or casting goes on its entry in `config/conditions.mjs` (`rules`, `cast`), never in `advantage.mjs`, `cast-checks.mjs` or `damage.mjs` (a test checks those files name no condition).
+
+## STD6b — Claude, 2026-11-15 (published 0.47.0-alpha.1)
+- Stance packs are now the source of truth for stance rules: `flags.n5e.qualifies`, `flags.n5e.rules` and the level-gated effects (`flags.n5e.std6b`). `tools/content/automation.py` does not write these; don't regenerate stances over them.
+- A weapon's facts reach rolls through `spec.facts` (`rules/stance-weapons.mjs weaponFacts`). A new weapon roll path should set them too, or stance elements won't see it.

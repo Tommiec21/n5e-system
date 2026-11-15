@@ -39,7 +39,78 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eDjmXPNxdluo1r",
+      "name": "Drunken Fist: 5th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 5,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Your Drunken Fist reaction also gives the attacker disadvantage on further attacks against you this turn; each attack after the first takes your [Unarmed Damage]."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e4hyD0iMAXnR9N.n5eDjmXPNxdluo1r"
+    },
+    {
+      "_id": "n5e2G4hFgd9HlC8c",
+      "name": "Drunken Fist: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "After using the Drunken Fist reaction, you gain Drunken Turn at the start of the next turn: a special action spent only as that reaction, once before the end of your next turn."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e4hyD0iMAXnR9N.n5e2G4hFgd9HlC8c"
+    }
+  ],
   "folder": "n5eOpMgOYddzmz3a",
   "sort": 0,
   "ownership": {
@@ -47,7 +118,13 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Taijutsu you cast as a Reaction can't trigger reactions from hostile creatures."
+        }
+      ]
     }
   },
   "_stats": {

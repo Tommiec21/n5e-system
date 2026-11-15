@@ -1,6 +1,6 @@
 # STD6b function spec: stances as data
 
-Status: **spec written 2026-11-15 (King: "Start"). Awaiting answers and approval.**
+Status: **King 2026-11-15: "QS1. Correct. QS2. Every one. QS3. Notes for now. Try to automate later. Approved." Built and published `0.47.0-alpha.1`.**
 
 Plan: `docs/STD_SPEC.md`, STD6b. The contract: every mechanic is data (rule elements, activities, effects); what can't be automated is a **note** on the stance's Notes tab (King Q-STD6), never left only in the text. No rule changes.
 
@@ -59,3 +59,11 @@ Each note keeps the level it starts at. The level-gated parts become effects wit
 ## Progress log
 
 - 2026-11-15 Claude: spec written from the stance text. Awaiting answers and approval.
+- 2026-11-15 King: Q-S1 correct; Q-S2 every weapon damage die; Q-S3 notes for now, automate later. Approved.
+- 2026-11-15 Claude: **built, published 0.47.0-alpha.1.**
+  - E1: `rules/stance-weapons.mjs` (`qualifiesForStance`, `weaponFacts`). The list is at `flags.n5e.qualifies` (not `system.qualifies`: like the stance's other data flags, no schema change). Attack specs carry `facts`; `rules/elements.mjs rollOptions` adds them. The card damage roll carries the weapon's facts too.
+  - E2: `attack:opportunity` on Opportunity Attacks (`workflow/attack.mjs`); `criticalHit` in `ELEMENT_EVENTS`, fired by `dice/roll.mjs` on an attack whose natural roll is in its critical range, with the roll's target or the one targeted token.
+  - E3: `rerollBelow` (Foundry `r<=n`, the reroll-once modifier; the spec's `ro` is not Foundry syntax), applied by `shapeDice` to the first damage part. Great Weapon's old `flags.n5e.weaponDie` (`r<3`) and its code in `weaponAttackSpec` are removed.
+  - Great Weapon's "double your ability modifier on a critical hit" is a note: King's critical damage ruling already doubles the modifier for every critical hit, so it changes nothing.
+  - Level-gated notes and Blade's 10th-level Bleeding are transfer effects on the stance with `flags.n5e.levels {min}` (and `flags.n5e.std6b`).
+  - Tests: `tests/core/stances.test.mjs` (6). Suites: 561 (559 pass, 2 skipped) and 169 pass.

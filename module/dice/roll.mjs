@@ -234,6 +234,13 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     const event = spec.kind === "attack" ? (degree >= 2 ? "hit" : "miss") : (degree >= 2 ? "succeededSave" : "failedSave");
     void import("../workflow/triggers.mjs").then(m => m.fireTriggers(actor, event, { spec, target })).catch(error => console.warn("n5e | triggers", error));
   }
+  // STD6b: a critical hit (the attack's natural roll in its critical range) fires criticalHit, with the
+  // one target (the roll's, else the single targeted token's).
+  if ( spec.kind === "attack" && result.crit ) {
+    const aimed = Array.from(globalThis.game?.user?.targets ?? []);
+    const critTarget = target ?? (aimed.length === 1 ? aimed[0].actor : null);
+    void import("../workflow/triggers.mjs").then(m => m.fireTriggers(actor, "criticalHit", { spec, target: critTarget })).catch(error => console.warn("n5e | triggers", error));
+  }
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
   return message;
 }

@@ -20,6 +20,7 @@ import { rollWithSpec } from "../dice/roll.mjs";
 import { damageButtons } from "./activity-buttons.mjs";
 import { rollAmmo } from "./ammo.mjs";
 import { unarmedSpec, stepDie, resolveFormula, activeStance, isUnarmedStrike, equippedWeapons } from "../rules/unarmed.mjs";
+import { weaponFacts } from "../rules/stance-weapons.mjs";
 import { weaponCritBonus, deadlyDice, heavyPenalty, heavyDamage, volatileRank, backfires, attackMode, attackRange,
   rangeSources, rollsAmmo, lightAttackBlock, matchingWeapons, needText, evocationDie, evocationEcho } from "../rules/weapon-properties.mjs";
 
@@ -72,9 +73,6 @@ export function weaponAttackSpec(actor, weapon = null, { mode: requested = "", d
     die = (twoHanded && w.damage?.versatile) || w.damage?.die || "1d4";
     if ( twoHanded && w.damage?.versatile ) label += " (two hands)";
     extra = [];
-    // Stance die rules (Great Weapon Stance: reroll 1s and 2s on Heavy weapons' damage die).
-    const stanceDie = activeStance(actor)?.flags?.n5e?.weaponDie;
-    if ( stanceDie?.mod && (!stanceDie.property || stanceDie.property in props) ) die = `${die}${stanceDie.mod}`;
     types = [...(w.damage?.types ?? [])];
     scope = "weapon";
     critBonus = weaponCritBonus(weapon);
@@ -117,7 +115,9 @@ export function weaponAttackSpec(actor, weapon = null, { mode: requested = "", d
   const abilityMod = noMod ? 0 : mod(ability);
   return {
     type: "weaponAttack", key: weapon?.id ?? "unarmed", kind: "attack", scope, label: `${label} attack`,
-    ranged: mode !== "melee", mode, bonus: b.total, breakdown: b.toJSON(), ability, abilityMod,
+    ranged: mode !== "melee", mode, bonus: b.total,
+    // STD6b: the weapon's groups and properties, and whether it qualifies for the active stance.
+    facts: weaponFacts(weapon, activeStance(actor)), breakdown: b.toJSON(), ability, abilityMod,
     damage: { formula: `${die}${extra.map(x => ` + ${x}`).join("")}${signedPart(flat)}${signedPart(abilityMod)}`, die, extra, types, critExtra, flat },
     ammo: weapon?.system.ammo?.usesDie ? weapon.system.ammo : null,
     rollsAmmo: weapon ? rollsAmmo(weapon, mode, distance) : false,
@@ -174,6 +174,7 @@ export async function attackWithWeapon(actor, weapon = null, { event, targetActo
   const spec = weaponAttackSpec(actor, weapon, { mode: mode === "thrown" ? "thrown" : "", twoHanded: mode === "twoHanded",
     bonusAction: mode === "bonus", light: mode === "light", ...geometry });
   if ( spec.refuse ) return ui.notifications.warn(spec.refuse);
+  if ( mode === "opportunity" ) spec.facts = [...spec.facts, "attack:opportunity"];
   spec.footer = `<div class="n5e-acts"><div class="act-row">${damageButtons(
     [{ formula: spec.damage.formula, type: spec.damage.types[0] ?? "" }],
     { abilityMod: spec.abilityMod, weapon: true, weaponId: weapon?.id, critExtra: spec.damage.critExtra })}</div></div>`;

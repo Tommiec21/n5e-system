@@ -47,7 +47,43 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eBrTkfRAghYFcB",
+      "name": "Sharpshooter: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Diverting an attack lets you make one more ranged weapon attack against the new target. A Pinpoint Shot hit on an unaware creature: Con save vs your Taijutsu save DC or Bruised."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ePIcRBHJF4sf3A.n5eBrTkfRAghYFcB"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -55,7 +91,31 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "groups": [
+          "ammunition",
+          "thrown"
+        ],
+        "properties": [
+          "ammunition",
+          "thrown"
+        ]
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your weapon's long range becomes its normal range: no disadvantage within it."
+        },
+        {
+          "key": "note",
+          "text": "The first ranged weapon attack each turn with a Bullseye Weapon against a creature unaware of you or that you're hidden from: +1 critical range and Pierce 4."
+        },
+        {
+          "key": "note",
+          "text": "Reaction: targeted by a ranged attack you can see, make a ranged weapon attack against its result; if higher, choose a new target within 30 ft of the attacker."
+        }
+      ]
     }
   },
   "_stats": {

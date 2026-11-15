@@ -56,7 +56,8 @@ import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { isBukijutsu } from "../rules/keywords.mjs";
 import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
-import { resolveFormula, unarmedSpec } from "../rules/unarmed.mjs";
+import { resolveFormula, unarmedSpec, activeStance } from "../rules/unarmed.mjs";
+import { weaponFacts } from "../rules/stance-weapons.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
 import { executeActivity } from "./activity-execution.mjs";
@@ -365,10 +366,12 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const targets = targetActors ? targetActors.map(actor => ({ actor })) : Array.from(game.user?.targets ?? []);
       // STD1/STD2: elements on this damage roll, the actor's own and the card's action effects: extra
       // damage, dice changes, damage handling (resistance, immunity, DR) for when it is applied.
-      const dmgSpec = { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" };
+      const dmgSpec = { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "",
+        // STD6b: the weapon's facts (groups, properties, weapon:stance) for elements such as rerollBelow.
+        facts: d.weapon ? weaponFacts(weapon, actor ? activeStance(actor) : null) : [] };
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
-      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0 };
+      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0 };
       parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
       const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
@@ -385,7 +388,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const rolls = [], rollMetadata = [], advNotes = [];
       for ( const [index, p] of parts.entries() ) {
         let formula = level(p.formula);
-        if ( index === 0 && (shaped.maximizeDice || shaped.minimumDie) ) formula = shapeDice(formula, { maximize: shaped.maximizeDice, minimum: shaped.minimumDie });
+        if ( index === 0 && (shaped.maximizeDice || shaped.minimumDie || shaped.rerollBelow) ) {
+          formula = shapeDice(formula, { maximize: shaped.maximizeDice, minimum: shaped.minimumDie, rerollBelow: shaped.rerollBelow });
+        }
         let abilityMod = p.abilityMod ?? (d.mod !== undefined ? Number(d.mod) : null);
         if ( formula.includes("@unarmed") ) {
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);

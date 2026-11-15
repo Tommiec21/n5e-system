@@ -46,7 +46,88 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e2NQrZxdqBHxfy",
+      "name": "Blade: 5th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 5,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Bleeding Edge: +2 damage for each rank of Bleeding the target has (on the strike)."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ebwpI8h7x54uyP.n5e2NQrZxdqBHxfy"
+    },
+    {
+      "_id": "n5eEYdvKTQecqsdV",
+      "name": "Blade: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "inflict",
+              "on": "criticalHit",
+              "selector": "attack",
+              "predicate": "weapon:stance",
+              "condition": "bleed",
+              "ranks": 1,
+              "who": "target",
+              "label": "Blade Stance (10th): +1 Bleeding on a critical hit"
+            },
+            {
+              "key": "note",
+              "text": "Creatures that stand up from Prone within your reach provoke an Opportunity Attack from you."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ebwpI8h7x54uyP.n5eEYdvKTQecqsdV"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -54,7 +135,37 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "groups": [
+          "blade"
+        ]
+      },
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "attack",
+          "predicate": [
+            "attack:opportunity",
+            "weapon:stance"
+          ],
+          "label": "Blade Stance"
+        },
+        {
+          "key": "inflict",
+          "on": "criticalHit",
+          "selector": "attack",
+          "predicate": "weapon:stance",
+          "condition": "bleed",
+          "ranks": 1,
+          "who": "target",
+          "label": "Blade Stance: Bleeding on a critical hit"
+        },
+        {
+          "key": "note",
+          "text": "Hostile creatures that cast a jutsu with the Mobility (M) component provoke an Opportunity Attack from you."
+        }
+      ]
     }
   },
   "_stats": {

@@ -85,6 +85,41 @@
       },
       "sort": 0,
       "_key": "!items.effects!n5eKa9ypUOKVczTS.n5eQ4fdmdIsi3MOC"
+    },
+    {
+      "_id": "n5eXauV6QnCh3rzl",
+      "name": "Titan Fist: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "After a successful Titan Guard, take the Attack action against the triggering creature if within reach, adding your Reinforced value to your [Unarmed Damage]."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eKa9ypUOKVczTS.n5eXauV6QnCh3rzl"
     }
   ],
   "folder": "n5eOpMgOYddzmz3a",
@@ -94,7 +129,13 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "DR from the Reinforced property can't be reduced by hostile effects."
+        }
+      ]
     }
   },
   "_stats": {

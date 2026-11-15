@@ -47,7 +47,43 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eXS98do1XYgT3v",
+      "name": "Power: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Raiding Strike's damage to an interposing construct, structure or creature increases by its Pierce value."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eHTyWGobGeMUtm.n5eXS98do1XYgT3v"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -55,7 +91,32 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "groups": [
+          "power"
+        ]
+      },
+      "rules": [
+        {
+          "key": "inflict",
+          "on": "criticalHit",
+          "selector": "attack",
+          "predicate": "weapon:stance",
+          "condition": "bruised",
+          "ranks": 1,
+          "who": "target",
+          "label": "Power Stance: Bruised on a critical hit"
+        },
+        {
+          "key": "note",
+          "text": "Ready action: make a weapon attack as part of it; on a hit the target is knocked Prone, and standing costs it a Bonus Action until the end of its next turn."
+        },
+        {
+          "key": "note",
+          "text": "Raid Weapons with the Heavy property ignore its Strength requirement."
+        }
+      ]
     }
   },
   "_stats": {

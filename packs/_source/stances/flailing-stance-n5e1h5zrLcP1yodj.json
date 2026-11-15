@@ -75,7 +75,78 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eiJ5GfMfPELYgr",
+      "name": "Flailing: 5th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 5,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "That Opportunity Attack can be a Reaping Swing."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e1h5zrLcP1yodj.n5eiJ5GfMfPELYgr"
+    },
+    {
+      "_id": "n5eGk2uQh4NM9IXe",
+      "name": "Flailing: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Reaping Swing's DR penalty is 4, and it can affect up to 3 spaces in your weapon's range (one attack result against each creature's AC)."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e1h5zrLcP1yodj.n5eGk2uQh4NM9IXe"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -83,7 +154,18 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "groups": [
+          "flail"
+        ]
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction: when a creature within your weapon's range misses you with an attack, make an Opportunity Attack against it."
+        }
+      ]
     }
   },
   "_stats": {

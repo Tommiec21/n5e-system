@@ -46,7 +46,43 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eJevoTArcQgKyv",
+      "name": "Guardian: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Interposing doubles your weapon's Blocking value (ignoring limits); the attack doesn't hit automatically, and your Opportunity Attack on a miss adds your Blocking value to its damage."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eQYF0gbArmTc8T.n5eJevoTArcQgKyv"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -54,7 +90,27 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "properties": [
+          "blocking"
+        ]
+      },
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": [
+            "save:str",
+            "save:dex"
+          ],
+          "predicate": "self:status:dodging",
+          "label": "Guardian Stance (Dodging)"
+        },
+        {
+          "key": "note",
+          "text": "Reaction: when an ally within 5 ft would take damage from an attack, the attack targets you instead; that creature can't target the ally again this turn. If it misses you, make one Opportunity Attack against it if it's within reach."
+        }
+      ]
     }
   },
   "_stats": {

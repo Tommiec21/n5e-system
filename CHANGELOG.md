@@ -1,3 +1,15 @@
+## 0.47.0-alpha.1 — STD6b: stances as data (King 2026-11-15: "QS1. Correct. QS2. Every one. QS3. Notes for now. Try to automate later. Approved.")
+
+- **Stance weapons:** each weapon stance lists the weapons that qualify for it (Ronin = Blade group, Reaper = Flail, Lance = Polearm, Raid = Power, Berserker = Heavy, Stalwart = Blocking, Bullseye = Ammunition or Thrown, Dancer = Light or Multiattack, Assassin = Iron Claw, Deadly or Hidden).
+- **Automated:**
+  - Blade: advantage on Opportunity Attacks with a Ronin weapon; a critical hit with one gives the target 1 Bleeding (one more from 10th level).
+  - Great Weapon: with a Berserker weapon, every weapon damage die showing 1 or 2 is rerolled once, keeping the new result.
+  - Guardian: while Dodging, advantage on Strength and Dexterity saves.
+  - Power: a critical hit with a Raid weapon gives the target 1 Bruised.
+- **Notes:** everything else every stance does is on its Notes tab; the 5th- and 10th-level parts appear only from that level.
+- Effect authors get a `rerollBelow` element, a `criticalHit` trigger, and the roll facts `weapon:stance`, `weapon:group:<g>`, `weapon:property:<p>` and `attack:opportunity`.
+- Not checked in a running Foundry world.
+
 ## 0.46.0-alpha.2 — Shinobi implements (King Q-I1)
 
 - Scout-Nin's third attack counts only the Kunai, Shuriken and Senbon themselves; Fuma-Shuriken, Monster Shuriken, Ballistic Kunai Gun and Ballistic Shuriken Rifle no longer count.

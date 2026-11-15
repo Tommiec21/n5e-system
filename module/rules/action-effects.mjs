@@ -71,6 +71,7 @@ export function describeElement(e = {}) {
     case "critRange": return `Critical range +${Number(e.value) || 0} on ${what}`;
     case "maximizeDice": return `${Number(e.value) || 0} die maximized on ${what}`;
     case "minimumDie": return `Each die at least ${Number(e.value) || 0} on ${what}`;
+    case "rerollBelow": return `Reroll dice of ${Number(e.value) || 0} or less once on ${what}`;
     case "damage": return `+${e.formula ?? ""}${e.damageType ? ` ${e.damageType}` : ""} damage on ${what}`;
     case "damageHandling": return [e.drMultiplier != null && Number(e.drMultiplier) !== 1 ? `DR ×${Number(e.drMultiplier)}` : "",
       e.ignoreResistance ? "ignores resistance" : "", e.immunityAsResistance ? "immunity counts as resistance" : ""].filter(Boolean).join(", ") || "Damage handling";

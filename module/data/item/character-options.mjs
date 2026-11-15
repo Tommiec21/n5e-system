@@ -167,7 +167,8 @@ export class FeatData extends TDM() {
  * While active: its transfer effects apply (documents/active-effect.mjs isSuppressed), its Unarmed
  * die/type rules apply (rules/unarmed.mjs), and its activities (strikes) appear on the Combat tab.
  * Taijutsu stances make the Unarmed die a d6 unless unarmedDie says otherwise.
- * Optional flags.n5e.weaponDie {mod, property}: a modifier on weapon damage dice (Great Weapon: "r<3").
+ * flags.n5e.qualifies {groups, properties, items}: the weapons that qualify for it (STD6b, rules/stance-weapons.mjs).
+ * Its mechanics are rule elements on the item and on level-gated transfer effects; the rest are notes.
  */
 export class StanceData extends TDM() {
   static defineSchema() {

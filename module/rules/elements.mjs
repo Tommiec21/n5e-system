@@ -13,7 +13,8 @@
  *              element never acts from the actor; it is copied onto the card), turn, round
  *   uses       how many matching rolls it applies to (counted on the action card)
  *   targets    all (default), one (the first target that rolls uses it up), chosen
- *   on         a trigger event (STD4): kept and validated now, dispatched later
+ *   on         a trigger event (STD4; criticalHit from STD6b)
+ *   rerollBelow (STD6b) damage dice showing the value or less are rerolled once, keeping the new result
  * No engine line names content: every source is read from data.
  */
 const list = value => value ? Array.from(value) : [];
@@ -23,11 +24,13 @@ export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvanta
   // STD3: "can't gain advantage" (removes advantage sources) and a cost-reduction cap on casting.
   "noAdvantage", "costReduction",
   // STD4: attacks per Attack action, and skills that may stand in for Initiative.
-  "attacks", "initiativeOptions"];
+  "attacks", "initiativeOptions",
+  // STD6b: reroll low damage dice once.
+  "rerollBelow"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
-export const ELEMENT_EVENTS = ["initiative", "turnStart", "turnEnd", "hit", "miss", "failedSave", "succeededSave", "damageDealt", "damageTaken", "zeroHP"];
+export const ELEMENT_EVENTS = ["initiative", "turnStart", "turnEnd", "hit", "miss", "failedSave", "succeededSave", "damageDealt", "damageTaken", "zeroHP", "criticalHit"];
 
 /** Does this element act from its owner's own sheet? (Not one bound to an action, not a trigger.) */
 export const actsFromActor = e => (e.direction ?? "self") === "self" && (e.scope ?? "always") !== "action" && !e.on;
@@ -94,7 +97,7 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
  */
 export function contextualRoll(actor, spec = {}, target = null, extra = []) {
   const out = { autoFail: [], autoSucceed: [], reroll: null, critRange: 0, maximizeDice: 0, minimumDie: 0,
-    damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
+    rerollBelow: 0, damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
   for ( const { element: e, label } of gatherElements(actor, spec, target, extra) ) {
     switch ( e.key ) {
       case "autoFail": out.autoFail.push(label); break;
@@ -103,6 +106,7 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
       case "critRange": out.critRange += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "maximizeDice": out.maximizeDice += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "minimumDie": out.minimumDie = Math.max(out.minimumDie, Math.trunc(Number(e.value) || 0)); break;
+      case "rerollBelow": out.rerollBelow = Math.max(out.rerollBelow, Math.trunc(Number(e.value) || 0)); break;
       case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label }); break;
       case "damageHandling": out.handling = mergeHandling(out.handling, e); break;
       case "addRanks": out.addRanks += Math.trunc(Number(e.value) || 0); break;
@@ -160,8 +164,11 @@ export function costReductionAllowed(actor) {
   return !gatherElements(actor, { kind: "cast", type: "cast" }).some(g => g.element.key === "costReduction" && Number(g.element.value) === 0);
 }
 
-/** Dice changes on a formula: the first `maximize` dice rolled at their maximum, every die at least `minimum`. */
-export function shapeDice(formula, { maximize = 0, minimum = 0 } = {}) {
+/**
+ * Dice changes on a formula: the first `maximize` dice rolled at their maximum, every die at least
+ * `minimum`, and dice showing `rerollBelow` or less rerolled once, keeping the new result (Foundry r<=n).
+ */
+export function shapeDice(formula, { maximize = 0, minimum = 0, rerollBelow = 0 } = {}) {
   let left = Math.max(0, maximize);
   let f = String(formula).replace(/(\d*)d(\d+)/g, (all, n, faces) => {
     const count = Number(n || 1);
@@ -171,6 +178,7 @@ export function shapeDice(formula, { maximize = 0, minimum = 0 } = {}) {
     const rest = count - max;
     return `${max * Number(faces)}${rest ? ` + ${rest}d${faces}` : ""}`;
   });
+  if ( rerollBelow > 0 ) f = f.replace(/(\d*d\d+)(?![\dr])/g, `$1r<=${rerollBelow}`);
   if ( minimum > 1 ) f = f.replace(/(\d*d\d+)(?![\dm])/g, `$1min${minimum}`);
   return f;
 }
@@ -180,6 +188,8 @@ export function rollOptions(actor, spec = {}, target = null) {
   const options = new Set(["self", `kind:${spec.kind ?? "check"}`, `type:${spec.type ?? "custom"}`]);
   if ( spec.key ) options.add(`key:${spec.key}`);
   if ( spec.scope ) options.add(`scope:${spec.scope}`);
+  // STD6b: facts the roll carries (the weapon's groups and properties, weapon:stance, attack:opportunity).
+  for ( const fact of list(spec.facts) ) if ( typeof fact === "string" && fact ) options.add(fact);
   const addActor = (a, prefix) => {
     for ( const status of list(a?.statuses) ) options.add(`${prefix}:status:${status}`);
     for ( const effect of list(a?.effects).filter(e => e.active !== false && !e.disabled && !e.isSuppressed) ) {

@@ -65,7 +65,43 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eGvdXV0Zh0hcNl",
+      "name": "Two-Weapon: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "A Flutter Attack with both hits lets you spend your Reaction to Dash; creatures you hit during it can't make Opportunity Attacks against you."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ekYgW64urTc7Ma.n5eGvdXV0Zh0hcNl"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -73,7 +109,31 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "properties": [
+          "light",
+          "multiattack"
+        ]
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Dancer Weapon is one with Light or Multiattack, with one in each hand."
+        },
+        {
+          "key": "note",
+          "text": "Multiattack attacks add your ability modifier to damage."
+        },
+        {
+          "key": "note",
+          "text": "Opportunity Attacks can be made with both Dancer Weapons."
+        },
+        {
+          "key": "note",
+          "text": "Once per turn, taking the Dash action: one weapon attack compared against the AC of every hostile creature you move within reach of (no ability modifier on the damage)."
+        }
+      ]
     }
   },
   "_stats": {

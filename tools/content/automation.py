@@ -149,7 +149,7 @@ STANCES = {
         strike("Reaping Swing", "weapon", oncePerTurn=True, **save("dex", "tai")),
         effect("Reaping Swing: DR penalty", [ch("n5e.dr", "lvl(1:-2,10:-4)")], target="targets", expires="turnStart",
                name="Reaping Swing (DR)", text="On a failed Dexterity save.")]},
-    "Great Weapon Stance": {"flags": {"weaponDie": {"mod": "r<3", "property": "heavy"}}, "activities": [
+    "Great Weapon Stance": {"activities": [
         strike("Savage Attack", "weapon", minLevel=5, extraDice="@wdie", text="Advantage against a creature that damaged you since your last turn."),
         act("save", "Savage Attack: knock Prone", minLevel=10, **save("str", "tai", [cond("prone", kind="state", label="Prone")]))]},
     "Guardian Stance": {"activities": [strike("Guardian Strike", "weapon", minLevel=5,

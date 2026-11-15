@@ -58,11 +58,11 @@ function validatePredicate(value, depth = 0) {
  * Rule elements v2 (STD1). Every key and field is checked; anything unknown is refused.
  * Numeric keys need a number; the others carry their own fields.
  */
-const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction"]);
+const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction", "rerollBelow"]);
 const FIELDS = {
   common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on", "endsOnUse", "oncePerTurn"],
   attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
-  modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"],
+  modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
   reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]

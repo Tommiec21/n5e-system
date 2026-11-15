@@ -53,7 +53,78 @@
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eViHsBqgwhV0Aj",
+      "name": "Silent Killing: 5th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 5,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "After a successful Assassination Strike, spend your Bonus Action to Disengage."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eYBeUqzQaE0h3f.n5eViHsBqgwhV0Aj"
+    },
+    {
+      "_id": "n5edLmYyFw5an2QI",
+      "name": "Silent Killing: 10th level",
+      "type": "generic",
+      "img": "icons/svg/aura.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6b": true,
+          "levels": {
+            "min": 10,
+            "max": 0
+          },
+          "rules": [
+            {
+              "key": "note",
+              "text": "Once per turn, after that Disengage, spend your Reaction to Hide again if cover or concealment is available."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eYBeUqzQaE0h3f.n5edLmYyFw5an2QI"
+    }
+  ],
   "folder": "n5euxou7fp1RgDnw",
   "sort": 0,
   "ownership": {
@@ -61,7 +132,26 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "qualifies": {
+        "items": [
+          "iron-claw"
+        ],
+        "properties": [
+          "deadly",
+          "hidden"
+        ]
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "While hidden from a creature, your weapon and unarmed attacks against it pierce half its DR."
+        },
+        {
+          "key": "note",
+          "text": "The first unarmed or weapon attack against a creature you're hidden from: +1 critical range."
+        }
+      ]
     }
   },
   "_stats": {

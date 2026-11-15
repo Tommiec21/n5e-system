@@ -686,3 +686,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Path | Meaning |
 | --- | --- |
 | Weapon `flags.n5e.implement` | A basic Shinobi implement (Kunai, Shuriken, Senbon) for "attacks with implements" |
+
+## Added in 0.47.0-alpha.1 (STD6b)
+
+| Path | Meaning |
+| --- | --- |
+| Stance `flags.n5e.qualifies` | {groups, properties, items}: the weapons that qualify for the stance (any match) |
+| Stance `flags.n5e.rules`, effects with `flags.n5e.levels` | The stance's rule elements and notes; level-gated ones on transfer effects |
+| Rule element `rerollBelow` {value} | Damage dice showing the value or less reroll once (Foundry `r<=n`) |
+| Trigger event `criticalHit` | An attack's natural roll in its critical range |
+| Roll facts `weapon`, `weapon:unarmed`, `weapon:group:<g>`, `weapon:property:<p>`, `weapon:stance`, `attack:opportunity` | Predicate options on weapon attack and damage rolls (spec `facts`) |
+| Removed: stance `flags.n5e.weaponDie` | Replaced by `rerollBelow` |
