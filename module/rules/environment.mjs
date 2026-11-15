@@ -28,6 +28,23 @@ export function worstExposure(terrains = []) {
   return list.sort((a, b) => b.dc - a.dc)[0] ?? null;
 }
 
+/** FIN4a: breath held outside combat, in seconds: the Con modifier in minutes, at least 30 seconds. */
+export const breathSeconds = conMod => Math.max(30, (Number(conMod) || 0) * 60);
+
+/**
+ * FIN4a: where a creature's breath stands. flags.n5e.breath is a number (turns left, in combat) or
+ * {until} (world time it runs out, outside combat); anything else starts fresh (King Q-F16).
+ * @returns {{mode: "turns"|"time"|"fresh", left: number|null}}
+ */
+export function breathState(breath, { inCombat = false, now = 0 } = {}) {
+  if ( inCombat && Number.isFinite(Number(breath)) && typeof breath !== "object" && breath !== null ) return { mode: "turns", left: Number(breath) };
+  if ( !inCombat && breath && typeof breath === "object" && Number.isFinite(Number(breath.until)) ) return { mode: "time", left: Math.max(0, Number(breath.until) - now) };
+  return { mode: "fresh", left: null };
+}
+
+/** FIN4a: what running out of breath does: 0 HP and Dying, or Unconscious from a choke (Ch6 Choke). */
+export const outOfBreathStatus = ({ choke = false } = {}) => (choke ? "unconscious" : "dying");
+
 /** Breath held in combat: the Con modifier in turns, at least 1. */
 export const breathTurns = conMod => Math.max(1, Number(conMod) || 0);
 

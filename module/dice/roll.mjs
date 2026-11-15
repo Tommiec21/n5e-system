@@ -397,6 +397,10 @@ export function onRenderChatMessage(message, html) {
       : btn.dataset.n5eSkillRelease ? m.onSkillReleaseClick(btn) : m.onSkillApplyClick(btn)))
       .catch(error => ui.notifications.warn(error.message));
   });
+  for ( const btn of html.querySelectorAll("[data-n5e-breath-set]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    import("../workflow/environment.mjs").then(m => m.setBreath(btn.dataset.n5eBreathSet)).catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-terrain-save]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/environment.mjs").then(m => m.onTerrainSaveClick(btn, ev)).catch(error => ui.notifications.warn(error.message));

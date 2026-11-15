@@ -554,3 +554,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.concentrationRank[itemId]` (Actor) | The rank a concentration jutsu was cast at |
 | `flags.n5e.clash.auto` (`a` or `b`), `.dispelled[]`, side `itemId` | GM decision, dispelled sides, the clashing jutsu |
 | Owner intent `dispelJutsu {itemId, messageId, side}` | A player's dispel, finished by the active GM |
+
+## Added in 0.33.0-alpha.4 (FIN4a)
+
+| Path | Meaning |
+| --- | --- |
+| `flags.n5e.choke {holder}` (Suffocating effect) | Suffocating from a Choke: Unconscious when breath runs out; ends with the holder's hold |
+| `flags.n5e.breath` (Actor) | Turns of breath left (combat) or `{until}` world time (outside combat) |

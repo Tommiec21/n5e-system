@@ -65,3 +65,29 @@ test("falling (Option A): nothing within the Str score; 1d6 per 10 ft, max 100d6
   assert.equal(fallDamage(5000, 10).dice, 100);
   assert.equal(fallDamage(9, 0), null, "under 10 ft rolls no dice");
 });
+
+/* FIN4a */
+import { breathSeconds, breathState, outOfBreathStatus } from "../module/rules/environment.mjs";
+
+test("FIN4a: breath outside combat is Con modifier minutes (at least 30 s); counts start fresh across combat", () => {
+  assert.equal(breathSeconds(3), 180);
+  assert.equal(breathSeconds(0), 30);
+  assert.equal(breathSeconds(-1), 30);
+  assert.deepEqual(breathState({ until: 500 }, { inCombat: false, now: 380 }), { mode: "time", left: 120 });
+  assert.deepEqual(breathState({ until: 500 }, { inCombat: true }), { mode: "fresh", left: null }, "combat starts: fresh");
+  assert.deepEqual(breathState(3, { inCombat: false, now: 0 }), { mode: "fresh", left: null }, "combat ends: fresh");
+  assert.deepEqual(breathState(3, { inCombat: true }), { mode: "turns", left: 3 });
+  assert.equal(outOfBreathStatus(), "dying");
+  assert.equal(outOfBreathStatus({ choke: true }), "unconscious");
+});
+
+test("FIN4a: a choked creature runs out of breath into Unconscious, not Dying; a count from outside combat starts fresh", async () => {
+  const updates = [], toggles = [];
+  const actor = { statuses: new Set(["suffocating"]), flags: { n5e: { breath: { until: 99 } } }, system: { abilities: { con: { mod: 0 } } },
+    effects: [{ statuses: new Set(["suffocating"]), flags: { n5e: { choke: { holder: "Actor.h" } } } }],
+    update: async u => { updates.push(u); if ( "flags.n5e.breath" in u ) actor.flags.n5e.breath = u["flags.n5e.breath"]; },
+    toggleStatusEffect: async (s, o) => { toggles.push([s, o.active]); } };
+  assert.match((await breathTurnStart(actor))[0], /0 turns of breath left \(choked\)/, "fresh: Con 0 gives 1 turn");
+  assert.match((await breathTurnStart(actor))[0], /Unconscious \(choked, not Dying\)/);
+  assert.deepEqual(toggles, [["unconscious", true]]);
+});

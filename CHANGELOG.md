@@ -1,3 +1,10 @@
+## 0.33.0-alpha.4 — Choke and breath (FIN4a; King 2026-11-15)
+
+- **Choke:** Suffocating applied from a Choke outcome remembers it. Out of breath, a choked creature drops to 0 HP and is Unconscious, not Dying. The choke's Suffocating ends at once when the hold ends (let go, escaped, or more than 5 ft apart).
+- **Breath outside combat:** a creature that starts Suffocating outside combat holds its breath for its Con modifier in minutes (at least 30 seconds) of world time; when it runs out, it drops to 0 HP and is Dying (Unconscious from a choke). The count starts fresh when combat starts or ends.
+- **Set breath (GM):** when a creature starts holding its breath, the GM gets a whispered card with "Set breath" to set the turns (in combat) or seconds (outside it) left, to account for time already spent.
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.3 — Several damage rolls on one card, and the Clash (FIN3b; King 2026-11-15)
 
 - **Several damage rolls on one card:** a jutsu with more than one damage (Cherry Blossom Impact's strike and its Finisher) keeps every roll on the action card. Each creature's row shows each effect's share ("Strike: Full damage · Finisher: Half damage", from that effect's own save) with its own Apply and Half buttons; the row's Undo removes all of them. The Damage section is done once every effect's damage is rolled. Concentration checks and reactions show per application.

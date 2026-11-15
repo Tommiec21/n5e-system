@@ -98,7 +98,7 @@ async function postOutcome(actor, target, key, { result, margin, against, weapon
   const label = { success: "Success", failure: "Failure", tie: "Tie" }[result];
   const won = result === "success";
   // FIN2a: a hold records its holder; Escape releases; a weapon's Disarm or Trip property adds its damage die.
-  const holder = HOLD_ACTIONS.includes(key) ? ` data-holder="${esc(actor.uuid)}"` : "";
+  const holder = HOLD_ACTIONS.includes(key) ? ` data-holder="${esc(actor.uuid)}"` : key === "choke" ? ` data-choke="${esc(actor?.uuid ?? "")}"` : "";
   const release = won && SKILL_RESULTS[key]?.release
     ? `<div class="n5e-apply"><button type="button" data-n5e-skill-release="${esc(target.uuid)}" data-target="${esc(actor.uuid)}">End the hold on ${esc(actor.name)}</button></div>` : "";
   let damage = "";
@@ -127,6 +127,11 @@ export async function onSkillApplyClick(button) {
   if ( button.dataset.holder ) {
     const effect = target.effects.find(e => e.statuses?.has(status));
     if ( effect ) await effect.setFlag("n5e", "heldBy", button.dataset.holder);
+  }
+  // FIN4a: Suffocating from a Choke remembers it (Unconscious, not Dying; ends with the hold).
+  if ( button.dataset.choke != null && status === "suffocating" ) {
+    const effect = target.effects.find(e => e.statuses?.has("suffocating"));
+    if ( effect ) await effect.setFlag("n5e", "choke", { holder: button.dataset.choke });
   }
   button.disabled = true;
   return status;

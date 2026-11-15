@@ -150,7 +150,7 @@ export const conditionText = {
     "ends": ""
   },
   "suffocating": {
-    "text": "hold breath Con mod minutes (min 30 s); in combat Con mod turns (min 1); then drops to 0 HP and Dying",
+    "text": "hold breath Con mod minutes (min 30 s); in combat Con mod turns (min 1); then drops to 0 HP and Dying (Unconscious from a choke)",
     "ends": ""
   },
   "incapacitated": {
