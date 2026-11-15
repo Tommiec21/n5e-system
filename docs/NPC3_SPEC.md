@@ -1,6 +1,6 @@
-# NPC3 function spec: Freeform Strikes, Jutsu and Abilities
+# NPC3 function spec: Freeform Strikes and Freeform Jutsu
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-N33–Q-N41 below.**
+Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead to build. Nothing is built.**
 
 Plan: `docs/NPC1_PLAN.md` ("How adversaries fight: Freeform"). Source: the Bingo Book, "Adversary Combat": Freeform Strike (with Multiattack and the Freeform Strike Table), Freeform Jutsu (Offensive, Defensive, Support, with the rank, penalty, shape, effects and damage tables), Non-Freeform Jutsu, Freeform Abilities (with the nine examples). Chakra cost ranges: core book, "Chakra Cost by Rank".
 
@@ -59,6 +59,19 @@ Plan: `docs/NPC1_PLAN.md` ("How adversaries fight: Freeform"). Source: the Bingo
 - **Q-N40: gaps in the focus values.** The book gives some values only at D, B and S (Defensive AC +3/+4/+5; Support attack and save +1/+2/+3; check Mastery 1/2/3). For C and A, use the step below (C as D, A as B)?
 - **Q-N41: releases.** One release, or NPC3a and NPC3b together then NPC3c?
 
+## King's answers (2026-11-14)
+
+- **Q-N33:** Freeform Jutsu chakra cost by rank: D 5, C 9, B 14, A 20, S 30 (editable per jutsu).
+- **Q-N34:** Freeform Abilities move to NPC4, with Tenacity. B6 and the builder's Ability section are out of NPC3.
+- **Q-N35:** the GM builds a Strike and it is set when built: the attack line (Weapon/Freeform, Ninjutsu, Taijutsu or Genjutsu) is chosen in the builder and kept. Claude's reading, applied to C4: a Strike does not recalculate when the adversary's level changes; "Rebuild in the builder" recalculates it. Freeform Jutsu recalculate as C4 says.
+- **Q-N36:** agreed: conditions on a failed save; AC/DR/speed penalties, roll penalties and disadvantage as Active Effects; forced movement, dispel, interrupt and action denial as card notes; "Make your own" as text.
+- **Q-N37:** yes, the system runs each effect's recovery as it does for jutsu conditions.
+- **Q-N38:** one attack per click (the count shown). The single-attack, combined-damage option is chosen per Strike in the builder.
+- **Q-N39:** leave a Minion's once-per-turn Freeform Jutsu to the GM; no warning.
+- **Q-N40:** for C and A, use the value of the rank below (C as D, A as B).
+- **Q-N41:** one release.
+
 ## Progress log
 
+- 2026-11-14 Claude: King answered Q-N33–Q-N41. Abilities moved to NPC4.
 - 2026-11-14 Claude: spec written from the Bingo Book's "Adversary Combat" chapter and the core book's chakra cost ranges. Nothing built.

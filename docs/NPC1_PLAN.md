@@ -135,6 +135,10 @@ NPC1–NPC3 can come before standardization. NPC4–NPC6 lean on STD1–STD4 (au
 
 The "stored values" framing in Part 3 and Q-N1 is superseded. Adversaries use the Bingo Book's own math: the profile computes every number, stat lines are the assumed baseline, and the GM adjusts. The tables and math move from NPC2 into NPC1; NPC2 is the builder window. See `docs/NPC1_SPEC.md`.
 
+## Change (King, 2026-11-14, Q-N34)
+
+Freeform Abilities move from NPC3 to NPC4, with Tenacity, which they spend.
+
 ## Progress log
 
 - 2026-11-14 Claude: PF2e NPC source and the Bingo Book's rules section read; plan written. Nothing built.
