@@ -1,6 +1,6 @@
 # NPC2 function spec: the Adversary Builder
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-N25–Q-N32 below.**
+Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead to build. Nothing is built.**
 
 Plan: `docs/NPC1_PLAN.md`. After NPC1, NPC2 is only the builder window: the tables and the math are already in NPC1a (`config/adversary.mjs`, `rules/adversary.mjs`), and the Build tab edits every number.
 
@@ -56,6 +56,18 @@ Source: the Bingo Book, "Build Your Adversary", steps 1–9 and "Refining As You
 - **Q-N31: the party's level.** For the level step, read the party's level from the player characters assigned to users (as the Solo party size does), or let the GM type it?
 - **Q-N32: releases.** One release?
 
+## King's answers (2026-11-14)
+
+- **Q-N25:** prompt. Creating an NPC through Foundry's "Create Actor" asks whether to open the Adversary Builder. The sidebar "Create adversary" button and the Build tab's "Open builder" stay as proposed.
+- **Q-N26:** yes. The GM can type a trait (name, rank, text) in the builder; NPC6 adds the pickers.
+- **Q-N27:** yes to the filtered picker with a show-all switch, warning but not blocking. An E-Rank adversary casts E and D.
+- **Q-N28:** both. Claude's reading: the concept is its own field (shown on the Build and Notes tabs, GM only) and also fills the blurb players see, which the GM can then edit separately.
+- **Q-N29:** free movement with a step list.
+- **Q-N30:** keep the assigned modifiers, with an update button that adjusts them to the new baseline line for the changed level or class.
+- **Q-N31:** the GM types the party's level.
+- **Q-N32:** one release.
+
 ## Progress log
 
+- 2026-11-14 Claude: King answered Q-N25–Q-N32.
 - 2026-11-14 Claude: spec written from the Bingo Book's build steps and "Non-Freeform Jutsu". Nothing built.
