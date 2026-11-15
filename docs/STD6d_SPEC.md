@@ -81,3 +81,4 @@ Highlights:
 
 - 2026-11-15 Claude: spec written with King's direction; engine D1–D8 and Medical-Nin built, published 0.48.0-alpha.1 (with Great Weapon Stance's tripled modifier, King). Tests: `tests/core/class-automation.test.mjs`, `tests/std6d.test.mjs`.
 - 2026-11-15 Claude: engine D9–D14 and Ninjutsu Specialist built, published 0.49.0-alpha.1. The rider applier now compares flags regardless of key order (both tables write Gale Fracture's flags). Stopped after two classes (King). Suites: 568 (566 pass, 2 skipped) and 175 pass.
+- 2026-11-15 King: Q-D1 Envenomed (Toxic Tongue now gives immunity to Envenomed and Corroded; ships with the next release); Q-D2 character level is right (no multiclassing in N5e); Q-D4–Q-D7 correct; Q-D3 asked for an explanation.
