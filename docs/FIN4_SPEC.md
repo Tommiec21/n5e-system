@@ -1,6 +1,6 @@
 # FIN4 function spec: rules corrections
 
-Status: **spec written 2026-11-15 (King: "Next batch"). Awaiting King's answers and approval.**
+Status: **spec written 2026-11-15 (King: "Next batch"). King answered Q-F14–Q-F18 (2026-11-15). Split into FIN4a, FIN4b and FIN4c. Awaiting approval.**
 
 Plan: `docs/DEV_PLAN.md` row 4. It closes the limits ENV1 and POS1 recorded when they shipped.
 
@@ -22,11 +22,17 @@ After each function, add a line to the progress log and push.
 
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
-| F1 | Choke: Unconscious, not Dying | `workflow/skill-actions.mjs` (`onSkillApplyClick`), `workflow/environment.mjs` (`breathTurnStart`) | Suffocating applied from a Choke outcome is marked `flags.n5e.choke` (with the holder). Out of breath, a choked creature drops to 0 HP and is **Unconscious** (not Dying), and the turn card says so. Per Q-F15, the choke's Suffocating ends when the hold ends. |
-| F2 | Breath outside combat | `rules/environment.mjs` (`breathSeconds`, `breathLeft`), `workflow/environment.mjs` | Outside combat, Suffocating records the world time it started; breath lasts Con modifier minutes (at least 30 s). When world time passes it, the active GM drops the creature to 0 HP and Dying (Unconscious for a choke). Per Q-F16 when combat starts or ends mid-breath. The breath left shows on the Suffocating effect. |
-| F3 | Indirect Exposure checks | `rules/environment.mjs` (`indirectExposure`), `workflow/environment.mjs`, GM scene control or API `game.n5e.api.indirectExposure()` | Per Q-F14. Proposed: the GM runs "Indirect Exposure" (a button on the Combat-free Hostile Terrain region, or the API) at the interval the table uses; every creature inside a Hostile Terrain region gets a card for a Survival check against the terrain's DC (D-Rank regions included, since D is Indirect only). A creature with the immune Release affinity is listed as immune and rolls nothing. A failure shows the consequence from Q-F14 with an Apply button. Chakra Resistant has no check. |
-| F4 | "Can see you" from token vision | `workflow/positioning.mjs` (`onMoveForOpportunity`), `canvas/visibility.mjs` (`observerVisibility`) | Each watcher's sight of the mover is checked with the same observer-specific test Uncanny Dodge uses (the watcher's own vision and detection modes, line of sight, Hidden/Undetected). Can't see: no reminder. When the check can't decide (no vision on the token, different elevation), per Q-F17. Blinded still blocks. |
+| F1 | Choke: Unconscious, not Dying | `workflow/skill-actions.mjs` (`onSkillApplyClick`), `workflow/environment.mjs` (`breathTurnStart`) | Suffocating applied from a Choke outcome is marked `flags.n5e.choke` (with the holder). Out of breath, a choked creature drops to 0 HP and is **Unconscious** (not Dying), and the turn card says so. Q-F15: the choke's Suffocating ends at once when the hold ends (let go, escaped, or the hold effect is removed). |
+| F2 | Breath outside combat | `rules/environment.mjs` (`breathSeconds`, `breathLeft`), `workflow/environment.mjs` | Outside combat, Suffocating records the world time it started; breath lasts Con modifier minutes (at least 30 s). When world time passes it, the active GM drops the creature to 0 HP and Dying (Unconscious for a choke). Q-F16: when combat starts or ends mid-breath, the count starts fresh (Con modifier turns in combat, Con modifier minutes out of it). The breath left shows on the turn card and the Suffocating effect, and the GM can set it to any value ("Set breath" button, GM only) to account for time already spent. |
+| F3 | Indirect Exposure checks (an option) | `rules/environment.mjs` (`indirectExposure`), `workflow/environment.mjs`, API `game.n5e.api.indirectExposure()` and a GM button | Q-F14: the GM decides; nothing runs on its own. When the GM chooses, "Indirect Exposure" opens a GM dialog listing the creatures in Hostile Terrain regions (or the selected tokens), with the terrain's DC pre-filled (D 18, C 20, B 21, A 23, S 25) and editable, and a note box for the consequence. Each listed creature gets a Survival check card for its owner; creatures with the terrain's Release are marked "may be immune" for the GM to keep or remove. The GM applies any consequence by hand. |
+| F4 | "Can see you" from token vision | `workflow/positioning.mjs` (`onMoveForOpportunity`), `canvas/visibility.mjs` (`observerVisibility`) | Each watcher's sight of the mover is checked with the same observer-specific test Uncanny Dodge uses (the watcher's own vision and detection modes, line of sight, Hidden/Undetected). Can't see: no reminder. Q-F17: when the check can't decide (no vision on the token, different elevation), the reminder is sent with "sight not checked". Blinded still blocks. |
 | F5 | Reach edge to edge | `rules/positioning.mjs` (`nearestCells`), `workflow/positioning.mjs` | Reach is measured from the nearest square of the watcher to the nearest square of the mover, before and after the move, with Foundry's grid measurement (so the scene's diagonal rule applies). Gridless scenes: centre distance less each token's half-size. |
+
+## Releases (Q-F18: several small ones)
+
+- **FIN4a**: F1 (choke), F2 (breath outside combat).
+- **FIN4b**: F3 (Indirect Exposure, GM option).
+- **FIN4c**: F4 (sight), F5 (reach edge to edge).
 
 ## Tests
 
@@ -41,6 +47,15 @@ After each function, add a line to the progress log and push.
 - **Q-F17: Unknown sight.** When the system can't check a watcher's sight (the token has no vision set up, or the two are at different elevations), send the Opportunity Attack reminder anyway with "sight not checked" (proposed), or send nothing?
 - **Q-F18: Releases.** One release, or F1–F3 (environment) then F4–F5 (positioning)?
 
+## King's answers (2026-11-15)
+
+- **Q-F14:** the GM decides; no need to automate. Offer it as an option; the GM has the final say.
+- **Q-F15:** yes, the choke's Suffocating ends when the hold ends.
+- **Q-F16:** start the count fresh; the GM can adjust it to account for time spent.
+- **Q-F17:** yes, send the reminder with "sight not checked".
+- **Q-F18:** several smaller releases.
+
 ## Progress log
 
 - 2026-11-15 Claude: spec written from the ENV1 and POS1 limits; the Pierce item dropped (King: Pierce is a universal counter to DR). Awaiting answers and approval.
+- 2026-11-15 Claude: answers recorded; F2 gains the GM's Set breath; F3 is a GM option with an editable DC and no automatic consequence; split into FIN4a, FIN4b, FIN4c.
