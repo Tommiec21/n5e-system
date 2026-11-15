@@ -64,7 +64,7 @@ const FIELDS = {
   attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
   modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"], critAbilityMod: ["value"], maximizeAfter: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
-  reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
+  reroll: ["mode"], damage: ["formula", "damageType", "who", "unreducible"], heal: ["formula", "pool", "who"], resave: ["ability", "dc"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
 };
 export function validateConditionalRules(rules) {
@@ -81,7 +81,7 @@ export function validateConditionalRules(rules) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);
     }
-    const noSelector = ["note", "inflict", "effect", "resource", "attacks", "initiativeOptions"].includes(r.key);
+    const noSelector = ["note", "inflict", "effect", "resource", "attacks", "initiativeOptions", "heal", "resave"].includes(r.key) || (r.key === "damage" && r.on);
     const selectors = r.selector === undefined && noSelector ? [] : (Array.isArray(r.selector) ? r.selector : [r.selector]);
     if ( (!noSelector && !selectors.length) || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, damage:fire, healing, save or skill:ste.");
     if ( r.predicate !== undefined ) validatePredicate(r.predicate);

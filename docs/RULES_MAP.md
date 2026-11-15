@@ -358,3 +358,11 @@
 | Clash advantage by Release (Breakers) | data: advantage elements; `workflow/clash.mjs` facts |
 | Potent Ninjutsu | data: `maximizeAfter`; `rules/elements.mjs maximizeAfterBonus`, `workflow/activity-buttons.mjs` |
 | Chakra Compression 0-cost casting | cast option `costDelta: "zero"`; `workflow/cast-plan.mjs` |
+
+## ENG1a capabilities
+
+| Rule | Code |
+| --- | --- |
+| Effects that heal, damage or force a save each turn | `rules/triggers.mjs triggerOutcomes`, `workflow/triggers.mjs fireTriggers` |
+| Formulas reading the target's condition ranks | `rules/target-formula.mjs`; `workflow/activity-buttons.mjs` damage |
+| Marks (one or N per caster) | effect activity `limit`; `workflow/trackers.mjs applyActivityEffect` |

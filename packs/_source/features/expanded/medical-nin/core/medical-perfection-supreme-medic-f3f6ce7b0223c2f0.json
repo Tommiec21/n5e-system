@@ -48,7 +48,7 @@
         },
         {
           "key": "note",
-          "text": "The per-turn healing and damage of Life Pulse and Hemorrhage Vitality are rolled at the table."
+          "text": "Life Pulse heals and Hemorrhage Vitality damages at the start of each of the creature's turns; Hemorrhage Vitality's save comes at the end of its turns (the damage card waits for the GM to apply it)."
         }
       ],
       "castOptions": [
@@ -72,8 +72,22 @@
             "seconds": 60,
             "rules": [
               {
+                "key": "heal",
+                "on": "turnStart",
+                "formula": "4d6",
+                "pool": "hp",
+                "label": "Life Pulse"
+              },
+              {
+                "key": "heal",
+                "on": "turnStart",
+                "formula": "2d6",
+                "pool": "cp",
+                "label": "Life Pulse"
+              },
+              {
                 "key": "note",
-                "text": "Physical condition: regains 4d6 HP and 2d6 CP at the start of each of its turns; saves and checks to end conditions at advantage.",
+                "text": "Physical condition: saves and checks to end conditions at advantage (the healing at the start of each turn is automatic).",
                 "label": "Life Pulse"
               }
             ]
@@ -99,8 +113,29 @@
             "seconds": 60,
             "rules": [
               {
+                "key": "damage",
+                "on": "turnStart",
+                "formula": "6d6",
+                "damageType": "necrotic",
+                "label": "Hemorrhage Vitality"
+              },
+              {
+                "key": "damage",
+                "on": "turnStart",
+                "formula": "6d6",
+                "damageType": "chakra",
+                "label": "Hemorrhage Vitality"
+              },
+              {
+                "key": "resave",
+                "on": "turnEnd",
+                "ability": "con",
+                "dc": "@dc.nin",
+                "label": "Hemorrhage Vitality"
+              },
+              {
                 "key": "note",
-                "text": "Physical condition: takes 6d6 necrotic and 6d6 chakra damage at the start of each of its turns; can't regain HP; its other Physical conditions can't be removed; Con save vs your Ninjutsu DC at the end of each of its turns ends it. Treated as S-Rank.",
+                "text": "Physical condition: can't regain HP; its other Physical conditions can't be removed. Treated as S-Rank. (The damage at the start of each turn and the save at the end are automatic.)",
                 "label": "Hemorrhage Vitality"
               }
             ]

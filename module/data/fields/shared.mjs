@@ -265,6 +265,7 @@ export function activityFields() {
       state: str(),                      // named state the effect represents (crash, flow, combatRival...)
       exclusive: str(),                  // group: applying one removes the others (surge: Crash / Flow)
       ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
+      limit: str(),                      // ENG1a mark: at most this many (formula) from one caster; the oldest ends
       // Rule elements the effect carries (NPC3: disadvantage from a Freeform effect): {key, selector, label}.
       // STD6d: any rule element (predicate, value, on, ...), checked by validateConditionalRules.
       rules: arr(new (F().ObjectField)())

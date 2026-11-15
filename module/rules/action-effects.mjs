@@ -76,7 +76,8 @@ export function describeElement(e = {}) {
     case "maximizeAfter": return `After rolling, up to ${Number(e.value) || 0} dice count as their maximum on ${what}`;
     case "critAbilityMod": return `A critical hit adds the ability modifier ${Number(e.value) || 0} more time${Number(e.value) === 1 ? "" : "s"} on ${what}`;
     case "rerollBelow": return `Reroll dice of ${Number(e.value) || 0} or less once on ${what}`;
-    case "damage": return `+${e.formula ?? ""}${e.damageType ? ` ${e.damageType}` : ""} damage on ${what}`;
+    case "damage": return e.on ? `${e.who === "target" ? "The target takes" : "Takes"} ${e.formula ?? ""}${e.damageType ? ` ${e.damageType}` : ""} damage${e.unreducible ? " (can't be reduced)" : ""}`
+      : `+${e.formula ?? ""}${e.damageType ? ` ${e.damageType}` : ""} damage on ${what}`;
     case "damageHandling": return [e.drMultiplier != null && Number(e.drMultiplier) !== 1 ? `DR ×${Number(e.drMultiplier)}` : "",
       e.ignoreResistance ? "ignores resistance" : "", e.immunityAsResistance ? "immunity counts as resistance" : ""].filter(Boolean).join(", ") || "Damage handling";
     case "addRanks": return `+${Number(e.value) || 0} rank on conditions inflicted`;
@@ -86,6 +87,8 @@ export function describeElement(e = {}) {
     case "costReduction": return Number(e.value) === 0 ? "No cost reduction on casts" : `Cost reduction at most ${e.value}`;
     case "attacks": return `${Number(e.value) || 1} attacks per Attack action${e.implementsOnly ? " with Kunai, Shuriken or Senbon" : ""}${e.text ? ` (${e.text})` : ""}`;
     case "initiativeOptions": return `May roll ${(e.skills ?? []).join(", ")} instead of Initiative${e.text ? `: ${e.text}` : ""}`;
+    case "heal": return `${e.who === "target" ? "The target regains" : "Regains"} ${e.formula ?? ""} ${({ cp: "CP", tempHp: "temporary HP", tempCp: "temporary CP" })[e.pool] ?? "HP"}`;
+    case "resave": return `${String(e.ability ?? "").toUpperCase()} save (DC ${e.dc ?? "?"}); a success ends it`;
     case "resource": return `${Number(e.amount) >= 0 ? "+" : ""}${Number(e.amount) || 0} ${e.pool ?? ""}`.trim();
     default: return e.key ?? "";
   }

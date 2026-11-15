@@ -59,6 +59,7 @@ import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
 import { resolveFormula, unarmedSpec, activeStance } from "../rules/unarmed.mjs";
 import { weaponFacts } from "../rules/stance-weapons.mjs";
 import { jutsuFacts } from "../rules/jutsu-facts.mjs";
+import { targetFormula } from "../rules/target-formula.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
 import { executeActivity } from "./activity-execution.mjs";
@@ -388,7 +389,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const instances = [];
       const rolls = [], rollMetadata = [], advNotes = [];
       for ( const [index, p] of parts.entries() ) {
-        let formula = level(p.formula);
+        // ENG1a: "@target.ranks.envenomed" and the like read the one target.
+        let formula = targetFormula(level(p.formula), oneTarget);
         if ( index === 0 && (shaped.maximizeDice || shaped.minimumDie || shaped.rerollBelow) ) {
           formula = shapeDice(formula, { maximize: shaped.maximizeDice, minimum: shaped.minimumDie, rerollBelow: shaped.rerollBelow });
         }

@@ -62,8 +62,16 @@
               "label": "Overheat"
             },
             {
+              "key": "damage",
+              "on": "turnEnd",
+              "formula": "1d6",
+              "damageType": "fire",
+              "unreducible": true,
+              "label": "Overheat"
+            },
+            {
               "key": "note",
-              "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th; on this effect). You take 1d6 fire damage at the end of each of your turns that can't be reduced or resisted.",
+              "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th) and 1d6 fire damage to you at the end of each of your turns, unreduced (both on this effect).",
               "label": "Chakra Surge: Crash (Overheat)"
             }
           ]

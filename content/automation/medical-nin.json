@@ -594,8 +594,15 @@
             "seconds": 60,
             "rules": [
               {
+                "key": "heal",
+                "on": "turnStart",
+                "formula": "@scale.medicalNin.channeledHealing",
+                "pool": "hp",
+                "label": "Mending Spark"
+              },
+              {
                 "key": "note",
-                "text": "Regains HP equal to the Medical-Nin's Channeled Healing bonus at the start of each of its turns; ends at 0 HP. One instance at a time.",
+                "text": "Ends at 0 HP. One instance at a time. (The healing at the start of each of its turns is automatic.)",
                 "label": "Mending Spark"
               }
             ]
@@ -828,8 +835,22 @@
             "seconds": 60,
             "rules": [
               {
+                "key": "heal",
+                "on": "turnStart",
+                "formula": "4d6",
+                "pool": "hp",
+                "label": "Life Pulse"
+              },
+              {
+                "key": "heal",
+                "on": "turnStart",
+                "formula": "2d6",
+                "pool": "cp",
+                "label": "Life Pulse"
+              },
+              {
                 "key": "note",
-                "text": "Physical condition: regains 4d6 HP and 2d6 CP at the start of each of its turns; saves and checks to end conditions at advantage.",
+                "text": "Physical condition: saves and checks to end conditions at advantage (the healing at the start of each turn is automatic).",
                 "label": "Life Pulse"
               }
             ]
@@ -855,8 +876,29 @@
             "seconds": 60,
             "rules": [
               {
+                "key": "damage",
+                "on": "turnStart",
+                "formula": "6d6",
+                "damageType": "necrotic",
+                "label": "Hemorrhage Vitality"
+              },
+              {
+                "key": "damage",
+                "on": "turnStart",
+                "formula": "6d6",
+                "damageType": "chakra",
+                "label": "Hemorrhage Vitality"
+              },
+              {
+                "key": "resave",
+                "on": "turnEnd",
+                "ability": "con",
+                "dc": "@dc.nin",
+                "label": "Hemorrhage Vitality"
+              },
+              {
                 "key": "note",
-                "text": "Physical condition: takes 6d6 necrotic and 6d6 chakra damage at the start of each of its turns; can't regain HP; its other Physical conditions can't be removed; Con save vs your Ninjutsu DC at the end of each of its turns ends it. Treated as S-Rank.",
+                "text": "Physical condition: can't regain HP; its other Physical conditions can't be removed. Treated as S-Rank. (The damage at the start of each turn and the save at the end are automatic.)",
                 "label": "Hemorrhage Vitality"
               }
             ]
@@ -870,7 +912,7 @@
         },
         {
           "key": "note",
-          "text": "The per-turn healing and damage of Life Pulse and Hemorrhage Vitality are rolled at the table."
+          "text": "Life Pulse heals and Hemorrhage Vitality damages at the start of each of the creature's turns; Hemorrhage Vitality's save comes at the end of its turns (the damage card waits for the GM to apply it)."
         }
       ]
     },
@@ -993,10 +1035,11 @@
             "rules": [
               {
                 "key": "note",
-                "text": "Cursed (Mental condition), with the Hex chosen when marked. One creature at a time (two from 18th level).",
+                "text": "Cursed (Mental condition), with the Hex chosen when marked. One creature at a time (two from 18th level: the oldest curse ends automatically).",
                 "label": "Curse of the Reaper"
               }
-            ]
+            ],
+            "limit": "lvl(2:1,18:2)"
           }
         }
       ],
@@ -1127,17 +1170,24 @@
         },
         {
           "id": "n5egk2RfFnqCBtd8",
-          "type": "roll",
+          "type": "damage",
           "label": "Septic Detonation",
           "activation": "action",
           "cost": {
             "pool": "blight",
             "amount": 1
           },
-          "roll": {
-            "formula": "",
-            "note": "A creature with Envenomed takes 1d12 poison damage per rank of Envenomed. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
-          }
+          "damage": {
+            "parts": [
+              {
+                "formula": "(@target.ranks.envenomed)d12",
+                "type": "poison"
+              }
+            ],
+            "pierce": 0,
+            "ignoreDR": false
+          },
+          "text": "Target the creature: 1d12 poison per rank of Envenomed it has. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
         },
         {
           "id": "n5eNVsBtHLZgAyIO",
@@ -1305,7 +1355,30 @@
       ]
     },
     "vital-conductor-adept-medic": {
-      "status": "note",
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eF6IjlG9nWte5P",
+          "type": "effect",
+          "label": "Vital Thread",
+          "activation": "bonus",
+          "effect": {
+            "name": "Vital Thread",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Marked by Vital Thread (one at a time: a new thread ends the old one).",
+                "label": "Vital Thread"
+              }
+            ],
+            "limit": "1"
+          }
+        }
+      ],
       "rules": [
         {
           "key": "note",

@@ -466,3 +466,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - Reviewed features (`flags.n5e.reviewed`) get no buttons from their text.
 - Feats (STD6c) are moved to the end by King.
 - 0.49.0-alpha.1: Ninjutsu Specialist reviewed too. Flow's concentration advantage is an element on its effect now (no state check in code). Gale Fracture is written by both the rider table and the automation table; the rider applier compares flags regardless of key order.
+
+## ENG1a — Claude, 2026-11-15 (published 0.50.0-alpha.1)
+- Per-turn behaviour on an effect is trigger elements (`heal`, `damage`, `resave`), never turn-pipeline code. Damage from triggers is a card for the GM, not applied automatically.
+- The class tables (`content/automation/*.json`) are the source; edit them directly (the generator scripts were one-time).

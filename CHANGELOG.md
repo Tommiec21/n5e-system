@@ -1,3 +1,17 @@
+## 0.50.0-alpha.1 — ENG1a: effects that act each turn, target-aware formulas, marks (King: "Do that immediately")
+
+- **Effects can heal, deal damage or force a save each turn.** Damage goes on a card for the GM to apply, like condition damage. A successful save ends the effect.
+  - Life Pulse heals 4d6 HP and 2d6 CP at the start of each turn.
+  - Hemorrhage Vitality deals 6d6 necrotic and 6d6 chakra at the start of each turn, with a Con save at the end to end it.
+  - Mending Spark heals the Channeled Healing bonus each turn.
+  - Overheat and Burnout burn you at the end of your turns; that damage ignores DR and resistance.
+- **Effects keep the caster's numbers** (Channeled Healing, save DC, level) after they're placed on another creature.
+- **Damage formulas can read the target.** Septic Detonation is now a damage button: 1d12 per rank of Envenomed on the target.
+- **Marks:** Curse of the Reaper (one creature, two from 18th level) and Vital Thread (one) end the oldest mark automatically.
+- **Toxic Tongue** gives immunity to Envenomed (King) as well as Corroded.
+- **For authors:** trigger elements `heal`, `damage` and `resave`; `@target.ranks.<condition>` and `@target.state.<state>` in damage formulas; `@scale`, `@dc` and `@level` in an effect activity's elements; effect activity `limit`.
+- Not checked in a running Foundry world.
+
 ## 0.49.0-alpha.1 — STD6d: Ninjutsu Specialist as data
 
 - **All 84 Ninjutsu Specialist features and options are reviewed.** The review table is `docs/classes/ninjutsu-specialist-automation.md`.

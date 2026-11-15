@@ -356,7 +356,9 @@ const evalNumber = expr => {
 export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null } = {}) {
   // STD6d: class table values (@scale.medicalNin.channeledHealing) resolve from the caster's roll data.
   const rollData = actor.getRollData?.() ?? {};
-  const scale = v => v.replace(/@scale\.([\w.]+)/g, (m, p) => String(p.split(".").reduce((o, k) => o?.[k], rollData.scale) ?? 0));
+  // ENG1a: and the caster's save DCs (@dc.nin), so an effect on another creature keeps the caster's numbers.
+  const scale = v => v.replace(/@scale\.([\w.]+)/g, (m, p) => String(p.split(".").reduce((o, k) => o?.[k], rollData.scale) ?? 0))
+    .replace(/@dc\.(nin|tai|gen|buki)\b/g, (m, d) => String(actor.system?.disciplines?.[d === "buki" ? "tai" : d]?.dc ?? 10));
   const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))), actor);
   const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
@@ -377,12 +379,28 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
       // STD6d: class table values ("@scale.…") become numbers here; lvl(...) values are read at roll time.
-      ...(eff.rules?.length ? { rules: eff.rules.map(r => Object.fromEntries(Object.entries(r).map(([k, v]) =>
-        [k, k === "value" && typeof v === "string" && /@scale/.test(v) ? (Number(sub(v)) || 0) : v]))) } : {}),
+      ...(eff.rules?.length ? { rules: eff.rules.map(r => Object.fromEntries(Object.entries(r).map(([k, v]) => {
+        if ( typeof v !== "string" || !/@(scale|dc|level)/.test(v) ) return [k, v];
+        const resolved = sub(v);
+        return [k, ["value", "dc", "amount"].includes(k) ? (Number(evalNumber(resolved)) || 0) : resolved];
+      }))) } : {}),
+      // ENG1a marks: one effect (or N) per caster at a time; the oldest ends when a new one is placed.
+      ...(eff.limit ? { mark: { sourceUuid: actor.uuid, name: eff.name || label } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
   if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
   const notes = [];
+  if ( eff.limit ) {
+    const max = Math.max(1, Number(evalNumber(sub(String(eff.limit)))) || 1);
+    const marks = [...new Set((globalThis.canvas?.tokens?.placeables ?? []).map(tk => tk.actor).filter(Boolean))]
+      .flatMap(a => a.effects.filter(e => e.flags?.n5e?.mark?.sourceUuid === actor.uuid && e.flags.n5e.mark.name === (eff.name || label)))
+      .sort((a, b) => (a.duration?.startTime ?? 0) - (b.duration?.startTime ?? 0));
+    const over = marks.length + targets.length - max;
+    for ( const e of marks.slice(0, Math.max(0, over)) ) {
+      if ( e.parent?.isOwner || game.user.isGM ) await e.delete();
+      else notes.push(`Remove ${e.name} from ${e.parent?.name} (oldest)`);
+    }
+  }
   for ( const t of targets ) {
     // Exclusive group: remove the other member first (entering Flow ends Crash).
     if ( eff.exclusive && t.isOwner ) {

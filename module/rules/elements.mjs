@@ -17,6 +17,9 @@
  *   rerollBelow (STD6b) damage dice showing the value or less are rerolled once, keeping the new result
  *   critAbilityMod (STD6b fix) a critical hit adds the ability modifier this many more times
  *   maximizeAfter (STD6d) after the damage roll, this many of its dice (the lowest) count as their maximum
+ *   heal / resave (ENG1a, triggers only) heal {formula, pool, who}; resave {ability, dc}: roll the save,
+ *              and on a success the effect carrying it ends. damage with `on` posts a damage card
+ *              {formula, damageType, who, unreducible}.
  * No engine line names content: every source is read from data.
  */
 const list = value => value ? Array.from(value) : [];
@@ -28,7 +31,9 @@ export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvanta
   // STD4: attacks per Attack action, and skills that may stand in for Initiative.
   "attacks", "initiativeOptions",
   // STD6b: reroll low damage dice once.
-  "rerollBelow", "critAbilityMod", "maximizeAfter"];
+  "rerollBelow", "critAbilityMod", "maximizeAfter",
+  // ENG1a: trigger outcomes that heal, or end the effect on a successful save.
+  "heal", "resave"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];

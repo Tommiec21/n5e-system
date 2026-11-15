@@ -66,17 +66,24 @@
       },
       {
         "id": "n5egk2RfFnqCBtd8",
-        "type": "roll",
+        "type": "damage",
         "label": "Septic Detonation",
         "activation": "action",
         "cost": {
           "pool": "blight",
           "amount": 1
         },
-        "roll": {
-          "formula": "",
-          "note": "A creature with Envenomed takes 1d12 poison damage per rank of Envenomed. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
-        }
+        "damage": {
+          "parts": [
+            {
+              "formula": "(@target.ranks.envenomed)d12",
+              "type": "poison"
+            }
+          ],
+          "pierce": 0,
+          "ignoreDR": false
+        },
+        "text": "Target the creature: 1d12 poison per rank of Envenomed it has. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
       },
       {
         "id": "n5eNVsBtHLZgAyIO",

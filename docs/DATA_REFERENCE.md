@@ -724,3 +724,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Element `maximizeAfter` {value} | After the damage roll, up to N dice (the lowest) count as their maximum |
 | Element value `"lvl(level:value,...)"` | Read at the element owner's level |
 | Pools `tension` (Seismic Tether), `pressure` (Tempest Pressure) | Stone Crusher and Storm Terror resources |
+
+## Added in 0.50.0-alpha.1 (ENG1a)
+
+| Path | Meaning |
+| --- | --- |
+| Trigger element `heal` {formula, pool, who} | Heals at once (hp, cp, tempHp, tempCp) |
+| Trigger element `damage` {formula, damageType, who, unreducible} | A damage card for the GM (fixed target; unreducible skips DR and resistance) |
+| Trigger element `resave` {ability, dc} | The owner rolls the save; a success ends the effect carrying it |
+| Effect activity element fields with `@scale.…`, `@dc.<disc>`, `@level` | The caster's values, fixed when the effect is applied |
+| Effect activity `limit` (number or `lvl(...)`) | Mark: at most that many from one caster (`flags.n5e.mark`); the oldest ends |
+| Damage formula `@target.ranks.<condition>`, `@target.state.<state>` | The one target's ranks, or 1/0 for the state |

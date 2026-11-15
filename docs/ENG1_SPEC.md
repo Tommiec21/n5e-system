@@ -1,0 +1,36 @@
+# ENG1 function spec: the missing capabilities
+
+Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1.**
+
+Why: the STD6d class review left most class features as notes, but not because they are judgment calls. A handful of general capabilities was missing, and the same ones recur across classes, clans and jutsu. Each is built once, generically, as data the effects use (no class or feature named in code). Then the reviewed classes are redone and the class pass continues with the fuller toolkit (`docs/STD6d_SPEC.md`).
+
+## Batches
+
+| # | Capability | Data | Unlocks (examples) |
+| --- | --- | --- | --- |
+| ENG1a | **Effects that act each turn** | Trigger elements on an effect: `heal {formula, pool, who}` (applied at once), `damage {formula, damageType, who, unreducible}` (a damage card for the GM, like condition damage), `resave {ability, dc}` (the owner rolls; a success ends the effect) | Life Pulse, Hemorrhage Vitality, Mending Spark, Overheat and Burnout self-damage |
+| ENG1a | **Caster numbers kept on the effect** | In an effect activity's elements, `@scale.<class>.<column>`, `@dc.<discipline>` and `@level` are the caster's, fixed when applied | Mending Spark's Channeled Healing, Hemorrhage Vitality's save DC |
+| ENG1a | **Formulas that read the target** | `@target.ranks.<condition>`, `@target.state.<state>` in damage formulas (the one target) | Septic Detonation (1d12 per rank of Envenomed) |
+| ENG1a | **Marks** | Effect activity `limit` (a number or `lvl(...)`): at most that many from one caster; the oldest ends | Curse of the Reaper (1, 2 at 18th), Vital Thread, Transfiguration |
+| ENG1b | **Moldings that change the jutsu** | Action-effect elements on the cast: range, area size, an extra target, no hand seals, excluded creatures | Distant, Widened, Doubled, Subtle, Careful; Dragwind |
+| ENG1c | **Reactions that protect others** (the planned reactions batch) | Reaction recipes offered to the ally's owner, not only the damaged creature's | Vitality Guard, Counter Seal, Interpose, Grit |
+| ENG1d | **Auras and zones** (AURA1) | Effects that apply to creatures within a radius of a token, and to creatures that enter | Black Lotus Bloom, Pressure Stagnation, Storm Zone |
+| ENG1e | **Redo the reviewed classes** | Move Medical-Nin and Ninjutsu Specialist notes onto the new capabilities | — |
+
+Each batch: spec section here, build, tests, release, log. King said to build them immediately, so the ENG1b–ENG1e specs are written as each starts and built without a separate approval; anything unclear is asked, not invented.
+
+## ENG1a (0.50.0-alpha.1)
+
+- `rules/elements.mjs`: new keys `heal`, `resave`; `damage` with `on` is a trigger outcome.
+- `rules/triggers.mjs triggerOutcomes`: damage, heal, resave (with the effect that carries it).
+- `workflow/triggers.mjs fireTriggers`: heals at once; posts damage cards (fixed target; `unreducible` skips DR and resistance); rolls the save and ends the effect on a success.
+- `workflow/trackers.mjs applyActivityEffect`: resolves `@scale`, `@dc`, `@level` in element fields; `limit` marks (oldest ends; flags.n5e.mark).
+- `rules/target-formula.mjs`: `@target.ranks.<key>`, `@target.state.<key>`; used by card damage rolls.
+- **Class data now using them:**
+  - **Medical-Nin:** Life Pulse (heals each turn), Hemorrhage Vitality (damage each turn, save to end), Mending Spark (heals each turn), Septic Detonation (a damage button per rank of Envenomed), Curse of the Reaper (one at a time, two at 18th), Vital Thread (one at a time).
+  - **Ninjutsu Specialist:** Overheat and Burnout (fire damage to you each turn).
+- Also in this release (STD6d answers): Toxic Tongue gives immunity to Envenomed (King Q-D1).
+
+## Progress log
+
+- 2026-11-15 Claude: plan written from the STD6d review; ENG1a built and published 0.50.0-alpha.1. Tests: `tests/core/eng1.test.mjs`.

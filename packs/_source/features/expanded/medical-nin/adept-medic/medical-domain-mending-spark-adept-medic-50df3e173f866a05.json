@@ -52,8 +52,15 @@
           "seconds": 60,
           "rules": [
             {
+              "key": "heal",
+              "on": "turnStart",
+              "formula": "@scale.medicalNin.channeledHealing",
+              "pool": "hp",
+              "label": "Mending Spark"
+            },
+            {
               "key": "note",
-              "text": "Regains HP equal to the Medical-Nin's Channeled Healing bonus at the start of each of its turns; ends at 0 HP. One instance at a time.",
+              "text": "Ends at 0 HP. One instance at a time. (The healing at the start of each of its turns is automatic.)",
               "label": "Mending Spark"
             }
           ]

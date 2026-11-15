@@ -645,8 +645,16 @@
                 "label": "Overheat"
               },
               {
+                "key": "damage",
+                "on": "turnEnd",
+                "formula": "1d6",
+                "damageType": "fire",
+                "unreducible": true,
+                "label": "Overheat"
+              },
+              {
                 "key": "note",
-                "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th; on this effect). You take 1d6 fire damage at the end of each of your turns that can't be reduced or resisted.",
+                "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th) and 1d6 fire damage to you at the end of each of your turns, unreduced (both on this effect).",
                 "label": "Chakra Surge: Crash (Overheat)"
               }
             ]
@@ -691,8 +699,16 @@
                 "label": "Burnout"
               },
               {
+                "key": "damage",
+                "on": "turnEnd",
+                "formula": "3d6",
+                "damageType": "fire",
+                "unreducible": true,
+                "label": "Burnout"
+              },
+              {
                 "key": "note",
-                "text": "Overheat's damage bonus and +1 Pyroclasm at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. You take 3d6 fire damage at the end of each turn that can't be reduced, resisted or ignored. Also spend 1 Pyroclasm.",
+                "text": "Overheat's damage bonus, +1 Pyroclasm and 3d6 unreduced fire damage to you at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. Also spend 1 Pyroclasm.",
                 "label": "Chakra Surge: Crash (Burnout)"
               }
             ]

@@ -92,6 +92,11 @@ export function tableProblems() {
       const where = `${t.file} ${id}`;
       if ( !features.has(id) ) p.push(`${where}: no ${t.class} feature with this identifier`);
       if ( !STATUSES.includes(e.status) ) p.push(`${where}: status is one of ${STATUSES.join(", ")}`);
+      for ( const fld of ["castOptions", "activities"] ) {
+        const labels = (e[fld] ?? []).map(o => o.label);
+        const dup = labels.filter((l, i) => labels.indexOf(l) !== i);
+        if ( dup.length ) p.push(`${where}: ${fld} repeat ${[...new Set(dup)].join(", ")}`);
+      }
       const check = (rules, at) => { try { validateConditionalRules(rules ?? []); } catch (error) { p.push(`${where}${at}: ${error.message}`); } };
       check(e.rules, "");
       for ( const fx of e.effects ?? [] ) check(fx.rules, ` (${fx.name})`);
