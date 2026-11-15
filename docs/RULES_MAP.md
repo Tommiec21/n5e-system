@@ -342,3 +342,14 @@
 | Guardian: Dodging gives advantage on Str and Dex saves | data: advantage element on the stance |
 | Power: Bruised on a critical hit | data: `criticalHit` trigger on the stance |
 | Everything else the stances do | notes on each stance's Notes tab (King Q-S3) |
+
+## Classes (STD6d)
+
+| Rule | Code |
+| --- | --- |
+| Medical-Nin features | data: `content/automation/medical-nin.json` (review: `docs/classes/medical-nin-automation.md`); applied by `tools/content/apply-automation.mjs` |
+| Medical Release: Wisdom for Medical jutsu | `n5e.keywordAbility.medical`; `data/item/jutsu.mjs _liveNumbers` |
+| Preserve Life (rank dice maximized), Hematoxic Touch (reroll 1s and 2s) | action effects; `rules/jutsu-facts.mjs resolveRankValues`, `workflow/activity-buttons.mjs` (healing and damage) |
+| Battle Medic d12 / 2d12 Unarmed die | `n5e.unarmed.die`; `rules/unarmed.mjs unarmedSpec` |
+| Bonus Action / Reaction casting (Quickened, Reactive, Reapers Techniques) | `flags.n5e.castAs`, cast option `castAs`; `workflow/cast-plan.mjs` |
+| Great Weapon Stance: critical hit triples the modifier | data: `critAbilityMod`; `workflow/activity-buttons.mjs` |

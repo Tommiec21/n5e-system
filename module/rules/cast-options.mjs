@@ -18,6 +18,11 @@
  *   rider            a CARD1d rider armed by this option (rules/riders.mjs): it goes onto the action card
  *   appliesTo also takes natureRelease (any nature release keyword), inflictsCondition (the jutsu can
  *   inflict a condition) and inflictsTag (one of its conditions has this tag, e.g. "elemental").
+ *   castAs           "bonus" | "reaction": a 1-Action casting becomes a Bonus Action or Reaction (STD6d)
+ *   actionEffect     the name of the feature's action effect this option brings (STD6d; without it,
+ *                    choosing any option of the feature brings all its action effects)
+ *   appliesTo also takes (STD6d) maxRank (a rank or lvl(level:rank,...): the highest rank it applies
+ *   to) and namePrefix (the jutsu's name starts with it: "Grim").
  *   Formulas may use @amount (pool spent), @rankValue (cast rank: D 1 ... S 5), lvl(...) and @level.
  */
 import { rankValue } from "./progression.mjs";
@@ -74,6 +79,12 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null, 
     if ( a.discipline && !castAs.includes(a.discipline) ) continue;
     if ( a.keywords?.length && !a.keywords.some(k => kwSet(jutsu).has(k)) ) continue;
     if ( a.activation && jutsu.system.activation?.type !== a.activation ) continue;
+    if ( a.namePrefix && !String(jutsu.name ?? "").toLowerCase().startsWith(String(a.namePrefix).toLowerCase()) ) continue;
+    if ( a.maxRank ) {
+      // The jutsu's own rank (options are offered before an upcast is chosen).
+      const top = /^[DCBAS]$/.test(a.maxRank) ? a.maxRank : levelRank(a.maxRank, actor.system.level ?? 0);
+      if ( !top || rankValue(jutsu.system.rank) > rankValue(top) ) continue;
+    }
     if ( a.requiresDamage && !hasDamage(jutsu, activities) ) continue;
     if ( a.requiresHealing && !hasHealing(jutsu, activities) ) continue;
     // CARD1d rider filters.
@@ -94,6 +105,13 @@ export function availableCastOptions(actor, jutsu, activities = [], now = null, 
   return out;
 }
 
+/** The rank a "lvl(level:rank,...)" table gives at this level ("lvl(2:D,10:C,18:B)"). */
+export function levelRank(table, level) {
+  let out = "";
+  for ( const [, l, r] of String(table).matchAll(/(\d+)\s*:\s*([DCBAS])/g) ) if ( level >= Number(l) ) out = r;
+  return out;
+}
+
 /** Halve the dice of "NdX" terms (rounded up, min 1) for area jutsu. */
 export function halveDice(formula) {
   return String(formula).replace(/(\d+)d(\d+)/g, (m, n, f) => `${Math.max(1, Math.ceil(Number(n) / 2))}d${f}`);
@@ -108,7 +126,7 @@ export function halveDice(formula) {
  * @param {string} rank         cast rank
  */
 export function applyCastOptions(actor, jutsu, chosen, available, rank) {
-  const res = { subtract: 0, pools: {}, damage: [], heals: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [], riders: [] };
+  const res = { subtract: 0, pools: {}, damage: [], heals: [], effects: [], rolls: [], notes: [], problems: [], update: {}, names: [], riders: [], castAs: [] };
   const area = !!jutsu.system.target?.area?.shape;
   for ( const c of chosen ) {
     const opt = available.find(o => o.id === c.id);
@@ -140,6 +158,7 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
     if ( o.rider ) res.riders.push({ id: opt.id, label: opt.label, rider: o.rider, cost: o.cost ?? null, amount });
     if ( o.roll ) res.rolls.push({ label: opt.label, formula: o.roll, note: o.note ?? "" });
     else if ( o.note ) res.notes.push(`${opt.label}: ${sub(o.note)}`);
+    if ( o.castAs ) res.castAs.push(o.castAs);
     if ( o.oncePerTurn ) res.update[`flags.n5e.optionTurn.${opt.id}`] = "@now";
   }
   return res;

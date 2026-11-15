@@ -697,3 +697,19 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Trigger event `criticalHit` | An attack's natural roll in its critical range |
 | Roll facts `weapon`, `weapon:unarmed`, `weapon:group:<g>`, `weapon:property:<p>`, `weapon:stance`, `attack:opportunity` | Predicate options on weapon attack and damage rolls (spec `facts`) |
 | Removed: stance `flags.n5e.weaponDie` | Replaced by `rerollBelow` |
+
+## Added in 0.48.0-alpha.1 (STD6d, Medical-Nin)
+
+| Path | Meaning |
+| --- | --- |
+| `content/automation/<class>.json` | A class's automation table (one entry per feature); `node tools/content/apply-automation.mjs` writes it onto the features |
+| Feature `flags.n5e.reviewed` | Reviewed: no buttons are guessed from its text |
+| Embedded effects with `flags.n5e.std6d` | Effects written from the automation table |
+| Roll facts `jutsu`, `jutsu:keyword:<k>`, `jutsu:rank:<R>`, `jutsu:discipline:<d>` | Rolls from a cast card |
+| Cast option `castAs`, `actionEffect`, `appliesTo.namePrefix`, `appliesTo.maxRank` | Casting time change; the one action effect it brings; name prefix; highest rank (a rank or `lvl(...)`) |
+| Molding `flags.n5e.castAs` | "bonus" or "reaction" (Quickened, Reactive Ninjutsu) |
+| Action effect element value `"@rankValue"` | The cast rank's number (D 1 … S 5), also `@rankValue+N`, `N*@rankValue` |
+| Change key `n5e.keywordAbility.<keyword>` | Jutsu with the keyword may use this ability when higher |
+| Change key `n5e.unarmed.die` | The Unarmed die becomes this when larger |
+| Element `critAbilityMod` {value} | A critical hit adds the ability modifier this many more times (Great Weapon Stance) |
+| Effect activity `effect.rules` | Any rule element; change values may use `@scale.<class>.<column>` |

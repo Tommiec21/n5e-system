@@ -33,13 +33,46 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezDqG3vHGehwUQ",
+        "type": "effect",
+        "label": "Overflow Recovery",
+        "activation": "bonus",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Overflow",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Spend when making a saving throw: +1d4 to it, then remove this (once every other turn).",
+              "label": "Overflow"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Only while in your Ascension state."
+        }
+      ]
     }
   },
   "ownership": {

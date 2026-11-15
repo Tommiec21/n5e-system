@@ -1,3 +1,18 @@
+## 0.48.0-alpha.1 — STD6d: Medical-Nin as data (King 2026-11-15: "start work on using the new Active Effects system to actually automate class features")
+
+- **Every Medical-Nin feature is reviewed:** what can be automated is data, the rest is on its Notes tab, and no buttons are guessed from its text any more. The review table is `docs/classes/medical-nin-automation.md`.
+- **Medical Release:** Medical jutsu use Wisdom for their attack and save DC when it's higher.
+- **Medical Domain:** Preserve Life and Take Life are options in the cast dialog that spend a Domain Charge. Preserve Life maximizes healing dice equal to the cast rank.
+- **Hematoxic Touch** also rerolls 1s and 2s on the Medical jutsu's damage.
+- **Battle Medic:** the d12 Unarmed die and +1 critical range (+2 at 10th level). Strength of 100 and Strength of 1000 enter it with 2d12, Mastery on Strength saves and (1000) DR.
+- **Two attacks** per Attack action from Chakra Enhanced Combat and Entropic Combatant.
+- **Reapers Techniques:** Grim jutsu can be cast as a Bonus Action (D-Rank, C from 10th, B from 18th).
+- **Pools grow with level:** Healing Surges (5 at 10th), Blight (5 at 10th), Byakugou Seals (6 at 10th, 8 at 18th).
+- **New buttons:** Battle Surge, Healing Burst, Vitality Guard, Overflow, Mending Spark, Vital Transference, Condition Break, Septic Detonation, Malignant Barrier, Rotting Pulse, Plague Doctor, Life Pulse, Hemorrhage Vitality, Curse of the Reaper, Gravetouched, Jashin's Harvest, Transmuted. Toxic Tongue gives immunity to Corroded.
+- **Great Weapon Stance:** a critical hit with a Berserker weapon triples the ability modifier (King: the stance text was meant to say triple).
+- **For authors:** healing rolls take rule elements; rolls from a cast card know the jutsu's keywords, rank and discipline; cast options can change the casting time, name the one action effect they bring, and be limited by a name prefix or a level-scaled rank; new change keys `n5e.keywordAbility.<keyword>` and `n5e.unarmed.die`. Quickened and Reactive Ninjutsu are data now.
+- Not checked in a running Foundry world.
+
 ## 0.47.0-alpha.1 — STD6b: stances as data (King 2026-11-15: "QS1. Correct. QS2. Every one. QS3. Notes for now. Try to automate later. Approved.")
 
 - **Stance weapons:** each weapon stance lists the weapons that qualify for it (Ronin = Blade group, Reaper = Flail, Lance = Polearm, Raid = Power, Berserker = Heavy, Stalwart = Blocking, Bullseye = Ammunition or Thrown, Dancer = Light or Multiattack, Assassin = Iron Claw, Deadly or Hidden).

@@ -8,8 +8,8 @@ export function effectFieldCatalog(config) {
   return changeKeyCatalog(config).map(field => {
     let type = "number", example = "2", choices = null;
     if ( field.key.startsWith("n5e.mastery.") ) { type = "text"; example = "Class feature"; }
-    else if ( field.key.startsWith("n5e.disciplineAbility.") ) { type = "ability"; choices = ["str", "dex", "con", "int", "wis", "cha"]; example = "wis"; }
-    else if ( field.key === "n5e.unarmed.dice" ) { type = "dice"; example = "1d8"; }
+    else if ( /^n5e\.(discipline|keyword)Ability\./.test(field.key) ) { type = "ability"; choices = ["str", "dex", "con", "int", "wis", "cha"]; example = "wis"; }
+    else if ( ["n5e.unarmed.dice", "n5e.unarmed.die"].includes(field.key) ) { type = "dice"; example = field.key.endsWith("die") ? "1d12" : "1d8"; }
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
     const custom = field.key.startsWith("n5e.");
     return { ...field, type, example, choices, modes: custom ? [0, 2] : [1, 2, 3, 4, 5],
@@ -74,7 +74,9 @@ export function validateConditionalRules(rules) {
     const allowed = new Set([...FIELDS.common, ...(FIELDS[r.key] ?? [])]);
     const extra = Object.keys(r).filter(k => !allowed.has(k));
     if ( extra.length ) throw new Error(`Unsupported property for ${r.key}: ${extra.join(", ")}.`);
-    if ( NUMERIC.has(r.key) ) {
+    // STD6d: an action effect's value may be the cast rank ("@rankValue", "@rankValue+1", "2*@rankValue").
+    const rankValued = typeof r.value === "string" && /^\s*(?:-?\d+\s*[+*]\s*)?@rankValue(?:\s*[+*]\s*-?\d+)?\s*$/.test(r.value);
+    if ( NUMERIC.has(r.key) && !rankValued ) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);
     }
@@ -141,7 +143,7 @@ export const EFFECT_PRESETS = [
 export function effectPreview(original, draft, actor) {
   const unresolved = [], data = effectFormulaData(actor);
   const resolve = rows => rows.flatMap(c => {
-    if ( Number.isFinite(Number(c.value)) || /^(n5e\.(mastery|disciplineAbility|unarmed)\.)/.test(c.key)
+    if ( Number.isFinite(Number(c.value)) || /^(n5e\.(mastery|disciplineAbility|keywordAbility|unarmed)\.)/.test(c.key)
       || (/^n5e\.(cost|upkeep)\./.test(c.key) && /^[*/]/.test(c.value)) ) return [c];
     try { return [{ ...c, value: String(resolveEffectFormula(c.value, { ...data, target: data, base: getPath(data, c.key) ?? 0 })) }]; }
     catch (error) { unresolved.push({ key: c.key, reason: error.message }); return []; }

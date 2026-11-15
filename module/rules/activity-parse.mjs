@@ -129,6 +129,8 @@ export function effectiveActivities(item, { rank } = {}) {
   const ranked = rank ? item.flags?.n5e?.jutsuBookImport?.activitiesByRank?.[rank] : null;
   const authored = [...(Array.isArray(ranked) ? ranked : item.system.activities ?? [])];
   if ( authored.length ) return authored.map(a => ({ ...a, authored: true }));
+  // STD6d: a reviewed feature (flags.n5e.reviewed) has no guessed buttons; its text is display only.
+  if ( item.flags?.n5e?.reviewed ) return [];
   return parseActivities(item.system.description, { discipline: item.system.discipline ?? "" });
 }
 

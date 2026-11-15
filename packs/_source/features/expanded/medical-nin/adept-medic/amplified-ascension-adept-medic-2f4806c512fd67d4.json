@@ -33,13 +33,60 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eD38JfgZSRHjiv",
+        "type": "effect",
+        "label": "Vital Transference",
+        "activation": "action",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 2
+        },
+        "effect": {
+          "name": "Vital Transference",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "The first time each turn an ally damages it with an attack, that ally regains HP equal to the Medical-Nin's Channeled Healing bonus.",
+              "label": "Vital Transference"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJLblMQNlT18Oe",
+        "type": "roll",
+        "label": "Condition Break",
+        "activation": "action",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 2
+        },
+        "roll": {
+          "formula": "",
+          "note": "Allies within 20 ft lose all ranks of one condition of your choice of B-Rank or lower (A-Rank or lower from 18th level)."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Healing Surge maximum becomes 5 (on Healing Ascension). Only while in your Ascension state."
+        }
+      ]
     }
   },
   "ownership": {

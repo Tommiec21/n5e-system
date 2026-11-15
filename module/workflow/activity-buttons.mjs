@@ -58,6 +58,7 @@ import { isBukijutsu } from "../rules/keywords.mjs";
 import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
 import { resolveFormula, unarmedSpec, activeStance } from "../rules/unarmed.mjs";
 import { weaponFacts } from "../rules/stance-weapons.mjs";
+import { jutsuFacts } from "../rules/jutsu-facts.mjs";
 import { featureDiscipline } from "../rules/features.mjs";
 import { activeCoatings, spendCoatings } from "../rules/coatings.mjs";
 import { executeActivity } from "./activity-execution.mjs";
@@ -350,7 +351,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         if ( immune.size === aimed.length ) return fail("warn", `Immune to this Genjutsu: ${text}.`);
         ui.notifications.info(`Immune to this Genjutsu: ${text}.`);
       }
-      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope },
+      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope, facts: await castFacts(message) },
         { event, source: message?.id ?? "",
           ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     }
@@ -368,7 +369,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       // damage, dice changes, damage handling (resistance, immunity, DR) for when it is applied.
       const dmgSpec = { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "",
         // STD6b: the weapon's facts (groups, properties, weapon:stance) for elements such as rerollBelow.
-        facts: d.weapon ? weaponFacts(weapon, actor ? activeStance(actor) : null) : [] };
+        facts: d.weapon ? weaponFacts(weapon, actor ? activeStance(actor) : null) : await castFacts(message) };
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
       const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0 };
@@ -472,7 +473,15 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       return rolled ? { saves: rolled } : null;
     }
     case "heal": {
-      const rolled = await rollFormula(caster, level(d.formula), { title: `${caster?.name ?? ""}: ${d.label || "Healing"}`, kind: "healing", type: "healing", key: d.pool || "hp" });
+      // STD6d: elements on healing rolls (the caster's own and the card's action effects): a flat
+      // modifier, dice maximized, a minimum die, low dice rerolled.
+      const healSpec = { kind: "healing", type: "healing", key: d.pool || "hp", facts: await castFacts(message) };
+      const healCtx = caster ? cardActionContext(message?.id, caster) : { extra: [] };
+      const healShape = caster ? contextualRoll(caster, healSpec, null, healCtx.extra) : { maximizeDice: 0, minimumDie: 0, rerollBelow: 0 };
+      const healMods = caster ? contextualModifiers(caster, healSpec, null, healCtx.extra) : { bonus: 0 };
+      let healFormula = shapeDice(level(d.formula), { maximize: healShape.maximizeDice, minimum: healShape.minimumDie, rerollBelow: healShape.rerollBelow });
+      if ( healMods.bonus ) healFormula = `${healFormula} ${healMods.bonus < 0 ? "-" : "+"} ${Math.abs(healMods.bonus)}`;
+      const rolled = await rollFormula(caster, healFormula, { title: `${caster?.name ?? ""}: ${d.label || "Healing"}`, ...healSpec });
       if ( !rolled ) return null;
       const roll = rolled.roll;
       const healNote = advantageNote(rolled);
@@ -500,6 +509,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
  * Warn (or inform) and report a failed click. The runner (activity-execution.mjs) refunds any cost
  * and skips the once-per-turn and action-economy bookkeeping when a handler returns null.
  */
+/** The cast card's jutsu facts (STD6d, rules/jutsu-facts.mjs), or none for another card. */
+async function castFacts(message) {
+  const cast = message?.getFlag?.("n5e", "cast");
+  if ( !cast?.itemUuid ) return [];
+  const item = await fromUuid(cast.itemUuid).catch(() => null);
+  return jutsuFacts(item, { rank: cast.rank, discipline: cast.discipline });
+}
+
 function fail(level, message) {
   ui.notifications[level](message);
   return null;

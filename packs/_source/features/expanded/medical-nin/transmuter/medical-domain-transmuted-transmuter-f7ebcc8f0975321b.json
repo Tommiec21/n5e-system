@@ -33,13 +33,40 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUB6ZpBBydFA72",
+        "type": "effect",
+        "label": "Transmuted",
+        "activation": "bonus",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Transmuted",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Allies within 20 ft, until the start of your next turn, one designation: Lion (a rank of Mastery on attacks, +1 critical range), Dog (+2 AC within 10 ft of an ally), Bear (advantage on Str and Con saves), Deer (Int and Wis), Rabbit (Dex and Cha).",
+              "label": "Transmuted"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

@@ -20,20 +20,25 @@ const MECHANIC_TEXT = /\b(advantage|disadvantage|resistan(?:ce|t)|immun(?:e|ity)
 export function automationOf(item) {
   const channels = [], notes = [];
   for ( const a of list(item.system?.activities) ) channels.push({ kind: "Activity", label: a.label || ACTIVITY[a.type] || a.type, summary: ACTIVITY[a.type] ?? a.type });
-  const elementRows = (rules, origin) => {
+  const elementRows = (rules, origin, action = false) => {
     for ( const e of list(rules) ) {
       if ( !e || typeof e !== "object" ) continue;
       if ( e.key === "note" ) { notes.push({ label: e.label || origin, text: e.text ?? "" }); continue; }
-      channels.push({ kind: e.on ? "Trigger" : e.scope === "action" ? "Action effect" : "Rule element", label: e.label || origin, summary: summarizeElement(e) });
+      channels.push({ kind: e.on ? "Trigger" : action || e.scope === "action" ? "Action effect" : "Rule element", label: e.label || origin, summary: summarizeElement(e) });
     }
   };
   elementRows(item.flags?.n5e?.rules, item.name);
+  // Cast options (STD6d: the Automation tab lists them too).
+  const n5e = item.flags?.n5e ?? {};
+  for ( const o of [n5e.castOption, ...list(n5e.castOptions)].filter(o => o && typeof o === "object") ) {
+    channels.push({ kind: "Cast option", label: o.label || item.name, summary: castOptionSummary(o) });
+  }
   for ( const fx of list(item.effects) ) {
     const n = fx.flags?.n5e ?? {};
     const action = n.applyTo === "action";
     const changes = list(fx.changes).filter(c => c?.key);
     if ( changes.length ) channels.push({ kind: action ? "Action effect" : "Effect", label: fx.name, summary: changes.map(c => `${c.key} ${c.value}`).join("; ") });
-    elementRows(n.rules, fx.name);
+    elementRows(n.rules, fx.name, action);
   }
   const recipe = item.flags?.n5e?.reaction;
   if ( recipe?.enabled ) channels.push({ kind: "Reaction", label: item.name, summary: [recipe.multiplier !== 1 ? `damage ×${recipe.multiplier}` : "",
@@ -43,6 +48,18 @@ export function automationOf(item) {
   const status = channels.length ? (notes.length ? "partial" : "automated") : notes.length ? "note" : "none";
   const text = String(item.system?.description ?? "").replace(/<[^>]+>/g, " ");
   return { channels, notes, status, mentions: status === "none" && MECHANIC_TEXT.test(text) };
+}
+
+/** One line for a cast option: what it applies to and what it does. */
+function castOptionSummary(o) {
+  const a = o.appliesTo ?? {};
+  const when = [a.discipline, ...(a.keywords ?? []), a.namePrefix && `"${a.namePrefix}…"`, a.maxRank && `up to ${a.maxRank}`,
+    a.requiresDamage && "deals damage", a.requiresHealing && "heals", o.requiresState && `in ${o.requiresState}`].filter(Boolean).join(", ");
+  const does = [o.costDelta === "-rank" ? "cost −rank" : o.costDelta ? `cost ${o.costDelta}` : "", o.cost?.pool ? `spends ${o.cost.choose ? "any" : o.cost.amount ?? 1} ${o.cost.pool}` : "",
+    o.damage?.formula ? `+${o.damage.formula} damage` : "", o.heal?.formula ? `+${o.heal.formula} ${o.heal.pool === "tempHp" ? "temporary HP" : "healing"}` : "",
+    o.effect ? `applies ${o.effect.name ?? "an effect"}` : "", o.castAs ? `cast as a ${o.castAs === "bonus" ? "Bonus Action" : "Reaction"}` : "",
+    o.rider ? "arms a rider" : "", o.note ? o.note : ""].filter(Boolean).join("; ");
+  return `${when ? `${when}: ` : ""}${does || "an option in the cast dialog"}${o.auto ? " (on by default)" : ""}${o.oncePerTurn ? " (once per turn)" : ""}`;
 }
 
 export const STATUS_LABELS = { automated: "Automated", partial: "Partly automated", note: "Notes only", none: "Nothing authored" };

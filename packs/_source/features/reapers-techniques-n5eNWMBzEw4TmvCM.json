@@ -39,7 +39,24 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The listed Grim jutsu are learned at their levels and don't count against jutsu known."
+        }
+      ],
+      "castOption": {
+        "label": "Reapers Techniques: cast as a Bonus Action",
+        "appliesTo": {
+          "namePrefix": "Grim",
+          "activation": "action",
+          "maxRank": "lvl(2:D,10:C,18:B)"
+        },
+        "castAs": "bonus",
+        "note": "Not cast as an Action on the same turn."
+      }
     }
   },
   "_stats": {

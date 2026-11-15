@@ -31,7 +31,42 @@
     "tags": [],
     "resourcePools": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5ecUHFgkmN8JyGu",
+      "name": "Hematoxic Touch: reroll",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "rerollBelow",
+              "selector": "damage",
+              "value": 2,
+              "label": "Hematoxic Touch"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eyKgAs64doHSDT.n5ecUHFgkmN8JyGu"
+    }
+  ],
   "folder": "n5ec6wcAb5BrWBu4",
   "sort": 0,
   "ownership": {
@@ -40,6 +75,7 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
       "castOption": {
         "label": "Hematoxic Touch (+rank damage)",
         "auto": true,
@@ -52,7 +88,7 @@
         "damage": {
           "formula": "@rankValue"
         },
-        "note": "Reroll 1s and 2s on its damage dice."
+        "actionEffect": "Hematoxic Touch: reroll"
       }
     }
   },

@@ -33,13 +33,63 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eN2sSu6xIW8uGD",
+        "type": "effect",
+        "label": "Enter Battle Medic: Strength of 100",
+        "activation": "bonus",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Battle Medic: Strength of 100",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "2d12",
+              "mode": 0
+            },
+            {
+              "key": "n5e.critRange.unarmed",
+              "value": "lvl(2:1,10:2)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.critRange.tai",
+              "value": "lvl(2:1,10:2)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.mastery.save.str",
+              "value": "Strength of 100",
+              "mode": 0
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "state": "battleMedic",
+          "exclusive": "battleMedic",
+          "ampType": "fortitude"
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use instead of Enter Battle Medic: Unarmed die 2d12 and a rank of Mastery on Strength saves are on the effect. At the table: the rank of Mastery on Strength checks; constructs and structures are vulnerable to your [Unarmed Damage]; once per turn an unarmed hit pushes 10 ft (not upward)."
+        }
+      ]
     }
   },
   "ownership": {

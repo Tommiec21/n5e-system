@@ -20,6 +20,8 @@ import { withActorLock } from "./commands.mjs";
 import { rule } from "../rules-settings.mjs";
 import { castableDisciplines, castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { cardFlag } from "./action-card.mjs";
+import { resolveRankValues } from "../rules/jutsu-facts.mjs";
+import { rankValue } from "../rules/progression.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 // {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
@@ -172,7 +174,18 @@ export async function postCastCard(actor, item, plan) {
   // STD2: what the chosen Moldings, Maneuvers and feature cast options change about this cast's rolls
   // is their action effects (Active Effects with applyTo "action"), copied onto the card.
   const chosenItems = [...(plan.options ?? []), ...(plan.chosenFeatureOptions ?? [])].map(o => actor.items.get(String(o.id).split("-")[0])).filter(Boolean);
-  const actionEffects = actionEffectsOf([...new Set(chosenItems)]);
+  // STD6d: "@rankValue" in their element values is the cast rank (Preserve Life: rank dice maximized).
+  // A cast option naming its effect (actionEffect) brings only that one: one feature can carry several
+  // options with their own effects (Medical Domain: Preserve Life, Take Life).
+  const named = new Map();
+  for ( const o of plan.chosenFeatureOptions ?? [] ) {
+    const def = o.def ?? (plan.featureOptions ?? []).find(f => f.id === o.id)?.def;
+    if ( !def?.actionEffect ) continue;
+    const itemId = String(o.id).split("-")[0];
+    named.set(itemId, [...(named.get(itemId) ?? []), def.actionEffect]);
+  }
+  const actionEffects = actionEffectsOf([...new Set(chosenItems)], { only: named })
+    .map(fx => ({ ...fx, rules: resolveRankValues(fx.rules, rankValue(plan.rank)) }));
   // Feature extras: added damage (Crash, Warfare), effects for targets (Hellrend), rolls (Devastation).
   const extras = [];
   const castAs = plan.discipline || castDisciplineOf(actor, item);

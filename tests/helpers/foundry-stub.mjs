@@ -47,6 +47,10 @@ class TypedObjectField extends DataField {
     return Object.fromEntries(Object.entries(value ?? {}).map(([k, v]) => [k, this.element.initialize(v)]));
   }
 }
+class ObjectField extends DataField {
+  getInitial() { return {}; }
+  initialize(value) { return structuredClone(value ?? {}); }
+}
 class TypeDataModel {
   constructor(source = {}, { parent } = {}) {
     this.parent = parent;
@@ -60,6 +64,6 @@ class TypeDataModel {
 
 globalThis.foundry = {
   data: { fields: { DataField, StringField, NumberField, BooleanField, HTMLField, SchemaField, ArrayField, SetField,
-    TypedObjectField } },
+    TypedObjectField, ObjectField } },
   abstract: { TypeDataModel }
 };

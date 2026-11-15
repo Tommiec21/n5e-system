@@ -114,7 +114,7 @@ The existing format gains fields. Every addition is generic, validated, and edit
 | STD5 | **In-game review** | The Automation tab, the generated summaries, the GM Automation Audit window, full breakdowns on cards | STD1–STD4 |
 | STD6a | **Items** (final pass; King's order, least to most) | Weapon properties, coatings, equipment and anything else still coded | STD1–STD5 |
 | STD6b | **Stances** | Every stance as data | STD1–STD5 |
-| STD6c | **Feats** | Every feat as data, from the final feat list King will provide (Q-STD4) | STD1–STD5 |
+| STD6c | **Feats** (moved to the end by King 2026-11-15: after STD6f) | Every feat as data, from the final feat list King will provide (Q-STD4) | STD1–STD5 |
 | STD6d | **Classes** (one class per release; this is FEATAUTO1 under the contract, King Q-STD2) | Every class feature and option: a review table for King, then data. Text fallback off per class once reviewed | STD1–STD5 |
 | STD6e | **Clans** (a few clans per release) | Clan traits, hijutsu, clan conditions and keywords as data; `workflow/clan.mjs` name branches removed | STD1–STD5 |
 | STD6f | **Jutsu** (by discipline and release section) | Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King | STD1–STD5 |
@@ -146,3 +146,5 @@ Each batch follows the usual rule: a spec, King's approval, build, tests, releas
 - 2026-11-15 Claude: **STD5 published 0.45.0-alpha.1** (`docs/STD5_SPEC.md`).
 - 2026-11-15 Claude: **STD6a published 0.46.0-alpha.1** (`docs/STD6a_SPEC.md`; Q-I1 answered 0.46.0-alpha.2).
 - 2026-11-15 Claude: **STD6b published 0.47.0-alpha.1** (`docs/STD6b_SPEC.md`).
+- 2026-11-15 King: feats (STD6c) move to the end, after the jutsu pass; start the class pass (STD6d) with the new effects system.
+- 2026-11-15 Claude: **STD6d started** (`docs/STD6d_SPEC.md`): engine additions and Medical-Nin published 0.48.0-alpha.1.

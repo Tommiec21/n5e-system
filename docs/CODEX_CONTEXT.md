@@ -460,3 +460,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## STD6b — Claude, 2026-11-15 (published 0.47.0-alpha.1)
 - Stance packs are now the source of truth for stance rules: `flags.n5e.qualifies`, `flags.n5e.rules` and the level-gated effects (`flags.n5e.std6b`). `tools/content/automation.py` does not write these; don't regenerate stances over them.
 - A weapon's facts reach rolls through `spec.facts` (`rules/stance-weapons.mjs weaponFacts`). A new weapon roll path should set them too, or stance elements won't see it.
+
+## STD6d — Claude, 2026-11-15 (Medical-Nin published 0.48.0-alpha.1)
+- Class features of a reviewed class come from `content/automation/<class>.json`. Change the table, then run `node tools/content/apply-automation.mjs` (and `node tools/report-class-automation.mjs` for the review table). Never rerun `tools/content/automation.py` or `build-class-expansion.mjs` over a reviewed class; `npm run check` fails when a table isn't applied.
+- Reviewed features (`flags.n5e.reviewed`) get no buttons from their text.
+- Feats (STD6c) are moved to the end by King.

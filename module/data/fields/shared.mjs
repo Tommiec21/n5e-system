@@ -266,7 +266,8 @@ export function activityFields() {
       exclusive: str(),                  // group: applying one removes the others (surge: Crash / Flow)
       ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
       // Rule elements the effect carries (NPC3: disadvantage from a Freeform effect): {key, selector, label}.
-      rules: arr(obj({ key: str(), selector: str(), label: str() }))
+      // STD6d: any rule element (predicate, value, on, ...), checked by validateConditionalRules.
+      rules: arr(new (F().ObjectField)())
     })
   };
 }

@@ -11,10 +11,9 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | `module/data/item/character-options.mjs` | extra-attack, switch-hitter |
 | `module/data/item/templates.mjs` | scout-nin, superior-assault |
 | `module/rules/features.mjs` | genjutsu-specialist, hunter-nin, jack-of-all, medical-nin, ninjutsu-specialist, scout-nin, superior-assault, switch-hitter, taijutsu-specialist, weapon-specialist |
-| `module/workflow/cast-plan.mjs` | quickened-ninjutsu, reactive-ninjutsu |
 | `module/workflow/clan.mjs` | non-clan |
 
-19 names in 7 files. `npm run check` fails on any new one.
+17 names in 6 files. `npm run check` fails on any new one.
 
 ## 2. Other content-driven code
 
@@ -69,10 +68,10 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/chat/card.mjs:70`
 - `module/rules/activity-parse.mjs:73`
 - `module/rules/activity-parse.mjs:128`
-- `module/rules/activity-parse.mjs:132`
+- `module/rules/activity-parse.mjs:134`
 - `module/workflow/areas.mjs:267`
 - `module/workflow/cast-plan.mjs:54`
-- `module/workflow/cast.mjs:169`
+- `module/workflow/cast.mjs:171`
 
 ## 3. Coverage per pack
 
@@ -83,6 +82,6 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 120 | 15 | 8 | 0 | 3 |
+| features | 700 | 129 | 19 | 52 | 43 | 5 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |

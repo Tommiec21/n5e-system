@@ -1,0 +1,1454 @@
+{
+  "class": "medical-nin",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-15",
+  "features": {
+    "advanced-medical-research": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learning and creating Medical jutsu takes half the time and no lifestyle Ryo; a newly created Medical jutsu's final cost is reduced by its rank."
+        }
+      ]
+    },
+    "amplified-ascension-adept-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eD38JfgZSRHjiv",
+          "type": "effect",
+          "label": "Vital Transference",
+          "activation": "action",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Vital Transference",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "The first time each turn an ally damages it with an attack, that ally regains HP equal to the Medical-Nin's Channeled Healing bonus.",
+                "label": "Vital Transference"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eJLblMQNlT18Oe",
+          "type": "roll",
+          "label": "Condition Break",
+          "activation": "action",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Allies within 20 ft lose all ranks of one condition of your choice of B-Rank or lower (A-Rank or lower from 18th level)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Healing Surge maximum becomes 5 (on Healing Ascension). Only while in your Ascension state."
+        }
+      ]
+    },
+    "avatar-of-the-reaper-reaper": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two creatures can be cursed at once, sharing one Hex (a third replaces the oldest). Bonus Action once per turn: swap the Hex on every cursed and Gravetouched creature."
+        },
+        {
+          "key": "note",
+          "text": "Reapers Hex: healing and temporary HP or CP it would get goes to you; at 0 HP or CP it erupts: enemies within 15 ft make a Cha save, 6d6 necrotic and chakra damage (half on a success); allies within 15 ft regain 4d6 HP."
+        }
+      ]
+    },
+    "black-lotus-bloom-black-medicine": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bloom (Action, 3 Blight): 1-minute, 30-ft aura. Creatures of your choice starting their turn in it or entering it make a Con save vs your Ninjutsu DC (disadvantage if Blighted); on a failure, each turn in it: 1 rank of Envenomed or Corroded, resistances and immunities suppressed, no HP regained."
+        }
+      ]
+    },
+    "bladed-chakra-scalpel": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5eyFswov67CyNWO",
+          "type": "effect",
+          "label": "Coat your hands",
+          "effect": {
+            "name": "Chakra Scalpel",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "text": "Attack action attacks become melee Ninjutsu attacks."
+        },
+        {
+          "id": "n5eBiZjyh3dSEaL1",
+          "type": "attack",
+          "label": "Chakra Scalpel",
+          "attack": {
+            "discipline": "nin",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8 + @scale.medicalNin.channeledHealing",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "chakra-enhanced-combat-combat-medic": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Chakra Enhanced Combat"
+        },
+        {
+          "key": "note",
+          "text": "Battle Medic (Fortitude Amp; the d12 Unarmed die and the critical range are on its effect): Taijutsu of D-Rank or lower gain the Medical keyword (C from 6th, B from 10th); starting a turn at half HP or less, regain your Channeled Healing bonus."
+        },
+        {
+          "key": "note",
+          "text": "A critical hit with an Unarmed Attack may deal [Unarmed Damage] + [Unarmed Damage] instead. With Bladed Chakra Scalpel, unarmed damage is piercing and a result 10+ over the AC inflicts 1 rank of Bruised."
+        }
+      ]
+    },
+    "channeled-healing": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Channeled Healing",
+          "auto": true,
+          "oncePerTurn": true,
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresHealing": true
+          },
+          "heal": {
+            "formula": "@scale.medicalNin.channeledHealing",
+            "pool": "hp"
+          }
+        }
+      ]
+    },
+    "chimeric-mutation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Penalties: Aberration (disadvantage on checks using the five senses; no jutsu bonuses), Demonic (first damage each turn: Con save or Dazed), Monstrosity (−1 to hit per creature within 10 ft when more than one)."
+        },
+        {
+          "key": "note",
+          "text": "Enhancements: Aberration (resistance to psychic, immune to Mental conditions), Demonic (once per turn, + Channeled Healing bonus to jutsu damage), Monstrosity (advantage on the first d20 each turn for checks and attacks)."
+        }
+      ]
+    },
+    "condition-override": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When cast, a Medical jutsu's Physical or Elemental condition can be replaced with Weakened or Bruised. Transfigured creatures can't save with advantage against your Medical jutsu's conditions."
+        }
+      ]
+    },
+    "entropic-combatant-reaper": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Entropic Combatant"
+        },
+        {
+          "key": "note",
+          "text": "Bladed Chakra Scalpel can coat a weapon: add your Channeled Healing bonus instead of the ability modifier, and it deals slashing damage."
+        },
+        {
+          "key": "note",
+          "text": "Once per turn, a Chain Bukijutsu against a cursed creature can use a Chain 1 or 2 effect regardless of the chain rank."
+        }
+      ]
+    },
+    "expert-combatant-combat-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Byakugou Seal maximum 6 (on Yin Seal: Storage). Unarmed attacks gain Deadly 2; unarmed and Taijutsu attacks Pierce 4; a creature within 5 ft that misses you with a melee attack gives you advantage on your next melee attack against it."
+        }
+      ]
+    },
+    "gifted-healer-adept-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Treat Wounds with a Medicine Kit: a Critical Healing recovers 2 spent kit charges. Emergency Stabilization with a Medicine Kit takes a Bonus Action."
+        }
+      ]
+    },
+    "healing-ascension": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "healingSurges",
+          "label": "Healing Surges",
+          "value": 0,
+          "max": "lvl(2:3,10:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5er1SNeiSzTtZiY",
+          "type": "effect",
+          "label": "Enter Ascension",
+          "effect": {
+            "name": "Ascension",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "ascension",
+            "ampType": "will"
+          },
+          "activation": "bonus",
+          "text": "In combat; 10 minutes of meditation before reuse."
+        },
+        {
+          "id": "n5eQ3McmY6fBJZ6w",
+          "type": "roll",
+          "label": "Gain a Healing Surge",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "When a jutsu you cast restores HP or grants temporary HP."
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5exGIhFUWvYfJVG",
+          "type": "effect",
+          "label": "Battle Surge",
+          "activation": "action",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Battle Surge",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Spend in place of 1 of your class or subclass special resource (once every other turn).",
+                "label": "Battle Surge"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eqVVQMECdZe0uG",
+          "type": "roll",
+          "label": "Healing Burst",
+          "activation": "bonus",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Willing allies of your choice within 20 ft regain 1 of their Hit Dice + their Con modifier (2 Hit Dice from 10th level), without spending them; not at 0 HP."
+          }
+        },
+        {
+          "id": "n5ekPuRfTZWQxdv7",
+          "type": "roll",
+          "label": "Vitality Guard",
+          "activation": "reaction",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "An ally within 30 ft who takes damage gains resistance to that damage."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Healing Surges: max 3 (5 from 10th level, Amplified Ascension)."
+        },
+        {
+          "key": "note",
+          "text": "Ascension: once entered, not again until 10 minutes of uninterrupted meditation."
+        }
+      ]
+    },
+    "healing-overflow-adept-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezDqG3vHGehwUQ",
+          "type": "effect",
+          "label": "Overflow Recovery",
+          "activation": "bonus",
+          "cost": {
+            "pool": "healingSurges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Overflow",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Spend when making a saving throw: +1d4 to it, then remove this (once every other turn).",
+                "label": "Overflow"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Only while in your Ascension state."
+        }
+      ]
+    },
+    "hematoxic-touch": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Hematoxic Touch (+rank damage)",
+          "auto": true,
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "damage": {
+            "formula": "@rankValue"
+          },
+          "actionEffect": "Hematoxic Touch: reroll"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Hematoxic Touch: reroll",
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "rerollBelow",
+              "selector": "damage",
+              "value": 2,
+              "label": "Hematoxic Touch"
+            }
+          ]
+        }
+      ]
+    },
+    "hexing-expansion-reaper": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Also available when cursing: Devouring Hex (its first chakra-costing jutsu each turn costs your Channeled Healing bonus more; one fewer concentration jutsu) and Executioner's Hex (once per turn when you take damage, it takes that much necrotic damage, ignoring resistance and immunity)."
+        }
+      ]
+    },
+    "jashins-harvest-reaper": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2WCWZiQuB1DwJ",
+          "type": "save",
+          "label": "Jashin's Harvest",
+          "activation": "reaction",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "nin",
+              "formula": ""
+            },
+            "onSuccess": "half",
+            "fourTier": false,
+            "resave": false,
+            "tiers": {
+              "critSuccess": "",
+              "success": "",
+              "failure": "",
+              "critFailure": ""
+            }
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(10:7d6,18:9d6)",
+                "type": "chakra"
+              }
+            ],
+            "pierce": 0,
+            "ignoreDR": false
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when a cursed or Gravetouched hostile creature casts a jutsu within 15 ft: hostile creatures within 15 ft of it save. If any fail, willing creatures of your choice within 20 ft regain CP equal to your Channeled Healing bonus. Then every curse and Gravetouched mark ends."
+        }
+      ]
+    },
+    "malignant-harmony-black-medicine": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blight maximum 5 (on Toxic Chakra). The 2-Blight versions of Septic Detonation, Rotting Pulse and Malignant Barrier are on those buttons."
+        }
+      ]
+    },
+    "martial-competency": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency with Unarmed-property weapons and heavy armor; one unarmed attack as a Bonus Action; Wisdom may replace Dexterity for AC; choose a Taijutsu Stance."
+        }
+      ]
+    },
+    "medical-domain": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "domainCharges",
+          "label": "Domain Charges",
+          "value": 0,
+          "max": "lvl(3:4,11:5,17:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            },
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5ejZoHz8TBlY1cW",
+          "type": "roll",
+          "label": "Sustain Life",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "activation": "action",
+          "roll": {
+            "formula": "",
+            "note": "Touch a willing creature: it regains CP equal to one of its Chakra Dice + its Con modifier, without spending the die (in combat)."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Preserve Life (1 Domain Charge)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresHealing": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "actionEffect": "Preserve Life",
+          "note": "Healing dice equal to the rank are maximized. In combat only; not on undead or constructs."
+        },
+        {
+          "label": "Take Life (1 Domain Charge)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "damage": {
+            "formula": "5 + @level"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "name": "Preserve Life",
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "maximizeDice",
+              "selector": "healing",
+              "value": "@rankValue",
+              "label": "Preserve Life"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Sustain Life restores one of the target's Chakra Dice + its Con modifier: roll it from the target's sheet (the die isn't spent). In combat only; not on undead or constructs."
+        },
+        {
+          "key": "note",
+          "text": "Take Life adds 5 + your Medical-Nin level; @level is your character level (the same unless you multiclass)."
+        }
+      ]
+    },
+    "medical-domain-mending-spark-adept-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euDUkBGs823vU0",
+          "type": "effect",
+          "label": "Mending Spark",
+          "activation": "bonus",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Mending Spark",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Regains HP equal to the Medical-Nin's Channeled Healing bonus at the start of each of its turns; ends at 0 HP. One instance at a time.",
+                "label": "Mending Spark"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Only while in your Ascension state; you concentrate on it as on a C-Rank jutsu."
+        }
+      ]
+    },
+    "medical-domain-plague-doctor-black-medicine": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Plague Doctor (1 Domain Charge)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "note": "On the jutsu's failed save (or a Con save vs your Ninjutsu DC, −2 if Envenomed or Corroded): until the end of your next turn, one resistance lost, DR 0, or one immunity treated as resistance (two if Blighted)."
+        }
+      ]
+    },
+    "medical-domain-reapers-verdict-reaper": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekYb4hwNg1I6eu",
+          "type": "effect",
+          "label": "Reapers Verdict",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Gravetouched",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Cursed as by Curse of the Reaper (choose a Hex) for 1 minute or until it dies; a new curse doesn't end it.",
+                "label": "Gravetouched"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Weapon Damage] or Grim jutsu damage to a Gravetouched creature adds: Vitality Hex, willing creatures within 20 ft regain your Channeled Healing bonus; Tributing Hex, its next jutsu before your next turn costs that much more; Withering Hex, its penalties apply to your jutsu too."
+        }
+      ]
+    },
+    "medical-domain-strength-of-100-combat-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eN2sSu6xIW8uGD",
+          "type": "effect",
+          "label": "Enter Battle Medic: Strength of 100",
+          "activation": "bonus",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Battle Medic: Strength of 100",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.unarmed.die",
+                "value": "2d12",
+                "mode": 0
+              },
+              {
+                "key": "n5e.critRange.unarmed",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.critRange.tai",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.mastery.save.str",
+                "value": "Strength of 100",
+                "mode": 0
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "battleMedic",
+            "exclusive": "battleMedic",
+            "ampType": "fortitude"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use instead of Enter Battle Medic: Unarmed die 2d12 and a rank of Mastery on Strength saves are on the effect. At the table: the rank of Mastery on Strength checks; constructs and structures are vulnerable to your [Unarmed Damage]; once per turn an unarmed hit pushes 10 ft (not upward)."
+        }
+      ]
+    },
+    "medical-domain-strength-of-1000-combat-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZRHn8sxRVeORk",
+          "type": "effect",
+          "label": "Enter Battle Medic: Strength of 1000",
+          "activation": "bonus",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Battle Medic: Strength of 1000",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.unarmed.die",
+                "value": "2d12",
+                "mode": 0
+              },
+              {
+                "key": "n5e.critRange.unarmed",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.critRange.tai",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.mastery.save.str",
+                "value": "Strength of 1000",
+                "mode": 0
+              },
+              {
+                "key": "n5e.mastery.save.str",
+                "value": "Strength of 1000 (2)",
+                "mode": 0
+              },
+              {
+                "key": "n5e.dr",
+                "value": "@scale.medicalNin.channeledHealing",
+                "mode": 0
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "battleMedic",
+            "exclusive": "battleMedic",
+            "ampType": "fortitude"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use instead of Enter Battle Medic; also spend 2 Byakugou Seals. 2d12 Unarmed die, 2 ranks of Mastery on Strength saves and DR equal to your Channeled Healing bonus are on the effect; the rest is as Strength of 100."
+        }
+      ]
+    },
+    "medical-domain-transmuted-transmuter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUB6ZpBBydFA72",
+          "type": "effect",
+          "label": "Transmuted",
+          "activation": "bonus",
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Transmuted",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Allies within 20 ft, until the start of your next turn, one designation: Lion (a rank of Mastery on attacks, +1 critical range), Dog (+2 AC within 10 ft of an ally), Bear (advantage on Str and Con saves), Deer (Int and Wis), Rabbit (Dex and Cha).",
+                "label": "Transmuted"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "medical-perfection-supreme-medic": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Life Pulse (2 Domain Charges)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresHealing": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Life Pulse",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Physical condition: regains 4d6 HP and 2d6 CP at the start of each of its turns; saves and checks to end conditions at advantage.",
+                "label": "Life Pulse"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Hemorrhage Vitality (2 Domain Charges)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Hemorrhage Vitality",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Physical condition: takes 6d6 necrotic and 6d6 chakra damage at the start of each of its turns; can't regain HP; its other Physical conditions can't be removed; Con save vs your Ninjutsu DC at the end of each of its turns ends it. Treated as S-Rank.",
+                "label": "Hemorrhage Vitality"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Life Pulse needs concentration as an S-Rank jutsu and a DC 25 Chakra Control check at the start of each of your turns; losing it ends Life Pulse on everyone. In combat only."
+        },
+        {
+          "key": "note",
+          "text": "The per-turn healing and damage of Life Pulse and Hemorrhage Vitality are rolled at the table."
+        }
+      ]
+    },
+    "medical-release": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Medical Release: Wisdom",
+          "changes": [
+            {
+              "key": "n5e.keywordAbility.medical",
+              "value": "wis",
+              "mode": 0
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Medical jutsu use Wisdom for their attack and save DC when it is higher (automated); damage that adds an ability modifier uses it at the table."
+        },
+        {
+          "key": "note",
+          "text": "Medicine checks can use Intelligence or Wisdom."
+        },
+        {
+          "key": "note",
+          "text": "Medicine Mastery ranks at 1st, 8th and 12th level come from level-up."
+        }
+      ]
+    },
+    "metachirurgical-mastery-transmuter": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Medical jutsu's Physical condition can be replaced with Transfiguration."
+        }
+      ]
+    },
+    "mystical-palm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eH9eAYRGEThcZl",
+          "type": "effect",
+          "label": "Mystical Palm",
+          "effect": {
+            "name": "Mystical Palm",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "activation": "bonus",
+          "text": "For your next Medicine Kit activity."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Medicine Kit benefits (Light and Heavy Patch Up, Adrenaline Injection) are applied when you use the kit."
+        }
+      ]
+    },
+    "nerve-shredder-black-medicine": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damaging a creature through a failed save against your jutsu: it can't take reactions and has disadvantage on attacks until the end of its next turn; Blighted, its speed is also halved."
+        }
+      ]
+    },
+    "never-on-the-front-lines": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Within 10 ft of a hostile creature: Dash or Disengage as a Bonus Action; from 15th level, Dodge too."
+        }
+      ]
+    },
+    "over-heal-adept-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Healing past full HP gives temporary HP equal to half the excess (all of it in Ascension); once per 10 minutes per creature."
+        }
+      ]
+    },
+    "poisonous-touch-black-medicine": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bladed Chakra Scalpel can deal acid or poison damage, and you can attack with it as a Bonus Action while it lasts."
+        },
+        {
+          "key": "note",
+          "text": "Virulent Dance (Action, 1 Blight, Scalpel active): one melee Ninjutsu attack against every creature in reach; on a hit, Scalpel damage and a Con save or 1 rank of Envenomed or Blighted."
+        }
+      ]
+    },
+    "reapers-arsenal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e87aMDOepv0hMx",
+          "type": "effect",
+          "label": "Curse of the Reaper",
+          "effect": {
+            "name": "Curse of the Reaper",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Cursed (Mental condition), with the Hex chosen when marked. One creature at a time (two from 18th level).",
+                "label": "Curse of the Reaper"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency with martial Power and Polearm weapons and the Kama, Kusarigama, Scythe and Triple-Bladed Scythe (these count as Power and Polearm, not Blade); choose Power, Great Weapon, Polearm or Two-Weapon Stance."
+        },
+        {
+          "key": "note",
+          "text": "Mark with the curse when you damage a creature with a weapon attack or a Grim jutsu."
+        },
+        {
+          "key": "note",
+          "text": "Vitality Hex: once per turn when it takes necrotic damage, you or an ally within 20 ft gain temporary HP equal to your Channeled Healing bonus. Tributing Hex: necrotic damage also deals chakra damage equal to that bonus; once per turn your chakra damage gives you or an ally temporary CP equal to it. Withering Hex: −1 to its saves against others' jutsu and effects (−2 at 10th, −3 at 18th)."
+        }
+      ]
+    },
+    "reapers-techniques": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Reapers Techniques: cast as a Bonus Action",
+          "appliesTo": {
+            "namePrefix": "Grim",
+            "activation": "action",
+            "maxRank": "lvl(2:D,10:C,18:B)"
+          },
+          "castAs": "bonus",
+          "note": "Not cast as an Action on the same turn."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The listed Grim jutsu are learned at their levels and don't count against jutsu known."
+        }
+      ]
+    },
+    "rejuvenating-rest": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5eE0OzZPbGqSWle",
+          "type": "roll",
+          "label": "Rejuvenating Rest",
+          "roll": {
+            "formula": "lvl(1:1d6,5:2d6,10:3d6,15:4d6)",
+            "note": "Add to the HP you and your allies regain at the end of a Short Rest."
+          }
+        }
+      ]
+    },
+    "soul-draining-reaper": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a Grim jutsu that deals damage heals you for half the damage dealt (half the damage rolled against several creatures)."
+        }
+      ]
+    },
+    "talented-support": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Talented Support: 4 temporary HP (no conditions)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ]
+          },
+          "heal": {
+            "formula": "4",
+            "pool": "tempHp"
+          }
+        },
+        {
+          "label": "Talented Support: cost −rank (target has a condition)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ]
+          },
+          "costDelta": "-rank"
+        }
+      ]
+    },
+    "tenets-of-medicine": {
+      "status": "none"
+    },
+    "toxic-chakra": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "blight",
+          "label": "Blight",
+          "value": 0,
+          "max": "lvl(2:3,10:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eINiZy4ltCUhJt",
+          "type": "roll",
+          "label": "Gain Blight",
+          "cost": {
+            "pool": "blight",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Bonus Action, or when you inflict Envenomed or Corroded."
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5egk2RfFnqCBtd8",
+          "type": "roll",
+          "label": "Septic Detonation",
+          "activation": "action",
+          "cost": {
+            "pool": "blight",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "A creature with Envenomed takes 1d12 poison damage per rank of Envenomed. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
+          }
+        },
+        {
+          "id": "n5eNVsBtHLZgAyIO",
+          "type": "effect",
+          "label": "Malignant Barrier",
+          "activation": "bonus",
+          "cost": {
+            "pool": "blight",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Malignant Barrier",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "note",
+                "text": "The first creature to make a melee attack against you gains 1 rank of Corroded (10th level, 2 Blight: up to twice per turn).",
+                "label": "Malignant Barrier"
+              }
+            ]
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Rotting Pulse (1 Blight)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "blight",
+            "amount": 1
+          },
+          "note": "A save jutsu: its damage becomes poison or necrotic and creatures that fail become Blighted (10th level, 2 Blight: Envenomed or Corroded creatures save at disadvantage)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Malignant Aura: from rolling initiative to the end of the encounter. Gain Blight once per turn (Bonus Action, or inflicting Envenomed or Corroded). Max 3 (5 from 10th level)."
+        },
+        {
+          "key": "note",
+          "text": "Blighted (Elemental condition): can't gain jutsu bonuses to AC or damage; an Envenomed one can't take Bonus Actions; a Corroded one takes poison damage equal to your Channeled Healing bonus from attacks once per turn; it can spend its Action retching to end it."
+        }
+      ]
+    },
+    "toxic-tongue-black-medicine": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Toxic Tongue: Corroded immunity",
+          "changes": [
+            {
+              "key": "system.traits.conditionImmune",
+              "value": "corroded",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Immune to Corroded (on the effect; it blocks the condition when the Condition resistance rule is on). At the table: your poison and acid damage ignores resistance; immunity to Poisoned; crafting a poison with a Poison Kit is at advantage."
+        }
+      ]
+    },
+    "transfigured-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erhSBMR4ScyCd5",
+          "type": "effect",
+          "label": "Transfigure an ally",
+          "effect": {
+            "name": "Transfigured",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "ampType": "fortitude"
+          },
+          "activation": "bonus",
+          "text": "One ally at a time; pick its designation from the Transfiguration box."
+        },
+        {
+          "id": "n5e3evV0iMX8BAIp",
+          "type": "save",
+          "label": "Transfigure an enemy",
+          "activation": "bonus",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": []
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose the biological designation when applying it; one ally at a time (a new one ends the oldest); an enemy saves (Con vs your Ninjutsu DC) each time, and transfiguring it again extends it by 1 round."
+        }
+      ]
+    },
+    "transmogrified-biology-transmuter": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Transfiguring a hostile creature, you can concentrate on it (no chakra cost) for up to 1 minute."
+        },
+        {
+          "key": "note",
+          "text": "Sage Beast designation. Enhancement: regain your Channeled Healing bonus at the start of each turn (temporary HP at full HP), +2 critical range, once per turn spend half your movement to teleport 60 ft. Penalty: necrotic damage equal to the Channeled Healing bonus at the start of its turns; casting a jutsu, a d20 roll of 5 or more raises its cost by that bonus."
+        }
+      ]
+    },
+    "transmutation-transmuter": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bladed Chakra Scalpel can deal necrotic damage with a 10-ft range; once per turn its damage forces a Con save vs your Ninjutsu DC: 1 rank of Weakened and Transfigured."
+        },
+        {
+          "key": "note",
+          "text": "With Mystical Palm active, an ally you transfigure gets two designations."
+        }
+      ]
+    },
+    "transmuted-self-transmuter": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Transfiguring yourself, choose up to two benefits; once every 10 minutes."
+        }
+      ]
+    },
+    "until-their-heart-stops": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature other than you healed by your jutsu while it has a Mental, Physical or Elemental condition makes its next save or check to end that condition with a rank of Mastery."
+        }
+      ]
+    },
+    "vital-conductor-adept-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus Action after a Medical jutsu damages a hostile creature or heals an ally: mark one with Vital Thread (one at a time; 1 minute, or until it ends a turn over 120 ft away)."
+        },
+        {
+          "key": "note",
+          "text": "Ally: when your jutsu heals it or gives it temporary HP, +10 ft speed it can use at once, without provoking (once per rest per ally); in Ascension it also reduces the first damage it takes each turn by your Channeled Healing bonus."
+        },
+        {
+          "key": "note",
+          "text": "Hostile: casting a jutsu where you can see it, Con save vs your Ninjutsu DC or 1 rank of Slowed until the end of its turn; a success breaks the thread (not while you're in Ascension)."
+        }
+      ]
+    },
+    "yin-seal-burst-combat-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Iron Rose Spear (in place of an attack, 2 seals): melee Taijutsu attack for [Unarmed Damage] ×2 + 2d12; Str save vs your Taijutsu or Ninjutsu DC or pushed 30 ft and Staggered."
+        },
+        {
+          "key": "note",
+          "text": "Magnolia Hammer (in place of an attack, 2 seals): creatures within 15 ft make a Dex save; on a failure [Unarmed Damage] ×2 + 2d6, Prone and Dazed; half damage on a success."
+        }
+      ]
+    },
+    "yin-seal-release-combat-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Byakugou Seal maximum 8 (on Yin Seal: Storage)."
+        },
+        {
+          "key": "note",
+          "text": "Tiger Lily Drive (Action, 3 seals): 60-ft line; Dex save or [Unarmed Damage] ×3 + 3d6, pushed 20 ft, Prone, and standing takes all its movement (half on a success)."
+        },
+        {
+          "key": "note",
+          "text": "Camellia Rupture (in place of an attack, 3 seals): melee Taijutsu attack for [Unarmed Damage] ×3 + 3d12, ignoring resistance (immunity as resistance); Con save or Stunned until the end of its next turn."
+        },
+        {
+          "key": "note",
+          "text": "Orchid Pulse (Bonus Action, 3 seals): willing creatures within 20 ft gain temporary HP equal to twice your Channeled Healing bonus, end one condition, and are immune to Bruised, Bleed, Dazed, Slowed, Blinded or Stunned until the end of your next turn."
+        }
+      ]
+    },
+    "yin-seal-storage": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "byakugouSeals",
+          "label": "Byakugou Seals",
+          "value": 0,
+          "max": "lvl(2:4,10:6,18:8)",
+          "die": "d12",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest10m",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eDaLPUkOQJtgKM",
+          "type": "effect",
+          "label": "Enter Battle Medic",
+          "effect": {
+            "name": "Battle Medic",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.unarmed.die",
+                "value": "1d12",
+                "mode": 0
+              },
+              {
+                "key": "n5e.critRange.unarmed",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.critRange.tai",
+                "value": "lvl(2:1,10:2)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "battleMedic",
+            "ampType": "fortitude",
+            "exclusive": "battleMedic"
+          },
+          "activation": "bonus",
+          "text": "In combat; 10 minutes before reuse."
+        },
+        {
+          "id": "n5eXI03N7KKpJhJ5",
+          "type": "roll",
+          "label": "Spend a Byakugou Seal",
+          "cost": {
+            "pool": "byakugouSeals",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Crimson Lotus Missile and the other Battle Medic techniques."
+          }
+        },
+        {
+          "id": "n5eBseNJQSB8hoDd",
+          "type": "roll",
+          "label": "Regain a Byakugou Seal",
+          "cost": {
+            "pool": "byakugouSeals",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a melee unarmed or Taijutsu critical hit."
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Regain 1 Byakugou Seal on a critical hit with a melee unarmed or Taijutsu attack (once per turn); all after 10 minutes of meditation. Max 4 (6 from 10th, 8 from 18th level)."
+        },
+        {
+          "key": "note",
+          "text": "Crimson Lotus Missile: add the spent seal to a single-attack Taijutsu's damage; that creature and those within 5 ft make a Str save vs your Taijutsu or Ninjutsu DC or are knocked Prone and Dazed."
+        },
+        {
+          "key": "note",
+          "text": "Cherry Blossom Rush (Reaction, after damage from an attack or jutsu): move up to the seal roll × 5 ft, then cast a 1-Action Taijutsu."
+        }
+      ]
+    }
+  }
+}

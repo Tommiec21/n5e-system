@@ -146,10 +146,10 @@ export function castPlan(actor, item, sel = {}) {
     Object.assign(update, pyro);
   }
   // Action economy: mark the slot this cast uses; warn when it's already spent this turn.
-  // Quickened Ninjutsu: 1 Action -> Bonus Action; Reactive Ninjutsu: 1 Action -> Reaction.
-  const ids = new Set(used.map(o => o.system?.identifier));
-  const castAs = j.activation?.type === "action" && ids.has("quickened-ninjutsu") ? "bonus"
-    : j.activation?.type === "action" && ids.has("reactive-ninjutsu") ? "reaction" : j.activation?.type;
+  // STD6d: a Molding or cast option with flags.n5e.castAs / castAs changes a 1-Action casting to a
+  // Bonus Action or Reaction (Quickened, Reactive, Reapers Techniques).
+  const asked = [...used.map(o => o.flags?.n5e?.castAs), ...(fx.castAs ?? [])].find(v => ["bonus", "reaction"].includes(v));
+  const castAs = j.activation?.type === "action" && asked ? asked : j.activation?.type;
   const slot = economySlot(castAs);
   if ( slot && rule("actionEconomy") ) {
     if ( actor.flags?.n5e?.economy?.[slot] ) warnings.push(`Your ${slot === "bonus" ? "Bonus Action" : slot[0].toUpperCase() + slot.slice(1)} is already used this turn`);

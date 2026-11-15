@@ -33,13 +33,56 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e2WCWZiQuB1DwJ",
+        "type": "save",
+        "label": "Jashin's Harvest",
+        "activation": "reaction",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "nin",
+            "formula": ""
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "resave": false,
+          "tiers": {
+            "critSuccess": "",
+            "success": "",
+            "failure": "",
+            "critFailure": ""
+          }
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(10:7d6,18:9d6)",
+              "type": "chakra"
+            }
+          ],
+          "pierce": 0,
+          "ignoreDR": false
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when a cursed or Gravetouched hostile creature casts a jutsu within 15 ft: hostile creatures within 15 ft of it save. If any fail, willing creatures of your choice within 20 ft regain CP equal to your Channeled Healing bonus. Then every curse and Gravetouched mark ends."
+        }
+      ]
     }
   },
   "ownership": {

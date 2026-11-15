@@ -13,11 +13,14 @@
  *   n5e.attack.<disc>             +attack bonus (disc, or weapon | unarmed for weapon and unarmed attacks)
  *   n5e.damage.<weapon|unarmed>   +damage on weapon or unarmed attacks
  *   n5e.disciplineAbility.<disc>  sets the discipline's ability (value: ability key)
+ *   n5e.keywordAbility.<keyword>  jutsu with this keyword may use this ability when it is higher (STD6d;
+ *                                 Medical Release: medical = wis)
  *   n5e.saveTier.shift            moves four-tier results by N steps (+/-)
  *   n5e.concentration.max         +max concentration jutsu
  *   n5e.upkeep.<scope>            upkeep change (number), same scopes as cost
  *   n5e.dice.all                  bonus/penalty to all dice rolls
  *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
+ *   n5e.unarmed.die               the Unarmed damage die becomes this when larger (value: "1d12", "2d12"; STD6d Battle Medic)
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
  *   n5e.resist / n5e.immune       adds a damage resistance or immunity (value: damage type; NPC3 Freeform Jutsu)
@@ -39,8 +42,8 @@ export const CHANGE_KEY_PREFIX = "n5e.";
  */
 export function emptyModifiers() {
   return {
-    mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, reinforced: 0, resist: [], immune: [], unknown: []
+    mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], furyMax: 0, reinforced: 0, resist: [], immune: [], unknown: []
   };
 }
 
@@ -99,10 +102,17 @@ export function parseN5eChanges(changes) {
         break;
       }
       case "disciplineAbility": if ( sub ) out.disciplineAbility[sub] = String(change.value); break;
+      case "keywordAbility": if ( sub ) out.keywordAbility[sub] = [...new Set([...(out.keywordAbility[sub] ?? []), String(change.value)])]; break;
       case "saveTier": out.saveTierShift += num(change.value); break;
       case "concentration": out.concentrationMax += num(change.value); break;
       case "dice": out.diceAll += num(change.value); break;
-      case "unarmed": if ( /^\d*d\d+$/.test(String(change.value).trim()) ) out.unarmedDice.push(String(change.value).trim()); break;
+      case "unarmed": {
+        const v = String(change.value).trim();
+        if ( !/^\d*d\d+$/.test(v) ) break;
+        if ( sub === "die" ) out.unarmedDie.push(v);
+        else out.unarmedDice.push(v);
+        break;
+      }
       case "fury": out.furyMax += num(change.value); break;
       case "reinforced": out.reinforced += num(change.value); break;
       default: out.unknown.push(key);
@@ -157,12 +167,14 @@ export function changeKeyCatalog(N5E) {
     add("Discipline", `n5e.attack.${d}`, `${discLabel(d)} attack: + number`);
     add("Discipline", `n5e.disciplineAbility.${d}`, `${discLabel(d)} ability: value = str|dex|con|int|wis|cha`);
   }
+  add("Discipline", "n5e.keywordAbility.medical", "Jutsu with the keyword (here Medical) may use this ability when higher: value = str|dex|con|int|wis|cha");
   for ( const s of ["weapon", "unarmed"] ) {
     add("Weapons", `n5e.attack.${s}`, `${s === "weapon" ? "Weapon" : "Unarmed"} attacks: + number`);
     add("Weapons", `n5e.damage.${s}`, `${s === "weapon" ? "Weapon" : "Unarmed"} damage: + number`);
   }
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
   add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");
+  add("Damage", "n5e.unarmed.die", "Unarmed damage die becomes this when larger (value e.g. 1d12)");
   add("Defense", "n5e.reinforced", "Reinforced: + number to armor's Reinforced; without it, Reinforced = Taijutsu modifier");
   add("Bukijutsu", "n5e.fury.max", "Max Fury: + number (Fury stacks up to 1 + this)");
   add("Rolls", "n5e.saveTier.shift", "Four-tier save results: shift up (+1) or down (−1)");

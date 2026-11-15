@@ -31,7 +31,40 @@
     "tags": [],
     "resourcePools": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eVegDUUGQ4EGOk",
+      "name": "Medical Release: Wisdom",
+      "type": "generic",
+      "img": "icons/svg/regen.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.keywordAbility.medical",
+          "value": "wis",
+          "mode": 0,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eIjrdZ8yNGnuUj.n5eVegDUUGQ4EGOk"
+    }
+  ],
   "folder": "n5eYgOe92Qkev1iA",
   "sort": 0,
   "ownership": {
@@ -39,7 +72,22 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Medical jutsu use Wisdom for their attack and save DC when it is higher (automated); damage that adds an ability modifier uses it at the table."
+        },
+        {
+          "key": "note",
+          "text": "Medicine checks can use Intelligence or Wisdom."
+        },
+        {
+          "key": "note",
+          "text": "Medicine Mastery ranks at 1st, 8th and 12th level come from level-up."
+        }
+      ]
     }
   },
   "_stats": {

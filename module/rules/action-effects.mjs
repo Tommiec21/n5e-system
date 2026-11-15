@@ -11,11 +11,13 @@
  */
 
 /** The action effects of the items chosen for an action: [{id, origin, label, rules}]. */
-export function actionEffectsOf(items) {
+export function actionEffectsOf(items, { only = new Map() } = {}) {
   const out = [];
   for ( const item of items ?? [] ) {
+    const names = only.get?.(item?.id);
     for ( const effect of [...(item?.effects ?? [])] ) {
       if ( effect?.flags?.n5e?.applyTo !== "action" ) continue;
+      if ( names?.length && !names.includes(effect.name) ) continue;
       const rules = (Array.isArray(effect.flags.n5e.rules) ? effect.flags.n5e.rules : []).filter(r => r && typeof r === "object");
       out.push({ id: `${item.id}.${effect.id ?? effect._id}`, origin: item.name, label: effect.name || item.name, rules: structuredClone(rules) });
     }
@@ -69,7 +71,7 @@ export function describeElement(e = {}) {
     case "autoSucceed": return `${what}: automatic success`;
     case "reroll": return `Reroll ${what} (keep the ${e.mode === "lower" ? "lower" : e.mode === "higher" ? "higher" : "new"} result)`;
     case "critRange": return `Critical range +${Number(e.value) || 0} on ${what}`;
-    case "maximizeDice": return `${Number(e.value) || 0} die maximized on ${what}`;
+    case "maximizeDice": return typeof e.value === "string" && e.value.includes("@rankValue") ? `Dice maximized (as many as ${e.value.replace(/@rankValue/g, "the cast rank")}) on ${what}` : `${Number(e.value) || 0} die maximized on ${what}`;
     case "minimumDie": return `Each die at least ${Number(e.value) || 0} on ${what}`;
     case "critAbilityMod": return `A critical hit adds the ability modifier ${Number(e.value) || 0} more time${Number(e.value) === 1 ? "" : "s"} on ${what}`;
     case "rerollBelow": return `Reroll dice of ${Number(e.value) || 0} or less once on ${what}`;

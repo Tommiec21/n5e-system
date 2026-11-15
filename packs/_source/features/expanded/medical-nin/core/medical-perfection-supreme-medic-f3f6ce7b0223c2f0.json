@@ -39,7 +39,74 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Life Pulse needs concentration as an S-Rank jutsu and a DC 25 Chakra Control check at the start of each of your turns; losing it ends Life Pulse on everyone. In combat only."
+        },
+        {
+          "key": "note",
+          "text": "The per-turn healing and damage of Life Pulse and Hemorrhage Vitality are rolled at the table."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Life Pulse (2 Domain Charges)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresHealing": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Life Pulse",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Physical condition: regains 4d6 HP and 2d6 CP at the start of each of its turns; saves and checks to end conditions at advantage.",
+                "label": "Life Pulse"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Hemorrhage Vitality (2 Domain Charges)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Hemorrhage Vitality",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Physical condition: takes 6d6 necrotic and 6d6 chakra damage at the start of each of its turns; can't regain HP; its other Physical conditions can't be removed; Con save vs your Ninjutsu DC at the end of each of its turns ends it. Treated as S-Rank.",
+                "label": "Hemorrhage Vitality"
+              }
+            ]
+          }
+        }
+      ]
     }
   },
   "ownership": {

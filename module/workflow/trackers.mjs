@@ -354,7 +354,10 @@ const evalNumber = expr => {
  * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
 export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null } = {}) {
-  const sub = v => resolveFormula(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0)), actor);
+  // STD6d: class table values (@scale.medicalNin.channeledHealing) resolve from the caster's roll data.
+  const rollData = actor.getRollData?.() ?? {};
+  const scale = v => v.replace(/@scale\.([\w.]+)/g, (m, p) => String(p.split(".").reduce((o, k) => o?.[k], rollData.scale) ?? 0));
+  const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))), actor);
   const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");

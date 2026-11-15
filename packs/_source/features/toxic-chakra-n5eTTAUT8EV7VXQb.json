@@ -34,7 +34,7 @@
         "id": "blight",
         "label": "Blight",
         "value": 0,
-        "max": "3",
+        "max": "lvl(2:3,10:5)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -65,16 +65,41 @@
         "oncePerTurn": true
       },
       {
-        "id": "n5eXvLsF3nvtlKN7",
+        "id": "n5egk2RfFnqCBtd8",
         "type": "roll",
-        "label": "Spend Blight",
+        "label": "Septic Detonation",
+        "activation": "action",
         "cost": {
           "pool": "blight",
           "amount": 1
         },
         "roll": {
           "formula": "",
-          "note": "Septic Detonation and the other Blight abilities (Ninjutsu save DC)."
+          "note": "A creature with Envenomed takes 1d12 poison damage per rank of Envenomed. 10th level, 2 Blight: creatures within 20 ft of it make a Con save, taking the same damage (half on a success)."
+        }
+      },
+      {
+        "id": "n5eNVsBtHLZgAyIO",
+        "type": "effect",
+        "label": "Malignant Barrier",
+        "activation": "bonus",
+        "cost": {
+          "pool": "blight",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Malignant Barrier",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "note",
+              "text": "The first creature to make a melee attack against you gains 1 rank of Corroded (10th level, 2 Blight: up to twice per turn).",
+              "label": "Malignant Barrier"
+            }
+          ]
         }
       }
     ]
@@ -87,7 +112,32 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Malignant Aura: from rolling initiative to the end of the encounter. Gain Blight once per turn (Bonus Action, or inflicting Envenomed or Corroded). Max 3 (5 from 10th level)."
+        },
+        {
+          "key": "note",
+          "text": "Blighted (Elemental condition): can't gain jutsu bonuses to AC or damage; an Envenomed one can't take Bonus Actions; a Corroded one takes poison damage equal to your Channeled Healing bonus from attacks once per turn; it can spend its Action retching to end it."
+        }
+      ],
+      "castOption": {
+        "label": "Rotting Pulse (1 Blight)",
+        "appliesTo": {
+          "keywords": [
+            "medical"
+          ],
+          "requiresDamage": true
+        },
+        "cost": {
+          "pool": "blight",
+          "amount": 1
+        },
+        "note": "A save jutsu: its damage becomes poison or necrotic and creatures that fail become Blighted (10th level, 2 Blight: Envenomed or Corroded creatures save at disadvantage)."
+      }
     }
   },
   "_stats": {

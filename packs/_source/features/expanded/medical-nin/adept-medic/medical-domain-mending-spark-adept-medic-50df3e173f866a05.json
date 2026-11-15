@@ -33,13 +33,46 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5euDUkBGs823vU0",
+        "type": "effect",
+        "label": "Mending Spark",
+        "activation": "bonus",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Mending Spark",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Regains HP equal to the Medical-Nin's Channeled Healing bonus at the start of each of its turns; ends at 0 HP. One instance at a time.",
+              "label": "Mending Spark"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Only while in your Ascension state; you concentrate on it as on a C-Rank jutsu."
+        }
+      ]
     }
   },
   "ownership": {

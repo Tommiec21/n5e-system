@@ -34,7 +34,7 @@
         "id": "byakugouSeals",
         "label": "Byakugou Seals",
         "value": 0,
-        "max": "4",
+        "max": "lvl(2:4,10:6,18:8)",
         "die": "d12",
         "steps": [],
         "step": 0,
@@ -56,10 +56,28 @@
         "effect": {
           "name": "Battle Medic",
           "target": "self",
-          "changes": [],
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "1d12",
+              "mode": 0
+            },
+            {
+              "key": "n5e.critRange.unarmed",
+              "value": "lvl(2:1,10:2)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.critRange.tai",
+              "value": "lvl(2:1,10:2)",
+              "mode": 2
+            }
+          ],
           "expires": "",
           "seconds": 60,
-          "state": "battleMedic"
+          "state": "battleMedic",
+          "ampType": "fortitude",
+          "exclusive": "battleMedic"
         },
         "activation": "bonus",
         "text": "In combat; 10 minutes before reuse."
@@ -103,7 +121,22 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Regain 1 Byakugou Seal on a critical hit with a melee unarmed or Taijutsu attack (once per turn); all after 10 minutes of meditation. Max 4 (6 from 10th, 8 from 18th level)."
+        },
+        {
+          "key": "note",
+          "text": "Crimson Lotus Missile: add the spent seal to a single-attack Taijutsu's damage; that creature and those within 5 ft make a Str save vs your Taijutsu or Ninjutsu DC or are knocked Prone and Dazed."
+        },
+        {
+          "key": "note",
+          "text": "Cherry Blossom Rush (Reaction, after damage from an attack or jutsu): move up to the seal roll × 5 ft, then cast a 1-Action Taijutsu."
+        }
+      ]
     }
   },
   "_stats": {

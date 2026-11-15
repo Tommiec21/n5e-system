@@ -33,13 +33,45 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ekYb4hwNg1I6eu",
+        "type": "effect",
+        "label": "Reapers Verdict",
+        "cost": {
+          "pool": "domainCharges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Gravetouched",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Cursed as by Curse of the Reaper (choose a Hex) for 1 minute or until it dies; a new curse doesn't end it.",
+              "label": "Gravetouched"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Weapon Damage] or Grim jutsu damage to a Gravetouched creature adds: Vitality Hex, willing creatures within 20 ft regain your Channeled Healing bonus; Tributing Hex, its next jutsu before your next turn costs that much more; Withering Hex, its penalties apply to your jutsu too."
+        }
+      ]
     }
   },
   "ownership": {

@@ -34,7 +34,7 @@
         "id": "healingSurges",
         "label": "Healing Surges",
         "value": 0,
-        "max": "3",
+        "max": "lvl(2:3,10:5)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -81,16 +81,55 @@
         "oncePerTurn": true
       },
       {
-        "id": "n5eIKBHCCstQKxsq",
+        "id": "n5exGIhFUWvYfJVG",
+        "type": "effect",
+        "label": "Battle Surge",
+        "activation": "action",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Battle Surge",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Spend in place of 1 of your class or subclass special resource (once every other turn).",
+              "label": "Battle Surge"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eqVVQMECdZe0uG",
         "type": "roll",
-        "label": "Spend a Healing Surge",
+        "label": "Healing Burst",
+        "activation": "bonus",
         "cost": {
           "pool": "healingSurges",
           "amount": 1
         },
         "roll": {
           "formula": "",
-          "note": "Battle Surge and the other Surge abilities."
+          "note": "Willing allies of your choice within 20 ft regain 1 of their Hit Dice + their Con modifier (2 Hit Dice from 10th level), without spending them; not at 0 HP."
+        }
+      },
+      {
+        "id": "n5ekPuRfTZWQxdv7",
+        "type": "roll",
+        "label": "Vitality Guard",
+        "activation": "reaction",
+        "cost": {
+          "pool": "healingSurges",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "An ally within 30 ft who takes damage gains resistance to that damage."
         }
       }
     ]
@@ -103,7 +142,18 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Healing Surges: max 3 (5 from 10th level, Amplified Ascension)."
+        },
+        {
+          "key": "note",
+          "text": "Ascension: once entered, not again until 10 minutes of uninterrupted meditation."
+        }
+      ]
     }
   },
   "_stats": {

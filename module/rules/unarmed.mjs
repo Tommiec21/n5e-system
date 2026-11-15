@@ -48,12 +48,16 @@ export function unarmedSpec(actor) {
     const abilityOk = !alt.ability || sys.disciplines?.tai?.ability === alt.ability;
     if ( has && abilityOk ) die = alt.die;
   }
+  // STD6d: effects that set the die (n5e.unarmed.die: Battle Medic's d12): the largest average wins.
+  const avg = d => { const m = String(d).match(/^(\d*)d(\d+)$/); return m ? (Number(m[1] || 1) * (Number(m[2]) + 1)) / 2 : Number(d) || 0; };
+  let fromEffect = false;
+  for ( const d of sys.modifiers?.unarmedDie ?? [] ) if ( avg(d) > avg(die) ) { die = d; fromEffect = true; }
   const type = st.unarmedType || "bludgeoning";
   const extra = [...(sys.modifiers?.unarmedDice ?? [])];
   const ability = unarmedAbility(actor);
   const mod = sys.abilities?.[ability]?.mod ?? 0;
   const formula = `${die}${extra.map(d => ` + ${d}`).join("")}${mod ? ` ${mod < 0 ? "-" : "+"} ${Math.abs(mod)}` : ""}`;
-  return { die, type, extra, mod, ability, formula, source: stance && die !== "1" ? stance.name : "" };
+  return { die, type, extra, mod, ability, formula, source: fromEffect ? "Effect" : stance && die !== "1" ? stance.name : "" };
 }
 
 /** Die ladder for stepping: d4 > d6 > d8 > d10 > d12 (capped at both ends). */

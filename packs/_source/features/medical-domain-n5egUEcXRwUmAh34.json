@@ -56,19 +56,6 @@
     ],
     "activities": [
       {
-        "id": "n5exOzaenr9dAqI5",
-        "type": "roll",
-        "label": "Preserve Life",
-        "cost": {
-          "pool": "domainCharges",
-          "amount": 1
-        },
-        "roll": {
-          "formula": "",
-          "note": "Healing dice equal to the jutsu's rank are treated as their maximum (in combat; not undead or constructs)."
-        }
-      },
-      {
         "id": "n5ejZoHz8TBlY1cW",
         "type": "roll",
         "label": "Sustain Life",
@@ -81,28 +68,45 @@
           "formula": "",
           "note": "Touch a willing creature: it regains CP equal to one of its Chakra Dice + its Con modifier, without spending the die (in combat)."
         }
-      },
-      {
-        "id": "n5e744PdmnN1HzeW",
-        "type": "damage",
-        "label": "Take Life",
-        "damage": {
-          "parts": [
-            {
-              "formula": "5 + @level",
-              "type": ""
-            }
-          ]
-        },
-        "cost": {
-          "pool": "domainCharges",
-          "amount": 1
-        },
-        "text": "Added to a Medical jutsu's damage."
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e8hjMvTUrqOZCx",
+      "name": "Preserve Life",
+      "type": "generic",
+      "img": "icons/svg/heal.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "maximizeDice",
+              "selector": "healing",
+              "value": "@rankValue",
+              "label": "Preserve Life"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5egUEcXRwUmAh34.n5e8hjMvTUrqOZCx"
+    }
+  ],
   "folder": "n5eYgOe92Qkev1iA",
   "sort": 0,
   "ownership": {
@@ -110,7 +114,51 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Sustain Life restores one of the target's Chakra Dice + its Con modifier: roll it from the target's sheet (the die isn't spent). In combat only; not on undead or constructs."
+        },
+        {
+          "key": "note",
+          "text": "Take Life adds 5 + your Medical-Nin level; @level is your character level (the same unless you multiclass)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Preserve Life (1 Domain Charge)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresHealing": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "actionEffect": "Preserve Life",
+          "note": "Healing dice equal to the rank are maximized. In combat only; not on undead or constructs."
+        },
+        {
+          "label": "Take Life (1 Domain Charge)",
+          "appliesTo": {
+            "keywords": [
+              "medical"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "domainCharges",
+            "amount": 1
+          },
+          "damage": {
+            "formula": "5 + @level"
+          }
+        }
+      ]
     }
   },
   "_stats": {

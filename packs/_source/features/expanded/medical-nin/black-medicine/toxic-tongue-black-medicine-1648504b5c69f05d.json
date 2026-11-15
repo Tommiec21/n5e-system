@@ -35,11 +35,51 @@
     "resourcePools": [],
     "advancement": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eN5YnZUVl3oaND",
+      "name": "Toxic Tongue: Corroded immunity",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.traits.conditionImmune",
+          "value": "corroded",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!1648504b5c69f05d.n5eN5YnZUVl3oaND"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Immune to Corroded (on the effect; it blocks the condition when the Condition resistance rule is on). At the table: your poison and acid damage ignores resistance; immunity to Poisoned; crafting a poison with a Poison Kit is at advantage."
+        }
+      ]
     }
   },
   "ownership": {
