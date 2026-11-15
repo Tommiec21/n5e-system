@@ -19,7 +19,9 @@
 const list = value => value ? Array.from(value) : [];
 
 export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvantage", "autoFail", "autoSucceed", "reroll",
-  "maximizeDice", "minimumDie", "critRange", "damage", "damageHandling", "addRanks", "inflict", "effect", "resource", "note"];
+  "maximizeDice", "minimumDie", "critRange", "damage", "damageHandling", "addRanks", "inflict", "effect", "resource", "note",
+  // STD3: "can't gain advantage" (removes advantage sources) and a cost-reduction cap on casting.
+  "noAdvantage", "costReduction"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
@@ -114,10 +116,16 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
 export function mergeHandling(into, e) {
   const h = into ?? { ignoreResistance: false, immunityAsResistance: false, drMultiplier: 1 };
   if ( e.ignoreResistance ) h.ignoreResistance = true;
+  if ( e.resistAll ) h.resistAll = true;
   if ( e.immunityAsResistance ) h.immunityAsResistance = true;
   const m = Number(e.drMultiplier);
   if ( Number.isFinite(m) && m >= 0 ) h.drMultiplier = Math.min(h.drMultiplier, m);
   return h;
+}
+
+/** STD3: may cost reductions apply to this creature's casts? (A costReduction element of 0 says no.) */
+export function costReductionAllowed(actor) {
+  return !gatherElements(actor, { kind: "cast", type: "cast" }).some(g => g.element.key === "costReduction" && Number(g.element.value) === 0);
 }
 
 /** Dice changes on a formula: the first `maximize` dice rolled at their maximum, every die at least `minimum`. */
@@ -212,7 +220,10 @@ export function contextualAdvantage(actor, spec, target = null, extra = []) {
   const out = { advantage: [], disadvantage: [] };
   for ( const { element, label } of gatherElements(actor, spec, target, extra) ) {
     if ( ["advantage", "disadvantage"].includes(element.key) ) out[element.key].push(label);
+    if ( element.key === "noAdvantage" ) out.blocked = true;
   }
+  if ( out.blocked ) out.advantage = [];
+  delete out.blocked;
   return out;
 }
 

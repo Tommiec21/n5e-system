@@ -1,4 +1,4 @@
-/** ADV1: advantage/disadvantage sources and automatic save failures. */
+/** ADV1: advantage/disadvantage sources and automatic save failures (STD3: read from the condition entries). */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { advantageSources, resolveMode, sourcesNote } from "../../module/rules/advantage.mjs";
@@ -14,13 +14,13 @@ test("counting: any advantage and any disadvantage cancel; the click counts as o
 });
 
 test("attacks: attacker and target conditions and states", () => {
-  const blind = who({ flags: { attacksWithDisadvantage: true, attackedWithAdvantage: true } });
+  const blind = who({ statuses: ["blinded"] });
   assert.deepEqual(advantageSources({ roller: blind, kind: "attack" }).disadvantage, ["Blinded"]);
-  assert.deepEqual(advantageSources({ roller: who({ flags: { attacksWithDisadvantage: true }, senses: { blindsight: 10 } }), kind: "attack" }).disadvantage, [], "Blindsight ignores Blinded");
+  assert.deepEqual(advantageSources({ roller: who({ statuses: ["blinded"], senses: { blindsight: 10 } }), kind: "attack" }).disadvantage, [], "Blindsight ignores Blinded");
   const prone = who({ statuses: ["prone"] });
   assert.deepEqual(advantageSources({ roller: who(), target: prone, kind: "attack" }).advantage, ["Target Prone"]);
   assert.deepEqual(advantageSources({ roller: who(), target: prone, kind: "attack", ranged: true }).disadvantage, ["Target Prone"]);
-  const invisible = who({ flags: { attacksWithAdvantage: true, attackedWithDisadvantage: true } });
+  const invisible = who({ statuses: ["invisible"] });
   assert.deepEqual(advantageSources({ roller: invisible, target: who(), kind: "attack" }).advantage, ["Invisible"]);
   assert.deepEqual(advantageSources({ roller: invisible, target: who({ senses: { trueSight: 30 } }), kind: "attack" }).advantage, [], "True Sight sees it");
   assert.deepEqual(advantageSources({ roller: who(), target: invisible, kind: "attack" }).disadvantage, ["Target Invisible"]);
@@ -28,19 +28,19 @@ test("attacks: attacker and target conditions and states", () => {
   assert.deepEqual(advantageSources({ roller: who(), target: who({ statuses: ["dodging", "stunned"] }), kind: "attack" }).disadvantage, [], "no Dodge while incapacitated");
   assert.deepEqual(advantageSources({ roller: who({ statuses: ["restrained"] }), target: who({ statuses: ["restrained"] }), kind: "attack" }),
     { advantage: ["Target Restrained"], disadvantage: ["Restrained"], autoFail: null, consume: [] });
-  const dazzled = who({ flags: { noAttackAdvantage: true } });
+  const dazzled = who({ statuses: ["dazzled"] });
   assert.deepEqual(advantageSources({ roller: dazzled, target: prone, kind: "attack" }).advantage, [], "Dazzled can't gain advantage");
-  assert.deepEqual(advantageSources({ roller: who({ flags: { disadvantagePhysical: true } }), kind: "attack", ability: "dex" }).disadvantage, ["Staggered"]);
-  assert.deepEqual(advantageSources({ roller: who({ flags: { disadvantagePhysical: true } }), kind: "attack", ability: "int" }).disadvantage, []);
+  assert.deepEqual(advantageSources({ roller: who({ statuses: ["staggered"] }), kind: "attack", ability: "dex" }).disadvantage, ["Staggered"]);
+  assert.deepEqual(advantageSources({ roller: who({ statuses: ["staggered"] }), kind: "attack", ability: "int" }).disadvantage, []);
 });
 
 test("saves: automatic failures, Blinded and Dodging", () => {
-  assert.equal(advantageSources({ roller: who({ flags: { autoFailSaves: ["str", "dex"] } }), kind: "save", ability: "dex" }).autoFail, "Petrified");
-  assert.equal(advantageSources({ roller: who({ flags: { autoFailSaves: ["str", "dex"] } }), kind: "save", ability: "wis" }).autoFail, null);
+  assert.equal(advantageSources({ roller: who({ statuses: ["petrified"] }), kind: "save", ability: "dex" }).autoFail, "Petrified");
+  assert.equal(advantageSources({ roller: who({ statuses: ["petrified"] }), kind: "save", ability: "wis" }).autoFail, null);
   assert.equal(advantageSources({ roller: who({ statuses: ["stunned"] }), kind: "save", ability: "str" }).autoFail, "Stunned");
   assert.equal(advantageSources({ roller: who({ statuses: ["stunned"] }), kind: "save", ability: "con" }).autoFail, null);
   assert.equal(advantageSources({ roller: who({ statuses: ["unconscious"] }), kind: "save", ability: "wis" }).autoFail, "Unconscious");
-  assert.deepEqual(advantageSources({ roller: who({ flags: { disadvantageSaves: ["dex", "int", "wis"] } }), kind: "save", ability: "int" }).disadvantage, ["Blinded"]);
+  assert.deepEqual(advantageSources({ roller: who({ statuses: ["blinded"] }), kind: "save", ability: "int" }).disadvantage, ["Blinded"]);
   assert.deepEqual(advantageSources({ roller: who({ statuses: ["dodging"] }), kind: "save", ability: "dex" }).advantage, ["Dodging"]);
 });
 

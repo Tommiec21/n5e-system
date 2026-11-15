@@ -653,3 +653,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | ChatMessage `flags.n5e.roll.consumed [{elementId, rollerUuid}]` | Uses a roll spent from its card |
 | ChatMessage `flags.n5e.damage.handling` | Damage handling for when the damage is applied (replaces `piercing`) |
 | `tools/hardcoding-allowlist.json` | Content names still in engine code (to be emptied by STD batches) |
+
+## Added in 0.43.0-alpha.1 (STD3)
+
+| Path | Meaning |
+| --- | --- |
+| `config/conditions.mjs` entry `rules` | What the condition or state does to rolls and damage (rule elements; `against` = rolls aimed at its creature) |
+| `config/conditions.mjs` entry `cast` | `{blocked}`, `{components, reason}` or `{maxComponents, reason}` casting limits |
+| Rule element keys `noAdvantage`, `costReduction`; fields `endsOnUse`, `damageHandling.resistAll` | STD3 additions |
+| Predicate options `ability:<key>`, `range:melee` / `range:ranged`, `self:sense:<key>` / `target:sense:<key>` | Read by condition elements |

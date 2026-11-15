@@ -11,12 +11,12 @@
  *   - Chakra Suppression Tag (FIN2b): no Ninjutsu or Genjutsu below the tag's rank (any listed discipline).
  *   - Ability score requirement (B 16 / A 18 / S 20; not Hijutsu) and the highest rank for the level.
  */
+import { conditionCastProblems } from "./condition-elements.mjs";
 import { rankOrder } from "../config/core.mjs";
 import { maxRankForLevel } from "./progression.mjs";
 import { caughtBy } from "./cast-discipline.mjs";
 import { tagsOn, suppressionBlocks } from "./jutsu-defense.mjs";
 
-const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const kw = item => (item.system?.keywords instanceof Set ? item.system.keywords : new Set(item.system?.keywords ?? []));
 
 /** Components this jutsu uses (count for Slowed). */
@@ -38,16 +38,10 @@ export function castBlockers(actor, item, { rank, discipline = "", scroll = fals
   const problems = [];
   const statuses = actor.statuses ?? new Set();
   const flags = actor.system?.conditionPenalties?.flags ?? {};
-  const has = s => statuses.has?.(s);
   const comps = jutsuComponents(item);
 
-  if ( flags.incapacitated || has("incapacitated") || has("stunned") || has("unconscious") ) problems.push("Incapacitated: can't take actions or Mold Chakra");
-  const handsBound = has("grappled") || has("restrained");
-  if ( comps.includes("hs") && handsBound ) problems.push("Hand Seals need free hands (Grappled or Restrained)");
-  if ( comps.includes("hs") && list(flags.noComponents).includes("hs") ) problems.push("Confused: can't use Hand Seals");
-  if ( comps.includes("cs") && handsBound ) problems.push("Chakra Seals need free hands (Grappled or Restrained)");
-  if ( comps.includes("m") && handsBound ) problems.push("Mobility needs movement (Grappled or Restrained)");
-  if ( Number.isFinite(flags.maxComponents) && comps.length > flags.maxComponents ) problems.push(`Slowed: can't cast a jutsu with more than ${flags.maxComponents} components (this one has ${comps.length})`);
+  // STD3: casting limits are data on each condition and state (config/conditions.mjs `cast`).
+  problems.push(...conditionCastProblems({ statuses }, comps));
   if ( flags.maxAttackOrJutsuPerTurn && actor.flags?.n5e?.economy?.attackOrJutsu ) problems.push("Shocked: already made an attack or cast a jutsu this turn");
   const sealed = flags["has.sealed"] ?? 0;
   if ( flags.noTeleportAtRanks && sealed >= flags.noTeleportAtRanks && /\bteleport/i.test(String(item.system?.description ?? "")) ) problems.push(`Sealed ${sealed}: can't teleport`);

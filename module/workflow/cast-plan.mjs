@@ -10,13 +10,14 @@ import { resourceChange } from "../rules/resources.mjs";
  *     limit, one current jutsu must end.
  *   - Chain and Combo/Finisher update (rules/cast-tracking).
  */
+import { costReductionAllowed } from "../rules/elements.mjs";
 import { castUpdates } from "../rules/cast-tracking.mjs";
 import { resourceCost } from "../rules/resource-cost.mjs";
 import { rankValue } from "../rules/progression.mjs";
 import { economySlot } from "../rules/turn-start.mjs";
 import { castBlockers } from "../rules/cast-checks.mjs";
 import { rule } from "../rules-settings.mjs";
-import { availableCastOptions, applyCastOptions, hasState, pyroclasmGain } from "../rules/cast-options.mjs";
+import { availableCastOptions, applyCastOptions, pyroclasmGain } from "../rules/cast-options.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
 import { resolveCastDiscipline } from "../rules/cast-discipline.mjs";
 
@@ -48,7 +49,8 @@ export function castPlan(actor, item, sel = {}) {
 
   // Feature cast options.
   const now = sel.now ?? null;
-  const crash = hasState(actor, "crash");
+  // STD3: "no cost reduction" is a costReduction element of 0 (the Crash state's effect carries it).
+  const crash = !costReductionAllowed(actor);
   const available = availableCastOptions(actor, item, effectiveActivities(item), now, { discipline });
   const chosen = sel.featureOptions ?? available.filter(o => o.auto && !o.used).map(o => ({ id: o.id }));
   const fx = applyCastOptions(actor, item, chosen, available, rank);

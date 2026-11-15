@@ -224,9 +224,9 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
       total: roll.total, targets: spec.kind === "attack" ? attackTargetSnapshot() : undefined,
       source: source || undefined, consumed: usedOnCard.length ? spentBy(usedOnCard, actor.uuid) : undefined, onSuccess: onSuccess || undefined, effect: effect !== "" && effect != null ? String(effect) : undefined, name: actor.name }, ...(card ? { card } : {}) } }
   });
-  // Help is spent by the roll it helped.
-  if ( sources.consume.includes("helped") && actor.isOwner && actor.statuses?.has("helped") ) {
-    await actor.toggleStatusEffect?.("helped", { active: false });
+  // Conditions and states that end on use (STD3: endsOnUse on the entry; Help) end with this roll.
+  for ( const status of sources.consume ?? [] ) {
+    if ( actor.isOwner && actor.statuses?.has(status) ) await actor.toggleStatusEffect?.(status, { active: false });
   }
   await awardWillOfFire(actor, result);
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
@@ -301,7 +301,8 @@ export async function spendWillOfFire(message, how) {
  */
 /** Plain facts the advantage rules read (rules/advantage.mjs). */
 function rollFacts(actor) {
-  return { flags: actor?.system?.conditionPenalties?.flags ?? {}, statuses: actor?.statuses ?? new Set(), senses: actor?.system?.senses ?? {} };
+  return { flags: actor?.system?.conditionPenalties?.flags ?? {}, statuses: actor?.statuses ?? new Set(), senses: actor?.system?.senses ?? {},
+    encumbered: !!actor?.system?.inventory?.encumbered };
 }
 
 /**

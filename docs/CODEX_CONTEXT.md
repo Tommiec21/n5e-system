@@ -453,3 +453,6 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - `npm run check` runs `tools/check-hardcoding.mjs`: never add a pack identifier as a string literal in `module/`. Model the behaviour as data (rule elements, action effects) instead. The allowlist only shrinks.
 - Rule elements v2: an element acts from the actor only when `actsFromActor` (direction self, scope not action, no `on`). Card elements reach rolls through `rollWithSpec(..., { source })` → `workflow/action-effects.mjs cardActionContext`.
 - `damagePlan` takes `handling` (not `piercing`).
+
+## STD3 — Claude, 2026-11-15 (published 0.43.0-alpha.1)
+- A condition's or state's effect on rolls, damage or casting goes on its entry in `config/conditions.mjs` (`rules`, `cast`), never in `advantage.mjs`, `cast-checks.mjs` or `damage.mjs` (a test checks those files name no condition).

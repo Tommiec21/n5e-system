@@ -113,7 +113,7 @@ test("cast options: Chakra Compression, Crash, Warfare, Hellrend, Pyroclasm gain
   assert.equal(compressed.cost, Math.max(0, base - 1), "D-Rank: −1");
   assert.ok(compressed.update[`flags.n5e.optionTurn.${cc.id}`], "once per turn");
   // Crash: the state turns on its damage option (auto) and stops cost reduction.
-  a.effects.push({ id: "crash", type: "generic", disabled: false, flags: { n5e: { state: "crash" } } });
+  a.effects.push({ id: "crash", type: "generic", disabled: false, flags: { n5e: { state: "crash", rules: [{ key: "costReduction", selector: "cast", value: 0, label: "Crash" }] } } });
   const crashOpts = availableCastOptions(a, j, [], now);
   const crash = crashOpts.find(o => o.label === "Crash: bonus damage");
   assert.ok(crash?.auto);

@@ -21,6 +21,9 @@
  *   immunityFrom    immunities that also grant immunity to this condition
  *   group       "compelled" for the three Compelled conditions
  *   icon        token status icon
+ *   rules       rule elements (STD3): what it does to rolls and damage, read by rules/condition-elements.mjs
+ *               ("against" elements act on rolls aimed at the creature that has it)
+ *   cast        casting limits (STD3): {blocked: reason} | {components: [keys], reason} | {maxComponents, reason}
  *
  * Adding a condition: add an entry here. It appears on the token HUD and in the rail's Add list, its
  * penalties apply through rules/conditions.mjs, jutsu text that names it gets Apply buttons
@@ -69,7 +72,12 @@ export const conditions = {
   petrified: {
     label: "Petrified", tags: ["elemental"], maxRanks: null, persists: true, icon: "icons/svg/stoned.svg",
     flags: { incapacitated: true, cannotMove: true, cannotSpeak: true, unaware: true, attackedWithAdvantage: true,
-      autoFailSaves: ["str", "dex"], resistAll: true, weightMultiplier: 10 }
+      autoFailSaves: ["str", "dex"], resistAll: true, weightMultiplier: 10 },
+    rules: [
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Petrified" },
+      { key: "autoFail", selector: "save", predicate: { any: ["ability:str", "ability:dex"] }, label: "Petrified" },
+      { key: "damageHandling", selector: "damage", direction: "against", resistAll: true, label: "Petrified" }],
+    cast: { blocked: "Incapacitated: can't take actions or Mold Chakra" }
   },
   bruised: {
     label: "Bruised", tags: ["physical"], maxRanks: null, icon: "icons/svg/bones.svg",
@@ -79,7 +87,8 @@ export const conditions = {
   staggered: {
     label: "Staggered", tags: ["physical"], maxRanks: null, endsAt: "nextTurnEnd", icon: "icons/svg/falling.svg",
     flags: { noDisengage: true, noDash: true, noDodge: true, disadvantagePhysical: true,
-      dispelsKeywords: ["dojutsu", "sensory"] }
+      dispelsKeywords: ["dojutsu", "sensory"] },
+    rules: [{ key: "disadvantage", selector: ["attack", "save", "check"], predicate: { any: ["ability:str", "ability:dex", "ability:con"] }, label: "Staggered" }]
   },
   bleed: {
     label: "Bleed", tags: ["physical"], maxRanks: 5, persists: true, icon: "icons/svg/blood.svg",
@@ -117,12 +126,14 @@ export const conditions = {
   },
   confused: {
     label: "Compelled: Confused", tags: ["mental"], group: "compelled", maxRanks: null, endsAt: "nextTurnEnd",
-    icon: "icons/svg/mystery-man.svg", flags: { noComponents: ["hs"] }
+    icon: "icons/svg/mystery-man.svg", flags: { noComponents: ["hs"] },
+    cast: { components: ["hs"], reason: "Confused: can't use {components}" }
   },
   slowed: {
     label: "Slowed", tags: ["mental", "physical", "elemental"], maxRanks: null, endsAt: "nextTurnEnd",
     icon: "icons/svg/cowled.svg",
-    flags: { speedMultiplier: 0.5, noSpeedBonuses: true, noReactions: true, maxComponents: 2 }
+    flags: { speedMultiplier: 0.5, noSpeedBonuses: true, noReactions: true, maxComponents: 2 },
+    cast: { maxComponents: 2, reason: "Slowed" }
   },
   sealed: {
     label: "Sealed", tags: ["mental"], maxRanks: 5, persists: true, icon: "icons/svg/padlock.svg",
@@ -134,17 +145,25 @@ export const conditions = {
   blinded: {
     label: "Blinded", tags: ["sensory", "physical"], maxRanks: null, icon: "icons/svg/blind.svg",
     flags: { noDojutsu: true, disadvantageSaves: ["dex", "int", "wis"], attackedWithAdvantage: true,
-      attacksWithDisadvantage: true, ignoredBySenses: ["blindsight", "tremorSense", "chakraSensing"] }
+      attacksWithDisadvantage: true, ignoredBySenses: ["blindsight", "tremorSense", "chakraSensing"] },
+    rules: [
+      { key: "disadvantage", selector: "attack", label: "Blinded", predicate: { not: ["self:sense:blindsight", "self:sense:tremorSense", "self:sense:chakraSensing"] } },
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Blinded" },
+      { key: "disadvantage", selector: "save", label: "Blinded", predicate: { any: ["ability:dex", "ability:int", "ability:wis"] } }]
   },
   dazzled: {
     label: "Dazzled", tags: ["sensory"], maxRanks: 5, persists: true, icon: "icons/svg/sun.svg",
     perRank: { checksAndAttacks: -2 }, flags: { noAttackAdvantage: true, rangeMultiplier: 0.5, minRange: 5 },
+    rules: [{ key: "noAdvantage", selector: "attack", label: "Dazzled" }],
     removal: [{ action: "action", check: ["con"], dc: 15, ranks: "all" }]
   },
   invisible: {
     label: "Invisible", tags: ["sensory"], maxRanks: null, icon: "icons/svg/invisible.svg",
     flags: { attackedWithDisadvantage: true, attacksWithAdvantage: true, heavilyObscured: true,
-      seenBy: ["trueSight", "chakraSight"] }
+      seenBy: ["trueSight", "chakraSight"] },
+    rules: [
+      { key: "advantage", selector: "attack", label: "Invisible", predicate: { not: ["target:sense:trueSight", "target:sense:chakraSight"] } },
+      { key: "disadvantage", selector: "attack", direction: "against", label: "Target Invisible", predicate: { not: ["target:sense:trueSight", "target:sense:chakraSight"] } }]
   },
   deafened: {
     label: "Deafened", tags: ["sensory", "physical"], maxRanks: null, icon: "icons/svg/deaf.svg",
@@ -166,21 +185,43 @@ export const states = {
   surprised: { label: "Surprised", type: "circumstantial", icon: "icons/svg/hazard.svg" },
   inCombat: { label: "In Combat", type: "circumstantial", derived: true },
   engaged: { label: "Engaged", type: "circumstantial", relational: true, derived: true },
-  prone: { label: "Prone", type: "encounter", icon: "icons/svg/falling.svg" },
-  grappled: { label: "Grappled", type: "encounter", icon: "icons/svg/net.svg" },
-  restrained: { label: "Restrained", type: "encounter", icon: "icons/svg/net.svg", includes: ["grappled"] },
+  prone: { label: "Prone", type: "encounter", icon: "icons/svg/falling.svg",
+    rules: [
+      { key: "disadvantage", selector: "attack", label: "Prone" },
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Prone", predicate: "range:melee" },
+      { key: "disadvantage", selector: "attack", direction: "against", label: "Target Prone", predicate: "range:ranged" }] },
+  grappled: { label: "Grappled", type: "encounter", icon: "icons/svg/net.svg",
+    cast: { components: ["hs", "cs", "m"], reason: "{components} need free hands and movement (Grappled or Restrained)" } },
+  restrained: { label: "Restrained", type: "encounter", icon: "icons/svg/net.svg", includes: ["grappled"],
+    rules: [
+      { key: "disadvantage", selector: "attack", label: "Restrained" },
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Restrained" }],
+    cast: { components: ["hs", "cs", "m"], reason: "{components} need free hands and movement (Grappled or Restrained)" } },
   suffocating: { label: "Suffocating", type: "encounter", icon: "icons/svg/silenced.svg" },
-  incapacitated: { label: "Incapacitated", type: "encounter", icon: "icons/svg/paralysis.svg" },
-  stunned: { label: "Stunned", type: "encounter", icon: "icons/svg/daze.svg", includes: ["incapacitated"] },
+  incapacitated: { label: "Incapacitated", type: "encounter", icon: "icons/svg/paralysis.svg",
+    cast: { blocked: "Incapacitated: can't take actions or Mold Chakra" } },
+  stunned: { label: "Stunned", type: "encounter", icon: "icons/svg/daze.svg", includes: ["incapacitated"],
+    rules: [
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Stunned" },
+      { key: "autoFail", selector: "save", predicate: { any: ["ability:str", "ability:dex"] }, label: "Stunned" }],
+    cast: { blocked: "Incapacitated: can't take actions or Mold Chakra" } },
   unconscious: { label: "Unconscious", type: "encounter", icon: "icons/svg/unconscious.svg",
-    includes: ["incapacitated", "prone"] },
+    includes: ["incapacitated", "prone"],
+    rules: [
+      { key: "advantage", selector: "attack", direction: "against", label: "Target Unconscious" },
+      { key: "autoFail", selector: "save", label: "Unconscious" }],
+    cast: { blocked: "Incapacitated: can't take actions or Mold Chakra" } },
   stabilized: { label: "Stabilized", type: "encounter", icon: "icons/svg/regen.svg", includes: ["unconscious"] },
   dying: { label: "Dying", type: "encounter", icon: "icons/svg/skull.svg", includes: ["unconscious"] },
   dead: { label: "Dead", type: "encounter", icon: "icons/svg/skull.svg" },
   /** Dodge action (KB 03): attacks against it have disadvantage, advantage on Dex saves; ends at the start of its next turn (ADV1). */
-  dodging: { label: "Dodging", type: "encounter", icon: "icons/svg/wing.svg" },
+  dodging: { label: "Dodging", type: "encounter", icon: "icons/svg/wing.svg",
+    rules: [
+      { key: "disadvantage", selector: "attack", direction: "against", label: "Target Dodging", predicate: { not: ["self:status:incapacitated", "self:status:stunned", "self:status:unconscious", "self:status:grappled", "self:status:restrained", "self:status:petrified"] } },
+      { key: "advantage", selector: "save", label: "Dodging", predicate: { all: ["ability:dex"], not: ["self:status:incapacitated", "self:status:stunned", "self:status:unconscious", "self:status:grappled", "self:status:restrained", "self:status:petrified"] } }] },
   /** Help action (KB 03): advantage on its next attack or check, then it ends (ADV1). */
-  helped: { label: "Helped", type: "circumstantial", icon: "icons/svg/upgrade.svg" },
+  helped: { label: "Helped", type: "circumstantial", icon: "icons/svg/upgrade.svg",
+    rules: [{ key: "advantage", selector: ["attack", "check"], endsOnUse: true, label: "Helped" }] },
   /** Cover (KB 03, POS1): the GM marks it on the token; only the highest applies. */
   coverPartial: { label: "Partial Cover (+2)", type: "circumstantial", icon: "icons/svg/shield.svg" },
   coverHalf: { label: "Half Cover (+4)", type: "circumstantial", icon: "icons/svg/castle.svg" },
@@ -196,5 +237,6 @@ export const retiredConditions = ["frightened", "paralyzed", "poisoned"];
  * Derived (inventory) effects: computed, never a condition or state (King ruling: Encumbered).
  */
 export const derivedEffects = {
-  encumbered: { label: "Encumbered", speedMultiplier: 0.5, disadvantagePhysical: true }
+  encumbered: { label: "Encumbered", speedMultiplier: 0.5, disadvantagePhysical: true,
+    rules: [{ key: "disadvantage", selector: ["attack", "save", "check"], predicate: { any: ["ability:str", "ability:dex", "ability:con"] }, label: "Encumbered" }] }
 };

@@ -16,11 +16,11 @@ test("Bruised: +4 to the first HP damage type before DR", () => {
 });
 
 test("Petrified: resistance to all damage; immunity still wins; Half does not stack with it", () => {
-  const p = target({ flags: { resistAll: true } });
+  const p = { ...target(), statuses: new Set(["petrified"]) };
   assert.equal(damagePlan(p, [{ amount: 10, type: "fire" }, { amount: 7, type: "slashing" }]).health, 5 + 3);
   p.system.traits = { immune: new Set(["poison"]) };
   assert.equal(damagePlan(p, [{ amount: 10, type: "poison" }]).health, 0);
-  assert.equal(damagePlan(target({ flags: { resistAll: true } }), [{ amount: 10, type: "fire" }], { multiplier: 0.5 }).health, 5);
+  assert.equal(damagePlan({ ...target(), statuses: new Set(["petrified"]) }, [{ amount: 10, type: "fire" }], { multiplier: 0.5 }).health, 5);
 });
 
 test("Weakened and Exhaustion on dealt damage: first type first, never below 0", () => {

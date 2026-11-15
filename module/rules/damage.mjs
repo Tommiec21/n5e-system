@@ -14,6 +14,7 @@
  * at 0 HP = 1 death save failure (crit: 2). Most NPCs die at 0 (diesAtZero).
  */
 
+import { conditionDamageHandling } from "./condition-elements.mjs";
 import { rule } from "./settings.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -106,6 +107,8 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
     if ( used ) steps.push("DR " + dr + " per pool" + (flatReduction ? " (includes " + flatReduction + " Deflection)" : "") + ": −" + used);
   }
 
+  // Conditions that resist all damage (STD3: data on the condition, Petrified); off with ignoreTraits.
+  const resistAll = !ignoreTraits && conditionDamageHandling({ statuses: target?.statuses }).resistAll;
   // Resistance / vulnerability / immunity per type.
   parts = parts.map(p => {
     if ( !p.amount ) return p;
@@ -115,7 +118,7 @@ export function damagePlan(target, instances, { multiplier = 1, pierce = 0, igno
     }
     const immunityAsResistance = has(traits.immune, p.type) && !!handling?.immunityAsResistance;
     // Petrified: resistance to all damage.
-    const r = ((has(traits.resist, p.type) || !!pen.flags?.resistAll) && !handling?.ignoreResistance) || immunityAsResistance;
+    const r = ((has(traits.resist, p.type) || resistAll) && !handling?.ignoreResistance) || immunityAsResistance;
     const v = !immunityAsResistance && has(traits.vuln, p.type);
     // Equal sources do not stack; opposite Half/Double sources cancel (King 2026-11-09).
     const factors = new Set([multiplier, reactionMultiplier, ...(r ? [0.5] : []), ...(v ? [2] : [])]);

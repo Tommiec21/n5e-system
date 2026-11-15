@@ -31,13 +31,11 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/trackers.mjs:164`
 - `module/view-models/combat.mjs:346`
 
-### State checks named in code (3)
+### State checks named in code (1)
 
-- `module/dice/roll.mjs:228`
-- `module/workflow/cast-plan.mjs:51`
 - `module/workflow/trackers.mjs:64`
 
-### Condition mechanics named in engines (45)
+### Condition mechanics named in engines (33)
 
 - `module/canvas/flanking.mjs:8`
 - `module/canvas/visibility.mjs:17`
@@ -50,22 +48,10 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/config/condition-text.mjs:148`
 - `module/config/condition-text.mjs:160`
 - `module/config/condition-text.mjs:177`
-- `module/config/conditions.mjs:176`
+- `module/config/conditions.mjs:209`
 - `module/config/jutsu.mjs:58`
 - `module/config/jutsu.mjs:61`
-- `module/rules/advantage.mjs:25`
-- `module/rules/advantage.mjs:27`
-- `module/rules/advantage.mjs:41`
-- `module/rules/advantage.mjs:42`
-- `module/rules/advantage.mjs:47`
-- `module/rules/advantage.mjs:49`
-- `module/rules/advantage.mjs:50`
-- `module/rules/advantage.mjs:52`
-- `module/rules/advantage.mjs:61`
-- `module/rules/advantage.mjs:64`
 - `module/rules/authored-reactions.mjs:15`
-- `module/rules/cast-checks.mjs:44`
-- `module/rules/cast-checks.mjs:45`
 - `module/rules/concentration.mjs:10`
 - `module/rules/deflection.mjs:6`
 - `module/rules/jutsu-defense.mjs:37`
@@ -92,7 +78,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/activity-parse.mjs:128`
 - `module/rules/activity-parse.mjs:132`
 - `module/workflow/areas.mjs:267`
-- `module/workflow/cast-plan.mjs:52`
+- `module/workflow/cast-plan.mjs:54`
 - `module/workflow/cast.mjs:169`
 
 ## 3. Coverage per pack

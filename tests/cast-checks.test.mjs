@@ -15,11 +15,11 @@ test("components count and component blocks", () => {
   const hs = jutsu({ hs: true, cm: true });
   assert.deepEqual(castBlockers(caster(), hs), []);
   assert.match(castBlockers(caster({ statuses: ["grappled"] }), hs)[0], /Hand Seals need free hands/);
-  assert.match(castBlockers(caster({ flags: { noComponents: ["hs"] } }), hs)[0], /Confused/);
+  assert.match(castBlockers(caster({ statuses: ["confused"] }), hs)[0], /Confused/);
   assert.match(castBlockers(caster({ statuses: ["restrained"] }), jutsu({ m: true }))[0], /Mobility/);
   assert.match(castBlockers(caster({ statuses: ["stunned"] }), jutsu({ cm: true }))[0], /Incapacitated/);
-  assert.match(castBlockers(caster({ flags: { maxComponents: 2 } }), jutsu({ hs: true, cm: true, m: true }))[0], /Slowed/);
-  assert.deepEqual(castBlockers(caster({ flags: { maxComponents: 2 } }), hs), [], "two components are fine while Slowed");
+  assert.match(castBlockers(caster({ statuses: ["slowed"] }), jutsu({ hs: true, cm: true, m: true }))[0], /Slowed/);
+  assert.deepEqual(castBlockers(caster({ statuses: ["slowed"] }), hs), [], "two components are fine while Slowed");
 });
 
 test("Shocked, Sealed teleport, Blinded Dojutsu", () => {

@@ -315,3 +315,10 @@
 | --- | --- |
 | Precise Ninjutsu (advantage on the cast's attack), Heightened (one target, first save at disadvantage), Piercing (no resistance, immunity as resistance, half DR) | data: action effects in the features pack; engine: `rules/action-effects.mjs`, `rules/elements.mjs`, `rules/damage.mjs damagePlan({handling})` |
 | Rule elements v2 (directions, uses, targets, new keys) | `rules/elements.mjs`, `rules/effect-authoring.mjs` |
+
+## Conditions and states as data (STD3, 0.43.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Condition and state effects on rolls, damage and casting (Blinded, Restrained, Prone, Invisible, Petrified, Stunned, Unconscious, Dodging, Staggered, Dazzled, Helped, Encumbered, Grappled, Incapacitated, Confused, Slowed) | data: `config/conditions.mjs` `rules` and `cast`; reader: `rules/condition-elements.mjs` |
+| Crash: no cost reduction | data: Chakra Surge's Crash effect (`costReduction` 0); `rules/elements.mjs costReductionAllowed` |

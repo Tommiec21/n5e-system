@@ -1,3 +1,12 @@
+## 0.43.0-alpha.1 — STD3: conditions and states as data (King 2026-11-15: "Approved")
+
+No rule changes: what each condition and state does to rolls, damage and casting moved from code onto its own entry (`config/conditions.mjs`), so new conditions need no code.
+- **Rolls:** advantage, disadvantage and automatic failures from Blinded, Restrained, Prone, Invisible, Petrified, Stunned, Unconscious, Dodging, Staggered, Dazzled (can't gain advantage), Helped (ends after the roll) and Encumbered are rule elements on their entries; "against" elements act on attacks aimed at the creature. Predicates can now read the roll's ability, melee or ranged, and the senses of either creature (Blindsight, True Sight...).
+- **Damage:** Petrified's resistance to all damage is an element on Petrified.
+- **Casting:** Incapacitated, Stunned, Unconscious and Petrified block casting; Grappled and Restrained block Hand Seals, Chakra Seals and Mobility; Confused blocks Hand Seals; Slowed allows at most 2 components. All read from each entry's `cast` limits.
+- **Crash:** "no cost reduction" is a rule element on the Crash state's effect (Chakra Surge).
+- Not checked in a running Foundry world.
+
 ## 0.42.0-alpha.1 — Standardization STD0–STD2 (King 2026-11-15: "Approved. You can work on STD 0 - 2 all together.")
 
 - **STD0, the gate:** `npm run check` now fails when engine code names a piece of content (a feature, jutsu, clan, feat or item identifier). The 25 names still in code are listed in `tools/hardcoding-allowlist.json`; each later STD batch removes its own. `tools/report-std-audit.mjs` writes `docs/generated/std-audit.md`: those names, other content-driven code, and how much of each pack carries its mechanics as data.

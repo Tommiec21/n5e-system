@@ -1,6 +1,6 @@
 # STD3 function spec: conditions and states as data
 
-Status: **spec written 2026-11-15 (King: "Start."). Awaiting approval.**
+Status: **spec written 2026-11-15 (King: "Start."). Approved 2026-11-15; published `0.43.0-alpha.1`.**
 
 Plan: `docs/STD_SPEC.md`, batch STD3. The contract allows engine code to name a condition or state key (a generic concept); what moves to data is **what each one does to rolls, damage and casting**, so the GM can open it in game and new conditions need no code. **No rule changes:** every behaviour below is today's, moved from code into each condition's entry.
 
@@ -67,3 +67,7 @@ None about rules: this moves today's behaviour into data. Approve the mapping, o
 ## Progress log
 
 - 2026-11-15 Claude: spec written from the STD0 audit. Awaiting approval.
+- 2026-11-15 Claude: **built and published 0.43.0-alpha.1.**
+  - Readings: C1 was built as a reader of its own (`rules/condition-elements.mjs`: `activeEntries`, `factOptions`, `conditionRoll`, `conditionDamageHandling`, `conditionCastProblems`) rather than adding conditions to `ruleSources`, so a condition is never counted twice; `advantage.mjs advantageSources` delegates to it. The Crash element (`costReduction` 0) also keeps the "more than one Molding" allowance tied to it, as before. The cast reasons name the blocked components (`{components}`).
+  - Keys added: `noAdvantage`, `costReduction`; fields `endsOnUse`, `damageHandling.resistAll`. `damagePlan` reads `conditionDamageHandling(target)`; `cast-checks.mjs` reads `conditionCastProblems`; `cast-plan.mjs` reads `costReductionAllowed`; `roll.mjs` ends whatever `consume` lists.
+  - Tests: ADV1, cast-check, Crash and Petrified tests now give real statuses instead of engine flags; `tests/core/conditions-data.test.mjs` +4 (every entry validates; the engines name no condition). Suites: 545 and 159 pass.

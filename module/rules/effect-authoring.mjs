@@ -58,12 +58,12 @@ function validatePredicate(value, depth = 0) {
  * Rule elements v2 (STD1). Every key and field is checked; anything unknown is refused.
  * Numeric keys need a number; the others carry their own fields.
  */
-const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks"]);
+const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction"]);
 const FIELDS = {
-  common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on"],
+  common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on", "endsOnUse"],
   modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"],
-  advantage: [], disadvantage: [], autoFail: [], autoSucceed: [],
-  reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier"],
+  advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
+  reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
 };
 export function validateConditionalRules(rules) {
