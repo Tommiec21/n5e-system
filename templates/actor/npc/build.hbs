@@ -1,6 +1,8 @@
 {{!-- Build tab (NPC1b, NPC1c). Data: vm = npcBuildVM(actor), defenses = npcDefensesVM(actor), knowledge = npcKnowledgeVM(actor). The profile gives every number (rules/adversary.mjs); each can be overridden here. Blank override = the computed number. --}}
 <section class="tab n5e-tab npc-build {{tab.cssClass}}" data-tab="build" data-group="primary">
+  {{#if vm.concept}}<div class="build-concept"><b>Concept</b> (GM only): {{vm.concept}}</div>{{/if}}
   <div class="build-row">
+    {{#if editable}}<button type="button" data-action="npcOpenBuilder"><i class="fa-solid fa-user-ninja"></i> Open builder</button>{{/if}}
     <label>Build <select name="system.details.build" {{#unless editable}}disabled{{/unless}}>{{#each vm.buildOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
     {{#unless vm.isAdversary}}<span class="hint">Player-style: the numbers come from ability scores, level, dice and equipment, as for a character.</span>{{/unless}}
   </div>

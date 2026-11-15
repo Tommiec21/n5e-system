@@ -1,6 +1,6 @@
 # NPC2 function spec: the Adversary Builder
 
-Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead to build. Nothing is built.**
+Status: **Approved by King 2026-11-14. Published `0.32.0-alpha.1`.**
 
 Plan: `docs/NPC1_PLAN.md`. After NPC1, NPC2 is only the builder window: the tables and the math are already in NPC1a (`config/adversary.mjs`, `rules/adversary.mjs`), and the Build tab edits every number.
 
@@ -69,5 +69,13 @@ Source: the Bingo Book, "Build Your Adversary", steps 1–9 and "Refining As You
 
 ## Progress log
 
+- 2026-11-14 Claude: **built (King: "Approved").**
+  - F1: `applications/npc/adversary-builder.mjs` (ApplicationV2 form; draft in the window; close asks when dirty); `templates/apps/adversary-builder.hbs`, `adversary-builder-jutsu.hbs`. F2: `rules/adversary-builder.mjs` (`blankDraft`, `draftFromActor`, `draftToUpdate`, `assignLine`, `rebaseMods`, `stepNotes`, `suggestedRanksFor`, `draftProfile`); view model `view-models/adversary-builder.mjs`. F3: `suggestedJutsuRanks` and the builder's text in `config/adversary.mjs`. F4: pickers from the `n5e.jutsu` and `n5e.equipment` indexes; an item with the same type and name already on the NPC is skipped. F5: sidebar button, `N5eActor.createDialog` prompt, Build tab button. F6: editing keeps modifiers; "Update modifiers to the new baseline" (`rebaseMods`) keeps their order.
+  - New field `system.details.concept`. Typed traits are `feat` items with category `npcTraits` and `flags.n5e.adversaryTrait.rank`.
+  - The preview is an unsaved actor built from the draft, read through `statBlockVM`.
+  - A new adversary's modifiers follow the baseline line when its class or level changes, until the GM edits a modifier.
+  - **For King:** the book's tables suggest 2 (Elite) + 3 (levels 12–17) = 5 traits for Sasuke; its worked example counts +4 at level 13 and +2 for Iconic (8). The builder follows the tables and adds nothing for Iconic. Say if Iconic and Epic should add traits.
+- 2026-11-14 Claude: tests. Attempt 1 failed (1): a test expected an over-budget flag for modifiers that were under budget (the test's numbers were wrong). Attempt 2 passed: `npm test` 466 pass, 2 skipped; core 103/103; lint and check clean. Files: `tests/core/adversary-builder.test.mjs`, `tests/adversary-builder.test.mjs`.
+- 2026-11-14 Claude: **published `0.32.0-alpha.1`.** Not checked in a running Foundry world.
 - 2026-11-14 Claude: King answered Q-N25–Q-N32.
 - 2026-11-14 Claude: spec written from the Bingo Book's build steps and "Non-Freeform Jutsu". Nothing built.

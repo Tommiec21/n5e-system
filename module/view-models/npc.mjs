@@ -90,7 +90,8 @@ export function npcBuildVM(actor, { partyManual = false } = {}) {
   const d = src.details;
   const a = src.adversary ?? {};
   const build = sys.adversaryBuild;
-  const base = { buildOptions: opts(adversaryBuilds, d.build), isAdversary: sys.isAdversary };
+  const base = { buildOptions: opts(adversaryBuilds, d.build), isAdversary: sys.isAdversary,
+    concept: globalThis.game?.user?.isGM === false ? "" : (d.concept ?? "") };
   if ( !sys.isAdversary || !build ) return base;
   const o = a.overrides ?? {};
   const bd = key => sys.breakdowns?.[key];

@@ -1,3 +1,21 @@
+## 0.32.0-alpha.1 — The Adversary Builder (NPC2; King 2026-11-14)
+
+- **A step-by-step window** following the Bingo Book's "Build Your Adversary", with a step list (open any step at any time), Next and Back, and a live stat block beside every step. Nothing is saved until Create or Update; closing with changes asks first.
+  1. **Concept:** name, portrait, and the one or two sentences (GM only), with the book's examples. The concept also fills the blurb players see, unless you write a separate blurb.
+  2. **Class:** Minion, Standard, Elite or Solo, with the book's description and HP rule.
+  3. **Level:** 1–30, with the party level you type and the book's guidance (more than 3 levels away is flagged). Previews proficiency, the baseline stat line and the suggested counts. Editing an existing adversary offers "Update modifiers to the new baseline".
+  4. **Role and Role Traits:** the five roles with their bonuses, Iconic and Epic, and typed traits (name, rank, text) until the book's trait lists arrive.
+  5. **Rank:** the six ranks with HP/CP per level, the jutsu ranks each casts, and the optional Rank bonus.
+  6. **Clan and Affiliation:** both optional, with suggestions from the book's clan and species list and the Clans compendium.
+  7. **Attacks and jutsu:** named jutsu from the compendium filtered to the adversary's rank (a switch shows every rank), counted against the book's limit; weapons from the Equipment compendium. Freeform waits for NPC3.
+  7.5. **Generic jutsu and General traits:** jutsu of any rank and typed traits.
+  8. **Calculate and finalize:** the six modifiers with the baseline line and budget ("Use baseline"), fully proficient saves, armor, HP from the formula or a Lazy GM column, players for a Solo, HP and CP overrides.
+- **Notes, not walls:** steps with something to look at carry a "!" (Elite below level 3, over the jutsu limit, jutsu outside the suggested ranks, modifiers over budget). Nothing blocks Create.
+- **Where it opens:** "Create adversary" on the Actors sidebar (GM); "Open builder" on an adversary's Build tab; and Foundry's Create Actor asks whether to open it for a new NPC.
+- **Concept** shows to the GM at the top of the Build tab and on the Notes tab.
+- An E-Rank adversary's suggested jutsu ranks are E and D.
+- Not checked in a running Foundry world.
+
 ## 0.31.0-alpha.2 — NPC sheet gaps and what the players can learn (NPC1c; King 2026-11-14)
 
 - **Build tab, for both builds:**

@@ -514,3 +514,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `system.knowledge.learned[]` (NPC) | Entry ids the whole party knows |
 | `flags.n5e.learn {npcUuid, readerUuid, available, picked}` (ChatMessage) | On a Read the Enemy success against an NPC with learnable entries |
 | Owner intent `learnEntry {messageId, entryId}` | The reader's pick, finished on the GM's client |
+
+## Added in 0.32.0-alpha.1 (NPC2)
+
+| Path | Meaning |
+| --- | --- |
+| `system.details.concept` (NPC) | The builder's Step 1; GM only on the sheet |
+| Item `feat` with `system.category: "npcTraits"`, `flags.n5e.adversaryTrait.rank` | A trait typed in the builder (until NPC6 brings the book's lists) |
+| Config `suggestedJutsuRanks`, `classDescriptions`, `roleDescriptions`, `rankDescriptions`, `conceptExamples`, `adversaryClanGroups` | The builder's tables and text |

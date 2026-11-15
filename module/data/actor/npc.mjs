@@ -37,6 +37,8 @@ export default class NPCData extends CreatureData {
       biography: S.html(),
       /** One line under the name. */
       blurb: S.str(),
+      /** The builder's Step 1: what this adversary does in a fight (GM only; NPC2). */
+      concept: S.str(),
       publicNotes: S.html(),
       /** Shown to GMs only. */
       privateNotes: S.html(),

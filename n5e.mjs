@@ -148,9 +148,10 @@ Hooks.once("init", () => {
 
 // Chat card buttons. Cards are plain HTML with data-n5e-* attributes; each render wires the buttons
 // (module/dice/roll.mjs dispatches them; turn cards have their own End-concentration buttons).
-// NPC1c C2: "Reset NPCs" for the GM on the Actors sidebar.
+// NPC1c C2 and NPC2: "Reset NPCs" and "Create adversary" for the GM on the Actors sidebar.
 Hooks.on("renderActorDirectory", (app, html) => {
   import("./module/applications/gm/npc-reset.mjs").then(m => m.addResetButton(app, html)).catch(error => console.warn("n5e | reset button", error));
+  import("./module/applications/npc/adversary-builder.mjs").then(m => m.addBuilderButton(app, html)).catch(error => console.warn("n5e | builder button", error));
 });
 
 Hooks.on("renderChatMessageHTML", (message, html) => {

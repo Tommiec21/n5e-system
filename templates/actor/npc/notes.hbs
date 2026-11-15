@@ -2,6 +2,7 @@
 <section class="tab n5e-tab biography npc-notes {{tab.cssClass}}" data-tab="biography" data-group="primary">
   <div class="section-head"><h2>Public notes</h2></div>
   {{#if editMode}}<textarea name="system.details.publicNotes" rows="6" aria-label="Public notes">{{notes.public}}</textarea>{{else}}<div class="bio-text">{{{notes.publicHTML}}}</div>{{/if}}
+  {{#if notes.concept}}<div class="section-head"><h2>Concept</h2><span class="budget">GM only</span></div><div class="bio-text">{{notes.concept}}</div>{{/if}}
   {{#if notes.isGM}}
     <div class="section-head"><h2>Private notes</h2><span class="budget">GM only</span></div>
     {{#if editMode}}<textarea name="system.details.privateNotes" rows="6" aria-label="Private notes">{{notes.private}}</textarea>{{else}}<div class="bio-text">{{{notes.privateHTML}}}</div>{{/if}}

@@ -1,0 +1,8 @@
+{{!-- The builder's jutsu list and compendium search (steps 7 and 7.5). Data: vm = builderVM(...). --}}
+{{#each vm.jutsu}}<div class="entry {{#if outside}}outside{{/if}}">{{name}} <span class="hint">{{rank}}-Rank{{#if outside}}, outside the suggested ranks{{/if}}</span>
+  <button type="button" data-action="removeEntry" data-list="jutsu" data-index="{{i}}" aria-label="Remove">×</button></div>{{/each}}
+<div class="row">
+  <label class="search">Find a jutsu <input type="search" data-n5e-builder-search="jutsu" value="{{vm.search.jutsu}}"></label>
+  <label class="check"><input type="checkbox" data-action="toggleAllRanks" {{#if vm.showAllRanks}}checked{{/if}}> Show every rank</label>
+</div>
+<div class="results">{{#each vm.jutsuResults}}<button type="button" data-action="addEntry" data-list="jutsu" data-uuid="{{uuid}}" data-name="{{name}}" data-rank="{{rank}}" data-discipline="{{discipline}}">+ {{name}} <span class="hint">{{rank}}</span></button>{{/each}}</div>

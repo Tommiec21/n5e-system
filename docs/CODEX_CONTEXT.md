@@ -423,3 +423,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - The Notes tab's raw editor skips every field the header and Build tab edit. Keep that list in step when adding Build fields.
 - Learn flow: `workflow/npc-knowledge.mjs`; rendering hooks into `onRenderChatMessage` in `dice/roll.mjs` for messages with `flags.n5e.learn`.
 
+## NPC2 — Claude, 2026-11-14 (published 0.32.0-alpha.1)
+- The builder works on a plain draft (`rules/adversary-builder.mjs`); `draftToUpdate` is the only place that turns it into an actor update and items. NPC3 (Freeform) and NPC6 (traits) plug into steps 4, 6, 7 and 7.5: add to the draft, `draftFromActor` and `draftToUpdate`, then the step's section in the template.
+- Typed traits are `feat` items, category `npcTraits`. NPC6 should convert or replace them, not add a second kind.
+

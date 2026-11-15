@@ -17,7 +17,7 @@ import { buildRows } from "../schema-form.mjs";
 
 const T = name => `systems/n5e/templates/actor/npc/${name}.hbs`;
 
-export const NPC_TEMPLATE_PATHS = [T("stat-block"), T("casting-lines"), T("embed")];
+export const NPC_TEMPLATE_PATHS = [T("stat-block"), T("casting-lines"), T("embed"), "systems/n5e/templates/apps/adversary-builder-jutsu.hbs"];
 
 export default class NPCSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
@@ -34,7 +34,8 @@ export default class NPCSheet extends CharacterSheet {
       npcAddKnowledge: NPCSheet.#onAddKnowledge,
       npcRemoveKnowledge: NPCSheet.#onRemoveKnowledge,
       npcMoveKnowledge: NPCSheet.#onMoveKnowledge,
-      npcToggleLearned: NPCSheet.#onToggleLearned
+      npcToggleLearned: NPCSheet.#onToggleLearned,
+      npcOpenBuilder: NPCSheet.#onOpenBuilder
     }
   };
 
@@ -105,7 +106,7 @@ export default class NPCSheet extends CharacterSheet {
         break;
       case "biography":
         context.notes = {
-          isGM: game.user.isGM, public: d.publicNotes, private: d.privateNotes, biography: d.biography,
+          isGM: game.user.isGM, public: d.publicNotes, private: d.privateNotes, biography: d.biography, concept: game.user.isGM ? d.concept : "",
           publicHTML: await TextEditor.enrichHTML(d.publicNotes ?? "", { relativeTo: actor }),
           privateHTML: game.user.isGM ? await TextEditor.enrichHTML(d.privateNotes ?? "", { relativeTo: actor }) : "",
           biographyHTML: await TextEditor.enrichHTML(d.biography ?? "", { relativeTo: actor })
@@ -260,5 +261,12 @@ export default class NPCSheet extends CharacterSheet {
     const learned = new Set(this.actor._source.system.knowledge.learned ?? []);
     if ( learned.has(target.dataset.id) ) learned.delete(target.dataset.id); else learned.add(target.dataset.id);
     return this.actor.update({ "system.knowledge.learned": [...learned] });
+  }
+
+  /** The Adversary Builder for this NPC (NPC2). */
+  static async #onOpenBuilder() {
+    if ( !this.isEditable ) return;
+    const { default: AdversaryBuilder } = await import("../npc/adversary-builder.mjs");
+    return AdversaryBuilder.open(this.actor);
   }
 }

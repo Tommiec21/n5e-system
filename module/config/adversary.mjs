@@ -83,3 +83,39 @@ export const suggested = {
 
 /** Discipline abilities for adversaries; the Weapon/Freeform line uses any ability the GM picks. */
 export const adversaryDisciplineAbility = { nin: "int", gen: "wis", tai: "str" };
+
+/* NPC2: what the Adversary Builder shows (the Bingo Book's own words, shortened). */
+
+/** Suggested jutsu ranks by adversary rank ("Non-Freeform Jutsu"); E-Rank: E and D (King Q-N27). */
+export const suggestedJutsuRanks = { E: ["E", "D"], D: ["D", "C"], C: ["D", "C", "B"], B: ["C", "B", "A"], A: ["B", "A", "S"], S: ["A", "S"] };
+
+/** The three concept examples from Step 1. */
+export const conceptExamples = [
+  "A fanatical cultist who charges into melee and burns anyone who strikes them down.",
+  "A calculating illusionist who turns every condition their allies apply into something worse.",
+  "A lone predator who picks one target at the start of combat and refuses to let them breathe until one of them hits the ground."
+];
+
+export const classDescriptions = {
+  minion: "Grunts and cannon fodder that fill out the ranks. 4 to 6 Minions challenge one player. HP 10 + level, no Chakra, saves fail automatically.",
+  standard: "A capable shinobi who can take a hit and throw one back. One Standard is a moderate challenge for one player of its level; two are a hard one.",
+  elite: "A commander or champion who acts more than once a round and draws on Tenacity. One Elite challenges two players. Not before level 3.",
+  solo: "The capstone of a mission: it handles the whole table at once and can change the battlefield. Not before level 5."
+};
+
+export const roleDescriptions = {
+  none: "No Role. Solos take no Role and may use every Role's traits.",
+  striker: "Offense above all else: hits hard, hits often. +1 level on damage tables, +2 initiative.",
+  defender: "Durability and protection: absorbs punishment and shields allies. +1 AC, +2 DR.",
+  lurker: "Patience and ambush: positioning, concealment, gone before the players respond. +20 speed, +2 Stealth.",
+  controller: "Disruption and denial: conditions, lockdown, everything costs more. +1 jutsu save DCs, +2 Chakra Control.",
+  supporter: "Amplification and sustain: makes everything around it more dangerous. +1 saving throws, +2 Perception."
+};
+
+export const rankDescriptions = { E: "Inconsequential threats", D: "Low level threats", C: "Mid-level threats", B: "High level threats", A: "Extreme level threats", S: "Village level threats" };
+
+/** Clan and species groups with Adversary Traits in the book (suggestions for Step 6). */
+export const adversaryClanGroups = ["Aberration", "Aburame", "Akimichi", "Bakuton", "Beast", "Construct", "Demon", "Fuma", "Futton", "Hatake",
+  "Hebi", "Hoshigaki", "Hyuga", "Inuzuka", "Jinchūriki", "Jiton", "Kaguya", "Kurama", "Kuru", "Monstrosity", "Mutant", "Namikaze", "Nara",
+  "Non-Clan", "Plant", "Ranton", "Ryu", "Sage Creature", "Sarutobi", "Senju", "Shakuton", "Shikigami", "Shoton", "Tsuchigumo", "Uchiha",
+  "Undead", "Uzumaki", "Yamanaka", "Yoton", "Yuki", "Ōtsutsuki"];

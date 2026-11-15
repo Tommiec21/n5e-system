@@ -31,7 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-sheet.mjs` | 723 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
-| `npc-sheet.mjs` | 265 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
+| `npc-sheet.mjs` | 273 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 | `npc-simple-sheet.mjs` | 34 | Simple NPC sheet (NPC1b): the whole stat block on one page, in the Bingo Book's order (header, traits, jutsu by discipline and rank, attacks). | `NPCSimpleSheet` |
 
 ## module/applications/browser
@@ -72,6 +72,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `item-sheet.mjs` | 176 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
 | `reaction-editor.mjs` | 30 |  | `editReaction` |
 
+## module/applications/npc
+
+| File | Lines | Purpose | Exports |
+| --- | ---: | --- | --- |
+| `adversary-builder.mjs` | 247 | The Adversary Builder (NPC2; King 2026-11-14): the Bingo Book's build steps in one window, with a step list (any step can be opened at any time), a live stat... | `AdversaryBuilder`, `promptBuilder`, `addBuilderButton` |
+
 ## module/applications/settings
 
 | File | Lines | Purpose | Exports |
@@ -108,7 +114,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
-| `adversary.mjs` | 86 | Adversary tables (the Bingo Book, "The Adversary Profile" to "Final Calculation(s)"; NPC1). | `adversaryClasses`, `adversaryRoles`, `adversaryArmor`, `adversaryBuilds`, `hpSources`, `proficiencyByLevel`, `statLines`, `rankTable`, `armorTable`, `classModifiers`, `roleModifiers`, `classifications`, `fullSavesByLevel`, `lazyPerLevel`, `lazySoloPlayers`, `suggested`, `adversaryDisciplineAbility` |
+| `adversary.mjs` | 122 | Adversary tables (the Bingo Book, "The Adversary Profile" to "Final Calculation(s)"; NPC1). | `adversaryClasses`, `adversaryRoles`, `adversaryArmor`, `adversaryBuilds`, `hpSources`, `proficiencyByLevel`, `statLines`, `rankTable`, `armorTable`, `classModifiers`, `roleModifiers`, `classifications`, `fullSavesByLevel`, `lazyPerLevel`, `lazySoloPlayers`, `suggested`, `adversaryDisciplineAbility`, `suggestedJutsuRanks`, `conceptExamples`, `classDescriptions`, `roleDescriptions`, `rankDescriptions`, `adversaryClanGroups` |
 | `character.mjs` | 159 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
 | `combat.mjs` | 239 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
@@ -131,7 +137,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
 | `creature.mjs` | 632 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
-| `npc.mjs` | 255 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
+| `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
 
 ## module/data/effect
 
@@ -175,7 +181,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 89 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 177 | N5e Actor document. | `N5eActor` |
+| `actor.mjs` | 188 | N5e Actor document. | `N5eActor` |
 | `combat.mjs` | 63 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
@@ -198,6 +204,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 154 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
+| `adversary-builder.mjs` | 110 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
 | `adversary.mjs` | 154 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 183 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `authored-reactions.mjs` | 32 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
@@ -268,12 +275,13 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `adversary-builder.mjs` | 72 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
 | `character.mjs` | 550 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 420 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `item.mjs` | 433 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
-| `npc.mjs` | 273 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
+| `npc.mjs` | 274 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
 
 ## module/workflow

@@ -1,0 +1,150 @@
+{{!-- The Adversary Builder (NPC2). Data: vm = builderVM(draft, extra) (view-models/adversary-builder.mjs). Steps follow the Bingo Book's "Build Your Adversary". Nothing is saved until Create or Update. --}}
+<div class="n5e-builder">
+  <nav class="builder-steps" aria-label="Steps">
+    {{#each vm.steps}}
+      <button type="button" class="step {{#if active}}active{{/if}}" data-action="goStep" data-step="{{key}}" aria-current="{{#if active}}step{{/if}}">
+        {{label}}{{#if notes}} <span class="badge" data-tooltip="{{notes}} note(s)">!</span>{{/if}}
+      </button>
+    {{/each}}
+  </nav>
+
+  <section class="builder-body">
+    {{#each vm.notes}}<div class="build-note">{{this}}</div>{{/each}}
+
+    {{#if (n5eEq vm.step "concept")}}
+      <h2>Define the Concept</h2>
+      <p class="hint">What does this adversary do in a fight, and why does fighting it feel different from fighting anyone else? One or two sentences.</p>
+      <label>Name <input type="text" name="name" value="{{vm.draft.name}}"></label>
+      <label>Portrait <input type="text" name="img" value="{{vm.draft.img}}"></label>
+      <label>Concept (GM only) <textarea name="concept" rows="3" placeholder="{{lookup vm.conceptExamples 0}}">{{vm.draft.concept}}</textarea></label>
+      <ul class="hint">{{#each vm.conceptExamples}}<li>{{this}}</li>{{/each}}</ul>
+      <label class="check"><input type="checkbox" name="blurbFollowsConcept" {{#if vm.draft.blurbFollowsConcept}}checked{{/if}}> The blurb players see is the concept</label>
+      {{#unless vm.draft.blurbFollowsConcept}}<label>Blurb (players see this) <input type="text" name="blurb" value="{{vm.draft.blurb}}"></label>{{/unless}}
+    {{/if}}
+
+    {{#if (n5eEq vm.step "class")}}
+      <h2>Pick a Class</h2>
+      <div class="cards">
+        {{#each vm.classCards}}
+          <button type="button" class="card {{#if selected}}selected{{/if}}" data-action="pick" data-field="class" data-value="{{key}}" aria-pressed="{{selected}}">
+            <b>{{label}}</b><span>{{text}}</span>{{#if mods}}<span class="mods">{{mods}}</span>{{/if}}{{#if hp}}<span class="mods">{{hp}}</span>{{/if}}
+          </button>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "level")}}
+      <h2>Pick a Level</h2>
+      <div class="row">
+        <label>Level <input type="number" name="level" value="{{vm.level.value}}" min="1" max="30"></label>
+        <label>Party level <input type="number" name="partyLevel" value="{{vm.level.partyLevel}}" min="1" max="30" placeholder="—"></label>
+      </div>
+      <p class="hint">The party's level for a medium fight; +2 to push the challenge, −2 for something easier. Never more than 3 levels away.</p>
+      <dl class="facts">
+        <dt>Proficiency</dt><dd>{{vm.level.prof}}</dd>
+        <dt>Baseline stat line</dt><dd>{{vm.level.line}}{{#if vm.level.missing}} (no Elite/Solo line at this level; the Standard line is shown){{/if}}</dd>
+        <dt>Suggested</dt><dd>{{vm.level.counts.traits}} traits, {{vm.level.counts.jutsu}} jutsu, {{vm.level.counts.freeformSlots}} Freeform slots, {{vm.level.counts.multiattack}} attacks with Multiattack, {{vm.level.counts.fullSaves}} fully proficient saves</dd>
+      </dl>
+      {{#unless vm.isNew}}<button type="button" data-action="rebase" data-tooltip="Keeps which ability is highest, second and so on, with the values of the new line">Update modifiers to the new baseline</button>{{/unless}}
+    {{/if}}
+
+    {{#if (n5eEq vm.step "role")}}
+      <h2>Pick a Role and Role Traits</h2>
+      <div class="cards">
+        {{#each vm.roleCards}}
+          <button type="button" class="card {{#if selected}}selected{{/if}}" data-action="pick" data-field="role" data-value="{{key}}" aria-pressed="{{selected}}"><b>{{label}}</b><span>{{text}}</span></button>
+        {{/each}}
+      </div>
+      <div class="row">
+        {{#each vm.classifications}}<label class="check" data-tooltip="{{text}}"><input type="checkbox" name="{{key}}" {{#if on}}checked{{/if}}> {{label}}</label>{{/each}}
+      </div>
+      <h3>Traits <span class="hint">({{vm.traits.length}} of {{vm.level.counts.traits}} suggested)</span></h3>
+      <p class="hint">Type each trait until the book's trait lists arrive (NPC6).</p>
+      {{#each vm.traits}}
+        <div class="trait-row">
+          <input type="text" name="traits.{{i}}.name" value="{{name}}" placeholder="Name" aria-label="Trait name">
+          <select name="traits.{{i}}.rank" aria-label="Rank"><option value="">Rank</option>{{#each rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+          {{#if id}}<span class="hint">on the NPC</span>{{else}}<input type="text" name="traits.{{i}}.text" value="{{text}}" placeholder="What it does" aria-label="Trait text">{{/if}}
+          <button type="button" data-action="removeEntry" data-list="traits" data-index="{{i}}" aria-label="Remove">×</button>
+        </div>
+      {{/each}}
+      <button type="button" data-action="addTrait">Add a trait</button>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "rank")}}
+      <h2>Pick a Rank</h2>
+      <p class="hint">Keep the adversary within one rank of its mission, unless the encounter calls for a spike or a dip.</p>
+      <div class="cards">
+        {{#each vm.rankCards}}
+          <button type="button" class="card {{#if selected}}selected{{/if}}" data-action="pick" data-field="rank" data-value="{{key}}" aria-pressed="{{selected}}">
+            <b>{{label}}</b><span>{{text}}</span><span class="mods">{{perLevel}} HP and CP per level · casts {{casts}}</span>
+          </button>
+        {{/each}}
+      </div>
+      <label class="check" data-tooltip="Suggested, not guaranteed: D 1, C 2, B 3, A 4, S 5"><input type="checkbox" name="rankBonus" {{#if vm.rankBonus}}checked{{/if}}> Rank bonus ability points</label>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "clan")}}
+      <h2>Pick a Clan and Affiliation</h2>
+      <p class="hint">Both are optional. A rogue shinobi with no clan and no banner is a valid adversary.</p>
+      <label>Clan or species <input type="text" name="clan" value="{{vm.clan}}" list="n5e-builder-clans"></label>
+      <datalist id="n5e-builder-clans">{{#each vm.clanNames}}<option value="{{this}}"></option>{{/each}}</datalist>
+      <label>Affiliation <input type="text" name="affiliation" value="{{vm.affiliation}}" placeholder="Leaf Village, Akatsuki…"></label>
+      <p class="hint">Clan, species and affiliation traits arrive with the book's trait lists (NPC6). Add them as traits in step 4 until then.</p>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "attacks")}}
+      <h2>Attacks and Jutsu</h2>
+      <h3>Jutsu <span class="hint">({{vm.jutsu.length}} of {{vm.jutsuLimit}}; suggested ranks {{vm.jutsuRanks}})</span></h3>
+      {{> "systems/n5e/templates/apps/adversary-builder-jutsu.hbs" vm=vm}}
+      <h3>Weapons</h3>
+      {{#each vm.weapons}}<div class="entry">{{name}} <button type="button" data-action="removeEntry" data-list="weapons" data-index="{{i}}" aria-label="Remove">×</button></div>{{/each}}
+      <label class="search">Find a weapon <input type="search" data-n5e-builder-search="weapon" value="{{vm.search.weapon}}"></label>
+      <div class="results">{{#each vm.weaponResults}}<button type="button" data-action="addEntry" data-list="weapons" data-uuid="{{uuid}}" data-name="{{name}}">+ {{name}}</button>{{/each}}</div>
+      <h3>Freeform Strikes, Jutsu and Abilities</h3>
+      <p class="hint">Coming with NPC3.</p>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "generic")}}
+      <h2>Generic Jutsu and General Traits</h2>
+      <p class="hint">Optional. Jutsu from any rank, and General traits (typed until NPC6).</p>
+      {{> "systems/n5e/templates/apps/adversary-builder-jutsu.hbs" vm=vm}}
+      <button type="button" data-action="addTrait">Add a General trait</button>
+    {{/if}}
+
+    {{#if (n5eEq vm.step "finalize")}}
+      <h2>Calculate and Finalize</h2>
+      <div class="row"><span>Baseline line: <b>{{vm.finalize.line}}</b></span>
+        <span class="budget {{#if vm.finalize.over}}over{{/if}} {{#if vm.finalize.under}}under{{/if}}">Assigned {{vm.finalize.assigned}} of {{vm.finalize.budget}}</span>
+        <button type="button" data-action="useBaseline">Use baseline</button></div>
+      <table class="build-table">
+        <thead><tr><th>Ability</th><th>Modifier</th><th>Fully proficient save</th></tr></thead>
+        <tbody>{{#each vm.finalize.abilities}}<tr><td>{{label}}</td><td><input type="number" name="mods.{{key}}" value="{{value}}" min="-5" max="20"></td>
+          <td><input type="checkbox" name="fullSave.{{key}}" {{#if full}}checked{{/if}} aria-label="{{label}} fully proficient"></td></tr>{{/each}}</tbody>
+      </table>
+      <p class="hint">{{vm.finalize.fullPicked}} saves ticked; the baseline at this level is {{vm.finalize.fullSuggested}}. With none ticked, the highest modifiers are used.</p>
+      <div class="row">
+        <label>Armor <select name="armor">{{#each vm.finalize.armorOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>HP and CP from <select name="hpSource">{{#each vm.finalize.hpSourceOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label>Weapon/Freeform ability <select name="freeformAbility">{{#each vm.finalize.freeformOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        {{#if vm.finalize.isSolo}}<label>Players <input type="number" name="partySize" value="{{vm.finalize.partySize}}" min="0" max="12"></label>{{/if}}
+      </div>
+      <div class="row">
+        <label data-tooltip="Blank = the formula or table">HP max <input type="number" name="hpMax" value="{{vm.finalize.hpMax}}" min="0" placeholder="—"></label>
+        <label data-tooltip="Blank = the same as HP">CP max <input type="number" name="cpMax" value="{{vm.finalize.cpMax}}" min="0" placeholder="—"></label>
+      </div>
+      <p class="hint">Tweak anything that feels misaligned with the concept or your table. Every other number can be overridden on the NPC's Build tab.</p>
+    {{/if}}
+
+    <footer class="builder-footer">
+      <button type="button" data-action="back">Back</button>
+      <button type="button" data-action="next">Next</button>
+      <button type="button" class="primary" data-action="save"><i class="fa-solid fa-check"></i> {{#if vm.isNew}}Create{{else}}Update{{/if}}</button>
+    </footer>
+  </section>
+
+  <aside class="builder-preview" aria-label="Preview">
+    <h3>{{vm.draft.name}}</h3>
+    {{#if vm.preview}}{{> "systems/n5e/templates/actor/npc/stat-block.hbs" block=vm.preview}}{{/if}}
+  </aside>
+</div>

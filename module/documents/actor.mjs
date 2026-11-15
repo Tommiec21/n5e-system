@@ -48,6 +48,17 @@ export default class N5eActor extends Actor {
     return div.firstElementChild;
   }
 
+  /**
+   * @override
+   * An NPC made through Foundry's Create Actor asks whether to open the Adversary Builder (NPC2,
+   * King Q-N25).
+   */
+  static async createDialog(data = {}, createOptions = {}, ...rest) {
+    const created = await super.createDialog(data, createOptions, ...rest);
+    if ( created?.type === "npc" ) await import("../applications/npc/adversary-builder.mjs").then(m => m.promptBuilder(created));
+    return created;
+  }
+
   static migrateData(source) {
     if ( isV31Actor(source) ) {
       migrateV31Actor(source, { conditionKeys: new Set(Object.keys(CONFIG.N5E?.conditions ?? {})) });
