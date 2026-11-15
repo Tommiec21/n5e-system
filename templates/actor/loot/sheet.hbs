@@ -1,0 +1,34 @@
+<section class="n5e-loot">
+  <header class="loot-header">
+    <img src="{{vm.img}}" alt="" height="64" width="64">
+    <div>
+      <h2>{{vm.name}}</h2>
+      {{#if vm.isGM}}
+        <label>Kind <select name="system.mode">{{#each vm.modes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      {{else}}<div class="hint">{{vm.modeLabel}}</div>{{/if}}
+    </div>
+    <div class="ryo">
+      <b>Ryo</b> {{#if vm.isGM}}<input type="number" name="system.currency.ryo" value="{{vm.ryo}}" min="0">{{else}}{{vm.ryo}}{{/if}}
+    </div>
+  </header>
+  {{#if vm.merchant}}
+    <div class="rates hint">Buys at the price × {{#if vm.isGM}}<input type="number" step="0.05" min="0" name="system.buyRate" value="{{vm.buyRate}}">{{else}}{{vm.buyRate}}{{/if}};
+      pays sellers the price × {{#if vm.isGM}}<input type="number" step="0.05" min="0" name="system.sellRate" value="{{vm.sellRate}}">{{else}}{{vm.sellRate}}{{/if}}.
+      Drop one of your items here to sell it.</div>
+  {{else}}
+    <div class="hint">Take what you need; drop your own items here to leave them.</div>
+  {{/if}}
+  <ol class="items">
+    {{#each vm.items}}
+      <li class="n5e-row" data-item-id="{{id}}">
+        <img src="{{img}}" alt="" height="28" width="28"><span class="name">{{name}}</span>
+        <span class="qty">×{{quantity}}</span>
+        <span class="price">{{price}} ryo</span>
+        {{#if ../vm.merchant}}<button type="button" data-action="lootBuy">Buy</button>{{else}}<button type="button" data-action="lootTake">Take</button>{{/if}}
+        <button type="button" data-action="lootEdit" aria-label="View"><i class="fa-solid fa-eye"></i></button>
+        {{#if ../vm.isGM}}<button type="button" data-action="lootDelete" aria-label="Delete"><i class="fa-solid fa-trash"></i></button>{{/if}}
+      </li>
+    {{else}}<li class="hint">Nothing here.</li>{{/each}}
+  </ol>
+  {{#if vm.description}}<div class="description">{{{vm.description}}}</div>{{/if}}
+</section>

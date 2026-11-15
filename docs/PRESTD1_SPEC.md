@@ -1,6 +1,6 @@
 # PRESTD1 function spec: the combined batch before standardization
 
-Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`, A-ii `0.34.0-alpha.2`, A-iii/iv (without A14) `0.34.0-alpha.3`; Part B `0.35.0-alpha.1`. Q-P12 open.**
+Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`, A-ii `0.34.0-alpha.2`, A-iii/iv (without A14) `0.34.0-alpha.3`; Part B `0.35.0-alpha.1`; Part C `0.36.0-alpha.1`. Q-P12 open.**
 
 King (2026-11-15): combine VAR1a, SCROLL1, LOOT1, PF2E1, MISSION1 and SOCIAL1 into one batch, before standardization. Sources:
 - `docs/VAR1_SPEC.md` (PF2e optional rules; King Q-V1–Q-V4);
@@ -141,3 +141,6 @@ A (optional rules), B (scrolls), C (loot), D (PF2e emulation), E (missions), F (
   - Differs from the spec: no "make scroll" drop zone; scrolls are made from the jutsu's right-click menu (GM) or the API.
   - Reading: a failed casting check doesn't use the scroll up (the rules don't say); say if it should.
   - Tests: `tests/core/scrolls.test.mjs` (3), `tests/fin3.test.mjs` +1. Suites: 516 and 129 pass.
+- 2026-11-15 Claude: **Part C built and published 0.36.0-alpha.1.** Actor type `loot` (`data/actor/loot.mjs`: mode pile|merchant|stash, currency.ryo, buyRate 1, sellRate 0.5, description); `rules/loot.mjs` (`priceOf`, `canTake`, `purchase`, `saleValue`); `workflow/loot.mjs` (`takeFromLoot`, `buyFromMerchant`, `sellToMerchant`, `leaveLoot`, intents `lootTake`, `lootBuy`, `lootSell`); `applications/actor/loot-sheet.mjs` and `templates/actor/loot/sheet.hbs`; `canReceive` accepts piles and the stash; FIN1's `moveItem` exported.
+  - Differs from the spec: C5 "lootable NPCs" is the GM's "Leave loot" (the NPC's items become a pile beside it) instead of opening the NPC's own sheet to players. Dragging items out of any sheet you don't own is now refused (it used to copy them).
+  - Tests: `tests/core/loot.test.mjs` (2), `tests/fin3.test.mjs` +1, `tests/entry.test.mjs` updated (3 actor types, 7 sheets). Suites: 519 and 131 pass.

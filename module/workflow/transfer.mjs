@@ -13,9 +13,13 @@ import { transferPlan, transferRefusal, canReceive, ryoPlan } from "../rules/tra
 import { canModify, isAllied } from "../automation/authority.mjs";
 import { esc } from "../view-models/common.mjs";
 
-const facts = actor => ({ type: actor?.type, allied: isAllied(actor) });
+const facts = actor => ({ type: actor?.type, allied: isAllied(actor), mode: actor?.system?.mode });
 
 /** Move the item. Runs on a client that may change both actors. Returns the receiver's item. */
+export async function moveItem(source, item, target, quantity) {
+  return move(source, item, target, quantity);
+}
+
 async function move(source, item, target, quantity) {
   const plan = transferPlan(item.toObject(), target.items.map(i => i.toObject()), quantity);
   const before = item.toObject();

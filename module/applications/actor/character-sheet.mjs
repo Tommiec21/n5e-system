@@ -309,8 +309,20 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const actor = this.actor;
     // FIN1: another creature's physical item dropped here is given, not copied.
     if ( item.parent instanceof Actor && item.parent !== actor ) {
+      // PRESTD1 Part C: from a loot pile or the stash it is taken; from a merchant it is bought.
+      if ( item.parent.type === "loot" ) {
+        const loot = await import("../../workflow/loot.mjs");
+        if ( item.parent.system.mode === "merchant" ) await loot.buyFromMerchant(item, { buyer: actor });
+        else await loot.takeFromLoot(item, { target: actor });
+        return null;
+      }
       const { transferFromDrop } = await import("../../workflow/transfer.mjs");
       if ( await transferFromDrop(item, actor) ) return null;
+      // King Q-F2: no copying items out of a sheet you don't own.
+      if ( !game.user.isGM && !item.parent.isOwner ) {
+        ui.notifications.warn("You can't take items from a creature you don't own. Ask the GM.");
+        return null;
+      }
     }
     if ( !this.actor.isOwner ) return null;
 

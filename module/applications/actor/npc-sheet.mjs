@@ -36,7 +36,8 @@ export default class NPCSheet extends CharacterSheet {
       npcMoveKnowledge: NPCSheet.#onMoveKnowledge,
       npcToggleLearned: NPCSheet.#onToggleLearned,
       npcOpenBuilder: NPCSheet.#onOpenBuilder,
-      npcNewFreeform: NPCSheet.#onNewFreeform
+      npcNewFreeform: NPCSheet.#onNewFreeform,
+      npcLeaveLoot: NPCSheet.#onLeaveLoot
     }
   };
 
@@ -287,6 +288,19 @@ export default class NPCSheet extends CharacterSheet {
     if ( !this.isEditable ) return;
     const { default: AdversaryBuilder } = await import("../npc/adversary-builder.mjs");
     return AdversaryBuilder.open(this.actor);
+  }
+
+  /** PRESTD1 Part C (GM): the NPC's items become a loot pile beside its token. */
+  static async #onLeaveLoot() {
+    if ( !game.user.isGM ) return null;
+    return (await import("../../workflow/loot.mjs")).leaveLoot(this.actor);
+  }
+
+  /** @override  The GM's "Leave loot" in the window header. */
+  _getHeaderControls() {
+    const controls = super._getHeaderControls();
+    if ( game.user.isGM ) controls.push({ icon: "fa-solid fa-sack-dollar", label: "Leave loot", action: "npcLeaveLoot" });
+    return controls;
   }
 
   /** "New Freeform Jutsu" (Jutsu tab) and "New Freeform Strike" (Combat tab) (NPC3d D3). */

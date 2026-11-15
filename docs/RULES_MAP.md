@@ -265,3 +265,10 @@
 | --- | --- |
 | Ninjutsu and Genjutsu scrolls; casting check vs the identify DC within the skill tier; no chakra; the scroll's numbers (King Q-P3, Q-P11) | `rules/scrolls.mjs`, `workflow/scrolls.mjs castFromScroll`, `workflow/cast-plan.mjs` (`sel.scroll`), `rules/cast-checks.mjs` |
 | Identify with the matching skill only (King Q-P4) | `workflow/scrolls.mjs identifyScroll` |
+
+## Loot, merchants, party stash (PRESTD1 Part C, 0.36.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Take from piles and the stash; buy at price × buy rate, sell at price × sell rate (King Q-P5) | `rules/loot.mjs`, `workflow/loot.mjs` |
+| No taking from sheets you don't own (King Q-F2); the GM leaves an NPC's items as a pile | `applications/actor/character-sheet.mjs _onDropItem`, `workflow/loot.mjs leaveLoot` |

@@ -1,3 +1,12 @@
+## 0.36.0-alpha.1 — Loot piles, merchants and the party stash (PRESTD1 Part C; King 2026-11-15)
+
+- **New actor type: Loot**, with three kinds (set by the GM on its sheet): a **loot pile**, a **merchant** and the **party stash**. Each holds items and ryo.
+- **Piles and the stash:** players open the sheet and press Take (or drag an item to their own sheet); the GM's client moves it. Drop your own item on a pile or the stash to leave it. Give a stash Owner permission for all players; piles start at Observer.
+- **Merchants:** Buy pays the item's price times the merchant's buy rate (1) from your ryo; drop one of your items on the merchant to sell it for its price times the sell rate (0.5). The GM can change both rates per merchant (King Q-P5). The merchant's ryo goes up and down with each deal.
+- **Leave loot (GM):** "Leave loot" in an NPC sheet's header moves its physical items into a new loot pile placed beside its token. Players never take from an NPC's own sheet (King Q-F2): dragging an item out of a sheet you don't own is now refused instead of copying it.
+- Purchases and sales from players go through the GM's client and are announced in chat.
+- Not checked in a running Foundry world.
+
 ## 0.35.0-alpha.1 — Jutsu scrolls (PRESTD1 Part B; King 2026-11-15)
 
 - **Make a scroll (GM):** right-click a Ninjutsu or Genjutsu on a sheet, "Make a scroll": pick the rank and whether it starts identified. The scroll is a consumable that holds the jutsu (`game.n5e.api.makeScroll(jutsu, {rank, identified, actor})` too). No Taijutsu or Bukijutsu scrolls.

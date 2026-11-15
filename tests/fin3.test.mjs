@@ -86,3 +86,11 @@ test("PRESTD1 B: a cast from a scroll costs no chakra and ignores the rank cap",
   assert.ok(castBlockers(actor, item, { rank: "A" }).length >= 1);
   assert.deepEqual(castBlockers(actor, item, { rank: "A", scroll: true }), []);
 });
+
+test("PRESTD1 C: loot intents are validated", async () => {
+  const { validateIntent } = await import("../module/automation/owner-intents.mjs");
+  for ( const t of ["lootTake", "lootBuy", "lootSell"] ) {
+    assert.deepEqual(validateIntent(t, { lootUuid: "Actor.pile1", itemId: "abc123", quantity: 2 }), { lootUuid: "Actor.pile1", itemId: "abc123", quantity: 2 });
+    assert.throws(() => validateIntent(t, { lootUuid: "Actor.pile1", itemId: "abc123", quantity: 0 }), /Invalid loot request/);
+  }
+});

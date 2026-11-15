@@ -36,6 +36,8 @@ export function canReceive(target, user = {}) {
   if ( !target ) return false;
   if ( user.isGM ) return true;
   if ( target.type === "character" ) return true;
+  // PRESTD1 Part C: items can be left on a loot pile or put in the party stash (merchants buy instead).
+  if ( target.type === "loot" ) return target.mode !== "merchant";
   return target.type === "npc" && !!target.allied;
 }
 

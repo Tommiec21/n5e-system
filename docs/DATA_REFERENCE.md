@@ -589,3 +589,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Consumable `system.subtype: "scroll"` with `flags.n5e.scroll {jutsu, rank, discipline, identified}` | A jutsu scroll |
 | `flags.n5e.scrollCopy {scrollId, numbers {attack, dc}}` (jutsu) | The hidden copy a scroll casts through; off the Jutsu tab |
+
+## Added in 0.36.0-alpha.1 (PRESTD1 Part C)
+
+| Path | Meaning |
+| --- | --- |
+| Actor type `loot`: `system.mode` (pile, merchant, stash), `system.currency.ryo`, `system.buyRate`, `system.sellRate`, `system.description` | Loot piles, merchants and the party stash |
+| Owner intents `lootTake`, `lootBuy`, `lootSell {lootUuid, itemId, quantity}` | A player's take, purchase or sale, finished by the active GM |

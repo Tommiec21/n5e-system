@@ -41,14 +41,14 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   await import("../n5e.mjs");
   assert.ok(hooks.init, "init hook registered");
   hooks.init();
-  assert.deepEqual(Object.keys(CONFIG.Actor.dataModels).sort(), ["character", "npc"]);
+  assert.deepEqual(Object.keys(CONFIG.Actor.dataModels).sort(), ["character", "loot", "npc"]);
   assert.equal(Object.keys(CONFIG.Item.dataModels).length, 13);
   assert.equal(Object.keys(CONFIG.ActiveEffect.dataModels).length, 6);
   assert.ok(CONFIG.N5E.conditions.exhaustion);
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 6, "character, NPC, simple NPC, raw-data placeholder, item, effect");
+  assert.equal(registered.sheets.length, 7, "character, NPC, simple NPC, loot, raw-data placeholder, item, effect");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
   assert.ok(registered.settings.includes("n5e.restLimit"));
