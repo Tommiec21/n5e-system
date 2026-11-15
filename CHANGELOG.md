@@ -1,3 +1,7 @@
+## 0.46.0-alpha.2 — Shinobi implements (King Q-I1)
+
+- Scout-Nin's third attack counts only the Kunai, Shuriken and Senbon themselves; Fuma-Shuriken, Monster Shuriken, Ballistic Kunai Gun and Ballistic Shuriken Rifle no longer count.
+
 ## 0.46.0-alpha.1 — STD6a: items (King 2026-11-15: "Build out the next 3 batches")
 
 - The equipment compendium's weapons, consumables, armor and containers already carry their mechanics as data; two things were still found by name and now aren't:

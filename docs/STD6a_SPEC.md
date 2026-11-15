@@ -1,6 +1,6 @@
 # STD6a function spec: items
 
-Status: **King 2026-11-15: "Build out the next 3 batches" (STD4, STD5, STD6a). Built and published `0.46.0-alpha.1`. One question open (Q-I1).**
+Status: **King 2026-11-15: "Build out the next 3 batches" (STD4, STD5, STD6a). Built and published `0.46.0-alpha.1`. Q-I1 answered.**
 
 Plan: `docs/STD_SPEC.md`, STD6a (items, the first content pass).
 
@@ -26,3 +26,4 @@ Plan: `docs/STD_SPEC.md`, STD6a (items, the first content pass).
 ## Progress log
 
 - 2026-11-15 Claude: built and published `0.46.0-alpha.1`. Tests: core +1 (the flag counts, the name alone no longer does). Suites: 552 and 163 pass.
+- 2026-11-15 Claude: King answered **Q-I1: only Kunai and Shuriken proper**, none of the weapons that mention them. Published `0.46.0-alpha.2`: Fuma-Shuriken, Monster Shuriken, Ballistic Kunai Gun and Ballistic Shuriken Rifle unmarked. Senbon stays marked (the feature names it; it is not a weapon that mentions them).
