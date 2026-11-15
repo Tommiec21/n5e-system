@@ -743,3 +743,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Action-effect element `areaSize` {value, shapes} | The cast's area grows (all shapes, or per shape) |
 | Action-effect element `ignoreComponent` {component} | The cast doesn't need hs, cm, cs or m |
 | `plan.shaping` {grow, ignore}; area button `data-grow` | The cast's shaping, used by area placement |
+
+## Added in 0.52.0-alpha.1 (ENG1c)
+
+| Path | Meaning |
+| --- | --- |
+| Reaction recipe `ally` {range, includeSelf} | Offered to its owner when another creature within range is about to take damage |
+| Reaction recipe `requiresState` | Only offered while its owner is in that state (flags.n5e.state) |
+| Reaction preparation `reactorUpdate` {actor, update} | The protecting creature's cost, paid after validation |

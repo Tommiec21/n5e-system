@@ -6,7 +6,9 @@ export function createReactionDispatcher({ authority, stamp, open, wait }) {
   };
   const checkOffer = (actor, offer) => {
     if ( !offer ) return null;
-    if ( !offer.item?.id || !actor.items.some(i => i.id === offer.item.id) ) throw new Error("Reaction must belong to the reacting actor.");
+    // ENG1c: an offer may come from another creature (offer.reactor) that protects this one.
+    const reactor = offer.reactor ?? actor;
+    if ( !offer.item?.id || !reactor.items.some(i => i.id === offer.item.id) ) throw new Error("Reaction must belong to the reacting actor.");
     // Terms contain only small JSON values; adapters put costs/scaling here for revalidation.
     const terms = JSON.stringify(offer.terms ?? {});
     if ( terms.length > 4000 ) throw new Error("Reaction terms are too large.");
@@ -37,13 +39,13 @@ export function createReactionDispatcher({ authority, stamp, open, wait }) {
         for ( const raw of (Array.isArray(offered) ? offered : [offered]) ) {
         const initial = checkOffer(actor, raw);
         if ( !initial ) continue;
-        const window = await open(actor, initial.offer.item, { label: initial.offer.label ?? initial.offer.item.name, trigger: initial.offer.trigger ?? "Use this reaction?", requestId: context.requestId, sourceMessageId: context.message?.id ?? null });
+        const window = await open(initial.offer.reactor ?? actor, initial.offer.item, { label: initial.offer.label ?? initial.offer.item.name, trigger: initial.offer.trigger ?? "Use this reaction?", requestId: context.requestId, sourceMessageId: context.message?.id ?? null });
         const decision = await wait(window);
         requireAuthority();
         if ( decision !== "accepted" ) continue;
         let attempted = false;
         return {
-          id, itemId: initial.offer.item.id,
+          id, itemId: initial.offer.item.id, reactorUuid: initial.offer.reactor?.uuid ?? null,
           async interruptions() {
             requireAuthority();
             if ( adapters.get(id) !== adapter || originalStamp !== stamp() ) throw new Error("Reaction changed before interruption discovery.");

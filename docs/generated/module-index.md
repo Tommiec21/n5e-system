@@ -73,7 +73,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `item-sheet.mjs` | 182 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
-| `reaction-editor.mjs` | 31 |  | `editReaction` |
+| `reaction-editor.mjs` | 36 |  | `editReaction` |
 
 ## module/applications/npc
 
@@ -222,8 +222,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `adversary-builder.mjs` | 120 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
 | `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 185 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
-| `authored-reactions.mjs` | 38 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
-| `automation-summary.mjs` | 67 | What an item does, read from its data (STD5; docs/STD_SPEC.md "Reviewable in game"): every channel (activities, Active Effects and their changes, rule elemen... | `automationOf`, `STATUS_LABELS` |
+| `authored-reactions.mjs` | 81 | Declarative before-damage recipes. | `validateReactionRecipe`, `allyReactionOffers`, `authoredReactionOffers` |
+| `automation-summary.mjs` | 68 | What an item does, read from its data (STD5; docs/STD_SPEC.md "Reviewable in game"): every channel (activities, Active Effects and their changes, rule elemen... | `automationOf`, `STATUS_LABELS` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 58 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
 | `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
@@ -325,7 +325,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
-| `apply-damage.mjs` | 348 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
+| `apply-damage.mjs` | 350 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 281 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
@@ -349,9 +349,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `npc-knowledge.mjs` | 95 | What the players can learn (NPC1c C5; King Q-N21-Q-N24). | `unknownEntries`, `learnSectionHTML`, `onLearnOffer`, `onLearnPick`, `learnEntry`, `registerNpcKnowledge` |
 | `npc-privacy.mjs` | 78 | What players see of NPCs (PRESTD1 Part A, King 2026-11-15): optional rules that keep NPC numbers, damage, condition messages and names for the GM. | `privateNpc`, `gmWhisper`, `nameShownToAll`, `hideNameFor`, `renderPrivacy`, `registerPrivacyHooks` |
 | `positioning.mjs` | 161 | Positioning workflows (POS1). | `meleeReach`, `onMoveForOpportunity`, `onOpportunityClick`, `onCoreAction`, `recordEngagement`, `engagedWith`, `surprisedTurnStart`, `surprisedTurnEnd`, `endSurprise`, `registerPositioningHooks` |
-| `reaction-adapters.mjs` | 50 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
+| `reaction-adapters.mjs` | 76 | Whoever applies the damage resolves reactions (dnd5e parity: the GM for NPCs, owners for their characters). | `registerReaction`, `listReactions`, `chooseReaction`, `resolveReactionChain` |
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
-| `reaction-dispatch.mjs` | 83 | Trusted system/module adapters. | `createReactionDispatcher` |
+| `reaction-dispatch.mjs` | 85 | Trusted system/module adapters. | `createReactionDispatcher` |
 | `reactions.mjs` | 183 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resolution.mjs` | 66 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |

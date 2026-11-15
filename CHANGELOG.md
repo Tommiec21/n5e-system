@@ -1,3 +1,9 @@
+## 0.52.0-alpha.1 — ENG1c: reactions that protect others
+
+- **Vitality Guard:** when an ally within 30 ft is about to take damage in combat, a Medical-Nin in Ascension is offered the reaction. It halves that damage for 1 Healing Surge and uses the Medical-Nin's reaction.
+- For authors: damage reaction recipes can protect others within a range (and optionally the owner too), and can require a state. Both are in the reaction editor.
+- Not checked in a running Foundry world. The ally offer uses token distance on the current scene.
+
 ## 0.51.0-alpha.1 — ENG1b: Moldings that change the jutsu
 
 - **Widened Ninjutsu** makes the placed area larger: sphere or cube +5 ft, cone or line +10 ft, cylinder +10 ft.

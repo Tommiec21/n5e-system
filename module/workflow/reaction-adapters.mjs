@@ -2,7 +2,7 @@ import { createReactionDispatcher } from "./reaction-dispatch.mjs";
 import { openReactionWindow, waitForReactionWindow, askReactionLocally } from "./reactions.mjs";
 import { damageSourceVisibility } from "../canvas/visibility.mjs";
 import { rule } from "../rules-settings.mjs";
-import { authoredReactionOffers } from "../rules/authored-reactions.mjs";
+import { authoredReactionOffers, allyReactionOffers } from "../rules/authored-reactions.mjs";
 import { createReactionChain } from "./reaction-chain.mjs";
 
 const combatStamp = () => game.combat?.started ? `${game.combat.id}:${game.combat.round}:${game.combat.turn}` : null;
@@ -34,6 +34,32 @@ dispatcher.register("authored-damage", {
     if ( terms.cost ) update[`system.resources.${terms.pool}.value`] = actor.system.resources[terms.pool].value - terms.cost;
     if ( terms.spendReaction ) update["flags.n5e.economy.reaction"] = true;
     return { flatReduction: roll?.total ?? 0, multiplier: terms.multiplier, update, roll, label };
+  }
+});
+
+// ENG1c: a nearby creature's reaction that protects the damaged one (recipe `ally`). Its owner is asked;
+// it pays the cost and spends its reaction; the damaged creature's damage changes.
+dispatcher.register("authored-ally-damage", {
+  events: ["beforeDamage"], priority: 40,
+  offer(actor, { data }) {
+    const mine = actor.getActiveTokens?.()[0];
+    if ( !mine || !canvas?.ready ) return [];
+    const others = [];
+    for ( const token of canvas.tokens.placeables ) {
+      if ( !token.actor || token.actor === actor ) continue;
+      const distance = canvas.grid.measurePath([mine.center, token.center]).distance;
+      others.push({ actor: token.actor, distance });
+    }
+    return allyReactionOffers(actor, { combat: !!combatStamp(), instances: data.instances, ignoreDR: !!data.ignoreDR, genjutsu: !!data.genjutsu, others });
+  },
+  async prepare(actor, { terms, label, reactor }) {
+    const roll = terms.reduction ? (await (await import("../dice/advantaged.mjs")).rollFormula(reactor, terms.reduction, { title: `${reactor.name}: ${label}`, kind: "dice", type: "dice", cancellable: false })).roll : null;
+    if ( roll && (!Number.isFinite(roll.total) || roll.total < 0) ) throw new Error("Reaction reduction must be a finite nonnegative number.");
+    const spend = {};
+    if ( terms.cost ) spend[`system.resources.${terms.pool}.value`] = reactor.system.resources[terms.pool].value - terms.cost;
+    if ( terms.spendReaction ) spend["flags.n5e.economy.reaction"] = true;
+    // The reactor pays after the damage is validated (apply-damage.mjs), so the offer is still valid then.
+    return { flatReduction: roll?.total ?? 0, multiplier: terms.multiplier, update: {}, roll, label, reactorUpdate: { actor: reactor, update: spend } };
   }
 });
 

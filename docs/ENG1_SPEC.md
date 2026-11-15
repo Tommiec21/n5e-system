@@ -1,6 +1,6 @@
 # ENG1 function spec: the missing capabilities
 
-Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1; ENG1b 0.51.0-alpha.1.**
+Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1; ENG1b 0.51.0-alpha.1; ENG1c 0.52.0-alpha.1.**
 
 Why: the STD6d class review left most class features as notes, but not because they are judgment calls. A handful of general capabilities was missing, and the same ones recur across classes, clans and jutsu. Each is built once, generically, as data the effects use (no class or feature named in code). Then the reviewed classes are redone and the class pass continues with the fuller toolkit (`docs/STD6d_SPEC.md`).
 
@@ -46,7 +46,22 @@ Each batch: spec section here, build, tests, release, log. King said to build th
 - **Not automated, with notes:** Distant (range isn't enforced anywhere, so +30 ft changes nothing to check), Doubled and Careful (the caster picks the targets), and the alternative Widened choices (a line 5 ft wider, a cylinder 10 ft taller).
 - **Question Q-E1:** Widened says a cube's "radius" grows 5 ft. The template's cube size is its side. I add 5 ft to the side. Should it be 10 (5 on each side)?
 
+## ENG1c (0.52.0-alpha.1)
+
+- **Recipe fields:** a damage reaction recipe (`flags.n5e.reaction`) can now carry `ally {range, includeSelf}` (it protects other creatures within range) and `requiresState` (it is only offered while its owner is in that state). The item's reaction editor has both fields.
+- **How it's offered:**
+  - Before damage is applied in combat, creatures within range of the damaged one are offered their ally reactions (`rules/authored-reactions.mjs allyReactionOffers`; adapter `authored-ally-damage` in `workflow/reaction-adapters.mjs`).
+  - The reacting creature's owner is asked. The dispatcher accepts an offer's `reactor`.
+  - The damaged creature's damage changes: multiplier and/or rolled reduction.
+  - The reactor pays the cost and spends its reaction once the damage is validated (`reactorUpdate`, `workflow/apply-damage.mjs`).
+- **Data:** Vitality Guard (Healing Ascension) halves the damage to an ally within 30 ft, for 1 Healing Surge, only in Ascension.
+- **Left as buttons, because they don't change the incoming damage:**
+  - Counter Seal: it changes a save, and its +2 effect button stays.
+  - Grit: it gives temporary HP that outlast the hit.
+  - Interpose: it redirects the attack.
+
 ## Progress log
 
 - 2026-11-15 Claude: plan written from the STD6d review; ENG1a built and published 0.50.0-alpha.1. Tests: `tests/core/eng1.test.mjs`.
 - 2026-11-15 Claude: ENG1b built and published 0.51.0-alpha.1.
+- 2026-11-15 Claude: ENG1c built and published 0.52.0-alpha.1.

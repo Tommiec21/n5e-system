@@ -119,6 +119,8 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     }
     const update = { ...plan.update, ...reaction.update };
     if ( reaction.validate ) await reaction.validate();
+    // ENG1c: a protecting creature's reaction is paid by that creature.
+    if ( reaction.reactorUpdate && Object.keys(reaction.reactorUpdate.update ?? {}).length ) await reaction.reactorUpdate.actor.update(reaction.reactorUpdate.update);
     if ( coordinated && !game.users.activeGM?.isSelf ) throw new Error("GM authority changed before damage commit; reconcile the pending request.");
     if ( plan.deathFailures ) update["system.deathSaves.failure"] = Math.min(3, (actor.system.deathSaves?.failure ?? 0) + plan.deathFailures);
     if ( Object.keys(update).length ) await actor.update(update);

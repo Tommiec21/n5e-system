@@ -44,7 +44,8 @@ export function automationOf(item) {
   const recipe = item.flags?.n5e?.reaction;
   if ( recipe?.enabled ) channels.push({ kind: "Reaction", label: item.name, summary: [recipe.multiplier !== 1 ? `damage ×${recipe.multiplier}` : "",
     recipe.reduction ? `reduce by ${recipe.reduction}` : "", recipe.cost ? `costs ${recipe.cost} ${recipe.pool}` : "", recipe.requireSight ? "needs sight" : "",
-    recipe.spendReaction ? "uses the reaction" : ""].filter(Boolean).join(", ") });
+    recipe.spendReaction ? "uses the reaction" : "", recipe.ally ? `protects others within ${recipe.ally.range} ft${recipe.ally.includeSelf ? " and itself" : ""}` : "",
+    recipe.requiresState ? `only in ${recipe.requiresState}` : ""].filter(Boolean).join(", ") });
   for ( const r of list(item.system?.riders) ) channels.push({ kind: "Rider", label: r.label || "Rider", summary: r.text || r.type || "" });
   const status = channels.length ? (notes.length ? "partial" : "automated") : notes.length ? "note" : "none";
   const text = String(item.system?.description ?? "").replace(/<[^>]+>/g, " ");

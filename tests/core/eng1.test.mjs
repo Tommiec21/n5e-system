@@ -54,3 +54,20 @@ test("ENG1b: Widened, Dragwind and Subtle change the jutsu as cast", async () =>
   assert.deepEqual(castShaping([fx(nin["subtle-ninjutsu"], "Subtle Ninjutsu")]).ignore, ["hs"]);
   assert.deepEqual(jutsuComponents({ system: { components: { hs: true, cm: true } } }).filter(c => !["hs"].includes(c)), ["cm"]);
 });
+
+test("ENG1c: a nearby creature's reaction protects the damaged one (Vitality Guard)", async () => {
+  const { allyReactionOffers, authoredReactionOffers } = await import("../../module/rules/authored-reactions.mjs");
+  const fs2 = (await import("node:fs")).default;
+  const walk = d => fs2.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".json") ? [`${d}/${e.name}`] : []);
+  const asc = walk("packs/_source/features").map(f => JSON.parse(fs2.readFileSync(f, "utf8"))).find(d => d.system?.identifier === "healing-ascension");
+  const medic = (state, extra = {}) => ({ name: "Medic", statuses: new Set(), flags: { n5e: { economy: {} } }, items: [{ ...asc, id: "asc" }],
+    effects: state ? [{ flags: { n5e: { state } } }] : [], system: { resources: { healingSurges: { value: 2 } } }, ...extra });
+  const ally = { name: "Ally", statuses: new Set(), items: [], effects: [] };
+  const hit = { combat: true, instances: [{ amount: 10, type: "fire" }] };
+  const offers = allyReactionOffers(ally, { ...hit, others: [{ actor: medic("ascension"), distance: 25 }] });
+  assert.deepEqual(offers.map(o => [o.reactor.name, o.terms.multiplier, o.terms.cost]), [["Medic", 0.5, 1]]);
+  assert.equal(allyReactionOffers(ally, { ...hit, others: [{ actor: medic("ascension"), distance: 35 }] }).length, 0, "out of range");
+  assert.equal(allyReactionOffers(ally, { ...hit, others: [{ actor: medic(null), distance: 10 }] }).length, 0, "not in Ascension");
+  assert.equal(allyReactionOffers(ally, { ...hit, others: [{ actor: medic("ascension", { system: { resources: { healingSurges: { value: 0 } } } }), distance: 10 }] }).length, 0, "no Surge");
+  assert.equal(authoredReactionOffers(medic("ascension"), hit).length, 0, "not for the medic itself");
+});

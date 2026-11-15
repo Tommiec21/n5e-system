@@ -306,20 +306,6 @@
             "formula": "",
             "note": "Willing allies of your choice within 20 ft regain 1 of their Hit Dice + their Con modifier (2 Hit Dice from 10th level), without spending them; not at 0 HP."
           }
-        },
-        {
-          "id": "n5ekPuRfTZWQxdv7",
-          "type": "roll",
-          "label": "Vitality Guard",
-          "activation": "reaction",
-          "cost": {
-            "pool": "healingSurges",
-            "amount": 1
-          },
-          "roll": {
-            "formula": "",
-            "note": "An ally within 30 ft who takes damage gains resistance to that damage."
-          }
         }
       ],
       "rules": [
@@ -330,8 +316,30 @@
         {
           "key": "note",
           "text": "Ascension: once entered, not again until 10 minutes of uninterrupted meditation."
+        },
+        {
+          "key": "note",
+          "text": "Vitality Guard is offered to you as a reaction when an ally within 30 ft is about to take damage while you're in Ascension: it halves that damage (resistance) for 1 Healing Surge."
         }
-      ]
+      ],
+      "flags": {
+        "reaction": {
+          "version": 1,
+          "enabled": true,
+          "reduction": "",
+          "multiplier": 0.5,
+          "requireSight": false,
+          "spendReaction": true,
+          "pool": "healingSurges",
+          "cost": 1,
+          "requiresDR": false,
+          "ally": {
+            "range": 30,
+            "includeSelf": false
+          },
+          "requiresState": "ascension"
+        }
+      }
     },
     "healing-overflow-adept-medic": {
       "status": "partial",

@@ -16,12 +16,17 @@ export async function editReaction(item) {
       <label><input type="checkbox" name="requireSight" ${check("requireSight")}> Requires seeing the source</label>
       <label><input type="checkbox" name="spendReaction" ${check("spendReaction")}> Spends reaction</label>
       <label><input type="checkbox" name="requiresDR" ${check("requiresDR")}> Only against damage DR applies to (not DR-ignoring damage or Genjutsu psychic damage)</label>
+      <label>Protects others within (ft; blank = only itself)<input type="number" name="allyRange" min="0" max="300" step="5" value="${value.ally?.range ?? ""}"></label>
+      <label><input type="checkbox" name="allyIncludeSelf" ${value.ally?.includeSelf ? "checked" : ""}> Also itself</label>
+      <label>Only in this state (optional)<input name="requiresState" value="${esc(value.requiresState ?? "")}" placeholder="ascension"></label>
       <p>Does not implement attack redirection, free-use turn limits or additional targets. Leave unsupported abilities disabled. Do not duplicate a built-in reaction on the same ability.</p>`,
     ok: { label: "Save", callback: (event, button) => {
       const form = button.form.elements;
       return validateReactionRecipe({ version: 1, enabled: form.enabled.checked, reduction: form.reduction.value,
         multiplier: Number(form.multiplier.value), pool: form.pool.value.trim(), cost: Number(form.cost.value),
-        requireSight: form.requireSight.checked, spendReaction: form.spendReaction.checked, requiresDR: form.requiresDR.checked });
+        requireSight: form.requireSight.checked, spendReaction: form.spendReaction.checked, requiresDR: form.requiresDR.checked,
+        ...(form.allyRange.value !== "" ? { ally: { range: Number(form.allyRange.value), includeSelf: form.allyIncludeSelf.checked } } : {}),
+        ...(form.requiresState.value.trim() ? { requiresState: form.requiresState.value.trim() } : {}) });
     } }, rejectClose: false });
   if ( !result ) return;
   if ( result.reduction ) n5eRollFormula(result.reduction, item.actor?.getRollData?.() ?? {});
