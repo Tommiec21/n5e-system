@@ -5,12 +5,17 @@
   {{#if editable}}
     <div class="simple-pools">
       <label>HP <input type="number" name="system.hp.value" value="{{vm.block.hp.value}}" min="0"> / {{vm.block.hp.max}}</label>
-      {{#unless vm.block.cp.none}}<label>CP <input type="number" name="system.cp.value" value="{{vm.block.cp.value}}" min="0"> / {{vm.block.cp.max}}</label>{{/unless}}
+      <label>Temp HP <input type="number" name="system.hp.temp" value="{{vm.temp.hp}}" min="0"></label>
+      {{#unless vm.block.cp.none}}<label>CP <input type="number" name="system.cp.value" value="{{vm.block.cp.value}}" min="0"> / {{vm.block.cp.max}}</label>
+      <label>Temp CP <input type="number" name="system.cp.temp" value="{{vm.temp.cp}}" min="0"></label>{{/unless}}
     </div>
+  {{/if}}
+  {{#if vm.conditions.length}}
+    <div class="simple-conditions">{{#each vm.conditions}}<span class="chip" data-tooltip="{{label}}">{{label}}{{#if (n5eGt ranks 1)}} {{ranks}}{{/if}}</span>{{/each}}</div>
   {{/if}}
   {{#if vm.traits.length}}
     <h2>Traits</h2>
-    {{#each vm.traits}}<div class="simple-entry n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem"><b>{{name}}.</b></a> <span class="text">{{{text}}}</span></div>{{/each}}
+    {{#each vm.traits}}<div class="simple-entry n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem"><b>{{name}}{{#if uses}} ({{uses}}){{/if}}.</b></a> <span class="text">{{{text}}}</span></div>{{/each}}
   {{/if}}
   {{#if vm.jutsu.length}}
     <h2>Jutsu</h2>
@@ -18,14 +23,15 @@
     {{#each vm.jutsu}}
       <div class="simple-group"><b>{{label}}</b>
         {{#each ranks}}<div class="simple-rank"><span class="rank">{{label}}:</span>
-          {{#each jutsu}}<span class="n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem">{{name}}</a>{{#if cost}} ({{cost}}){{/if}}</span>{{/each}}</div>{{/each}}
+          {{#each jutsu}}<span class="n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem">{{name}}</a>{{#if cost}} ({{cost}}){{/if}}{{#if uses}} [{{uses}}]{{/if}}</span>{{/each}}</div>{{/each}}
       </div>
     {{/each}}
   {{/if}}
   {{#if vm.attacks.length}}
     <h2>Attacks</h2>
     {{> "systems/n5e/templates/actor/npc/casting-lines.hbs" block=vm.block which="attacks"}}
-    <div class="simple-rank">{{#each vm.attacks}}<span class="n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem">{{name}}</a></span>{{/each}}</div>
+    {{#if vm.multiattack}}<div class="simple-entry"><b>{{vm.multiattack}}</b></div>{{/if}}
+    {{#each vm.attacks}}<div class="simple-entry n5e-row" data-item-id="{{id}}"><a class="title" data-action="useItem"><b>{{name}}.</b></a> {{text}}</div>{{/each}}
   {{/if}}
   {{#if vm.publicNotes}}<h2>Notes</h2><div class="bio-text">{{{vm.publicNotes}}}</div>{{/if}}
 </section>

@@ -504,3 +504,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `flags.n5e.roll.breakdown.parts[].removed`, `.added`, `.dice` | Unticked parts, added modifiers, added dice |
 | Card attribute `data-n5e-gm-only` | Removed for non-GM users when the card renders |
 | `rollWithSpec` options `dialog`, `prepared {offLabels, added, mode}`, `situational [{label, value, when}]` | No dialog; a group's choice; unticked extra modifiers |
+
+## Added in 0.31.0-alpha.2 (NPC1c)
+
+| Path | Meaning |
+| --- | --- |
+| `system.situational[] {skill, value, when}` (NPC) | Situational skill bonuses, unticked in that skill's roll dialog |
+| `system.knowledge.entries[] {id, kind: item, stat or text, ref, label, note}` (NPC) | What the players can learn; `ref` is an item id on this NPC or a statistic key (`KNOWABLE_STATS`) |
+| `system.knowledge.learned[]` (NPC) | Entry ids the whole party knows |
+| `flags.n5e.learn {npcUuid, readerUuid, available, picked}` (ChatMessage) | On a Read the Enemy success against an NPC with learnable entries |
+| Owner intent `learnEntry {messageId, entryId}` | The reader's pick, finished on the GM's client |

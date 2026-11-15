@@ -10,14 +10,14 @@
  */
 import CharacterSheet from "./character-sheet.mjs";
 import { headerVM } from "../../view-models/character.mjs";
-import { npcHeaderVM, npcBuildVM, statBlockVM } from "../../view-models/npc.mjs";
+import { npcHeaderVM, npcBuildVM, statBlockVM, npcDefensesVM, npcKnowledgeVM, learnedVM } from "../../view-models/npc.mjs";
 import { statLine, ABILITY_KEYS, fullSaves } from "../../rules/adversary.mjs";
 import { rule } from "../../rules/settings.mjs";
 import { buildRows } from "../schema-form.mjs";
 
 const T = name => `systems/n5e/templates/actor/npc/${name}.hbs`;
 
-export const NPC_TEMPLATE_PATHS = [T("stat-block"), T("casting-lines")];
+export const NPC_TEMPLATE_PATHS = [T("stat-block"), T("casting-lines"), T("embed")];
 
 export default class NPCSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
@@ -26,7 +26,15 @@ export default class NPCSheet extends CharacterSheet {
     actions: {
       npcApplyStatLine: NPCSheet.#onApplyStatLine,
       npcToggleFullSave: NPCSheet.#onToggleFullSave,
-      npcToggleSkill: NPCSheet.#onToggleSkill
+      npcToggleSkill: NPCSheet.#onToggleSkill,
+      npcAddTrait: NPCSheet.#onAddTrait,
+      npcRemoveTrait: NPCSheet.#onRemoveTrait,
+      npcAddSituational: NPCSheet.#onAddSituational,
+      npcRemoveSituational: NPCSheet.#onRemoveSituational,
+      npcAddKnowledge: NPCSheet.#onAddKnowledge,
+      npcRemoveKnowledge: NPCSheet.#onRemoveKnowledge,
+      npcMoveKnowledge: NPCSheet.#onMoveKnowledge,
+      npcToggleLearned: NPCSheet.#onToggleLearned
     }
   };
 
@@ -72,7 +80,10 @@ export default class NPCSheet extends CharacterSheet {
     const actor = this.actor;
     const d = actor.system.details;
     if ( partId === "limited" ) {
-      context.limited = { name: actor.name, img: actor.img, blurb: d.blurb, publicHTML: await TextEditor.enrichHTML(d.publicNotes ?? "", { relativeTo: actor }) };
+      const learned = learnedVM(actor);
+      for ( const e of learned ) e.text = await TextEditor.enrichHTML(e.text ?? "", { relativeTo: actor });
+      context.limited = { name: actor.name, img: actor.img, blurb: d.blurb, learned,
+        publicHTML: await TextEditor.enrichHTML(d.publicNotes ?? "", { relativeTo: actor }) };
       return context;
     }
     context = await super._preparePartContext(partId, context, options);
@@ -84,6 +95,8 @@ export default class NPCSheet extends CharacterSheet {
       case "build":
         context.tab = context.tabs.build;
         context.vm = npcBuildVM(actor, { partyManual: rule("adversaryPartySize") === "manual" });
+        context.defenses = npcDefensesVM(actor);
+        context.knowledge = npcKnowledgeVM(actor);
         break;
       case "jutsu":
       case "combat":
@@ -97,7 +110,10 @@ export default class NPCSheet extends CharacterSheet {
           privateHTML: game.user.isGM ? await TextEditor.enrichHTML(d.privateNotes ?? "", { relativeTo: actor }) : "",
           biographyHTML: await TextEditor.enrichHTML(d.biography ?? "", { relativeTo: actor })
         };
-        if ( this.editMode ) context.rows = buildRows(actor.system.schema, actor._source.system, { skip: new Set(["abilities", "saves", "skills"]) });
+        // The raw field editor leaves out everything the header and Build tab already edit, so no field
+        // is in the form twice (NPC1c).
+        if ( this.editMode ) context.rows = buildRows(actor.system.schema, actor._source.system, { skip: new Set(["abilities", "saves", "skills",
+          "details", "adversary", "traits", "hpMax", "cpMax", "diesAtZero", "allied", "situational", "knowledge"]) });
         break;
     }
     return context;
@@ -125,5 +141,124 @@ export default class NPCSheet extends CharacterSheet {
     if ( !this.isEditable ) return;
     const key = target.dataset.key;
     return this.actor.update({ [`system.skills.${key}.proficient`]: !this.actor._source.system.skills?.[key]?.proficient });
+  }
+
+  /**
+   * @override
+   * Rows of list fields are edited in place ("system.situational.0.when"); they are merged into the
+   * stored arrays here, so the arrays are saved whole.
+   */
+  _processFormData(event, form, formData) {
+    const flat = formData.object;
+    const src = this.actor._source.system;
+    const lists = { situational: foundry.utils.deepClone(src.situational ?? []), "knowledge.entries": foundry.utils.deepClone(src.knowledge?.entries ?? []) };
+    const touched = new Set();
+    for ( const [key, value] of Object.entries(flat) ) {
+      const m = key.match(/^system\.(situational|knowledge\.entries)\.(\d+)\.(\w+)$/);
+      if ( !m ) continue;
+      const row = lists[m[1]][Number(m[2])];
+      if ( row ) row[m[3]] = m[3] === "value" ? Number(value) || 0 : value;
+      touched.add(m[1]);
+      delete flat[key];
+    }
+    for ( const name of touched ) flat[`system.${name}`] = lists[name];
+    return super._processFormData(event, form, formData);
+  }
+
+  /** @override  The learnable list takes items dragged from this sheet (NPC1c C4). */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    const zone = this.element.querySelector("[data-n5e-learn-drop]");
+    if ( !zone || !this.isEditable ) return;
+    zone.addEventListener("dragover", ev => { ev.preventDefault(); zone.classList.add("over"); });
+    zone.addEventListener("dragleave", () => zone.classList.remove("over"));
+    zone.addEventListener("drop", async ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      zone.classList.remove("over");
+      const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(ev);
+      const item = data?.type === "Item" && data.uuid ? await fromUuid(data.uuid) : null;
+      if ( !item || item.parent !== this.actor ) return ui.notifications.warn("Drag a feature, trait, jutsu or item from this NPC's own sheet.");
+      await this.#addKnowledge({ kind: "item", ref: item.id, label: item.name });
+    });
+  }
+
+  /** Add one learnable entry (no duplicates). */
+  async #addKnowledge(entry) {
+    const k = foundry.utils.deepClone(this.actor._source.system.knowledge ?? { entries: [], learned: [] });
+    if ( k.entries.some(e => e.kind === entry.kind && e.ref && e.ref === entry.ref) ) return ui.notifications.info(`${entry.label} is already on the list.`);
+    k.entries.push({ id: foundry.utils.randomID(), note: "", ...entry });
+    return this.actor.update({ "system.knowledge.entries": k.entries });
+  }
+
+  /** Add a damage type, condition or language to a set (Build tab chips). */
+  static async #onAddTrait(event, target) {
+    if ( !this.isEditable ) return;
+    const field = target.dataset.field;
+    const row = target.closest(".build-set");
+    const value = row?.querySelector("[data-n5e-trait-custom]")?.value.trim() || row?.querySelector("[data-n5e-trait-pick]")?.value;
+    if ( !value ) return;
+    const current = new Set(field.split(".").reduce((o, k) => o?.[k], this.actor._source.system) ?? []);
+    current.add(value);
+    return this.actor.update({ [`system.${field}`]: [...current] });
+  }
+
+  static async #onRemoveTrait(event, target) {
+    if ( !this.isEditable ) return;
+    const { field, key } = target.dataset;
+    const current = new Set(field.split(".").reduce((o, k) => o?.[k], this.actor._source.system) ?? []);
+    current.delete(key);
+    return this.actor.update({ [`system.${field}`]: [...current] });
+  }
+
+  static async #onAddSituational() {
+    if ( !this.isEditable ) return;
+    const list = foundry.utils.deepClone(this.actor._source.system.situational ?? []);
+    list.push({ skill: "ste", value: 2, when: "" });
+    return this.actor.update({ "system.situational": list });
+  }
+
+  static async #onRemoveSituational(event, target) {
+    if ( !this.isEditable ) return;
+    const list = foundry.utils.deepClone(this.actor._source.system.situational ?? []);
+    list.splice(Number(target.dataset.index), 1);
+    return this.actor.update({ "system.situational": list });
+  }
+
+  static async #onAddKnowledge(event, target) {
+    if ( !this.isEditable ) return;
+    const row = target.closest(".build-row");
+    if ( target.dataset.kind === "stat" ) {
+      const select = row?.querySelector("[data-n5e-learn-stat]");
+      if ( !select?.value ) return;
+      return this.#addKnowledge({ kind: "stat", ref: select.value, label: select.selectedOptions[0]?.textContent ?? select.value });
+    }
+    const text = row?.querySelector("[data-n5e-learn-text]")?.value.trim();
+    if ( !text ) return;
+    return this.#addKnowledge({ kind: "text", ref: "", label: "Note", note: text });
+  }
+
+  static async #onRemoveKnowledge(event, target) {
+    if ( !this.isEditable ) return;
+    const k = foundry.utils.deepClone(this.actor._source.system.knowledge);
+    const [gone] = k.entries.splice(Number(target.dataset.index), 1);
+    return this.actor.update({ "system.knowledge.entries": k.entries, "system.knowledge.learned": k.learned.filter(id => id !== gone?.id) });
+  }
+
+  static async #onMoveKnowledge(event, target) {
+    if ( !this.isEditable ) return;
+    const entries = foundry.utils.deepClone(this.actor._source.system.knowledge.entries);
+    const i = Number(target.dataset.index), j = i + Number(target.dataset.dir);
+    if ( j < 0 || j >= entries.length ) return;
+    [entries[i], entries[j]] = [entries[j], entries[i]];
+    return this.actor.update({ "system.knowledge.entries": entries });
+  }
+
+  /** The GM marks an entry known or not known to the party by hand (NPC1c C6). */
+  static async #onToggleLearned(event, target) {
+    if ( !this.isEditable ) return;
+    const learned = new Set(this.actor._source.system.knowledge.learned ?? []);
+    if ( learned.has(target.dataset.id) ) learned.delete(target.dataset.id); else learned.add(target.dataset.id);
+    return this.actor.update({ "system.knowledge.learned": [...learned] });
   }
 }

@@ -367,6 +367,19 @@ export function onRenderChatMessage(message, html) {
     const run = m => (d.n5eClashRoll ? m.rollClash(message, d.n5eClashRoll, ev) : d.n5eClashLose ? m.applyClashLoss(d.n5eClashLose) : m.startClash(message));
     import("../workflow/clash.mjs").then(run).catch(error => ui.notifications.warn(error.message));
   });
+  // NPC1c C5: what the party can learn from a Read the Enemy success.
+  if ( message.flags?.n5e?.learn ) {
+    import("../workflow/npc-knowledge.mjs").then(m => {
+      const box = document.createElement("div");
+      box.innerHTML = m.learnSectionHTML(message);
+      (html.querySelector(".n5e-roll-card") ?? html).append(...box.childNodes);
+      for ( const b of html.querySelectorAll("[data-n5e-learn-offer]") ) b.addEventListener("click", ev => { ev.preventDefault(); m.onLearnOffer(message); });
+      for ( const b of html.querySelectorAll("[data-n5e-learn-pick]") ) b.addEventListener("click", ev => {
+        ev.preventDefault();
+        m.onLearnPick(message, b.dataset.n5eLearnPick).catch(error => ui.notifications.warn(error.message));
+      });
+    }).catch(error => console.warn("n5e | learn", error));
+  }
   for ( const btn of html.querySelectorAll("[data-n5e-read-choice]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/jutsu-defense.mjs").then(m => m.onReadChoiceClick(message, btn)).catch(error => ui.notifications.warn(error.message));

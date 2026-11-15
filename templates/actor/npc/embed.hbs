@@ -1,0 +1,16 @@
+{{!-- An NPC's stat block in a journal page (@Embed, NPC1c C1). Data: vm = npcSimpleVM(actor), read only. Private notes never appear here. --}}
+<section class="n5e-npc-embed">
+  <h3>{{vm.block.name}}</h3>
+  {{> "systems/n5e/templates/actor/npc/stat-block.hbs" block=vm.block}}
+  {{#if vm.traits.length}}<h4>Traits</h4>{{#each vm.traits}}<p><b>{{name}}{{#if uses}} ({{uses}}){{/if}}.</b> {{{text}}}</p>{{/each}}{{/if}}
+  {{#if vm.jutsu.length}}
+    <h4>Jutsu</h4>
+    {{#each vm.block.lines}}<p><b>{{label}}.</b> {{attack}} to hit, save DC {{dc}}</p>{{/each}}
+    {{#each vm.jutsu}}<p><b>{{label}}:</b> {{#each ranks}}{{label}}: {{#each jutsu}}{{name}}{{#if cost}} ({{cost}}){{/if}}{{#unless @last}}, {{/unless}}{{/each}}{{#unless @last}}; {{/unless}}{{/each}}</p>{{/each}}
+  {{/if}}
+  {{#if vm.attacks.length}}
+    <h4>Attacks</h4>
+    {{#if vm.multiattack}}<p><b>{{vm.multiattack}}</b></p>{{/if}}
+    {{#each vm.attacks}}<p><b>{{name}}.</b> {{text}}</p>{{/each}}
+  {{/if}}
+</section>

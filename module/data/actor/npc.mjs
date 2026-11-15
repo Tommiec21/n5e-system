@@ -74,6 +74,16 @@ export default class NPCData extends CreatureData {
         skills: new (globalThis.foundry.data.fields.TypedObjectField)(S.num(null))
       })
     });
+    /** Situational skill bonuses (NPC1c C3): listed unticked in the roll dialog for that skill. */
+    schema.situational = S.arr(S.obj({ skill: S.str(), value: S.int(0), when: S.str() }));
+    /**
+     * What the players can learn (NPC1c C4-C6; King Q-N21-Q-N24). entries: what the GM put in the
+     * list (an item on this NPC, a statistic, or a note); learned: the entry ids the party knows.
+     */
+    schema.knowledge = S.obj({
+      entries: S.arr(S.obj({ id: S.str(), kind: S.str({ initial: "text" }), ref: S.str(), label: S.str(), note: S.str() })),
+      learned: S.arr(S.str())
+    });
     schema.hitDie = S.str({ initial: "d8" });
     schema.chakraDie = S.str({ initial: "d8" });
     /** Stated pool maximums; null = computed (the adversary formula, or the level formula). */

@@ -28,6 +28,8 @@
   <div class="head-right">
     <div class="buttons">
       {{#if editable}}
+        <button type="button" class="rest" data-action="rest" data-rest="short" data-tooltip="1 hour: spend Hit and Chakra Dice">Short Rest</button>
+        <button type="button" class="rest" data-action="rest" data-rest="long" data-tooltip="8 hours">Long Rest</button>
         <button type="button" class="mode {{#if editMode}}on{{/if}}" data-action="toggleMode" aria-pressed="{{editMode}}"
           data-tooltip="{{#if editMode}}Back to play mode{{else}}Edit stat block{{/if}}" aria-label="Toggle edit mode"><i class="fa-solid fa-pen"></i></button>
       {{/if}}

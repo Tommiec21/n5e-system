@@ -69,11 +69,15 @@ export async function onDefenseClick(message, kind, event) {
     body = `<div class="note">${name}.</div><div class="n5e-identified">${facts.item.system?.description ?? ""}</div>`;
   }
   const label = kind === "identify" ? "Identify" : "Read the Enemy";
+  // Whispered to the reader's owners and the GM (who chooses what can be learned, NPC1c C5).
   return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), whisper: ownersOf(actor),
     content: `<div class="n5e-roll-card"><header><b>${label}: ${won ? "Success" : "Failure"}</b></header>
       <div class="note">${total} vs DC ${dc}</div>${body}</div>`,
     flags: { n5e: { actorUuid: actor.uuid, readEnemy: won && kind === "read"
-      ? { cardId: message.id, discipline: facts.discipline, jutsu: facts.item.name, readerUuid: actor.uuid, used: false } : null } } });
+      ? { cardId: message.id, discipline: facts.discipline, jutsu: facts.item.name, readerUuid: actor.uuid, used: false } : null,
+      // NPC1c C5: a success against an NPC with learnable entries also offers what the party can learn.
+      learn: won && kind === "read" && facts.caster.type === "npc" && (facts.caster.system.knowledge?.entries ?? []).length
+        ? { npcUuid: facts.caster.uuid, readerUuid: actor.uuid, available: null, picked: null } : null } } });
 }
 
 /** A Read the Enemy benefit, for the selected creature (default: the reader). One creature, once. */

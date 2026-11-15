@@ -1,6 +1,6 @@
 # NPC1c function spec: closing the NPC sheet gaps
 
-Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead. Nothing is built. Comes after ROLL1 (King).**
+Status: **Approved by King 2026-11-14 (with ROLL1). Published `0.31.0-alpha.2`.**
 
 King (2026-11-14): anything missing from the NPC sheets that is relevant goes into a batch for future inclusion. Source: `docs/NPC_SHEET_REVIEW.md` (dnd5e 6.1.0 and PF2e 8.7.0 against N5e 0.30.0-alpha.2), items 1–11. Items already owned by a planned batch stay there (boss resources NPC4, strikes NPC3, loot LOOT1, trait content NPC6).
 
@@ -69,3 +69,12 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 ## Progress log
 
 - 2026-11-14 Claude: spec written from `docs/NPC_SHEET_REVIEW.md`. Nothing built.
+- 2026-11-14 Claude: **built after ROLL1 (King: "Approved").**
+  - A1–A4: `npcDefensesVM`; Build tab section for both builds; chips through `npcAddTrait` / `npcRemoveTrait` (buttons, so no field is in the form twice). A5: `statBlockVM` `defenses`, `senses`, `languages`. A6: rest buttons on the NPC header (King Q-N18: all NPCs).
+  - **Reading to confirm:** the Lurker's "+20 Speed" goes through the existing speed bonus, which adds to every speed the creature has (walk and climb alike). If the book means walking speed only, that is a one-line change.
+  - B1–B5: `attackLine` (from the Combat tab's attack spec), Multiattack from the suggested count, conditions, temp HP and CP, uses.
+  - C1: `N5eActor._buildEmbedHTML` with `templates/actor/npc/embed.hbs`. C2: `rules/npc-reset.mjs` (pure) and `applications/gm/npc-reset.mjs` (a "Reset NPCs" button on the Actors sidebar through `renderActorDirectory`). C3: `system.situational`; `rollSpec` passes them to the roll dialog (ROLL1 A3).
+  - C4–C6: `system.knowledge {{entries, learned}}`; Build tab list with a drop zone; `workflow/npc-knowledge.mjs` (`learnSectionHTML`, `onLearnOffer`, `onLearnPick`, `learnEntry`); owner intent `learnEntry`; Read the Enemy results carry `flags.n5e.learn`. King Q-N22 reading: one pick per success.
+  - Found while building: the Notes tab's raw field editor repeated every NPC field the header and Build tab edit. It now leaves them out.
+- 2026-11-14 Claude: tests. Attempt 1 failed (3): two test fixtures used an item type that doesn't exist ("feature"; features are "feat") and the old weapon damage field; one expectation missed that the Lurker bonus applies to every speed. Attempt 2 passed: `npm test` 456 pass, 2 skipped; core 98/98; lint and check clean. File: `tests/npc1c.test.mjs`.
+- 2026-11-14 Claude: **published `0.31.0-alpha.2`.** Not checked in a running Foundry world.

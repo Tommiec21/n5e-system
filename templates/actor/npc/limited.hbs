@@ -1,7 +1,11 @@
-{{!-- What a player with Limited permission sees of an NPC: name, portrait, blurb and public notes. Data: limited = {name, img, blurb, publicHTML}. --}}
+{{!-- What a player with Limited permission sees of an NPC: name, portrait, blurb and public notes. Data: limited = {name, img, blurb, publicHTML, learned} (learned: what the party knows, NPC1c C6). --}}
 <section class="n5e-npc-limited">
   <img src="{{limited.img}}" alt="" width="96" height="96">
   <h1>{{limited.name}}</h1>
   {{#if limited.blurb}}<div class="blurb">{{limited.blurb}}</div>{{/if}}
   <div class="bio-text">{{{limited.publicHTML}}}</div>
+  {{#if limited.learned.length}}
+    <h2>What the party has learned</h2>
+    {{#each limited.learned}}<div class="learned-entry"><b>{{label}}.</b> <span class="text">{{{text}}}</span>{{#if note}} <em>{{note}}</em>{{/if}}</div>{{/each}}
+  {{/if}}
 </section>

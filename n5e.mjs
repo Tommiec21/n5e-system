@@ -148,6 +148,11 @@ Hooks.once("init", () => {
 
 // Chat card buttons. Cards are plain HTML with data-n5e-* attributes; each render wires the buttons
 // (module/dice/roll.mjs dispatches them; turn cards have their own End-concentration buttons).
+// NPC1c C2: "Reset NPCs" for the GM on the Actors sidebar.
+Hooks.on("renderActorDirectory", (app, html) => {
+  import("./module/applications/gm/npc-reset.mjs").then(m => m.addResetButton(app, html)).catch(error => console.warn("n5e | reset button", error));
+});
+
 Hooks.on("renderChatMessageHTML", (message, html) => {
   dice.onRenderChatMessage(message, html);
   onRenderTurnCard(message, html);
@@ -175,6 +180,7 @@ Hooks.once("ready", async () => {
   registerOwnerIntents();
   registerAlliedIntents();
   void import("./module/workflow/transfer.mjs").then(m => m.registerTransfer());
+  void import("./module/workflow/npc-knowledge.mjs").then(m => m.registerNpcKnowledge());
   registerRestIntents();
   registerEffectApplication();
   registerReactionWindows();

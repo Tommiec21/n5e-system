@@ -1,4 +1,4 @@
-{{!-- Build tab (NPC1b). Data: vm = npcBuildVM(actor). The profile gives every number (rules/adversary.mjs); each can be overridden here. Blank override = the computed number. --}}
+{{!-- Build tab (NPC1b, NPC1c). Data: vm = npcBuildVM(actor), defenses = npcDefensesVM(actor), knowledge = npcKnowledgeVM(actor). The profile gives every number (rules/adversary.mjs); each can be overridden here. Blank override = the computed number. --}}
 <section class="tab n5e-tab npc-build {{tab.cssClass}}" data-tab="build" data-group="primary">
   <div class="build-row">
     <label>Build <select name="system.details.build" {{#unless editable}}disabled{{/unless}}>{{#each vm.buildOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
@@ -99,6 +99,80 @@
     <div class="build-suggested">
       <span><b>{{vm.suggested.traits}}</b> traits</span><span><b>{{vm.suggested.jutsu}}</b> jutsu known</span>
       <span><b>{{vm.suggested.freeformSlots}}</b> Freeform slots</span><span><b>{{vm.suggested.multiattack}}</b> attacks with Multiattack</span>
+    </div>
+  {{/if}}
+
+  {{!-- NPC1c A1-A4: both builds. Sets are edited with buttons so no field appears twice in the form. --}}
+  <div class="section-head"><h2>Defenses, senses and movement</h2></div>
+  <div class="build-sets">
+    {{#each defenses.sets}}
+      <div class="build-set" data-field="{{field}}">
+        <span class="lbl">{{label}}</span>
+        {{#each chips}}<span class="chip">{{label}}{{#if @root.editable}} <button type="button" class="chip-x" data-action="npcRemoveTrait" data-field="{{../field}}" data-key="{{key}}" aria-label="Remove {{label}}">×</button>{{/if}}</span>{{else}}<span class="hint">None</span>{{/each}}
+        {{#if @root.editable}}
+          <select data-n5e-trait-pick aria-label="Add to {{label}}"><option value="">Add…</option>{{#each options}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
+          {{#if custom}}<input type="text" data-n5e-trait-custom placeholder="Other" aria-label="Other language">{{/if}}
+          <button type="button" data-action="npcAddTrait" data-field="{{field}}">Add</button>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+  <div class="build-grid">
+    <label>Size <select name="system.traits.size">{{#each defenses.sizeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    {{#each defenses.speeds}}<label>{{label}} <input type="number" name="system.traits.speed.{{key}}" value="{{value}}" min="0" step="5"> ft</label>{{/each}}
+    <label class="check"><input type="checkbox" name="system.traits.speed.hover" {{#if defenses.hover}}checked{{/if}}> Hover</label>
+  </div>
+  <div class="build-grid">
+    {{#each defenses.senses}}<label>{{label}} <input type="number" name="system.traits.senses.{{key}}" value="{{value}}" min="0" step="5"> ft</label>{{/each}}
+  </div>
+  <div class="build-grid">
+    <label class="check" data-tooltip="On: the creature dies at 0 Hit Points. Off: it makes death saves like a character."><input type="checkbox" name="system.diesAtZero" {{#if defenses.diesAtZero}}checked{{/if}}> Dies at 0 Hit Points</label>
+    <label class="check" data-tooltip="A player-controlled summon or ally: its owner acts with it, and it counts as an ally of the party."><input type="checkbox" name="system.allied" {{#if defenses.allied}}checked{{/if}}> Allied</label>
+  </div>
+
+  {{!-- NPC1c C3: situational skill bonuses, offered unticked in that skill's roll dialog. --}}
+  <div class="section-head"><h2>Situational skill bonuses</h2><span class="budget">Offered in the roll dialog for that skill; the roller ticks them when they apply.</span></div>
+  <table class="build-table">
+    <thead><tr><th>Skill</th><th>Bonus</th><th>When</th><th></th></tr></thead>
+    <tbody>
+      {{#each defenses.situational}}
+        <tr>
+          <td><select name="system.situational.{{i}}.skill">{{#each skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></td>
+          <td><input type="number" name="system.situational.{{i}}.value" value="{{value}}"></td>
+          <td><input type="text" name="system.situational.{{i}}.when" value="{{when}}" placeholder="in forests"></td>
+          <td>{{#if @root.editable}}<button type="button" data-action="npcRemoveSituational" data-index="{{i}}" aria-label="Remove">×</button>{{/if}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{#if editable}}<button type="button" data-action="npcAddSituational">Add a situational bonus</button>{{/if}}
+
+  {{!-- NPC1c C4: what the players can learn through Read the Enemy (King Q-N21-Q-N24). --}}
+  <div class="section-head"><h2>What the players can learn</h2><span class="budget">{{knowledge.learnedCount}} known to the party</span></div>
+  <div class="learn-drop" data-n5e-learn-drop>
+    {{#each knowledge.entries}}
+      <div class="learn-entry {{#if learned}}learned{{/if}} {{#if missing}}missing{{/if}}">
+        <span class="kind">{{kindLabel}}</span>
+        <b>{{label}}</b>
+        {{#if note}}<span class="note">{{note}}</span>{{/if}}
+        {{#if @root.editable}}
+          <input type="text" name="system.knowledge.entries.{{i}}.note" value="{{note}}" placeholder="Note for the players (optional)" aria-label="Note">
+          <button type="button" data-action="npcToggleLearned" data-id="{{id}}" aria-pressed="{{learned}}">{{#if learned}}Known{{else}}Not known{{/if}}</button>
+          {{#unless first}}<button type="button" data-action="npcMoveKnowledge" data-index="{{i}}" data-dir="-1" aria-label="Move up">↑</button>{{/unless}}
+          {{#unless last}}<button type="button" data-action="npcMoveKnowledge" data-index="{{i}}" data-dir="1" aria-label="Move down">↓</button>{{/unless}}
+          <button type="button" data-action="npcRemoveKnowledge" data-index="{{i}}" aria-label="Remove">×</button>
+        {{/if}}
+      </div>
+    {{else}}
+      <div class="hint">Drag features, traits, jutsu or items from this sheet here, or add a statistic or a note below.</div>
+    {{/each}}
+  </div>
+  {{#if editable}}
+    <div class="build-row">
+      <select data-n5e-learn-stat aria-label="Statistic"><option value="">Statistic…</option>{{#each knowledge.statOptions}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
+      <button type="button" data-action="npcAddKnowledge" data-kind="stat">Add statistic</button>
+      <input type="text" data-n5e-learn-text placeholder="A note (a weakness, a secret)" aria-label="Note">
+      <button type="button" data-action="npcAddKnowledge" data-kind="text">Add note</button>
     </div>
   {{/if}}
 </section>

@@ -31,6 +31,23 @@ export default class N5eActor extends Actor {
   }
 
   /** @override  V3.1 data is converted in memory on every load (persisted by the migration runner). */
+  /**
+   * @override
+   * An NPC dropped into a journal page (@Embed[Actor.x]) shows its stat block (NPC1c C1): the simple
+   * sheet's content, read only. Private notes never appear. Other actors use Foundry's default.
+   */
+  async _buildEmbedHTML(config, options = {}) {
+    if ( this.type !== "npc" ) return super._buildEmbedHTML?.(config, options) ?? null;
+    const { npcSimpleVM } = await import("../view-models/npc.mjs");
+    const vm = npcSimpleVM(this);
+    const TextEditor = foundry.applications.ux.TextEditor.implementation;
+    for ( const t of vm.traits ) t.text = await TextEditor.enrichHTML(t.text, { ...options, relativeTo: this });
+    const html = await foundry.applications.handlebars.renderTemplate("systems/n5e/templates/actor/npc/embed.hbs", { vm });
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.firstElementChild;
+  }
+
   static migrateData(source) {
     if ( isV31Actor(source) ) {
       migrateV31Actor(source, { conditionKeys: new Set(Object.keys(CONFIG.N5E?.conditions ?? {})) });

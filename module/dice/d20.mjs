@@ -29,6 +29,12 @@ export function critThreshold(actor, scope = "", extra = 0) {
  * @param {string} [key]
  * @returns {{label, bonus, breakdown, scope, type, key, kind, note?, penalty?, outcome?}|null}
  */
+/** An NPC's situational bonuses for a skill (NPC1c C3), for the roll dialog: [{label, value, when}]. */
+function situationalFor(sys, skill) {
+  return (sys.situational ?? []).filter(s => s.skill === skill && Number(s.value))
+    .map(s => ({ label: `${skills[skill]?.label ?? skill} ${Number(s.value) > 0 ? "+" : ""}${s.value}`, value: Number(s.value), when: s.when }));
+}
+
 export function rollSpec(actor, type, key) {
   const sys = actor.system;
   const bd = sys.breakdowns ?? {};
@@ -41,7 +47,7 @@ export function rollSpec(actor, type, key) {
         bonus: sys.saves[key]?.total ?? 0, breakdown: bd[`save.${key}`] };
     case "skill":
       return { type, key, kind: "check", label: `${skills[key]?.label ?? key} check`,
-        bonus: sys.skills[key]?.total ?? 0, breakdown: bd[`skill.${key}`] };
+        bonus: sys.skills[key]?.total ?? 0, breakdown: bd[`skill.${key}`], situational: situationalFor(sys, key) };
     case "tool": {
       const t = sys.tools?.[key] ?? {};
       // Toolkit checks: Int + proficiency + the kit's Mastery (KB 08; the action's skill may override the ability).
@@ -64,7 +70,7 @@ export function rollSpec(actor, type, key) {
       const penalty = a.tier === "kit" || !rule("skillActionPenalties") ? 0
         : skillActionPenalty(a.tier, { proficient: !!sk.isProficient, masteryRank: sk.mastery ?? 0 });
       return { type, key, kind: "check", label: a.label, bonus: (sk.total ?? 0) + penalty, penalty,
-        breakdown: bd[`skill.${a.skill}`], skill: a.skill,
+        breakdown: bd[`skill.${a.skill}`], skill: a.skill, situational: situationalFor(sys, a.skill),
         note: `${skills[a.skill]?.label ?? a.skill} · ${skillActionTiers[a.tier]?.label ?? a.tier}${penalty ? ` · ${penalty} (${penalty === -5 ? "no Mastery" : "not proficient"})` : ""}`,
         roll: a.roll ?? "", outcome: a.text ?? "" };
     }

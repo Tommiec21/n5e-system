@@ -3,10 +3,14 @@
  * Pure: they read prepared data and return plain objects for the templates.
  */
 import { abilities, skills, ranks, rankOrder } from "../config/core.mjs";
-import { npcTemplates } from "../config/combat.mjs";
+import { npcTemplates, damageTypes, sizes, senses as senseLabels } from "../config/combat.mjs";
+import { languages as languageLabels } from "../config/character.mjs";
+import { conditions as conditionDefs } from "../config/conditions.mjs";
+import { weaponAttackSpec } from "../workflow/attack.mjs";
+import { reachOf, attackRange } from "../rules/weapon-properties.mjs";
 import { adversaryClasses, adversaryRoles, adversaryArmor, adversaryBuilds, hpSources } from "../config/adversary.mjs";
 import { ABILITY_KEYS } from "../rules/adversary.mjs";
-import { signed, breakdownTooltip } from "./common.mjs";
+import { signed, breakdownTooltip, esc } from "./common.mjs";
 
 const opts = (choices, value) => Object.entries(choices).map(([v, l]) => ({ value: v, label: l?.label ?? l, selected: v === value }));
 const cap = s => (s ? s.charAt(0).toUpperCase() + s.slice(1) : "");
@@ -28,6 +32,10 @@ export function statBlockVM(actor) {
   const lines = DISC.map(([key, label]) => ({ key, label, attack: signed(sys.disciplines[key].attack), dc: sys.disciplines[key].dc,
     attackTip: tip(`${key}.attack`), dcTip: tip(`${key}.dc`) }));
   const freeform = sys.adversaryBuild?.freeform;
+  const t = sys.traits ?? {};
+  const names = (set, labels) => [...(set ?? [])].map(k => labels[k]?.label ?? labels[k] ?? k).join(", ");
+  const situational = (sys.situational ?? []).filter(s => s.skill && Number(s.value));
+  const specialSenses = Object.entries(t.senses ?? {}).filter(([, v]) => v).map(([k, v]) => `${senseLabels[k] ?? k} ${v} ft`);
   return {
     name: actor.name, img: actor.img, blurb: d.blurb, identity, isAdversary: adv,
     level: sys.level, prof: signed(sys.prof),
@@ -43,8 +51,15 @@ export function statBlockVM(actor) {
     autoFailSaves: !!sys.autoFailSaves,
     // The book lists only the skills an adversary is trained in or has a stated bonus for.
     skills: Object.entries(sys.skills).filter(([key, s]) => s.isProficient || sys.adversary?.overrides?.skills?.[key] != null || (adv && sys._statParts(`skill.${key}`).length))
-      .map(([key, s]) => ({ key, label: skills[key]?.label ?? key, total: signed(s.total), tip: tip(`skill.${key}`) })),
+      .map(([key, s]) => ({ key, label: skills[key]?.label ?? key, total: signed(s.total), tip: tip(`skill.${key}`),
+        situational: situational.filter(x => x.skill === key).map(x => `${signed(x.value)}${x.when ? ` ${x.when}` : ""}`).join("; ") })),
     passivePerception: sys.skills.prc?.passive ?? 10,
+    // NPC1c A5: the book's defense, sense and language lines, shown only when filled.
+    defenses: [["Damage Resistances", names(t.resist, damageTypes)], ["Damage Immunities", names(t.immune, damageTypes)],
+      ["Damage Vulnerabilities", names(t.vuln, damageTypes)], ["Condition Immunities", names(t.conditionImmune, conditionDefs)],
+      ["Condition Resistances", names(t.conditionResist, conditionDefs)]].filter(([, v]) => v).map(([label, value]) => ({ label, value })),
+    senses: [...specialSenses, `passive Perception ${sys.skills.prc?.passive ?? 10}`].join(", "),
+    languages: names(t.languages, languageLabels),
     lines,
     freeform: freeform ? { label: "Weapon/Freeform", ability: freeform.ability.toUpperCase(), attack: signed(freeform.attack), dc: freeform.dc,
       attackTip: tip("freeform.attack"), dcTip: tip("freeform.dc") } : null
@@ -126,6 +141,14 @@ export function npcBuildVM(actor, { partyManual = false } = {}) {
   };
 }
 
+/** "n/max" for an item with limited uses (NPC1c B5), or "". */
+function usesText(item) {
+  const u = item.system?.uses;
+  const max = u?.maxValue ?? Number(u?.max);
+  if ( !max ) return "";
+  return `${Math.max(0, max - (Number(u.spent) || 0))}/${max}`;
+}
+
 /** The simple sheet: the stat block, then traits, jutsu by discipline and rank, and attacks. */
 export function npcSimpleVM(actor) {
   const items = [...(actor.items ?? [])];
@@ -136,15 +159,114 @@ export function npcSimpleVM(actor) {
     const mine = jutsu.filter(j => j.system.discipline === key);
     if ( !mine.length ) continue;
     const byRank = rankOrder.map(rank => ({ rank, label: ranks[rank]?.label ?? rank,
-      jutsu: mine.filter(j => j.system.rank === rank).sort(byName).map(j => ({ id: j.id, name: j.name, cost: j.system.live?.cost ?? j.system.cost?.value ?? "" })) }))
+      jutsu: mine.filter(j => j.system.rank === rank).sort(byName).map(j => ({ id: j.id, name: j.name, cost: j.system.live?.cost ?? j.system.cost?.value ?? "", uses: usesText(j) })) }))
       .filter(r => r.jutsu.length);
     groups.push({ key, label, ranks: byRank });
   }
+  const sys = actor.system;
+  const effects = [...(actor.effects ?? [])];
+  const suggested = sys.adversaryBuild?.suggested;
   return {
     block: statBlockVM(actor),
-    traits: items.filter(i => i.type === "feature" || i.type === "feat").sort(byName).map(i => ({ id: i.id, name: i.name, text: i.system.description ?? "" })),
+    traits: items.filter(i => i.type === "feature" || i.type === "feat").sort(byName).map(i => ({ id: i.id, name: i.name, text: i.system.description ?? "", uses: usesText(i) })),
     jutsu: groups,
-    attacks: items.filter(i => i.type === "weapon").sort(byName).map(i => ({ id: i.id, name: i.name })),
+    // NPC1c B1-B2: attack lines as a stat block prints them, and the Multiattack count.
+    attacks: items.filter(i => i.type === "weapon").sort(byName).map(i => {
+      try { return attackLine(actor, i); } catch { return { id: i.id, name: i.name, text: "" }; }
+    }),
+    multiattack: suggested && suggested.multiattack > 1 ? `Multiattack. The ${actor.name} makes ${suggested.multiattack} attacks.` : "",
+    // B3-B4: conditions with ranks, temporary HP and CP.
+    conditions: effects.filter(e => e.type === "condition").map(e => ({ id: e.id, key: e.system?.key, label: conditionDefs[e.system?.key]?.label ?? e.name, ranks: e.system?.ranks ?? 1 })),
+    temp: { hp: sys.hp.temp ?? 0, cp: sys.cp?.temp ?? 0 },
     publicNotes: actor.system.details.publicNotes
   };
 }
+
+/* -------------------------------------------- */
+/*  NPC1c                                       */
+/* -------------------------------------------- */
+
+const chips = (set, labels) => [...(set ?? [])].map(k => ({ key: k, label: labels[k]?.label ?? labels[k] ?? k }));
+const choicesLeft = (set, labels) => Object.entries(labels).filter(([k]) => !(set ?? new Set()).has?.(k) && ![...(set ?? [])].includes(k))
+  .map(([value, l]) => ({ value, label: l?.label ?? l }));
+
+/** Defenses, senses, languages, size, speeds and switches (Build tab, both builds; NPC1c A1-A4). */
+export function npcDefensesVM(actor) {
+  const src = actor._source?.system ?? actor.system;
+  const t = src.traits ?? {};
+  const sets = [
+    ["traits.resist", "Damage resistances", damageTypes], ["traits.immune", "Damage immunities", damageTypes],
+    ["traits.vuln", "Damage vulnerabilities", damageTypes], ["traits.conditionImmune", "Condition immunities", conditionDefs],
+    ["traits.conditionResist", "Condition resistances", conditionDefs], ["traits.languages", "Languages", languageLabels]
+  ].map(([field, label, labels]) => {
+    const value = field.split(".").reduce((o, k) => o?.[k], src);
+    return { field, label, chips: chips(value, labels), options: choicesLeft(value, labels), custom: field === "traits.languages" };
+  });
+  return {
+    sets,
+    senses: Object.entries(senseLabels).map(([key, label]) => ({ key, label, value: t.senses?.[key] ?? 0 })),
+    sizeOptions: Object.entries(sizes).map(([value, s]) => ({ value, label: s.label, selected: value === (t.size ?? "medium") })),
+    speeds: ["walk", "climb", "swim", "fly", "burrow"].map(key => ({ key, label: key[0].toUpperCase() + key.slice(1), value: t.speed?.[key] ?? 0 })),
+    hover: !!t.speed?.hover,
+    diesAtZero: !!src.diesAtZero, allied: !!src.allied,
+    situational: (src.situational ?? []).map((s, i) => ({ i, skill: s.skill, value: s.value, when: s.when,
+      skillOptions: Object.entries(skills).map(([k, c]) => ({ value: k, label: c.label, selected: k === s.skill })) }))
+  };
+}
+
+/** A statistic the GM can put on the learnable list: [key, label, read(actor)]. */
+export const KNOWABLE_STATS = [
+  ["ac", "Armor Class", a => `${a.system.ac.value}`], ["dr", "Damage Reduction", a => `${a.system.dr}`],
+  ["hp", "Hit Points", a => `${a.system.hp.max}`], ["cp", "Chakra Points", a => `${a.system.cp.max}`],
+  ["speed", "Speed", a => statBlockVM(a).speed], ["level", "Level and rank", a => `Level ${a.system.level}, ${ranks[a.system.details.rank]?.label ?? a.system.details.rank}`],
+  ...Object.keys(abilities).map(k => [`save.${k}`, `${abilities[k].label} save`, a => signed(a.system.saves[k].total)]),
+  ["abilities", "Ability modifiers", a => Object.keys(abilities).map(k => `${abilities[k].abbr.toUpperCase()} ${signed(a.system.abilities[k].mod)}`).join(", ")],
+  ["defenses", "Resistances, immunities and vulnerabilities", a => statBlockVM(a).defenses.map(d => `${d.label}: ${d.value}`).join("; ") || "None"],
+  ["senses", "Senses", a => statBlockVM(a).senses], ["languages", "Languages", a => statBlockVM(a).languages || "None"],
+  ["skills", "Skills", a => statBlockVM(a).skills.map(s => `${s.label} ${s.total}`).join(", ") || "None"],
+  ["lines", "Attack bonuses and save DCs", a => statBlockVM(a).lines.map(l => `${l.label} ${l.attack}, DC ${l.dc}`).join("; ")]
+];
+
+/** What one learnable entry says: {label, text (HTML for items), missing}. */
+export function knowledgeEntryView(actor, entry) {
+  if ( entry.kind === "item" ) {
+    const item = actor.items?.get?.(entry.ref) ?? [...(actor.items ?? [])].find(i => i.id === entry.ref);
+    if ( !item ) return { label: entry.label || "A removed item", text: "", missing: true };
+    return { label: item.name, text: item.system?.description ?? "", note: entry.note };
+  }
+  if ( entry.kind === "stat" ) {
+    const stat = KNOWABLE_STATS.find(([k]) => k === entry.ref);
+    return stat ? { label: stat[1], text: esc(stat[2](actor)), note: entry.note } : { label: entry.label || entry.ref, text: "", missing: true };
+  }
+  return { label: entry.label || "Note", text: esc(entry.note ?? ""), note: "" };
+}
+
+/** The learnable list on the Build tab (NPC1c C4). */
+export function npcKnowledgeVM(actor) {
+  const k = actor._source?.system?.knowledge ?? actor.system.knowledge ?? { entries: [], learned: [] };
+  const learned = new Set(k.learned ?? []);
+  return {
+    entries: (k.entries ?? []).map((e, i) => ({ ...e, i, ...knowledgeEntryView(actor, e), learned: learned.has(e.id),
+      kindLabel: { item: "Item", stat: "Statistic", text: "Note" }[e.kind] ?? e.kind, first: i === 0, last: i === k.entries.length - 1 })),
+    statOptions: KNOWABLE_STATS.filter(([key]) => !(k.entries ?? []).some(e => e.kind === "stat" && e.ref === key)).map(([value, label]) => ({ value, label })),
+    learnedCount: learned.size
+  };
+}
+
+/** What the party knows of this NPC (limited view; NPC1c C6). */
+export function learnedVM(actor) {
+  const k = actor.system.knowledge ?? { entries: [], learned: [] };
+  const learned = new Set(k.learned ?? []);
+  return (k.entries ?? []).filter(e => learned.has(e.id)).map(e => knowledgeEntryView(actor, e)).filter(v => !v.missing);
+}
+
+/** A weapon as a stat block prints it (NPC1c B1): "Melee weapon attack: +7, reach 10 ft. Hit: 1d6 + 2 piercing." */
+export function attackLine(actor, weapon) {
+  const spec = weaponAttackSpec(actor, weapon);
+  const ranged = spec.mode !== "melee";
+  const range = ranged ? attackRange(weapon, spec.mode) : null;
+  const where = ranged ? `range ${range?.normal ?? "?"}${range?.long ? `/${range.long}` : ""} ft` : `reach ${reachOf(weapon)} ft`;
+  const types = (spec.damage.types ?? []).map(k => damageTypes[k]?.label?.toLowerCase() ?? k).join(" or ");
+  return { id: weapon.id, name: weapon.name, text: `${ranged ? "Ranged" : "Melee"} weapon attack: ${signed(spec.bonus)}, ${where}, one target. Hit: ${spec.damage.formula}${types ? ` ${types}` : ""} damage.` };
+}
+

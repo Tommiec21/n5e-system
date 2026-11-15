@@ -30,8 +30,10 @@
   {{#if block.autoFailSaves}}<div class="sb-note">Minion: saving throws fail automatically.</div>{{/if}}
   {{#if block.skills.length}}
     <div class="sb-line wrap"><b>Skills</b>
-      {{#each block.skills}}<a class="rollable" data-action="roll" data-roll="skill" data-key="{{key}}" data-tooltip-html="{{tip}}">{{label}} {{total}}</a>{{/each}}
+      {{#each block.skills}}<a class="rollable" data-action="roll" data-roll="skill" data-key="{{key}}" data-tooltip-html="{{tip}}">{{label}} {{total}}{{#if situational}} ({{situational}}){{/if}}</a>{{/each}}
     </div>
   {{/if}}
-  <div class="sb-line"><span><b>Senses</b> passive Perception {{block.passivePerception}}</span></div>
+  {{#each block.defenses}}<div class="sb-line"><span><b>{{label}}</b> {{value}}</span></div>{{/each}}
+  <div class="sb-line"><span><b>Senses</b> {{block.senses}}</span></div>
+  {{#if block.languages}}<div class="sb-line"><span><b>Languages</b> {{block.languages}}</span></div>{{/if}}
 </div>

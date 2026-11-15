@@ -418,3 +418,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - **Every roll opens the dialog.** d20: `rollWithSpec` (pass `dialog: false` only for rolls with no choice, like Will of Fire). Dice: `promptDice` / `rollFormula` in `dice/advantaged.mjs`; use `cancellable: false` after a cost is paid. Several creatures: `groupRollChoice` and pass `prepared`.
 - Tests stand in for the dialog through `dialogs` in `dice/roll-dialog.mjs` (`enabled`, `d20`, `dice`); with no setting registered the dialog stays closed, so older tests roll straight through.
 
+## NPC1c — Claude, 2026-11-14 (published 0.31.0-alpha.2)
+- Build tab now has defenses, senses, speeds, switches, situational bonuses and the learnable list, for both builds. Set fields (`traits.resist` and the like) change through `npcAddTrait` / `npcRemoveTrait`, not form inputs. Row lists (`situational`, `knowledge.entries`) are merged whole in `NPCSheet._processFormData`.
+- The Notes tab's raw editor skips every field the header and Build tab edit. Keep that list in step when adding Build fields.
+- Learn flow: `workflow/npc-knowledge.mjs`; rendering hooks into `onRenderChatMessage` in `dice/roll.mjs` for messages with `flags.n5e.learn`.
+

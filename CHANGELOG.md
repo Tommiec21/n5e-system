@@ -1,3 +1,21 @@
+## 0.31.0-alpha.2 — NPC sheet gaps and what the players can learn (NPC1c; King 2026-11-14)
+
+- **Build tab, for both builds:**
+  - **Defenses:** damage resistances, immunities and vulnerabilities, condition immunities and resistances, picked from the system's lists and shown as chips.
+  - **Senses and languages:** every sense with its range, and languages (from the list or typed).
+  - **Size and speeds:** size and every speed (walk, climb, swim, fly, burrow, hover).
+  - **Switches:** "Dies at 0 Hit Points" and Allied.
+  - **Situational skill bonuses:** a skill, a bonus and when it applies ("+2 Stealth in forests"). They appear unticked in that skill's roll dialog and in the stat block's Skills line.
+  - **What the players can learn:** drag features, traits, jutsu and items from the NPC's own sheet into the list, or add a statistic or a note. Each entry can be reordered, given a note for the players, marked known or not known, or removed.
+- **Stat block:** resistance, immunity and vulnerability lines, condition lines, special senses and languages, shown only when filled.
+- **Rest buttons** (Short and Long) on every NPC header.
+- **Read the Enemy reveals what can be learned.** A success against an NPC with learnable entries puts a "Choose what it can reveal" button on the result card for the GM. The GM ticks what is available, the reader's owner picks one, and a card shows it to the whole party. The NPC records it; the limited view lists everything the party has learned.
+- **Simple sheet:** attack lines as a stat block prints them ("Melee weapon attack: +6, reach 10 ft, one target. Hit: 1d6 + 3 piercing damage."), the Multiattack count, conditions, temporary HP and CP, and uses left beside traits and jutsu.
+- **Journal stat block:** an NPC embedded in a journal page shows its stat block, traits, jutsu and attacks. Private notes never appear.
+- **Reset NPCs:** a GM button on the Actors sidebar. Pick the selected tokens or a folder, untick anything that shouldn't change, confirm.
+- **Fix:** the NPC sheet's raw field editor (Notes tab, edit mode) no longer repeats fields the header and Build tab edit.
+- Not checked in a running Foundry world.
+
 ## 0.31.0-alpha.1 — The roll dialog (ROLL1; King 2026-11-14)
 
 **Every roll now shows its math first.** No key combination changes a roll any more.
