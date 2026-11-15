@@ -439,3 +439,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 
 ## FIN3b — Claude, 2026-11-15 (published 0.33.0-alpha.3)
 - Card damage and applications are nested by effect: read them with `damagesOf(results)`, `appliedOf(results, uuid)` and `allApplied(results)`.
+
+## PRESTD1 — Claude, 2026-11-15 (published 0.34.0-alpha.1 to 0.39.0-alpha.1)
+- New actor types: `loot`, `hazard`, `vehicle`. Hazards and vehicles extend NPCData; where code means "an NPC-like actor", test `["npc", "hazard", "vehicle"].includes(type)` (`rules/hazards.mjs isNpcLike`), not `type === "npc"`.
+- Hidden jutsu copies: scrolls (`flags.n5e.scrollCopy`) and wands (`flags.n5e.wandCopy`). Keep both out of any jutsu list.
+- New owner intents: `transferRyo`, `lootTake`, `lootBuy`, `lootSell`, `socialResult`. Social encounter secrets live only in the GM-whispered card (`flags.n5e.socialGM`); never copy them to the public tracker.

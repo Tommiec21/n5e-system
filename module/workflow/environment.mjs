@@ -169,6 +169,9 @@ export function registerEnvironmentHooks() {
     // PRESTD1 Part E: the mission planner.
     tokens.tools.n5eMission = { name: "n5eMission", title: "N5e Mission planner", icon: "fa-solid fa-scroll", button: true,
       order: Object.keys(tokens.tools).length + 1, onChange: () => void import("../applications/gm/mission-planner.mjs").then(m => m.default.choose()) };
+    // PRESTD1 Part F: start a social encounter with the selected NPC.
+    tokens.tools.n5eSocial = { name: "n5eSocial", title: "N5e Social encounter", icon: "fa-solid fa-comments", button: true,
+      order: Object.keys(tokens.tools).length + 1, onChange: () => void import("./social.mjs").then(m => m.startSocialEncounter()).catch(error => ui.notifications.warn(error.message)) };
   });
 }
 

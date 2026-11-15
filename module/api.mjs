@@ -106,6 +106,11 @@ export async function fall(actor, feet) {
 }
 
 /** FIN4b: the GM's Indirect Exposure dialog (King Q-F14: an option; the GM decides). */
+/** PRESTD1 Part F: start a social encounter with the selected NPC token (GM). */
+export async function socialEncounter() {
+  return (await import("./workflow/social.mjs")).startSocialEncounter();
+}
+
 /** PRESTD1 Part E: the GM's mission planner (a new plan, or a saved mission's journal page). */
 export async function missionPlanner(page = null) {
   const { default: MissionPlanner } = await import("./applications/gm/mission-planner.mjs");
@@ -132,5 +137,5 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData, fall, indirectExposure, makeScroll, missionPlanner
+  registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter
 };

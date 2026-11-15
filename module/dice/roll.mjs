@@ -431,6 +431,12 @@ export function onRenderChatMessage(message, html) {
       : btn.dataset.n5eSkillRelease ? m.onSkillReleaseClick(btn) : m.onSkillApplyClick(btn)))
       .catch(error => ui.notifications.warn(error.message));
   });
+  // PRESTD1 Part F: social encounter tracker (players) and GM card.
+  for ( const btn of html.querySelectorAll("[data-n5e-social], [data-n5e-social-gm]") ) btn.addEventListener("click", ev => {
+    ev.preventDefault();
+    import("../workflow/social.mjs").then(m => (btn.dataset.n5eSocialGm ? m.onSocialGMClick(message, btn) : m.onSocialClick(message, btn, ev)))
+      .catch(error => ui.notifications.warn(error.message));
+  });
   for ( const btn of html.querySelectorAll("[data-n5e-exposure-roll]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     import("../workflow/environment.mjs").then(m => m.onExposureRollClick(btn, ev)).catch(error => ui.notifications.warn(error.message));

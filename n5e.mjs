@@ -195,6 +195,7 @@ Hooks.once("ready", async () => {
   registerAlliedIntents();
   void import("./module/workflow/transfer.mjs").then(m => m.registerTransfer());
   void import("./module/workflow/loot.mjs").then(m => m.registerLoot());
+  void import("./module/workflow/social.mjs").then(m => m.registerSocial());
   void import("./module/workflow/npc-knowledge.mjs").then(m => m.registerNpcKnowledge());
   registerRestIntents();
   registerEffectApplication();

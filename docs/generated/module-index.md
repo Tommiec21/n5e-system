@@ -22,7 +22,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 137 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `missionPlanner`, `indirectExposure`, `makeScroll` |
+| `api.mjs` | 142 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
 | `settings.mjs` | 57 | World settings. | `registerSettings` |
 
@@ -98,7 +98,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `commands.mjs` | 23 | GM-local extension boundary, never a socket endpoint or authorization from a claimed user ID. | `coordinateCommand` |
 | `effect-services.mjs` | 158 |  | `registerAppearanceProvider`, `refreshEffectAppearances`, `approveEffectMacros`, `emitEffectEvent`, `registerEffectServices` |
 | `history.mjs` | 24 | Explicit GM reconciliation/archive. | `requestHistory`, `archiveRequestHistory` |
-| `owner-intents.mjs` | 164 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
+| `owner-intents.mjs` | 170 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
 | `receipts.mjs` | 72 | Durable, serialized GM receipts. | `requestFingerprint`, `createReceiptCoordinator` |
 
 ## module/canvas
@@ -133,6 +133,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
 | `rules.mjs` | 219 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `social.mjs` | 74 | Social encounter tables (PRESTD1 Part F, SOCIAL1). | `socialAttitudes`, `socialTypes`, `socialMotivations`, `socialPitfalls`, `socialActions`, `socialNpcActions`, `socialOutcomeLabels` |
 
 ## module/data
 
@@ -186,7 +187,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `d20.mjs` | 113 | d20 roll rules (pure). | `MODES`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
 | `roll-dialog.mjs` | 166 | The roll dialog (ROLL1; King 2026-11-14): every roll shows its math before it is rolled. | `wantsDialog`, `addedRowHTML`, `d20DialogHTML`, `diceDialogHTML`, `dialogs`, `chosenMode` |
-| `roll.mjs` | 567 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
+| `roll.mjs` | 573 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
 
 ## module/documents
 
@@ -274,6 +275,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `settings.mjs` | 22 | Optional-rule lookup for the shared core (SHARED1). | `setRuleProvider`, `rule` |
 | `skill-actions.mjs` | 22 | Skill-action attempt penalty (Core Ch6; King 2026-11-07: penalties don't stack). | `skillActionPenalty` |
 | `skill-resolution.mjs` | 129 | Skill-action resolution (pure; SKILL1, KB 02 and Chapter 6). | `parseVs`, `passiveScore`, `standardDC`, `fixedDC`, `contestOutcome`, `checkOutcome`, `SKILL_RESULTS`, `skillActionEffects`, `SIZE_ORDER`, `SIZE_GATED`, `HOLD_ACTIONS`, `REQUIRES_HOLD`, `ESCAPE_ACTIONS`, `WEAPON_SKILL_ACTIONS`, `sizeGate`, `skillActionGate`, `holdBroken` |
+| `social.mjs` | 60 | Social encounters (PRESTD1 Part F; the Bingo Book). | `socialSetup`, `standardDC`, `argumentResult`, `primaryPoints`, `socialScore`, `socialOutcome`, `actionDC`, `patienceSpent` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
 | `token-size.mjs` | 22 | PRESTD1 A11 (optional rule scaleTokens): token size in grid units by creature size (PF2e's token autoscale, on N5e's sizes). | `TOKEN_SIZES`, `tokenSizeFor`, `isDefeated`, `encumbranceChange` |
 | `trackers.mjs` | 244 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `bindingFuryTrigger`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
@@ -329,7 +331,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |
 | `effect-application.mjs` | 120 | Effect-application cards (dnd5e effect-application parity). | `withCardLink`, `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
-| `environment.mjs` | 272 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
+| `environment.mjs` | 275 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
 | `expiry.mjs` | 67 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
@@ -350,6 +352,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `roll-request.mjs` | 64 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `scrolls.mjs` | 140 | Jutsu scrolls (PRESTD1 Part B; King 2026-11-15, Q-P3, Q-P4, Q-P11). | `scrollData`, `makeScroll`, `promptMakeScroll`, `castFromScroll`, `identifyScroll`, `scrollContextOptions`, `isScroll` |
 | `skill-actions.mjs` | 176 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
+| `social.mjs` | 235 | Social encounters (PRESTD1 Part F, SOCIAL1; the Bingo Book). | `startSocialEncounter`, `onSocialClick`, `receiveSocial`, `onSocialGMClick`, `registerSocial` |
 | `table-options.mjs` | 81 | PRESTD1 A-ii (King 2026-11-15): optional table rules that act on tokens and the combat tracker. | `registerTableOptions` |
 | `trackers.mjs` | 421 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 204 | Item transfer between actors (Foundry side; FIN1). | `moveItem`, `transferItem`, `receiveTransfer`, `transferFromDrop`, `transferRyo`, `receiveRyo`, `promptGiveRyo`, `registerTransfer` |

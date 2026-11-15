@@ -8,7 +8,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -59,6 +59,12 @@ export function validateIntent(type, data = {}) {
       const quantity = Number(data.quantity ?? 1);
       if ( !isUuid(data.lootUuid) || !isId(data.itemId) || !Number.isSafeInteger(quantity) || quantity < 1 ) throw new Error("Invalid loot request.");
       return { lootUuid: data.lootUuid, itemId: data.itemId, quantity };
+    }
+    case "socialResult": {
+      const actions = ["impression", "lie", "coerce", "other", "perform", "sense", "recall", "seeThrough"];
+      const total = Number(data.total);
+      if ( !isId(data.messageId) || !actions.includes(data.action) || !Number.isSafeInteger(total) ) throw new Error("Invalid social encounter result.");
+      return { messageId: data.messageId, action: data.action, total, motivation: data.motivation === true, usedPerform: data.usedPerform === true };
     }
     case "transferRyo": {
       const amount = Number(data.amount);

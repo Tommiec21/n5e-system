@@ -294,3 +294,11 @@
 | --- | --- |
 | Mission Rewards, Tier Modifications (round down), Rank Multipliers, encounter costs | `config/missions.mjs`, `rules/missions.mjs` |
 | XP: total purchased split evenly among active players; failure: the tier's payout (King Q-P9: verbatim) | `rules/missions.mjs missionPayout`, `applications/gm/mission-planner.mjs award` |
+
+## Social encounters (PRESTD1 Part F, 0.39.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Attitudes, starting points, Patience; Motivations and Pitfalls (hidden) | `config/social.mjs`, `rules/social.mjs socialSetup`, `workflow/social.mjs startSocialEncounter` |
+| Primary arguments vs Standard DCs (King Q-P10), Argument Results, Motivation bonus, Pitfall −4, Coerce in Diplomatic | `rules/social.mjs primaryPoints`, `workflow/social.mjs receiveSocial` |
+| Support (Perform, Sense Motive, Recall Knowledge), See Through Lies, NPC actions, type risks, resolution | `workflow/social.mjs`, `rules/social.mjs socialOutcome` |

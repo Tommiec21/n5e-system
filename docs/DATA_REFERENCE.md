@@ -618,3 +618,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | JournalEntryPage `flags.n5e.mission {name, rank, tier, players (actor UUIDs), ryo, downtime, lines [{key, count, cost}], notes, status}` | A saved mission plan (journal "N5e Missions") |
 | `game.n5e.api.missionPlanner(page?)` | Open the mission planner |
+
+## Added in 0.39.0-alpha.1 (PRESTD1 Part F)
+
+| Path | Meaning |
+| --- | --- |
+| ChatMessage `flags.n5e.social {npcUuid, npcName, type, attitude, round, patience, poa, pof, revealed, perform, disadvantage, partyDisadvantage, log, ended, controlId}` | The public social encounter tracker |
+| ChatMessage (GM whisper) `flags.n5e.socialGM {motivations, pitfalls [{text, revealed}], pitfallRound, recallDC, trackerId}` | The hidden half, GM only |
+| Owner intent `socialResult {messageId, action, total, motivation, usedPerform}` | A player's social roll, applied by the active GM |
+| `game.n5e.api.socialEncounter()` | Start one with the selected NPC token |
