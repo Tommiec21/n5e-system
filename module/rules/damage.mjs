@@ -54,13 +54,18 @@ export function exhaustedRollTotal(total, actor) {
   return Math.max(0, total - Math.max(0, actor?.system?.exhaustion ?? 0));
 }
 
-export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1, dealtPenalty = 0 } = {}) {
+export function damagePlan(target, instances, { multiplier = 1, pierce = 0, ignoreDR = false, genjutsu = false, crit = false, piercing = false, flatReduction = 0, drOrder, reactionMultiplier = 1, dealtPenalty = 0, ignoreTraits = false } = {}) {
   const sys = target.system;
-  const traits = sys.traits ?? {};
+  // PRESTD1 A2 (optional rule applyResistances off): resistance, immunity and vulnerability are
+  // skipped, and the ones that would have applied are listed for the GM.
+  const traits = ignoreTraits ? {} : sys.traits ?? {};
+  const skippedTraits = ignoreTraits ? (instances ?? []).flatMap(i => [["immune", "Immune"], ["resist", "Resists"], ["vuln", "Vulnerable to"]]
+    .filter(([k]) => has(sys.traits?.[k], i.type)).map(([, l]) => `${l} ${i.type}`)) : [];
   const steps = [];
   let parts = instances.map(i => ({ type: i.type || "", amount: Math.max(0, Math.floor(Number(i.amount) || 0)) }));
   const raw = parts.reduce((t, p) => t + p.amount, 0);
-  const pen = sys.conditionPenalties ?? {};
+  const pen = ignoreTraits ? { ...(sys.conditionPenalties ?? {}), flags: { ...(sys.conditionPenalties?.flags ?? {}), resistAll: false } } : sys.conditionPenalties ?? {};
+  if ( skippedTraits.length ) steps.push(`Not applied (rule off): ${[...new Set(skippedTraits)].join(", ")}`);
 
   // The source's Weakened/Exhaustion penalty, stored on its damage card (first type first, never below 0).
   if ( dealtPenalty > 0 ) {

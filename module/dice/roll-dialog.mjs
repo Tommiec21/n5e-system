@@ -51,7 +51,7 @@ export function addedRowHTML(n, { types = null } = {}) {
  * d20 dialog content. parts: d20Parts / situationalParts (or groupParts with `group`).
  * @param {{parts, mode, sources?, stake?, group?: string[], baseLabel?: string}} view
  */
-export function d20DialogHTML({ parts, mode = "normal", sources = {}, stake = "", group = null }) {
+export function d20DialogHTML({ parts, mode = "normal", sources = {}, stake = "", group = null, secret = null }) {
   const rows = parts.map(p => {
     const value = group && !p.same ? "varies" : signed(p.value);
     const ticked = p.situational ? "" : "checked";
@@ -67,6 +67,7 @@ export function d20DialogHTML({ parts, mode = "normal", sources = {}, stake = ""
     <button type="button" class="n5e-rd-more" data-n5e-rd-more>Add another modifier</button>
     ${total}
     ${modeRadios(mode, { own: group ? "Each creature's own" : null })}
+    ${secret ? `<label class="n5e-rd-secret"><input type="checkbox" name="secret" ${secret.checked ? "checked" : ""}> Secret (GM only)</label>` : ""}
     ${sourceLines(sources)}
   </div>`;
 }

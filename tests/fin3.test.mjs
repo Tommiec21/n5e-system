@@ -54,3 +54,27 @@ test("FIN5: the ryo transfer intent is validated", async () => {
   assert.deepEqual(validateIntent("transferRyo", { targetUuid: "Actor.abc123", amount: 50 }), { targetUuid: "Actor.abc123", amount: 50 });
   assert.throws(() => validateIntent("transferRyo", { targetUuid: "Actor.abc123", amount: 0 }), /Invalid ryo transfer/);
 });
+
+test("PRESTD1 A: NPC privacy: only NPCs no player owns; whisper only when the rule is on", async () => {
+  const { privateNpc, gmWhisper, nameShownToAll, hideNameFor } = await import("../module/workflow/npc-privacy.mjs");
+  const npc = { type: "npc", testUserPermission: () => false, prototypeToken: { displayName: 0 } };
+  const allied = { type: "npc", testUserPermission: () => true };
+  const pc = { type: "character", testUserPermission: () => true };
+  const priorGame = globalThis.game;
+  globalThis.game = { ...(priorGame ?? {}), users: [{ id: "gm", isGM: true }, { id: "p1", isGM: false }] };
+  assert.equal(privateNpc(npc), true);
+  assert.equal(privateNpc(allied), false);
+  assert.equal(privateNpc(pc), false);
+  assert.deepEqual(gmWhisper(npc, "hideNpcDamage"), {}, "rule off by default");
+  assert.equal(nameShownToAll({ displayName: 50 }), true);
+  assert.equal(nameShownToAll({ displayName: 40 }), false);
+  assert.equal(hideNameFor({ isGM: false }, npc, null), false, "rule off by default");
+  globalThis.game = priorGame;
+});
+
+test("PRESTD1 A: Stealth, Insight and identify checks start secret", async () => {
+  const { secretByDefault } = await import("../module/dice/roll.mjs");
+  assert.equal(secretByDefault({ type: "skill", key: "ste" }), true);
+  assert.equal(secretByDefault({ type: "skill", key: "ath" }), false);
+  assert.equal(secretByDefault({ type: "skill", key: "ill", label: "Identify Genjutsu" }), true);
+});

@@ -49,6 +49,7 @@ import { rollDice, advantageNote, promptDice, rollFormula } from "../dice/advant
  */
 import { esc, signed } from "../view-models/common.mjs";
 import { unarmedFormula, critFormula } from "../rules/activity-parse.mjs";
+import { rule } from "../rules/settings.mjs";
 import { rollWithSpec, groupRollChoice } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
@@ -385,7 +386,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
         // Deadly X: a crit adds the weapon's own dice after doubling (first part only).
-        const critText = `${critFormula(formula, abilityMod)}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}`;
+        const critText = `${critFormula(formula, abilityMod, rule("critDamage"))}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}`;
         const rolled = await rollDice(actor, crit ? critText : formula,
           { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null,
             final: picked.mode });

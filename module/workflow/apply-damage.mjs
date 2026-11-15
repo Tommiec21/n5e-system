@@ -24,6 +24,7 @@ import { applyHealing } from "./health.mjs";
 import { rule } from "../rules-settings.mjs";
 import { coordinateDamage } from "./coordinated-damage.mjs";
 import { immuneTargets } from "./action-card.mjs";
+import { gmWhisper } from "./npc-privacy.mjs";
 import { canModify, ownedRecipients, skippedNotice } from "../automation/authority.mjs";
 
 const ChatMessage = () => CONFIG.ChatMessage.documentClass;
@@ -107,7 +108,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     const reaction = !immuneWhy && beforePlan ? await beforePlan(actor) : {};
     const damageOptions = { multiplier, pierce: data.pierce ?? 0, genjutsu: !!data.genjutsu, crit: !!data.crit, ignoreDR: !!data.ignoreDR,
       piercing: !!data.piercing, flatReduction: reaction.flatReduction ?? 0, reactionMultiplier: reaction.multiplier ?? 1,
-      dealtPenalty: Number(data.dealtPenalty) || 0 };
+      dealtPenalty: Number(data.dealtPenalty) || 0, ignoreTraits: !rule("applyResistances") };
     let plan = damagePlan(actor, immuneWhy ? [] : data.instances, damageOptions);
     if ( plan.requiresDROrder && !immuneWhy ) {
       const revision = actor._stats?.modifiedTime;
@@ -153,6 +154,8 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       ${data.rollTrace?.sourceUuid ? `<button type="button" class="n5e-source-roll inline-control icon fa-solid fa-dice" data-n5e-source="${esc(data.rollTrace.sourceUuid)}" title="View damage roll" aria-label="View damage roll"></button>` : ""}
       ${rows.join("")}${coordinated ? "" : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
     ...(data.sourceVisibility ?? {}),
+    // PRESTD1 (rule hideNpcDamage): damage to NPCs no player owns goes to the GM only.
+    ...gmWhisper(applications.map(a => globalThis.fromUuidSync?.(a.actorUuid)), "hideNpcDamage"),
     flags: { n5e: { undo: coordinated ? [] : undo, damageApplication: { version: 1, sourceUuid: data.rollTrace?.sourceUuid ?? null, mode, rollTrace: data.rollTrace ?? null, recipients: applications,
       effect: data.effect ?? null } } }
   });

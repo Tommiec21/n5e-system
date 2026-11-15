@@ -138,11 +138,14 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   // choice made before (prepared); "own" keeps each creature's worked-out mode.
   const parts = [...d20Parts(spec), ...situationalParts(situational ?? spec.situational ?? [])];
   let choice = prepared ? { ...prepared, off: prepared.off ?? parts.filter(p => (prepared.offLabels ?? []).includes(p.label)).map(p => p.id), on: [] } : null;
+  // PRESTD1 (rule secretChecks): Stealth, Insight and identify checks start ticked as secret.
+  const secretOffer = rule("secretChecks") && spec.kind !== "attack" ? { checked: secretByDefault(spec) } : null;
   if ( !choice && dialog && wantsDialog() ) {
-    choice = await dialogs.d20({ title: `${actor.name}: ${spec.label}`, parts, mode, sources,
+    choice = await dialogs.d20({ title: `${actor.name}: ${spec.label}`, parts, mode, sources, secret: secretOffer,
       stake: stakeLine(spec, { dc, target, autoFail: sources.autoFail, actor }) });
     if ( !choice ) return null;
   }
+  const secret = secretOffer ? (choice && "secret" in choice ? !!choice.secret : secretOffer.checked) : false;
   let extra = "";
   let edited = false;
   if ( choice ) {
@@ -175,6 +178,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
+    ...(secret ? { whisper: (globalThis.game?.users ?? []).filter(u => u.isGM).map(u => u.id), blind: true } : {}),
     flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof, edited }) + (spec.kind === "attack"
       ? '<div class="n5e-attack-targets" data-n5e-attack-targets></div><button type="button" data-n5e-hit="1">Successful hit: reactions</button>' : ""),
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
@@ -290,6 +294,12 @@ function stakeLine(spec, { dc = null, target = null, autoFail = null, actor = nu
   return out.join(" · ");
 }
 
+/** PRESTD1: checks that start as secret (Stealth, Insight, identify). */
+export function secretByDefault(spec) {
+  if ( spec.type === "skill" && ["ste", "ins"].includes(spec.key) ) return true;
+  return /identify/i.test(`${spec.key ?? ""} ${spec.label ?? ""}`);
+}
+
 /** The ability a roll uses: attack ability, save key, or a skill's ability. */
 function rollAbility(spec) {
   if ( spec.ability ) return spec.ability;
@@ -307,9 +317,12 @@ export async function registerResolution() {
   clashModule.registerClashHooks().catch(error => console.warn("n5e | clash hooks", error));
   actionCardModule = await import("../workflow/action-card.mjs");
   await actionCardModule.registerActionCardHooks();
+  privacyModule = await import("../workflow/npc-privacy.mjs");
+  privacyModule.registerPrivacyHooks();
 }
 let clashModule = null;
 let actionCardModule = null;
+let privacyModule = null;
 
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
@@ -352,6 +365,8 @@ export const ROLL_BUTTONS = '[data-n5e-act="attack"], [data-n5e-act="damage"], [
 export function onRenderChatMessage(message, html) {
   // Roll edits for the GM only (rule rollEditsVisibility): players see the total and the result.
   if ( !globalThis.game?.user?.isGM ) for ( const el of html.querySelectorAll("[data-n5e-gm-only]") ) el.remove();
+  // PRESTD1 Part A: NPC roll breakdowns and names for players.
+  privacyModule?.renderPrivacy(message, html);
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
   // Jutsu Clash cards (CLASH1), drawn before their listeners are bound below.

@@ -16,10 +16,30 @@ export const ruleGroups = {
   resting: "Resting",
   rations: "Rations (Resource Based Rests)",
   character: "Character options",
-  map: "Map: areas, senses and movement"
+  map: "Map: areas, senses and movement",
+  optional: "Optional rules (PF2e variants)",
+  privacy: "What players see"
 };
 
 export const rules = {
+  // PRESTD1 Part A (King 2026-11-15): optional rules ported from PF2e. Defaults keep play as it was.
+  critDamage: { group: "optional", type: "choice", default: "dice", label: "Critical damage",
+    choices: { dice: "Double the dice and the ability modifier (the book)", total: "Double the total", maximize: "Roll the dice and add their maximum" },
+    hint: "How a critical hit's damage is worked out." },
+  applyResistances: { group: "optional", type: "boolean", default: true, label: "Apply resistances automatically",
+    hint: "Off: Apply ignores resistance, immunity and vulnerability, and the card names the ones it skipped for the GM." },
+  removeExpiredEffects: { group: "optional", type: "boolean", default: true, label: "Remove expired effects automatically",
+    hint: "Off: effects that run out stay on the creature, marked expired, for the GM to remove." },
+  npcRollBreakdowns: { group: "privacy", type: "boolean", default: true, label: "Players see NPC roll breakdowns",
+    hint: "Off: players see an NPC's roll total and result, not the parts that made it." },
+  hideNpcDamage: { group: "privacy", type: "boolean", default: false, label: "Hide damage NPCs take",
+    hint: "Damage and healing applied to NPCs no player owns is whispered to the GM." },
+  hideNpcConditions: { group: "privacy", type: "boolean", default: false, label: "Hide NPC condition messages",
+    hint: "Condition damage, condition endings and removal results for NPCs no player owns are whispered to the GM." },
+  hideNpcNames: { group: "privacy", type: "boolean", default: false, label: "Hide NPC names",
+    hint: "When an NPC token's name isn't shown to everyone, players see \"Unknown creature\" in chat and the combat tracker." },
+  secretChecks: { group: "privacy", type: "boolean", default: false, label: "Secret checks",
+    hint: "The roll dialog gets a Secret box (ticked for Stealth, Insight and identify checks); a secret roll goes to the GM only." },
   effectMacros: { group: "casting", type: "boolean", default: false, label: "Effect world Macro execution", hint: "Execute only saved bindings explicitly approved by the active GM. Trusted world Macros run with GM privileges; foreign scripts remain inert." },
   effectAppearanceProviders: { group: "casting", type: "boolean", default: true, label: "Effect token appearance providers", hint: "Reversible client-side effect visuals. Built-in filter and optional registered providers; no token data is overwritten." },
   actionCard: { group: "casting", type: "boolean", default: true, label: "Single action card",

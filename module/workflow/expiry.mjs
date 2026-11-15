@@ -5,12 +5,22 @@
  */
 import { expiredEffects } from "../rules/expiry.mjs";
 import { esc } from "../view-models/common.mjs";
+import { rule } from "../rules-settings.mjs";
 
-/** Delete expired effects on one actor; returns their names. */
+/**
+ * Delete expired effects on one actor; returns their names. PRESTD1 A3 (rule removeExpiredEffects
+ * off): they stay, marked flags.n5e.expired, and each is reported once.
+ */
 export async function expireEffects(actor, { includeConditions = false } = {}) {
   if ( !actor || !game.users.activeGM?.isSelf ) return [];
   const gone = expiredEffects(actor, { includeConditions });
-  if ( gone.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", gone.map(e => e.id));
+  if ( !gone.length ) return [];
+  if ( rule("removeExpiredEffects") === false ) {
+    const fresh = gone.filter(e => !e.flags?.n5e?.expired);
+    if ( fresh.length ) await actor.updateEmbeddedDocuments("ActiveEffect", fresh.map(e => ({ _id: e.id, "flags.n5e.expired": true })));
+    return fresh.map(e => `${e.name} (expired, not removed)`);
+  }
+  await actor.deleteEmbeddedDocuments("ActiveEffect", gone.map(e => e.id));
   return gone.map(e => e.name);
 }
 

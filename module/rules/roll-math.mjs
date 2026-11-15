@@ -147,5 +147,7 @@ export function readChoice(fields = {}, parts = [], { mode = null } = {}) {
     added.push({ label: fields[`addLabel_${m[1]}`] ?? "", value: String(v), type: fields[`addType_${m[1]}`] ?? "" });
   }
   const invalid = added.filter(a => !parseAdded(a.value).ok).map(a => a.value);
-  return { off, on, added: added.filter(a => parseAdded(a.value).ok), invalid, mode: fields.mode || mode, crit: !!fields.crit };
+  return { off, on, added: added.filter(a => parseAdded(a.value).ok), invalid, mode: fields.mode || mode, crit: !!fields.crit,
+    // PRESTD1 (rule secretChecks): a secret roll goes to the GM only.
+    secret: !!fields.secret };
 }

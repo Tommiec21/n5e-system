@@ -1,3 +1,15 @@
+## 0.34.0-alpha.1 — Optional rules, part 1 (PRESTD1 A-i; King 2026-11-15)
+
+Eight new world rules in the N5e Rules panel (two new groups: "Optional rules (PF2e variants)" and "What players see"). Their defaults keep play as it was.
+- **Critical damage:** double the dice and ability modifier (the book), double the total, or roll the dice and add their maximum.
+- **Apply resistances automatically:** off, Apply ignores resistance, immunity and vulnerability, and the damage steps name the ones it skipped.
+- **Remove expired effects automatically:** off, effects that run out stay on the creature, marked expired, and the GM's "Effects ended" card lists them once.
+- **Players see NPC roll breakdowns:** off, players see an NPC's total and result but not its parts.
+- **Hide damage NPCs take** and **Hide NPC condition messages:** for NPCs no player owns, the damage-applied card, condition damage, condition endings and removal results are whispered to the GM.
+- **Hide NPC names:** when an NPC token's name isn't shown to everyone, players see "Unknown creature" in chat and the combat tracker.
+- **Secret checks:** the roll dialog gets a "Secret (GM only)" box, ticked to start for Stealth, Insight and identify checks; a secret roll goes to the GM only.
+- Not checked in a running Foundry world.
+
 ## 0.33.0-alpha.7 — Ryo, the size rule and weapon Disarm/Trip damage (FIN5; King 2026-11-15)
 
 - **Give ryo:** "Give ryo" next to Ryo on the Inventory tab. Pick another player character or Allied NPC and an amount up to what you have; the ryo moves (through the GM's client when you don't own the receiver) and chat says "A gave 50 ryo to B" (King Q-F3).

@@ -8,6 +8,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
 import { conditionTurnStart, conditionTurnEnd, removalOptions, removalResult } from "../rules/condition-lifecycle.mjs";
+import { gmWhisper } from "./npc-privacy.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
@@ -32,7 +33,7 @@ export async function postConditionDamage(actor) {
     instances.push({ amount: r.total, type: h.type, label: `${h.name}${h.ranks > 1 ? ` ${h.ranks}` : ""}` });
   }
   const total = instances.reduce((t, i) => t + i.amount, 0);
-  return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), rolls,
+  return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), rolls, ...gmWhisper(actor, "hideNpcConditions"),
     content: `<div class="n5e-roll-card damage"><header><b>${esc(actor.name)}: condition damage</b><span class="bonus">${total}</span></header>
       <div class="note">${esc(instances.map(i => `${i.label}: ${i.amount} ${i.type}`).join(" · "))} · ignores DR</div>
       ${applyButtons()}</div>`,
@@ -53,7 +54,7 @@ export async function processConditionTurnEnd(actor, now) {
   for ( const d of decay ) await actor.removeCondition(d.key, d.ranks);
   for ( const e of end ) await actor.removeCondition(e.key, "all");
   const lines = [...decay.map(d => `${esc(d.name)}: −${d.ranks} rank`), ...end.map(e => `${esc(e.name)} ends (${esc(e.reason)})`)];
-  return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }),
+  return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), ...gmWhisper(actor, "hideNpcConditions"),
     content: `<div class="n5e-turn-card"><b>${esc(actor.name)}: end of turn</b>${lines.map(l => `<div>${l}</div>`).join("")}</div>` });
 }
 
@@ -96,6 +97,6 @@ export async function tryEndCondition(actor, effect, event) {
       await effect.setFlag("n5e", "removalDC", (effect.flags?.n5e?.removalDC ?? 0) + res.raiseDC);
       text = `${effect.name} holds: its removal DC rises by ${res.raiseDC}.`;
     } else text = `${effect.name} holds.`;
-    await ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), content: `<div class="n5e-roll-card"><div class="note">${esc(text)}</div></div>` });
+    await ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor }), ...gmWhisper(actor, "hideNpcConditions"), content: `<div class="n5e-roll-card"><div class="note">${esc(text)}</div></div>` });
   } });
 }

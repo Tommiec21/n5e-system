@@ -575,3 +575,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Owner intent `transferRyo {targetUuid, amount}` | A player's ryo gift, finished by the active GM |
 | Sheet action `giveRyo` (Inventory tab) | Give ryo to a player character or Allied NPC |
+
+## Added in 0.34.0-alpha.1 (PRESTD1 A-i)
+
+| Path | Meaning |
+| --- | --- |
+| `flags.n5e.expired` (ActiveEffect) | Ran out while "Remove expired effects automatically" is off |
+| Roll dialog field `secret` | Secret roll (GM only) |

@@ -227,3 +227,14 @@
 | Ryo can be given like items (King Q-F3) | `rules/transfer.mjs ryoPlan`, `workflow/transfer.mjs transferRyo` |
 | Size rule for Trip, Grapple, Shove, Pin and Disarm (King Q-F4) | `rules/skill-resolution.mjs SIZE_GATED`, `skillActionGate` |
 | Weapon Disarm/Trip success: full weapon damage (King Q-F5) | `workflow/skill-actions.mjs` |
+
+## Optional rules, part 1 (PRESTD1 A-i, 0.34.0-alpha.1)
+
+| Rule (world setting) | Code |
+| --- | --- |
+| `critDamage`: dice (book), total, maximize | `rules/activity-parse.mjs critFormula`, `workflow/activity-buttons.mjs` |
+| `applyResistances` | `rules/damage.mjs damagePlan({ignoreTraits})`, `workflow/apply-damage.mjs` |
+| `removeExpiredEffects` | `workflow/expiry.mjs expireEffects` |
+| `npcRollBreakdowns`, `hideNpcNames` | `workflow/npc-privacy.mjs renderPrivacy`, `registerPrivacyHooks` |
+| `hideNpcDamage`, `hideNpcConditions` | `workflow/npc-privacy.mjs gmWhisper`; `workflow/apply-damage.mjs`, `workflow/conditions.mjs` |
+| `secretChecks` | `dice/roll-dialog.mjs`, `rules/roll-math.mjs readChoice`, `dice/roll.mjs secretByDefault` |

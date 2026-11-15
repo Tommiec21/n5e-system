@@ -146,8 +146,15 @@ export function unarmedFormula(actor) {
  * @param {string} formula     e.g. "2d10+2" or "1d6 + 3"
  * @param {number} [abilityMod] the modifier that the formula adds (doubled when present)
  */
-export function critFormula(formula, abilityMod = null) {
-  let doubled = String(formula).replace(/(\d*)d(\d+)/g, (m, n, f) => `${(Number(n) || 1) * 2}d${f}`);
+export function critFormula(formula, abilityMod = null, mode = "dice") {
+  const f = String(formula);
+  // PRESTD1 A1 (optional rule critDamage): double the total, or roll the dice and add their maximum.
+  if ( mode === "total" ) return `2 * (${f})`;
+  if ( mode === "maximize" ) {
+    const max = [...f.matchAll(/(\d*)d(\d+)/g)].reduce((t, [, n, s]) => t + (Number(n) || 1) * Number(s), 0);
+    return `${f}${max ? ` + ${max}` : ""}${abilityMod ? ` ${abilityMod < 0 ? "-" : "+"} ${Math.abs(abilityMod)}` : ""}`;
+  }
+  let doubled = f.replace(/(\d*)d(\d+)/g, (m, n, s) => `${(Number(n) || 1) * 2}d${s}`);
   if ( abilityMod ) doubled += ` ${abilityMod < 0 ? "-" : "+"} ${Math.abs(abilityMod)}`;
   return doubled;
 }
