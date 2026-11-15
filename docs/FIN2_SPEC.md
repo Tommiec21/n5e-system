@@ -1,6 +1,6 @@
 # FIN2 function spec: combat actions
 
-Status: **approved by King 2026-11-14. FIN2a published `0.29.0-alpha.2` and FIN2b `0.29.0-alpha.3`, on literal readings (Q-F4–Q-F7 still to confirm).**
+Status: **approved by King 2026-11-14. FIN2a published `0.29.0-alpha.2` and FIN2b `0.29.0-alpha.3`, on literal readings. King answered Q-F4–Q-F7 on 2026-11-15 (see `docs/FIN5_SPEC.md`).**
 
 Plan: `docs/DEV_PLAN.md` batch 2. Finishes the combat actions that earlier batches left as text or by hand (ATK1, SKILL1, MDISC1, GEN1).
 
