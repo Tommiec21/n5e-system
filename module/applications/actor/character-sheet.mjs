@@ -384,6 +384,9 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const item = li => this.actor.items.get(li.dataset.itemId);
     const owner = () => this.actor.isOwner;
     return [
+      { name: "Edit in Freeform window", icon: "<i class=\"fa-solid fa-wand-sparkles\"></i>",
+        condition: li => owner() && !!item(li)?.flags?.n5e?.freeform,
+        callback: li => import("../npc/freeform-window.mjs").then(m => m.default.openFor(item(li))) },
       { name: "Edit", icon: "<i class=\"fa-solid fa-pen-to-square\"></i>", condition: owner,
         callback: li => item(li)?.sheet.render(true) },
       { name: "Post to chat", icon: "<i class=\"fa-solid fa-comment\"></i>",

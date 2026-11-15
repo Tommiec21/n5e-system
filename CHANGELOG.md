@@ -1,3 +1,20 @@
+## 0.33.0-alpha.1 — Freeform Strikes and Freeform Jutsu (NPC3; King 2026-11-14)
+
+- **Freeform Strike window:** the Bingo Book's five decisions in one pop-up: range (melee with the reach you set, or ranged 60 ft); what it counts as (Weapon/Freeform, Ninjutsu, Taijutsu or Genjutsu), which picks the attack line; an optional rider from the Effects table with its save and recovery; damage type; and one attack with the damage of all, or one attack per Multiattack. The table's damage, the attack count and the rider DC (Minion lowest, Standard middle, Elite and Solo highest jutsu save DC) update as you choose. A Strike is set when built; reopen it to rebuild.
+- **Freeform Jutsu window:** Offensive, Defensive or Support, then the book's steps: rank (with the class and level suggestion), discipline and keywords, range, single target or area and shape, attack or save, up to two extra effects (one for Defensive and Support) with their recovery, and the Defensive or Support focus. The effective level with every Damage Penalty, the damage or focus value, and the chakra cost (D 5, C 9, B 14, A 20, S 30; Minions 0; editable) update live.
+- **What they become:** a Strike is a feature on the Combat tab with an attack and damage, and a rider save that applies its condition on a failure. A Freeform Jutsu is a real jutsu that casts through the normal cast dialog and action card:
+  - conditions apply on a failed save, and a "save at the end of its turn" recovery repeats the save;
+  - AC, DR, speed, attack, save, check and DC penalties and disadvantage are Active Effects, lasting 1–2 rounds when recovery is "wait";
+  - forced movement, dispel, action denial and your own effects are notes on the card;
+  - Defensive AC, DR, resistance and immunity last until the start of the adversary's next turn, and temporary Hit Points until used up (dice-valued DR applies its average, noted);
+  - Support bonuses are under concentration (except Hit Point Burst); Regen is a heal button with a note.
+- **Where they open:** "Add Freeform Strike" and "Add Freeform Jutsu" in the Adversary Builder's step 7 (listed there with Edit and Remove, saved with the adversary); "New Freeform Jutsu" on an NPC's Jutsu tab and "New Freeform Strike" on its Combat tab; "Edit in Freeform window" on a Freeform item's right-click menu.
+- **Level changes:** Freeform Jutsu are rebuilt when the adversary's level, class or role changes. A jutsu whose damage you edited by hand is kept and marked. Strikes stay as built.
+- A Striker reads the Freeform tables 1 level higher. The builder counts Freeform Jutsu against the jutsu limit and Freeform items against the suggested Freeform slots.
+- New effect keys: `n5e.resist` and `n5e.immune` (value: a damage type) and `n5e.attack.all`. Item effect activities can carry rule elements (disadvantage and the like).
+- Freeform Abilities move to NPC4 with Tenacity.
+- Not checked in a running Foundry world.
+
 ## 0.32.0-alpha.2 — Iconic traits (King 2026-11-14: "Follow the book")
 
 - An Iconic adversary's suggested trait count is 2 higher, as in the book's Sasuke example. The book gives Epic no extra traits. The level bands stay as the book's table states (+3 at levels 12–17), where the example says +4 at level 13.

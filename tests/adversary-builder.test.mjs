@@ -45,12 +45,13 @@ test("level step: party level, baseline line, suggested counts; rebase only when
   assert.doesNotMatch(tpl({ vm: builderVM(draft, { step: "level", isNew: true }) }), /data-action="rebase"/);
 });
 
-test("attacks: jutsu count against the limit, outside ranks flagged, Freeform waits for NPC3", () => {
+test("attacks: jutsu count against the limit, outside ranks flagged, Freeform buttons (NPC3)", () => {
   const draft = { ...blankDraft(), rank: "D", jutsu: [{ uuid: "a", name: "Chidori", rank: "A" }] };
   const html = tpl({ vm: builderVM(draft, { step: "attacks" }) });
-  assert.match(html, /1 of 4; suggested ranks D, C/);
+  assert.match(html, /1 of 4, Freeform included; suggested ranks D, C/);
   assert.match(html, /outside the suggested ranks/);
-  assert.match(html, /Coming with NPC3/);
+  assert.match(html, /Add Freeform Strike/);
+  assert.match(html, /Add Freeform Jutsu/);
 });
 
 test("finalize: modifiers, budget, saves, armor, HP source; a Solo asks for players", () => {

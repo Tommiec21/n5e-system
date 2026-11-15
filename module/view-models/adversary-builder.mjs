@@ -53,9 +53,12 @@ export function builderVM(draft, extra = {}) {
     rankBonus: !!draft.rankBonus,
     clan: draft.clan, affiliation: draft.affiliation, clanNames: extra.clanNames ?? [],
     jutsu: draft.jutsu.map((j, i) => ({ ...j, i, outside: j.rank && !ranksOk.includes(j.rank) })),
-    jutsuLimit: counts.jutsu, jutsuRanks: ranksOk.join(", "), showAllRanks: !!extra.showAllRanks,
+    jutsuCount: draft.jutsu.length + (draft.freeform ?? []).filter(f => f.kind === "jutsu").length, jutsuLimit: counts.jutsu, jutsuRanks: ranksOk.join(", "), showAllRanks: !!extra.showAllRanks,
     jutsuResults: extra.jutsuResults ?? [], weaponResults: extra.weaponResults ?? [], search: extra.search ?? { jutsu: "", weapon: "" },
     weapons: draft.weapons.map((w, i) => ({ ...w, i })),
+    freeform: (draft.freeform ?? []).map((f, i) => ({ i, kind: f.kind, name: f.choices?.name || f.name || "Unnamed",
+      label: f.kind === "strike" ? "Strike" : `${f.choices?.rank ?? ""}-Rank ${f.choices?.type ?? "offensive"} jutsu`, pending: !f.id || !!f.dirty })),
+    freeformSlots: counts.freeformSlots ?? 0,
     finalize: {
       abilities: ABILITY_KEYS.map(k => ({ key: k, label: abilities[k].label, abbr: abilities[k].abbr.toUpperCase(), value: draft.mods[k] ?? 0,
         full: draft.fullSaves.includes(k) })),

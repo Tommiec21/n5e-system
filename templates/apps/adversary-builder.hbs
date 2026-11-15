@@ -95,14 +95,21 @@
 
     {{#if (n5eEq vm.step "attacks")}}
       <h2>Attacks and Jutsu</h2>
-      <h3>Jutsu <span class="hint">({{vm.jutsu.length}} of {{vm.jutsuLimit}}; suggested ranks {{vm.jutsuRanks}})</span></h3>
+      <h3>Jutsu <span class="hint">({{vm.jutsuCount}} of {{vm.jutsuLimit}}, Freeform included; suggested ranks {{vm.jutsuRanks}})</span></h3>
       {{> "systems/n5e/templates/apps/adversary-builder-jutsu.hbs" vm=vm}}
       <h3>Weapons</h3>
       {{#each vm.weapons}}<div class="entry">{{name}} <button type="button" data-action="removeEntry" data-list="weapons" data-index="{{i}}" aria-label="Remove">×</button></div>{{/each}}
       <label class="search">Find a weapon <input type="search" data-n5e-builder-search="weapon" value="{{vm.search.weapon}}"></label>
       <div class="results">{{#each vm.weaponResults}}<button type="button" data-action="addEntry" data-list="weapons" data-uuid="{{uuid}}" data-name="{{name}}">+ {{name}}</button>{{/each}}</div>
-      <h3>Freeform Strikes, Jutsu and Abilities</h3>
-      <p class="hint">Coming with NPC3.</p>
+      <h3>Freeform Strikes and Jutsu <span class="hint">({{vm.freeform.length}} of {{vm.freeformSlots}} suggested slots)</span></h3>
+      <div class="freeform-list">
+        {{#each vm.freeform}}<div class="entry"><span>{{name}}</span> <span class="sub">{{label}}{{#if pending}}, saved with the adversary{{/if}}</span>
+          <button type="button" data-action="editFreeform" data-index="{{i}}" aria-label="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" data-action="removeEntry" data-list="freeform" data-index="{{i}}" aria-label="Remove">×</button></div>{{/each}}
+      </div>
+      <div class="row"><button type="button" data-action="addFreeform" data-kind="strike"><i class="fa-solid fa-hand-fist"></i> Add Freeform Strike</button>
+        <button type="button" data-action="addFreeform" data-kind="jutsu"><i class="fa-solid fa-fire"></i> Add Freeform Jutsu</button></div>
+      <p class="hint">Freeform Abilities come with NPC4 (Tenacity).</p>
     {{/if}}
 
     {{#if (n5eEq vm.step "generic")}}

@@ -168,3 +168,16 @@
 | Incapacitation ends all concentration | `rules/concentration.mjs`, `workflow/concentration.mjs checkConcentration` |
 | Effects of concentration jutsu end with the concentration | `workflow/trackers.mjs` (`dependentOn`), `workflow/effect-application.mjs removeDependents` |
 | Ready a jutsu: pay and hold with concentration, release with the Reaction, lost at the next turn start or when concentration breaks | `workflow/cast-plan.mjs`, `workflow/cast.mjs`, `workflow/concentration.mjs` |
+
+## Freeform Strikes and Freeform Jutsu (NPC3, 0.33.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Strike damage: class column at the level, 2 lower with a Tier 1 rider, 3 lower with Tier 2; a Striker +1 | `rules/freeform.mjs strikeDamage`, `buildStrike` |
+| Single attack with the combined damage of the table's attack count | `rules/freeform.mjs combineAttacks` |
+| Rider DC: Minion lowest, Standard middle, Elite and Solo highest jutsu save DC | `rules/freeform.mjs riderDC` |
+| Freeform Jutsu ranks by class and level; cost D 5, C 9, B 14, A 20, S 30, Minions 0 | `rules/freeform.mjs freeformRanks`, `freeformCostFor` |
+| Effective level: Damage Penalties (area, effect tiers, no damage on save, lowest attack, pre-established), clamped 1–30 | `rules/freeform.mjs effectiveLevel`, `jutsuDamage` |
+| Defensive and Support focus values; C and A use the rank below | `rules/freeform.mjs defensiveValue`, `supportValue`, `stepValue` |
+| Effects & Conditions: conditions on a failed save, penalties and disadvantage as Active Effects, the rest as card notes; recovery by save, rounds or action | `rules/freeform.mjs effectActivity` |
+| Freeform Jutsu follow level, class and role; Strikes are set when built; hand-edited damage kept | `rules/freeform.mjs recalculate`, `workflow/freeform.mjs` |

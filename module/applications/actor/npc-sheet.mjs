@@ -35,7 +35,8 @@ export default class NPCSheet extends CharacterSheet {
       npcRemoveKnowledge: NPCSheet.#onRemoveKnowledge,
       npcMoveKnowledge: NPCSheet.#onMoveKnowledge,
       npcToggleLearned: NPCSheet.#onToggleLearned,
-      npcOpenBuilder: NPCSheet.#onOpenBuilder
+      npcOpenBuilder: NPCSheet.#onOpenBuilder,
+      npcNewFreeform: NPCSheet.#onNewFreeform
     }
   };
 
@@ -62,6 +63,23 @@ export default class NPCSheet extends CharacterSheet {
       initial: "main"
     }
   };
+
+  /** The Freeform buttons at the top of the Jutsu and Combat tabs (an editable sheet only). */
+  #addFreeformButtons() {
+    if ( !this.isEditable || this.isLimitedView ) return;
+    for ( const [tab, kind, label] of [["jutsu", "jutsu", "New Freeform Jutsu"], ["combat", "strike", "New Freeform Strike"]] ) {
+      const section = this.element.querySelector(`section.tab[data-tab="${tab}"]`);
+      if ( !section || section.querySelector("[data-n5e-new-freeform]") ) continue;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "n5e-new-freeform";
+      button.dataset.action = "npcNewFreeform";
+      button.dataset.kind = kind;
+      button.dataset.n5eNewFreeform = kind;
+      button.innerHTML = `<i class="fa-solid fa-wand-sparkles"></i> ${label}`;
+      section.prepend(button);
+    }
+  }
 
   /** A user with Limited permission (and no more) sees the limited view only. */
   get isLimitedView() {
@@ -169,6 +187,7 @@ export default class NPCSheet extends CharacterSheet {
   /** @override  The learnable list takes items dragged from this sheet (NPC1c C4). */
   async _onRender(context, options) {
     await super._onRender(context, options);
+    this.#addFreeformButtons();
     const zone = this.element.querySelector("[data-n5e-learn-drop]");
     if ( !zone || !this.isEditable ) return;
     zone.addEventListener("dragover", ev => { ev.preventDefault(); zone.classList.add("over"); });
@@ -268,5 +287,13 @@ export default class NPCSheet extends CharacterSheet {
     if ( !this.isEditable ) return;
     const { default: AdversaryBuilder } = await import("../npc/adversary-builder.mjs");
     return AdversaryBuilder.open(this.actor);
+  }
+
+  /** "New Freeform Jutsu" (Jutsu tab) and "New Freeform Strike" (Combat tab) (NPC3d D3). */
+  static async #onNewFreeform(event, target) {
+    if ( !this.isEditable ) return;
+    const file = target.dataset.kind === "strike" ? "freeform-strike" : "freeform-jutsu";
+    const { default: Window } = await import(`../npc/${file}.mjs`);
+    return new Window({ actor: this.actor }).render({ force: true });
   }
 }

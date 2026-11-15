@@ -30,8 +30,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-sheet.mjs` | 723 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
-| `npc-sheet.mjs` | 273 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
+| `character-sheet.mjs` | 726 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `npc-sheet.mjs` | 300 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 | `npc-simple-sheet.mjs` | 34 | Simple NPC sheet (NPC1b): the whole stat block on one page, in the Bingo Book's order (header, traits, jutsu by discipline and rank, attacks). | `NPCSimpleSheet` |
 
 ## module/applications/browser
@@ -76,7 +76,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `adversary-builder.mjs` | 247 | The Adversary Builder (NPC2; King 2026-11-14): the Bingo Book's build steps in one window, with a step list (any step can be opened at any time), a live stat... | `AdversaryBuilder`, `promptBuilder`, `addBuilderButton` |
+| `adversary-builder.mjs` | 293 | The Adversary Builder (NPC2; King 2026-11-14): the Bingo Book's build steps in one window, with a step list (any step can be opened at any time), a live stat... | `AdversaryBuilder`, `promptBuilder`, `addBuilderButton` |
+| `freeform-jutsu.mjs` | 16 | The Freeform Jutsu window (NPC3d D1): the book's steps in order with the effective level and damage live. | `FreeformJutsuWindow` |
+| `freeform-strike.mjs` | 16 | The Freeform Strike window (NPC3d D2): the book's five decisions with the table's damage live. | `FreeformStrikeWindow` |
+| `freeform-window.mjs` | 90 | The shared window behind the Freeform Strike and Freeform Jutsu windows (NPC3d; King 2026-11-14): a small form whose every change updates the choices and re-... | `FreeformWindow` |
 
 ## module/applications/settings
 
@@ -114,13 +117,14 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `activities.mjs` | 7 | Activity capabilities are explicit. | `activityKinds` |
-| `adversary.mjs` | 122 | Adversary tables (the Bingo Book, "The Adversary Profile" to "Final Calculation(s)"; NPC1). | `adversaryClasses`, `adversaryRoles`, `adversaryArmor`, `adversaryBuilds`, `hpSources`, `proficiencyByLevel`, `statLines`, `rankTable`, `armorTable`, `classModifiers`, `roleModifiers`, `classifications`, `fullSavesByLevel`, `lazyPerLevel`, `lazySoloPlayers`, `suggested`, `adversaryDisciplineAbility`, `suggestedJutsuRanks`, `conceptExamples`, `classDescriptions`, `roleDescriptions`, `rankDescriptions`, `adversaryClanGroups` |
+| `adversary.mjs` | 124 | Adversary tables (the Bingo Book, "The Adversary Profile" to "Final Calculation(s)"; NPC1). | `adversaryClasses`, `adversaryRoles`, `adversaryArmor`, `adversaryBuilds`, `hpSources`, `proficiencyByLevel`, `statLines`, `rankTable`, `armorTable`, `classModifiers`, `roleModifiers`, `classifications`, `fullSavesByLevel`, `lazyPerLevel`, `lazySoloPlayers`, `suggested`, `adversaryDisciplineAbility`, `suggestedJutsuRanks`, `conceptExamples`, `classDescriptions`, `roleDescriptions`, `rankDescriptions`, `adversaryClanGroups` |
 | `character.mjs` | 159 | Character options, rests, terrain, optional rules, skill actions. | `stanceCategories`, `stanceRules`, `featCategories`, `featureKinds`, `jutsuTiers`, `backgrounds`, `willOfFire`, `languages`, `rests`, `rations`, `hostileTerrain`, `terrainTypes`, `skillActionTiers`, `skillActions` |
 | `combat.mjs` | 239 | Combat and shared vocabularies: damage types, activation, ranges, durations, recovery periods, sizes, senses, amps. | `damageGroups`, `damageTypes`, `damagePipeline`, `drApplication`, `critRangeCap`, `critRules`, `allDicePenaltyMode`, `activationTypes`, `timeUnits`, `rangeTypes`, `areaShapes`, `durationUnits`, `recoveryPeriods`, `recoveryAmounts`, `sizes`, `senses`, `movementTypes`, `ampTypes`, `ampLimits`, `featureTypes`, `cover`, `rechargeDice`, `dieSteps`, `npcRoles`, `npcTemplates`, `summonRoles`, `masteryTargets`, `coreActions`, `marks`, `innerGates`, `gateAccess` |
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 201 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 160 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
+| `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `rules.mjs` | 150 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
@@ -136,7 +140,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 632 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 639 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
 
 ## module/data/effect
@@ -149,7 +153,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `shared.mjs` | 311 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
+| `shared.mjs` | 313 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
 
 ## module/data/item
 
@@ -204,8 +208,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 154 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
 | `advantage.mjs` | 94 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
-| `adversary-builder.mjs` | 110 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
-| `adversary.mjs` | 154 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
+| `adversary-builder.mjs` | 120 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
+| `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 183 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `authored-reactions.mjs` | 32 | Declarative before-damage recipes. | `validateReactionRecipe`, `authoredReactionOffers` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
@@ -216,7 +220,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-options.mjs` | 156 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 179 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 186 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
@@ -235,6 +239,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `expiry.mjs` | 42 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
+| `freeform.mjs` | 354 | Freeform Strikes and Freeform Jutsu (pure; the Bingo Book, "Adversary Combat"; NPC3). | `stepValue`, `strikeDamage`, `combineAttacks`, `riderDC`, `freeformRanks`, `freeformCostFor`, `effectiveLevel`, `splitDamage`, `jutsuDamage`, `defensiveValue`, `supportValue`, `effectActivity`, `buildStrike`, `buildJutsu`, `averageOf`, `recalculate`, `adversaryOf` |
 | `host.mjs` | 24 | Host hooks for the shared core (SHARED1). | `setHost`, `n5eConfig` |
 | `item-audit.mjs` | 64 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
@@ -275,11 +280,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `adversary-builder.mjs` | 72 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
+| `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
 | `character.mjs` | 550 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 420 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
+| `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
 | `item.mjs` | 433 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc.mjs` | 274 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
@@ -289,7 +295,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `action-card.mjs` | 475 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
-| `activity-buttons.mjs` | 492 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 495 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
@@ -309,6 +315,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `effect-application.mjs` | 103 | Effect-application cards (dnd5e effect-application parity). | `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
 | `environment.mjs` | 109 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `breathTurnStart`, `onTerrainSaveClick`, `fall` |
 | `expiry.mjs` | 57 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
+| `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
 | `jutsu-defense.mjs` | 156 | Reading and countering jutsu (Foundry side; FIN2b). | `actingActor`, `castFacts`, `onDefenseClick`, `onReadChoiceClick`, `applySuppression`, `endSuppression`, `counteredOn`, `counterTagFor`, `onCounterTagClick` |
 | `npc-knowledge.mjs` | 95 | What the players can learn (NPC1c C5; King Q-N21-Q-N24). | `unknownEntries`, `learnSectionHTML`, `onLearnOffer`, `onLearnPick`, `learnEntry`, `registerNpcKnowledge` |
@@ -324,7 +331,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `riders.mjs` | 311 | Feature riders on the action card (Foundry side; CARD1d). | `conditionTags`, `riderDC`, `actionOf`, `castRiderEntries`, `withRiderSections`, `riderView`, `onRiderClick`, `validateRider` |
 | `roll-request.mjs` | 64 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `skill-actions.mjs` | 168 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
-| `trackers.mjs` | 420 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `trackers.mjs` | 421 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 136 | Item transfer between actors (Foundry side; FIN1). | `transferItem`, `receiveTransfer`, `transferFromDrop`, `registerTransfer` |
 | `turn.mjs` | 161 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |
 | `unarmed.mjs` | 14 | The Unarmed Strike item (DATA2). | `ensureUnarmedStrike` |

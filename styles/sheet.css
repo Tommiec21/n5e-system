@@ -821,3 +821,19 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-builder .builder-footer .primary { margin-left: auto; font-weight: 700; }
 .n5e-builder .builder-preview { overflow-y: auto; border-left: 1px solid currentColor; padding-left: 8px; }
 .npc-build .build-concept { font-size: 12px; font-style: italic; margin-bottom: 4px; }
+
+/* NPC3d: Freeform Strike and Freeform Jutsu windows */
+.n5e-freeform .window-content { padding: 8px 10px; }
+.n5e-freeform-window .ff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px 10px; margin: 6px 0; }
+.n5e-freeform-window .ff-grid label { display: flex; flex-direction: column; gap: 2px; font-size: 0.85em; }
+.n5e-freeform-window .ff-grid label.check { flex-direction: row; align-items: center; gap: 4px; }
+.n5e-freeform-window .ff-grid label.wide { grid-column: 1 / -1; }
+.n5e-freeform-window fieldset { border: 1px solid var(--color-border-light-2, #bbb); border-radius: 4px; margin: 6px 0; padding: 4px 8px; }
+.n5e-freeform-window .ff-keywords { display: flex; flex-wrap: wrap; gap: 2px 10px; font-size: 0.85em; }
+.n5e-freeform-window .ff-keywords label.check { display: inline-flex; align-items: center; gap: 3px; }
+.n5e-freeform-window .ff-live { background: rgba(0, 0, 0, 0.06); border-radius: 4px; padding: 6px 8px; margin: 6px 0; display: grid; gap: 3px; }
+.n5e-freeform-window .hint { opacity: 0.75; font-size: 0.85em; }
+.n5e-freeform-window .ff-footer { display: flex; justify-content: flex-end; margin-top: 6px; }
+.n5e-adversary-builder .freeform-list .entry { display: flex; gap: 6px; align-items: center; }
+.n5e-adversary-builder .freeform-list .entry .sub { opacity: 0.75; font-size: 0.85em; }
+.n5e-new-freeform { margin: 4px 0 6px; width: auto; }

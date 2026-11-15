@@ -245,7 +245,7 @@ export default class NPCData extends CreatureData {
     const label = key.toUpperCase();
     const attack = (this.breakdowns["freeform.attack"] = new Breakdown("Weapon/Freeform attack")).base(label, mod).add("Proficiency", this.prof)
       .addAll(adversaryParts("attack", this.adversaryProfile)).override(o.attack.freeform)
-      .addAll(this.conditionPenalties?.sources?.allDice ?? []).addAll(this.conditionPenalties?.sources?.checksAndAttacks ?? []);
+      .add("Effects", this.modifiers?.attack?.all ?? 0).addAll(this.conditionPenalties?.sources?.allDice ?? []).addAll(this.conditionPenalties?.sources?.checksAndAttacks ?? []);
     const dc = (this.breakdowns["freeform.dc"] = new Breakdown("Freeform save DC")).base("Base", 8).add(label, mod).add("Proficiency", this.prof)
       .addAll(adversaryParts("dc", this.adversaryProfile)).override(o.dc.freeform)
       .add("Effects", this.modifiers?.saveDC?.all ?? 0).addAll(this.conditionPenalties?.sources?.saveDC ?? []);

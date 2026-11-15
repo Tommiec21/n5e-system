@@ -264,7 +264,9 @@ export function activityFields() {
       tempHp: formula(),
       state: str(),                      // named state the effect represents (crash, flow, combatRival...)
       exclusive: str(),                  // group: applying one removes the others (surge: Crash / Flow)
-      ampType: str()                     // makes it an Amp (battle|reflex|fortitude|will|clan)
+      ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
+      // Rule elements the effect carries (NPC3: disadvantage from a Freeform effect): {key, selector, label}.
+      rules: arr(obj({ key: str(), selector: str(), label: str() }))
     })
   };
 }

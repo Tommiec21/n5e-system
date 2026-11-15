@@ -1,0 +1,67 @@
+<section class="n5e-freeform-window">
+  <p class="hint">{{#if vm.adversary}}{{vm.adversary}}, {{/if}}level {{vm.level}} {{vm.klass}}. Suggested ranks: {{vm.suggestedRanks}}. A Freeform Jutsu follows the adversary's level.</p>
+  <div class="ff-grid">
+    <label>Name <input type="text" name="name" value="{{vm.name}}" placeholder="Fire Release: …"></label>
+    <label>Kind <select name="type">{{#each vm.typeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Rank <select name="rank">{{#each vm.rankOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Discipline <select name="discipline">{{#each vm.disciplineOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Range <select name="range">{{#each vm.rangeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Activation <select name="activation">{{#each vm.activationOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label data-tooltip="Blank = the rank's cost">Chakra <input type="number" name="cost" value="{{vm.cost}}" min="0" placeholder="{{vm.bookCost}}"></label>
+  </div>
+  <fieldset class="ff-keywords"><legend>Keywords</legend>
+    {{#each vm.keywordOptions}}<label class="check"><input type="checkbox" name="kw.{{key}}" {{#if checked}}checked{{/if}}> {{label}}</label>{{/each}}
+  </fieldset>
+
+  {{#if vm.isOffensive}}
+    <div class="ff-grid">
+      <label>Target <select name="target">{{#each vm.targetOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      {{#if vm.isArea}}<label>Shape <select name="shape">{{#each vm.shapeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+      <label>Resolved by <select name="resolve">{{#each vm.resolveOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      {{#if vm.isAttack}}
+        <label>Attacks <input type="number" name="attacks" value="{{vm.attacks}}" min="1" max="6"></label>
+        <label class="check"><input type="checkbox" name="lowestAttack" {{#if vm.lowestAttack}}checked{{/if}}> Uses the lowest attack bonus</label>
+      {{else}}
+        <label>Save <select name="saveAbility">{{#each vm.saveOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label class="check"><input type="checkbox" name="noDamageOnSave" {{#if vm.noDamageOnSave}}checked{{/if}}> No damage on a success</label>
+      {{/if}}
+      <label>Builds on an effect <select name="preestablished">{{#each vm.preestablishedOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Damage type <select name="damageType">{{#each vm.damageTypeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    </div>
+  {{else}}
+    <div class="ff-grid">
+      <label>Focus <select name="focus">{{#each vm.focusOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      {{#each vm.focusTypeSlots}}<label>Damage type <select name="focusType{{i}}"><option value="">—</option>{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/each}}
+      {{#if vm.needsAttackKey}}<label>Attacks <select name="focusKey">{{#each vm.attackKeyOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+      {{#if vm.needsSkill}}<label>Skill <select name="focusKey">{{#each vm.skillOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+    </div>
+  {{/if}}
+
+  <fieldset class="ff-effects"><legend>Extra effects</legend>
+    {{#each vm.effects}}
+      <div class="ff-grid">
+        <label>Effect {{n}} <select name="effect{{i}}Key"><option value="">None</option>{{#each options}}<optgroup label="{{label}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup>{{/each}}</select></label>
+        {{#if set}}
+          <label>Recovery <select name="effect{{i}}Recovery">{{#each recoveryOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{#if isRounds}}<label>Rounds <input type="number" name="effect{{i}}Rounds" value="{{rounds}}" min="1" max="2"></label>{{/if}}
+          {{#if hasValue}}<label>Value <input type="number" name="effect{{i}}Value" value="{{value}}"></label>{{/if}}
+          {{#if isCustom}}<label class="wide">Effect text <input type="text" name="effect{{i}}Text" value="{{text}}"></label>{{/if}}
+          <span class="hint">Tier {{tier}}</span>
+        {{/if}}
+      </div>
+    {{/each}}
+  </fieldset>
+
+  <div class="ff-live">
+    {{#if (n5eEq vm.live.kind "damage")}}
+      <div><b>Damage</b> {{vm.live.formula}} (average {{vm.live.average}}){{#if vm.live.split}}, {{vm.live.perAttack}} per attack over {{vm.live.attacks}}{{/if}}</div>
+      <div class="hint">{{vm.live.column}}, read at level {{vm.live.readAt}}{{#each vm.live.parts}}; {{label}} {{value}}{{/each}}</div>
+    {{/if}}
+    {{#if (n5eEq vm.live.kind "focus")}}
+      <div><b>Value</b> {{vm.live.value}}{{#if vm.live.readAt}} (read at level {{vm.live.readAt}}){{/if}}</div>
+      {{#if vm.live.note}}<div class="hint">{{vm.live.note}}</div>{{/if}}
+    {{/if}}
+    <div><b>Chakra</b> {{#if vm.cost}}{{vm.cost}}{{else}}{{vm.bookCost}}{{/if}}</div>
+  </div>
+  <footer class="ff-footer"><button type="button" data-action="save"><i class="fa-solid fa-check"></i> {{#if vm.isEdit}}Update jutsu{{else}}Create jutsu{{/if}}</button></footer>
+</section>

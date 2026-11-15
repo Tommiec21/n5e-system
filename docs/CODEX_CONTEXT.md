@@ -427,3 +427,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - The builder works on a plain draft (`rules/adversary-builder.mjs`); `draftToUpdate` is the only place that turns it into an actor update and items. NPC3 (Freeform) and NPC6 (traits) plug into steps 4, 6, 7 and 7.5: add to the draft, `draftFromActor` and `draftToUpdate`, then the step's section in the template.
 - Typed traits are `feat` items, category `npcTraits`. NPC6 should convert or replace them, not add a second kind.
 
+
+## NPC3 — Claude, 2026-11-14 (published 0.33.0-alpha.1)
+- Freeform items are built only by `rules/freeform.mjs buildStrike` and `buildJutsu` from `flags.n5e.freeform.choices`. The windows (`applications/npc/freeform-*.mjs`), the builder and `workflow/freeform.mjs` all go through them; change the math there, not on the items.
+- A window opened from the builder hands choices back through `onSave` (nothing written until the builder saves); opened from a sheet it writes the item.
+- NPC4 (Elite Actions): Defensive Freeform Jutsu of an Elite or Solo should end at its next Elite Action; today they end at the start of its next turn (`effect.expires: "turnStart"`). Freeform Abilities (Tenacity) belong in NPC4.

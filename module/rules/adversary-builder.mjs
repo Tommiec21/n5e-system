@@ -5,7 +5,8 @@
  * Draft: {name, img, concept, blurb, blurbFollowsConcept, class, level, role, iconic, epic, rank,
  *   rankBonus, clan, affiliation, partyLevel, armor, hpSource, partySize, mods, fullSaves,
  *   freeformAbility, overrides, hpMax, cpMax,
- *   traits: [{id?, name, rank, text}], jutsu: [{id?, uuid?, name, rank, discipline}], weapons: [{id?, uuid?, name}]}
+ *   traits: [{id?, name, rank, text}], jutsu: [{id?, uuid?, name, rank, discipline}], weapons: [{id?, uuid?, name}],
+ *   freeform: [{id?, kind: strike|jutsu, name, choices, dirty?}]}  (NPC3: built from choices by rules/freeform.mjs)
  * An entry with an `id` is an item already on the NPC; one with only a `uuid` comes from a compendium.
  */
 import { ABILITY_KEYS, statLine, suggestedCounts, adversaryWarnings } from "./adversary.mjs";
@@ -19,7 +20,7 @@ export function blankDraft() {
   return { name: "New Adversary", img: "icons/svg/mystery-man.svg", concept: "", blurb: "", blurbFollowsConcept: true,
     class: "standard", level: 1, role: "none", iconic: false, epic: false, rank: "D", rankBonus: false, clan: "", affiliation: "",
     partyLevel: null, armor: "light", hpSource: "formula", partySize: 4, mods: Object.fromEntries(ABILITY_KEYS.map((k, i) => [k, statLine(1, "standard").line[i]])),
-    fullSaves: [], freeformAbility: "str", overrides: null, hpMax: null, cpMax: null, traits: [], jutsu: [], weapons: [] };
+    fullSaves: [], freeformAbility: "str", overrides: null, hpMax: null, cpMax: null, traits: [], jutsu: [], weapons: [], freeform: [] };
 }
 
 /** Read an NPC into a draft (its source data and items). */
@@ -37,8 +38,10 @@ export function draftFromActor(actor) {
     freeformAbility: a.freeformAbility ?? "str", overrides: clone(a.overrides ?? null), hpMax: src.hpMax ?? null, cpMax: src.cpMax ?? null,
     traits: items.filter(i => i.type === "feat" && i.system?.category === "npcTraits")
       .map(i => ({ id: i.id, name: i.name, rank: i.flags?.n5e?.adversaryTrait?.rank ?? "", text: i.system.description ?? "" })),
-    jutsu: items.filter(i => i.type === "jutsu").map(i => ({ id: i.id, name: i.name, rank: i.system.rank, discipline: i.system.discipline })),
-    weapons: items.filter(i => i.type === "weapon" && i.system?.identifier !== "unarmedStrike").map(i => ({ id: i.id, name: i.name }))
+    jutsu: items.filter(i => i.type === "jutsu" && !i.flags?.n5e?.freeform).map(i => ({ id: i.id, name: i.name, rank: i.system.rank, discipline: i.system.discipline })),
+    weapons: items.filter(i => i.type === "weapon" && i.system?.identifier !== "unarmedStrike").map(i => ({ id: i.id, name: i.name })),
+    freeform: items.filter(i => i.flags?.n5e?.freeform?.choices).map(i => ({ id: i.id, kind: i.flags.n5e.freeform.kind, name: i.name,
+      choices: clone(i.flags.n5e.freeform.choices) }))
   };
 }
 
@@ -74,7 +77,10 @@ export function stepNotes(d) {
     notes.level.push(`More than 3 levels from the party (${d.partyLevel}): the players will be clearly outmatched or overwhelming.`);
   }
   if ( d.traits.length > counts.traits ) notes.role.push(`${d.traits.length} traits; the book suggests ${counts.traits}.`);
-  if ( d.jutsu.length > counts.jutsu ) notes.attacks.push(`${d.jutsu.length} jutsu; the limit at this level is ${counts.jutsu}.`);
+  const freeformJutsu = (d.freeform ?? []).filter(f => f.kind === "jutsu").length;
+  const jutsuCount = d.jutsu.length + freeformJutsu;
+  if ( jutsuCount > counts.jutsu ) notes.attacks.push(`${jutsuCount} jutsu${freeformJutsu ? ` (${freeformJutsu} Freeform)` : ""}; the limit at this level is ${counts.jutsu}.`);
+  if ( (d.freeform ?? []).length > (counts.freeformSlots ?? 0) ) notes.attacks.push(`${d.freeform.length} Freeform Strikes and Jutsu; the book suggests ${counts.freeformSlots ?? 0} Freeform slots.`);
   const ranks = suggestedRanksFor(d.rank);
   const outside = d.jutsu.filter(j => j.rank && !ranks.includes(j.rank));
   if ( outside.length ) notes.attacks.push(`Outside the suggested ranks (${ranks.join(", ")}): ${outside.map(j => j.name).join(", ")}.`);
@@ -102,8 +108,12 @@ export function draftToUpdate(d, actor = null) {
   const typed = d.traits.filter(t => !t.id).map(t => ({ name: t.name || "Trait", type: "feat",
     system: { category: "npcTraits", description: t.text ? `<p>${t.text}</p>` : "" }, flags: { n5e: { adversaryTrait: { rank: t.rank ?? "" } } } }));
   const traitEdits = d.traits.filter(t => t.id).map(t => ({ _id: t.id, name: t.name, "flags.n5e.adversaryTrait.rank": t.rank ?? "" }));
-  const kept = new Set([...d.traits, ...d.jutsu, ...d.weapons].filter(e => e.id).map(e => e.id));
+  const ff = d.freeform ?? [];
+  const kept = new Set([...d.traits, ...d.jutsu, ...d.weapons, ...ff].filter(e => e.id).map(e => e.id));
   const removed = [...(actor?.items ?? [])].filter(i => (i.type === "jutsu" || (i.type === "weapon" && i.system?.identifier !== "unarmedStrike")
-    || (i.type === "feat" && i.system?.category === "npcTraits")) && !kept.has(i.id)).map(i => i.id);
-  return { update, fromUuid, typed, traitEdits, removed };
+    || (i.type === "feat" && i.system?.category === "npcTraits") || i.flags?.n5e?.freeform) && !kept.has(i.id)).map(i => i.id);
+  // Freeform items are built after the save, from the saved adversary (its level, class and save DCs).
+  const freeform = { create: ff.filter(f => !f.id).map(f => ({ kind: f.kind, choices: clone(f.choices) })),
+    edit: ff.filter(f => f.id && f.dirty).map(f => ({ id: f.id, kind: f.kind, choices: clone(f.choices) })) };
+  return { update, fromUuid, typed, traitEdits, removed, freeform };
 }

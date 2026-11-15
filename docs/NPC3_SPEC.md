@@ -87,3 +87,11 @@ C1 changes: the Builder's step 7 lists the adversary's Strikes and Freeform Juts
 - 2026-11-14 Claude: King: a pop-up creation window for Freeform Jutsu and one for Strikes (NPC3d).
 - 2026-11-14 Claude: King answered Q-N33–Q-N41. Abilities moved to NPC4.
 - 2026-11-14 Claude: spec written from the Bingo Book's "Adversary Combat" chapter and the core book's chakra cost ranges. Nothing built.
+- 2026-11-14 Claude: King approved. Built and published as v0.33.0-alpha.1:
+  - `config/freeform.mjs` (tables parsed from the Bingo Book), `rules/freeform.mjs` (math, `buildStrike`, `buildJutsu`, `effectActivity`, `recalculate`, `adversaryOf`), `view-models/freeform.mjs`;
+  - windows `applications/npc/freeform-window.mjs` (shared), `freeform-strike.mjs`, `freeform-jutsu.mjs`, templates `apps/freeform-strike.hbs`, `apps/freeform-jutsu.hbs`;
+  - builder step 7 list (draft `freeform[]`, built after the save from the saved adversary), sheet buttons on the Jutsu and Combat tabs, "Edit in Freeform window" in the item context menu;
+  - `workflow/freeform.mjs`: level, class or role change rebuilds Freeform Jutsu; hand-edited damage kept and flagged `flags.n5e.freeform.handEdited`;
+  - engine: `n5e.resist`, `n5e.immune`, `n5e.attack.all` (also on the Weapon/Freeform line); effect activities carry `rules` (rule elements); the attack row reads the Freeform line for `discipline: "freeform"`.
+  - Readings for King: a Strike's attack count is the table's (x2, x3, x4), not the Multiattack suggestion; the Striker's +1 damage level applies to Strikes and Freeform Jutsu; Defensive temporary HP reads the Standard table at level/4 (rounded up); Hit Point Burst reads the class's table at level/2 and Regen the Strike table (Low for Minion and Standard, Medium Elite, High Solo) at level/4; Support damage bonus is a card note (+1 from C, +2 from A).
+  - Tests: `tests/core/freeform.test.mjs`, `tests/freeform-items.test.mjs`.

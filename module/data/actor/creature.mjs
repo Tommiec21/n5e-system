@@ -193,6 +193,13 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     const pen = aggregatePenalties(activeConditions, conditionRegistry);
     this.conditionPenalties = pen;
     this.modifiers = mods;
+    // n5e.resist / n5e.immune (NPC3): resistances and immunities from effects join the creature's own.
+    for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune]] ) {
+      if ( !list.length ) continue;
+      const set = this.traits[field] instanceof Set ? this.traits[field] : new Set(this.traits[field] ?? []);
+      for ( const type of list ) set.add(type);
+      this.traits[field] = set;
+    }
     this.exhaustion = activeConditions.find(c => c.key === "exhaustion")?.ranks ?? 0;
 
     // Step 2: item contributions.
@@ -264,7 +271,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     // ability, proficiency and weapon properties are added per attack (workflow/attack.mjs).
     this.weaponBonuses = {};
     for ( const scope of ["weapon", "unarmed"] ) {
-      const parts = [["Bonuses", this.bonuses.attack[scope] ?? 0], ["Effects", mods.attack[scope] ?? 0]];
+      const parts = [["Bonuses", this.bonuses.attack[scope] ?? 0], ["Effects", (mods.attack[scope] ?? 0) + (mods.attack.all ?? 0)]];
       const mm = this.masteryFor(`attack.${scope}`);
       if ( mm.rank ) parts.push([`Mastery ${mm.rank}`, mm.bonus]);
       this.weaponBonuses[scope] = {
@@ -330,7 +337,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       disc.mod = mod(disc.ability);
       const ab = B(`${key}.attack`, `${label} attack`).base(abbr(disc.ability), disc.mod).add("Proficiency", this.prof)
         .addAll(this._statParts("attack")).override(this._statOverride(`attack.${key}`))
-        .add("Bonuses", this.bonuses.attack[key]).add("Effects", mods.attack[key] ?? 0);
+        .add("Bonuses", this.bonuses.attack[key]).add("Effects", (mods.attack[key] ?? 0) + (mods.attack.all ?? 0));
       addMastery(ab, `attack.${key}`).addAll(P("allDice", "checksAndAttacks"));
       disc.attack = ab.total;
       const db = B(`${key}.dc`, `${label} save DC`).base("Base", dcTables.jutsuSaveBase).add(abbr(disc.ability), disc.mod)

@@ -215,7 +215,10 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     // discipline's (Bukijutsu attacks use the Taijutsu numbers).
     if ( a.type === "attack" ) {
       const disc = a.attack?.discipline || item.system.discipline;
-      const bonus = item.type === "jutsu" ? live.attack : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
+      // A Freeform Strike on the Weapon/Freeform line reads the adversary's own line (NPC3).
+      const own = disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
+        : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
+      const bonus = (item.type === "jutsu" ? live.attack : own) + (Number(a.attack?.bonus) || 0);
       rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}${castAttrs.attack}
         ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}${flags.precise ? " (advantage)" : ""}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: castGen || (item.type !== "jutsu" && disc === "gen"), weapon: isBukijutsu(item), ...castAttrs.damage })}</div>`);

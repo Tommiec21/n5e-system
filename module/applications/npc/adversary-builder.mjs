@@ -10,7 +10,8 @@ import { blankDraft, draftFromActor, draftToUpdate, assignLine, rebaseMods, sugg
 import { builderVM, STEPS } from "../../view-models/adversary-builder.mjs";
 import { statBlockVM } from "../../view-models/npc.mjs";
 import { statLine, ABILITY_KEYS } from "../../rules/adversary.mjs";
-import { adversaryClanGroups } from "../../config/adversary.mjs";
+import { adversaryClanGroups, roleModifiers } from "../../config/adversary.mjs";
+import { adversaryOf, buildStrike, buildJutsu } from "../../rules/freeform.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const STEP_KEYS = STEPS.map(([k]) => k);
@@ -26,7 +27,8 @@ export default class AdversaryBuilder extends HandlebarsApplicationMixin(Applica
       goStep: AdversaryBuilder.#onGoStep, next: AdversaryBuilder.#onNext, back: AdversaryBuilder.#onBack,
       pick: AdversaryBuilder.#onPick, addTrait: AdversaryBuilder.#onAddTrait, removeEntry: AdversaryBuilder.#onRemoveEntry,
       addEntry: AdversaryBuilder.#onAddEntry, toggleAllRanks: AdversaryBuilder.#onToggleAllRanks,
-      useBaseline: AdversaryBuilder.#onUseBaseline, rebase: AdversaryBuilder.#onRebase, save: AdversaryBuilder.#onSave
+      useBaseline: AdversaryBuilder.#onUseBaseline, rebase: AdversaryBuilder.#onRebase, save: AdversaryBuilder.#onSave,
+      addFreeform: AdversaryBuilder.#onAddFreeform, editFreeform: AdversaryBuilder.#onEditFreeform
     }
   };
 
@@ -195,6 +197,42 @@ export default class AdversaryBuilder extends HandlebarsApplicationMixin(Applica
     return this.render();
   }
 
+  /** The draft's numbers for the Freeform windows (level and class from the draft; save DCs from the preview). */
+  #freeformAdv() {
+    let dcs = [];
+    try {
+      const { update } = draftToUpdate(this.draft, this.actor);
+      const expanded = foundry.utils.expandObject(update);
+      const base = this.actor ? this.actor.toObject() : { type: "npc", system: {} };
+      const data = foundry.utils.mergeObject(base, { name: expanded.name, type: "npc", system: expanded.system }, { inplace: false });
+      delete data._id;
+      dcs = adversaryOf(new CONFIG.Actor.documentClass(data)).dcs;
+    } catch (error) {
+      console.warn("n5e | builder freeform DCs", error);
+    }
+    return { name: this.draft.name, level: Math.min(30, Math.max(1, Number(this.draft.level) || 1)), klass: this.draft.class,
+      damageLevel: roleModifiers[this.draft.role]?.damageLevel ?? 0, dcs };
+  }
+
+  /** Open a Freeform window whose Create/Update writes into the draft (NPC3d D3). */
+  async #openFreeform(kind, index = null) {
+    const entry = index == null ? null : this.draft.freeform[index];
+    const file = kind === "strike" ? "freeform-strike" : "freeform-jutsu";
+    const { default: Window } = await import(`./${file}.mjs`);
+    return new Window({ adv: this.#freeformAdv(), choices: entry?.choices, isEdit: !!entry, onSave: choices => {
+      if ( entry ) Object.assign(entry, { choices, name: choices.name, dirty: true });
+      else this.draft.freeform.push({ kind, name: choices.name, choices });
+      this.dirty = true;
+      return this.render();
+    } }).render({ force: true });
+  }
+
+  static #onAddFreeform(event, target) { return this.#openFreeform(target.dataset.kind); }
+  static #onEditFreeform(event, target) {
+    const entry = this.draft.freeform[Number(target.dataset.index)];
+    return entry ? this.#openFreeform(entry.kind, Number(target.dataset.index)) : null;
+  }
+
   /** Create or Update, then open the sheet. */
   static async #onSave() {
     const plan = draftToUpdate(this.draft, this.actor);
@@ -217,6 +255,14 @@ export default class AdversaryBuilder extends HandlebarsApplicationMixin(Applica
     }
     const create = [...fromPacks, ...plan.typed];
     if ( create.length ) await actor.createEmbeddedDocuments("Item", create);
+    // Freeform items, built from the saved adversary (NPC3).
+    const adv = adversaryOf(actor);
+    const build = f => (f.kind === "strike" ? buildStrike : buildJutsu)(f.choices, adv);
+    if ( plan.freeform.create.length ) await actor.createEmbeddedDocuments("Item", plan.freeform.create.map(build));
+    if ( plan.freeform.edit.length ) await actor.updateEmbeddedDocuments("Item", plan.freeform.edit.map(f => {
+      const data = build(f);
+      return { _id: f.id, name: data.name, system: data.system, flags: data.flags };
+    }));
     this.dirty = false;
     await this.close({ force: true });
     return actor.sheet.render(true);

@@ -522,3 +522,15 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `system.details.concept` (NPC) | The builder's Step 1; GM only on the sheet |
 | Item `feat` with `system.category: "npcTraits"`, `flags.n5e.adversaryTrait.rank` | A trait typed in the builder (until NPC6 brings the book's lists) |
 | Config `suggestedJutsuRanks`, `classDescriptions`, `roleDescriptions`, `rankDescriptions`, `conceptExamples`, `adversaryClanGroups` | The builder's tables and text |
+
+## Added in 0.33.0-alpha.1 (NPC3)
+
+| Path | Meaning |
+| --- | --- |
+| Item `feat` with `system.category: "npcStrikes"` | A Freeform Strike: attack activity (`attack.discipline` `freeform`, `nin`, `tai` or `gen`), optional rider save with a fixed DC |
+| `attack.discipline: "freeform"` | The attack row reads the adversary's Weapon/Freeform line (`system.adversaryBuild.freeform.attack`) |
+| `flags.n5e.freeform {kind: strike or jutsu, choices, built {level, klass, damageLevel, formula, dc}, handEdited}` (Item) | The window's choices (one source for the windows, the builder and recalculation); `handEdited` when the damage was edited by hand |
+| Activity `effect.rules[] {key, selector, label}` | Rule elements copied onto the applied effect (`flags.n5e.rules`), e.g. disadvantage on attacks |
+| Change keys `n5e.resist`, `n5e.immune` (value: damage type), `n5e.attack.all` | Resistance and immunity from effects; a bonus to every attack line (Weapon/Freeform included) |
+| Builder draft `freeform[] {id?, kind, name, choices, dirty?}`; `draftToUpdate().freeform {create, edit}` | Freeform entries, built after the save from the saved adversary |
+| Config `config/freeform.mjs` | Strike and jutsu damage tables, Damage Penalties, Effects & Conditions, shapes, ranges, rank levels, cost, DR, focus values |

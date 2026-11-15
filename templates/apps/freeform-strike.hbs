@@ -1,0 +1,25 @@
+<section class="n5e-freeform-window">
+  <p class="hint">{{#if vm.adversary}}{{vm.adversary}}, {{/if}}level {{vm.level}} {{vm.klass}}. A Strike is set when built: open it here again to rebuild it.</p>
+  <div class="ff-grid">
+    <label>Name <input type="text" name="name" value="{{vm.name}}" placeholder="Claw, Kunai Toss…"></label>
+    <label>1. Range <select name="range">{{#each vm.rangeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    {{#if vm.isMelee}}<label>Reach (ft) <input type="number" name="reach" value="{{vm.reach}}" min="5" step="5"></label>{{/if}}
+    <label>2. Counts as <select name="countsAs">{{#each vm.countsAsOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>3. Rider <select name="riderKey"><option value="">No rider</option>{{#each vm.riderOptions}}<optgroup label="{{label}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</optgroup>{{/each}}</select></label>
+    {{#if vm.rider}}
+      <label>Rider save <select name="riderSave">{{#each vm.rider.saveOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      <label>Recovery <select name="riderRecovery">{{#each vm.rider.recoveryOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+      {{#if vm.rider.isRounds}}<label>Rounds <input type="number" name="riderRounds" value="{{vm.rider.rounds}}" min="1" max="2"></label>{{/if}}
+      {{#if vm.rider.hasValue}}<label>Value <input type="number" name="riderValue" value="{{vm.rider.value}}"></label>{{/if}}
+      {{#if vm.rider.isCustom}}<label class="wide">Effect text <input type="text" name="riderText" value="{{vm.rider.text}}"></label>{{/if}}
+    {{/if}}
+    <label>4. Damage type <select name="damageType">{{#each vm.damageTypeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label class="check"><input type="checkbox" name="single" {{#if vm.single}}checked{{/if}}> 5. One attack with the damage of all {{vm.damage.attacks}}</label>
+  </div>
+  <div class="ff-live">
+    <div><b>Damage</b> {{vm.damage.formula}}{{#unless vm.single}}{{#if (n5eGt vm.damage.attacks 1)}} per attack, {{vm.damage.attacks}} attacks with Multiattack{{/if}}{{/unless}}</div>
+    <div class="hint">{{vm.damage.column}} column, read at level {{vm.damage.readAt}}{{#if vm.damage.penalty}} ({{vm.damage.penalty}}){{/if}}</div>
+    {{#if vm.rider}}<div><b>Rider</b> {{vm.rider.label}} (Tier {{vm.rider.tier}}), DC {{vm.damage.dc}}</div>{{/if}}
+  </div>
+  <footer class="ff-footer"><button type="button" data-action="save"><i class="fa-solid fa-check"></i> {{#if vm.isEdit}}Update Strike{{else}}Create Strike{{/if}}</button></footer>
+</section>

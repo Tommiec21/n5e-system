@@ -20,6 +20,8 @@
  *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
+ *   n5e.resist / n5e.immune       adds a damage resistance or immunity (value: damage type; NPC3 Freeform Jutsu)
+ *   n5e.attack.all                +attack bonus on every attack (NPC3)
  *
  * Adding a new key (four places, all in this file plus the reader):
  *   1. a field in emptyModifiers() with its neutral value,
@@ -38,7 +40,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, reinforced: 0, unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], furyMax: 0, reinforced: 0, resist: [], immune: [], unknown: []
   };
 }
 
@@ -71,6 +73,8 @@ export function parseN5eChanges(changes) {
         if ( sub ) out.mastery.push({ target: sub, source: String(change.value || label) });
         break;
       case "dr": out.dr += num(change.value); break;
+      case "resist": if ( change.value ) out.resist.push(String(change.value)); break;
+      case "immune": if ( change.value ) out.immune.push(String(change.value)); break;
       case "pierce": out.pierce += num(change.value); break;
       case "critRange": {
         const scope = sub || "all";
@@ -137,6 +141,9 @@ export function changeKeyCatalog(N5E) {
   const discs = ["nin", "tai", "gen", "buki"];
   const discLabel = d => N5E.disciplines?.[d]?.label ?? d;
   add("Defense", "n5e.dr", "Damage Reduction: + number");
+  add("Defense", "n5e.resist", "Damage resistance: value = damage type");
+  add("Defense", "n5e.immune", "Damage immunity: value = damage type");
+  add("Rolls", "n5e.attack.all", "Every attack: + or − number");
   add("Defense", "n5e.pierce", "DR Pierce: + number");
   for ( const s of ["all", "weapon", "unarmed", ...discs] ) add("Crits", `n5e.critRange.${s}`, `Crit range (${s}): +1 = 19-20; total capped at +3`);
   for ( const s of ["all", ...discs] ) {
