@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { observerVisibility, damageSourceVisibility } from "../module/canvas/visibility.mjs";
-import { uncannyDodgeOffer } from "../module/rules/uncanny-dodge.mjs";
+import { authoredReactionOffers } from "../module/rules/authored-reactions.mjs";
 import { damagePlan } from "../module/rules/damage.mjs";
 
 function fixture(mode = "basicSight") {
@@ -47,12 +47,13 @@ test("missing source, relational stealth, hidden tokens and backend failures rem
   assert.equal(observerVisibility(h.observer, h.target, h.options).visible, null);
 });
 test("Dodge requires verified visibility and one reaction; half/double sources are deduplicated globally", () => {
-  const actor = { flags: {}, statuses: new Set(), items: [{ id: "dodge", system: { identifier: "uncanny-dodge" } }],
+  const actor = { flags: {}, statuses: new Set(), items: [{ id: "dodge", name: "Uncanny Dodge", system: { identifier: "uncanny-dodge" }, flags: { n5e: { reaction: { version: 1, enabled: true,
+    reduction: "", multiplier: 0.5, requireSight: true, spendReaction: true, pool: "", cost: 0 } } } }],
     system: { dr: 4, hp: { value: 30, temp: 0, max: 30 }, cp: { value: 10, temp: 0 }, traits: { resist: new Set(["fire"]), vuln: new Set(["fire"]) } } };
   const context = { combat: true, instances: [{ amount: 20, type: "fire" }] };
-  assert.throws(() => uncannyDodgeOffer(actor, { ...context, visibility: { visible: null, reason: "missing" } }), /unresolved/);
-  assert.equal(uncannyDodgeOffer(actor, { ...context, visibility: { visible: false } }), null);
-  assert.equal(uncannyDodgeOffer(actor, { ...context, visibility: { visible: true } }).multiplier, 0.5);
+  assert.throws(() => authoredReactionOffers(actor, { ...context, visibility: () => ({ visible: null, reason: "missing" }) }), /unresolved/);
+  assert.equal(authoredReactionOffers(actor, { ...context, visibility: () => ({ visible: false }) }).length, 0);
+  assert.equal(authoredReactionOffers(actor, { ...context, visibility: () => ({ visible: true }) })[0].terms.multiplier, 0.5);
   assert.equal(damagePlan(actor, context.instances, { reactionMultiplier: 0.5 }).health, 16);
   actor.system.traits.vuln.clear(); assert.equal(damagePlan(actor, context.instances, { reactionMultiplier: 0.5, multiplier: 0.5 }).health, 8);
   globalThis.canvas = { ready: false }; assert.equal(damageSourceVisibility(actor, {}).visible, null);

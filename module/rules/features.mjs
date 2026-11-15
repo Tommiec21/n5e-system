@@ -6,6 +6,7 @@
  *     (2 with basic Shinobi implements).
  *   - Superior Assault: +1 crit range with the Primary casting discipline.
  */
+import { attackElements } from "./elements.mjs";
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const SHINOBI_IMPLEMENTS = /kunai|shuriken|senbon/i;
 
@@ -22,16 +23,12 @@ export const generalization = actor => choiceOf(actor, "jack-of-all");
 
 /** Attacks per Attack action. */
 export function attacksPerAction(actor) {
-  const extra = !!featureById(actor, "extra-attack");
-  // Only Scout-Nin's Extra Attack gives a third attack with Kunai, Shuriken or Senbon.
-  const scoutExtra = list(actor.items).some(i => i.system?.identifier === "extra-attack" && i.system?.requirement?.class === "scout-nin");
-  const general = !!featureById(actor, "general-technique");
-  const base = extra ? 2 : 1;
-  const implementsN = scoutExtra ? 3 : general ? Math.max(base, 2) : base;
+  // STD4: attacks per Attack action are data ("attacks" elements on Extra Attack, General Technique...).
+  const { base, implements: implementsN, notes } = attackElements(actor);
   const weapons = list(actor.items).filter(i => i.type === "weapon" && i.system.equipped && i.system.identifier !== "unarmedStrike");
   const usingImplements = weapons.some(w => SHINOBI_IMPLEMENTS.test(w.name));
-  const text = [extra ? "Extra Attack: two attacks per Attack action" : "",
-    implementsN > base ? `${implementsN} with Kunai, Shuriken or Senbon${general && !extra ? " (then no Bonus Action attack with them this turn)" : ""}` : ""]
+  const text = [base > 1 ? `Extra Attack: ${base === 2 ? "two" : base} attacks per Attack action` : "",
+    implementsN > base ? `${implementsN} with Kunai, Shuriken or Senbon${notes.length ? ` (${notes.join("; ")})` : ""}` : ""]
     .filter(Boolean).join("; ");
   return { base, implements: implementsN, usingImplements, text: text ? `${text}.` : "" };
 }

@@ -94,7 +94,7 @@ test("option costs: Martial Techniques, Katas (only when they spend), Skilled Ex
 });
 
 test("Taijutsu and Weapon Specialist Extra Attack: two attacks (Kunai third is Scout-Nin only)", () => {
-  const taiEa = { name: "Extra Attack", type: "feat", system: { identifier: "extra-attack", requirement: { class: "taijutsu-specialist" } } };
+  const taiEa = load("features", "extra-attack-n5essbdrH1znNvmV");
   const r = attacksPerAction(makeActor({ items: [load("classes", "taijutsu-specialist"), taiEa] }));
   assert.equal(r.base, 2);
   assert.equal(r.implements, 2);

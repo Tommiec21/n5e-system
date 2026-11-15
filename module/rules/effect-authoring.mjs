@@ -60,11 +60,12 @@ function validatePredicate(value, depth = 0) {
  */
 const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction"]);
 const FIELDS = {
-  common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on", "endsOnUse"],
+  common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on", "endsOnUse", "oncePerTurn"],
+  attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
   modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
   reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
-  inflict: ["condition", "ranks"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
+  inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
 };
 export function validateConditionalRules(rules) {
   if ( !Array.isArray(rules) || rules.length > 50 ) throw new Error("Conditional rules must be an array of at most 50 entries.");
@@ -77,7 +78,7 @@ export function validateConditionalRules(rules) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);
     }
-    const noSelector = ["note", "inflict", "effect", "resource"].includes(r.key);
+    const noSelector = ["note", "inflict", "effect", "resource", "attacks", "initiativeOptions"].includes(r.key);
     const selectors = r.selector === undefined && noSelector ? [] : (Array.isArray(r.selector) ? r.selector : [r.selector]);
     if ( (!noSelector && !selectors.length) || selectors.some(s => typeof s !== "string" || !/^[\w:-]{1,100}$/.test(s)) ) throw new Error("Use named roll selectors, such as attack, damage, damage:fire, healing, save or skill:ste.");
     if ( r.predicate !== undefined ) validatePredicate(r.predicate);
@@ -91,6 +92,10 @@ export function validateConditionalRules(rules) {
     if ( r.key === "damageHandling" && r.drMultiplier !== undefined && !(Number(r.drMultiplier) >= 0 && Number(r.drMultiplier) <= 1) ) throw new Error("drMultiplier is between 0 and 1.");
     if ( r.key === "inflict" && (typeof r.condition !== "string" || !/^[\w-]{1,60}$/.test(r.condition)) ) throw new Error("inflict names a condition key.");
     if ( r.key === "note" && (typeof r.text !== "string" || !r.text.trim() || r.text.length > 2000) ) throw new Error("A note needs its text (up to 2000 characters).");
+    if ( r.key === "attacks" && !(Number.isInteger(Number(r.value)) && Number(r.value) >= 1 && Number(r.value) <= 10) ) throw new Error("attacks needs a whole number from 1 to 10.");
+    if ( r.key === "initiativeOptions" && (!Array.isArray(r.skills) || !r.skills.length || r.skills.some(k => !/^[a-z]{2,12}$/.test(k))) ) throw new Error("initiativeOptions lists skill keys.");
+    if ( r.key === "resource" && (typeof r.pool !== "string" || !/^[a-zA-Z][\w-]{0,59}$/.test(r.pool) || !Number.isFinite(Number(r.amount))) ) throw new Error("resource needs a pool and an amount.");
+    if ( r.key === "inflict" && r.who !== undefined && !["self", "target"].includes(r.who) ) throw new Error("inflict who is self or target.");
     if ( r.label !== undefined && (typeof r.label !== "string" || r.label.length > 120) ) throw new Error("label is text of at most 120 characters.");
   }
   return rules;

@@ -44,6 +44,7 @@ export async function turnStartPipeline(combat, combatant) {
   const actor = combatant?.actor;
   if ( !actor ) return;
   await expireSourceEffects(combat, actor, "turnStart", { round: combat.round, turn: combat.turn });
+  await import("./triggers.mjs").then(m => m.fireTriggers(actor, "turnStart")).catch(error => console.warn("n5e | turnStart triggers", error));
   // Timed effects whose duration ran out, on every combatant (EXPIRE1).
   await expireInCombat(combat);
   // Jutsu areas: timed ones that ran out go; lasting ones this creature starts in get a GM card.
@@ -104,6 +105,7 @@ export async function turnEndPipeline(combat, combatant) {
   if ( !actor ) return;
   const now = { round: combat.round, turn: combat.turn };
   await processConditionTurnEnd(actor, now);
+  await import("./triggers.mjs").then(m => m.fireTriggers(actor, "turnEnd")).catch(error => console.warn("n5e | turnEnd triggers", error));
   await trackersTurnEnd(combat, actor, now);
   await areasTurnEnd(combat, actor);
   effectEvent(actor, "turnEnd", combat, combatant.id);

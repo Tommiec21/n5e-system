@@ -662,3 +662,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `config/conditions.mjs` entry `cast` | `{blocked}`, `{components, reason}` or `{maxComponents, reason}` casting limits |
 | Rule element keys `noAdvantage`, `costReduction`; fields `endsOnUse`, `damageHandling.resistAll` | STD3 additions |
 | Predicate options `ability:<key>`, `range:melee` / `range:ranged`, `self:sense:<key>` / `target:sense:<key>` | Read by condition elements |
+
+## Added in 0.44.0-alpha.1 (STD4)
+
+| Path | Meaning |
+| --- | --- |
+| Rule element `on` (initiative, turnStart, turnEnd, hit, miss, failedSave, succeededSave, damageDealt, damageTaken, zeroHP) with keys `resource {pool, amount}`, `note {text}`, `inflict {condition, ranks, who}`; field `oncePerTurn` | Trigger elements |
+| Rule element keys `attacks {value, implementsOnly, text}`, `initiativeOptions {skills, text}` | Attacks per Attack action; Initiative substitutes |
+| Reaction recipe field `requiresDR` | Offered only against damage DR applies to |
+| Actor `flags.n5e.triggerTurn {stamp, keys}` | Once-per-turn triggers already fired |
+| Class column `deflectionDice` (Weapon Specialist) | Deflection dice by level |
+| Predicate option `self:stance:<id>` | The active stance |

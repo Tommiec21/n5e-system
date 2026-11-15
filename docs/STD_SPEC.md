@@ -142,3 +142,4 @@ Each batch follows the usual rule: a spec, King's approval, build, tests, releas
   - Readings: inflict, effect and resource keys are validated and described but not yet run from action effects (STD4 triggers and STD5 authoring); damage-roll uses are not counted (no damage element uses `uses` yet); reroll applies to d20 rolls.
   - Tests: `tests/core/elements-v2.test.mjs` +5. Suites: 545 and 155 pass.
 - 2026-11-15 Claude: **STD3 published 0.43.0-alpha.1** (`docs/STD3_SPEC.md`).
+- 2026-11-15 Claude: **STD4 published 0.44.0-alpha.1** (`docs/STD4_SPEC.md`).

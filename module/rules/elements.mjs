@@ -21,7 +21,9 @@ const list = value => value ? Array.from(value) : [];
 export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvantage", "autoFail", "autoSucceed", "reroll",
   "maximizeDice", "minimumDie", "critRange", "damage", "damageHandling", "addRanks", "inflict", "effect", "resource", "note",
   // STD3: "can't gain advantage" (removes advantage sources) and a cost-reduction cap on casting.
-  "noAdvantage", "costReduction"];
+  "noAdvantage", "costReduction",
+  // STD4: attacks per Attack action, and skills that may stand in for Initiative.
+  "attacks", "initiativeOptions"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
@@ -123,6 +125,36 @@ export function mergeHandling(into, e) {
   return h;
 }
 
+/** STD4: attacks per Attack action from elements: {base, implements, notes}. */
+export function attackElements(actor) {
+  let base = 1, implementsN = 1;
+  const notes = [];
+  for ( const source of ruleSources(actor) ) {
+    for ( const e of elementsOf(source) ) {
+      if ( e.key !== "attacks" || !actsFromActor(e) ) continue;
+      const n = Math.max(1, Math.trunc(Number(e.value) || 1));
+      if ( e.implementsOnly ) implementsN = Math.max(implementsN, n);
+      else base = Math.max(base, n);
+      if ( e.text ) notes.push(e.text);
+    }
+  }
+  return { base, implements: Math.max(base, implementsN), notes };
+}
+
+/** STD4: skills that may replace Initiative ({skills, text, label} merged from elements, or null). */
+export function initiativeChoices(actor) {
+  const skills = [], texts = [], labels = [];
+  for ( const source of ruleSources(actor) ) {
+    for ( const e of elementsOf(source) ) {
+      if ( e.key !== "initiativeOptions" ) continue;
+      for ( const k of e.skills ?? [] ) if ( !skills.includes(k) ) skills.push(k);
+      if ( e.text ) texts.push(e.text);
+      labels.push(e.label || source.name);
+    }
+  }
+  return skills.length ? { skills, text: texts.join(" "), label: labels.join(", ") } : null;
+}
+
 /** STD3: may cost reductions apply to this creature's casts? (A costReduction element of 0 says no.) */
 export function costReductionAllowed(actor) {
   return !gatherElements(actor, { kind: "cast", type: "cast" }).some(g => g.element.key === "costReduction" && Number(g.element.value) === 0);
@@ -160,6 +192,10 @@ export function rollOptions(actor, spec = {}, target = null) {
   };
   addActor(actor, "self");
   if ( target ) { options.add("target"); addActor(target, "target"); }
+  // STD4: the active stance, by identifier (or its name made into one): "self:stance:<id>".
+  const stanceId = actor?.system?.combat?.activeStance;
+  const stance = stanceId ? list(actor.items).find(i => i.id === stanceId) : null;
+  if ( stance ) options.add(`self:stance:${stance.system?.identifier || String(stance.name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`);
   return options;
 }
 

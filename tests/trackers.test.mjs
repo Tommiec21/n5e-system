@@ -5,7 +5,7 @@ import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { makeActor, baseAbilities, load } from "./helpers/actor.mjs";
 import {
-  usesStamina, chilledMove, furyMax, gainFury, furyTurnEnd, bindingFuryTrigger, jutsuTrackers, trackerEffectData,
+  usesStamina, chilledMove, furyMax, gainFury, furyTurnEnd, jutsuTrackers, trackerEffectData,
   marksToExpire, ampsToDisable, gateLimit, gateChanges, nextGate, closeGatesPlan, hasResave, resavesDue
 } from "../module/rules/trackers.mjs";
 import { resourceCost } from "../module/rules/resource-cost.mjs";
@@ -60,14 +60,17 @@ test("Fury: single state, lasts until the end of the turn after gaining it; n5e.
   assert.equal(parseN5eChanges([{ key: "n5e.fury.max", value: 2 }]).furyMax, 2);
 });
 
-test("Binding Fury Stance grants Fury once per turn on weapon damage", () => {
-  const a = char({ items: [{ _id: "stance000000001", name: "Binding Fury Stance", type: "stance", system: {} }] });
-  assert.equal(bindingFuryTrigger(a, { round: 1, turn: 0 }), null, "stance not active");
+test("STD4: Binding Fury Stance's Fury is a trigger element (weapon damage, once per turn, only while it is the stance)", async () => {
+  const { triggersFor, triggerOutcomes } = await import("../module/rules/triggers.mjs");
+  const fury = { key: "resource", on: "damageDealt", selector: "damage:weapon", pool: "fury", amount: 1, oncePerTurn: true, label: "Binding Fury Stance" };
+  const a = char({ items: [{ _id: "stance000000001", id: "stance000000001", name: "Binding Fury Stance", type: "stance", system: {}, flags: { n5e: { rules: [fury] } } }] });
+  const spec = { kind: "damage", type: "damage", scope: "weapon" };
+  assert.deepEqual(triggersFor(a, "damageDealt", { spec }), [], "stance not active");
   a.system.combat.activeStance = "stance000000001";
-  const u = bindingFuryTrigger(a, { round: 1, turn: 0 });
-  assert.equal(u["system.combat.fury"], 1);
-  a.flags.n5e.furyTurnGain = { round: 1, turn: 0 };
-  assert.equal(bindingFuryTrigger(a, { round: 1, turn: 0 }), null);
+  const fired = triggersFor(a, "damageDealt", { spec });
+  assert.deepEqual(triggerOutcomes(fired).resources, [{ pool: "fury", amount: 1, label: "Binding Fury Stance" }]);
+  assert.deepEqual(triggersFor(a, "damageDealt", { spec, firedThisTurn: [fired[0].key] }), [], "once per turn");
+  assert.deepEqual(triggersFor(a, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "nin" } }), [], "weapon damage only");
 });
 
 test("Marks, Branded and Amps are read from jutsu; Marks expire at the end of the marker's next turn", () => {

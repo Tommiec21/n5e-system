@@ -76,10 +76,12 @@ test("feat proficiency grants: skill, or Mastery when already proficient", () =>
 });
 
 test("Extra Attack, Superior Assault crit with the Primary discipline, Tenketsu-gated recovery", () => {
-  const ea = { name: "Extra Attack", type: "feat", system: { identifier: "extra-attack", requirement: { class: "scout-nin" } } };
+  // STD4: attacks per action are rule elements on the feature (pack data).
+  const ea = { name: "Extra Attack", type: "feat", system: { identifier: "extra-attack", requirement: { class: "scout-nin" } },
+    flags: { n5e: { rules: [{ key: "attacks", value: 2 }, { key: "attacks", value: 3, implementsOnly: true }] } } };
   assert.equal(attacksPerAction(makeActor({ items: [ea] })).base, 2);
   assert.equal(attacksPerAction(makeActor({ items: [ea] })).implements, 3, "Scout-Nin: three with Kunai");
-  const taiEa = { name: "Extra Attack", type: "feat", system: { identifier: "extra-attack", requirement: { class: "taijutsu-specialist" } } };
+  const taiEa = { name: "Extra Attack", type: "feat", system: { identifier: "extra-attack", requirement: { class: "taijutsu-specialist" } }, flags: { n5e: { rules: [{ key: "attacks", value: 2 }] } } };
   assert.equal(attacksPerAction(makeActor({ items: [taiEa] })).implements, 2, "other classes: two");
   const sh = { name: "Switch Hitter", type: "feat", system: { identifier: "switch-hitter" }, flags: { n5e: { choice: { value: "tai" } } } };
   const sa = { name: "Superior Assault", type: "feat", system: { identifier: "superior-assault" } };

@@ -1,7 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { damagePlan } from "../module/rules/damage.mjs";
-import { deflectionOffer } from "../module/rules/deflection.mjs";
+import { authoredReactionOffers } from "../module/rules/authored-reactions.mjs";
+import { load } from "./helpers/actor.mjs";
 import { onApplyClick } from "../module/workflow/apply-damage.mjs";
 
 const target = () => ({ system: { dr: 5, hp: { value: 100, temp: 0, max: 100 }, cp: { value: 100, temp: 0 }, traits: {} } });
@@ -20,22 +21,31 @@ test("static and rolled DR each protect HP and CP; chosen type order changes res
   assert.equal(damagePlan(actor, hit, { ignoreDR: true, flatReduction: 3 }).requiresDROrder, false);
 });
 
-test("Deflection offers scale and respect allowances, pools, exempt damage and upgraded techniques", () => {
-  const actor = { ...target(), flags: {}, statuses: new Set(), items: [{ id: "d", system: { identifier: "discipline" } }, { type: "class", system: { identifier: "weapon-specialist", levels: 11 } }] };
+test("STD4 Deflection is data: a recipe on Discipline, dice from the Weapon Specialist table, only damage DR applies to", () => {
+  const discipline = load("features", "discipline-n5e");
+  const recipe = discipline.flags.n5e.reaction;
+  assert.equal(recipe.reduction, "(@scale.weaponSpecialist.deflectionDice)d12");
+  assert.deepEqual([recipe.pool, recipe.cost, recipe.spendReaction, recipe.requiresDR], ["discipline", 1, true, true]);
+  const col = load("classes", "weapon-specialist").system.columns.find(c => c.key === "deflectionDice").values;
+  assert.deepEqual([col[0], col[9], col[10], col[18], col[19]], ["1", "1", "2", "2", "3"]);
+  const actor = { ...target(), flags: {}, statuses: new Set(), items: [{ id: "d", name: "Discipline", flags: { n5e: { reaction: recipe } } }] };
   actor.system.resources = { discipline: { value: 1 } };
-  const context = { combat: true, instances: [{ type: "fire", amount: 10 }] };
-  assert.equal(deflectionOffer(actor, context).dice, 2);
-  actor.items[1].system.levels = 20; assert.equal(deflectionOffer(actor, context).dice, 3);
-  assert.equal(deflectionOffer(actor, { ...context, ignoreDR: true }), null);
-  assert.equal(deflectionOffer(actor, { ...context, genjutsu: true, instances: [{ amount: 10, type: "psychic" }] }), null);
-  actor.flags.n5e = { economy: { reaction: true } }; assert.equal(deflectionOffer(actor, context), null);
+  const context = { combat: true, instances: [{ type: "fire", amount: 10 }], visibility: () => ({ visible: true }) };
+  assert.equal(authoredReactionOffers(actor, context).length, 1);
+  assert.equal(authoredReactionOffers(actor, { ...context, ignoreDR: true }).length, 0);
+  assert.equal(authoredReactionOffers(actor, { ...context, genjutsu: true, instances: [{ amount: 10, type: "psychic" }] }).length, 0);
+  actor.system.resources.discipline.value = 0; assert.equal(authoredReactionOffers(actor, context).length, 0);
+  actor.system.resources.discipline.value = 1; actor.flags.n5e = { economy: { reaction: true } }; assert.equal(authoredReactionOffers(actor, context).length, 0);
 });
 
 function coordinatedFixture({ uncanny = false, visible = true, missingSource = false } = {}) {
   const actor = { ...target(), documentName: "Actor", uuid: "Actor.target", id: "target", name: "Defender", isOwner: true, flags: {}, statuses: new Set(), _stats: { modifiedTime: 1 } };
   actor.system.resources = { discipline: { value: 2 } };
-  actor.items = [{ id: "d", name: "Discipline", actor, system: { identifier: "discipline" } }, { type: "class", system: { identifier: "weapon-specialist", levels: 11 } }];
-  if ( uncanny ) actor.items[0] = { id: "u", name: "Uncanny Dodge", actor, system: { identifier: "uncanny-dodge" } };
+  // STD4: both reactions are recipes on their features (flags.n5e.reaction).
+  actor.items = [{ id: "d", name: "Discipline", actor, system: { identifier: "discipline" }, flags: { n5e: { reaction: { version: 1, enabled: true, reduction: "2d12",
+    multiplier: 1, requireSight: false, spendReaction: true, pool: "discipline", cost: 1, requiresDR: true } } } }];
+  if ( uncanny ) actor.items[0] = { id: "u", name: "Uncanny Dodge", actor, system: { identifier: "uncanny-dodge" }, flags: { n5e: { reaction: { version: 1, enabled: true, reduction: "",
+    multiplier: 0.5, requireSight: true, spendReaction: true, pool: "", cost: 0 } } } };
   actor.items.get = id => actor.items.find(i => i.id === id);
   actor.testUserPermission = () => true;
   actor.update = async update => { for ( const [key, value] of Object.entries(update) ) { const keys = key.split("."); let object = actor; for ( const k of keys.slice(0, -1) ) object = object[k] ??= {}; object[keys.at(-1)] = value; } actor._stats.modifiedTime++; };

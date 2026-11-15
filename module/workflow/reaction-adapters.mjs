@@ -1,7 +1,5 @@
 import { createReactionDispatcher } from "./reaction-dispatch.mjs";
 import { openReactionWindow, waitForReactionWindow, askReactionLocally } from "./reactions.mjs";
-import { deflectionOffer } from "../rules/deflection.mjs";
-import { uncannyDodgeOffer } from "../rules/uncanny-dodge.mjs";
 import { damageSourceVisibility } from "../canvas/visibility.mjs";
 import { rule } from "../rules-settings.mjs";
 import { authoredReactionOffers } from "../rules/authored-reactions.mjs";
@@ -23,33 +21,10 @@ const dispatcher = createReactionDispatcher({
   stamp: combatStamp, open: askOwner, wait: window => window.local ?? waitForReactionWindow(window)
 });
 
-dispatcher.register("uncanny-dodge", {
-  events: ["beforeDamage"], priority: 100,
-  offer(actor, { data, message }) {
-    const offer = uncannyDodgeOffer(actor, { combat: !!combatStamp(), instances: data.instances,
-      visibility: actor.items.some(i => i.system?.identifier === "uncanny-dodge") ? damageSourceVisibility(actor, message) : null });
-    return offer && { ...offer, label: "Uncanny Dodge", trigger: "The source creature is automatically visible. Use your reaction to halve this damage?", terms: { multiplier: 0.5 } };
-  },
-  prepare() { return { multiplier: 0.5, update: { "flags.n5e.economy.reaction": true } }; }
-});
-dispatcher.register("deflection", {
-  events: ["beforeDamage"], priority: 0,
-  offer(actor, { data }) {
-    const offer = deflectionOffer(actor, { combat: !!combatStamp(), ...data });
-    return offer && { ...offer, label: "Deflection", trigger: "Use your reaction and 1 Discipline to reduce this damage?",
-      terms: { cost: offer.cost, dice: offer.dice, die: offer.die } };
-  },
-  async prepare(actor, offer) {
-    const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, `${offer.dice}${offer.die}`, { title: `${actor.name}: Deflection`, kind: "dice", type: "dice", key: "discipline", cancellable: false })).roll;
-    return { flatReduction: roll.total, update: { "system.resources.discipline.value": actor.system.resources.discipline.value - offer.cost,
-      "flags.n5e.economy.reaction": true }, roll, label: "Deflection" };
-  }
-});
-
 dispatcher.register("authored-damage", {
   events: ["beforeDamage"], priority: 50,
   offer(actor, { data, message }) {
-    return authoredReactionOffers(actor, { combat: !!combatStamp(), instances: data.instances,
+    return authoredReactionOffers(actor, { combat: !!combatStamp(), instances: data.instances, ignoreDR: !!data.ignoreDR, genjutsu: !!data.genjutsu,
       visibility: () => damageSourceVisibility(actor, message) });
   },
   async prepare(actor, { terms, label }) {

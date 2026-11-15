@@ -135,6 +135,9 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       notes.push(rule("deathSaves") && !isNPC ? "falls to 0 HP: Dying" : "falls to 0 HP: Unconscious");
     } else if ( plan.deathFailures ) notes.push(`${plan.deathFailures} death save failure${plan.deathFailures > 1 ? "s" : ""}`);
     if ( plan.total > 0 ) void emitEffectEvent(actor, "damageTaken", { id: crypto.randomUUID(), damage: plan.total }).catch(error => ui.notifications.warn(error.message));
+    // STD4 trigger elements: damage taken, dropping to 0 HP.
+    if ( plan.total > 0 ) void import("./triggers.mjs").then(m => m.fireTriggers(actor, "damageTaken", { spec: { kind: "damage", type: "damage" } })).catch(error => ui.notifications.warn(error.message));
+    if ( plan.dropsToZero ) void import("./triggers.mjs").then(m => m.fireTriggers(actor, "zeroHP")).catch(error => ui.notifications.warn(error.message));
     const conc = concentrationOnDamage(actor, plan.total);
     const concBtn = conc ? `<button type="button" data-n5e-concheck="${conc.dc}" data-actor="${actor.uuid}"
       data-jutsu='${esc(JSON.stringify(conc.atRisk.map(j => j.id)))}'>Concentration check DC ${conc.dc} (${esc(conc.atRisk.map(j => j.name).join(", "))})</button>` : "";

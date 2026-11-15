@@ -87,14 +87,6 @@ export function furyTurnEnd(actor, now) {
   return { "system.combat.fury": 0, "flags.n5e.furyGained": null };
 }
 
-/** Binding Fury Stance grants Fury the first time each turn you deal weapon damage. */
-export function bindingFuryTrigger(actor, now) {
-  const stance = actor.system.combat?.activeStance;
-  const item = stance ? (actor.items.get?.(stance) ?? list(actor.items).find(i => i.id === stance)) : null;
-  if ( !item || !/binding fury/i.test(item.name) ) return null;
-  if ( sameTurn(actor.flags?.n5e?.furyTurnGain, now) ) return null;
-  return { ...gainFury(actor, now), "flags.n5e.furyTurnGain": now ? { round: now.round, turn: now.turn } : null };
-}
 
 /* -------------------------------------------- */
 /*  Marks, Branded, Amps (read from jutsu text) */

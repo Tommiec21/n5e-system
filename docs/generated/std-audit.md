@@ -10,32 +10,27 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | `module/data/actor/creature.mjs` | scout-nin |
 | `module/data/item/character-options.mjs` | extra-attack, switch-hitter |
 | `module/data/item/templates.mjs` | scout-nin, superior-assault |
-| `module/dice/roll.mjs` | adaptive-initiative |
-| `module/rules/deflection.mjs` | weapon-specialist |
-| `module/rules/features.mjs` | extra-attack, general-technique, genjutsu-specialist, hunter-nin, jack-of-all, medical-nin, ninjutsu-specialist, scout-nin, superior-assault, switch-hitter, taijutsu-specialist, weapon-specialist |
-| `module/rules/uncanny-dodge.mjs` | uncanny-dodge |
+| `module/rules/features.mjs` | genjutsu-specialist, hunter-nin, jack-of-all, medical-nin, ninjutsu-specialist, scout-nin, superior-assault, switch-hitter, taijutsu-specialist, weapon-specialist |
 | `module/workflow/cast-plan.mjs` | quickened-ninjutsu, reactive-ninjutsu |
 | `module/workflow/clan.mjs` | non-clan |
-| `module/workflow/reaction-adapters.mjs` | uncanny-dodge |
 
-25 names in 11 files. `npm run check` fails on any new one.
+19 names in 7 files. `npm run check` fails on any new one.
 
 ## 2. Other content-driven code
 
-### Name or description tests (6)
+### Name or description tests (5)
 
 - `module/applications/browser/compendium-browser.mjs:183`
 - `module/applications/browser/compendium-browser.mjs:184`
 - `module/applications/browser/compendium-browser.mjs:185`
-- `module/rules/trackers.mjs:94`
-- `module/rules/trackers.mjs:164`
+- `module/rules/trackers.mjs:156`
 - `module/view-models/combat.mjs:346`
 
 ### State checks named in code (1)
 
-- `module/workflow/trackers.mjs:64`
+- `module/workflow/trackers.mjs:61`
 
-### Condition mechanics named in engines (33)
+### Condition mechanics named in engines (31)
 
 - `module/canvas/flanking.mjs:8`
 - `module/canvas/visibility.mjs:17`
@@ -51,9 +46,8 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/config/conditions.mjs:209`
 - `module/config/jutsu.mjs:58`
 - `module/config/jutsu.mjs:61`
-- `module/rules/authored-reactions.mjs:15`
+- `module/rules/authored-reactions.mjs:20`
 - `module/rules/concentration.mjs:10`
-- `module/rules/deflection.mjs:6`
 - `module/rules/jutsu-defense.mjs:37`
 - `module/rules/positioning.mjs:38`
 - `module/rules/positioning.mjs:39`
@@ -64,12 +58,11 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/rules/uncanny-dodge.mjs:4`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
-- `module/workflow/trackers.mjs:241`
-- `module/workflow/turn.mjs:53`
+- `module/workflow/trackers.mjs:236`
+- `module/workflow/turn.mjs:54`
 
 ### Text fallback (description parsed at play time) (7)
 
@@ -90,6 +83,6 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 120 | 15 | 3 | 0 | 3 |
-| jutsu | 968 | 968 | 0 | 0 | 0 | 0 |
+| features | 700 | 120 | 15 | 8 | 0 | 3 |
+| jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 2 | 0 | 0 | 0 |

@@ -5,12 +5,17 @@ export function validateReactionRecipe(value) {
     || ![0.5, 1, 2].includes(value.multiplier)
     || typeof value.requireSight !== "boolean" || typeof value.spendReaction !== "boolean"
     || typeof value.pool !== "string" || (value.pool && !/^[a-zA-Z][a-zA-Z0-9_-]{0,59}$/.test(value.pool))
-    || !Number.isSafeInteger(value.cost) || value.cost < 0 || (value.cost && !value.pool) ) throw new Error("Invalid reaction recipe. Check formula, multiplier and resource cost.");
+    || !Number.isSafeInteger(value.cost) || value.cost < 0 || (value.cost && !value.pool)
+    || (value.requiresDR !== undefined && typeof value.requiresDR !== "boolean") ) throw new Error("Invalid reaction recipe. Check formula, multiplier and resource cost.");
   return { version: 1, enabled: value.enabled, reduction: value.reduction.trim(), multiplier: value.multiplier,
-    requireSight: value.requireSight, spendReaction: value.spendReaction, pool: value.pool, cost: value.cost };
+    requireSight: value.requireSight, spendReaction: value.spendReaction, pool: value.pool, cost: value.cost, requiresDR: !!value.requiresDR };
 }
 
-export function authoredReactionOffers(actor, { combat, instances = [], visibility } = {}) {
+/**
+ * Before-damage reactions authored on items (flags.n5e.reaction; STD4: Uncanny Dodge and Deflection
+ * are recipes on their features, not code). `requiresDR`: only damage DR applies to.
+ */
+export function authoredReactionOffers(actor, { combat, instances = [], visibility, ignoreDR = false, genjutsu = false } = {}) {
   if ( !combat || !instances.some(i => i.amount > 0)
     || ["dead", "unconscious", "incapacitated", "stunned"].some(s => actor.statuses?.has(s)) ) return [];
   const offers = [];
@@ -19,6 +24,7 @@ export function authoredReactionOffers(actor, { combat, instances = [], visibili
     if ( !raw?.enabled ) continue;
     const recipe = validateReactionRecipe(raw);
     if ( recipe.spendReaction && actor.flags?.n5e?.economy?.reaction ) continue;
+    if ( recipe.requiresDR && (ignoreDR || !instances.some(i => i.amount > 0 && !(genjutsu && i.type === "psychic"))) ) continue;
     if ( recipe.cost && (actor.system.resources?.[recipe.pool]?.value ?? 0) < recipe.cost ) continue;
     if ( recipe.requireSight ) {
       const sight = visibility();

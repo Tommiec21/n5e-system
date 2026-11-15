@@ -13,7 +13,7 @@ import { d20Parts, situationalParts, composeD20, groupParts } from "../rules/rol
 import { dialogs, wantsDialog } from "./roll-dialog.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
-import { contextualSpec, contextualAdvantage, contextualRoll, gatherElements } from "../rules/elements.mjs";
+import { contextualSpec, contextualAdvantage, contextualRoll, gatherElements, initiativeChoices } from "../rules/elements.mjs";
 import { spentBy } from "../rules/action-effects.mjs";
 import { cardActionContext } from "../workflow/action-effects.mjs";
 import { rule } from "../rules-settings.mjs";
@@ -229,6 +229,11 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     if ( actor.isOwner && actor.statuses?.has(status) ) await actor.toggleStatusEffect?.(status, { active: false });
   }
   await awardWillOfFire(actor, result);
+  // STD4 trigger elements: hit or miss, a failed or succeeded save.
+  if ( degree != null && ["attack", "save"].includes(spec.kind) ) {
+    const event = spec.kind === "attack" ? (degree >= 2 ? "hit" : "miss") : (degree >= 2 ? "succeededSave" : "failedSave");
+    void import("../workflow/triggers.mjs").then(m => m.fireTriggers(actor, event, { spec, target })).catch(error => console.warn("n5e | triggers", error));
+  }
   if ( onResult ) await onResult({ ...result, degree, success: degree == null ? null : degree >= 2, message });
   return message;
 }
@@ -538,18 +543,20 @@ export function onRenderChatMessage(message, html) {
  */
 export async function rollInitiative(actor, { event } = {}) {
   let skill = null;
-  const adaptive = actor.items.some(i => i.system.identifier === "adaptive-initiative");
+  // STD4: skills that may replace Initiative are data ("initiativeOptions" elements: Adaptive Initiative).
+  const adaptive = initiativeChoices(actor);
   if ( adaptive ) {
     const { DialogV2 } = foundry.applications.api;
-    const choices = [["", `Initiative (${signed(actor.system.initiative.total)})`], ["ath", "Athletics"], ["nin", "Ninshou"],
-      ["ill", "Illusions"], ["ins", "Insight"]];
-    skill = await DialogV2.wait({ window: { title: "Adaptive Initiative" },
-      content: "<p>Substitute a skill if it fits how combat started (GM decides).</p>",
+    const choices = [["", `Initiative (${signed(actor.system.initiative.total)})`],
+      ...adaptive.skills.map(k => [k, CONFIG.N5E.skills?.[k]?.label ?? k])];
+    skill = await DialogV2.wait({ window: { title: adaptive.label },
+      content: `<p>${esc(adaptive.text || "Substitute a skill?")}</p>`,
       buttons: choices.map(([k, label]) => ({ action: k || "init", label: k ? `${label} (${signed(actor.system.skills[k]?.total ?? 0)})` : label,
         default: !k, callback: () => k })), rejectClose: false });
     if ( skill === null || skill === undefined ) return null;
   }
   const combatant = game.combat?.getCombatantsByActor?.(actor)?.[0];
+  void import("../workflow/triggers.mjs").then(m => m.fireTriggers(actor, "initiative")).catch(error => console.warn("n5e | initiative triggers", error));
   if ( combatant ) return game.combat.rollInitiative([combatant.id], { updateTurn: false, n5eSkill: skill });
   return skill ? rollD20(actor, "skill", skill, { event }) : rollD20(actor, "initiative", "", { event });
 }

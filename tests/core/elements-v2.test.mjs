@@ -67,3 +67,21 @@ test("validation: v2 keys and fields", () => {
   assert.throws(() => validateConditionalRules([{ key: "advantage", selector: "attack", bogus: 1 }]), /Unsupported property/);
   assert.throws(() => validateConditionalRules([{ key: "disadvantage", selector: "save", uses: 0 }]), /uses/);
 });
+
+test("STD4: attacks, initiative choices, active stance option, trigger outcomes", async () => {
+  const { attackElements, initiativeChoices, rollOptions } = await import("../../module/rules/elements.mjs");
+  const { triggerOutcomes } = await import("../../module/rules/triggers.mjs");
+  const a = { system: { combat: { activeStance: "s1" } }, statuses: new Set(), effects: [],
+    items: [{ id: "s1", type: "stance", name: "Binding Fury Stance", system: {}, flags: {} },
+      { id: "x", type: "feat", name: "Extra Attack", flags: { n5e: { rules: [{ key: "attacks", value: 2 }, { key: "attacks", value: 3, implementsOnly: true }] } } },
+      { id: "y", type: "feat", name: "Adaptive Initiative", flags: { n5e: { rules: [{ key: "initiativeOptions", skills: ["ath", "ins"], text: "GM decides." }] } } }] };
+  assert.deepEqual(attackElements(a), { base: 2, implements: 3, notes: [] });
+  assert.deepEqual(initiativeChoices(a).skills, ["ath", "ins"]);
+  assert.ok(rollOptions(a).has("self:stance:binding-fury-stance"));
+  const out = triggerOutcomes([{ element: { key: "inflict", condition: "prone", who: "target", oncePerTurn: true }, label: "Trip", key: "k" },
+    { element: { key: "note", text: "Remember" }, label: "Tip", key: "n" }]);
+  assert.deepEqual(out.inflict, [{ condition: "prone", ranks: 1, who: "target", label: "Trip" }]);
+  assert.deepEqual(out.notes, ["Tip: Remember"]);
+  assert.deepEqual(out.onceKeys, ["k"]);
+  assert.doesNotThrow(() => validateConditionalRules([{ key: "resource", on: "damageDealt", selector: "damage:weapon", pool: "fury", amount: 1, oncePerTurn: true, predicate: "self:stance:x" }]));
+});

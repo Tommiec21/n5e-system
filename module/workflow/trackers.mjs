@@ -16,10 +16,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
-import {
-  chilledMove, gainFury, spendFury, furyTurnEnd, bindingFuryTrigger, jutsuTrackers, trackerEffectData, marksToExpire,
-  ampsToDisable, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects
-} from "../rules/trackers.mjs";
+import { chilledMove, gainFury, spendFury, furyTurnEnd, jutsuTrackers, trackerEffectData, marksToExpire, ampsToDisable, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects } from "../rules/trackers.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 import { innerGates } from "../config/combat.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
@@ -59,7 +56,7 @@ const targetedActors = () => [...(game.user.targets ?? [])].map(t => t.actor).fi
 /* -------------------------------------------- */
 
 /** Keep the Furious token status in step with system.combat.fury (on while Fury > 0). */
-async function syncFurious(actor) {
+export async function syncFurious(actor) {
   const on = (actor.system.combat?.fury ?? 0) > 0;
   if ( on !== !!actor.statuses?.has("furious") ) await actor.toggleStatusEffect("furious", { active: on });
 }
@@ -78,11 +75,9 @@ export async function changeFury(actor, delta) {
 
 /** Weapon damage rolled: Binding Fury Stance grants Fury the first time each turn. */
 export async function onWeaponDamage(actor) {
-  const update = bindingFuryTrigger(actor, nowTurn());
-  if ( !update ) return;
-  await actor.update(update);
-  await syncFurious(actor);
-  await say(actor, `<b>${esc(actor.name)}</b> gains Fury (Binding Fury Stance).`);
+  // STD4: what weapon damage triggers (Binding Fury Stance's Fury) is data: `on: "damageDealt"` elements.
+  const { fireTriggers } = await import("./triggers.mjs");
+  return fireTriggers(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } });
 }
 
 /* -------------------------------------------- */

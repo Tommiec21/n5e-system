@@ -1,3 +1,13 @@
+## 0.44.0-alpha.1 — STD4: trigger elements (King 2026-11-15: "Build out the next 3 batches")
+
+No rule changes: five coded features are now data.
+- **Triggers:** a rule element can fire on an event instead of changing a roll: initiative, turn start, turn end, a hit or a miss, a failed or succeeded save, weapon damage dealt, damage taken, dropping to 0 HP. It can change a resource (Fury included), whisper a reminder, or apply a condition to the creature or its target, at most once per turn when it says so.
+- **Uncanny Dodge** and **Deflection** are reaction recipes on their features. Deflection's dice come from a new Deflection Dice column on the Weapon Specialist table (1, then 2 at 11th level, 3 at 20th) and it is offered only against damage DR applies to.
+- **Extra Attack** and **General Technique** give their attacks per Attack action as data (Scout-Nin's third attack with Kunai, Shuriken or Senbon included).
+- **Adaptive Initiative** lists the skills that may replace Initiative as data.
+- **Binding Fury Stance** gains Fury on weapon damage through a trigger.
+- Not checked in a running Foundry world.
+
 ## 0.43.0-alpha.1 — STD3: conditions and states as data (King 2026-11-15: "Approved")
 
 No rule changes: what each condition and state does to rolls, damage and casting moved from code onto its own entry (`config/conditions.mjs`), so new conditions need no code.

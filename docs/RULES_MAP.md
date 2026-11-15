@@ -322,3 +322,12 @@
 | --- | --- |
 | Condition and state effects on rolls, damage and casting (Blinded, Restrained, Prone, Invisible, Petrified, Stunned, Unconscious, Dodging, Staggered, Dazzled, Helped, Encumbered, Grappled, Incapacitated, Confused, Slowed) | data: `config/conditions.mjs` `rules` and `cast`; reader: `rules/condition-elements.mjs` |
 | Crash: no cost reduction | data: Chakra Surge's Crash effect (`costReduction` 0); `rules/elements.mjs costReductionAllowed` |
+
+## Trigger elements (STD4, 0.44.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Uncanny Dodge, Deflection | data: reaction recipes on the features; engine `rules/authored-reactions.mjs` |
+| Extra Attack, General Technique | data: `attacks` elements; `rules/features.mjs attacksPerAction` via `rules/elements.mjs attackElements` |
+| Adaptive Initiative | data: `initiativeOptions`; `dice/roll.mjs rollInitiative` via `initiativeChoices` |
+| Binding Fury Stance | data: trigger element; `rules/triggers.mjs`, `workflow/triggers.mjs` |

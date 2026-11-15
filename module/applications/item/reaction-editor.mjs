@@ -15,12 +15,13 @@ export async function editReaction(item) {
       <label>Resource cost<input type="number" name="cost" min="0" step="1" value="${value.cost}"></label>
       <label><input type="checkbox" name="requireSight" ${check("requireSight")}> Requires seeing the source</label>
       <label><input type="checkbox" name="spendReaction" ${check("spendReaction")}> Spends reaction</label>
+      <label><input type="checkbox" name="requiresDR" ${check("requiresDR")}> Only against damage DR applies to (not DR-ignoring damage or Genjutsu psychic damage)</label>
       <p>Does not implement attack redirection, free-use turn limits or additional targets. Leave unsupported abilities disabled. Do not duplicate a built-in reaction on the same ability.</p>`,
     ok: { label: "Save", callback: (event, button) => {
       const form = button.form.elements;
       return validateReactionRecipe({ version: 1, enabled: form.enabled.checked, reduction: form.reduction.value,
         multiplier: Number(form.multiplier.value), pool: form.pool.value.trim(), cost: Number(form.cost.value),
-        requireSight: form.requireSight.checked, spendReaction: form.spendReaction.checked });
+        requireSight: form.requireSight.checked, spendReaction: form.spendReaction.checked, requiresDR: form.requiresDR.checked });
     } }, rejectClose: false });
   if ( !result ) return;
   if ( result.reduction ) n5eRollFormula(result.reduction, item.actor?.getRollData?.() ?? {});
