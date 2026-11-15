@@ -2,7 +2,6 @@ import { castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { damageFromMessage, damageApplicationTrace } from "../rules/damage-trace.mjs";
 import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { chooseReaction } from "./reaction-adapters.mjs";
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs.
  *
@@ -198,11 +197,18 @@ async function concentrationCheck(actor, dc, jutsuIds, event) {
   } });
 }
 
-/** Death save (no bonuses): >= 10 success; nat 1 two failures; nat 20 back to 1 HP. */
+/**
+ * Death save: >= 10 success; nat 1 two failures; nat 20 back to 1 HP. It opens the roll dialog like
+ * any other roll (King Q-R4): no bonuses of its own, but the roller can add modifiers and pick a mode.
+ */
 export async function rollDeathSave(actor) {
   if ( !actor?.isOwner ) return null;
-  const roll = await createN5eRoll("1d20").evaluate();
-  const res = deathSaveResult(actor.system.deathSaves, roll.total);
+  const { rollFormula } = await import("../dice/advantaged.mjs");
+  const rolled = await rollFormula(actor, "1d20", { title: `${actor.name}: Death save`, kind: "deathSave", type: "deathSave" });
+  if ( !rolled ) return null;
+  const roll = rolled.roll;
+  const natural = roll.dice?.find(die => die.faces === 20)?.results?.find(r => r.active !== false && !r.discarded)?.result ?? roll.total;
+  const res = deathSaveResult(actor.system.deathSaves, natural, roll.total - natural);
   const update = { "system.deathSaves.success": res.success, "system.deathSaves.failure": res.failure };
   let note = `${res.success} success / ${res.failure} failure`;
   if ( res.outcome === "revive" ) {

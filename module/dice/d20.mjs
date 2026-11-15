@@ -14,16 +14,6 @@ import { rule } from "../rules-settings.mjs";
 
 export const MODES = { normal: "1d20", advantage: "2d20kh", disadvantage: "2d20kl" };
 
-/**
- * Click modifiers (dnd5e convention): Shift opens the dialog, Alt = advantage, Ctrl/Meta = disadvantage.
- * @param {{shiftKey?, altKey?, ctrlKey?, metaKey?}} [event]
- */
-export function clickMode(event = {}) {
-  if ( event.altKey ) return { mode: "advantage", dialog: false };
-  if ( event.ctrlKey || event.metaKey ) return { mode: "disadvantage", dialog: false };
-  return { mode: "normal", dialog: !!event.shiftKey };
-}
-
 /** Lowest natural d20 that crits for a scope (all + scope bonuses, capped at +3: 17-20). */
 export function critThreshold(actor, scope = "", extra = 0) {
   const cr = actor.system.critRange ?? {};

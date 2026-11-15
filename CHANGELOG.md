@@ -1,3 +1,26 @@
+## 0.31.0-alpha.1 — The roll dialog (ROLL1; King 2026-11-14)
+
+**Every roll now shows its math first.** No key combination changes a roll any more.
+
+- **d20 rolls** (ability, save, skill, skill action, attack, initiative, concentration, death save):
+  - each part of the bonus with a tick, and a running total; any part can be unticked, including ability and proficiency;
+  - "Add a modifier" rows: a number or dice ("2", "-1", "1d4") with an optional label;
+  - situational modifiers listed unticked (for NPC situational skill bonuses, coming with NPC1c);
+  - Advantage, Normal, Disadvantage, with the mode the system worked out preselected and the reasons listed;
+  - the DC or target, and any automatic failure; a Roll button (Enter). Closing the dialog rolls nothing.
+- **Damage, healing and other dice:** each part with its type, effect modifiers, added damage with a type, Critical (preset from the attack), and the mode ("As worked out" keeps each part's own).
+- **Groups roll through one dialog:** saves rolled for several creatures at once, roll requests answered for several tokens, and initiative for several combatants. Action cards get a "save for all" button when two or more targets still have to save.
+- **Initiative from the combat tracker** opens the dialog too.
+- **Will of Fire rerolls** repeat the edited math with no dialog.
+- **Rolls after a cost is paid** (pool dice, rider dice, recovery dice, Deflection, temporary HP from an effect): closing the dialog rolls as shown, so a spent cost always gets its roll.
+- **The chat card** lists unticked parts struck through and added ones marked "(added)".
+- **New settings:**
+  - "Roll without the dialog" (per user, off by default) for anyone who wants instant rolls.
+  - "Roll edits shown to" (world, rule settings): Everyone (default) or GM only.
+- **Removed hidden keys:** Shift-click (dialog), Alt-click (advantage), Ctrl-click (disadvantage), Alt-click to cast without the cast dialog, Shift-click to remove a condition from a link (the link now asks Add or Remove). The small Adv and Dis buttons on cards are gone; the choice is in the dialog. `npm run check` now fails if code reads a held key (area placement on the map is exempt).
+- **No dialog, by design:** rolls the system makes with no roller (turn-start condition damage, Chilled, recharge, ammunition die, hazard and falling damage).
+- Not checked in a running Foundry world.
+
 ## 0.30.0-alpha.2 — Adversary sheets (NPC1b; King 2026-11-14)
 
 - **New NPCs are adversaries.** A new NPC uses the Bingo Book build. NPCs saved before this release stay player-style until switched on the Build tab; summons, clones and companions are player-style.

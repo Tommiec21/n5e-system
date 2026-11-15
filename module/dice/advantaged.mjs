@@ -7,6 +7,8 @@
 import { createN5eRoll } from "./n5e-roll.mjs";
 import { contextualAdvantage, keptIndex } from "../rules/elements.mjs";
 import { resolveMode } from "../rules/advantage.mjs";
+import { diceParts, composeDice } from "../rules/roll-math.mjs";
+import { dialogs, wantsDialog } from "./roll-dialog.mjs";
 
 /**
  * Roll a formula with a mode. Returns the kept roll, the discarded one (or null) and the mode.
@@ -27,11 +29,10 @@ export async function rollAdvantaged(formula, data = {}, mode = "normal") {
  * @param {{kind: string, type?: string, key?: string, scope?: string, damageType?: string, target?: Actor, data?: object}} spec
  * @returns {Promise<{roll, discarded, mode, sources}>}
  */
-export async function rollDice(actor, formula, { target = null, data = null, base = "normal", ...spec } = {}) {
-  const sources = actor ? contextualAdvantage(actor, { type: spec.kind, ...spec }, target) : { advantage: [], disadvantage: [] };
-  addSheetToggle(sources, actor, rollGroup(spec.kind));
-  // `base` is this roll's own choice (the card's Adv/Dis buttons, or Alt/Ctrl); it counts as one source.
-  const mode = resolveMode(sources, base);
+export async function rollDice(actor, formula, { target = null, data = null, base = "normal", final = null, ...spec } = {}) {
+  const sources = diceSources(actor, spec, target);
+  // `base` counts as one more source; `final` is the mode picked in the roll dialog (ROLL1), which wins.
+  const mode = final && final !== "own" ? final : resolveMode(sources, base);
   const result = await rollAdvantaged(formula, data ?? actor?.getRollData?.() ?? {}, mode);
   return { ...result, sources };
 }
@@ -71,3 +72,42 @@ export function advantageNote(result, label = "") {
   const who = [...result.sources?.advantage ?? [], ...result.sources?.disadvantage ?? []].join(", ");
   return `${label ? `${label}: ` : ""}${result.mode === "advantage" ? "Advantage" : "Disadvantage"}${who ? ` (${who})` : ""}: kept ${result.roll.total}, not ${result.discarded.total}`;
 }
+
+/** The advantage sources for a dice roll (rule elements and the sheet toggle for its group). */
+export function diceSources(actor, spec = {}, target = null) {
+  const sources = actor ? contextualAdvantage(actor, { type: spec.kind, ...spec }, target) : { advantage: [], disadvantage: [] };
+  return addSheetToggle(sources, actor, rollGroup(spec.kind));
+}
+
+/**
+ * The dice roll dialog (ROLL1b): shows the parts, lets the roller untick them, add modifiers (typed
+ * for damage), set Critical and pick the mode. Resolves {parts, crit, mode} ("own" = as worked out)
+ * or null when closed. Without the dialog (setting or tests) the parts come back as they are.
+ * @param {Actor} actor
+ * @param {{title, parts: Array<{formula, type?, label?, abilityMod?}>, modifiers?: Array<{label, value}>,
+ *   kind: string, showCrit?: boolean, crit?: boolean, types?: object, cancellable?: boolean, spec?: object, target?: Actor}} o
+ */
+export async function promptDice(actor, o) {
+  const parts = diceParts(o.parts, o.modifiers ?? []);
+  const sources = diceSources(actor, { kind: o.kind, ...(o.spec ?? {}) }, o.target ?? null);
+  let choice = { off: [], added: [], mode: "own", crit: !!o.crit };
+  if ( wantsDialog() ) {
+    choice = await dialogs.dice({ title: o.title, parts, sources, crit: !!o.crit, showCrit: !!o.showCrit, types: o.types ?? null,
+      cancellable: o.cancellable, mode: "own" });
+    if ( !choice ) return null;
+  }
+  const composed = composeDice(parts, choice);
+  return { parts: composed.parts, crit: o.showCrit ? composed.crit : !!o.crit, mode: choice.mode ?? "own", edited: composed.edited };
+}
+
+/**
+ * One formula through the dice dialog, then rolled (healing, pool dice, recovery dice, feature dice).
+ * Added parts join the formula. Resolves rollDice's result or null when the dialog was closed.
+ */
+export async function rollFormula(actor, formula, { title = "Roll", kind = "dice", cancellable = true, ...spec } = {}) {
+  const picked = await promptDice(actor, { title, parts: [{ formula, label: formula }], kind, cancellable, spec });
+  if ( !picked ) return null;
+  const joined = picked.parts.map(p => `(${p.formula})`).join(" + ") || "0";
+  return rollDice(actor, joined, { kind, ...spec, final: picked.mode });
+}
+

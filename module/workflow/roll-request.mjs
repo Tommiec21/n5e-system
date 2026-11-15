@@ -32,7 +32,6 @@ export function renderRollRequest(message, html) {
   const owns = uuid => { const actor = fromUuidSync(uuid); return canModify(game.user, actor); };
   const entries = request.entries?.length ? visibleRequestEntries(request.entries, owns, game.user.isGM) : [{ uuid: "", name: "Roll for my creature" }];
   box.innerHTML = entries.map(e => `<button type="button" data-n5e-request-roll="${esc(e.uuid)}">${esc(e.name)}</button>`).join("");
-  import("../dice/roll.mjs").then(m => m.addRollModeButtons(box));
   for ( const button of box.querySelectorAll("[data-n5e-request-roll]") ) {
     button.addEventListener("click", event => {
       event.preventDefault();
@@ -52,10 +51,13 @@ export async function rollForRequest(message, uuid, event) {
   }
   actors = actors.filter(a => canModify(game.user, a));
   if ( !actors.length ) return ui.notifications.info("Select a creature you own to roll for.");
-  const [{ rollWithSpec }, { rollSpec }] = await Promise.all([import("../dice/roll.mjs"), import("../dice/d20.mjs")]);
-  for ( const actor of actors ) {
-    const spec = rollSpec(actor, TYPES[request.type], request.key);
-    await rollWithSpec(actor, { ...spec, label: request.label ?? spec.label }, { event, dc: request.dc });
+  const [{ rollWithSpec, groupRollChoice }, { rollSpec }] = await Promise.all([import("../dice/roll.mjs"), import("../dice/d20.mjs")]);
+  const entries = actors.map(actor => ({ actor, spec: rollSpec(actor, TYPES[request.type], request.key) })).filter(e => e.spec);
+  // Several creatures: one roll dialog for the group (King Q-R2).
+  const prepared = await groupRollChoice(entries, request.label ?? entries[0]?.spec.label ?? "Roll");
+  if ( prepared === null ) return null;
+  for ( const { actor, spec } of entries ) {
+    await rollWithSpec(actor, { ...spec, label: request.label ?? spec.label }, { event, dc: request.dc, prepared: prepared ?? null });
   }
   return actors.length;
 }

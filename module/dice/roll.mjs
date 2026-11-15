@@ -3,11 +3,14 @@ import { createN5eRoll } from "./n5e-roll.mjs";
 /**
  * Rolling d20s from the sheet and posting them to chat (Foundry side). The rules live in dice/d20.mjs.
  *
- * Click = roll; Shift+click = dialog (advantage/disadvantage, situational bonus); Alt = advantage;
- * Ctrl = disadvantage. Every card shows the breakdown on hover and, while the actor has Will of Fire,
- * buttons to spend one for a reroll or advantage after the fact.
+ * Every roll opens the roll dialog first (dice/roll-dialog.mjs; ROLL1): its parts with ticks, added
+ * modifiers, and Advantage/Normal/Disadvantage. No key combination changes a roll (King 2026-11-14).
+ * Every card shows the breakdown, with unticked parts struck and added ones marked, and, while the
+ * actor has Will of Fire, buttons to spend one for a reroll or advantage after the fact.
  */
-import { MODES, clickMode, critThreshold, rollSpec, readD20, willOfFireAward } from "./d20.mjs";
+import { MODES, critThreshold, rollSpec, readD20, willOfFireAward } from "./d20.mjs";
+import { d20Parts, situationalParts, composeD20, groupParts } from "../rules/roll-math.mjs";
+import { dialogs, wantsDialog } from "./roll-dialog.mjs";
 import { esc, signed, breakdownTooltip } from "../view-models/common.mjs";
 import { degreeOfSuccess } from "../rules/degree.mjs";
 import { contextualSpec, contextualAdvantage } from "../rules/elements.mjs";
@@ -19,25 +22,18 @@ import { skills as skillConfig } from "../config/core.mjs";
 
 const MODE_LABEL = { normal: "", advantage: "Advantage", disadvantage: "Disadvantage" };
 
-/** Shift+click dialog: mode and situational bonus. Resolves null when cancelled. */
-async function rollDialog(title, mode) {
-  const { DialogV2 } = foundry.applications.api;
-  const content = `<div class="n5e-roll-dialog">
-    <label>Situational bonus <input type="text" name="bonus" placeholder="e.g. 2 or 1d4"></label></div>`;
-  const pick = m => ({ action: m, label: m === "normal" ? "Normal" : MODE_LABEL[m], default: m === mode,
-    callback: (event, button) => ({ mode: m, bonus: button.form.elements.bonus.value.trim() }) });
-  return DialogV2.wait({ window: { title }, content, buttons: ["advantage", "normal", "disadvantage"].map(pick),
-    rejectClose: false });
-}
+/** Roll edits on cards: shown to everyone (default) or to the GM only (King Q-R5). */
+const editsForGMOnly = () => rule("rollEditsVisibility") === "gm";
 
 /** Flavor HTML for a d20 card. */
-function cardHTML(spec, { mode, result, bonusText, wof }) {
+function cardHTML(spec, { mode, result, bonusText, wof, edited = false }) {
   const tip = spec.breakdown ? breakdownTooltip(spec.breakdown) : "";
+  const gmOnly = edited && editsForGMOnly();
   const state = result.crit ? "crit" : result.fumble ? "fumble" : "";
   return `<div class="n5e-roll-card ${state}" data-n5e-roll>
     <header><b>${esc(spec.label)}</b>${MODE_LABEL[mode] ? `<span class="mode">${MODE_LABEL[mode]}</span>` : ""}
-      <span class="bonus" ${tip ? `data-tooltip-html="${esc(tip)}"` : ""}>${signed(spec.bonus)}${bonusText ? ` ${esc(bonusText)}` : ""}</span></header>
-    ${tip ? `<details class="n5e-roll-breakdown"><summary>Roll breakdown</summary>${tip}</details>` : ""}
+      <span class="bonus" ${tip && !gmOnly ? `data-tooltip-html="${esc(tip)}"` : ""}>${signed(spec.bonus)}${bonusText ? ` ${esc(bonusText)}` : ""}</span></header>
+    ${tip ? `<details class="n5e-roll-breakdown"${gmOnly ? " data-n5e-gm-only" : ""}><summary>Roll breakdown${edited ? " (edited)" : ""}</summary>${tip}</details>` : ""}
     ${spec.note ? `<div class="note">${esc(spec.note)}</div>` : ""}
     ${spec.dcLine ? `<div class="note n5e-dc" data-n5e-dc>${esc(spec.dcLine)}</div>` : ""}
     ${spec.roll ? `<div class="vs"><b>Roll:</b> ${esc(spec.roll)}</div>` : ""}
@@ -88,8 +84,11 @@ export async function rollD20(actor, type, key, options = {}) {
  * Every d20 in the system ends up here: sheet rolls, attacks, saves from cards, removal checks,
  * resaves. The message carries flags.n5e.roll so Will of Fire can reroll it later.
  * @param {object} [options]
- * @param {Event} [options.event]        the click (modifier keys pick the mode; Shift opens the dialog)
- * @param {string} [options.mode]        force normal | advantage | disadvantage (e.g. condition resistance)
+ * @param {Event} [options.event]        the click (kept for callers; keys no longer change the roll)
+ * @param {string} [options.mode]        one more source: normal | advantage | disadvantage (e.g. condition resistance)
+ * @param {boolean} [options.dialog]     false: no dialog (Will of Fire style rolls with no choice to make)
+ * @param {object} [options.prepared]    a choice made already (one dialog for a group, King Q-R2): {off, added, mode}
+ * @param {Array} [options.situational]  modifiers listed unticked in the dialog: [{label, value, when}]
  * @param {number} [options.dc]          compare against a DC (saves from a card)
  * @param {boolean} [options.fourTier]   report Genjutsu four-tier results
  * @param {string} [options.source]      id of the card whose button made this roll (RES1 per-target resolution)
@@ -98,7 +97,7 @@ export async function rollD20(actor, type, key, options = {}) {
  * @param {Function} [options.onResult]  called with {natural, crit, fumble, degree, success, message}
  */
 export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null, fourTier = false, onFail = "", onResult = null,
-  target = undefined, tiers = null, source = "", onSuccess = "", card = undefined } = {}) {
+  target = undefined, tiers = null, source = "", onSuccess = "", card = undefined, dialog = true, prepared = null, situational = null } = {}) {
   // Multiple targets can have different defenses: never borrow the first target's facts for all.
   if ( target === undefined ) {
     const targets = Array.from(globalThis.game?.user?.targets ?? []);
@@ -116,8 +115,6 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   spec = contextualSpec(actor, spec, target);
   const type = spec.type ?? "custom";
   const key = spec.key ?? "";
-  const click = clickMode(event);
-  const dialog = click.dialog;
   // Advantage engine (ADV1): conditions and states on the roller and its single target are counted
   // with the click (or a forced mode); any advantage and any disadvantage cancel.
   const sources = advantageSources({ roller: rollFacts(actor), target: target ? rollFacts(target) : null,
@@ -133,15 +130,26 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   if ( spec.kind === "save" && actor.system?.autoFailSaves && !sources.autoFail ) sources.autoFail = "Minion";
   addSheetToggle(sources, actor, "d20");
   if ( actor.system?.conditionPenalties?.flags?.noAttackAdvantage && spec.kind === "attack" ) sources.advantage.length = 0;
-  let mode = resolveMode(sources, forced ?? click.mode);
+  let mode = resolveMode(sources, forced ?? "normal");
   const sourceNote = sourcesNote(sources);
   if ( sourceNote ) spec = { ...spec, note: [spec.note, sourceNote].filter(Boolean).join(" · ") };
+  // The roll dialog (ROLL1): every part with a tick, added modifiers, the mode. A group shares one
+  // choice made before (prepared); "own" keeps each creature's worked-out mode.
+  const parts = [...d20Parts(spec), ...situationalParts(situational ?? spec.situational ?? [])];
+  let choice = prepared ? { ...prepared, off: prepared.off ?? parts.filter(p => (prepared.offLabels ?? []).includes(p.label)).map(p => p.id), on: [] } : null;
+  if ( !choice && dialog && wantsDialog() ) {
+    choice = await dialogs.d20({ title: `${actor.name}: ${spec.label}`, parts, mode, sources,
+      stake: stakeLine(spec, { dc, target, autoFail: sources.autoFail, actor }) });
+    if ( !choice ) return null;
+  }
   let extra = "";
-  if ( dialog ) {
-    const res = await rollDialog(`${actor.name}: ${spec.label}`, mode);
-    if ( !res ) return null;
-    mode = res.mode;
-    extra = res.bonus;
+  let edited = false;
+  if ( choice ) {
+    if ( choice.mode && choice.mode !== "own" ) mode = choice.mode;
+    const composed = composeD20(parts, choice, spec.label);
+    spec = { ...spec, bonus: composed.bonus, breakdown: composed.breakdown };
+    extra = composed.extra;
+    edited = composed.edited;
   }
   const formula = `${MODES[mode]} + @bonus${extra ? ` + ${extra}` : ""}`;
   const roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
@@ -166,7 +174,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;
   const message = await roll.toMessage({
     speaker: ChatMessageCls.getSpeaker({ actor }),
-    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof }) + (spec.kind === "attack"
+    flavor: cardHTML(spec, { mode, result, bonusText: extra ? `+ ${extra}` : "", wof, edited }) + (spec.kind === "attack"
       ? '<div class="n5e-attack-targets" data-n5e-attack-targets></div><button type="button" data-n5e-hit="1">Successful hit: reactions</button>' : ""),
     flags: { n5e: { roll: { type, key: key ?? "", mode, bonus: spec.bonus, extra, threshold,
       natural: result.natural, label: spec.label, kind: spec.kind, actorUuid: actor.uuid,
@@ -254,6 +262,33 @@ function rollFacts(actor) {
   return { flags: actor?.system?.conditionPenalties?.flags ?? {}, statuses: actor?.statuses ?? new Set(), senses: actor?.system?.senses ?? {} };
 }
 
+/**
+ * One roll dialog for several creatures rolling the same thing (King Q-R2). Resolves:
+ *   undefined  one creature, or no dialog: each roll goes on as usual;
+ *   null       the dialog was closed: nothing is rolled;
+ *   {offLabels, added, mode}  pass as `prepared` to each rollWithSpec ("own" keeps each creature's mode).
+ * @param {Array<{actor, spec}>} entries
+ */
+export async function groupRollChoice(entries, title) {
+  if ( entries.length < 2 || !wantsDialog() ) return undefined;
+  const rows = groupParts(entries.map(e => e.spec));
+  const choice = await dialogs.d20({ title, parts: rows, mode: "own", group: entries.map(e => e.actor.name) });
+  if ( !choice ) return null;
+  return { offLabels: rows.filter(r => choice.off.includes(r.id)).map(r => r.label), added: choice.added, mode: choice.mode };
+}
+
+/** What the dialog says is at stake: the DC, the target, an automatic failure. */
+function stakeLine(spec, { dc = null, target = null, autoFail = null, actor = null } = {}) {
+  const out = [];
+  if ( dc != null ) {
+    const owned = globalThis.game?.users?.some?.(u => !u.isGM && actor?.testUserPermission?.(u, "OWNER")) ?? false;
+    out.push(challengeVisible(rule("challengeVisibility"), globalThis.game?.user, owned) ? `vs DC ${dc}` : "Against a DC");
+  }
+  if ( target && spec.kind === "attack" ) out.push(`Attacking ${target.name}`);
+  if ( autoFail ) out.push(`Automatic failure: ${autoFail}`);
+  return out.join(" · ");
+}
+
 /** The ability a roll uses: attack ability, save key, or a skill's ability. */
 function rollAbility(spec) {
   if ( spec.ability ) return spec.ability;
@@ -309,40 +344,20 @@ export async function renderParityParts(message, html) {
   }
 }
 
-/**
- * Small Adv / Dis buttons beside every roll button on a card (King 2026-11-13). They click the roll
- * button with Alt (advantage) or Ctrl (disadvantage), so the choice applies to that roll only.
- */
+/** Roll buttons on cards (the roll dialog opens from each; ROLL1 removed the separate Adv/Dis buttons). */
 export const ROLL_BUTTONS = '[data-n5e-act="attack"], [data-n5e-act="damage"], [data-n5e-act="save"], [data-n5e-act="heal"], '
   + '[data-n5e-act="roll"], [data-n5e-act="check"], [data-n5e-act="strike"], [data-n5e-resave], [data-n5e-concheck], [data-n5e-request-roll]';
-export function addRollModeButtons(html) {
-  for ( const btn of html.querySelectorAll(ROLL_BUTTONS) ) {
-    if ( btn.nextElementSibling?.classList?.contains("n5e-roll-modes") ) continue;
-    const span = document.createElement("span");
-    span.className = "n5e-roll-modes";
-    for ( const [mode, label, tip] of [["advantage", "Adv", "Roll with advantage"], ["disadvantage", "Dis", "Roll with disadvantage"]] ) {
-      const b = document.createElement("button");
-      b.type = "button"; b.textContent = label; b.dataset.tooltip = tip; b.setAttribute("aria-label", `${btn.textContent.trim()}: ${tip.toLowerCase()}`);
-      b.addEventListener("click", ev => {
-        ev.preventDefault(); ev.stopPropagation();
-        if ( btn.disabled ) return;
-        btn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, altKey: mode === "advantage", ctrlKey: mode === "disadvantage" }));
-      });
-      span.append(b);
-    }
-    btn.after(span);
-  }
-}
 
 export function onRenderChatMessage(message, html) {
-  addRollModeButtons(html);
+  // Roll edits for the GM only (rule rollEditsVisibility): players see the total and the result.
+  if ( !globalThis.game?.user?.isGM ) for ( const el of html.querySelectorAll("[data-n5e-gm-only]") ) el.remove();
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
   // Jutsu Clash cards (CLASH1), drawn before their listeners are bound below.
   if ( message.flags?.n5e?.clash ) clashModule?.renderClash(message, html);
   // Single action card (CARD1): sections and per-target rows, or the one-line view of a linked roll.
   actionCardModule?.renderActionCard(message, html);
-  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck], [data-n5e-card-defense], [data-n5e-card-counter], [data-n5e-rider-use], [data-n5e-rider-cancel], [data-n5e-rider-eventsave], [data-n5e-rider-save], [data-n5e-rider-apply]") ) btn.addEventListener("click", ev => {
+  for ( const btn of html.querySelectorAll("[data-n5e-card-apply], [data-n5e-card-undo], [data-n5e-card-save], [data-n5e-card-inflict], [data-n5e-card-effect], [data-n5e-card-wof], [data-n5e-card-hit], [data-n5e-card-concheck], [data-n5e-card-saveall], [data-n5e-card-defense], [data-n5e-card-counter], [data-n5e-rider-use], [data-n5e-rider-cancel], [data-n5e-rider-eventsave], [data-n5e-rider-save], [data-n5e-rider-apply]") ) btn.addEventListener("click", ev => {
     ev.preventDefault();
     actionCardModule?.onActionCardClick(message, btn, ev).catch(error => ui.notifications.warn(error.message));
   });
@@ -443,11 +458,47 @@ export async function rollInitiative(actor, { event } = {}) {
         default: !k, callback: () => k })), rejectClose: false });
     if ( skill === null || skill === undefined ) return null;
   }
-  const bonus = skill ? actor.system.skills[skill]?.total ?? 0 : actor.system.initiative.total;
   const combatant = game.combat?.getCombatantsByActor?.(actor)?.[0];
-  if ( combatant ) {
-    const { mode } = clickMode(event);
-    return game.combat.rollInitiative([combatant.id], { formula: `${MODES[mode]} + ${bonus}`, updateTurn: false });
-  }
+  if ( combatant ) return game.combat.rollInitiative([combatant.id], { updateTurn: false, n5eSkill: skill });
   return skill ? rollD20(actor, "skill", skill, { event }) : rollD20(actor, "initiative", "", { event });
 }
+
+/**
+ * The initiative formula for combatants, through the roll dialog (ROLL1 A9): one dialog for one
+ * creature, one for a group (King Q-R2). Resolves {[combatantId]: formula} or null when closed.
+ * @param {Array<{id, actor}>} combatants
+ * @param {string|null} [skill]  Adaptive Initiative's skill, if one was chosen
+ */
+export async function initiativeFormulas(combatants, skill = null) {
+  const entries = combatants.filter(c => c.actor).map(c => ({ c, actor: c.actor,
+    spec: skill ? rollSpec(c.actor, "skill", skill) : rollSpec(c.actor, "initiative", "") }));
+  const out = {};
+  if ( !entries.length ) return out;
+  const formulaFor = (e, choice) => {
+    const sources = { advantage: [], disadvantage: [] };
+    addSheetToggle(sources, e.actor, "d20");
+    let mode = resolveMode(sources, "normal");
+    if ( choice?.mode && choice.mode !== "own" ) mode = choice.mode;
+    const parts = d20Parts(e.spec);
+    const off = choice?.off ?? parts.filter(p => (choice?.offLabels ?? []).includes(p.label)).map(p => p.id);
+    const composed = composeD20(parts, { off, added: choice?.added ?? [] });
+    return `${MODES[mode]} + ${composed.bonus}${composed.extra ? ` + ${composed.extra}` : ""}`;
+  };
+  if ( entries.length === 1 ) {
+    const e = entries[0];
+    let choice = null;
+    if ( wantsDialog() ) {
+      const sources = { advantage: [], disadvantage: [] };
+      addSheetToggle(sources, e.actor, "d20");
+      choice = await dialogs.d20({ title: `${e.actor.name}: ${e.spec.label}`, parts: d20Parts(e.spec), mode: resolveMode(sources, "normal"), sources });
+      if ( !choice ) return null;
+    }
+    out[e.c.id] = formulaFor(e, choice);
+    return out;
+  }
+  const prepared = await groupRollChoice(entries.map(e => ({ actor: e.actor, spec: e.spec })), "Initiative");
+  if ( prepared === null ) return null;
+  for ( const e of entries ) out[e.c.id] = formulaFor(e, prepared);
+  return out;
+}
+

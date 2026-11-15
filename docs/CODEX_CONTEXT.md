@@ -413,3 +413,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - `NPCSimpleSheet` extends `NPCSheet` with one part; registered as a non-default sheet. Not verified in a live world.
 - `details.build` now defaults to `adversary`; `NPCData.migrateData` keeps saved NPCs without it as `character`.
 
+## ROLL1 — Claude, 2026-11-14 (published 0.31.0-alpha.1)
+- **King's rule: no key combinations.** Never read `altKey`, `ctrlKey`, `metaKey` or `shiftKey` to change behaviour; `npm run check` (`tools/check-keys.mjs`) fails if you do. Put the choice in a dialog or a visible control.
+- **Every roll opens the dialog.** d20: `rollWithSpec` (pass `dialog: false` only for rolls with no choice, like Will of Fire). Dice: `promptDice` / `rollFormula` in `dice/advantaged.mjs`; use `cancellable: false` after a cost is paid. Several creatures: `groupRollChoice` and pass `prepared`.
+- Tests stand in for the dialog through `dialogs` in `dice/roll-dialog.mjs` (`enabled`, `d20`, `dice`); with no setting registered the dialog stays closed, so older tests roll straight through.
+

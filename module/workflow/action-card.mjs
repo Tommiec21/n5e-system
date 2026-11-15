@@ -200,6 +200,11 @@ export function renderActionCard(message, html) {
   const riders = riderView(message, results, acts, appliedSources);
   // FIN2b: Counter Tags (single-target casts) and the creatures the jutsu was absorbed for.
   const countered = card.kind === "jutsu" ? counteredOn(message) : new Set();
+  // ROLL1 (King Q-R2): one button rolls every pending save this user may roll, through one dialog.
+  const pendingSaves = card.sections.includes("saves") ? rows.filter(r => !r.saved && !countered.has(r.uuid)
+    && (game.user.isGM || canModify(game.user, globalThis.fromUuidSync?.(r.uuid)))) : [];
+  const saveAll = pendingSaves.length > 1 ? `<div class="n5e-card-saveall">${acts.saves.map((d, i) =>
+    `<button type="button" data-n5e-card-saveall="${i}">${esc(saveLabel(d))} for all ${pendingSaves.length}</button>`).join("")}</div>` : "";
   const row = r => {
     const actor = globalThis.fromUuidSync?.(r.uuid);
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
@@ -258,7 +263,7 @@ export function renderActionCard(message, html) {
   box.innerHTML = `<div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
     ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
-    ${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
+    ${saveAll}${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
     ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
   (html.querySelector(".message-content") ?? html).append(box);
 }
@@ -348,6 +353,19 @@ export async function onActionCardClick(message, btn, event) {
   }
   if ( d.n5eCardDefense ) return onDefenseClick(message, d.n5eCardDefense, event);
   if ( d.n5eCardCounter ) return onCounterTagClick(message, btn);
+  // ROLL1 (King Q-R2): every pending save this user may roll, one dialog for the group.
+  if ( d.n5eCardSaveall != null ) {
+    const save = cardActivities(message).saves[Number(d.n5eCardSaveall)];
+    if ( !save ) return null;
+    const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave: () => true });
+    const actors = (await Promise.all(rows.filter(r => !r.saved).map(r => fromUuid(r.uuid)))).filter(a => a && canModify(game.user, a));
+    if ( !actors.length ) return null;
+    const dataset = { ...save };
+    if ( Object.keys(results.saves ?? {}).length ) delete dataset.dis;
+    btn.disabled = true;
+    const { onActivityClick } = await import("./activity-buttons.mjs");
+    return onActivityClick(message, { dataset, disabled: false }, event, { selectedActors: actors });
+  }
   const target = d.target ? await fromUuid(d.target) : null;
   if ( d.n5eCardApply ) {
     const damage = results.damage ? messages()?.get(results.damage.messageId) : null;

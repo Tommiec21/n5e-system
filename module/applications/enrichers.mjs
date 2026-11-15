@@ -159,12 +159,17 @@ export async function onLinkClick(link, event) {
     case "condition":
     case "state": {
       const actors = selectedActors().filter(a => a.isOwner);
-      if ( !actors.length ) return ui.notifications.info(`Select tokens you own to ${event.shiftKey ? "remove" : "apply"} ${spec.label}.`);
+      if ( !actors.length ) return ui.notifications.info(`Select tokens you own to apply or remove ${spec.label}.`);
+      // Add or Remove is asked, not read from a held key (ROLL1c).
+      const how = await foundry.applications.api.DialogV2.wait({ window: { title: spec.label },
+        content: `<p>${actors.map(a => a.name).join(", ")}</p>`, rejectClose: false,
+        buttons: [{ action: "add", label: "Add", default: true }, { action: "remove", label: "Remove" }] });
+      if ( !how ) return null;
       for ( const a of actors ) {
         if ( spec.kind === "condition" ) {
-          if ( event.shiftKey ) await a.removeCondition(spec.key, spec.ranks > 1 ? spec.ranks : "all");
+          if ( how === "remove" ) await a.removeCondition(spec.key, spec.ranks > 1 ? spec.ranks : "all");
           else await a.addCondition(spec.key, spec.ranks);
-        } else await a.toggleStatusEffect(spec.key, { active: !event.shiftKey });
+        } else await a.toggleStatusEffect(spec.key, { active: how === "add" });
       }
       return null;
     }

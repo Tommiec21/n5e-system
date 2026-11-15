@@ -493,3 +493,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `system.hpMax`, `system.cpMax` | Stated pool maximums (the HP and CP overrides) |
 | Derived `system.adversaryBuild` | `profile`, `statLine`, `budget`, `fullSaves`, `suggested`, `warnings`, `baselines`, `freeform {ability, attack, dc}`; null for player-style NPCs |
 | Derived `system.autoFailSaves` | true for Minions |
+
+## Added in 0.31.0-alpha.1 (ROLL1)
+
+| Path | Meaning |
+| --- | --- |
+| Setting `n5e.rollWithoutDialog` (client) | Skip the roll dialog for this user; off by default |
+| Rule `rollEditsVisibility` | `all` (default) or `gm`: who sees struck and added parts on roll cards |
+| `flags.n5e.roll.bonus`, `.extra` | Now the bonus and added dice after the dialog; Will of Fire rerolls repeat them |
+| `flags.n5e.roll.breakdown.parts[].removed`, `.added`, `.dice` | Unticked parts, added modifiers, added dice |
+| Card attribute `data-n5e-gm-only` | Removed for non-GM users when the card renders |
+| `rollWithSpec` options `dialog`, `prepared {offLabels, added, mode}`, `situational [{label, value, when}]` | No dialog; a group's choice; unticked extra modifiers |

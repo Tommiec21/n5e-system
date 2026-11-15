@@ -3,7 +3,6 @@ import { openReactionWindow, waitForReactionWindow, askReactionLocally } from ".
 import { deflectionOffer } from "../rules/deflection.mjs";
 import { uncannyDodgeOffer } from "../rules/uncanny-dodge.mjs";
 import { damageSourceVisibility } from "../canvas/visibility.mjs";
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
 import { rule } from "../rules-settings.mjs";
 import { authoredReactionOffers } from "../rules/authored-reactions.mjs";
 import { createReactionChain } from "./reaction-chain.mjs";
@@ -41,7 +40,7 @@ dispatcher.register("deflection", {
       terms: { cost: offer.cost, dice: offer.dice, die: offer.die } };
   },
   async prepare(actor, offer) {
-    const roll = await createN5eRoll(`${offer.dice}${offer.die}`).evaluate();
+    const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, `${offer.dice}${offer.die}`, { title: `${actor.name}: Deflection`, kind: "dice", type: "dice", key: "discipline", cancellable: false })).roll;
     return { flatReduction: roll.total, update: { "system.resources.discipline.value": actor.system.resources.discipline.value - offer.cost,
       "flags.n5e.economy.reaction": true }, roll, label: "Deflection" };
   }
@@ -54,7 +53,7 @@ dispatcher.register("authored-damage", {
       visibility: () => damageSourceVisibility(actor, message) });
   },
   async prepare(actor, { terms, label }) {
-    const roll = terms.reduction ? await createN5eRoll(terms.reduction, actor.getRollData?.() ?? {}).evaluate() : null;
+    const roll = terms.reduction ? (await (await import("../dice/advantaged.mjs")).rollFormula(actor, terms.reduction, { title: `${actor.name}: ${label}`, kind: "dice", type: "dice", cancellable: false })).roll : null;
     if ( roll && (!Number.isFinite(roll.total) || roll.total < 0) ) throw new Error("Reaction reduction must be a finite nonnegative number.");
     const update = {};
     if ( terms.cost ) update[`system.resources.${terms.pool}.value`] = actor.system.resources[terms.pool].value - terms.cost;

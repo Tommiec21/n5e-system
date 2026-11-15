@@ -1,6 +1,6 @@
 import { damageRollTrace } from "../rules/damage-trace.mjs";
 import { renderDamageRolls } from "../view-models/damage-trace.mjs";
-import { rollDice, advantageNote } from "../dice/advantaged.mjs";
+import { rollDice, advantageNote, promptDice, rollFormula } from "../dice/advantaged.mjs";
 /**
  * Chat card buttons for activities, and what happens when they're clicked.
  *
@@ -49,8 +49,8 @@ import { rollDice, advantageNote } from "../dice/advantaged.mjs";
  */
 import { esc, signed } from "../view-models/common.mjs";
 import { unarmedFormula, critFormula } from "../rules/activity-parse.mjs";
-import { rollWithSpec } from "../dice/roll.mjs";
-import { rollSpec, clickMode } from "../dice/d20.mjs";
+import { rollWithSpec, groupRollChoice } from "../dice/roll.mjs";
+import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
 import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { isBukijutsu } from "../rules/keywords.mjs";
@@ -320,8 +320,10 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "roll": {
       const formula = level(d.formula);
       // Any other dice (pool dice, feature dice): rule-element advantage with selector "dice".
-      const roll = formula ? (await rollDice(caster, formula, { kind: "dice", type: "dice", key: d.pool || "", base: clickMode(event).mode })).roll : null;
-      if ( !roll ) return payment;
+      if ( !formula ) return payment;
+      const rolledDice = await rollFormula(caster, formula, { title: `${caster?.name ?? ""}: ${d.label}`, kind: "dice", type: "dice", key: d.pool || "" });
+      if ( !rolledDice ) return null;
+      const roll = rolledDice.roll;
       return roll.toMessage({ speaker: speaker({ actor: caster }),
         flavor: `<div class="n5e-roll-card"><header><b>${esc(d.label)}</b><span class="bonus">${roll.total}</span></header>${d.note ? `<div class="note">${esc(d.note)}</div>` : ""}</div>` });
     }
@@ -355,8 +357,16 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       parts.push(...coatings.flatMap(c => c.parts.map(p => ({ ...p, abilityMod: 0 }))));
       const targets = targetActors ? targetActors.map(actor => ({ actor })) : Array.from(game.user?.targets ?? []);
       const modifiers = actor ? contextualModifiers(actor, { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" }, targets.length === 1 ? targets[0].actor : null) : { parts: [], bonus: 0 };
-      if ( modifiers.bonus && parts.length ) parts[0] = { ...parts[0], formula: `(${parts[0].formula}) + (${modifiers.bonus})` };
-      const crit = !!d.crit;
+      // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
+      // Critical (preset from the attack) and the mode. Flat modifiers fold into the first part.
+      const modParts = modifiers.parts?.length ? modifiers.parts : (modifiers.bonus ? [{ label: "Effects", value: modifiers.bonus }] : []);
+      const picked = await promptDice(actor, { title: `${actor?.name ?? ""}: ${d.label || "Damage"}`, kind: "damage",
+        parts: parts.map(p => ({ ...p, label: p.label || `${p.formula}${p.type ? ` ${CONFIG.N5E.damageTypes?.[p.type]?.label ?? p.type}` : ""}` })),
+        modifiers: modParts, showCrit: true, crit: !!d.crit, types: CONFIG.N5E.damageTypes, target: targets.length === 1 ? targets[0].actor : null,
+        spec: { type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "" } });
+      if ( !picked ) return null;
+      parts.splice(0, parts.length, ...picked.parts);
+      const crit = picked.crit;
       const instances = [];
       const rolls = [], rollMetadata = [], advNotes = [];
       for ( const [index, p] of parts.entries() ) {
@@ -372,7 +382,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         const critText = `${critFormula(formula, abilityMod)}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}`;
         const rolled = await rollDice(actor, crit ? critText : formula,
           { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null,
-            base: clickMode(event).mode });
+            final: picked.mode });
         const roll = rolled.roll;
         const note = advantageNote(rolled, p.type || "Damage");
         if ( note ) advNotes.push(note);
@@ -409,6 +419,11 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       let rolled = 0;
       // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.
       const immune = await stimuliImmune(message, targets);
+      // Several creatures: one roll dialog for the group (King Q-R2).
+      const rollers = targets.filter(t => t.isOwner && !immune.has(t));
+      const prepared = await groupRollChoice(rollers.map(t => ({ actor: t, spec: rollSpec(t, "save", d.ability) })),
+        `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}`);
+      if ( prepared === null ) return null;
       for ( const t of targets ) {
         if ( !t.isOwner ) continue;
         if ( immune.has(t) ) {
@@ -431,13 +446,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         first = false;
         const mode = resisted && dis ? undefined : resisted ? "advantage" : dis ? "disadvantage" : undefined;
         await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, mode, target: caster, tiers: JSON.parse(d.tiers || "{}"),
-          source: message?.id ?? "", onSuccess: d.onSuccess || "" });
+          source: message?.id ?? "", onSuccess: d.onSuccess || "", prepared: prepared ?? null });
         rolled++;
       }
       return rolled ? { saves: rolled } : null;
     }
     case "heal": {
-      const rolled = await rollDice(caster, level(d.formula), { kind: "healing", type: "healing", key: d.pool || "hp", base: clickMode(event).mode });
+      const rolled = await rollFormula(caster, level(d.formula), { title: `${caster?.name ?? ""}: ${d.label || "Healing"}`, kind: "healing", type: "healing", key: d.pool || "hp" });
+      if ( !rolled ) return null;
       const roll = rolled.roll;
       const healNote = advantageNote(rolled);
       // Exhaustion: −1 per rank once per roll (King A7).

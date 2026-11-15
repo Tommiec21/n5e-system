@@ -9,7 +9,7 @@ import { emitEffectEvent } from "../automation/effect-services.mjs";
 import { restCheck, restPlan, shortRestDice, REST_LABELS } from "../rules/rest.mjs";
 import { rule } from "../rules-settings.mjs";
 import { exhaustedRollTotal } from "../rules/damage.mjs";
-import { rollDice } from "../dice/advantaged.mjs";
+import { rollFormula } from "../dice/advantaged.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -122,12 +122,12 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   cd = Math.min(Math.max(0, Math.floor(cd)), shortRestDice(sys.chakraDice));
   if ( type === "short" && check.benefit ) {
     if ( hd && sys.hitDice.die ) {
-      const r = (await rollDice(actor, `${hd}${sys.hitDice.die} + ${con * hd}`, { kind: "recovery", type: "recovery", key: "hitDice" })).roll;
+      const r = (await rollFormula(actor, `${hd}${sys.hitDice.die} + ${con * hd}`, { title: `${actor.name}: Hit Dice`, kind: "recovery", type: "recovery", key: "hitDice", cancellable: false })).roll;
       rolls.push(r);
       hdRoll = exhaustedRollTotal(r.total, actor);
     }
     if ( cd && sys.chakraDice.die ) {
-      const r = (await rollDice(actor, `${cd}${sys.chakraDice.die} + ${con * cd}`, { kind: "recovery", type: "recovery", key: "chakraDice" })).roll;
+      const r = (await rollFormula(actor, `${cd}${sys.chakraDice.die} + ${con * cd}`, { title: `${actor.name}: Chakra Dice`, kind: "recovery", type: "recovery", key: "chakraDice", cancellable: false })).roll;
       rolls.push(r);
       cdRoll = exhaustedRollTotal(r.total, actor);
     }

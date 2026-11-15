@@ -1,6 +1,6 @@
 # ROLL1 function spec: a roll dialog for every roll
 
-Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead to build. Nothing is built.**
+Status: **Approved by King 2026-11-14. Published `0.31.0-alpha.1`.**
 
 King (2026-11-14): every roll opens a dialog where players see the current roll math and can edit it by adding modifiers, as dnd5e and PF2e do (his original direction). Shift-click must never be the way in: "the options need to be in the user's face and not hidden behind a combination key." ROLL1 comes before NPC1c.
 
@@ -70,5 +70,15 @@ King (2026-11-14): every roll opens a dialog where players see the current roll 
 
 ## Progress log
 
+- 2026-11-14 Claude: **built (King: "Approved").**
+  - A1–A8, A10: `rules/roll-math.mjs` (pure: `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `diceParts`, `composeDice`, `readChoice`, `parseAdded`); `dice/roll-dialog.mjs` (`d20Dialog`, `diceDialog`, the HTML builders, `wantsDialog`, the `dialogs` indirection); `rollWithSpec` options `dialog`, `prepared`, `situational`; `groupRollChoice`; settings `rollWithoutDialog` (client) and rule `rollEditsVisibility`; GM-only edits are removed from the card for players at render.
+  - The dialog HTML is built in `dice/roll-dialog.mjs`, not a `.hbs` file as the table says, so it can be tested without Foundry.
+  - A9: initiative through `initiativeFormulas` and `N5eCombat.rollInitiative` (tracker, sheet, Roll All). **Difference:** Adaptive Initiative keeps its own skill choice first (a visible choice, not a key); it is not a select inside the roll dialog.
+  - B1–B2: `promptDice`, `rollFormula`, `diceSources` in `dice/advantaged.mjs`; damage, healing and feature dice; rest Hit and Chakra Dice; death saves (natural read from the die, added modifiers count toward 10). Rolls after a cost are `cancellable: false`: pool dice, rider dice, cast pool dice and extra rolls, Deflection and authored reaction reductions, temporary HP from effects.
+  - **Left without a dialog** (no roller, the system rolls for a condition or the world): condition damage at turn start, Chilled movement damage, recharge, ammunition die, hazard damage after a failed save, falling damage. Flag for King.
+  - Q-R2 on cards: a "save for all" button (`data-n5e-card-saveall`) when two or more targets still have to save; it uses the group dialog.
+  - C1–C3: cast and condition links; `tools/check-keys.mjs` in `npm run check`.
+- 2026-11-14 Claude: tests attempt 1 passed: `npm test` 448 pass, 2 skipped; core 98/98; lint and check clean. Files: `tests/core/roll-math.test.mjs`, `tests/roll-dialog.test.mjs`; `tests/dice.test.mjs` lost its click-key assertions.
+- 2026-11-14 Claude: **published `0.31.0-alpha.1`.** Not checked in a running Foundry world.
 - 2026-11-14 Claude: King answered Q-R1–Q-R6; A10 added from Q-R5.
 - 2026-11-14 Claude: spec written. Current roll paths read in `dice/roll.mjs`, `dice/d20.mjs`, `dice/advantaged.mjs`, `workflow/cast.mjs`, `applications/enrichers.mjs`. Nothing built.

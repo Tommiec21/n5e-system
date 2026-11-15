@@ -7,6 +7,27 @@ import { turnStartPipeline, turnEndPipeline, combatEndPipeline } from "../workfl
 import { recoverForCombat } from "../workflow/recovery.mjs";
 
 export default class N5eCombat extends foundry.documents.Combat {
+  /**
+   * @override
+   * Initiative from the tracker, the sheet or "Roll All" goes through the roll dialog (ROLL1 A9):
+   * one dialog for one creature, one for several (King Q-R2). A caller that passes a formula skips it.
+   */
+  async rollInitiative(ids, options = {}) {
+    if ( options.formula ) return super.rollInitiative(ids, options);
+    const list = (typeof ids === "string" ? [ids] : [...ids]).map(id => this.combatants.get(id)).filter(Boolean);
+    const mine = list.filter(c => c.actor && c.isOwner);
+    const { initiativeFormulas } = await import("../dice/roll.mjs");
+    const formulas = await initiativeFormulas(mine, options.n5eSkill ?? null);
+    if ( formulas === null ) return this;
+    const rest = { ...options };
+    delete rest.n5eSkill;
+    for ( const [i, c] of list.entries() ) {
+      const last = i === list.length - 1;
+      await super.rollInitiative([c.id], { ...rest, ...(formulas[c.id] ? { formula: formulas[c.id] } : {}), updateTurn: last ? rest.updateTurn ?? true : false });
+    }
+    return this;
+  }
+
   /** @override */
   async startCombat() {
     await recoverForCombat(this, ["encounter"]);

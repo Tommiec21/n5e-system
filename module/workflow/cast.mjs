@@ -1,4 +1,3 @@
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /**
  * Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card.
  *
@@ -105,7 +104,7 @@ function previewHTML(plan) {
  * @param {Actor} actor
  * @param {Item} item       a jutsu owned by the actor
  * @param {object} [o]
- * @param {boolean} [o.skipDialog]  cast at base rank with defaults (Alt+click)
+ * @param {boolean} [o.skipDialog]  cast at base rank with defaults (API and tests only; the sheet always opens the dialog)
  */
 export async function castJutsu(actor, item, { skipDialog = false } = {}) {
   let sel = { now: nowTurn() };
@@ -186,7 +185,7 @@ export async function postCastCard(actor, item, plan) {
   if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));
   for ( const r of plan.extraRolls ?? [] ) {
-    const roll = await createN5eRoll(r.formula).evaluate();
+    const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, r.formula, { title: `${actor.name}: ${r.label}`, kind: "dice", type: "dice", cancellable: false })).roll;
     extras.push(`<p class="note"><b>${esc(r.label)}</b>: rolled ${roll.total}. ${esc(r.note)}</p>`);
   }
   for ( const n of plan.notes ?? [] ) extras.push(`<p class="note">${esc(n)}</p>`);
@@ -204,7 +203,7 @@ export async function postCastCard(actor, item, plan) {
     const v = total - (rolledPools[k] ?? 0);
     const die = actor.system.resources?.[k]?.die;
     if ( !die || !v ) continue;
-    const roll = await createN5eRoll(`${v}${die}`).evaluate();
+    const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, `${v}${die}`, { title: `${actor.name}: ${actor.system.resources[k].label || k}`, kind: "dice", type: "dice", key: k, cancellable: false })).roll;
     extras.push(`<p class="note"><b>${esc(actor.system.resources[k].label || k)}</b>: rolled ${roll.total} (${v}${die})</p>`);
   }
   if ( plan.pyroclasm ) extras.push(`<p class="note">+1 Pyroclasm (${Math.min(3, actor.system.resources?.pyroclasm?.value ?? 0)} / 3)</p>`);

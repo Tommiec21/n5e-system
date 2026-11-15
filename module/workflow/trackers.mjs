@@ -394,7 +394,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor, item);
     }
     if ( eff.tempHp ) {
-      const roll = await createN5eRoll(sub(eff.tempHp)).evaluate();
+      const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, sub(eff.tempHp), { title: `${actor.name}: temporary HP`, kind: "healing", type: "healing", key: "tempHp", cancellable: false })).roll;
       if ( t.isOwner ) await t.update({ "system.hp.temp": Math.max(t.system.hp.temp ?? 0, roll.total) });
       notes.push(`${t.name}: ${roll.total} temporary HP`);
     }

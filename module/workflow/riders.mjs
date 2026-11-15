@@ -49,7 +49,7 @@ export async function castRiderEntries(actor, card, chosen = []) {
     let poolRoll = null;
     const die = c.cost?.pool ? actor.system.resources?.[c.cost.pool]?.die : null;
     if ( c.cost?.roll && die && c.amount ) {
-      const roll = await (await import("../dice/n5e-roll.mjs")).createN5eRoll(`${c.amount}${die}`).evaluate();
+      const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, `${c.amount}${die}`, { title: `${actor.name}: ${c.label ?? c.cost.pool}`, kind: "dice", type: "dice", key: c.cost.pool, cancellable: false })).roll;
       poolRoll = roll.total;
       rolledPools[c.cost.pool] = (rolledPools[c.cost.pool] ?? 0) + c.amount;
       notes.push(`${c.label}: rolled ${poolRoll} (${c.amount}${die})`);

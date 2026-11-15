@@ -26,9 +26,11 @@ export function breakdownTooltip(bd, { signedTotal = true } = {}) {
   if ( !bd ) return "";
   const json = typeof bd.toJSON === "function" ? bd.toJSON() : bd;
   const rows = json.parts.map(p => {
-    const v = p.base ? String(p.value) : signed(p.value);
-    const cls = p.value < 0 ? " class=\"neg\"" : "";
-    return `<li${cls}><span>${esc(p.label)}</span><b>${v}</b></li>`;
+    const v = p.dice ? p.dice : p.base ? String(p.value) : signed(p.value);
+    // ROLL1: parts unticked in the roll dialog are struck; modifiers the roller added are marked.
+    const cls = [p.value < 0 ? "neg" : "", p.removed ? "removed" : "", p.added ? "added" : ""].filter(Boolean).join(" ");
+    const label = p.removed ? `<s>${esc(p.label)}</s>` : esc(p.label);
+    return `<li${cls ? ` class="${cls}"` : ""}><span>${label}${p.added ? " <em>(added)</em>" : ""}</span><b>${p.removed ? `<s>${v}</s>` : v}</b></li>`;
   }).join("");
   const total = signedTotal ? signed(json.total) : String(json.total);
   return `<div class="n5e-breakdown"><h4>${esc(json.label)}</h4><ul>${rows}</ul>`

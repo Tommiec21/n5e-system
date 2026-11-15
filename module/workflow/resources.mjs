@@ -1,4 +1,3 @@
-import { createN5eRoll } from "../dice/n5e-roll.mjs";
 /** Shared validated resource payment for activities and feature use. */
 import { withActorLock } from "./commands.mjs";
 import { resourceChange } from "../rules/resources.mjs";
@@ -54,7 +53,8 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
   // FIN2b: a chakra-like resource (White Chakra, Calories, Sage Chakra...) ends Suppress Chakra.
   if ( pool.countsAsChakraSpend && amount > 0 ) await (await import("./jutsu-defense.mjs")).endSuppression(actor);
   if ( !cost.roll || !pool.die || !amount ) return { roll: null, amount };
-  const roll = await createN5eRoll(`${amount}${pool.die}`).evaluate();
+  // The dice dialog (ROLL1); the cost is paid already, so closing it rolls as shown.
+  const roll = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, `${amount}${pool.die}`, { title: `${actor.name}: ${pool.label || cost.pool}`, kind: "dice", type: "dice", key: cost.pool, cancellable: false })).roll;
   await roll.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }),
     flavor: `<div class="n5e-roll-card"><header><b>${esc(pool.label || cost.pool)}</b><span class="bonus">${roll.total}</span></header><div class="note">Spent ${amount}</div></div>` });
   return { roll: roll.total, amount };

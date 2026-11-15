@@ -4,15 +4,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { makeActor, load, baseAbilities, taiSpec } from "./helpers/actor.mjs";
-import { clickMode, critThreshold, rollSpec, readD20, willOfFireAward, MODES } from "../module/dice/d20.mjs";
+import { critThreshold, rollSpec, readD20, willOfFireAward, MODES } from "../module/dice/d20.mjs";
 
 const actor = () => makeActor({ system: structuredClone(baseAbilities), items: [taiSpec(5), load("clans", "Uchiha")] });
 
-test("click modifiers", () => {
-  assert.deepEqual(clickMode({}), { mode: "normal", dialog: false });
-  assert.deepEqual(clickMode({ shiftKey: true }), { mode: "normal", dialog: true });
-  assert.equal(clickMode({ altKey: true }).mode, "advantage");
-  assert.equal(clickMode({ ctrlKey: true }).mode, "disadvantage");
+test("roll modes", () => {
   assert.equal(MODES.advantage, "2d20kh");
 });
 

@@ -97,3 +97,29 @@
 .n5e-item-integrity .row { border-top: 1px solid var(--color-border-light-primary, #888); padding-block: .3rem; }
 .n5e-item-integrity .finding { align-items: center; gap: .5rem; margin-block: .15rem; }
 .n5e-item-integrity .finding button, .n5e-item-integrity header button { flex: 0 0 auto; width: auto; }
+
+/* ROLL1: the roll dialog. */
+.n5e-roll-dialog { display: flex; flex-direction: column; gap: 6px; min-width: 320px; }
+.n5e-roll-dialog .n5e-rd-stake, .n5e-roll-dialog .n5e-rd-group { font-weight: 600; }
+.n5e-roll-dialog .n5e-rd-parts { display: flex; flex-direction: column; gap: 2px; }
+.n5e-roll-dialog .n5e-rd-part { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 6px; }
+.n5e-roll-dialog .n5e-rd-part.situational .label { font-style: italic; }
+.n5e-roll-dialog .n5e-rd-part input:not(:checked) ~ .label, .n5e-roll-dialog .n5e-rd-part input:not(:checked) ~ .value { text-decoration: line-through; opacity: .6; }
+.n5e-roll-dialog .n5e-rd-part.situational input:not(:checked) ~ .label, .n5e-roll-dialog .n5e-rd-part.situational input:not(:checked) ~ .value { text-decoration: none; }
+.n5e-roll-dialog .n5e-rd-add { display: flex; gap: 4px; }
+.n5e-roll-dialog .n5e-rd-add input { flex: 1; }
+.n5e-roll-dialog .n5e-rd-add input.invalid { outline: 2px solid #b3261e; }
+.n5e-roll-dialog .n5e-rd-more { align-self: flex-start; width: auto; }
+.n5e-roll-dialog .n5e-rd-total { font-size: 1.1em; }
+.n5e-roll-dialog .n5e-rd-modes { display: flex; gap: 4px; flex-wrap: wrap; }
+.n5e-roll-dialog .n5e-rd-mode { flex: 1; }
+.n5e-roll-dialog .n5e-rd-mode input { position: absolute; opacity: 0; pointer-events: none; }
+.n5e-roll-dialog .n5e-rd-mode span { display: block; text-align: center; padding: 4px 6px; border: 1px solid currentColor; border-radius: 4px; cursor: pointer; }
+.n5e-roll-dialog .n5e-rd-mode input:checked + span { font-weight: 700; background: rgba(183, 92, 64, .25); border-color: #b75c40; }
+.n5e-roll-dialog .n5e-rd-mode input:focus-visible + span { outline: 2px solid #b75c40; }
+.n5e-roll-dialog .n5e-rd-why { font-size: .9em; opacity: .85; }
+.n5e-roll-dialog .n5e-rd-why.fail { color: #b3261e; opacity: 1; }
+.n5e-breakdown li.removed { opacity: .6; }
+.n5e-breakdown li.added em { font-style: italic; opacity: .8; }
+.n5e-card-saveall { display: flex; flex-wrap: wrap; gap: .25rem; margin-bottom: .3rem; }
+.n5e-card-saveall button { flex: 0 0 auto; width: auto; }
