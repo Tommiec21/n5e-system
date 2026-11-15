@@ -1,6 +1,6 @@
 # ROLL1 function spec: a roll dialog for every roll
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-R1–Q-R6 below.**
+Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead to build. Nothing is built.**
 
 King (2026-11-14): every roll opens a dialog where players see the current roll math and can edit it by adding modifiers, as dnd5e and PF2e do (his original direction). Shift-click must never be the way in: "the options need to be in the user's face and not hidden behind a combination key." ROLL1 comes before NPC1c.
 
@@ -53,6 +53,22 @@ King (2026-11-14): every roll opens a dialog where players see the current roll 
 - **Q-R5: what other users see.** The chat card shows what was unticked or added to everyone who can see the roll (proposed), or to the GM only?
 - **Q-R6: releases.** ROLL1a, ROLL1b and ROLL1c as one release, or a then b then c?
 
+## King's answers (2026-11-14)
+
+- **Q-R1:** agreed. A per-user setting "Roll without the dialog", off by default, visible in the settings menu. No key combination.
+- **Q-R2:** one dialog for the group.
+- **Q-R3:** any part can be unticked, including ability and proficiency.
+- **Q-R4:** yes. Will of Fire rerolls repeat the original math with no dialog; concentration checks and death saves open the dialog like any other roll.
+- **Q-R5:** variable. Standard is everyone who can see the roll; an optional world setting limits the edits shown to the GM (added as A10).
+- **Q-R6:** one release.
+
+**Added from Q-R5:**
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| A10 | Who sees edits | `config/rules.mjs`, `dice/roll.mjs` | World setting "Roll edits shown to": Everyone (default) or GM only. With GM only, players see the roll's total and result; the struck and added parts are in a GM-only section of the card. |
+
 ## Progress log
 
+- 2026-11-14 Claude: King answered Q-R1–Q-R6; A10 added from Q-R5.
 - 2026-11-14 Claude: spec written. Current roll paths read in `dice/roll.mjs`, `dice/d20.mjs`, `dice/advantaged.mjs`, `workflow/cast.mjs`, `applications/enrichers.mjs`. Nothing built.

@@ -1,6 +1,6 @@
 # NPC1c function spec: closing the NPC sheet gaps
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Q-N18–Q-N21 answered; Q-N22–Q-N24 open. Comes after ROLL1 (King).**
+Status: **All questions answered (King 2026-11-14); waiting for King's go-ahead. Nothing is built. Comes after ROLL1 (King).**
 
 King (2026-11-14): anything missing from the NPC sheets that is relevant goes into a batch for future inclusion. Source: `docs/NPC_SHEET_REVIEW.md` (dnd5e 6.1.0 and PF2e 8.7.0 against N5e 0.30.0-alpha.2), items 1–11. Items already owned by a planned batch stay there (boss resources NPC4, strikes NPC3, loot LOOT1, trait content NPC6).
 
@@ -38,8 +38,8 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
 | C4 | Learnable list | `data/actor/npc.mjs`, `templates/actor/npc/build.hbs` | A "What the players can learn" list on the Build tab. The GM drags in features, traits, jutsu and items from the sheet, and statistics (AC, a save, a resistance, HP, the stat block lines) from a picker. Each entry can be reordered, removed, and given a short note. |
-| C5 | Reveal | `workflow/jutsu-defense.mjs`, `workflow/npc-knowledge.mjs` (new) | On a successful Read the Enemy against the NPC, the chosen entries are revealed (Q-N22, Q-N23): the player gets a whispered card with each one, and the NPC keeps a record of what each player has learned. |
-| C6 | What a player knows | `templates/actor/npc/limited.hbs` | The limited view adds the entries that player has learned, so they can look them up later. |
+| C5 | Reveal | `workflow/jutsu-defense.mjs`, `workflow/npc-knowledge.mjs` (new) | Read the Enemy works the same everywhere (King Q-N23): the reaction on seeing the creature cast a jutsu, the cast discipline's skill against its save DC (FIN2b). On a success, besides the jutsu's name, rank and targets: the GM gets a dialog listing the learnable entries not yet known and ticks which are available; the player then picks one from that pool (King Q-N22). The pick is shown to the party. |
+| C6 | What the party knows | `data/actor/npc.mjs`, `templates/actor/npc/limited.hbs` | Learned entries are known to the whole party (King Q-N24). The NPC records them; the limited view shows them, so the party can look them up later. The GM can add or remove an entry from what the party knows by hand. |
 
 ## Not in this batch
 
@@ -55,13 +55,11 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 - **Q-N19: releases.** Three small releases (a, b, c), or one?
 - **Q-N20: situational skill bonuses.** Is a tick in the roll dialog right, or should some apply by themselves from the scene (a later batch, since nothing yet knows terrain)?
 
-## Questions for King (C4–C6)
-
-- **Q-N22: who picks.** On a success, does the GM pick which entries to reveal (a dialog listing the learnable entries), or does the player pick from them? And how many: one per success, or more on a higher result?
-- **Q-N23: which Read the Enemy.** The book's Read the Enemy is a reaction on seeing a jutsu cast, against the caster's save DC (FIN2b). Is this the same action, used against the creature as well as its jutsu, or a separate use (an action spent studying a creature)? What DC: the creature's highest save DC, or a set number?
-- **Q-N24: party knowledge.** Is what one player learns known to the whole party, or only to that player?
-
 ## King's answers (2026-11-14)
+
+- **Q-N22:** the GM picks what is available; the player picks from that pool. Claude's reading: one entry per successful Read the Enemy (the number per success was not stated).
+- **Q-N23:** all Read the Enemy functions the same.
+- **Q-N24:** the whole party learns it.
 
 - **Q-N18:** rest buttons on all NPCs.
 - **Q-N19:** one release.
