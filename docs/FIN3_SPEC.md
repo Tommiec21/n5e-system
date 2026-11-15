@@ -1,6 +1,6 @@
 # FIN3 function spec: card and resolution limits
 
-Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F10, Q-F12, Q-F13; Q-F11 explained, awaiting answer. Split into FIN3a (card) and FIN3b (Clash). Awaiting approval.**
+Status: **spec written 2026-11-14 (King: "Next batch"). King answered Q-F8–Q-F13. Split into FIN3a (card) and FIN3b (Clash). Awaiting approval.**
 
 Plan: `docs/DEV_PLAN.md` row 3. It closes the limits that CARD1, GEN1 and CLASH1 recorded when they shipped. NPC4–NPC6 wait for STD4 (King Q-N2), so FIN3 is the next batch in order.
 
@@ -23,7 +23,7 @@ After each function, add a line to the progress log and push.
 
 | # | Function | File | Behaviour |
 | --- | --- | --- | --- |
-| F1 | Saves per activity | `rules/action-card.mjs` (`addCardResult`, `resultsFromLinked`, `cardTargetRows`, `sectionStates`), `workflow/action-card.mjs`, `workflow/activity-buttons.mjs` | Save results are kept per target **and per save activity** (`results.saves[uuid][saveKey]`, `saveKey` = the activity's id or index). A save roll carries its `saveKey`. Each row shows one line per save ("Con: Failure · Dex: Success"); "Roll X save" and "Apply <condition>" exist per save, each applying the conditions of its own activity. Damage halving follows the save on the activity that carries the damage (Q-F11). The saves section is done once every target has every save. Cards posted before FIN3 read their single save as the first activity's. |
+| F1 | Saves per activity | `rules/action-card.mjs` (`addCardResult`, `resultsFromLinked`, `cardTargetRows`, `sectionStates`), `workflow/action-card.mjs`, `workflow/activity-buttons.mjs` | Save results are kept per target **and per save activity** (`results.saves[uuid][saveKey]`, `saveKey` = the activity's id or index). A save roll carries its `saveKey`. Each row shows one line per save ("Con: Failure · Dex: Success"); "Roll X save" and "Apply <condition>" exist per save, each applying the conditions of its own activity. Q-F11: each save halves only the damage of its own effect (its own activity), and only for the creature that rolled it; a damage activity with no save of its own follows the jutsu's one save. The saves section is done once every target has every save. Cards posted before FIN3 read their single save as the first activity's. |
 | F2 | Offered effects recorded | `workflow/effect-application.mjs` (offer card), `workflow/action-card.mjs`, owner intent `cardResult` | The offer card carries the action card's message id and the activity key. When the owner applies the effect from the offer card, the effect summary is linked to the action card and recorded through the existing `cardResult` intent (the GM writes it), so the Effects section shows it and the card's Undo removes it. Until accepted, the row shows "Offered to <owner>". |
 | F3 | Reaction windows on the card | `workflow/reactions.mjs` (`openReactionWindow` gains `cardMessageId`), `workflow/reaction-dispatch.mjs`, `rules/action-card.mjs` | A reaction window opened for an attack, save or damage on an action card stores that card's id. The card's Reactions section lists each window per creature: pending (with the time left), taken (and what), declined or timed out, and each refreshes when the window changes. The window keeps working as today; the card only shows it. |
 | F4 | Immune creatures on damage rows | `rules/action-card.mjs` (`cardTargetRows`), `workflow/apply-damage.mjs`, `workflow/effect-application.mjs`, `workflow/activity-buttons.mjs` (`stimuliImmune`) | Q-F12: Apply stays. A creature immune to the jutsu's stimuli (cast as Genjutsu) shows "Immune (<reason>)" on its row; applying damage to it applies 0 (the trace names the immunity), and a condition or effect from that jutsu applied to it ends at once (it is not left on the creature). |
@@ -56,7 +56,7 @@ After each function, add a line to the progress log and push.
 - **Q-F8:** auto-wins exist (some Ninjutsu specialist class features). For now an auto-win button, GM only, to decide the winner.
 - **Q-F9:** Arts are much later and involve class mods: post-launch work, not a priority.
 - **Q-F10:** a dispelled effect is ended immediately at the time of dispelling.
-- **Q-F11:** King asked for an explanation and an example (given 2026-11-14); open.
+- **Q-F11:** an area save for half: each creature's own save decides its own share, and a success halves the damage applied to that creature. N5e has one save per effect; a jutsu with several different saves is a set of separate effects (Cherry Blossom Impact's strike and its Finisher), each save halving only its own effect's damage. A single damage pool decided by two different saves doesn't happen unless a jutsu explicitly says so (astronomically rare).
 - **Q-F12:** keep Apply; the immunity reduces the damage to 0, or immediately ends the effect on them.
 - **Q-F13:** smaller batches.
 
