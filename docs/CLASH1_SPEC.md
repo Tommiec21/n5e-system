@@ -60,3 +60,4 @@ Published `v0.25.0-alpha.1`. F1–F5 were built as specified.
   - Dispelling the losing jutsu and the area-save rules are notes for the table.
   - Auto-win features are supported by the rules function but have no button yet.
   - Arts (S-Rank + 1) aren't modelled.
+- 2026-11-15 King: best of 3 with no side reaching two wins is a Draw (approved as built).

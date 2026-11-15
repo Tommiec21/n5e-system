@@ -15,6 +15,7 @@ Every leftover from a shipped batch has one home below: a FIN batch (before stan
 | 3 | **FIN3** card and resolution limits | Two different saves on one jutsu; effects on creatures the caster doesn't own recorded on the card; GM reaction prompts linked to the card (CARD1). Stimulus-immune creatures dropped from damage rows (GEN1). Clash: upcast rank of a concentrated jutsu, auto-win buttons, Arts (S-Rank + 1), dispelling the loser's jutsu (CLASH1) | spec `docs/FIN3_SPEC.md` written 2026-11-14; **complete**: FIN3a 0.33.0-alpha.2, FIN3b 0.33.0-alpha.3 (Arts post-launch) |
 | 4 | **FIN4** rules corrections | A choke sets Unconscious, not Dying (ENV1). "Can see you" from token vision instead of "not Blinded"; reach measured edge to edge (POS1). Out-of-combat breath; Indirect Exposure checks (ENV1). (Pierce item dropped: King 2026-11-15, Pierce is a universal counter to DR.) | spec `docs/FIN4_SPEC.md`; King answered Q-F14–Q-F18; **complete**: FIN4a 0.33.0-alpha.4, FIN4b 0.33.0-alpha.5, FIN4c 0.33.0-alpha.6 |
 | 4b | **FIN5** King's answers to Q-F1–Q-F7 (ryo transfer, size rule for more actions, full weapon damage); ROLL2 closed with no change (King 2026-11-15) | **published 0.33.0-alpha.7** (`docs/FIN5_SPEC.md`) |
+| 4c | **PRESTD1** one combined batch before standardization (King 2026-11-15): VAR1a optional-rule settings, SCROLL1 jutsu scrolls, LOOT1 loot piles, merchants and party stash (buying, King Q-F2), PF2E1 wands, flanking, hazards, vehicles and crafting, MISSION1 missions, SOCIAL1 social encounters | spec to write |
 | 5 | STD0–STD7 | As `docs/STD_SPEC.md` | planned |
 | 6 | Tier 3 | As the plan table | later |
 
@@ -34,12 +35,15 @@ Every leftover from a shipped batch has one home below: a FIN batch (before stan
 
 - Arts (S-Rank + 1) in Clash, with class mods (King Q-F9, 2026-11-14).
 
+## Decided
+
+- Clash best of 3 with no side reaching two wins is a Draw (King 2026-11-15: approved).
+
 ## Blocked on King
 
 - NPC in-depth pass: the Bingo Book.
 - Review of RES1, POS1, ENV1a and SKILL1.
 - Merchants and buying (King Q-F2): LOOT1.
-- Best of 3 with no side reaching two wins: a Draw?
 - The final feat list (STD6c); the clan stance recategorization.
 
 ---
