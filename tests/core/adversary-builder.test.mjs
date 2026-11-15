@@ -58,9 +58,10 @@ test("step notes: concept, class level, party level, traits, jutsu limit and ran
   assert.deepEqual(stepNotes({ ...blankDraft(), concept: "x", partyLevel: null }).level, []);
 });
 
-test("the Sasuke example: a level 13 A-Rank Elite casts B, A and S and knows 6 jutsu", () => {
-  const counts = suggestedCounts({ level: 13, class: "elite" });
+test("the Sasuke example: a level 13 Iconic A-Rank Elite casts B, A and S, knows 6 jutsu, and has 7 traits", () => {
+  const counts = suggestedCounts({ level: 13, class: "elite", iconic: true });
   assert.deepEqual([counts.jutsu, suggestedRanksFor("A")], [6, ["B", "A", "S"]]);
-  // The book's tables give 2 (Elite) + 3 (levels 12-17) = 5 traits; the worked example counts +4 for level 13 and +2 for Iconic.
-  assert.equal(counts.traits, 5);
+  // 2 (Elite) + 3 (levels 12-17, the table) + 2 (Iconic, the example). The example's "+4 at level 13" contradicts the table.
+  assert.equal(counts.traits, 7);
+  assert.equal(suggestedCounts({ level: 13, class: "elite", epic: true }).traits, 5, "the book gives Epic no traits");
 });

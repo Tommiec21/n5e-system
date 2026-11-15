@@ -132,7 +132,8 @@ export function suggestedCounts(p = {}) {
   const level = clampLevel(p.level);
   const klass = classModifiers[p.class] ? p.class : "standard";
   return {
-    traits: suggested.traitsByClass[klass] + band(suggested.traitsByLevel, level),
+    traits: suggested.traitsByClass[klass] + band(suggested.traitsByLevel, level)
+      + (p.iconic ? suggested.traitsByClassification.iconic : 0) + (p.epic ? suggested.traitsByClassification.epic : 0),
     jutsu: band(suggested.jutsuByLevel, level),
     freeformSlots: band(suggested.freeformSlots[klass], level) ?? 0,
     multiattack: band(suggested.multiattack[klass], level),

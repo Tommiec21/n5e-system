@@ -1,3 +1,7 @@
+## 0.32.0-alpha.2 — Iconic traits (King 2026-11-14: "Follow the book")
+
+- An Iconic adversary's suggested trait count is 2 higher, as in the book's Sasuke example. The book gives Epic no extra traits. The level bands stay as the book's table states (+3 at levels 12–17), where the example says +4 at level 13.
+
 ## 0.32.0-alpha.1 — The Adversary Builder (NPC2; King 2026-11-14)
 
 - **A step-by-step window** following the Bingo Book's "Build Your Adversary", with a step list (open any step at any time), Next and Back, and a live stat block beside every step. Nothing is saved until Create or Update; closing with changes asks first.

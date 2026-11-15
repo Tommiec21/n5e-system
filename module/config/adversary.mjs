@@ -73,6 +73,8 @@ export const lazySoloPlayers = 4;
 export const suggested = {
   traitsByClass: { minion: 0, standard: 1, elite: 2, solo: 3 },
   traitsByLevel: [[1, 1], [6, 2], [12, 3], [18, 4]],
+  /** Iconic +2 traits (the book's Sasuke example; King: "Follow the book"). The book gives Epic none. */
+  traitsByClassification: { iconic: 2, epic: 0 },
   jutsuByLevel: [[1, 4], [7, 6], [14, 8], [21, 10]],
   freeformSlots: {
     minion: [[1, 1], [5, 2], [6, 3]], standard: [[1, 2], [5, 3], [10, 4], [15, 5]],

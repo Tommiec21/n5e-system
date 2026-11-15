@@ -77,5 +77,6 @@ Source: the Bingo Book, "Build Your Adversary", steps 1–9 and "Refining As You
   - **For King:** the book's tables suggest 2 (Elite) + 3 (levels 12–17) = 5 traits for Sasuke; its worked example counts +4 at level 13 and +2 for Iconic (8). The builder follows the tables and adds nothing for Iconic. Say if Iconic and Epic should add traits.
 - 2026-11-14 Claude: tests. Attempt 1 failed (1): a test expected an over-budget flag for modifiers that were under budget (the test's numbers were wrong). Attempt 2 passed: `npm test` 466 pass, 2 skipped; core 103/103; lint and check clean. Files: `tests/core/adversary-builder.test.mjs`, `tests/adversary-builder.test.mjs`.
 - 2026-11-14 Claude: **published `0.32.0-alpha.1`.** Not checked in a running Foundry world.
+- 2026-11-14 Claude: King on the trait count: "Follow the book." Iconic adds 2 suggested traits (the Sasuke example, the only place the book states it); Epic adds none (the book states none); the level bands follow the table, which the example contradicts (+4 at level 13 against the table's +3). Published `0.32.0-alpha.2`.
 - 2026-11-14 Claude: King answered Q-N25–Q-N32.
 - 2026-11-14 Claude: spec written from the Bingo Book's build steps and "Non-Freeform Jutsu". Nothing built.
