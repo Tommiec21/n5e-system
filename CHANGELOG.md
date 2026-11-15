@@ -1,3 +1,14 @@
+## 0.53.0-alpha.1 — ENG1d: auras and zones; ENG1e: the two classes redone
+
+- **Auras move with tokens:** an aura effect gives its effect to the right creatures within its radius, and takes it back when they leave or the aura ends. The GM's client keeps them in step as tokens move and turns change.
+  - **Bastion:** you and allies within 20 ft are immune to Bruised, Dazed and Chilled.
+  - **Storm Zone (Storm Terror):** ranged attacks by the chosen creature's allies within 60 ft are at disadvantage.
+  - **Black Lotus Bloom and Pressure Stagnation** mark the hostile creatures inside their zones.
+- **Battle Medic** (and Strength of 100 and 1000) heals the Channeled Healing bonus at the start of your turn when you're at half HP or less.
+- **Review tables updated:** Medical-Nin is now 5 automated, 27 partly automated, 18 notes only; Ninjutsu Specialist is 21, 28 and 33.
+- **For authors:** effect `aura` {radius, who, includeSelf, effect}; roll facts `attack:ranged` and `self:bloodied`.
+- Not checked in a running Foundry world.
+
 ## 0.52.0-alpha.1 — ENG1c: reactions that protect others
 
 - **Vitality Guard:** when an ally within 30 ft is about to take damage in combat, a Medical-Nin in Ascension is offered the reaction. It halves that damage for 1 Healing Surge and uses the Medical-Nin's reaction.

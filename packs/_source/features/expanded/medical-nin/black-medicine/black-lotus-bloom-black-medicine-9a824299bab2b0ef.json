@@ -33,7 +33,40 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZgz4P8YJ94xIf",
+        "type": "effect",
+        "label": "Black Lotus Bloom",
+        "activation": "action",
+        "cost": {
+          "pool": "blight",
+          "amount": 3
+        },
+        "effect": {
+          "name": "Black Lotus Bloom",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "aura": {
+            "radius": 30,
+            "who": "hostile",
+            "includeSelf": false,
+            "effect": {
+              "name": "In the Black Lotus Bloom",
+              "rules": [
+                {
+                  "key": "note",
+                  "text": "Starting its turn here or entering for the first time: Con save vs the Medical-Nin's Ninjutsu DC (disadvantage if Blighted). On a failure, each turn here: 1 rank of Envenomed or Corroded, resistances and immunities suppressed, no HP regained. Remove this effect from a creature the Medical-Nin didn't choose."
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
@@ -44,7 +77,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Bloom (Action, 3 Blight): 1-minute, 30-ft aura. Creatures of your choice starting their turn in it or entering it make a Con save vs your Ninjutsu DC (disadvantage if Blighted); on a failure, each turn in it: 1 rank of Envenomed or Corroded, resistances and immunities suppressed, no HP regained."
+          "text": "The 30-ft aura marks hostile creatures inside it (automatic as tokens move); the save and its results are applied at the table."
         }
       ]
     }

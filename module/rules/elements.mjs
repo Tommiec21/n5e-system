@@ -237,6 +237,11 @@ export function rollOptions(actor, spec = {}, target = null) {
   const options = new Set(["self", `kind:${spec.kind ?? "check"}`, `type:${spec.type ?? "custom"}`]);
   if ( spec.key ) options.add(`key:${spec.key}`);
   if ( spec.scope ) options.add(`scope:${spec.scope}`);
+  // ENG1d: at half HP or less ("self:bloodied"; Battle Medic heals then).
+  const hp = actor?.system?.hp;
+  if ( hp?.max > 0 && hp.value <= hp.max / 2 ) options.add("self:bloodied");
+  // ENG1d: a ranged attack (weapon or jutsu) answers to "attack:ranged".
+  if ( spec.kind === "attack" && spec.ranged ) options.add("attack:ranged");
   // STD6b: facts the roll carries (the weapon's groups and properties, weapon:stance, attack:opportunity).
   for ( const fact of list(spec.facts) ) if ( typeof fact === "string" && fact ) options.add(fact);
   const addActor = (a, prefix) => {

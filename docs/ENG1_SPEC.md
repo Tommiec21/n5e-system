@@ -1,6 +1,6 @@
 # ENG1 function spec: the missing capabilities
 
-Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1; ENG1b 0.51.0-alpha.1; ENG1c 0.52.0-alpha.1.**
+Status: **King 2026-11-15: "Building the missing capabilities is the next correct step. Do that immediately." ENG1a published 0.50.0-alpha.1; ENG1b 0.51.0-alpha.1; ENG1c 0.52.0-alpha.1; ENG1d and ENG1e 0.53.0-alpha.1. ENG1 is complete.**
 
 Why: the STD6d class review left most class features as notes, but not because they are judgment calls. A handful of general capabilities was missing, and the same ones recur across classes, clans and jutsu. Each is built once, generically, as data the effects use (no class or feature named in code). Then the reviewed classes are redone and the class pass continues with the fuller toolkit (`docs/STD6d_SPEC.md`).
 
@@ -60,8 +60,39 @@ Each batch: spec section here, build, tests, release, log. King said to build th
   - Grit: it gives temporary HP that outlast the hit.
   - Interpose: it redirects the attack.
 
+## ENG1d (0.53.0-alpha.1)
+
+- **Aura effects:** an effect with `flags.n5e.aura {radius, who: hostile | friendly | all, includeSelf, effect: {name, changes, rules, state}}` gives its child effect to the creatures within range.
+- **How it stays in step:**
+  - `rules/auras.mjs auraPlan` decides who should have the child.
+  - `workflow/auras.mjs` (active GM) adds and removes children (`flags.n5e.auraFrom`) when tokens move, appear or disappear, aura effects start or end, and the turn changes.
+  - Effect activities and cast-option effects carry `aura`; the child's elements keep the caster's numbers.
+- **New facts:** `attack:ranged` (weapon and jutsu attacks) and `self:bloodied` (at half HP or less).
+- **Data:**
+  - **Bastion:** you and allies within 20 ft are immune to Bruised, Dazed and Chilled.
+  - **Storm Terror's Storm Zone:** within 60 ft of the chosen creature, its allies' ranged attacks are at disadvantage.
+  - **Black Lotus Bloom and Pressure Stagnation:** their zones mark the hostile creatures inside, and the zone's rules are on that mark.
+  - **Battle Medic** (and Strength of 100 and 1000): regain the Channeled Healing bonus at the start of your turn at half HP or less.
+
+## ENG1e (0.53.0-alpha.1): the reviewed classes, redone
+
+- **What changed across ENG1a–d:**
+  - **Medical-Nin:** Life Pulse, Hemorrhage Vitality, Mending Spark, Septic Detonation, Curse of the Reaper and Vital Thread marks, Vitality Guard, Black Lotus Bloom, Battle Medic healing.
+  - **Ninjutsu Specialist:** Overheat and Burnout self-damage, Widened, Subtle, Dragwind, Bastion, Storm Zone, Pressure Stagnation.
+  - Features whose mechanics live on another feature's data (pool maximums, one Molding per cast) are marked partly automated.
+- **Medical-Nin:** 5 automated, 27 partly automated, 18 notes only, 1 no mechanics (was 5, 22, 23, 1).
+- **Ninjutsu Specialist:** 21 automated, 28 partly automated, 33 notes only, 2 no mechanics (was 19, 24, 39, 2).
+- **What the remaining notes need** (they recur in the other classes, so they are the next candidates):
+  - Events that carry their amount or source: damage dealt (Soul Draining), a creature failing your save (Nerve Shredder), a state swap (Union).
+  - Summons and Bonded creatures (most of the Summoner).
+  - Interception by structures (Breach).
+  - Level-up choices: Perfected Surge evolutions, the traditions.
+  - Downtime and kit rules.
+  - Positioning and movement: Never on the Front Lines, push and pull, teleports.
+
 ## Progress log
 
 - 2026-11-15 Claude: plan written from the STD6d review; ENG1a built and published 0.50.0-alpha.1. Tests: `tests/core/eng1.test.mjs`.
 - 2026-11-15 Claude: ENG1b built and published 0.51.0-alpha.1.
 - 2026-11-15 Claude: ENG1c built and published 0.52.0-alpha.1.
+- 2026-11-15 Claude: ENG1d and ENG1e built and published 0.53.0-alpha.1. ENG1 complete.

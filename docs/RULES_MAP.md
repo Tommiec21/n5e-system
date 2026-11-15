@@ -366,5 +366,6 @@
 | Effects that heal, damage or force a save each turn | `rules/triggers.mjs triggerOutcomes`, `workflow/triggers.mjs fireTriggers` |
 | Formulas reading the target's condition ranks | `rules/target-formula.mjs`; `workflow/activity-buttons.mjs` damage |
 | Marks (one or N per caster) | effect activity `limit`; `workflow/trackers.mjs applyActivityEffect` |
+| Auras and zones (Bastion, Storm Zone, Black Lotus Bloom, Pressure Stagnation) | effect `aura`; `rules/auras.mjs auraPlan`, `workflow/auras.mjs` |
 | Reactions that protect others (Vitality Guard) | recipe `ally`; `rules/authored-reactions.mjs allyReactionOffers`, `workflow/reaction-adapters.mjs`, `workflow/reaction-dispatch.mjs` (offer `reactor`) |
 | Widened, Dragwind (area), Subtle (no hand seals) | data: `areaSize`, `ignoreComponent`; `rules/elements.mjs castShaping`, `rules/area.mjs areaOf`, `rules/cast-checks.mjs castBlockers` |

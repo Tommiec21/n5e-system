@@ -223,7 +223,7 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
       const own = disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
         : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
       const bonus = (item.type === "jutsu" ? live.attack : own) + (Number(a.attack?.bonus) || 0);
-      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}
+      rows.push(`<div class="act-row"><button type="button" data-n5e-act="attack"${attr("bonus", bonus)}${attr("scope", disc)}${attr("ranged", a.attack?.range === "ranged" ? 1 : "")}
         ${attr("label", `${a.authored && a.label ? a.label : item.name} attack`)}><i class="fa-solid fa-dice-d20"></i> ${esc(a.authored && a.label ? `${a.label}: ` : "")}${esc(a.attack?.range === "ranged" ? "Ranged" : "Melee")} attack ${signed(bonus)}</button>
         ${damageButtons(a.damage?.parts, { genjutsu: castGen || (item.type !== "jutsu" && disc === "gen"), weapon: isBukijutsu(item) })}</div>`);
     } else if ( a.type === "save" ) {
@@ -352,7 +352,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         if ( immune.size === aimed.length ) return fail("warn", `Immune to this Genjutsu: ${text}.`);
         ui.notifications.info(`Immune to this Genjutsu: ${text}.`);
       }
-      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope, facts: await castFacts(message) },
+      return rollWithSpec(caster, { type: "jutsuAttack", kind: "attack", label: d.label, bonus: Number(d.bonus) || 0, scope: d.scope, ranged: !!d.ranged, facts: await castFacts(message) },
         { event, source: message?.id ?? "",
           ...(targetActors ? { target: targetActors.length === 1 ? targetActors[0] : null } : {}) });
     }

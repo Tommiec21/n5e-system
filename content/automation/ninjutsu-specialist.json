@@ -82,8 +82,13 @@
       ]
     },
     "bulwark-stone-crusher": {
-      "status": "note",
+      "status": "partial",
       "rules": [
+        {
+          "key": "note",
+          "text": "Tension maximum 6 from 10th level is automated (on Seismic Tether's pool).",
+          "label": "Automated elsewhere"
+        },
         {
           "key": "note",
           "text": "Tension max 6 (on Seismic Tether), also gained ending your turn within 10 ft of a hostile creature; Earthen Constructs have 20 HP when nothing sets it; tethers up to 30 ft; once per turn Stone Bind at no action cost when a hostile creature moves in range; Grit on an ally can redirect up to half its damage to the construct."
@@ -354,11 +359,12 @@
       ]
     },
     "eye-of-the-storm-storm-terror": {
-      "status": "note",
+      "status": "partial",
       "rules": [
         {
           "key": "note",
-          "text": "Pressure max 5 (on Tempest Pressure); the 1-Focus enhanced Gale Burst, Sharpening and Dragwind are in their options' notes."
+          "text": "Pressure maximum 5 from 10th level is automated (on Tempest Pressure's pool).",
+          "label": "Automated elsewhere"
         }
       ]
     },
@@ -494,11 +500,55 @@
       ]
     },
     "mountains-aegis-bastion-stone-crusher": {
-      "status": "note",
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSROD51Q0Au3NP",
+          "type": "effect",
+          "label": "Bastion",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Bastion",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "aura": {
+              "radius": 20,
+              "who": "friendly",
+              "includeSelf": true,
+              "effect": {
+                "name": "Bastion",
+                "changes": [
+                  {
+                    "key": "system.traits.conditionImmune",
+                    "value": "bruised",
+                    "mode": 2
+                  },
+                  {
+                    "key": "system.traits.conditionImmune",
+                    "value": "dazed",
+                    "mode": 2
+                  },
+                  {
+                    "key": "system.traits.conditionImmune",
+                    "value": "chilled",
+                    "mode": 2
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
       "rules": [
         {
           "key": "note",
-          "text": "Manifesting your Aegis, spend 2 Focus to be a Bastion: you and allies within 20 ft are immune to Bruised, Dazed and Chilled; the AC loss isn't limited per turn and goes to −3."
+          "text": "Use when you manifest your Aegis. You and allies within 20 ft are immune to Bruised, Dazed and Chilled (an aura, automatic as tokens move). At the table: the Aegis AC loss isn't limited per turn and goes to −3."
         }
       ]
     },
@@ -781,7 +831,28 @@
             "pool": "focus",
             "amount": 2
           },
-          "note": "A 40-ft zone around you until the end of your next turn: hostile creatures casting a hand-seal jutsu in it take 4d6 cold and chakra damage (6d6 from 14th level)."
+          "note": "A 40-ft zone around you until the end of your next turn (an aura marking hostile creatures in it).",
+          "effect": {
+            "name": "Pressure Stagnation",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "aura": {
+              "radius": 40,
+              "who": "hostile",
+              "includeSelf": false,
+              "effect": {
+                "name": "In the Pressure Stagnation",
+                "rules": [
+                  {
+                    "key": "note",
+                    "text": "Casting a jutsu with hand seals here: 4d6 cold and 4d6 chakra damage (6d6 each from 14th level)."
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },
@@ -891,11 +962,12 @@
       ]
     },
     "refined-focus": {
-      "status": "note",
+      "status": "partial",
       "rules": [
         {
           "key": "note",
-          "text": "Focus: 1 + proficiency bonus (the class's pool), regained on a long rest. One Molding per Ninjutsu (two or more in Crash), never on a Combination jutsu; Moldings known by level (class table)."
+          "text": "The Focus pool (on the class) and one Molding per cast (two or more in Crash) are checked when casting.",
+          "label": "Automated elsewhere"
         }
       ]
     },
@@ -1288,7 +1360,34 @@
             "pool": "focus",
             "amount": 2
           },
-          "note": "Also spend 2 Pressure. A 60-ft Storm Zone around one affected creature until the end of your next turn: hostile creatures in it get no cover, concealment or invisibility, have disadvantage on ranged attacks, and their Barrier jutsu have half HP."
+          "note": "Also spend 2 Pressure. Choose one affected creature: the 60-ft Storm Zone around it (an aura on it) puts its allies' ranged attacks at disadvantage; the rest is on the zone's effect.",
+          "effect": {
+            "name": "Storm Terror",
+            "target": "targets",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "aura": {
+              "radius": 60,
+              "who": "friendly",
+              "includeSelf": true,
+              "effect": {
+                "name": "In the Storm Zone",
+                "rules": [
+                  {
+                    "key": "disadvantage",
+                    "selector": "attack",
+                    "predicate": "attack:ranged",
+                    "label": "Storm Zone"
+                  },
+                  {
+                    "key": "note",
+                    "text": "No cover, concealment or invisibility; Barrier jutsu cast here have half HP."
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },

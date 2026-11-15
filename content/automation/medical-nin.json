@@ -75,11 +75,44 @@
       ]
     },
     "black-lotus-bloom-black-medicine": {
-      "status": "note",
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZgz4P8YJ94xIf",
+          "type": "effect",
+          "label": "Black Lotus Bloom",
+          "activation": "action",
+          "cost": {
+            "pool": "blight",
+            "amount": 3
+          },
+          "effect": {
+            "name": "Black Lotus Bloom",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "aura": {
+              "radius": 30,
+              "who": "hostile",
+              "includeSelf": false,
+              "effect": {
+                "name": "In the Black Lotus Bloom",
+                "rules": [
+                  {
+                    "key": "note",
+                    "text": "Starting its turn here or entering for the first time: Con save vs the Medical-Nin's Ninjutsu DC (disadvantage if Blighted). On a failure, each turn here: 1 rank of Envenomed or Corroded, resistances and immunities suppressed, no HP regained. Remove this effect from a creature the Medical-Nin didn't choose."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
       "rules": [
         {
           "key": "note",
-          "text": "Bloom (Action, 3 Blight): 1-minute, 30-ft aura. Creatures of your choice starting their turn in it or entering it make a Con save vs your Ninjutsu DC (disadvantage if Blighted); on a failure, each turn in it: 1 rank of Envenomed or Corroded, resistances and immunities suppressed, no HP regained."
+          "text": "The 30-ft aura marks hostile creatures inside it (automatic as tokens move); the save and its results are applied at the table."
         }
       ]
     },
@@ -130,7 +163,7 @@
         },
         {
           "key": "note",
-          "text": "Battle Medic (Fortitude Amp; the d12 Unarmed die and the critical range are on its effect): Taijutsu of D-Rank or lower gain the Medical keyword (C from 6th, B from 10th); starting a turn at half HP or less, regain your Channeled Healing bonus."
+          "text": "Battle Medic (Fortitude Amp; the d12 Unarmed die, the critical range and the healing at the start of your turn at half HP or less are on its effect): Taijutsu of D-Rank or lower gain the Medical keyword (C from 6th, B from 10th)."
         },
         {
           "key": "note",
@@ -199,11 +232,12 @@
       ]
     },
     "expert-combatant-combat-medic": {
-      "status": "note",
+      "status": "partial",
       "rules": [
         {
           "key": "note",
-          "text": "Byakugou Seal maximum 6 (on Yin Seal: Storage). Unarmed attacks gain Deadly 2; unarmed and Taijutsu attacks Pierce 4; a creature within 5 ft that misses you with a melee attack gives you advantage on your next melee attack against it."
+          "text": "Byakugou Seal maximum 6 from 10th level is automated (on Yin Seal: Storage's pool).",
+          "label": "Automated elsewhere"
         }
       ]
     },
@@ -464,11 +498,12 @@
       ]
     },
     "malignant-harmony-black-medicine": {
-      "status": "note",
+      "status": "partial",
       "rules": [
         {
           "key": "note",
-          "text": "Blight maximum 5 (on Toxic Chakra). The 2-Blight versions of Septic Detonation, Rotting Pulse and Malignant Barrier are on those buttons."
+          "text": "Blight maximum 5 from 10th level is automated (on Toxic Chakra's pool).",
+          "label": "Automated elsewhere"
         }
       ]
     },
@@ -718,7 +753,17 @@
             "seconds": 60,
             "state": "battleMedic",
             "exclusive": "battleMedic",
-            "ampType": "fortitude"
+            "ampType": "fortitude",
+            "rules": [
+              {
+                "key": "heal",
+                "on": "turnStart",
+                "predicate": "self:bloodied",
+                "formula": "@scale.medicalNin.channeledHealing",
+                "pool": "hp",
+                "label": "Battle Medic"
+              }
+            ]
           }
         }
       ],
@@ -780,7 +825,17 @@
             "seconds": 60,
             "state": "battleMedic",
             "exclusive": "battleMedic",
-            "ampType": "fortitude"
+            "ampType": "fortitude",
+            "rules": [
+              {
+                "key": "heal",
+                "on": "turnStart",
+                "predicate": "self:bloodied",
+                "formula": "@scale.medicalNin.channeledHealing",
+                "pool": "hp",
+                "label": "Battle Medic"
+              }
+            ]
           }
         }
       ],
@@ -1416,11 +1471,12 @@
       ]
     },
     "yin-seal-release-combat-medic": {
-      "status": "note",
+      "status": "partial",
       "rules": [
         {
           "key": "note",
-          "text": "Byakugou Seal maximum 8 (on Yin Seal: Storage)."
+          "text": "Byakugou Seal maximum 8 from 18th level is automated (on Yin Seal: Storage's pool).",
+          "label": "Automated elsewhere"
         },
         {
           "key": "note",
@@ -1486,7 +1542,17 @@
             "seconds": 60,
             "state": "battleMedic",
             "ampType": "fortitude",
-            "exclusive": "battleMedic"
+            "exclusive": "battleMedic",
+            "rules": [
+              {
+                "key": "heal",
+                "on": "turnStart",
+                "predicate": "self:bloodied",
+                "formula": "@scale.medicalNin.channeledHealing",
+                "pool": "hp",
+                "label": "Battle Medic"
+              }
+            ]
           },
           "activation": "bonus",
           "text": "In combat; 10 minutes before reuse."

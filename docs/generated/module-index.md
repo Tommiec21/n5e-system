@@ -163,7 +163,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `shared.mjs` | 315 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
+| `shared.mjs` | 317 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
 
 ## module/data/item
 
@@ -222,6 +222,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `adversary-builder.mjs` | 120 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
 | `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `area.mjs` | 185 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
+| `auras.mjs` | 40 | Auras and zones (ENG1d; docs/ENG1_SPEC.md). | `auraCounts`, `auraPlan` |
 | `authored-reactions.mjs` | 81 | Declarative before-damage recipes. | `validateReactionRecipe`, `allyReactionOffers`, `authoredReactionOffers` |
 | `automation-summary.mjs` | 68 | What an item does, read from its data (STD5; docs/STD_SPEC.md "Reviewable in game"): every channel (activities, Active Effects and their changes, rule elemen... | `automationOf`, `STATUS_LABELS` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
@@ -245,7 +246,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
 | `effect-authoring.mjs` | 193 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
-| `elements.mjs` | 340 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
+| `elements.mjs` | 345 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
 | `environment.mjs` | 94 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `indirectExposure`, `mayBeImmune`, `breathSeconds`, `breathState`, `outOfBreathStatus`, `breathTurns`, `suffocationStep`, `fallDamage` |
 | `expiry.mjs` | 42 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
@@ -328,6 +329,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `apply-damage.mjs` | 350 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 281 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
+| `auras.mjs` | 48 | Aura sync (ENG1d; rules/auras.mjs decides). | `scheduleAuraSync`, `syncAuras`, `registerAuraHooks` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 104 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
@@ -363,7 +365,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-actions.mjs` | 176 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
 | `social.mjs` | 235 | Social encounters (PRESTD1 Part F, SOCIAL1; the Bingo Book). | `startSocialEncounter`, `onSocialClick`, `receiveSocial`, `onSocialGMClick`, `registerSocial` |
 | `table-options.mjs` | 81 | PRESTD1 A-ii (King 2026-11-15): optional table rules that act on tokens and the combat tracker. | `registerTableOptions` |
-| `trackers.mjs` | 439 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `trackers.mjs` | 442 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 204 | Item transfer between actors (Foundry side; FIN1). | `moveItem`, `transferItem`, `receiveTransfer`, `transferFromDrop`, `transferRyo`, `receiveRyo`, `promptGiveRyo`, `registerTransfer` |
 | `triggers.mjs` | 78 | Firing trigger elements (STD4; rules/triggers.mjs). | `fireTriggers` |
 | `turn.mjs` | 163 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |

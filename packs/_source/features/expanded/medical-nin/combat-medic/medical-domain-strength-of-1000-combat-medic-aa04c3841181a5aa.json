@@ -83,7 +83,17 @@
           "seconds": 60,
           "state": "battleMedic",
           "exclusive": "battleMedic",
-          "ampType": "fortitude"
+          "ampType": "fortitude",
+          "rules": [
+            {
+              "key": "heal",
+              "on": "turnStart",
+              "predicate": "self:bloodied",
+              "formula": "@scale.medicalNin.channeledHealing",
+              "pool": "hp",
+              "label": "Battle Medic"
+            }
+          ]
         }
       }
     ]

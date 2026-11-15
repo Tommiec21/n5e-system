@@ -77,7 +77,17 @@
           "seconds": 60,
           "state": "battleMedic",
           "ampType": "fortitude",
-          "exclusive": "battleMedic"
+          "exclusive": "battleMedic",
+          "rules": [
+            {
+              "key": "heal",
+              "on": "turnStart",
+              "predicate": "self:bloodied",
+              "formula": "@scale.medicalNin.channeledHealing",
+              "pool": "hp",
+              "label": "Battle Medic"
+            }
+          ]
         },
         "activation": "bonus",
         "text": "In combat; 10 minutes before reuse."

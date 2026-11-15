@@ -386,6 +386,9 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       }))) } : {}),
       // ENG1a marks: one effect (or N) per caster at a time; the oldest ends when a new one is placed.
       ...(eff.limit ? { mark: { sourceUuid: actor.uuid, name: eff.name || label } } : {}),
+      // ENG1d: an aura; its child effect's element fields keep the caster's numbers too.
+      ...(eff.aura?.radius ? { aura: { ...eff.aura, effect: eff.aura.effect ? { ...eff.aura.effect, rules: (eff.aura.effect.rules ?? []).map(r => Object.fromEntries(Object.entries(r).map(([k, v]) =>
+        [k, typeof v === "string" && /@(scale|dc|level)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
   if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
@@ -408,7 +411,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old);
     }
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
-    if ( changes.length || eff.expires || eff.state || eff.ampType || eff.rules?.length ) {
+    if ( changes.length || eff.expires || eff.state || eff.ampType || eff.rules?.length || eff.aura?.radius ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
       else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor, item);
     }

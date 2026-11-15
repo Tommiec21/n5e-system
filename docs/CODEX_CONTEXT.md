@@ -470,3 +470,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## ENG1a — Claude, 2026-11-15 (published 0.50.0-alpha.1)
 - Per-turn behaviour on an effect is trigger elements (`heal`, `damage`, `resave`), never turn-pipeline code. Damage from triggers is a card for the GM, not applied automatically.
 - The class tables (`content/automation/*.json`) are the source; edit them directly (the generator scripts were one-time).
+
+## ENG1d–e — Claude, 2026-11-15 (published 0.53.0-alpha.1)
+- Auras are effects with `flags.n5e.aura`; the active GM's `workflow/auras.mjs` keeps children (`flags.n5e.auraFrom`) in step. Don't create aura children elsewhere.
+- ENG1 is complete; the remaining class notes and what they need are listed in `docs/ENG1_SPEC.md` (ENG1e).

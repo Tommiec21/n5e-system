@@ -100,7 +100,14 @@ export function tableProblems() {
       const check = (rules, at) => { try { validateConditionalRules(rules ?? []); } catch (error) { p.push(`${where}${at}: ${error.message}`); } };
       check(e.rules, "");
       for ( const fx of e.effects ?? [] ) check(fx.rules, ` (${fx.name})`);
-      for ( const a of e.activities ?? [] ) if ( a.effect?.rules ) check(a.effect.rules, ` (${a.label})`);
+      for ( const a of [...(e.activities ?? []), ...(e.castOptions ?? [])] ) {
+        if ( a.effect?.rules ) check(a.effect.rules, ` (${a.label})`);
+        if ( a.effect?.aura ) {
+          if ( !(Number(a.effect.aura.radius) > 0) ) p.push(`${where} (${a.label}): an aura needs a radius`);
+          if ( !["hostile", "friendly", "all"].includes(a.effect.aura.who ?? "hostile") ) p.push(`${where} (${a.label}): aura who is hostile, friendly or all`);
+          check(a.effect.aura.effect?.rules, ` (${a.label} aura)`);
+        }
+      }
       if ( e.status !== "none" && features.has(id) && automationOf(appliedDoc(features.get(id).doc, e)).status === "none" ) {
         p.push(`${where}: status ${e.status} but nothing authored`);
       }

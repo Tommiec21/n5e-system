@@ -71,3 +71,22 @@ test("ENG1c: a nearby creature's reaction protects the damaged one (Vitality Gua
   assert.equal(allyReactionOffers(ally, { ...hit, others: [{ actor: medic("ascension", { system: { resources: { healingSurges: { value: 0 } } } }), distance: 10 }] }).length, 0, "no Surge");
   assert.equal(authoredReactionOffers(medic("ascension"), hit).length, 0, "not for the medic itself");
 });
+
+test("ENG1d: auras give their effect to the right creatures in range, and take it back", async () => {
+  const { auraPlan, auraCounts } = await import("../../module/rules/auras.mjs");
+  assert.equal(auraCounts("hostile", 1, -1), true);
+  assert.equal(auraCounts("hostile", 1, 1), false);
+  assert.equal(auraCounts("hostile", 1, 0), false, "neutral creatures aren't hostile");
+  assert.equal(auraCounts("friendly", 1, 1), true);
+  const bastion = table("ninjutsu-specialist")["mountains-aegis-bastion-stone-crusher"].activities[0].effect.aura;
+  const auras = [{ uuid: "A.bastion", actorUuid: "A", disposition: 1, aura: bastion }];
+  const at = (actorUuid, disposition, feet, children = []) => ({ actorUuid, disposition, distanceTo: () => feet, children });
+  const plan = auraPlan(auras, [at("A", 1, 0), at("B", 1, 15), at("C", 1, 25), at("D", -1, 5),
+    at("E", 1, 40, [{ auraFrom: "A.bastion", effectId: "e1" }]), at("F", 1, 5, [{ auraFrom: "gone", effectId: "e2" }])]);
+  assert.deepEqual(plan.add.map(a => a.actorUuid), ["A", "B", "F"], "itself and allies within 20 ft");
+  assert.deepEqual(plan.remove.map(r => [r.actorUuid, r.effectId]), [["E", "e1"], ["F", "e2"]], "left the aura; its aura ended");
+  assert.deepEqual(bastion.effect.changes.map(c => c.value), ["bruised", "dazed", "chilled"]);
+  const storm = table("ninjutsu-specialist")["storm-terror-storm-terror"].castOptions[0].effect.aura.effect.rules[0];
+  const { rollOptions } = await import("../../module/rules/elements.mjs");
+  assert.ok(rollOptions({ statuses: new Set(), effects: [], items: [] }, { kind: "attack", ranged: true }).has(storm.predicate));
+});

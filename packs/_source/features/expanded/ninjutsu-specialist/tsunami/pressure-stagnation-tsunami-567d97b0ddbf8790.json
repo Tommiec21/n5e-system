@@ -53,7 +53,28 @@
           "pool": "focus",
           "amount": 2
         },
-        "note": "A 40-ft zone around you until the end of your next turn: hostile creatures casting a hand-seal jutsu in it take 4d6 cold and chakra damage (6d6 from 14th level)."
+        "note": "A 40-ft zone around you until the end of your next turn (an aura marking hostile creatures in it).",
+        "effect": {
+          "name": "Pressure Stagnation",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "aura": {
+            "radius": 40,
+            "who": "hostile",
+            "includeSelf": false,
+            "effect": {
+              "name": "In the Pressure Stagnation",
+              "rules": [
+                {
+                  "key": "note",
+                  "text": "Casting a jutsu with hand seals here: 4d6 cold and 4d6 chakra damage (6d6 each from 14th level)."
+                }
+              ]
+            }
+          }
+        }
       }
     }
   },

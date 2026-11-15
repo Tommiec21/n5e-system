@@ -53,7 +53,34 @@
           "pool": "focus",
           "amount": 2
         },
-        "note": "Also spend 2 Pressure. A 60-ft Storm Zone around one affected creature until the end of your next turn: hostile creatures in it get no cover, concealment or invisibility, have disadvantage on ranged attacks, and their Barrier jutsu have half HP."
+        "note": "Also spend 2 Pressure. Choose one affected creature: the 60-ft Storm Zone around it (an aura on it) puts its allies' ranged attacks at disadvantage; the rest is on the zone's effect.",
+        "effect": {
+          "name": "Storm Terror",
+          "target": "targets",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "aura": {
+            "radius": 60,
+            "who": "friendly",
+            "includeSelf": true,
+            "effect": {
+              "name": "In the Storm Zone",
+              "rules": [
+                {
+                  "key": "disadvantage",
+                  "selector": "attack",
+                  "predicate": "attack:ranged",
+                  "label": "Storm Zone"
+                },
+                {
+                  "key": "note",
+                  "text": "No cover, concealment or invisibility; Barrier jutsu cast here have half HP."
+                }
+              ]
+            }
+          }
+        }
       }
     }
   },

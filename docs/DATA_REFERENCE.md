@@ -751,3 +751,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Reaction recipe `ally` {range, includeSelf} | Offered to its owner when another creature within range is about to take damage |
 | Reaction recipe `requiresState` | Only offered while its owner is in that state (flags.n5e.state) |
 | Reaction preparation `reactorUpdate` {actor, update} | The protecting creature's cost, paid after validation |
+
+## Added in 0.53.0-alpha.1 (ENG1d)
+
+| Path | Meaning |
+| --- | --- |
+| Effect `flags.n5e.aura` {radius, who, includeSelf, effect} | An aura; its child effect goes to the creatures within range |
+| Effect `flags.n5e.auraFrom` | A child of the aura effect with this uuid |
+| Effect activity / cast option effect `aura` | Placed as an aura |
+| Roll facts `attack:ranged`, `self:bloodied` | A ranged attack; at half HP or less |

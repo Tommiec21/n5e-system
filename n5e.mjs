@@ -37,6 +37,7 @@ import { registerAreaHooks } from "./module/workflow/areas.mjs";
 import { registerAutomationHooks } from "./module/workflow/automation.mjs";
 import { registerFreeformHooks } from "./module/workflow/freeform.mjs";
 import { registerEnvironmentHooks } from "./module/workflow/environment.mjs";
+import { registerAuraHooks } from "./module/workflow/auras.mjs";
 import { registerTableOptions } from "./module/workflow/table-options.mjs";
 import { registerVariantTools } from "./module/workflow/variant-tools.mjs";
 import { registerEnrichers } from "./module/applications/enrichers.mjs";
@@ -74,6 +75,7 @@ import * as elements from "./module/rules/elements.mjs";
 registerAutomationHooks();
 registerFreeformHooks();
 registerEnvironmentHooks();
+registerAuraHooks();
 registerTableOptions();
 registerVariantTools();
 // Timed effects end out of combat when world time advances (workflow/expiry.mjs; EXPIRE1).

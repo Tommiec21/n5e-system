@@ -33,7 +33,51 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSROD51Q0Au3NP",
+        "type": "effect",
+        "label": "Bastion",
+        "activation": "bonus",
+        "cost": {
+          "pool": "focus",
+          "amount": 2
+        },
+        "effect": {
+          "name": "Bastion",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "aura": {
+            "radius": 20,
+            "who": "friendly",
+            "includeSelf": true,
+            "effect": {
+              "name": "Bastion",
+              "changes": [
+                {
+                  "key": "system.traits.conditionImmune",
+                  "value": "bruised",
+                  "mode": 2
+                },
+                {
+                  "key": "system.traits.conditionImmune",
+                  "value": "dazed",
+                  "mode": 2
+                },
+                {
+                  "key": "system.traits.conditionImmune",
+                  "value": "chilled",
+                  "mode": 2
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
@@ -44,7 +88,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Manifesting your Aegis, spend 2 Focus to be a Bastion: you and allies within 20 ft are immune to Bruised, Dazed and Chilled; the AC loss isn't limited per turn and goes to −3."
+          "text": "Use when you manifest your Aegis. You and allies within 20 ft are immune to Bruised, Dazed and Chilled (an aura, automatic as tokens move). At the table: the Aegis AC loss isn't limited per turn and goes to −3."
         }
       ]
     }
