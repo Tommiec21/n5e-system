@@ -1,3 +1,13 @@
+## 0.34.0-alpha.2 — Optional rules, part 2 (PRESTD1 A-ii; King 2026-11-15)
+
+Five more world rules, all off by default.
+- **Shared party vision:** players see through every player character's token that has vision (reload the scene after changing it).
+- **Players can open the party overview:** the Party Overview button is shown to players: the player characters only, without the GM's Damage, Heal and condition controls.
+- **Scale tokens by creature size:** a token's width and height follow the creature's size (Tiny ½, Small and Medium 1, Large 2, Huge 3, Gargantuan 4) when placed and when the size changes. A token flagged `flags.n5e.manualSize` keeps its size.
+- **Mark defeated creatures:** a dead creature, or an NPC at 0 HP, is marked defeated in the combat tracker (and unmarked if it comes back).
+- **Apply Encumbered automatically:** over Inventory Slots or under a Heavyweight armour's Strength, the Encumbered state is put on and taken off for you (speed halving already applied either way).
+- Not checked in a running Foundry world.
+
 ## 0.34.0-alpha.1 — Optional rules, part 1 (PRESTD1 A-i; King 2026-11-15)
 
 Eight new world rules in the N5e Rules panel (two new groups: "Optional rules (PF2e variants)" and "What players see"). Their defaults keep play as it was.

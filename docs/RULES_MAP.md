@@ -238,3 +238,13 @@
 | `npcRollBreakdowns`, `hideNpcNames` | `workflow/npc-privacy.mjs renderPrivacy`, `registerPrivacyHooks` |
 | `hideNpcDamage`, `hideNpcConditions` | `workflow/npc-privacy.mjs gmWhisper`; `workflow/apply-damage.mjs`, `workflow/conditions.mjs` |
 | `secretChecks` | `dice/roll-dialog.mjs`, `rules/roll-math.mjs readChoice`, `dice/roll.mjs secretByDefault` |
+
+## Optional rules, part 2 (PRESTD1 A-ii, 0.34.0-alpha.2)
+
+| Rule (world setting) | Code |
+| --- | --- |
+| `sharedVision` | `workflow/table-options.mjs` (Token `_isVisionSource` wrap) |
+| `partyStatsVisible` | `applications/gm/party-overview.mjs` |
+| `scaleTokens` | `rules/token-size.mjs tokenSizeFor`, `workflow/table-options.mjs` |
+| `defeatedMarker` | `rules/token-size.mjs isDefeated`, `workflow/table-options.mjs` |
+| `encumbranceStatus` | `rules/token-size.mjs encumbranceChange`, `workflow/table-options.mjs` |

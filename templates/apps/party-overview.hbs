@@ -17,7 +17,7 @@
             {{#each badges}}<span class="tag badge">{{this}}</span>{{/each}}
           </div>
         </div>
-        <div class="quick">
+        {{#if ../isGM}}<div class="quick">
           <input type="number" name="amount" min="0" placeholder="0" aria-label="Amount">
           <select name="type" aria-label="Damage type"><option value="">Untyped</option>
             {{#each @root.damageTypes}}<option value="{{key}}">{{label}}</option>{{/each}}</select>
@@ -26,7 +26,7 @@
           <select name="condition" aria-label="Condition"><option value="">Condition…</option>
             {{#each @root.conditions}}<option value="{{key}}">{{label}}</option>{{/each}}</select>
           <button type="button" data-action="quick" data-kind="condition">Add</button>
-        </div>
+        </div>{{/if}}
       </div>
     {{else}}
       <p class="muted">No player characters{{#unless inCombat}} and no combat{{/unless}}.</p>

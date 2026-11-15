@@ -63,7 +63,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
-| `party-overview.mjs` | 102 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
+| `party-overview.mjs` | 106 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
 
 ## module/applications/item
 
@@ -127,7 +127,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
-| `rules.mjs` | 170 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 180 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 
 ## module/data
 
@@ -262,6 +262,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-actions.mjs` | 22 | Skill-action attempt penalty (Core Ch6; King 2026-11-07: penalties don't stack). | `skillActionPenalty` |
 | `skill-resolution.mjs` | 129 | Skill-action resolution (pure; SKILL1, KB 02 and Chapter 6). | `parseVs`, `passiveScore`, `standardDC`, `fixedDC`, `contestOutcome`, `checkOutcome`, `SKILL_RESULTS`, `skillActionEffects`, `SIZE_ORDER`, `SIZE_GATED`, `HOLD_ACTIONS`, `REQUIRES_HOLD`, `ESCAPE_ACTIONS`, `WEAPON_SKILL_ACTIONS`, `sizeGate`, `skillActionGate`, `holdBroken` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
+| `token-size.mjs` | 22 | PRESTD1 A11 (optional rule scaleTokens): token size in grid units by creature size (PF2e's token autoscale, on N5e's sizes). | `TOKEN_SIZES`, `tokenSizeFor`, `isDefeated`, `encumbranceChange` |
 | `trackers.mjs` | 244 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `bindingFuryTrigger`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
 | `transfer.mjs` | 82 | Item transfer between actors (pure; FIN1, King 2026-11-14; PF2e parity, no dialogs beyond "how many"). | `PHYSICAL_TYPES`, `transferRefusal`, `canReceive`, `ryoPlan`, `transferPlan` |
 | `turn-start.mjs` | 64 | Start of a combatant's turn (pure). | `parseRecharge`, `turnStartPlan`, `economySlot` |
@@ -332,6 +333,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `riders.mjs` | 311 | Feature riders on the action card (Foundry side; CARD1d). | `conditionTags`, `riderDC`, `actionOf`, `castRiderEntries`, `withRiderSections`, `riderView`, `onRiderClick`, `validateRider` |
 | `roll-request.mjs` | 64 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
 | `skill-actions.mjs` | 176 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
+| `table-options.mjs` | 81 | PRESTD1 A-ii (King 2026-11-15): optional table rules that act on tokens and the combat tracker. | `registerTableOptions` |
 | `trackers.mjs` | 421 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `onAmpCreated`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 200 | Item transfer between actors (Foundry side; FIN1). | `transferItem`, `receiveTransfer`, `transferFromDrop`, `transferRyo`, `receiveRyo`, `promptGiveRyo`, `registerTransfer` |
 | `turn.mjs` | 161 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |

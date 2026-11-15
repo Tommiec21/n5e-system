@@ -34,3 +34,17 @@ test("Part A rules exist with defaults that keep play as it was", () => {
   assert.equal(rules.npcRollBreakdowns.default, true);
   for ( const k of ["hideNpcDamage", "hideNpcConditions", "hideNpcNames", "secretChecks"] ) assert.equal(rules[k].default, false, k);
 });
+
+test("A-ii: token sizes, defeated, encumbrance", async () => {
+  const { tokenSizeFor, isDefeated, encumbranceChange } = await import("../../module/rules/token-size.mjs");
+  assert.deepEqual(tokenSizeFor("tiny"), { width: 0.5, height: 0.5 });
+  assert.deepEqual(tokenSizeFor("huge"), { width: 3, height: 3 });
+  assert.equal(tokenSizeFor("colossal"), null);
+  assert.equal(isDefeated({ type: "npc", hp: 0, statuses: new Set() }), true);
+  assert.equal(isDefeated({ type: "character", hp: 0, statuses: new Set(["dying"]) }), false, "a Dying character isn't defeated");
+  assert.equal(isDefeated({ type: "character", hp: 0, statuses: new Set(["dead"]) }), true);
+  assert.equal(encumbranceChange(true, false), "add");
+  assert.equal(encumbranceChange(false, true), "remove");
+  assert.equal(encumbranceChange(true, true), null);
+  for ( const k of ["sharedVision", "partyStatsVisible", "scaleTokens", "defeatedMarker", "encumbranceStatus"] ) assert.equal(rules[k].default, false, k);
+});

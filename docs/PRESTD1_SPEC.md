@@ -1,6 +1,6 @@
 # PRESTD1 function spec: the combined batch before standardization
 
-Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`.**
+Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`, A-ii `0.34.0-alpha.2`.**
 
 King (2026-11-15): combine VAR1a, SCROLL1, LOOT1, PF2E1, MISSION1 and SOCIAL1 into one batch, before standardization. Sources:
 - `docs/VAR1_SPEC.md` (PF2e optional rules; King Q-V1–Q-V4);
@@ -131,3 +131,4 @@ A (optional rules), B (scrolls), C (loot), D (PF2e emulation), E (missions), F (
 - 2026-11-15 Claude: King's answers recorded; Q-P11 (scroll casting DC) open.
 - 2026-11-15 Claude: King approved; Q-P11 as proposed (identify DC). Part A split into A-i (A1–A8), A-ii (A9–A13), A-iii/iv (A14–A19).
 - 2026-11-15 Claude: **A-i built and published 0.34.0-alpha.1.** Rules `critDamage`, `applyResistances`, `removeExpiredEffects`, `npcRollBreakdowns`, `hideNpcDamage`, `hideNpcConditions`, `hideNpcNames`, `secretChecks` (groups `optional`, `privacy`). Code: `rules/activity-parse.mjs critFormula(formula, mod, mode)`; `rules/damage.mjs damagePlan({ignoreTraits})`; `workflow/expiry.mjs` marks `flags.n5e.expired`; new `workflow/npc-privacy.mjs` (`privateNpc`, `gmWhisper`, `hideNameFor`, `renderPrivacy`, combat tracker hook); `readChoice().secret`, the dialog's Secret box, `secretByDefault`. Tests: `tests/core/optional-rules.test.mjs` (4), `tests/fin3.test.mjs` +2. Suites: 510 and 124 pass.
+- 2026-11-15 Claude: **A-ii built and published 0.34.0-alpha.2.** Rules `sharedVision`, `partyStatsVisible`, `scaleTokens`, `defeatedMarker`, `encumbranceStatus`. Code: `rules/token-size.mjs` (`tokenSizeFor`, `isDefeated`, `encumbranceChange`); `workflow/table-options.mjs` (token vision source wrap, preCreateToken sizing, size change resize, combatant defeated, Encumbered state); party overview for players (PCs only, no quick controls). Tests: core +1. Suites: 511 and 125 pass.

@@ -6,6 +6,7 @@
  * same summary card with Undo. Rows come from view-models/party.mjs (add a column there + in the
  * template templates/apps/party-overview.hbs).
  */
+import { rule } from "../../rules-settings.mjs";
 import { partyRowVM } from "../../view-models/party.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -44,7 +45,8 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
       }
     };
     game.actors.filter(a => a.type === "character" && a.hasPlayerOwner).forEach(add);
-    for ( const c of game.combat?.combatants ?? [] ) add(c.actor);
+    // PRESTD1 (rule partyStatsVisible): players see the player characters only.
+    if ( game.user.isGM ) for ( const c of game.combat?.combatants ?? [] ) add(c.actor);
     return out;
   }
 
@@ -53,6 +55,7 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     const N5E = CONFIG.N5E;
     return {
       rows: this.actors().map(partyRowVM),
+      isGM: game.user.isGM,
       inCombat: !!game.combat,
       conditions: Object.entries(N5E.conditions).map(([key, c]) => ({ key, label: c.label })),
       damageTypes: Object.entries(N5E.damageTypes ?? {}).map(([key, d]) => ({ key, label: d.label ?? key }))
@@ -69,6 +72,7 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
    * fixed target (so DR, resistances and Undo all work); Add puts 1 rank of the chosen condition.
    */
   static async #onQuick(event, target) {
+    if ( !game.user.isGM ) return;
     const row = target.closest("[data-uuid]");
     const actor = await fromUuid(row.dataset.uuid);
     if ( !actor ) return;
@@ -89,7 +93,7 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
 /** Token controls button (GM) and live refresh. */
 export function registerPartyOverview() {
   Hooks.on("getSceneControlButtons", controls => {
-    if ( !game.user.isGM ) return;
+    if ( !game.user.isGM && !rule("partyStatsVisible") ) return;
     const tokens = controls.tokens ?? controls.token;
     if ( !tokens?.tools ) return;
     tokens.tools.n5eParty = { name: "n5eParty", title: "N5e Party Overview", icon: "fa-solid fa-users", button: true,
