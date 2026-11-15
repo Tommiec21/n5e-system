@@ -96,3 +96,4 @@ Each batch: spec section here, build, tests, release, log. King said to build th
 - 2026-11-15 Claude: ENG1b built and published 0.51.0-alpha.1.
 - 2026-11-15 Claude: ENG1c built and published 0.52.0-alpha.1.
 - 2026-11-15 Claude: ENG1d and ENG1e built and published 0.53.0-alpha.1. ENG1 complete.
+- 2026-11-15 King: Q-E1 a cube grows 10 ft (5 ft on each side). Applied; ships with the next release.
