@@ -1,6 +1,6 @@
 # NPC1c function spec: closing the NPC sheet gaps
 
-Status: **draft for King's approval (2026-11-14). Nothing is built. Questions Q-N18–Q-N21 below.**
+Status: **draft for King's approval (2026-11-14). Nothing is built. Q-N18–Q-N20 answered; Q-N21 open.**
 
 King (2026-11-14): anything missing from the NPC sheets that is relevant goes into a batch for future inclusion. Source: `docs/NPC_SHEET_REVIEW.md` (dnd5e 6.1.0 and PF2e 8.7.0 against N5e 0.30.0-alpha.2), items 1–11. Items already owned by a planned batch stay there (boss resources NPC4, strikes NPC3, loot LOOT1, trait content NPC6).
 
@@ -48,6 +48,13 @@ King (2026-11-14): anything missing from the NPC sheets that is relevant goes in
 - **Q-N19: releases.** Three small releases (a, b, c), or one?
 - **Q-N20: situational skill bonuses.** Is a tick in the roll dialog right, or should some apply by themselves from the scene (a later batch, since nothing yet knows terrain)?
 - **Q-N21: identification.** Do you want a per-NPC "what the players can learn" entry (a DC and the text revealed on success), or is Read the Enemy and Identify enough?
+
+## King's answers (2026-11-14)
+
+- **Q-N18:** rest buttons on all NPCs.
+- **Q-N19:** one release.
+- **Q-N20:** King's standing direction is that every roll opens a dialog showing the roll's math, where the player can add modifiers, as dnd5e and PF2e do. That is not how N5e works today (see ROLL1 in `docs/PROGRESSION_PLAN.md`). C3's situational bonuses will be modifiers the ROLL1 dialog lists and lets the roller switch on; until ROLL1 ships they are shown in the stat block only.
+- **Q-N21:** open.
 
 ## Progress log
 
