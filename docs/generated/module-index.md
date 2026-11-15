@@ -22,7 +22,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 131 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `indirectExposure`, `makeScroll` |
+| `api.mjs` | 137 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `missionPlanner`, `indirectExposure`, `makeScroll` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
 | `settings.mjs` | 57 | World settings. | `registerSettings` |
 
@@ -64,6 +64,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
+| `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
 | `party-overview.mjs` | 106 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
 
@@ -130,6 +131,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 43 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
+| `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
 | `rules.mjs` | 219 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 
 ## module/data
@@ -252,6 +254,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
+| `missions.mjs` | 46 | Mission budgets and payouts (PRESTD1 Part E; King Q-P9: the Bingo Book's Mission XP rules, verbatim, no per-player XP logic of our own). | `missionNumbers`, `encounterCost`, `spentOf`, `missionPayout` |
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
 | `pf2e-emulation.mjs` | 78 | PRESTD1 Part D (King Q-PF4: "emulating PF2e for now"): wands, flanking and crafting. | `wandAction`, `overchargeHolds`, `segmentHitsRect`, `flanks`, `flankingEffect`, `CRAFT_RANKS`, `craftNumbers`, `craftOutcome` |
@@ -326,7 +329,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |
 | `effect-application.mjs` | 120 | Effect-application cards (dnd5e effect-application parity). | `withCardLink`, `cleanEffectData`, `applyOrOffer`, `tagDependent`, `effectApplicationCard`, `applyEffectFromCard`, `removeDependents`, `registerEffectApplication` |
-| `environment.mjs` | 269 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
+| `environment.mjs` | 272 | Environment at turn start (ENV1, active GM; rules in rules/environment.mjs). | `terrainsAt`, `environmentTurnStart`, `chokeOf`, `runOutOfBreath`, `breathTurnStart`, `startBreathTime`, `setBreath`, `breathClock`, `registerEnvironmentHooks`, `onTerrainSaveClick`, `fall`, `indirectExposureCheck`, `onExposureRollClick` |
 | `expiry.mjs` | 67 | Remove expired timed effects (EXPIRE1; rules/expiry.mjs). | `expireEffects`, `postExpiryCard`, `expireInCombat`, `expireOutOfCombat`, `registerExpiryHooks` |
 | `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |

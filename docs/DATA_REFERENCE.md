@@ -611,3 +611,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Actor type `hazard` (NPC fields plus) `system.hazard.kind` (simple, complex), `stealthDC`, `disable {skill, dc, note}` (skill key, `tool:<kit>` or ability), `hardness`, `trigger`, `routine` (HTML), `reset` | A hazard |
 | Actor type `vehicle` (NPC fields plus) `system.vehicle.hardness`, `pilot {skill, dc}`, `collision {damage, save, dc}`, `capacity {crew, passengers}` (0: any), `crew`, `passengers` (actor UUIDs), `notes` | A vehicle |
+
+## Added in 0.38.0-alpha.1 (PRESTD1 Part E)
+
+| Path | Meaning |
+| --- | --- |
+| JournalEntryPage `flags.n5e.mission {name, rank, tier, players (actor UUIDs), ryo, downtime, lines [{key, count, cost}], notes, status}` | A saved mission plan (journal "N5e Missions") |
+| `game.n5e.api.missionPlanner(page?)` | Open the mission planner |

@@ -287,3 +287,10 @@
 | --- | --- |
 | Hazards: notice (Perception vs Stealth DC), disable (skill or toolkit vs DC), trigger; hardness adds to DR (King Q-P8: own actor type) | `rules/hazards.mjs`, `data/actor/hazard.mjs`, `applications/actor/hazard-sheet.mjs` |
 | Vehicles: piloting check, collision damage and save, crew and passengers; hardness adds to DR | `rules/hazards.mjs`, `data/actor/vehicle.mjs`, `applications/actor/hazard-sheet.mjs` |
+
+## Missions (PRESTD1 Part E, 0.38.0-alpha.1)
+
+| Rule | Code |
+| --- | --- |
+| Mission Rewards, Tier Modifications (round down), Rank Multipliers, encounter costs | `config/missions.mjs`, `rules/missions.mjs` |
+| XP: total purchased split evenly among active players; failure: the tier's payout (King Q-P9: verbatim) | `rules/missions.mjs missionPayout`, `applications/gm/mission-planner.mjs award` |

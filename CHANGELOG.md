@@ -1,3 +1,10 @@
+## 0.38.0-alpha.1 — Mission planner (PRESTD1 Part E; King 2026-11-15)
+
+- **Mission planner (GM):** the scroll button in the token controls (or `game.n5e.api.missionPlanner()`). Pick the rank and tier and tick the active players: the planner shows XP per player and the budget (Mission Rewards and Tier Modifications from the Bingo Book, percentages rounded down), the ryo range, the downtime (fixed, or roll its dice), the average adversary level change and the failure payout. Buy encounter elements (social, environmental, combat and combat modifiers, priced × the rank multiplier); each line's cost can be typed over. Spent and left are shown as you go.
+- **Saved as a journal page** in the "N5e Missions" journal, with a summary you can show players. The button asks which saved mission to open, or starts a new one.
+- **Complete or Fail** (King Q-P9: the book's rule, verbatim): the award quotes the rule as printed ("Players receive XP equal to the total value of all encounters purchased, split evenly among active players."; on a failure also the failure rule), shows each active player's figure (a failure takes the tier's payout: Trivial 75%, Moderate 50%, Extreme 25%), lets the GM change any number, and one **Award** button adds the XP, ryo and downtime to each character and posts the result.
+- Not checked in a running Foundry world.
+
 ## 0.37.0-alpha.2 — Hazards and vehicles (PRESTD1 D-ii; King 2026-11-15)
 
 - **New actor type: Hazard** (King Q-P8). A hazard is built like an NPC (it rolls, saves and takes damage like one; its attacks and saves can be features and jutsu with activities), with a **Hazard** tab: simple or complex, the Stealth DC to notice it, the check and DC that disables it (any skill, toolkit or ability), hardness (added to its DR), a reset note, its trigger and what it does (shortcuts such as [[/save dex dc=15]] and [[/damage 2d6 fire]] work there). **Notice**, **Disable** and **Trigger** post cards with the check, save and damage buttons for the players to click.

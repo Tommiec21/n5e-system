@@ -166,6 +166,9 @@ export function registerEnvironmentHooks() {
     if ( !tokens?.tools ) return;
     tokens.tools.n5eExposure = { name: "n5eExposure", title: "N5e Indirect Exposure", icon: "fa-solid fa-temperature-half", button: true,
       order: Object.keys(tokens.tools).length + 1, onChange: () => void indirectExposureCheck().catch(error => ui.notifications.warn(error.message)) };
+    // PRESTD1 Part E: the mission planner.
+    tokens.tools.n5eMission = { name: "n5eMission", title: "N5e Mission planner", icon: "fa-solid fa-scroll", button: true,
+      order: Object.keys(tokens.tools).length + 1, onChange: () => void import("../applications/gm/mission-planner.mjs").then(m => m.default.choose()) };
   });
 }
 

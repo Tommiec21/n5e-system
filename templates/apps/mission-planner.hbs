@@ -1,0 +1,41 @@
+{{!-- Mission planner (PRESTD1 Part E). Data: vm (see applications/gm/mission-planner.mjs _prepareContext). --}}
+<section class="n5e-mission-planner">
+  <div class="n5e-grid">
+    <label>Name <input type="text" name="name" value="{{vm.name}}" placeholder="Mission name"></label>
+    <label>Rank <select name="rank">{{#each vm.ranks}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Tier <select name="tier">{{#each vm.tiers}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+  </div>
+  <fieldset><legend>Active players</legend>
+    {{#each vm.party}}<label class="checkbox"><input type="checkbox" name="player.{{index}}" {{#if checked}}checked{{/if}}> {{name}}</label>{{else}}<p class="hint">No player-owned characters.</p>{{/each}}
+  </fieldset>
+  <p><b>{{vm.numbers.xpPerPlayer}} XP per player × {{vm.numbers.players}} = budget {{vm.numbers.budget}}</b>.
+    Spent {{vm.spent}}, <span class="{{#if vm.over}}warning{{/if}}">left {{vm.left}}</span>.
+    Average adversary level {{#if vm.numbers.adversaryLevel}}{{vm.numbers.adversaryLevel}} from the party's{{else}}as the party's{{/if}}; failure payout {{vm.numbers.failure}}%.</p>
+  <div class="n5e-grid">
+    <label>Ryo per player ({{vm.numbers.ryo.[0]}}–{{vm.numbers.ryo.[1]}}) <input type="number" name="ryo" value="{{vm.ryo}}" min="0"></label>
+    <label>Downtime <input type="number" name="downtime" value="{{vm.downtime}}" min="0"></label>
+    <button type="button" data-action="rollDowntime"><i class="fa-solid fa-dice"></i> Roll {{vm.downtimeDice}}</button>
+  </div>
+  {{#if vm.ryoOutside}}<p class="hint warning">The ryo is outside the range for this rank and tier.</p>{{/if}}
+  <fieldset><legend>Encounters purchased</legend>
+    <table class="n5e-table">
+      <tr><th>Element</th><th>Count</th><th>Cost each</th><th></th></tr>
+      {{#each vm.lines}}
+        <tr>
+          <td><select name="lines.{{index}}.key">{{#each kinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></td>
+          <td><input type="number" name="lines.{{index}}.count" value="{{count}}" min="0"></td>
+          <td><input type="number" name="lines.{{index}}.cost" value="{{costValue}}" placeholder="{{table}}" min="0"></td>
+          <td><button type="button" data-action="removeLine" data-index="{{index}}" aria-label="Remove"><i class="fa-solid fa-trash"></i></button></td>
+        </tr>
+      {{/each}}
+    </table>
+    <button type="button" data-action="addLine"><i class="fa-solid fa-plus"></i> Add element</button>
+    <p class="hint">Costs come from the rank (× its multiplier); type a cost to change one line.</p>
+  </fieldset>
+  <label>Notes <textarea name="notes" rows="3">{{vm.notes}}</textarea></label>
+  <footer class="n5e-buttons">
+    <button type="button" data-action="save"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+    <button type="button" data-action="complete"><i class="fa-solid fa-flag-checkered"></i> Complete</button>
+    <button type="button" data-action="fail"><i class="fa-solid fa-circle-xmark"></i> Fail</button>
+  </footer>
+</section>
