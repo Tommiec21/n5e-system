@@ -27,3 +27,4 @@ Plan: `docs/STD_SPEC.md`, STD6a (items, the first content pass).
 
 - 2026-11-15 Claude: built and published `0.46.0-alpha.1`. Tests: core +1 (the flag counts, the name alone no longer does). Suites: 552 and 163 pass.
 - 2026-11-15 Claude: King answered **Q-I1: only Kunai and Shuriken proper**, none of the weapons that mention them. Published `0.46.0-alpha.2`: Fuma-Shuriken, Monster Shuriken, Ballistic Kunai Gun and Ballistic Shuriken Rifle unmarked. Senbon stays marked (the feature names it; it is not a weapon that mentions them).
+- 2026-11-15 Claude: King confirmed Senbon counts. Q-I1 closed: Kunai, Shuriken and Senbon.
