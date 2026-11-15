@@ -38,11 +38,13 @@ Every leftover from a shipped batch has one home below: a FIN batch (before stan
 ## Decided
 
 - Clash best of 3 with no side reaching two wins is a Draw (King 2026-11-15: approved).
+- RES1, POS1 and SKILL1 rulings approved as built (King 2026-11-15).
+- NPC readings approved as built (King 2026-11-15): Lurker speed on every speed, one Read the Enemy pick per success, concept field, 2 full saves at 1–7, Lazy GM tables as printed, Strikes set when built, the NPC3 table readings.
 
 ## Blocked on King
 
 - NPC in-depth pass: the Bingo Book.
-- Review of RES1, POS1, ENV1a and SKILL1.
+- ENV1a: King 2026-11-15 "leave this as mostly manual"; what changes, if anything, is being confirmed.
 - Merchants and buying (King Q-F2): LOOT1.
 - The final feat list (STD6c); the clan stance recategorization.
 
