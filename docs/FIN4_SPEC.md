@@ -1,0 +1,46 @@
+# FIN4 function spec: rules corrections
+
+Status: **spec written 2026-11-15 (King: "Next batch"). Awaiting King's answers and approval.**
+
+Plan: `docs/DEV_PLAN.md` row 4. It closes the limits ENV1 and POS1 recorded when they shipped.
+
+**Dropped (King 2026-11-15):** "Pierce limited to unarmed and Taijutsu damage" had no source. Pierce is a universal counter to DR and stays as it works today.
+
+## What is open today
+
+| # | Limit | From | What happens now |
+| --- | --- | --- | --- |
+| L1 | A choke still drops the target to 0 HP and Dying when its breath runs out | ENV1 | The Choke skill action (Athletics, on a creature you hold) applies Suffocating, and its card says "0 HP from it means Unconscious, not Dying". The breath countdown doesn't know the Suffocating came from a choke, so out of breath it sets Dying, and the GM swaps it by hand. |
+| L2 | Breath outside combat isn't counted | ENV1 | Holding breath is Con modifier minutes (at least 30 seconds) outside combat, Con modifier turns in combat (at least 1). Only the combat count runs. |
+| L3 | Indirect Exposure is a table procedure | ENV1 | Hostile Terrain regions only run Direct Exposure (the Con save at turn start in combat). The exploration Survival checks, and the Release immunities to them (Extreme Heat: Fire Release; Extreme Cold: Water Release; Toxic: Medical Release), are not run. |
+| L4 | "Can see you" for Opportunity Attacks is "not Blinded" | POS1 | A creature that can't see the mover for any other reason (darkness, walls, Hidden) still gets the reminder. |
+| L5 | Reach is measured centre to centre | POS1 | Large and bigger creatures (and their targets) get reach measured from their middles, so a Large creature's 5-ft reach is too short by half its size. |
+
+## Functions
+
+After each function, add a line to the progress log and push.
+
+| # | Function | File | Behaviour |
+| --- | --- | --- | --- |
+| F1 | Choke: Unconscious, not Dying | `workflow/skill-actions.mjs` (`onSkillApplyClick`), `workflow/environment.mjs` (`breathTurnStart`) | Suffocating applied from a Choke outcome is marked `flags.n5e.choke` (with the holder). Out of breath, a choked creature drops to 0 HP and is **Unconscious** (not Dying), and the turn card says so. Per Q-F15, the choke's Suffocating ends when the hold ends. |
+| F2 | Breath outside combat | `rules/environment.mjs` (`breathSeconds`, `breathLeft`), `workflow/environment.mjs` | Outside combat, Suffocating records the world time it started; breath lasts Con modifier minutes (at least 30 s). When world time passes it, the active GM drops the creature to 0 HP and Dying (Unconscious for a choke). Per Q-F16 when combat starts or ends mid-breath. The breath left shows on the Suffocating effect. |
+| F3 | Indirect Exposure checks | `rules/environment.mjs` (`indirectExposure`), `workflow/environment.mjs`, GM scene control or API `game.n5e.api.indirectExposure()` | Per Q-F14. Proposed: the GM runs "Indirect Exposure" (a button on the Combat-free Hostile Terrain region, or the API) at the interval the table uses; every creature inside a Hostile Terrain region gets a card for a Survival check against the terrain's DC (D-Rank regions included, since D is Indirect only). A creature with the immune Release affinity is listed as immune and rolls nothing. A failure shows the consequence from Q-F14 with an Apply button. Chakra Resistant has no check. |
+| F4 | "Can see you" from token vision | `workflow/positioning.mjs` (`onMoveForOpportunity`), `canvas/visibility.mjs` (`observerVisibility`) | Each watcher's sight of the mover is checked with the same observer-specific test Uncanny Dodge uses (the watcher's own vision and detection modes, line of sight, Hidden/Undetected). Can't see: no reminder. When the check can't decide (no vision on the token, different elevation), per Q-F17. Blinded still blocks. |
+| F5 | Reach edge to edge | `rules/positioning.mjs` (`nearestCells`), `workflow/positioning.mjs` | Reach is measured from the nearest square of the watcher to the nearest square of the mover, before and after the move, with Foundry's grid measurement (so the scene's diagonal rule applies). Gridless scenes: centre distance less each token's half-size. |
+
+## Tests
+
+- `tests/core/environment.test.mjs`: breath seconds (Con mod minutes, at least 30 s); breath left from a start time; the choke's out-of-breath result (Unconscious); Indirect Exposure DC and the Release immunity per terrain.
+- `tests/positioning.test.mjs`: nearest cells for 1×1 and 2×2 tokens (adjacent, diagonal, 10 ft apart); a Large watcher's 5-ft reach covers an adjacent Medium mover; "can't see" (false) gives no reminder; unknown follows Q-F17.
+
+## Questions for King
+
+- **Q-F14: Indirect Exposure.** The rules say "Survival check at intervals or consequences". What is the interval (every hour of travel, as ENV1 assumed?), the DC (the terrain's DC: D 18, C 20, B 21, A 23, S 25?), and the consequence of a failure (a rank of Exhaustion, the terrain's damage, something per terrain type)? Does a Release affinity alone make a creature immune, or must it have Release jutsu or a feature?
+- **Q-F15: Ending a choke.** When the holder lets go or the hold is escaped, does the choke's Suffocating end at once (proposed), or does the creature need to catch its breath?
+- **Q-F16: Breath across combat.** If a creature is already holding its breath when combat starts: keep its remaining time (1 round = 6 seconds, so 2 minutes left = 20 turns), or start the combat count fresh (Con modifier turns)? And the other way when combat ends?
+- **Q-F17: Unknown sight.** When the system can't check a watcher's sight (the token has no vision set up, or the two are at different elevations), send the Opportunity Attack reminder anyway with "sight not checked" (proposed), or send nothing?
+- **Q-F18: Releases.** One release, or F1–F3 (environment) then F4–F5 (positioning)?
+
+## Progress log
+
+- 2026-11-15 Claude: spec written from the ENV1 and POS1 limits; the Pierce item dropped (King: Pierce is a universal counter to DR). Awaiting answers and approval.
