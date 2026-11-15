@@ -31,11 +31,12 @@ After each function, add a line to the progress log and push.
 | F6 | Auto-win buttons | `workflow/clash.mjs`, `rules/clash.mjs` | Q-F8: GM only. The Clash card shows the GM "<side> wins automatically" for each side; pressing it decides the clash for that side (no rolls needed), and the card says it was a GM decision. |
 | F7 | Arts | — | Q-F9: **post-launch** (involves class mods). Not in FIN3; recorded in `docs/DEV_PLAN.md` under post-launch work. |
 | F8 | Dispel the loser | `workflow/clash.mjs` (`applyClashLoss`), `workflow/concentration.mjs` | Q-F10: a dispelled effect ends immediately. The loser's Apply ends its concentration on the clashing jutsu and every effect that jutsu put out (CONC1 dependents, and effects from it with no concentration), and marks it dispelled on the card. On a Draw, "Dispel both" does the same for both sides (each owner for their side, or the GM). |
+| F9 | Several damage rolls on one card (King 2026-11-15) | `rules/action-card.mjs` (`addCardResult`, `resultsFromLinked`, `cardTargetRows`, `sectionStates`), `workflow/action-card.mjs`, `workflow/apply-damage.mjs` | The card keeps one damage roll per effect (`results.damage[effect]`; a card from before reads its one roll as its effect's) and one application per creature per effect. Each row shows each effect's share ("Strike: full · Finisher: half", from that effect's own save) with its own Apply and Half buttons; Undo on the row removes all of them. The damage section is done once every effect's damage is rolled. Reactions and concentration checks are shown per application as today. |
 
 ## Releases (Q-F13: smaller batches)
 
 - **FIN3a** (card): F1, F2, F3, F4.
-- **FIN3b** (Clash): F5, F6, F8.
+- **FIN3b**: F9 (several damage rolls on one card), then the Clash: F5, F6, F8.
 
 ## Tests
 
@@ -71,3 +72,4 @@ After each function, add a line to the progress log and push.
   - F4: `immuneTargets(message, uuids)` (sync GEN1 check); `applyToSelected` applies 0 with the reason; card and save-card condition/effect buttons end the effect at once on an immune creature.
   - Limit: a second damage roll on one card (the Finisher's 6d6) is still applied from its own damage card, whose per-target rows follow its own save; the action card records the first damage roll.
   - Tests: core +4 (per-effect saves, legacy cards, immune row, reaction windows), `tests/fin3.test.mjs` (effect keys on buttons, offer link). Suites: 493 and 117 pass.
+- 2026-11-15 Claude: King asked to resolve the two-damage-roll limit in the next batch: added as F9 in FIN3b.
