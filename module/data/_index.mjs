@@ -18,6 +18,8 @@ import CharacterData from "./actor/character.mjs";
 import HostileTerrainBehavior from "./region/hostile-terrain.mjs";
 import NPCData from "./actor/npc.mjs";
 import LootActorData from "./actor/loot.mjs";
+import HazardData from "./actor/hazard.mjs";
+import VehicleData from "./actor/vehicle.mjs";
 import JutsuData from "./item/jutsu.mjs";
 import { WeaponData, ArmorData, ConsumableData, ToolkitData, ContainerData, LootData } from "./item/equipment.mjs";
 import { ClassData, SubclassData, ClanData, BackgroundData, FeatData, StanceData } from "./item/character-options.mjs";
@@ -25,7 +27,7 @@ import {
   ConditionEffectData, StateEffectData, AmpEffectData, StanceEffectData, ConcentrationEffectData, GenericEffectData
 } from "./effect/effects.mjs";
 
-export const actorModels = { character: CharacterData, npc: NPCData, loot: LootActorData };
+export const actorModels = { character: CharacterData, npc: NPCData, loot: LootActorData, hazard: HazardData, vehicle: VehicleData };
 export const regionBehaviorModels = { hostileTerrain: HostileTerrainBehavior };
 
 export const itemModels = {

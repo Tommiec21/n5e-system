@@ -1,0 +1,23 @@
+{{!-- Vehicle tab (PRESTD1 D-ii). Data: vh = {hardness, pilot, checks, collision, saves, capacity, crewList, passengerList, notesHTML, editable}. --}}
+<section class="tab n5e-tab vehicle {{tab.cssClass}}" data-tab="vehicle" data-group="primary">
+  <div class="section-head"><h2>Vehicle</h2></div>
+  <div class="n5e-grid">
+    <label>Hardness (adds to DR) <input type="number" name="system.vehicle.hardness" value="{{vh.hardness}}" min="0"></label>
+    <label>Pilot with <select name="system.vehicle.pilot.skill">{{#each vh.checks}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Piloting DC <input type="number" name="system.vehicle.pilot.dc" value="{{vh.pilot.dc}}" min="0"></label>
+    <label>Collision damage <input type="text" name="system.vehicle.collision.damage" value="{{vh.collision.damage}}"></label>
+    <label>Collision save <select name="system.vehicle.collision.save">{{#each vh.saves}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Collision DC <input type="number" name="system.vehicle.collision.dc" value="{{vh.collision.dc}}" min="0"></label>
+    <label>Crew seats (0: any) <input type="number" name="system.vehicle.capacity.crew" value="{{vh.capacity.crew}}" min="0"></label>
+    <label>Passenger seats (0: any) <input type="number" name="system.vehicle.capacity.passengers" value="{{vh.capacity.passengers}}" min="0"></label>
+  </div>
+  <div class="n5e-buttons">
+    <button type="button" data-action="vehiclePost" data-moment="pilot"><i class="fa-solid fa-dharmachakra"></i> Piloting check</button>
+    <button type="button" data-action="vehiclePost" data-moment="collision"><i class="fa-solid fa-car-burst"></i> Collision</button>
+  </div>
+  <div class="section-head"><h2>Crew</h2></div>
+  <ol class="n5e-list">{{#each vh.crewList}}<li data-uuid="{{uuid}}">{{name}} {{#if ../vh.editable}}<button type="button" data-action="vehicleLeave" aria-label="Leave"><i class="fa-solid fa-person-walking-arrow-right"></i></button>{{/if}}</li>{{else}}<li class="hint">No crew.</li>{{/each}}</ol>
+  <div class="section-head"><h2>Passengers</h2></div>
+  <ol class="n5e-list">{{#each vh.passengerList}}<li data-uuid="{{uuid}}">{{name}} {{#if ../vh.editable}}<button type="button" data-action="vehicleLeave" aria-label="Leave"><i class="fa-solid fa-person-walking-arrow-right"></i></button>{{/if}}</li>{{else}}<li class="hint">No passengers.</li>{{/each}}</ol>
+  <p class="hint">Drop an actor on this sheet to add it as crew or a passenger.</p>
+</section>

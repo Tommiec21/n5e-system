@@ -1,3 +1,10 @@
+## 0.37.0-alpha.2 — Hazards and vehicles (PRESTD1 D-ii; King 2026-11-15)
+
+- **New actor type: Hazard** (King Q-P8). A hazard is built like an NPC (it rolls, saves and takes damage like one; its attacks and saves can be features and jutsu with activities), with a **Hazard** tab: simple or complex, the Stealth DC to notice it, the check and DC that disables it (any skill, toolkit or ability), hardness (added to its DR), a reset note, its trigger and what it does (shortcuts such as [[/save dex dc=15]] and [[/damage 2d6 fire]] work there). **Notice**, **Disable** and **Trigger** post cards with the check, save and damage buttons for the players to click.
+- **New actor type: Vehicle** (King Q-P8), also built like an NPC, with a **Vehicle** tab: hardness, the piloting check and DC, collision damage with its save and DC, crew and passenger seats. Drop an actor on the sheet to add it as crew or a passenger; the leave button takes it off. **Piloting check** and **Collision** post cards with their buttons.
+- Hazards and vehicles count as NPCs for privacy, the defeated marker and dying at 0 HP.
+- Not checked in a running Foundry world.
+
 ## 0.37.0-alpha.1 — Wands, flanking and crafting (PRESTD1 D-i; King 2026-11-15)
 
 - **Wands (GM makes them):** right-click a Ninjutsu or Genjutsu, "Make a wand". The wand holds the jutsu at its rank. "Use wand" (right-click) casts it once a day with the holder's own attack and DC and no chakra, within the holder's own limits. A second use that day overcharges it: the jutsu is cast, then a d20 flat check (DC 10) or the wand breaks. Overcharging it again, or using a broken wand, destroys it and casts nothing (you're asked first). A Long or Full Rest recharges wands; broken ones stay broken.

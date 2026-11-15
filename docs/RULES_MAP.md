@@ -280,3 +280,10 @@
 | Wand: once a day, overcharge with a DC 10 flat check, destroyed when overcharged again or broken; recharges on a Long Rest | `rules/pf2e-emulation.mjs wandAction`, `workflow/wands.mjs` |
 | Flanking: opposite sides, both in melee reach; −2 AC or advantage (King Q-P6) | `rules/pf2e-emulation.mjs flanks`, `canvas/flanking.mjs`, `dice/roll.mjs rollWithSpec` |
 | Crafting: toolkit check vs rank DC; critical halves days, critical failure loses half the materials (King Q-P7) | `rules/pf2e-emulation.mjs craftOutcome`, `workflow/crafting.mjs` |
+
+## Hazards and vehicles (PRESTD1 D-ii, 0.37.0-alpha.2)
+
+| Rule | Code |
+| --- | --- |
+| Hazards: notice (Perception vs Stealth DC), disable (skill or toolkit vs DC), trigger; hardness adds to DR (King Q-P8: own actor type) | `rules/hazards.mjs`, `data/actor/hazard.mjs`, `applications/actor/hazard-sheet.mjs` |
+| Vehicles: piloting check, collision damage and save, crew and passengers; hardness adds to DR | `rules/hazards.mjs`, `data/actor/vehicle.mjs`, `applications/actor/hazard-sheet.mjs` |

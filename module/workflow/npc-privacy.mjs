@@ -15,7 +15,7 @@ const UNKNOWN = "Unknown creature";
 
 /** An NPC no player owns. */
 export function privateNpc(actor) {
-  if ( !actor || actor.type !== "npc" ) return false;
+  if ( !actor || !["npc", "hazard", "vehicle"].includes(actor.type) ) return false;
   return !(globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
 }
 

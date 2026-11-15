@@ -125,7 +125,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
     if ( reaction.roll ) await reaction.roll.toMessage({ speaker: ChatMessage().getSpeaker({ actor }), flavor: reaction.label ?? "Reaction" });
     undo.push(before);
     const notes = immuneWhy ? [`immune (${immuneWhy.join(", ")})`] : [];
-    const isNPC = actor.type === "npc";
+    const isNPC = ["npc", "hazard", "vehicle"].includes(actor.type);
     if ( plan.instantDeath || (isNPC && rule("npcDieAtZero") && actor.system.diesAtZero && plan.dropsToZero)
       || (rule("deathSaves") && update["system.deathSaves.failure"] === 3) ) {
       await actor.toggleStatusEffect("dead", { active: true, overlay: true });

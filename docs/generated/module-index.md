@@ -31,6 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-sheet.mjs` | 759 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 314 | NPC sheet (NPC1b): the character sheet's tabs, rolls, casting and Combat tab, with - a stat-block header in the Bingo Book's layout (templates/actor/npc/head... | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 | `npc-simple-sheet.mjs` | 34 | Simple NPC sheet (NPC1b): the whole stat block on one page, in the Bingo Book's order (header, traits, jutsu by discipline and rank, attacks). | `NPCSimpleSheet` |
@@ -135,7 +136,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `_index.mjs` | 68 | Registers every TypeDataModel with CONFIG. | `actorModels`, `regionBehaviorModels`, `itemModels`, `effectModels`, `registerDataModels` |
+| `_index.mjs` | 70 | Registers every TypeDataModel with CONFIG. | `actorModels`, `regionBehaviorModels`, `itemModels`, `effectModels`, `registerDataModels` |
 
 ## module/data/actor
 
@@ -143,8 +144,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
 | `creature.mjs` | 640 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
+| `vehicle.mjs` | 31 | Vehicles (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `VehicleData` |
 
 ## module/data/effect
 
@@ -243,6 +246,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `features.mjs` | 64 | Feature-driven rules (pure). | `featureById`, `choiceOf`, `primaryDiscipline`, `generalization`, `attacksPerAction`, `featureCritRange`, `recoveryAllowed`, `featureDiscipline` |
 | `formula.mjs` | 92 | Deterministic formula evaluation for derived numbers (pool sizes, DCs, scale values). | `getPath`, `replaceRefs`, `evaluateFormula`, `dieFaces`, `stepDie` |
 | `freeform.mjs` | 354 | Freeform Strikes and Freeform Jutsu (pure; the Bingo Book, "Adversary Combat"; NPC3). | `stepValue`, `strikeDamage`, `combineAttacks`, `riderDC`, `freeformRanks`, `freeformCostFor`, `effectiveLevel`, `splitDamage`, `jutsuDamage`, `defensiveValue`, `supportValue`, `effectActivity`, `buildStrike`, `buildJutsu`, `averageOf`, `recalculate`, `adversaryOf` |
+| `hazards.mjs` | 77 | Hazards and vehicles (PRESTD1 Part D-ii; King Q-PF4: PF2e emulation, Q-P8: their own actor types). | `NPC_TYPES`, `isNpcLike`, `HAZARD_KINDS`, `checkShortcut`, `saveShortcut`, `damageShortcut`, `checkChoices`, `hazardLines`, `hasSeat`, `board`, `leave`, `vehicleLines` |
 | `host.mjs` | 24 | Host hooks for the shared core (SHARED1). | `setHost`, `n5eConfig` |
 | `item-audit.mjs` | 64 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |

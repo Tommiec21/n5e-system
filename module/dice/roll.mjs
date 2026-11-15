@@ -370,7 +370,7 @@ export async function renderParityParts(message, html) {
     }
   }
   const actor = message.speakerActor;
-  if ( actor && html.querySelector(".desc") && !descriptionVisible(rule("concealItemDescriptions"), user, { isNPC: actor.type === "npc", isOwner: actor.isOwner }) ) {
+  if ( actor && html.querySelector(".desc") && !descriptionVisible(rule("concealItemDescriptions"), user, { isNPC: ["npc", "hazard", "vehicle"].includes(actor.type), isOwner: actor.isOwner }) ) {
     for ( const el of html.querySelectorAll(".desc") ) el.remove();
   }
 }

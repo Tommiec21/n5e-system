@@ -14,7 +14,7 @@ export function tokenSizeFor(size) {
 export function isDefeated({ type, hp, statuses } = {}) {
   const has = s => (statuses instanceof Set ? statuses.has(s) : (statuses ?? []).includes(s));
   if ( has("dead") ) return true;
-  return type === "npc" && Number(hp) <= 0;
+  return ["npc", "hazard", "vehicle"].includes(type) && Number(hp) <= 0;
 }
 
 /** PRESTD1 A13: the Encumbered state should be on exactly when the inventory says so. */

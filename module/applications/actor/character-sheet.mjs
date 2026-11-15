@@ -172,7 +172,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     context.actor = this.actor;
     context.editMode = this.editMode;
     context.editable = this.isEditable;
-    context.isNPC = this.actor.type === "npc";
+    context.isNPC = ["npc", "hazard", "vehicle"].includes(this.actor.type);
     // Roll modes per group (Effects tab): Advantage/Disadvantage until switched back to Normal.
     context.rollModes = Object.entries(ROLL_GROUPS).map(([group, label]) => {
       const mode = sheetRollMode(this.actor, group);

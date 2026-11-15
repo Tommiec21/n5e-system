@@ -604,3 +604,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Consumable `system.subtype: "wand"`, `flags.n5e.wand {jutsu, rank, used, overcharged, broken}` | A wand and its state today |
 | Jutsu `flags.n5e.wandCopy {wandId}` | The hidden copy a wand casts through (left out of jutsu lists) |
 | Rules `flanking` (off, ac, advantage), `craftDCD`–`craftDCS`, `craftDaysD`–`craftDaysS`, `craftMaterials` | Flanking effect and crafting numbers (GM-editable) |
+
+## Added in 0.37.0-alpha.2 (PRESTD1 D-ii)
+
+| Path | Meaning |
+| --- | --- |
+| Actor type `hazard` (NPC fields plus) `system.hazard.kind` (simple, complex), `stealthDC`, `disable {skill, dc, note}` (skill key, `tool:<kit>` or ability), `hardness`, `trigger`, `routine` (HTML), `reset` | A hazard |
+| Actor type `vehicle` (NPC fields plus) `system.vehicle.hardness`, `pilot {skill, dc}`, `collision {damage, save, dc}`, `capacity {crew, passengers}` (0: any), `crew`, `passengers` (actor UUIDs), `notes` | A vehicle |

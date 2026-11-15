@@ -1,0 +1,23 @@
+{{!-- Hazard tab (PRESTD1 D-ii). Data: hz = {kind, kinds, stealthDC, disable, checks, hardness, trigger(HTML), routine(HTML), reset, isGM, editMode}. --}}
+<section class="tab n5e-tab hazard {{tab.cssClass}}" data-tab="hazard" data-group="primary">
+  <div class="section-head"><h2>Hazard</h2></div>
+  <div class="n5e-grid">
+    <label>Kind <select name="system.hazard.kind">{{#each hz.kinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Stealth DC (to notice) <input type="number" name="system.hazard.stealthDC" value="{{hz.stealthDC}}" min="0"></label>
+    <label>Disable with <select name="system.hazard.disable.skill">{{#each hz.checks}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    <label>Disable DC <input type="number" name="system.hazard.disable.dc" value="{{hz.disable.dc}}" min="0"></label>
+    <label>Disable note <input type="text" name="system.hazard.disable.note" value="{{hz.disable.note}}"></label>
+    <label>Hardness (adds to DR) <input type="number" name="system.hazard.hardness" value="{{hz.hardness}}" min="0"></label>
+    <label>Reset <input type="text" name="system.hazard.reset" value="{{hz.reset}}" placeholder="e.g. after 1 hour"></label>
+  </div>
+  <div class="n5e-buttons">
+    <button type="button" data-action="hazardPost" data-moment="notice"><i class="fa-solid fa-eye"></i> Notice</button>
+    <button type="button" data-action="hazardPost" data-moment="disable"><i class="fa-solid fa-screwdriver-wrench"></i> Disable</button>
+    <button type="button" data-action="hazardPost" data-moment="trigger"><i class="fa-solid fa-bolt"></i> Trigger</button>
+  </div>
+  <div class="section-head"><h2>Trigger</h2></div>
+  {{#if hz.editMode}}<textarea name="system.hazard.trigger" rows="3" aria-label="Trigger">{{hz.trigger}}</textarea>{{else}}<div class="bio-text">{{{hz.triggerHTML}}}</div>{{/if}}
+  <div class="section-head"><h2>What it does</h2></div>
+  {{#if hz.editMode}}<textarea name="system.hazard.routine" rows="5" aria-label="What it does">{{hz.routine}}</textarea>{{else}}<div class="bio-text">{{{hz.routineHTML}}}</div>{{/if}}
+  <p class="hint">Shortcuts work here: [[/save dex dc=15]], [[/damage 2d6 fire]]. Its attacks and saves can also be features and jutsu with activities, as on any NPC. Turn on Edit to change the text.</p>
+</section>

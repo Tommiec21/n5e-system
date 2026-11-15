@@ -111,7 +111,7 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     this._rows = buildRows(actor.system.schema, actor._source.system,
       { skip: new Set(["abilities", "saves", "skills"]) });
     context.rows = decorate(this._rows);
-    context.isNPC = actor.type === "npc";
+    context.isNPC = ["npc", "hazard", "vehicle"].includes(actor.type);
     return context;
   }
 
