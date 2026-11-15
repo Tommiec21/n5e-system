@@ -73,6 +73,7 @@ export function describeElement(e = {}) {
     case "critRange": return `Critical range +${Number(e.value) || 0} on ${what}`;
     case "maximizeDice": return typeof e.value === "string" && e.value.includes("@rankValue") ? `Dice maximized (as many as ${e.value.replace(/@rankValue/g, "the cast rank")}) on ${what}` : `${Number(e.value) || 0} die maximized on ${what}`;
     case "minimumDie": return `Each die at least ${Number(e.value) || 0} on ${what}`;
+    case "maximizeAfter": return `After rolling, up to ${Number(e.value) || 0} dice count as their maximum on ${what}`;
     case "critAbilityMod": return `A critical hit adds the ability modifier ${Number(e.value) || 0} more time${Number(e.value) === 1 ? "" : "s"} on ${what}`;
     case "rerollBelow": return `Reroll dice of ${Number(e.value) || 0} or less once on ${what}`;
     case "damage": return `+${e.formula ?? ""}${e.damageType ? ` ${e.damageType}` : ""} damage on ${what}`;

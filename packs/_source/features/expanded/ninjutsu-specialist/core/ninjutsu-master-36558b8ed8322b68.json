@@ -33,13 +33,112 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEWp3keXUYr3D9",
+        "type": "effect",
+        "label": "Enter Crash (Perfected)",
+        "activation": "bonus",
+        "cost": {
+          "pool": "focus",
+          "amount": 4
+        },
+        "effect": {
+          "name": "Chakra Surge: Crash (Perfected)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "crash",
+          "exclusive": "surge",
+          "ampType": "will",
+          "rules": [
+            {
+              "key": "damageHandling",
+              "selector": "damage",
+              "predicate": "jutsu:discipline:nin",
+              "immunityAsResistance": true,
+              "label": "Crash (Perfected)"
+            },
+            {
+              "key": "note",
+              "text": "Once per casting +5d10 Ninjutsu damage (the Crash option); three or more Moldings on one casting; your Ninjutsu treat immunity as resistance (on this effect).",
+              "label": "Chakra Surge: Crash (Perfected)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eik7rn6oatI53P",
+        "type": "effect",
+        "label": "Enter Flow (Perfected)",
+        "activation": "bonus",
+        "cost": {
+          "pool": "focus",
+          "amount": 4
+        },
+        "effect": {
+          "name": "Chakra Surge: Flow (Perfected)",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.saveDC.nin",
+              "value": "3",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "state": "flow",
+          "exclusive": "surge",
+          "ampType": "will",
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "check",
+              "predicate": [
+                "concentration",
+                "concentration:discipline:nin"
+              ],
+              "label": "Flow (Perfected)"
+            },
+            {
+              "key": "resource",
+              "on": "turnStart",
+              "pool": "focus",
+              "amount": 1,
+              "label": "Flow (Perfected)"
+            },
+            {
+              "key": "resource",
+              "on": "turnEnd",
+              "pool": "focus",
+              "amount": 1,
+              "label": "Flow (Perfected)"
+            },
+            {
+              "key": "note",
+              "text": "+3 Ninjutsu save DC and a Focus at the start and end of each turn (on this effect); concentrate on up to 3 Ninjutsu at once.",
+              "label": "Chakra Surge: Flow (Perfected)"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use instead of entering Crash or Flow: 4 Focus, then not again for 10 minutes."
+        }
+      ]
     }
   },
   "ownership": {

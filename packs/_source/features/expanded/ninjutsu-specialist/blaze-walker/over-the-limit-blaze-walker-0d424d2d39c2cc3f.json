@@ -33,13 +33,50 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUj9yVZJrDkAzF",
+        "type": "effect",
+        "label": "Enter Crash: Overheat",
+        "activation": "bonus",
+        "cost": {
+          "pool": "pyroclasm",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Chakra Surge: Crash (Overheat)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "crash",
+          "exclusive": "surge",
+          "ampType": "will",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "damage",
+              "predicate": "jutsu:keyword:fireRelease",
+              "value": "lvl(6:2,10:4,18:6)",
+              "label": "Overheat"
+            },
+            {
+              "key": "note",
+              "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th; on this effect). You take 1d6 fire damage at the end of each of your turns that can't be reduced or resisted.",
+              "label": "Chakra Surge: Crash (Overheat)"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

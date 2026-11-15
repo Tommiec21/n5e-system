@@ -197,11 +197,12 @@ async function undoApply(message) {
 /** Concentration check after damage: Con (Chakra Control) vs DC; failure ends the non-Stable jutsu. */
 async function concentrationCheck(actor, dc, jutsuIds, event) {
   if ( !actor?.isOwner ) return ui.notifications.warn("Only the owner rolls this check.");
-  const spec = { ...rollSpec(actor, "skill", "cha"), label: "Concentration check" };
-  // Chakra Surge, Flow: Concentration checks for Ninjutsu at advantage.
-  const flow = actor.effects.some(e => !e.disabled && e.flags?.n5e?.state === "flow")
-    && jutsuIds.some(id => { const j = actor.items.get(id); return j && castDisciplineOf(actor, j) === "nin"; }); // locked cast discipline (MDISC1)
-  return rollWithSpec(actor, spec, { event, dc, mode: flow ? "advantage" : undefined, onResult: async r => {
+  // STD6d: the check knows it is one, and the disciplines of the jutsu at stake (locked cast discipline,
+  // MDISC1), so effects can name them: Chakra Surge's Flow gives advantage for Ninjutsu.
+  const discs = new Set(jutsuIds.map(id => actor.items.get(id)).filter(Boolean).map(j => castDisciplineOf(actor, j)));
+  const spec = { ...rollSpec(actor, "skill", "cha"), label: "Concentration check",
+    facts: ["concentration", ...[...discs].map(d => `concentration:discipline:${d}`)] };
+  return rollWithSpec(actor, spec, { event, dc, onResult: async r => {
     if ( r.success ) return;
     const keep = (actor.system.combat?.concentrating ?? []).filter(id => !jutsuIds.includes(id));
     const update = { "system.combat.concentrating": keep };

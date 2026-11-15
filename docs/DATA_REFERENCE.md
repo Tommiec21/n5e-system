@@ -713,3 +713,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Change key `n5e.unarmed.die` | The Unarmed die becomes this when larger |
 | Element `critAbilityMod` {value} | A critical hit adds the ability modifier this many more times (Great Weapon Stance) |
 | Effect activity `effect.rules` | Any rule element; change values may use `@scale.<class>.<column>` |
+
+## Added in 0.49.0-alpha.1 (STD6d, Ninjutsu Specialist)
+
+| Path | Meaning |
+| --- | --- |
+| Roll facts `clash`, `clash:against:keyword:<k>` | Clash checks (with the side's own jutsu facts) |
+| Roll facts `concentration`, `concentration:discipline:<d>` | Concentration checks |
+| Cast option `costDelta: "zero"` | Cast at 0 cost (not a cost reduction) |
+| Element `maximizeAfter` {value} | After the damage roll, up to N dice (the lowest) count as their maximum |
+| Element value `"lvl(level:value,...)"` | Read at the element owner's level |
+| Pools `tension` (Seismic Tether), `pressure` (Tempest Pressure) | Stone Crusher and Storm Terror resources |

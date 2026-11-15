@@ -39,7 +39,21 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Current Breaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:earthRelease",
+            "clash:against:keyword:lightningRelease"
+          ]
+        }
+      ]
     }
   },
   "ownership": {

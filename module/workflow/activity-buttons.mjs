@@ -66,7 +66,7 @@ import { activityKinds } from "../config/activities.mjs";
 import { payPoolCost } from "./resources.mjs";
 export { payPoolCost } from "./resources.mjs";
 import { applyHealing } from "./health.mjs";
-import { contextualModifiers, contextualRoll, shapeDice } from "../rules/elements.mjs";
+import { contextualModifiers, contextualRoll, shapeDice, maximizeAfterBonus } from "../rules/elements.mjs";
 import { describeElement } from "../rules/action-effects.mjs";
 import { cardActionContext } from "./action-effects.mjs";
 
@@ -372,7 +372,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         facts: d.weapon ? weaponFacts(weapon, actor ? activeStance(actor) : null) : await castFacts(message) };
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
-      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0 };
+      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0, maximizeAfter: 0, sources: [] };
       parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
       const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
@@ -411,7 +411,14 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         if ( note ) advNotes.push(note);
         rolls.push(roll);
         rollMetadata.push({ formula: crit ? critText : formula, normalFormula: formula, abilityMod });
-        instances.push({ amount: roll.total, type: p.type });
+        // STD6d maximizeAfter (Potent Ninjutsu): the lowest dice of the first part count as their maximum.
+        let after = 0;
+        if ( index === 0 && shaped.maximizeAfter ) {
+          const dice = (roll.dice ?? []).flatMap(t => (t.results ?? []).filter(r => r.active !== false && !r.discarded).map(r => ({ faces: t.faces, result: r.result })));
+          after = maximizeAfterBonus(dice, shaped.maximizeAfter);
+          if ( after ) advNotes.push(`${shaped.sources.join(", ")}: +${after} (up to ${shaped.maximizeAfter} dice counted as their maximum)`);
+        }
+        instances.push({ amount: roll.total + after, type: p.type });
       }
       const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };
       const total = instances.reduce((t, i) => t + i.amount, 0);

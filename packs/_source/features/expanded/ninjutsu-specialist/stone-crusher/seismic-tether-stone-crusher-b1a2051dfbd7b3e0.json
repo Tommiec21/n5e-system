@@ -32,14 +32,114 @@
       }
     },
     "tags": [],
-    "resourcePools": [],
-    "advancement": []
+    "resourcePools": [
+      {
+        "id": "tension",
+        "label": "Tension",
+        "value": 0,
+        "max": "lvl(2:4,10:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efcwtSs5ISypCO",
+        "type": "roll",
+        "label": "Gain Tension",
+        "cost": {
+          "pool": "tension",
+          "amount": 1,
+          "gain": true
+        },
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "With a Geo-Tether active: when you cast an Earth Release Ninjutsu or take damage (from 10th level also ending your turn within 10 ft of a hostile creature)."
+        }
+      },
+      {
+        "id": "n5eGV0f4bDj90djB",
+        "type": "save",
+        "label": "Stone Bind",
+        "cost": {
+          "pool": "tension",
+          "amount": 1
+        },
+        "oncePerTurn": true,
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "nin",
+            "formula": ""
+          },
+          "onSuccess": "half",
+          "fourTier": false,
+          "resave": false,
+          "tiers": {
+            "critSuccess": "",
+            "success": "",
+            "failure": "",
+            "critFailure": ""
+          }
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(2:1d6,6:3d6,10:5d6,14:7d6)",
+              "type": "earth"
+            }
+          ],
+          "pierce": 0,
+          "ignoreDR": false
+        },
+        "text": "Creatures of your choice within 10 ft of a Geo-Tether; on a failure their speed is halved until the end of their next turn."
+      },
+      {
+        "id": "n5eJ42ENC3l2pf8u",
+        "type": "heal",
+        "label": "Grit",
+        "activation": "reaction",
+        "cost": {
+          "pool": "tension",
+          "amount": 1
+        },
+        "heal": {
+          "formula": "lvl(2:6,6:10,10:14,14:18)",
+          "pool": "tempHp"
+        },
+        "text": "One Tension per damaged creature (you or allies within 10 ft of a Geo-Tether); until the start of your next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Geo-Tether (Action, Bonus Action or part of an Earth Release cast, once per turn): mark a space within 20 ft (30 ft from 10th); 2 at a time (3 at 10th, 4 at 18th); they count as Earthen Artifacts. Tension max 4 (6 from 10th)."
+        },
+        {
+          "key": "note",
+          "text": "Adamantine Blood (1 Tension, casting an Earth Release construct or structure within 10 ft of a tether): it gains DR equal to 4 (D/C), 6 (B/A) or 8 (S)."
+        }
+      ]
     }
   },
   "ownership": {

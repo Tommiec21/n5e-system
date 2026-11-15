@@ -16,6 +16,7 @@
  *   on         a trigger event (STD4; criticalHit from STD6b)
  *   rerollBelow (STD6b) damage dice showing the value or less are rerolled once, keeping the new result
  *   critAbilityMod (STD6b fix) a critical hit adds the ability modifier this many more times
+ *   maximizeAfter (STD6d) after the damage roll, this many of its dice (the lowest) count as their maximum
  * No engine line names content: every source is read from data.
  */
 const list = value => value ? Array.from(value) : [];
@@ -27,7 +28,7 @@ export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvanta
   // STD4: attacks per Attack action, and skills that may stand in for Initiative.
   "attacks", "initiativeOptions",
   // STD6b: reroll low damage dice once.
-  "rerollBelow", "critAbilityMod"];
+  "rerollBelow", "critAbilityMod", "maximizeAfter"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
@@ -35,6 +36,13 @@ export const ELEMENT_EVENTS = ["initiative", "turnStart", "turnEnd", "hit", "mis
 
 /** Does this element act from its owner's own sheet? (Not one bound to an action, not a trigger.) */
 export const actsFromActor = e => (e.direction ?? "self") === "self" && (e.scope ?? "always") !== "action" && !e.on;
+
+/** "lvl(level:value,...)": the value for this level (0 below the first entry). */
+export function levelValue(table, level) {
+  let out = 0;
+  for ( const [, l, v] of String(table).matchAll(/(\d+)\s*:\s*(-?\d+)/g) ) if ( level >= Number(l) ) out = Number(v);
+  return out;
+}
 
 /** The selector names a roll answers to. */
 export function selectorNames(spec = {}) {
@@ -66,13 +74,16 @@ function sourceOptions(base, source) {
 export function gatherElements(actor, spec = {}, target = null, extra = []) {
   const names = selectorNames(spec);
   const out = [];
+  // STD6d: a level-scaled value ("lvl(6:2,10:4,18:6)") is read at its owner's level.
+  const leveled = (element, owner) => (typeof element.value === "string" && element.value.startsWith("lvl(")
+    ? { ...element, value: levelValue(element.value, owner?.system?.level ?? 0) } : element);
   const mine = rollOptions(actor, spec, target);
   for ( const source of ruleSources(actor) ) {
     if ( source.flags?.n5e?.ruleToggle?.enabled === false ) continue;
     const opts = sourceOptions(mine, source);
     for ( const element of elementsOf(source) ) {
       if ( !actsFromActor(element) || !selects(element, names) || !testPredicate(element.predicate, opts) ) continue;
-      out.push({ element, label: element.label || source.name });
+      out.push({ element: leveled(element, actor), label: element.label || source.name });
     }
   }
   if ( target ) {
@@ -82,7 +93,7 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
       const opts = sourceOptions(theirs, source);
       for ( const element of elementsOf(source) ) {
         if ( element.direction !== "against" || element.on || !selects(element, names) || !testPredicate(element.predicate, opts) ) continue;
-        out.push({ element, label: element.label || source.name });
+        out.push({ element: leveled(element, target), label: element.label || source.name });
       }
     }
   }
@@ -98,7 +109,7 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
  */
 export function contextualRoll(actor, spec = {}, target = null, extra = []) {
   const out = { autoFail: [], autoSucceed: [], reroll: null, critRange: 0, maximizeDice: 0, minimumDie: 0,
-    rerollBelow: 0, critAbilityMod: 0, damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
+    rerollBelow: 0, critAbilityMod: 0, maximizeAfter: 0, damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
   for ( const { element: e, label } of gatherElements(actor, spec, target, extra) ) {
     switch ( e.key ) {
       case "autoFail": out.autoFail.push(label); break;
@@ -108,6 +119,7 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
       case "maximizeDice": out.maximizeDice += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "minimumDie": out.minimumDie = Math.max(out.minimumDie, Math.trunc(Number(e.value) || 0)); break;
       case "rerollBelow": out.rerollBelow = Math.max(out.rerollBelow, Math.trunc(Number(e.value) || 0)); break;
+      case "maximizeAfter": out.maximizeAfter += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "critAbilityMod": out.critAbilityMod += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label }); break;
       case "damageHandling": out.handling = mergeHandling(out.handling, e); break;
@@ -118,6 +130,14 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
     out.sources.push(label);
   }
   return out;
+}
+
+/**
+ * STD6d maximizeAfter: the bonus from counting the `count` lowest dice of a rolled formula as their
+ * maximum (the roller picks after seeing the roll, so the lowest give the most). dice: [{faces, result}].
+ */
+export function maximizeAfterBonus(dice, count) {
+  return dice.map(d => d.faces - d.result).filter(g => g > 0).sort((a, b) => b - a).slice(0, Math.max(0, count)).reduce((t, g) => t + g, 0);
 }
 
 /** Combine damage handling: any element can turn a flag on; the lowest DR multiplier wins. */

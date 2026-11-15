@@ -21,6 +21,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { validateConditionalRules } from "../../module/rules/effect-authoring.mjs";
+import { automationOf } from "../../module/rules/automation-summary.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const TABLES = path.join(ROOT, "content/automation");
@@ -95,7 +96,7 @@ export function tableProblems() {
       check(e.rules, "");
       for ( const fx of e.effects ?? [] ) check(fx.rules, ` (${fx.name})`);
       for ( const a of e.activities ?? [] ) if ( a.effect?.rules ) check(a.effect.rules, ` (${a.label})`);
-      if ( e.status !== "none" && !(e.rules?.length || e.castOptions?.length || e.activities?.length || e.effects?.length || e.pools?.length) ) {
+      if ( e.status !== "none" && features.has(id) && automationOf(appliedDoc(features.get(id).doc, e)).status === "none" ) {
         p.push(`${where}: status ${e.status} but nothing authored`);
       }
     }

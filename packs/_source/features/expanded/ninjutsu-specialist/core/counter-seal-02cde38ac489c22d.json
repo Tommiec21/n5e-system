@@ -33,13 +33,48 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5etsskLekwj48za",
+        "type": "effect",
+        "label": "Counter Seal",
+        "activation": "reaction",
+        "effect": {
+          "name": "Counter Seal",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "save",
+              "value": 2,
+              "label": "Counter Seal"
+            },
+            {
+              "key": "note",
+              "text": "Against a Fuinjutsu: +2 to this saving throw (advantage instead if it would inflict Sealed).",
+              "label": "Counter Seal"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when you or an ally within 30 ft makes a save against a Fuinjutsu. From 13th level, spend 1 Focus to give it to all willing creatures within 30 ft."
+        }
+      ]
     }
   },
   "ownership": {

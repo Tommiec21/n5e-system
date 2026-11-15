@@ -8,7 +8,7 @@
  *   blockedByState   a state that forbids it ("flow": no damage boosts)
  *   oncePerTurn
  *   auto             checked by default (Crash's damage: once per casting)
- *   costDelta        "-rank" (Chakra Compression) or a number
+ *   costDelta        "-rank" (Chakra Compression), "zero" (cast at 0 cost: not a reduction) or a number
  *   cost             {pool, amount, choose}: spend from a pool (choose: the caster picks how many)
  *   damage           {formula, type, halfForArea}: an extra damage button on the cast card
  *   heal             {formula, pool}: an extra healing button on the cast card
@@ -140,6 +140,7 @@ export function applyCastOptions(actor, jutsu, chosen, available, rank) {
     if ( o.cost?.choose && !amount ) continue;
     res.names.push(o.cost?.choose ? `${opt.label} ×${amount}` : opt.label);
     if ( o.costDelta === "-rank" ) res.subtract += Math.max(0, rankValue(rank));
+    else if ( o.costDelta === "zero" ) res.zeroCost = true;
     else if ( Number(o.costDelta) ) res.subtract -= Number(o.costDelta);
     if ( o.cost?.pool && amount ) res.pools[o.cost.pool] = (res.pools[o.cost.pool] ?? 0) + amount;
     // @amount: how many of the pool were spent; @rankValue: the cast rank as a number (D 1 ... S 5).

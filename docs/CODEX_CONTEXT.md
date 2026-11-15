@@ -465,3 +465,4 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - Class features of a reviewed class come from `content/automation/<class>.json`. Change the table, then run `node tools/content/apply-automation.mjs` (and `node tools/report-class-automation.mjs` for the review table). Never rerun `tools/content/automation.py` or `build-class-expansion.mjs` over a reviewed class; `npm run check` fails when a table isn't applied.
 - Reviewed features (`flags.n5e.reviewed`) get no buttons from their text.
 - Feats (STD6c) are moved to the end by King.
+- 0.49.0-alpha.1: Ninjutsu Specialist reviewed too. Flow's concentration advantage is an element on its effect now (no state check in code). Gale Fracture is written by both the rider table and the automation table; the rider applier compares flags regardless of key order.

@@ -73,3 +73,45 @@ test("Medical-Nin: every feature reviewed, text not parsed, the Automation tab l
   assert.deepEqual(chakra.flags.n5e.rules.filter(r => r.key === "attacks").map(r => r.value), [2]);
   assert.equal(feature("healing-ascension").system.resourcePools[0].max, "lvl(2:3,10:5)");
 });
+
+test("Ninjutsu Specialist: clash advantage by keywords, Flow's concentration advantage, Overheat by level", async () => {
+  const { contextualAdvantage, contextualModifiers } = await import("../../module/rules/elements.mjs");
+  const tide = feature("tidebreaker-blaze-walker");
+  const actor = { system: { level: 10 }, statuses: new Set(), effects: [], items: [tide] };
+  const clash = against => ({ kind: "check", type: "skill", key: "nin",
+    facts: ["clash", ...jutsuFacts(jutsu("Fire Ball", ["fireRelease"])), `clash:against:keyword:${against}`] });
+  assert.deepEqual(contextualAdvantage(actor, clash("waterRelease")).advantage, ["Tidebreaker"]);
+  assert.deepEqual(contextualAdvantage(actor, clash("earthRelease")).advantage, []);
+
+  const flow = feature("chakra-surge").system.activities.find(a => a.label === "Enter Flow").effect;
+  const inFlow = { system: { level: 5 }, statuses: new Set(), items: [], effects: [{ name: "Flow", flags: { n5e: { rules: flow.rules } } }] };
+  const conc = d => ({ kind: "check", type: "skill", key: "cha", facts: ["concentration", `concentration:discipline:${d}`] });
+  assert.deepEqual(contextualAdvantage(inFlow, conc("nin")).advantage, ["Flow"]);
+  assert.deepEqual(contextualAdvantage(inFlow, conc("gen")).advantage, []);
+  assert.ok(flow.rules.some(r => r.on === "turnStart" && r.pool === "focus"));
+
+  const overheat = feature("over-the-limit-blaze-walker").system.activities[0].effect;
+  const hot = level => ({ system: { level }, statuses: new Set(), items: [], effects: [{ name: "Overheat", flags: { n5e: { rules: overheat.rules } } }] });
+  const fire = { kind: "damage", type: "damage", facts: jutsuFacts(jutsu("Fire Ball", ["fireRelease"])) };
+  assert.equal(contextualModifiers(hot(6), fire).bonus, 2);
+  assert.equal(contextualModifiers(hot(10), fire).bonus, 4);
+  assert.equal(contextualModifiers(hot(10), { kind: "damage", type: "damage", facts: jutsuFacts(jutsu("Gust", ["windRelease"])) }).bonus, 0);
+});
+
+test("Ninjutsu Specialist: 0-cost Chakra Compression from 11th, Potent counts the lowest dice as maximum, every feature reviewed", async () => {
+  const { maximizeAfterBonus } = await import("../../module/rules/elements.mjs");
+  const comp = feature("chakra-compression");
+  const at = level => availableCastOptions({ system: { level }, items: [comp], effects: [], flags: {} }, jutsu("Gust", [], "D"));
+  assert.equal(at(10).length, 1, "only the −rank option before 11th");
+  assert.equal(at(11).length, 2);
+  const avail = at(11);
+  const zero = avail.find(o => o.def.costDelta === "zero");
+  assert.equal(applyCastOptions({ system: { level: 11 } }, jutsu("Gust", [], "D"), [{ id: zero.id }], avail, "D").zeroCost, true);
+  assert.equal(maximizeAfterBonus([{ faces: 10, result: 1 }, { faces: 10, result: 9 }, { faces: 10, result: 4 }, { faces: 10, result: 2 }], 3), 9 + 8 + 6);
+  const potent = cardElements(actionEffectsOf([feature("potent-ninjutsu")]), { isActor: true, rollerUuid: "a" });
+  assert.equal(contextualRoll({ statuses: new Set(), effects: [], items: [] }, { kind: "damage", type: "damage" }, null, potent).maximizeAfter, 3);
+  const nin = features.filter(f => f.system.requirement?.class === "ninjutsu-specialist");
+  assert.equal(nin.length, 84);
+  for ( const f of nin ) assert.equal(f.flags.n5e.reviewed, true, f.name);
+  assert.equal(automationOf(feature("quickened-ninjutsu")).channels[0].kind, "Casting time");
+});

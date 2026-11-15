@@ -10,6 +10,7 @@
  * a clash with "wins automatically" (Q-F8); a dispelled jutsu ends at once, with every effect it put
  * out (Q-F10): the loser's Apply dispels its jutsu, and a Draw has "Dispel both".
  */
+import { jutsuFacts } from "../rules/jutsu-facts.mjs";
 import { clashSkill, rankMastery, releaseOf, elementalAdvantage, contestCount, clashResult } from "../rules/clash.mjs";
 import { castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { canModify } from "../automation/authority.mjs";
@@ -60,14 +61,19 @@ export async function startClash(message) {
   const rankA = cast.rank ?? triggerItem.system.rank;
   const rankB = clashRank(defender, chosen);
   const element = elementalAdvantage(releaseOf(triggerItem.system.keywords), releaseOf(chosen.system.keywords));
-  const side = (actor, item, rank, otherRank, adv) => {
+  // STD6d: each side's clash checks know both jutsu: "clash", its own jutsu facts and
+  // "clash:against:keyword:<k>" for the other's keywords (Tidebreaker: Fire against Water).
+  const factsFor = (item, rank, other) => ["clash", ...jutsuFacts(item, { rank }),
+    ...[...(other.system.keywords ?? [])].map(k => `clash:against:keyword:${String(k).split(":")[0]}`)];
+  const side = (actor, item, rank, otherRank, adv, other) => {
     const m = rankMastery(rank, otherRank, actor.system.skills?.[skill]?.mastery ?? 0);
-    return { actorUuid: actor.uuid, name: actor.name, item: item.name, itemId: item.id, rank, bonus: m.bonus, masteryRanks: m.ranks, advantage: adv };
+    return { actorUuid: actor.uuid, name: actor.name, item: item.name, itemId: item.id, rank, bonus: m.bonus, masteryRanks: m.ranks, advantage: adv,
+      facts: factsFor(item, rank, other) };
   };
   const data = {
     skill, contests: contestCount(rankA, rankB),
-    a: side(trigger, triggerItem, rankA, rankB, element === "mine"),
-    b: side(defender, chosen, rankB, rankA, element === "theirs"),
+    a: side(trigger, triggerItem, rankA, rankB, element === "mine", chosen),
+    b: side(defender, chosen, rankB, rankA, element === "theirs", triggerItem),
     triggerDiscipline: cast.discipline ?? castDisciplineOf(trigger, triggerItem)
   };
   return ChatMessage().create({ speaker: ChatMessage().getSpeaker({ actor: defender }),
@@ -133,7 +139,7 @@ export async function rollClash(card, key, event) {
   for ( let i = 0; i < left; i++ ) {
     const base = rollSpec(actor, "skill", data.skill);
     const spec = { ...base, label: `Clash: ${s.item}${data.contests > 1 ? ` (${i + 1 + data.contests - left}/${data.contests})` : ""}`,
-      bonus: base.bonus + (s.bonus || 0), note: [base.note, s.masteryRanks ? `+${s.masteryRanks} Mastery for rank` : ""].filter(Boolean).join(" · ") };
+      bonus: base.bonus + (s.bonus || 0), facts: s.facts ?? [], note: [base.note, s.masteryRanks ? `+${s.masteryRanks} Mastery for rank` : ""].filter(Boolean).join(" · ") };
     await rollWithSpec(actor, spec, { event, mode: s.advantage ? "advantage" : undefined, source: card.id });
   }
   return left;

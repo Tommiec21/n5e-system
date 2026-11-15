@@ -1,0 +1,1672 @@
+{
+  "class": "ninjutsu-specialist",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-15",
+  "features": {
+    "blaze-breaker-storm-terror": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Blaze Breaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:windRelease",
+            "clash:against:keyword:fireRelease"
+          ]
+        }
+      ]
+    },
+    "blaze-walker-blaze-walker": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Blaze Walker (2 Focus, 2 Pyroclasm)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "fireRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Also spend 2 Pyroclasm. Affected creatures take +8 from the first damage each turn by others, and can't lose ranks of Burned, until the start of your next turn."
+        }
+      ]
+    },
+    "bonded-summoning-summoner": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learn the Summoning Technique (casting time 1 Action) and bond the first creature you summon: always the highest rank at half cost; uses your level for AC and HP; regains half its HP and jutsu slots on a rest; Primary Role plus one more; +3 ability points and a skill at 6th, 10th, 14th and 18th; jutsu known grow by level; uses your Focus for its slots; dispelled at 0 HP."
+        }
+      ]
+    },
+    "breach": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash, 9th: a structure or construct intercepting your Ninjutsu attack lets half the damage through if the attack would have hit."
+        }
+      ]
+    },
+    "breach-15th-level-benefit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash, 15th: a save Ninjutsu intercepted by a structure or construct still forces saves: half damage on a failure (the structure takes full), none on a success."
+        }
+      ]
+    },
+    "breeze-breaker-lightning-breaker": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Breeze Breaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:lightningRelease",
+            "clash:against:keyword:windRelease"
+          ]
+        }
+      ]
+    },
+    "bulwark-stone-crusher": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Tension max 6 (on Seismic Tether), also gained ending your turn within 10 ft of a hostile creature; Earthen Constructs have 20 HP when nothing sets it; tethers up to 30 ft; once per turn Stone Bind at no action cost when a hostile creature moves in range; Grit on an ally can redirect up to half its damage to the construct."
+        }
+      ]
+    },
+    "careful-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 4 chosen creatures suffer no effect from your save Ninjutsu."
+        }
+      ]
+    },
+    "chakra-compression": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Chakra Compression (cost −rank)",
+          "appliesTo": {
+            "discipline": "nin",
+            "activation": "action"
+          },
+          "oncePerTurn": true,
+          "costDelta": "-rank"
+        },
+        {
+          "label": "Chakra Compression: 0 cost (1 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "activation": "action",
+            "maxRank": "lvl(11:D,17:C)"
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 1
+          },
+          "note": "Not a Combination jutsu. Casting at 0 cost is not a cost reduction.",
+          "costDelta": "zero"
+        }
+      ]
+    },
+    "chakra-stance": {
+      "status": "none"
+    },
+    "chakra-surge": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Crash: bonus damage",
+          "requiresState": "crash",
+          "auto": true,
+          "appliesTo": {
+            "discipline": "nin",
+            "requiresDamage": true
+          },
+          "damage": {
+            "formula": "lvl(3:1d10,7:2d10,11:3d10,15:4d10,19:5d10)",
+            "halfForArea": true
+          }
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5egCqzoOn6KvA1k",
+          "type": "effect",
+          "label": "Enter Crash",
+          "effect": {
+            "name": "Chakra Surge: Crash",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will"
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5edoFOqoeYZvrPk",
+          "type": "effect",
+          "label": "Enter Flow",
+          "effect": {
+            "name": "Chakra Surge: Flow",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.saveDC.nin",
+                "value": "lvl(3:1,11:2,19:3)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "flow",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "advantage",
+                "selector": "check",
+                "predicate": [
+                  "concentration",
+                  "concentration:discipline:nin"
+                ],
+                "label": "Flow"
+              },
+              {
+                "key": "resource",
+                "on": "turnStart",
+                "pool": "focus",
+                "amount": 1,
+                "label": "Flow"
+              }
+            ]
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash: two or more Moldings on one casting and no cost reduction (both checked when casting); Draw Reserves as an Action."
+        },
+        {
+          "key": "note",
+          "text": "Flow: its save DC bonus, a Focus at the start of your turn and advantage on Ninjutsu concentration checks are on its effect. It can't benefit from jutsu or features that boost Ninjutsu damage."
+        },
+        {
+          "key": "note",
+          "text": "One state at a time, 1 minute combined, a Bonus Action to swap once per turn; 10 minutes of rest or meditation before entering again."
+        }
+      ]
+    },
+    "circuit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow, 9th: the first time you maintain a concentration Ninjutsu it costs 0 chakra."
+        }
+      ]
+    },
+    "circuit-15th-level-benefit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow, 15th: immune to hostile effects that raise the cost of your jutsu."
+        }
+      ]
+    },
+    "combination-technique-summoner": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Combination Technique (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Your Bonded creature spends its Reaction: the jutsu gains a qualifying Role effect or special feature of it, or it casts a D-Rank jutsu (C-Rank from 14th) at no slot cost."
+        }
+      ]
+    },
+    "counter-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etsskLekwj48za",
+          "type": "effect",
+          "label": "Counter Seal",
+          "activation": "reaction",
+          "effect": {
+            "name": "Counter Seal",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "save",
+                "value": 2,
+                "label": "Counter Seal"
+              },
+              {
+                "key": "note",
+                "text": "Against a Fuinjutsu: +2 to this saving throw (advantage instead if it would inflict Sealed).",
+                "label": "Counter Seal"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when you or an ally within 30 ft makes a save against a Fuinjutsu. From 13th level, spend 1 Focus to give it to all willing creatures within 30 ft."
+        }
+      ]
+    },
+    "crimson-kindling-blaze-walker": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Crimson Kindling (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "fireRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Area save Ninjutsu: creatures with Burned that fail take −1 to their jutsu save DCs per rank of Burned until the start of your next turn; flammable Plants, Beasts and Constructs save at disadvantage."
+        }
+      ]
+    },
+    "current-breaker-stone-crusher": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Current Breaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:earthRelease",
+            "clash:against:keyword:lightningRelease"
+          ]
+        }
+      ]
+    },
+    "distant-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "+30 ft range (touch becomes 30 ft)."
+        }
+      ]
+    },
+    "doubled-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A single-target Ninjutsu (not self) targets a second creature in range."
+        }
+      ]
+    },
+    "earth-release-stone-crusher": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you choose this tradition: learn Earth Release Ninjutsu (2 known ones, one C-Rank or lower, if you already had the affinity); learn and create them in half the time. Earthen Artifacts you conjure may have AC 10 and 10 HP when nothing else sets them."
+        }
+      ]
+    },
+    "eye-of-the-storm-storm-terror": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pressure max 5 (on Tempest Pressure); the 1-Focus enhanced Gale Burst, Sharpening and Dragwind are in their options' notes."
+        }
+      ]
+    },
+    "fire-release-blaze-walker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you choose this tradition: learn Fire Release Ninjutsu (2 known ones, one C-Rank or lower, if you already had the affinity); learn and create them in half the time."
+        }
+      ]
+    },
+    "focused-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pass a concentration check for a Ninjutsu automatically (with any other Moldings)."
+        }
+      ]
+    },
+    "gale-fracture-storm-terror": {
+      "status": "automated"
+    },
+    "galvanize-lightning-breaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "More Stormcircuit options: 1 die, Linked creatures have disadvantage on their next attack; 2 dice, pulled 20 ft toward the damaged creature; 3 dice, no Bonus Action until the end of their next turns."
+        }
+      ]
+    },
+    "gigawatt-pulse-lightning-breaker": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Gigawatt Pulse (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "lightningRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Allies within 30 ft gain +2 to one of AC, an attack roll, critical range, a save, a skill or ability check until the start of your next turn (d20 choices: the next roll). Aberrations, Celestials and Mutants save against the jutsu at disadvantage."
+        }
+      ]
+    },
+    "harmony": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow, 9th: Reaction when an ally within 30 ft casts a jutsu: add your Flow save DC bonus to it."
+        }
+      ]
+    },
+    "harmony-15th-level-benefit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow, 15th: 1 Focus when an ally within 30 ft saves against a jutsu: add your Flow save DC bonus to its result."
+        }
+      ]
+    },
+    "heightened-ninjutsu": {
+      "status": "automated"
+    },
+    "ignition-blaze-walker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Using a Pyroclasm ability, 1 Focus per enhancement: Detonate Burst (20 ft) or Heat (3d6 per Pyroclasm); Hellrend Sunder (2+ Pyroclasm: targets lose resistances until your next turn); Devastation Probability (+2 dice maximized) or Potential (roll 1d10)."
+        }
+      ]
+    },
+    "jutsu-breaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when you see a creature within 90 ft cast a damaging Ninjutsu: cast a 1-Action Ninjutsu that gains Clash and starts a clash with it."
+        }
+      ]
+    },
+    "lightning-breaker-lightning-breaker": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Lightning Breaker (2 Focus, 2 Shocked)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "lightningRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Also spend 2 ranks of Shocked. Affected creatures lose their jutsu-based effects (not conditions) and make a Con save vs your Ninjutsu DC or are Stunned until the end of their next turn."
+        }
+      ]
+    },
+    "lightning-release-lightning-breaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you choose this tradition: learn Lightning Release Ninjutsu (2 known ones, one C-Rank or lower, if you already had the affinity); learn and create them in half the time."
+        }
+      ]
+    },
+    "meditation": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5eMclfrXkLMfx2C",
+          "type": "heal",
+          "label": "Group meditation",
+          "heal": {
+            "formula": "lvl(5:1d8,11:2d8,17:3d8)",
+            "pool": "cp"
+          },
+          "text": "You and participating allies (select their tokens); once per Short Rest each."
+        }
+      ]
+    },
+    "mountains-aegis-bastion-stone-crusher": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Manifesting your Aegis, spend 2 Focus to be a Bastion: you and allies within 20 ft are immune to Bruised, Dazed and Chilled; the AC loss isn't limited per turn and goes to −3."
+        }
+      ]
+    },
+    "mountains-aegis-stone-crusher": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Entering Flow, spend 1 Tension for your Aegis: within 10 ft of an Earthen Artifact, redirect up to half the damage you take to it (excess back to you); once per turn when you take damage, −1 AC (max −2) until your next turn."
+        }
+      ]
+    },
+    "ninjutsu-master": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEWp3keXUYr3D9",
+          "type": "effect",
+          "label": "Enter Crash (Perfected)",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 4
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Perfected)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "damageHandling",
+                "selector": "damage",
+                "predicate": "jutsu:discipline:nin",
+                "immunityAsResistance": true,
+                "label": "Crash (Perfected)"
+              },
+              {
+                "key": "note",
+                "text": "Once per casting +5d10 Ninjutsu damage (the Crash option); three or more Moldings on one casting; your Ninjutsu treat immunity as resistance (on this effect).",
+                "label": "Chakra Surge: Crash (Perfected)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eik7rn6oatI53P",
+          "type": "effect",
+          "label": "Enter Flow (Perfected)",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 4
+          },
+          "effect": {
+            "name": "Chakra Surge: Flow (Perfected)",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.saveDC.nin",
+                "value": "3",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "flow",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "advantage",
+                "selector": "check",
+                "predicate": [
+                  "concentration",
+                  "concentration:discipline:nin"
+                ],
+                "label": "Flow (Perfected)"
+              },
+              {
+                "key": "resource",
+                "on": "turnStart",
+                "pool": "focus",
+                "amount": 1,
+                "label": "Flow (Perfected)"
+              },
+              {
+                "key": "resource",
+                "on": "turnEnd",
+                "pool": "focus",
+                "amount": 1,
+                "label": "Flow (Perfected)"
+              },
+              {
+                "key": "note",
+                "text": "+3 Ninjutsu save DC and a Focus at the start and end of each turn (on this effect); concentrate on up to 3 Ninjutsu at once.",
+                "label": "Chakra Surge: Flow (Perfected)"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use instead of entering Crash or Flow: 4 Focus, then not again for 10 minutes."
+        }
+      ]
+    },
+    "ninjutsu-tradition": {
+      "status": "none"
+    },
+    "over-the-limit-blaze-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUj9yVZJrDkAzF",
+          "type": "effect",
+          "label": "Enter Crash: Overheat",
+          "activation": "bonus",
+          "cost": {
+            "pool": "pyroclasm",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Overheat)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "damage",
+                "predicate": "jutsu:keyword:fireRelease",
+                "value": "lvl(6:2,10:4,18:6)",
+                "label": "Overheat"
+              },
+              {
+                "key": "note",
+                "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th; on this effect). You take 1d6 fire damage at the end of each of your turns that can't be reduced or resisted.",
+                "label": "Chakra Surge: Crash (Overheat)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "over-the-limit-burnout-blaze-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5XrsEErhCPBwC",
+          "type": "effect",
+          "label": "Enter Crash: Burnout",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Burnout)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "damage",
+                "predicate": "jutsu:keyword:fireRelease",
+                "value": "lvl(6:2,10:4,18:6)",
+                "label": "Overheat"
+              },
+              {
+                "key": "resource",
+                "on": "turnEnd",
+                "pool": "pyroclasm",
+                "amount": 1,
+                "label": "Burnout"
+              },
+              {
+                "key": "note",
+                "text": "Overheat's damage bonus and +1 Pyroclasm at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. You take 3d6 fire damage at the end of each turn that can't be reduced, resisted or ignored. Also spend 1 Pyroclasm.",
+                "label": "Chakra Surge: Crash (Burnout)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "overdrive": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash, 9th: once per turn casting a Ninjutsu, roll 1d4; on a 4 one affected creature takes −4 on its save."
+        }
+      ]
+    },
+    "overdrive-15th-level-benefit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash, 15th: one Molding at no Focus cost, once every other turn."
+        }
+      ]
+    },
+    "perfected-surge": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose one Crash and one Flow evolution (a Neutral one counts as either) for their 9th-level effects; at 15th level, one more for its 15th-level effect only (chosen at level-up)."
+        }
+      ]
+    },
+    "piercing-ninjutsu": {
+      "status": "automated"
+    },
+    "potent-ninjutsu": {
+      "status": "automated",
+      "effects": [
+        {
+          "name": "Potent Ninjutsu",
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "maximizeAfter",
+              "selector": "damage",
+              "value": 3,
+              "label": "Potent Ninjutsu"
+            }
+          ]
+        }
+      ]
+    },
+    "precise-ninjutsu": {
+      "status": "automated"
+    },
+    "pressure-stagnation-tsunami": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Pressure Stagnation (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "waterRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "A 40-ft zone around you until the end of your next turn: hostile creatures casting a hand-seal jutsu in it take 4d6 cold and chakra damage (6d6 from 14th level)."
+        }
+      ]
+    },
+    "pyroclasm": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Hellrend (Pyroclasm)",
+          "appliesTo": {
+            "keywords": [
+              "fireRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pyroclasm",
+            "choose": true
+          },
+          "effect": {
+            "name": "Hellrend (DR)",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "-2*@amount",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd"
+          }
+        },
+        {
+          "label": "Devastation (1 Pyroclasm)",
+          "appliesTo": {
+            "keywords": [
+              "fireRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pyroclasm",
+            "amount": 1
+          },
+          "roll": "1d6",
+          "note": "Maximize that many damage dice, halved (round down), minimum 1."
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5esf3FD8Qiby1zH",
+          "type": "save",
+          "label": "Detonate",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(2*@amount)d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "pyroclasm",
+            "choose": true
+          },
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "activation": "action",
+          "text": "10 ft around you. Failed save: the damage and 1 rank of Burned per Pyroclasm spent."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Gaining Pyroclasm (once per turn when you cast a Fire Release jutsu, max 3) is counted when casting."
+        }
+      ]
+    },
+    "quickened-ninjutsu": {
+      "status": "automated"
+    },
+    "reactive-ninjutsu": {
+      "status": "automated"
+    },
+    "redirected-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "On a miss, remake the attack roll against another creature in range and use the new roll."
+        }
+      ]
+    },
+    "refined-focus": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Focus: 1 + proficiency bonus (the class's pool), regained on a long rest. One Molding per Ninjutsu (two or more in Crash), never on a Combination jutsu; Moldings known by level (class table)."
+        }
+      ]
+    },
+    "rule-breaker-summoner": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Rule Breaker: Summoning Technique as a Bonus Action",
+          "appliesTo": {
+            "namePrefix": "Summoning Technique"
+          },
+          "castAs": "bonus",
+          "note": "On your turn."
+        }
+      ]
+    },
+    "scholar": {
+      "status": "automated",
+      "effects": [
+        {
+          "name": "Scholar (2)",
+          "levels": {
+            "min": 2
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.nin",
+              "value": "Scholar (2)",
+              "mode": 0
+            }
+          ]
+        },
+        {
+          "name": "Scholar (7)",
+          "levels": {
+            "min": 7
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.nin",
+              "value": "Scholar (7)",
+              "mode": 0
+            }
+          ]
+        },
+        {
+          "name": "Scholar (13)",
+          "levels": {
+            "min": 13
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.nin",
+              "value": "Scholar (13)",
+              "mode": 0
+            }
+          ]
+        }
+      ]
+    },
+    "seismic-tether-stone-crusher": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "tension",
+          "label": "Tension",
+          "value": 0,
+          "max": "lvl(2:4,10:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5efcwtSs5ISypCO",
+          "type": "roll",
+          "label": "Gain Tension",
+          "cost": {
+            "pool": "tension",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "With a Geo-Tether active: when you cast an Earth Release Ninjutsu or take damage (from 10th level also ending your turn within 10 ft of a hostile creature)."
+          }
+        },
+        {
+          "id": "n5eGV0f4bDj90djB",
+          "type": "save",
+          "label": "Stone Bind",
+          "cost": {
+            "pool": "tension",
+            "amount": 1
+          },
+          "oncePerTurn": true,
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "nin",
+              "formula": ""
+            },
+            "onSuccess": "half",
+            "fourTier": false,
+            "resave": false,
+            "tiers": {
+              "critSuccess": "",
+              "success": "",
+              "failure": "",
+              "critFailure": ""
+            }
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(2:1d6,6:3d6,10:5d6,14:7d6)",
+                "type": "earth"
+              }
+            ],
+            "pierce": 0,
+            "ignoreDR": false
+          },
+          "text": "Creatures of your choice within 10 ft of a Geo-Tether; on a failure their speed is halved until the end of their next turn."
+        },
+        {
+          "id": "n5eJ42ENC3l2pf8u",
+          "type": "heal",
+          "label": "Grit",
+          "activation": "reaction",
+          "cost": {
+            "pool": "tension",
+            "amount": 1
+          },
+          "heal": {
+            "formula": "lvl(2:6,6:10,10:14,14:18)",
+            "pool": "tempHp"
+          },
+          "text": "One Tension per damaged creature (you or allies within 10 ft of a Geo-Tether); until the start of your next turn."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Geo-Tether (Action, Bonus Action or part of an Earth Release cast, once per turn): mark a space within 20 ft (30 ft from 10th); 2 at a time (3 at 10th, 4 at 18th); they count as Earthen Artifacts. Tension max 4 (6 from 10th)."
+        },
+        {
+          "key": "note",
+          "text": "Adamantine Blood (1 Tension, casting an Earth Release construct or structure within 10 ft of a tether): it gains DR equal to 4 (D/C), 6 (B/A) or 8 (S)."
+        }
+      ]
+    },
+    "shifting-tides-tsunami": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewlrF82R5jBn8r",
+          "type": "effect",
+          "label": "Shift Tides: Shark Jaw",
+          "effect": {
+            "name": "Shift Tides: Shark Jaw",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Once per turn, cold damage you deal also deals chakra damage equal to half of it (all of it from 10th level).",
+                "label": "Shift Tides: Shark Jaw"
+              }
+            ],
+            "exclusive": "tides"
+          }
+        },
+        {
+          "id": "n5eKypOL5pHf719J",
+          "type": "effect",
+          "label": "Shift Tides: Piranha Fang",
+          "effect": {
+            "name": "Shift Tides: Piranha Fang",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Once per turn (twice from 10th level), inflicting Chilled gives you 1 Focus.",
+                "label": "Shift Tides: Piranha Fang"
+              }
+            ],
+            "exclusive": "tides"
+          }
+        },
+        {
+          "id": "n5elB5937c1sFufW",
+          "type": "effect",
+          "label": "Shift Tides: Surge",
+          "effect": {
+            "name": "Shift Tides: Surge",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Damage you deal can move the creature 10 ft (15 ft from 10th) toward or away from you.",
+                "label": "Shift Tides: Surge"
+              }
+            ],
+            "exclusive": "tides"
+          }
+        },
+        {
+          "id": "n5efGFN2La8W4MkN",
+          "type": "effect",
+          "label": "Shift Tides: Undertow",
+          "effect": {
+            "name": "Shift Tides: Undertow",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 12,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Your Water Release Ninjutsu bypass Barrier interception to reach at least one original target (all of them from 10th level).",
+                "label": "Shift Tides: Undertow"
+              }
+            ],
+            "exclusive": "tides"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shift when you cast a Water Release Ninjutsu or attack with an Evocation weapon, once per turn; the stance lasts until the end of your next turn and applies to that jutsu."
+        }
+      ]
+    },
+    "stone-crusher-stone-crusher": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Stone Crusher (2 Focus, 2 Tension)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "earthRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Also spend 2 Tension. Allies within 30 ft of a Geo-Tether: +4 AC and immune to critical hits until your next turn; hostile creatures there suffer Stone Bind as if they failed."
+        }
+      ]
+    },
+    "storm-herald-storm-terror": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eg2onjBZa8TZMy",
+          "type": "effect",
+          "label": "Enter Crash: Herald",
+          "activation": "bonus",
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Herald)",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.speed.fly",
+                "value": "40",
+                "mode": 4
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "attack",
+                "direction": "against",
+                "value": 1,
+                "label": "Herald"
+              },
+              {
+                "key": "note",
+                "text": "40-ft fly speed and +1 to attacks against you (on this effect). Crash's damage dice can be halved and applied to two jutsu.",
+                "label": "Chakra Surge: Crash (Herald)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "storm-herald-typhoon-storm-terror": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZQV2Hb8rQSylr",
+          "type": "effect",
+          "label": "Enter Crash: Typhoon",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Typhoon)",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.speed.fly",
+                "value": "40",
+                "mode": 4
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "attack",
+                "direction": "against",
+                "value": 2,
+                "label": "Typhoon"
+              },
+              {
+                "key": "critRange",
+                "selector": "attack",
+                "direction": "against",
+                "value": 1,
+                "label": "Typhoon"
+              },
+              {
+                "key": "resource",
+                "on": "turnEnd",
+                "pool": "pressure",
+                "amount": 1,
+                "label": "Typhoon"
+              },
+              {
+                "key": "note",
+                "text": "Herald's benefits; +1 Pressure at the end of each turn; attacks against you +2 and +1 critical range (on this effect). Once per turn one base Gale Burst, Sharpening or Dragwind at no Pressure cost. Also spend 1 Pressure.",
+                "label": "Chakra Surge: Crash (Typhoon)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "storm-terror-storm-terror": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Storm Terror (2 Focus, 2 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Also spend 2 Pressure. A 60-ft Storm Zone around one affected creature until the end of your next turn: hostile creatures in it get no cover, concealment or invisibility, have disadvantage on ranged attacks, and their Barrier jutsu have half HP."
+        }
+      ]
+    },
+    "stormcircuit-lightning-breaker": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Static marks are applied by the rider on a failed save. Forgo damage dice against a marked creature: 1, Linked creatures' speed halved; 2, they suffer the jutsu's condition; 3, they take the same damage."
+        }
+      ]
+    },
+    "subtle-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Cast without hand seals (with any other Moldings)."
+        }
+      ]
+    },
+    "summoning-duality-summoner": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Entering Crash or Flow, 1 Focus: you enter Crash Duality or Flow Duality and your Bonded creature the opposite one, swapping together; it loses 2 jutsu slots at the end of each of your turns and gains its Role's Crash or Flow benefit."
+        },
+        {
+          "key": "note",
+          "text": "Crash Duality: once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction. Flow Duality: +1 Ninjutsu save DC (+2 at 15th), a Focus (a Bonded creature: a jutsu slot) at the start of your turn, concentration at advantage, no damage boosts."
+        }
+      ]
+    },
+    "summoning-expert-summoner": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A second Bonded creature at half your level (rounded up); both can be summoned; command the one not yet commanded this turn with your Action or Reaction; only one benefits from Summoning Duality at a time."
+        }
+      ]
+    },
+    "summoning-master-summoner": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Summoning a Bonded creature, spend 4 Focus: it gains a Bonded Role (for Tag-Team and Summoning Duality) and is dispelled after 1 minute; one such creature at a time."
+        }
+      ]
+    },
+    "surging-maelstrom-abyss-tsunami": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erGBLRGCXLwog2",
+          "type": "effect",
+          "label": "Enter Crash: Abyss",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Abyss)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "note",
+                "text": "Maelstrom's benefits; Tidal Draw on every creature your Water Release Ninjutsu affects; each time you deal chakra damage, regain 1 Focus. Each instance of damage you take +4.",
+                "label": "Chakra Surge: Crash (Abyss)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "surging-maelstrom-tsunami": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSlUA5WeKfrlUQ",
+          "type": "effect",
+          "label": "Enter Crash: Maelstrom",
+          "activation": "bonus",
+          "cost": {
+            "pool": "focus",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Chakra Surge: Crash (Maelstrom)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "crash",
+            "exclusive": "surge",
+            "ampType": "will",
+            "rules": [
+              {
+                "key": "note",
+                "text": "Two Shift Tides stances at once; once per turn, Water Release cold damage can inflict Tidal Draw until your next turn (when it casts a chakra-molding jutsu you gain temporary chakra: 1d4 D/C, 1d8 B/A, 1d12 S). Each instance of damage you take +2.",
+                "label": "Chakra Surge: Crash (Maelstrom)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "synchronization-technique-summoner": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Synchronization Technique (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Each Bonded creature spends its Reaction and 4 jutsu slots to cast its lowest-rank jutsu; if your jutsu hits or a creature fails its save, theirs apply as if they hit or it failed. Once per 10 minutes."
+        }
+      ]
+    },
+    "tag-team-summoner": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "By its Primary Role, once per turn: Striker (two hits: regain 1 Focus), Caster (it spends a slot in combat: 1 Focus), Controller (a creature fails its save: 1 Focus), Defender (its Reaction: it takes an attack aimed at you within 10 ft), Lurker (its Lethal Attack: you teleport within 20 ft of it), Supporter (it heals or gives temporary HP or CP: you or it reduce a condition by 1 rank)."
+        }
+      ]
+    },
+    "tectonic-mantle-stone-crusher": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Tectonic Mantle (2 Focus)",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 2
+          },
+          "note": "Allies within 20 ft of a Geo-Tether resist the next damage before your next turn. Hostile creatures failing the save: speed 0 and disadvantage on their next Dex save until your next turn (Demons, Monstrosities, Undead: disadvantage on all saves)."
+        }
+      ]
+    },
+    "tempest-pressure-storm-terror": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "pressure",
+          "label": "Pressure",
+          "value": 0,
+          "max": "lvl(2:3,10:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5ezH9SiOJ97EFFn",
+          "type": "roll",
+          "label": "Build Pressure",
+          "cost": {
+            "pool": "pressure",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "When you cast a Wind Release jutsu or make a Ninjutsu attack with an Evocation weapon."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Gale Burst (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ]
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "Creatures within 10 ft: Str save vs your Ninjutsu DC or pushed 10 ft and Prone (10th level, 1 Focus: pulled 10 ft and Dazed instead)."
+        },
+        {
+          "label": "Sharpening (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "+1 wind damage per damage die rolled, max +10 (10th level, 1 Focus: +2 per die).",
+          "oncePerTurn": true
+        },
+        {
+          "label": "Dragwind (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ]
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "Area +5 ft (+10 at 10th, +15 at 18th). 10th level, 1 Focus: creatures with a Physical or Elemental condition get no jutsu bonuses to the save."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pressure lasts 1 minute; max 3 (5 from 10th level). Each Pressure you start your turn with gives +2 temporary HP. Gale Burst and Sharpening also work with Evocation weapon Ninjutsu attacks."
+        }
+      ]
+    },
+    "tenacious-ninjutsu": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5e25deaFFNV5BzD",
+          "type": "roll",
+          "label": "Tenacious Ninjutsu: clash bonus",
+          "activation": "reaction",
+          "roll": {
+            "formula": "1d10",
+            "note": "Add to your clash check; the DC to counter, dispel or interrupt this jutsu rises by 2."
+          }
+        }
+      ]
+    },
+    "tenketsu-refinement": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Automated by the Focus pool's short-rest recovery (on the class): below half, Focus is set to half its maximum."
+        }
+      ]
+    },
+    "terra-breaker-tsunami": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Terra Breaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:waterRelease",
+            "clash:against:keyword:earthRelease"
+          ]
+        }
+      ]
+    },
+    "tidal-crescendo-tsunami": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shift Tides stances improve at 10th level (shown on each stance)."
+        }
+      ]
+    },
+    "tidebreaker-blaze-walker": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "label": "Tidebreaker",
+          "predicate": [
+            "clash",
+            "jutsu:discipline:nin",
+            "jutsu:keyword:fireRelease",
+            "clash:against:keyword:waterRelease"
+          ]
+        }
+      ]
+    },
+    "tsunami-tsunami": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Tsunami (3 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "waterRelease"
+            ]
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 3
+          },
+          "note": "Creatures failing the save (or a Con save vs your Ninjutsu DC) pay your level more for their jutsu until the end of your next turn."
+        }
+      ]
+    },
+    "union": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Neutral, 9th: once per turn at the start of your turn, swap states without a Bonus Action."
+        }
+      ]
+    },
+    "union-15th-level-benefit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Neutral, 15th: once per turn when you swap states, regain 1 Focus."
+        }
+      ]
+    },
+    "voltaic-conduction-lightning-breaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Entering Voltaic, spend 2 Focus for Conduction: +1 rank of Shocked at the start of each turn and Speed Jolt not limited per turn; 1d12 lightning per rank instead of 1d6."
+        }
+      ]
+    },
+    "voltaic-lightning-breaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Entering Flow, end one Static mark to become Voltaic: immune to Shocked's effects (ranks still gained); take Shocked ranks from creatures your Ninjutsu affects; spend them to Circumvent (in place of forgone dice), Speed Jolt (teleport 10 ft, once per turn) or Supercharge (Overcharge, once per turn). 1d6 lightning per rank at the end of your turns, not reducible."
+        }
+      ]
+    },
+    "water-release-tsunami": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you choose this tradition: learn Water Release Ninjutsu (2 known ones, one C-Rank or lower, if you already had the affinity); learn and create them in half the time."
+        }
+      ]
+    },
+    "widened-ninjutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Larger area: line +5 ft wide or +10 ft long; cube or sphere +5 ft radius; cone +10 ft; cylinder +10 ft radius or height."
+        }
+      ]
+    },
+    "wind-release-storm-terror": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you choose this tradition: learn Wind Release Ninjutsu (2 known ones, one C-Rank or lower, if you already had the affinity); learn and create them in half the time. Proficiency with the Gunbai Fan and Giant Iron Fan; the Gunsen, Gunbai Fan and Giant Iron Fan gain Evocation with a Ninjutsu Echo and wind damage, range 60 ft."
+        }
+      ]
+    }
+  }
+}

@@ -40,15 +40,32 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "castOption": {
-        "label": "Chakra Compression (cost −rank)",
-        "appliesTo": {
-          "discipline": "nin",
-          "activation": "action"
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Chakra Compression (cost −rank)",
+          "appliesTo": {
+            "discipline": "nin",
+            "activation": "action"
+          },
+          "oncePerTurn": true,
+          "costDelta": "-rank"
         },
-        "oncePerTurn": true,
-        "costDelta": "-rank"
-      }
+        {
+          "label": "Chakra Compression: 0 cost (1 Focus)",
+          "appliesTo": {
+            "discipline": "nin",
+            "activation": "action",
+            "maxRank": "lvl(11:D,17:C)"
+          },
+          "cost": {
+            "pool": "focus",
+            "amount": 1
+          },
+          "note": "Not a Combination jutsu. Casting at 0 cost is not a cost reduction.",
+          "costDelta": "zero"
+        }
+      ]
     }
   },
   "_stats": {

@@ -58,11 +58,11 @@ function validatePredicate(value, depth = 0) {
  * Rule elements v2 (STD1). Every key and field is checked; anything unknown is refused.
  * Numeric keys need a number; the others carry their own fields.
  */
-const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction", "rerollBelow", "critAbilityMod"]);
+const NUMERIC = new Set(["modifier", "degreeShift", "critRange", "maximizeDice", "minimumDie", "addRanks", "costReduction", "rerollBelow", "critAbilityMod", "maximizeAfter"]);
 const FIELDS = {
   common: ["key", "selector", "label", "predicate", "direction", "scope", "uses", "targets", "on", "endsOnUse", "oncePerTurn"],
   attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
-  modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"], critAbilityMod: ["value"],
+  modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"], critAbilityMod: ["value"], maximizeAfter: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
   reroll: ["mode"], damage: ["formula", "damageType"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
@@ -75,7 +75,8 @@ export function validateConditionalRules(rules) {
     const extra = Object.keys(r).filter(k => !allowed.has(k));
     if ( extra.length ) throw new Error(`Unsupported property for ${r.key}: ${extra.join(", ")}.`);
     // STD6d: an action effect's value may be the cast rank ("@rankValue", "@rankValue+1", "2*@rankValue").
-    const rankValued = typeof r.value === "string" && /^\s*(?:-?\d+\s*[+*]\s*)?@rankValue(?:\s*[+*]\s*-?\d+)?\s*$/.test(r.value);
+    const rankValued = typeof r.value === "string" && (/^\s*(?:-?\d+\s*[+*]\s*)?@rankValue(?:\s*[+*]\s*-?\d+)?\s*$/.test(r.value)
+      || /^lvl\((\s*\d+\s*:\s*-?\d+\s*,?)+\)$/.test(r.value));
     if ( NUMERIC.has(r.key) && !rankValued ) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);

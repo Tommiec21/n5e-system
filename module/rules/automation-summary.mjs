@@ -28,8 +28,9 @@ export function automationOf(item) {
     }
   };
   elementRows(item.flags?.n5e?.rules, item.name);
-  // Cast options (STD6d: the Automation tab lists them too).
+  // Cast options (STD6d: the Automation tab lists them too), and a Molding's casting-time change.
   const n5e = item.flags?.n5e ?? {};
+  if ( n5e.castAs ) channels.push({ kind: "Casting time", label: item.name, summary: `A 1-Action Ninjutsu is cast as a ${n5e.castAs === "bonus" ? "Bonus Action" : "Reaction"}` });
   for ( const o of [n5e.castOption, ...list(n5e.castOptions)].filter(o => o && typeof o === "object") ) {
     channels.push({ kind: "Cast option", label: o.label || item.name, summary: castOptionSummary(o) });
   }

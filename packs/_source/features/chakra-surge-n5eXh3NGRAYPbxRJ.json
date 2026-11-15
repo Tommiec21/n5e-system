@@ -65,7 +65,25 @@
           "seconds": 60,
           "state": "flow",
           "exclusive": "surge",
-          "ampType": "will"
+          "ampType": "will",
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "check",
+              "predicate": [
+                "concentration",
+                "concentration:discipline:nin"
+              ],
+              "label": "Flow"
+            },
+            {
+              "key": "resource",
+              "on": "turnStart",
+              "pool": "focus",
+              "amount": 1,
+              "label": "Flow"
+            }
+          ]
         },
         "activation": "bonus"
       }
@@ -80,6 +98,21 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crash: two or more Moldings on one casting and no cost reduction (both checked when casting); Draw Reserves as an Action."
+        },
+        {
+          "key": "note",
+          "text": "Flow: its save DC bonus, a Focus at the start of your turn and advantage on Ninjutsu concentration checks are on its effect. It can't benefit from jutsu or features that boost Ninjutsu damage."
+        },
+        {
+          "key": "note",
+          "text": "One state at a time, 1 minute combined, a Bonus Action to swap once per turn; 10 minutes of rest or meditation before entering again."
+        }
+      ],
       "castOption": {
         "label": "Crash: bonus damage",
         "requiresState": "crash",

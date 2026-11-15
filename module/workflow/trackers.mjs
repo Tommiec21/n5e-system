@@ -376,7 +376,9 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
-      ...(eff.rules?.length ? { rules: eff.rules.map(r => ({ ...r })) } : {}),
+      // STD6d: class table values ("@scale.…") become numbers here; lvl(...) values are read at roll time.
+      ...(eff.rules?.length ? { rules: eff.rules.map(r => Object.fromEntries(Object.entries(r).map(([k, v]) =>
+        [k, k === "value" && typeof v === "string" && /@scale/.test(v) ? (Number(sub(v)) || 0) : v]))) } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
   if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });

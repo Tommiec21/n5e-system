@@ -33,13 +33,102 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ewlrF82R5jBn8r",
+        "type": "effect",
+        "label": "Shift Tides: Shark Jaw",
+        "effect": {
+          "name": "Shift Tides: Shark Jaw",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Once per turn, cold damage you deal also deals chakra damage equal to half of it (all of it from 10th level).",
+              "label": "Shift Tides: Shark Jaw"
+            }
+          ],
+          "exclusive": "tides"
+        }
+      },
+      {
+        "id": "n5eKypOL5pHf719J",
+        "type": "effect",
+        "label": "Shift Tides: Piranha Fang",
+        "effect": {
+          "name": "Shift Tides: Piranha Fang",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Once per turn (twice from 10th level), inflicting Chilled gives you 1 Focus.",
+              "label": "Shift Tides: Piranha Fang"
+            }
+          ],
+          "exclusive": "tides"
+        }
+      },
+      {
+        "id": "n5elB5937c1sFufW",
+        "type": "effect",
+        "label": "Shift Tides: Surge",
+        "effect": {
+          "name": "Shift Tides: Surge",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Damage you deal can move the creature 10 ft (15 ft from 10th) toward or away from you.",
+              "label": "Shift Tides: Surge"
+            }
+          ],
+          "exclusive": "tides"
+        }
+      },
+      {
+        "id": "n5efGFN2La8W4MkN",
+        "type": "effect",
+        "label": "Shift Tides: Undertow",
+        "effect": {
+          "name": "Shift Tides: Undertow",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 12,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Your Water Release Ninjutsu bypass Barrier interception to reach at least one original target (all of them from 10th level).",
+              "label": "Shift Tides: Undertow"
+            }
+          ],
+          "exclusive": "tides"
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shift when you cast a Water Release Ninjutsu or attack with an Evocation weapon, once per turn; the stance lasts until the end of your next turn and applies to that jutsu."
+        }
+      ]
     }
   },
   "ownership": {

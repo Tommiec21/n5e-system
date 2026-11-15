@@ -60,6 +60,8 @@ export function castPlan(actor, item, sel = {}) {
   const cost = j.computeCost(sys, rank, { multiplierChoice: sel.multiplierChoice, divisorChoice: sel.divisorChoice,
     noReduction: crash, subtract: crash ? 0 : fx.subtract, discipline });
   if ( crash && fx.subtract > 0 ) warnings.push("Crash: no cost reduction applies");
+  // STD6d: an option that casts it at 0 cost (costDelta "zero"; not a cost reduction, so Crash allows it).
+  if ( fx.zeroCost ) cost.cost = 0;
   const imported = item.flags?.n5e?.jutsuBookImport;
   // PRESTD1 Part B (King Q-P3): a scroll costs no chakra.
   const scroll = !!sel.scroll;

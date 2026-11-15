@@ -33,13 +33,70 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZQV2Hb8rQSylr",
+        "type": "effect",
+        "label": "Enter Crash: Typhoon",
+        "activation": "bonus",
+        "cost": {
+          "pool": "focus",
+          "amount": 2
+        },
+        "effect": {
+          "name": "Chakra Surge: Crash (Typhoon)",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.speed.fly",
+              "value": "40",
+              "mode": 4
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "state": "crash",
+          "exclusive": "surge",
+          "ampType": "will",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "direction": "against",
+              "value": 2,
+              "label": "Typhoon"
+            },
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "direction": "against",
+              "value": 1,
+              "label": "Typhoon"
+            },
+            {
+              "key": "resource",
+              "on": "turnEnd",
+              "pool": "pressure",
+              "amount": 1,
+              "label": "Typhoon"
+            },
+            {
+              "key": "note",
+              "text": "Herald's benefits; +1 Pressure at the end of each turn; attacks against you +2 and +1 critical range (on this effect). Once per turn one base Gale Burst, Sharpening or Dragwind at no Pressure cost. Also spend 1 Pressure.",
+              "label": "Chakra Surge: Crash (Typhoon)"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

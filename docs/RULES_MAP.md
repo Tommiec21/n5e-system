@@ -353,3 +353,8 @@
 | Battle Medic d12 / 2d12 Unarmed die | `n5e.unarmed.die`; `rules/unarmed.mjs unarmedSpec` |
 | Bonus Action / Reaction casting (Quickened, Reactive, Reapers Techniques) | `flags.n5e.castAs`, cast option `castAs`; `workflow/cast-plan.mjs` |
 | Great Weapon Stance: critical hit triples the modifier | data: `critAbilityMod`; `workflow/activity-buttons.mjs` |
+| Ninjutsu Specialist features | data: `content/automation/ninjutsu-specialist.json` (review: `docs/classes/ninjutsu-specialist-automation.md`) |
+| Flow: concentration advantage and Focus each turn | data: elements on the Flow effect; `workflow/apply-damage.mjs concentrationCheck` facts |
+| Clash advantage by Release (Breakers) | data: advantage elements; `workflow/clash.mjs` facts |
+| Potent Ninjutsu | data: `maximizeAfter`; `rules/elements.mjs maximizeAfterBonus`, `workflow/activity-buttons.mjs` |
+| Chakra Compression 0-cost casting | cast option `costDelta: "zero"`; `workflow/cast-plan.mjs` |

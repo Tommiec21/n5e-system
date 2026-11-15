@@ -1,3 +1,18 @@
+## 0.49.0-alpha.1 — STD6d: Ninjutsu Specialist as data
+
+- **All 84 Ninjutsu Specialist features and options are reviewed.** The review table is `docs/classes/ninjutsu-specialist-automation.md`.
+- **Flow** gives a Focus at the start of your turn and advantage on Ninjutsu concentration checks. Both are now data on its effect instead of a coded check.
+- **Ninjutsu Master:** Enter Crash (Perfected) and Enter Flow (Perfected) for 4 Focus.
+- **Chakra Compression:** from 11th level, 1 Focus casts a D-Rank Ninjutsu (C-Rank from 17th) at 0 cost.
+- **Scholar** gives its Ninshou Mastery ranks at 2nd, 7th and 13th level. **Counter Seal** gives +2 to a save.
+- **Potent Ninjutsu:** the three lowest damage dice count as their maximum.
+- **Clash advantage:** Tidebreaker, Breeze Breaker, Current Breaker, Blaze Breaker and Terra Breaker apply automatically.
+- **Battle-state variants:** Overheat and Burnout (Fire Release damage bonus), Herald and Typhoon (fly speed; attackers get a bonus), Maelstrom and Abyss.
+- **New pools:** Tension (Gain Tension, Stone Bind, Grit) and Pressure (Build Pressure, Gale Burst, Sharpening, Dragwind).
+- **Molding options in the cast dialog:** Crimson Kindling, Gigawatt Pulse, Tectonic Mantle, Pressure Stagnation, Blaze Walker, Lightning Breaker, Stone Crusher, Storm Terror, Tsunami, Combination Technique and Synchronization Technique. Rule Breaker casts the Summoning Technique as a Bonus Action. **Shift Tides** stances are effects.
+- **For authors:** clash and concentration checks know their jutsu; cast options can cast at 0 cost; element values can scale by level (`lvl(...)`); new `maximizeAfter` element.
+- Not checked in a running Foundry world.
+
 ## 0.48.0-alpha.1 — STD6d: Medical-Nin as data (King 2026-11-15: "start work on using the new Active Effects system to actually automate class features")
 
 - **Every Medical-Nin feature is reviewed:** what can be automated is data, the rest is on its Notes tab, and no buttons are guessed from its text any more. The review table is `docs/classes/medical-nin-automation.md`.

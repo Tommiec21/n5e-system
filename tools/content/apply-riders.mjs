@@ -66,6 +66,8 @@ export function mergedFlags(n5e = {}, entry) {
   return out;
 }
 
+const stable = v => JSON.stringify(v, (k, x) => (x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a], [b]) => a.localeCompare(b))) : x));
+
 /** Apply (or, with check, only compare). Returns {changed: [files], problems}. */
 export function applyRiders({ check = false } = {}) {
   const files = featureFiles();
@@ -74,9 +76,9 @@ export function applyRiders({ check = false } = {}) {
   for ( const e of riderTables() ) {
     for ( const f of files.get(e.identifier) ?? [] ) {
       const doc = JSON.parse(fs.readFileSync(f, "utf8"));
-      const before = JSON.stringify(doc.flags?.n5e ?? {});
       const n5e = mergedFlags(doc.flags?.n5e ?? {}, e);
-      if ( JSON.stringify(n5e) === before ) continue;
+      // Key order doesn't matter (the class automation tables write the same flags: STD6d).
+      if ( stable(n5e) === stable(doc.flags?.n5e ?? {}) ) continue;
       changed.push(path.relative(ROOT, f));
       if ( !check ) {
         doc.flags = { ...(doc.flags ?? {}), n5e };

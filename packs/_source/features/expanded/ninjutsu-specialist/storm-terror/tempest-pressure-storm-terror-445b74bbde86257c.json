@@ -32,14 +32,102 @@
       }
     },
     "tags": [],
-    "resourcePools": [],
-    "advancement": []
+    "resourcePools": [
+      {
+        "id": "pressure",
+        "label": "Pressure",
+        "value": 0,
+        "max": "lvl(2:3,10:5)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "event",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezH9SiOJ97EFFn",
+        "type": "roll",
+        "label": "Build Pressure",
+        "cost": {
+          "pool": "pressure",
+          "amount": 1,
+          "gain": true
+        },
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "When you cast a Wind Release jutsu or make a Ninjutsu attack with an Evocation weapon."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pressure lasts 1 minute; max 3 (5 from 10th level). Each Pressure you start your turn with gives +2 temporary HP. Gale Burst and Sharpening also work with Evocation weapon Ninjutsu attacks."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Gale Burst (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ]
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "Creatures within 10 ft: Str save vs your Ninjutsu DC or pushed 10 ft and Prone (10th level, 1 Focus: pulled 10 ft and Dazed instead)."
+        },
+        {
+          "label": "Sharpening (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ],
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "+1 wind damage per damage die rolled, max +10 (10th level, 1 Focus: +2 per die).",
+          "oncePerTurn": true
+        },
+        {
+          "label": "Dragwind (1 Pressure)",
+          "appliesTo": {
+            "discipline": "nin",
+            "keywords": [
+              "windRelease"
+            ]
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          },
+          "note": "Area +5 ft (+10 at 10th, +15 at 18th). 10th level, 1 Focus: creatures with a Physical or Elemental condition get no jutsu bonuses to the save."
+        }
+      ]
     }
   },
   "ownership": {

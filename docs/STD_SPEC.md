@@ -148,3 +148,4 @@ Each batch follows the usual rule: a spec, King's approval, build, tests, releas
 - 2026-11-15 Claude: **STD6b published 0.47.0-alpha.1** (`docs/STD6b_SPEC.md`).
 - 2026-11-15 King: feats (STD6c) move to the end, after the jutsu pass; start the class pass (STD6d) with the new effects system.
 - 2026-11-15 Claude: **STD6d started** (`docs/STD6d_SPEC.md`): engine additions and Medical-Nin published 0.48.0-alpha.1.
+- 2026-11-15 Claude: **STD6d Ninjutsu Specialist published 0.49.0-alpha.1.** First two classes complete; stopped as King asked.
