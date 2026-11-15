@@ -71,6 +71,8 @@ test("Q-S2 Great Weapon: every weapon damage die rerolls 1s and 2s once, with a 
   assert.equal(shapeDice("1d12", { rerollBelow: 2, minimum: 3 }), "1d12min3r<=2");
   assert.equal(shapeDice("1d10r<=2", { rerollBelow: 2 }), "1d10r<=2", "never twice");
   assert.equal(stance("Great Weapon Stance").flags.n5e.weaponDie, undefined, "the old die flag is gone");
+  assert.equal(contextualRoll(actor, dmg(heavy)).critAbilityMod, 1, "King: a critical hit triples the modifier (the rule doubles it, the stance adds one more)");
+  assert.equal(contextualRoll(actor, dmg(["weapon"])).critAbilityMod, 0);
 });
 
 test("Guardian: Dodging gives advantage on Strength and Dexterity saves", () => {

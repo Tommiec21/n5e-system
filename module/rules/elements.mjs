@@ -15,6 +15,7 @@
  *   targets    all (default), one (the first target that rolls uses it up), chosen
  *   on         a trigger event (STD4; criticalHit from STD6b)
  *   rerollBelow (STD6b) damage dice showing the value or less are rerolled once, keeping the new result
+ *   critAbilityMod (STD6b fix) a critical hit adds the ability modifier this many more times
  * No engine line names content: every source is read from data.
  */
 const list = value => value ? Array.from(value) : [];
@@ -26,7 +27,7 @@ export const ELEMENT_KEYS = ["modifier", "degreeShift", "advantage", "disadvanta
   // STD4: attacks per Attack action, and skills that may stand in for Initiative.
   "attacks", "initiativeOptions",
   // STD6b: reroll low damage dice once.
-  "rerollBelow"];
+  "rerollBelow", "critAbilityMod"];
 export const ELEMENT_DIRECTIONS = ["self", "imposed", "against"];
 export const ELEMENT_SCOPES = ["always", "action", "turn", "round"];
 export const ELEMENT_TARGETS = ["all", "one", "chosen"];
@@ -97,7 +98,7 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
  */
 export function contextualRoll(actor, spec = {}, target = null, extra = []) {
   const out = { autoFail: [], autoSucceed: [], reroll: null, critRange: 0, maximizeDice: 0, minimumDie: 0,
-    rerollBelow: 0, damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
+    rerollBelow: 0, critAbilityMod: 0, damage: [], handling: null, addRanks: 0, notes: [], sources: [] };
   for ( const { element: e, label } of gatherElements(actor, spec, target, extra) ) {
     switch ( e.key ) {
       case "autoFail": out.autoFail.push(label); break;
@@ -107,6 +108,7 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
       case "maximizeDice": out.maximizeDice += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "minimumDie": out.minimumDie = Math.max(out.minimumDie, Math.trunc(Number(e.value) || 0)); break;
       case "rerollBelow": out.rerollBelow = Math.max(out.rerollBelow, Math.trunc(Number(e.value) || 0)); break;
+      case "critAbilityMod": out.critAbilityMod += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label }); break;
       case "damageHandling": out.handling = mergeHandling(out.handling, e); break;
       case "addRanks": out.addRanks += Math.trunc(Number(e.value) || 0); break;

@@ -94,12 +94,15 @@
           "label": "Great Weapon Stance"
         },
         {
-          "key": "note",
-          "text": "Cleave: a hit against a hostile creature deals half the damage to other hostile creatures adjacent to you."
+          "key": "critAbilityMod",
+          "selector": "damage:weapon",
+          "predicate": "weapon:stance",
+          "value": 1,
+          "label": "Great Weapon Stance: critical hit"
         },
         {
           "key": "note",
-          "text": "A critical hit with a Berserker Weapon doubles your ability modifier: the critical damage rule already doubles it."
+          "text": "Cleave: a hit against a hostile creature deals half the damage to other hostile creatures adjacent to you."
         }
       ]
     }

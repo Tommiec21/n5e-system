@@ -371,7 +371,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         facts: d.weapon ? weaponFacts(weapon, actor ? activeStance(actor) : null) : [] };
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
-      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0 };
+      const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0 };
       parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
       const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
@@ -399,7 +399,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
         // Deadly X: a crit adds the weapon's own dice after doubling (first part only).
-        const critText = `${critFormula(formula, abilityMod, rule("critDamage"))}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}`;
+        // critAbilityMod elements (Great Weapon Stance): the modifier once more per point, after the crit rule.
+        const moreMod = index === 0 && abilityMod ? abilityMod * shaped.critAbilityMod : 0;
+        const critText = `${critFormula(formula, abilityMod, rule("critDamage"))}${index === 0 && d.critExtra ? ` + ${d.critExtra}` : ""}${moreMod ? ` ${moreMod < 0 ? "-" : "+"} ${Math.abs(moreMod)}` : ""}`;
         const rolled = await rollDice(actor, crit ? critText : formula,
           { kind: "damage", type: "damage", scope: d.weapon ? "weapon" : d.gen ? "gen" : "", damageType: p.type, target: targets.length === 1 ? targets[0].actor : null,
             final: picked.mode });
