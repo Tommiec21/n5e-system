@@ -1,6 +1,6 @@
 # PRESTD1 function spec: the combined batch before standardization
 
-Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`, A-ii `0.34.0-alpha.2`.**
+Status: **spec written 2026-11-15 (King: "Begin batch"). King answered Q-P1–Q-P11 and approved (2026-11-15). Part A-i published `0.34.0-alpha.1`, A-ii `0.34.0-alpha.2`, A-iii/iv (without A14) `0.34.0-alpha.3`. Q-P12 open.**
 
 King (2026-11-15): combine VAR1a, SCROLL1, LOOT1, PF2E1, MISSION1 and SOCIAL1 into one batch, before standardization. Sources:
 - `docs/VAR1_SPEC.md` (PF2e optional rules; King Q-V1–Q-V4);
@@ -121,6 +121,10 @@ A (optional rules), B (scrolls), C (loot), D (PF2e emulation), E (missions), F (
 - **Q-P9:** don't automate how much XP each player gets; follow the Mission XP rules verbatim.
 - **Q-P10:** yes, Standard DCs.
 
+## Open
+
+- **Q-P12: gradual ability increases (A14).** The system doesn't add ASI ability points itself; the ASI table says "Ability Score Improvement/Feat" and the code counts one Mastery rank per ASI. How many ability points does an ASI give (5e's two, or one)? With two, the gradual rule gives one point at the level before the ASI and one at the ASI. With one, there is nothing to spread.
+
 ## Settled
 
 - **Q-P11 (approved with the spec, 2026-11-15): the identify DC for the scroll's rank.** Was: The book gives each rank an identify DC (D 12, C 15, B 18, A 21, S 24) and a save DC (D 14 … S 22) but no casting DC. Proposed: the identify DC for the scroll's rank. Or another number?
@@ -132,3 +136,4 @@ A (optional rules), B (scrolls), C (loot), D (PF2e emulation), E (missions), F (
 - 2026-11-15 Claude: King approved; Q-P11 as proposed (identify DC). Part A split into A-i (A1–A8), A-ii (A9–A13), A-iii/iv (A14–A19).
 - 2026-11-15 Claude: **A-i built and published 0.34.0-alpha.1.** Rules `critDamage`, `applyResistances`, `removeExpiredEffects`, `npcRollBreakdowns`, `hideNpcDamage`, `hideNpcConditions`, `hideNpcNames`, `secretChecks` (groups `optional`, `privacy`). Code: `rules/activity-parse.mjs critFormula(formula, mod, mode)`; `rules/damage.mjs damagePlan({ignoreTraits})`; `workflow/expiry.mjs` marks `flags.n5e.expired`; new `workflow/npc-privacy.mjs` (`privateNpc`, `gmWhisper`, `hideNameFor`, `renderPrivacy`, combat tracker hook); `readChoice().secret`, the dialog's Secret box, `secretByDefault`. Tests: `tests/core/optional-rules.test.mjs` (4), `tests/fin3.test.mjs` +2. Suites: 510 and 124 pass.
 - 2026-11-15 Claude: **A-ii built and published 0.34.0-alpha.2.** Rules `sharedVision`, `partyStatsVisible`, `scaleTokens`, `defeatedMarker`, `encumbranceStatus`. Code: `rules/token-size.mjs` (`tokenSizeFor`, `isDefeated`, `encumbranceChange`); `workflow/table-options.mjs` (token vision source wrap, preCreateToken sizing, size change resize, combatant defeated, Encumbered state); party overview for players (PCs only, no quick controls). Tests: core +1. Suites: 511 and 125 pass.
+- 2026-11-15 Claude: **A-iii/iv built and published 0.34.0-alpha.3** (A15–A19). Rules type `text` added (settings String; panel text input). Rules `freeFeatLevels`, `freeFeatGroup`, `flatProficiency`, `flatProficiencyValue`, `critTable`, `fumbleTable`, `homebrewKeywords`, `homebrewWeaponGroups`, `homebrewDamageTypes`, `homebrewLanguages`, `worldClock`. Code: `rules/progression.mjs proficiencyFor`, `freeFeatCount`; `rules/variants.mjs` (`parseHomebrew`, `mergeHomebrew`, `worldTimeParts`, `CLOCK_STEPS`, `tableFor`); `workflow/variant-tools.mjs` (`applyHomebrew` at ready, `renderTableButton`, `WorldClock`). A14 waits on Q-P12. Tests: core +1. Suites: 512 and 126 pass.

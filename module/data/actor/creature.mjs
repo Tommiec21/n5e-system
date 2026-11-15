@@ -35,7 +35,7 @@ import { abilities, skills, toolkits, castingDisciplines, disciplines, dcTables 
 import { critRangeCap } from "../../config/combat.mjs";
 import { containerTypes } from "../../config/equipment.mjs";
 import {
-  abilityMod, proficiencyForLevel, masteryRank, masteryBonus, poolMax, inventorySlots, asiCount, masteryCap
+  abilityMod, proficiencyFor, masteryRank, masteryBonus, poolMax, inventorySlots, asiCount, masteryCap
 } from "../../rules/progression.mjs";
 import { aggregatePenalties } from "../../rules/conditions.mjs";
 import { computeAC } from "../../rules/ac.mjs";
@@ -144,7 +144,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
    */
   prepareBaseData() {
     this.level = this._computeLevel();
-    this.prof = proficiencyForLevel(this.level);
+    // PRESTD1 A16: the GM's proficiency rule (the book's bands by default).
+    this.prof = proficiencyFor(this.level, rule("flatProficiency"), rule("flatProficiencyValue"));
     this.derived = { notes: [] };
     /** Statistic breakdowns, filled during prepareDerivedData: {"ac": Breakdown, "skill.ath": Breakdown, ...}. */
     this.breakdowns = {};

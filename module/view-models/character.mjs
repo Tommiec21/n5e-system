@@ -11,6 +11,7 @@
  * result in the template's `vm`. To show something new: compute it in the actor's data model,
  * expose it here, print it in the template. Keep decisions out of templates.
  */
+import { freeFeatCount } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
 import {
   abilities, skills, toolkits, castingDisciplines, disciplines, rankOrder, ranks as rankDefs, progression
@@ -230,6 +231,13 @@ export function mainVM(actor) {
     abilities: abilityCards,
     disciplines: disciplineCards,
     asiAvailable: sys.mastery?.asiAvailable ?? 0,
+    // PRESTD1 A15: the free feat track's feats earned by this level.
+    freeFeats: (() => {
+      const levels = rule("freeFeatLevels");
+      if ( !levels ) return null;
+      const count = freeFeatCount(levels, sys.level ?? sys.details?.level ?? 1);
+      return count ? { count, group: rule("freeFeatGroup") || "" } : null;
+    })(),
     skillColumns: [skillRows.slice(0, half), skillRows.slice(half)],
     passives: {
       perception: sys.skills.prc?.passive, insight: sys.skills.ins?.passive, investigation: sys.skills.inv?.passive

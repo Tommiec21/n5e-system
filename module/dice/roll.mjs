@@ -319,10 +319,12 @@ export async function registerResolution() {
   await actionCardModule.registerActionCardHooks();
   privacyModule = await import("../workflow/npc-privacy.mjs");
   privacyModule.registerPrivacyHooks();
+  variantModule = await import("../workflow/variant-tools.mjs");
 }
 let clashModule = null;
 let actionCardModule = null;
 let privacyModule = null;
+let variantModule = null;
 
 /** The attacker's targets when the attack is rolled, with their AC (dnd5e chat target list). */
 function attackTargetSnapshot() {
@@ -367,6 +369,8 @@ export function onRenderChatMessage(message, html) {
   if ( !globalThis.game?.user?.isGM ) for ( const el of html.querySelectorAll("[data-n5e-gm-only]") ) el.remove();
   // PRESTD1 Part A: NPC roll breakdowns and names for players.
   privacyModule?.renderPrivacy(message, html);
+  // PRESTD1: crit and fumble table buttons.
+  variantModule?.renderTableButton(message, html);
   // Per-target rows on damage cards (RES1), drawn before the Apply listeners are bound below.
   if ( message.flags?.n5e?.damage ) resolutionModule?.renderResolution(message, html);
   // Jutsu Clash cards (CLASH1), drawn before their listeners are bound below.

@@ -34,7 +34,7 @@ export function registerSettings() {
       scope: "world",
       // Hidden from Foundry's default settings list: the N5e Rules panel shows them grouped instead.
       config: false,
-      type: r.type === "number" ? Number : r.type === "choice" ? String : Boolean,
+      type: r.type === "number" ? Number : r.type === "choice" || r.type === "text" ? String : Boolean,
       choices: r.type === "choice" ? r.choices : undefined,
       default: r.default,
       requiresReload: false,

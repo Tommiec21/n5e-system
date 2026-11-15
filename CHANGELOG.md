@@ -1,3 +1,14 @@
+## 0.34.0-alpha.3 — Optional rules, part 3 (PRESTD1 A-iii/iv; King 2026-11-15)
+
+More world rules in the N5e Rules panel, which now also has text fields. Defaults keep play as it was.
+- **Free feat track:** list the levels (for example "2, 6, 10, 14, 18") and the feat group; the character's main tab shows how many free feats have been earned.
+- **Proficiency bonus:** by level (the book), a fixed number, or a slower curve (+2 at 1, +3 at 5, +4 at 11, +5 at 17). Everything built on proficiency follows. Bingo Book adversaries keep their own tables.
+- **Critical hit and fumble tables:** name a roll table for each; a natural 20 or 1 on an attack adds a button that draws from it.
+- **Homebrew elements:** comma-separated keywords, weapon groups, damage types and languages join the lists (reload after changing).
+- **World clock:** a World Clock button on the token controls shows the world's day and time; the GM can move it on by a round, a minute, 10 minutes, an hour, 8 hours or a day (which runs breath, effect expiry and the like).
+- Gradual ability increases are not built yet: it waits on a question about how many ability points an ASI gives.
+- Not checked in a running Foundry world.
+
 ## 0.34.0-alpha.2 — Optional rules, part 2 (PRESTD1 A-ii; King 2026-11-15)
 
 Five more world rules, all off by default.

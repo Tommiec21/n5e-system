@@ -21,6 +21,23 @@ export function proficiencyForLevel(level) {
   return band(progression.proficiency, Math.max(1, level || 1));
 }
 
+/**
+ * PRESTD1 A16 (optional rule flatProficiency): the proficiency bonus by mode. "book" is the bands
+ * above; "fixed" a set number; "slow" +2 at 1, +3 at 5, +4 at 11, +5 at 17.
+ */
+export const SLOW_PROFICIENCY = Object.freeze([[1, 2], [5, 3], [11, 4], [17, 5]]);
+export function proficiencyFor(level, mode = "book", value = 3) {
+  if ( mode === "fixed" ) return Math.max(0, Math.floor(Number(value) || 0));
+  if ( mode === "slow" ) return band(SLOW_PROFICIENCY, Math.max(1, level || 1));
+  return proficiencyForLevel(level);
+}
+
+/** PRESTD1 A15 (free feat track): how many of the listed levels a character has reached. */
+export function freeFeatCount(levels, level) {
+  const list = String(levels ?? "").split(/[,\s]+/).map(Number).filter(n => Number.isInteger(n) && n > 0);
+  return [...new Set(list)].filter(l => (Number(level) || 0) >= l).length;
+}
+
 /** Highest Mastery rank allowed at a level: 1-6 -> 1, 7-11 -> 2, 12+ -> 3. */
 export function masteryCap(level) {
   return Math.min(progression.mastery.maxRank, band(progression.mastery.capByLevel, Math.max(1, level || 1)));

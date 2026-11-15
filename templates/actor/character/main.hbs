@@ -43,6 +43,10 @@
     </div>
   </div>
 
+  {{#if vm.freeFeats}}
+    <div class="callout"><b>Free feat track: {{vm.freeFeats.count}} feat{{#if (n5eGt vm.freeFeats.count 1)}}s{{/if}}</b>
+      <span>earned by this level{{#if vm.freeFeats.group}} ({{vm.freeFeats.group}}){{/if}}, on top of the usual feats.</span></div>
+  {{/if}}
   {{#if vm.asiAvailable}}
     <div class="callout">
       <b>{{vm.asiAvailable}} Mastery rank{{#if (n5eGt vm.asiAvailable 1)}}s{{/if}} to assign</b>

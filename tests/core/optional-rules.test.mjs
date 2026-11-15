@@ -48,3 +48,25 @@ test("A-ii: token sizes, defeated, encumbrance", async () => {
   assert.equal(encumbranceChange(true, true), null);
   for ( const k of ["sharedVision", "partyStatsVisible", "scaleTokens", "defeatedMarker", "encumbranceStatus"] ) assert.equal(rules[k].default, false, k);
 });
+
+test("A15–A19: free feat track, proficiency modes, homebrew, world clock, tables", async () => {
+  const { proficiencyFor, freeFeatCount } = await import("../../module/rules/progression.mjs");
+  const { parseHomebrew, mergeHomebrew, worldTimeParts, tableFor } = await import("../../module/rules/variants.mjs");
+  assert.equal(freeFeatCount("2, 6, 10", 7), 2);
+  assert.equal(freeFeatCount("", 20), 0);
+  assert.equal(proficiencyFor(10), 6, "the book");
+  assert.equal(proficiencyFor(10, "fixed", 4), 4);
+  assert.equal(proficiencyFor(10, "slow"), 3);
+  assert.equal(proficiencyFor(17, "slow"), 5);
+  assert.deepEqual(parseHomebrew("Storm Release, Lava Release, ,"), { stormRelease: "Storm Release", lavaRelease: "Lava Release" });
+  const list = { fire: { label: "Fire" } };
+  assert.deepEqual(mergeHomebrew(list, { fire: "Fire", sound: "Sound" }, label => ({ label })), ["sound"]);
+  assert.equal(list.fire.label, "Fire", "existing entries are kept");
+  assert.equal(worldTimeParts(0).label, "Day 1, 00:00");
+  assert.equal(worldTimeParts(86400 * 2 + 3600 * 14 + 300).label, "Day 3, 14:05");
+  assert.deepEqual(tableFor({ kind: "attack", natural: 20 }, { crit: "Crits" }), { which: "crit", name: "Crits" });
+  assert.equal(tableFor({ kind: "attack", natural: 20 }, { crit: "" }), null);
+  assert.equal(tableFor({ kind: "save", natural: 1 }, { fumble: "Fumbles" }), null);
+  assert.equal(rules.flatProficiency.default, "book");
+  assert.equal(rules.worldClock.default, false);
+});

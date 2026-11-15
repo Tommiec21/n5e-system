@@ -38,6 +38,7 @@ import { registerAutomationHooks } from "./module/workflow/automation.mjs";
 import { registerFreeformHooks } from "./module/workflow/freeform.mjs";
 import { registerEnvironmentHooks } from "./module/workflow/environment.mjs";
 import { registerTableOptions } from "./module/workflow/table-options.mjs";
+import { registerVariantTools } from "./module/workflow/variant-tools.mjs";
 import { registerEnrichers } from "./module/applications/enrichers.mjs";
 import CompendiumBrowser, { registerCompendiumBrowser } from "./module/applications/browser/compendium-browser.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
@@ -73,6 +74,7 @@ registerAutomationHooks();
 registerFreeformHooks();
 registerEnvironmentHooks();
 registerTableOptions();
+registerVariantTools();
 // Timed effects end out of combat when world time advances (workflow/expiry.mjs; EXPIRE1).
 registerExpiryHooks();
 // Incapacitation ends concentration; readied jutsu are held by it (workflow/concentration.mjs; CONC1).

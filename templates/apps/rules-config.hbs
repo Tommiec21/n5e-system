@@ -14,6 +14,7 @@
           <span class="rule-input">
             {{#if isBool}}<input id="n5e-rule-{{key}}" type="checkbox" name="{{key}}" {{#if value}}checked{{/if}} {{#unless @root.gm}}disabled{{/unless}}>{{/if}}
             {{#if isNumber}}<input id="n5e-rule-{{key}}" type="number" name="{{key}}" value="{{value}}" min="{{min}}" max="{{max}}" {{#unless @root.gm}}disabled{{/unless}}>{{/if}}
+            {{#if isText}}<input id="n5e-rule-{{key}}" type="text" name="{{key}}" value="{{value}}" placeholder="{{placeholder}}" {{#unless @root.gm}}disabled{{/unless}}>{{/if}}
             {{#if isChoice}}<select id="n5e-rule-{{key}}" name="{{key}}" {{#unless @root.gm}}disabled{{/unless}}>{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>{{/if}}
           </span>
           {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}

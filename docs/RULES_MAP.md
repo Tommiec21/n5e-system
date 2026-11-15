@@ -248,3 +248,13 @@
 | `scaleTokens` | `rules/token-size.mjs tokenSizeFor`, `workflow/table-options.mjs` |
 | `defeatedMarker` | `rules/token-size.mjs isDefeated`, `workflow/table-options.mjs` |
 | `encumbranceStatus` | `rules/token-size.mjs encumbranceChange`, `workflow/table-options.mjs` |
+
+## Optional rules, part 3 (PRESTD1 A-iii/iv, 0.34.0-alpha.3)
+
+| Rule (world setting) | Code |
+| --- | --- |
+| `freeFeatLevels`, `freeFeatGroup` | `rules/progression.mjs freeFeatCount`, `view-models/character.mjs` |
+| `flatProficiency`, `flatProficiencyValue` | `rules/progression.mjs proficiencyFor`, `data/actor/creature.mjs` |
+| `critTable`, `fumbleTable` | `rules/variants.mjs tableFor`, `workflow/variant-tools.mjs renderTableButton` |
+| `homebrewKeywords`, `homebrewWeaponGroups`, `homebrewDamageTypes`, `homebrewLanguages` | `rules/variants.mjs parseHomebrew`, `mergeHomebrew`; `workflow/variant-tools.mjs applyHomebrew` |
+| `worldClock` | `rules/variants.mjs worldTimeParts`, `workflow/variant-tools.mjs WorldClock` |

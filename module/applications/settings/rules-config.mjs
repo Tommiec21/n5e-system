@@ -28,7 +28,7 @@ export default class RulesConfig extends HandlebarsApplicationMixin(ApplicationV
       key, label,
       rules: Object.entries(rules).filter(([, r]) => r.group === key).map(([k, r]) => {
         const value = game.settings.get("n5e", k);
-        return { key: k, ...r, value, isBool: r.type === "boolean", isNumber: r.type === "number", isChoice: r.type === "choice",
+        return { key: k, ...r, value, isBool: r.type === "boolean", isNumber: r.type === "number", isChoice: r.type === "choice", isText: r.type === "text",
           options: r.type === "choice" ? Object.entries(r.choices).map(([v, l]) => ({ value: v, label: l, selected: v === value })) : null,
           changed: value !== r.default };
       })
@@ -47,6 +47,7 @@ export default class RulesConfig extends HandlebarsApplicationMixin(ApplicationV
       let v = data[key];
       if ( r.type === "boolean" ) v = !!v;
       else if ( r.type === "number" ) v = Math.max(r.min ?? -Infinity, Math.min(r.max ?? Infinity, Number(v) || 0));
+      else if ( r.type === "text" ) v = String(v ?? "").trim().slice(0, 2000);
       if ( v !== undefined && v !== game.settings.get("n5e", key) ) await game.settings.set("n5e", key, v);
     }
     ui.notifications.info("N5e Rules saved.");
