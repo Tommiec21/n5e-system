@@ -134,3 +134,4 @@ Original questions:
 - **Q-CC5 "dies":** the Dead status, or an NPC at 0 HP. **"Leaves the fight":** its combatant is deleted or the combat ends.
 - **Cards so far:** Balance Broken, Bone Broken, Flow Broken, Shattered. Flow Broken's keyword lock and initiative −4, Balance Broken's movement rule, Bone Broken's disarm and Shattered's level-scaled damage and remade save are on the card's text (at the table).
 - **Next (CCOND1b):** the other 15 class conditions from section 7.
+- 2026-11-15 King: Flow Broken's −4 should change the creature's actual initiative and can move it in the turn order. Built (0.56.0-alpha.2): card field `initiativeShift`; each application in a started combat queues the change on the combatant (`flags.n5e.pendingInitiative`); the active GM applies it at the start of the next round (as the box says), re-sorts, and sets the turn to the new first creature. Not restored when the condition ends.

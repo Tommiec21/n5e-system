@@ -26,6 +26,7 @@ export function cardDefinition(card) {
     tags: list(s.tags), maxRanks: s.maxRanks ?? null, persists: !!s.persists
   };
   if ( s.endsAt ) def.endsAt = s.endsAt;
+  if ( s.initiativeShift ) def.initiativeShift = Number(s.initiativeShift);
   if ( s.decay?.when ) def.decay = { when: s.decay.when, amount: s.decay.amount ?? 1 };
   const removal = list(s.removal).map(r => r.text && !list(r.check).length ? { text: r.text }
     : { action: r.action || "action", check: list(r.check), dc: r.dc ?? null, ranks: /^\d+$/.test(String(r.ranks)) ? Number(r.ranks) : "all" });
@@ -36,6 +37,20 @@ export function cardDefinition(card) {
   const rules = card.flags?.n5e?.rules;
   if ( Array.isArray(rules) && rules.length ) def.rules = structuredClone(rules);
   return def;
+}
+
+/**
+ * Pending initiative changes to apply at the start of a round (pure): [{_id, initiative}] for each
+ * combatant with flags.n5e.pendingInitiative and an initiative, and the ids to clear.
+ */
+export function pendingInitiative(combatants) {
+  const updates = [];
+  for ( const c of list(combatants) ) {
+    const shift = Number(c.flags?.n5e?.pendingInitiative) || 0;
+    if ( !shift ) continue;
+    updates.push({ _id: c.id ?? c._id, ...(c.initiative == null ? {} : { initiative: c.initiative + shift }), "flags.n5e.-=pendingInitiative": null });
+  }
+  return updates;
 }
 
 /** Is this registry entry a card (class or clan condition)? */

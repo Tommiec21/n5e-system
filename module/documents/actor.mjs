@@ -140,6 +140,26 @@ export default class N5eActor extends Actor {
   async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false, flags = null } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
+    const result = await this.#addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags });
+    if ( result && def.initiativeShift ) await this.#queueInitiativeShift(def.initiativeShift);
+    return result;
+  }
+
+  /**
+   * CCOND1 (King 2026-11-15): a condition that changes initiative (Flow Broken −4) lowers this
+   * creature's initiative each time it is applied in combat; the change is applied, and the turn order
+   * re-sorted, at the start of the next round (documents/combat.mjs _onStartRound).
+   */
+  async #queueInitiativeShift(shift) {
+    for ( const combat of game.combats ?? [] ) {
+      if ( !combat.started ) continue;
+      for ( const c of combat.combatants.filter(cb => cb.actor?.uuid === this.uuid && cb.initiative != null) ) {
+        await c.setFlag("n5e", "pendingInitiative", (Number(c.flags?.n5e?.pendingInitiative) || 0) + shift);
+      }
+    }
+  }
+
+  async #addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags }) {
     // King 2026-11-13: out of combat, "until the end of its next turn" conditions from game effects
     // end immediately; only a deliberate application (sheet, GM tools, dragged effect) stays.
     if ( !manual && def.endsAt === "nextTurnEnd" && !this.inStartedCombat ) {

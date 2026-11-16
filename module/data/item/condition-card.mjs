@@ -11,6 +11,8 @@
  *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd"
  *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
  *              source discipline: tai, nin, gen, buki)
+ *   initiativeShift  each time it is applied in combat, the creature's initiative changes by this; the
+ *              turn order is re-sorted at the start of the next round (Flow Broken: −4)
  *   summary    one line for tooltips and the card face
  */
 import * as S from "../fields/shared.mjs";
@@ -29,6 +31,7 @@ export class ConditionCardData extends TDM() {
       maxRanks: S.num(null, { integer: true, min: 0, nullable: true }),
       endsAt: S.str(),
       persists: S.bool(),
+      initiativeShift: S.int(0),
       decay: S.obj({ when: S.str(), amount: S.int(1, { min: 0 }) }),
       removal: S.arr(S.obj({ action: S.str({ initial: "action" }), check: S.arr(S.str()), dc: S.num(null, { nullable: true }), ranks: S.str({ initial: "all" }), text: S.str() })),
       resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),

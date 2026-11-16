@@ -1,3 +1,9 @@
+## 0.56.0-alpha.2 — Flow Broken lowers initiative (King)
+
+- **Flow Broken's −4 initiative now changes the creature's initiative** each time it's applied in combat. As the book's box says, the creature moves in the turn order at the start of the next round: its initiative drops then, the order is re-sorted, and whoever is now first takes the round's first turn. The change lasts for the rest of the combat (it isn't restored when Flow Broken ends).
+- **For authors:** condition cards have an **Initiative change** field (`system.initiativeShift`).
+- Not checked in a running Foundry world (the turn-order change at the round's start needs a look in a live combat).
+
 ## 0.56.0-alpha.1 — CCOND1a: class and clan condition cards
 
 - **Condition cards:** a new item type for conditions that belong to a class or a clan, kept in the new **Class & Clan Conditions** compendium. A card has the same rules as a core condition (tags, ranks, how it ends, "Try to end", penalties and roll effects), so on a creature it works like Burned or Dazed: token icon, sheet rail, expiry.

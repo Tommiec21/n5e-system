@@ -250,6 +250,7 @@ const DETAILS = {
       F.num(src, "maxRanks", "Max ranks", { small: true, placeholder: "none" }),
       F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn" }),
       F.check(src, "persists", "Persists"),
+      F.num(src, "initiativeShift", "Initiative change", { small: true }),
       F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),
       F.select(src, "resave.source", "Save DC from", { "": "Fixed DC", tai: "Taijutsu", nin: "Ninjutsu", gen: "Genjutsu", buki: "Bukijutsu" }),
       F.num(src, "resave.dc", "Fixed DC", { small: true })

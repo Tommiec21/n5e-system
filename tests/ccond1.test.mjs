@@ -92,3 +92,14 @@ test("the Moment of Stillness and Shatterpoint saves apply the cards", () => {
   assert.ok(load("focused-genius").system.activities.some(a => a.inflicts?.[0]?.key === "shattered"));
   assert.ok(card("bone-broken").flags.n5e.rules.length);
 });
+
+test("Flow Broken's initiative −4 waits for the start of the next round, then re-sorts the order", async () => {
+  const { pendingInitiative } = await import("../module/rules/condition-cards.mjs");
+  assert.equal(registry["flow-broken"].initiativeShift, -4);
+  assert.equal(registry["bone-broken"].initiativeShift, undefined);
+  const updates = pendingInitiative([
+    { id: "a", initiative: 15, flags: { n5e: { pendingInitiative: -8 } } },
+    { id: "b", initiative: 12, flags: {} },
+    { id: "c", initiative: null, flags: { n5e: { pendingInitiative: -4 } } }]);
+  assert.deepEqual(updates, [{ _id: "a", initiative: 7, "flags.n5e.-=pendingInitiative": null }, { _id: "c", "flags.n5e.-=pendingInitiative": null }]);
+});

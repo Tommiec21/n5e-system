@@ -37,6 +37,16 @@ export default class N5eCombat extends foundry.documents.Combat {
   /** @override */
   async _onStartRound(context) {
     await super._onStartRound(context);
+    // CCOND1: initiative changes from conditions (Flow Broken −4) take effect now; the new first
+    // creature in the order takes the round's first turn.
+    if ( game.users.activeGM?.isSelf ) {
+      const { pendingInitiative } = await import("../rules/condition-cards.mjs");
+      const updates = pendingInitiative(this.combatants.contents);
+      if ( updates.length ) {
+        await this.updateEmbeddedDocuments("Combatant", updates, { turnEvents: false });
+        if ( this.turn !== 0 ) await this.update({ turn: 0 }, { turnEvents: false });
+      }
+    }
     await recoverForCombat(this, ["round"]);
     // Surprised ends at the end of round 1 (POS1).
     if ( game.users.activeGM?.isSelf ) await import("../workflow/positioning.mjs").then(m => m.endSurprise(this));

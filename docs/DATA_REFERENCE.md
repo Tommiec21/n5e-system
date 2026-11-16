@@ -790,3 +790,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Condition flag `drZero` | The creature's DR is 0 |
 | Owner intent `applyCondition` {key, targetUuid, ranks} | A player's card applied by the GM's client |
 | World setting `conditionCardDetails` | Players see card rules on creatures they don't own (default on) |
+
+## Added in 0.56.0-alpha.2
+
+| Path | Meaning |
+| --- | --- |
+| Condition card `system.initiativeShift` | Initiative change each time it is applied in combat (Flow Broken −4) |
+| Combatant `flags.n5e.pendingInitiative` | The change waiting for the start of the next round |
