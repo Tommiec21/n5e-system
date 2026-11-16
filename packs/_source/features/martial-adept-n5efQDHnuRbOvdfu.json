@@ -35,7 +35,7 @@
         "label": "Martial Dice",
         "value": 0,
         "max": "@scale.taijutsuSpecialist.martialDie",
-        "die": "d6",
+        "die": "lvl(1:6,7:8,13:10,19:12)",
         "steps": [],
         "step": 0,
         "recovery": [
@@ -47,6 +47,22 @@
           }
         ]
       }
+    ],
+    "activities": [
+      {
+        "id": "n5eW1L6mdvOJ8QQB",
+        "type": "roll",
+        "label": "Spend a Martial Die",
+        "roll": {
+          "formula": "",
+          "note": "For a Martial Technique or class feature that rolls or spends Martial Dice."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1,
+          "roll": true
+        }
+      }
     ]
   },
   "effects": [],
@@ -57,7 +73,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Martial Dice refill at the start of each of your turns (unspent dice are lost). The die matches your Martial Strength Unarmed die: d6, d8 at 7th, d10 at 13th, d12 at 19th level. Martial Techniques use your Taijutsu save DC."
+        }
+      ]
     }
   },
   "_stats": {

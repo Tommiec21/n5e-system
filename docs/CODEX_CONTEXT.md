@@ -478,3 +478,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## SHEETS1 — Claude, 2026-11-15 (published 0.54.0-alpha.1)
 - Five optional character sheet designs are subclasses of `CharacterSheet` (`character-designs.mjs`); they replace only the chrome parts (header, tabs, rail, main). New sheet features go in the view models and the shared partials in `templates/actor/designs/shared/`, and a new button or field on the default chrome must be added to every design: `tests/sheet-designs.test.mjs` fails until it is.
 - The sheet ids (`n5e.CharacterSheet<Design>`) are saved on actors; never rename them.
+
+## STD6d Taijutsu Specialist — Claude, 2026-11-15 (published 0.55.0-alpha.1)
+- `content/automation/taijutsu-specialist.json` is the source for the class (written once by a scratch script; edit the JSON). Martial Die formulas use `@pools.martialDice.faces`, never a fixed d6.
+- Unwasted Movements is `n5e.rankCost.tai` on Martial Technique's stance-gated effect; cost math is still `rules/cost.mjs` (the fixed cost goes in as Special).

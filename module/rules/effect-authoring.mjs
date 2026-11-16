@@ -76,7 +76,9 @@ export function validateConditionalRules(rules) {
     if ( extra.length ) throw new Error(`Unsupported property for ${r.key}: ${extra.join(", ")}.`);
     // STD6d: an action effect's value may be the cast rank ("@rankValue", "@rankValue+1", "2*@rankValue").
     const rankValued = typeof r.value === "string" && (/^\s*(?:-?\d+\s*[+*]\s*)?@rankValue(?:\s*[+*]\s*-?\d+)?\s*$/.test(r.value)
-      || /^lvl\((\s*\d+\s*:\s*-?\d+\s*,?)+\)$/.test(r.value));
+      || /^lvl\((\s*\d+\s*:\s*-?\d+\s*,?)+\)$/.test(r.value)
+      // STD6d: the highest of some ability modifiers ("mod(int,wis,cha)": Agile).
+      || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value));
     if ( NUMERIC.has(r.key) && !rankValued ) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);

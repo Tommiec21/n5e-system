@@ -33,13 +33,29 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqQadQg6HOHJVO",
+        "type": "roll",
+        "label": "Close the Distance",
+        "roll": {
+          "formula": "(@amount)d10",
+          "note": "Damage from a ranged attack: reduce it by this and move 10 ft per Momentum spent, toward the source."
+        },
+        "cost": {
+          "pool": "momentum",
+          "choose": true
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

@@ -71,6 +71,20 @@ export function castShaping(actionEffects = [], level = 0) {
   return out;
 }
 
+/**
+ * An element's value read for its owner (STD6d): "lvl(6:2,10:4)" by level; "mod(int,wis,cha)" is the
+ * highest of those ability modifiers (Agile's initiative bonus). Anything else is returned as is.
+ */
+export function elementValue(value, owner) {
+  const s = String(value);
+  if ( s.startsWith("lvl(") ) return levelValue(s, owner?.system?.level ?? 0);
+  const m = s.match(/^mod\(([^)]*)\)$/);
+  if ( !m ) return value;
+  const abilities = owner?.system?.abilities ?? {};
+  const mods = m[1].split(",").map(k => Number(abilities[k.trim()]?.mod ?? 0));
+  return mods.length ? Math.max(...mods) : 0;
+}
+
 /** The selector names a roll answers to. */
 export function selectorNames(spec = {}) {
   return ["all", spec.kind, spec.type, spec.type && spec.key && `${spec.type}:${spec.key}`, spec.scope && `${spec.kind}:${spec.scope}`,
@@ -102,8 +116,8 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
   const names = selectorNames(spec);
   const out = [];
   // STD6d: a level-scaled value ("lvl(6:2,10:4,18:6)") is read at its owner's level.
-  const leveled = (element, owner) => (typeof element.value === "string" && element.value.startsWith("lvl(")
-    ? { ...element, value: levelValue(element.value, owner?.system?.level ?? 0) } : element);
+  const leveled = (element, owner) => (typeof element.value === "string" && /^(lvl|mod)\(/.test(element.value)
+    ? { ...element, value: elementValue(element.value, owner) } : element);
   const mine = rollOptions(actor, spec, target);
   for ( const source of ruleSources(actor) ) {
     if ( source.flags?.n5e?.ruleToggle?.enabled === false ) continue;

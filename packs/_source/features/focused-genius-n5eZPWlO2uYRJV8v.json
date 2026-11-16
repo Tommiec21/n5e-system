@@ -29,7 +29,76 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eUVwzQMuRPaCrV",
+        "type": "roll",
+        "label": "Redirected Aggression",
+        "roll": {
+          "formula": "1d@pools.martialDice.faces",
+          "note": "Reaction to a melee or ranged attack: reduce its attack roll by this; if it misses, a melee or ranged unarmed attack back (its range); a hit applies its attack's effects + 1 Martial Die damage."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5et5W6YgomZ4zg8",
+        "type": "save",
+        "label": "Shatterpoint",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
+        "text": "When you deal [Unarmed Damage]. Failure: Shattered."
+      },
+      {
+        "id": "n5eGck2WmKoJim1S",
+        "type": "effect",
+        "label": "Shattered",
+        "effect": {
+          "name": "Shattered",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "direction": "against",
+              "value": 1,
+              "label": "Shattered"
+            },
+            {
+              "key": "modifier",
+              "selector": "damage",
+              "direction": "against",
+              "value": "lvl(3:2,10:4,17:6)",
+              "label": "Shattered"
+            },
+            {
+              "key": "note",
+              "text": "A critical hit on it adds 2 Martial Dice (3 at 10th, 4 at 17th). Its first successful Str, Dex or Con save is remade minus a Martial Die (lower result), then this ends. An Action and a DC 20 Strength check end it."
+            }
+          ]
+        },
+        "text": "On a failed Shatterpoint save (a Physical condition)."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eceH3mxypgGDlU",
@@ -39,7 +108,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

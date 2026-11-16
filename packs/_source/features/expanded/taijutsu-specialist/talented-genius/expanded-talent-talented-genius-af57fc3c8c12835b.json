@@ -33,13 +33,106 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e5Pm6bEYwcHXDe",
+        "type": "effect",
+        "label": "Flawless Power",
+        "effect": {
+          "name": "Flawless Power",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "note",
+              "text": "The first creature to save against your Martial Techniques subtracts half a Martial Die from its save."
+            }
+          ]
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "perfection",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eVr89kPSwKBBeO",
+        "type": "roll",
+        "label": "Flawless Execution",
+        "roll": {
+          "formula": "",
+          "note": "On an unarmed or Taijutsu critical hit: an extra unarmed attack as part of the same action."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eEGaqAHIiNkMfu",
+        "type": "roll",
+        "label": "Flawless Balance",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: you aren't moved against your will or knocked Prone (teleportation still works)."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5erU9xNb40AA9FI",
+        "type": "roll",
+        "label": "Flawless Guard",
+        "roll": {
+          "formula": "2d@pools.martialDice.faces",
+          "note": "Reaction when an ally within 15 ft would be hit: move up to 10 ft next to it and reduce its damage by this."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eXTlBUEcy5yiws",
+        "type": "roll",
+        "label": "Flawless Clash",
+        "roll": {
+          "formula": "1d@pools.martialDice.faces",
+          "note": "Once per turn: add to a Clash check with a Taijutsu you cast."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Perfection max 6 is on Genius Talent's pool."
+        }
+      ]
     }
   },
   "ownership": {

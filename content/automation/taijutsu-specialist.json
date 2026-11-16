@@ -1,0 +1,2264 @@
+{
+  "class": "taijutsu-specialist",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-15",
+  "features": {
+    "agile": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "initiative",
+          "value": "mod(int,wis,cha)",
+          "label": "Agile"
+        },
+        {
+          "key": "note",
+          "text": "Dexterity saves for half damage: none on a success, half on a failure. Disengage as a Bonus Action (and Dodge from 13th level)."
+        }
+      ]
+    },
+    "ancient-scrolls-stancer": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learn a second Secret Stance; your first becomes its Prestige version (Hanami: damage penalty; Hyuga: jutsu cost increase; Uchiha: no reactions on a Martial Die 6+; Ryu: reactive attack and temporary chakra; Kuru: consume a rank of Slow for a Bonus Action)."
+        }
+      ]
+    },
+    "arresting-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEofcbXVuBfjgr",
+          "type": "save",
+          "label": "Arresting Technique",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "On a melee unarmed or Taijutsu hit. Failure: speed 0 and Prone until the start of your next turn."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its speed of 0 until the start of your next turn is applied at the table."
+        }
+      ]
+    },
+    "balance-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSe3VWmABKInfk",
+          "type": "save",
+          "label": "Balance Breaker",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn."
+        },
+        {
+          "id": "n5e9KXeeXgRBpLAw",
+          "type": "effect",
+          "label": "Balance Broken",
+          "effect": {
+            "name": "Balance Broken",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0,
+            "rules": [
+              {
+                "key": "disadvantage",
+                "selector": "save:str",
+                "label": "Balance Broken"
+              },
+              {
+                "key": "note",
+                "text": "Can't gain AC or DR bonuses from jutsu. Willingly moving more than 5 ft or casting a Mobility (M) jutsu costs its Reaction, or it falls Prone and can't stand until the start of its next turn."
+              }
+            ]
+          },
+          "text": "On a failed save; ends at the end of its turn (from 6th level, Perfected Stillness: a save at the end of each of its turns ends it)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Balance Broken (defined in Extra Attack): disadvantage on Strength saves is on the effect; the rest is at the table."
+        }
+      ]
+    },
+    "blinding-speed": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exqMth2gr9EX7B",
+          "type": "roll",
+          "label": "Shatter",
+          "roll": {
+            "formula": "",
+            "note": "Reaction when a hostile creature casts a Ninjutsu or Genjutsu: move half your speed toward it; in reach, two unarmed attacks; if one hits, its Chakra Control check vs your Taijutsu DC or the jutsu is Interrupted."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eZOZoHLTvsiX7N",
+          "type": "roll",
+          "label": "Unstable Drive",
+          "roll": {
+            "formula": "",
+            "note": "In place of an attack of opportunity's attack: cast a D-Rank Taijutsu at it (C-Rank from 10th, B-Rank from 17th)."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "bone-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehJQVMKsBEnUUn",
+          "type": "save",
+          "label": "Bone Breaker",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn."
+        },
+        {
+          "id": "n5eWd1FSQy7ZDgfC",
+          "type": "effect",
+          "label": "Bone Broken",
+          "effect": {
+            "name": "Bone Broken",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "On a failed save; ends at the end of its turn (from 6th level, Perfected Stillness: a save at the end of each of its turns ends it)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bone Broken is applied as a marker; what it does is applied at the table."
+        }
+      ]
+    },
+    "burst-techniques": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMYFg8zEnGGpjT",
+          "type": "roll",
+          "label": "Elemental Rush",
+          "roll": {
+            "formula": "",
+            "note": "On a melee Taijutsu hit: Bonus Action to cast a 1-Action D-Rank Ninjutsu of your chosen release (C from 10th, B from 17th), with your Taijutsu ability modifier."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Elemental Crush (1 Martial Die)",
+          "appliesTo": {
+            "discipline": "tai",
+            "keywords": [
+              "finisher"
+            ]
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "note": "Use your Elemental Finisher in place of the Finisher effect (still a Finisher; pay the jutsu's cost)."
+        }
+      ]
+    },
+    "cant-stop-wont-stop-passionate": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Tempo max 5 is on Never Ending Combo's pool. A Finisher can spend any amount of Tempo. 5 Tempo: advantage on Dexterity saves; spending 5 regains the chakra spent this turn at its end (at the table)."
+        }
+      ]
+    },
+    "chakra-valves": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Valve Break (1 Martial Die: +rank Martial Dice)",
+          "appliesTo": {
+            "discipline": "tai",
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "damage": {
+            "formula": "(@rankValue)d@pools.martialDice.faces"
+          },
+          "note": "The first time you deal damage this turn (Attack action or a Taijutsu). From 20th level (Mastery of Self) it costs no Martial Die: refund it."
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eRXWFnV6mnR8JR",
+          "type": "effect",
+          "label": "Sustained Pressure",
+          "effect": {
+            "name": "Sustained Pressure",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "damage",
+                "selector": "damage",
+                "predicate": "weapon:unarmed",
+                "formula": "1d@pools.martialDice.faces",
+                "label": "Sustained Pressure"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "text": "The first time you deal damage this turn: that unarmed attack and every later one this turn add a Martial Die (from 20th level, free)."
+        }
+      ]
+    },
+    "close-the-distance-disturbance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqQadQg6HOHJVO",
+          "type": "roll",
+          "label": "Close the Distance",
+          "roll": {
+            "formula": "(@amount)d10",
+            "note": "Damage from a ranged attack: reduce it by this and move 10 ft per Momentum spent, toward the source."
+          },
+          "cost": {
+            "pool": "momentum",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "conversational-feint-disturbance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Social encounter, Reaction when a creature passes a Charisma check: Martial Arts or Deception check vs its Wisdom save DC; on a success it loses the benefit of that social action (a Lie and a misdirection)."
+        }
+      ]
+    },
+    "delayed-fall": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5ep3bFWPOTaZ5gY",
+          "type": "roll",
+          "label": "Delayed Fall",
+          "roll": {
+            "formula": "(@amount)d@pools.martialDice.faces * 2",
+            "note": "Roll that many fewer falling damage dice (up to 3 Martial Dice)."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "disturbance-flurry": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "momentum",
+          "label": "Momentum",
+          "value": 0,
+          "max": "lvl(3:4,10:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5emoycKJB6sTpIX",
+          "type": "roll",
+          "label": "Gain Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn when you deal unarmed damage to a hostile creature with an attack or a Taijutsu; lasts 1 minute."
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5ea2sb0guhgexGv",
+          "type": "effect",
+          "label": "Blitzing Momentum",
+          "effect": {
+            "name": "Blitzing Momentum",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "10",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "note",
+                "text": "Until the start of your next turn, move 10 ft as part of each reaction (+10 ft if the reaction already moves you)."
+              }
+            ]
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 1
+          },
+          "text": "On your turn."
+        },
+        {
+          "id": "n5e6UR3clXpWTh4C",
+          "type": "roll",
+          "label": "Surging Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, on your turn: an extra Bonus Action this turn, only to cast a Taijutsu of D-Rank or lower (C from 10th, B from 17th)."
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5ennRA7WVJuHDV3",
+          "type": "roll",
+          "label": "Disturbing Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, on a hostile creature's turn: an extra Reaction this turn, only to cast a Taijutsu or use a Martial Technique."
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Momentum: max 4 (6 from 10th level, Unmatched Reflexes)."
+        }
+      ]
+    },
+    "disturbing-technique-disturbance": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Disturbing Technique (3 Martial Dice)",
+          "appliesTo": {
+            "discipline": "tai"
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 3
+          },
+          "note": "A Taijutsu with 2 or more attacks and two or more hostile creatures in range: every hostile creature in range is a target, each attack compared to each AC."
+        }
+      ]
+    },
+    "dramatic-pose-passionate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egJu4mUHEAkFmC",
+          "type": "roll",
+          "label": "Encourage",
+          "roll": {
+            "formula": "1d@pools.martialDice.faces",
+            "note": "Add to the target's next Charisma or Wisdom check."
+          }
+        },
+        {
+          "id": "n5el6UPnXpPvzSVK",
+          "type": "roll",
+          "label": "Flatter",
+          "roll": {
+            "formula": "1d@pools.martialDice.faces",
+            "note": "Penalty to the target's next Wisdom check."
+          }
+        },
+        {
+          "id": "n5eEZoX1gxPlJjG0",
+          "type": "save",
+          "label": "Callout",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "text": "Failure: it loses the benefit of its most recent successful Charisma or Wisdom check within the last minute."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Social encounter: an Action, each once per creature per encounter; in combat a Bonus Action, once per initiative."
+        }
+      ]
+    },
+    "drowsy-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehLPWOVxVob0g2",
+          "type": "roll",
+          "label": "Drowsy Strike",
+          "roll": {
+            "formula": "1d@pools.martialDice.faces * 10",
+            "note": "In place of an attack: at or above its current HP it falls unconscious for 10 minutes (wakes if moved, damaged or woken)."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Elite and Solo adversaries and creatures of a higher level are immune; a creature is immune for 8 hours after it is tried on them."
+        }
+      ]
+    },
+    "elemental-defenses-nin-tai": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While in your Elemental Cloak: resistance to your chosen release's damage type (add it to the Cloak effect, or apply at the table)."
+        }
+      ]
+    },
+    "elemental-recharge-nin-tai": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaUd0rlNB8IXME",
+          "type": "roll",
+          "label": "Elemental Recharge",
+          "roll": {
+            "formula": "",
+            "note": "An extra Action this turn, only to cast a Taijutsu. Not again until you spend a Full-Turn Action to stabilize."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "enhanced-movement": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Enhanced Movement +20",
+          "levels": {
+            "min": 11,
+            "max": 14
+          },
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ]
+        },
+        {
+          "name": "Enhanced Movement +25",
+          "levels": {
+            "min": 15,
+            "max": 19
+          },
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "25",
+              "mode": 2
+            }
+          ]
+        },
+        {
+          "name": "Enhanced Movement +30",
+          "levels": {
+            "min": 20,
+            "max": 0
+          },
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "30",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Speed +10 (+15 at 5th, +20 at 11th, +25 at 15th, +30 at 20th) is on the effects. At the table: Dash as a Bonus Action; from 5th level your jump distance doubles when you Dash."
+        }
+      ]
+    },
+    "expanded-talent-talented-genius": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5Pm6bEYwcHXDe",
+          "type": "effect",
+          "label": "Flawless Power",
+          "effect": {
+            "name": "Flawless Power",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "note",
+                "text": "The first creature to save against your Martial Techniques subtracts half a Martial Die from its save."
+              }
+            ]
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "perfection",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eVr89kPSwKBBeO",
+          "type": "roll",
+          "label": "Flawless Execution",
+          "roll": {
+            "formula": "",
+            "note": "On an unarmed or Taijutsu critical hit: an extra unarmed attack as part of the same action."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eEGaqAHIiNkMfu",
+          "type": "roll",
+          "label": "Flawless Balance",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: you aren't moved against your will or knocked Prone (teleportation still works)."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5erU9xNb40AA9FI",
+          "type": "roll",
+          "label": "Flawless Guard",
+          "roll": {
+            "formula": "2d@pools.martialDice.faces",
+            "note": "Reaction when an ally within 15 ft would be hit: move up to 10 ft next to it and reduce its damage by this."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eXTlBUEcy5yiws",
+          "type": "roll",
+          "label": "Flawless Clash",
+          "roll": {
+            "formula": "1d@pools.martialDice.faces",
+            "note": "Once per turn: add to a Clash check with a Taijutsu you cast."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Perfection max 6 is on Genius Talent's pool."
+        }
+      ]
+    },
+    "expert-of-the-fist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use up to two Martial Techniques per trigger. Choose the Expertise of a Taijutsu stance you know (its benefits are on the stance)."
+        }
+      ]
+    },
+    "expertise-drunken-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Drunken Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-frog-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Frog Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-iron-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Iron Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-lion-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Lion Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-rabbit-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Rabbit Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-serpent-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Serpent Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-titan-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Titan Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "expertise-wolf-fist-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Expert of the Fist: the Wolf Fist Stance's Expertise benefits (its effects and buttons are on the stance item, by level)."
+        }
+      ]
+    },
+    "extra-attack": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Extra Attack"
+        },
+        {
+          "key": "note",
+          "text": "From 11th level, when you take the Attack action you can make 2 unarmed attacks as a Bonus Action."
+        }
+      ]
+    },
+    "flow-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6avlO5nZdUYl3",
+          "type": "save",
+          "label": "Flow Breaker",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn."
+        },
+        {
+          "id": "n5eNXhZ1Gpch4WT4",
+          "type": "effect",
+          "label": "Flow Broken",
+          "effect": {
+            "name": "Flow Broken",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "On a failed save; ends at the end of its turn (from 6th level, Perfected Stillness: a save at the end of each of its turns ends it)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow Broken is applied as a marker; what it does is applied at the table."
+        }
+      ]
+    },
+    "fluid-stance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0EHAQNr3RdL5G",
+          "type": "roll",
+          "label": "Style Shift",
+          "roll": {
+            "formula": "",
+            "note": "Reaction when a creature attacks you: switch stance and make an unarmed attack at it; on a hit, Strength save or Dazed."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ekkM3RdqvN4iyT",
+          "type": "effect",
+          "label": "Dodge Cancel",
+          "effect": {
+            "name": "Dodge Cancel",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "note",
+                "text": "The damaged creature's next attack against you before the start of your next turn is at disadvantage."
+              }
+            ]
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "text": "On a melee Taijutsu or unarmed hit: switch stance into a defensive one."
+        }
+      ]
+    },
+    "focused-genius": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUVwzQMuRPaCrV",
+          "type": "roll",
+          "label": "Redirected Aggression",
+          "roll": {
+            "formula": "1d@pools.martialDice.faces",
+            "note": "Reaction to a melee or ranged attack: reduce its attack roll by this; if it misses, a melee or ranged unarmed attack back (its range); a hit applies its attack's effects + 1 Martial Die damage."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5et5W6YgomZ4zg8",
+          "type": "save",
+          "label": "Shatterpoint",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "text": "When you deal [Unarmed Damage]. Failure: Shattered."
+        },
+        {
+          "id": "n5eGck2WmKoJim1S",
+          "type": "effect",
+          "label": "Shattered",
+          "effect": {
+            "name": "Shattered",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "rules": [
+              {
+                "key": "critRange",
+                "selector": "attack",
+                "direction": "against",
+                "value": 1,
+                "label": "Shattered"
+              },
+              {
+                "key": "modifier",
+                "selector": "damage",
+                "direction": "against",
+                "value": "lvl(3:2,10:4,17:6)",
+                "label": "Shattered"
+              },
+              {
+                "key": "note",
+                "text": "A critical hit on it adds 2 Martial Dice (3 at 10th, 4 at 17th). Its first successful Str, Dex or Con save is remade minus a Martial Die (lower result), then this ends. An Action and a DC 20 Strength check end it."
+              }
+            ]
+          },
+          "text": "On a failed Shatterpoint save (a Physical condition)."
+        }
+      ]
+    },
+    "forceful-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBhRJe4P4CK5OO",
+          "type": "save",
+          "label": "Forceful Strike",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "choose": true
+          },
+          "text": "When you deal unarmed damage with an attack. 1 Martial Die (2 from 7th, 3 from 13th level)."
+        },
+        {
+          "id": "n5edadNCV0GKy7qF",
+          "type": "roll",
+          "label": "Push distance",
+          "roll": {
+            "formula": "5 * ((@amount)d@pools.martialDice.faces)",
+            "note": "Feet pushed on a failed save; if a structure stops it, it and the structure take 1d6 bludgeoning per 5 ft short."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "choose": true,
+            "roll": false
+          }
+        }
+      ]
+    },
+    "genius-talent": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "perfection",
+          "label": "Perfection",
+          "value": 0,
+          "max": "lvl(3:4,10:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eIjjioU6U5ifBq",
+          "type": "effect",
+          "label": "Become Flawless",
+          "effect": {
+            "name": "Flawless",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "flawless"
+          },
+          "text": "When you roll initiative; for the rest of combat."
+        },
+        {
+          "id": "n5enhUuwl4cqAaen",
+          "type": "roll",
+          "label": "Gain Perfection",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn when you spend at least 1 Martial Die (Flawless state)."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eSinZq6gzNWsYQ",
+          "type": "roll",
+          "label": "Flawless Focus",
+          "roll": {
+            "formula": "",
+            "note": "In place of spending 1 Martial Die (roll it as usual, it isn't spent)."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5esHGtRdorEkWuv",
+          "type": "roll",
+          "label": "Flawless Technique",
+          "roll": {
+            "formula": "{1d@pools.martialDice.faces,1d@pools.martialDice.faces}kh",
+            "note": "Roll a Martial Die with advantage."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5erT5SbZCTGLCul",
+          "type": "effect",
+          "label": "Flawless Stances",
+          "effect": {
+            "name": "Flawless Stances",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 6,
+            "rules": [
+              {
+                "key": "disadvantage",
+                "selector": "attack",
+                "direction": "against",
+                "uses": 1,
+                "label": "Flawless Stances"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 1
+          },
+          "text": "Once per turn: switch stance without a Bonus Action."
+        },
+        {
+          "id": "n5enBViXsFhda8P8",
+          "type": "roll",
+          "label": "Flawless Disturbance",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn on a hostile creature's turn: an extra reaction, only to cast a Taijutsu (one until your next turn)."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eVNcJOCXL4osX6",
+          "type": "roll",
+          "label": "Flawless Tempo",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn on a Combo Taijutsu: your next Taijutsu gains Combo Extender, and you can cast a Finisher as a Reaction until the end of your turn."
+          },
+          "cost": {
+            "pool": "perfection",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Perfection: max 4 (6 from 10th level, Expanded Talent); only while Flawless."
+        }
+      ]
+    },
+    "genius-technique-talented-genius": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elbbRpb60yBZUS",
+          "type": "save",
+          "label": "Genius Technique",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 3
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "On an unarmed or Taijutsu hit that deals unarmed damage (also 3 Perfection). Failure: Stunned until the start of your next turn."
+        }
+      ]
+    },
+    "hurricane-strikes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exZQ1A72xD09Gc",
+          "type": "attack",
+          "label": "Hurricane Strikes",
+          "minLevel": 0,
+          "oncePerTurn": false,
+          "activation": "action",
+          "attack": {
+            "discipline": "tai",
+            "range": "melee",
+            "count": 1
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "4d@pools.martialDice.faces"
+          },
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "One roll against up to 4 creatures within your speed, then teleport next to one.",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "iron-body": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Iron Body: Constitution Mastery",
+          "levels": {
+            "min": 7,
+            "max": 0
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.save.con",
+              "value": "Iron Body",
+              "mode": 2
+            }
+          ]
+        },
+        {
+          "name": "Iron Body: second rank",
+          "levels": {
+            "min": 13,
+            "max": 0
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.save.con",
+              "value": "Iron Body (13th)",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Guard Slots: after a Full Rest choose 2 minor armor seals (3 from 9th; from 13th also 1 greater or refined seal); you have their benefits while unarmored until your next Full Rest."
+        }
+      ]
+    },
+    "iron-will": {
+      "status": "automated",
+      "effects": [
+        {
+          "name": "Iron Will: Wisdom Mastery",
+          "levels": {
+            "min": 9,
+            "max": 0
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.save.wis",
+              "value": "Iron Will",
+              "mode": 2
+            }
+          ]
+        },
+        {
+          "name": "Iron Will: second rank",
+          "levels": {
+            "min": 15,
+            "max": 0
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.save.wis",
+              "value": "Iron Will (15th)",
+              "mode": 2
+            }
+          ]
+        }
+      ]
+    },
+    "martial-adept": {
+      "status": "automated",
+      "pools": [
+        {
+          "id": "martialDice",
+          "label": "Martial Dice",
+          "value": 0,
+          "max": "@scale.taijutsuSpecialist.martialDie",
+          "die": "lvl(1:6,7:8,13:10,19:12)",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "turn",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eW1L6mdvOJ8QQB",
+          "type": "roll",
+          "label": "Spend a Martial Die",
+          "roll": {
+            "formula": "",
+            "note": "For a Martial Technique or class feature that rolls or spends Martial Dice."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1,
+            "roll": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Martial Dice refill at the start of each of your turns (unspent dice are lost). The die matches your Martial Strength Unarmed die: d6, d8 at 7th, d10 at 13th, d12 at 19th level. Martial Techniques use your Taijutsu save DC."
+        }
+      ]
+    },
+    "martial-guard": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5efdwQaVsrtQA1J",
+          "type": "roll",
+          "label": "Martial Guard",
+          "roll": {
+            "formula": "(@amount)d@pools.martialDice.faces",
+            "note": "When targeted by a melee attack: reduce the damage roll by this. 1 Martial Die (2 from 7th, 3 from 13th level)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "martial-technique": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Martial Strength d8",
+          "levels": {
+            "min": 7,
+            "max": 12
+          },
+          "requiresStance": "taijutsu",
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "1d8",
+              "mode": 0
+            }
+          ]
+        },
+        {
+          "name": "Martial Strength d10",
+          "levels": {
+            "min": 13,
+            "max": 18
+          },
+          "requiresStance": "taijutsu",
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "1d10",
+              "mode": 0
+            }
+          ]
+        },
+        {
+          "name": "Martial Strength d12",
+          "levels": {
+            "min": 19,
+            "max": 0
+          },
+          "requiresStance": "taijutsu",
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "1d12",
+              "mode": 0
+            }
+          ]
+        },
+        {
+          "name": "Unwasted Movements",
+          "requiresStance": "taijutsu",
+          "changes": [
+            {
+              "key": "n5e.rankCost.tai",
+              "value": "D:3,C:5,B:9,A:14,S:20",
+              "mode": 0
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Unarmored AC 10 + proficiency + Dex is on the AC effect. In a Taijutsu stance: the Unarmed die d6 (the stance), d8 at 7th, d10 at 13th, d12 at 19th, and Taijutsu cost a fixed Special cost by cast rank (D 3, C 5, B 9, A 14, S 20; a jutsu whose cost is already Special keeps its own; no reductions) are on the effects."
+        },
+        {
+          "key": "note",
+          "text": "At the table: the same benefits while wielding a weapon you're proficient with (not in a stance); Strength or Dexterity for unarmed strikes, Taijutsu and Martial Arts (set your Taijutsu ability); one unarmed attack as a Bonus Action. Choose a Taijutsu stance and its Expertise."
+        }
+      ]
+    },
+    "mastery-of-self": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Mastery of Self",
+          "changes": [
+            {
+              "key": "system.traits.conditionImmune",
+              "value": "envenomed",
+              "mode": 2
+            },
+            {
+              "key": "system.traits.conditionImmune",
+              "value": "exhaustion",
+              "mode": 2
+            },
+            {
+              "key": "system.traits.conditionImmune",
+              "value": "dazed",
+              "mode": 2
+            },
+            {
+              "key": "n5e.mastery.save.con",
+              "value": "Mastery of Self",
+              "mode": 2
+            },
+            {
+              "key": "n5e.mastery.save.wis",
+              "value": "Mastery of Self",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Immunity to Envenomed, Exhaustion and Dazed and a rank of Mastery on Constitution and Wisdom saves are on the effect. At the table: Chakra Valves costs no Martial Die; Constitution saves for half damage take none on a success and half on a failure."
+        }
+      ]
+    },
+    "mimicry-of-motion-stancer": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Social encounter, Reaction when a creature succeeds on a social check: Martial Arts check vs its Charisma save DC; on a success use its bonuses for your Charisma checks for the rest of the encounter. Once per hour."
+        }
+      ]
+    },
+    "moment-of-stillness": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose one Moment of Stillness technique (a second at 11th level); each is triggered by an unarmed or Taijutsu hit that deals unarmed damage, for 2 Martial Dice. On a Taijutsu that already forces a save, the technique's save replaces it and a failure applies both; with two techniques, pick which replaces the save and the other forces a second save."
+        }
+      ]
+    },
+    "nature-enhanced-combat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRldGLzJdXZDwO",
+          "type": "effect",
+          "label": "Enter Elemental Cloak",
+          "effect": {
+            "name": "Elemental Cloak",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "elementalCloak",
+            "ampType": "fortitude"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          },
+          "text": "For 1 minute (end it with a Bonus Action); 10 minutes of meditation before reuse. From 17th level you enter it free when initiative is rolled."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a nature release (Earth, Wind, Fire, Water or Lightning): you can learn and cast its jutsu, and your Taijutsu gain its keyword if they have none."
+        },
+        {
+          "key": "note",
+          "text": "Elemental Finisher: a Finisher Taijutsu changed into one gains your release's effect at its cast rank (Earth: 20-ft radius Str or Dex save, [Unarmed Damage] + 2d4 per rank step, Prone, difficult terrain; Wind: ranged attack, [Unarmed Damage] + 3d8…, fly speed; Fire: ranged attack, 2d6+2… and a 10-ft burst; Water: 30-ft cone, knocked back and disarmed; Lightning: melee attack, a critical recasts it at another creature). Applied at the table."
+        }
+      ]
+    },
+    "never-ending-combo": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "tempo",
+          "label": "Tempo",
+          "value": 0,
+          "max": "lvl(3:3,10:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "event",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5elNhltLEm2VsnI",
+          "type": "effect",
+          "label": "Enter DYNAMIC FORM!",
+          "effect": {
+            "name": "DYNAMIC FORM!",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "dynamicForm"
+          },
+          "text": "When you cast a Combo Taijutsu; ends when you cast a Finisher or initiative ends."
+        },
+        {
+          "id": "n5egmxMACVzeZFQP",
+          "type": "roll",
+          "label": "Gain Tempo",
+          "roll": {
+            "formula": "",
+            "note": "Each Combo Taijutsu in DYNAMIC FORM!; lose 1 at the end of a turn without one."
+          },
+          "cost": {
+            "pool": "tempo",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eNeRjeSRggSD1w",
+          "type": "roll",
+          "label": "Spend Tempo (Finisher)",
+          "roll": {
+            "formula": "",
+            "note": "A Finisher spends all Tempo (from 10th level any amount): 1 a free Martial Technique; 2 the attack also hits creatures within 5 ft of the target (10 ft at 10th, 15 ft at 17th); 3 regain the Action on a critical hit or a save failed by 5+; 5 regain the chakra spent this turn at its end."
+          },
+          "cost": {
+            "pool": "tempo",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Tempo max 3 (5 from 10th level). While you have Tempo: 1 a rank of Mastery on Athletics and Acrobatics skill actions and ignore difficult terrain; 2 move through enemies and attacks of opportunity against you are at disadvantage; 3 +1 Taijutsu critical range and Taijutsu save DC; 5 advantage on Dexterity saves. Applied at the table."
+        }
+      ]
+    },
+    "nin-tai-technique-nin-tai": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You enter your Elemental Cloak when initiative is rolled, free. Difficult terrain costs no extra movement. While you have your reaction, the first creature within 10 ft to hit you each turn takes 4 Martial Dice of your Cloak's type. A melee Taijutsu or unarmed hit lets you teleport to a space within your speed (once per hit)."
+        }
+      ]
+    },
+    "parry-the-shot": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5e2PqyFLAcwkQ9p",
+          "type": "roll",
+          "label": "Parry The Shot",
+          "roll": {
+            "formula": "(@amount)d@pools.martialDice.faces + @level",
+            "note": "Hit by a ranged weapon, Ninjutsu or Taijutsu attack: reduce the damage taken by this (up to 3 Martial Dice)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "passionate-flame-technique-passionate": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Passionate Flame (3 Martial Dice)",
+          "appliesTo": {
+            "discipline": "tai",
+            "keywords": [
+              "finisher"
+            ]
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 3
+          },
+          "note": "Gain Tempo Boost's benefits while still applying the Finisher effects."
+        }
+      ]
+    },
+    "passionate-flurry": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ermIG2Fa7T7nO3",
+          "type": "roll",
+          "label": "Chakra Enhanced Blows",
+          "roll": {
+            "formula": "",
+            "note": "On an unarmed attack or Taijutsu: apply Sustained Pressure or Valve Break at no further Martial Die cost. Creatures that fail the Taijutsu's save or are hit twice by your unarmed attacks gain a rank of Bruised."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eMR8wFHVAC8HaR",
+          "type": "roll",
+          "label": "Tempo Boost",
+          "roll": {
+            "formula": "",
+            "note": "While you have Tempo, casting a Finisher: ignore its casting time; it loses Finisher (no Finisher effect) and gains Combo Extender."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn on an unarmed attack: a Shove, Trip or Grapple as part of it, using the attack result as the check, also dealing [Unarmed Damage] on a hit."
+        }
+      ]
+    },
+    "path-of-the-genius": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Elite Taijutsu (+1 to hit)",
+          "appliesTo": {
+            "discipline": "tai",
+            "stance": "taijutsu"
+          },
+          "oncePerTurn": true,
+          "auto": true,
+          "actionEffect": "Elite Taijutsu"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Elite Taijutsu",
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "value": 1,
+              "label": "Elite Taijutsu"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In a Taijutsu stance: Elite Taijutsu (+1 to hit, once per turn) and The New Era (+1 Taijutsu save DC) are automated. Next Generation (9th): an Elite Taijutsu that forces a Chakra Control check to keep concentration can force an Athletics check instead."
+        }
+      ]
+    },
+    "path-of-the-hero": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Protective Taijutsu gives the targeted ally +1 AC (cast dialog; +1 more for a second instance of damage, max +2). Guardian Force: a Taijutsu cast as a reaction to damage or a save also benefits allies within 10 ft while they stay within 10 ft. Champion (9th): affected allies gain 10 temporary HP per instance of damage (max 20)."
+        }
+      ]
+    },
+    "path-of-the-predator": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Furious Taijutsu (DR −2) and Can't Run (−5 ft speed) are buttons. Never Escaping (9th): against a creature whose speed is 0, a Furious Taijutsu's first attack each turn has advantage, or its first save each turn is at disadvantage."
+        }
+      ]
+    },
+    "path-of-the-savage": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Devastating Taijutsu (+1 crit range)",
+          "appliesTo": {
+            "discipline": "tai",
+            "stance": "taijutsu"
+          },
+          "oncePerTurn": true,
+          "auto": true,
+          "actionEffect": "Devastating Taijutsu"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Devastating Taijutsu",
+          "applyTo": "action",
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "value": 1,
+              "label": "Devastating Taijutsu"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Unstoppable Force: when the target summons a construct or structure with its reaction to intercept your damage, use your reaction to gain an Action to recast the same jutsu at it. Fueled By Ruin (9th): a Devastating critical hit gives temporary chakra by cast rank (D 2, C 3, B 4, A 5, S 6)."
+        }
+      ]
+    },
+    "path-of-the-technician": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Unbreakable Focus: hostile effects can't increase your Taijutsu's cost. Perfectionist's Musing (9th): a Technical Taijutsu that doesn't affect hostile creatures can't be reacted to or dispelled by jutsu of its rank or lower."
+        }
+      ]
+    },
+    "path-of-the-tyrant": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Brutal Taijutsu (+2 damage, +4 from 11th) is automated. Stolen Hope: a creature adjacent to you that casts a Hand Seals jutsu lets you take the Attack action against it as a reaction. Victimizer (9th): saves against a Brutal Taijutsu's Physical condition can't be made with advantage."
+        }
+      ]
+    },
+    "perfect-physique-talented-genius": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Resistance to one of bludgeoning, piercing, slashing, earth, wind, fire, water, lightning, force, poison or necrotic (add it as a resistance on the sheet). Change it with a Bonus Action, 2 Perfection and 2 Martial Dice."
+        }
+      ]
+    },
+    "perfected-stillness-talented-genius": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Moment of Stillness techniques cost 1 Martial Die instead of 2 (refund one). Their condition lasts until a successful save at the end of each of the creature's turns, which can't be made at disadvantage."
+        }
+      ]
+    },
+    "persistence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewvi45BYJeIveZ",
+          "type": "roll",
+          "label": "Persistence",
+          "roll": {
+            "formula": "",
+            "note": "At the start of your turn: end one Physical or Sensory condition you have."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "physical-genius": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learning and creating Taijutsu takes half the time and no lifestyle Ryo; a newly created Taijutsu's final cost is reduced by its rank (D 1 … S 5). Saves and checks to resist gaining Exhaustion are made with advantage."
+        }
+      ]
+    },
+    "precise-technique": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 2 Martial Dice when you cast a Taijutsu (cast dialog); +1 to hit per die is added at the table."
+        }
+      ]
+    },
+    "pressure-of-the-talented-talented-genius": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5el8qOPrRMSFtW0",
+          "type": "roll",
+          "label": "Pressure of the Talented",
+          "roll": {
+            "formula": "4d@pools.martialDice.faces",
+            "note": "Once per social encounter: halve each die (min 1) and record them; use one as a penalty to a creature's Charisma or Wisdom check."
+          }
+        }
+      ]
+    },
+    "primal-glare-nin-tai": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Social encounter, Action: Chakra Control check vs a creature's Wisdom save DC; on a success it gains 2 ranks of Demoralized and can't lie or withhold important information on its next question. Once per creature per hour."
+        }
+      ]
+    },
+    "quivering-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAEZ52xhubhaV9",
+          "type": "save",
+          "label": "Quivering Strike",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 5
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d@pools.martialDice.faces",
+                "type": "bludgeoning"
+              }
+            ],
+            "ignoreDR": true
+          },
+          "inflicts": [],
+          "text": "On an unarmed hit. At the end of each of its turns: Constitution save; a failure deals the damage (can't be reduced), a success ends it."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature can only be under this technique once per rest."
+        }
+      ]
+    },
+    "raw-technique": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 2 Martial Dice when you cast a Taijutsu (cast dialog); +1 to its DC per die is added at the table."
+        }
+      ]
+    },
+    "regenerative-surge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1eSwvULo6AfBj",
+          "type": "heal",
+          "label": "Regenerative Surge",
+          "heal": {
+            "formula": "2d@pools.martialDice.faces + @disciplines.tai.mod",
+            "pool": "hp"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "text": "Once per rest."
+        }
+      ]
+    },
+    "secret-stances-stancer": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a clan and learn its modified stance: Hanami Medical Fist (necrotic; Envenomed), Hyuga Gentle Fist (force; Sealed), Uchiha Agile Fist (piercing; Confused), Ryu Dragon Fist (chakra; Weakened), Kuru Dark Devotion Fist (psychic; Slow as a Physical condition). Once per turn on unarmed damage: Constitution save vs your Taijutsu DC or a rank of the condition."
+        }
+      ]
+    },
+    "sheer-will-passionate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIqJxlMcQscneq",
+          "type": "roll",
+          "label": "Sheer Will: reroll a save",
+          "roll": {
+            "formula": "",
+            "note": "When you fail a saving throw: remake it."
+          },
+          "cost": {
+            "pool": "tempo",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e3OxqZYhmReWxs",
+          "type": "roll",
+          "label": "Sheer Will: reactive Taijutsu",
+          "roll": {
+            "formula": "",
+            "note": "When a creature makes a melee attack against you: cast a 1-Action Taijutsu as a reaction."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "shockwave-strike": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 Martial Die when you cast an attack Taijutsu (cast dialog): creatures of your choice within 5 ft of the target make a Dexterity save or take half the damage dealt, once per casting."
+        }
+      ]
+    },
+    "stance-blending": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learn a Taijutsu stance you don't know and its Expert feat (no ability increase). After an unarmed or melee Taijutsu attack, switch stances without a Bonus Action. Once per turn on switching, a Stance Shift until the start of your next turn: Impact (push 5 ft on each [Unarmed Damage]), Defensive (temporary HP equal to a Martial Die on each), Retaliatory (Hand Seal casts adjacent provoke a free attack of opportunity, once per turn; a hit: Strength save or Prone), Deflective (reduce the first attack damage each turn by a Martial Die)."
+        }
+      ]
+    },
+    "stance-mastery-stancer": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learn another Taijutsu stance. New Stance Shifts: Momentum (Dash), Anchored (−10 ft speed on each [Unarmed Damage]), Distracting (allies have advantage on their next attack at creatures you damaged), Resilient (resistance to a damage type you choose)."
+        }
+      ]
+    },
+    "stancer-technique-stancer": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Stancer Technique (2 Martial Dice)",
+          "appliesTo": {
+            "discipline": "tai"
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "note": "A Taijutsu that requires a stance: until the end of the turn your attacks ignore AC bonuses from jutsu, and a hostile creature that succeeds on its save must remake it."
+        }
+      ]
+    },
+    "step-of-savagery": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5euyqpJePGqCQox",
+          "type": "save",
+          "label": "Step of Savagery",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "martialDice",
+            "choose": true
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "@unarmed + (@amount)d@pools.martialDice.faces",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "activation": "action",
+          "text": "Up to 4 Martial Dice; move your speed in a straight line through creatures; those that fail are dragged along (not two or more sizes larger)."
+        }
+      ]
+    },
+    "step-of-silence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eERaYQuOjYazIo",
+          "type": "roll",
+          "label": "Step of Silence",
+          "roll": {
+            "formula": "",
+            "note": "Creatures can't react to your movement; you move silently and leave no tracks."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "step-of-the-stars": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRqvbtx2lWF5Y4",
+          "type": "roll",
+          "label": "Step of the Stars",
+          "roll": {
+            "formula": "",
+            "note": "When a creature triggers an attack of opportunity: make two unarmed attacks in place of one."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "step-of-the-wind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeU5xU0xVL6LB7",
+          "type": "roll",
+          "label": "Step of the Wind",
+          "roll": {
+            "formula": "",
+            "note": "On your turn, with all your movement: teleport to a space you can see within your movement range."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "student-of-perfection": {
+      "status": "none"
+    },
+    "taijutsu-style": {
+      "status": "none"
+    },
+    "technical-technique": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 Martial Die when you cast a Taijutsu (cast dialog): it gains the Technical keyword; its concentration upkeep is reduced by half the die roll."
+        }
+      ]
+    },
+    "unchecked-power-nin-tai": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eP1PMHBBbOvk9m",
+          "type": "roll",
+          "label": "Elemental Core",
+          "roll": {
+            "formula": "2d@pools.martialDice.faces",
+            "note": "Add to your save against a Ninjutsu; against your Cloak's release, regain the 2 Martial Dice at the end of the turn."
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e27zM663wQeNpW",
+          "type": "heal",
+          "label": "Flashguard Counter",
+          "heal": {
+            "formula": "5 * (2d@pools.martialDice.faces)",
+            "pool": "tempHp"
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "text": "When you cast a jutsu in reaction to damage you take; added to that jutsu's temporary HP. You lose all temporary HP at the end of the turn."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Ninjutsu Combo (2 Martial Dice)",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "cost": {
+            "pool": "martialDice",
+            "amount": 2
+          },
+          "note": "Cast with your Taijutsu ability modifier; gains Combo: until the end of your turn, a Taijutsu Finisher at one affected creature at any range, once, as an Action or Bonus Action."
+        }
+      ]
+    },
+    "unmatched-reflexes-disturbance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eP7yCqwFNWJBkT",
+          "type": "roll",
+          "label": "Overwhelming Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when a creature saves against your Taijutsu (also 1 Martial Die): it can't react to the Taijutsu's casting or damage unless it takes 2 ranks of Dazzled."
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eFwib35Igb7bSC",
+          "type": "roll",
+          "label": "Imperceivable Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Reaction when a hostile creature you can reach casts a Ninjutsu or Taijutsu (also 1 Martial Die): teleport within 5 ft of it; you may also use another class feature that costs a reaction."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "momentum",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e6edk5Y4pB9WcA",
+          "type": "save",
+          "label": "Debilitating Momentum",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "cost": {
+            "pool": "momentum",
+            "amount": 2
+          },
+          "text": "Two or more hits on the same creature with one action (also 2 Martial Dice). Failure: vulnerable to the next damage from a creature other than you until the start of your next turn."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Momentum max 6 is on Disturbance Flurry's pool. Each of these also spends Martial Dice: spend them from the Martial Dice button."
+        }
+      ]
+    },
+    "unpredictable-disturbance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures can't target you with attacks of opportunity or attacks made with a reaction. A creature that casts a Ninjutsu or Genjutsu while adjacent to you provokes an attack of opportunity from you."
+        }
+      ]
+    },
+    "unreasonable-training-passionate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCe5vBNrrH7Zuu",
+          "type": "effect",
+          "label": "Drop Training Weights",
+          "effect": {
+            "name": "Unweighted",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "20",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60,
+            "rules": [
+              {
+                "key": "note",
+                "text": "The first melee unarmed or Taijutsu attack each turn: make an extra unarmed attack (no ability modifier to damage)."
+              }
+            ]
+          },
+          "activation": "bonus",
+          "text": "1 minute; then re-weight for 10 minutes before using it again."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a training implement (a second at 14th level). Binding Hand Wraps: a martial weapon (Light, Disarm, Reach 1, Grapple, Unarmed, Hidden); a Finisher on a creature grappled by them maximizes up to half your proficiency bonus in damage dice. Training Weights: the button. Specialized Training Kit: counts as two toolkits you choose, 5 charges per rest, Greater at 10th, Superior at 14th."
+        }
+      ]
+    }
+  }
+}

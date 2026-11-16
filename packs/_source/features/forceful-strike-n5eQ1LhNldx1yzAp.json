@@ -47,15 +47,24 @@
           "onSuccess": "none",
           "resave": false
         },
-        "inflicts": []
+        "cost": {
+          "pool": "martialDice",
+          "choose": true
+        },
+        "text": "When you deal unarmed damage with an attack. 1 Martial Die (2 from 7th, 3 from 13th level)."
       },
       {
         "id": "n5edadNCV0GKy7qF",
         "type": "roll",
         "label": "Push distance",
         "roll": {
-          "formula": "5 * 1d6",
-          "note": "Feet pushed on a failure (1d6 per bludgeoning per 5 ft short if stopped)."
+          "formula": "5 * ((@amount)d@pools.martialDice.faces)",
+          "note": "Feet pushed on a failed save; if a structure stops it, it and the structure take 1d6 bludgeoning per 5 ft short."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "choose": true,
+          "roll": false
         }
       }
     ],
@@ -69,7 +78,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

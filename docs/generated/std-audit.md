@@ -83,6 +83,6 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 143 | 24 | 106 | 91 | 9 |
+| features | 700 | 163 | 28 | 161 | 147 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |

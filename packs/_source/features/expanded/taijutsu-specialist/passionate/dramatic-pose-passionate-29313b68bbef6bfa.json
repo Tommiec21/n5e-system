@@ -33,13 +33,56 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egJu4mUHEAkFmC",
+        "type": "roll",
+        "label": "Encourage",
+        "roll": {
+          "formula": "1d@pools.martialDice.faces",
+          "note": "Add to the target's next Charisma or Wisdom check."
+        }
+      },
+      {
+        "id": "n5el6UPnXpPvzSVK",
+        "type": "roll",
+        "label": "Flatter",
+        "roll": {
+          "formula": "1d@pools.martialDice.faces",
+          "note": "Penalty to the target's next Wisdom check."
+        }
+      },
+      {
+        "id": "n5eEZoX1gxPlJjG0",
+        "type": "save",
+        "label": "Callout",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "text": "Failure: it loses the benefit of its most recent successful Charisma or Wisdom check within the last minute."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Social encounter: an Action, each once per creature per encounter; in combat a Bonus Action, once per initiative."
+        }
+      ]
     }
   },
   "ownership": {

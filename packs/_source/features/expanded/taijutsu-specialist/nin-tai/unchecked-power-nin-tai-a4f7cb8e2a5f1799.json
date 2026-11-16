@@ -33,13 +33,54 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eP1PMHBBbOvk9m",
+        "type": "roll",
+        "label": "Elemental Core",
+        "roll": {
+          "formula": "2d@pools.martialDice.faces",
+          "note": "Add to your save against a Ninjutsu; against your Cloak's release, regain the 2 Martial Dice at the end of the turn."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e27zM663wQeNpW",
+        "type": "heal",
+        "label": "Flashguard Counter",
+        "heal": {
+          "formula": "5 * (2d@pools.martialDice.faces)",
+          "pool": "tempHp"
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        },
+        "text": "When you cast a jutsu in reaction to damage you take; added to that jutsu's temporary HP. You lose all temporary HP at the end of the turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "castOption": {
+        "label": "Ninjutsu Combo (2 Martial Dice)",
+        "appliesTo": {
+          "discipline": "nin"
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        },
+        "note": "Cast with your Taijutsu ability modifier; gains Combo: until the end of your turn, a Taijutsu Finisher at one affected creature at any range, once, as an Action or Bonus Action."
+      }
     }
   },
   "ownership": {

@@ -34,7 +34,7 @@
         "id": "tempo",
         "label": "Tempo",
         "value": 0,
-        "max": "3",
+        "max": "lvl(3:3,10:5)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -50,17 +50,44 @@
     ],
     "activities": [
       {
+        "id": "n5elNhltLEm2VsnI",
+        "type": "effect",
+        "label": "Enter DYNAMIC FORM!",
+        "effect": {
+          "name": "DYNAMIC FORM!",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "dynamicForm"
+        },
+        "text": "When you cast a Combo Taijutsu; ends when you cast a Finisher or initiative ends."
+      },
+      {
         "id": "n5egmxMACVzeZFQP",
         "type": "roll",
         "label": "Gain Tempo",
+        "roll": {
+          "formula": "",
+          "note": "Each Combo Taijutsu in DYNAMIC FORM!; lose 1 at the end of a turn without one."
+        },
         "cost": {
           "pool": "tempo",
           "amount": 1,
           "gain": true
-        },
+        }
+      },
+      {
+        "id": "n5eNeRjeSRggSD1w",
+        "type": "roll",
+        "label": "Spend Tempo (Finisher)",
         "roll": {
           "formula": "",
-          "note": "Each Combo Taijutsu in DYNAMIC FORM!; lose 1 at the end of a turn without one."
+          "note": "A Finisher spends all Tempo (from 10th level any amount): 1 a free Martial Technique; 2 the attack also hits creatures within 5 ft of the target (10 ft at 10th, 15 ft at 17th); 3 regain the Action on a critical hit or a save failed by 5+; 5 regain the chakra spent this turn at its end."
+        },
+        "cost": {
+          "pool": "tempo",
+          "choose": true
         }
       }
     ]
@@ -73,7 +100,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Tempo max 3 (5 from 10th level). While you have Tempo: 1 a rank of Mastery on Athletics and Acrobatics skill actions and ignore difficult terrain; 2 move through enemies and attacks of opportunity against you are at disadvantage; 3 +1 Taijutsu critical range and Taijutsu save DC; 5 advantage on Dexterity saves. Applied at the table."
+        }
+      ]
     }
   },
   "_stats": {

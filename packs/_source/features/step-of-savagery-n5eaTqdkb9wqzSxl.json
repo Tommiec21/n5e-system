@@ -37,18 +37,6 @@
         "id": "n5euyqpJePGqCQox",
         "type": "save",
         "label": "Step of Savagery",
-        "cost": {
-          "pool": "martialDice",
-          "choose": true
-        },
-        "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + (@amount)d6",
-              "type": "bludgeoning"
-            }
-          ]
-        },
         "save": {
           "abilities": [
             "dex"
@@ -59,6 +47,18 @@
           "onSuccess": "none",
           "resave": false
         },
+        "cost": {
+          "pool": "martialDice",
+          "choose": true
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + (@amount)d@pools.martialDice.faces",
+              "type": "bludgeoning"
+            }
+          ]
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -68,7 +68,7 @@
           }
         ],
         "activation": "action",
-        "text": "Up to 4 Martial Dice; creatures in the line are dragged along."
+        "text": "Up to 4 Martial Dice; move your speed in a straight line through creatures; those that fail are dragged along (not two or more sizes larger)."
       }
     ],
     "prerequisites": []
@@ -81,7 +81,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

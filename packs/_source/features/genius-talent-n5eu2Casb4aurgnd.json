@@ -34,7 +34,7 @@
         "id": "perfection",
         "label": "Perfection",
         "value": 0,
-        "max": "4",
+        "max": "lvl(3:4,10:6)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -50,32 +50,114 @@
     ],
     "activities": [
       {
+        "id": "n5eIjjioU6U5ifBq",
+        "type": "effect",
+        "label": "Become Flawless",
+        "effect": {
+          "name": "Flawless",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "flawless"
+        },
+        "text": "When you roll initiative; for the rest of combat."
+      },
+      {
         "id": "n5enhUuwl4cqAaen",
         "type": "roll",
         "label": "Gain Perfection",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn when you spend at least 1 Martial Die (Flawless state)."
+        },
         "cost": {
           "pool": "perfection",
           "amount": 1,
           "gain": true
         },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eSinZq6gzNWsYQ",
+        "type": "roll",
+        "label": "Flawless Focus",
         "roll": {
           "formula": "",
-          "note": "When you spend at least 1 Martial Die (Flawless state)."
+          "note": "In place of spending 1 Martial Die (roll it as usual, it isn't spent)."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
         },
         "oncePerTurn": true
       },
       {
+        "id": "n5esHGtRdorEkWuv",
+        "type": "roll",
+        "label": "Flawless Technique",
+        "roll": {
+          "formula": "{1d@pools.martialDice.faces,1d@pools.martialDice.faces}kh",
+          "note": "Roll a Martial Die with advantage."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5erT5SbZCTGLCul",
+        "type": "effect",
+        "label": "Flawless Stances",
+        "effect": {
+          "name": "Flawless Stances",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "disadvantage",
+              "selector": "attack",
+              "direction": "against",
+              "uses": 1,
+              "label": "Flawless Stances"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 1
+        },
+        "text": "Once per turn: switch stance without a Bonus Action."
+      },
+      {
         "id": "n5enBViXsFhda8P8",
         "type": "roll",
-        "label": "Spend Perfection",
+        "label": "Flawless Disturbance",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn on a hostile creature's turn: an extra reaction, only to cast a Taijutsu (one until your next turn)."
+        },
         "cost": {
           "pool": "perfection",
           "amount": 2
         },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eVNcJOCXL4osX6",
+        "type": "roll",
+        "label": "Flawless Tempo",
         "roll": {
           "formula": "",
-          "note": "Flawless Disturbance and the other Perfection abilities."
-        }
+          "note": "Once per turn on a Combo Taijutsu: your next Taijutsu gains Combo Extender, and you can cast a Finisher as a Reaction until the end of your turn."
+        },
+        "cost": {
+          "pool": "perfection",
+          "amount": 2
+        },
+        "oncePerTurn": true
       }
     ]
   },
@@ -87,7 +169,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Perfection: max 4 (6 from 10th level, Expanded Talent); only while Flawless."
+        }
+      ]
     }
   },
   "_stats": {

@@ -38,10 +38,14 @@
         "type": "heal",
         "label": "Regenerative Surge",
         "heal": {
-          "formula": "2d6 + @disciplines.tai.mod",
+          "formula": "2d@pools.martialDice.faces + @disciplines.tai.mod",
           "pool": "hp"
         },
         "activation": "bonus",
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        },
         "text": "Once per rest."
       }
     ],
@@ -55,7 +59,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

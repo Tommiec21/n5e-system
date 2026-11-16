@@ -33,13 +33,70 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eP7yCqwFNWJBkT",
+        "type": "roll",
+        "label": "Overwhelming Momentum",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, when a creature saves against your Taijutsu (also 1 Martial Die): it can't react to the Taijutsu's casting or damage unless it takes 2 ranks of Dazzled."
+        },
+        "cost": {
+          "pool": "momentum",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eFwib35Igb7bSC",
+        "type": "roll",
+        "label": "Imperceivable Momentum",
+        "roll": {
+          "formula": "",
+          "note": "Reaction when a hostile creature you can reach casts a Ninjutsu or Taijutsu (also 1 Martial Die): teleport within 5 ft of it; you may also use another class feature that costs a reaction."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "momentum",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e6edk5Y4pB9WcA",
+        "type": "save",
+        "label": "Debilitating Momentum",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "cost": {
+          "pool": "momentum",
+          "amount": 2
+        },
+        "text": "Two or more hits on the same creature with one action (also 2 Martial Dice). Failure: vulnerable to the next damage from a creature other than you until the start of your next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Momentum max 6 is on Disturbance Flurry's pool. Each of these also spends Martial Dice: spend them from the Martial Dice button."
+        }
+      ]
     }
   },
   "ownership": {

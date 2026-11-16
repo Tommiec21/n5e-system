@@ -149,7 +149,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 640 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 645 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
@@ -173,7 +173,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `character-options.mjs` | 191 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
 | `equipment.mjs` | 148 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
-| `jutsu.mjs` | 201 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
+| `jutsu.mjs` | 209 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
 
 ## module/data/region
@@ -235,7 +235,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-options.mjs` | 192 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 198 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 206 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
@@ -246,9 +246,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
-| `effect-authoring.mjs` | 193 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
+| `effect-authoring.mjs` | 195 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
-| `elements.mjs` | 345 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
+| `elements.mjs` | 359 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
 | `environment.mjs` | 94 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `indirectExposure`, `mayBeImmune`, `breathSeconds`, `breathState`, `outOfBreathStatus`, `breathTurns`, `suffocationStep`, `fallDamage` |
 | `expiry.mjs` | 42 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
@@ -284,7 +284,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-actions.mjs` | 22 | Skill-action attempt penalty (Core Ch6; King 2026-11-07: penalties don't stack). | `skillActionPenalty` |
 | `skill-resolution.mjs` | 129 | Skill-action resolution (pure; SKILL1, KB 02 and Chapter 6). | `parseVs`, `passiveScore`, `standardDC`, `fixedDC`, `contestOutcome`, `checkOutcome`, `SKILL_RESULTS`, `skillActionEffects`, `SIZE_ORDER`, `SIZE_GATED`, `HOLD_ACTIONS`, `REQUIRES_HOLD`, `ESCAPE_ACTIONS`, `WEAPON_SKILL_ACTIONS`, `sizeGate`, `skillActionGate`, `holdBroken` |
 | `social.mjs` | 60 | Social encounters (PRESTD1 Part F; the Bingo Book). | `socialSetup`, `standardDC`, `argumentResult`, `primaryPoints`, `socialScore`, `socialOutcome`, `actionDC`, `patienceSpent` |
-| `stance-weapons.mjs` | 36 | Stance weapons (STD6b E1; docs/STD6b_SPEC.md). | `qualifiesForStance`, `weaponFacts` |
+| `stance-weapons.mjs` | 38 | Stance weapons (STD6b E1; docs/STD6b_SPEC.md). | `qualifiesForStance`, `weaponFacts` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
 | `target-formula.mjs` | 18 | Formulas that read the target (ENG1a; docs/ENG1_SPEC.md): "@target.ranks.<condition>" is the target's ranks of that condition, "@target.state.<state>" is 1 w... | `conditionRanksOn`, `targetFormula` |
 | `token-size.mjs` | 22 | PRESTD1 A11 (optional rule scaleTokens): token size in grid units by creature size (PF2e's token autoscale, on N5e's sizes). | `TOKEN_SIZES`, `tokenSizeFor`, `isDefeated`, `encumbranceChange` |

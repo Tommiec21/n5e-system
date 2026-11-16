@@ -33,13 +33,44 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elbbRpb60yBZUS",
+        "type": "save",
+        "label": "Genius Technique",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 3
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "On an unarmed or Taijutsu hit that deals unarmed damage (also 3 Perfection). Failure: Stunned until the start of your next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

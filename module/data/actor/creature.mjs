@@ -242,6 +242,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     for ( const pool of Object.values(this.resources ?? {}) ) {
       // lvl(3:4,11:5,17:6) scales by character level (Domain Charges); see rules/unarmed.mjs resolveFormula.
       pool.maxValue = Math.max(0, Math.floor(evaluateFormula(resolveFormula(pool.max, { system: { level: this.level } }), rollData, 0)));
+      // STD6d: a die that grows with level ("lvl(1:6,7:8,13:10,19:12)": Martial Dice) is read at this level.
+      if ( String(pool.die ?? "").startsWith("lvl(") ) pool.die = `d${resolveFormula(pool.die, { system: { level: this.level } })}`;
       if ( pool.value == null ) pool.value = pool.startsFull === false ? 0 : pool.maxValue;
       pool.value = Math.min(pool.value, pool.maxValue);
     }
@@ -634,6 +636,9 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     data.mod.buki = data.mod.tai;
     data.init = this.initiative?.total ?? data.dex;
     data.scale = this.grants?.scale ?? {};
+    // Pools for formulas (STD6d): @pools.<id>.faces is the pool die's size ("(@amount)d@pools.martialDice.faces").
+    data.pools = Object.fromEntries(Object.entries(this.resources ?? {}).map(([id, p]) =>
+      [id, { value: p.value ?? 0, max: p.maxValue ?? 0, faces: Number(String(p.die ?? "").replace(/^\d*d/, "")) || 0 }]));
     return data;
   }
 }

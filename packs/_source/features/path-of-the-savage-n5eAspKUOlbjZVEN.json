@@ -34,7 +34,42 @@
     "resourcePools": [],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5elkEa4vAFSjUI4",
+      "name": "Devastating Taijutsu",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "value": 1,
+              "label": "Devastating Taijutsu"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eAspKUOlbjZVEN.n5elkEa4vAFSjUI4"
+    }
+  ],
   "folder": "n5eakTYV3SxLDHGE",
   "sort": 0,
   "ownership": {
@@ -43,6 +78,13 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Unstoppable Force: when the target summons a construct or structure with its reaction to intercept your damage, use your reaction to gain an Action to recast the same jutsu at it. Fueled By Ruin (9th): a Devastating critical hit gives temporary chakra by cast rank (D 2, C 3, B 4, A 5, S 6)."
+        }
+      ],
       "castOption": {
         "label": "Devastating Taijutsu (+1 crit range)",
         "appliesTo": {
@@ -51,7 +93,7 @@
         },
         "oncePerTurn": true,
         "auto": true,
-        "note": "+1 critical threat range on this Taijutsu."
+        "actionEffect": "Devastating Taijutsu"
       }
     }
   },

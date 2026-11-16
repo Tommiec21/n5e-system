@@ -35,11 +35,75 @@
     "resourcePools": [],
     "advancement": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e4inQnK4zBqo4r",
+      "name": "Mastery of Self",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.traits.conditionImmune",
+          "value": "envenomed",
+          "mode": 2,
+          "priority": null
+        },
+        {
+          "key": "system.traits.conditionImmune",
+          "value": "exhaustion",
+          "mode": 2,
+          "priority": null
+        },
+        {
+          "key": "system.traits.conditionImmune",
+          "value": "dazed",
+          "mode": 2,
+          "priority": null
+        },
+        {
+          "key": "n5e.mastery.save.con",
+          "value": "Mastery of Self",
+          "mode": 2,
+          "priority": null
+        },
+        {
+          "key": "n5e.mastery.save.wis",
+          "value": "Mastery of Self",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!84a078eefe4d98ed.n5e4inQnK4zBqo4r"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Immunity to Envenomed, Exhaustion and Dazed and a rank of Mastery on Constitution and Wisdom saves are on the effect. At the table: Chakra Valves costs no Martial Die; Constitution saves for half damage take none on a success and half on a failure."
+        }
+      ]
     }
   },
   "ownership": {

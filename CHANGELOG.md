@@ -1,3 +1,17 @@
+## 0.55.0-alpha.1 — STD6d: Taijutsu Specialist automated
+
+- **Martial Dice grow with you:** d6, d8 at 7th, d10 at 13th, d12 at 19th level (the Martial Strength die). Every Martial Die button now rolls the right size.
+- **Martial Strength** (the Unarmed die d8 / d10 / d12) and **Unwasted Movements** (Taijutsu cost D 3, C 5, B 9, A 14, S 20 as a Special cost) apply while you're in a Taijutsu stance.
+- **Sustained Pressure** adds a Martial Die to every unarmed attack's damage for the rest of the turn; **Valve Break** adds rank Martial Dice of the right size.
+- **Agile** adds your best of Intelligence, Wisdom or Charisma to initiative. **Iron Body, Iron Will and Mastery of Self** give their saving throw Mastery; Mastery of Self gives immunity to Envenomed, Exhaustion and Dazed. **Enhanced Movement** now reaches +20, +25 and +30 speed.
+- **Paths:** Elite Taijutsu's +1 to hit and Devastating Taijutsu's +1 critical range now apply to the roll.
+- **Balance Broken** gives disadvantage on Strength saves. **Shattered** (Focused Genius) widens the critical range against the creature and adds +2 / +4 / +6 to damage it takes.
+- **New buttons:** Persistence, Step of Silence / the Stars / the Wind, Shatter and Unstable Drive, Surging and Disturbing Momentum, the Unmatched Reflexes techniques, Close the Distance, Elemental Rush, Elemental Core, Flashguard Counter, Elemental Recharge, DYNAMIC FORM! and Tempo spending, Chakra Enhanced Blows, Tempo Boost, Encourage / Flatter / Callout, Training Weights, Sheer Will, Style Shift, Dodge Cancel, Redirected Aggression, Shatterpoint, Flawless and every Perfection ability, Flawless Power, Genius Technique.
+- **Cast dialog:** Disturbing Technique, Elemental Crush, Ninjutsu Combo, Passionate Flame, Stancer Technique.
+- Review table: `docs/classes/taijutsu-specialist-automation.md` (84 features: 7 automated, 52 partly automated, 23 notes only, 2 no mechanics). Questions for King are in `docs/STD6d_SPEC.md` (Q-D8 to Q-D13).
+- **For authors:** a pool die can scale with level (`lvl(1:6,7:8,...)`); formulas can read a pool's die size (`@pools.<id>.faces`); a rule element's value can be the highest of some ability modifiers (`mod(int,wis,cha)`); change key `n5e.rankCost.<scope>` sets a fixed Special cost per cast rank; unarmed strikes carry the roll fact `weapon:unarmed`.
+- Not checked in a running Foundry world.
+
 ## 0.54.0-alpha.1 — SHEETS1: five optional character sheet designs (King: "Spend time building them all")
 
 - **Pick a look per character:** open a character's Sheet menu (the sheet's title bar) and choose a sheet. The default N5e sheet stays the default; the five new ones are the same sheet with a different design, so every button, roll and field still works the same.

@@ -37,10 +37,14 @@
         "id": "n5efdwQaVsrtQA1J",
         "type": "roll",
         "label": "Martial Guard",
-        "activation": "reaction",
         "roll": {
-          "formula": "1d6",
-          "note": "Reduce the triggering damage by this."
+          "formula": "(@amount)d@pools.martialDice.faces",
+          "note": "When targeted by a melee attack: reduce the damage roll by this. 1 Martial Die (2 from 7th, 3 from 13th level)."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "martialDice",
+          "choose": true
         }
       }
     ],
@@ -54,7 +58,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

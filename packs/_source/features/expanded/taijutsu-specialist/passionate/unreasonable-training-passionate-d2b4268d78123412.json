@@ -33,13 +33,48 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eCe5vBNrrH7Zuu",
+        "type": "effect",
+        "label": "Drop Training Weights",
+        "effect": {
+          "name": "Unweighted",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "note",
+              "text": "The first melee unarmed or Taijutsu attack each turn: make an extra unarmed attack (no ability modifier to damage)."
+            }
+          ]
+        },
+        "activation": "bonus",
+        "text": "1 minute; then re-weight for 10 minutes before using it again."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a training implement (a second at 14th level). Binding Hand Wraps: a martial weapon (Light, Disarm, Reach 1, Grapple, Unarmed, Hidden); a Finisher on a creature grappled by them maximizes up to half your proficiency bonus in damage dice. Training Weights: the button. Specialized Training Kit: counts as two toolkits you choose, 5 charges per rest, Greater at 10th, Superior at 14th."
+        }
+      ]
     }
   },
   "ownership": {

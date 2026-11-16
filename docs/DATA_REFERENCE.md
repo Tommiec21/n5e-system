@@ -766,3 +766,14 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Path | Meaning |
 | --- | --- |
 | Actor `flags.core.sheetClass` `n5e.CharacterSheetClassic`, `n5e.CharacterSheetGlass`, `n5e.CharacterSheetInk`, `n5e.CharacterSheetScroll`, `n5e.CharacterSheetOneui` | The character's chosen sheet design (Foundry's own flag, set from the Sheet menu); empty means the default N5e sheet |
+
+## Added in 0.55.0-alpha.1 (STD6d Taijutsu Specialist)
+
+| Path | Meaning |
+| --- | --- |
+| Pool `die` `lvl(1:6,7:8,13:10,19:12)` | The pool die's size by the owner's level (Martial Dice) |
+| Roll data `@pools.<id>.value`, `.max`, `.faces` | A pool's current value, maximum and die size, for formulas |
+| Rule element value `mod(int,wis,cha)` | The highest of those ability modifiers |
+| Change `n5e.rankCost.<scope>` "D:3,C:5,B:9,A:14,S:20" | A fixed Special cost by cast rank for jutsu in scope (`system.modifiers.rankCost`) |
+| Roll fact `weapon:unarmed` | A damage roll from the Unarmed Strike item |
+| Automation table effect `requiresStance` | The effect only applies in a stance of that category |

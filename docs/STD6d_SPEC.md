@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1): the first two classes are complete; stopped as King asked.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1). Next: Weapon Specialist, Scout-Nin, Hunter-Nin, Genjutsu Specialist.**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -32,6 +32,11 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D12 | `maximizeAfter` element | After the damage roll, up to N of the first part's dice count as their maximum (the lowest, as the roller would pick): Potent Ninjutsu. |
 | D13 | Level-scaled element values | `"lvl(6:2,10:4,18:6)"` as an element's value is read at its owner's level. |
 | D14 | Automation tab | Shows a Molding's casting-time change (`flags.n5e.castAs`). |
+| D15 | Pool die by level | A pool's `die` may be `lvl(1:6,7:8,13:10,19:12)`: read at the owner's level (Martial Dice). |
+| D16 | Pool die in formulas | Roll data `@pools.<id>.{value,max,faces}`: `(@amount)d@pools.martialDice.faces` rolls the dice spent at their current size. |
+| D17 | Best-of-abilities values | A rule element's value `mod(int,wis,cha)` is the highest of those modifiers (Agile's initiative bonus). |
+| D18 | Fixed cost by rank | Change key `n5e.rankCost.<scope>` ("D:3,C:5,B:9,A:14,S:20"): the jutsu costs that for its cast rank, as a Special cost (no reductions); a jutsu already Special keeps its own (Unwasted Movements). |
+| D19 | Unarmed fact | The Unarmed Strike item's damage rolls carry `weapon:unarmed` (Sustained Pressure's predicate). Table effects may require a stance (`requiresStance`). |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -65,6 +70,22 @@ Highlights:
 - **Cast dialog Moldings:** Crimson Kindling, Gigawatt Pulse, Tectonic Mantle, Pressure Stagnation, the 18th-level Moldings and the Summoner's techniques. Rule Breaker casts the Summoning Technique as a Bonus Action.
 - **Shift Tides** stances as effects.
 
+## Taijutsu Specialist (0.55.0-alpha.1)
+
+Review table: `docs/classes/taijutsu-specialist-automation.md` (84 features: 7 automated, 52 partly automated, 23 notes only, 2 no mechanics).
+
+Highlights:
+- **Martial Dice:** the die follows Martial Strength (d6, d8 at 7th, d10 at 13th, d12 at 19th); every Martial Die button rolls at the current size; Martial Technique buttons that spend "up to N" ask how many.
+- **Martial Technique (in a Taijutsu stance):** Martial Strength's Unarmed die and Unwasted Movements' fixed Special costs.
+- **Chakra Valves:** Sustained Pressure (a Martial Die on every unarmed damage roll this turn) and Valve Break (rank Martial Dice).
+- **Agile, Iron Body, Iron Will, Mastery of Self, Enhanced Movement:** initiative, saving throw Mastery, condition immunities, speed.
+- **Paths of Perfection:** Elite (+1 to hit) and Devastating (+1 crit range) as action effects; Protective, Furious, Brutal and The New Era as before.
+- **Moment of Stillness:** the three breakers (2 Martial Dice) with their markers; Balance Broken's Strength-save disadvantage.
+- **Disturbance:** Momentum (4, 6 from 10th) and its spends. **Nin-Tai:** Elemental Cloak and the Unchecked Power techniques. **Passionate:** DYNAMIC FORM!, Tempo (3, 5 from 10th) and its spends, Training Weights. **Stancer:** Style Shift, Dodge Cancel. **Talented Genius:** Flawless, Perfection (4, 6 from 10th) and its spends, Shattered, Flawless Power, Genius Technique.
+- **Stance Expertise options:** their benefits are on the stance items; the class options are notes.
+
+- **Text issues** (for the errata list): Extra Attack contains the Balance Broken definition; Iron Body ends with the class design note; Genius Talent has a broken sentence ("You can only use each Flawless"); Bone Broken and Flow Broken are not defined anywhere in the class text.
+
 ## Questions for King (answer when convenient; nothing waits on them)
 
 - **Q-D1 Toxic Tongue:** "immunity to the Poisoned and Corroded conditions": N5e has no Poisoned condition. Is it Envenomed? (Only Corroded is automated.)
@@ -73,6 +94,12 @@ Highlights:
 - **Q-D4 Preserve Life:** maximizes dice equal to the rank the jutsu is cast at (an upcast counts). Correct?
 - **Q-D5 Potent Ninjutsu:** "after damage is rolled, select up to 3 damage dice, treat each as its maximum": the card counts the three lowest dice as their maximum (what a player would pick). OK?
 - **Q-D6 Battle-state variants** (Overheat, Burnout, Herald, Typhoon, Maelstrom, Abyss, Crash and Flow Perfected): each is a button that enters Crash (or Flow) with its extras and cost, used instead of the plain Enter Crash. Burnout and Typhoon also need the base variant's cost (1 Pyroclasm, 1 Pressure), noted on the button. OK?
+- **Q-D8 Bone Broken and Flow Broken:** Balance Broken is defined (inside Extra Attack), but Bone Broken and Flow Broken aren't defined in the class text. What do they do? (They are markers on the creature for now.)
+- **Q-D9 Martial Die size:** the die follows Martial Strength by level (d6/d8/d10/d12) even when a stance's Expertise sets your Unarmed die to d6 or you're outside a stance. Correct?
+- **Q-D10 Unwasted Movements:** a Taijutsu cast at a higher rank costs that rank's value (a D-Rank cast at C costs 5), and a Taijutsu whose cost is None also gets the fixed cost. Correct?
+- **Q-D11 Martial Strength and Unwasted Movements** also apply "while wielding a weapon you are proficient in". Only the stance case is automated; is the weapon case meant for Bukijutsu users (and should it be automated too)?
+- **Q-D12 Saving throw Mastery:** Iron Body (2 ranks of Con at 13th) plus Mastery of Self (1 more) is 3 ranks of Con at 20th, and Iron Will plus Mastery of Self is 3 ranks of Wis. Is that intended?
+- **Q-D13 Quivering Strike:** the damage card is posted with each end-of-turn save; on a success it isn't applied. OK?
 - **Q-D7 Breakers:** advantage on Clash checks only when the jutsu you clash with is a Ninjutsu of the Release against the other's Release. Correct?
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
@@ -83,3 +110,4 @@ Highlights:
 - 2026-11-15 Claude: engine D9–D14 and Ninjutsu Specialist built, published 0.49.0-alpha.1. The rider applier now compares flags regardless of key order (both tables write Gale Fracture's flags). Stopped after two classes (King). Suites: 568 (566 pass, 2 skipped) and 175 pass.
 - 2026-11-15 King: Q-D3 2nd level was correct. ENG1 (`docs/ENG1_SPEC.md`) comes next: the missing capabilities, then these classes are redone.
 - 2026-11-15 King: Q-D1 Envenomed (Toxic Tongue now gives immunity to Envenomed and Corroded; ships with the next release); Q-D2 character level is right (no multiclassing in N5e); Q-D4–Q-D7 correct; Q-D3 asked for an explanation.
+- 2026-11-15 King: "Lets move on to STD6d". Claude: engine D15–D19 and Taijutsu Specialist built, published 0.55.0-alpha.1. Suites 589 and 180 pass.

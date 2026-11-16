@@ -33,13 +33,21 @@
     "activities": [
       {
         "id": "n5eRXWFnV6mnR8JR",
-        "type": "damage",
+        "type": "effect",
         "label": "Sustained Pressure",
-        "damage": {
-          "parts": [
+        "effect": {
+          "name": "Sustained Pressure",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 6,
+          "rules": [
             {
-              "formula": "1d6",
-              "type": ""
+              "key": "damage",
+              "selector": "damage",
+              "predicate": "weapon:unarmed",
+              "formula": "1d@pools.martialDice.faces",
+              "label": "Sustained Pressure"
             }
           ]
         },
@@ -47,7 +55,7 @@
           "pool": "martialDice",
           "amount": 1
         },
-        "text": "This and every later unarmed attack this turn adds a Martial Die."
+        "text": "The first time you deal damage this turn: that unarmed attack and every later one this turn add a Martial Die (from 20th level, free)."
       }
     ]
   },
@@ -60,6 +68,7 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
       "castOption": {
         "label": "Valve Break (1 Martial Die: +rank Martial Dice)",
         "appliesTo": {
@@ -71,9 +80,9 @@
           "amount": 1
         },
         "damage": {
-          "formula": "(@rankValue)d6"
+          "formula": "(@rankValue)d@pools.martialDice.faces"
         },
-        "note": "The first time you deal damage this turn."
+        "note": "The first time you deal damage this turn (Attack action or a Taijutsu). From 20th level (Mastery of Self) it costs no Martial Die: refund it."
       }
     }
   },

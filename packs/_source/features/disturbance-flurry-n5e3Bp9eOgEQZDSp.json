@@ -34,7 +34,7 @@
         "id": "momentum",
         "label": "Momentum",
         "value": 0,
-        "max": "4",
+        "max": "lvl(3:4,10:6)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -53,29 +53,73 @@
         "id": "n5emoycKJB6sTpIX",
         "type": "roll",
         "label": "Gain Momentum",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn when you deal unarmed damage to a hostile creature with an attack or a Taijutsu; lasts 1 minute."
+        },
         "cost": {
           "pool": "momentum",
           "amount": 1,
           "gain": true
         },
-        "roll": {
-          "formula": "",
-          "note": "When you deal unarmed damage; lasts 1 minute."
-        },
         "oncePerTurn": true
       },
       {
         "id": "n5ea2sb0guhgexGv",
-        "type": "roll",
+        "type": "effect",
         "label": "Blitzing Momentum",
+        "effect": {
+          "name": "Blitzing Momentum",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "note",
+              "text": "Until the start of your next turn, move 10 ft as part of each reaction (+10 ft if the reaction already moves you)."
+            }
+          ]
+        },
         "cost": {
           "pool": "momentum",
           "amount": 1
         },
+        "text": "On your turn."
+      },
+      {
+        "id": "n5e6UR3clXpWTh4C",
+        "type": "roll",
+        "label": "Surging Momentum",
         "roll": {
           "formula": "",
-          "note": "+10 speed; move 10 ft with each reaction until your next turn."
-        }
+          "note": "Once per turn, on your turn: an extra Bonus Action this turn, only to cast a Taijutsu of D-Rank or lower (C from 10th, B from 17th)."
+        },
+        "cost": {
+          "pool": "momentum",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5ennRA7WVJuHDV3",
+        "type": "roll",
+        "label": "Disturbing Momentum",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, on a hostile creature's turn: an extra Reaction this turn, only to cast a Taijutsu or use a Martial Technique."
+        },
+        "cost": {
+          "pool": "momentum",
+          "amount": 2
+        },
+        "oncePerTurn": true
       }
     ]
   },
@@ -87,7 +131,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Momentum: max 4 (6 from 10th level, Unmatched Reflexes)."
+        }
+      ]
     }
   },
   "_stats": {

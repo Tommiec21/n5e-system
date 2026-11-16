@@ -47,6 +47,10 @@
           "onSuccess": "none",
           "resave": false
         },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -55,7 +59,7 @@
             "label": "Prone"
           }
         ],
-        "text": "Failure: speed 0 and Prone until the start of your next turn."
+        "text": "On a melee unarmed or Taijutsu hit. Failure: speed 0 and Prone until the start of your next turn."
       }
     ],
     "prerequisites": []
@@ -68,7 +72,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its speed of 0 until the start of your next turn is applied at the table."
+        }
+      ]
     }
   },
   "_stats": {

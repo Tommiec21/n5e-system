@@ -66,6 +66,40 @@
       },
       "sort": 0,
       "_key": "!items.effects!n5eJuRiH4JOxAJA6.n5efFcg2usyqKKaJ"
+    },
+    {
+      "_id": "n5eZumPJNJ7YZMsG",
+      "name": "Elite Taijutsu",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "value": 1,
+              "label": "Elite Taijutsu"
+            }
+          ],
+          "applyTo": "action"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eJuRiH4JOxAJA6.n5eZumPJNJ7YZMsG"
     }
   ],
   "folder": "n5eakTYV3SxLDHGE",
@@ -76,6 +110,13 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In a Taijutsu stance: Elite Taijutsu (+1 to hit, once per turn) and The New Era (+1 Taijutsu save DC) are automated. Next Generation (9th): an Elite Taijutsu that forces a Chakra Control check to keep concentration can force an Athletics check instead."
+        }
+      ],
       "castOption": {
         "label": "Elite Taijutsu (+1 to hit)",
         "appliesTo": {
@@ -84,7 +125,7 @@
         },
         "oncePerTurn": true,
         "auto": true,
-        "note": "+1 to its attack rolls."
+        "actionEffect": "Elite Taijutsu"
       }
     }
   },

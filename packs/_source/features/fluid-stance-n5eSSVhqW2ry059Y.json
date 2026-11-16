@@ -29,7 +29,46 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5e0EHAQNr3RdL5G",
+        "type": "roll",
+        "label": "Style Shift",
+        "roll": {
+          "formula": "",
+          "note": "Reaction when a creature attacks you: switch stance and make an unarmed attack at it; on a hit, Strength save or Dazed."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ekkM3RdqvN4iyT",
+        "type": "effect",
+        "label": "Dodge Cancel",
+        "effect": {
+          "name": "Dodge Cancel",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 6,
+          "rules": [
+            {
+              "key": "note",
+              "text": "The damaged creature's next attack against you before the start of your next turn is at disadvantage."
+            }
+          ]
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
+        "text": "On a melee Taijutsu or unarmed hit: switch stance into a defensive one."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ek62UEjMksI16V",
@@ -39,7 +78,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

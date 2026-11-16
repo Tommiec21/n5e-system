@@ -47,7 +47,7 @@
         },
         "strike": {
           "kind": "unarmed",
-          "extraDice": "4d6"
+          "extraDice": "4d@pools.martialDice.faces"
         },
         "save": {
           "abilities": [
@@ -67,7 +67,7 @@
             "label": "Staggered"
           }
         ],
-        "text": "One roll against up to 4 creatures, then teleport next to one.",
+        "text": "One roll against up to 4 creatures within your speed, then teleport next to one.",
         "cost": {
           "pool": "martialDice",
           "amount": 4
@@ -84,7 +84,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

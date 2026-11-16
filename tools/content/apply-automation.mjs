@@ -11,7 +11,7 @@
  *   castOptions  cast dialog options (rider options are kept) → flags.n5e.castOption(s)
  *   activities   buttons                                     → system.activities
  *   pools        resource pools                              → system.resourcePools
- *   effects      transfer or action effects {name, levels?, changes?, rules?, applyTo?} → embedded effects
+ *   effects      transfer or action effects {name, levels?, changes?, rules?, applyTo?, requiresStance?} → embedded effects
  *                marked flags.n5e.std6d (effects the feature had without that mark are kept)
  *   flags        other flags.n5e values (castAs ...)
  *   status       automated | partial | note | none: what the review decided (shown in the review table)
@@ -73,6 +73,7 @@ export function appliedDoc(doc, entry) {
       if ( e.levels ) flags.levels = { min: e.levels.min ?? 0, max: e.levels.max ?? 0 };
       if ( e.rules?.length ) flags.rules = e.rules;
       if ( e.applyTo ) flags.applyTo = e.applyTo;
+      if ( e.requiresStance ) flags.requiresStance = e.requiresStance;
       return { _id: id, name: e.name, type: "generic", img: doc.img ?? "icons/svg/aura.svg", transfer: e.applyTo !== "action", disabled: false,
         system: { category: "feature" }, changes: (e.changes ?? []).map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2, priority: null })),
         duration: {}, description: "", origin: null, tint: "#ffffff", statuses: [], flags: { n5e: flags }, sort: 0,

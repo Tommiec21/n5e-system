@@ -47,7 +47,11 @@
           "onSuccess": "none",
           "resave": false
         },
-        "inflicts": []
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        },
+        "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn."
       },
       {
         "id": "n5eNXhZ1Gpch4WT4",
@@ -57,10 +61,10 @@
           "name": "Flow Broken",
           "target": "targets",
           "changes": [],
-          "expires": "turnStart",
+          "expires": "turnEnd",
           "seconds": 0
         },
-        "text": "On a failed save (ends at the end of its turn)."
+        "text": "On a failed save; ends at the end of its turn (from 6th level, Perfected Stillness: a save at the end of each of its turns ends it)."
       }
     ],
     "prerequisites": []
@@ -73,7 +77,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Flow Broken is applied as a marker; what it does is applied at the table."
+        }
+      ]
     }
   },
   "_stats": {

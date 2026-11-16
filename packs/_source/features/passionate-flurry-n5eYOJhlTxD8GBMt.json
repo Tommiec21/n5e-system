@@ -29,7 +29,35 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5ermIG2Fa7T7nO3",
+        "type": "roll",
+        "label": "Chakra Enhanced Blows",
+        "roll": {
+          "formula": "",
+          "note": "On an unarmed attack or Taijutsu: apply Sustained Pressure or Valve Break at no further Martial Die cost. Creatures that fail the Taijutsu's save or are hit twice by your unarmed attacks gain a rank of Bruised."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eMR8wFHVAC8HaR",
+        "type": "roll",
+        "label": "Tempo Boost",
+        "roll": {
+          "formula": "",
+          "note": "While you have Tempo, casting a Finisher: ignore its casting time; it loses Finisher (no Finisher effect) and gains Combo Extender."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5edxgXVpuoLgBuM",
@@ -39,7 +67,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn on an unarmed attack: a Shove, Trip or Grapple as part of it, using the attack result as the check, also dealing [Unarmed Damage] on a hit."
+        }
+      ]
     }
   },
   "_stats": {

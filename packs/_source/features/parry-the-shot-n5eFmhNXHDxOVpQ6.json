@@ -37,14 +37,14 @@
         "id": "n5e2PqyFLAcwkQ9p",
         "type": "roll",
         "label": "Parry The Shot",
+        "roll": {
+          "formula": "(@amount)d@pools.martialDice.faces + @level",
+          "note": "Hit by a ranged weapon, Ninjutsu or Taijutsu attack: reduce the damage taken by this (up to 3 Martial Dice)."
+        },
         "activation": "reaction",
         "cost": {
           "pool": "martialDice",
           "choose": true
-        },
-        "roll": {
-          "formula": "(@amount)d6 + @level",
-          "note": "Reduce the damage taken by this (up to 3 Martial Dice)."
         }
       }
     ],
@@ -58,7 +58,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

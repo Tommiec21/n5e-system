@@ -29,7 +29,22 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eMYFg8zEnGGpjT",
+        "type": "roll",
+        "label": "Elemental Rush",
+        "roll": {
+          "formula": "",
+          "note": "On a melee Taijutsu hit: Bonus Action to cast a 1-Action D-Rank Ninjutsu of your chosen release (C from 10th, B from 17th), with your Taijutsu ability modifier."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5erMvNAeaicdBFG",
@@ -39,7 +54,23 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "castOption": {
+        "label": "Elemental Crush (1 Martial Die)",
+        "appliesTo": {
+          "discipline": "tai",
+          "keywords": [
+            "finisher"
+          ]
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
+        },
+        "note": "Use your Elemental Finisher in place of the Finisher effect (still a Finisher; pay the jutsu's cost)."
+      }
     }
   },
   "_stats": {

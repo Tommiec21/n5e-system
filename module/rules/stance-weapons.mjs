@@ -29,7 +29,9 @@ export function qualifiesForStance(weapon, stance) {
 export function weaponFacts(weapon, stance = null) {
   if ( !weapon ) return ["weapon:unarmed"];
   const sys = weapon.system ?? {};
-  const facts = ["weapon", ...list(sys.groups).map(g => `weapon:group:${g}`), ...Object.keys(sys.properties ?? {}).map(p => `weapon:property:${p}`)];
+  // STD6d: the Unarmed Strike item still answers to "weapon:unarmed" (Sustained Pressure).
+  const unarmed = sys.identifier === "unarmedStrike" || !!weapon.flags?.n5e?.unarmedStrike;
+  const facts = ["weapon", ...(unarmed ? ["weapon:unarmed"] : []), ...list(sys.groups).map(g => `weapon:group:${g}`), ...Object.keys(sys.properties ?? {}).map(p => `weapon:property:${p}`)];
   if ( qualifiesForStance(weapon, stance) ) facts.push("weapon:stance");
   return facts;
 }

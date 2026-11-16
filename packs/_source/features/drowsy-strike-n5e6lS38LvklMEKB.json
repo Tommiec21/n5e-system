@@ -38,8 +38,12 @@
         "type": "roll",
         "label": "Drowsy Strike",
         "roll": {
-          "formula": "1d6 * 10",
-          "note": "At or above its current HP: unconscious for 10 minutes."
+          "formula": "1d@pools.martialDice.faces * 10",
+          "note": "In place of an attack: at or above its current HP it falls unconscious for 10 minutes (wakes if moved, damaged or woken)."
+        },
+        "cost": {
+          "pool": "martialDice",
+          "amount": 1
         }
       }
     ],
@@ -53,7 +57,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Elite and Solo adversaries and creatures of a higher level are immune; a creature is immune for 8 hours after it is tried on them."
+        }
+      ]
     }
   },
   "_stats": {

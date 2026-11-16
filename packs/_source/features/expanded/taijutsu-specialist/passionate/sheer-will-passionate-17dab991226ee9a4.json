@@ -33,13 +33,43 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eIqJxlMcQscneq",
+        "type": "roll",
+        "label": "Sheer Will: reroll a save",
+        "roll": {
+          "formula": "",
+          "note": "When you fail a saving throw: remake it."
+        },
+        "cost": {
+          "pool": "tempo",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e3OxqZYhmReWxs",
+        "type": "roll",
+        "label": "Sheer Will: reactive Taijutsu",
+        "roll": {
+          "formula": "",
+          "note": "When a creature makes a melee attack against you: cast a 1-Action Taijutsu as a reaction."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "martialDice",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

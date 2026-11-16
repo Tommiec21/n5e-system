@@ -21,6 +21,8 @@
  *   n5e.dice.all                  bonus/penalty to all dice rolls
  *   n5e.unarmed.dice              extra dice on Unarmed damage (value: "1d8")
  *   n5e.unarmed.die               the Unarmed damage die becomes this when larger (value: "1d12", "2d12"; STD6d Battle Medic)
+ *   n5e.rankCost.<scope>          a fixed cost by cast rank, treated as Special ("D:3,C:5,B:9,A:14,S:20"; STD6d Unwasted
+ *                                 Movements); jutsu whose cost is already Special keep theirs
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
  *   n5e.resist / n5e.immune       adds a damage resistance or immunity (value: damage type; NPC3 Freeform Jutsu)
@@ -43,7 +45,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], furyMax: 0, reinforced: 0, resist: [], immune: [], unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], furyMax: 0, reinforced: 0, resist: [], immune: [], rankCost: [], unknown: []
   };
 }
 
@@ -114,6 +116,11 @@ export function parseN5eChanges(changes) {
         break;
       }
       case "fury": out.furyMax += num(change.value); break;
+      case "rankCost": {
+        const table = Object.fromEntries([...String(change.value).matchAll(/([EDCBAS])\s*:\s*(\d+)/gi)].map(([, r, v]) => [r.toUpperCase(), Number(v)]));
+        if ( Object.keys(table).length ) out.rankCost.push({ scope: sub || "all", table, source: label });
+        break;
+      }
       case "reinforced": out.reinforced += num(change.value); break;
       default: out.unknown.push(key);
     }
@@ -175,6 +182,7 @@ export function changeKeyCatalog(N5E) {
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
   add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");
   add("Damage", "n5e.unarmed.die", "Unarmed damage die becomes this when larger (value e.g. 1d12)");
+  add("Casting", "n5e.rankCost.tai", "Fixed cost by cast rank, treated as Special (value \"D:3,C:5,B:9,A:14,S:20\"; scope like n5e.cost)");
   add("Defense", "n5e.reinforced", "Reinforced: + number to armor's Reinforced; without it, Reinforced = Taijutsu modifier");
   add("Bukijutsu", "n5e.fury.max", "Max Fury: + number (Fury stacks up to 1 + this)");
   add("Rolls", "n5e.saveTier.shift", "Four-tier save results: shift up (+1) or down (−1)");
