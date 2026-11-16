@@ -1,3 +1,8 @@
+## 0.60.0-alpha.2 — Effect editor: the Changes tab stays on its own tab
+
+- **Fix:** the effect editor's Changes content showed under the Details and Duration tabs too. It now shows only on the Changes tab.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.1 — UX1: a readable Amp card and effect editor
 
 - **Plain names for every effect field.** All 140 fields have:

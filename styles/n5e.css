@@ -48,7 +48,10 @@
 
 /* Expanded effect authoring preserves Foundry's native theme and tabs. */
 .n5e-effect-config .window-content { min-height: 0; }
-.n5e-effect-config .n5e-effect-authoring { overflow: auto; min-height: 0; display: flex; flex-direction: column; gap: .6rem; }
+/* Only the active tab shows: Foundry hides inactive tabs; display: flex must not override that. */
+.n5e-effect-config .n5e-effect-authoring { overflow: auto; min-height: 0; }
+.n5e-effect-config .n5e-effect-authoring.active { display: flex; flex-direction: column; gap: .6rem; }
+.n5e-effect-config .n5e-effect-authoring:not(.active) { display: none; }
 .n5e-effect-config label { display: flex; flex-direction: column; gap: .2rem; font-weight: 500; }
 .n5e-effect-config label.check { flex-direction: row; align-items: center; gap: .35rem; font-weight: 400; }
 .n5e-effect-config input, .n5e-effect-config select { min-width: 0; width: 100%; }

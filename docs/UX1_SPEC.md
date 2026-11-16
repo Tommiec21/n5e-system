@@ -133,3 +133,4 @@ Then back to AMP1b (the Amp audit).
 
 - 2026-11-16 King: the Amp card's effect editor overlaps, its wording is too technical, it needs plain definitions; pivot to readability. Claude: plan written; found that card Active Effects aren't applied by AMP1a (fix in UX1a).
 - 2026-11-16 King: Q-U1 yes, Q-U2 everyone sees the key, Q-U3 both phases at once, Q-U4 yes. Claude: UX1a and UX1b built (0.60.0-alpha.1). One category added beyond the plan: Other (initiative, inventory slots, max concentration, all dice rolls).
+- 2026-11-16 King: the Changes content showed on every tab. Claude: fixed in 0.60.0-alpha.2 (the new flex layout overrode Foundry's hiding of inactive tabs).
