@@ -7,6 +7,8 @@
  *                        save, none when immune or missed)
  *   diceSummary          a roll's dice as "2d6: 3, 5" lines, for a tile's expand arrow
  *   saveTile             one creature's save as a tile ("Dex 14 ✓", King Q-C4)
+ *   chunk                a list in groups (the save boxes hold 3 creatures each)
+ *   shortSaveLabel       "DC 12 DEX Save" (King 2026-11-16)
  */
 
 const list = v => (Array.isArray(v) ? v : v == null ? [] : [...v]);
@@ -50,4 +52,17 @@ export function saveTile({ name, label = "", total = null, degree, visible }) {
   if ( !visible ) return { name, label, total: "?", mark: "", outcome: "hidden" };
   const saved = degree >= 2;
   return { name, label, total: total ?? "", mark: saved ? "✓" : "✗", outcome: saved ? "saved" : "failed" };
+}
+
+/** A list in groups of n. */
+export function chunk(items, n) {
+  const out = [];
+  for ( let i = 0; i < items.length; i += n ) out.push(items.slice(i, i + n));
+  return out;
+}
+
+/** The save button's label: "DC 12 DEX Save". */
+export function shortSaveLabel(dc, ability, abilities = {}) {
+  const abbr = String(abilities?.[ability]?.abbr ?? ability ?? "").toUpperCase();
+  return `DC ${dc ?? "?"} ${abbr} Save`.replace(/\s+/g, " ");
 }

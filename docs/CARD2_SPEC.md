@@ -64,3 +64,4 @@ The current card keeps working underneath: riders, reactions to hits and damage,
 
 - 2026-11-16 King: wants combat cards like his SW5e card. Claude: spec written. Separately fixed: Fireball's damage now records on the card (0.62.0-alpha.4).
 - 2026-11-16 King: Q-C1 yes, Q-C2 yes, Q-C3 all, Q-C4 own tile. Claude: CARD2 built (0.63.0-alpha.1): rules/card-layout.mjs, workflow/card-layout.mjs, renderActionCard tiles/targets/apply panel, recorded linked messages hidden, quarter/none apply modes.
+- 2026-11-16 King: card cleanup (one attack display, no Will of Fire or hit-reaction buttons, two-column smaller buttons, short save label, small Clash/Read/Identify, compact save boxes, no per-target save buttons). Claude: done (0.63.0-alpha.2); also fixed the ghost save row (uuid keys split by Foundry).

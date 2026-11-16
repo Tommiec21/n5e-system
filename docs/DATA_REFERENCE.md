@@ -903,3 +903,8 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Activity effect `{name, target, amp: key}` | Every former Amp button: it starts that card (no inline changes or rules). |
 | Roll fact `ability:<ability>`, `ability:<nin|tai|gen>` | The ability a check or save uses, and whether it is that discipline's ability. |
 | Delete option `n5eAmpSwap` | An exclusive-group swap; the ended Amp's cooldown doesn't start. |
+
+### Action card results keys (0.63.0-alpha.2)
+
+- `flags.n5e.card.results.saves`, `.applied` and `.effects` are keyed by creature uuid with `~` in place of `.` (`Actor~abc`), because Foundry splits dotted keys on update.
+- Read them through `normalizeResults` (rules/action-card.mjs), which decodes the keys and repairs cards stored split. Write through `encodeResults`.

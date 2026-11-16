@@ -446,7 +446,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     }
     case "save": {
       const dc = Number(d.dc);
-      const targets = selectedActors ?? targetsOrSelf(null);
+      // King 2026-11-16: on an action card, the Save button rolls for the card's targets that haven't saved.
+      const pending = selectedActors ? [] : await (await import("./action-card.mjs")).pendingSaveActors(message, d.effect ?? "0");
+      const targets = selectedActors ?? (pending.length ? pending : targetsOrSelf(null));
       if ( !targets.length ) return fail("info", "Select the tokens that roll the save.");
       let rolled = 0;
       // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.

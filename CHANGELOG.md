@@ -1,3 +1,18 @@
+## 0.63.0-alpha.2 — CARD2 cleanup: a tighter combat card
+
+### Changed
+- **Combat card cleanup (King 2026-11-16):**
+  - The attack roll shows once: the roll's own dice line is hidden on the card; the Attack tile stays.
+  - Will of Fire buttons are hidden on combat cards for now.
+  - "Successful hit: reactions" is removed from the attacker's card.
+  - Action buttons sit in two columns with smaller text. The save button reads "DC 12 DEX Save".
+  - Critical, Clash, Read the Enemy and Identify are small buttons on one row.
+  - Saves share a compact box: one line per creature (name, ✓ or ✗, total), 3 per box; more creatures open another box.
+  - No per-target "Roll Dex save" buttons. The card's Save button rolls for every card target you may roll that hasn't saved yet.
+
+### Fixed
+- A nameless "save Failure" row on cards. Creature ids contain dots, and Foundry split them into nested keys when the card saved its results. Keys are now stored safely, and cards saved the old way read back correctly.
+
 ## 0.63.0-alpha.1 — CARD2: combat cards like the SW5e card
 
 King's answers: rolls inside the card (Q-C1), multipliers −1, 0, ¼, ½, 1, 2 (Q-C2), all cards at once (Q-C3), saves as their own tiles (Q-C4).

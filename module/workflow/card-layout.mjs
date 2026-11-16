@@ -12,7 +12,7 @@
  * Rolls live inside the card (King Q-C1): the linked roll messages are recorded in the card and no
  * longer shown in the chat log (workflow/action-card.mjs hides them once recorded).
  */
-import { MULTIPLIERS, defaultMultiplier, diceSummary, saveTile } from "../rules/card-layout.mjs";
+import { MULTIPLIERS, defaultMultiplier, diceSummary, saveTile, chunk, shortSaveLabel } from "../rules/card-layout.mjs";
 import { damagePlan } from "../rules/damage.mjs";
 import { damagesOf } from "../rules/action-card.mjs";
 import { canModify } from "../automation/authority.mjs";
@@ -76,16 +76,65 @@ export function tilesHTML(results, rows, { canSeeSave = () => true, isGM = false
     out.push(tile({ head: `Damage${key && Object.keys(damagesOf(results)).length > 1 ? ` (${key})` : ""}${d.crit ? " · Critical" : ""}`,
       formula: visible ? msg?.rolls?.[0]?.formula ?? "" : "", total: visible ? d.total : "?", sub: visible ? types.join(" + ") : "", cls: "damage", roll: visible ? msg?.rolls?.[0] : null }));
   }
-  // King Q-C4: each creature's save gets its own tile next to the damage.
+  // King 2026-11-16: the saves share a box, one small line per creature ("Test ✓ 15"), at most 3 per
+  // box; more creatures open another box. One set of boxes per save (Con, Dex).
+  const bySave = new Map();
   for ( const r of rows ) {
     for ( const s of r.saves ?? [] ) {
       const msg = messages()?.get(s.messageId);
       const visible = isGM || canSeeSave(r.uuid);
       const t = saveTile({ name: r.name, label: s.label, total: msg?.rolls?.[0]?.total ?? null, degree: s.failed ? 0 : 2, visible });
-      out.push(tile({ head: `${t.name}${t.label ? ` · ${t.label}` : ""} save`, total: t.total, mark: t.mark, cls: `save ${t.outcome}`, roll: visible ? msg?.rolls?.[0] : null }));
+      if ( !bySave.has(s.label) ) bySave.set(s.label, []);
+      bySave.get(s.label).push(t);
     }
   }
+  for ( const [label, list] of bySave ) for ( const part of chunk(list, 3) ) out.push(`<div class="n5e-c2-tile saves">
+    <div class="h">${esc(label ? `${label} Save` : "Save")}</div>
+    ${part.map(t => `<div class="f srow ${t.outcome}" data-tooltip="${esc(t.name)}"><span class="nm">${esc(t.name)}</span><span class="mark">${t.mark}</span><b>${esc(t.total)}</b></div>`).join("")}</div>`);
   return out.length ? `<div class="n5e-c2-tiles">${out.join("")}</div>` : "";
+}
+
+/**
+ * King 2026-11-16: the card's action buttons in two columns, smaller, with the short save label
+ * ("DC 12 DEX Save"); Critical, Clash, Read the Enemy and Identify together on one small row.
+ * Runs before the chat listeners are bound, so moved buttons keep working.
+ * @param {HTMLElement} html   the message element
+ * @param {HTMLElement} box    the card's own panel (left alone)
+ * @param {string} smallHTML   more small buttons (Read the Enemy, Identify)
+ */
+export function compactActions(html, box, smallHTML = "") {
+  const rows = [...html.querySelectorAll(".act-row")].filter(r => !box.contains(r));
+  const small = document.createElement("div");
+  small.className = "n5e-c2-small";
+  if ( !rows.length ) {
+    if ( smallHTML ) { small.innerHTML = smallHTML; box.before(small); }
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "n5e-c2-grid";
+  const hints = [];
+  for ( const r of rows ) {
+    for ( const el of [...r.children] ) {
+      if ( el.matches("button.crit, [data-n5e-clash]") ) small.append(el);
+      else if ( el.matches("button") ) {
+        if ( el.dataset.n5eAct === "save" && el.dataset.dc ) relabelSave(el);
+        grid.append(el);
+      } else hints.push(el);
+    }
+  }
+  rows[0].before(grid);
+  grid.after(small);
+  small.insertAdjacentHTML("beforeend", smallHTML);
+  for ( const h of hints.reverse() ) small.after(h);
+  for ( const r of rows ) r.remove();
+  if ( !small.children.length ) small.remove();
+}
+
+/** "DC 12 DEX Save" on a save button (its icon kept). */
+function relabelSave(btn) {
+  const icon = btn.querySelector("i")?.outerHTML ?? "";
+  const N5E = globalThis.CONFIG?.N5E ?? {};
+  btn.innerHTML = `${icon} ${esc(shortSaveLabel(btn.dataset.dc, btn.dataset.ability, N5E.abilities))}`;
 }
 
 /** The damage a creature would take from one damage roll at a multiplier, after its own resistance and DR. */

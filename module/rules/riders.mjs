@@ -22,7 +22,7 @@
  * Rank increases from several riders stack additively, then the condition's cap (Q-CD5).
  */
 import { attackTargetRows } from "./parity.mjs";
-import { savesOf, appliedOf } from "./action-card.mjs";
+import { savesOf, appliedOf, normalizeResults } from "./action-card.mjs";
 
 const list = v => (Array.isArray(v) ? v : v == null ? [] : [...v]);
 export const NATURE_RELEASES = Object.freeze(["fireRelease", "windRelease", "waterRelease", "earthRelease", "lightningRelease"]);
@@ -63,6 +63,7 @@ export function triggerRiders(items, action, { now = null, riderTurn = {}, condi
  * @returns {Map<string, {hit, crit, saved, saveFailed, damaged}>}
  */
 export function targetFacts(card, results = card?.results ?? {}) {
+  results = normalizeResults(results);
   const attack = results.attack;
   const named = new Map();
   for ( const t of [...list(card?.targets), ...list(attack?.targets)] ) if ( t?.uuid && !named.has(t.uuid) ) named.set(t.uuid, t);

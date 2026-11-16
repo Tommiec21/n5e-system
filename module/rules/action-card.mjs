@@ -25,6 +25,36 @@ const SAVE_LABELS = ["Critical Failure", "Failure", "Success", "Critical Success
 const list = v => (Array.isArray(v) ? v : []);
 
 /**
+ * CARD2 fix (King 2026-11-16): results are keyed by creature uuid ("Scene.x.Token.y.Actor.z"), and
+ * Foundry splits dotted keys into nested objects when the card is updated, which left a nameless
+ * ghost row ("save Failure"). Keys are stored with "~" for "." (encodeResults) and read back with
+ * normalizeResults, which also repairs cards already saved split.
+ */
+const BUCKETS = ["saves", "applied", "effects"];
+const isObj = v => !!v && typeof v === "object" && !Array.isArray(v);
+const isEntry = v => Array.isArray(v) || (isObj(v) && ("messageId" in v || "degree" in v || "mode" in v
+  || (Object.keys(v).length > 0 && Object.values(v).every(x => isObj(x) && ("messageId" in x || "degree" in x || "mode" in x)))));
+function flattenBucket(bucket, prefix = "", out = {}) {
+  for ( const [k, v] of Object.entries(bucket ?? {}) ) {
+    const key = (prefix ? `${prefix}.${k}` : k).replaceAll("~", ".");
+    if ( isEntry(v) || !isObj(v) ) out[key] = v;
+    else flattenBucket(v, key, out);
+  }
+  return out;
+}
+export function normalizeResults(results) {
+  if ( !isObj(results) ) return {};
+  const out = { ...results };
+  for ( const b of BUCKETS ) if ( isObj(results[b]) ) out[b] = flattenBucket(results[b]);
+  return out;
+}
+export function encodeResults(results) {
+  const out = { ...normalizeResults(results) };
+  for ( const b of BUCKETS ) if ( isObj(out[b]) ) out[b] = Object.fromEntries(Object.entries(out[b]).map(([k, v]) => [k.replaceAll(".", "~"), v]));
+  return out;
+}
+
+/**
  * One creature's saves on a card, by effect key (FIN3). A pre-FIN3 entry (a single save) reads as
  * its own key, or "0".
  * @returns {Object<string, object>}
@@ -153,7 +183,7 @@ export function mergeTargets(existing = [], added = []) {
  * Throws on anything the card can't take.
  */
 export function addCardResult(card, { section, targetUuid = null, result } = {}) {
-  const results = structuredClone(card?.results ?? {});
+  const results = structuredClone(normalizeResults(card?.results));
   const sections = list(card?.sections);
   if ( section === "damage" ) {
     if ( !sections.includes("damage") ) throw new Error("This card has no damage section.");
@@ -223,7 +253,7 @@ export function addCardResult(card, { section, targetUuid = null, result } = {})
 
 /** Card results plus linked results not written into the card yet (display only; no-GM fallback). */
 export function mergedResults(card, linked = []) {
-  let results = structuredClone(card?.results ?? {});
+  let results = structuredClone(normalizeResults(card?.results));
   for ( const entry of linked ) {
     try { results = addCardResult({ ...card, results }, entry); } catch { /* already recorded or not for this card */ }
   }
@@ -238,6 +268,7 @@ export function mergedResults(card, linked = []) {
  *   canSeeSave: challengeVisibility for that creature's save (default: visible)
  */
 export function cardTargetRows(card, results = card?.results ?? {}, { visibility = "none", isGM = false, canSeeSave = () => true, saveEffects = [], saveLabels = {}, damageLabels = {}, immune = new Map() } = {}) {
+  results = normalizeResults(results);
   const attack = results.attack ?? null;
   const saves = allSaves(results);
   const keys = saveEffects.length ? saveEffects.map(String) : [...new Set(saves.map(s => s.effect))];
@@ -334,6 +365,7 @@ export function cardReactionWindows(windows = [], now = Date.now()) {
  *   others   ready (their own buttons; filled in by CARD1b and CARD1c)
  */
 export function sectionStates(card, results = card?.results ?? {}, { saveEffects = [], damageEffects = [] } = {}) {
+  results = normalizeResults(results);
   const sections = list(card?.sections);
   const targets = list(card?.targets);
   const states = {};

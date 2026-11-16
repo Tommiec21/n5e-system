@@ -32,3 +32,10 @@ test("quarter and none are apply modes everywhere damage is applied", async () =
     assert.ok(s.includes("quarter") && s.includes("none"), f);
   }
 });
+
+test("CARD2 cleanup: save boxes hold 3 creatures each; the short save label", async () => {
+  const { chunk, shortSaveLabel } = await import("../module/rules/card-layout.mjs");
+  assert.deepEqual(chunk([1, 2, 3, 4, 5, 6, 7], 3), [[1, 2, 3], [4, 5, 6], [7]]);
+  assert.equal(shortSaveLabel(12, "dex", { dex: { abbr: "Dex" } }), "DC 12 DEX Save");
+  assert.equal(shortSaveLabel(14, "con"), "DC 14 CON Save");
+});

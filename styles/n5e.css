@@ -175,6 +175,17 @@
 .n5e-c2 .message-content .act-row > button.crit { flex: 0 0 auto; }
 .n5e-c2 .n5e-c2-tags { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 6px 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }
 /* Result tiles side by side. */
+/* King 2026-11-16: action buttons in two columns, smaller; Critical, Clash, Read the Enemy, Identify small on one row. */
+.n5e-c2 .n5e-c2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 4px 0; }
+.n5e-c2 .n5e-c2-grid > button { min-width: 0; min-height: 26px; margin: 0; padding: 2px 4px; font-size: 11px; font-weight: 700; line-height: 1.15;
+  text-transform: uppercase; letter-spacing: .02em; justify-content: center; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+.n5e-c2 .n5e-c2-grid > button:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.n5e-c2 .n5e-c2-small { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+.n5e-c2 .n5e-c2-small > button { flex: 0 0 auto; width: auto; min-width: 0; margin: 0; padding: 1px 8px; min-height: 22px; font-size: 11px; line-height: 1.2; }
+.n5e-c2 .n5e-c2-tile.saves .srow { display: flex; align-items: center; gap: 4px; text-align: left; }
+.n5e-c2 .n5e-c2-tile.saves .srow .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.n5e-c2 .n5e-c2-tile.saves .srow.saved .mark { color: #2e7d32; }
+.n5e-c2 .n5e-c2-tile.saves .srow.failed .mark { color: #b03a2e; }
 .n5e-c2 .n5e-c2-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin: 6px 0; }
 .n5e-c2 .n5e-c2-tile { border: 1px solid var(--color-border-light-primary, #999); border-radius: 6px; padding: 4px 6px; text-align: center; background: rgba(0, 0, 0, .04); }
 .n5e-c2 .n5e-c2-tile .h { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }

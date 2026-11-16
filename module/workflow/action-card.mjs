@@ -15,13 +15,13 @@
  *   Setting    rule("actionCard") off: nothing here runs and cards look as they did (Q-CD3).
  */
 import { rule } from "../rules-settings.mjs";
-import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets, savesOf, allSaves, cardReactionWindows, damagesOf, appliedOf, allApplied } from "../rules/action-card.mjs";
+import { cardSections, resultsFromLinked, addCardResult, mergedResults, cardTargetRows, sectionStates, mergeTargets, savesOf, allSaves, cardReactionWindows, damagesOf, appliedOf, allApplied, normalizeResults, encodeResults } from "../rules/action-card.mjs";
 import { genjutsuImmunity, creatureFacts } from "../rules/stimuli.mjs";
 import { challengeVisible } from "../rules/parity.mjs";
 import { riderView, onRiderClick } from "./riders.mjs";
 import { castFacts, counteredOn, counterTagFor, onDefenseClick, onCounterTagClick } from "./jutsu-defense.mjs";
 import { canModify } from "../automation/authority.mjs";
-import { headerHTML, tagsHTML, tilesHTML, applyPanelHTML, bindLayout, applyAll } from "./card-layout.mjs";
+import { headerHTML, tagsHTML, tilesHTML, applyPanelHTML, bindLayout, applyAll, compactActions } from "./card-layout.mjs";
 import { esc } from "../view-models/common.mjs";
 
 export const actionCardOn = () => !!rule("actionCard");
@@ -77,12 +77,20 @@ export function cardOfLinked(message) {
 
 /** Write results into a card (its author or a GM). Entries the card can't take are skipped. */
 async function writeResults(card, entries) {
-  let results = card.flags.n5e.card.results ?? {};
+  const stored = card.flags.n5e.card.results ?? {};
+  let results = normalizeResults(stored);
   for ( const entry of entries ) {
     try { results = addCardResult({ ...card.flags.n5e.card, results }, entry); } catch { /* recorded already, or not for this card */ }
   }
-  if ( JSON.stringify(results) === JSON.stringify(card.flags.n5e.card.results ?? {}) ) return card;
-  return card.update({ "flags.n5e.card.results": results });
+  // CARD2 fix: uuid keys stored with "~" for "." (Foundry splits dotted keys); keys left split by
+  // older versions are deleted.
+  const encoded = encodeResults(results);
+  if ( JSON.stringify(encoded) === JSON.stringify(stored) ) return card;
+  const update = { "flags.n5e.card.results": encoded };
+  for ( const b of ["saves", "applied", "effects"] ) for ( const k of Object.keys(stored[b] ?? {}) ) {
+    if ( !(k in (encoded[b] ?? {})) ) update[`flags.n5e.card.results.${b}.-=${k}`] = null;
+  }
+  return card.update(update);
 }
 
 /** The actor this user owns that a linked message is about (the intent travels on it). */
@@ -153,7 +161,7 @@ function linkedEntries(card) {
 
 /** Is this linked message recorded in its card's own results? */
 function recordedIn(card, messageId) {
-  const r = card?.flags?.n5e?.card?.results ?? {};
+  const r = normalizeResults(card?.flags?.n5e?.card?.results);
   return [r.attack, ...Object.values(damagesOf(r)), ...allSaves(r), ...allApplied(r)].some(x => x?.messageId === messageId);
 }
 
@@ -161,11 +169,8 @@ const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage:
 const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
 const MODE_LABELS = { full: "Applied ×1", half: "Applied ×½", quarter: "Applied ×¼", none: "Applied ×0", double: "Applied ×2", heal: "Healed" };
 
-const wofButtons = (kind, uuid, effect = null, label = "") => ["reroll", "advantage"].map(how =>
-  `<button type="button" data-n5e-card-wof="${kind}" data-how="${how}"${uuid ? ` data-target="${esc(uuid)}"` : ""}${effect != null ? ` data-effect="${esc(effect)}"` : ""}>Will of Fire${label ? ` (${esc(label)})` : ""}: ${how === "reroll" ? "reroll" : "keep higher"}</button>`).join("");
 const parse = v => { try { return JSON.parse(v || "null") ?? []; } catch { return []; } };
 const hasPlayerOwner = actor => !!actor && (globalThis.game?.users ?? []).some(u => !u.isGM && actor.testUserPermission?.(u, "OWNER"));
-const saveLabel = d => `Roll ${globalThis.CONFIG?.N5E?.abilities?.[d.ability]?.abbr ?? d.ability ?? ""} save`.replace(/\s+/g, " ");
 
 /** The card's own save buttons and target-effect buttons, as plain datasets, in order. */
 function cardActivities(message) {
@@ -264,12 +269,8 @@ export function renderActionCard(message, html) {
   const riders = riderView(message, results, acts, appliedSources);
   // FIN2b: Counter Tags (single-target casts) and the creatures the jutsu was absorbed for.
   const countered = card.kind === "jutsu" ? counteredOn(message) : new Set();
-  // ROLL1 (King Q-R2): one button rolls every pending save this user may roll, through one dialog.
-  const mayRoll = r => !countered.has(r.uuid) && (game.user.isGM || canModify(game.user, globalThis.fromUuidSync?.(r.uuid)));
-  const pendingFor = d => (card.sections.includes("saves") ? rows.filter(r => !r.savedEffects.includes(d.effect) && mayRoll(r)) : []);
-  const saveAll = acts.saves.map((d, i) => [d, i, pendingFor(d).length]).filter(([, , n]) => n > 1);
-  const saveAllBar = saveAll.length ? `<div class="n5e-card-saveall">${saveAll.map(([d, i, n]) =>
-    `<button type="button" data-n5e-card-saveall="${i}">${esc(saveLabel(d))} for all ${n}</button>`).join("")}</div>` : "";
+  // King 2026-11-16: no per-target or "for all" save buttons; the card's own Save button rolls every
+  // card target this user may roll that hasn't saved yet (pendingSaveActors).
   const row = r => {
     const actor = globalThis.fromUuidSync?.(r.uuid);
     const mine = game.user.isGM || (actor && canModify(game.user, actor));
@@ -280,10 +281,6 @@ export function renderActionCard(message, html) {
     if ( mine ) for ( const dm of r.damages ) if ( dm.share && !dm.applied && !r.immune ) facts.push(`${dm.label ? `${dm.label}: ` : ""}${SHARE_LABELS[dm.share]}`);
     if ( mine && !r.damages.length && r.share && !r.immune ) facts.push(SHARE_LABELS[r.share]);
     const controls = [];
-    // B2: the target's owner (GM for NPCs) rolls its save from the card.
-    // FIN3: one button per effect's save not yet rolled.
-    if ( mine && card.sections.includes("saves") ) acts.saves.forEach((d, i) => r.savedEffects.includes(d.effect) ||
-      controls.push(`<button type="button" data-n5e-card-save="${i}" data-target="${esc(r.uuid)}">${esc(saveLabel(d))}</button>`));
     // B3: conditions on a failed save (applied by whoever may change the creature), with rider ranks added (CARD1d).
     const riderRow = riders.row(r.uuid, mine);
     let k = 0;
@@ -314,9 +311,7 @@ export function renderActionCard(message, html) {
       if ( rx ) facts.push(`${rx.label}${rx.reduction ? ` (−${rx.reduction})` : ""}${rx.multiplier !== 1 ? ` (×${rx.multiplier})` : ""}`);
     }
     facts.push(...(windows.get(r.uuid) ?? []));
-    // C2: Will of Fire on this creature's save (its owner).
-    if ( mine && r.saves.length && (actor?.system?.willOfFire?.value ?? 0) > 0 ) r.saves.forEach(sv =>
-      controls.push(wofButtons("save", r.uuid, sv.effect, r.saves.length > 1 ? sv.label : "")));
+    // King 2026-11-16: Will of Fire buttons are hidden on the card for now (a new way is coming).
     // C3: the concentration check the damage called for (that creature's owner).
     for ( const dm of r.damages ) if ( mine && dm.applied?.concentration ) controls.push(`<button type="button" data-n5e-card-concheck="${esc(r.uuid)}" data-effect="${esc(dm.effect)}">Concentration check DC ${dm.applied.concentration.dc}</button>`);
     // Undo (Q-CD4): the damage and the conditions/effects applied to this creature from the card.
@@ -326,26 +321,24 @@ export function renderActionCard(message, html) {
   const box = document.createElement("div");
   box.className = "n5e-action-card";
   box.dataset.n5eActionCard = "1";
-  // C1/C2: attack-level controls for the caster's owner: Will of Fire on the attack, successful-hit reactions.
+  // King 2026-11-16: no Will of Fire or "Successful hit: reactions" buttons on the card for now.
   const caster = globalThis.fromUuidSync?.(card.actorUuid);
-  const attackControls = [];
-  if ( results.attack && results.attack.messageId !== message.id && caster?.isOwner && (caster.system?.willOfFire?.value ?? 0) > 0 ) attackControls.push(wofButtons("attack", ""));
-  if ( results.attack && results.attack.messageId !== message.id ) attackControls.push('<button type="button" data-n5e-card-hit="1">Successful hit: reactions</button>');
   // C3: is the caster still concentrating on this jutsu?
   const item = globalThis.fromUuidSync?.(card.itemUuid);
   const concLine = card.sections.includes("concentration") && caster && item
     ? `<div class="note">Concentration: ${(caster.system?.combat?.concentrating ?? []).includes(item.id) ? `${esc(caster.name)} is concentrating on ${esc(item.name)}` : "ended"}${results.effects ? "; effects applied from this card end with it" : ""}.</div>` : "";
   // FIN2b: Read the Enemy and Identify, for users acting with a creature other than the caster.
+  // King 2026-11-16: small buttons, on the row with Critical and Clash.
   const defense = castFacts(message)?.casterDC != null
-    ? '<div class="n5e-card-defense"><button type="button" data-n5e-card-defense="read">Read the Enemy</button><button type="button" data-n5e-card-defense="identify">Identify</button></div>' : "";
+    ? '<button type="button" data-n5e-card-defense="read">Read the Enemy</button><button type="button" data-n5e-card-defense="identify">Identify</button>' : "";
   const shown = riders.bar.length && !card.sections.includes("riders") ? [...card.sections, "riders"] : card.sections;
   const shownStates = { ...states, riders: riders.entries.length ? "done" : "ready" };
   // CARD2 (King 2026-11-16): results as tiles, the targets, then the Apply panel (workflow/card-layout.mjs).
   box.innerHTML = `${tilesHTML(results, rows, { canSeeSave, isGM: game.user.isGM })}
-    ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
+    ${concLine}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
-    ${rows.length || saveAllBar ? '<div class="n5e-c2-h">Targets</div>' : ""}
-    ${saveAllBar}${rows.length ? rows.map(row).join("") : ""}
+    ${rows.length ? '<div class="n5e-c2-h">Targets</div>' : ""}
+    ${rows.length ? rows.map(row).join("") : ""}
     <div data-n5e-c2-applies>${applyPanelHTML(message, results, rows, applyView.get(message.id) ?? (rows.length ? "targeted" : "selected"))}</div>
     <div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
     ${pending ? `<div class="note">${game.users?.activeGM
@@ -357,6 +350,12 @@ export function renderActionCard(message, html) {
   html.classList.add("n5e-c2");
   if ( !content.querySelector(".n5e-c2-who") ) content.insertAdjacentHTML("afterbegin", headerHTML(card));
   if ( !content.querySelector(".n5e-c2-tags") ) box.insertAdjacentHTML("beforebegin", tagsHTML(card));
+  // King 2026-11-16: two columns of smaller action buttons; small buttons on one row.
+  compactActions(html, box, defense);
+  // King 2026-11-16: the card's own roll (a weapon attack) shows once, in its tile.
+  if ( results.attack?.messageId === message.id ) for ( const el of html.querySelectorAll(".dice-roll") ) if ( !box.contains(el) ) el.hidden = true;
+  // Hidden for now on the card: Will of Fire and successful-hit reactions from the roll's own buttons.
+  for ( const el of html.querySelectorAll(".wof-buttons, [data-n5e-hit]") ) el.remove();
   const redraw = view => {
     applyView.set(message.id, view);
     const holder = box.querySelector("[data-n5e-c2-applies]");
@@ -364,6 +363,25 @@ export function renderActionCard(message, html) {
     bindLayout(holder, message, redraw);
   };
   bindLayout(box, message, redraw);
+}
+
+/**
+ * King 2026-11-16: the card targets this user may roll the save for that haven't rolled it yet
+ * (the card's own Save button rolls these; empty when it isn't an action card or none are left).
+ * @param {ChatMessage} message
+ * @param {string} effect   the save's effect key (its row)
+ * @returns {Promise<Actor[]>}
+ */
+export async function pendingSaveActors(message, effect) {
+  const card = message?.flags?.n5e?.card;
+  if ( !card || !actionCardOn() || !card.sections?.includes("saves") ) return [];
+  const game = globalThis.game;
+  const results = mergedResults(card, linkedEntries(message));
+  const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave: () => true,
+    ...saveEffectsOf(cardActivities(message)) });
+  const countered = card.kind === "jutsu" ? counteredOn(message) : new Set();
+  const left = rows.filter(r => !countered.has(r.uuid) && !r.savedEffects.includes(String(effect ?? "0")));
+  return (await Promise.all(left.map(r => fromUuid(r.uuid)))).filter(a => a && canModify(game.user, a));
 }
 
 /** CARD2: each card's Apply view (Targeted or Selected) for this client. */
@@ -462,9 +480,7 @@ export async function onActionCardClick(message, btn, event) {
   if ( d.n5eCardSaveall != null ) {
     const save = cardActivities(message).saves[Number(d.n5eCardSaveall)];
     if ( !save ) return null;
-    const rows = cardTargetRows(card, results, { visibility: rule("attackRollVisibility"), isGM: game.user.isGM, canSeeSave: () => true,
-      ...saveEffectsOf(cardActivities(message)) });
-    const actors = (await Promise.all(rows.filter(r => !r.savedEffects.includes(save.effect)).map(r => fromUuid(r.uuid)))).filter(a => a && canModify(game.user, a));
+    const actors = await pendingSaveActors(message, save.effect);
     if ( !actors.length ) return null;
     const dataset = { ...save };
     if ( Object.keys(results.saves ?? {}).length ) delete dataset.dis;
