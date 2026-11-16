@@ -8,6 +8,7 @@
  *   tags       Physical, Mental, Sensory, Elemental, Fatigue (King Q-CC1: it counts as these for everything)
  *   maxRanks   empty: no ranks (applying again replaces it and the new duration wins, King Q-CC3);
  *              a number: ranks stack up to it; 0: no limit
+ *   changes    Active Effect changes the condition carries (Manic: system.bonuses.speed +10)
  *   immunityFrom  "damage:acid" or "condition:envenomed": that immunity also makes the creature immune to
  *              this; "all:damage:fire,damage:earth" needs every one
  *   seconds    its duration in seconds when not the default 1 minute (0: default)
@@ -40,6 +41,7 @@ export class ConditionCardData extends TDM() {
         dcIncrease: S.int(0), text: S.str() })),
       seconds: S.int(0, { min: 0 }),
       immunityFrom: S.arr(S.str()),
+      changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })),
       resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),
       turnStartDamage: S.obj({ die: S.str(), type: S.str(), perRank: S.bool() }),
       perRank: object(),

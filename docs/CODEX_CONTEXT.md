@@ -485,3 +485,4 @@ The single action card is a layer over the existing handlers. Do not move rollin
 
 ## CCOND1a — Claude, 2026-11-15 (published 0.56.0-alpha.1)
 - Class and clan conditions are condition cards (item type `condition`, pack `conditions`), registered at ready into `CONFIG.N5E.clanConditions`. Add new class or clan conditions as cards, never as marker effects. Their keys are the card identifiers.
+- 2026-11-16: all 33 clan conditions are cards (0.57.0-alpha.1–3). A card's rules and changes are copied onto the condition effect when applied; the clan items' `system.conditions` are superseded.

@@ -166,3 +166,15 @@ test("clan cards, batch B, and immunity through other immunities", async () => {
   assert.equal(out.damage[0].formula, "(3)d10");
   assert.equal(aggregatePenalties([{ key: "shoton-crystallization", ranks: 2 }], registry).baseCost.tai, 8);
 });
+
+test("clan cards, batch C: every clan condition in the clan items is a card", () => {
+  const items = fs.readdirSync(path.join(import.meta.dirname, "..", "packs/_source/clans"), { recursive: true }).filter(f => f.endsWith(".json"))
+    .map(f => JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "packs/_source/clans", f), "utf8")));
+  const keys = items.flatMap(d => (d.system?.conditions ?? []).map(c => c.key));
+  assert.equal(keys.length, 33);
+  for ( const k of keys ) assert.equal(registry[k]?.owner.kind, "clan", k);
+  assert.deepEqual(registry["jugo-primal-focus"].changes, [{ key: "system.bonuses.speed", value: "10", mode: 2 }]);
+  assert.ok(registry["jugo-primal-focus"].persists);
+  assert.equal(registry["jiton-heavy"].flags.noDash, true);
+  assert.equal(registry["yamada-asaemon-discipline"].removal[0].check[0], "med");
+});

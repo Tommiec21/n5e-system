@@ -814,3 +814,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Condition card `system.immunityFrom` | "damage:acid", "condition:dazzled": that immunity blocks this condition; "all:damage:fire,damage:earth" needs each |
 | Trigger damage formula `@ranks` | The ranks of the condition carrying the element |
+
+## Added in 0.57.0-alpha.3 (CCOND1c batch C)
+
+| Path | Meaning |
+| --- | --- |
+| Condition card `system.changes` [{key, value, mode}] | Active Effect changes the condition carries (Jūgo +10 ft speed) |

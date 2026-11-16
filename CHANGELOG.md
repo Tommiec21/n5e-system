@@ -1,3 +1,10 @@
+## 0.57.0-alpha.3 — CCOND1c batch C: the last 11 clan condition cards
+
+- **New cards:** **Manic**, **Feral Mania** and **Primal Focus** (Jūgo), **Firewalled** and **Data Leak** (Genwa), **Claws of Night** (Vesper), **Asaemon Discipline / Severed** (Yamada), **Volatile**, **Heavy**, **Brined** and **Unstable** (Jiton). All 33 clan conditions in the clans are now cards.
+- **What's automated:** the Jūgo frenzies +1 critical range and +10 ft speed (Primal Focus also advantage on Wisdom saves); Data Leak +8 jutsu cost; Heavy can't Dash or Disengage; Unstable ends at the end of its next turn; "Try to end" on Firewalled (DC 15 Con), Severed (DC 15 Medicine) and Volatile (an Action). The rest is on each card for the table.
+- **For authors:** condition cards can carry Active Effect changes (`system.changes`), applied with the condition.
+- Not checked in a running Foundry world.
+
 ## 0.57.0-alpha.2 — CCOND1c batch B: 11 more clan condition cards
 
 - **New cards:** **Deteriorate** and **Scald** (Futton), **Molten** (Yōton), **Convergence** (Keton), **Refraction Point** (Ranton), **Stupor** and **Doused** (Jinzo), **Disoriented** (Kashu), **Crystallization** (Shōton), **Immolation** (Shakuton), **Frostbite** (Yuki).

@@ -62,7 +62,8 @@ export default class N5eActiveEffect extends ActiveEffect {
       system: { key, ranks, sourceRank },
       // CCOND1: a condition card's rule elements ride on the effect, so the rules engine reads them
       // (core conditions keep theirs in config and are read by rules/condition-elements.mjs).
-      ...(def?.owner && def.rules?.length ? { flags: { n5e: { rules: structuredClone(def.rules) } } } : {})
+      ...(def?.owner && def.rules?.length ? { flags: { n5e: { rules: structuredClone(def.rules) } } } : {}),
+      ...(def?.owner && def.changes?.length ? { changes: structuredClone(def.changes) } : {})
     };
   }
 

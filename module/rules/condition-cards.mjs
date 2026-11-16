@@ -36,6 +36,7 @@ export function cardDefinition(card) {
   if ( s.resave?.ability ) def.resave = { ability: s.resave.ability, source: s.resave.source ?? "", dc: s.resave.dc ?? null };
   if ( s.turnStartDamage?.die ) def.turnStartDamage = { ...s.turnStartDamage };
   if ( list(s.immunityFrom).length ) def.immunityFrom = list(s.immunityFrom);
+  if ( list(s.changes).length ) def.changes = list(s.changes).filter(c => c.key).map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) }));
   for ( const k of ["perRank", "flat", "flags", "cast"] ) if ( s[k] && Object.keys(s[k]).length ) def[k] = structuredClone(s[k]);
   const rules = card.flags?.n5e?.rules;
   if ( Array.isArray(rules) && rules.length ) def.rules = structuredClone(rules);

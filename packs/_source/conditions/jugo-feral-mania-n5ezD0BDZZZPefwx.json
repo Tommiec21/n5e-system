@@ -1,0 +1,87 @@
+{
+  "_id": "n5ezD0BDZZZPefwx",
+  "name": "Feral Mania",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5ebtpJgzfyeK855",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jugo-feral-mania",
+    "description": "<p>A creature can only experience Feral Mania if they are of the Jugo Clan and have reached the maximum amount of Nature Energy, they can maintain. While experiencing Feral Mania, you gain the following penalty and benefits:</p><p>Penalty</p><p>Feral Frenzy. You do not distinguish between friend and foe. All creatures are treated as hostile to you. Each time you experience Feral Mania per combat, count the number of creatures in combat and in the immediate area within 60 feet of you. Assign each creature a number, starting from the closest creature being 1. If an Elite class adversary is present, they should be counted twice, given two different values. If a Solo class adversary is present, they count a number of times equal to the total number of player characters, minus 2 (min 1). At the start of each of your turns while in Feral Mania, roll a dice that is closest in size to the number of people counted (Ex. 7 Creatures, you roll a d8. 14 Creatures, roll a d20). All values that don’t associate with a counted creature forces you to reroll until you land on such a value. The creature landed on becomes your Frenzy Target for this turn.</p><p>Frenzy Target. You must spend your turn moving as close to the creature as possible while also attempting to inflict as much damage to them as possible.</p><p>Untamed Frenzy. Feral Suppression, and The Hunter features can no longer stop you from entering Feral Mania or select your Marked Prey. You can still use your expenditures targeting your Frenzy Target.</p><p>Benefits</p><p>A creature experiencing Feral Mania gains a +1 bonus to their critical threat range. This increases to +2, if attacking a creature that dealt damage to you since the end of your last turn.</p><p>A creature experiencing Feral Mania that scores a critical hit, adds 2d12 force damage to the result. This increases by 1d12 at 7th and 15th levels.</p><p>A creature experiencing Feral Mania can make one additional weapon or Unarmed attack when they take the Attack Action.</p><p>A creature experiencing Feral Mania speed increases by +10 feet. They gain an additional +10 speed when moving towards a creature that dealt damage to you since the end of your last turn.</p><p>A creature experiencing Feral Mania spends 4 feet of movement for every 1 feet they spend moving away from a valid hostile creature while not also moving towards another valid hostile creature.</p><p>A creature experiencing Feral Mania maintains this condition until their Frenzy Target is dead, or this condition is cleansed.</p><p>A Creature attempting to cleanse you of conditions does not need you to be willing.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jugo",
+      "subclass": ""
+    },
+    "summary": "Manic's benefits, but every creature is hostile: a Frenzy Target rolled each turn; ends when that target dies or it is cleansed.",
+    "tags": [
+      "mental",
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": true,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "10",
+        "mode": 2
+      }
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "value": 1,
+          "label": "Jugo frenzy"
+        },
+        {
+          "key": "note",
+          "text": "Frenzy: count the creatures within 60 ft (Elites twice; Solos once per player character − 2), roll the nearest die each turn for its Frenzy Target, and spend the turn closing on and damaging it. Same benefits as Manic. Feral Suppression and The Hunter can't stop it. Cleansing it doesn't need it to be willing."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5ezD0BDZZZPefwx"
+}

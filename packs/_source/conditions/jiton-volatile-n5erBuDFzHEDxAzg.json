@@ -1,0 +1,84 @@
+{
+  "_id": "n5erBuDFzHEDxAzg",
+  "name": "Volatile",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eDVR9QYVaLyNvq",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jiton-volatile",
+    "description": "<p>A Volatile creature is covered in extremely explosive carbon dust for the next minute.</p><p>If a Volatile creature takes fire or lightning damage, the carbon dust sparks and then explodes. When it does, all creatures within 5-feet of the exploding creature take 1d12 fire damage for every rank of Volatile that was detonated, then removing all ranks of Volatile.</p><p>A creature can only take damage from one Instance of a Volatile explosion.</p><p>A Creature that takes cold damage as a result of a jutsu with the Water Release keyword, submerges themselves in a body of water, or spend 1 action on their turns can cleanse itself of the Volatile condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jiton",
+      "subclass": ""
+    },
+    "summary": "Fire or lightning damage detonates it: creatures within 5 ft take 1d12 fire per rank; 1 minute; an Action (or water) cleanses it.",
+    "tags": [
+      "elemental",
+      "physical"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [],
+        "dc": null,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": "Spend 1 Action on its turn to cleanse it (or submerge in water, or take cold damage from a Water Release jutsu)."
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "When it takes fire or lightning damage, every creature within 5 ft takes 1d12 fire damage per rank, then it loses all ranks. A creature takes damage from only one Volatile explosion per instance."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5erBuDFzHEDxAzg"
+}

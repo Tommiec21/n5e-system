@@ -1,0 +1,87 @@
+{
+  "_id": "n5eIhHgvMbLnjJCq",
+  "name": "Manic",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5ebtpJgzfyeK855",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jugo-manic",
+    "description": "<p>A creature can only become Manic if they are of the Jugo Clan and have reached the maximum amount of Nature Energy, they can maintain. While Manic, you gain the following penalty and benefits:</p><p>Penalty</p><p>While Manic, you suffer the effects of the Berserk condition as if you yourself are your own compeller.</p><p>Benefits</p><p>A Manic creature gains a +1 bonus to their critical threat range. This increases to +2, if attacking a creature that dealt damage to you since the end of your last turn.</p><p>A Manic creature that scores a critical hit, adds 2d12 force damage to the result. This increases by 1d12 at 7th and 15th levels.</p><p>A Manic creature can make one additional weapon or Unarmed attack when they take the Attack Action.</p><p>A Manic creatures speed increases by +10 feet. They gain an additional +10 speed when moving towards a creature that dealt damage to you since the end of your last turn.</p><p>A Manic creature spends 4 feet of movement for every 1 feet they spend moving away from a valid hostile creature while not also moving towards another valid hostile creature.</p><p>This condition ends when you would reach 0 Nature Energy.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jugo",
+      "subclass": ""
+    },
+    "summary": "+1 critical range (+2 against a creature that damaged it), crits add 2d12 force, an extra attack, +10 ft speed; Berserk on itself.",
+    "tags": [
+      "mental",
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": true,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "10",
+        "mode": 2
+      }
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "value": 1,
+          "label": "Jugo frenzy"
+        },
+        {
+          "key": "note",
+          "text": "+1 more critical range against a creature that damaged it since the end of its last turn; a critical hit adds 2d12 force (3d12 at 7th, 4d12 at 15th); one extra weapon or unarmed attack with the Attack action; +10 ft more speed toward a creature that damaged it; 4 ft of movement per foot moving away from hostile creatures. It is Berserk with itself as the compeller. Ends at 0 Nature Energy."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eIhHgvMbLnjJCq"
+}

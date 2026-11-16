@@ -1,0 +1,85 @@
+{
+  "_id": "n5eP25XKHTq3IT7U",
+  "name": "Asaemon Discipline",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5e0nmugEXeG7eJm",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamada-asaemon-discipline",
+    "description": "<p>A Severed creature has part of their body severely wounded. When a creature gains this condition, roll 1d6 and apply the effect based on the result. If a creature would be Severed again, they instead gain +1 rank of Shaken. Creatures without the listed anatomy are immune to that result. If a creature regains hit points, would cleanse a condition or spends an Action to make a DC 15 Medicine check, this condition ends. You may increase the DC by +2 for every rank of Shaken a creature has.</p><p>Hand/Arm. The affected creature cannot make HS or wield a weapon.</p><p>Eyes. The affected creature becomes Blinded.</p><p>Back/Wings/Tail. The Affected creature loses its flying or swim speed if any. They also lose concentration of all jutsu they are concentrating on and cannot concentrate on more than 1 jutsu at a time.</p><p>Foot/Leg. The affected creature cannot cast jutsu with a Mobility (M) component, and their speed is reduced by half.</p><p>Torso/Abdomen. The affected creature reduces the damage they deal by 10.</p><p>Neck/Head. The affected creature is Staggered, and remains Staggered for this conditions duration.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "yamada",
+      "subclass": ""
+    },
+    "summary": "Severed: roll 1d6 for the wound (arm, eyes, back, leg, torso, head); being Severed again adds Shaken instead; DC 15 Medicine to end.",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "med"
+        ],
+        "dc": 15,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 Hand/Arm: no hand seals or weapons. 2 Eyes: Blinded. 3 Back/Wings/Tail: loses fly and swim speeds, drops concentration and can concentrate on 1 jutsu. 4 Foot/Leg: no Mobility (M) jutsu, half speed. 5 Torso/Abdomen: −10 damage dealt. 6 Neck/Head: Staggered for the duration. Creatures without that anatomy are immune to that result. Severed again: +1 Shaken instead. Ends if it regains hit points or a condition is cleansed; the Medicine DC rises by 2 per rank of Shaken."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eP25XKHTq3IT7U"
+}

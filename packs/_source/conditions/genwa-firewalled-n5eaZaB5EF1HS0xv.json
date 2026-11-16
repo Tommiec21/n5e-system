@@ -1,0 +1,85 @@
+{
+  "_id": "n5eaZaB5EF1HS0xv",
+  "name": "Firewalled",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eCm309BRWDkmJ1",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "genwa-firewalled",
+    "description": "<p>A Firewalled creature cannot provide or gain the benefit of bonuses or advantage.</p><p>A Firewalled creature cannot gain additional actions, bonus actions, reactions, or special actions.</p><p>A Firewalled creature cannot concentrate on jutsu they weren’t already concentrating prior to gaining this condition.</p><p>Effects that would cleanse the Shocked or Sealed condition can also cleanse this condition.</p><p>This condition can be ended early, if the affected creature spends their Action to make a DC 15 Constitution ability check to end this affliction.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "genwa",
+      "subclass": ""
+    },
+    "summary": "Can't give or gain bonuses or advantage, extra actions or reactions, or start concentrating; DC 15 Constitution to end.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 15,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "It can't provide or gain bonuses or advantage, can't gain additional actions, bonus actions, reactions or special actions, and can't concentrate on jutsu it wasn't already concentrating on. Effects that cleanse Shocked or Sealed also cleanse this."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eaZaB5EF1HS0xv"
+}

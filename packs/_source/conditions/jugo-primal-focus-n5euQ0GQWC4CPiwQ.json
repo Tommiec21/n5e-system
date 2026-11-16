@@ -1,0 +1,88 @@
+{
+  "_id": "n5euQ0GQWC4CPiwQ",
+  "name": "Primal Focus",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5ebtpJgzfyeK855",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jugo-primal-focus",
+    "description": "<p>A creature can only experience Primal Focus if they are of the Jugo Clan and have reached the maximum amount of Nature Energy, they can maintain. While experiencing Primal Focus, you gain the following penalty and benefits:</p><p>Benefits</p><p>A creature experiencing Primal Focus gains a +1 bonus to their critical threat range.</p><p>A creature experiencing Primal Focus speed increases by +10 feet.</p><p>A creature experiencing Primal Focus gains advantage on Wisdom saving throws.</p><p>This condition ends when you would end your turn with less than half of your maximum Nature Energy.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jugo",
+      "subclass": ""
+    },
+    "summary": "+1 critical range, +10 ft speed, advantage on Wisdom saves; ends if it ends a turn below half its maximum Nature Energy.",
+    "tags": [
+      "mental",
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": true,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "10",
+        "mode": 2
+      }
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "value": 1,
+          "label": "Jugo frenzy"
+        },
+        {
+          "key": "advantage",
+          "selector": "save:wis",
+          "label": "Primal Focus"
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5euQ0GQWC4CPiwQ"
+}
