@@ -1,6 +1,6 @@
 # AMP1 function spec: Amps as packaged buffs (Amp cards)
 
-Status: **spec written 2026-11-16 (King: "plan for designing amps as packaged buffs in this system", after the condition cards, CCOND1). Awaiting answers and approval.**
+Status: **spec written 2026-11-16 (King: "plan for designing amps as packaged buffs in this system", after the condition cards, CCOND1). King answered Q-A1–Q-A4 the same day (scope widened: typeless Amps, jutsu included, its own larger release). Q-A5 and Q-A6 open; awaiting approval to build.**
 
 ## The problem
 
@@ -64,15 +64,51 @@ Package each Amp the way class and clan conditions are packaged: an **Amp card**
 - The 17 items with an Amp button: Chakra Surge's Crash and Flow, Healing Ascension, Battle Medic and others. Their buttons will apply the cards.
 - The ~45 named Amp boxes in clans and classes become cards in batches, like the clan conditions.
 
-## Phases
+### 6. King's answers (2026-11-16)
+
+- **Q-A1 Clan Amps:** an Amp provided by a clan (clan features, clan jutsu, Hijutsu) is a **Clan Amp**, whatever type its box names. The box's named type is kept on the card as a note.
+- **Q-A2 Who:** anyone can apply an Amp, with a confirmation that warns when the applier doesn't have its source (as condition cards warn).
+- **Q-A3 Singleton:** the creature picks which Amp applies.
+- **Q-A4 Typeless Amps:** self-buffs the books don't call Amps (Feral, Well Rested, Combat and Social Coordinated, DYNAMIC FORM!, Flawless, the stances…) become Amp cards **with no type**, and **jutsu are included**. The Automation Audit labels them "Amp: no type" so King can assign types.
+
+### 7. What counts as an Amp (King's definition)
+
+An Amp is a **bonus to a statistic, a unique ability or an action** that **lasts longer than one round**. Examples of the statistics: damage, DR, AC, speed, skills, saves, resistances and immunities, chakra costs, healing, extra actions. This covers everything the book's Amp section describes.
+- **An Amp:** "+10 ft speed and +1 damage die, concentration up to 1 minute"; "resistance to fire for 1 minute"; a state such as Sharingan or Crash.
+- **Not an Amp:** a bonus that happens once on use, such as healing now, a reroll, or +2 to this one attack; anything that ends within the same round; harmful effects on enemies (those are conditions).
+
+### 8. Finding them: an Amp audit
+
+- **Candidates:** a scan finds features and jutsu whose text gives a lasting bonus: a duration over one round (minutes, hours, concentration, "until the end of your next turn" across turns) with a bonus to a statistic, an ability or an action. A first pass over the 968 jutsu finds about **125 candidates**. Add to those the ~45 named Amp boxes, the 17 Amp buttons and the self-buff states. The scan suggests; it decides nothing.
+- **Automation Audit:** a new **Amps** view in the GM's Automation Audit lists every Amp card and every candidate:
+  - **typed** (Battle / Reflex / Fortitude / Will / Clan);
+  - **"Amp: no type"** (King's queue to assign);
+  - **candidate, not yet a card**;
+  - **not an Amp** (dismissed).
+  
+  The type can be set from the row, which edits the card.
+- **The generated report** (`docs/generated/std-audit.md`) gets the same Amps section, so the counts are tracked between releases.
+
+
 
 | Phase | What |
 | --- | --- |
-| AMP1a | The `amp` item type and card sheet, the registry, the Amps panel (active and available, Activate and End, uses and cooldowns), activities that name a card, drag onto allies, initiative start, the limit dialogs, tests. |
-| AMP1b | Cards for the 17 Amps that have buttons today, with their features pointed at them. |
-| AMP1c | Cards for the clan and class Amp boxes, in batches (Battle about 25, Will 10, Fortitude 7, Reflex 3). |
+Its own larger release line (0.6x), in pieces:
+
+| Phase | What |
+| --- | --- |
+| AMP1a | The engine: the `amp` item type (type may be empty) and card sheet, the registry, the Amps panel (active and available, Activate and End, uses and cooldowns), activities that name a card, drag onto allies with the confirmation (Q-A2), initiative start, the limit dialogs (Q-A3), clan-sourced = Clan (Q-A1), tests. |
+| AMP1b | The Amp audit: the candidate scan, the Automation Audit's Amps view with "Amp: no type" and set-type, the report section. |
+| AMP1c | Cards for the 17 Amps that have buttons today, with their features pointed at them. |
+| AMP1d | Cards for the named Amp boxes in clans and classes, in batches (clan ones as Clan Amps). |
+| AMP1e | Typeless cards for the self-buff states (Feral, Well Rested, Coordinated, DYNAMIC FORM!, Flawless, stances…). |
+| AMP1f | Jutsu Amps from the audit's candidates, in batches (about 125 to review), typeless unless the jutsu names a type. |
 
 ## Questions for King
+
+Answered 2026-11-16: Q-A1 clan-provided Amps are Clan Amps. Q-A2 anyone, with a confirmation or warning. Q-A3 the creature picks. Q-A4 the self-buff states and jutsu become typeless Amps, labelled in the audit. Still open: Q-A5, Q-A6.
+
+Original questions:
 
 - **Q-A1 Type of a clan Amp:** the rules say any clan-sourced Amp defaults to Clan, but clan boxes name a type (White Wolf "Battle Amp", Sharingan "Reflex Amp"). Which wins for the limits: the named type, or Clan?
 - **Q-A2 Who applies:** like condition cards (any player or the GM, with a warning when the applier lacks the source)? Or only the owner, and only to themselves unless the text says it can be given?
@@ -84,3 +120,4 @@ Package each Amp the way class and clan conditions are packaged: an **Amp card**
 ## Progress log
 
 - 2026-11-16 Claude: spec written. Surveyed the content: about 45 named Amp boxes (Battle ~25, Will 10, Fortitude 7, Reflex 3), 17 items with Amp buttons, the Amp limits and the Amps tracker as they are now.
+- 2026-11-16 King: answers Q-A1–Q-A4 and the Amp definition (a lasting bonus to a statistic, ability or action; instant bonuses aren't Amps). Claude: spec widened (typeless Amps, jutsu, the Amp audit, phases AMP1a–f); first jutsu scan ≈125 candidates.
