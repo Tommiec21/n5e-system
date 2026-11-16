@@ -1,0 +1,13 @@
+{{!-- SHEETS1e One UI: a column of rounded cards (vitals, dice and death saves, resources, conditions). --}}
+<aside class="n5e-rail d-rail">
+  <div class="d-card vitals">
+    {{> "systems/n5e/templates/actor/designs/shared/meters.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/stats.hbs" r=d.rail}}
+  </div>
+  <div class="d-card">
+    {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/death-saves.hbs" r=d.rail}}
+  </div>
+  {{#if d.rail.resources.length}}<div class="d-card"><h2>Resources</h2>{{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}</div>{{/if}}
+  <div class="d-card">{{> "systems/n5e/templates/actor/designs/shared/conditions.hbs" r=d.rail}}</div>
+</aside>

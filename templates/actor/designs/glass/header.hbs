@@ -1,0 +1,13 @@
+{{!-- SHEETS1b Glass header: a frosted bar (portrait, name, origins, rests, level tile) over a row of frosted ability tiles. --}}
+<header class="n5e-head d-head">
+  <div class="d-glass d-bar-row">
+    <img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+    <div class="d-head-side">
+      {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+      {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+    </div>
+    <div class="d-level" aria-label="Level {{d.header.level}}"><b>{{d.header.level}}</b><span>Level</span></div>
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}
+</header>

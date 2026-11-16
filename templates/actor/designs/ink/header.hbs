@@ -1,0 +1,12 @@
+{{!-- SHEETS1c Ink & Paper header (the first draft): ink band, name and origins, rests, XP, hexagon level badge; ability tabs hang below it. --}}
+<header class="n5e-head d-head">
+  <div class="d-band">
+    {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+    <div class="d-head-side">
+      {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+      {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+    </div>
+    <div class="d-hex" aria-label="Level {{d.header.level}}" data-tooltip="Level {{d.header.level}}"><b>{{d.header.level}}</b></div>
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}
+</header>

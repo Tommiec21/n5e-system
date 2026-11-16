@@ -1,0 +1,17 @@
+{{!-- SHEETS1 shared: HP and CP meters with current and temp inputs. r = railVM. --}}
+<div class="d-meters">
+  <div class="d-meter hp" data-tooltip-html="{{r.hp.tip}}">
+    <div class="d-meter-head"><span class="lbl">Hit Points</span>
+      <span class="nums"><input type="number" name="system.hp.value" value="{{r.hp.value}}" aria-label="Current HP" {{#unless @root.editable}}disabled{{/unless}}><span class="max">/ {{r.hp.max}}</span></span></div>
+    <div class="track"><div class="fill" style="width: {{r.hp.pct}}%"></div></div>
+    <div class="d-meter-foot"><label>Temp <input type="number" name="system.hp.temp" value="{{r.hp.temp}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+      <span class="{{#if r.hp.bloodied}}warn{{/if}}">{{#if r.hp.bloodied}}Bloodied{{else}}Bloodied at {{r.hp.bloodiedAt}}{{/if}}</span></div>
+  </div>
+  <div class="d-meter cp" data-tooltip-html="{{r.cp.tip}}">
+    <div class="d-meter-head"><span class="lbl">Chakra Points</span>
+      <span class="nums"><input type="number" name="system.cp.value" value="{{r.cp.value}}" aria-label="Current CP" {{#unless @root.editable}}disabled{{/unless}}><span class="max">/ {{r.cp.max}}</span></span></div>
+    <div class="track"><div class="fill" style="width: {{r.cp.pct}}%"></div></div>
+    <div class="d-meter-foot"><label>Temp <input type="number" name="system.cp.temp" value="{{r.cp.temp}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+      <span class="{{#if r.cp.drained}}warn{{/if}}">{{#if r.cp.drained}}Drained{{else}}Drained at {{r.cp.drainedAt}}{{/if}}</span></div>
+  </div>
+</div>

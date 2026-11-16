@@ -1,0 +1,29 @@
+{{!-- SHEETS1 shared: conditions with ranks, Try to end, add and remove. r = railVM; @root.conditionChoices. --}}
+<div class="d-conditions">
+  <div class="d-section-title line"><span>Conditions</span>
+    {{#if @root.editable}}
+      <select data-add-condition aria-label="Add a condition">
+        <option value="">+ Add</option>
+        {{#each @root.conditionChoices}}<option value="{{key}}">{{label}}</option>{{/each}}
+      </select>
+    {{/if}}
+  </div>
+  {{#each r.conditions}}
+    <div class="condition {{#if disabled}}off{{/if}}" data-effect-id="{{id}}" data-tooltip-text="{{summary}}">
+      <span class="name">{{label}}</span>
+      {{#if removable}}{{#if @root.editable}}<a class="ctl try" data-action="tryEndCondition" data-tooltip="Try to end (Action check)"><i class="fa-solid fa-hand-sparkles"></i></a>{{/if}}{{/if}}
+      {{#if ranked}}
+        <span class="ranks">
+          {{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="-1" aria-label="Lower rank">−</a>{{/if}}
+          {{#each pips}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}
+          <span class="num">{{ranks}}/{{max}}</span>
+          {{#if @root.editable}}<a class="ctl" data-action="changeRanks" data-delta="1" aria-label="Raise rank">+</a>{{/if}}
+        </span>
+      {{else if @root.editable}}
+        <a class="ctl" data-action="deleteEffect" aria-label="Remove {{label}}"><i class="fa-solid fa-xmark"></i></a>
+      {{/if}}
+    </div>
+  {{else}}
+    <p class="muted small">No conditions.</p>
+  {{/each}}
+</div>

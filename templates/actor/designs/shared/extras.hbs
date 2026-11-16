@@ -1,0 +1,15 @@
+{{!-- SHEETS1 shared: free feats and Mastery callouts, passives, toolkits. m = mainVM. --}}
+{{#if m.freeFeats}}
+  <div class="callout"><b>Free feat track: {{m.freeFeats.count}} feat{{#if (n5eGt m.freeFeats.count 1)}}s{{/if}}</b>
+    <span>earned by this level{{#if m.freeFeats.group}} ({{m.freeFeats.group}}){{/if}}, on top of the usual feats.</span></div>
+{{/if}}
+{{#if m.asiAvailable}}
+  <div class="callout"><b>{{m.asiAvailable}} Mastery rank{{#if (n5eGt m.asiAvailable 1)}}s{{/if}} to assign</b>
+    <span>from your ASI levels (skill or toolkit). Until the level-up dialog arrives, add it in edit mode under Biography → All stored fields → mastery, with source "ASI 4".</span></div>
+{{/if}}
+<div class="d-passives"><span>Passive Perception <b>{{m.passives.perception}}</b></span><span>Insight <b>{{m.passives.insight}}</b></span><span>Investigation <b>{{m.passives.investigation}}</b></span></div>
+{{#if m.toolkits.length}}
+  <div class="d-toolkits"><span class="lbl">Toolkits</span>
+    {{#each m.toolkits}}<span class="chip rollable" data-action="roll" data-roll="tool" data-key="{{key}}">● {{label}}{{#if mastery}} ◆{{mastery}}{{/if}}</span>{{/each}}
+  </div>
+{{/if}}

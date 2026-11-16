@@ -1,0 +1,8 @@
+{{!-- SHEETS1d Shinobi Scroll main tab: attribute boxes, favorites, discipline banners, skills (saves live on the scroll). --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  {{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}
+  {{> "systems/n5e/templates/actor/designs/shared/pins.hbs" m=d.main}}
+  {{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}
+  <div class="d-table skills"><div class="d-table-head"><span>Skills</span><span class="sub">● proficient · ◆ Mastery</span></div>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}</div>
+  {{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}
+</section>

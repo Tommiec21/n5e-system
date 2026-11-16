@@ -474,3 +474,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## ENG1d–e — Claude, 2026-11-15 (published 0.53.0-alpha.1)
 - Auras are effects with `flags.n5e.aura`; the active GM's `workflow/auras.mjs` keeps children (`flags.n5e.auraFrom`) in step. Don't create aura children elsewhere.
 - ENG1 is complete; the remaining class notes and what they need are listed in `docs/ENG1_SPEC.md` (ENG1e).
+
+## SHEETS1 — Claude, 2026-11-15 (published 0.54.0-alpha.1)
+- Five optional character sheet designs are subclasses of `CharacterSheet` (`character-designs.mjs`); they replace only the chrome parts (header, tabs, rail, main). New sheet features go in the view models and the shared partials in `templates/actor/designs/shared/`, and a new button or field on the default chrome must be added to every design: `tests/sheet-designs.test.mjs` fails until it is.
+- The sheet ids (`n5e.CharacterSheet<Design>`) are saved on actors; never rename them.

@@ -1,0 +1,10 @@
+{{!-- SHEETS1e One UI main tab: favorites, abilities, saves, disciplines and skills as rounded cards. --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="d-card">{{> "systems/n5e/templates/actor/designs/shared/pins.hbs" m=d.main}}</div>
+  <div class="d-card abilities"><h2>Abilities</h2>{{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}</div>
+  <div class="d-columns">
+    <div class="d-card saves"><h2>Saving throws</h2>{{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}</div>
+    <div class="d-card disciplines"><h2>Disciplines</h2>{{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}</div>
+  </div>
+  <div class="d-card skills"><h2>Skills</h2>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}{{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}</div>
+</section>

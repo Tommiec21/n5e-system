@@ -1,0 +1,11 @@
+{{!-- SHEETS1c Ink & Paper main tab: skills beside saves, disciplines and the extras. --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="d-columns">
+    <div class="d-card skills"><h2>Skills</h2>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}</div>
+    <div class="d-stack">
+      <div class="d-card saves"><h2>Saving Throws</h2>{{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}</div>
+      <div class="d-card disciplines"><h2>Disciplines</h2>{{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}</div>
+      {{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+{{!-- SHEETS1 shared: class resources and Will of Fire. r = railVM. --}}
+<div class="d-resources">
+  {{#each r.resources}}
+    <div class="d-resource resource {{kind}}" data-pool="{{id}}" {{#if itemId}}data-item-id="{{itemId}}"{{/if}}>
+      <div class="d-res-head"><b>{{label}}</b><span>{{value}} / {{max}}</span></div>
+      {{#if segments}}
+        <div class="segments">
+          {{#each segments}}<button type="button" class="seg {{#if filled}}on{{/if}}" data-action="{{../action}}" data-value="{{n}}" aria-label="{{../label}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}></button>{{/each}}
+        </div>
+      {{else}}
+        <div class="track thin"><div class="fill" style="width: {{pct}}%"></div></div>
+      {{/if}}
+      {{#if note}}<div class="sub">{{note}}</div>{{/if}}
+    </div>
+  {{/each}}
+</div>

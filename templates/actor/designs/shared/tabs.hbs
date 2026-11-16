@@ -1,0 +1,8 @@
+{{!-- SHEETS1 shared: the tab strip. Each tab has an icon and a label; a design shows either or both. --}}
+<nav class="n5e-tabs tabs d-tabs" data-group="primary" aria-label="Sheet tabs">
+  {{#each tabs}}
+    <a class="item {{cssClass}}" data-action="n5eTab" data-tab="{{id}}" data-group="{{group}}" data-tooltip="{{label}}" aria-label="{{label}}">
+      <i class="{{icon}}" aria-hidden="true"></i><span class="txt">{{label}}</span>
+    </a>
+  {{/each}}
+</nav>

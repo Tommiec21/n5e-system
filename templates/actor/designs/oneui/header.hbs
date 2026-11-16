@@ -1,0 +1,14 @@
+{{!-- SHEETS1e One UI header: a large, calm viewing area (portrait, big name, origins) with the actions in reach below it. --}}
+<header class="n5e-head d-head">
+  <div class="d-view">
+    <img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    <div class="d-title">
+      {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+      <span class="d-level-line">Level {{d.header.level}}</span>
+    </div>
+  </div>
+  <div class="d-actions">
+    {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+    {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+  </div>
+</header>

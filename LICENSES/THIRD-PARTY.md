@@ -5,8 +5,12 @@ Any file that contains code taken from them keeps a header comment naming the so
 
 | Project | License | Used for |
 | --- | --- | --- |
-| dnd5e (Foundry VTT D&D 5e system), https://github.com/foundryvtt/dnd5e | MIT | Data model layout, activities/advancement concepts, sheet layout (Phase 2) |
+| dnd5e (Foundry VTT D&D 5e system), https://github.com/foundryvtt/dnd5e | MIT | Data model layout, activities/advancement concepts, sheet layout (Phase 2), the Classic sheet design's layout (SHEETS1a: drawn anew in `templates/actor/designs/classic/` and `styles/designs.css`; no dnd5e images, Wizards of the Coast art or marks) |
 | PF2e (Pathfinder 2e system), https://github.com/foundryvtt/pf2e | Apache License 2.0 | Degree-of-success resolution concept |
+
+## Fonts
+
+The optional sheet designs load Alegreya SC, Roboto, Roboto Condensed, Roboto Slab, Space Grotesk, Shippori Mincho B1 and Inter from Google Fonts (SIL Open Font License or Apache License 2.0). No font files ship with the system.
 
 ## MIT License (dnd5e)
 

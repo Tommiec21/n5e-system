@@ -1,0 +1,13 @@
+{{!-- SHEETS1c Ink & Paper card: portrait with the AC shield, lozenges, meters, dice, favorites, resources, conditions. --}}
+<aside class="n5e-rail d-rail">
+  <div class="d-portrait-wrap">
+    <img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/stats.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/meters.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/death-saves.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/pins.hbs" m=d.main}}
+  {{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/conditions.hbs" r=d.rail}}
+</aside>

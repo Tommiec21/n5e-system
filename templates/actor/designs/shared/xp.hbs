@@ -1,0 +1,10 @@
+{{!-- SHEETS1 shared: experience (edit mode edits it). h = headerVM. --}}
+<div class="d-xp">
+  <span class="lbl">XP</span>
+  {{#if @root.editMode}}
+    <input type="number" name="system.details.xp" value="{{h.xp.value}}" aria-label="Experience">
+  {{else}}
+    <span class="val">{{h.xp.value}}{{#if h.xp.next}} / {{h.xp.next}}{{/if}}</span>
+  {{/if}}
+  <span class="bar" role="meter" aria-label="Experience" aria-valuenow="{{h.xp.pct}}" aria-valuemin="0" aria-valuemax="100"><span class="fill" style="width: {{h.xp.pct}}%"></span></span>
+</div>

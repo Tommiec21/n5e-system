@@ -1,0 +1,7 @@
+{{!-- SHEETS1 shared: Hit Dice and Chakra Dice. r = railVM. --}}
+<div class="d-dice">
+  <div class="d-die hd" data-tooltip="Hit Dice: {{r.hitDice.value}} of {{r.hitDice.max}} {{r.hitDice.die}} left (spend on a short rest)">
+    <span class="lbl">Hit Dice</span><b>{{r.hitDice.value}} / {{r.hitDice.max}}</b><span class="sub">{{r.hitDice.die}}</span></div>
+  <div class="d-die cd" data-tooltip="Chakra Dice: {{r.chakraDice.value}} of {{r.chakraDice.max}} {{r.chakraDice.die}} left (spend on a short rest)">
+    <span class="lbl">Chakra Dice</span><b>{{r.chakraDice.value}} / {{r.chakraDice.max}}</b><span class="sub">{{r.chakraDice.die}}</span></div>
+</div>

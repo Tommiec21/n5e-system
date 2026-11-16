@@ -1,0 +1,9 @@
+{{!-- SHEETS1d Shinobi Scroll header: crimson band with the name, origins, rests, the forehead-protector level plate and XP. --}}
+<header class="n5e-head d-head">
+  {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+  <div class="d-head-side">
+    {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+    {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+  </div>
+  <div class="d-plate" aria-label="Level {{d.header.level}}" data-tooltip="Level {{d.header.level}}"><span class="cloth" aria-hidden="true"></span><span class="metal"><span class="lbl">Level</span><b>{{d.header.level}}</b></span></div>
+</header>

@@ -1,0 +1,19 @@
+{{!-- SHEETS1 shared: name and the origin bubbles (clan, class, background...). h = headerVM. --}}
+<div class="d-identity">
+  {{#if @root.editMode}}
+    <input class="name-input" type="text" name="name" value="{{h.name}}" aria-label="Name">
+  {{else}}
+    <h1 class="d-name">{{h.name}}</h1>
+  {{/if}}
+  <div class="d-origins">
+    {{#each h.origins}}
+      {{#if empty}}
+        <span class="d-origin empty" data-origin="{{kind}}" data-tooltip="{{label}}: drop one on the sheet">{{label}}: <b>{{name}}</b></span>
+      {{else}}
+        <span class="d-origin n5e-row {{kind}}" data-item-id="{{id}}" data-action="editItem" data-tooltip="Open {{label}}{{#if sub}} ({{sub}}){{/if}}">
+          <img src="{{img}}" alt="" width="20" height="20"><b>{{name}}</b>{{#if sub}}<span class="sub">{{sub}}</span>{{/if}}
+        </span>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>

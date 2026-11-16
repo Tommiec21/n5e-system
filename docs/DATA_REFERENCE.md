@@ -760,3 +760,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Effect `flags.n5e.auraFrom` | A child of the aura effect with this uuid |
 | Effect activity / cast option effect `aura` | Placed as an aura |
 | Roll facts `attack:ranged`, `self:bloodied` | A ranged attack; at half HP or less |
+
+## Added in 0.54.0-alpha.1 (SHEETS1)
+
+| Path | Meaning |
+| --- | --- |
+| Actor `flags.core.sheetClass` `n5e.CharacterSheetClassic`, `n5e.CharacterSheetGlass`, `n5e.CharacterSheetInk`, `n5e.CharacterSheetScroll`, `n5e.CharacterSheetOneui` | The character's chosen sheet design (Foundry's own flag, set from the Sheet menu); empty means the default N5e sheet |

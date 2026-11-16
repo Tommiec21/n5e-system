@@ -1,0 +1,36 @@
+{{!-- SHEETS1d Shinobi Scroll: the hanging scroll on the left (Vitality, Defense, Initiative, Saves, resources, conditions). --}}
+<aside class="n5e-rail d-rail">
+  <div class="d-rod top" aria-hidden="true"><span class="cord"></span></div>
+  <div class="d-paper">
+    <img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    <h2 class="d-rule">Vitality</h2>
+    <div class="d-vital hp" data-tooltip-html="{{d.rail.hp.tip}}">
+      <label class="side"><span class="lbl">Temp HP</span><input type="number" name="system.hp.temp" value="{{d.rail.hp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
+      <label class="cur {{#if d.rail.hp.bloodied}}low{{/if}}"><span class="lbl">{{#if d.rail.hp.bloodied}}Bloodied{{else}}Hit Points{{/if}}</span><input type="number" name="system.hp.value" value="{{d.rail.hp.value}}" aria-label="Current HP" {{#unless editable}}disabled{{/unless}}></label>
+      <span class="side"><span class="lbl">Max HP</span><b>{{d.rail.hp.max}}</b></span>
+    </div>
+    <div class="d-vital cp" data-tooltip-html="{{d.rail.cp.tip}}">
+      <label class="side"><span class="lbl">Temp CP</span><input type="number" name="system.cp.temp" value="{{d.rail.cp.temp}}" {{#unless editable}}disabled{{/unless}}></label>
+      <label class="cur {{#if d.rail.cp.drained}}low{{/if}}"><span class="lbl">{{#if d.rail.cp.drained}}Drained{{else}}Chakra{{/if}}</span><input type="number" name="system.cp.value" value="{{d.rail.cp.value}}" aria-label="Current CP" {{#unless editable}}disabled{{/unless}}></label>
+      <span class="side"><span class="lbl">Max CP</span><b>{{d.rail.cp.max}}</b></span>
+    </div>
+    {{> "systems/n5e/templates/actor/designs/shared/death-saves.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
+    <h2 class="d-rule">Defense</h2>
+    <div class="d-defense">
+      <div class="d-shield" data-tooltip-html="{{d.rail.ac.tip}}" aria-label="Armor Class {{d.rail.ac.value}}"><span class="band" aria-hidden="true"></span><b>{{d.rail.ac.value}}</b><span class="lbl">AC</span></div>
+      <div class="d-dr" data-tooltip-html="{{d.rail.dr.tip}}"><b>{{d.rail.dr.value}}</b><span class="lbl">DR</span></div>
+      <div class="d-facts">
+        <span data-tooltip-html="{{d.rail.speed.tip}}">Speed <b class="{{#if d.rail.speed.halved}}warn{{/if}}">{{d.rail.speed.value}}</b></span>
+        <span data-tooltip-html="{{d.rail.profTip}}">Proficiency <b>{{d.rail.prof}}</b></span>
+      </div>
+    </div>
+    <div class="d-init"><span class="title">Initiative</span><a class="rollable" data-action="rollInit" data-tooltip-html="{{d.rail.initiative.tip}}">{{d.rail.initiative.value}}</a></div>
+    <h2 class="d-rule">Saves</h2>
+    {{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}
+    {{#if d.rail.resources.length}}<h2 class="d-rule">Resources</h2>{{/if}}
+    {{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/conditions.hbs" r=d.rail}}
+  </div>
+  <div class="d-rod bottom" aria-hidden="true"></div>
+</aside>

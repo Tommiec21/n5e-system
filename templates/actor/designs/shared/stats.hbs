@@ -1,0 +1,8 @@
+{{!-- SHEETS1 shared: AC, DR, initiative (rolls), speed and proficiency tiles. r = railVM. --}}
+<div class="d-stats">
+  <div class="d-stat ac" data-tooltip-html="{{r.ac.tip}}"><b>{{r.ac.value}}</b><span class="lbl">Armor Class</span></div>
+  <div class="d-stat dr" data-tooltip-html="{{r.dr.tip}}"><b>{{r.dr.value}}</b><span class="lbl">DR</span></div>
+  <div class="d-stat init rollable" data-action="rollInit" data-tooltip-html="{{r.initiative.tip}}"><b>{{r.initiative.value}}</b><span class="lbl">Initiative</span></div>
+  <div class="d-stat speed" data-tooltip-html="{{r.speed.tip}}"><b class="{{#if r.speed.halved}}warn{{/if}}">{{r.speed.value}}</b><span class="lbl">Speed</span></div>
+  <div class="d-stat prof" data-tooltip-html="{{r.profTip}}"><b>{{r.prof}}</b><span class="lbl">Proficiency</span></div>
+</div>

@@ -1,6 +1,6 @@
 # SHEETS1 function spec: optional character sheet designs
 
-Status: **spec written 2026-11-15 (King: fork the dnd5e character sheet design into a second sheet, then alternative designs such as glass). Mockups on the "N5e Alternate Character Sheets" canvas. Awaiting answers and approval.**
+Status: **approved 2026-11-15 (King: "Spend time building them all"). All five designs built in 0.54.0-alpha.1; see the build notes at the end. Mockups on the "N5e Alternate Character Sheets" canvas.**
 
 Goal (King): aesthetically pleasing character sheets that players can choose, with the same (or nearly the same) functionality, for different kinds of players.
 
@@ -67,6 +67,12 @@ Goal (King): aesthetically pleasing character sheets that players can choose, wi
 - **Fonts:** Shippori Mincho B1 for headings (SIL Open Font License), bundled.
 - The Pf2e system's art and marks are not used; the layout is reworked for N5e.
 
+## SHEETS1e: One UI style (King 2026-11-15)
+
+- **Principles (Samsung One UI):** a large, calm viewing area at the top (portrait, big name, origins) and the controls in reach below it; rounded cards (26 px) on a soft grey ground; one accent blue; a bottom navigation bar with icons and labels.
+- **Layout:** header (viewing area, XP, rest and level buttons as pills) · left column of cards (HP and CP, stat tiles, dice and death saves, resources, conditions) · main tab cards (favorites, abilities as round modifier buttons, saves, disciplines, skills) · bottom tab bar.
+- **Dark mode:** follows Foundry's dark application theme, as One UI follows the phone's dark mode (mockup's dark variant).
+
 ## Later designs (proposals; King picks the order)
 
 - **Scroll:** ink-on-paper, a shinobi scroll feel.
@@ -78,13 +84,25 @@ Each is a new design folder and stylesheet on the same logic.
 
 ## Questions for King
 
-- **Q-SH1:** Should players choose per character (Foundry's Sheet menu), with a personal default for new sheets? Or should the GM set one design for the world?
+- **Q-SH1 (answered):** per character: "Players can pick by changing their character sheet selection" (Foundry's Sheet menu). No world or user default setting.
 - **Q-SH2 (answered):** vertical icon tabs down the right edge, as in dnd5e.
-- **Q-SH3:** Glass: a fixed dark ground with one accent glow, or should players pick their own background image?
-- **Q-SH4:** After Classic and Glass, which design comes next?
+- **Q-SH3 (answered):** Glass keeps a dark background with a dark orange accent glow (#C2561A).
+- **Q-SH4 (answered):** "Spend time building them all."
+- **Q-SH5 (open):** the build restyles the other tabs (Combat, Jutsu, Inventory, Features, Effects, Biography) through each design's colours but keeps their layout. Should any design get its own layout for one of them next (for example the Scroll's jutsu table with rank groups and subtabs from mockup 4)?
 
 ## Progress log
 
 - 2026-11-15 Claude: studied dnd5e release-5.3.3 (v13) sheet structure and licences; spec and two mockups written. Widened cube 10 ft applied (King).
 - 2026-11-15 King: the first Classic mockup didn't emulate the hexagonal ability tabs, the dark character card, the shield, the bordered skill and save frames or the vertical tabs, and treated non-proprietary design as off-limits. Mockup redone to match the dnd5e sheet closely, vertical tabs included.
 - 2026-11-15 King: keep the first draft as a third design and add a fourth, Pf2e-style with a scroll; many designs for different players. Mockups 3 (Ink & Paper) and 4 (Shinobi Scroll) added; designs are never overwritten from now on, each new idea is a new artboard.
+- 2026-11-15 King: fifth design inspired by Samsung One UI; per-character choice; Glass dark with an orange glow; build them all. Mockup 5 added.
+- 2026-11-15 Claude: built all five (0.54.0-alpha.1).
+
+## Build notes (0.54.0-alpha.1)
+
+- **Code:** `module/applications/actor/sheet-designs.mjs` (the list: id, label, window size, parts, shared partials) and `character-designs.mjs` (`designSheet(id)`, a `CharacterSheet` subclass per design, registered in `n5e.mjs` with `makeDefault: false`). Each design replaces the four chrome parts (header, tabs, rail, main) and keeps every other tab. Its chrome parts see all three chrome view models (`d.header`, `d.rail`, `d.main`), so a design can move a block, for example the Scroll puts the saves on the scroll and Glass and One UI put the portrait in the header.
+- **Templates:** `templates/actor/designs/<id>/{header,tabs,rail,main}.hbs` and the shared blocks in `templates/actor/designs/shared/` (identity, xp, abilities, tabs, meters, stats, header buttons, pins, saves, disciplines, skills, extras, resources, conditions, death saves, dice). The shared blocks carry the buttons, rolls and fields, so a design is layout and style only.
+- **Styles:** one file, `styles/designs.css`, a section per design scoped by `.n5e-design-<id>` (the spec said a file per design; one file keeps `system.json` short). Each section sets the `--n5e-*` colours, the window grid and the shapes, all in CSS (no images). Glass and dark One UI also tint the few light backgrounds the shared tabs hard-code.
+- **Parity:** `tests/sheet-designs.test.mjs` renders the default chrome and each design's chrome in play and edit mode and checks the same buttons (action, roll type and key, rest type) and the same fields, each field once (a field twice would save as a list); it also compares the template text with the partials expanded, so blocks the test actor does not show (death saves, pins, level down) are covered.
+- **Not built (spec items left for later):** client settings for a Glass accent picker and blur toggle; bundled fonts (the designs load Google Fonts like the default sheet and fall back to system fonts offline); Scroll's initiative ability choice and the immunities/weaknesses rows with Edit buttons (no such data in the system yet; not invented); a per-design layout for the tabs other than Main (Q-SH5).
+- **Untested in Foundry:** checked with static renders in a browser (Playwright, without Foundry or Font Awesome). Worth a look in Foundry: the tab icons, the Glass blur, and One UI's dark mode under Foundry's theme setting.

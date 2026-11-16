@@ -1,0 +1,15 @@
+{{!-- SHEETS1 shared: pinned items (drop zone). m = mainVM. --}}
+<div class="d-pins" data-pin-zone>
+  <div class="d-section-title"><i class="fa-solid fa-bookmark"></i> Favorites</div>
+  {{#each m.pinned}}
+    <span class="d-pin n5e-row" data-item-id="{{id}}">
+      <img src="{{img}}" alt="" width="22" height="22">
+      {{{glyph}}}
+      <a data-action="useItem" data-tooltip="Use">{{name}}</a>
+      {{#if detail}}<span class="sub">{{detail}}</span>{{/if}}
+      <a class="ctl" data-action="togglePin" aria-label="Unpin {{name}}"><i class="fa-solid fa-xmark"></i></a>
+    </span>
+  {{else}}
+    <div class="d-drop">Drop a favorite</div>
+  {{/each}}
+</div>

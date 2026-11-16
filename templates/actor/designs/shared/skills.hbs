@@ -1,0 +1,16 @@
+{{!-- SHEETS1 shared: skills (all columns in one list; the design lays them out). m = mainVM. --}}
+<ul class="d-skills">
+  {{#each m.skillColumns}}{{#each this}}
+    <li class="d-skill rollable {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}" {{#unless @root.editMode}}data-action="roll" data-roll="skill" data-key="{{key}}"{{/unless}}>
+      {{#if @root.editMode}}
+        <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">
+      {{else}}
+        <span class="dot {{#if proficient}}on{{/if}}"></span>
+      {{/if}}
+      <span class="ab">{{ability}}</span>
+      <span class="label">{{label}}{{#if granted}} <span class="sub">granted</span>{{/if}}</span>
+      <span class="mastery">{{#each masteryPips}}{{#if filled}}◆{{/if}}{{/each}}</span>
+      <b>{{total}}</b>
+    </li>
+  {{/each}}{{/each}}
+</ul>

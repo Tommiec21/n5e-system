@@ -32,7 +32,7 @@ foundry.applications = {
     DocumentSheetConfig: { registerSheet: (doc, ns, cls, o) => registered.sheets.push(["ActiveEffect", ns, o.makeDefault]) } }
 };
 foundry.documents = { TokenDocument: class extends Doc {}, Combat: class extends Doc {}, collections: {
-  Actors: { registerSheet: (ns, cls, o) => registered.sheets.push(["Actor", ns, o.makeDefault]) },
+  Actors: { registerSheet: (ns, cls, o) => { registered.sheets.push(["Actor", ns, o.makeDefault]); (registered.actorSheetNames ??= []).push(cls.name); } },
   Items: { registerSheet: (ns, cls, o) => registered.sheets.push(["Item", ns, o.makeDefault]) }
 } };
 foundry.utils = { deepClone: structuredClone, expandObject: o => o };
@@ -48,7 +48,10 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 8, "character, NPC, loot, hazard, vehicle, raw-data placeholder, item, effect");
+  assert.equal(registered.sheets.length, 13, "character, five character designs (SHEETS1), NPC, loot, hazard, vehicle, raw-data placeholder, item, effect");
+  // Foundry saves a chosen sheet as "n5e.<class name>": every design needs its own, stable name.
+  for ( const n of ["Classic", "Glass", "Ink", "Scroll", "Oneui"] ) assert.ok(registered.actorSheetNames.includes(`CharacterSheet${n}`), n);
+  assert.equal(new Set(registered.actorSheetNames).size, registered.actorSheetNames.length, "unique sheet ids");
   assert.ok(registered.settings.includes("n5e.migrationVersion"));
   assert.ok(registered.settings.includes("n5e.stamina"));
   assert.ok(registered.settings.includes("n5e.restLimit"));

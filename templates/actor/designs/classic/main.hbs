@@ -1,0 +1,11 @@
+{{!-- SHEETS1a Classic main tab: notched, double-bordered Skills and Saving Throws frames, then disciplines and the extras. --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="d-columns">
+    <div class="d-frame skills"><h2><i class="fa-solid fa-briefcase"></i> Skills</h2>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}</div>
+    <div class="d-stack">
+      <div class="d-frame saves"><h2><i class="fa-solid fa-shield-halved"></i> Saving Throws</h2>{{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}</div>
+      <div class="d-frame disciplines"><h2><i class="fa-solid fa-fire"></i> Disciplines</h2>{{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}</div>
+      <div class="d-frame extras">{{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}</div>
+    </div>
+  </div>
+</section>

@@ -160,6 +160,7 @@
 | Conditions, components, ability requirement and rank cap block casting | `rules/cast-checks.mjs`, `workflow/cast-plan.mjs` |
 | Shocked: one attack or one jutsu per turn | `rules/cast-checks.mjs`, `workflow/attack.mjs shockedBlock`, economy `attackOrJutsu` |
 | Sheet roll-mode toggle (until switched off) and per-roll Adv/Dis buttons | `applications/actor/character-sheet.mjs`, `dice/advantaged.mjs addSheetToggle`, `dice/roll.mjs addRollModeButtons` |
+| Optional character sheet designs (Classic, Glass, Ink & Paper, Shinobi Scroll, One UI), chosen per character from the Sheet menu; same sheet logic, own chrome and styles | `applications/actor/sheet-designs.mjs`, `applications/actor/character-designs.mjs`, `templates/actor/designs/`, `styles/designs.css` |
 
 # Concentration (0.15.0-alpha.9, CONC1)
 

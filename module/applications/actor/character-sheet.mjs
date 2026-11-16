@@ -133,13 +133,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static TABS = {
     primary: {
       tabs: [
-        { id: "main", label: "Main" },
-        { id: "combat", label: "Combat" },
-        { id: "jutsu", label: "Jutsu" },
-        { id: "inventory", label: "Inventory" },
-        { id: "features", label: "Features" },
-        { id: "effects", label: "Effects" },
-        { id: "biography", label: "Biography" }
+        // Icons are shown by the sheet designs (SHEETS1) that use icon tabs.
+        { id: "main", label: "Main", icon: "fa-solid fa-id-card" },
+        { id: "combat", label: "Combat", icon: "fa-solid fa-hand-fist" },
+        { id: "jutsu", label: "Jutsu", icon: "fa-solid fa-scroll" },
+        { id: "inventory", label: "Inventory", icon: "fa-solid fa-suitcase" },
+        { id: "features", label: "Features", icon: "fa-solid fa-list" },
+        { id: "effects", label: "Effects", icon: "fa-solid fa-bolt" },
+        { id: "biography", label: "Biography", icon: "fa-solid fa-feather" }
       ],
       initial: "main"
     }

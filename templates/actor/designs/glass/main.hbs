@@ -1,0 +1,8 @@
+{{!-- SHEETS1b Glass main tab: frosted panels for saves, disciplines and skills. --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="d-columns">
+    <div class="d-glass d-panel saves"><h2>Saving Throws</h2>{{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}</div>
+    <div class="d-glass d-panel disciplines"><h2>Disciplines</h2>{{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}</div>
+  </div>
+  <div class="d-glass d-panel skills"><h2>Skills</h2>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}{{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}</div>
+</section>

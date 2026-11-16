@@ -44,6 +44,7 @@ import { registerEnrichers } from "./module/applications/enrichers.mjs";
 import CompendiumBrowser, { registerCompendiumBrowser } from "./module/applications/browser/compendium-browser.mjs";
 import { N5eActorSheet, TEMPLATE_PATHS } from "./module/applications/sheets.mjs";
 import CharacterSheet, { CHARACTER_TEMPLATE_PATHS } from "./module/applications/actor/character-sheet.mjs";
+import { SHEET_DESIGNS, DESIGN_TEMPLATE_PATHS, designSheet } from "./module/applications/actor/character-designs.mjs";
 import NPCSheet, { NPC_TEMPLATE_PATHS } from "./module/applications/actor/npc-sheet.mjs";
 import LootSheet from "./module/applications/actor/loot-sheet.mjs";
 import { HazardSheet, VehicleSheet } from "./module/applications/actor/hazard-sheet.mjs";
@@ -141,6 +142,10 @@ Hooks.once("init", () => {
   // Sheets: character, NPC, item, effect. The Phase 1 placeholder stays available (not default) as a raw data view.
   const { Actors, Items } = foundry.documents.collections;
   Actors.registerSheet("n5e", CharacterSheet, { types: ["character"], makeDefault: true, label: "N5E.SheetCharacter" });
+  // SHEETS1: optional designs of the same sheet, chosen per character from its Sheet menu.
+  for ( const [id, design] of Object.entries(SHEET_DESIGNS) ) {
+    Actors.registerSheet("n5e", designSheet(id), { types: ["character"], makeDefault: false, label: design.label });
+  }
   Actors.registerSheet("n5e", NPCSheet, { types: ["npc"], makeDefault: true, label: "N5E.SheetNPC" });
   Actors.registerSheet("n5e", LootSheet, { types: ["loot"], makeDefault: true, label: "N5E.SheetLoot" });
   Actors.registerSheet("n5e", HazardSheet, { types: ["hazard"], makeDefault: true, label: "N5E.SheetHazard" });
@@ -156,7 +161,7 @@ Hooks.once("init", () => {
   registerHelpers();
   // Shortcuts in text: [[/save]], [[/check]], [[/damage]], [[/heal]], @Condition[], @State[] (applications/enrichers.mjs).
   registerEnrichers();
-  foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS, ...NPC_TEMPLATE_PATHS, ...ITEM_TEMPLATE_PATHS])]);
+  foundry.applications.handlebars.loadTemplates([...new Set([...TEMPLATE_PATHS, ...CHARACTER_TEMPLATE_PATHS, ...DESIGN_TEMPLATE_PATHS, ...NPC_TEMPLATE_PATHS, ...ITEM_TEMPLATE_PATHS])]);
 });
 
 // Chat card buttons. Cards are plain HTML with data-n5e-* attributes; each render wires the buttons

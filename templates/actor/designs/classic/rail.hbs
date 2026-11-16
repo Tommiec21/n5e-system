@@ -1,0 +1,33 @@
+{{!-- SHEETS1a Classic sidebar: the dark character card (portrait, AC shield, Initiative / Speed / Proficiency lozenges, HP and CP bars with a TMP slot), then dice, favorites, resources and conditions. --}}
+<aside class="n5e-rail d-rail">
+  <div class="d-card">
+    <img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}>
+    <div class="d-shield-row">
+      <div class="d-shield" data-tooltip-html="{{d.rail.ac.tip}}" aria-label="Armor Class {{d.rail.ac.value}}"><b>{{d.rail.ac.value}}</b><span class="lbl">AC</span></div>
+      <div class="d-dr" data-tooltip-html="{{d.rail.dr.tip}}"><span class="lbl">DR</span><b>{{d.rail.dr.value}}</b></div>
+    </div>
+    <div class="d-lozenges">
+      <div class="d-loz rollable" data-action="rollInit" data-tooltip-html="{{d.rail.initiative.tip}}"><b>{{d.rail.initiative.value}}</b><span class="lbl">Initiative</span></div>
+      <div class="d-loz" data-tooltip-html="{{d.rail.speed.tip}}"><b class="{{#if d.rail.speed.halved}}warn{{/if}}">{{d.rail.speed.value}}</b><span class="lbl">Speed</span></div>
+      <div class="d-loz" data-tooltip-html="{{d.rail.profTip}}"><b>{{d.rail.prof}}</b><span class="lbl">Proficiency</span></div>
+    </div>
+    <div class="d-bar hp" data-tooltip-html="{{d.rail.hp.tip}}">
+      <span class="lbl">Hit Points{{#if d.rail.hp.bloodied}} · <span class="warn">Bloodied</span>{{/if}}</span>
+      <div class="d-bar-box"><span class="fill" style="width: {{d.rail.hp.pct}}%"></span>
+        <span class="nums"><input type="number" name="system.hp.value" value="{{d.rail.hp.value}}" aria-label="Current HP" {{#unless editable}}disabled{{/unless}}><span class="max">/ {{d.rail.hp.max}}</span></span>
+        <label class="tmp" data-tooltip="Temporary HP"><input type="number" name="system.hp.temp" value="{{d.rail.hp.temp}}" placeholder="TMP" aria-label="Temporary HP" {{#unless editable}}disabled{{/unless}}></label></div>
+    </div>
+    <div class="d-bar cp" data-tooltip-html="{{d.rail.cp.tip}}">
+      <span class="lbl">Chakra Points{{#if d.rail.cp.drained}} · <span class="warn">Drained</span>{{/if}}</span>
+      <div class="d-bar-box"><span class="fill" style="width: {{d.rail.cp.pct}}%"></span>
+        <span class="nums"><input type="number" name="system.cp.value" value="{{d.rail.cp.value}}" aria-label="Current CP" {{#unless editable}}disabled{{/unless}}><span class="max">/ {{d.rail.cp.max}}</span></span>
+        <label class="tmp" data-tooltip="Temporary CP"><input type="number" name="system.cp.temp" value="{{d.rail.cp.temp}}" placeholder="TMP" aria-label="Temporary CP" {{#unless editable}}disabled{{/unless}}></label></div>
+    </div>
+    {{> "systems/n5e/templates/actor/designs/shared/death-saves.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/pins.hbs" m=d.main}}
+  {{#if d.rail.resources.length}}<div class="d-section-title"><i class="fa-solid fa-gem"></i> Resources</div>{{/if}}
+  {{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}
+  {{> "systems/n5e/templates/actor/designs/shared/conditions.hbs" r=d.rail}}
+</aside>

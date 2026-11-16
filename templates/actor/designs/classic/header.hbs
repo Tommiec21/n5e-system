@@ -1,0 +1,12 @@
+{{!-- SHEETS1a Classic header: maroon banner, name and origins, rest buttons, XP, level medallion; the hexagonal ability tabs hang off its lower edge. --}}
+<header class="n5e-head d-head">
+  <div class="d-banner">
+    {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+    <div class="d-head-side">
+      {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+      {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+    </div>
+    <div class="d-medallion" data-tooltip="Level {{d.header.level}}" aria-label="Level {{d.header.level}}"><span class="spike" aria-hidden="true"></span><span class="ring"><b>{{d.header.level}}</b></span></div>
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}
+</header>

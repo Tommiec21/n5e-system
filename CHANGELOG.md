@@ -1,3 +1,15 @@
+## 0.54.0-alpha.1 — SHEETS1: five optional character sheet designs (King: "Spend time building them all")
+
+- **Pick a look per character:** open a character's Sheet menu (the sheet's title bar) and choose a sheet. The default N5e sheet stays the default; the five new ones are the same sheet with a different design, so every button, roll and field still works the same.
+  - **N5e Character: Classic:** after the dnd5e sheet layout. Maroon header with a level medallion and XP bar, hexagonal ability tabs, a dark character card (portrait, AC shield, Initiative / Speed / Proficiency lozenges, HP and CP bars with a TMP slot), notched Skills and Saving Throws frames, vertical icon tabs on the right.
+  - **N5e Character: Glass:** frosted panels on a dark ground with an orange glow.
+  - **N5e Character: Ink & Paper:** the first draft, kept: ink header, hexagon level badge, hanging ability tabs, pill tabs.
+  - **N5e Character: Shinobi Scroll:** a Pf2e-style layout. A hanging scroll on the left (Vitality, Defense, Initiative, Saves, resources, conditions), a crimson header with a forehead-protector level plate, a navy tab strip with gold rules.
+  - **N5e Character: One UI:** after Samsung's One UI. A large viewing area at the top, rounded cards, a bottom tab bar; dark when Foundry's application theme is dark.
+- The other tabs (Combat, Jutsu, Inventory, Features, Effects, Biography) keep their layout and take each design's colours.
+- **Widened Ninjutsu:** a cube now grows 10 ft (5 ft on each side; King Q-E1).
+- Not checked in a running Foundry world (checked with static renders in a browser).
+
 ## 0.53.0-alpha.1 — ENG1d: auras and zones; ENG1e: the two classes redone
 
 - **Auras move with tokens:** an aura effect gives its effect to the right creatures within its radius, and takes it back when they leave or the aura ends. The GM's client keeps them in step as tokens move and turns change.

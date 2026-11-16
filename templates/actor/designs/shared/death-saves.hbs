@@ -1,0 +1,9 @@
+{{!-- SHEETS1 shared: death saves (only when they apply). r = railVM. --}}
+{{#if r.deathSaves}}
+  <div class="d-death death-saves {{#if r.deathSaves.dead}}dead{{/if}}">
+    <span class="lbl">{{#if r.deathSaves.dead}}Dead{{else if r.deathSaves.stable}}Stable{{else}}Death saves{{/if}}</span>
+    <span class="ok" data-tooltip="Successes">{{#each r.deathSaves.success}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+    <span class="bad" data-tooltip="Failures (persist until a short rest)">{{#each r.deathSaves.failure}}<span class="pip {{#if filled}}on{{/if}}"></span>{{/each}}</span>
+    {{#unless r.deathSaves.dead}}{{#unless r.deathSaves.stable}}{{#if @root.editable}}<button type="button" data-action="deathSave">Roll</button>{{/if}}{{/unless}}{{/unless}}
+  </div>
+{{/if}}
