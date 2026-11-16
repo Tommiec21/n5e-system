@@ -16,7 +16,7 @@ import { getPath } from "../rules/formula.mjs";
  */
 import { CHANGE_KEY_PREFIX } from "../rules/change-keys.mjs";
 import { isV31Actor, migrateV31Actor } from "../migration/v31.mjs";
-import { defaultDuration } from "../rules/condition-lifecycle.mjs";
+import { defaultDuration, immuneTo } from "../rules/condition-lifecycle.mjs";
 import { rule } from "../rules-settings.mjs";
 import { immuneVia } from "../rules/condition-cards.mjs";
 
@@ -117,6 +117,19 @@ export default class N5eActor extends Actor {
     return { ...super.getRollData(), ...(this.system.getRollData?.() ?? {}) };
   }
 
+  /**
+   * @override  State and condition immunity (King 2026-11-16) also stop the token HUD and every
+   * toggleStatusEffect call from turning a status on.
+   */
+  async toggleStatusEffect(statusId, options = {}) {
+    if ( options.active !== false && !this.statuses?.has(statusId) && immuneTo(this, statusId) ) {
+      const label = CONFIG.N5E.states?.[statusId]?.label ?? CONFIG.N5E.conditions?.[statusId]?.label ?? CONFIG.N5E.clanConditions?.[statusId]?.label ?? statusId;
+      ui.notifications?.info(`${this.name} is immune to ${label}.`);
+      return false;
+    }
+    return super.toggleStatusEffect(statusId, options);
+  }
+
   /** Convenience: the actor's condition effect for a key, if any. */
   getCondition(key) {
     return this.effects.find(e => e.type === "condition" && e.system.key === key) ?? null;
@@ -167,7 +180,11 @@ export default class N5eActor extends Actor {
       ui.notifications?.info(`${def.label ?? key} ends immediately: ${this.name} is not in combat.`);
       return null;
     }
-    if ( rule("conditionResistance") && this.system.traits?.conditionImmune?.has(key) ) return null;
+    // Condition immunity: the key or a group it belongs to (King 2026-11-16).
+    if ( immuneTo(this, key) ) {
+      ui.notifications?.info(`${this.name} is immune to ${def.label ?? key}.`);
+      return null;
+    }
     // CCOND1: "creatures immune to X damage (or the Y condition) are immune to this condition".
     if ( immuneVia(this, def) ) return null;
     const existing = this.getCondition(key);

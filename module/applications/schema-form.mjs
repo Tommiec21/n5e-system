@@ -42,6 +42,25 @@ export function buildRows(schema, source, { prefix = "system", skip = new Set() 
 }
 
 /**
+ * One field shown twice on a sheet (the HP box on the rail and again in Edit mode's field editor)
+ * comes back from the form as an array of both values, which a number field rejects ("must be an
+ * integer"). Keep the value the user changed (the one that differs from what's stored), else the
+ * first. Fields that really hold arrays are left alone.
+ * @param {object} flat     flattened form data ("system.hp.value": ...)
+ * @param {object} source   the document's _source
+ */
+export function collapseDuplicates(flat, source) {
+  for ( const [key, value] of Object.entries(flat) ) {
+    if ( !Array.isArray(value) ) continue;
+    const stored = key.split(".").reduce((o, k) => o?.[k], source);
+    if ( Array.isArray(stored) || stored instanceof Set ) continue;
+    const changed = value.find(v => String(v ?? "") !== String(stored ?? ""));
+    flat[key] = changed !== undefined ? changed : value[0];
+  }
+  return flat;
+}
+
+/**
  * Comma-separated "list" inputs come back as strings; turn them into arrays before the update.
  * @param {object} submitData  flattened form data
  * @param {Array} rows

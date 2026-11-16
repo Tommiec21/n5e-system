@@ -199,3 +199,32 @@ test("Unarmed Damage Die Step moves the current die along 1 > d4 > d6 > d8 > d10
   const both = makeActor({ system: baseAbilities, items: [taiSpec(1)], n5eChanges: [{ key: "n5e.unarmed.die", value: "1d8", mode: 2 }, { key: "n5e.unarmed.step", value: "-1", mode: 2 }] });
   assert.equal(unarmedSpec(both).die, "1d6", "the override first, then the step");
 });
+
+// King 2026-11-16: Condition Immunity, State Resistance and State Immunity.
+import { traitCovers } from "../module/rules/condition-lifecycle.mjs";
+test("Condition Immunity (key or group) and State Resistance / Immunity", () => {
+  for ( const k of ["n5e.conditionImmune", "n5e.stateResist", "n5e.stateImmune"] ) assert.ok(fieldInfo(k, N5E)?.name, k);
+  const [state] = changeCards([{ key: "n5e.stateImmune", mode: 2, value: "prone" }], catalog, {}, N5E);
+  assert.equal(state.input, "select");
+  assert.ok(state.options.some(o => o.value === "grappled") && !state.options.some(o => o.value === "inCombat"));
+  assert.equal(describeChange({ key: "n5e.stateResist", value: "grappled" }, catalog, N5E), "State Resistance: Grappled");
+  assert.equal(validateEffectChanges([{ key: "n5e.stateImmune", mode: 2, value: "dead" }], [], catalog).rows[0].problem, "Pick a state.");
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(1)], n5eChanges: [{ key: "n5e.conditionImmune", value: "group:mental", mode: 2 },
+    { key: "n5e.stateResist", value: "grappled", mode: 2 }, { key: "n5e.stateImmune", value: "prone", mode: 2 }] });
+  const mental = Object.entries(N5E.conditions).find(([, d]) => (d.tags ?? []).includes("mental"))[0];
+  assert.ok(traitCovers(a, "Immune", mental), `${mental} is Mental`);
+  assert.ok(traitCovers(a, "Immune", "prone"));
+  assert.ok(!traitCovers(a, "Immune", "grappled"));
+  assert.ok(resistsAny(a, ["grappled"]), "a state can be resisted");
+});
+
+// King 2026-11-16 bug: a field shown twice on a sheet came back as an array ("must be an integer").
+import { collapseDuplicates } from "../module/applications/schema-form.mjs";
+test("a field shown twice on a sheet saves the value the user changed", () => {
+  const source = { system: { hp: { value: 12 }, details: { xp: 0 }, traits: { resist: ["fire"] } } };
+  const flat = collapseDuplicates({ "system.hp.value": [12, 9], "system.details.xp": [0, 0], "system.traits.resist": ["fire", "cold"], "system.abilities.str.value": 16 }, source);
+  assert.equal(flat["system.hp.value"], 9);
+  assert.equal(flat["system.details.xp"], 0);
+  assert.deepEqual(flat["system.traits.resist"], ["fire", "cold"], "real arrays stay");
+  assert.equal(flat["system.abilities.str.value"], 16);
+});

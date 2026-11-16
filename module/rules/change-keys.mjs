@@ -29,6 +29,8 @@
  *   n5e.resist / n5e.immune       adds a damage resistance or immunity (value: damage type; NPC3 Freeform Jutsu)
  *   n5e.conditionResist           condition resistance (King 2026-11-16): advantage on saves against a condition
  *                                 (value: its key) or a condition group (value: group:physical, group:mental...)
+ *   n5e.conditionImmune           condition immunity: it can't be applied (a key or a group, as above)
+ *   n5e.stateResist / n5e.stateImmune  the same for states (value: grappled, restrained, prone...)
  *   n5e.attack.all                +attack bonus on every attack (NPC3)
  *
  * Adding a new key (four places, all in this file plus the reader):
@@ -48,7 +50,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], rankCost: [], unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], conditionImmune: [], stateResist: [], stateImmune: [], rankCost: [], unknown: []
   };
 }
 
@@ -83,7 +85,9 @@ export function parseN5eChanges(changes) {
       case "dr": out.dr += num(change.value); break;
       case "resist": if ( change.value ) out.resist.push(String(change.value)); break;
       case "immune": if ( change.value ) out.immune.push(String(change.value)); break;
-      case "conditionResist": if ( change.value ) out.conditionResist.push(String(change.value)); break;
+      case "conditionResist": case "conditionImmune": case "stateResist": case "stateImmune":
+        if ( change.value ) out[group].push(String(change.value));
+        break;
       case "pierce": out.pierce += num(change.value); break;
       case "critRange": {
         const scope = sub || "all";
@@ -167,6 +171,9 @@ export function changeKeyCatalog(N5E) {
   add("Defense", "n5e.resist", "Damage resistance: value = damage type");
   add("Defense", "n5e.immune", "Damage immunity: value = damage type");
   add("Defense", "n5e.conditionResist", "Condition resistance: value = condition key or group:<tag>");
+  add("Defense", "n5e.conditionImmune", "Condition immunity: value = condition key or group:<tag>");
+  add("Defense", "n5e.stateResist", "State resistance: value = state key");
+  add("Defense", "n5e.stateImmune", "State immunity: value = state key");
   add("Rolls", "n5e.attack.all", "Every attack: + or − number");
   add("Defense", "n5e.pierce", "DR Pierce: + number");
   for ( const s of ["all", "weapon", "unarmed", ...discs] ) add("Crits", `n5e.critRange.${s}`, `Crit range (${s}): +1 = 19-20; total capped at +3`);

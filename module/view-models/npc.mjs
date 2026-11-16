@@ -6,9 +6,11 @@ import { abilities, skills, ranks, rankOrder } from "../config/core.mjs";
 import { npcTemplates, damageTypes, sizes, senses as senseLabels } from "../config/combat.mjs";
 import { languages as languageLabels } from "../config/character.mjs";
 import { conditions as conditionDefs } from "../config/conditions.mjs";
-import { CONDITION_GROUPS } from "../rules/condition-lifecycle.mjs";
+import { CONDITION_GROUPS, RESISTIBLE_STATES } from "../rules/condition-lifecycle.mjs";
+import { states as stateDefs } from "../config/conditions.mjs";
 
 // Condition resistances can name a whole group (King 2026-11-16): "All Physical conditions".
+const resistStates = Object.fromEntries(RESISTIBLE_STATES.map(k => [k, stateDefs[k] ?? { label: k }]));
 const resistDefs = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, { label: `All ${v} conditions` }])), ...conditionDefs };
 import { weaponAttackSpec } from "../workflow/attack.mjs";
 import { reachOf, attackRange } from "../rules/weapon-properties.mjs";
@@ -60,8 +62,9 @@ export function statBlockVM(actor) {
     passivePerception: sys.skills.prc?.passive ?? 10,
     // NPC1c A5: the book's defense, sense and language lines, shown only when filled.
     defenses: [["Damage Resistances", names(t.resist, damageTypes)], ["Damage Immunities", names(t.immune, damageTypes)],
-      ["Damage Vulnerabilities", names(t.vuln, damageTypes)], ["Condition Immunities", names(t.conditionImmune, conditionDefs)],
-      ["Condition Resistances", names(t.conditionResist, resistDefs)]].filter(([, v]) => v).map(([label, value]) => ({ label, value })),
+      ["Damage Vulnerabilities", names(t.vuln, damageTypes)], ["Condition Immunities", names(t.conditionImmune, resistDefs)],
+      ["Condition Resistances", names(t.conditionResist, resistDefs)],
+      ["State Immunities", names(t.stateImmune, resistStates)], ["State Resistances", names(t.stateResist, resistStates)]].filter(([, v]) => v).map(([label, value]) => ({ label, value })),
     senses: [...specialSenses, `passive Perception ${sys.skills.prc?.passive ?? 10}`].join(", "),
     languages: names(t.languages, languageLabels),
     lines,
@@ -201,8 +204,9 @@ export function npcDefensesVM(actor) {
   const t = src.traits ?? {};
   const sets = [
     ["traits.resist", "Damage resistances", damageTypes], ["traits.immune", "Damage immunities", damageTypes],
-    ["traits.vuln", "Damage vulnerabilities", damageTypes], ["traits.conditionImmune", "Condition immunities", conditionDefs],
-    ["traits.conditionResist", "Condition resistances", resistDefs], ["traits.languages", "Languages", languageLabels]
+    ["traits.vuln", "Damage vulnerabilities", damageTypes], ["traits.conditionImmune", "Condition immunities", resistDefs],
+    ["traits.conditionResist", "Condition resistances", resistDefs],
+    ["traits.stateImmune", "State immunities", resistStates], ["traits.stateResist", "State resistances", resistStates], ["traits.languages", "Languages", languageLabels]
   ].map(([field, label, labels]) => {
     const value = field.split(".").reduce((o, k) => o?.[k], src);
     return { field, label, chips: chips(value, labels), options: choicesLeft(value, labels), custom: field === "traits.languages" };

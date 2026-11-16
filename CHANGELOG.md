@@ -1,3 +1,19 @@
+## 0.60.0-alpha.7 — Level up fixed; editing ability scores fixed; Condition Immunity and State Resistance / Immunity
+
+- **Fix: Level up opens again.**
+  - The level-up window's template had a block closed in the wrong place, which broke the dialog.
+  - The ASI card is also back in order: +1 to an ability, then the feat, then the Mastery rank, each only when that level grants it.
+  - Every template is now compile-checked by the tests, so this can't ship again.
+- **Fix: changing a character's ability scores (or anything else) in Edit mode no longer fails** with "must be an integer". HP, CP, XP and Ryo appear twice in Edit mode, on the sheet and in the field editor. The sheet now keeps the value you changed.
+- **New effect fields (King):**
+  - **Condition Immunity:** a condition or a whole group can't be applied.
+  - **State Resistance:** advantage on saves against a state, including saves to end it.
+  - **State Immunity:** the state can't be applied, including from the token HUD.
+  - The states offered: Prone, Grappled, Restrained, Incapacitated, Stunned, Unconscious, Suffocating, Surprised, Drained, Hidden and Undetected.
+  - NPCs get State resistances and State immunities, and their condition immunities can name a group.
+  - The GM rule "Condition resistance and immunity" still turns these on or off.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.6 — Unarmed Damage Die Step
 
 - **New effect field (King): Unarmed Damage Die Step** (`n5e.unarmed.step`), under Damage. It reads your current unarmed die and moves it up or down: 1 → 1d4 → 1d6 → 1d8 → 1d10 → 1d12, and back down. It stops at 1 and at 1d12.

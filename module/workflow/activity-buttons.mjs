@@ -471,7 +471,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         const onFail = inflicts.length ? `<div class="n5e-apply">${inflicts.map(i =>
           `<button type="button" data-n5e-inflict="${esc(i.key)}" data-kind="${esc(i.kind)}" data-ranks="${i.ranks}"${d.resave ? ` data-resave="${esc(JSON.stringify({ ability: d.ability, dc, label: d.label }))}"` : ""}>Apply ${esc(i.label)}${i.kind === "condition" ? ` ${i.ranks}` : ""}</button>`).join("")}</div>` : "";
         // Condition resistance (optional rule): advantage on saves against a condition you resist.
-        const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition").map(i => i.key));
+        const resisted = resistsAny(t, inflicts.filter(i => i.kind === "condition" || i.kind === "state").map(i => i.key));
         // Resisting the condition is one more advantage source; disadvantage from the action (an action
         // effect "imposed" on its targets' saves, STD2) cancels it in the advantage engine.
         if ( resisted ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];

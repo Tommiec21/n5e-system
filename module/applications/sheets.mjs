@@ -4,7 +4,7 @@
  * Still registered (not as default) as a "raw data" sheet: Sheet → choose "N5e placeholder" to see
  * and edit every stored field of an actor or item. Useful when debugging data.
  */
-import { buildRows, coerceListInputs } from "./schema-form.mjs";
+import { buildRows, coerceListInputs, collapseDuplicates } from "./schema-form.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2, ItemSheetV2 } = foundry.applications.sheets;
@@ -118,6 +118,7 @@ export class N5eActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** @override */
   _processFormData(event, form, formData) {
     const flat = formData.object;
+    collapseDuplicates(flat, this.document._source);
     coerceListInputs(flat, this._rows ?? []);
     return foundry.utils.expandObject(flat);
   }
@@ -198,6 +199,7 @@ export class N5eItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   /** @override */
   _processFormData(event, form, formData) {
     const flat = formData.object;
+    collapseDuplicates(flat, this.document._source);
     coerceListInputs(flat, this._rows ?? []);
     return foundry.utils.expandObject(flat);
   }

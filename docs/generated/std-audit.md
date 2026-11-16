@@ -29,7 +29,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 - `module/workflow/trackers.mjs:61`
 
-### Condition mechanics named in engines (33)
+### Condition mechanics named in engines (35)
 
 - `module/canvas/flanking.mjs:8`
 - `module/canvas/visibility.mjs:17`
@@ -43,11 +43,13 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/config/condition-text.mjs:160`
 - `module/config/condition-text.mjs:177`
 - `module/config/conditions.mjs:209`
+- `module/config/effect-fields.mjs:39`
 - `module/config/jutsu.mjs:58`
 - `module/config/jutsu.mjs:61`
 - `module/rules/authored-reactions.mjs:20`
 - `module/rules/authored-reactions.mjs:61`
 - `module/rules/concentration.mjs:10`
+- `module/rules/condition-lifecycle.mjs:114`
 - `module/rules/jutsu-defense.mjs:37`
 - `module/rules/positioning.mjs:38`
 - `module/rules/positioning.mjs:39`

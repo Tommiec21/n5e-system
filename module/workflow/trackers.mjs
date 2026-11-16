@@ -303,7 +303,7 @@ export async function rollResave(btn, event, { message } = {}) {
   btn.disabled = true;
   const spec = { ...rollSpec(actor, "save", r.ability), label: `${abilities[r.ability]?.label ?? r.ability} save: end ${effect.name}` };
   // Condition resistance (King 2026-11-16): a save to end a resisted condition is made with advantage.
-  if ( effect.type === "condition" && resistsAny(actor, [effect.system?.key]) ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];
+  if ( ["condition", "state"].includes(effect.type) && resistsAny(actor, [effect.system?.key ?? [...(effect.statuses ?? [])][0]]) ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];
   return rollWithSpec(actor, spec, { event, dc: r.dc, onResult: async res => {
     if ( !res.success ) return;
     await effect.delete();

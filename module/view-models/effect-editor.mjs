@@ -8,7 +8,7 @@
  *   ruleRows(rules, N5E)           each roll rule as a builder row (plain dropdowns and a sentence)
  */
 import { FIELD_CATEGORIES, MODE_LABELS } from "../config/effect-fields.mjs";
-import { CONDITION_GROUPS } from "../rules/condition-lifecycle.mjs";
+import { CONDITION_GROUPS, RESISTIBLE_STATES } from "../rules/condition-lifecycle.mjs";
 import { describeRule, ruleToRow, RULE_KINDS, selectorBases, WHEN_FACTS, RULE_WHO, RULE_TRIGGERS } from "../rules/plain-language.mjs";
 
 const opts = (choices, selected) => Object.entries(choices).map(([value, label]) => ({ value, label, selected: String(selected ?? "") === value }));
@@ -46,6 +46,7 @@ export function changeCards(changes, catalog, report = {}, N5E = {}) {
     const fixedMode = custom ? ([0, 2].includes(mode) ? mode : 2) : null;
     const choices = field?.type === "ability" ? Object.fromEntries(Object.entries(N5E.abilities ?? {}).map(([k, v]) => [k, v.label ?? k]))
       : field?.type === "damageType" ? Object.fromEntries(Object.entries(N5E.damageTypes ?? {}).map(([k, v]) => [k, v.label ?? k]))
+      : field?.type === "state" ? Object.fromEntries(RESISTIBLE_STATES.map(k => [k, N5E.states?.[k]?.label ?? k]))
       : field?.type === "condition" ? { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...conditionChoices(N5E) } : null;
     return {
       i, key: change.key ?? "", value: change.value ?? "", priority: change.priority ?? "",

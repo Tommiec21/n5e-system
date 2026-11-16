@@ -869,3 +869,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Path | Meaning |
 | --- | --- |
 | Change key `n5e.unarmed.step` | Steps the unarmed damage die up (+) or down (−) along 1 > 1d4 > 1d6 > 1d8 > 1d10 > 1d12, capped at both ends; applied after `n5e.unarmed.die` (rules/unarmed.mjs `stepUnarmed`). |
+
+## Added in 0.60.0-alpha.7
+
+| Path | Meaning |
+| --- | --- |
+| Change key `n5e.conditionImmune` | Condition immunity from an effect: a condition key or `group:<tag>`; joins `traits.conditionImmune`. |
+| Change keys `n5e.stateResist` / `n5e.stateImmune` | State resistance (advantage on saves against it and to end it) or immunity (it can't be applied); value a state key; join `traits.stateResist` / `traits.stateImmune`. |
+| Actor `system.traits.stateResist`, `system.traits.stateImmune` | New sets (empty by default). |
+| `traits.conditionImmune` values `group:<tag>` | Immune to every condition with that tag. |

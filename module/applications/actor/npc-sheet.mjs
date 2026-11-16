@@ -11,6 +11,7 @@
  * Rolls, casting, item handling and the context menu come from CharacterSheet (inherited actions);
  * none of its tab templates are drawn here.
  */
+import { collapseDuplicates } from "../schema-form.mjs";
 import CharacterSheet from "./character-sheet.mjs";
 import { headerVM } from "../../view-models/character.mjs";
 import { npcHeaderVM, npcBuildVM, npcDefensesVM, npcKnowledgeVM } from "../../view-models/npc.mjs";
@@ -200,6 +201,7 @@ export default class NPCSheet extends CharacterSheet {
    */
   _processFormData(event, form, formData) {
     const flat = formData.object;
+    collapseDuplicates(flat, this.actor._source);
     const src = this.actor._source.system;
     const lists = { situational: foundry.utils.deepClone(src.situational ?? []), "knowledge.entries": foundry.utils.deepClone(src.knowledge?.entries ?? []) };
     const touched = new Set();

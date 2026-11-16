@@ -26,7 +26,7 @@ import {
   headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
 } from "../../view-models/character.mjs";
 import { combatVM } from "../../view-models/combat.mjs";
-import { buildRows, coerceListInputs } from "../schema-form.mjs";
+import { buildRows, coerceListInputs, collapseDuplicates } from "../schema-form.mjs";
 import { postItemCard, postActionCard } from "../../chat/card.mjs";
 import LevelUpDialog from "../level-up.mjs";
 import { rollD20, rollInitiative } from "../../dice/roll.mjs";
@@ -243,6 +243,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /** @override  Turns the raw editor's list inputs (comma-separated text) back into arrays before saving. */
   _processFormData(event, form, formData) {
     const flat = formData.object;
+    collapseDuplicates(flat, this.actor._source);
     coerceListInputs(flat, this._rows ?? []);
     return foundry.utils.expandObject(flat);
   }

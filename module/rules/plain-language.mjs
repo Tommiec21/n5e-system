@@ -23,6 +23,7 @@ export function describeChange(change, catalog = [], N5E = {}) {
   const v = String(change?.value ?? "").trim();
   if ( !field ) return `${name}: ${v}`;
   if ( field.key.startsWith("n5e.mastery.") ) return `${name}${v ? ` (from ${v})` : ""}`;
+  if ( field.type === "state" ) return `${name}: ${N5E.states?.[v]?.label ?? v}`;
   if ( field.type === "condition" ) {
     const label = v.startsWith("group:") ? `all ${cap(v.slice(6))} conditions` : N5E.conditions?.[v]?.label ?? N5E.clanConditions?.[v]?.label ?? v;
     return `${name}: ${label}`;

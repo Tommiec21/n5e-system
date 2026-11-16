@@ -107,12 +107,29 @@ export const CONDITION_GROUPS = { physical: "Physical", mental: "Mental", sensor
  */
 export function resistsAny(actor, keys) {
   if ( !rule("conditionResistance") ) return false;
-  const r = actor.system?.traits?.conditionResist;
-  const has = k => (r instanceof Set ? r.has(k) : list(r).includes(k));
+  return list(keys).some(k => traitCovers(actor, "Resist", k));
+}
+
+/** States a creature can be put into, for State Resistance and Immunity (not bookkeeping states). */
+export const RESISTIBLE_STATES = ["prone", "grappled", "restrained", "incapacitated", "stunned", "unconscious", "suffocating", "surprised", "drained", "hidden", "undetected"];
+
+/**
+ * Does a creature's Resist or Immune trait cover this condition or state? Conditions: the key or a
+ * group it belongs to (conditionResist / conditionImmune); states: the key (stateResist / stateImmune).
+ */
+export function traitCovers(actor, kind, key) {
+  const traits = actor?.system?.traits ?? {};
   const cfg = n5eConfig();
-  return list(keys).some(k => {
-    if ( has(k) ) return true;
-    const def = cfg.conditions?.[k] ?? cfg.clanConditions?.[k] ?? coreConditions[k];
-    return list(def?.tags).some(t => has(`group:${t}`));
-  });
+  const isState = !!(cfg.states?.[key]) && !(cfg.conditions?.[key] ?? cfg.clanConditions?.[key] ?? coreConditions[key]);
+  const set = traits[`${isState ? "state" : "condition"}${kind}`];
+  const has = k => (set instanceof Set ? set.has(k) : list(set).includes(k));
+  if ( has(key) ) return true;
+  if ( isState ) return false;
+  const def = cfg.conditions?.[key] ?? cfg.clanConditions?.[key] ?? coreConditions[key];
+  return list(def?.tags).some(t => has(`group:${t}`));
+}
+
+/** Immune to a condition (by key or group) or a state (King 2026-11-16), when the rule is on. */
+export function immuneTo(actor, key) {
+  return rule("conditionResistance") && traitCovers(actor, "Immune", key);
 }
