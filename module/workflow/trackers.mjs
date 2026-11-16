@@ -365,6 +365,17 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     ui.notifications.info("Target the creatures first (T over a token).");
     return null;
   }
+  // CCOND1: an effect activity naming a condition card ({condition: key}) applies that condition
+  // instead (owner warning, GM relay for creatures this user doesn't own, ends with the applier).
+  if ( eff.condition ) {
+    const { applyConditionCard } = await import("./condition-cards.mjs");
+    const done = [];
+    for ( const t of targets ) {
+      try { if ( await applyConditionCard(t, eff.condition, { applier: actor }) ) done.push(t.name); }
+      catch(e) { ui.notifications.warn(e.message); }
+    }
+    return done.length ? { applied: done } : null;
+  }
   const now = nowTurn();
   const changes = (eff.changes ?? []).map(c => {
     const v = sub(c.value);

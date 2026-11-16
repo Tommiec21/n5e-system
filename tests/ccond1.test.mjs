@@ -178,3 +178,26 @@ test("clan cards, batch C: every clan condition in the clan items is a card", ()
   assert.equal(registry["jiton-heavy"].flags.noDash, true);
   assert.equal(registry["yamada-asaemon-discipline"].removal[0].check[0], "med");
 });
+
+test("CCOND1b: all 19 class conditions from the books are cards, and their features apply them", () => {
+  const classCards = Object.entries(registry).filter(([, d]) => d.owner.kind === "class").map(([k]) => k).sort();
+  assert.deepEqual(classCards, ["balance-broken", "blighted", "bone-broken", "curse-of-the-reaper", "flow-broken", "ghostburn", "hemorrhage-vitality",
+    "hobbled", "identity-crisis", "life-pulse", "momentary-flaw", "okuri-inu-shaken", "provoked", "psychosis", "reaver-echo", "scout-disoriented",
+    "shattered", "suppressed", "transfiguration"]);
+  const labels = Object.values(registry).map(d => d.label);
+  assert.equal(new Set(labels).size, labels.length, "unique names (text links find conditions by name)");
+  assert.deepEqual(registry["hemorrhage-vitality"].resave, { ability: "con", source: "nin", dc: null });
+  assert.deepEqual(registry["life-pulse"].rules.filter(r => r.key === "heal").map(r => r.pool), ["hp", "cp"]);
+  assert.equal(registry.psychosis.endsAt, "nextTurnEnd");
+  const feature = name => {
+    const dir = path.join(import.meta.dirname, "..", "packs/_source/features");
+    const f = fs.readdirSync(dir, { recursive: true }).find(x => path.basename(x).startsWith(name));
+    return JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+  };
+  assert.equal(feature("reapers-arsenal").system.activities[0].effect.condition, "curse-of-the-reaper");
+  assert.equal(feature("warden-techniques").system.activities.find(a => a.label === "Provoke").effect.condition, "provoked");
+  assert.equal(feature("savage-assault").system.activities.find(a => a.label === "Okuri-Inu Fang").inflicts[0].key, "okuri-inu-shaken");
+  assert.ok(feature("transfigured-technique").system.activities.some(a => a.inflicts?.[0]?.key === "transfiguration"));
+  const lifePulse = feature("medical-perfection-supreme-medic").flags.n5e.castOptions.find(o => o.effect?.name === "Life Pulse");
+  assert.equal(lifePulse.effect.condition, "life-pulse");
+});

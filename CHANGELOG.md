@@ -1,3 +1,11 @@
+## 0.58.0-alpha.1 — CCOND1b: the remaining 15 class condition cards
+
+- **New cards** (text from the books' boxes): **Blighted**, **Curse of the Reaper**, **Life Pulse**, **Hemorrhage Vitality** and **Transfiguration** (Medical-Nin); **Suppressed** (Hunter-Nin, Necrotic Hand); **Disoriented (Clones Everywhere)**, **Ghostburn** and **Momentary Flaw** (Scout-Nin); **Hobbled**, **Shaken (Okuri-Inu Fang)**, **Provoked** and **Reaver Echo** (Weapon Specialist); **Psychosis** and **Identity Crisis** (Genjutsu Specialist). All 19 class conditions in the books are now cards.
+- **Buttons now apply the cards:** Curse of the Reaper, Transfigure an enemy (on a failed save), Life Pulse and Hemorrhage Vitality (Supreme Medic cast options), Provoke and Okuri-Inu Fang. An effect button can now apply a condition card.
+- **What's automated:** Life Pulse heals 4d6 HP and 2d6 CP at the start of each turn; Hemorrhage Vitality deals 6d6 necrotic and 6d6 chakra at the start of each turn with an end-of-turn Constitution save against the Medical-Nin's Ninjutsu DC; Psychosis disadvantage on attacks, Insight and Perception; Disoriented disadvantage on Perception; Suppressed, Disoriented, Hobbled, Shaken and Psychosis end at the end of the creature's next turn; Reaver Echo stacks. The rest of each card is for the table.
+- Two cards are renamed so names stay unique: the Scout's Disoriented (the Kashu clan has one too) and Okuri-Inu Fang's Shaken (different from the core Shaken).
+- Not checked in a running Foundry world.
+
 ## 0.57.0-alpha.3 — CCOND1c batch C: the last 11 clan condition cards
 
 - **New cards:** **Manic**, **Feral Mania** and **Primal Focus** (Jūgo), **Firewalled** and **Data Leak** (Genwa), **Claws of Night** (Vesper), **Asaemon Discipline / Severed** (Yamada), **Volatile**, **Heavy**, **Brined** and **Unstable** (Jiton). All 33 clan conditions in the clans are now cards.

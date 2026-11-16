@@ -1,0 +1,83 @@
+{
+  "_id": "n5eqq3iPQJOyjZ1y",
+  "name": "Blighted",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5eRukSF87xn5GtQ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "blighted",
+    "description": "<p>Toxic Chakra – Blighted.</p><p>Blighted is treated as an Elemental Condition. A Blighted creature suffers the following effects;</p><p>A Blighted creature cannot gain Jutsu based bonuses to its AC or Damage.</p><p>An Envenomed creature cannot take its Bonus Action as it is suffering from severe poisoning.</p><p>A Corroded creature takes bonus poison damage equal to your Channeled Healing bonus from melee and ranged attacks, once per turn.</p><p>A Blighted creature can spend their Action retching to expel the toxins in their body, ending this condition.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "medical-nin",
+      "subclass": ""
+    },
+    "summary": "No jutsu bonuses to AC or damage; Envenomed: no Bonus Action; Corroded: bonus poison damage from attacks; an Action retching ends it.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [],
+        "dc": null,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": "Spend an Action retching to end it."
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "No jutsu-based bonuses to AC or damage. While also Envenomed it can't take its Bonus Action. While also Corroded it takes bonus poison damage equal to the Medical-Nin's Channeled Healing bonus from melee and ranged attacks, once per turn."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.58.0"
+  },
+  "_key": "!items!n5eqq3iPQJOyjZ1y"
+}

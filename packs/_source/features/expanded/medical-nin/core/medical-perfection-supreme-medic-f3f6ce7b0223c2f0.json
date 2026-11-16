@@ -67,30 +67,10 @@
           "effect": {
             "name": "Life Pulse",
             "target": "targets",
+            "condition": "life-pulse",
             "changes": [],
             "expires": "",
-            "seconds": 60,
-            "rules": [
-              {
-                "key": "heal",
-                "on": "turnStart",
-                "formula": "4d6",
-                "pool": "hp",
-                "label": "Life Pulse"
-              },
-              {
-                "key": "heal",
-                "on": "turnStart",
-                "formula": "2d6",
-                "pool": "cp",
-                "label": "Life Pulse"
-              },
-              {
-                "key": "note",
-                "text": "Physical condition: saves and checks to end conditions at advantage (the healing at the start of each turn is automatic).",
-                "label": "Life Pulse"
-              }
-            ]
+            "seconds": 60
           }
         },
         {
@@ -108,37 +88,10 @@
           "effect": {
             "name": "Hemorrhage Vitality",
             "target": "targets",
+            "condition": "hemorrhage-vitality",
             "changes": [],
             "expires": "",
-            "seconds": 60,
-            "rules": [
-              {
-                "key": "damage",
-                "on": "turnStart",
-                "formula": "6d6",
-                "damageType": "necrotic",
-                "label": "Hemorrhage Vitality"
-              },
-              {
-                "key": "damage",
-                "on": "turnStart",
-                "formula": "6d6",
-                "damageType": "chakra",
-                "label": "Hemorrhage Vitality"
-              },
-              {
-                "key": "resave",
-                "on": "turnEnd",
-                "ability": "con",
-                "dc": "@dc.nin",
-                "label": "Hemorrhage Vitality"
-              },
-              {
-                "key": "note",
-                "text": "Physical condition: can't regain HP; its other Physical conditions can't be removed. Treated as S-Rank. (The damage at the start of each turn and the save at the end are automatic.)",
-                "label": "Hemorrhage Vitality"
-              }
-            ]
+            "seconds": 60
           }
         }
       ]

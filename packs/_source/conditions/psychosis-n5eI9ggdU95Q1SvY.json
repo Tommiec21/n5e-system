@@ -1,0 +1,83 @@
+{
+  "_id": "n5eI9ggdU95Q1SvY",
+  "name": "Psychosis",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5ezvj26S3XfcXLQ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "psychosis",
+    "description": "<p>Venom Strike Expert – Psychosis.</p><p>Psychosis is treated as a Mental Condition. Creatures with it suffers warped perception, hallucinations and emotional instability. Creatures suffer the following effects.</p><p>Disadvantage on Insight and Perception Checks.</p><p>Disadvantage on Attack Rolls.</p><p>When casting a Jutsu that requires HS (Hand Signs), they must first make an Illusions Check vs your Genjutsu Save DC. On a failure they increase the cost of the jutsu being cast by +12.</p><p>This condition ends at the end of an affected creatures turn.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "genjutsu-specialist",
+      "subclass": "misty-distortionist"
+    },
+    "summary": "Disadvantage on Insight, Perception and attack rolls; Hand Seal jutsu need an Illusions check or cost +12; ends at the end of its turn.",
+    "tags": [
+      "mental"
+    ],
+    "maxRanks": null,
+    "endsAt": "nextTurnEnd",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "disadvantage",
+          "selector": [
+            "skill:ins",
+            "skill:prc",
+            "attack"
+          ],
+          "label": "Psychosis"
+        },
+        {
+          "key": "note",
+          "text": "Casting a Hand Seal jutsu: an Illusions check against the Genjutsu Specialist's save DC first; a failure adds +12 to its cost."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.58.0"
+  },
+  "_key": "!items!n5eI9ggdU95Q1SvY"
+}

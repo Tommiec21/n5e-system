@@ -73,6 +73,14 @@ export async function applyEffectFromCard(message, index) {
     targets = [...(game.user.targets ?? [])].map(t => t.actor).filter(Boolean);
     if ( !targets.length ) targets = (canvas?.tokens?.controlled ?? []).map(t => t.actor).filter(Boolean);
   }
+  // CCOND1: an effect that is a class or clan condition card is applied as that condition, to every
+  // recipient (the GM's client applies it on creatures this user doesn't own: King Q-CC4).
+  if ( data.condition ) {
+    const source = card.sourceUuid ? await fromUuid(card.sourceUuid) : null;
+    const { applyConditionCard, applierFor } = await import("./condition-cards.mjs");
+    for ( const t of targets ) await applyConditionCard(t, data.condition, { applier: applierFor(source) }).catch(e => ui.notifications.warn(e.message));
+    return targets.length;
+  }
   const { owned, skipped } = ownedRecipients(targets, game.user);
   if ( !owned.length ) return ui.notifications.info(skippedNotice(skipped) ?? "Select or target the creatures that receive this effect.");
   const source = card.sourceUuid ? await fromUuid(card.sourceUuid) : null;
