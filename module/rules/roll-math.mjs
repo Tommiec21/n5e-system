@@ -30,7 +30,7 @@ export function parseAdded(text) {
  */
 export function d20Parts(spec = {}) {
   const src = spec.breakdown?.parts ?? [];
-  const parts = src.map((p, i) => ({ id: `p${i}`, label: p.label, value: Number(p.value) || 0, base: !!p.base }));
+  const parts = src.map((p, i) => ({ id: `p${i}`, label: p.label, value: Number(p.value) || 0, base: !!p.base, ...(p.dice ? { dice: p.dice } : {}) }));
   const sum = parts.reduce((a, p) => a + p.value, 0);
   const bonus = Number(spec.bonus) || 0;
   if ( !parts.length ) parts.push({ id: "p0", label: "Bonus", value: bonus, base: true });
@@ -51,6 +51,7 @@ export function situationalParts(list = []) {
 export function composeD20(parts, { off = [], added = [], on = [] } = {}, label = "") {
   const offSet = new Set(off);
   const onSet = new Set(on);
+  const dice = [];
   const used = p => (p.situational ? onSet.has(p.id) : !offSet.has(p.id));
   const shown = [];
   let bonus = 0;
@@ -58,9 +59,10 @@ export function composeD20(parts, { off = [], added = [], on = [] } = {}, label 
     if ( p.situational && !onSet.has(p.id) ) continue;
     const isUsed = used(p);
     if ( isUsed ) bonus += p.value;
-    shown.push({ label: p.label, value: p.value, base: p.base, ...(isUsed ? {} : { removed: true }), ...(p.situational ? { added: true } : {}) });
+    if ( isUsed && p.dice ) dice.push(p.dice);
+    shown.push({ label: p.dice ? `${p.label} (${p.dice})` : p.label, value: p.value, base: p.base, ...(p.dice ? { dice: p.dice } : {}),
+      ...(isUsed ? {} : { removed: true }), ...(p.situational ? { added: true } : {}) });
   }
-  const dice = [];
   for ( const a of added ) {
     const parsed = parseAdded(a.value);
     if ( !parsed.ok ) continue;
@@ -74,7 +76,9 @@ export function composeD20(parts, { off = [], added = [], on = [] } = {}, label 
     }
   }
   const edited = shown.some(p => p.removed || p.added);
-  return { bonus, extra: dice.join(" + "), edited, breakdown: { label, total: bonus, parts: shown } };
+  // "+1d4" and "-1d4" both join cleanly ("1d4 - 1d4").
+  const extra = dice.map((d, i) => (i === 0 ? d.replace(/^\+/, "") : d.startsWith("-") ? `- ${d.slice(1)}` : `+ ${d.replace(/^\+/, "")}`)).join(" ");
+  return { bonus, extra, edited, breakdown: { label, total: bonus, parts: shown } };
 }
 
 /** Several creatures' parts as one list (King Q-R2): one row per label, with each creature's value. */
@@ -107,7 +111,8 @@ export function choiceForMember(spec, groupRows, choice = {}) {
 export function diceParts(parts = [], modifiers = []) {
   return [
     ...parts.map((p, i) => ({ id: `d${i}`, label: p.label || p.formula, formula: String(p.formula), type: p.type ?? "", abilityMod: p.abilityMod })),
-    ...modifiers.map((m, i) => ({ id: `m${i}`, label: m.label, formula: String(m.value), type: "", flat: true }))
+    ...modifiers.map((m, i) => (m.dice ? { id: `m${i}`, label: m.label, formula: m.dice.replace(/^\+/, ""), type: "" }
+      : { id: `m${i}`, label: m.label, formula: String(m.value), type: "", flat: true }))
   ];
 }
 

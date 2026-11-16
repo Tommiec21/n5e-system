@@ -50,10 +50,12 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], conditionImmune: [], stateResist: [], stateImmune: [], rankCost: [], unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], conditionImmune: [], rollBonus: [], stateResist: [], stateImmune: [], rankCost: [], unknown: []
   };
 }
 
+/** A dice bonus: "1d4", "+1d4", "-1d6", "2d4". */
+export const DICE_BONUS = /^[+-]?\s*\d*d\d+$/i;
 const num = v => {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
@@ -103,7 +105,21 @@ export function parseN5eChanges(changes) {
       }
       case "attack": {
         const scope = sub || "all";
+        // King 2026-11-16 (Bless): dice ("1d4", "-1d4") ride on the roll itself (rules/elements.mjs).
+        if ( DICE_BONUS.test(String(change.value).trim()) ) {
+          out.rollBonus.push({ selector: scope === "all" ? "attack" : `attack:${scope}`, dice: String(change.value).replace(/\s+/g, ""), label });
+          break;
+        }
         out.attack[scope] = (out.attack[scope] ?? 0) + num(change.value);
+        break;
+      }
+      // Saves, checks and initiative: a number or dice, added to the matching rolls (King 2026-11-16).
+      case "save": case "check": case "initiative": {
+        // check.<ability>: that ability's checks and every skill that uses it (matched in rules/elements.mjs).
+        const selector = group === "initiative" ? "initiative" : sub && sub !== "all" ? `${group}:${sub}` : group;
+        const v = String(change.value ?? "").trim();
+        if ( DICE_BONUS.test(v) ) out.rollBonus.push({ selector, dice: v.replace(/\s+/g, ""), label });
+        else if ( num(v) ) out.rollBonus.push({ selector, value: num(v), label });
         break;
       }
       case "damage": {
@@ -218,5 +234,11 @@ export function changeKeyCatalog(N5E) {
     add("Bonuses", `system.bonuses.saveDC.${d}`, `${discLabel(d)} save DC: + number (mode Add)`);
   }
   for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Abilities", `system.abilities.${k}.value`, `${v.label} score (Add or Override)`);
+  // King 2026-11-16: roll bonuses that take a number or dice (Bless: +1d4).
+  add("Rolls", "n5e.save.all", "All saving throws: + number or dice");
+  for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Rolls", `n5e.save.${k}`, `${v.label} saves: + number or dice`);
+  add("Rolls", "n5e.check.all", "All ability and skill checks: + number or dice");
+  for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Rolls", `n5e.check.${k}`, `${v.label} checks: + number or dice`);
+  add("Rolls", "n5e.initiative", "Initiative: + number or dice");
   return out;
 }

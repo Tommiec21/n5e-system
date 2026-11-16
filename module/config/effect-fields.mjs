@@ -15,6 +15,8 @@ const ADDS = "Adds to other bonuses of this kind.";
 const LARGEST = "Only the largest one counts.";
 const discName = { nin: "Ninjutsu", tai: "Taijutsu", gen: "Genjutsu", buki: "Bukijutsu", all: "All Jutsu" };
 const cap = s => (s ? s[0].toUpperCase() + s.slice(1) : s);
+// A bonus that can be a number or dice (King 2026-11-16: Bless adds 1d4).
+const dice = (what, extra = {}) => ({ enter: "A number (2, −1) or dice (1d4, −1d4).", example: "1d4", stacks: "Adds to other bonuses; dice are rolled with the roll.", what, ...extra });
 const num = (what, example = "2", extra = {}) => ({ enter: "A number. Use a minus sign for a penalty.", example, stacks: ADDS, what, ...extra });
 
 /** Fixed keys. */
@@ -37,7 +39,10 @@ const FIXED = {
   "n5e.stateImmune": { name: "State Immunity", category: "Defense", words: "state immune immunity grappled restrained prone stunned",
     what: "This state can't be applied to you.",
     enter: "Pick a state, such as Prone.", example: "prone", stacks: "Add one change per state." },
-  "n5e.attack.all": { name: "All Attack Rolls", category: "Attacks", words: "hit to-hit attack bonus", ...num("A bonus to every attack roll you make.", "1") },
+  "n5e.attack.all": { name: "All Attack Rolls", category: "Attacks", words: "hit to-hit attack bonus bless dice", ...dice("A bonus to every attack roll you make.") },
+  "n5e.save.all": { name: "All Saving Throws", category: "Saves & DCs", words: "save saving throw bonus bless dice", ...dice("A bonus to every saving throw you make.") },
+  "n5e.check.all": { name: "All Ability Checks", category: "Skills & Mastery", words: "check skill ability bonus guidance dice", ...dice("A bonus to every ability check and skill check you make.") },
+  "n5e.initiative": { name: "Initiative Roll", category: "Other", words: "initiative turn order bonus dice", ...dice("A bonus to your initiative rolls.") },
   "n5e.dice.all": { name: "All Dice Rolls", category: "Other", words: "roll bonus all", ...num("A bonus to every roll you make, added once per roll.", "1") },
   "n5e.unarmed.dice": { name: "Unarmed Extra Damage", category: "Damage", words: "fist punch unarmed taijutsu extra dice", what: "Your unarmed strikes deal these extra dice of damage.",
     enter: "Dice, such as 1d8.", example: "1d8", stacks: ADDS },
@@ -58,15 +63,15 @@ const FIXED = {
   "n5e.keywordAbility.medical": { name: "Medical Jutsu Ability", category: "Saves & DCs", words: "medical keyword ability", what: "Your Medical jutsu can use this ability when it's higher than their usual one.",
     enter: "Pick an ability.", example: "wis", stacks: LARGEST },
   "system.bonuses.ac": { name: "Armor Class", category: "Defense", words: "ac armor class", ...num("A bonus to your Armor Class.", "1") },
-  "system.bonuses.initiative": { name: "Initiative", category: "Other", words: "initiative turn order", ...num("A bonus to your initiative rolls.", "2") },
+  "system.bonuses.initiative": { name: "Initiative (number only)", category: "Other", words: "initiative turn order", ...num("A bonus to your initiative rolls.", "2") },
   "system.bonuses.hpMax": { name: "Max HP", category: "Health & Chakra", words: "hit points hp health", ...num("Raises your maximum hit points.", "5") },
   "system.bonuses.cpMax": { name: "Max Chakra", category: "Health & Chakra", words: "chakra cp", ...num("Raises your maximum chakra points.", "5") },
   "system.bonuses.hpPerLevel": { name: "HP per Level", category: "Health & Chakra", words: "hit points hp level", ...num("Extra maximum hit points for each character level.", "1") },
   "system.bonuses.cpPerLevel": { name: "Chakra per Level", category: "Health & Chakra", words: "chakra cp level", ...num("Extra maximum chakra for each character level.", "1") },
   "system.bonuses.inventorySlots": { name: "Inventory Slots", category: "Other", words: "bulk carry inventory", ...num("Extra inventory slots.", "2") },
   "system.bonuses.speed": { name: "Speed", category: "Speed & Movement", words: "speed move movement walk", ...num("Adds to your walking speed, in feet.", "10") },
-  "system.bonuses.save": { name: "All Saving Throws", category: "Saves & DCs", words: "save saving throw", ...num("A bonus to every saving throw you make.", "1") },
-  "system.bonuses.check": { name: "All Ability Checks", category: "Skills & Mastery", words: "check skill ability", ...num("A bonus to every ability check and skill check you make.", "1") }
+  "system.bonuses.save": { name: "All Saving Throws (number only)", category: "Saves & DCs", words: "save saving throw", ...num("A bonus to every saving throw you make.", "1") },
+  "system.bonuses.check": { name: "All Ability Checks (number only)", category: "Skills & Mastery", words: "check skill ability", ...num("A bonus to every ability check and skill check you make.", "1") }
 };
 
 /**
@@ -79,6 +84,12 @@ export function fieldInfo(key, N5E = {}) {
   const last = parts.at(-1);
   const skill = N5E.skills?.[last]?.label, ability = N5E.abilities?.[last]?.label, tool = N5E.toolkits?.[last]?.label;
   let m;
+  if ( (m = key.match(/^n5e\.(save|check)\.(str|dex|con|int|wis|cha)$/)) ) {
+    const label = N5E.abilities?.[m[2]]?.label ?? m[2];
+    return m[1] === "save"
+      ? { name: `${label} Saves`, category: "Saves & DCs", words: `save saving throw ${label} dice`, ...dice(`A bonus to your ${label} saving throws.`) }
+      : { name: `${label} Checks`, category: "Skills & Mastery", words: `check skill ${label} dice`, ...dice(`A bonus to ${label} checks and every ${label} skill.`) };
+  }
   if ( (m = key.match(/^n5e\.critRange\.(\w+)$/)) ) {
     const what = { all: "all attacks", weapon: "weapon attacks", unarmed: "unarmed strikes" }[m[1]] ?? `${discName[m[1]] ?? m[1]} attacks`;
     return { name: `Critical Range (${cap(what)})`, category: "Attacks", words: "crit critical range", what: `Your ${what} score a critical hit on a lower roll; 1 means 19–20.`,
@@ -105,12 +116,12 @@ export function fieldInfo(key, N5E = {}) {
     return { name: `${discName[m[1]]} Save DC`, category: "Saves & DCs", words: "dc save difficulty", ...num(`Raises the save DC of ${m[1] === "all" ? "every jutsu" : `your ${discName[m[1]]}`}.`, "1") };
   }
   if ( (m = key.match(/^n5e\.attack\.(nin|tai|gen)$/)) ) {
-    return { name: `${discName[m[1]]} Attack Rolls`, category: "Attacks", words: "hit to-hit attack jutsu", ...num(`A bonus to your ${discName[m[1]]} attack rolls.`, "1") };
+    return { name: `${discName[m[1]]} Attack Rolls`, category: "Attacks", words: "hit to-hit attack jutsu dice", ...dice(`A bonus to your ${discName[m[1]]} attack rolls.`) };
   }
   if ( (m = key.match(/^n5e\.(attack|damage)\.(weapon|unarmed)$/)) ) {
     const what = m[2] === "weapon" ? "weapon" : "unarmed";
     return m[1] === "attack"
-      ? { name: `${cap(what)} Attack Rolls`, category: "Attacks", words: `hit to-hit ${what} ${what === "unarmed" ? "fist punch" : "bukijutsu"}`, ...num(`A bonus to your ${what} attack rolls.`, "1") }
+      ? { name: `${cap(what)} Attack Rolls`, category: "Attacks", words: `hit to-hit dice ${what} ${what === "unarmed" ? "fist punch" : "bukijutsu"}`, ...dice(`A bonus to your ${what} attack rolls.`) }
       : { name: `${cap(what)} Damage`, category: "Damage", words: `damage ${what} ${what === "unarmed" ? "fist punch" : "bukijutsu"}`, ...num(`A bonus to your ${what} damage rolls.`, "2") };
   }
   if ( (m = key.match(/^n5e\.disciplineAbility\.(nin|tai|gen)$/)) ) {

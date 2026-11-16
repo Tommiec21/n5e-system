@@ -878,3 +878,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Change keys `n5e.stateResist` / `n5e.stateImmune` | State resistance (advantage on saves against it and to end it) or immunity (it can't be applied); value a state key; join `traits.stateResist` / `traits.stateImmune`. |
 | Actor `system.traits.stateResist`, `system.traits.stateImmune` | New sets (empty by default). |
 | `traits.conditionImmune` values `group:<tag>` | Immune to every condition with that tag. |
+
+## Added in 0.60.0-alpha.11
+
+| Path | Meaning |
+| --- | --- |
+| Change keys `n5e.attack.<scope>` | Now also take dice ("1d4", "-1d4"), rolled with the attack. |
+| Change keys `n5e.save.all`, `n5e.save.<ability>`, `n5e.check.all`, `n5e.check.<ability>`, `n5e.initiative` | Roll bonuses: a number or dice. `check.<ability>` covers that ability's checks and its skills. Parsed into `system.modifiers.rollBonus` [{selector, value or dice, label}] (rules/elements.mjs `rollBonusApplies`). |
+| Rule element `modifier` `value` | May be dice. |
+| Breakdown parts `dice` | A part with dice, rolled with the roll (rules/roll-math.mjs). |

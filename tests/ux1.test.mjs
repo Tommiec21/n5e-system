@@ -240,3 +240,32 @@ test("Basic Combat has no Attack pill (the Strikes row attacks); the jutsu tab c
   assert.equal(jutsuVM(a, { view: "pills" }).pills, true);
   assert.equal(jutsuVM(a).pills, false);
 });
+
+// King 2026-11-16: dice bonuses (Bless +1d4) on attacks, saves, checks and initiative.
+import { contextualModifiers, rollBonusApplies } from "../module/rules/elements.mjs";
+import { composeD20, d20Parts } from "../module/rules/roll-math.mjs";
+import { parseN5eChanges } from "../module/rules/change-keys.mjs";
+test("Bless: +1d4 to attack rolls and saves from an effect, rolled with the d20", () => {
+  const mods = parseN5eChanges([{ key: "n5e.attack.all", value: "1d4", mode: 2, effect: { name: "Bless" } },
+    { key: "n5e.save.all", value: "1d4", mode: 2, effect: { name: "Bless" } }, { key: "n5e.check.str", value: "2", mode: 2, effect: { name: "Mighty" } }]);
+  assert.deepEqual(mods.rollBonus.map(b => b.selector), ["attack", "save", "check:str"]);
+  assert.equal(mods.attack.all ?? 0, 0, "dice don't become a flat bonus");
+  const actor = { system: { modifiers: mods, skills: { ath: { ability: "str" }, acr: { ability: "dex" } } }, items: [], effects: [] };
+  const atk = contextualModifiers(actor, { kind: "attack", scope: "weapon" });
+  assert.deepEqual(atk.parts.map(p => p.dice), ["1d4"]);
+  assert.ok(rollBonusApplies("check:str", { kind: "check", type: "skill", key: "ath" }, actor), "Athletics is a Strength check");
+  assert.ok(!rollBonusApplies("check:str", { kind: "check", type: "skill", key: "acr" }, actor));
+  assert.ok(rollBonusApplies("initiative", { kind: "check", type: "skill", key: "acr", initiative: true }, actor));
+  const parts = d20Parts({ bonus: 5, breakdown: { parts: [{ label: "Str", value: 5 }, { label: "Bless", value: 0, dice: "1d4" }] } });
+  const out = composeD20(parts, { off: [], added: [], on: [] });
+  assert.equal(out.bonus, 5);
+  assert.equal(out.extra, "1d4");
+  assert.equal(composeD20(d20Parts({ bonus: 0, breakdown: { parts: [{ label: "Bane", value: 0, dice: "-1d4" }] } }), {}).extra, "-1d4");
+});
+
+test("the effect editor accepts dice on roll fields and explains number-only fields", () => {
+  assert.equal(validateEffectChanges([{ key: "n5e.attack.all", mode: 2, value: "1d4" }, { key: "n5e.save.all", mode: 2, value: "-1d4" }], [], catalog).errors.length, 0);
+  assert.match(validateEffectChanges([{ key: "system.bonuses.save", mode: 2, value: "1d4" }], [], catalog).rows[0].problem, /number only/);
+  assert.equal(describeChange({ key: "n5e.attack.all", value: "1d4" }, catalog), "+1d4 All Attack Rolls");
+  validateConditionalRules([{ key: "modifier", selector: "attack", value: "1d4" }]);
+});

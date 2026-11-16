@@ -315,8 +315,20 @@ export function ruleToggles(actor) {
 export function contextualModifiers(actor, spec, target = null, extra = []) {
   const parts = [];
   let shift = spec.kind === "save" ? Number(actor?.system?.saveTierShift) || 0 : 0;
+  // King 2026-11-16 (Bless): roll bonuses from effects (n5e.attack.* dice, n5e.save.*, n5e.check.*,
+  // n5e.initiative): a number, or dice rolled with the roll.
+  for ( const b of actor?.system?.modifiers?.rollBonus ?? [] ) {
+    if ( !rollBonusApplies(b.selector, spec, actor) ) continue;
+    if ( b.dice ) parts.push({ label: b.label, value: 0, dice: b.dice });
+    else if ( b.value ) parts.push({ label: b.label, value: b.value });
+  }
   for ( const { element, label } of gatherElements(actor, spec, target, extra) ) {
     if ( !["modifier", "degreeShift"].includes(element.key) ) continue;
+    // A "Bonus or penalty" rule can be dice ("1d4", "-1d4").
+    if ( element.key === "modifier" && /^[+-]?\d*d\d+$/i.test(String(element.value ?? "").replace(/\s+/g, "")) ) {
+      parts.push({ label, value: 0, dice: String(element.value).replace(/\s+/g, "") });
+      continue;
+    }
     const value = Number(element.value);
     if ( !Number.isFinite(value) ) continue;
     if ( element.key === "degreeShift" ) {
@@ -324,6 +336,26 @@ export function contextualModifiers(actor, spec, target = null, extra = []) {
     } else if ( value ) parts.push({ label, value });
   }
   return { parts, bonus: parts.reduce((sum, p) => sum + p.value, 0), shift };
+}
+
+/**
+ * Does a roll bonus's selector cover this roll? "attack", "attack:<scope>", "save", "save:<ability>",
+ * "check" (ability and skill checks), "check:<ability>" (that ability's checks and its skills),
+ * "initiative".
+ */
+export function rollBonusApplies(selector, spec = {}, actor = null) {
+  const [base, sub] = String(selector ?? "").split(":");
+  if ( base === "initiative" ) return spec.kind === "initiative" || spec.type === "initiative" || !!spec.initiative;
+  if ( base === "attack" ) return spec.kind === "attack" && (!sub || spec.scope === sub);
+  if ( base === "save" ) return spec.kind === "save" && (!sub || spec.key === sub);
+  if ( base === "check" ) {
+    if ( spec.kind !== "check" ) return false;
+    if ( !sub ) return true;
+    if ( spec.type === "ability" ) return spec.key === sub;
+    if ( spec.type === "skill" ) return (actor?.system?.skills?.[spec.key]?.ability) === sub;
+    return false;
+  }
+  return false;
 }
 
 /**

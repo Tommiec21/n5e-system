@@ -174,6 +174,8 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
   const secret = secretOffer ? (choice && "secret" in choice ? !!choice.secret : secretOffer.checked) : false;
   let extra = "";
   let edited = false;
+  // Dice parts (Bless: +1d4) roll with the d20 even when no dialog was shown.
+  if ( !choice && parts.some(p => p.dice) ) choice = { off: [], added: [], on: [] };
   if ( choice ) {
     if ( choice.mode && choice.mode !== "own" ) mode = choice.mode;
     const composed = composeD20(parts, choice, spec.label);
@@ -181,7 +183,7 @@ export async function rollWithSpec(actor, spec, { event, mode: forced, dc = null
     extra = composed.extra;
     edited = composed.edited;
   }
-  const formula = `${MODES[mode]} + @bonus${extra ? ` + ${extra}` : ""}`;
+  const formula = `${MODES[mode]} + @bonus${extra ? (extra.startsWith("-") ? ` - ${extra.slice(1)}` : ` + ${extra}`) : ""}`;
   let roll = await createN5eRoll(formula, { bonus: spec.bonus }).evaluate();
   // STD1 reroll element: roll again and keep the lower, the higher, or the new result.
   if ( extraFx.reroll ) {
@@ -576,7 +578,8 @@ export async function rollInitiative(actor, { event } = {}) {
  */
 export async function initiativeFormulas(combatants, skill = null) {
   const entries = combatants.filter(c => c.actor).map(c => ({ c, actor: c.actor,
-    spec: skill ? rollSpec(c.actor, "skill", skill) : rollSpec(c.actor, "initiative", "") }));
+    // King 2026-11-16: effect roll bonuses (n5e.initiative, Bless dice) and rule elements count here too.
+    spec: contextualSpec(c.actor, skill ? { ...rollSpec(c.actor, "skill", skill), initiative: true } : rollSpec(c.actor, "initiative", "")) }));
   const out = {};
   if ( !entries.length ) return out;
   const formulaFor = (e, choice) => {
@@ -587,7 +590,8 @@ export async function initiativeFormulas(combatants, skill = null) {
     const parts = d20Parts(e.spec);
     const off = choice?.off ?? parts.filter(p => (choice?.offLabels ?? []).includes(p.label)).map(p => p.id);
     const composed = composeD20(parts, { off, added: choice?.added ?? [] });
-    return `${MODES[mode]} + ${composed.bonus}${composed.extra ? ` + ${composed.extra}` : ""}`;
+    const x = composed.extra;
+    return `${MODES[mode]} + ${composed.bonus}${x ? (x.startsWith("-") ? ` - ${x.slice(1)}` : ` + ${x}`) : ""}`;
   };
   if ( entries.length === 1 ) {
     const e = entries[0];

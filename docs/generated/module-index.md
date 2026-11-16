@@ -31,7 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 829 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 839 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
@@ -129,7 +129,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 243 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 162 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
-| `effect-fields.mjs` | 152 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
+| `effect-fields.mjs` | 163 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 45 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
@@ -192,8 +192,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantaged.mjs` | 114 | Advantage on any dice roll (King 2026-11-13; ADV2). | `rollAdvantaged`, `rollDice`, `ROLL_GROUPS`, `rollGroup`, `sheetRollMode`, `addSheetToggle`, `advantageNote`, `diceSources`, `promptDice`, `rollFormula` |
 | `d20.mjs` | 113 | d20 roll rules (pure). | `MODES`, `critThreshold`, `rollSpec`, `readD20`, `willOfFireAward` |
 | `n5e-roll.mjs` | 79 | Group N5e arithmetic before passing dice/modifiers to Foundry. | `n5eRollFormula`, `createN5eRoll` |
-| `roll-dialog.mjs` | 166 | The roll dialog (ROLL1; King 2026-11-14): every roll shows its math before it is rolled. | `wantsDialog`, `addedRowHTML`, `d20DialogHTML`, `diceDialogHTML`, `dialogs`, `chosenMode` |
-| `roll.mjs` | 610 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
+| `roll-dialog.mjs` | 168 | The roll dialog (ROLL1; King 2026-11-14): every roll shows its math before it is rolled. | `wantsDialog`, `addedRowHTML`, `d20DialogHTML`, `diceDialogHTML`, `dialogs`, `chosenMode` |
+| `roll.mjs` | 614 | Rolling d20s from the sheet and posting them to chat (Foundry side). | `rollD20`, `rollWithSpec`, `spendWillOfFire`, `groupRollChoice`, `secretByDefault`, `registerResolution`, `renderParityParts`, `ROLL_BUTTONS`, `onRenderChatMessage`, `rollInitiative`, `initiativeFormulas` |
 
 ## module/documents
 
@@ -226,7 +226,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `advantage.mjs` | 41 | Advantage / disadvantage sources (pure; ADV1). | `advantageSources`, `resolveMode`, `sourcesNote` |
 | `adversary-builder.mjs` | 120 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
 | `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
-| `amp-cards.mjs` | 241 | Amp cards, pure rules (AMP1a; docs/AMP1_SPEC.md). | `AMP_TYPES`, `AMP_END_TRIGGERS`, `ampKey`, `effectiveAmpType`, `ampTypeLabel`, `ampDefinition`, `ownsAmp`, `ampUsesLeft`, `ampCooldownLeft`, `activeAmpCards`, `ampCardsFor`, `ampWarnings`, `ampSpendUpdate`, `ampCooldownUpdate`, `ampEffectPlan`, `ampLimitConflict`, `ampsEndingOn`, `ampUsesAfterRest` |
+| `amp-cards.mjs` | 285 | Amp cards, pure rules (AMP1a; docs/AMP1_SPEC.md). | `AMP_TYPES`, `AMP_END_TRIGGERS`, `ampKey`, `effectiveAmpType`, `ampTypeLabel`, `ampDefinition`, `ownsAmp`, `ampUsesLeft`, `ampCooldownLeft`, `activeAmpCards`, `ampCardsFor`, `ampWarnings`, `ampSpendUpdate`, `ampCooldownUpdate`, `ampEffectPlan`, `ampLimitConflict`, `ampsEndingOn`, `ampUsesAfterRest`, `ampDefFor`, `effectLines`, `ampEffectView` |
 | `area.mjs` | 185 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `auras.mjs` | 40 | Auras and zones (ENG1d; docs/ENG1_SPEC.md). | `auraCounts`, `auraPlan` |
 | `authored-reactions.mjs` | 81 | Declarative before-damage recipes. | `validateReactionRecipe`, `allyReactionOffers`, `authoredReactionOffers` |
@@ -239,7 +239,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-options.mjs` | 192 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 223 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 245 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `DICE_BONUS`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
@@ -251,9 +251,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
-| `effect-authoring.mjs` | 213 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
+| `effect-authoring.mjs` | 218 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
-| `elements.mjs` | 363 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
+| `elements.mjs` | 395 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `rollBonusApplies`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
 | `environment.mjs` | 94 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `indirectExposure`, `mayBeImmune`, `breathSeconds`, `breathState`, `outOfBreathStatus`, `breathTurns`, `suffocationStep`, `fallDamage` |
 | `expiry.mjs` | 42 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
@@ -272,7 +272,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
 | `pf2e-emulation.mjs` | 78 | PRESTD1 Part D (King Q-PF4: "emulating PF2e for now"): wands, flanking and crafting. | `wandAction`, `overchargeHolds`, `segmentHitsRect`, `flanks`, `flankingEffect`, `CRAFT_RANKS`, `craftNumbers`, `craftOutcome` |
-| `plain-language.mjs` | 273 | Plain-language effects (UX1; docs/UX1_SPEC.md), pure: describeChange(change, catalog)   "+2 Damage Reduction", "Unarmed Damage Die: 1d10" describeRule(rule, ... | `describeChange`, `RULE_KINDS`, `selectorBases`, `WHEN_FACTS`, `RULE_WHO`, `RULE_TRIGGERS`, `describeRule`, `ruleToRow`, `rowToRule`, `NEW_RULE` |
+| `plain-language.mjs` | 274 | Plain-language effects (UX1; docs/UX1_SPEC.md), pure: describeChange(change, catalog)   "+2 Damage Reduction", "Unarmed Damage Die: 1d10" describeRule(rule, ... | `describeChange`, `RULE_KINDS`, `selectorBases`, `WHEN_FACTS`, `RULE_WHO`, `RULE_TRIGGERS`, `describeRule`, `ruleToRow`, `rowToRule`, `NEW_RULE` |
 | `positioning.mjs` | 105 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `nearestCells`, `edgeGap`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 123 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `SLOW_PROFICIENCY`, `proficiencyFor`, `freeFeatCount`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiParts`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
@@ -283,7 +283,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `resources.mjs` | 14 | Positive integer costs only; explicit zero is a free operation, never an implicit spend of one. | `resourceChange` |
 | `rest.mjs` | 190 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
 | `riders.mjs` | 227 | Feature riders on the action card (pure; CARD1d, King 2026-11-14; plan docs/CARD1D_SPEC.md). | `NATURE_RELEASES`, `riderFits`, `triggerRiders`, `targetFacts`, `triggered`, `saveEffect`, `eventSave`, `resolveAmount`, `riderOnTarget`, `adjustedInflicts`, `riderEntry`, `validateRider` |
-| `roll-math.mjs` | 154 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
+| `roll-math.mjs` | 159 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
 | `scrolls.mjs` | 46 | PRESTD1 Part B: jutsu scrolls (King 2026-11-15, Q-P3, Q-P4, Q-P11). | `scrollDiscipline`, `scrollSkill`, `scrollNumbers`, `skillTier`, `tierAllows`, `tierMaxRank`, `scrollName` |
 | `senses.mjs` | 77 | Senses → token vision (pure). | `SENSE_MODES`, `visionFromSenses`, `movementCost`, `speedBand` |
 | `settings.mjs` | 22 | Optional-rule lookup for the shared core (SHARED1). | `setRuleProvider`, `rule` |
@@ -314,8 +314,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
-| `character.mjs` | 559 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
-| `combat.mjs` | 432 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
+| `character.mjs` | 578 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
+| `combat.mjs` | 434 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `effect-editor.mjs` | 99 | Effect editor view model (UX1; docs/UX1_SPEC.md), pure. | `pickerGroups`, `normalizeModes`, `changeCards`, `ruleRows` |
@@ -331,11 +331,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `action-card.mjs` | 574 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
-| `activity-buttons.mjs` | 538 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 539 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 133 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
-| `amp-cards.mjs` | 285 | Amp cards, Foundry side (AMP1a; docs/AMP1_SPEC.md). | `AMP_PACK`, `registerAmp`, `loadAmpCards`, `keyForAmp`, `isResponsible`, `applyAmp`, `placeAmp`, `endAmp`, `onAmpCreated`, `endAmpsOn`, `startOnInitiative`, `registerAmpCards` |
+| `amp-cards.mjs` | 294 | Amp cards, Foundry side (AMP1a; docs/AMP1_SPEC.md). | `AMP_PACK`, `registerAmp`, `loadAmpCards`, `keyForAmp`, `isResponsible`, `applyAmp`, `placeAmp`, `endAmp`, `onAmpCreated`, `endAmpsOn`, `startOnInitiative`, `registerAmpCards` |
 | `apply-damage.mjs` | 350 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 281 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |

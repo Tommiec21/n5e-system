@@ -28,7 +28,8 @@ export function describeChange(change, catalog = [], N5E = {}) {
     const label = v.startsWith("group:") ? `all ${cap(v.slice(6))} conditions` : N5E.conditions?.[v]?.label ?? N5E.clanConditions?.[v]?.label ?? v;
     return `${name}: ${label}`;
   }
-  if ( field.type === "number" || field.type === "adjustment" ) {
+  if ( field.type === "bonus" && /d\d/i.test(v) ) return `${v.startsWith("-") ? "−" + v.slice(1) : "+" + v.replace(/^\+/, "")} ${name}`;
+  if ( field.type === "number" || field.type === "adjustment" || field.type === "bonus" ) {
     if ( /^[*/]/.test(v) ) return `${name} ${v.startsWith("*") ? "×" : "÷"}${v.slice(1)}`;
     if ( Number.isFinite(Number(v)) ) {
       const mode = Number(change.mode ?? 2);

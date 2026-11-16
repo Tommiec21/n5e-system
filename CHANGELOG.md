@@ -1,3 +1,17 @@
+## 0.60.0-alpha.11 — Dice bonuses on rolls (Bless)
+
+- **Dice bonuses (King):** effects can add dice to rolls, so a Bless Amp works: **+1d4** to attack rolls and saving throws, rolled together with the d20. Bane-style penalties work too (**−1d4**).
+- **Fields that take a number or dice:**
+  - **All Attack Rolls**, plus Weapon, Unarmed, Ninjutsu, Taijutsu and Genjutsu Attack Rolls;
+  - new: **All Saving Throws**, **Strength Saves** … **Charisma Saves**;
+  - new: **All Ability Checks**, **Strength Checks** … **Charisma Checks** (an ability's checks and every skill that uses it);
+  - new: **Initiative Roll**.
+- **Roll rules:** a "Bonus or penalty" rule can be dice too, for situational dice. Dice on a damage or healing rule are added to that roll.
+- The old Foundry fields that only take a number are now labelled "(number only)". Typing dice into one says which field to use instead.
+- **Initiative** now counts effect bonuses and roll rules.
+- The roll card's breakdown shows each die bonus by name, e.g. "Bless (1d4)". The roll dialog lists it with a tick box, like other modifiers.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.10 — Jutsu rows show their names again
 
 - **Fix:** the Jutsu tab's rows lost their names and range in 0.60.0-alpha.8. A general row style squeezed the row into a 200px column. Rows now span the full width: name, range, cost, hit or DC, and Use on one line, with the keyword chips underneath. The pill view is unaffected.

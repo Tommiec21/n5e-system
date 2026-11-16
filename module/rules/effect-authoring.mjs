@@ -19,6 +19,7 @@ export function effectFieldCatalog(config) {
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
     else if ( ["n5e.resist", "n5e.immune"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
     else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
+    else if ( /^n5e\.(attack\.\w+|save\.\w+|check\.\w+|initiative)$/.test(field.key) ) { type = "bonus"; example = "1d4"; }
     else if ( ["n5e.conditionResist", "n5e.conditionImmune"].includes(field.key) ) { type = "condition"; example = "group:physical"; }
     else if ( ["n5e.stateResist", "n5e.stateImmune"].includes(field.key) ) { type = "state"; choices = RESISTIBLE_STATES; example = "grappled"; }
     const custom = field.key.startsWith("n5e.");
@@ -42,6 +43,7 @@ export function validateEffectChanges(changes, original, catalog) {
     else if ( !field ) problem = `"${change.key}" isn't a field N5e knows. It is kept only if you leave it unchanged.`;
     else if ( !field.modes.includes(Number(change.mode)) ) problem = field.custom ? "this field always adds; set Mode to Add under Advanced." : "pick a mode under Advanced.";
     else if ( change.priority != null && change.priority !== "" && !Number.isFinite(Number(change.priority)) ) problem = "priority must be a number.";
+    else if ( field.type === "number" && /\d*d\d+/i.test(value) ) problem = "this field takes a number only. For dice (1d4), use the matching N5e roll field: All Attack Rolls, All Saving Throws, All Ability Checks or Initiative Roll.";
     else if ( field.type === "number" && (!value || !Number.isFinite(Number(value))) ) { try { resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
     else if ( field.type === "ability" && !field.choices.includes(value) ) problem = "pick an ability.";
     else if ( field.type === "dice" && !/^([1-9]\d*)?d[1-9]\d*$/.test(value) ) problem = "enter dice, like 1d8.";
@@ -50,6 +52,7 @@ export function validateEffectChanges(changes, original, catalog) {
     else if ( field.type === "damageType" && !field.choices.includes(value) ) problem = "pick a damage type.";
     else if ( field.type === "condition" && !/^(group:)?[A-Za-z][\w-]{0,59}$/.test(value) ) problem = "pick a condition or a group.";
     else if ( field.type === "state" && !field.choices.includes(value) ) problem = "pick a state.";
+    else if ( field.type === "bonus" && !/^[+-]?\s*(\d*d\d+|\d+)$/i.test(value) ) problem = "enter a number (2, -1) or dice (1d4, -1d4).";
     else if ( field.type === "text" && !value ) problem = field.key.startsWith("n5e.mastery.") ? "enter where it comes from, like the Amp's name." : "enter a value.";
     if ( value.length > 1000 ) problem = "value is too long.";
     if ( problem ) {
@@ -96,7 +99,9 @@ export function validateConditionalRules(rules) {
       // STD6d: the highest of some ability modifiers ("mod(int,wis,cha)": Agile).
       || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value)
       // CCOND1: so much per rank of the condition carrying it ("ranks(-2)").
-      || /^ranks\(-?\d+\)$/.test(r.value));
+      || /^ranks\(-?\d+\)$/.test(r.value)
+      // King 2026-11-16 (Bless): a modifier can be dice ("1d4", "-1d4").
+      || (r.key === "modifier" && /^[+-]?\d*d\d+$/i.test(r.value.replace(/\s+/g, ""))));
     if ( NUMERIC.has(r.key) && !rankValued ) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);
