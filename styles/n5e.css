@@ -68,7 +68,13 @@
 .n5e-effect-config .n5e-browser-actions select { flex: 1 1 12rem; }
 .n5e-effect-config .n5e-effect-h { margin: .4rem 0 0; font-size: 1.05em; }
 /* UX1: each change is a stacked card, so nothing overlaps at any width. */
-.n5e-effect-config .n5e-change-cards, .n5e-effect-config .n5e-rule-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+/* Change cards fill a row left to right, at most 3 per row, wrapping to fewer as the window narrows. */
+.n5e-effect-config .n5e-change-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; align-items: stretch; justify-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(max(14rem, calc((100% - 1rem) / 3)), 1fr)); }
+.n5e-effect-config .n5e-change-cards > li.hint { grid-column: 1 / -1; }
+.n5e-effect-config .n5e-change-card { width: auto; margin: 0; min-width: 0; }
+.n5e-effect-config .n5e-change-card .n5e-change-value { max-width: none; }
+.n5e-effect-config .n5e-rule-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
 .n5e-effect-config .n5e-change-card, .n5e-effect-config .n5e-rule-row { display: flex; flex-direction: column; gap: .35rem; padding: .5rem .6rem;
   border: 1px solid var(--color-border-light-primary, #999); border-radius: 6px; }
 .n5e-effect-config .n5e-change-card.bad { border-color: #a33; }

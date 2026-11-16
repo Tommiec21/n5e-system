@@ -1,3 +1,8 @@
+## 0.60.0-alpha.5 — Effect editor: change cards in rows
+
+- **Layout (King):** the effect editor's change cards fill a row left to right, at most 3 per row. Narrower windows wrap to 2 or 1 per row. Cards in a row share the same height, so the rows look even.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.4 — Condition Resistance in effects
 
 - **New effect field (King): Condition Resistance** (`n5e.conditionResist`), under Defense. Pick one condition (Bruised) or a whole group (All Physical / Mental / Sensory / Elemental / Fatigue conditions).
