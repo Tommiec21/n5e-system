@@ -299,7 +299,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
 
     // Ability checks: mod + check bonuses + condition penalties (rolled from the ability strip).
     for ( const key of Object.keys(abilities) ) {
-      const b = B(`check.${key}`, `${abilities[key].label} check`).base(abbr(key), mod(key))
+      const b = addMastery(B(`check.${key}`, `${abilities[key].label} check`).base(abbr(key), mod(key)), `check.${key}`)
         .add("Bonuses", this.bonuses.check).addAll(d20Parts(key)).addAll(P("checksAndAttacks"));
       this.abilities[key].check = b.total;
     }
@@ -592,7 +592,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
    * Step 6/7: Mastery map {target: {rank, bonus, sources[]}} with the level cap.
    * Each distinct source counts once (the same feature twice is still one rank); rank = number of
    * sources, capped by level (rules/progression.mjs masteryRank). Targets are strings like
-   * "skill.ath", "save.con", "tool.medicine", "attack.tai", "initiative".
+   * "skill.ath", "save.con", "check.str", "tool.medicine", "attack.tai", "initiative".
    */
   _prepareMastery(grants, mods) {
     const map = new Map();
@@ -604,6 +604,12 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     for ( const s of this.mastery.sources ) add(s.target, s.source);
     for ( const s of grants.mastery ) add(s.target, s.source);
     for ( const s of mods.mastery ) add(s.target, s.source);
+    // Ability Check Mastery (check.<ability>): its sources also count for every skill that uses the
+    // ability (each distinct source once, together with the skill's own).
+    for ( const [key, skill] of Object.entries(this.skills ?? {}) ) {
+      const shared = map.get(`check.${skill.ability}`);
+      if ( shared ) for ( const source of shared ) add(`skill.${key}`, source);
+    }
     this.masteryMap = {};
     for ( const [target, sources] of map ) {
       const rank = masteryRank(sources.size, this.level);

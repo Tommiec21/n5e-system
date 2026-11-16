@@ -129,7 +129,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 243 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 162 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
-| `effect-fields.mjs` | 132 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
+| `effect-fields.mjs` | 137 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 45 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
@@ -150,7 +150,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 646 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 652 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
@@ -239,7 +239,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-options.mjs` | 192 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 206 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 209 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |

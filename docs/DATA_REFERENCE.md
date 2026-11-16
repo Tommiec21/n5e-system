@@ -850,3 +850,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | `validateEffectChanges()` `.rows` | {index: {problem, blocking}}: the plain-language problem for each change. |
 | `module/rules/plain-language.mjs` | `describeChange`, `describeRule`, the roll rules builder (`ruleToRow`, `rowToRule`, `RULE_KINDS`, `selectorBases`, `WHEN_FACTS`). |
 | Amp card: Active Effects on the card | Their changes and `flags.n5e.rules` are part of the Amp (with `system.changes` and the card's own rules); switched-off effects are left out. |
+
+## Added in 0.60.0-alpha.3
+
+| Path | Meaning |
+| --- | --- |
+| Change key `n5e.mastery.check.<ability>` | Ability Check Mastery: a Mastery source for that ability's checks (target `check.<ability>`) and every skill whose ability it is. |

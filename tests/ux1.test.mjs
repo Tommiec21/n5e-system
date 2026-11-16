@@ -151,3 +151,17 @@ test("the Amp card sheet: plain sections, definitions, Advanced collapsed, and W
   assert.deepEqual(lines, ["+2 Damage Reduction", "Advantage on your Constitution saves."]);
   assert.match(vm.subtitle, /Clan Amp/);
 });
+
+// King 2026-11-16: Ability Check Mastery covers the ability's checks and every skill under it.
+import { makeActor, baseAbilities, taiSpec } from "./helpers/actor.mjs";
+test("Ability Check Mastery raises the ability's checks and every skill that uses it", () => {
+  assert.equal(fieldInfo("n5e.mastery.check.str", N5E).name, "Strength Check Mastery");
+  assert.ok(catalog.some(f => f.key === "n5e.mastery.check.dex" && f.category === "Skills & Mastery"));
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(12)], n5eChanges: [{ key: "n5e.mastery.check.str", value: "White Wolf", mode: 2 },
+    { key: "n5e.mastery.skill.ath", value: "Training", mode: 2 }, { key: "n5e.mastery.skill.ath", value: "White Wolf", mode: 2 }] });
+  const s = a.system;
+  assert.equal(s.masteryFor("check.str").rank, 1, "Strength checks");
+  assert.ok(s.breakdowns["check.str"].parts.some(p => /Mastery/.test(p.label)), "on the check's breakdown");
+  assert.equal(s.skills.ath.mastery, 2, "Athletics: White Wolf counts once, plus Training");
+  assert.equal(s.skills.acr.mastery, 0, "a Dexterity skill is unaffected");
+});

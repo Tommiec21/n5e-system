@@ -108,6 +108,11 @@ export function fieldInfo(key, N5E = {}) {
       enter: "Pick an ability.", example: "wis", stacks: LARGEST };
   }
   if ( key.startsWith("n5e.mastery.") ) {
+    if ( key.startsWith("n5e.mastery.check.") && ability ) {
+      return { name: `${ability} Check Mastery`, category: "Skills & Mastery", words: `mastery rank ability check skills ${ability}`,
+        what: `Raises your mastery in ${ability} checks and every ${ability} skill by one step.`,
+        enter: "Where it comes from, such as the Amp's name.", example: "White Wolf", stacks: "Each different source raises it one step, together with each skill's own sources." };
+    }
     const label = key.startsWith("n5e.mastery.skill.") ? skill : key.startsWith("n5e.mastery.save.") ? `${ability} Save` : key.startsWith("n5e.mastery.tool.") ? tool
       : key.startsWith("n5e.mastery.attack.") ? `${discName[last]} Attack` : null;
     if ( !label ) return null;

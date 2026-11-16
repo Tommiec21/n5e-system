@@ -3,7 +3,8 @@
  * are held back from core application and parsed here into one structured object the derived-data
  * pipeline reads.
  *
- *   n5e.mastery.<target>          adds a Mastery source; value = source label (e.g. skill.ste, save.con)
+ *   n5e.mastery.<target>          adds a Mastery source; value = source label (e.g. skill.ste, save.con;
+ *                                 check.str: Strength checks and every Strength skill)
  *   n5e.dr                        +DR (number)
  *   n5e.pierce                    +Pierce (number)
  *   n5e.critRange.<scope>         +crit range (all|weapon|unarmed|nin|tai|gen|buki); capped at +3
@@ -189,6 +190,8 @@ export function changeKeyCatalog(N5E) {
   add("Concentration", "n5e.concentration.max", "Max concentration jutsu: + number");
   for ( const [k, v] of Object.entries(N5E.skills ?? {}) ) add("Mastery", `n5e.mastery.skill.${k}`, `Mastery rank: ${v.label} (value = source label)`);
   for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Mastery", `n5e.mastery.save.${k}`, `Mastery rank: ${v.label} save`);
+  // King 2026-11-16: one source covers the ability's checks and every skill under that ability.
+  for ( const [k, v] of Object.entries(N5E.abilities ?? {}) ) add("Mastery", `n5e.mastery.check.${k}`, `Mastery rank: ${v.label} checks and every ${v.label} skill`);
   for ( const [k, v] of Object.entries(N5E.toolkits ?? {}) ) add("Mastery", `n5e.mastery.tool.${k}`, `Mastery rank: ${v.label}`);
   add("Mastery", "n5e.mastery.initiative", "Mastery rank: Initiative");
   for ( const d of ["nin", "tai", "gen"] ) add("Mastery", `n5e.mastery.attack.${d}`, `Mastery rank: ${discLabel(d)} attack`);

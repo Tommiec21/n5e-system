@@ -1,3 +1,12 @@
+## 0.60.0-alpha.3 — Ability Check Mastery
+
+- **New effect fields (King):** **Strength / Dexterity / Constitution / Intelligence / Wisdom / Charisma Check Mastery** (`n5e.mastery.check.<ability>`), under Skills & Mastery in the field picker.
+- One source raises the ability's own checks and every skill that uses that ability by one step. Example: Strength Check Mastery from White Wolf raises Strength checks and Athletics.
+- It counts together with a skill's own sources. Each distinct source still counts once, so White Wolf giving both Strength Check Mastery and Athletics Mastery is one step, not two. The usual level cap applies.
+- Ability checks now show Mastery in their breakdown.
+- Toolkits aren't tied to an ability, so they aren't affected.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.2 — Effect editor: the Changes tab stays on its own tab
 
 - **Fix:** the effect editor's Changes content showed under the Details and Duration tabs too. It now shows only on the Changes tab.
