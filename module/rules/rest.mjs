@@ -20,6 +20,7 @@ import { n5eConfig } from "./host.mjs";
 import { rule } from "./settings.mjs";
 import { recoveryAllowed } from "./features.mjs";
 import { resolveFormula } from "./unarmed.mjs";
+import { ampUsesAfterRest } from "./amp-cards.mjs";
 
 const DAY = 86400;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -176,6 +177,12 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
       items.push({ _id: i.id, "system.uses.spent": 0 });
       refreshed.push(i.name);
     }
+  }
+  // AMP1a: Amp card uses come back by their per.
+  const ampUses = ampUsesAfterRest(actor, recovers);
+  if ( ampUses ) {
+    Object.assign(update, ampUses);
+    refreshed.push("Amp uses");
   }
   if ( refreshed.length ) lines.push(`Recovered: ${refreshed.join(", ")}`);
   return { update, items, conditions, lines };

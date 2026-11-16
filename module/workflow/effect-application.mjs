@@ -81,6 +81,13 @@ export async function applyEffectFromCard(message, index) {
     for ( const t of targets ) await applyConditionCard(t, data.condition, { applier: applierFor(source) }).catch(e => ui.notifications.warn(e.message));
     return targets.length;
   }
+  // AMP1a: an effect that is an Amp card starts that Amp on every recipient.
+  if ( data.amp ) {
+    const source = card.sourceUuid ? await fromUuid(card.sourceUuid) : null;
+    const { applyAmp } = await import("./amp-cards.mjs");
+    for ( const t of targets ) await applyAmp(t, data.amp, { applier: source?.actor ?? source ?? null }).catch(e => ui.notifications.warn(e.message));
+    return targets.length;
+  }
   const { owned, skipped } = ownedRecipients(targets, game.user);
   if ( !owned.length ) return ui.notifications.info(skippedNotice(skipped) ?? "Select or target the creatures that receive this effect.");
   const source = card.sourceUuid ? await fromUuid(card.sourceUuid) : null;

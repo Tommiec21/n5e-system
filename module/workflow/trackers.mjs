@@ -16,7 +16,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  *
  * Folder conventions (pure rules vs Foundry side, who runs what, ownership): workflow/turn.mjs header.
  */
-import { chilledMove, gainFury, spendFury, furyTurnEnd, jutsuTrackers, trackerEffectData, marksToExpire, ampsToDisable, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects } from "../rules/trackers.mjs";
+import { chilledMove, gainFury, spendFury, furyTurnEnd, jutsuTrackers, trackerEffectData, marksToExpire, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects } from "../rules/trackers.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 import { innerGates } from "../config/combat.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
@@ -24,7 +24,6 @@ import { rollWithSpec } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { esc } from "../view-models/common.mjs";
 import { applyOrOffer } from "./effect-application.mjs";
-import { rule } from "../rules-settings.mjs";
 import { abilities } from "../config/core.mjs";
 
 /**
@@ -154,17 +153,7 @@ export async function onTrackerClick(message, btn, { targetActors = null } = {})
   return null;
 }
 
-/** Amp limit (optional): a new Amp switches older ones off (runs on the creating client). */
-export async function onAmpCreated(effect, options, userId) {
-  if ( effect.type !== "amp" || userId !== game.user.id || rule("ampLimit") === "none" ) return;
-  const actor = effect.parent;
-  if ( !(actor instanceof Actor) ) return;
-  const others = actor.effects.filter(e => e.type === "amp" && e.id !== effect.id).sort((a, b) => (a.duration?.startTime ?? 0) - (b.duration?.startTime ?? 0));
-  const off = ampsToDisable(others, effect.system.ampType);
-  if ( !off.length ) return;
-  await actor.updateEmbeddedDocuments("ActiveEffect", off.map(e => ({ _id: e.id, disabled: true })));
-  await say(actor, `<b>${esc(actor.name)}</b>: Amp limit (${rule("ampLimit") === "singleton" ? "Singleton" : "Rule of 3's"}). Switched off ${esc(off.map(e => e.name).join(", "))}; switch which one applies on the Effects tab.`);
-}
+// AMP1a: the Amp limit (King Q-A3, the creature picks) moved to workflow/amp-cards.mjs onAmpCreated.
 
 /* -------------------------------------------- */
 /*  8-Inner Gates                               */
@@ -376,6 +365,17 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     }
     return done.length ? { applied: done } : null;
   }
+  // AMP1a: an effect activity naming an Amp card ({amp: key}) starts that Amp (King Q-A2 confirmation,
+  // uses and cooldown, GM relay for creatures this user doesn't own).
+  if ( eff.amp ) {
+    const { applyAmp } = await import("./amp-cards.mjs");
+    const done = [];
+    for ( const t of targets ) {
+      try { if ( await applyAmp(t, eff.amp, { applier: actor, item }) ) done.push(t.name); }
+      catch(e) { ui.notifications.warn(e.message); }
+    }
+    return done.length ? { applied: done } : null;
+  }
   const now = nowTurn();
   const changes = (eff.changes ?? []).map(c => {
     const v = sub(c.value);
@@ -384,11 +384,13 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // Duration: the given seconds; otherwise 2 rounds for turn-ended effects (a safety net if the turn
   // hook never runs, e.g. out of combat) and 1 minute for the rest.
   const seconds = eff.seconds || (eff.expires ? 12 : 60);
-  const data = { name: eff.name || label, img: item?.img ?? "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
+  const data = { name: eff.name || label, img: eff.img || item?.img || "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
     duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
+      // AMP1a: what ends an Amp card's effect (rules/amp-cards.mjs ampsEndingOn; King Q-A5).
+      ...(eff.ampKey ? { ampEnds: [...(eff.endsOn ?? []), ...(eff.until === "combatEnd" || eff.until === "rest" ? [eff.until] : [])] } : {}),
       // STD6d: class table values ("@scale.…") become numbers here; lvl(...) values are read at roll time.
       ...(eff.rules?.length ? { rules: eff.rules.map(r => Object.fromEntries(Object.entries(r).map(([k, v]) => {
         if ( typeof v !== "string" || !/@(scale|dc|level)/.test(v) ) return [k, v];
@@ -402,7 +404,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
         [k, typeof v === "string" && /@(scale|dc|level)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
-  if ( eff.ampType ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType, sourceUuid: actor.uuid } });
+  if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid } });
   const notes = [];
   if ( eff.limit ) {
     const max = Math.max(1, Number(evalNumber(sub(String(eff.limit)))) || 1);
@@ -422,7 +424,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old);
     }
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
-    if ( changes.length || eff.expires || eff.state || eff.ampType || eff.rules?.length || eff.aura?.radius ) {
+    if ( changes.length || eff.expires || eff.state || eff.ampType || eff.ampKey || eff.rules?.length || eff.aura?.radius ) {
       if ( t.isOwner ) await t.createEmbeddedDocuments("ActiveEffect", [data]);
       else await requestEffects({ actorUuid: t.uuid, effects: [data] }, actor, item);
     }

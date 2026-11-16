@@ -961,3 +961,24 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2 .cc-card .cc-text { display: flex; flex-direction: column; min-width: 0; }
 .n5e-v2 .cc-card .sub { text-transform: capitalize; }
 .n5e-v2 .cc-card .cc-summary { font-size: 11px; color: var(--n5e-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* -------------------------------------------- */
+/*  Amp cards (AMP1a)                           */
+/* -------------------------------------------- */
+
+.n5e-v2 .amps .amp-cards { display: grid; gap: 6px; margin-top: 6px; }
+.n5e-v2 .amp-card { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px;
+  background: var(--n5e-card); border: 1px solid var(--n5e-line); border-left: 4px solid var(--amp-color, var(--n5e-muted)); cursor: grab; }
+.n5e-v2 .amp-card:active { cursor: grabbing; }
+.n5e-v2 .amp-card.on { box-shadow: inset 0 0 0 1px var(--amp-color, var(--n5e-accent)); }
+.n5e-v2 .amp-card img { border: none; border-radius: 6px; }
+.n5e-v2 .amp-card .amp-text { display: flex; flex-direction: column; min-width: 0; }
+.n5e-v2 .amp-card .amp-pips { display: flex; gap: 3px; margin-top: 2px; }
+.n5e-v2 .amp-card .pip { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--amp-color, var(--n5e-muted)); }
+.n5e-v2 .amp-card .pip.full { background: var(--amp-color, var(--n5e-muted)); }
+.n5e-v2 .amp-battle { --amp-color: #b03a2e; }
+.n5e-v2 .amp-reflex { --amp-color: #1f7a8c; }
+.n5e-v2 .amp-fortitude { --amp-color: #8a6d1f; }
+.n5e-v2 .amp-will { --amp-color: #6a3d9a; }
+.n5e-v2 .amp-clan { --amp-color: #2e7d32; }
+.n5e-v2 .amps .rank.amp-typeless { font-style: italic; color: var(--n5e-muted); }

@@ -27,7 +27,7 @@ import { turnStartPlan } from "../rules/turn-start.mjs";
 import { esc } from "../view-models/common.mjs";
 import { rule } from "../rules-settings.mjs";
 import { postConditionDamage, processConditionTurnEnd } from "./conditions.mjs";
-import { trackersTurnEnd, onTokenMove, onAmpCreated, expireSourceEffects } from "./trackers.mjs";
+import { trackersTurnEnd, onTokenMove, expireSourceEffects } from "./trackers.mjs";
 import { areasTurnStart, areasTurnEnd } from "./areas.mjs";
 import { recoverCombatUses } from "./recovery.mjs";
 import { expireInCombat, expireEffects } from "./expiry.mjs";
@@ -138,13 +138,12 @@ export async function combatEndPipeline(combat) {
  * Hooks this module still listens to (registered once from n5e.mjs). Turn start/end, round start
  * and combat end are N5eCombat methods (documents/combat.mjs), not hooks.
  *   moveToken(token, movement)       Chilled movement damage (workflow/trackers.mjs onTokenMove)
- *   createActiveEffect(effect)       Amp limit enforcement (workflow/trackers.mjs onAmpCreated)
+ *   createActiveEffect(effect)       Amp limits: workflow/amp-cards.mjs (AMP1a)
  */
 export function registerTurnHooks() {
   // Chilled: damage when a Chilled creature moves (trackers.mjs onTokenMove).
   Hooks.on("moveToken", (token, movement) => onTokenMove(token, movement));
   // Optional Amp limit: a new Amp may switch older ones off.
-  Hooks.on("createActiveEffect", (effect, options, userId) => onAmpCreated(effect, options, userId));
 }
 
 /** Chat buttons on turn cards. */

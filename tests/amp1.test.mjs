@@ -1,0 +1,153 @@
+/** AMP1a: Amp cards, the engine (docs/AMP1_SPEC.md). */
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { makeActor, taiSpec, baseAbilities } from "./helpers/actor.mjs";
+import { ampDefinition, ampKey, effectiveAmpType, ampTypeLabel, ownsAmp, ampUsesLeft, ampCooldownLeft, ampCardsFor, ampWarnings,
+  ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampUsesAfterRest } from "../module/rules/amp-cards.mjs";
+import { validateIntent, INTENT_TYPES } from "../module/automation/owner-intents.mjs";
+import { restPlan } from "../module/rules/rest.mjs";
+import { ampsVM } from "../module/view-models/combat.mjs";
+import { AmpCardData } from "../module/data/item/amp-card.mjs";
+
+const card = (system, extra = {}) => ({ name: "Test Amp", img: "icons/x.svg", uuid: "Compendium.n5e.amps.Item.abc", system, ...extra });
+const white = ampDefinition(card({ identifier: "inuzuka-white-wolf", ampType: "battle", owner: { kind: "clan", id: "inuzuka" },
+  summary: "+2 damage", duration: { seconds: 60, until: "", concentration: false }, uses: { max: "2", per: "lr" }, cooldown: 600,
+  endsOn: ["staggered", "noChakra"], changes: [{ key: "system.bonuses.damage", value: "2", mode: 2 }] }, { name: "White Wolf" }));
+
+test("the Amp card data model has every field the engine reads", () => {
+  const keys = Object.keys(AmpCardData.defineSchema());
+  for ( const k of ["identifier", "ampType", "namedType", "owner", "summary", "activation", "giveable", "startOnInitiative", "duration",
+    "uses", "cooldown", "exclusive", "state", "tempHp", "endsOn", "changes", "aura"] ) assert.ok(keys.includes(k), k);
+});
+
+test("King Q-A1: an Amp a clan provides is a Clan Amp; the box's type is kept as a note", () => {
+  assert.equal(white.ampType, "clan");
+  assert.equal(white.namedType, "battle");
+  assert.equal(effectiveAmpType({ ampType: "reflex", owner: { kind: "class", id: "x" } }), "reflex");
+  assert.equal(ampKey({ name: "Kujaku Mode!", system: {} }), "kujaku-mode");
+});
+
+test("King Q-A4: an Amp can have no type, labelled \"No type\"", () => {
+  const feral = ampDefinition(card({ identifier: "feral", ampType: "" }));
+  assert.equal(feral.ampType, "");
+  assert.equal(ampTypeLabel(feral.ampType), "No type");
+  assert.equal(effectiveAmpType({ ampType: "nonsense" }), "");
+});
+
+test("ownership: class (and subclass), clan, feat, or anyone", () => {
+  const inu = makeActor({ system: baseAbilities, items: [{ type: "clan", name: "Inuzuka", system: { identifier: "inuzuka" } }] });
+  const tai = makeActor({ system: baseAbilities, items: [taiSpec(3)] });
+  assert.ok(ownsAmp(inu, white));
+  assert.ok(!ownsAmp(tai, white));
+  assert.ok(ownsAmp(tai, { owner: { kind: "class", id: "taijutsu-specialist" } }));
+  assert.ok(!ownsAmp(tai, { owner: { kind: "class", id: "taijutsu-specialist", subclass: "nope" } }));
+  assert.ok(ownsAmp(tai, { owner: { kind: "any" } }));
+});
+
+test("uses and cooldowns are counted per creature", () => {
+  const a = { flags: { n5e: { ampUses: { w: { spent: 1, per: "lr", cooldownUntil: 700 } } } } };
+  assert.deepEqual(ampUsesLeft(a, "w", white), { max: 2, left: 1, spent: 1 });
+  assert.equal(ampUsesLeft(a, "w", { uses: { max: "" } }), null);
+  assert.equal(ampCooldownLeft(a, "w", 100), 600);
+  assert.deepEqual(ampSpendUpdate(a, "w", white), { "flags.n5e.ampUses.w": { spent: 2, per: "lr", cooldownUntil: 700 } });
+  assert.deepEqual(ampCooldownUpdate("w", white, 1000, { spent: 2 }), { "flags.n5e.ampUses.w": { spent: 2, cooldownUntil: 1600 } });
+  assert.equal(ampSpendUpdate(a, "w", { uses: { max: "" }, cooldown: 0 }), null);
+});
+
+test("King Q-A2: the confirmation warns about the source, giving a self-only Amp, uses and cooldown", () => {
+  const inu = makeActor({ name: "Kiba", system: baseAbilities, items: [{ type: "clan", name: "Inuzuka", system: { identifier: "inuzuka" } }],
+    flags: { ampUses: { w: { spent: 2, cooldownUntil: 999 } } } });
+  inu.uuid = "Actor.kiba";
+  const ally = { name: "Hinata", uuid: "Actor.hinata", items: [] };
+  const w = ampWarnings(white, { applier: inu, target: ally, key: "w", worldTime: 0 });
+  assert.equal(w.length, 3);
+  assert.match(w[0], /normally used on yourself/);
+  assert.match(w[1], /No uses/);
+  assert.match(w[2], /cooling down/);
+  assert.match(ampWarnings(white, { applier: ally, target: ally })[0], /no clan that grants White Wolf/);
+  assert.deepEqual(ampWarnings({ ...white, giveable: true, uses: { max: "" }, owner: { kind: "any" } }, { applier: inu, target: ally }), []);
+});
+
+test("a card applies as an Amp effect of its type, carrying its key and endings", () => {
+  const plan = ampEffectPlan("w", white);
+  assert.equal(plan.ampType, "clan");
+  assert.equal(plan.ampKey, "w");
+  assert.equal(plan.seconds, 60);
+  assert.deepEqual(plan.endsOn, ["staggered", "noChakra"]);
+  const turn = ampEffectPlan("t", { ...white, duration: { seconds: 0, until: "nextTurnEnd" } });
+  assert.equal(turn.expires, "nextTurnEnd");
+  const fight = ampEffectPlan("c", { ...white, duration: { seconds: 0, until: "combatEnd" } });
+  assert.equal(fight.until, "combatEnd");
+  assert.ok(fight.seconds >= 3600, "lasts until the combat ends, not 1 minute");
+});
+
+test("King Q-A3: Singleton asks among the Amps of the new one's type; typeless Amps don't clash", () => {
+  const amps = [{ id: "1", system: { ampType: "battle" } }, { id: "2", system: { ampType: "reflex" } }, { id: "3", system: { ampType: "battle" }, disabled: true }];
+  const added = { id: "4", system: { ampType: "battle" } };
+  const c = ampLimitConflict(amps, added, "singleton");
+  assert.equal(c.kind, "singleton");
+  assert.deepEqual(c.candidates.map(a => a.id), ["1", "4"]);
+  assert.equal(c.keep, 1);
+  assert.equal(ampLimitConflict(amps, { id: "5", system: { ampType: "" } }, "singleton"), null);
+  assert.equal(ampLimitConflict(amps, added, "none"), null);
+});
+
+test("Rule of 3's asks which three stay on; a typeless Amp counts", () => {
+  const amps = [1, 2, 3].map(i => ({ id: String(i), system: { ampType: "" } }));
+  const c = ampLimitConflict(amps, { id: "4", system: { ampType: "will" } }, "ruleOfThree");
+  assert.equal(c.keep, 3);
+  assert.equal(c.candidates.length, 4);
+  assert.equal(ampLimitConflict(amps.slice(0, 2), { id: "4", system: { ampType: "will" } }, "ruleOfThree"), null);
+});
+
+test("King Q-A5: the Amps an event ends", () => {
+  const actor = { effects: [
+    { id: "a", type: "amp", flags: { n5e: { ampEnds: ["staggered"] } } },
+    { id: "b", type: "amp", flags: { n5e: { ampEnds: ["noChakra", "combatEnd"] } } },
+    { id: "c", type: "amp", disabled: true, flags: { n5e: { ampEnds: ["staggered"] } } },
+    { id: "d", type: "condition", flags: { n5e: { ampEnds: ["staggered"] } } }] };
+  assert.deepEqual(ampsEndingOn(actor, "staggered").map(e => e.id), ["a"]);
+  assert.deepEqual(ampsEndingOn(actor, "combatEnd").map(e => e.id), ["b"]);
+  assert.deepEqual(ampsEndingOn(actor, "blinded"), []);
+});
+
+test("rests bring Amp uses back by their per", () => {
+  const actor = { flags: { n5e: { ampUses: { a: { spent: 2, per: "lr" }, b: { spent: 1, per: "sr" }, c: { spent: 0, per: "sr" } } } } };
+  assert.deepEqual(ampUsesAfterRest(actor, new Set(["sr"])), { "flags.n5e.ampUses.b.spent": 0 });
+  assert.deepEqual(ampUsesAfterRest(actor, new Set(["sr", "lr"])), { "flags.n5e.ampUses.a.spent": 0, "flags.n5e.ampUses.b.spent": 0 });
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(3)], flags: { ampUses: { a: { spent: 1, per: "lr" } } } });
+  assert.equal(restPlan(a, "long").update["flags.n5e.ampUses.a.spent"], 0);
+  assert.equal(restPlan(a, "short").update["flags.n5e.ampUses.a.spent"], undefined);
+});
+
+test("the Amps panel lists the active Amps and the cards this creature can start", () => {
+  const inu = makeActor({ system: baseAbilities, items: [{ type: "clan", name: "Inuzuka", system: { identifier: "inuzuka" } }],
+    flags: { ampUses: { w: { spent: 1, per: "lr" } } } });
+  inu.effects.push({ id: "e1", type: "amp", name: "Feral", system: { ampType: "", key: "feral" }, duration: { label: "1 min" } });
+  const reg = { w: white, other: ampDefinition(card({ identifier: "other", owner: { kind: "clan", id: "uchiha" } })),
+    open: ampDefinition(card({ identifier: "open", owner: { kind: "any" } })) };
+  const vm = ampsVM(inu, reg, { worldTime: 0 });
+  assert.ok(vm.show);
+  assert.equal(vm.rows[0].type, "No type");
+  assert.ok(vm.rows[0].typeless);
+  assert.deepEqual(vm.available.map(c => c.key), ["w"], "its clan's card only; cards for anyone are applied by drag");
+  assert.deepEqual(vm.available[0].pips, [true, false], "1 of 2 uses left");
+  assert.equal(vm.available[0].typeLabel, "Clan");
+  assert.deepEqual(ampCardsFor(inu, reg).map(c => c.key), ["w"]);
+});
+
+test("the applyAmp intent is validated", () => {
+  assert.ok(INTENT_TYPES.includes("applyAmp"));
+  assert.deepEqual(validateIntent("applyAmp", { key: "inuzuka-white-wolf", targetUuid: "Actor.x" }), { key: "inuzuka-white-wolf", targetUuid: "Actor.x" });
+  assert.throws(() => validateIntent("applyAmp", { key: "1bad key", targetUuid: "Actor.x" }));
+});
+
+test("the Amps pack exists with its folders, and the system declares the Amp item type", () => {
+  const sys = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "system.json"), "utf8"));
+  assert.ok(sys.documentTypes.Item.amp);
+  assert.ok(sys.packs.some(p => p.name === "amps"));
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  assert.ok(fs.readdirSync(dir).some(f => f.startsWith("_folder")));
+});

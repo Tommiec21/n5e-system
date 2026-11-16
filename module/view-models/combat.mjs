@@ -24,7 +24,10 @@ import { unarmedSpec, isUnarmedStrike } from "../rules/unarmed.mjs";
 import { canDualWieldLight } from "../rules/weapon-properties.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
-import { innerGates, ampTypes } from "../config/combat.mjs";
+import { innerGates } from "../config/combat.mjs";
+import { ampCardsFor, ampTypeLabel } from "../rules/amp-cards.mjs";
+import { n5eConfig } from "../rules/host.mjs";
+import { resolveFormula } from "../rules/unarmed.mjs";
 
 // list(): schema set()/arr() fields are Sets after Foundry prepares them but arrays in JSON and tests;
 // list() accepts both. flag(): reads flags.n5e.<key> from a real document or a plain test object.
@@ -380,12 +383,19 @@ function marksVM(actor) {
   return { show: rows.length > 0, rows };
 }
 
-/** Amps tracker: Amp effects with type and time left, and which Amp limit is in force. */
-function ampsVM(actor) {
+/**
+ * Amps panel (AMP1a): the active Amps (type, time left, switch on/off, End) and the Amp cards this
+ * creature can start (Activate, uses, cooldown; drag onto a creature), and the Amp limit in force.
+ */
+export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = globalThis.game?.time?.worldTime ?? 0 } = {}) {
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, name: e.name, disabled: !!e.disabled,
-    type: ampTypes[e.system?.ampType] ?? e.system?.ampType ?? "", remaining: e.duration?.label ?? "" }));
+    type: ampTypeLabel(e.system?.ampType), typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
+  const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
+  const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,
+    cooling: c.cooldown > 0 ? `${Math.ceil(c.cooldown / 60)} min` : "", spent: !!c.uses && c.uses.left <= 0 }));
   const mode = rule("ampLimit");
-  return { show: rows.length > 0, rows, limit: mode === "singleton" ? "Singleton: 1 per type" : mode === "ruleOfThree" ? "Rule of 3's: 3 active" : "" };
+  return { show: rows.length > 0 || available.length > 0, rows, available,
+    limit: mode === "singleton" ? "Singleton: 1 per type" : mode === "ruleOfThree" ? "Rule of 3's: 3 active" : "" };
 }
 
 /* -------------------------------------------- */

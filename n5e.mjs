@@ -209,6 +209,9 @@ Hooks.once("ready", async () => {
   // CCOND1: class and clan condition cards (drops, the GM's apply intent, endings) and their registry.
   await import("./module/workflow/condition-cards.mjs").then(async m => { m.registerConditionCards(); await m.loadConditionCards(); })
     .catch(error => console.error("N5e | condition cards", error));
+  // AMP1a: Amp cards (drops, the GM's apply intent, limits, endings, initiative) and their registry.
+  await import("./module/workflow/amp-cards.mjs").then(async m => { m.registerAmpCards(); await m.loadAmpCards(); })
+    .catch(error => console.error("N5e | amp cards", error));
   // Data migrations the world hasn't run yet (GM only; module/migration/runner.mjs).
   await checkMigrations();
 });

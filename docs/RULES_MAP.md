@@ -40,7 +40,8 @@
 | Condition lifecycle: turn damage, decay, 1-minute default, removal checks, resistance | `rules/condition-lifecycle.mjs`, `workflow/conditions.mjs` | 05 |
 | Stamina (optional) | `rules/trackers.mjs usesStamina`, `creature.mjs` | 09 |
 | Chilled movement damage | `rules/trackers.mjs chilledMove`, `workflow/trackers.mjs onTokenMove` | 05 |
-| Fury, Marks, Branded, Amps (limits), 8-Inner Gates, resaves | `rules/trackers.mjs`, `workflow/trackers.mjs`, `config/combat.mjs` | 03, 05, Context 6/8f |
+| Fury, Marks, Branded, 8-Inner Gates, resaves | `rules/trackers.mjs`, `workflow/trackers.mjs`, `config/combat.mjs` | 03, 05, Context 6/8f |
+| Amps: Amp cards, limits (creature picks), endings, uses, initiative start (AMP1a) | `rules/amp-cards.mjs`, `workflow/amp-cards.mjs`, `data/item/amp-card.mjs`, Amps panel in `view-models/combat.mjs` | 03 (Amps), AMP1 spec |
 | Effects ending on the source's turn | `rules/trackers.mjs expiringEffects`, `workflow/trackers.mjs` | — |
 | Stance effects only while active | `documents/active-effect.mjs isSuppressed` | 09 |
 | Feature choices, Extra Attack, Superior Assault crit, recovery requirements | `rules/features.mjs` | 12 |

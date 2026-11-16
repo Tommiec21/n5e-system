@@ -141,6 +141,17 @@ export async function applyConditionCard(target, key, options = {}) {
   return m.applyConditionCard(target, key, { ...options, applier: m.applierFor(options.applier ?? null) });
 }
 
+/**
+ * AMP1a: start an Amp card on a creature ({applier, item, confirm}); the applier defaults to the
+ * target itself. endAmp(actor, effectIdOrKey) ends one.
+ */
+export async function applyAmp(target, key, options = {}) {
+  return (await import("./workflow/amp-cards.mjs")).applyAmp(target, key, options);
+}
+export async function endAmp(actor, idOrKey) {
+  return (await import("./workflow/amp-cards.mjs")).endAmp(actor, idOrKey);
+}
+
 export default {
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
@@ -152,5 +163,5 @@ export default {
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
   registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter, automationAudit,
-  applyConditionCard
+  applyConditionCard, applyAmp, endAmp
 };

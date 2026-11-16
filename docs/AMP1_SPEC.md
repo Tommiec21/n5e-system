@@ -1,6 +1,6 @@
 # AMP1 function spec: Amps as packaged buffs (Amp cards)
 
-Status: **spec written 2026-11-16 (King: "plan for designing amps as packaged buffs in this system", after the condition cards, CCOND1). King answered Q-A1–Q-A4 the same day (scope widened: typeless Amps, jutsu included, its own larger release). Q-A5 and Q-A6 open; awaiting approval to build.**
+Status: **spec written 2026-11-16 (King: "plan for designing amps as packaged buffs in this system", after the condition cards, CCOND1). King answered Q-A1–Q-A4 the same day (scope widened: typeless Amps, jutsu included, its own larger release). King answered Q-A5 and Q-A6 and approved the build. AMP1a released in 0.59.0-alpha.1; next AMP1b.**
 
 ## The problem
 
@@ -104,7 +104,9 @@ Its own larger release line (0.6x), in pieces:
 
 ## Questions for King
 
-Answered 2026-11-16: Q-A1 clan-provided Amps are Clan Amps. Q-A2 anyone, with a confirmation or warning. Q-A3 the creature picks. Q-A4 the self-buff states and jutsu become typeless Amps, labelled in the audit. Still open: Q-A5, Q-A6.
+Answered 2026-11-16: Q-A1 clan-provided Amps are Clan Amps. Q-A2 anyone, with a confirmation or warning. Q-A3 the creature picks. Q-A4 the self-buff states and jutsu become typeless Amps, labelled in the audit. Q-A5 both, as a GM setting ("Amps that end on a condition": automatically or a reminder at the table). Q-A6 the order above is approved.
+
+Claude's reading where the answers leave a gap: an Amp with no type has no type to clash with under Singleton, but it counts toward Rule of 3's.
 
 Original questions:
 
@@ -119,3 +121,4 @@ Original questions:
 
 - 2026-11-16 Claude: spec written. Surveyed the content: about 45 named Amp boxes (Battle ~25, Will 10, Fortitude 7, Reflex 3), 17 items with Amp buttons, the Amp limits and the Amps tracker as they are now.
 - 2026-11-16 King: answers Q-A1–Q-A4 and the Amp definition (a lasting bonus to a statistic, ability or action; instant bonuses aren't Amps). Claude: spec widened (typeless Amps, jutsu, the Amp audit, phases AMP1a–f); first jutsu scan ≈125 candidates.
+- 2026-11-16 King: Q-A5 both (a GM setting), Q-A6 approved. Claude: AMP1a built (0.59.0-alpha.1): the amp item type and Amps pack, the registry, the Amps panel, drag and Activate with the confirmation, the limit dialogs, endings by setting, initiative start, uses and cooldowns.

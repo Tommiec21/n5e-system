@@ -267,6 +267,7 @@ export function activityFields() {
       ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
       limit: str(),                      // ENG1a mark: at most this many (formula) from one caster; the oldest ends
       condition: str(),                  // CCOND1: apply this class or clan condition card instead
+      amp: str(),                        // AMP1a: start this Amp card instead (workflow/amp-cards.mjs)
       // ENG1d: an aura {radius, who, includeSelf, effect: {name, changes, rules, state}} (rules/auras.mjs)
       aura: new (F().ObjectField)(),
       // Rule elements the effect carries (NPC3: disadvantage from a Freeform effect): {key, selector, label}.

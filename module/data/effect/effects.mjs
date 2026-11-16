@@ -58,11 +58,15 @@ export class StateEffectData extends TDM() {
   }
 }
 
-/** An Amp. ampType drives the optional Amp limits (rules/trackers.mjs ampsToDisable). */
+/**
+ * An Amp. ampType drives the optional Amp limits (rules/amp-cards.mjs ampLimitConflict); "" is an Amp
+ * with no type (AMP1a, King Q-A4). key: the Amp card it came from (CONFIG.N5E.amps), if any.
+ */
 export class AmpEffectData extends TDM() {
   static defineSchema() {
     return {
       ampType: S.str({ initial: "battle" }),
+      key: S.str(),
       sourceUuid: S.str()
     };
   }

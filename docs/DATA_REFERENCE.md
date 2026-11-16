@@ -820,3 +820,23 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Path | Meaning |
 | --- | --- |
 | Condition card `system.changes` [{key, value, mode}] | Active Effect changes the condition carries (Jūgo +10 ft speed) |
+
+## Added in 0.59.0-alpha.1 (AMP1a)
+
+| Path | Meaning |
+| --- | --- |
+| Item type `amp` (Amp card) | A packaged Amp (`module/data/item/amp-card.mjs`); registers into `CONFIG.N5E.amps` by `system.identifier` |
+| `amp.system.ampType` | battle, reflex, fortitude, will, clan, or "" (no type, King Q-A4) |
+| `amp.system.namedType` | The type the book's box names when the limits use another (clan Amps are Clan, King Q-A1) |
+| `amp.system.owner` {kind, id, subclass} | kind: any, class, subclass, clan, feat; id: its identifier (a feat's name made into one) |
+| `amp.system.activation`, `giveable`, `startOnInitiative` ("" / ask / auto) | How it starts, whether it can be given to others, and whether it starts on rolling initiative |
+| `amp.system.duration` {seconds, until, concentration} | until: "" (its seconds), turnStart, turnEnd, nextTurnEnd, combatEnd, rest |
+| `amp.system.uses` {max, per}, `cooldown` | Uses (number or formula) per sr, lr, fr or day; seconds before it can start again after it ends |
+| `amp.system.endsOn` | staggered, blinded, unconscious, noChakra, stanceLeave (the `ampEnding` setting: automatic or at the table) |
+| `amp.system.changes`, `tempHp`, `state`, `exclusive`, `aura`; `flags.n5e.rules` | The buff: Active Effect changes, temporary HP, a named state, an exclusive group, an aura, rule elements |
+| ActiveEffect `amp` `system.key` | The Amp card the effect came from |
+| ActiveEffect `flags.n5e.ampEnds` | What ends it (the card's endsOn, plus combatEnd or rest) |
+| Actor `flags.n5e.ampUses.<key>` {spent, per, cooldownUntil} | Uses spent and when its cooldown ends |
+| Activity effect `amp` | Start this Amp card instead of building an effect |
+| Rule setting `ampEnding` | auto (default) or table |
+| Owner intent `applyAmp` {key, targetUuid} | A player giving an Amp to a creature they don't own |

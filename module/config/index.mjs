@@ -20,6 +20,8 @@ export const N5E = {
   ...adversary,
   /** Clan-scoped conditions and keywords registered at runtime: {key: {...def, scope: "clan:<id>"}}. */
   clanConditions: {},
+  /** AMP1a: Amp cards registered at runtime (workflow/amp-cards.mjs): {key: def}. */
+  amps: {},
   uniqueKeywords: {}
 };
 

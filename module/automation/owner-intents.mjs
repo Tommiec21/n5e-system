@@ -9,7 +9,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult", "applyCondition"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult", "applyCondition", "applyAmp"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -72,6 +72,10 @@ export function validateIntent(type, data = {}) {
       if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid)
         || !Number.isSafeInteger(ranks) || ranks < 1 || ranks > 20 ) throw new Error("Invalid condition request.");
       return { key: data.key, targetUuid: data.targetUuid, ranks };
+    }
+    case "applyAmp": {
+      if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid) ) throw new Error("Invalid Amp request.");
+      return { key: data.key, targetUuid: data.targetUuid };
     }
     case "transferRyo": {
       const amount = Number(data.amount);

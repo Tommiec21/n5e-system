@@ -23,13 +23,13 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/applications/browser/compendium-browser.mjs:184`
 - `module/applications/browser/compendium-browser.mjs:185`
 - `module/rules/trackers.mjs:156`
-- `module/view-models/combat.mjs:347`
+- `module/view-models/combat.mjs:350`
 
 ### State checks named in code (1)
 
-- `module/workflow/trackers.mjs:61`
+- `module/workflow/trackers.mjs:60`
 
-### Condition mechanics named in engines (32)
+### Condition mechanics named in engines (33)
 
 - `module/canvas/flanking.mjs:8`
 - `module/canvas/visibility.mjs:17`
@@ -58,10 +58,11 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
+- `module/workflow/amp-cards.mjs:192`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
-- `module/workflow/trackers.mjs:236`
+- `module/workflow/trackers.mjs:225`
 - `module/workflow/turn.mjs:54`
 
 ### Text fallback (description parsed at play time) (7)
@@ -78,6 +79,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
+| amps | 0 | 0 | 0 | 0 | 0 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 0 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |

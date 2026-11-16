@@ -137,6 +137,8 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   await actor.update(plan.update);
   if ( plan.items.length ) await actor.updateEmbeddedDocuments("Item", plan.items);
   for ( const c of plan.conditions ) await actor.removeCondition(c.key, c.ranks);
+  // AMP1a: Amps that last until a rest end.
+  await (await import("./amp-cards.mjs")).endAmpsOn(actor, "rest");
   // PRESTD1 Part D: a Long or Full Rest recharges wands.
   if ( type === "long" || type === "full" ) await (await import("./wands.mjs")).rechargeWands(actor);
   const ChatMessageCls = CONFIG.ChatMessage.documentClass;

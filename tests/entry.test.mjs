@@ -42,7 +42,7 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(hooks.init, "init hook registered");
   hooks.init();
   assert.deepEqual(Object.keys(CONFIG.Actor.dataModels).sort(), ["character", "hazard", "loot", "npc", "vehicle"]);
-  assert.equal(Object.keys(CONFIG.Item.dataModels).length, 14, "with the condition card (CCOND1)");
+  assert.equal(Object.keys(CONFIG.Item.dataModels).length, 15, "with the condition card (CCOND1) and the Amp card (AMP1a)");
   assert.equal(Object.keys(CONFIG.ActiveEffect.dataModels).length, 6);
   assert.ok(CONFIG.N5E.conditions.exhaustion);
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));

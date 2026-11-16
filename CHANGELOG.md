@@ -1,3 +1,35 @@
+## 0.59.0-alpha.1 — AMP1a: Amp cards, the engine
+
+- **Amp cards** are a new item type and a new **Amps** compendium (folders: Classes, Clans, Self-buffs and jutsu). A card holds an Amp once:
+  - its type, or **no type** (King Q-A4);
+  - who it belongs to;
+  - how long it lasts (a duration, a turn ending, the end of combat or a rest);
+  - its uses per rest and cooldown;
+  - what it changes and what ends it.
+  
+  The compendium is empty for now; AMP1c onward fills it. A world Amp item works the same.
+- **Clan Amps (King Q-A1):** an Amp a clan provides is always a Clan Amp for the limits. The type its box names is kept on the card.
+- **The Amps panel** on the Combat tab:
+  - **Active Amps** show their type ("No type" in italics), time left, the on/off switch and an **End** button.
+  - **Amp cards you can start** show your class, subclass, clan and feat Amps, with use pips and any cooldown.
+  - **Activate** starts an Amp on you, or gives it to the creatures you target. Pressing it again ends the Amp.
+- **Anyone can apply an Amp (King Q-A2):** drag a card onto a token or a sheet, use Activate, or use an effect button that names the card. A confirmation warns when:
+  - the creature doesn't have the Amp's source;
+  - a self-only Amp is being given to another creature;
+  - no uses are left;
+  - it's cooling down.
+  
+  On a creature you don't own, the GM's client applies it.
+- **Amp limits (King Q-A3):**
+  - Under Singleton, the creature picks which Amp of a type applies. An Amp with no type doesn't clash.
+  - Under Rule of 3's, the creature picks which three stay on.
+  - The creature's owner is asked, or the GM when no owner is online.
+- **Endings (King Q-A5):** Amps whose text ends them on Staggered, Blinded, Unconscious, 0 chakra or leaving a stance end automatically or with a reminder at the table. The new GM setting **"Amps that end on a condition"** decides which. Amps that last until the end of combat or a rest always end then.
+- **On initiative:** cards set to start on initiative start automatically or ask.
+- **Uses and cooldowns:** uses come back on rests by the card's "per". A cooldown starts when the Amp ends.
+- **For authors:** an effect activity can name a card (`{amp: key}`). Amp effects carry the card key (`system.key`). The API adds `game.n5e.api.applyAmp(actor, key)` and `endAmp(actor, idOrKey)`.
+- Not checked in a running Foundry world.
+
 ## 0.58.0-alpha.1 — CCOND1b: the remaining 15 class condition cards
 
 - **New cards** (text from the books' boxes): **Blighted**, **Curse of the Reaper**, **Life Pulse**, **Hemorrhage Vitality** and **Transfiguration** (Medical-Nin); **Suppressed** (Hunter-Nin, Necrotic Hand); **Disoriented (Clones Everywhere)**, **Ghostburn** and **Momentary Flaw** (Scout-Nin); **Hobbled**, **Shaken (Okuri-Inu Fang)**, **Provoked** and **Reaver Echo** (Weapon Specialist); **Psychosis** and **Identity Crisis** (Genjutsu Specialist). All 19 class conditions in the books are now cards.

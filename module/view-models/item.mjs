@@ -257,6 +257,35 @@ const DETAILS = {
       F.num(src, "resave.dc", "Fixed DC", { small: true })
     ])
   ],
+  // AMP1a: Amp cards (rules/amp-cards.mjs). Rule elements go in the Rules editor like other items.
+  amp: src => [
+    section("Amp card", [
+      F.text(src, "identifier", "Identifier"),
+      F.select(src, "ampType", "Amp type", { "": "No type", battle: "Battle", reflex: "Reflex", fortitude: "Fortitude", will: "Will", clan: "Clan" }),
+      F.text(src, "namedType", "Type the box names", { placeholder: "when a clan Amp names another type" }),
+      F.select(src, "owner.kind", "Belongs to", { any: "Anyone", class: "Class", subclass: "Subclass", clan: "Clan (always a Clan Amp)", feat: "Feat" }),
+      F.text(src, "owner.id", "Class, clan or feat", { placeholder: "identifier" }),
+      F.text(src, "owner.subclass", "Subclass", { placeholder: "identifier (optional)" }),
+      F.text(src, "summary", "Summary", { wide: true })
+    ]),
+    section("Starting it", [
+      F.select(src, "activation", "Activation", { "": "—", action: "Action", bonus: "Bonus Action", reaction: "Reaction", initiative: "On rolling initiative", trigger: "A trigger" }),
+      F.select(src, "startOnInitiative", "On initiative", { "": "No", ask: "Ask", auto: "Start automatically" }),
+      F.check(src, "giveable", "Can be given to others"),
+      F.text(src, "uses.max", "Uses", { small: true, placeholder: "none, 2, @prof" }),
+      F.select(src, "uses.per", "Per", { "": "—", sr: "Short Rest", lr: "Long Rest", fr: "Full Rest", day: "Day" }),
+      F.num(src, "cooldown", "Cooldown after it ends (seconds)", { small: true })
+    ]),
+    section("Lasting and ending", [
+      F.num(src, "duration.seconds", "Duration (seconds)", { small: true }),
+      F.select(src, "duration.until", "Or until", { "": "Its duration", turnStart: "Start of your next turn", turnEnd: "End of your turn", nextTurnEnd: "End of your next turn", combatEnd: "The end of combat", rest: "A rest" }),
+      F.check(src, "duration.concentration", "Concentration"),
+      F.tags(src, "endsOn", "Ends on", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "0 chakra", stanceLeave: "Leaving its stance" }),
+      F.text(src, "exclusive", "Exclusive group", { placeholder: "surge" }),
+      F.text(src, "state", "State", { placeholder: "crash" }),
+      F.text(src, "tempHp", "Temporary HP", { placeholder: "formula" })
+    ])
+  ],
   background: src => [
     section("Background", [
       F.tags(src, "skills", "Skills", Object.fromEntries(Object.entries(skills).map(([k, v]) => [k, v.label]))),
@@ -365,6 +394,15 @@ function summary(item) {
       add("Ends", s.endsAt === "nextTurnEnd" ? "End of its next turn" : s.persists ? "Persists" : "");
       chips = s.summary ? [{ label: "Drag onto a creature to apply", tone: "", tooltip: s.summary }] : [];
       break;
+    case "amp": {
+      const type = s.owner?.kind === "clan" ? "clan" : s.ampType;
+      subtitle = `${type ? `${type[0].toUpperCase()}${type.slice(1)} Amp` : "Amp: no type"}${s.owner?.id ? ` · ${s.owner.id.replace(/-/g, " ")}` : ""}`;
+      add("Box names", s.namedType && s.namedType !== type ? s.namedType : "");
+      add("Uses", s.uses?.max ? `${s.uses.max}${s.uses.per ? ` per ${s.uses.per}` : ""}` : "");
+      add("Ends on", list(s.endsOn).join(", "));
+      chips = [{ label: "Drag onto a creature to start it", tone: "", tooltip: s.summary ?? "" }];
+      break;
+    }
     case "background":
       subtitle = "Background";
       add("Skills", list(s.skills).map(k => skills[k]?.label ?? k).join(", ")); add("Toolkit", toolkits[s.tool]?.label ?? s.tool);

@@ -144,7 +144,10 @@ export const rules = {
     hint: "More than one Molding per cast needs the Crash state." },
   ampLimit: { group: "casting", type: "choice", default: "none", label: "Amp limit",
     choices: { none: "No limit", ruleOfThree: "Rule of 3's (3 active)", singleton: "Singleton (1 per type)" },
-    hint: "Optional limits on active Amps." },
+    hint: "Optional limits on active Amps. Singleton asks the creature which Amp of a type applies; Rule of 3's asks which stay on." },
+  ampEnding: { group: "casting", type: "choice", default: "auto", label: "Amps that end on a condition",
+    choices: { auto: "End automatically", table: "Remind at the table" },
+    hint: "Amps whose text ends them on Staggered, Blinded, Unconscious, 0 chakra or leaving a stance (King Q-A5)." },
 
   // Damage and death
   concentrationOnDamage: { group: "damage", type: "boolean", default: true, label: "Concentration check on damage",

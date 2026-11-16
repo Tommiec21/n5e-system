@@ -74,6 +74,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     actions: {
       n5eTab: CharacterSheet.#onTab,
       applyConditionCard: CharacterSheet.#onApplyConditionCard,
+      activateAmp: CharacterSheet.#onActivateAmp,
+      endAmp: CharacterSheet.#onEndAmp,
       giveRyo: CharacterSheet.#onGiveRyo,
       craft: CharacterSheet.#onCraft,
       toggleMode: CharacterSheet.#onToggleMode,
@@ -265,6 +267,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     for ( const el of this.element.querySelectorAll("[data-condition-card]") ) {
       el.addEventListener("dragstart", ev => ev.dataTransfer.setData("text/plain", JSON.stringify({ type: "Item", uuid: el.dataset.conditionCard })));
     }
+    // AMP1a: Amp cards on the Amps panel drag onto tokens and sheets.
+    for ( const el of this.element.querySelectorAll("[data-amp-card]") ) {
+      if ( !el.dataset.ampCard ) continue;
+      el.addEventListener("dragstart", ev => ev.dataTransfer.setData("text/plain", JSON.stringify({ type: "Item", uuid: el.dataset.ampCard })));
+    }
 
     // Jutsu search: re-render only the jutsu part, keep focus in the box.
     const search = this.element.querySelector("[data-jutsu-search]");
@@ -327,6 +334,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       const cards = await import("../../workflow/condition-cards.mjs");
       const key = cards.keyForCard(item.uuid) ?? cards.registerCard(item);
       return cards.applyConditionCard(actor, key, { applier: cards.applierFor() }).catch(e => ui.notifications.warn(e.message));
+    }
+    // AMP1a: an Amp card dropped here starts that Amp on this creature (the applier: the selected
+    // token's actor or the user's character, else this creature).
+    if ( item.type === "amp" ) {
+      const amps = await import("../../workflow/amp-cards.mjs");
+      const key = amps.keyForAmp(item.uuid) ?? amps.registerAmp(item);
+      const applier = canvas?.tokens?.controlled?.[0]?.actor ?? game.user?.character ?? actor;
+      return amps.applyAmp(actor, key, { applier }).catch(e => ui.notifications.warn(e.message));
     }
     // FIN1: another creature's physical item dropped here is given, not copied.
     if ( item.parent instanceof Actor && item.parent !== actor ) {
@@ -489,6 +504,31 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !targets.length ) return ui.notifications.info("Target one or more creatures first (or drag the card onto a token).");
     const { applyConditionCard } = await import("../../workflow/condition-cards.mjs");
     for ( const t of targets ) await applyConditionCard(t, key, { applier: this.actor }).catch(e => ui.notifications.warn(e.message));
+  }
+
+  /**
+   * AMP1a: Activate on the Amps panel. With creatures targeted it gives them the Amp; otherwise it
+   * starts on this creature, or ends it when it is already on.
+   */
+  static async #onActivateAmp(event, target) {
+    const key = target.closest("[data-amp-key]")?.dataset.ampKey;
+    if ( !key ) return;
+    const amps = await import("../../workflow/amp-cards.mjs");
+    const targets = [...game.user.targets].map(t => t.actor).filter(Boolean);
+    if ( targets.length ) {
+      for ( const t of targets ) await amps.applyAmp(t, key, { applier: this.actor }).catch(e => ui.notifications.warn(e.message));
+      return;
+    }
+    if ( target.getAttribute("aria-pressed") === "true" ) return amps.endAmp(this.actor, key);
+    return amps.applyAmp(this.actor, key, { applier: this.actor }).catch(e => ui.notifications.warn(e.message));
+  }
+
+  /** AMP1a: End on an active Amp. */
+  static async #onEndAmp(event, target) {
+    const id = target.closest("[data-effect-id]")?.dataset.effectId;
+    if ( !id ) return;
+    const { endAmp } = await import("../../workflow/amp-cards.mjs");
+    return endAmp(this.actor, id);
   }
 
   static #onTab(event, target) {

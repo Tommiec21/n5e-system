@@ -24,6 +24,7 @@ import JutsuData from "./item/jutsu.mjs";
 import { WeaponData, ArmorData, ConsumableData, ToolkitData, ContainerData, LootData } from "./item/equipment.mjs";
 import { ClassData, SubclassData, ClanData, BackgroundData, FeatData, StanceData } from "./item/character-options.mjs";
 import { ConditionCardData } from "./item/condition-card.mjs";
+import { AmpCardData } from "./item/amp-card.mjs";
 import {
   ConditionEffectData, StateEffectData, AmpEffectData, StanceEffectData, ConcentrationEffectData, GenericEffectData
 } from "./effect/effects.mjs";
@@ -45,7 +46,8 @@ export const itemModels = {
   background: BackgroundData,
   feat: FeatData,
   stance: StanceData,
-  condition: ConditionCardData
+  condition: ConditionCardData,
+  amp: AmpCardData
 };
 
 export const effectModels = {

@@ -486,3 +486,8 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## CCOND1a — Claude, 2026-11-15 (published 0.56.0-alpha.1)
 - Class and clan conditions are condition cards (item type `condition`, pack `conditions`), registered at ready into `CONFIG.N5E.clanConditions`. Add new class or clan conditions as cards, never as marker effects. Their keys are the card identifiers.
 - 2026-11-16: all 33 clan conditions are cards (0.57.0-alpha.1–3). A card's rules and changes are copied onto the condition effect when applied; the clan items' `system.conditions` are superseded.
+
+## AMP1a — Claude, 2026-11-16 (published 0.59.0-alpha.1)
+- Amps are Amp cards (item type `amp`, pack `amps`), registered at ready into `CONFIG.N5E.amps`. New Amps go in as cards; features point at them with an effect activity `{amp: key}` instead of building an `ampType` effect by hand.
+- The limit dialog, endings and initiative start run on the creature's responsible client (`isResponsible` in `workflow/amp-cards.mjs`). The old `onAmpCreated` in `workflow/trackers.mjs` is gone; `ampsToDisable` remains only for its tests.
+- Concentration on a card is noted but not tracked unless the Amp is started from a concentration item (the item's `dependentOn`).
