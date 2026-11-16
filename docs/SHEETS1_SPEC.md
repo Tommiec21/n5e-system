@@ -17,7 +17,14 @@ Goal (King): aesthetically pleasing character sheets that players can choose, wi
 ## SHEETS1a: Classic (a fork of the dnd5e character sheet layout)
 
 - **Source:** dnd5e `release-5.3.3` (the last line for Foundry v13): `templates/actors/character-*.hbs`, `templates/actors/tabs/*`, `less/v2/character.less` and `sheets.less`. The dnd5e software is MIT (© 2021 Andrew Clayton); the forked templates and styles keep that notice in `THIRD-PARTY-NOTICES.md` and in each forked file's header.
-- **Not taken from dnd5e:** its artwork and badges are under other terms (Wizards of the Coast art under `ui/official`, icon licences, textures with no stated licence). The AC shield, level badge, lozenges and textures are redrawn in CSS. No D&D names or marks appear anywhere.
+- **The look is emulated faithfully (King 2026-11-15):** the shapes, colours and borders are design, not proprietary, so the Classic sheet copies them closely:
+  - the hexagonal ability score tabs with their dark score box;
+  - the dark character card holding the portrait, the AC shield with pips on each side, and the Initiative, Speed and Proficiency lozenges;
+  - the HP bar with its TMP slot;
+  - the notched double-bordered Skills and Saving Throws frames;
+  - the maroon header with the level medallion and XP bar;
+  - the vertical icon tabs down the right edge.
+- **Asset files:** the shapes are drawn in CSS and inline SVG rather than shipping dnd5e's image files. Wizards of the Coast art (`ui/official`) and D&D names and marks stay out.
 - **Fonts:** Roboto Slab and Roboto Condensed (Apache 2.0), bundled with their licence so the sheet works offline.
 - **Layout (mockup artboard 1):**
   - Header: dark band with the name, "clan · class level · subclass", rest buttons, Play/Edit, XP bar and level badge.
@@ -49,10 +56,11 @@ Each is a new design folder and stylesheet on the same logic.
 ## Questions for King
 
 - **Q-SH1:** Should players choose per character (Foundry's Sheet menu), with a personal default for new sheets? Or should the GM set one design for the world?
-- **Q-SH2:** Tabs on the Classic sheet: dnd5e puts them as icons down the right edge of the window. The mockup keeps them as a row above the body. Which do you want?
+- **Q-SH2 (answered):** vertical icon tabs down the right edge, as in dnd5e.
 - **Q-SH3:** Glass: a fixed dark ground with one accent glow, or should players pick their own background image?
 - **Q-SH4:** After Classic and Glass, which design comes next?
 
 ## Progress log
 
 - 2026-11-15 Claude: studied dnd5e release-5.3.3 (v13) sheet structure and licences; spec and two mockups written. Widened cube 10 ft applied (King).
+- 2026-11-15 King: the first Classic mockup didn't emulate the hexagonal ability tabs, the dark character card, the shield, the bordered skill and save frames or the vertical tabs, and treated non-proprietary design as off-limits. Mockup redone to match the dnd5e sheet closely, vertical tabs included.
