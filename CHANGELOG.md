@@ -1,3 +1,10 @@
+## 0.61.0-alpha.2 — The Amps view lists everything at once
+
+- **Fix (King):** the Automation Audit's **Amps** view now scans the world and every N5e compendium at once, so the list fills whichever Source was picked before. The Source picker hides while it's open.
+- Each row names where the item lives (Jutsu, Class Features, Clans, Stances, World) and its rank.
+- The Amps compendium itself is still empty; AMP1c starts filling it.
+- Not checked in a running Foundry world.
+
 ## 0.61.0-alpha.1 — AMP1b: the Amp audit
 
 - **Amps view in the Automation Audit** (GM: `game.n5e.api.automationAudit()`, then the **Amps** filter). For the chosen source (world items or any N5e compendium) it lists:

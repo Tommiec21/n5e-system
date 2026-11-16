@@ -25,13 +25,23 @@ export default class AutomationAudit extends HandlebarsApplicationMixin(Applicat
   filter = "all";
   ampFilter = "open";
   #rows = null;
-  #docs = [];
+  #ampDocs = null;
+
+  /**
+   * AMP1b (King 2026-11-16): the Amps view reads everything at once, whatever the Source says: the
+   * world's items and every N5e Item compendium, each row naming where it lives.
+   */
+  async #loadAmps() {
+    const packs = game.packs.filter(p => p.metadata.type === "Item" && p.metadata.packageName === "n5e");
+    const out = game.items.contents.map(d => ({ d, where: "World" }));
+    for ( const p of packs ) for ( const d of await p.getDocuments() ) out.push({ d, where: p.metadata.label });
+    this.#ampDocs = out;
+  }
 
   async #load() {
     let docs;
     if ( this.source === "world" ) docs = game.items.contents;
     else docs = await game.packs.get(this.source)?.getDocuments() ?? [];
-    this.#docs = docs;
     this.#rows = docs.map(d => ({ uuid: d.uuid, name: d.name, type: d.type, ...automationOf(d) }));
   }
 
@@ -42,8 +52,8 @@ export default class AutomationAudit extends HandlebarsApplicationMixin(Applicat
   #ampContext() {
     const dismissed = new Set(game.settings.get("n5e", "ampAuditDismissed") ?? []);
     const RANKS = ["E", "D", "C", "B", "A", "S"];
-    const rows = this.#docs.map(d => ({ d, a: ampAuditOf(d, { dismissed }) })).filter(x => x.a)
-      .map(({ d, a }) => ({ uuid: d.uuid, name: d.name, itemType: d.type, rank: d.system?.rank ?? "", ...a,
+    const rows = (this.#ampDocs ?? []).map(({ d, where }) => ({ d, where, a: ampAuditOf(d, { dismissed }) })).filter(x => x.a)
+      .map(({ d, where, a }) => ({ uuid: d.uuid, name: d.name, itemType: d.type, where, rank: d.system?.rank ?? "", ...a,
         locked: !!d.pack && !!game.packs.get(d.pack)?.locked,
         typeOptions: Object.entries(AMP_TYPE_CHOICES).map(([value, label]) => ({ value, label, selected: value === (d.system?.ampType ?? "") })),
         isCard: d.type === "amp", canDismiss: a.status === "candidate", canRestore: a.status === "dismissed" }))
@@ -53,11 +63,13 @@ export default class AutomationAudit extends HandlebarsApplicationMixin(Applicat
     const filters = [["open", `Needs review (${counts.untyped + counts.candidate})`], ["all", `All (${rows.length})`],
       ...Object.entries(AMP_AUDIT_STATUSES).map(([k, label]) => [k, `${label} (${counts[k]})`])]
       .map(([key, label]) => ({ key, label, active: this.ampFilter === key }));
-    return { ampRows: rows.filter(keep).slice(0, 500), ampFilters: filters };
+    const shown = rows.filter(keep);
+    return { ampRows: shown.slice(0, 500), ampFilters: filters, ampTruncated: shown.length > 500 };
   }
 
   async _prepareContext() {
     if ( !this.#rows ) await this.#load();
+    if ( this.filter === "amps" && !this.#ampDocs ) await this.#loadAmps();
     const counts = { all: this.#rows.length, automated: 0, partial: 0, note: 0, none: 0, mentions: 0 };
     for ( const r of this.#rows ) { counts[r.status]++; if ( r.mentions ) counts.mentions++; }
     const rows = this.#rows.filter(r => this.filter === "all" || (this.filter === "mentions" ? r.mentions : r.status === this.filter))
@@ -68,7 +80,7 @@ export default class AutomationAudit extends HandlebarsApplicationMixin(Applicat
         .map(p => ({ value: p.collection, label: p.metadata.label, selected: this.source === p.collection }))];
     const filters = ["all", "automated", "partial", "note", "none", "mentions"].map(k => ({ key: k, active: this.filter === k,
       label: `${k === "all" ? "All" : k === "mentions" ? "Text names mechanics" : STATUS_LABELS[k]} (${counts[k]})` }));
-    filters.push({ key: "amps", active: this.filter === "amps", label: "Amps" });
+    filters.push({ key: "amps", active: this.filter === "amps", label: "Amps (all compendiums)" });
     return { rows, sources, filters, truncated: rows.length >= 500, amps: this.filter === "amps", ...(this.filter === "amps" ? this.#ampContext() : {}) };
   }
 
@@ -107,6 +119,7 @@ export default class AutomationAudit extends HandlebarsApplicationMixin(Applicat
     }
     await doc.update({ "system.ampType": select.value });
     this.#rows = null;
+    this.#ampDocs = null;
     return this.render();
   }
 

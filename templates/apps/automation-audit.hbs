@@ -1,17 +1,17 @@
 {{!-- GM Automation Audit (STD5). Data: rows [{uuid, name, type, status, statusLabel, channelCount, noteCount, mentions}], sources, filters.
   AMP1b: with the Amps filter, ampRows [{uuid, name, itemType, rank, status, label, typeLabel, namedType, reason, isCard, typeOptions, locked, canDismiss, canRestore}] and ampFilters. --}}
 <section class="n5e-automation-audit">
-  <label>Source <select name="auditSource">{{#each sources}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+  {{#unless amps}}<label>Source <select name="auditSource">{{#each sources}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/unless}}
   <nav class="audit-filters">{{#each filters}}<button type="button" class="{{#if active}}active{{/if}}" data-action="auditFilter" data-filter="{{key}}">{{label}}</button>{{/each}}</nav>
   {{#if amps}}
-  <p class="hint">Amps are lasting bonuses (longer than one round). The scan suggests candidates from each item's text; it decides nothing. Set a card's type here, or mark a candidate as not an Amp. Amp cards live in the Amps compendium.</p>
+  <p class="hint">Amps are lasting bonuses (longer than one round). This view scans the world and every N5e compendium at once. The scan only suggests; set a card's type here, or mark a candidate "Not an Amp".</p>
   <nav class="audit-filters amp-filters">{{#each ampFilters}}<button type="button" class="{{#if active}}active{{/if}}" data-action="ampFilter" data-filter="{{key}}">{{label}}</button>{{/each}}</nav>
   <div class="audit-rows">
     <table class="n5e-table amp-audit">
       <tr><th>Item</th><th>Status</th><th>Amp type</th><th>Why</th><th></th></tr>
       {{#each ampRows}}
         <tr data-uuid="{{uuid}}" class="amp-{{status}}">
-          <td><a data-action="auditOpen">{{name}}</a> <span class="sub">{{itemType}}{{#if rank}} · {{rank}}{{/if}}</span></td>
+          <td><a data-action="auditOpen">{{name}}</a> <span class="sub">{{where}}{{#if rank}} · {{rank}}-Rank{{/if}}</span></td>
           <td class="amp-status {{status}}">{{label}}</td>
           <td>{{#if isCard}}<select data-amp-type aria-label="Amp type of {{name}}" {{#if locked}}data-tooltip="Unlock the compendium to edit"{{/if}}>{{#each typeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
             {{else}}{{typeLabel}}{{#if namedType}}{{#unless typeLabel}}{{namedType}}{{/unless}}{{/if}}{{/if}}</td>
@@ -19,7 +19,7 @@
           <td>{{#if canDismiss}}<button type="button" data-action="ampDismiss" data-tooltip="Not an Amp: hide it from Needs review">Not an Amp</button>{{/if}}
             {{#if canRestore}}<button type="button" data-action="ampDismiss">Restore</button>{{/if}}</td>
         </tr>
-      {{else}}<tr><td colspan="5" class="muted">Nothing here. Pick another source above (Jutsu, Class Features, Clans, Stances or Amps).</td></tr>{{/each}}
+      {{else}}<tr><td colspan="5" class="muted">Nothing in this group.</td></tr>{{/each}}
     </table>
   </div>
   {{else}}
@@ -34,4 +34,5 @@
     {{#if truncated}}<p class="hint">Showing the first 500; filter to narrow.</p>{{/if}}
   </div>
   {{/if}}
+  {{#if ampTruncated}}<p class="hint">Showing the first 500; pick a group above to narrow.</p>{{/if}}
 </section>
