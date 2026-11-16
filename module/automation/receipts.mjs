@@ -42,7 +42,7 @@ export function createReceiptCoordinator({ read, write, authority, now = () => D
         const receipt = prior ?? { id, type, fingerprint, state: "reviewing", created: now(),
           actorUuid: typeof (payload.actorUuid ?? payload.target) === "string" ? (payload.actorUuid ?? payload.target) : null,
           sourceUuid: typeof (payload.message ?? payload.messageUuid) === "string" ? (payload.message ?? payload.messageUuid) : null,
-          mode: type === "damage" && ["full", "half", "double"].includes(payload.mode) ? payload.mode : null };
+          mode: type === "damage" && ["full", "half", "quarter", "none", "double"].includes(payload.mode) ? payload.mode : null };
         if ( prior ) receipt.resumed = now(); else ledger.entries.push(receipt);
         const persist = async () => { requireAuthority(); receipt.updated = now(); await write(structuredClone(ledger)); };
         await persist(); // Failure here prevents any prompt or mutation.

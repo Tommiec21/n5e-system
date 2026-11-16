@@ -78,7 +78,7 @@ export async function successfulHitReaction(message, actor) {
  *   ignoreDR                    condition/environment damage (Burned, Bleed, Chilled cards)
  *   targetUuid                  a fixed target (condition damage on that creature; the GM Party
  *                               Overview's quick damage) instead of the selected tokens
- * @param {"full"|"half"|"double"|"heal"} mode
+ * @param {"full"|"half"|"quarter"|"none"|"double"|"heal"} mode  (CARD2: quarter ¼ and none ×0, King Q-C2)
  */
 export async function applyToSelected(data, mode, { coordinated = false, beforePlan } = {}) {
   const fixed = data.targetUuid ? await fromUuid(data.targetUuid) : null;
@@ -102,7 +102,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
       rows.push(`<div><b>${esc(actor.name)}</b> regains ${plan.gained} HP${plan.revived ? " and is no longer Dying" : ""}.</div>`);
       return;
     }
-    const multiplier = { half: 0.5, double: 2 }[mode] ?? 1;
+    const multiplier = { half: 0.5, quarter: 0.25, none: 0, double: 2 }[mode] ?? 1;
     // FIN3 (King Q-F12): a creature immune to the Genjutsu's stimuli takes 0 from it.
     const immuneWhy = immuneToOrigin(data.rollTrace?.originUuid, actor);
     const reaction = !immuneWhy && beforePlan ? await beforePlan(actor) : {};
@@ -155,7 +155,7 @@ export async function applyToSelected(data, mode, { coordinated = false, beforeP
   }
   if ( !rows.length ) return null;
   return ChatMessage().create({
-    content: `<div class="n5e-apply-card"><b>${mode === "heal" ? "Healing applied" : `${{ full: "Damage", half: "Half damage", double: "Double damage" }[mode]} applied`}</b>
+    content: `<div class="n5e-apply-card"><b>${mode === "heal" ? "Healing applied" : `${{ full: "Damage", half: "Half damage", quarter: "Quarter damage", none: "No damage", double: "Double damage" }[mode]} applied`}</b>
       ${data.rollTrace?.sourceUuid ? `<button type="button" class="n5e-source-roll inline-control icon fa-solid fa-dice" data-n5e-source="${esc(data.rollTrace.sourceUuid)}" title="View damage roll" aria-label="View damage roll"></button>` : ""}
       ${rows.join("")}${coordinated ? "" : '<button type="button" class="undo" data-n5e-undo="1"><i class="fa-solid fa-rotate-left"></i> Undo</button>'}</div>`,
     ...(data.sourceVisibility ?? {}),

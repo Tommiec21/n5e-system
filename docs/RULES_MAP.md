@@ -42,6 +42,7 @@
 | Chilled movement damage | `rules/trackers.mjs chilledMove`, `workflow/trackers.mjs onTokenMove` | 05 |
 | Fury, Marks, Branded, 8-Inner Gates, resaves | `rules/trackers.mjs`, `workflow/trackers.mjs`, `config/combat.mjs` | 03, 05, Context 6/8f |
 | Effect editor in plain language: field dictionary, roll rules builder, change cards (UX1) | `config/effect-fields.mjs`, `rules/plain-language.mjs`, `view-models/effect-editor.mjs`, `applications/effect/effect-config.mjs` | UX1 spec |
+| Combat card layout like SW5e: tiles, targets, Apply panel with multipliers (CARD2) | `rules/card-layout.mjs`, `workflow/card-layout.mjs`, `workflow/action-card.mjs` | CARD2 spec |
 | Amp audit: candidate scan, Automation Audit Amps view, report section (AMP1b) | `rules/amp-audit.mjs`, `applications/gm/automation-audit.mjs`, `tools/report-std-audit.mjs` | AMP1 spec §8 |
 | Amps: Amp cards, limits (creature picks), endings, uses, initiative start (AMP1a) | `rules/amp-cards.mjs`, `workflow/amp-cards.mjs`, `data/item/amp-card.mjs`, Amps panel in `view-models/combat.mjs` | 03 (Amps), AMP1 spec |
 | Effects ending on the source's turn | `rules/trackers.mjs expiringEffects`, `workflow/trackers.mjs` | — |

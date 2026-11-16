@@ -219,7 +219,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `ac.mjs` | 71 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC` |
-| `action-card.mjs` | 360 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `savesOf`, `damagesOf`, `appliedOf`, `allApplied`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
+| `action-card.mjs` | 362 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `savesOf`, `damagesOf`, `appliedOf`, `allApplied`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
 | `action-effects.mjs` | 110 | Action effects (STD2; docs/STD_SPEC.md). | `actionEffectsOf`, `cardElements`, `spentBy`, `describeElement`, `summarizeElement` |
 | `activity-contract.mjs` | 15 | Inspect authored data against the same field definitions used by Foundry. | `unknownActivityFields` |
 | `activity-parse.mjs` | 163 | Reads a jutsu's or feature's rules text into activities, for items whose activities aren't authored yet (all imported content today). | `parseInflicted`, `parseActivities`, `effectiveActivities`, `unarmedFormula`, `critFormula` |
@@ -235,9 +235,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 58 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
 | `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
+| `card-layout.mjs` | 54 | CARD2 (docs/CARD2_SPEC.md; King 2026-11-16: combat cards laid out like his SW5e card), pure parts. | `MULTIPLIERS`, `defaultMultiplier`, `multiplied`, `diceSummary`, `saveTile` |
 | `cast-checks.mjs` | 63 | Pre-cast checks (pure; CAST1). | `jutsuComponents`, `castBlockers` |
 | `cast-discipline.mjs` | 99 | Multi-discipline jutsu (pure; MDISC1, King 2026-11-13, N5e-Context.md decisions 11, 14 and 15). | `castableDisciplines`, `defaultCastDiscipline`, `castDisciplineOf`, `resolveCastDiscipline`, `countsAsDiscipline`, `knowsJutsuOf`, `sameTypeForSwap`, `disciplineAllowed`, `defenseSkillFor`, `genjutsuRidersApply`, `caughtBy` |
-| `cast-options.mjs` | 192 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
+| `cast-options.mjs` | 211 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `mergeExtraDamage`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
 | `change-keys.mjs` | 245 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `DICE_BONUS`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
@@ -330,7 +331,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `action-card.mjs` | 574 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
+| `action-card.mjs` | 600 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
 | `activity-buttons.mjs` | 539 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
@@ -343,8 +344,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `auras.mjs` | 48 | Aura sync (ENG1d; rules/auras.mjs decides). | `scheduleAuraSync`, `syncAuras`, `registerAuraHooks` |
 | `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 104 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
+| `card-layout.mjs` | 195 | CARD2 (docs/CARD2_SPEC.md; King 2026-11-16): the action card laid out like King's SW5e card. | `headerHTML`, `tagsHTML`, `tilesHTML`, `previewDamage`, `applyPanelHTML`, `bindLayout`, `applyAll` |
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
-| `cast.mjs` | 256 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
+| `cast.mjs` | 257 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
 | `clan.mjs` | 90 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |

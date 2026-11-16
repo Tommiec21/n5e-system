@@ -75,7 +75,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/activity-parse.mjs:134`
 - `module/workflow/areas.mjs:267`
 - `module/workflow/cast-plan.mjs:55`
-- `module/workflow/cast.mjs:172`
+- `module/workflow/cast.mjs:173`
 
 ## 3. Coverage per pack
 

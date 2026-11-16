@@ -9,7 +9,7 @@ import { retireReactionWindows } from "./reactions.mjs";
 export async function coordinateDamage(message, data, mode, targets, apply, { resumeReview = false } = {}) {
   if ( !game.users.activeGM?.isSelf ) throw new Error("The active GM applies coordinated damage. Use the manual workflow when no GM is available.");
   if ( !rule("reactionWindows") ) throw new Error("Enable reaction decision windows before using the coordinated damage pilot.");
-  if ( !["full", "half", "double"].includes(mode) || !Array.isArray(data.instances) || !data.instances.length
+  if ( !["full", "half", "quarter", "none", "double"].includes(mode) || !Array.isArray(data.instances) || !data.instances.length
     || data.instances.some(i => !Number.isFinite(i.amount) || i.amount < 0) ) throw new Error("Unsupported coordinated damage data.");
   data = damageFromMessage(message);
   const results = [];

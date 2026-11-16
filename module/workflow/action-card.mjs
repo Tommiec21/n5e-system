@@ -21,6 +21,7 @@ import { challengeVisible } from "../rules/parity.mjs";
 import { riderView, onRiderClick } from "./riders.mjs";
 import { castFacts, counteredOn, counterTagFor, onDefenseClick, onCounterTagClick } from "./jutsu-defense.mjs";
 import { canModify } from "../automation/authority.mjs";
+import { headerHTML, tagsHTML, tilesHTML, applyPanelHTML, bindLayout, applyAll } from "./card-layout.mjs";
 import { esc } from "../view-models/common.mjs";
 
 export const actionCardOn = () => !!rule("actionCard");
@@ -158,7 +159,7 @@ function recordedIn(card, messageId) {
 
 const SECTION_LABELS = { attack: "Attack", area: "Area", saves: "Saves", damage: "Damage", effects: "Effects", riders: "Riders", reactions: "Reactions", concentration: "Concentration" };
 const SHARE_LABELS = { full: "Full damage", half: "Half damage", none: "No damage" };
-const MODE_LABELS = { full: "Applied", half: "Applied half", double: "Applied double", heal: "Healed" };
+const MODE_LABELS = { full: "Applied ×1", half: "Applied ×½", quarter: "Applied ×¼", none: "Applied ×0", double: "Applied ×2", heal: "Healed" };
 
 const wofButtons = (kind, uuid, effect = null, label = "") => ["reroll", "advantage"].map(how =>
   `<button type="button" data-n5e-card-wof="${kind}" data-how="${how}"${uuid ? ` data-target="${esc(uuid)}"` : ""}${effect != null ? ` data-effect="${esc(effect)}"` : ""}>Will of Fire${label ? ` (${esc(label)})` : ""}: ${how === "reroll" ? "reroll" : "keep higher"}</button>`).join("");
@@ -306,7 +307,7 @@ export function renderActionCard(message, html) {
     // FIN3b: Apply and Half per effect's damage.
     for ( const dm of r.damages ) {
       const name = dm.label ? `${dm.label}: ` : "";
-      if ( mine && !dm.applied ) ["full", "half"].forEach(m => controls.push(`<button type="button" data-n5e-card-apply="${m}" data-effect="${esc(dm.effect)}" data-target="${esc(r.uuid)}"${dm.share === m ? ' class="suggested"' : ""}>${esc(name)}${m === "full" ? "Apply" : "Half"}</button>`));
+      // CARD2: Apply and the multipliers are in the Apply panel below the targets.
       if ( dm.applied ) facts.push(`${name}${MODE_LABELS[dm.applied.mode] ?? "Applied"}`);
       // C1: the reaction the creature took against this damage.
       const rx = dm.applied?.reaction;
@@ -339,20 +340,42 @@ export function renderActionCard(message, html) {
     ? '<div class="n5e-card-defense"><button type="button" data-n5e-card-defense="read">Read the Enemy</button><button type="button" data-n5e-card-defense="identify">Identify</button></div>' : "";
   const shown = riders.bar.length && !card.sections.includes("riders") ? [...card.sections, "riders"] : card.sections;
   const shownStates = { ...states, riders: riders.entries.length ? "done" : "ready" };
-  box.innerHTML = `<div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
+  // CARD2 (King 2026-11-16): results as tiles, the targets, then the Apply panel (workflow/card-layout.mjs).
+  box.innerHTML = `${tilesHTML(results, rows, { canSeeSave, isGM: game.user.isGM })}
     ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
-    ${saveAllBar}${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
+    ${rows.length || saveAllBar ? '<div class="n5e-c2-h">Targets</div>' : ""}
+    ${saveAllBar}${rows.length ? rows.map(row).join("") : ""}
+    <div data-n5e-c2-applies>${applyPanelHTML(message, results, rows, applyView.get(message.id) ?? (rows.length ? "targeted" : "selected"))}</div>
+    <div class="n5e-card-sections">${shown.map(s => `<span class="n5e-card-section ${shownStates[s]}">${esc(SECTION_LABELS[s] ?? s)}</span>`).join("")}</div>
     ${pending ? `<div class="note">${game.users?.activeGM
     ? "Some results couldn't be added to this card (such as a second damage roll for the same effect), so they stay separate cards."
     : "Some results are separate cards until a GM connects."}</div>` : ""}`;
-  (html.querySelector(".message-content") ?? html).append(box);
+  const content = html.querySelector(".message-content") ?? html;
+  content.append(box);
+  // CARD2: the caster above the card, its tags below the header; big action buttons (CSS: .n5e-c2).
+  html.classList.add("n5e-c2");
+  if ( !content.querySelector(".n5e-c2-who") ) content.insertAdjacentHTML("afterbegin", headerHTML(card));
+  if ( !content.querySelector(".n5e-c2-tags") ) box.insertAdjacentHTML("beforebegin", tagsHTML(card));
+  const redraw = view => {
+    applyView.set(message.id, view);
+    const holder = box.querySelector("[data-n5e-c2-applies]");
+    holder.innerHTML = applyPanelHTML(message, results, rows, view);
+    bindLayout(holder, message, redraw);
+  };
+  bindLayout(box, message, redraw);
 }
+
+/** CARD2: each card's Apply view (Targeted or Selected) for this client. */
+const applyView = new Map();
 
 /** A linked message recorded in its card shows as one line, with Show to expand it. */
 function collapseLinked(message, html) {
   const card = cardOfLinked(message);
   if ( !card || !recordedIn(card, message.id) || html.querySelector("[data-n5e-linked-note]") ) return;
+  // CARD2 (King Q-C1): a roll recorded in its card lives inside the card; its own message isn't shown.
+  html.classList.add("n5e-linked-hidden");
+  html.hidden = true;
   const name = globalThis.fromUuidSync?.(card.flags.n5e.card.itemUuid)?.name ?? "the action";
   html.classList.add("n5e-linked-collapsed");
   const note = document.createElement("div");
@@ -450,6 +473,7 @@ export async function onActionCardClick(message, btn, event) {
     return onActivityClick(message, { dataset, disabled: false }, event, { selectedActors: actors });
   }
   const target = d.target ? await fromUuid(d.target) : null;
+  if ( d.n5eCardApplyall != null ) return applyAll(message, btn, event);
   if ( d.n5eCardApply ) {
     const rolled = damagesOf(results);
     const pick = rolled[d.effect ?? ""] ?? Object.values(rolled)[0];

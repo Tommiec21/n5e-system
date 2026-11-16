@@ -1,3 +1,28 @@
+## 0.63.0-alpha.1 — CARD2: combat cards like the SW5e card
+
+King's answers: rolls inside the card (Q-C1), multipliers −1, 0, ¼, ½, 1, 2 (Q-C2), all cards at once (Q-C3), saves as their own tiles (Q-C4).
+
+- **One card per action** (jutsu, weapon attack or strike, feature use), laid out top to bottom:
+  - **Who and what:** the caster's portrait and name, then the jutsu, weapon or feature.
+  - **Big action buttons:** Damage, the save, Place area and so on, full width. Critical and other extras sit beside them.
+  - **Tags:** action, duration, concentration and keywords.
+  - **Result tiles side by side:**
+    - Attack: the formula, then the total with a ✓ or ✗ when there's one target;
+    - each Damage roll: the formula, then the total with its type;
+    - each creature's save: total with ✓ saved or ✗ failed.
+    
+    The › arrow on a tile shows the dice.
+  - **Targets:** each creature with its AC or save, and its own buttons (roll the save, apply conditions and effects, Will of Fire, concentration, Undo).
+  - **Apply:**
+    - **Targeted / Selected** switch;
+    - each creature with the damage it would take after its own resistance and DR;
+    - multiplier buttons **−1** (heal), **0**, **¼**, **½**, **1**, **2**, starting on its share (½ after a successful half-damage save, 0 when immune);
+    - one **APPLY** for every row.
+- **Rolls live inside the card:** once a roll is recorded on its card, its own chat message is no longer shown. That covers attack, damage, saves, and damage and effect summaries. Results that can't be recorded yet (a player's roll with no GM connected) still show until they are.
+- **New apply modes:** ¼ and 0 (the damage summary says "Quarter damage applied" or "No damage applied").
+- The GM's Action card setting still switches back to the old cards.
+- Not checked in a running Foundry world.
+
 ## 0.62.0-alpha.4 — Save jutsu record their damage on the card
 
 - **Fix (King):** a jutsu whose damage sits on its save (Fireball: half on a success) now has a Damage section on its action card. Its damage roll is recorded in the card instead of staying a separate card. Before, only attack and damage activities gave a card a Damage section.

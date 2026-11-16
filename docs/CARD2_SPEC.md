@@ -1,6 +1,6 @@
 # CARD2 function spec: combat cards laid out like the SW5e card
 
-Status: **spec written 2026-11-16 (King: "I was hoping the Combat cards would look similar/close to" the SW5e card he shared). Awaiting King's answers and approval.**
+Status: **spec written 2026-11-16 (King: "I was hoping the Combat cards would look similar/close to" the SW5e card he shared). King answered Q-C1–Q-C4 (rolls inside the card; −1, 0, ¼, ½, 1, 2; all cards; saves as tiles). Released in 0.63.0-alpha.1 (CARD2a and CARD2b together).**
 
 ## What King wants
 
@@ -63,3 +63,4 @@ The current card keeps working underneath: riders, reactions to hits and damage,
 ## Progress log
 
 - 2026-11-16 King: wants combat cards like his SW5e card. Claude: spec written. Separately fixed: Fireball's damage now records on the card (0.62.0-alpha.4).
+- 2026-11-16 King: Q-C1 yes, Q-C2 yes, Q-C3 all, Q-C4 own tile. Claude: CARD2 built (0.63.0-alpha.1): rules/card-layout.mjs, workflow/card-layout.mjs, renderActionCard tiles/targets/apply panel, recorded linked messages hidden, quarter/none apply modes.
