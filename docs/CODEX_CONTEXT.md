@@ -482,3 +482,6 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## STD6d Taijutsu Specialist — Claude, 2026-11-15 (published 0.55.0-alpha.1)
 - `content/automation/taijutsu-specialist.json` is the source for the class (written once by a scratch script; edit the JSON). Martial Die formulas use `@pools.martialDice.faces`, never a fixed d6.
 - Unwasted Movements is `n5e.rankCost.tai` on Martial Technique's stance-gated effect; cost math is still `rules/cost.mjs` (the fixed cost goes in as Special).
+
+## CCOND1a — Claude, 2026-11-15 (published 0.56.0-alpha.1)
+- Class and clan conditions are condition cards (item type `condition`, pack `conditions`), registered at ready into `CONFIG.N5E.clanConditions`. Add new class or clan conditions as cards, never as marker effects. Their keys are the card identifiers.

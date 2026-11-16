@@ -1,0 +1,76 @@
+{
+  "_id": "n5emso6wv6prLEDp",
+  "name": "Bone Broken",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5epoqxkZ3SaDWQ2",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bone-broken",
+    "description": "<p>Bone Broken is treated as a Physical Condition. Creatures with it have had their skeletal structure rattled and injured. They suffer the following effects.</p><p>Disadvantage on Constitution saving throws.</p><p>Cannot Dash, Disengage, or Dodge.</p><p>Reduce the affected creature's DR to 0.</p><p>Disarms all weapons or items it is holding and cannot hold weapons or items in their hands.</p><p>This condition ends at the end of an affected creature's turn.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "taijutsu-specialist",
+      "subclass": ""
+    },
+    "summary": "Disadvantage on Constitution saves; can't Dash, Disengage or Dodge; DR 0; disarmed and can't hold weapons or items.",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "nextTurnEnd",
+    "persists": false,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {
+      "noDash": true,
+      "noDisengage": true,
+      "noDodge": true,
+      "drZero": true
+    },
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "disadvantage",
+          "selector": "save:con",
+          "label": "Bone Broken"
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.56.0"
+  },
+  "_key": "!items!n5emso6wv6prLEDp"
+}

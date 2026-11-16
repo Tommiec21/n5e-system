@@ -1,6 +1,7 @@
 /**
  * Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied
- * NPC placement, party rations, reaction decisions on GM-authored windows, item transfer).
+ * NPC placement, party rations, reaction decisions on GM-authored windows, item transfer, class and
+ * clan condition cards on creatures the player doesn't own: CCOND1).
  *
  * The player writes the request into a flag on an actor they own. Only owners can write that flag,
  * and Foundry tells the GM which user made the change, so the request is authenticated. The active
@@ -8,7 +9,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult", "applyCondition"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -65,6 +66,12 @@ export function validateIntent(type, data = {}) {
       const total = Number(data.total);
       if ( !isId(data.messageId) || !actions.includes(data.action) || !Number.isSafeInteger(total) ) throw new Error("Invalid social encounter result.");
       return { messageId: data.messageId, action: data.action, total, motivation: data.motivation === true, usedPerform: data.usedPerform === true };
+    }
+    case "applyCondition": {
+      const ranks = Number(data.ranks ?? 1);
+      if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid)
+        || !Number.isSafeInteger(ranks) || ranks < 1 || ranks > 20 ) throw new Error("Invalid condition request.");
+      return { key: data.key, targetUuid: data.targetUuid, ranks };
     }
     case "transferRyo": {
       const amount = Number(data.amount);

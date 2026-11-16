@@ -206,6 +206,9 @@ Hooks.once("ready", async () => {
   registerEffectApplication();
   registerReactionWindows();
   registerEffectServices();
+  // CCOND1: class and clan condition cards (drops, the GM's apply intent, endings) and their registry.
+  await import("./module/workflow/condition-cards.mjs").then(async m => { m.registerConditionCards(); await m.loadConditionCards(); })
+    .catch(error => console.error("N5e | condition cards", error));
   // Data migrations the world hasn't run yet (GM only; module/migration/runner.mjs).
   await checkMigrations();
 });

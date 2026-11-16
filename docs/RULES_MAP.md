@@ -162,6 +162,7 @@
 | Sheet roll-mode toggle (until switched off) and per-roll Adv/Dis buttons | `applications/actor/character-sheet.mjs`, `dice/advantaged.mjs addSheetToggle`, `dice/roll.mjs addRollModeButtons` |
 | Optional character sheet designs (Classic, Glass, Ink & Paper, Shinobi Scroll, One UI), chosen per character from the Sheet menu; same sheet logic, own chrome and styles | `applications/actor/sheet-designs.mjs`, `applications/actor/character-designs.mjs`, `templates/actor/designs/`, `styles/designs.css` |
 | Class automation tables (Medical-Nin, Ninjutsu Specialist, Taijutsu Specialist): pools with level-scaled dice, fixed rank costs (`n5e.rankCost`), best-of-abilities element values | `content/automation/*.json`, `tools/content/apply-automation.mjs`, `data/actor/creature.mjs`, `data/item/jutsu.mjs`, `rules/elements.mjs`, `rules/change-keys.mjs` |
+| Class and clan condition cards: registration, applying (drag, Apply, intents), owner warning, ending with the applier, rule visibility | `data/item/condition-card.mjs`, `rules/condition-cards.mjs`, `workflow/condition-cards.mjs`, `packs/_source/conditions/` |
 
 # Concentration (0.15.0-alpha.9, CONC1)
 

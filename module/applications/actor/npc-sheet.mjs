@@ -18,6 +18,7 @@ import { npcSheetHeaderVM, npcStatBlockVM, npcPlayerVM } from "../../view-models
 import { statLine, ABILITY_KEYS, fullSaves } from "../../rules/adversary.mjs";
 import { rule } from "../../rules/settings.mjs";
 import { buildRows } from "../schema-form.mjs";
+import { visibleRegistry } from "../../rules/condition-cards.mjs";
 
 const T = name => `systems/n5e/templates/actor/npc/${name}.hbs`;
 
@@ -132,7 +133,8 @@ export default class NPCSheet extends CharacterSheet {
     switch ( partId ) {
       case "header": {
         const registry = { ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions };
-        context.head = npcSheetHeaderVM(actor, registry);
+        // CCOND1 (King Q-CC7): players may see only a class or clan condition's name.
+        context.head = npcSheetHeaderVM(actor, visibleRegistry(registry, { details: rule("conditionCardDetails") ? "full" : "name", owner: actor.isOwner }));
         context.conditionChoices = Object.entries(registry).map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
         break;
       }

@@ -2,7 +2,7 @@
   "id": "n5e",
   "title": "Naruto 5e (N5e 4.0)",
   "description": "The N5e 4.0 game system for Foundry Virtual Tabletop: chakra, jutsu ranks, Mastery, ranked conditions, Chain, Combo/Finisher, Clash, and the full N5e character chassis.",
-  "version": "0.55.0-alpha.1",
+  "version": "0.56.0-alpha.1",
   "authors": [
     {
       "name": "King",
@@ -141,6 +141,11 @@
           "evocation",
           "expertise"
         ]
+      },
+      "condition": {
+        "htmlFields": [
+          "description"
+        ]
       }
     },
     "ActiveEffect": {
@@ -243,6 +248,17 @@
       "name": "backgrounds",
       "type": "Item",
       "label": "Backgrounds"
+    },
+    {
+      "name": "conditions",
+      "label": "Class & Clan Conditions",
+      "system": "n5e",
+      "path": "packs/conditions",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "packFolders": [
@@ -258,7 +274,8 @@
         "equipment",
         "stances",
         "feats",
-        "backgrounds"
+        "backgrounds",
+        "conditions"
       ]
     }
   ],

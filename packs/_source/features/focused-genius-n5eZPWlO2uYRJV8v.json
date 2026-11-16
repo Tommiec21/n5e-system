@@ -63,40 +63,15 @@
           "pool": "martialDice",
           "amount": 1
         },
-        "text": "When you deal [Unarmed Damage]. Failure: Shattered."
-      },
-      {
-        "id": "n5eGck2WmKoJim1S",
-        "type": "effect",
-        "label": "Shattered",
-        "effect": {
-          "name": "Shattered",
-          "target": "targets",
-          "changes": [],
-          "expires": "",
-          "seconds": 0,
-          "rules": [
-            {
-              "key": "critRange",
-              "selector": "attack",
-              "direction": "against",
-              "value": 1,
-              "label": "Shattered"
-            },
-            {
-              "key": "modifier",
-              "selector": "damage",
-              "direction": "against",
-              "value": "lvl(3:2,10:4,17:6)",
-              "label": "Shattered"
-            },
-            {
-              "key": "note",
-              "text": "A critical hit on it adds 2 Martial Dice (3 at 10th, 4 at 17th). Its first successful Str, Dex or Con save is remade minus a Martial Die (lower result), then this ends. An Action and a DC 20 Strength check end it."
-            }
-          ]
-        },
-        "text": "On a failed Shatterpoint save (a Physical condition)."
+        "text": "When you deal [Unarmed Damage]. Failure: Shattered (a condition card).",
+        "inflicts": [
+          {
+            "key": "shattered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shattered"
+          }
+        ]
       }
     ]
   },

@@ -22,7 +22,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 147 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll` |
+| `api.mjs` | 157 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll`, `applyConditionCard` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
 | `settings.mjs` | 59 | World settings. | `registerSettings` |
 
@@ -30,11 +30,11 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `character-designs.mjs` | 56 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 760 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
+| `character-sheet.mjs` | 788 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
-| `npc-sheet.mjs` | 341 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
+| `npc-sheet.mjs` | 343 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
 | `sheet-designs.mjs` | 22 | The optional character sheet designs (SHEETS1), as data: no Foundry imports, so tests can read it. | `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
 
 ## module/applications/browser
@@ -100,7 +100,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `commands.mjs` | 23 | GM-local extension boundary, never a socket endpoint or authorization from a claimed user ID. | `coordinateCommand` |
 | `effect-services.mjs` | 158 |  | `registerAppearanceProvider`, `refreshEffectAppearances`, `approveEffectMacros`, `emitEffectEvent`, `registerEffectServices` |
 | `history.mjs` | 24 | Explicit GM reconciliation/archive. | `requestHistory`, `archiveRequestHistory` |
-| `owner-intents.mjs` | 170 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
+| `owner-intents.mjs` | 177 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
 | `receipts.mjs` | 72 | Durable, serialized GM receipts. | `requestFingerprint`, `createReceiptCoordinator` |
 
 ## module/canvas
@@ -135,21 +135,21 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 19 | Jutsu keyword colors (NPCUI1; King 2026-11-15). | `jutsuColors`, `jutsuPillPaper` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
-| `rules.mjs` | 221 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 223 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 | `social.mjs` | 74 | Social encounter tables (PRESTD1 Part F, SOCIAL1). | `socialAttitudes`, `socialTypes`, `socialMotivations`, `socialPitfalls`, `socialActions`, `socialNpcActions`, `socialOutcomeLabels` |
 
 ## module/data
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `_index.mjs` | 70 | Registers every TypeDataModel with CONFIG. | `actorModels`, `regionBehaviorModels`, `itemModels`, `effectModels`, `registerDataModels` |
+| `_index.mjs` | 72 | Registers every TypeDataModel with CONFIG. | `actorModels`, `regionBehaviorModels`, `itemModels`, `effectModels`, `registerDataModels` |
 
 ## module/data/actor
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 645 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 646 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
@@ -172,6 +172,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-options.mjs` | 191 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
+| `condition-card.mjs` | 43 | Condition cards (CCOND1; docs/CCOND1_SPEC.md): conditions unique to a class or a clan. | `ConditionCardData` |
 | `equipment.mjs` | 148 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
 | `jutsu.mjs` | 209 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
@@ -197,7 +198,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 89 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 188 | N5e Actor document. | `N5eActor` |
+| `actor.mjs` | 191 | N5e Actor document. | `N5eActor` |
 | `combat.mjs` | 63 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
@@ -239,6 +240,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
+| `condition-cards.mjs` | 95 | Condition cards, pure rules (CCOND1; docs/CCOND1_SPEC.md). | `cardKey`, `cardDefinition`, `isCard`, `ownsCondition`, `conditionCardsFor`, `visibleRegistry`, `cardResave`, `appliedBy` |
 | `condition-elements.mjs` | 103 | Conditions and states as data (STD3; docs/STD3_SPEC.md). | `activeEntries`, `factOptions`, `conditionRoll`, `conditionDamageHandling`, `conditionCastProblems` |
 | `condition-lifecycle.mjs` | 106 | Condition lifecycle (pure). | `defaultDuration`, `conditionTurnStart`, `conditionTurnEnd`, `removalOptions`, `removalResult`, `resistsAny` |
 | `conditions.mjs` | 76 | Condition rank penalties -> one aggregate object the derived-data pipeline applies (step 7). | `emptyPenalties`, `clampRanks`, `aggregatePenalties` |
@@ -313,7 +315,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
-| `item.mjs` | 433 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `item.mjs` | 458 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 274 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
@@ -340,6 +342,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
+| `condition-cards.mjs` | 136 | Condition cards, Foundry side (CCOND1; docs/CCOND1_SPEC.md). | `CONDITION_PACK`, `registerCard`, `loadConditionCards`, `keyForCard`, `applierFor`, `applyConditionCard`, `placeCondition`, `endConditionsOf`, `registerConditionCards` |
 | `conditions.mjs` | 103 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |

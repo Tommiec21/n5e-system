@@ -777,3 +777,16 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Change `n5e.rankCost.<scope>` "D:3,C:5,B:9,A:14,S:20" | A fixed Special cost by cast rank for jutsu in scope (`system.modifiers.rankCost`) |
 | Roll fact `weapon:unarmed` | A damage roll from the Unarmed Strike item |
 | Automation table effect `requiresStance` | The effect only applies in a stance of that category |
+
+## Added in 0.56.0-alpha.1 (CCOND1a)
+
+| Path | Meaning |
+| --- | --- |
+| Item type `condition` `system.owner` {kind, id, subclass} | The class (and subclass) or clan the condition card belongs to |
+| `system.summary`, `tags`, `maxRanks`, `endsAt`, `persists`, `decay`, `removal`, `resave` {ability, source, dc}, `turnStartDamage`, `perRank`, `flat`, `flags`, `cast` | The condition's rules, the same shape as a core condition entry |
+| Card `flags.n5e.rules` | The condition's rule elements |
+| `CONFIG.N5E.clanConditions.<key>` `owner`, `card`, `summary`, `scope` | A registered card (class or clan) |
+| Condition effect `flags.n5e.appliedBy` | The actor uuid that applied a card (it ends with that creature) |
+| Condition flag `drZero` | The creature's DR is 0 |
+| Owner intent `applyCondition` {key, targetUuid, ranks} | A player's card applied by the GM's client |
+| World setting `conditionCardDetails` | Players see card rules on creatures they don't own (default on) |

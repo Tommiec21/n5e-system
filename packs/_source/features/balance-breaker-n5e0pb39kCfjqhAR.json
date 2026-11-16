@@ -51,31 +51,15 @@
           "pool": "martialDice",
           "amount": 2
         },
-        "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn."
-      },
-      {
-        "id": "n5e9KXeeXgRBpLAw",
-        "type": "effect",
-        "label": "Balance Broken",
-        "effect": {
-          "name": "Balance Broken",
-          "target": "targets",
-          "changes": [],
-          "expires": "turnEnd",
-          "seconds": 0,
-          "rules": [
-            {
-              "key": "disadvantage",
-              "selector": "save:str",
-              "label": "Balance Broken"
-            },
-            {
-              "key": "note",
-              "text": "Can't gain AC or DR bonuses from jutsu. Willingly moving more than 5 ft or casting a Mobility (M) jutsu costs its Reaction, or it falls Prone and can't stand until the start of its next turn."
-            }
-          ]
-        },
-        "text": "On a failed save; ends at the end of its turn (from 6th level, Perfected Stillness: a save at the end of each of its turns ends it)."
+        "text": "On an unarmed or Taijutsu hit that deals unarmed damage. Not again until the end of your next turn. A failure applies the condition card (ends at the end of the creature's next turn).",
+        "inflicts": [
+          {
+            "key": "balance-broken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Balance Broken"
+          }
+        ]
       }
     ],
     "prerequisites": []
@@ -93,7 +77,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Balance Broken (defined in Extra Attack): disadvantage on Strength saves is on the effect; the rest is at the table."
+          "text": "Balance Broken is a condition card (Class & Clan Conditions): its rules are on the card. From 6th level (Talented Genius, Perfected Stillness) it lasts until a save at the end of each of the creature's turns: at the table."
         }
       ]
     }

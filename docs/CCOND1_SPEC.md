@@ -1,6 +1,6 @@
 # CCOND1 function spec: class and clan conditions
 
-Status: **spec written 2026-11-15 (King: "plan a system for Conditions unique to Classes and Clans … only they can apply them … condition cards that can be dragged and dropped on top of creatures or automatically applied via an apply button"). King answered Q-CC1–Q-CC7 the same day; Q-CC6 found in the books. Awaiting approval to build.**
+Status: **spec written 2026-11-15 (King: "plan a system for Conditions unique to Classes and Clans … only they can apply them … condition cards that can be dragged and dropped on top of creatures or automatically applied via an apply button"). King answered Q-CC1–Q-CC7 the same day; Q-CC6 found in the books. King: "Start building the system." CCOND1a built (0.56.0-alpha.1).**
 
 ## The problem
 
@@ -31,7 +31,7 @@ Foundry supports every piece:
 
 ### 2. One registry, one engine
 
-- At start-up, every card in the compendium registers under its identifier (class cards in a new `classConditions` registry; clan cards in the existing `clanConditions`).
+- At start-up, every card in the compendium and every world condition item registers under its identifier in `CONFIG.N5E.clanConditions`, the registry for every non-core condition (class and clan alike; build decision: every lookup in the system already reads it, so no second registry).
 - From then on a class condition works like a core one: the token icon, the sheet rail with ranks and "Try to end", the penalties and rule elements, durations and decay, turn damage, and "Apply" buttons when jutsu text names it.
 - On a creature it is the same condition effect as a core condition, plus who applied it (actor, feature, save DC) so end-of-turn saves use the right DC.
 
@@ -124,3 +124,13 @@ Original questions:
 
 - 2026-11-15 Claude: spec written from King's request; existing class conditions surveyed from the feature text.
 - 2026-11-15 King: answers Q-CC1–Q-CC7. Claude: swept the books for class conditions (19 found, Bone and Flow Broken defined); spec updated.
+- 2026-11-15 King: "Start building the system." Claude: CCOND1a built and published 0.56.0-alpha.1.
+
+## Build notes (CCOND1a, 0.56.0-alpha.1)
+
+- **Code:** item type `condition` (`data/item/condition-card.mjs`); pure rules `rules/condition-cards.mjs` (card → registry entry, owner check, the Features-tab list, Q-CC7 visibility, resave DC, applied-by lookup); Foundry side `workflow/condition-cards.mjs` (start-up registration, `applyConditionCard`, canvas drops, the GM-side `applyCondition` owner intent, Q-CC5 endings). Sheet drops route cards to apply instead of adding an item. `actor.addCondition` takes extra flags (`appliedBy`, `resave`).
+- **Engine:** condition flag `drZero` (DR is 0). Cards' rule elements live in the card's `flags.n5e.rules`.
+- **Who applies to a creature the player doesn't own:** an owner intent on the applying actor (the player must own it); the active GM's client applies it without a dialog. The request is authenticated by Foundry (the GM sees which user changed the actor).
+- **Q-CC5 "dies":** the Dead status, or an NPC at 0 HP. **"Leaves the fight":** its combatant is deleted or the combat ends.
+- **Cards so far:** Balance Broken, Bone Broken, Flow Broken, Shattered. Flow Broken's keyword lock and initiative −4, Balance Broken's movement rule, Bone Broken's disarm and Shattered's level-scaled damage and remade save are on the card's text (at the table).
+- **Next (CCOND1b):** the other 15 class conditions from section 7.

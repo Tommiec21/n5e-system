@@ -1,3 +1,14 @@
+## 0.56.0-alpha.1 — CCOND1a: class and clan condition cards
+
+- **Condition cards:** a new item type for conditions that belong to a class or a clan, kept in the new **Class & Clan Conditions** compendium. A card has the same rules as a core condition (tags, ranks, how it ends, "Try to end", penalties and roll effects), so on a creature it works like Burned or Dazed: token icon, sheet rail, expiry.
+- **Applying one:** drag the card onto a token or onto a creature's sheet, or target creatures and press **Apply** on the card in your Features tab (a new Conditions section lists the cards your class, subclass and clan give you). Save buttons that inflict a card apply it on a failure, as with core conditions. Macros: `game.n5e.api.applyConditionCard(actor, key)`.
+- **Who:** any player or the GM can apply a card (King); you get a warning when the applying creature has no matching class or clan. On a creature you don't own, the GM's client applies it for you, with no approval step. Applying it again replaces it and the new duration wins.
+- **It ends** when the creature that applied it dies or leaves the combat.
+- **World setting (privacy):** "Players see class and clan condition rules": off shows players only a card's name on creatures they don't own.
+- **First cards (Taijutsu Specialist):** Balance Broken, Bone Broken, Flow Broken (from the book's boxes) and Shattered. Balance, Bone and Flow Breaker and Shatterpoint now apply them. Bone Broken sets DR to 0; each Broken gives disadvantage on its save; Shattered widens the critical range against it and adds +2 damage taken.
+- **Fix:** a Taijutsu whose cost is None keeps it under Unwasted Movements (King Q-D10).
+- Not checked in a running Foundry world.
+
 ## 0.55.0-alpha.1 — STD6d: Taijutsu Specialist automated
 
 - **Martial Dice grow with you:** d6, d8 at 7th, d10 at 13th, d12 at 19th level (the Martial Strength die). Every Martial Die button now rolls the right size.

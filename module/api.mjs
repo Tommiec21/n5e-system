@@ -132,6 +132,15 @@ export async function makeScroll(jutsu, options = {}) {
   return (await import("./workflow/scrolls.mjs")).makeScroll(jutsu, options);
 }
 
+/**
+ * CCOND1: put a class or clan condition card on a creature ({applier, ranks}); the applier defaults to
+ * the selected token's actor or the user's character.
+ */
+export async function applyConditionCard(target, key, options = {}) {
+  const m = await import("./workflow/condition-cards.mjs");
+  return m.applyConditionCard(target, key, { ...options, applier: m.applierFor(options.applier ?? null) });
+}
+
 export default {
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
@@ -142,5 +151,6 @@ export default {
   setRuleElements, coatWeapon, removeCoating, summonTokens, dismissSummons,
   rollDice, summonAllied, dismissAllied, submitIntent, canModify, ownedRecipients, isAllied, effectApplicationCard,
   registerCondition, registerKeyword, registerSkillAction, registerDamageType, registerWeaponProperty,
-  registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter, automationAudit
+  registerClanData, fall, indirectExposure, makeScroll, missionPlanner, socialEncounter, automationAudit,
+  applyConditionCard
 };

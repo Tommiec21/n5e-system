@@ -1,0 +1,42 @@
+/**
+ * Condition cards (CCOND1; docs/CCOND1_SPEC.md): conditions unique to a class or a clan. A card holds
+ * the same rules a core condition entry has (config/conditions.mjs), so once registered
+ * (workflow/condition-cards.mjs) it runs on the same engine: ranks, penalties, rule elements
+ * (flags.n5e.rules on the card), durations, decay, "Try to end", turn damage and the token icon.
+ *
+ *   owner      who it belongs to: {kind: "class" | "clan", id: class or clan identifier, subclass}
+ *   tags       Physical, Mental, Sensory, Elemental, Fatigue (King Q-CC1: it counts as these for everything)
+ *   maxRanks   empty: no ranks (applying again replaces it and the new duration wins, King Q-CC3);
+ *              a number: ranks stack up to it; 0: no limit
+ *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd"
+ *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
+ *              source discipline: tai, nin, gen, buki)
+ *   summary    one line for tooltips and the card face
+ */
+import * as S from "../fields/shared.mjs";
+import { baseFields } from "./templates.mjs";
+
+const TDM = () => foundry.abstract.TypeDataModel;
+const object = () => new (foundry.data.fields.ObjectField)();
+
+export class ConditionCardData extends TDM() {
+  static defineSchema() {
+    return {
+      ...baseFields(),
+      owner: S.obj({ kind: S.str({ initial: "class" }), id: S.str(), subclass: S.str() }),
+      summary: S.str(),
+      tags: S.set(),
+      maxRanks: S.num(null, { integer: true, min: 0, nullable: true }),
+      endsAt: S.str(),
+      persists: S.bool(),
+      decay: S.obj({ when: S.str(), amount: S.int(1, { min: 0 }) }),
+      removal: S.arr(S.obj({ action: S.str({ initial: "action" }), check: S.arr(S.str()), dc: S.num(null, { nullable: true }), ranks: S.str({ initial: "all" }), text: S.str() })),
+      resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),
+      turnStartDamage: S.obj({ die: S.str(), type: S.str(), perRank: S.bool() }),
+      perRank: object(),
+      flat: object(),
+      flags: object(),
+      cast: object()
+    };
+  }
+}

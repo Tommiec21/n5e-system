@@ -237,6 +237,24 @@ const DETAILS = {
     section("Affinities", [F.list(src, "affinities.fixed", "Granted"), F.num(src, "affinities.choose", "Choose", { small: true })]),
     section("Skills", [F.tags(src, "skills.fixed", "Granted", Object.fromEntries(Object.entries(skills).map(([k, v]) => [k, v.label])))])
   ],
+  condition: src => [
+    section("Condition card", [
+      F.text(src, "identifier", "Identifier"),
+      F.select(src, "owner.kind", "Belongs to", { class: "Class", clan: "Clan" }),
+      F.text(src, "owner.id", "Class or clan", { placeholder: "identifier" }),
+      F.text(src, "owner.subclass", "Subclass", { placeholder: "identifier (optional)" }),
+      F.text(src, "summary", "Summary", { wide: true })
+    ]),
+    section("Rules", [
+      F.tags(src, "tags", "Counts as", { physical: "Physical", mental: "Mental", sensory: "Sensory", elemental: "Elemental", fatigue: "Fatigue" }),
+      F.num(src, "maxRanks", "Max ranks", { small: true, placeholder: "none" }),
+      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn" }),
+      F.check(src, "persists", "Persists"),
+      F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),
+      F.select(src, "resave.source", "Save DC from", { "": "Fixed DC", tai: "Taijutsu", nin: "Ninjutsu", gen: "Genjutsu", buki: "Bukijutsu" }),
+      F.num(src, "resave.dc", "Fixed DC", { small: true })
+    ])
+  ],
   background: src => [
     section("Background", [
       F.tags(src, "skills", "Skills", Object.fromEntries(Object.entries(skills).map(([k, v]) => [k, v.label]))),
@@ -337,6 +355,13 @@ function summary(item) {
       add("Speed", s.speed ? `${s.speed} ft` : "");
       add("Hijutsu", list(s.hijutsuAbilities).map(a => abilities[a]?.abbr ?? a).join(" / "));
       add("Affinity", list(s.affinities?.fixed).join(", ") || (s.affinities?.choose ? `choose ${s.affinities.choose}` : ""));
+      break;
+    case "condition":
+      subtitle = `${s.owner?.kind === "clan" ? "Clan" : "Class"} condition${s.owner?.id ? ` · ${s.owner.id.replace(/-/g, " ")}` : ""}${s.owner?.subclass ? ` (${s.owner.subclass.replace(/-/g, " ")})` : ""}`;
+      add("Counts as", list(s.tags).map(t => t[0].toUpperCase() + t.slice(1)).join(", "));
+      add("Ranks", s.maxRanks == null ? "No ranks" : s.maxRanks === 0 ? "Unlimited" : `Up to ${s.maxRanks}`);
+      add("Ends", s.endsAt === "nextTurnEnd" ? "End of its next turn" : s.persists ? "Persists" : "");
+      chips = s.summary ? [{ label: "Drag onto a creature to apply", tone: "", tooltip: s.summary }] : [];
       break;
     case "background":
       subtitle = "Background";

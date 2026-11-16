@@ -134,9 +134,10 @@ export default class N5eActor extends Actor {
    * @param {string} [o.sourceRank]  rank of the jutsu that caused it (Corroded and Charmed scale by it)
    * @param {string} [o.origin]      uuid of the source
    * @param {{seconds?: number, rounds?: number}} [o.duration]  overrides the default
+   * @param {object} [o.flags]       extra flags.n5e on the effect (CCOND1: appliedBy, resave)
    * @returns {Promise<ActiveEffect|null>}
    */
-  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false } = {}) {
+  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false, flags = null } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
     // King 2026-11-13: out of combat, "until the end of its next turn" conditions from game effects
@@ -160,11 +161,13 @@ export default class N5eActor extends Actor {
         "duration.startTime": game.time.worldTime,
         "duration.startRound": game.combat?.round ?? null,
         "duration.startTurn": game.combat?.turn ?? null,
-        ...(duration ? { "duration.seconds": duration.seconds ?? null, "duration.rounds": duration.rounds ?? null } : {})
+        ...(duration ? { "duration.seconds": duration.seconds ?? null, "duration.rounds": duration.rounds ?? null } : {}),
+        ...(flags ? { flags: { n5e: flags } } : {})
       });
     }
     const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin });
     if ( !manual ) foundry.utils.setProperty(data, "flags.n5e.applied", "auto");
+    if ( flags ) for ( const [k, v] of Object.entries(flags) ) foundry.utils.setProperty(data, `flags.n5e.${k}`, v);
     const dur = duration ?? defaultDuration(key);
     if ( dur ) data.duration = { seconds: dur.seconds ?? null, rounds: dur.rounds ?? null, startTime: game.time.worldTime,
       startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null };

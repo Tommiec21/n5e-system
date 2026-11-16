@@ -43,6 +43,8 @@ import { ROLL_GROUPS, sheetRollMode } from "../../dice/advantaged.mjs";
 import { ruleToggles } from "../../rules/elements.mjs";
 import { addBackground } from "../../workflow/background.mjs";
 import { addClan } from "../../workflow/clan.mjs";
+import { conditionCardsFor, visibleRegistry } from "../../rules/condition-cards.mjs";
+import { rule } from "../../rules-settings.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -71,6 +73,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     // level-up, toggles, small setters. Every handler is defined in the Actions section below.
     actions: {
       n5eTab: CharacterSheet.#onTab,
+      applyConditionCard: CharacterSheet.#onApplyConditionCard,
       giveRyo: CharacterSheet.#onGiveRyo,
       craft: CharacterSheet.#onCraft,
       toggleMode: CharacterSheet.#onToggleMode,
@@ -203,7 +206,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     switch ( partId ) {
       case "header": context.vm = headerVM(actor); break;
       case "rail":
-        context.vm = railVM(actor, { ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions });
+        context.vm = railVM(actor, visibleRegistry({ ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions },
+          { details: rule("conditionCardDetails") ? "full" : "name", owner: actor.isOwner }));
         context.conditionChoices = Object.entries({ ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions })
           .map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
         break;
@@ -211,7 +215,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       case "combat": context.vm = combatVM(actor); break;
       case "jutsu": context.vm = jutsuVM(actor, this.#jutsu); break;
       case "inventory": context.vm = inventoryVM(actor); break;
-      case "features": context.vm = featuresVM(actor); break;
+      case "features":
+        context.vm = featuresVM(actor);
+        context.vm.conditionCards = conditionCardsFor(actor, CONFIG.N5E.clanConditions);
+        break;
       case "effects": context.vm = effectsVM(actor); break;
       case "biography": {
         context.vm = biographyVM(actor);
@@ -253,6 +260,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.element.classList.toggle("edit-mode", this.editMode);
+
+    // CCOND1: condition cards on the Features tab drag onto tokens and sheets.
+    for ( const el of this.element.querySelectorAll("[data-condition-card]") ) {
+      el.addEventListener("dragstart", ev => ev.dataTransfer.setData("text/plain", JSON.stringify({ type: "Item", uuid: el.dataset.conditionCard })));
+    }
 
     // Jutsu search: re-render only the jutsu part, keep focus in the box.
     const search = this.element.querySelector("[data-jutsu-search]");
@@ -310,6 +322,12 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
    */
   async _onDropItem(event, item) {
     const actor = this.actor;
+    // CCOND1: a class or clan condition card dropped here is applied to this creature, not added.
+    if ( item.type === "condition" ) {
+      const cards = await import("../../workflow/condition-cards.mjs");
+      const key = cards.keyForCard(item.uuid) ?? cards.registerCard(item);
+      return cards.applyConditionCard(actor, key, { applier: cards.applierFor() }).catch(e => ui.notifications.warn(e.message));
+    }
     // FIN1: another creature's physical item dropped here is given, not copied.
     if ( item.parent instanceof Actor && item.parent !== actor ) {
       // PRESTD1 Part C: from a loot pile or the stash it is taken; from a merchant it is bought.
@@ -461,6 +479,16 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !this.isEditable ) return null;
     const { promptCraft } = await import("../../workflow/crafting.mjs");
     return promptCraft(this.actor);
+  }
+
+  /** CCOND1: apply a condition card from the Features tab to the user's targeted tokens. */
+  static async #onApplyConditionCard(event, target) {
+    const key = target.closest("[data-condition-key]")?.dataset.conditionKey;
+    const targets = [...game.user.targets].map(t => t.actor).filter(Boolean);
+    if ( !key ) return;
+    if ( !targets.length ) return ui.notifications.info("Target one or more creatures first (or drag the card onto a token).");
+    const { applyConditionCard } = await import("../../workflow/condition-cards.mjs");
+    for ( const t of targets ) await applyConditionCard(t, key, { applier: this.actor }).catch(e => ui.notifications.warn(e.message));
   }
 
   static #onTab(event, target) {

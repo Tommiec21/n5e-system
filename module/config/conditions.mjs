@@ -10,7 +10,7 @@
  *   endsAt      "nextTurnEnd" when the condition ends at the end of the creature's next turn
  *   perRank     numeric penalties multiplied by ranks (read by rules/conditions.mjs)
  *   flat        numeric penalties applied once while present
- *   flags       rule switches the engine checks (noHealing, maxComponents...)
+ *   flags       rule switches the engine checks (noHealing, maxComponents, drZero: DR is 0 (CCOND1)...)
  *   removal     how it can be removed: [{action, check: [ability or skill keys], dc, ranks: n|"all",
  *               perOver: {every, ranks} (Bleed), onFail: {dcIncrease} (Sealed), requiresTool}] or
  *               [{text}] for removals the GM judges. Drives the rail's "Try to end" button.

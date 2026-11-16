@@ -365,7 +365,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     const drb = B("dr", "Damage Reduction").base("Base", this.traits.dr).addAll(this._statParts("dr")).override(this._statOverride("dr"))
       .add(grants.reinforced ? "Reinforced armor" : "Reinforced", reinforced)
       .add("Effects", mods.dr).addAll(P("dr"));
-    this.dr = Math.max(0, drb.total);
+    // CCOND1: a condition flag that sets DR to 0 (Bone Broken).
+    this.dr = pen.flags?.drZero ? 0 : Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
     const ac = this._baseAC({ bonus: this.bonuses.ac, penalty: pen.ac }) ?? computeAC({
       calc: this.attributes.ac.calc, dexMod: mod("dex"), prof: this.prof, armor: grants.armor,

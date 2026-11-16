@@ -11,6 +11,8 @@
 import CharacterSheet from "./character-sheet.mjs";
 import { headerVM, railVM, mainVM } from "../../view-models/character.mjs";
 import { SHEET_DESIGNS, DESIGN_PARTS, DESIGN_TEMPLATE_PATHS } from "./sheet-designs.mjs";
+import { visibleRegistry } from "../../rules/condition-cards.mjs";
+import { rule } from "../../rules-settings.mjs";
 
 export { SHEET_DESIGNS, DESIGN_PARTS, DESIGN_TEMPLATE_PATHS };
 
@@ -41,7 +43,8 @@ export function designSheet(id) {
       context = await super._preparePartContext(partId, context, options);
       if ( !DESIGN_PARTS.includes(partId) ) return context;
       const actor = this.actor;
-      const conditions = { ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions };
+      const conditions = visibleRegistry({ ...CONFIG.N5E.conditions, ...CONFIG.N5E.clanConditions },
+        { details: rule("conditionCardDetails") ? "full" : "name", owner: actor.isOwner });
       context.d = {
         header: partId === "header" ? context.vm : headerVM(actor),
         rail: partId === "rail" ? context.vm : railVM(actor, conditions),

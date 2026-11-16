@@ -65,6 +65,20 @@
     <button type="button" data-action="toggleRule" data-rule-uuid="{{uuid}}" aria-pressed="{{enabled}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}: {{#if enabled}}On{{else}}Off{{/if}}</button>
   {{/each}}
   {{/if}}
+  {{#if vm.conditionCards.length}}
+  <div class="condition-cards">
+    <div class="section-head"><h2>Conditions</h2><span class="sub">Drag a card onto a creature, or target creatures and press Apply</span></div>
+    <div class="cc-grid">
+      {{#each vm.conditionCards}}
+        <div class="cc-card" draggable="true" data-condition-card="{{card}}" data-condition-key="{{key}}" {{#if summary}}data-tooltip-text="{{summary}}"{{/if}}>
+          <img src="{{icon}}" alt="" width="36" height="36">
+          <div class="cc-text"><b>{{label}}</b><span class="sub">{{#each tags}}{{this}} {{/each}}{{ranks}}</span>{{#if summary}}<span class="cc-summary">{{summary}}</span>{{/if}}</div>
+          <button type="button" data-action="applyConditionCard" {{#unless @root.editable}}disabled{{/unless}}>Apply</button>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
   <div class="stances">
     <div class="section-head"><h2>Stances</h2><span class="sub">One at a time · switching costs a Bonus Action</span></div>
     {{#each vm.stances}}

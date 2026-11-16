@@ -1,0 +1,90 @@
+{
+  "_id": "n5eVgL86U3fCDcUc",
+  "name": "Shattered",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5epoqxkZ3SaDWQ2",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shattered",
+    "description": "<p>Your defenses have been sundered and exposed. Shattered is a physical condition.</p><p>Attacks targeting a Shattered creature gain a +1 bonus to their critical threat range.</p><p>A Shattered creature that suffers a critical hit takes bonus damage equal to 2 Martial Die. This increases to 3 Martial Die at 10th and 4 Martial Die at 17th level.</p><p>A Shattered creature increases damage taken by +2. This increases to +4 if the inflictor is 10th level and +6 at 17th level.</p><p>The first time you succeed a Strength, Dexterity or Constitution saving throw while you are Shattered, you must remake your saving throw, subtracting the result of 1 Martial Die, taking the lower result. This condition ends immediately.</p><p>A Shattered creature can spend their action making a DC 20 Strength check to end this condition on a success.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "taijutsu-specialist",
+      "subclass": "talented-genius"
+    },
+    "summary": "+1 critical range against it; +2 damage taken (+4 / +6 from a 10th / 17th-level inflictor); a critical hit adds Martial Dice; its first successful Str, Dex or Con save is remade.",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": true,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "str"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {
+      "damageTaken": 2
+    },
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "direction": "against",
+          "value": 1,
+          "label": "Shattered"
+        },
+        {
+          "key": "note",
+          "text": "The inflictor's level raises the damage taken to +4 (10th) or +6 (17th): add the difference at the table. A critical hit on it adds 2 Martial Dice (3 at 10th, 4 at 17th). Its first successful Str, Dex or Con save is remade minus a Martial Die (lower result), then Shattered ends.",
+          "label": "Shattered"
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.56.0"
+  },
+  "_key": "!items!n5eVgL86U3fCDcUc"
+}

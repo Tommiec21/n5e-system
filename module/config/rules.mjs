@@ -37,6 +37,8 @@ export const rules = {
     hint: "Damage and healing applied to NPCs no player owns is whispered to the GM." },
   hideNpcConditions: { group: "privacy", type: "boolean", default: false, label: "Hide NPC condition messages",
     hint: "Condition damage, condition endings and removal results for NPCs no player owns are whispered to the GM." },
+  conditionCardDetails: { group: "privacy", type: "boolean", default: true, label: "Players see class and clan condition rules",
+    hint: "On: players see a class or clan condition's rules on creatures they don't own. Off: only its name (CCOND1, King Q-CC7)." },
   hideNpcNames: { group: "privacy", type: "boolean", default: false, label: "Hide NPC names",
     hint: "When an NPC token's name isn't shown to everyone, players see \"Unknown creature\" in chat and the combat tracker." },
   sharedVision: { group: "privacy", type: "boolean", default: false, label: "Shared party vision",
