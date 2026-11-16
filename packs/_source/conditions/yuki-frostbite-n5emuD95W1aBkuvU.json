@@ -1,0 +1,93 @@
+{
+  "_id": "n5emuD95W1aBkuvU",
+  "name": "Frostbite",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5efBwFp8BTTS87v",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yuki-frostbite",
+    "description": "<p>A Frostbitten creature suffers the effects of extreme cold.</p><p>A Frostbitten creature takes 1d10 cold damage at the end of their for each rank they have, if they have not spent at least half of their movement moving into a new space before the end of their turns.</p><p>A Frostbitten creature cannot cast jutsu with the Combo keyword, or benefit from a jutsu’s Chain 2 or 3 effects.</p><p>Creatures that are immune to Cold damage is immune to this condition.</p><p>A Frostbitten creature can spend an Action to make a DC 20 Dexterity ability check to end this affliction. On a successful check, the condition ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "yuki",
+      "subclass": ""
+    },
+    "summary": "1d10 cold per rank at the end of its turn unless it moved half its speed; no Combo jutsu or Chain 2/3 effects; DC 20 Dexterity to end.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "damage:cold"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "dex"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "damage",
+          "on": "turnEnd",
+          "formula": "(@ranks)d10",
+          "damageType": "cold",
+          "label": "Frostbite"
+        },
+        {
+          "key": "note",
+          "text": "The end-of-turn cold damage only applies if it didn't spend at least half its movement moving into a new space this turn: skip the card if it did. It can't cast Combo jutsu or benefit from Chain 2 or 3 effects."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5emuD95W1aBkuvU"
+}

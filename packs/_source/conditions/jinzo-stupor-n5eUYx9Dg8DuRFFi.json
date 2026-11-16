@@ -1,0 +1,99 @@
+{
+  "_id": "n5eUYx9Dg8DuRFFi",
+  "name": "Stupor",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5e3MV1ytTDO5uGp",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-stupor",
+    "description": "<p>A creature suffering Stupor has been injected with a synthetic hallucinogenic that assaults their brains ability to process information.</p><p>A creature with Stupor suffers a -2 penalty to all Strength and Dexterity based rolls.</p><p>A creature with Stupor has all ranks of Mastery suppressed.</p><p>A creature immune to the Envenomed condition is immune to this condition.</p><p>A creature with Stupor can spend an Action, to make a DC 20 Constitution or Intelligence ability check to end this affliction.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jinzo",
+      "subclass": ""
+    },
+    "summary": "−2 to all Strength and Dexterity rolls; all Mastery suppressed; DC 20 Constitution or Intelligence to end.",
+    "tags": [
+      "physical",
+      "sensory"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "condition:envenomed"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con",
+          "int"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": [
+            "save:str",
+            "save:dex",
+            "ability:str",
+            "ability:dex"
+          ],
+          "value": -2,
+          "label": "Stupor"
+        },
+        {
+          "key": "note",
+          "text": "−2 also applies to its Strength and Dexterity skill checks and attacks. All its ranks of Mastery are suppressed (at the table)."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eUYx9Dg8DuRFFi"
+}

@@ -148,3 +148,21 @@ test("Star Sickness loses 2 ranks on a long rest; persisting clan conditions end
     assert.deepEqual(restPlan(a, "full").conditions.filter(c => c.key === "hoshi-star-sickness"), [{ key: "hoshi-star-sickness", ranks: "all" }]);
   } finally { delete CONFIG.N5E.clanConditions["hoshi-star-sickness"]; }
 });
+
+test("clan cards, batch B, and immunity through other immunities", async () => {
+  const { immuneVia } = await import("../module/rules/condition-cards.mjs");
+  const { triggerOutcomes } = await import("../module/rules/triggers.mjs");
+  for ( const k of ["futton-deteriorate", "futton-scald", "yoton-molten", "keton-convergence", "ranton-refraction-point", "jinzo-stupor",
+    "jinzo-doused", "kashu-disoriented", "shoton-crystallization", "shakuton-immolation", "yuki-frostbite"] ) assert.equal(registry[k]?.owner.kind, "clan", k);
+  const fireImmune = { system: { traits: { immune: new Set(["fire"]), conditionImmune: new Set(["dazzled"]) } } };
+  assert.ok(immuneVia(fireImmune, registry["shakuton-immolation"]));
+  assert.ok(!immuneVia(fireImmune, registry["yoton-molten"]), "Molten needs fire and earth immunity");
+  assert.ok(immuneVia({ system: { traits: { immune: new Set(["fire", "earth"]) } } }, registry["yoton-molten"]));
+  assert.ok(immuneVia(fireImmune, registry["kashu-disoriented"]), "Dazzled immunity");
+  assert.ok(!immuneVia(fireImmune, registry["jinzo-doused"]));
+  assert.deepEqual(registry["shakuton-immolation"].turnStartDamage, { die: "1d12", type: "fire", perRank: true });
+  const frost = registry["yuki-frostbite"].rules[0];
+  const out = triggerOutcomes([{ element: frost, label: "Frostbite", key: "x#0", source: { system: { effectiveRanks: 3 } } }]);
+  assert.equal(out.damage[0].formula, "(3)d10");
+  assert.equal(aggregatePenalties([{ key: "shoton-crystallization", ranks: 2 }], registry).baseCost.tai, 8);
+});

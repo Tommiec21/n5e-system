@@ -1,0 +1,94 @@
+{
+  "_id": "n5eNLtdvwjTuIRzJ",
+  "name": "Crystallization",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eiN55DHB3QWaNR",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shoton-crystallization",
+    "description": "<p>A Crystallized creature suffers the effects of their body and chakra network being slowly transfigured into crystal.</p><p>A Crystallized creature increases the base chakra cost of Jutsu they cast by +4, for each rank it has.</p><p>A creature with 3 or more ranks of Crystallization has its movement speed reduced by half, and they cannot gain bonuses to their speed for the duration of this condition.</p><p>A creature with 5 ranks of Crystallization are Petrified for the next hour. If a creature with 5 ranks of Crystallization take damage from a Jutsu based attack, they are treated as vulnerable to the triggering damage, instead of resistant. This condition then ends.</p><p>Creatures that are immune to being Petrified is immune to this condition.</p><p>A Crystallized creature can spend an Action, even if Petrified to make a DC 20 Constitution ability check to end this affliction. On a successful check, the condition ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "shoton",
+      "subclass": ""
+    },
+    "summary": "+4 base jutsu cost per rank; half speed at 3 ranks; Petrified for an hour at 5; DC 20 Constitution to end (even Petrified).",
+    "tags": [
+      "elemental",
+      "physical"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "condition:petrified"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {
+      "baseCost": {
+        "nin": 4,
+        "gen": 4,
+        "tai": 4,
+        "buki": 4
+      }
+    },
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 3 or more ranks its speed is halved and it can't gain speed bonuses. At 5 ranks it is Petrified for the next hour; jutsu attack damage then makes it vulnerable to that damage instead of resistant, and this ends."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eNLtdvwjTuIRzJ"
+}

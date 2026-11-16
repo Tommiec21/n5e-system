@@ -1,0 +1,88 @@
+{
+  "_id": "n5eEGwD7FnQCROsw",
+  "name": "Scald",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5egh8nMR4etUwqO",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-scald",
+    "description": "<p>A Scalding creature suffers the effects of their body and physical form being unable to function to its full potential.</p><p>A Scalded creature reduces damage they deal by -2, for each rank they have.</p><p>A creature with 3 or more ranks of Scald loses all Temporary Hit Points they have, and cannot gain more.</p><p>A creature with 5 ranks of Scald cannot cast jutsu with the Barrier keyword.</p><p>Creatures that are immune to Acid damage is immune to this condition.</p><p>A Scalded creature can spend an Action to make a DC 20 Constitution ability check to end this affliction. On a successful check, the condition ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "futton",
+      "subclass": ""
+    },
+    "summary": "−2 damage dealt per rank; no temporary HP at 3 ranks; no Barrier jutsu at 5; DC 20 Constitution to end.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "damage:acid"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {
+      "damageDealt": -2
+    },
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 3 or more ranks it loses its temporary HP and can't gain more; at 5 ranks it can't cast Barrier jutsu."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eEGwD7FnQCROsw"
+}

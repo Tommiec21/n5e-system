@@ -1,0 +1,93 @@
+{
+  "_id": "n5ekGl3SDzq2Hkvb",
+  "name": "Deteriorate",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5egh8nMR4etUwqO",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "futton-deteriorate",
+    "description": "<p>A Deteriorating creature suffers the effects of their body and physical form falling apart.</p><p>A Deteriorating creature grants attacking creatures a +1 bonus to their critical hit range, for each rank they have.</p><p>A creature with 3 or more ranks of Deteriorate loses all Resistances they have.</p><p>A creature with 5 ranks of Deteriorate loses all Immunities they have</p><p>Creatures that are immune to Acid damage is immune to this condition.</p><p>A Deteriorating creature can spend an Action to make a DC 20 Constitution ability check to end this affliction. On a successful check, the condition ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "futton",
+      "subclass": ""
+    },
+    "summary": "+1 critical range against it per rank; loses its resistances at 3 ranks and immunities at 5; DC 20 Constitution to end.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "damage:acid"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "direction": "against",
+          "value": "ranks(1)",
+          "label": "Deteriorate"
+        },
+        {
+          "key": "note",
+          "text": "At 3 or more ranks it loses all its resistances; at 5 ranks all its immunities: at the table."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5ekGl3SDzq2Hkvb"
+}

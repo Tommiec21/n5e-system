@@ -1,3 +1,10 @@
+## 0.57.0-alpha.2 — CCOND1c batch B: 11 more clan condition cards
+
+- **New cards:** **Deteriorate** and **Scald** (Futton), **Molten** (Yōton), **Convergence** (Keton), **Refraction Point** (Ranton), **Stupor** and **Doused** (Jinzo), **Disoriented** (Kashu), **Crystallization** (Shōton), **Immolation** (Shakuton), **Frostbite** (Yuki).
+- **What's automated:** Deteriorate +1 critical range against it per rank; Scald −2 damage dealt per rank; Stupor −2 to Strength and Dexterity checks and saves; Disoriented −1 to attack rolls per rank; Crystallization +4 base jutsu cost per rank; Immolation 1d12 fire per rank at the start of its turns; Frostbite 1d10 cold per rank posted at the end of its turns (skip it if it moved half its speed); Molten ends at the end of its next turn. "Try to end" checks on every card that has one. The elemental reactions (Molten, Convergence, Doused, Refraction Point) are on the cards for the table.
+- **Immunity:** a condition is now blocked when the creature has the immunity it names ("creatures immune to fire damage are immune to this", "immune to Dazzled"); Molten needs both fire and earth immunity. This also applies to core conditions that name one.
+- Not checked in a running Foundry world.
+
 ## 0.57.0-alpha.1 — CCOND1c batch A: the first 11 clan condition cards
 
 - **Clan conditions are now condition cards** in the Class & Clan Conditions compendium (folder Clans), so they load in every world (before, only clans imported into the world registered theirs): **Off-Guard** (Uchiha), **Network Distortion** (Hyūga), **Shadow Bound** (Nara), **Drained** (Senju), **Infested** (Aburame), **5-Pronged Seal** and **River Dam Seal** (Uzumaki), **Mental Overwrite** (Yamanaka), **Yin-Seal** (Kuru), **Virulent** (Hebi), **Star Sickness** (Hoshi).

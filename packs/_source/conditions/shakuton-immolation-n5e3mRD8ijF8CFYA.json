@@ -1,0 +1,86 @@
+{
+  "_id": "n5e3mRD8ijF8CFYA",
+  "name": "Immolation",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5epjSxI4PiOmcvj",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "shakuton-immolation",
+    "description": "<p>An Immolated created takes 1d12 fire damage at the start of each of their turns for each rank it has.</p><p>An Immolated creature can concentrate on one less jutsu while under this affliction.</p><p>Creatures that are immune to fire damage is immune to this condition.</p><p>An Immolated creature can spend an Action to make a DC 20 Dexterity ability check to end this affliction. On a successful check, the condition ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "shakuton",
+      "subclass": ""
+    },
+    "summary": "1d12 fire damage per rank at the start of its turns; one fewer concentration jutsu; DC 20 Dexterity to end.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "damage:fire"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "dex"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "1d12",
+      "type": "fire",
+      "perRank": true
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "It can concentrate on one fewer jutsu."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5e3mRD8ijF8CFYA"
+}

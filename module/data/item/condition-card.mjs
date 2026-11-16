@@ -8,6 +8,8 @@
  *   tags       Physical, Mental, Sensory, Elemental, Fatigue (King Q-CC1: it counts as these for everything)
  *   maxRanks   empty: no ranks (applying again replaces it and the new duration wins, King Q-CC3);
  *              a number: ranks stack up to it; 0: no limit
+ *   immunityFrom  "damage:acid" or "condition:envenomed": that immunity also makes the creature immune to
+ *              this; "all:damage:fire,damage:earth" needs every one
  *   seconds    its duration in seconds when not the default 1 minute (0: default)
  *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd"
  *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
@@ -37,6 +39,7 @@ export class ConditionCardData extends TDM() {
       removal: S.arr(S.obj({ action: S.str({ initial: "action" }), check: S.arr(S.str()), dc: S.num(null, { nullable: true }), ranks: S.str({ initial: "all" }),
         dcIncrease: S.int(0), text: S.str() })),
       seconds: S.int(0, { min: 0 }),
+      immunityFrom: S.arr(S.str()),
       resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),
       turnStartDamage: S.obj({ die: S.str(), type: S.str(), perRank: S.bool() }),
       perRank: object(),

@@ -1,0 +1,75 @@
+{
+  "_id": "n5epr1J5bHesWjOM",
+  "name": "Refraction Point",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eNuCYOvT8VnLPE",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ranton-refraction-point",
+    "description": "<p>A creature marked as a Refraction Point has been saturated with Storm Release chakra, and their body acts as a Prism for the Laser Circus technique.</p><p>When a creature marked as a Refraction Point takes damage from a ranged attack as a result of a Ranton Hijutsu or a Laser Circus attack, the attack is refracted. The nearest creature within 30 feet of the Refraction Point, that is hostile to the Ranton that inflicted this condition becomes a target, immediately taking half the damage the Refraction Point took. This condition then immediately ends.</p><p>If a creature marked as a Refraction Point takes damage as a result of another creature that is marked as a Refraction Point, the next nearest creature takes damage equal to half the damage the original target took. This effect can only occur up to 4 times per turn.</p><p>The original Refraction Point, can never be affected by this chaining effect.</p><p>Creatures immune to both Lightning and Cold damage are immune to this condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "ranton",
+      "subclass": ""
+    },
+    "summary": "Ranged Ranton or Laser Circus damage refracts: the nearest hostile creature within 30 ft takes half, chaining up to 4 times a turn.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "all:damage:lightning,damage:cold"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "When it takes damage from a ranged Ranton Hijutsu or Laser Circus attack, the nearest creature within 30 ft hostile to the Ranton takes half that damage, then this ends. A Refraction Point damaged this way passes half on to the next nearest (up to 4 times per turn; never back to the original)."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5epr1J5bHesWjOM"
+}

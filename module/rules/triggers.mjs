@@ -35,6 +35,9 @@ export function triggersFor(actor, event, { spec = {}, target = null, firedThisT
   return out;
 }
 
+const withRanks = (formula, source) => String(formula)
+  .replace(/@ranks\b/g, String(Math.max(1, Number(source?.system?.effectiveRanks ?? source?.system?.ranks ?? 1) || 1)));
+
 /** What firing asks for: resource changes, notes, conditions. */
 export function triggerOutcomes(fired) {
   const out = { resources: [], notes: [], inflict: [], onceKeys: [], damage: [], heal: [], resave: [] };
@@ -43,7 +46,8 @@ export function triggerOutcomes(fired) {
     if ( e.key === "resource" && e.pool ) out.resources.push({ pool: e.pool, amount: Math.trunc(Number(e.amount) || 0), label });
     else if ( e.key === "note" ) out.notes.push(`${label}: ${e.text ?? ""}`);
     else if ( e.key === "inflict" && e.condition ) out.inflict.push({ condition: e.condition, ranks: Math.max(1, Number(e.ranks) || 1), who: e.who === "target" ? "target" : "self", label });
-    else if ( e.key === "damage" && e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", who: e.who === "target" ? "target" : "self", unreducible: !!e.unreducible, label });
+    // CCOND1: "@ranks" in a formula is the ranks of the condition carrying the element (Frostbite 1d10 per rank).
+    else if ( e.key === "damage" && e.formula ) out.damage.push({ formula: withRanks(e.formula, source), type: e.damageType ?? "", who: e.who === "target" ? "target" : "self", unreducible: !!e.unreducible, label });
     else if ( e.key === "heal" && e.formula ) out.heal.push({ formula: String(e.formula), pool: ["hp", "cp", "tempHp", "tempCp"].includes(e.pool) ? e.pool : "hp", who: e.who === "target" ? "target" : "self", label });
     else if ( e.key === "resave" && e.ability ) out.resave.push({ ability: e.ability, dc: Number(e.dc) || 10, label, sourceId: source?.id ?? source?._id ?? null, isEffect: source?.documentName === "ActiveEffect" || !!source?.changes });
   }

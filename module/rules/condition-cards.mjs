@@ -35,6 +35,7 @@ export function cardDefinition(card) {
   if ( removal.length ) def.removal = removal;
   if ( s.resave?.ability ) def.resave = { ability: s.resave.ability, source: s.resave.source ?? "", dc: s.resave.dc ?? null };
   if ( s.turnStartDamage?.die ) def.turnStartDamage = { ...s.turnStartDamage };
+  if ( list(s.immunityFrom).length ) def.immunityFrom = list(s.immunityFrom);
   for ( const k of ["perRank", "flat", "flags", "cast"] ) if ( s[k] && Object.keys(s[k]).length ) def[k] = structuredClone(s[k]);
   const rules = card.flags?.n5e?.rules;
   if ( Array.isArray(rules) && rules.length ) def.rules = structuredClone(rules);
@@ -53,6 +54,25 @@ export function pendingInitiative(combatants) {
     updates.push({ _id: c.id ?? c._id, ...(c.initiative == null ? {} : { initiative: c.initiative + shift }), "flags.n5e.-=pendingInitiative": null });
   }
   return updates;
+}
+
+/**
+ * Is the creature immune to this condition through another immunity (a condition's immunityFrom:
+ * "damage:<type>" its damage immunity, "condition:<key>" its condition immunity)? With "all:" first,
+ * every listed immunity is needed ("all:damage:fire,damage:earth": immune to fire and earth).
+ */
+export function immuneVia(actor, def) {
+  const from = list(def?.immunityFrom);
+  if ( !from.length ) return false;
+  const traits = actor?.system?.traits ?? {};
+  const has = entry => {
+    const [kind, value] = String(entry).split(":");
+    if ( kind === "damage" ) return !!(traits.immune?.has?.(value) ?? list(traits.immune).includes(value));
+    if ( kind === "condition" ) return !!(traits.conditionImmune?.has?.(value) ?? list(traits.conditionImmune).includes(value));
+    return false;
+  };
+  if ( from.length === 1 && String(from[0]).startsWith("all:") ) return String(from[0]).slice(4).split(",").every(has);
+  return from.some(has);
 }
 
 /** Is this registry entry a card (class or clan condition)? */

@@ -1,0 +1,85 @@
+{
+  "_id": "n5eRMxSK1k8mOuS2",
+  "name": "Doused",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5e3MV1ytTDO5uGp",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jinzo-doused",
+    "description": "<p>A Doused creature is covered in a toads belly oil, usually very flammable…oh no.</p><p>A Doused creature that takes Fire or Lightning damage takes 1d6 fire damage for each rank of Doused they have. Remove all ranks of Doused after this conditional damage is applied.</p><p>A Doused creature that takes Cold damage has its speed reduced by 10 feet for each rank of Doused they have and they cannot gain a bonus to speed, until the end of their next turn. Remove all ranks of Doused when this effect is applied.</p><p>A Doused creature can spend an Action, to make a DC 15 Dexterity ability check to end this affliction or submerge themselves fully into a body of water.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "jinzo",
+      "subclass": ""
+    },
+    "summary": "Fire or lightning damage: +1d6 fire per rank, then it ends. Cold damage: −10 ft speed per rank. DC 15 Dexterity or submerging ends it.",
+    "tags": [
+      "elemental",
+      "physical"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "dex"
+        ],
+        "dc": 15,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fire or lightning damage: it takes 1d6 fire damage per rank, then loses all ranks. Cold damage: speed −10 ft per rank and no speed bonuses until the end of its next turn, then it loses all ranks. Submerging fully in water also ends it."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eRMxSK1k8mOuS2"
+}

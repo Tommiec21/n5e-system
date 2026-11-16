@@ -807,3 +807,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Condition card `system.resave.source` "highest" | The applier's highest jutsu save DC |
 | Rule element value `ranks(N)` | N per rank of the condition carrying it |
 | Condition effect `flags.n5e.rules` | A card's rule elements, copied onto the condition when it is applied |
+
+## Added in 0.57.0-alpha.2 (CCOND1c batch B)
+
+| Path | Meaning |
+| --- | --- |
+| Condition card `system.immunityFrom` | "damage:acid", "condition:dazzled": that immunity blocks this condition; "all:damage:fire,damage:earth" needs each |
+| Trigger damage formula `@ranks` | The ranks of the condition carrying the element |

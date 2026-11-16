@@ -1,0 +1,75 @@
+{
+  "_id": "n5eQdIarOmQowJpD",
+  "name": "Molten",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5esjzVAzhowXpD0",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yoton-molten",
+    "description": "<p>A Molten creature is coated in molten rock and fire, setting them up for cataclysmic elemental reactions. Once a creature takes one of the listed elemental damage types this condition applies the listed effect.</p><p>This condition ends at the end of the affected creature’s next turn unless otherwise specified.</p><p>A Molten creature that takes earth damage, has the molten matter on them harden, reducing their speed by half and they cannot cast jutsu with the M (mobility) component until the end of their next turn.</p><p>A Molten creature that takes wind damage, has the molten matter on them burst, spreading to all creatures within 10 feet of them, applying the Burned condition. This condition then immediately ends.</p><p>A Molten creature that takes fire damage has the molten material heat up radiating extreme heat, applying 2 ranks of the Burned condition. This condition then immediately ends.</p><p>A Molten creature that takes cold damage has their body become brittle, becoming vulnerable to the next instance of Bludgeoning, piercing and slashing damage they take. If they take Bludgeoning, piercing or slashing damage before the end of their next turn, this condition immediately ends.</p><p>A Molten creature that takes lightning damage has lightning arc to all creatures within 10 feet of them, applying the Shocked condition. This condition then immediately ends.</p><p>Creatures that are immune to Fire and Earth damage is immune to this condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "yoton",
+      "subclass": ""
+    },
+    "summary": "Reacts to the next elemental damage: earth hardens (half speed), wind spreads Burned, fire 2 Burned, cold brittle, lightning arcs Shocked.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": null,
+    "endsAt": "nextTurnEnd",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [
+      "all:damage:fire,damage:earth"
+    ],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "When it takes: earth damage, half speed and no Mobility (M) jutsu until the end of its next turn; wind damage, all creatures within 10 ft gain Burned, then this ends; fire damage, 2 ranks of Burned, then this ends; cold damage, vulnerable to the next bludgeoning, piercing or slashing damage before the end of its next turn, then this ends; lightning damage, all creatures within 10 ft gain Shocked, then this ends."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eQdIarOmQowJpD"
+}

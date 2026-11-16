@@ -18,6 +18,7 @@ import { CHANGE_KEY_PREFIX } from "../rules/change-keys.mjs";
 import { isV31Actor, migrateV31Actor } from "../migration/v31.mjs";
 import { defaultDuration } from "../rules/condition-lifecycle.mjs";
 import { rule } from "../rules-settings.mjs";
+import { immuneVia } from "../rules/condition-cards.mjs";
 
 export default class N5eActor extends Actor {
 
@@ -167,6 +168,8 @@ export default class N5eActor extends Actor {
       return null;
     }
     if ( rule("conditionResistance") && this.system.traits?.conditionImmune?.has(key) ) return null;
+    // CCOND1: "creatures immune to X damage (or the Y condition) are immune to this condition".
+    if ( immuneVia(this, def) ) return null;
     const existing = this.getCondition(key);
     if ( existing ) {
       // New ranks reset the condition's duration (King 2026-11-07).
