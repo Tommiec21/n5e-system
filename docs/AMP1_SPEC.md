@@ -89,10 +89,8 @@ An Amp is a **bonus to a statistic, a unique ability or an action** that **lasts
   The type can be set from the row, which edits the card.
 - **The generated report** (`docs/generated/std-audit.md`) gets the same Amps section, so the counts are tracked between releases.
 
+## Phases
 
-
-| Phase | What |
-| --- | --- |
 Its own larger release line (0.6x), in pieces:
 
 | Phase | What |
