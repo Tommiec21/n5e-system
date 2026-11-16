@@ -1,0 +1,65 @@
+{{!-- CHATUI1 Chat Card Appearance (applications/settings/chat-appearance.mjs). Fields come from rules/chat-appearance.mjs CHAT_FIELDS. --}}
+<section class="ca-panel">
+  <div class="ca-head">
+    {{#if gm}}
+      <label>Editing <select data-ca-target>{{#each targets}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    {{/if}}
+    {{#if mine}}
+      <label class="ca-use"><input type="checkbox" name="use" {{#if use}}checked{{/if}}> Use my own settings (only on this computer, for you)</label>
+    {{else}}
+      <p class="hint">Everyone sees these unless they turn on their own.</p>
+    {{/if}}
+  </div>
+  <div class="ca-body">
+    <div class="ca-fields">
+      <fieldset>
+        <legend>Fonts</legend>
+        <datalist id="n5e-ca-fonts">{{#each fontList}}<option value="{{this}}"></option>{{/each}}</datalist>
+        <div class="ca-row"><label for="n5e-ca-head">Headings</label><input id="n5e-ca-head" type="text" name="fonts.head" value="{{fonts.head}}" list="n5e-ca-fonts" placeholder="Foundry's font">
+          <p class="hint">Titles, buttons, tags, result and section headings, the speaker.</p></div>
+        <div class="ca-row"><label for="n5e-ca-body">Body</label><input id="n5e-ca-body" type="text" name="fonts.body" value="{{fonts.body}}" list="n5e-ca-fonts" placeholder="Foundry's font">
+          <p class="hint">Everything else. Add fonts in Core settings: Additional Fonts.</p></div>
+      </fieldset>
+      <fieldset>
+        <legend>Sizes</legend>
+        <div class="ca-row"><label for="n5e-ca-scale">Everything</label><input id="n5e-ca-scale" type="range" name="scale" min="{{scaleMin}}" max="{{scaleMax}}" step="5" value="{{scale}}"><output data-ca-out="scale">{{scale}}%</output>
+          <p class="hint">Makes every size below bigger or smaller at once.</p></div>
+        {{#each fields}}
+          <div class="ca-row"><label for="n5e-ca-{{key}}">{{label}}</label><input id="n5e-ca-{{key}}" type="range" name="sizes.{{key}}" min="{{min}}" max="{{max}}" step="1" value="{{value}}"><output data-ca-out="{{key}}">{{value}}px</output>
+            <p class="hint">{{hint}}</p></div>
+        {{/each}}
+      </fieldset>
+    </div>
+    <div class="ca-side">
+      <div class="ca-label">Preview</div>
+      <div class="chat-message n5e-msg n5e-c2 ca-preview" style="{{vars}}">
+        <header class="message-header"><h4 class="message-sender">Ninjutsu Specialist</h4></header>
+        <div class="message-content">
+          <div class="n5e-c2-who"><b>Ninjutsu Specialist</b></div>
+          <div class="n5e-cast-card"><header><div><b>Fire Release: Fireball</b><span class="sub">D-Rank Ninjutsu</span></div></header>
+            <details><summary>Rules text</summary></details>
+            <div class="n5e-c2-grid"><button type="button">Place area</button><button type="button">DC 12 DEX Save</button><button type="button">Damage: 4d6+4 Fire</button></div>
+            <div class="n5e-c2-small"><button type="button" class="crit">Critical</button><button type="button">Clash</button></div>
+            <p class="note">+1 Pyroclasm (3 / 3)</p></div>
+          <div class="n5e-c2-tags"><span>Action</span><span>Instantaneous</span><span>Fire Release</span></div>
+          <div class="n5e-action-card">
+            <div class="n5e-c2-tiles">
+              <div class="n5e-c2-tile damage"><div class="h">Damage</div><div class="f">4d6 + 4</div><div class="t"><span class="n">22</span><span class="s">Fire</span></div></div>
+              <div class="n5e-c2-tile saves"><div class="h">Dex Save</div><div class="f srow saved"><span class="nm">Test</span><span class="mark">✓</span><b>15</b></div><div class="f srow failed"><span class="nm">Bandit</span><span class="mark">✗</span><b>9</b></div></div>
+            </div>
+            <div class="n5e-c2-h">Targets</div>
+            <div class="n5e-card-target"><span class="name">Test</span><span class="sub">save Success · Half damage</span></div>
+            <div class="n5e-c2-apply"><div class="n5e-c2-h">Apply</div>
+              <div class="n5e-c2-arow"><div class="who"><span>Test</span><span class="amt">−11</span></div>
+                <div class="mults"><button type="button">−1</button><button type="button">0</button><button type="button">¼</button><button type="button" class="on">½</button><button type="button">1</button><button type="button">2</button></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="ca-foot">
+    <button type="button" data-action="reset"><i class="fa-solid fa-rotate-left"></i> Defaults</button>
+    {{#if mine}}<button type="submit" class="primary"><i class="fa-solid fa-floppy-disk"></i> Save for me</button>
+    {{else}}<button type="submit" class="primary"><i class="fa-solid fa-floppy-disk"></i> Save for everyone</button>{{/if}}
+  </footer>
+</section>

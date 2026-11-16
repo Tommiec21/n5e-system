@@ -908,3 +908,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 - `flags.n5e.card.results.saves`, `.applied` and `.effects` are keyed by creature uuid with `~` in place of `.` (`Actor~abc`), because Foundry splits dotted keys on update.
 - Read them through `normalizeResults` (rules/action-card.mjs), which decodes the keys and repairs cards stored split. Write through `encodeResults`.
+
+### Chat appearance settings (CHATUI1, 0.64.0-alpha.1)
+
+- `n5e.chatAppearance` (world): `{scale, fonts: {head, body}, sizes: {body, speaker, title, subtitle, button, small, tag, tileHead, total, formula, section, target, apply, note}}`. Sizes in px; scale in %.
+- `n5e.chatAppearanceMine` (client): the same plus `use` (boolean). Used instead of the world's when `use` is on.
+- Applied as CSS custom properties on the page root: `--n5e-fs-<field>` (px, scaled) and `--n5e-ff-head` / `--n5e-ff-body`. N5e chat messages get the class `n5e-msg`.

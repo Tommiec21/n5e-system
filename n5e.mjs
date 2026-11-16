@@ -72,6 +72,7 @@ import * as chain from "./module/rules/chain.mjs";
 import * as ac from "./module/rules/ac.mjs";
 import * as formula from "./module/rules/formula.mjs";
 import * as elements from "./module/rules/elements.mjs";
+import { applyChatAppearance, tagN5eMessage } from "./module/workflow/chat-appearance.mjs";
 
 registerAutomationHooks();
 registerFreeformHooks();
@@ -173,6 +174,8 @@ Hooks.on("renderActorDirectory", (app, html) => {
 });
 
 Hooks.on("renderChatMessageHTML", (message, html) => {
+  // CHATUI1: N5e messages take the chat appearance settings (styles/n5e.css .n5e-msg).
+  tagN5eMessage(message, html);
   dice.onRenderChatMessage(message, html);
   onRenderTurnCard(message, html);
   onRenderReadyCard(message, html);
@@ -192,6 +195,8 @@ registerAreaHooks();
 registerCompendiumBrowser();
 
 Hooks.once("ready", async () => {
+  // CHATUI1: chat font sizes and fonts (world default or this user's own).
+  applyChatAppearance();
   // Clan-scoped conditions and keywords from world clan items (compendium clans load in Phase 6).
   for ( const item of game.items.filter(i => i.type === "clan") ) api.registerClanData(item);
   // dnd5e/PF2e parity: each user changes what they own. Owner intents finish the few N5e actions

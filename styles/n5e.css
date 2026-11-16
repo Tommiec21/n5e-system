@@ -167,44 +167,44 @@
 
 /* Rolls live inside the card: a recorded roll's own message isn't shown (King Q-C1). */
 .chat-message.n5e-linked-hidden { display: none !important; }
-.n5e-c2 .n5e-c2-who { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 1.05em; }
+.n5e-c2 .n5e-c2-who { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: var(--n5e-fs-speaker, 14px); font-family: var(--n5e-ff-head, inherit); }
 .n5e-c2 .n5e-c2-who img { border-radius: 50%; border: 2px solid var(--color-border-highlight, #b75c40); object-fit: cover; }
 /* Big action buttons, one per line, like ATTACK / DAMAGE. */
 .n5e-c2 .message-content .act-row { display: flex; flex-wrap: wrap; gap: 4px; margin: 3px 0; }
 .n5e-c2 .message-content .act-row > button:not(.crit) { flex: 1 1 100%; min-height: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; justify-content: center; }
 .n5e-c2 .message-content .act-row > button.crit { flex: 0 0 auto; }
-.n5e-c2 .n5e-c2-tags { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 6px 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }
+.n5e-c2 .n5e-c2-tags { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 6px 0; font-size: var(--n5e-fs-tag, 11px); font-family: var(--n5e-ff-head, inherit); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }
 /* Result tiles side by side. */
 /* King 2026-11-16: action buttons in two columns, smaller; Critical, Clash, Read the Enemy, Identify small on one row. */
 .n5e-c2 .n5e-c2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 4px 0; }
-.n5e-c2 .n5e-c2-grid > button { min-width: 0; min-height: 26px; margin: 0; padding: 2px 4px; font-size: 11px; font-weight: 700; line-height: 1.15;
+.n5e-c2 .n5e-c2-grid > button { min-width: 0; min-height: 26px; margin: 0; padding: 2px 4px; font-size: var(--n5e-fs-button, 11px); font-family: var(--n5e-ff-head, inherit); font-weight: 700; line-height: 1.15;
   text-transform: uppercase; letter-spacing: .02em; justify-content: center; text-align: center; white-space: normal; overflow-wrap: anywhere; }
 .n5e-c2 .n5e-c2-grid > button:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .n5e-c2 .n5e-c2-small { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
-.n5e-c2 .n5e-c2-small > button { flex: 0 0 auto; width: auto; min-width: 0; margin: 0; padding: 1px 8px; min-height: 22px; font-size: 11px; line-height: 1.2; }
+.n5e-c2 .n5e-c2-small > button { flex: 0 0 auto; width: auto; min-width: 0; margin: 0; padding: 1px 8px; min-height: 22px; font-size: var(--n5e-fs-small, 11px); font-family: var(--n5e-ff-head, inherit); line-height: 1.2; }
 .n5e-c2 .n5e-c2-tile.saves .srow { display: flex; align-items: center; gap: 4px; text-align: left; }
 .n5e-c2 .n5e-c2-tile.saves .srow .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .n5e-c2 .n5e-c2-tile.saves .srow.saved .mark { color: #2e7d32; }
 .n5e-c2 .n5e-c2-tile.saves .srow.failed .mark { color: #b03a2e; }
 .n5e-c2 .n5e-c2-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin: 6px 0; }
 .n5e-c2 .n5e-c2-tile { border: 1px solid var(--color-border-light-primary, #999); border-radius: 6px; padding: 4px 6px; text-align: center; background: rgba(0, 0, 0, .04); }
-.n5e-c2 .n5e-c2-tile .h { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }
-.n5e-c2 .n5e-c2-tile .f { font-size: 11px; border: 1px solid var(--color-border-light-primary, #bbb); border-radius: 4px; margin: 2px 0; padding: 1px 2px; overflow-wrap: anywhere; }
+.n5e-c2 .n5e-c2-tile .h { font-size: var(--n5e-fs-tileHead, 10px); font-family: var(--n5e-ff-head, inherit); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; opacity: .75; }
+.n5e-c2 .n5e-c2-tile .f { font-size: var(--n5e-fs-formula, 11px); border: 1px solid var(--color-border-light-primary, #bbb); border-radius: 4px; margin: 2px 0; padding: 1px 2px; overflow-wrap: anywhere; }
 .n5e-c2 .n5e-c2-tile .t { display: flex; align-items: center; justify-content: center; gap: 4px; }
-.n5e-c2 .n5e-c2-tile .n { font-size: 1.6em; font-weight: 700; }
-.n5e-c2 .n5e-c2-tile .s { font-size: 11px; opacity: .8; }
+.n5e-c2 .n5e-c2-tile .n { font-size: var(--n5e-fs-total, 21px); font-weight: 700; }
+.n5e-c2 .n5e-c2-tile .s { font-size: var(--n5e-fs-formula, 11px); opacity: .8; }
 .n5e-c2 .n5e-c2-tile .mark { font-weight: 700; }
 .n5e-c2 .n5e-c2-tile.hit .mark, .n5e-c2 .n5e-c2-tile.saved .mark { color: #2e7d32; }
 .n5e-c2 .n5e-c2-tile.miss .mark, .n5e-c2 .n5e-c2-tile.failed .mark { color: #b03a2e; }
 .n5e-c2 .n5e-c2-tile.hit .n { color: #2e7d32; }
 .n5e-c2 .n5e-c2-more { width: auto; min-width: 0; padding: 0 4px; line-height: 1; border: none; background: none; font-size: 1.2em; }
 .n5e-c2 .n5e-c2-more.open { transform: rotate(90deg); }
-.n5e-c2 .n5e-c2-dice { font-size: 11px; text-align: left; margin-top: 2px; }
-.n5e-c2 .n5e-c2-h { margin: 8px 0 4px; text-align: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+.n5e-c2 .n5e-c2-dice { font-size: var(--n5e-fs-formula, 11px); text-align: left; margin-top: 2px; }
+.n5e-c2 .n5e-c2-h { margin: 8px 0 4px; text-align: center; font-size: var(--n5e-fs-section, 11px); font-family: var(--n5e-ff-head, inherit); font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
   border-top: 1px dotted var(--color-border-light-primary, #999); padding-top: 4px; }
 /* The Apply panel. */
 .n5e-c2 .n5e-c2-view { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
-.n5e-c2 .n5e-c2-view button { width: auto; flex: 0 0 auto; font-size: 11px; text-transform: uppercase; font-weight: 700; }
+.n5e-c2 .n5e-c2-view button { width: auto; flex: 0 0 auto; font-size: var(--n5e-fs-small, 11px); font-family: var(--n5e-ff-head, inherit); text-transform: uppercase; font-weight: 700; }
 .n5e-c2 .n5e-c2-view button.on, .n5e-c2 .n5e-c2-arow .mults button.on { background: rgba(0, 0, 0, .12); border-color: var(--color-border-highlight, #b75c40); }
 .n5e-c2 .n5e-c2-arow { margin: 4px 0; }
 .n5e-c2 .n5e-c2-arow .who { display: flex; align-items: center; gap: 6px; font-weight: 600; }
@@ -216,3 +216,41 @@
 .n5e-c2 .n5e-c2-applyall { justify-content: center; }
 .n5e-c2 .n5e-c2-applyall { width: 100%; margin-top: 4px; min-height: 32px; font-weight: 700; text-transform: uppercase; }
 .n5e-c2 .n5e-card-sections { margin-top: 6px; opacity: .7; }
+
+/* CHATUI1 (King 2026-11-16): every N5e chat message takes the Chat Card Appearance sizes and fonts
+   (rules/chat-appearance.mjs; variables set on the page root, or on the window's preview). */
+.chat-message.n5e-msg .message-content { font-size: var(--n5e-fs-body, 13px); font-family: var(--n5e-ff-body, inherit); }
+.chat-message.n5e-msg .message-header .message-sender { font-size: var(--n5e-fs-speaker, 14px); font-family: var(--n5e-ff-head, inherit); }
+.chat-message.n5e-msg .message-content header b, .chat-message.n5e-msg .flavor-text header b { font-size: var(--n5e-fs-title, 14px); font-family: var(--n5e-ff-head, inherit); }
+.chat-message.n5e-msg header .sub, .chat-message.n5e-msg header .mode, .chat-message.n5e-msg header .bonus { font-size: var(--n5e-fs-subtitle, 12px); }
+.chat-message.n5e-msg button { font-size: var(--n5e-fs-button, 11px); font-family: var(--n5e-ff-head, inherit); }
+.chat-message.n5e-msg button.crit { font-size: var(--n5e-fs-small, 11px); }
+.chat-message.n5e-msg .note, .chat-message.n5e-msg .hint, .chat-message.n5e-msg details, .chat-message.n5e-msg .spent,
+.chat-message.n5e-msg .n5e-linked-note, .chat-message.n5e-msg .n5e-card-section { font-size: var(--n5e-fs-note, 12px); }
+.chat-message.n5e-msg .dice-formula, .chat-message.n5e-msg .dice-tooltip { font-size: var(--n5e-fs-formula, 11px); }
+.chat-message.n5e-msg .dice-total { font-size: var(--n5e-fs-total, 21px); }
+.chat-message.n5e-msg .n5e-card-target { font-size: var(--n5e-fs-target, 13px); }
+.chat-message.n5e-msg .n5e-card-target button { font-size: var(--n5e-fs-small, 11px); }
+.chat-message.n5e-msg .n5e-c2-arow .who, .chat-message.n5e-msg .n5e-c2-arow .mults button { font-size: var(--n5e-fs-apply, 13px); }
+.chat-message.n5e-msg .n5e-c2-grid > button, .chat-message.n5e-msg .n5e-c2-applyall { font-size: var(--n5e-fs-button, 11px); }
+.chat-message.n5e-msg .n5e-c2-small > button, .chat-message.n5e-msg .n5e-c2-view button { font-size: var(--n5e-fs-small, 11px); }
+
+/* The Chat Card Appearance window. */
+.n5e-chat-appearance .ca-panel { display: flex; flex-direction: column; height: 100%; gap: 6px; }
+.n5e-chat-appearance .ca-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.n5e-chat-appearance .ca-head select { width: auto; }
+.n5e-chat-appearance .ca-use { display: flex; align-items: center; gap: 6px; }
+.n5e-chat-appearance .ca-body { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 300px; gap: 10px; }
+.n5e-chat-appearance .ca-fields { overflow-y: auto; padding-right: 4px; }
+.n5e-chat-appearance .ca-row { display: grid; grid-template-columns: 130px 1fr 48px; align-items: center; gap: 4px 8px; margin: 4px 0; }
+.n5e-chat-appearance .ca-row .hint { grid-column: 1 / -1; margin: 0 0 2px; font-size: .85em; opacity: .75; }
+.n5e-chat-appearance .ca-row input[type="text"] { grid-column: 2 / -1; }
+.n5e-chat-appearance .ca-row output { text-align: right; font-variant-numeric: tabular-nums; }
+.n5e-chat-appearance .ca-side { overflow-y: auto; }
+.n5e-chat-appearance .ca-label { font-weight: 700; margin-bottom: 4px; }
+.n5e-chat-appearance .ca-preview { list-style: none; padding: 8px; border: 1px solid var(--color-border-light-primary, #999); border-radius: 6px; background: #e9e4d8; color: #191813; }
+.n5e-chat-appearance .ca-preview .message-header { margin: 0 0 4px; }
+.n5e-chat-appearance .ca-preview .message-sender { margin: 0; }
+.n5e-chat-appearance .ca-preview .n5e-cast-card header .sub { display: block; }
+.n5e-chat-appearance .ca-foot { display: flex; justify-content: flex-end; gap: 6px; }
+.n5e-chat-appearance .ca-foot button { width: auto; }

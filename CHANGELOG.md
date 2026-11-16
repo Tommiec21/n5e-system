@@ -1,3 +1,15 @@
+## 0.64.0-alpha.1 — CHATUI1: chat font sizes and fonts
+
+King's answers: the GM sets everyone's default and each user can use their own (Q-F1), a heading font and a body font (Q-F2), all N5e chat messages (Q-F3).
+
+- **N5e Chat Card Appearance** (Configure Settings):
+  - **Sizes:** one value per field: body text, speaker, card title, type line, action buttons, small buttons, tags, result headings, result totals, formulas and save lines, section headings, targets, Apply panel, notes and rules text.
+  - **Everything:** one scale (50–200%) over all sizes.
+  - **Fonts:** headings and body, from the fonts Foundry has loaded (Core settings → Additional Fonts adds your own).
+  - **Live preview** and **Defaults**.
+- **GM:** edits the world default ("Save for everyone") or their own copy.
+- **Players:** edit their own copy; it's used when "Use my own settings" is on.
+
 ## 0.63.0-alpha.2 — CARD2 cleanup: a tighter combat card
 
 ### Changed

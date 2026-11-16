@@ -24,7 +24,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `api.mjs` | 168 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll`, `applyConditionCard`, `applyAmp`, `endAmp` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
-| `settings.mjs` | 61 | World settings. | `registerSettings` |
+| `settings.mjs` | 75 | World settings. | `registerSettings` |
 
 ## module/applications/actor
 
@@ -90,6 +90,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `chat-appearance.mjs` | 108 | CHATUI1 (King 2026-11-16): the Chat Card Appearance window. | `ChatAppearanceConfig` |
 | `rules-config.mjs` | 63 | N5e Rules panel: every optional rule grouped, as toggles, numbers and choices. | `RulesConfig` |
 
 ## module/automation
@@ -242,6 +243,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
 | `change-keys.mjs` | 245 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `DICE_BONUS`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `chat-appearance.mjs` | 80 | CHATUI1 (King 2026-11-16): font sizes and fonts for every N5e chat message, set globally. | `CHAT_FIELDS`, `SCALE`, `defaultAppearance`, `cleanAppearance`, `effectiveAppearance`, `cssVariables` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
@@ -347,6 +349,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `card-layout.mjs` | 244 | CARD2 (docs/CARD2_SPEC.md; King 2026-11-16): the action card laid out like King's SW5e card. | `headerHTML`, `tagsHTML`, `tilesHTML`, `compactActions`, `previewDamage`, `applyPanelHTML`, `bindLayout`, `applyAll` |
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 257 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
+| `chat-appearance.mjs` | 41 | CHATUI1 (King 2026-11-16): chat font sizes and fonts, set globally (rules/chat-appearance.mjs). | `currentAppearance`, `applyChatAppearance`, `isN5eMessage`, `tagN5eMessage`, `availableFonts` |
 | `clan.mjs` | 90 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |

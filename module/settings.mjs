@@ -10,6 +10,8 @@ import { rules } from "./config/rules.mjs";
 import { registerMigrationSetting } from "./migration/runner.mjs";
 import RulesConfig from "./applications/settings/rules-config.mjs";
 import AutomationRecovery from "./applications/gm/automation-recovery.mjs";
+import ChatAppearanceConfig from "./applications/settings/chat-appearance.mjs";
+import { applyChatAppearance } from "./workflow/chat-appearance.mjs";
 
 /**
  * Called at init: one hidden world setting per rule in config/rules.mjs (edited through the N5e Rules
@@ -54,6 +56,18 @@ export function registerSettings() {
     hint: "Turn N5e rules and automations on or off, and set rest limits and the Ration Pool. Everyone can view; the GM can change.",
     icon: "fa-solid fa-scroll",
     type: RulesConfig,
+    restricted: false
+  });
+  // CHATUI1 (King 2026-11-16): chat font sizes and fonts. The GM's world setting is everyone's
+  // default; each user may turn on their own copy (King Q-F1: both).
+  game.settings.register("n5e", "chatAppearance", { scope: "world", config: false, type: Object, default: {}, onChange: () => applyChatAppearance() });
+  game.settings.register("n5e", "chatAppearanceMine", { scope: "client", config: false, type: Object, default: {}, onChange: () => applyChatAppearance() });
+  game.settings.registerMenu("n5e", "chatAppearanceConfig", {
+    name: "N5e Chat Card Appearance",
+    label: "Open Chat Card Appearance",
+    hint: "Font sizes for each part of N5e chat messages, and the heading and body fonts. The GM sets everyone's; anyone can use their own.",
+    icon: "fa-solid fa-font",
+    type: ChatAppearanceConfig,
     restricted: false
   });
   registerMigrationSetting();
