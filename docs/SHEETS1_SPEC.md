@@ -44,6 +44,29 @@ Goal (King): aesthetically pleasing character sheets that players can choose, wi
 - **Contrast:** text is checked against the darkest backdrop it can sit on.
 - **Performance:** backdrop blur is used on the five large panels only, never on list rows, and can be turned off (a client setting) for slower machines.
 
+## SHEETS1c: Ink & Paper (King 2026-11-15: keep the first draft as its own design)
+
+- **Layout:** the first Classic draft (mockup artboard 3), kept as its own design.
+  - Dark ink header with a hexagon level badge.
+  - Rounded ability tabs showing the score and save.
+  - A cream card with the portrait and AC shield, pill lozenges, HP and Chakra bars, dice, favorites and conditions.
+  - Pill tabs, skills with proficiency dots, traits as pills, and class resource pips.
+
+## SHEETS1d: Shinobi Scroll (a Pf2e-style layout with ninja flair; King 2026-11-15)
+
+- **The scroll (left):** a hanging paper scroll with wooden rods top and bottom and a coloured cord, in place of a banner. It holds:
+  - HP and Chakra blocks: temp / current / max, the current boxed in colour.
+  - Death save pips and dice.
+  - The AC shield with DR beside it, speed and proficiency.
+  - Initiative with its ability choice.
+  - The six saves with mastery badges.
+  - Immunities, weaknesses and resistances, each with an Edit button.
+- **Header (right):** a crimson band with the name, Will of Fire pips, and a forehead-protector plate as the level badge, plus the XP bar.
+- **Tab strip:** a navy band with gold rules, the section name and round icon tabs.
+- **Body:** subtabs (Known Jutsu, Moldings, Activations). A crimson section bar shows the discipline with attack, save DC and mastery. Jutsu are grouped by rank, each row with a keyword chip, action symbol, defense, cost and a Cast button, and "Learn a Jutsu" sits at the bottom.
+- **Fonts:** Shippori Mincho B1 for headings (SIL Open Font License), bundled.
+- The Pf2e system's art and marks are not used; the layout is reworked for N5e.
+
 ## Later designs (proposals; King picks the order)
 
 - **Scroll:** ink-on-paper, a shinobi scroll feel.
@@ -64,3 +87,4 @@ Each is a new design folder and stylesheet on the same logic.
 
 - 2026-11-15 Claude: studied dnd5e release-5.3.3 (v13) sheet structure and licences; spec and two mockups written. Widened cube 10 ft applied (King).
 - 2026-11-15 King: the first Classic mockup didn't emulate the hexagonal ability tabs, the dark character card, the shield, the bordered skill and save frames or the vertical tabs, and treated non-proprietary design as off-limits. Mockup redone to match the dnd5e sheet closely, vertical tabs included.
+- 2026-11-15 King: keep the first draft as a third design and add a fourth, Pf2e-style with a scroll; many designs for different players. Mockups 3 (Ink & Paper) and 4 (Shinobi Scroll) added; designs are never overwritten from now on, each new idea is a new artboard.
