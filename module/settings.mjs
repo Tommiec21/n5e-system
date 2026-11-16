@@ -24,6 +24,8 @@ export function registerSettings() {
   // NPCUI1: each user's NPC sheet toggles (the jutsu color key, hidden disciplines).
   game.settings.register("n5e", "npcSheetView", { scope: "client", config: false, type: Object, default: { legend: true, hidden: [] } });
   game.settings.register("n5e", "effectMacroApprovals", { scope: "world", config: false, type: Object, default: {} });
+  // AMP1b: the Amp audit's "not an Amp" list (item uuids the GM dismissed).
+  game.settings.register("n5e", "ampAuditDismissed", { scope: "world", config: false, type: Array, default: [] });
   game.settings.registerMenu("n5e", "automationRecovery", { name: "N5e Automation Recovery", label: "Review automation requests",
     hint: "Inspect interrupted actions, reconcile targets, and export/archive request history.", icon: "fa-solid fa-clock-rotate-left", type: AutomationRecovery, restricted: true });
   game.settings.register("n5e", "requestReceipts", {

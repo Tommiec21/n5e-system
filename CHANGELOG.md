@@ -1,3 +1,23 @@
+## 0.61.0-alpha.1 — AMP1b: the Amp audit
+
+- **Amps view in the Automation Audit** (GM: `game.n5e.api.automationAudit()`, then the **Amps** filter). For the chosen source (world items or any N5e compendium) it lists:
+  - **Amp card:** a card with a type. Its type can be changed right in the row.
+  - **Amp: no type:** your queue to type (King Q-A4). Pick the type in the row.
+  - **Starts an Amp:** features whose button already starts one (17 today).
+  - **Candidate:** the scan thinks it's an Amp. Press **Not an Amp** to dismiss it; **Restore** brings it back.
+  - **Not an Amp:** what you dismissed (kept for the world).
+- **Needs review** (the default) shows only Amps with no type and candidates. Rows are ordered by rank, then name. Each row says why it was picked.
+- **The scan** (King's definition: a lasting bonus to a statistic, ability or action; one-off bonuses aren't Amps) picks:
+  - text that names an Amp type ("Battle Amp");
+  - every stance (stances are Amps with no type);
+  - a lasting duration (minutes, hours, concentration, several rounds) together with a bonus for you or allies: a +N, advantage, resistance or immunity, temporary HP, speed, or a cheaper cost.
+  
+  Upcasting lines and effects on enemies don't count.
+- **First pass:** 240 candidates: 66 jutsu, 28 class features, 122 clan features and 24 stances. Plus the 17 that already start an Amp.
+- **The generated report** (`docs/generated/std-audit.md`) has a new **Amps** section: counts per compendium and every candidate, so progress shows between releases.
+- Changing a card's type in a compendium needs the Amps compendium unlocked; the row says so.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.11 — Dice bonuses on rolls (Bless)
 
 - **Dice bonuses (King):** effects can add dice to rolls, so a Bless Amp works: **+1d4** to attack rolls and saving throws, rolled together with the d20. Bane-style penalties work too (**−1d4**).

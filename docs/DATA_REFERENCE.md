@@ -887,3 +887,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Change keys `n5e.save.all`, `n5e.save.<ability>`, `n5e.check.all`, `n5e.check.<ability>`, `n5e.initiative` | Roll bonuses: a number or dice. `check.<ability>` covers that ability's checks and its skills. Parsed into `system.modifiers.rollBonus` [{selector, value or dice, label}] (rules/elements.mjs `rollBonusApplies`). |
 | Rule element `modifier` `value` | May be dice. |
 | Breakdown parts `dice` | A part with dice, rolled with the roll (rules/roll-math.mjs). |
+
+## Added in 0.61.0-alpha.1 (AMP1b)
+
+| Path | Meaning |
+| --- | --- |
+| World setting `n5e.ampAuditDismissed` | Item uuids the GM marked "Not an Amp" in the Amp audit. |
+| `module/rules/amp-audit.mjs` `ampAuditOf(doc, {dismissed})` | The audit status of a document: typed, untyped, linked, candidate, dismissed (or null), with the reason. |

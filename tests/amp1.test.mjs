@@ -169,3 +169,20 @@ test("an active Amp shows its card's current name and a hover listing what it ch
   assert.match(view.tip, /\+10 Speed/);
   assert.match(view.tip, /Advantage on your Constitution saves/);
 });
+
+// AMP1b: the Amp audit.
+import { ampAuditOf, ampAuditCounts, namedAmpType } from "../module/rules/amp-audit.mjs";
+test("AMP1b: the scan sorts cards, buttons, candidates and dismissals, and ignores one-off bonuses", () => {
+  assert.equal(namedAmpType("This counts as a Battle Amp."), "battle");
+  assert.equal(ampAuditOf({ type: "amp", name: "Feral", system: { ampType: "" } }).status, "untyped");
+  assert.equal(ampAuditOf({ type: "amp", name: "W", system: { ampType: "battle", owner: { kind: "clan", id: "x" } } }).typeLabel, "Clan");
+  assert.equal(ampAuditOf({ type: "feat", name: "Crash", system: { activities: [{ effect: { ampType: "battle" } }] } }).status, "linked");
+  assert.equal(ampAuditOf({ type: "stance", name: "Gentle Fist", system: {} }).status, "candidate");
+  const lasting = { uuid: "Item.a", type: "jutsu", name: "Sand Armor", system: { duration: { unit: "minute", value: 1 }, description: "<p>You gain 16 temporary hit points.</p>" } };
+  assert.equal(ampAuditOf(lasting).status, "candidate");
+  assert.equal(ampAuditOf(lasting, { dismissed: new Set(["Item.a"]) }).status, "dismissed");
+  assert.equal(ampAuditOf({ type: "jutsu", name: "Punch", system: { duration: { unit: "instant" }, description: "<p>Make an attack. You gain a +2 bonus to this attack.</p>" } }), null, "a one-off bonus isn't an Amp");
+  assert.equal(ampAuditOf({ type: "jutsu", name: "Up", system: { duration: { unit: "minute" }, description: "<p>The target takes damage. When you cast this jutsu above C-Rank, increase the damage by 1d6.</p>" } }), null, "upcasting isn't a bonus");
+  assert.equal(ampAuditOf({ type: "clan", name: "Inuzuka", system: { description: "Battle Amp" } }), null, "whole clans aren't scanned");
+  assert.deepEqual(ampAuditCounts([{ status: "candidate" }, { status: "linked" }, { status: "candidate" }]), { typed: 0, untyped: 0, linked: 1, candidate: 2, dismissed: 0 });
+});
