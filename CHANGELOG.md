@@ -1,3 +1,8 @@
+## 0.60.0-alpha.10 — Jutsu rows show their names again
+
+- **Fix:** the Jutsu tab's rows lost their names and range in 0.60.0-alpha.8. A general row style squeezed the row into a 200px column. Rows now span the full width: name, range, cost, hit or DC, and Use on one line, with the keyword chips underneath. The pill view is unaffected.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.9 — Active Amps show their name and what they change
 
 - **Names (King):** an active Amp shows its card's current name (Caloric Ignition), not the name the card had when the Amp started. This applies on the Combat tab's Amps panel and the Effects tab.

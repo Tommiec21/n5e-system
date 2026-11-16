@@ -1023,10 +1023,13 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 
 /* Jutsu rows (King 2026-11-16): one line for name, range, cost, hit and Use; the keyword chips get
    their own line underneath, so nothing stacks over the other columns on a narrow sheet. */
-.n5e-v2 .jutsu-row .row-main { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto 44px 46px auto;
+/* .n5e-row is a 200px + 1fr grid (n5e.css); a jutsu row lays out its own line instead. */
+.n5e-v2 .jutsu-row.n5e-row { display: block; }
+.n5e-v2 .jutsu-row .row-main { display: grid; grid-template-columns: 18px minmax(7rem, 1fr) minmax(2.5rem, auto) 44px 46px auto;
+  width: 100%; flex: 1 1 100%; min-width: 0; box-sizing: border-box;
   grid-template-areas: "glyph name range cost hit use" ". tags tags tags tags tags"; column-gap: 8px; row-gap: 2px; align-items: center; }
 .n5e-v2 .jutsu-row .glyph { grid-area: glyph; }
-.n5e-v2 .jutsu-row .name { grid-area: name; min-width: 0; }
+.n5e-v2 .jutsu-row .name { grid-area: name; min-width: 0; max-width: none; }
 .n5e-v2 .jutsu-row .tags { grid-area: tags; }
 .n5e-v2 .jutsu-row .tags:empty { display: none; }
 .n5e-v2 .jutsu-row .range { grid-area: range; }
