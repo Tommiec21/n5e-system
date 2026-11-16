@@ -86,14 +86,16 @@ export function savesForDamage(saves, damageEffect = null, saveEffects = []) {
  */
 export function cardSections({ kind, activities = [], area = false, concentration = false } = {}) {
   const types = new Set(list(activities).map(a => a?.type));
+  // King 2026-11-16: a save that deals damage (Fireball: half on success) has a damage section too.
+  const dealsDamage = list(activities).some(a => a?.damage?.parts?.length);
   const has = {
     attack: kind === "attack" || types.has("attack") || types.has("strike"),
     area: !!area,
     saves: types.has("save"),
-    damage: kind === "attack" || types.has("damage") || types.has("attack") || types.has("strike"),
+    damage: kind === "attack" || dealsDamage || types.has("damage") || types.has("attack") || types.has("strike"),
     effects: types.has("effect") || types.has("save"),
     // CARD1c: reactions to the hit or the damage are shown wherever damage is.
-    reactions: kind === "attack" || types.has("damage") || types.has("attack") || types.has("strike"),
+    reactions: kind === "attack" || dealsDamage || types.has("damage") || types.has("attack") || types.has("strike"),
     concentration: !!concentration
   };
   return SECTION_ORDER.filter(s => has[s]);

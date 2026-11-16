@@ -127,3 +127,4 @@ Original questions:
 - 2026-11-16 King: the buttons make Amps with no mechanics; can they be built from their text? Claude: AMP1c (0.62.0-alpha.1): 20 cards from the book boxes (Orochimaru's Observation Compendium), buttons repointed, Crash's no-cost-reduction now applied, Battle Trance automated, ability facts added. Next: AMP1d (named Amp boxes in clans and classes).
 - 2026-11-16 King: Crash damage is its own damage card. Claude: cast-option damage merges into the jutsu's damage roll (rules/cast-options.mjs mergeExtraDamage), 0.62.0-alpha.2.
 - 2026-11-16 King (GM): jutsu and damage cards are separate. Claude: the Crash extra-damage button made a second damage roll for one effect, which the card rejects; merged in alpha.2. Note text corrected when a GM is connected (0.62.0-alpha.3).
+- 2026-11-16 King: Fireball's damage still a separate card. Claude: cardSections gave no damage section to a save activity carrying damage (0.62.0-alpha.4).

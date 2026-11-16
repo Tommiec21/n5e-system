@@ -233,3 +233,11 @@ test("Crash's bonus damage joins the jutsu's damage roll, in its damage type", (
   assert.deepEqual(leftover, []);
   assert.equal(mergeExtraDamage([{ type: "effect" }], [{ formula: "1d10" }]).leftover.length, 1, "no damage roll: a separate button");
 });
+
+// King 2026-11-16: a save that deals damage gets a damage section, so its damage roll joins the card.
+import { cardSections } from "../module/rules/action-card.mjs";
+test("a save jutsu with damage (Fireball) records its damage on the card", () => {
+  const s = cardSections({ kind: "jutsu", area: true, activities: [{ type: "save", save: { ability: "dex" }, damage: { parts: [{ formula: "4d6+4", type: "fire" }] } }] });
+  assert.ok(s.includes("damage") && s.includes("saves") && s.includes("area"));
+  assert.ok(!cardSections({ kind: "jutsu", activities: [{ type: "save", save: { ability: "wis" } }] }).includes("damage"));
+});

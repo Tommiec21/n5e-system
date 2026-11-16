@@ -1,3 +1,8 @@
+## 0.62.0-alpha.4 — Save jutsu record their damage on the card
+
+- **Fix (King):** a jutsu whose damage sits on its save (Fireball: half on a success) now has a Damage section on its action card. Its damage roll is recorded in the card instead of staying a separate card. Before, only attack and damage activities gave a card a Damage section.
+- Not checked in a running Foundry world.
+
 ## 0.62.0-alpha.3 — Action card: the right reason when a result stays separate
 
 - **Why Crash's damage was a separate card (King):** the action card records one damage roll per effect. Crash's bonus had its own damage button, so its roll was a second one for the same effect; the card couldn't take it, and it stayed a separate card. Since 0.62.0-alpha.2, Crash's dice are part of the jutsu's own damage roll, so the card records it and the damage message folds into one line on the card.
