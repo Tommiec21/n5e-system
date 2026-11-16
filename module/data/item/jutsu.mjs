@@ -114,8 +114,8 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
     // Sealed raises the BASE cost (before reductions and the half-base floor).
     const baseAdds = [pen?.baseCost?.[discipline || this.discipline] ?? 0];
     // n5e.rankCost (STD6d Unwasted Movements): a fixed cost for the cast rank, treated as Special
-    // (no reductions); a jutsu whose cost is already Special keeps its own.
-    const fixed = this.cost.mode === "special" ? null
+    // (no reductions); a jutsu whose cost is already Special or None keeps its own (King Q-D10).
+    const fixed = ["special", "none"].includes(this.cost.mode) ? null
       : (mods?.rankCost ?? []).find(r => scopeApplies(r.scope, ctx) && r.table[castRank] != null);
     if ( fixed ) {
       return computeJutsuCost({ base: fixed.table[castRank], mode: "special", upcastRanks: 0, costPerRank: 0,

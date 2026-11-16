@@ -39,7 +39,7 @@ test("an element value can be the highest of some ability modifiers (Agile)", ()
   assert.equal(elementValue(5, owner), 5);
 });
 
-test("n5e.rankCost gives a fixed Special cost by cast rank (Unwasted Movements); Special jutsu keep theirs", () => {
+test("n5e.rankCost gives a fixed Special cost by cast rank (Unwasted Movements); Special and None jutsu keep theirs", () => {
   assert.deepEqual(parseN5eChanges([{ key: "n5e.rankCost.tai", value: "D:3,C:5,B:9,A:14,S:20" }]).rankCost[0].table, { D: 3, C: 5, B: 9, A: 14, S: 20 });
   const jutsu = load("jutsu", "DynamicEntry");
   const a = makeActor({ items: [taiSpec(5), jutsu], n5eChanges: [{ key: "n5e.rankCost.tai", value: "D:3,C:5,B:9,A:14,S:20" }] });
@@ -51,6 +51,10 @@ test("n5e.rankCost gives a fixed Special cost by cast rank (Unwasted Movements);
   special.system.cost = { mode: "special", value: 7, text: "Special" };
   const b = makeActor({ items: [taiSpec(5), special], n5eChanges: [{ key: "n5e.rankCost.tai", value: "D:3" }] });
   assert.equal(b.items.find(i => i.type === "jutsu").system.live.cost, 7);
+  const none = load("jutsu", "DynamicEntry");
+  none.system.cost = { mode: "none", value: 0, text: "None" };
+  const c = makeActor({ items: [taiSpec(5), none], n5eChanges: [{ key: "n5e.rankCost.tai", value: "D:3" }] });
+  assert.equal(c.items.find(i => i.type === "jutsu").system.live.cost, 0, "a None cost stays None (King Q-D10)");
 });
 
 test("the Unarmed Strike item answers to weapon:unarmed", () => {

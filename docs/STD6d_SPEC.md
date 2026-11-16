@@ -111,3 +111,4 @@ Highlights:
 - 2026-11-15 King: Q-D3 2nd level was correct. ENG1 (`docs/ENG1_SPEC.md`) comes next: the missing capabilities, then these classes are redone.
 - 2026-11-15 King: Q-D1 Envenomed (Toxic Tongue now gives immunity to Envenomed and Corroded; ships with the next release); Q-D2 character level is right (no multiclassing in N5e); Q-D4–Q-D7 correct; Q-D3 asked for an explanation.
 - 2026-11-15 King: "Lets move on to STD6d". Claude: engine D15–D19 and Taijutsu Specialist built, published 0.55.0-alpha.1. Suites 589 and 180 pass.
+- 2026-11-15 King: Q-D8 Bone Broken and Flow Broken are class conditions, to be built with the class and clan conditions system (`docs/CCOND1_SPEC.md`); Q-D9 yes; Q-D10 upcasting yes, a None-cost Taijutsu keeps None (fixed in code, ships with the next release); Q-D11 no (stance only); Q-D12 yes (3 ranks intended); Q-D13 yes.
