@@ -1,3 +1,11 @@
+## 0.60.0-alpha.9 — Active Amps show their name and what they change
+
+- **Names (King):** an active Amp shows its card's current name (Caloric Ignition), not the name the card had when the Amp started. This applies on the Combat tab's Amps panel and the Effects tab.
+- **Renaming a card keeps its key**, so Amps already running stay linked to it. New cards get an identifier from their name when made.
+- **Hover an active Amp** for its type and time left, the card's summary, and every change and roll rule it applies in plain words. For example: "+2 Damage Reduction", "+10 Speed", "Advantage on your Constitution saves."
+- Every other effect on the Effects tab lists what it changes on hover too.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.8 — Sheet polish: Amp card layout, Amps panel, jutsu views, roll dialog
 
 - **Amp card sheet:**

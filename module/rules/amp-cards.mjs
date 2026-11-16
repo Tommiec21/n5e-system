@@ -18,7 +18,11 @@
  *         the GM's "ampEnding" setting.
  */
 
+import { effectFieldCatalog } from "./effect-authoring.mjs";
+import { describeChange, describeRule } from "./plain-language.mjs";
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
+const escHTML = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const slug = s => String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const AMP_TYPES = ["battle", "reflex", "fortitude", "will", "clan"];
@@ -237,4 +241,44 @@ export function ampUsesAfterRest(actor, recovers) {
     if ( (Number(u?.spent) || 0) > 0 && recovers.has(u.per) ) out[`flags.n5e.ampUses.${key}.spent`] = 0;
   }
   return Object.keys(out).length ? out : null;
+}
+
+/* -------------------------------------------- */
+/*  What an active Amp shows (King 2026-11-16)  */
+/* -------------------------------------------- */
+
+/** The registry entry an Amp effect came from: by its card key, else by the card it was made from. */
+export function ampDefFor(effect, registry = {}) {
+  const key = effect?.system?.key;
+  const byCard = effect?.origin ? Object.values(registry).find(d => d.card && d.card === effect.origin) : null;
+  return byCard ?? (key ? registry[key] : null) ?? null;
+}
+
+/**
+ * The plain lines of what an effect changes: its changes and its roll rules.
+ * @param {object} effect
+ * @param {object} N5E   config (catalog, conditions, states)
+ */
+export function effectLines(effect, N5E = {}) {
+  const catalog = effectFieldCatalog(N5E);
+  return [...list(effect?.changes).filter(c => c?.key).map(c => describeChange(c, catalog, N5E)),
+    ...list(effect?.flags?.n5e?.rules).map(r => describeRule(r, N5E))];
+}
+
+/**
+ * An active Amp's name (its card's current name) and hover text: type, time left, summary, and
+ * every change and roll rule in plain words.
+ * @returns {{name: string, tip: string}}
+ */
+export function ampEffectView(effect, registry = {}, N5E = {}) {
+  const def = ampDefFor(effect, registry);
+  const name = def?.label || effect?.name || "Amp";
+  const type = ampTypeLabel(effect?.system?.ampType ?? def?.ampType ?? "");
+  const lines = effectLines(effect, N5E);
+  const time = effect?.duration?.label ? ` · ${effect.duration.label}` : "";
+  const tip = [`<b>${escHTML(name)}</b> <span class="sub">(${escHTML(type)} Amp${escHTML(time)})</span>`,
+    def?.summary ? `<div>${escHTML(def.summary)}</div>` : "",
+    lines.length ? `<ul>${lines.map(l => `<li>${escHTML(l)}</li>`).join("")}</ul>` : "<div><i>Changes nothing by itself; see the card.</i></div>",
+    effect?.disabled ? "<div><i>Switched off (Amp limit).</i></div>" : ""].filter(Boolean).join("");
+  return { name, tip };
 }

@@ -13,6 +13,8 @@
  */
 import { freeFeatCount } from "../rules/progression.mjs";
 import { rule } from "../rules-settings.mjs";
+import { ampEffectView, effectLines } from "../rules/amp-cards.mjs";
+import { n5eConfig } from "../rules/host.mjs";
 import {
   abilities, skills, toolkits, castingDisciplines, disciplines, rankOrder, ranks as rankDefs, progression
 } from "../config/core.mjs";
@@ -525,8 +527,14 @@ export function featuresVM(actor) {
 
 /** Effects tab: every Active Effect grouped (conditions, states, Amps, concentration, other). */
 export function effectsVM(actor) {
+  const N5E = n5eConfig();
   const rows = list(actor.effects).map(e => ({
-    id: e.id, name: e.name, img: e.img, type: e.type, disabled: !!e.disabled,
+    // King 2026-11-16: an Amp shows its card's current name; every effect lists what it changes on hover.
+    id: e.id, name: e.type === "amp" ? ampEffectView(e, N5E.amps ?? {}, N5E).name : e.name, img: e.img, type: e.type, disabled: !!e.disabled,
+    tip: e.type === "amp" ? ampEffectView(e, N5E.amps ?? {}, N5E).tip : (() => {
+      const lines = effectLines(e, N5E);
+      return lines.length ? `<b>${String(e.name).replace(/</g, "&lt;")}</b><ul>${lines.map(l => `<li>${l.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</li>`).join("")}</ul>` : "";
+    })(),
     ranks: e.type === "condition" ? e.system.ranks : null,
     max: e.type === "condition" ? ((globalThis.CONFIG?.N5E?.clanConditions?.[e.system.key] ?? coreConditions[e.system.key])?.maxRanks === 0 ? "∞"
       : (globalThis.CONFIG?.N5E?.clanConditions?.[e.system.key] ?? coreConditions[e.system.key])?.maxRanks ?? null) : null,

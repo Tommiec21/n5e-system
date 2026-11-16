@@ -25,7 +25,7 @@ import { canDualWieldLight } from "../rules/weapon-properties.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates } from "../config/combat.mjs";
-import { ampCardsFor, ampTypeLabel } from "../rules/amp-cards.mjs";
+import { ampCardsFor, ampTypeLabel, ampEffectView } from "../rules/amp-cards.mjs";
 import { n5eConfig } from "../rules/host.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 
@@ -389,7 +389,8 @@ function marksVM(actor) {
  * creature can start (Activate, uses, cooldown; drag onto a creature), and the Amp limit in force.
  */
 export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = globalThis.game?.time?.worldTime ?? 0 } = {}) {
-  const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, name: e.name, disabled: !!e.disabled,
+  // King 2026-11-16: the card's current name, and a hover listing what the Amp changes.
+  const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, ...ampEffectView(e, registry, n5eConfig()), disabled: !!e.disabled,
     type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
   const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
   const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,

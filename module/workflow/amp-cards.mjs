@@ -34,9 +34,14 @@ const resolver = actor => v => {
 
 /** Register one card (or re-register an edited one). Returns its key. */
 export function registerAmp(card) {
-  const key = ampKey(card);
+  // King 2026-11-16: renaming a card without an identifier must not change its key (Amps already
+  // started would lose their card): reuse the key this card already has, and drop stale entries.
+  const reg = registry();
+  const existing = card.uuid ? Object.keys(reg).filter(k => reg[k].card === card.uuid) : [];
+  const key = card.system?.identifier || existing[0] || ampKey(card);
   if ( !key ) return null;
-  registry()[key] = ampDefinition(card);
+  for ( const k of existing ) if ( k !== key ) delete reg[k];
+  reg[key] = ampDefinition(card);
   return key;
 }
 
@@ -243,6 +248,10 @@ export function registerAmpCards() {
   for ( const hook of ["createItem", "updateItem"] ) {
     Hooks.on(hook, item => { if ( item.type === "amp" && !item.parent ) registerAmp(item); });
   }
+  // A new card gets an identifier from its name, so it keeps its key when renamed.
+  Hooks.on("preCreateItem", (item, data) => {
+    if ( item.type === "amp" && !data.system?.identifier ) item.updateSource({ "system.identifier": ampKey(item) });
+  });
   // UX1: the card's own effects are part of its buff; editing them re-registers the card.
   for ( const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"] ) {
     Hooks.on(hook, effect => { const card = effect.parent; if ( card?.documentName === "Item" && card.type === "amp" && !card.parent ) registerAmp(card); });

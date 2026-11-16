@@ -151,3 +151,21 @@ test("the Amps pack exists with its folders, and the system declares the Amp ite
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   assert.ok(fs.readdirSync(dir).some(f => f.startsWith("_folder")));
 });
+
+// King 2026-11-16: an active Amp shows its card's current name and what it changes on hover.
+import { ampEffectView, ampDefFor } from "../module/rules/amp-cards.mjs";
+import { N5E } from "../module/config/index.mjs";
+test("an active Amp shows its card's current name and a hover listing what it changes", () => {
+  const def = ampDefinition(card({ identifier: "caloric", summary: "Grow huge.", owner: { kind: "clan", id: "akimichi" } }, { name: "Caloric Ignition", uuid: "Item.cal" }));
+  const registry = { "amp-card": { ...def, label: "Amp card", card: "Item.old" }, caloric: def };
+  const effect = { name: "Amp card", origin: "Item.cal", system: { key: "amp-card", ampType: "clan" }, duration: { label: "60 Seconds" },
+    changes: [{ key: "n5e.dr", value: "2", mode: 2 }, { key: "system.bonuses.speed", value: "10", mode: 2 }], flags: { n5e: { rules: [{ key: "advantage", selector: "save:con" }] } } };
+  assert.equal(ampDefFor(effect, registry), def, "found by the card it came from");
+  const view = ampEffectView(effect, registry, N5E);
+  assert.equal(view.name, "Caloric Ignition");
+  assert.match(view.tip, /Clan Amp · 60 Seconds/);
+  assert.match(view.tip, /Grow huge\./);
+  assert.match(view.tip, /\+2 Damage Reduction/);
+  assert.match(view.tip, /\+10 Speed/);
+  assert.match(view.tip, /Advantage on your Constitution saves/);
+});
