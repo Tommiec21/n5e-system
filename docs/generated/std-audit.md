@@ -81,7 +81,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 0 | 0 | 0 | 0 | 0 | 0 |
+| amps | 20 | 0 | 0 | 20 | 20 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 0 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
@@ -98,11 +98,12 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp |
 | --- | --- | --- | --- | --- | --- |
+| amps | 20 | 0 | 0 | 0 | 0 |
 | clans | 0 | 0 | 0 | 122 | 0 |
 | features | 0 | 0 | 17 | 28 | 0 |
 | jutsu | 0 | 0 | 0 | 66 | 0 |
 | stances | 0 | 0 | 0 | 24 | 0 |
-| **Total** | **0** | **0** | **17** | **240** | **0** |
+| **Total** | **20** | **0** | **17** | **240** | **0** |
 
 ### clans: 122 candidates
 

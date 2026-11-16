@@ -1,0 +1,96 @@
+{
+  "_id": "n5eAmp47d9ebd2c7",
+  "name": "Crash: Overheat",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 600,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "crash-overheat",
+    "description": "<p><b>Will Amp</b></p><p>When you enter your Crash state, by spending 1 Pyroclasm, you begin to Overheat for the duration of the Crash state.</p><p>While overheating, Ninjutsu you cast with the Fire Release keyword gain a +2 bonus to the damage it deals. This increases to +4 at 10th level and +6 at 18th level.</p><p>While overheating, you take 1d6 fire damage at the end of each of your turns. This damage cannot be reduced or resisted by any means.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "ninjutsu-specialist",
+      "subclass": "blaze-walker"
+    },
+    "summary": "Crash, plus +2 (+4 at 10th, +6 at 18th) damage on Fire Release Ninjutsu; take 1d6 fire at the end of each of your turns.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "crash",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage",
+          "predicate": "jutsu:keyword:fireRelease",
+          "value": "lvl(6:2,10:4,18:6)",
+          "label": "Overheat"
+        },
+        {
+          "key": "damage",
+          "on": "turnEnd",
+          "formula": "1d6",
+          "damageType": "fire",
+          "unreducible": true,
+          "label": "Overheat"
+        },
+        {
+          "key": "note",
+          "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th) and 1d6 fire damage to you at the end of each of your turns, unreduced (both on this effect).",
+          "label": "Chakra Surge: Crash (Overheat)"
+        },
+        {
+          "key": "costReduction",
+          "selector": "cast",
+          "value": 0,
+          "label": "Crash: no cost reduction"
+        },
+        {
+          "key": "note",
+          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+        },
+        {
+          "key": "note",
+          "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp47d9ebd2c7"
+}

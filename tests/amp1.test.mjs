@@ -186,3 +186,39 @@ test("AMP1b: the scan sorts cards, buttons, candidates and dismissals, and ignor
   assert.equal(ampAuditOf({ type: "clan", name: "Inuzuka", system: { description: "Battle Amp" } }), null, "whole clans aren't scanned");
   assert.deepEqual(ampAuditCounts([{ status: "candidate" }, { status: "linked" }, { status: "candidate" }]), { typed: 0, untyped: 0, linked: 1, candidate: 2, dismissed: 0 });
 });
+
+// AMP1c: the Amp cards for every feature whose button started an Amp.
+import { validateConditionalRules as validateCardRules } from "../module/rules/effect-authoring.mjs";
+test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
+  assert.equal(cards.length, 20);
+  const keys = new Set(cards.map(c => c.system.identifier));
+  for ( const c of cards ) {
+    validateCardRules(c.flags.n5e.rules ?? []);
+    assert.ok(c.system.summary && c.system.description, c.name);
+    assert.ok(c.system.owner.id, `${c.name} has an owner`);
+  }
+  const crash = cards.find(c => c.system.identifier === "chakra-surge-crash");
+  assert.equal(crash.system.state, "crash", "the Crash state still drives the bonus damage and Moldings");
+  assert.ok(crash.flags.n5e.rules.some(r => r.key === "costReduction" && r.value === 0), "no cost reduction in Crash");
+  const flow = cards.find(c => c.system.identifier === "chakra-surge-flow");
+  assert.ok(flow.system.changes.some(ch => ch.key === "n5e.saveDC.nin"), "Flow kept its save DC bonus");
+  const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".json") ? [path.join(d, e.name)] : []);
+  let buttons = 0;
+  for ( const f of walk(path.join(import.meta.dirname, "..", "packs/_source/features")) ) {
+    for ( const a of JSON.parse(fs.readFileSync(f, "utf8")).system?.activities ?? [] ) {
+      assert.ok(!a.effect?.ampType, `${f}: a bare ampType button is left`);
+      if ( a.effect?.amp ) { buttons++; assert.ok(keys.has(a.effect.amp), `${f}: unknown card ${a.effect.amp}`); }
+    }
+  }
+  assert.equal(buttons, 20);
+});
+
+test("AMP1c: checks and saves know the ability they use (Battle Trance: your Taijutsu ability)", async () => {
+  const { rollOptions } = await import("../module/rules/elements.mjs");
+  const actor = { system: { skills: { ath: { ability: "str" } }, disciplines: { tai: { ability: "str" }, nin: { ability: "int" } } }, items: [], effects: [] };
+  const o = rollOptions(actor, { kind: "check", type: "skill", key: "ath" });
+  assert.ok(o.has("ability:str") && o.has("ability:tai") && !o.has("ability:nin"));
+  assert.ok(rollOptions(actor, { kind: "save", type: "save", key: "int" }).has("ability:nin"));
+});

@@ -38,12 +38,7 @@
         "effect": {
           "name": "Chakra Surge: Crash",
           "target": "self",
-          "changes": [],
-          "expires": "",
-          "seconds": 60,
-          "state": "crash",
-          "exclusive": "surge",
-          "ampType": "will"
+          "amp": "chakra-surge-crash"
         },
         "activation": "bonus"
       },
@@ -54,36 +49,7 @@
         "effect": {
           "name": "Chakra Surge: Flow",
           "target": "self",
-          "changes": [
-            {
-              "key": "n5e.saveDC.nin",
-              "value": "lvl(3:1,11:2,19:3)",
-              "mode": 2
-            }
-          ],
-          "expires": "",
-          "seconds": 60,
-          "state": "flow",
-          "exclusive": "surge",
-          "ampType": "will",
-          "rules": [
-            {
-              "key": "advantage",
-              "selector": "check",
-              "predicate": [
-                "concentration",
-                "concentration:discipline:nin"
-              ],
-              "label": "Flow"
-            },
-            {
-              "key": "resource",
-              "on": "turnStart",
-              "pool": "focus",
-              "amount": 1,
-              "label": "Flow"
-            }
-          ]
+          "amp": "chakra-surge-flow"
         },
         "activation": "bonus"
       }

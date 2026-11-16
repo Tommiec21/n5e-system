@@ -1,0 +1,90 @@
+{
+  "_id": "n5eAmpaa53ebd79f",
+  "name": "Battle Medic",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 1200,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "battle-medic",
+    "description": "<p><b>Fortitude Amp</b></p><p>Your [Unarmed Damage] die becomes a d12.</p><p>Your unarmed and Taijutsu attacks gain a +1 bonus to their critical threat range. This becomes +2 at 10th level.</p><p>Taijutsu you cast, of D-Rank or lower gain the Medical keyword. This becomes C-Rank at 6th and B-Rank at 10th level.</p><p>If you begin your turn with half or fewer hit points, you regain hit points equal to your Channeled Healing bonus.</p><p>Lasts 1 minute; 10 minutes before you can enter it again.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "fortitude",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "medical-nin",
+      "subclass": "combat-medic"
+    },
+    "summary": "Unarmed die d12; +1 critical range on unarmed and Taijutsu (+2 at 10th); low-rank Taijutsu gain Medical; heal at the start of your turn while at half HP or less.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "battleMedic",
+    "state": "battleMedic",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.unarmed.die",
+        "value": "1d12",
+        "mode": 0
+      },
+      {
+        "key": "n5e.critRange.unarmed",
+        "value": "lvl(2:1,10:2)",
+        "mode": 2
+      },
+      {
+        "key": "n5e.critRange.tai",
+        "value": "lvl(2:1,10:2)",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "predicate": "self:bloodied",
+          "formula": "@scale.medicalNin.channeledHealing",
+          "pool": "hp",
+          "label": "Battle Medic"
+        },
+        {
+          "key": "note",
+          "text": "Taijutsu you cast of D-Rank or lower gain the Medical keyword (C-Rank at 6th, B-Rank at 10th)."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmpaa53ebd79f"
+}

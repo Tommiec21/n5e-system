@@ -45,43 +45,9 @@
           "amount": 2
         },
         "effect": {
-          "name": "Chakra Surge: Crash (Burnout)",
+          "name": "Crash: Burnout",
           "target": "self",
-          "changes": [],
-          "expires": "",
-          "seconds": 60,
-          "state": "crash",
-          "exclusive": "surge",
-          "ampType": "will",
-          "rules": [
-            {
-              "key": "modifier",
-              "selector": "damage",
-              "predicate": "jutsu:keyword:fireRelease",
-              "value": "lvl(6:2,10:4,18:6)",
-              "label": "Overheat"
-            },
-            {
-              "key": "resource",
-              "on": "turnEnd",
-              "pool": "pyroclasm",
-              "amount": 1,
-              "label": "Burnout"
-            },
-            {
-              "key": "damage",
-              "on": "turnEnd",
-              "formula": "3d6",
-              "damageType": "fire",
-              "unreducible": true,
-              "label": "Burnout"
-            },
-            {
-              "key": "note",
-              "text": "Overheat's damage bonus, +1 Pyroclasm and 3d6 unreduced fire damage to you at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. Also spend 1 Pyroclasm.",
-              "label": "Chakra Surge: Crash (Burnout)"
-            }
-          ]
+          "amp": "crash-burnout"
         }
       }
     ]

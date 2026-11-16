@@ -45,34 +45,9 @@
           "amount": 1
         },
         "effect": {
-          "name": "Chakra Surge: Crash (Herald)",
+          "name": "Crash: Herald",
           "target": "self",
-          "changes": [
-            {
-              "key": "system.traits.speed.fly",
-              "value": "40",
-              "mode": 4
-            }
-          ],
-          "expires": "",
-          "seconds": 60,
-          "state": "crash",
-          "exclusive": "surge",
-          "ampType": "will",
-          "rules": [
-            {
-              "key": "modifier",
-              "selector": "attack",
-              "direction": "against",
-              "value": 1,
-              "label": "Herald"
-            },
-            {
-              "key": "note",
-              "text": "40-ft fly speed and +1 to attacks against you (on this effect). Crash's damage dice can be halved and applied to two jutsu.",
-              "label": "Chakra Surge: Crash (Herald)"
-            }
-          ]
+          "amp": "crash-herald"
         }
       }
     ]

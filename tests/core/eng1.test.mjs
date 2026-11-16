@@ -29,7 +29,10 @@ test("ENG1a: an effect's turn triggers heal, post damage and roll a save that en
   const ally = { statuses: new Set(), items: [], effects: [{ id: "fx2", changes: [], flags: { n5e: { rules: pulse } } }] };
   assert.deepEqual(triggerOutcomes(triggersFor(ally, "turnStart")).heal.map(h => [h.formula, h.pool]), [["4d6", "hp"], ["2d6", "cp"]]);
 
-  const overheat = table("ninjutsu-specialist")["over-the-limit-blaze-walker"].activities[0].effect.rules;
+  assert.equal(table("ninjutsu-specialist")["over-the-limit-blaze-walker"].activities[0].effect.amp, "crash-overheat");
+  const ampDir = "packs/_source/amps";
+  const overheat = fs.readdirSync(ampDir).filter(n => !n.startsWith("_folder")).map(n => JSON.parse(fs.readFileSync(`${ampDir}/${n}`, "utf8")))
+    .find(c => c.system.identifier === "crash-overheat").flags.n5e.rules;
   const hot = { system: { level: 6 }, statuses: new Set(), items: [], effects: [{ id: "fx3", changes: [], flags: { n5e: { rules: overheat } } }] };
   assert.deepEqual(triggerOutcomes(triggersFor(hot, "turnEnd")).damage.map(d => [d.formula, d.type, d.unreducible]), [["1d6", "fire", true]]);
   assert.match(summarizeElement(overheat.find(r => r.on)), /Takes 1d6 fire damage \(can't be reduced\)/);

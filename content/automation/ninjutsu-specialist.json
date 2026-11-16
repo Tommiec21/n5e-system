@@ -160,12 +160,7 @@
           "effect": {
             "name": "Chakra Surge: Crash",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will"
+            "amp": "chakra-surge-crash"
           },
           "activation": "bonus"
         },
@@ -176,36 +171,7 @@
           "effect": {
             "name": "Chakra Surge: Flow",
             "target": "self",
-            "changes": [
-              {
-                "key": "n5e.saveDC.nin",
-                "value": "lvl(3:1,11:2,19:3)",
-                "mode": 2
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "flow",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "advantage",
-                "selector": "check",
-                "predicate": [
-                  "concentration",
-                  "concentration:discipline:nin"
-                ],
-                "label": "Flow"
-              },
-              {
-                "key": "resource",
-                "on": "turnStart",
-                "pool": "focus",
-                "amount": 1,
-                "label": "Flow"
-              }
-            ]
+            "amp": "chakra-surge-flow"
           },
           "activation": "bonus"
         }
@@ -576,26 +542,7 @@
           "effect": {
             "name": "Chakra Surge: Crash (Perfected)",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "damageHandling",
-                "selector": "damage",
-                "predicate": "jutsu:discipline:nin",
-                "immunityAsResistance": true,
-                "label": "Crash (Perfected)"
-              },
-              {
-                "key": "note",
-                "text": "Once per casting +5d10 Ninjutsu damage (the Crash option); three or more Moldings on one casting; your Ninjutsu treat immunity as resistance (on this effect).",
-                "label": "Chakra Surge: Crash (Perfected)"
-              }
-            ]
+            "amp": "chakra-surge-crash-perfected"
           }
         },
         {
@@ -610,48 +557,7 @@
           "effect": {
             "name": "Chakra Surge: Flow (Perfected)",
             "target": "self",
-            "changes": [
-              {
-                "key": "n5e.saveDC.nin",
-                "value": "3",
-                "mode": 2
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "flow",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "advantage",
-                "selector": "check",
-                "predicate": [
-                  "concentration",
-                  "concentration:discipline:nin"
-                ],
-                "label": "Flow (Perfected)"
-              },
-              {
-                "key": "resource",
-                "on": "turnStart",
-                "pool": "focus",
-                "amount": 1,
-                "label": "Flow (Perfected)"
-              },
-              {
-                "key": "resource",
-                "on": "turnEnd",
-                "pool": "focus",
-                "amount": 1,
-                "label": "Flow (Perfected)"
-              },
-              {
-                "key": "note",
-                "text": "+3 Ninjutsu save DC and a Focus at the start and end of each turn (on this effect); concentrate on up to 3 Ninjutsu at once.",
-                "label": "Chakra Surge: Flow (Perfected)"
-              }
-            ]
+            "amp": "chakra-surge-flow-perfected"
           }
         }
       ],
@@ -678,36 +584,9 @@
             "amount": 1
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Overheat)",
+            "name": "Crash: Overheat",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "modifier",
-                "selector": "damage",
-                "predicate": "jutsu:keyword:fireRelease",
-                "value": "lvl(6:2,10:4,18:6)",
-                "label": "Overheat"
-              },
-              {
-                "key": "damage",
-                "on": "turnEnd",
-                "formula": "1d6",
-                "damageType": "fire",
-                "unreducible": true,
-                "label": "Overheat"
-              },
-              {
-                "key": "note",
-                "text": "+2 Fire Release Ninjutsu damage (+4 at 10th, +6 at 18th) and 1d6 fire damage to you at the end of each of your turns, unreduced (both on this effect).",
-                "label": "Chakra Surge: Crash (Overheat)"
-              }
-            ]
+            "amp": "crash-overheat"
           }
         }
       ]
@@ -725,43 +604,9 @@
             "amount": 2
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Burnout)",
+            "name": "Crash: Burnout",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "modifier",
-                "selector": "damage",
-                "predicate": "jutsu:keyword:fireRelease",
-                "value": "lvl(6:2,10:4,18:6)",
-                "label": "Overheat"
-              },
-              {
-                "key": "resource",
-                "on": "turnEnd",
-                "pool": "pyroclasm",
-                "amount": 1,
-                "label": "Burnout"
-              },
-              {
-                "key": "damage",
-                "on": "turnEnd",
-                "formula": "3d6",
-                "damageType": "fire",
-                "unreducible": true,
-                "label": "Burnout"
-              },
-              {
-                "key": "note",
-                "text": "Overheat's damage bonus, +1 Pyroclasm and 3d6 unreduced fire damage to you at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. Also spend 1 Pyroclasm.",
-                "label": "Chakra Surge: Crash (Burnout)"
-              }
-            ]
+            "amp": "crash-burnout"
           }
         }
       ]
@@ -1254,34 +1099,9 @@
             "amount": 1
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Herald)",
+            "name": "Crash: Herald",
             "target": "self",
-            "changes": [
-              {
-                "key": "system.traits.speed.fly",
-                "value": "40",
-                "mode": 4
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "modifier",
-                "selector": "attack",
-                "direction": "against",
-                "value": 1,
-                "label": "Herald"
-              },
-              {
-                "key": "note",
-                "text": "40-ft fly speed and +1 to attacks against you (on this effect). Crash's damage dice can be halved and applied to two jutsu.",
-                "label": "Chakra Surge: Crash (Herald)"
-              }
-            ]
+            "amp": "crash-herald"
           }
         }
       ]
@@ -1299,48 +1119,9 @@
             "amount": 2
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Typhoon)",
+            "name": "Crash: Typhoon",
             "target": "self",
-            "changes": [
-              {
-                "key": "system.traits.speed.fly",
-                "value": "40",
-                "mode": 4
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "modifier",
-                "selector": "attack",
-                "direction": "against",
-                "value": 2,
-                "label": "Typhoon"
-              },
-              {
-                "key": "critRange",
-                "selector": "attack",
-                "direction": "against",
-                "value": 1,
-                "label": "Typhoon"
-              },
-              {
-                "key": "resource",
-                "on": "turnEnd",
-                "pool": "pressure",
-                "amount": 1,
-                "label": "Typhoon"
-              },
-              {
-                "key": "note",
-                "text": "Herald's benefits; +1 Pressure at the end of each turn; attacks against you +2 and +1 critical range (on this effect). Once per turn one base Gale Burst, Sharpening or Dragwind at no Pressure cost. Also spend 1 Pressure.",
-                "label": "Chakra Surge: Crash (Typhoon)"
-              }
-            ]
+            "amp": "crash-typhoon"
           }
         }
       ]
@@ -1460,21 +1241,9 @@
             "amount": 2
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Abyss)",
+            "name": "Crash: Abyss",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "note",
-                "text": "Maelstrom's benefits; Tidal Draw on every creature your Water Release Ninjutsu affects; each time you deal chakra damage, regain 1 Focus. Each instance of damage you take +4.",
-                "label": "Chakra Surge: Crash (Abyss)"
-              }
-            ]
+            "amp": "crash-abyss"
           }
         }
       ]
@@ -1492,21 +1261,9 @@
             "amount": 1
           },
           "effect": {
-            "name": "Chakra Surge: Crash (Maelstrom)",
+            "name": "Crash: Maelstrom",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "crash",
-            "exclusive": "surge",
-            "ampType": "will",
-            "rules": [
-              {
-                "key": "note",
-                "text": "Two Shift Tides stances at once; once per turn, Water Release cold damage can inflict Tidal Draw until your next turn (when it casts a chakra-molding jutsu you gain temporary chakra: 1d4 D/C, 1d8 B/A, 1d12 S). Each instance of damage you take +2.",
-                "label": "Chakra Surge: Crash (Maelstrom)"
-              }
-            ]
+            "amp": "crash-maelstrom"
           }
         }
       ]

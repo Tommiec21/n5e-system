@@ -894,3 +894,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | World setting `n5e.ampAuditDismissed` | Item uuids the GM marked "Not an Amp" in the Amp audit. |
 | `module/rules/amp-audit.mjs` `ampAuditOf(doc, {dismissed})` | The audit status of a document: typed, untyped, linked, candidate, dismissed (or null), with the reason. |
+
+## Added in 0.62.0-alpha.1 (AMP1c)
+
+| Path | Meaning |
+| --- | --- |
+| `packs/_source/amps/*` | 20 Amp cards (flags.n5e.amp1c), built by `tools/content/build-amp-cards.py` (idempotent; it also points the buttons at the cards). |
+| Activity effect `{name, target, amp: key}` | Every former Amp button: it starts that card (no inline changes or rules). |
+| Roll fact `ability:<ability>`, `ability:<nin|tai|gen>` | The ability a check or save uses, and whether it is that discipline's ability. |
+| Delete option `n5eAmpSwap` | An exclusive-group swap; the ended Amp's cooldown doesn't start. |

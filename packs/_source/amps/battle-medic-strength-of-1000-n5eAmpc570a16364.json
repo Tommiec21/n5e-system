@@ -1,0 +1,105 @@
+{
+  "_id": "n5eAmpc570a16364",
+  "name": "Battle Medic: Strength of 1000",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 1400,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "battle-medic-strength-of-1000",
+    "description": "<p><b>Fortitude Amp (Strength of 1000 Enhancement)</b></p><p>Your [Unarmed Damage] die becomes 2d12.</p><p>You gain 2 ranks of Mastery with Strength based checks and Saves.</p><p>Constructs and Structures are Vulnerable to your [Unarmed Damage].</p><p>Once per turn, when you hit a creature with an attack that deals [Unarmed Damage] you can push the target 10 feet in any direction, except upwards.</p><p>You gain DR (Damage reduction) vs all Damage, equal to your Channeled Healing bonus.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "fortitude",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "medical-nin",
+      "subclass": "combat-medic"
+    },
+    "summary": "Battle Medic, plus a 2d12 unarmed die, two Strength Mastery ranks, a 10-foot push and DR equal to your Channeled Healing bonus.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "battleMedic",
+    "state": "battleMedic",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.unarmed.die",
+        "value": "2d12",
+        "mode": 0
+      },
+      {
+        "key": "n5e.critRange.unarmed",
+        "value": "lvl(2:1,10:2)",
+        "mode": 2
+      },
+      {
+        "key": "n5e.critRange.tai",
+        "value": "lvl(2:1,10:2)",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.save.str",
+        "value": "Strength of 1000",
+        "mode": 0
+      },
+      {
+        "key": "n5e.mastery.save.str",
+        "value": "Strength of 1000 (2)",
+        "mode": 0
+      },
+      {
+        "key": "n5e.dr",
+        "value": "@scale.medicalNin.channeledHealing",
+        "mode": 0
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "predicate": "self:bloodied",
+          "formula": "@scale.medicalNin.channeledHealing",
+          "pool": "hp",
+          "label": "Battle Medic"
+        },
+        {
+          "key": "note",
+          "text": "Constructs and structures are vulnerable to your [Unarmed Damage]. Once per turn, when you hit with an attack dealing [Unarmed Damage], you can push the target 10 feet in any direction except up."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmpc570a16364"
+}

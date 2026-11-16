@@ -5,6 +5,7 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { makeActor, baseAbilities, load } from "./helpers/actor.mjs";
 import { activityButtons } from "../module/workflow/activity-buttons.mjs";
 
@@ -55,8 +56,16 @@ test("transfer effects: Critical Focus widens the Bukijutsu crit range; Demon Si
   assert.deepEqual([ds.key, ds.value, ds.mode], ["system.traits.senses.darkvision", "120", 4]);
 });
 
+// AMP1c: Amp buttons name a card ({amp: key}); the mechanics live on the card in packs/_source/amps.
+const ampCard = key => {
+  const dir = "packs/_source/amps";
+  const f = fs.readdirSync(dir).filter(n => !n.startsWith("_folder")).map(n => JSON.parse(fs.readFileSync(`${dir}/${n}`, "utf8"))).find(c => c.system.identifier === key);
+  return { ...f.system, rules: f.flags.n5e.rules };
+};
 test("amplification states: Reality Shift spends an Actualization Die for 1 minute", () => {
   const rs = load("features", "alteration-of-reality").system.activities[0];
-  assert.deepEqual([rs.type, rs.effect.state, rs.effect.ampType, rs.effect.seconds], ["effect", "realityShift", "will", 60]);
+  assert.deepEqual([rs.type, rs.effect.amp], ["effect", "reality-shift"]);
+  const card = ampCard("reality-shift");
+  assert.deepEqual([card.state, card.ampType, card.duration.seconds], ["realityShift", "will", 60]);
   assert.deepEqual(rs.cost, { pool: "actualizationDice", amount: 1 });
 });

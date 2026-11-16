@@ -1,0 +1,70 @@
+{
+  "_id": "n5eAmpa12b426adb",
+  "name": "Waltz",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 1500,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "waltz",
+    "description": "<p><b>Battle Amp</b></p><p>You perform a smooth dance filled with elegant steps, but you can't do it alone. You require a Partner. At the beginning of your turn, you select a Partner: a willing creature you can see, until the beginning of your next turn. You can only have 1 Partner at a time.</p><p>When you begin your turn within 10 feet of your willing partner you both gain: Move in Tandem, Battle Step, Cascade Step and Defensive Dance (see the feature).</p><p>You can dance for the duration of combat and end it early at no action on your turn. A Bonus Action switches your dance.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "battle",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "weapon-specialist",
+      "subclass": "battle-dancer"
+    },
+    "summary": "Dance with a Partner: Move in Tandem, Battle Step, Cascade Step (−2 AC), Defensive Dance (resistance). For the rest of combat.",
+    "activation": "bonus",
+    "giveable": true,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "combatEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "dance",
+    "state": "waltz",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Waltz: at the start of your turn pick a willing Partner you can see. When you begin your turn within 10 feet of them, you both gain: Move in Tandem (1 Discipline: share a turn), Battle Step (move together instead of moving), Cascade Step (1 Discipline: a Dex save vs the Weapon Specialist's Taijutsu DC or −2 AC until your next turn), Defensive Dance (Reaction + 2 Discipline: resistance to the triggering damage)."
+        },
+        {
+          "key": "note",
+          "text": "Give this Amp to your Partner too (drag the card onto them); a Partner without Discipline spends the Weapon Specialist's."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmpa12b426adb"
+}

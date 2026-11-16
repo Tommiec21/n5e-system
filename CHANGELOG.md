@@ -1,3 +1,22 @@
+## 0.62.0-alpha.1 — AMP1c: Amp cards for every Amp button
+
+- **20 Amp cards** in the Amps compendium (folder Classes), one for every class feature whose button started an Amp. Each card carries the book box as its description, a one-line summary, and its mechanics:
+  - **Ninjutsu Specialist:** Crash, Flow, Crash and Flow (Perfected).
+  - **Blaze Walker, Storm Terror and Tsunami:** Overheat, Burnout, Herald, Typhoon, Maelstrom, Abyss.
+  - **Medical-Nin:** Battle Medic, Strength of 100 and 1000 (Combat Medic); Ascension (Adept Medic); Transfigured (Transmuter, can be given to an ally).
+  - **Weapon Specialist:** Waltz and Samba (Battle Dancer); Battle Trance (Fang Breaker).
+  - **Taijutsu Specialist:** Elemental Cloak (Nin-Tai).
+  - **Genjutsu Specialist:** Reality Shift (Layered Reality).
+- **The feature buttons now start the card**, keeping their action and resource cost. The cards show on the Amps panel of characters with the class or subclass. They can be dragged onto creatures, and hovering an active one lists what it does.
+- **New automation from the books:**
+  - Crash (and every Crash variant) now blocks cost reduction on your casts. Before, nothing applied it.
+  - Battle Trance: advantage on checks and saves with your Taijutsu ability, and from 6th level +2 (+4 at 14th) Polearm and Flail damage.
+  - Mechanics the buttons already had (Flow's DC and Focus, Battle Medic's d12, critical range and healing, the Crash variants' damage and riders) moved onto the cards unchanged.
+  - What depends on a choice made at the table (Battle Trance's resistances, Elemental Cloak's release, Transfigured's designation, the dance partner) is listed as notes on the card.
+- **Cooldowns:** the "10 minutes before you can enter again" Amps start their cooldown when they end, and starting one early asks first. Swapping between Crash and Flow doesn't start one.
+- **For authors:** rule conditions can now test the ability a check or save uses (`ability:str`), and whether it's a discipline's ability (`ability:tai`, `ability:nin`, `ability:gen`).
+- Not checked in a running Foundry world.
+
 ## 0.61.0-alpha.2 — The Amps view lists everything at once
 
 - **Fix (King):** the Automation Audit's **Amps** view now scans the world and every N5e compendium at once, so the list fills whichever Source was picked before. The Source picker hides while it's open.

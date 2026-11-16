@@ -424,7 +424,9 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     // Exclusive group: remove the other member first (entering Flow ends Crash).
     if ( eff.exclusive && t.isOwner ) {
       const old = t.effects.filter(e => e.flags?.n5e?.exclusive === eff.exclusive).map(e => e.id);
-      if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old);
+      // AMP1c: a swap (Crash to Flow) doesn't start the ended Amp's cooldown; the shared minute and the
+      // 10 minutes after the state ends are the table's.
+      if ( old.length ) await t.deleteEmbeddedDocuments("ActiveEffect", old, { n5eAmpSwap: true });
     }
     // Only create an effect when it does or marks something; a pure temp-HP activity creates none.
     if ( changes.length || eff.expires || eff.state || eff.ampType || eff.ampKey || eff.rules?.length || eff.aura?.radius ) {

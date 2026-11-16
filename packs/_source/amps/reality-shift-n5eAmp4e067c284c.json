@@ -1,0 +1,78 @@
+{
+  "_id": "n5eAmp4e067c284c",
+  "name": "Reality Shift",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 100,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "reality-shift",
+    "description": "<p><b>Will Amp</b></p><p>You gain a +1 bonus to your Genjutsu Save DC.</p><p>You can use your Genjutsu Save DC as your AC.</p><p>All Genjutsu you cast can have its saving throw changed to Intelligence.</p><p>Lasts 1 minute, until you end it (no action) or are incapacitated. Once used, not again until 10 minutes have passed.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "genjutsu-specialist",
+      "subclass": "layered-reality"
+    },
+    "summary": "+1 Genjutsu save DC; your Genjutsu save DC can be your AC; Genjutsu saves can become Intelligence.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "",
+    "state": "realityShift",
+    "tempHp": "",
+    "endsOn": [
+      "unconscious"
+    ],
+    "changes": [
+      {
+        "key": "n5e.saveDC.gen",
+        "value": "1",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can use your Genjutsu Save DC as your AC (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "Genjutsu you cast can have their saving throw changed to Intelligence (choose when casting)."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp4e067c284c"
+}

@@ -1,0 +1,96 @@
+{
+  "_id": "n5eAmp35930da875",
+  "name": "Chakra Surge: Flow (Perfected)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 500,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "chakra-surge-flow-perfected",
+    "description": "<p><b>Will Amp</b></p><p>Starting at 20th level, when you would enter your Flow state, you can spend 4 Focus, perfecting it for the next minute. Once you do this, you cannot do so again for 10 minutes.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "ninjutsu-specialist",
+      "subclass": ""
+    },
+    "summary": "Perfected Flow (20th level, 4 Focus): Flow's benefits, perfected for 1 minute.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "flow",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.saveDC.nin",
+        "value": "3",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "predicate": [
+            "concentration",
+            "concentration:discipline:nin"
+          ],
+          "label": "Flow (Perfected)"
+        },
+        {
+          "key": "resource",
+          "on": "turnStart",
+          "pool": "focus",
+          "amount": 1,
+          "label": "Flow (Perfected)"
+        },
+        {
+          "key": "resource",
+          "on": "turnEnd",
+          "pool": "focus",
+          "amount": 1,
+          "label": "Flow (Perfected)"
+        },
+        {
+          "key": "note",
+          "text": "+3 Ninjutsu save DC and a Focus at the start and end of each turn (on this effect); concentrate on up to 3 Ninjutsu at once.",
+          "label": "Chakra Surge: Flow (Perfected)"
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp35930da875"
+}

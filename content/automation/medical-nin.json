@@ -279,11 +279,7 @@
           "effect": {
             "name": "Ascension",
             "target": "self",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "state": "ascension",
-            "ampType": "will"
+            "amp": "ascension"
           },
           "activation": "bonus",
           "text": "In combat; 10 minutes of meditation before reuse."
@@ -727,43 +723,7 @@
           "effect": {
             "name": "Battle Medic: Strength of 100",
             "target": "self",
-            "changes": [
-              {
-                "key": "n5e.unarmed.die",
-                "value": "2d12",
-                "mode": 0
-              },
-              {
-                "key": "n5e.critRange.unarmed",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              },
-              {
-                "key": "n5e.critRange.tai",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              },
-              {
-                "key": "n5e.mastery.save.str",
-                "value": "Strength of 100",
-                "mode": 0
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "battleMedic",
-            "exclusive": "battleMedic",
-            "ampType": "fortitude",
-            "rules": [
-              {
-                "key": "heal",
-                "on": "turnStart",
-                "predicate": "self:bloodied",
-                "formula": "@scale.medicalNin.channeledHealing",
-                "pool": "hp",
-                "label": "Battle Medic"
-              }
-            ]
+            "amp": "battle-medic-strength-of-100"
           }
         }
       ],
@@ -789,53 +749,7 @@
           "effect": {
             "name": "Battle Medic: Strength of 1000",
             "target": "self",
-            "changes": [
-              {
-                "key": "n5e.unarmed.die",
-                "value": "2d12",
-                "mode": 0
-              },
-              {
-                "key": "n5e.critRange.unarmed",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              },
-              {
-                "key": "n5e.critRange.tai",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              },
-              {
-                "key": "n5e.mastery.save.str",
-                "value": "Strength of 1000",
-                "mode": 0
-              },
-              {
-                "key": "n5e.mastery.save.str",
-                "value": "Strength of 1000 (2)",
-                "mode": 0
-              },
-              {
-                "key": "n5e.dr",
-                "value": "@scale.medicalNin.channeledHealing",
-                "mode": 0
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "battleMedic",
-            "exclusive": "battleMedic",
-            "ampType": "fortitude",
-            "rules": [
-              {
-                "key": "heal",
-                "on": "turnStart",
-                "predicate": "self:bloodied",
-                "formula": "@scale.medicalNin.channeledHealing",
-                "pool": "hp",
-                "label": "Battle Medic"
-              }
-            ]
+            "amp": "battle-medic-strength-of-1000"
           }
         }
       ],
@@ -1288,10 +1202,7 @@
           "effect": {
             "name": "Transfigured",
             "target": "targets",
-            "changes": [],
-            "expires": "",
-            "seconds": 60,
-            "ampType": "fortitude"
+            "amp": "transfigured"
           },
           "activation": "bonus",
           "text": "One ally at a time; pick its designation from the Transfiguration box."
@@ -1476,38 +1387,7 @@
           "effect": {
             "name": "Battle Medic",
             "target": "self",
-            "changes": [
-              {
-                "key": "n5e.unarmed.die",
-                "value": "1d12",
-                "mode": 0
-              },
-              {
-                "key": "n5e.critRange.unarmed",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              },
-              {
-                "key": "n5e.critRange.tai",
-                "value": "lvl(2:1,10:2)",
-                "mode": 2
-              }
-            ],
-            "expires": "",
-            "seconds": 60,
-            "state": "battleMedic",
-            "ampType": "fortitude",
-            "exclusive": "battleMedic",
-            "rules": [
-              {
-                "key": "heal",
-                "on": "turnStart",
-                "predicate": "self:bloodied",
-                "formula": "@scale.medicalNin.channeledHealing",
-                "pool": "hp",
-                "label": "Battle Medic"
-              }
-            ]
+            "amp": "battle-medic"
           },
           "activation": "bonus",
           "text": "In combat; 10 minutes before reuse."

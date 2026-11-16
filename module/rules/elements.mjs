@@ -260,6 +260,14 @@ export function rollOptions(actor, spec = {}, target = null) {
   if ( hp?.max > 0 && hp.value <= hp.max / 2 ) options.add("self:bloodied");
   // ENG1d: a ranged attack (weapon or jutsu) answers to "attack:ranged".
   if ( spec.kind === "attack" && spec.ranged ) options.add("attack:ranged");
+  // AMP1c: the ability a check or save uses ("ability:str"), and "ability:tai" / "ability:nin" /
+  // "ability:gen" when it is that discipline's ability (Battle Trance: checks and saves with your
+  // Taijutsu ability).
+  const ab = spec.type === "skill" ? actor?.system?.skills?.[spec.key]?.ability : ["save", "ability"].includes(spec.type) ? spec.key : null;
+  if ( ab ) {
+    options.add(`ability:${ab}`);
+    for ( const d of ["nin", "tai", "gen"] ) if ( actor?.system?.disciplines?.[d]?.ability === ab ) options.add(`ability:${d}`);
+  }
   // STD6b: facts the roll carries (the weapon's groups and properties, weapon:stance, attack:opportunity).
   for ( const fact of list(spec.facts) ) if ( typeof fact === "string" && fact ) options.add(fact);
   const addActor = (a, prefix) => {

@@ -273,7 +273,7 @@ export function registerAmpCards() {
   // The cooldown starts when an Amp card's effect ends, on whoever starts it.
   Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
     const key = effect.type === "amp" ? effect.system?.key : null;
-    if ( !key || userId !== game.user.id ) return;
+    if ( !key || userId !== game.user.id || options?.n5eAmpSwap ) return;
     const def = registry()[key];
     if ( !def?.cooldown ) return;
     const source = effect.system.sourceUuid ? await fromUuid(effect.system.sourceUuid) : effect.parent;

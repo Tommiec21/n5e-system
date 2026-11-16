@@ -47,53 +47,7 @@
         "effect": {
           "name": "Battle Medic: Strength of 1000",
           "target": "self",
-          "changes": [
-            {
-              "key": "n5e.unarmed.die",
-              "value": "2d12",
-              "mode": 0
-            },
-            {
-              "key": "n5e.critRange.unarmed",
-              "value": "lvl(2:1,10:2)",
-              "mode": 2
-            },
-            {
-              "key": "n5e.critRange.tai",
-              "value": "lvl(2:1,10:2)",
-              "mode": 2
-            },
-            {
-              "key": "n5e.mastery.save.str",
-              "value": "Strength of 1000",
-              "mode": 0
-            },
-            {
-              "key": "n5e.mastery.save.str",
-              "value": "Strength of 1000 (2)",
-              "mode": 0
-            },
-            {
-              "key": "n5e.dr",
-              "value": "@scale.medicalNin.channeledHealing",
-              "mode": 0
-            }
-          ],
-          "expires": "",
-          "seconds": 60,
-          "state": "battleMedic",
-          "exclusive": "battleMedic",
-          "ampType": "fortitude",
-          "rules": [
-            {
-              "key": "heal",
-              "on": "turnStart",
-              "predicate": "self:bloodied",
-              "formula": "@scale.medicalNin.channeledHealing",
-              "pool": "hp",
-              "label": "Battle Medic"
-            }
-          ]
+          "amp": "battle-medic-strength-of-1000"
         }
       }
     ]

@@ -56,38 +56,7 @@
         "effect": {
           "name": "Battle Medic",
           "target": "self",
-          "changes": [
-            {
-              "key": "n5e.unarmed.die",
-              "value": "1d12",
-              "mode": 0
-            },
-            {
-              "key": "n5e.critRange.unarmed",
-              "value": "lvl(2:1,10:2)",
-              "mode": 2
-            },
-            {
-              "key": "n5e.critRange.tai",
-              "value": "lvl(2:1,10:2)",
-              "mode": 2
-            }
-          ],
-          "expires": "",
-          "seconds": 60,
-          "state": "battleMedic",
-          "ampType": "fortitude",
-          "exclusive": "battleMedic",
-          "rules": [
-            {
-              "key": "heal",
-              "on": "turnStart",
-              "predicate": "self:bloodied",
-              "formula": "@scale.medicalNin.channeledHealing",
-              "pool": "hp",
-              "label": "Battle Medic"
-            }
-          ]
+          "amp": "battle-medic"
         },
         "activation": "bonus",
         "text": "In combat; 10 minutes before reuse."
