@@ -78,7 +78,9 @@ export function validateConditionalRules(rules) {
     const rankValued = typeof r.value === "string" && (/^\s*(?:-?\d+\s*[+*]\s*)?@rankValue(?:\s*[+*]\s*-?\d+)?\s*$/.test(r.value)
       || /^lvl\((\s*\d+\s*:\s*-?\d+\s*,?)+\)$/.test(r.value)
       // STD6d: the highest of some ability modifiers ("mod(int,wis,cha)": Agile).
-      || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value));
+      || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value)
+      // CCOND1: so much per rank of the condition carrying it ("ranks(-2)").
+      || /^ranks\(-?\d+\)$/.test(r.value));
     if ( NUMERIC.has(r.key) && !rankValued ) {
       if ( r.value === null || typeof r.value === "boolean" || String(r.value ?? "").trim() === "" || !Number.isFinite(Number(r.value)) ) throw new Error(`${r.key} needs a numeric value.`);
       if ( r.key !== "modifier" && !Number.isInteger(Number(r.value)) ) throw new Error(`${r.key} needs a whole number.`);

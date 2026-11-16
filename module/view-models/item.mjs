@@ -252,7 +252,8 @@ const DETAILS = {
       F.check(src, "persists", "Persists"),
       F.num(src, "initiativeShift", "Initiative change", { small: true }),
       F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),
-      F.select(src, "resave.source", "Save DC from", { "": "Fixed DC", tai: "Taijutsu", nin: "Ninjutsu", gen: "Genjutsu", buki: "Bukijutsu" }),
+      F.select(src, "resave.source", "Save DC from", { "": "Fixed DC", highest: "Highest jutsu DC", tai: "Taijutsu", nin: "Ninjutsu", gen: "Genjutsu", buki: "Bukijutsu" }),
+      F.num(src, "seconds", "Duration (seconds, 0 = 1 minute)", { small: true }),
       F.num(src, "resave.dc", "Fixed DC", { small: true })
     ])
   ],

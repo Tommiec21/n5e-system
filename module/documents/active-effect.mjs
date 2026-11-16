@@ -59,7 +59,10 @@ export default class N5eActiveEffect extends ActiveEffect {
       // The status id puts the condition's icon on the token and lets the HUD toggle it off.
       statuses: [key],
       origin,
-      system: { key, ranks, sourceRank }
+      system: { key, ranks, sourceRank },
+      // CCOND1: a condition card's rule elements ride on the effect, so the rules engine reads them
+      // (core conditions keep theirs in config and are read by rules/condition-elements.mjs).
+      ...(def?.owner && def.rules?.length ? { flags: { n5e: { rules: structuredClone(def.rules) } } } : {})
     };
   }
 

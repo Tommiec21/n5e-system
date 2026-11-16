@@ -1,0 +1,88 @@
+{
+  "_id": "n5eCFafCHnzuFY1n",
+  "name": "Infested",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eQxGRfjlOgalIK",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "aburame-infested",
+    "description": "<p>Your body has been infiltrated by a small colony of carnivorous insects. Infested is treated as a physical condition.</p><p>While Infested, Increase the cost of jutsu you cast by +4 for each rank of infested you have.</p><p>If enhanced, instead, increase the chakra cost by +6 for each rank.</p><p>While Infested, you gain a -2 penalty to Strength and Dexterity saving throws.</p><p>If enhanced, the affected creature suffers the same penalty to their jutsu save DC’s.</p><p>An Infested creature can make a Constitution saving throw vs your highest jutsu save DC at the end of each of their turns to remove the infestation on a success.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "aburame",
+      "subclass": ""
+    },
+    "summary": "Jutsu cost +4 per rank (+6 enhanced); −2 to Strength and Dexterity saves; Constitution save at the end of its turns ends it.",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": 0,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "con",
+      "source": "highest",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {
+      "baseCost": {
+        "nin": 4,
+        "gen": 4,
+        "tai": 4,
+        "buki": 4
+      }
+    },
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": [
+            "save:str",
+            "save:dex"
+          ],
+          "value": -2,
+          "label": "Infested"
+        },
+        {
+          "key": "note",
+          "text": "Enhanced: +6 cost per rank instead of +4, and the −2 also applies to its jutsu save DCs (at the table). The end-of-turn Constitution save is against the Aburame's highest jutsu save DC."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eCFafCHnzuFY1n"
+}

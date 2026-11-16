@@ -1,0 +1,86 @@
+{
+  "_id": "n5egsm70lfuuwkfV",
+  "name": "Virulent",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eTp5NmFEJwWGlS",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hebi-virulent",
+    "description": "<p>Your body has been compromised by the Hebi’s Viper Blood. Good Luck.</p><p>A Virulent creature cannot regain hit or chakra points.</p><p>A Virulent creature cannot gain temporary hit points or chakra points.</p><p>A Virulent creature reduces its damage die size by 1 step. If they use a d4, it instead becomes 1 damage, per dice that would be rolled.</p><p>Creatures that are resistant or immune to poison damage or the Envenomed condition are resistant or immune to the Virulent condition.</p><p>A creature can spend its action to make a DC 15 Constitution check to remove this condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "hebi",
+      "subclass": ""
+    },
+    "summary": "Can't regain or gain temporary HP or CP; damage dice one step smaller (d4 becomes 1); DC 15 Constitution check to end.",
+    "tags": [
+      "elemental",
+      "physical"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 15,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {
+      "noHealing": true
+    },
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Can't regain hit or chakra points and can't gain temporary hit or chakra points. Its damage dice are one step smaller (a d4 becomes 1 per die). Resistance or immunity to poison damage or Envenomed gives the same against Virulent."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5egsm70lfuuwkfV"
+}

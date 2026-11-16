@@ -73,11 +73,15 @@ export function castShaping(actionEffects = [], level = 0) {
 
 /**
  * An element's value read for its owner (STD6d): "lvl(6:2,10:4)" by level; "mod(int,wis,cha)" is the
- * highest of those ability modifiers (Agile's initiative bonus). Anything else is returned as is.
+ * highest of those ability modifiers (Agile's initiative bonus); "ranks(-2)" is that many per rank of
+ * the condition carrying it (CCOND1: Network Distortion's −2 Chakra Control per rank). Anything else
+ * is returned as is.
  */
-export function elementValue(value, owner) {
+export function elementValue(value, owner, source = null) {
   const s = String(value);
   if ( s.startsWith("lvl(") ) return levelValue(s, owner?.system?.level ?? 0);
+  const r = s.match(/^ranks\((-?\d+)\)$/);
+  if ( r ) return Number(r[1]) * Math.max(1, Number(source?.system?.effectiveRanks ?? source?.system?.ranks ?? 1) || 1);
   const m = s.match(/^mod\(([^)]*)\)$/);
   if ( !m ) return value;
   const abilities = owner?.system?.abilities ?? {};
@@ -116,15 +120,15 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
   const names = selectorNames(spec);
   const out = [];
   // STD6d: a level-scaled value ("lvl(6:2,10:4,18:6)") is read at its owner's level.
-  const leveled = (element, owner) => (typeof element.value === "string" && /^(lvl|mod)\(/.test(element.value)
-    ? { ...element, value: elementValue(element.value, owner) } : element);
+  const leveled = (element, owner, source = null) => (typeof element.value === "string" && /^(lvl|mod|ranks)\(/.test(element.value)
+    ? { ...element, value: elementValue(element.value, owner, source) } : element);
   const mine = rollOptions(actor, spec, target);
   for ( const source of ruleSources(actor) ) {
     if ( source.flags?.n5e?.ruleToggle?.enabled === false ) continue;
     const opts = sourceOptions(mine, source);
     for ( const element of elementsOf(source) ) {
       if ( !actsFromActor(element) || !selects(element, names) || !testPredicate(element.predicate, opts) ) continue;
-      out.push({ element: leveled(element, actor), label: element.label || source.name });
+      out.push({ element: leveled(element, actor, source), label: element.label || source.name });
     }
   }
   if ( target ) {
@@ -134,7 +138,7 @@ export function gatherElements(actor, spec = {}, target = null, extra = []) {
       const opts = sourceOptions(theirs, source);
       for ( const element of elementsOf(source) ) {
         if ( element.direction !== "against" || element.on || !selects(element, names) || !testPredicate(element.predicate, opts) ) continue;
-        out.push({ element: leveled(element, target), label: element.label || source.name });
+        out.push({ element: leveled(element, target, source), label: element.label || source.name });
       }
     }
   }

@@ -27,9 +27,11 @@ export function cardDefinition(card) {
   };
   if ( s.endsAt ) def.endsAt = s.endsAt;
   if ( s.initiativeShift ) def.initiativeShift = Number(s.initiativeShift);
+  if ( s.seconds ) def.seconds = Number(s.seconds);
   if ( s.decay?.when ) def.decay = { when: s.decay.when, amount: s.decay.amount ?? 1 };
   const removal = list(s.removal).map(r => r.text && !list(r.check).length ? { text: r.text }
-    : { action: r.action || "action", check: list(r.check), dc: r.dc ?? null, ranks: /^\d+$/.test(String(r.ranks)) ? Number(r.ranks) : "all" });
+    : { action: r.action || "action", check: list(r.check), dc: r.dc ?? null, ranks: /^\d+$/.test(String(r.ranks)) ? Number(r.ranks) : "all",
+      ...(r.dcIncrease ? { onFail: { dcIncrease: r.dcIncrease } } : {}) });
   if ( removal.length ) def.removal = removal;
   if ( s.resave?.ability ) def.resave = { ability: s.resave.ability, source: s.resave.source ?? "", dc: s.resave.dc ?? null };
   if ( s.turnStartDamage?.die ) def.turnStartDamage = { ...s.turnStartDamage };
@@ -98,7 +100,11 @@ export function visibleRegistry(registry, { details = "full", owner = true } = {
  */
 export function cardResave(def, applier) {
   if ( !def?.resave?.ability ) return null;
-  const dc = def.resave.dc ?? applier?.system?.disciplines?.[def.resave.source]?.dc ?? null;
+  // source "highest": the applier's highest jutsu save DC (Infested).
+  const discs = applier?.system?.disciplines ?? {};
+  const dc = def.resave.dc ?? (def.resave.source === "highest"
+    ? Math.max(...Object.values(discs).map(d => Number(d?.dc) || 0), 0) || null
+    : discs[def.resave.source]?.dc ?? null);
   return dc == null ? null : { ability: def.resave.ability, dc: Number(dc), label: def.label };
 }
 

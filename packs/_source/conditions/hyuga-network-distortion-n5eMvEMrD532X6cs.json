@@ -1,0 +1,81 @@
+{
+  "_id": "n5eMvEMrD532X6cs",
+  "name": "Network Distortion",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eWeGLbFiWT8OtX",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hyuga-network-distortion",
+    "description": "<p>Your chakra network has been damaged, making it difficult to control your chakra.</p><p>While Network Distorted, Increase the cost of jutsu cast by +4 for each rank.</p><p>While Network Distorted, you suffer a -2 penalty to chakra control checks for each rank.</p><p>You lose 1 rank of Network Distortion at the end of each of your turns.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "hyuga",
+      "subclass": ""
+    },
+    "summary": "Jutsu cost +4 per rank; −2 Chakra Control checks per rank; loses a rank at the end of each of its turns.",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "turnEnd",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {
+      "baseCost": {
+        "nin": 4,
+        "gen": 4,
+        "tai": 4,
+        "buki": 4
+      }
+    },
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "skill:cha",
+          "value": "ranks(-2)",
+          "label": "Network Distortion"
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eMvEMrD532X6cs"
+}

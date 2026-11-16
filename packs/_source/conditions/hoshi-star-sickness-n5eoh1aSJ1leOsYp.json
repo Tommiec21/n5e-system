@@ -1,0 +1,84 @@
+{
+  "_id": "n5eoh1aSJ1leOsYp",
+  "name": "Star Sickness",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eDhGcYww5LRiCl",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hoshi-star-sickness",
+    "description": "<p>A creature suffering Star Sickness is suffering the radiation of overusing the meteors chakra.</p><p>A Star Sickened creature suffers a -2 penalty to all damage rolls they for each rank they have.</p><p>A Star Sickened creature makes Strength and Dexterity checks and saving throws at disadvantage.</p><p>A Star Sickened creatures with 3 or more ranks of this condition cannot regain hit points except from short or long rests.</p><p>A Star Sickened creatures with 5 ranks of this condition cannot regain hit points except by Long Rests.</p><p>If a Star Sickened creature is part of the Hoshi Clan, then ranks of this condition cannot be reduced by Non-Hoshi Clan features, Jutsu or effects if the creature afflicted.</p><p>A Star Sickened creature reduces this condition by 2 ranks at the conclusion of a Long Rest.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "hoshi",
+      "subclass": ""
+    },
+    "summary": "−2 damage per rank; disadvantage on Strength and Dexterity checks and saves; healing limited at 3+ ranks; −2 ranks per long rest.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": true,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "longRest",
+      "amount": 2
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {
+      "damageDealt": -2
+    },
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "disadvantage",
+          "selector": [
+            "save:str",
+            "save:dex",
+            "ability:str",
+            "ability:dex"
+          ],
+          "label": "Star Sickness"
+        },
+        {
+          "key": "note",
+          "text": "At 3+ ranks it regains hit points only from short or long rests; at 5 ranks only from long rests. On a Hoshi, ranks can only be reduced by Hoshi Clan features, jutsu or effects."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eoh1aSJ1leOsYp"
+}

@@ -1,0 +1,84 @@
+{
+  "_id": "n5eSsaHzQsnX01CB",
+  "name": "Drained",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5epHZHRCBTQwVoQ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "senju-drained",
+    "description": "<p>A Drained creature takes 1d8 chakra damage at the start of each of their turns for each rank it has.</p><p>A Drained creature increases the chakra damage they take from hostile creatures attacks or jutsu by +2. This increases to +4 at 7th level and +6 at 15th level.</p><p>A Drained creature can spend an Action to make a DC 15 Constitution ability check to end this condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "senju",
+      "subclass": ""
+    },
+    "summary": "1d8 chakra damage per rank at the start of its turns; +2 chakra damage taken from hostile attacks and jutsu (+4 at 7th, +6 at 15th).",
+    "tags": [
+      "mental",
+      "physical"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "con"
+        ],
+        "dc": 15,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "1d8",
+      "type": "chakra",
+      "perRank": true
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "+2 chakra damage taken from hostile creatures' attacks and jutsu (+4 from a 7th-level, +6 from a 15th-level Senju): at the table."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5eSsaHzQsnX01CB"
+}

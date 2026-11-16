@@ -130,12 +130,19 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
       conditions.push({ key: "exhaustion", ranks: 2 });
       lines.push("−2 Exhaustion (food and drink)");
     }
+    // CCOND1: class and clan conditions that wear off on a long rest (Star Sickness −2).
+    for ( const e of list(actor.effects).filter(x => x.type === "condition" && !x.disabled) ) {
+      const def = n5eConfig().clanConditions?.[e.system?.key];
+      if ( def?.decay?.when !== "longRest" ) continue;
+      conditions.push({ key: e.system.key, ranks: def.decay.amount || 1 });
+      lines.push(`−${def.decay.amount || 1} ${e.name}`);
+    }
   } else {
     Object.assign(update, { "system.hp.value": hp.max, "system.cp.value": cp.max, "system.hp.temp": 0, "system.cp.temp": 0,
       "system.hitDice.spent": 0, "system.chakraDice.spent": 0 });
     lines.push("All HP, CP, Hit Dice and Chakra Dice restored");
     const persisting = list(actor.effects).filter(e => e.type === "condition" && !e.disabled
-      && (n5eConfig().conditions?.[e.system?.key]?.persists ?? e.system?.persists));
+      && (n5eConfig().conditions?.[e.system?.key]?.persists ?? n5eConfig().clanConditions?.[e.system?.key]?.persists ?? e.system?.persists));
     for ( const e of persisting ) conditions.push({ key: e.system.key, ranks: "all" });
     if ( persisting.length ) lines.push(`Removed: ${persisting.map(e => e.name).join(", ")}`);
   }

@@ -23,7 +23,8 @@ const defOf = (key, registry) => registry[key] ?? n5eConfig().clanConditions?.[k
 export function defaultDuration(key, registry = coreConditions) {
   const def = defOf(key, registry);
   if ( !rule("conditionDurations") || !def || def.persists || def.endsAt ) return null;
-  const seconds = defaultConditionDuration.value * 60;
+  // CCOND1: a card may set its own duration (5-Pronged Seal: 1 hour).
+  const seconds = Number(def.seconds) > 0 ? Number(def.seconds) : defaultConditionDuration.value * 60;
   return { seconds, rounds: seconds / 6 };
 }
 

@@ -797,3 +797,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Condition card `system.initiativeShift` | Initiative change each time it is applied in combat (Flow Broken −4) |
 | Combatant `flags.n5e.pendingInitiative` | The change waiting for the start of the next round |
+
+## Added in 0.57.0-alpha.1 (CCOND1c batch A)
+
+| Path | Meaning |
+| --- | --- |
+| Condition card `system.seconds` | Its duration when not the default minute |
+| Condition card `system.removal[].dcIncrease` | The removal DC rises by this after each failure |
+| Condition card `system.resave.source` "highest" | The applier's highest jutsu save DC |
+| Rule element value `ranks(N)` | N per rank of the condition carrying it |
+| Condition effect `flags.n5e.rules` | A card's rule elements, copied onto the condition when it is applied |

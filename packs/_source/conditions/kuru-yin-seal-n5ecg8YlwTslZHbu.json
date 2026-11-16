@@ -1,0 +1,84 @@
+{
+  "_id": "n5ecg8YlwTslZHbu",
+  "name": "Yin-Seal",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5eAxBO0EfFtQGGI",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "kuru-yin-seal",
+    "description": "<p>You have been marked with a special sealing mark created by the Kuru. Kuru refers to the clan of the creature that inflicted this seal.</p><p>Once per turn, If a Kuru deals damage to a Yin-Sealed creature, the Kuru regains 1 Foresight.</p><p>Attacks a Yin-Sealed creature makes against a Kuru suffer a -2 penalty to their result.</p><p>Saving throws a Yin-Sealed creature forces a Kuru to make are treated as if they have a -1 penalty, only for the Kuru.</p><p>A creature immune to the Sealed condition is immune to this condition.</p><p>A creature can spend its action to make a DC 20 Ninshou check to remove this condition.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "kuru",
+      "subclass": ""
+    },
+    "summary": "Its attacks against a Kuru take −2; its saves forced on a Kuru count −1; a Kuru that damages it regains 1 Foresight once per turn.",
+    "tags": [
+      "mental",
+      "sensory"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [
+      {
+        "action": "action",
+        "check": [
+          "nin"
+        ],
+        "dc": 20,
+        "ranks": "all",
+        "dcIncrease": 0,
+        "text": ""
+      }
+    ],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Attacks it makes against a Kuru: −2. Saves it forces a Kuru to make: −1 for the Kuru. Once per turn a Kuru that damages it regains 1 Foresight. Creatures immune to Sealed are immune to this."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5ecg8YlwTslZHbu"
+}

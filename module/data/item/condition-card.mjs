@@ -8,6 +8,7 @@
  *   tags       Physical, Mental, Sensory, Elemental, Fatigue (King Q-CC1: it counts as these for everything)
  *   maxRanks   empty: no ranks (applying again replaces it and the new duration wins, King Q-CC3);
  *              a number: ranks stack up to it; 0: no limit
+ *   seconds    its duration in seconds when not the default 1 minute (0: default)
  *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd"
  *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
  *              source discipline: tai, nin, gen, buki)
@@ -33,7 +34,9 @@ export class ConditionCardData extends TDM() {
       persists: S.bool(),
       initiativeShift: S.int(0),
       decay: S.obj({ when: S.str(), amount: S.int(1, { min: 0 }) }),
-      removal: S.arr(S.obj({ action: S.str({ initial: "action" }), check: S.arr(S.str()), dc: S.num(null, { nullable: true }), ranks: S.str({ initial: "all" }), text: S.str() })),
+      removal: S.arr(S.obj({ action: S.str({ initial: "action" }), check: S.arr(S.str()), dc: S.num(null, { nullable: true }), ranks: S.str({ initial: "all" }),
+        dcIncrease: S.int(0), text: S.str() })),
+      seconds: S.int(0, { min: 0 }),
       resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),
       turnStartDamage: S.obj({ die: S.str(), type: S.str(), perRank: S.bool() }),
       perRank: object(),

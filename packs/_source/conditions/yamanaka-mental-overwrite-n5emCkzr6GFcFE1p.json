@@ -1,0 +1,73 @@
+{
+  "_id": "n5emCkzr6GFcFE1p",
+  "name": "Mental Overwrite",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5ew2vYabp2Eg0PB",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "yamanaka-mental-overwrite",
+    "description": "<p>Pockets of the casters consciousness are overwriting yours. Your thoughts become hazy. Your movements sluggish and you begin to believe, not even your own. The strength of this jutsu depends on the mental strength of the target. Creatures lose 1 rank of Mental Overwrite at the end of each of their turns, unless they are Dominated.</p><p>Applies to Minions</p><p>With 1 rank of Mental Overwrite, the afflicter can choose to make the affected creature becomes Dominated (see effect), until dispelled.</p><p>Applies to Standards</p><p>With 3 rank of Mental Overwrite, the afflicter can choose to make the affected creature becomes Dominated for up to 1 hour.</p><p>This Dominated creature remakes their saves at the end of each of their turns, ending the condition and removing all ranks.</p><p>Applies to Elites</p><p>With 5 rank of Mental Overwrite, the afflicter can choose to make the affected creature becomes Dominated for up to 1 minute.</p><p>This Dominated creature remakes their saves at the end of each of their turns. ending the condition and removing all ranks.</p><p>Applies to Solo’s</p><p>With 5 rank of Mental Overwrite, the afflicter can choose to make the affected creature becomes Dominated until the end of their next turn. ending the condition and removing all ranks.</p><p>Applies to Player Characters</p><p>With 5 rank of Mental Overwrite, the afflicter can choose to make the affected creature becomes Dominated, remaking their saving throw at the end of each of their turns, ending it on a successful save.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "yamanaka",
+      "subclass": ""
+    },
+    "summary": "Ranks of the caster's consciousness; at enough ranks (by adversary class) the afflicter may make it Dominated; loses a rank each turn unless Dominated.",
+    "tags": [
+      "mental",
+      "sensory"
+    ],
+    "maxRanks": 5,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "turnEnd",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dominated thresholds: Minion 1 rank (until dispelled), Standard 3 (up to 1 hour), Elite 5 (up to 1 minute), Solo 5 (until the end of its next turn), Player Character 5 (save at the end of each turn). While Dominated it doesn't lose ranks at the end of its turns; a Dominated creature's successful save ends the condition and removes all ranks."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.57.0"
+  },
+  "_key": "!items!n5emCkzr6GFcFE1p"
+}

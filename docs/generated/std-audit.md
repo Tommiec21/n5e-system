@@ -81,7 +81,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 0 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
-| conditions | 4 | 0 | 0 | 4 | 1 | 0 |
+| conditions | 15 | 0 | 0 | 15 | 11 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
 | features | 700 | 163 | 28 | 161 | 147 | 11 |

@@ -172,7 +172,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-options.mjs` | 191 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
-| `condition-card.mjs` | 43 | Condition cards (CCOND1; docs/CCOND1_SPEC.md): conditions unique to a class or a clan. | `ConditionCardData` |
+| `condition-card.mjs` | 49 | Condition cards (CCOND1; docs/CCOND1_SPEC.md): conditions unique to a class or a clan. | `ConditionCardData` |
 | `equipment.mjs` | 148 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
 | `jutsu.mjs` | 209 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
@@ -197,9 +197,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `active-effect.mjs` | 89 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 191 | N5e Actor document. | `N5eActor` |
-| `combat.mjs` | 63 | N5e Combat (TURN1). | `N5eCombat` |
+| `active-effect.mjs` | 92 | N5e ActiveEffect document. | `N5eActiveEffect` |
+| `actor.mjs` | 211 | N5e Actor document. | `N5eActor` |
+| `combat.mjs` | 73 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
 
@@ -240,17 +240,17 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
-| `condition-cards.mjs` | 95 | Condition cards, pure rules (CCOND1; docs/CCOND1_SPEC.md). | `cardKey`, `cardDefinition`, `isCard`, `ownsCondition`, `conditionCardsFor`, `visibleRegistry`, `cardResave`, `appliedBy` |
+| `condition-cards.mjs` | 116 | Condition cards, pure rules (CCOND1; docs/CCOND1_SPEC.md). | `cardKey`, `cardDefinition`, `pendingInitiative`, `isCard`, `ownsCondition`, `conditionCardsFor`, `visibleRegistry`, `cardResave`, `appliedBy` |
 | `condition-elements.mjs` | 103 | Conditions and states as data (STD3; docs/STD3_SPEC.md). | `activeEntries`, `factOptions`, `conditionRoll`, `conditionDamageHandling`, `conditionCastProblems` |
-| `condition-lifecycle.mjs` | 106 | Condition lifecycle (pure). | `defaultDuration`, `conditionTurnStart`, `conditionTurnEnd`, `removalOptions`, `removalResult`, `resistsAny` |
+| `condition-lifecycle.mjs` | 107 | Condition lifecycle (pure). | `defaultDuration`, `conditionTurnStart`, `conditionTurnEnd`, `removalOptions`, `removalResult`, `resistsAny` |
 | `conditions.mjs` | 76 | Condition rank penalties -> one aggregate object the derived-data pipeline applies (step 7). | `emptyPenalties`, `clampRanks`, `aggregatePenalties` |
 | `cost.mjs` | 89 | Chakra cost calculation (KB 04, 11). | `computeJutsuCost`, `upkeepCost`, `concentrationDC` |
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
-| `effect-authoring.mjs` | 195 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
+| `effect-authoring.mjs` | 197 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
-| `elements.mjs` | 359 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
+| `elements.mjs` | 363 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
 | `environment.mjs` | 94 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `indirectExposure`, `mayBeImmune`, `breathSeconds`, `breathState`, `outOfBreathStatus`, `breathTurns`, `suffocationStep`, `fallDamage` |
 | `expiry.mjs` | 42 | Timed effect expiry (pure; EXPIRE1). | `durationExpired`, `expiredEffects` |
@@ -277,7 +277,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `resolution.mjs` | 63 | Per-target resolution (pure; RES1, KB 03 and 04). | `saveMode`, `targetOutcomes`, `pickLinkedRolls` |
 | `resource-cost.mjs` | 75 | What using a feature or option costs from the character's pools (pure). | `resourceCost`, `cannotPay` |
 | `resources.mjs` | 14 | Positive integer costs only; explicit zero is a free operation, never an implicit spend of one. | `resourceChange` |
-| `rest.mjs` | 176 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
+| `rest.mjs` | 183 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
 | `riders.mjs` | 227 | Feature riders on the action card (pure; CARD1d, King 2026-11-14; plan docs/CARD1D_SPEC.md). | `NATURE_RELEASES`, `riderFits`, `triggerRiders`, `targetFacts`, `triggered`, `saveEffect`, `eventSave`, `resolveAmount`, `riderOnTarget`, `adjustedInflicts`, `riderEntry`, `validateRider` |
 | `roll-math.mjs` | 154 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
 | `scrolls.mjs` | 46 | PRESTD1 Part B: jutsu scrolls (King 2026-11-15, Q-P3, Q-P4, Q-P11). | `scrollDiscipline`, `scrollSkill`, `scrollNumbers`, `skillTier`, `tierAllows`, `tierMaxRank`, `scrollName` |
@@ -315,7 +315,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
-| `item.mjs` | 458 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `item.mjs` | 460 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 274 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
