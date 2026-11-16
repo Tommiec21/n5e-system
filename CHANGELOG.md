@@ -1,3 +1,10 @@
+## 0.60.0-alpha.6 — Unarmed Damage Die Step
+
+- **New effect field (King): Unarmed Damage Die Step** (`n5e.unarmed.step`), under Damage. It reads your current unarmed die and moves it up or down: 1 → 1d4 → 1d6 → 1d8 → 1d10 → 1d12, and back down. It stops at 1 and at 1d12.
+- **What to enter:** 1 goes up one size, −1 down one, 2 up two. Steps from several effects add together.
+- It applies after **Unarmed Damage Die** (the "becomes this when larger" field). A stance's d6 with a +1 step is a d8; an effect setting d8 with a −1 step is a d6.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.5 — Effect editor: change cards in rows
 
 - **Layout (King):** the effect editor's change cards fill a row left to right, at most 3 per row. Narrower windows wrap to 2 or 1 per row. Cards in a row share the same height, so the rows look even.

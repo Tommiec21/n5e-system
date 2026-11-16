@@ -183,3 +183,19 @@ test("Condition Resistance: an effect field for a condition or a whole group, gi
   assert.ok(resistsAny(a, ["dazed"]), "a named condition");
   assert.ok(!resistsAny(a, [mentalOnly]), `${mentalOnly} isn't resisted`);
 });
+
+// King 2026-11-16: the unarmed die steps up or down from whatever it is now.
+import { stepUnarmed, unarmedSpec } from "../module/rules/unarmed.mjs";
+test("Unarmed Damage Die Step moves the current die along 1 > d4 > d6 > d8 > d10 > d12, capped at both ends", () => {
+  assert.equal(stepUnarmed("1", 1), "1d4");
+  assert.equal(stepUnarmed("1d6", 2), "1d10");
+  assert.equal(stepUnarmed("1d10", 5), "1d12");
+  assert.equal(stepUnarmed("1d6", -1), "1d4");
+  assert.equal(stepUnarmed("1d4", -3), "1");
+  assert.equal(stepUnarmed("d8", 1), "1d10");
+  assert.equal(fieldInfo("n5e.unarmed.step", N5E).name, "Unarmed Damage Die Step");
+  const up = makeActor({ system: baseAbilities, items: [taiSpec(1)], n5eChanges: [{ key: "n5e.unarmed.step", value: "2", mode: 2 }] });
+  assert.equal(unarmedSpec(up).die, "1d6", "no stance: 1, two steps up");
+  const both = makeActor({ system: baseAbilities, items: [taiSpec(1)], n5eChanges: [{ key: "n5e.unarmed.die", value: "1d8", mode: 2 }, { key: "n5e.unarmed.step", value: "-1", mode: 2 }] });
+  assert.equal(unarmedSpec(both).die, "1d6", "the override first, then the step");
+});

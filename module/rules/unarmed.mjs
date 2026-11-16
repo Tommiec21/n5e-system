@@ -52,12 +52,27 @@ export function unarmedSpec(actor) {
   const avg = d => { const m = String(d).match(/^(\d*)d(\d+)$/); return m ? (Number(m[1] || 1) * (Number(m[2]) + 1)) / 2 : Number(d) || 0; };
   let fromEffect = false;
   for ( const d of sys.modifiers?.unarmedDie ?? [] ) if ( avg(d) > avg(die) ) { die = d; fromEffect = true; }
+  // King 2026-11-16: n5e.unarmed.step moves the die (after any override) along 1 > d4 > ... > d12.
+  const steps = Number(sys.modifiers?.unarmedStep) || 0;
+  if ( steps ) { die = stepUnarmed(die, steps); fromEffect = true; }
   const type = st.unarmedType || "bludgeoning";
   const extra = [...(sys.modifiers?.unarmedDice ?? [])];
   const ability = unarmedAbility(actor);
   const mod = sys.abilities?.[ability]?.mod ?? 0;
   const formula = `${die}${extra.map(d => ` + ${d}`).join("")}${mod ? ` ${mod < 0 ? "-" : "+"} ${Math.abs(mod)}` : ""}`;
   return { die, type, extra, mod, ability, formula, source: fromEffect ? "Effect" : stance && die !== "1" ? stance.name : "" };
+}
+
+/** The unarmed ladder (King 2026-11-16): 1 > 1d4 > 1d6 > 1d8 > 1d10 > 1d12, capped at both ends. */
+const UNARMED_LADDER = ["1", "1d4", "1d6", "1d8", "1d10", "1d12"];
+/** Step an unarmed damage die up (+) or down (−) the ladder. A die not on it starts from the nearest size. */
+export function stepUnarmed(die, steps = 0) {
+  if ( !steps ) return die;
+  const m = String(die).match(/^1?d(\d+)$/);
+  let i = UNARMED_LADDER.indexOf(String(die));
+  if ( i < 0 ) i = m ? UNARMED_LADDER.findIndex(d => d !== "1" && Number(d.slice(2)) >= Number(m[1])) : 0;
+  if ( i < 0 ) i = UNARMED_LADDER.length - 1;
+  return UNARMED_LADDER[Math.max(0, Math.min(UNARMED_LADDER.length - 1, i + Math.trunc(steps)))];
 }
 
 /** Die ladder for stepping: d4 > d6 > d8 > d10 > d12 (capped at both ends). */

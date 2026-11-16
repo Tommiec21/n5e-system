@@ -863,3 +863,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | --- | --- |
 | Change key `n5e.conditionResist` | Condition resistance from an effect: a condition key (`bruised`) or a group (`group:physical`, `group:mental`, `group:sensory`, `group:elemental`, `group:fatigue`); joins `system.traits.conditionResist`. |
 | `traits.conditionResist` values `group:<tag>` | Resists every condition with that tag (rules/condition-lifecycle.mjs `resistsAny`). |
+
+## Added in 0.60.0-alpha.6
+
+| Path | Meaning |
+| --- | --- |
+| Change key `n5e.unarmed.step` | Steps the unarmed damage die up (+) or down (−) along 1 > 1d4 > 1d6 > 1d8 > 1d10 > 1d12, capped at both ends; applied after `n5e.unarmed.die` (rules/unarmed.mjs `stepUnarmed`). |

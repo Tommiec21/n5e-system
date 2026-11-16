@@ -48,7 +48,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], rankCost: [], unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], rankCost: [], unknown: []
   };
 }
 
@@ -114,6 +114,8 @@ export function parseN5eChanges(changes) {
       case "dice": out.diceAll += num(change.value); break;
       case "unarmed": {
         const v = String(change.value).trim();
+        // n5e.unarmed.step (King 2026-11-16): move the unarmed die up or down 1 > d4 > d6 > d8 > d10 > d12.
+        if ( sub === "step" ) { out.unarmedStep += num(change.value); break; }
         if ( !/^\d*d\d+$/.test(v) ) break;
         if ( sub === "die" ) out.unarmedDie.push(v);
         else out.unarmedDice.push(v);
@@ -187,6 +189,7 @@ export function changeKeyCatalog(N5E) {
   add("Rolls", "n5e.dice.all", "All dice rolls: + or − number (once per roll)");
   add("Damage", "n5e.unarmed.dice", "Unarmed damage: extra dice (value e.g. 1d8)");
   add("Damage", "n5e.unarmed.die", "Unarmed damage die becomes this when larger (value e.g. 1d12)");
+  add("Damage", "n5e.unarmed.step", "Unarmed damage die steps up or down: + or − number of steps (1 > d4 > d6 > d8 > d10 > d12)");
   add("Casting", "n5e.rankCost.tai", "Fixed cost by cast rank, treated as Special (value \"D:3,C:5,B:9,A:14,S:20\"; scope like n5e.cost)");
   add("Defense", "n5e.reinforced", "Reinforced: + number to armor's Reinforced; without it, Reinforced = Taijutsu modifier");
   add("Bukijutsu", "n5e.fury.max", "Max Fury: + number (Fury stacks up to 1 + this)");

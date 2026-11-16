@@ -137,3 +137,4 @@ Then back to AMP1b (the Amp audit).
 - 2026-11-16 King: add Ability Check Mastery (covers the ability's whole skill suite). Claude: n5e.mastery.check.<ability> in 0.60.0-alpha.3; it also applies to the plain ability check; distinct sources count once together with each skill's own.
 - 2026-11-16 King: Condition Resistance (advantage on saves to resist a named condition or a condition group). Claude: n5e.conditionResist in 0.60.0-alpha.4; also applies to end-of-turn saves to end the condition.
 - 2026-11-16 King: change cards should cascade across rows, max 3 per row. Claude: grid in 0.60.0-alpha.5.
+- 2026-11-16 King: an option that reads the current unarmed die and steps it up or down (1 > d4 > ... > d12). Claude: n5e.unarmed.step in 0.60.0-alpha.6, applied after the die override.

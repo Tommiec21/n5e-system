@@ -129,7 +129,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `condition-text.mjs` | 184 | Rules text for each condition and State (KB 05 tables), shown in condition links and tooltips (module/applications/enrichers.mjs). | `conditionText` |
 | `conditions.mjs` | 243 | Conditions and States. | `conditionTags`, `defaultConditionDuration`, `conditions`, `states`, `retiredConditions`, `derivedEffects` |
 | `core.mjs` | 162 | Core chassis registries: abilities, skills, toolkits, progression, ranks, disciplines, DC tables. | `abilities`, `skills`, `retiredSkills`, `toolkits`, `toolkitRules`, `progression`, `ranks`, `rankOrder`, `levelToRank`, `purchaseLevelByRank`, `disciplines`, `castingDisciplines`, `dcTables`, `abilityGeneration` |
-| `effect-fields.mjs` | 140 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
+| `effect-fields.mjs` | 143 | Effect field dictionary (UX1a; docs/UX1_SPEC.md): the plain-language layer over effect change keys. | `FIELD_CATEGORIES`, `fieldInfo`, `MODE_LABELS` |
 | `equipment.mjs` | 107 | Equipment registries. | `currency`, `startingWealth`, `weaponCategories`, `weaponGroups`, `unarmedStrike`, `weaponRangeTypes`, `weaponProperties`, `armorCategories`, `armorProperties`, `sealSlots`, `consumableTypes`, `containerTypes`, `inventory`, `ammoDie` |
 | `freeform.mjs` | 124 | Freeform tables (the Bingo Book, "Adversary Combat"; NPC3). | `strikeTable`, `strikeColumn`, `jutsuDamageTable`, `jutsuDamageAverage`, `jutsuTableFor`, `rankColumnLabel`, `damagePenalties`, `effectTierPenalty`, `strikeRiderPenalty`, `freeformEffects`, `recoveryMethods`, `freeformShapes`, `freeformRanges`, `freeformRankLevels`, `freeformCost`, `freeformDR`, `stepValues`, `defensiveFocus`, `supportFocus` |
 | `index.mjs` | 45 | CONFIG.N5E: every rule list the engine reads. | `N5E`, `optionalRules`, `ruleGroups` |
@@ -239,7 +239,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-options.mjs` | 192 | Cast options that come from features (pure). | `hasState`, `stanceIs`, `availableCastOptions`, `namedActionEffects`, `levelRank`, `halveDice`, `applyCastOptions`, `pyroclasmGain` |
 | `cast-tracking.mjs` | 37 | What casting a jutsu does to the Chain and Combo/Finisher trackers (KB 04, King 2026-11-06): - Chain: an Action Chain Bukijutsu raises the count by 1 (max 3;... | `castUpdates` |
 | `chain.mjs` | 59 | Chain count state machine (KB 04 "Chain (merged rule)", King rulings 2026-11-06). | `CHAIN_MAX`, `newChainState`, `resolveChainCast`, `chainTurnStart` |
-| `change-keys.mjs` | 213 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
+| `change-keys.mjs` | 216 | N5e custom Active Effect change keys (Phase 1 plan, section 9). | `CHANGE_KEY_PREFIX`, `emptyModifiers`, `parseCostValue`, `parseN5eChanges`, `scopeApplies`, `changeKeyCatalog` |
 | `clash.mjs` | 74 | Jutsu Clash (pure; CLASH1, Jiraiya's Jutsu Compendium "Clashing Jutsu"; King 2026-11-14). | `clashSkill`, `rankMastery`, `releaseOf`, `elementalAdvantage`, `contestCount`, `clashResult` |
 | `coatings.mjs` | 27 | Temporary weapon riders. | `activeCoatings`, `coatingData`, `spendCoatings` |
 | `concentration.mjs` | 30 | Concentration (pure; CONC1). | `concentrationBreaker`, `lostReadied`, `readiedIds` |
@@ -298,7 +298,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `transfer.mjs` | 84 | Item transfer between actors (pure; FIN1, King 2026-11-14; PF2e parity, no dialogs beyond "how many"). | `PHYSICAL_TYPES`, `transferRefusal`, `canReceive`, `ryoPlan`, `transferPlan` |
 | `triggers.mjs` | 56 | Trigger elements (STD4; docs/STD4_SPEC.md). | `triggersFor`, `triggerOutcomes` |
 | `turn-start.mjs` | 64 | Start of a combatant's turn (pure). | `parseRecharge`, `turnStartPlan`, `economySlot` |
-| `unarmed.mjs` | 90 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepDie`, `resolveFormula` |
+| `unarmed.mjs` | 105 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepUnarmed`, `stepDie`, `resolveFormula` |
 | `upkeep.mjs` | 57 | Concentration upkeep choice (pure). | `upkeepOptions`, `validateUpkeepChoice`, `upkeepMode`, `autoKeep` |
 | `variants.mjs` | 52 | PRESTD1 A-iv (King 2026-11-15): pure parts of the homebrew elements and the world clock. | `parseHomebrew`, `mergeHomebrew`, `worldTimeParts`, `CLOCK_STEPS`, `tableFor` |
 | `weapon-properties.mjs` | 179 | Weapon properties in attacks (pure; ATK1, Chapter 5 "Weapon Properties" and Chapter 8 "Making an Attack"). | `weaponCritBonus`, `deadlyDice`, `heavyPenalty`, `heavyDamage`, `volatileRank`, `backfires`, `reachOf`, `attackMode`, `attackRange`, `rangeSources`, `rollsAmmo`, `thrownAmmo`, `canDualWieldLight`, `lightAttackBlock`, `matchingWeapons`, `needText`, `evocationDice`, `evocationDie`, `evocationEcho` |
