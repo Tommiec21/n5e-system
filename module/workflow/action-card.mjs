@@ -343,7 +343,9 @@ export function renderActionCard(message, html) {
     ${attackControls.length ? `<div class="n5e-card-attack">${attackControls.join("")}</div>` : ""}${concLine}${defense}
     ${riders.bar.length ? `<div class="n5e-card-riders">${riders.bar.join("")}</div>` : ""}
     ${saveAllBar}${rows.length ? rows.map(row).join("") : '<div class="note">No targets. Target tokens before rolling, or use the damage card\'s own Apply buttons.</div>'}
-    ${pending ? '<div class="note">Some results are separate cards until a GM connects.</div>' : ""}`;
+    ${pending ? `<div class="note">${game.users?.activeGM
+    ? "Some results couldn't be added to this card (such as a second damage roll for the same effect), so they stay separate cards."
+    : "Some results are separate cards until a GM connects."}</div>` : ""}`;
   (html.querySelector(".message-content") ?? html).append(box);
 }
 

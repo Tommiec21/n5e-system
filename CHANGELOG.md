@@ -1,3 +1,9 @@
+## 0.62.0-alpha.3 — Action card: the right reason when a result stays separate
+
+- **Why Crash's damage was a separate card (King):** the action card records one damage roll per effect. Crash's bonus had its own damage button, so its roll was a second one for the same effect; the card couldn't take it, and it stayed a separate card. Since 0.62.0-alpha.2, Crash's dice are part of the jutsu's own damage roll, so the card records it and the damage message folds into one line on the card.
+- **Fix:** with a GM connected, that note no longer says "until a GM connects". It now explains that the result couldn't be added (for example a second damage roll for the same effect).
+- Not checked in a running Foundry world.
+
 ## 0.62.0-alpha.2 — Crash's damage joins the jutsu's damage roll
 
 - **Fix (King):** Crash's bonus dice (+1d10 to +5d10, halved for areas) are now added to the jutsu's own damage roll, in the jutsu's damage type. Before, they got a separate damage button. Example: a 4d6 + 4 Fire Ninjutsu in Crash rolls 4d6 + 4 + 1d10 Fire.
