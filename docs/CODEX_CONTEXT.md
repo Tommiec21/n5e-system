@@ -491,3 +491,7 @@ The single action card is a layer over the existing handlers. Do not move rollin
 - Amps are Amp cards (item type `amp`, pack `amps`), registered at ready into `CONFIG.N5E.amps`. New Amps go in as cards; features point at them with an effect activity `{amp: key}` instead of building an `ampType` effect by hand.
 - The limit dialog, endings and initiative start run on the creature's responsible client (`isResponsible` in `workflow/amp-cards.mjs`). The old `onAmpCreated` in `workflow/trackers.mjs` is gone; `ampsToDisable` remains only for its tests.
 - Concentration on a card is noted but not tracked unless the Amp is started from a concentration item (the item's `dependentOn`).
+
+## UX1 — Claude, 2026-11-16 (published 0.60.0-alpha.1)
+- Adding an effect change key: also add its plain entry in `config/effect-fields.mjs` (tests/ux1 fails otherwise). Descriptions: at most 2 sentences.
+- The effect editor's roll rules come from the builder rows (`n5eRules.*`), not a JSON box; `rowToRule` keeps every field the builder doesn't show, and tests/ux1 checks that every content rule survives the builder unchanged.

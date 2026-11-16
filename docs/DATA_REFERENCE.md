@@ -840,3 +840,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Activity effect `amp` | Start this Amp card instead of building an effect |
 | Rule setting `ampEnding` | auto (default) or table |
 | Owner intent `applyAmp` {key, targetUuid} | A player giving an Amp to a creature they don't own |
+
+## Added in 0.60.0-alpha.1 (UX1)
+
+| Path | Meaning |
+| --- | --- |
+| `module/config/effect-fields.mjs` `fieldInfo(key, N5E)` | The plain-language entry for an effect field: name, category, what, enter, example, stacks, words (search synonyms). Every `changeKeyCatalog` key needs one (tests/ux1). |
+| `effectFieldCatalog()` entries | Now also carry `name`, `category`, `what`, `enter`, `stacks`, `words`, `custom`; sorted by category. `n5e.resist` and `n5e.immune` are type `damageType`. |
+| `validateEffectChanges()` `.rows` | {index: {problem, blocking}}: the plain-language problem for each change. |
+| `module/rules/plain-language.mjs` | `describeChange`, `describeRule`, the roll rules builder (`ruleToRow`, `rowToRule`, `RULE_KINDS`, `selectorBases`, `WHEN_FACTS`). |
+| Amp card: Active Effects on the card | Their changes and `flags.n5e.rules` are part of the Amp (with `system.changes` and the card's own rules); switched-off effects are left out. |

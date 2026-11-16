@@ -982,3 +982,16 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2 .amp-will { --amp-color: #6a3d9a; }
 .n5e-v2 .amp-clan { --amp-color: #2e7d32; }
 .n5e-v2 .amps .rank.amp-typeless { font-style: italic; color: var(--n5e-muted); }
+
+/* -------------------------------------------- */
+/*  UX1: field definitions and collapsible      */
+/*  sections on item sheets (Amp cards)         */
+/* -------------------------------------------- */
+
+.n5e-v2.n5e-item .field-hint { display: block; font-size: 11px; line-height: 1.3; color: var(--n5e-muted); font-weight: 400; max-width: 22rem; margin-top: 2px; }
+.n5e-v2.n5e-item .field.wide .field-hint { max-width: none; }
+.n5e-v2.n5e-item details.det-collapse { margin: 0 0 10px; }
+.n5e-v2.n5e-item details.det-collapse > summary { cursor: pointer; font-family: var(--n5e-head); font-size: 14px; padding: 2px 4px; }
+.n5e-v2.n5e-item .lines-field { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.n5e-v2.n5e-item .plain-lines { margin: 0; padding-left: 1.1rem; }
+.n5e-v2.n5e-item .plain-lines li { margin: 2px 0; }

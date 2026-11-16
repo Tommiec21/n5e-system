@@ -1,3 +1,44 @@
+## 0.60.0-alpha.1 — UX1: a readable Amp card and effect editor
+
+- **Plain names for every effect field.** All 140 fields have:
+  - a name, such as **Unarmed Damage Die** (the stored key `n5e.unarmed.die` doesn't change);
+  - a category (Defense, Attacks, Damage, Jutsu Cost, Saves & DCs, Skills & Mastery, Speed & Movement, Health & Chakra, Ability Scores, Other);
+  - what it does, in at most 2 sentences;
+  - what to enter;
+  - how it stacks.
+- **The field picker:**
+  - The search also finds synonyms ("punch" finds the unarmed fields).
+  - The list is grouped by category and shows plain names.
+  - **About this field** explains the selected field before you add it.
+- **Changes are stacked cards, so nothing overlaps.** Each card shows:
+  - the field's name;
+  - a value box shaped to the field: a dropdown for an ability or a damage type, a box for numbers or dice;
+  - the problem in plain words, if there is one;
+  - "What this does" (collapsed);
+  - "Advanced" (collapsed): the stored key for everyone (King Q-U2), plus mode and priority for Foundry's own fields only. N5e fields always add (King Q-U1), and a stray mode on one is corrected to Add.
+- **Roll rules builder** (it was "Conditional roll modifiers"):
+  - Each rule is a row of plain dropdowns: **Kind**, **Applies to** (with tick boxes for which saves, skills or damage types), **Only when**, and the value the kind needs.
+  - **Limits and timing** are collapsed underneath.
+  - Each rule reads as a sentence: "Advantage on your attack rolls while you're in the iron-fist stance."
+  - Rules the builder can't show stay as they are, as a "custom rule" with its sentence, and can be edited as JSON under Advanced.
+  - Every rule in the compendiums passes through the builder unchanged.
+- **The rest of the editor** is short and collapsible:
+  - When this effect works
+  - Preview
+  - Copy and share
+  - Automation (GM)
+- **The Amp card sheet** is in plain sections:
+  - What it is
+  - Starting it
+  - How long it lasts
+  - What ends it early
+  - **What it does**: the buff written out ("+2 Damage Reduction", "Advantage on your Constitution saves."), with an Edit button.
+  - Advanced (collapsed)
+  
+  Every field has a one-line definition. The type, owner, initiative and duration dropdowns explain the option you pick.
+- **Fix:** an Amp card's own effects are now applied when the Amp starts, together with its Changes list. Before, they were ignored.
+- Not checked in a running Foundry world.
+
 ## 0.59.0-alpha.1 — AMP1a: Amp cards, the engine
 
 - **Amp cards** are a new item type and a new **Amps** compendium (folders: Classes, Clans, Self-buffs and jutsu). A card holds an Amp once:

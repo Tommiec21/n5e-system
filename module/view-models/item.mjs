@@ -16,6 +16,9 @@ import {
 } from "../config/equipment.mjs";
 import { featCategories, featureKinds, jutsuTiers } from "../config/character.mjs";
 import { keywordChip, componentChips, propertyChips, glyph, signed } from "./common.mjs";
+import { n5eConfig } from "../rules/host.mjs";
+import { effectFieldCatalog } from "../rules/effect-authoring.mjs";
+import { describeChange, describeRule } from "../rules/plain-language.mjs";
 
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const get = (obj, path) => path.split(".").reduce((o, k) => o?.[k], obj);
@@ -35,13 +38,18 @@ const F = {
   text: (src, path, label, extra = {}) => ({ kind: "text", path: `system.${path}`, label, value: get(src, path) ?? "", ...extra }),
   num: (src, path, label, extra = {}) => ({ kind: "number", path: `system.${path}`, label, value: get(src, path) ?? "", ...extra }),
   check: (src, path, label, extra = {}) => ({ kind: "checkbox", path: `system.${path}`, label, value: !!get(src, path), ...extra }),
-  select: (src, path, label, choices, extra = {}) => ({ kind: "select", path: `system.${path}`, label,
-    options: opts(choices, get(src, path), extra), ...extra }),
+  // UX1: extra.hint is a one-line definition under the field; extra.hints gives one per option of a
+  // select (the sheet swaps it in when the choice changes).
+  select: (src, path, label, choices, extra = {}) => {
+    const options = opts(choices, get(src, path), extra).map(o => ({ ...o, hint: extra.hints?.[o.value] ?? "" }));
+    const current = String(get(src, path) ?? "");
+    return { kind: "select", path: `system.${path}`, label, options, ...extra, hint: extra.hints?.[current] || extra.hint || "", hinted: !!extra.hints };
+  },
   /** Multi-pick from a registry, toggled one chip at a time (Set/Array fields). */
-  tags: (src, path, label, choices) => {
+  tags: (src, path, label, choices, more = {}) => {
     const have = new Set(list(get(src, path)));
     const extra = [...have].filter(k => !(k in choices));
-    return { kind: "tags", path: `system.${path}`, label,
+    return { kind: "tags", path: `system.${path}`, label, hint: more.hint ?? "",
       options: [...Object.entries(choices).map(([k, v]) => ({ value: k, label: labelOf(v) || k, selected: have.has(k) })),
         ...extra.map(k => ({ value: k, label: k, selected: true }))] };
   },
@@ -56,7 +64,7 @@ const F = {
   }
 };
 
-const section = (label, fields) => ({ label, fields: fields.filter(Boolean) });
+const section = (label, fields, extra = {}) => ({ label, fields: fields.filter(Boolean), ...extra });
 
 /** Activation, range/area, duration, uses: shared by jutsu, features, stances, weapons, consumables. */
 function activatable(src, { duration = true, uses = true } = {}) {
@@ -257,34 +265,52 @@ const DETAILS = {
       F.num(src, "resave.dc", "Fixed DC", { small: true })
     ])
   ],
-  // AMP1a: Amp cards (rules/amp-cards.mjs). Rule elements go in the Rules editor like other items.
+  // AMP1a / UX1: Amp cards (rules/amp-cards.mjs), in plain sections; each field says what it is.
+  // "What it does" (the buff in words) is added by itemVM, which can read the card's effects.
   amp: src => [
-    section("Amp card", [
-      F.text(src, "identifier", "Identifier"),
-      F.select(src, "ampType", "Amp type", { "": "No type", battle: "Battle", reflex: "Reflex", fortitude: "Fortitude", will: "Will", clan: "Clan" }),
-      F.text(src, "namedType", "Type the box names", { placeholder: "when a clan Amp names another type" }),
-      F.select(src, "owner.kind", "Belongs to", { any: "Anyone", class: "Class", subclass: "Subclass", clan: "Clan (always a Clan Amp)", feat: "Feat" }),
-      F.text(src, "owner.id", "Class, clan or feat", { placeholder: "identifier" }),
-      F.text(src, "owner.subclass", "Subclass", { placeholder: "identifier (optional)" }),
-      F.text(src, "summary", "Summary", { wide: true })
+    section("What it is", [
+      F.select(src, "ampType", "Amp type", { "": "No type", battle: "Battle", reflex: "Reflex", fortitude: "Fortitude", will: "Will", clan: "Clan" }, { hints: {
+        "": "Not sorted yet. It counts toward Rule of 3's but never clashes under Singleton.",
+        battle: "Attacks, damage, save DCs and actions.", reflex: "Dexterity, Intelligence, AC, speed and actions.",
+        fortitude: "Strength, Constitution, AC or DR, resistances and immunities.", will: "Wisdom, Charisma, chakra costs, healing and mental protection.",
+        clan: "From a clan feature or clan jutsu." } }),
+      F.select(src, "owner.kind", "Belongs to", { any: "Anyone", class: "A class", subclass: "A subclass", clan: "A clan", feat: "A feat" }, { hints: {
+        any: "Anyone can start it from the card; it isn't listed on any sheet's Amps panel.",
+        class: "Listed on the Amps panel of characters with this class.", subclass: "Listed for characters with this subclass.",
+        clan: "Listed for this clan's characters. Clan Amps always count as Clan for the limits.", feat: "Listed for characters with this feat." } }),
+      F.text(src, "owner.id", "Which one", { placeholder: "identifier, e.g. inuzuka", hint: "The class, subclass, clan or feat's identifier." }),
+      F.text(src, "summary", "Summary", { wide: true, hint: "One line shown on the card and its tooltip." })
     ]),
     section("Starting it", [
-      F.select(src, "activation", "Activation", { "": "—", action: "Action", bonus: "Bonus Action", reaction: "Reaction", initiative: "On rolling initiative", trigger: "A trigger" }),
-      F.select(src, "startOnInitiative", "On initiative", { "": "No", ask: "Ask", auto: "Start automatically" }),
-      F.check(src, "giveable", "Can be given to others"),
-      F.text(src, "uses.max", "Uses", { small: true, placeholder: "none, 2, @prof" }),
-      F.select(src, "uses.per", "Per", { "": "—", sr: "Short Rest", lr: "Long Rest", fr: "Full Rest", day: "Day" }),
-      F.num(src, "cooldown", "Cooldown after it ends (seconds)", { small: true })
+      F.select(src, "activation", "Takes", { "": "—", action: "An Action", bonus: "A Bonus Action", reaction: "A Reaction", initiative: "Rolling initiative", trigger: "A trigger" },
+        { hint: "What starting it costs. Shown on the card; the table tracks the action." }),
+      F.select(src, "startOnInitiative", "On rolling initiative", { "": "Don't start", ask: "Ask to start it", auto: "Start it automatically" }, { hints: {
+        "": "It only starts when someone presses Activate or drags the card.", ask: "When its owner rolls initiative, they're asked whether to start it.",
+        auto: "It starts by itself when its owner rolls initiative." } }),
+      F.check(src, "giveable", "Can be given to others", { hint: "Unticked: giving it to another creature asks for confirmation first." }),
+      F.text(src, "uses.max", "Uses", { small: true, placeholder: "unlimited", hint: "How many times it can start between rests: a number, or @prof." }),
+      F.select(src, "uses.per", "Uses come back on", { "": "—", sr: "A Short Rest", lr: "A Long Rest", fr: "A Full Rest", day: "Each day" }),
+      F.num(src, "cooldown", "Wait after it ends (seconds)", { small: true, hint: "It can't start again until this time passes. 600 = 10 minutes." })
     ]),
-    section("Lasting and ending", [
-      F.num(src, "duration.seconds", "Duration (seconds)", { small: true }),
-      F.select(src, "duration.until", "Or until", { "": "Its duration", turnStart: "Start of your next turn", turnEnd: "End of your turn", nextTurnEnd: "End of your next turn", combatEnd: "The end of combat", rest: "A rest" }),
-      F.check(src, "duration.concentration", "Concentration"),
-      F.tags(src, "endsOn", "Ends on", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "0 chakra", stanceLeave: "Leaving its stance" }),
-      F.text(src, "exclusive", "Exclusive group", { placeholder: "surge" }),
-      F.text(src, "state", "State", { placeholder: "crash" }),
-      F.text(src, "tempHp", "Temporary HP", { placeholder: "formula" })
-    ])
+    section("How long it lasts", [
+      F.num(src, "duration.seconds", "Duration (seconds)", { small: true, hint: "60 = 1 minute, 600 = 10 minutes, 3600 = 1 hour." }),
+      F.select(src, "duration.until", "Or until", { "": "Its duration runs out", turnStart: "The start of your next turn", turnEnd: "The end of your turn",
+        nextTurnEnd: "The end of your next turn", combatEnd: "The end of combat", rest: "Your next rest" }, { hints: {
+        "": "Ends when the duration above runs out.", turnStart: "Ends when your next turn starts.", turnEnd: "Ends when this turn ends.",
+        nextTurnEnd: "Ends at the end of your next turn.", combatEnd: "Lasts the whole fight, then ends.", rest: "Lasts until you take any rest." } }),
+      F.check(src, "duration.concentration", "Needs concentration", { hint: "Shown on the card. Tracked automatically only when started from a concentration jutsu." })
+    ]),
+    section("What ends it early", [
+      F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance" },
+        { hint: "The GM's setting decides whether these end it automatically or as a reminder." })
+    ]),
+    section("Advanced", [
+      F.text(src, "identifier", "Identifier", { hint: "The card's key. Activities name it to start this Amp." }),
+      F.text(src, "namedType", "Type the book's box names", { hint: "Kept as a note when the limits use another type (a clan Amp is Clan)." }),
+      F.text(src, "exclusive", "Exclusive group", { placeholder: "surge", hint: "Starting one Amp of the group ends the others (Crash and Flow)." }),
+      F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
+      F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." })
+    ], { collapsed: true })
   ],
   background: src => [
     section("Background", [
@@ -472,6 +498,8 @@ export function advancementVM(item, nameOf = u => u.split(".").at(-1)) {
 export function itemVM(item, { source = item._source?.system ?? item.system, nameOf } = {}) {
   const sum = summary(item);
   const details = (DETAILS[item.type]?.(source) ?? []).filter(Boolean);
+  // UX1: an Amp card's buff in plain words, from its Changes, its effects and its roll rules.
+  if ( item.type === "amp" ) details.splice(details.length - 1, 0, ampBuffSection(item, source));
   // Extra rich-text blocks show when they have text, or when the item's keywords call for them
   // (Chain 1-3 on Chain jutsu, Finisher on Finisher jutsu, stance upgrades on stances).
   const kw = new Set(list(item.system.keywords));
@@ -492,6 +520,17 @@ export function itemVM(item, { source = item._source?.system ?? item.system, nam
     effects,
     owned: !!item.actor
   };
+}
+
+/** UX1: "What it does" on an Amp card: one plain line per change and roll rule. */
+function ampBuffSection(item, source) {
+  const N5E = n5eConfig();
+  const catalog = effectFieldCatalog(N5E);
+  const effects = list(item.effects).filter(e => !e.disabled);
+  const changes = [...list(source.changes), ...effects.flatMap(e => list(e.changes))];
+  const rules = [...list(item.flags?.n5e?.rules), ...effects.flatMap(e => list(e.flags?.n5e?.rules))];
+  const lines = [...changes.filter(c => c?.key).map(c => describeChange(c, catalog)), ...rules.map(r => describeRule(r, N5E))];
+  return section("What it does", [{ kind: "lines", lines, empty: "Nothing yet. Press Edit to add what this Amp changes.", action: "editAmpBuff", actionLabel: lines.length ? "Edit" : "Add what it does" }]);
 }
 
 export { DETAILS, HTML_FIELDS };

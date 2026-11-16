@@ -2,8 +2,13 @@ import { resolveEffectFormula, validateServiceConfig, effectFormulaData } from "
 /** Effect authoring contracts. No document writes, evaluated scripts or independent effect engine. */
 import { changeKeyCatalog, parseN5eChanges } from "./change-keys.mjs";
 import { getPath } from "./formula.mjs";
+import { fieldInfo, FIELD_CATEGORIES } from "../config/effect-fields.mjs";
 import { ELEMENT_KEYS, ELEMENT_DIRECTIONS, ELEMENT_SCOPES, ELEMENT_TARGETS, ELEMENT_EVENTS } from "./elements.mjs";
 
+/**
+ * Every field an effect can change, with its plain-language entry (UX1a; config/effect-fields.mjs):
+ * name, category, what, enter, example, stacks, words. Sorted by category, then name.
+ */
 export function effectFieldCatalog(config) {
   return changeKeyCatalog(config).map(field => {
     let type = "number", example = "2", choices = null;
@@ -11,39 +16,45 @@ export function effectFieldCatalog(config) {
     else if ( /^n5e\.(discipline|keyword)Ability\./.test(field.key) ) { type = "ability"; choices = ["str", "dex", "con", "int", "wis", "cha"]; example = "wis"; }
     else if ( ["n5e.unarmed.dice", "n5e.unarmed.die"].includes(field.key) ) { type = "dice"; example = field.key.endsWith("die") ? "1d12" : "1d8"; }
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
+    else if ( ["n5e.resist", "n5e.immune"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
+    else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
     const custom = field.key.startsWith("n5e.");
-    return { ...field, type, example, choices, modes: custom ? [0, 2] : [1, 2, 3, 4, 5],
+    const info = fieldInfo(field.key, config) ?? { name: field.label, category: "Other", what: field.label, enter: "", example, stacks: "", words: "" };
+    return { ...field, type, example: info.example ?? example, choices, modes: custom ? [0, 2] : [1, 2, 3, 4, 5], custom,
+      name: info.name, category: info.category, what: info.what, enter: info.enter, stacks: info.stacks, words: info.words ?? "",
       behavior: custom ? "N5e combines this field using its own rules. Add/Custom are accepted; core priority does not change that calculation." : "Foundry applies this field using the selected mode and priority." };
-  });
+  }).sort((a, b) => FIELD_CATEGORIES.indexOf(a.category) - FIELD_CATEGORIES.indexOf(b.category) || a.name.localeCompare(b.name));
 }
 
 const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 export function validateEffectChanges(changes, original, catalog) {
-  const errors = [], warnings = [], fields = new Map(catalog.map(f => [f.key, f]));
-  if ( !Array.isArray(changes) || changes.length > 100 ) return { errors: ["Use at most 100 effect changes."], warnings };
+  const errors = [], warnings = [], rows = {}, fields = new Map(catalog.map(f => [f.key, f]));
+  if ( !Array.isArray(changes) || changes.length > 100 ) return { errors: ["Use at most 100 effect changes."], warnings, rows: {} };
   changes.forEach((change, index) => {
     if ( !change || typeof change !== "object" || Array.isArray(change) ) { errors.push(`Change ${index + 1}: invalid change row.`); return; }
     const prefix = `Change ${index + 1}: `, field = fields.get(change.key), value = String(change.value ?? "").trim();
     let problem;
-    if ( typeof change.key !== "string" || !change.key.trim() ) problem = "choose a field.";
+    if ( typeof change.key !== "string" || !change.key.trim() ) problem = "choose a field from the list.";
     else if ( /(?:^|\.)(?:__proto__|constructor|prototype)(?:\.|$)/.test(change.key) ) problem = "unsafe property path.";
-    else if ( !field ) problem = `unsupported field ${change.key}. Existing unchanged legacy rows are preserved.`;
-    else if ( !field.modes.includes(Number(change.mode)) ) problem = "this mode is not supported for the field.";
-    else if ( change.priority != null && change.priority !== "" && !Number.isFinite(Number(change.priority)) ) problem = "priority must be a finite number.";
+    else if ( !field ) problem = `"${change.key}" isn't a field N5e knows. It is kept only if you leave it unchanged.`;
+    else if ( !field.modes.includes(Number(change.mode)) ) problem = field.custom ? "this field always adds; set Mode to Add under Advanced." : "pick a mode under Advanced.";
+    else if ( change.priority != null && change.priority !== "" && !Number.isFinite(Number(change.priority)) ) problem = "priority must be a number.";
     else if ( field.type === "number" && (!value || !Number.isFinite(Number(value))) ) { try { resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
-    else if ( field.type === "ability" && !field.choices.includes(value) ) problem = "choose str, dex, con, int, wis or cha.";
-    else if ( field.type === "dice" && !/^([1-9]\d*)?d[1-9]\d*$/.test(value) ) problem = "use a simple dice term, such as 1d8.";
+    else if ( field.type === "ability" && !field.choices.includes(value) ) problem = "pick an ability.";
+    else if ( field.type === "dice" && !/^([1-9]\d*)?d[1-9]\d*$/.test(value) ) problem = "enter dice, like 1d8.";
     else if ( field.type === "adjustment" && (!/^([*/])?[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)
       || !Number.isFinite(Number(value.replace(/^[*/]/, ""))) || (/^[*/]/.test(value) && Number(value.slice(1)) <= 0)) ) { try { if ( /^[*/]/.test(value) ) throw new Error("Use a positive multiplier/divisor."); resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
-    else if ( field.type === "text" && !value ) problem = "enter the source label.";
+    else if ( field.type === "damageType" && !field.choices.includes(value) ) problem = "pick a damage type.";
+    else if ( field.type === "text" && !value ) problem = field.key.startsWith("n5e.mastery.") ? "enter where it comes from, like the Amp's name." : "enter a value.";
     if ( value.length > 1000 ) problem = "value is too long.";
     if ( problem ) {
       const legacy = original.some(row => row.key === change.key && String(row.value ?? "") === String(change.value ?? "")
         && Number(row.mode) === Number(change.mode) && (row.priority ?? null) === (change.priority ?? null));
       (legacy && !/unsafe/.test(problem) ? warnings : errors).push(prefix + problem);
+      rows[index] = { problem: problem[0].toUpperCase() + problem.slice(1), blocking: !(legacy && !/unsafe/.test(problem)) };
     }
   });
-  return { errors, warnings };
+  return { errors, warnings, rows };
 }
 
 function validatePredicate(value, depth = 0) {

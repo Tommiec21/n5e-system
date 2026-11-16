@@ -61,10 +61,15 @@ export function ampDefinition(card) {
     exclusive: s.exclusive ?? "", state: s.state ?? "", tempHp: s.tempHp ?? "",
     endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS)
   };
-  if ( list(s.changes).length ) def.changes = list(s.changes).filter(c => c.key).map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) }));
+  // UX1: the buff can be written on the card (its Changes, its rules) or in the card's own Active
+  // Effects (the effect editor); switched-off effects are left out. All of it applies together.
+  const effects = list(card.effects).filter(e => e && !e.disabled);
+  const changes = [...list(s.changes), ...effects.flatMap(e => list(e.changes))].filter(c => c?.key)
+    .map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) }));
+  if ( changes.length ) def.changes = changes;
   if ( s.aura && Object.keys(s.aura).length ) def.aura = structuredClone(s.aura);
-  const rules = card.flags?.n5e?.rules;
-  if ( Array.isArray(rules) && rules.length ) def.rules = structuredClone(rules);
+  const rules = [...list(card.flags?.n5e?.rules), ...effects.flatMap(e => list(e.flags?.n5e?.rules))];
+  if ( rules.length ) def.rules = structuredClone(rules);
   return def;
 }
 

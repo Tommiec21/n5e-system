@@ -1,5 +1,7 @@
 /** Expanded authoring on Foundry's supported effect sheet. All editing is draft-only until Save. */
 import { effectFieldCatalog, validateEffectChanges, editorFlags, EFFECT_PRESETS, effectPreview, portableEffect, importEffect } from "../../rules/effect-authoring.mjs";
+import { pickerGroups, changeCards, ruleRows, normalizeModes } from "../../view-models/effect-editor.mjs";
+import { rowToRule, NEW_RULE } from "../../rules/plain-language.mjs";
 
 const Base = foundry.applications.sheets.ActiveEffectConfig;
 export default class EffectConfig extends Base {
@@ -10,7 +12,9 @@ export default class EffectConfig extends Base {
       addChange: function() { this.editDraft("add"); }, deleteChange: function(event, target) { this.editDraft("delete", Number(target.closest("[data-index]").dataset.index)); },
       addField: function() { this.editDraft("field"); }, preset: function() { this.editDraft("preset"); },
       exportEffect: function() { this.exportDraft(); }, importEffect: function() { this.importDraft(); },
-      duplicateEffect: function() { this.duplicateDraft(); }
+      duplicateEffect: function() { this.duplicateDraft(); },
+      addRule: function() { this.editRules("add"); },
+      deleteRule: function(event, target) { this.editRules("delete", Number(target.closest("[data-rule-index]").dataset.ruleIndex)); }
     }
   };
   static PARTS = { ...Base.PARTS, changes: { template: "systems/n5e/templates/effect/changes.hbs", scrollable: [""] } };
@@ -29,6 +33,11 @@ export default class EffectConfig extends Base {
     context = await super._preparePartContext(partId, context);
     if ( partId !== "changes" ) return context;
     const flags = this.#draft.flags?.n5e ?? {};
+    this.#draft.changes = normalizeModes(this.#draft.changes, this.catalog);
+    const report = validateEffectChanges(this.#draft.changes ?? [], this.document._source.changes ?? [], this.catalog);
+    // UX1: plain names and definitions (view-models/effect-editor.mjs).
+    Object.assign(context, { pickerGroups: pickerGroups(this.catalog), changeCards: changeCards(this.#draft.changes ?? [], this.catalog, report, CONFIG.N5E),
+      ruleRows: ruleRows(flags.rules ?? [], CONFIG.N5E) });
     return Object.assign(context, { catalog: this.catalog, presets: EFFECT_PRESETS, canApproveMacros: !!globalThis.game?.user?.isGM, expirationChoices: { "": "None", turnStart: "Start of source turn", turnEnd: "End of source turn", nextTurnEnd: "End of next source turn" },
       guidance: { min: flags.levels?.min ?? 0, max: flags.levels?.max ?? 0, stance: flags.requiresStance ?? "",
         exclusive: flags.exclusive ?? "", state: flags.state ?? "", expires: flags.expires?.at ?? "", sourceUuid: flags.expires?.sourceUuid ?? "",
@@ -39,10 +48,19 @@ export default class EffectConfig extends Base {
       suppression: this.document.isSuppressed ? "Currently suppressed" : this.document.disabled ? "Currently disabled" : "Currently enabled; transfer and parent availability still apply" });
   }
 
-  readDraft(formData) {
+  /**
+   * The draft from the form. UX1: the roll rules come from the builder rows (n5eRules); lenient
+   * (re-rendering mid-edit) keeps incomplete rules without checking them.
+   */
+  readDraft(formData, { lenient = false } = {}) {
     const data = super._processFormData(null, this.form, formData);
     const guidance = data.n5eEditor;
     delete data.n5eEditor;
+    const rows = data.n5eRules;
+    delete data.n5eRules;
+    const rules = Object.values(rows ?? {}).map(row => rowToRule({ ...row,
+      details: row.details && typeof row.details === "object" ? Object.entries(row.details).filter(([, on]) => on).map(([k]) => k) : [] }));
+    if ( guidance ) guidance.rules = JSON.stringify(lenient ? (this.#draft.flags?.n5e?.rules ?? []) : rules);
     if ( data.changes ) data.changes = Object.values(data.changes).map((row, i) => ({ ...this.#draft.changes?.[i], ...row }));
     else data.changes = [];
     const next = foundry.utils.mergeObject(structuredClone(this.#draft), data, { inplace: false });
@@ -51,10 +69,23 @@ export default class EffectConfig extends Base {
       if ( patch.services && JSON.stringify(patch.services.macros) !== JSON.stringify(this.#draft.flags?.n5e?.services?.macros ?? []) && !globalThis.game?.user?.isGM ) throw new Error("Only a GM may author Macro bindings.");
       if ( patch.expires && !patch.expires.placed ) patch.expires.placed = game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null;
       next.flags ??= {}; next.flags.n5e = { ...next.flags.n5e, ...patch };
+      if ( lenient ) next.flags.n5e.rules = rules;
     }
     return next;
   }
-  capture() { this.#draft = this.readDraft(new foundry.applications.ux.FormDataExtended(this.form)); return this.#draft; }
+  capture({ lenient = false } = {}) { this.#draft = this.readDraft(new foundry.applications.ux.FormDataExtended(this.form), { lenient }); return this.#draft; }
+  /** UX1: add or remove a roll rule, or re-render after a dropdown that changes the row's inputs. */
+  editRules(action, index) {
+    try {
+      if ( !this.isEditable ) return;
+      this.capture({ lenient: true });
+      const rules = [...(this.#draft.flags?.n5e?.rules ?? [])];
+      if ( action === "add" ) rules.push(structuredClone(NEW_RULE));
+      else if ( action === "delete" ) rules.splice(index, 1);
+      this.#draft.flags ??= {}; this.#draft.flags.n5e = { ...this.#draft.flags.n5e, rules };
+      this.render();
+    } catch (error) { this.notice(error.message); }
+  }
   check(draft) {
     const report = validateEffectChanges(draft.changes ?? [], this.document._source.changes ?? [], this.catalog);
     if ( report.errors.length ) throw new Error(report.errors.join(" "));
@@ -70,8 +101,9 @@ export default class EffectConfig extends Base {
   editDraft(action, index) {
     try {
       if ( !this.isEditable ) return;
-      this.capture();
+      this.capture({ lenient: true });
       if ( action === "delete" ) this.#draft.changes.splice(index, 1);
+      else if ( action === "rerender" ) { /* the captured draft is enough */ }
       else if ( action === "preset" ) {
         const id = this.element.querySelector("[data-preset]").value;
         this.#draft.changes.push(...structuredClone(EFFECT_PRESETS.find(p => p.id === id)?.changes ?? []));
@@ -79,7 +111,7 @@ export default class EffectConfig extends Base {
         const key = action === "field" ? this.element.querySelector("[data-field-picker]").value : "";
         const field = this.catalog.find(c => c.key === key);
         if ( action === "field" && !field ) throw new Error("Choose a supported field from the browser.");
-        this.#draft.changes.push({ key, mode: 2, value: field?.type === "ability" ? "wis" : field?.type === "dice" ? "1d8" : field?.type === "text" ? this.#draft.name : "1", priority: 20 });
+        this.#draft.changes.push({ key, mode: 2, value: field?.key?.startsWith("n5e.mastery.") ? this.#draft.name : field?.example ?? "1", priority: field?.custom ? null : 20 });
       }
       this.render();
     } catch (error) { this.notice(error.message); }
@@ -115,27 +147,44 @@ export default class EffectConfig extends Base {
   }
   async _onRender(context, options) {
     await super._onRender(context, options);
-    const picker = this.element.querySelector("[data-field-picker]");
-    this.element.querySelector("[data-field-search]")?.addEventListener("input", event => {
-      const query = event.target.value.toLowerCase();
-      for ( const option of picker.options ) option.hidden = !option.textContent.toLowerCase().includes(query);
+    const root = this.element;
+    const picker = root.querySelector("[data-field-picker]");
+    // UX1: "About this field" fills from the selected option's definition.
+    const about = () => {
+      const o = picker?.selectedOptions?.[0];
+      const box = root.querySelector("[data-field-about]");
+      if ( !box ) return;
+      box.hidden = !o;
+      if ( !o ) return;
+      box.querySelector("[data-about-name]").textContent = o.textContent;
+      for ( const k of ["what", "enter", "example", "stacks"] ) box.querySelector(`[data-about-${k}]`).textContent = o.dataset[k] ?? "";
+    };
+    picker?.addEventListener("change", about);
+    root.querySelector("[data-field-search]")?.addEventListener("input", event => {
+      const words = event.target.value.toLowerCase().split(/\s+/).filter(Boolean);
+      for ( const option of picker.options ) option.hidden = !words.every(w => (option.dataset.search ?? "").includes(w));
+      for ( const group of picker.querySelectorAll("optgroup") ) group.hidden = ![...group.children].some(o => !o.hidden);
       const first = [...picker.options].find(o => !o.hidden); if ( first ) picker.value = first.value;
+      about();
     });
+    about();
+    // Dropdowns that change which inputs a rule needs, and a typed key, re-render the tab.
+    for ( const el of root.querySelectorAll("[data-rerender], [data-change-key]") ) {
+      el.addEventListener("change", () => { try { this.capture({ lenient: true }); this.render(); } catch (error) { this.notice(error.message); } });
+    }
     const update = () => {
       try {
-        const draft = this.readDraft(new foundry.applications.ux.FormDataExtended(this.form));
+        const draft = this.readDraft(new foundry.applications.ux.FormDataExtended(this.form), { lenient: true });
         const report = validateEffectChanges(draft.changes, this.document._source.changes ?? [], this.catalog);
-        this.notice([...report.errors, ...report.warnings].join(" ") || "Draft valid. Save effect to apply changes.");
-        const raw = this.element.querySelector("[data-raw]"); if ( raw ) raw.value = JSON.stringify(draft, null, 2);
-        const preview = this.element.querySelector("[data-preview]");
+        const blocking = Object.values(report.rows ?? {}).filter(r => r.blocking).length;
+        this.notice(blocking ? `${blocking} change${blocking > 1 ? "s need" : " needs"} fixing (see the red notes).` : report.warnings.length ? "Some unknown fields are kept as they were." : "Looks good. Press Save effect to apply it.");
+        for ( const p of root.querySelectorAll("[data-row-problem]") ) p.textContent = report.rows?.[p.dataset.rowProblem]?.problem ?? "";
+        const raw = root.querySelector("[data-raw]"); if ( raw ) raw.value = JSON.stringify(draft, null, 2);
+        const preview = root.querySelector("[data-preview]");
         if ( preview ) preview.textContent = JSON.stringify(effectPreview(this.document._source, draft, this.document.parent?.actor ?? this.document.parent), null, 2);
-        for ( const input of this.element.querySelectorAll('[name^="changes."][name$=".key"]') ) {
-          const field = this.catalog.find(f => f.key === input.value);
-          input.title = field ? field.label + " · " + field.behavior : "Unsupported legacy field: preserved if unchanged";
-        }
       } catch (error) { this.notice(error.message); }
     };
-    this.element.querySelector('[data-tab="changes"]')?.addEventListener("input", update);
+    root.querySelector('[data-tab="changes"]')?.addEventListener("input", update);
     update();
   }
 }

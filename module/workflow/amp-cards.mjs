@@ -243,6 +243,10 @@ export function registerAmpCards() {
   for ( const hook of ["createItem", "updateItem"] ) {
     Hooks.on(hook, item => { if ( item.type === "amp" && !item.parent ) registerAmp(item); });
   }
+  // UX1: the card's own effects are part of its buff; editing them re-registers the card.
+  for ( const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"] ) {
+    Hooks.on(hook, effect => { const card = effect.parent; if ( card?.documentName === "Item" && card.type === "amp" && !card.parent ) registerAmp(card); });
+  }
 
   Hooks.on("createActiveEffect", effect => {
     void onAmpCreated(effect);

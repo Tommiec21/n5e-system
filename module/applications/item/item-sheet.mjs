@@ -32,7 +32,8 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       createEffect: ItemSheet.#onCreateEffect,
       editEffect: ItemSheet.#onEditEffect,
       deleteEffect: ItemSheet.#onDeleteEffect,
-      toggleEffect: ItemSheet.#onToggleEffect
+      toggleEffect: ItemSheet.#onToggleEffect,
+      editAmpBuff: ItemSheet.#onEditAmpBuff
     }
   };
 
@@ -155,6 +156,28 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   }
 
   /** Effects tab: new transfer effect (applies to the owner; a stance's only while it is active). */
+  /** UX1: an Amp card's "What it does" → its buff effect (made on first use; it never transfers). */
+  static async #onEditAmpBuff() {
+    const doc = this.document;
+    let effect = doc.effects.contents[0];
+    if ( !effect ) {
+      const cls = CONFIG.ActiveEffect.documentClass;
+      effect = await cls.create({ name: `${doc.name}`, img: doc.img, type: "generic", transfer: false, origin: doc.uuid }, { parent: doc });
+    }
+    return effect?.sheet.render(true);
+  }
+
+  /** @override  UX1: a select with per-option definitions swaps its definition when the choice changes. */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    for ( const select of this.element.querySelectorAll("select[data-hinted]") ) {
+      select.addEventListener("change", () => {
+        const hint = select.closest("label")?.querySelector("[data-hint-for]");
+        if ( hint ) hint.textContent = select.selectedOptions[0]?.dataset.hint ?? "";
+      });
+    }
+  }
+
   static async #onCreateEffect() {
     const cls = CONFIG.ActiveEffect.documentClass;
     return cls.create({ name: `${this.document.name} effect`, img: this.document.img, type: "generic",

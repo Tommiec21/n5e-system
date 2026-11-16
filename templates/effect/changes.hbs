@@ -1,71 +1,177 @@
+{{!-- Effect editor, Changes tab (UX1; docs/UX1_SPEC.md). View model: view-models/effect-editor.mjs. --}}
 <section class="tab changes n5e-effect-authoring{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
-  <p class="hint">Changes stay in this draft until Save effect. Closing discards them. {{suppression}}.</p>
+  <p class="hint">Add what this effect changes, then press Save effect. Closing without saving discards your edits.</p>
+
   {{#if editable}}
-  <fieldset class="n5e-field-browser"><legend>Add a supported field</legend>
-    <label>Search fields<input type="search" data-field-search placeholder="Damage reduction, speed, mastery…"></label>
-    <label>Field<select data-field-picker>{{#each catalog}}<option value="{{key}}">{{group}} · {{label}} [{{type}}] — {{key}}</option>{{/each}}</select></label>
-    <button type="button" data-action="addField"><i class="fa-solid fa-plus"></i> Add selected field</button>
-    <label>Preset<select data-preset>{{#each presets}}<option value="{{id}}">{{label}}</option>{{/each}}</select></label>
-    <button type="button" data-action="preset">Add preset</button>
+  <fieldset class="n5e-field-browser"><legend>Add a field</legend>
+    <label class="wide">Search<input type="search" data-field-search placeholder="Damage reduction, speed, unarmed, mastery…"></label>
+    <label class="wide">Field
+      <select data-field-picker>
+        {{#each pickerGroups}}<optgroup label="{{category}}">{{#each fields}}<option value="{{key}}" data-search="{{search}}" data-what="{{what}}" data-enter="{{enter}}" data-example="{{example}}" data-stacks="{{stacks}}">{{name}}</option>{{/each}}</optgroup>{{/each}}
+      </select>
+    </label>
+    <div class="n5e-about" data-field-about aria-live="polite">
+      <b data-about-name></b>
+      <ul>
+        <li><span class="lbl">What it does:</span> <span data-about-what></span></li>
+        <li><span class="lbl">What to enter:</span> <span data-about-enter></span> <span class="sub">Example: <code data-about-example></code></span></li>
+        <li><span class="lbl">Stacking:</span> <span data-about-stacks></span></li>
+      </ul>
+    </div>
+    <div class="n5e-browser-actions">
+      <button type="button" data-action="addField"><i class="fa-solid fa-plus"></i> Add this field</button>
+      <select data-preset aria-label="Quick add">{{#each presets}}<option value="{{id}}">{{label}}</option>{{/each}}</select>
+      <button type="button" data-action="preset">Quick add</button>
+    </div>
   </fieldset>
   {{/if}}
-  <div class="n5e-effect-row n5e-effect-head"><span>Field</span><span>Mode</span><span>Value</span><span>Priority</span><span></span></div>
-  <ol data-changes>
-    {{#each source.changes as |change i|}}
-    <li class="n5e-effect-row" data-index="{{i}}">
-      <input name="changes.{{i}}.key" value="{{change.key}}" aria-label="Change {{i}} field" placeholder="n5e.dr">
-      <select name="changes.{{i}}.mode" data-dtype="Number" aria-label="Change {{i}} mode">{{selectOptions @root.modes selected=change.mode}}</select>
-      <input name="changes.{{i}}.value" value="{{change.value}}" aria-label="Change {{i}} value" placeholder="2">
-      <input type="number" name="changes.{{i}}.priority" value="{{change.priority}}" data-dtype="Number" aria-label="Change {{i}} priority" placeholder="Auto">
-      {{#if @root.editable}}<button type="button" data-action="deleteChange" aria-label="Remove change {{i}}"><i class="fa-solid fa-trash"></i></button>{{/if}}
+
+  <h3 class="n5e-effect-h">What it changes</h3>
+  <ol data-changes class="n5e-change-cards">
+    {{#each changeCards as |c|}}
+    <li class="n5e-change-card {{#if c.blocking}}bad{{/if}}" data-index="{{c.i}}">
+      <div class="n5e-change-top">
+        <b class="n5e-change-name">{{c.name}}</b>{{#if c.category}}<span class="sub">{{c.category}}</span>{{/if}}
+        {{#if @root.editable}}<button type="button" class="icon" data-action="deleteChange" aria-label="Remove {{c.name}}" data-tooltip="Remove"><i class="fa-solid fa-trash"></i></button>{{/if}}
+      </div>
+      <label class="n5e-change-value"><span class="lbl">Value</span>
+        {{#if (n5eEq c.input "select")}}
+          <select name="changes.{{c.i}}.value" aria-label="{{c.name}} value">{{#each c.options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+        {{else}}
+          <input name="changes.{{c.i}}.value" value="{{c.value}}" aria-label="{{c.name}} value" placeholder="{{c.example}}">
+        {{/if}}
+        {{#if c.enter}}<span class="sub">{{c.enter}}</span>{{/if}}
+      </label>
+      <p class="n5e-row-problem" data-row-problem="{{c.i}}" role="status">{{c.problem}}</p>
+      <details class="n5e-mini"><summary>What this does</summary>
+        <p>{{c.what}}</p>{{#if c.stacks}}<p class="sub">{{c.stacks}}</p>{{/if}}
+      </details>
+      <details class="n5e-mini"><summary>Advanced</summary>
+        <label>Stored key<input name="changes.{{c.i}}.key" value="{{c.key}}" data-change-key aria-label="{{c.name}} stored key" placeholder="n5e.dr"></label>
+        {{#if c.custom}}
+          <input type="hidden" name="changes.{{c.i}}.mode" value="{{c.fixedMode}}" data-dtype="Number">
+          <input type="hidden" name="changes.{{c.i}}.priority" value="{{c.priority}}" data-dtype="Number">
+          <p class="sub">N5e fields always add, so they have no mode or priority.</p>
+        {{else}}
+          <label>Mode<select name="changes.{{c.i}}.mode" data-dtype="Number">{{#each c.modes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          <label>Priority<input type="number" name="changes.{{c.i}}.priority" value="{{c.priority}}" data-dtype="Number" placeholder="Auto"></label>
+          <p class="sub">Mode decides how the value combines with the creature's own; higher priority applies later.</p>
+        {{/if}}
+      </details>
     </li>
-    {{else}}<li class="hint">No field changes. Add a field or preset above.</li>{{/each}}
+    {{else}}<li class="hint">Nothing yet. Pick a field above and press Add this field.</li>{{/each}}
   </ol>
-  {{#if editable}}<button type="button" data-action="addChange">Add blank change</button>{{/if}}
   <div data-editor-status class="n5e-effect-status" role="status" aria-live="polite"></div>
-  <p class="hint">N5e keys use their own additive, cost, dice or mastery rules. Core mode and priority do not alter that behavior. Core system fields use Foundry modes. Hover a field for its explanation.</p>
-  <details>
-    <summary>Conditions, suppression and source-turn expiration</summary>
+
+  <details class="n5e-section" {{#if ruleRows.length}}open{{/if}}>
+    <summary>Roll rules</summary>
+    <p class="hint">Advantage, bonuses or extra damage that apply only to some rolls or in some situations. Each rule reads as a sentence below its settings.</p>
+    <ol class="n5e-rule-rows">
+      {{#each ruleRows as |r|}}
+      <li class="n5e-rule-row" data-rule-index="{{r.i}}">
+        <p class="n5e-rule-sentence"><i class="fa-solid fa-dice-d20"></i> {{r.sentence}}</p>
+        <input type="hidden" name="n5eRules.{{r.i}}.orig" value="{{r.raw}}">
+        {{#if r.custom}}
+          <p class="sub">{{r.what}}</p>
+          <input type="hidden" name="n5eRules.{{r.i}}.kind" value="custom">
+        {{else}}
+        <div class="n5e-rule-grid">
+          <label>Kind<select name="n5eRules.{{r.i}}.kind" data-rerender>{{#each r.kinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          <label>Applies to<select name="n5eRules.{{r.i}}.base" data-rerender>{{#each r.bases}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{#if r.needs.value}}<label>Value<input name="n5eRules.{{r.i}}.value" value="{{r.value}}" placeholder="2"></label>{{/if}}
+          {{#if r.needs.formula}}<label>Dice<input name="n5eRules.{{r.i}}.formula" value="{{r.formula}}" placeholder="1d6"></label>{{/if}}
+          {{#if r.needs.damageType}}<label>Damage type<select name="n5eRules.{{r.i}}.damageType">{{#each r.damageTypes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+          {{#if r.needs.mode}}<label>Keep<select name="n5eRules.{{r.i}}.mode">{{#each r.rerollModes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+          {{#if r.needs.pool}}<label>Resource<input name="n5eRules.{{r.i}}.pool" value="{{r.pool}}" placeholder="fury"></label>{{/if}}
+          {{#if r.needs.amount}}<label>Amount<input name="n5eRules.{{r.i}}.amount" value="{{r.amount}}" placeholder="1"></label>{{/if}}
+          {{#if r.needs.condition}}<label>Condition<select name="n5eRules.{{r.i}}.condition">{{#each r.conditionOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+          {{#if r.needs.ranks}}<label>Ranks<input name="n5eRules.{{r.i}}.ranks" value="{{r.ranks}}" placeholder="1"></label>{{/if}}
+          {{#if r.needs.who}}<label>On<select name="n5eRules.{{r.i}}.who">{{#each r.whoOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+          {{#if r.needs.text}}<label class="wide">Note<input name="n5eRules.{{r.i}}.text" value="{{r.text}}"></label>{{/if}}
+          <label>Only when<select name="n5eRules.{{r.i}}.when" data-rerender>{{#each r.whens}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{#if r.whenIsCondition}}<label>Which condition<select name="n5eRules.{{r.i}}.whenDetail">{{#each r.whenConditionOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+          {{else if r.whenParam}}<label>Which<input name="n5eRules.{{r.i}}.whenDetail" value="{{r.whenDetail}}" placeholder="{{r.whenParam}}"></label>{{/if}}
+          {{#if r.when}}<label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.whenNot" {{#if r.whenNot}}checked{{/if}}> Unless instead</label>{{/if}}
+        </div>
+        {{#if r.detailOptions}}
+          <fieldset class="n5e-rule-details"><legend>Only these (none ticked: all)</legend>
+            {{#each r.detailOptions}}<label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.details.{{value}}" {{#if checked}}checked{{/if}}> {{label}}</label>{{/each}}
+          </fieldset>
+        {{/if}}
+        <p class="sub">{{r.what}}</p>
+        <details class="n5e-mini"><summary>Limits and timing</summary>
+          <div class="n5e-rule-grid">
+            <label>Whose rolls<select name="n5eRules.{{r.i}}.direction">{{#each r.directions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>Trigger<select name="n5eRules.{{r.i}}.on">{{#each r.triggers}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+            <label>Uses<input type="number" min="0" max="99" name="n5eRules.{{r.i}}.uses" value="{{r.uses}}" placeholder="unlimited"></label>
+            <label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.oncePerTurn" {{#if r.oncePerTurn}}checked{{/if}}> Once per turn</label>
+            <label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.endsOnUse" {{#if r.endsOnUse}}checked{{/if}}> Ends when used</label>
+            <label>Label in chat<input name="n5eRules.{{r.i}}.label" value="{{r.label}}" placeholder="the effect's name"></label>
+          </div>
+        </details>
+        {{/if}}
+        <details class="n5e-mini"><summary>Advanced: edit as JSON</summary>
+          <textarea name="n5eRules.{{r.i}}.raw" rows="4" spellcheck="false" aria-label="Rule {{r.i}} JSON">{{r.raw}}</textarea>
+          <p class="sub">Editing this replaces the settings above when you save.</p>
+        </details>
+        {{#if @root.editable}}<button type="button" data-action="deleteRule"><i class="fa-solid fa-trash"></i> Remove rule</button>{{/if}}
+      </li>
+      {{/each}}
+    </ol>
+    {{#if editable}}<button type="button" data-action="addRule"><i class="fa-solid fa-plus"></i> Add rule</button>{{/if}}
+    <label class="check"><input type="checkbox" name="n5eEditor.applyTo" {{#if guidance.applyTo}}checked{{/if}}> Only on the action it's chosen for</label>
+    <p class="sub">Tick this for an action effect: its rules go onto that action's card instead of applying to the creature.</p>
+  </details>
+
+  <details class="n5e-section">
+    <summary>When this effect works</summary>
+    <p class="hint">Limit it to some character levels or a stance. Outside them it switches off; it isn't deleted.</p>
     <div class="n5e-effect-fields">
-      <label>Minimum character level (0 = none)<input name="n5eEditor.min" type="number" min="0" step="1" value="{{guidance.min}}"></label>
-      <label>Maximum character level (0 = none)<input name="n5eEditor.max" type="number" min="0" step="1" value="{{guidance.max}}"></label>
-      <label>Required stance category<input name="n5eEditor.stance" value="{{guidance.stance}}" placeholder="taijutsu"></label>
-      <label>Activity exclusivity group<input name="n5eEditor.exclusive" value="{{guidance.exclusive}}"></label>
-      <label>Named N5e state<input name="n5eEditor.state" value="{{guidance.state}}"></label>
-      <label>Source-turn expiration<select name="n5eEditor.expires">{{selectOptions expirationChoices selected=guidance.expires}}</select></label>
-      <label>Source actor UUID<input name="n5eEditor.sourceUuid" value="{{guidance.sourceUuid}}" placeholder="Actor.…"></label>
+      <label>From level (0 = any)<input name="n5eEditor.min" type="number" min="0" step="1" value="{{guidance.min}}"></label>
+      <label>Up to level (0 = any)<input name="n5eEditor.max" type="number" min="0" step="1" value="{{guidance.max}}"></label>
+      <label>Only in a stance of this kind<input name="n5eEditor.stance" value="{{guidance.stance}}" placeholder="taijutsu"></label>
+      <label>Ends on the source's turn<select name="n5eEditor.expires">{{selectOptions expirationChoices selected=guidance.expires}}</select></label>
     </div>
-    <p class="hint">Level and stance conditions suppress rather than delete an effect. Exclusivity is used by activity application; it is not a universal stacking policy. Source-turn expiration requires the source in the active combat. Seconds/rounds and transfer are configured in the native Duration and Details tabs.</p>
+    <details class="n5e-mini"><summary>Advanced</summary>
+      <div class="n5e-effect-fields">
+        <label>Exclusive group<input name="n5eEditor.exclusive" value="{{guidance.exclusive}}" placeholder="surge"></label>
+        <label>Named state<input name="n5eEditor.state" value="{{guidance.state}}" placeholder="crash"></label>
+        <label>Source creature (UUID)<input name="n5eEditor.sourceUuid" value="{{guidance.sourceUuid}}" placeholder="Actor.…"></label>
+      </div>
+      <p class="sub">Exclusive group: starting one effect of the group ends the others. Named state: a name other rules check, such as crash.</p>
+    </details>
   </details>
-  <details>
-    <summary>Conditional roll modifiers</summary>
-    <p class="hint">Rule elements v2 (STD). Keys: modifier, degreeShift, advantage, disadvantage, noAdvantage, autoFail, autoSucceed, reroll {mode}, critRange, maximizeDice, minimumDie, damage {formula, damageType}, damageHandling {ignoreResistance, immunityAsResistance, drMultiplier, resistAll}, addRanks, attacks {value, implementsOnly}, initiativeOptions {skills}, costReduction, inflict {condition, ranks, who}, resource {pool, amount}, note {text}. Fields: selector (all, attack, damage, damage:fire, save, save:dex, skill:ste, cast...), predicate (all/any/not over facts such as self:status:prone, target:sense:trueSight, ability:dex, range:melee, self:stance:&lt;id&gt;, self:state:&lt;key&gt;), direction (self, imposed, against), scope (always, action), uses, targets (all, one), on (initiative, turnStart, turnEnd, hit, miss, failedSave, succeededSave, damageDealt, damageTaken, zeroHP), oncePerTurn, endsOnUse, label. Examples: <code>{"key": "advantage", "selector": "attack", "direction": "self", "scope": "action"}</code> · <code>{"key": "disadvantage", "selector": "save", "direction": "imposed", "targets": "one", "uses": 1}</code> · <code>{"key": "resource", "on": "damageDealt", "pool": "fury", "amount": 1, "oncePerTurn": true}</code>. No scripts.</p>
-    <label><input type="checkbox" name="n5eEditor.applyTo" {{#if guidance.applyTo}}checked{{/if}}> Apply to the action (an action effect: copied onto the card of the action it is chosen for, never applied to the actor)</label>
-    <textarea name="n5eEditor.rules" rows="7" spellcheck="false" aria-label="Conditional modifier rules JSON">{{guidance.rules}}</textarea>
+
+  <details class="n5e-section">
+    <summary>Preview</summary>
+    <p class="hint">What this effect would change on the creature right now. Save to apply it for real.</p>
+    <pre data-preview tabindex="0" aria-label="Effect preview"></pre>
   </details>
-  <details>
-    <summary>Current timing and source diagnostics</summary>
-    <p class="hint">Current document timing is shown alongside draft settings. Changes take effect after Save. Source-turn rules are evaluated by N5e combat hooks; this is not a new event scheduler.</p>
-    <pre tabindex="0" aria-label="Effect source and timing diagnostics">{{timing}}</pre>
+
+  <details class="n5e-section">
+    <summary>Copy and share</summary>
+    <p class="hint">Export this effect to a file, import one, or make a switched-off copy to experiment with.</p>
+    <div class="n5e-effect-tools"><button type="button" data-action="exportEffect">Export</button>
+    {{#if editable}}<button type="button" data-action="importEffect">Import</button><button type="button" data-action="duplicateEffect">Make a copy</button>{{/if}}</div>
+    <details class="n5e-mini"><summary>Advanced: the effect's data</summary>
+      <textarea data-raw rows="9" readonly spellcheck="false" aria-label="Read-only effect data">{{raw}}</textarea>
+    </details>
   </details>
-  <details>
-    <summary>Field estimates and N5e modifier contributions</summary>
-    <p class="hint">Core estimates apply each row to the actor's stored field separately. They do not simulate other effects, ordering or derived statistics. N5e before/after shows this effect's contributions only. Save to recalculate the actor.</p>
-    <pre data-preview tabindex="0" aria-label="Effect field estimates"></pre>
-  </details>
-  <details>
-    <summary>Draft data and portability</summary>
-    <textarea data-raw rows="9" readonly spellcheck="false" aria-label="Read-only effect draft JSON">{{raw}}</textarea>
-    <div class="n5e-effect-tools"><button type="button" data-action="exportEffect">Export draft</button>
-    {{#if editable}}<button type="button" data-action="importEffect">Import draft</button><button type="button" data-action="duplicateEffect">Create disabled copy</button>{{/if}}</div>
-    <p class="hint">Portable exports omit IDs, source-turn links and foreign/executable flags. Imports and copies start disabled. Unknown existing data is retained when editing the original; unsupported rows must remain unchanged or be removed.</p>
-  </details>
-  <details>
-    <summary>Effect services: expiration, world Macros and appearance</summary>
-    <p class="hint">Numeric fields accept formulas such as =1 + @level / 2. References use a fixed base snapshot; missing values skip the change with an actor diagnostic. No dice or JavaScript in derived numeric fields.</p>
-    <p class="hint">Service JSON: expiration [{"event":"damageTaken","count":1}], macros [{"event":"apply","uuid":"Macro.ID"}], appearance [{"provider":"filter","options":{"preset":"grayscale"}}]. Events: apply, remove, enable, disable, turnStart, turnEnd, combatEnd, damageTaken, successfulHit, rest. Expiration supports turn/combat/damage/hit/rest events. Counted expirations count distinct matching events.</p>
-    <textarea name="n5eEditor.services" rows="8" spellcheck="false" aria-label="Effect service bindings JSON">{{guidance.services}}</textarea>
-    {{#if canApproveMacros}}<button type="button" data-action="approveMacros">Approve saved Macro bindings</button>{{/if}}
-    <p class="hint">Save bindings first, then approve on the active GM. Effect Macros must also be enabled in N5e Rules. Bindings and referenced Macro code/ownership changes invalidate approval. Trusted world Macros run with GM privileges, not in a sandbox. Foreign scripts remain inert. Appearance filters do not overwrite token data. Automatic DAE import and universal stacking policies are not provided.</p>
+
+  <details class="n5e-section">
+    <summary>Automation (GM)</summary>
+    <p class="hint">End the effect on an event, run an approved world macro, or change how the token looks. Most effects don't need this.</p>
+    <details class="n5e-mini"><summary>How to write it</summary>
+      <ul class="sub">
+        <li>End on an event: <code>{"expiration":[{"event":"damageTaken","count":1}]}</code></li>
+        <li>Run a macro: <code>{"macros":[{"event":"apply","uuid":"Macro.ID"}]}</code> (the GM must approve it)</li>
+        <li>Events: apply, remove, enable, disable, turnStart, turnEnd, combatEnd, damageTaken, successfulHit, rest.</li>
+      </ul>
+    </details>
+    <textarea name="n5eEditor.services" rows="6" spellcheck="false" aria-label="Automation JSON">{{guidance.services}}</textarea>
+    {{#if canApproveMacros}}<button type="button" data-action="approveMacros">Approve saved macros</button>{{/if}}
+    <details class="n5e-mini"><summary>Timing details</summary>
+      <pre tabindex="0" aria-label="Effect timing">{{timing}}</pre>
+    </details>
   </details>
 </section>

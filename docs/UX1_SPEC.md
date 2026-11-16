@@ -1,6 +1,6 @@
 # UX1 function spec: a readable Amp card and effect editor
 
-Status: **plan written 2026-11-16 at King's request ("pivot and focus on the Amp Card ... Write out your plan before deploying"). Awaiting approval.** AMP1b waits until this is done.
+Status: **plan written 2026-11-16 at King's request ("pivot and focus on the Amp Card ... Write out your plan before deploying"). King approved (Q-U1–Q-U4) and asked for both phases at once: released in 0.60.0-alpha.1.** Next: AMP1b.
 
 ## What King asked for
 
@@ -122,6 +122,14 @@ Then back to AMP1b (the Amp audit).
 - **Q-U3 Order:** UX1a then UX1b as above, or the roll rules builder first?
 - **Q-U4 Categories:** do the player categories in section 1 read right, or do you want different ones?
 
+## King's answers
+
+- Q-U1: yes, no mode or priority for N5e fields; core fields keep them under Advanced.
+- Q-U2: everyone can see the stored key.
+- Q-U3: the order is right; build both phases at once.
+- Q-U4: yes.
+
 ## Progress log
 
 - 2026-11-16 King: the Amp card's effect editor overlaps, its wording is too technical, it needs plain definitions; pivot to readability. Claude: plan written; found that card Active Effects aren't applied by AMP1a (fix in UX1a).
+- 2026-11-16 King: Q-U1 yes, Q-U2 everyone sees the key, Q-U3 both phases at once, Q-U4 yes. Claude: UX1a and UX1b built (0.60.0-alpha.1). One category added beyond the plan: Other (initiative, inventory slots, max concentration, all dice rolls).
