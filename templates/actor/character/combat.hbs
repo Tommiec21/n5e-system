@@ -104,8 +104,8 @@
     <div class="tracker amps">
       <div class="t-head"><h3>Amps</h3>{{#if vm.amps.limit}}<span class="sub">{{vm.amps.limit}}</span>{{/if}}</div>
       {{#each vm.amps.rows}}
-        <div class="conc-row {{#if disabled}}off{{/if}}" data-effect-id="{{id}}">
-          <span class="rank {{#if typeless}}amp-typeless{{/if}}">{{type}}</span><span class="nm">{{name}}</span><span class="upkeep">{{remaining}}</span>
+        <div class="amp-row amp-{{typeKey}} {{#if disabled}}off{{/if}}" data-effect-id="{{id}}">
+          <span class="amp-badge">{{type}}</span><span class="nm">{{name}}</span><span class="amp-time">{{remaining}}</span>
           {{#if @root.editable}}<a class="ctl" data-action="toggleEffect" data-tooltip="{{#if disabled}}Make this the one that applies{{else}}Switch off{{/if}}"><i class="fa-solid {{#if disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i></a>
           <a class="ctl" data-action="endAmp" data-tooltip="End this Amp" aria-label="End {{name}}"><i class="fa-solid fa-xmark"></i></a>{{/if}}
         </div>

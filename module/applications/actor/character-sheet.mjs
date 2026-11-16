@@ -107,6 +107,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       toggleExpand: CharacterSheet.#onToggleExpand,
       castRank: CharacterSheet.#onCastRank,
       jutsuFilter: CharacterSheet.#onJutsuFilter,
+      jutsuView: CharacterSheet.#onJutsuView,
       ammoDown: CharacterSheet.#onAmmoDown,
       setCharge: CharacterSheet.#onSetCharge,
       setWillOfFire: CharacterSheet.#onSetWillOfFire,
@@ -162,7 +163,9 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   #editMode = false;
 
   /** Jutsu tab state. */
-  #jutsu = { discipline: "", search: "", expanded: new Set(), castRank: {}, refocus: false };
+  #jutsu = { discipline: "", search: "", expanded: new Set(), castRank: {}, refocus: false,
+    // King 2026-11-16: rows or pills, remembered per user.
+    view: globalThis.game?.user?.getFlag?.("n5e", "jutsuView") === "pills" ? "pills" : "rows" };
 
   get editMode() {
     return this.#editMode && this.isEditable;
@@ -615,6 +618,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !id ) return;
     this.#jutsu.castRank[id] = target.dataset.rank;
     this.render({ parts: ["jutsu"] });
+  }
+
+  /** Jutsu tab: show jutsu as rows or as pills (remembered for this user). */
+  static async #onJutsuView(event, target) {
+    this.#jutsu.view = target.dataset.view === "pills" ? "pills" : "rows";
+    this.render({ parts: ["jutsu"] });
+    await game.user.setFlag("n5e", "jutsuView", this.#jutsu.view).catch(() => null);
   }
 
   /** Jutsu tab: discipline filter buttons. */

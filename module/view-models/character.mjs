@@ -277,7 +277,7 @@ function rangeLabel(target) {
  * @param {Set<string>} [state.expanded]
  * @param {Record<string,string>} [state.castRank]
  */
-export function jutsuVM(actor, { discipline = "", search = "", expanded = new Set(), castRank = {} } = {}) {
+export function jutsuVM(actor, { discipline = "", search = "", expanded = new Set(), castRank = {}, view = "rows" } = {}) {
   const sys = actor.system;
   // PRESTD1: the copies scrolls cast through stay off the Jutsu tab.
   const all = ofType(actor, "jutsu").filter(i => !i.flags?.n5e?.scrollCopy && !i.flags?.n5e?.wandCopy);
@@ -319,6 +319,16 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
               tooltip: cc.map(c => c.tooltip).join("") } : null;
           })(),
           upcastTo: live.upcastRanks?.length ? live.upcastRanks.at(-1) : null,
+          // King 2026-11-16: the pill view shows the name and cost; everything else is on hover.
+          pillTip: (() => {
+            const esc2 = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+            const kws = [...s.keywords].filter(k => !["ninjutsu", "taijutsu", "genjutsu", "bukijutsu"].includes(k)).map(k => keywordChip(k).label);
+            const comps = componentChips(s.components).map(c => c.label).join(" · ");
+            const hitText = types.has("attack") ? `Attack ${signed(live.attack ?? 0)}` : types.has("save") ? `DC ${live.dc}` : "";
+            return [`<b>${esc2(i.name)}</b> (${esc2(s.rank)}-Rank)`, [range, area, s.cost.mode === "none" ? "" : `${costAt(chosen)} CP`, hitText].filter(Boolean).map(esc2).join(" · "),
+              kws.length ? esc2(kws.join(", ")) : "", comps ? `Components: ${esc2(comps)}` : "", s.duration?.concentration ? "Concentration" : "",
+              live.castable === false ? "No affinity" : ""].filter(Boolean).map(l => `<div>${l}</div>`).join("");
+          })(),
           missingAccess: live.castable === false,
           unmetRequirement: live.meetsRequirement === false ? `Needs ${abilities[live.ability]?.abbr ?? live.ability} ${live.requirement}` : "",
           open,
@@ -349,6 +359,7 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
   const knownMax = classItem?.system?.jutsuKnownNow ?? null;
   return {
     groups,
+    view, pills: view === "pills",
     empty: all.length === 0,
     noMatches: all.length > 0 && groups.length === 0,
     filters: [{ key: "", label: "All" }, ...["nin", "tai", "gen", "buki"].map(k => ({ key: k, label: disciplines[k].label }))]

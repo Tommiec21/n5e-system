@@ -43,8 +43,8 @@ function sourceLines(sources = {}) {
 export function addedRowHTML(n, { types = null } = {}) {
   const typeSelect = types ? `<select name="addType_${n}" aria-label="Damage type">${Object.entries(types).map(([k, t]) =>
     `<option value="${esc(k)}">${esc(t.label ?? t)}</option>`).join("")}</select>` : "";
-  return `<div class="n5e-rd-add" data-n5e-rd-add="${n}"><input type="text" name="addLabel_${n}" placeholder="Label (optional)" aria-label="Modifier label">
-    <input type="text" name="addValue_${n}" placeholder="2, -1, 1d4" aria-label="Modifier value">${typeSelect}</div>`;
+  return `<div class="n5e-rd-add" data-n5e-rd-add="${n}"><input type="text" name="addLabel_${n}" placeholder="What it's from (optional)" aria-label="What the extra modifier is from" data-tooltip="A name for the chat card, such as Bless">
+    <input type="text" name="addValue_${n}" placeholder="+2, -1 or 1d4" aria-label="Extra modifier amount" data-tooltip="A number or dice to add (use - for a penalty)">${typeSelect}</div>`;
 }
 
 /**
@@ -63,6 +63,7 @@ export function d20DialogHTML({ parts, mode = "normal", sources = {}, stake = ""
     ${group ? `<div class="n5e-rd-group">Rolling for: ${esc(group.join(", "))}</div>` : ""}
     ${stake ? `<div class="n5e-rd-stake">${esc(stake)}</div>` : ""}
     <div class="n5e-rd-parts">${rows}</div>
+    <div class="n5e-rd-adds-head">Extra modifier (optional): what it's from, and how much</div>
     <div class="n5e-rd-adds">${addedRowHTML(0)}</div>
     <button type="button" class="n5e-rd-more" data-n5e-rd-more>Add another modifier</button>
     ${total}
@@ -82,6 +83,7 @@ export function diceDialogHTML({ parts, mode = "own", sources = {}, crit = false
     <span class="label">${esc(p.label)}</span><span class="value">${esc(p.flat ? signed(Number(p.formula) || 0) : p.formula)}${esc(typeLabel(p.type))}</span></label>`).join("");
   return `<div class="n5e-roll-dialog dice">
     <div class="n5e-rd-parts">${rows}</div>
+    <div class="n5e-rd-adds-head">Extra damage (optional): what it's from, how much, and its type</div>
     <div class="n5e-rd-adds">${addedRowHTML(0, { types })}</div>
     <button type="button" class="n5e-rd-more" data-n5e-rd-more>Add another modifier</button>
     ${showCrit ? `<label class="n5e-rd-crit"><input type="checkbox" name="crit" ${crit ? "checked" : ""}> Critical (double the dice)</label>` : ""}

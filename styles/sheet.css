@@ -995,3 +995,46 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2.n5e-item .lines-field { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
 .n5e-v2.n5e-item .plain-lines { margin: 0; padding-left: 1.1rem; }
 .n5e-v2.n5e-item .plain-lines li { margin: 2px 0; }
+
+/* Amps panel rows (King 2026-11-16): type badge, name, time left and controls each in their own column. */
+.n5e-v2 .amps .amp-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto; align-items: center; gap: 8px;
+  padding: 5px 0; border-bottom: 1px solid var(--n5e-line-soft); }
+.n5e-v2 .amps .amp-row.off { opacity: .55; }
+.n5e-v2 .amps .amp-row .nm { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.n5e-v2 .amps .amp-row .amp-time { font-size: 12px; font-weight: 700; white-space: nowrap; }
+.n5e-v2 .amps .amp-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap;
+  padding: 1px 6px; border-radius: 9px; border: 1px solid var(--amp-color, var(--n5e-muted)); color: var(--amp-color, var(--n5e-muted)); }
+.n5e-v2 .amps .amp-none .amp-badge { font-style: italic; text-transform: none; border-style: dashed; }
+.n5e-v2 .amps .amp-row .ctl { cursor: pointer; }
+
+/* Structured details (Amp cards, King 2026-11-16): an even grid of up to 3 columns, labels on top,
+   each definition under its own field, checkboxes as a box and a label. */
+.n5e-v2.n5e-item fieldset.det.structured .det-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(max(11rem, calc((100% - 32px) / 3)), 1fr)); gap: 12px 16px; align-items: start; }
+.n5e-v2.n5e-item fieldset.det.structured .field,
+.n5e-v2.n5e-item fieldset.det.structured .field.small { min-width: 0; flex: none; }
+.n5e-v2.n5e-item fieldset.det.structured .field.wide,
+.n5e-v2.n5e-item fieldset.det.structured .field.tags-field,
+.n5e-v2.n5e-item fieldset.det.structured .field.lines-field { grid-column: 1 / -1; }
+.n5e-v2.n5e-item fieldset.det.structured .field .field-hint { max-width: none; }
+.n5e-v2.n5e-item fieldset.det.structured .field.checkbox { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 6px; align-items: center; padding-top: 14px; }
+.n5e-v2.n5e-item fieldset.det.structured .field.checkbox input { grid-column: 1; grid-row: 1; margin: 0; }
+.n5e-v2.n5e-item fieldset.det.structured .field.checkbox .lbl { grid-column: 2; grid-row: 1; }
+.n5e-v2.n5e-item fieldset.det.structured .field.checkbox .field-hint { grid-column: 1 / -1; }
+
+/* Jutsu rows (King 2026-11-16): one line for name, range, cost, hit and Use; the keyword chips get
+   their own line underneath, so nothing stacks over the other columns on a narrow sheet. */
+.n5e-v2 .jutsu-row .row-main { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto 44px 46px auto;
+  grid-template-areas: "glyph name range cost hit use" ". tags tags tags tags tags"; column-gap: 8px; row-gap: 2px; align-items: center; }
+.n5e-v2 .jutsu-row .glyph { grid-area: glyph; }
+.n5e-v2 .jutsu-row .name { grid-area: name; min-width: 0; }
+.n5e-v2 .jutsu-row .tags { grid-area: tags; }
+.n5e-v2 .jutsu-row .tags:empty { display: none; }
+.n5e-v2 .jutsu-row .range { grid-area: range; }
+.n5e-v2 .jutsu-row .cost { grid-area: cost; }
+.n5e-v2 .jutsu-row .hit { grid-area: hit; }
+.n5e-v2 .jutsu-row .use { grid-area: use; }
+/* The pill view: compact pills that wrap, like the adversary sheet. */
+.n5e-v2 .jutsu .jutsu-pills { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 2px 0 8px; }
+.n5e-v2 .jutsu .jutsu-pill .cost { color: var(--n5e-chakra); font-weight: 700; }
+.n5e-v2 .jutsu .view-toggle { display: inline-flex; gap: 2px; margin-left: auto; }
+.n5e-v2 .jutsu .view-toggle .filter { width: auto; }

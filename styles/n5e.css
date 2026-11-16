@@ -139,8 +139,11 @@
 .n5e-roll-dialog .n5e-rd-part.situational .label { font-style: italic; }
 .n5e-roll-dialog .n5e-rd-part input:not(:checked) ~ .label, .n5e-roll-dialog .n5e-rd-part input:not(:checked) ~ .value { text-decoration: line-through; opacity: .6; }
 .n5e-roll-dialog .n5e-rd-part.situational input:not(:checked) ~ .label, .n5e-roll-dialog .n5e-rd-part.situational input:not(:checked) ~ .value { text-decoration: none; }
-.n5e-roll-dialog .n5e-rd-add { display: flex; gap: 4px; }
-.n5e-roll-dialog .n5e-rd-add input { flex: 1; }
+/* An extra modifier: what it is, how much, and (damage) its type, each with room to read. */
+.n5e-roll-dialog .n5e-rd-adds-head { font-size: .85em; opacity: .75; margin: 4px 0 2px; }
+.n5e-roll-dialog .n5e-rd-add { display: grid; grid-template-columns: minmax(0, 2fr) minmax(5.5rem, 1fr); gap: 4px; margin-bottom: 4px; }
+.n5e-roll-dialog.dice .n5e-rd-add { grid-template-columns: minmax(0, 1.6fr) minmax(5.5rem, 1fr) minmax(0, 1.4fr); }
+.n5e-roll-dialog .n5e-rd-add :is(input, select) { width: 100%; min-width: 0; }
 .n5e-roll-dialog .n5e-rd-add input.invalid { outline: 2px solid #b3261e; }
 .n5e-roll-dialog .n5e-rd-more { align-self: flex-start; width: auto; }
 .n5e-roll-dialog .n5e-rd-total { font-size: 1.1em; }

@@ -139,3 +139,4 @@ Then back to AMP1b (the Amp audit).
 - 2026-11-16 King: change cards should cascade across rows, max 3 per row. Claude: grid in 0.60.0-alpha.5.
 - 2026-11-16 King: an option that reads the current unarmed die and steps it up or down (1 > d4 > ... > d12). Claude: n5e.unarmed.step in 0.60.0-alpha.6, applied after the die override.
 - 2026-11-16 King: Condition Immunity, State Resistance and Immunity; level up broken; ability score edits failing. Claude: 0.60.0-alpha.7 fixes level-up.hbs (broken since 0.41: misplaced {{/if}}), collapses duplicate form fields, adds the three fields, and compile-checks every template in the tests.
+- 2026-11-16 King: Amp card fields all over the place; drop the Attack pill; Amps panel overlap; jutsu chips stacked (wants a row view and a pill view); two tiny unexplained fields in the damage dialog. Claude: all in 0.60.0-alpha.8.

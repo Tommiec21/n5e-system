@@ -228,3 +228,15 @@ test("a field shown twice on a sheet saves the value the user changed", () => {
   assert.deepEqual(flat["system.traits.resist"], ["fire", "cold"], "real arrays stay");
   assert.equal(flat["system.abilities.str.value"], 16);
 });
+
+// King 2026-11-16 polish: no generic Attack pill; Amp rows carry their type key; jutsu pill view.
+import { combatVM } from "../module/view-models/combat.mjs";
+import { jutsuVM } from "../module/view-models/character.mjs";
+test("Basic Combat has no Attack pill (the Strikes row attacks); the jutsu tab can show pills", () => {
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(1)] });
+  const core = combatVM(a).basic.sections.find(s => s.key === "core") ?? combatVM(a).basic.sections[0];
+  assert.ok(!core.pills.some(p => p.name === "Attack"));
+  assert.ok(core.pills.some(p => p.name === "Dash"));
+  assert.equal(jutsuVM(a, { view: "pills" }).pills, true);
+  assert.equal(jutsuVM(a).pills, false);
+});

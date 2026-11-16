@@ -1,3 +1,19 @@
+## 0.60.0-alpha.8 — Sheet polish: Amp card layout, Amps panel, jutsu views, roll dialog
+
+- **Amp card sheet:**
+  - The fields sit in an even grid of up to 3 columns, labels on top and each definition under its own field. Checkboxes are a box with its label.
+  - Starting it reads: Takes / On rolling initiative / Can be given to others, then Uses / Uses come back on / Wait after it ends.
+- **Amps panel:** each active Amp is one clean row: the type as a coloured badge ("No type" dashed), the name, the time left, then the switch and End. Nothing overlaps.
+- **Basic Combat:** the **Attack** pill is gone. The Strikes row (Unarmed Strike and each equipped weapon) makes attacks.
+- **Jutsu tab, two views** (toggle next to Browse, remembered for you):
+  - **Rows:** name, range, cost, hit or DC and Use on one line; the keyword chips go on their own line underneath, so nothing stacks over the other columns.
+  - **Pills:** compact pills like the adversary sheet, with the name, cost and hit or DC. Hover for range, keywords, components and concentration; click to use.
+- **Roll dialog:** the extra modifier boxes are labelled and wide enough to read:
+  - What it's from (optional, a name for the chat card);
+  - How much (+2, −1 or 1d4);
+  - For damage, the type.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.7 — Level up fixed; editing ability scores fixed; Condition Immunity and State Resistance / Immunity
 
 - **Fix: Level up opens again.**

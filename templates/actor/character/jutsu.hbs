@@ -8,6 +8,10 @@
       <button type="button" class="filter {{#if active}}on{{/if}}" data-action="jutsuFilter" data-discipline="{{key}}">{{label}}</button>
     {{/each}}
     <button type="button" class="filter" data-action="openBrowser" data-browser-tab="jutsu" data-tooltip="Open the Compendium Browser"><i class="fa-solid fa-book-open"></i> Browse</button>
+    <span class="view-toggle" role="group" aria-label="Jutsu view">
+      <button type="button" class="filter {{#unless vm.pills}}on{{/unless}}" data-action="jutsuView" data-view="rows" data-tooltip="Rows: every detail on one line" aria-pressed="{{#if vm.pills}}false{{else}}true{{/if}}"><i class="fa-solid fa-list"></i></button>
+      <button type="button" class="filter {{#if vm.pills}}on{{/if}}" data-action="jutsuView" data-view="pills" data-tooltip="Pills: name and cost; hover for details" aria-pressed="{{#if vm.pills}}true{{else}}false{{/if}}"><i class="fa-solid fa-grip"></i></button>
+    </span>
   </div>
   <div class="strip">
     <span><b>Known</b> {{vm.known}}{{#if vm.knownMax}} / {{vm.knownMax}}{{/if}}</span>
@@ -27,6 +31,15 @@
           <span class="sub">Attack <b data-tooltip-html="{{attackTip}}">{{attack}}</b> · Save DC <b data-tooltip-html="{{dcTip}}">{{dc}}</b> · {{ability}}</span></div>
         {{#each ranks}}
           <div class="rank-head"><span>{{label}}</span></div>
+          {{#if @root.vm.pills}}
+          <div class="jutsu-pills">
+            {{#each rows}}
+              <span class="act-pill jutsu-pill n5e-row draggable {{#if missingAccess}}dim{{/if}}" data-item-id="{{id}}" draggable="true" data-tooltip-html="{{pillTip}}" data-tooltip-direction="UP">
+                <a class="pill-main" data-action="useItem">{{{glyph}}}<span class="nm">{{name}}</span>{{#unless (n5eEq costMode "none")}}<span class="cost">{{cost}} CP</span>{{/unless}}{{#if hit}}<span class="sub">{{hit}}</span>{{else if dc}}<span class="sub">DC {{dc}}</span>{{/if}}</a>
+              </span>
+            {{/each}}
+          </div>
+          {{else}}
           <ol class="rows">
             {{#each rows}}
               <li class="n5e-row jutsu-row draggable {{#if open}}open{{/if}} {{#if missingAccess}}locked{{/if}}" data-item-id="{{id}}" draggable="true">
@@ -68,6 +81,7 @@
               </li>
             {{/each}}
           </ol>
+          {{/if}}
         {{/each}}
       </div>
     {{/each}}

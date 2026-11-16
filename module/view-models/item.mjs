@@ -280,7 +280,7 @@ const DETAILS = {
         clan: "Listed for this clan's characters. Clan Amps always count as Clan for the limits.", feat: "Listed for characters with this feat." } }),
       F.text(src, "owner.id", "Which one", { placeholder: "identifier, e.g. inuzuka", hint: "The class, subclass, clan or feat's identifier." }),
       F.text(src, "summary", "Summary", { wide: true, hint: "One line shown on the card and its tooltip." })
-    ]),
+    ], { structured: true }),
     section("Starting it", [
       F.select(src, "activation", "Takes", { "": "—", action: "An Action", bonus: "A Bonus Action", reaction: "A Reaction", initiative: "Rolling initiative", trigger: "A trigger" },
         { hint: "What starting it costs. Shown on the card; the table tracks the action." }),
@@ -291,7 +291,7 @@ const DETAILS = {
       F.text(src, "uses.max", "Uses", { small: true, placeholder: "unlimited", hint: "How many times it can start between rests: a number, or @prof." }),
       F.select(src, "uses.per", "Uses come back on", { "": "—", sr: "A Short Rest", lr: "A Long Rest", fr: "A Full Rest", day: "Each day" }),
       F.num(src, "cooldown", "Wait after it ends (seconds)", { small: true, hint: "It can't start again until this time passes. 600 = 10 minutes." })
-    ]),
+    ], { structured: true }),
     section("How long it lasts", [
       F.num(src, "duration.seconds", "Duration (seconds)", { small: true, hint: "60 = 1 minute, 600 = 10 minutes, 3600 = 1 hour." }),
       F.select(src, "duration.until", "Or until", { "": "Its duration runs out", turnStart: "The start of your next turn", turnEnd: "The end of your turn",
@@ -299,18 +299,18 @@ const DETAILS = {
         "": "Ends when the duration above runs out.", turnStart: "Ends when your next turn starts.", turnEnd: "Ends when this turn ends.",
         nextTurnEnd: "Ends at the end of your next turn.", combatEnd: "Lasts the whole fight, then ends.", rest: "Lasts until you take any rest." } }),
       F.check(src, "duration.concentration", "Needs concentration", { hint: "Shown on the card. Tracked automatically only when started from a concentration jutsu." })
-    ]),
+    ], { structured: true }),
     section("What ends it early", [
       F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance" },
         { hint: "The GM's setting decides whether these end it automatically or as a reminder." })
-    ]),
+    ], { structured: true }),
     section("Advanced", [
       F.text(src, "identifier", "Identifier", { hint: "The card's key. Activities name it to start this Amp." }),
       F.text(src, "namedType", "Type the book's box names", { hint: "Kept as a note when the limits use another type (a clan Amp is Clan)." }),
       F.text(src, "exclusive", "Exclusive group", { placeholder: "surge", hint: "Starting one Amp of the group ends the others (Crash and Flow)." }),
       F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
       F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." })
-    ], { collapsed: true })
+    ], { collapsed: true, structured: true })
   ],
   background: src => [
     section("Background", [

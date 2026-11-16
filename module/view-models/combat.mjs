@@ -88,7 +88,8 @@ function basicCombat(actor) {
   // The Unarmed Strike item is shown by the Unarmed Strike pill below, not as a weapon.
   const equippedWeapons = ofType(actor, "weapon").filter(w => w.system.equipped && !isUnarmedStrike(w));
 
-  const core = Object.entries(coreActions)
+  // King 2026-11-16: no generic Attack pill; the Strikes row (Unarmed Strike, each weapon) attacks.
+  const core = Object.entries(coreActions).filter(([key]) => key !== "attack")
     .map(([key, a]) => pill({ kind: "core", key, name: a.label, activation: a.activation,
       tip: tipHTML({ title: a.label, meta: [activationTypes[a.activation]], body: esc(a.text) }) }));
 
@@ -389,7 +390,7 @@ function marksVM(actor) {
  */
 export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = globalThis.game?.time?.worldTime ?? 0 } = {}) {
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, name: e.name, disabled: !!e.disabled,
-    type: ampTypeLabel(e.system?.ampType), typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
+    type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
   const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
   const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,
     cooling: c.cooldown > 0 ? `${Math.ceil(c.cooldown / 60)} min` : "", spent: !!c.uses && c.uses.left <= 0 }));
