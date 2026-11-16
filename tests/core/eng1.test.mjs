@@ -10,15 +10,22 @@ import { summarizeElement } from "../../module/rules/action-effects.mjs";
 const table = cls => JSON.parse(fs.readFileSync(`content/automation/${cls}.json`, "utf8")).features;
 
 test("ENG1a: an effect's turn triggers heal, post damage and roll a save that ends it", () => {
-  const hemo = table("medical-nin")["medical-perfection-supreme-medic"].castOptions.find(o => o.label.startsWith("Hemorrhage")).effect.rules;
+  // CCOND1b: Life Pulse and Hemorrhage Vitality are condition cards; the cast options apply them and
+  // the cards' rules ride on the condition (the end-of-turn save is the card's resave).
+  const cardRules = key => {
+    const dir = "packs/_source/conditions";
+    return JSON.parse(fs.readFileSync(`${dir}/${fs.readdirSync(dir).find(f => f.startsWith(`${key}-`))}`, "utf8"));
+  };
+  assert.equal(table("medical-nin")["medical-perfection-supreme-medic"].castOptions.find(o => o.label.startsWith("Hemorrhage")).effect.condition, "hemorrhage-vitality");
+  const hemoCard = cardRules("hemorrhage-vitality");
+  const hemo = hemoCard.flags.n5e.rules;
   validateConditionalRules(hemo);
-  const victim = { statuses: new Set(), items: [], effects: [{ id: "fx1", name: "Hemorrhage Vitality", changes: [], flags: { n5e: { rules: hemo.map(r => ({ ...r, dc: r.dc === "@dc.nin" ? 17 : r.dc })) } } }] };
+  const victim = { statuses: new Set(), items: [], effects: [{ id: "fx1", name: "Hemorrhage Vitality", changes: [], flags: { n5e: { rules: hemo } } }] };
   const start = triggerOutcomes(triggersFor(victim, "turnStart"));
   assert.deepEqual(start.damage.map(d => [d.formula, d.type, d.who]), [["6d6", "necrotic", "self"], ["6d6", "chakra", "self"]]);
-  const end = triggerOutcomes(triggersFor(victim, "turnEnd"));
-  assert.deepEqual(end.resave.map(s => [s.ability, s.dc, s.sourceId, s.isEffect]), [["con", 17, "fx1", true]]);
+  assert.deepEqual(hemoCard.system.resave, { ability: "con", source: "nin", dc: null });
 
-  const pulse = table("medical-nin")["medical-perfection-supreme-medic"].castOptions.find(o => o.label.startsWith("Life Pulse")).effect.rules;
+  const pulse = cardRules("life-pulse").flags.n5e.rules;
   const ally = { statuses: new Set(), items: [], effects: [{ id: "fx2", changes: [], flags: { n5e: { rules: pulse } } }] };
   assert.deepEqual(triggerOutcomes(triggersFor(ally, "turnStart")).heal.map(h => [h.formula, h.pool]), [["4d6", "hp"], ["2d6", "cp"]]);
 
