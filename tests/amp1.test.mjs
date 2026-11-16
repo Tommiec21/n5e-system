@@ -222,3 +222,14 @@ test("AMP1c: checks and saves know the ability they use (Battle Trance: your Tai
   assert.ok(o.has("ability:str") && o.has("ability:tai") && !o.has("ability:nin"));
   assert.ok(rollOptions(actor, { kind: "save", type: "save", key: "int" }).has("ability:nin"));
 });
+
+// King 2026-11-16: Crash's bonus dice join the jutsu's own damage roll.
+import { mergeExtraDamage } from "../module/rules/cast-options.mjs";
+test("Crash's bonus damage joins the jutsu's damage roll, in its damage type", () => {
+  const acts = [{ type: "save", save: { ability: "dex" } }, { type: "damage", damage: { parts: [{ formula: "4d6+4", type: "fire" }] } }];
+  const { activities, leftover } = mergeExtraDamage(acts, [{ label: "Crash: bonus damage", formula: "1d10", type: "" }]);
+  assert.deepEqual(activities[1].damage.parts, [{ formula: "4d6+4", type: "fire" }, { formula: "1d10", type: "fire" }]);
+  assert.deepEqual(acts[1].damage.parts.length, 1, "the jutsu itself is untouched");
+  assert.deepEqual(leftover, []);
+  assert.equal(mergeExtraDamage([{ type: "effect" }], [{ formula: "1d10" }]).leftover.length, 1, "no damage roll: a separate button");
+});

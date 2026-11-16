@@ -53,6 +53,25 @@ export function stanceIs(actor, category) {
   return !!st && (cats instanceof Set ? cats.has(category) : list(cats).includes(category));
 }
 
+/**
+ * King 2026-11-16: a cast option's added damage (Crash's +Nd10) joins the jutsu's own damage roll,
+ * in the jutsu's damage type when the option names none. Damage with nowhere to go (the jutsu has no
+ * damage roll) stays a separate button.
+ * @returns {{activities: object[], leftover: object[]}}
+ */
+export function mergeExtraDamage(activities, extra = []) {
+  const out = activities.map(a => a);
+  const leftover = [];
+  for ( const d of extra ) {
+    const i = out.findIndex(a => a?.damage?.parts?.length);
+    if ( i < 0 ) { leftover.push(d); continue; }
+    const a = out[i];
+    const type = d.type || a.damage.parts[0]?.type || "";
+    out[i] = { ...a, damage: { ...a.damage, parts: [...a.damage.parts, { formula: d.formula, type }] } };
+  }
+  return { activities: out, leftover };
+}
+
 /** Does this jutsu deal damage (activity damage parts, or "XdY ... damage" in its text)? */
 function hasDamage(jutsu, activities) {
   return activities.some(a => a.damage?.parts?.length) || /\d+d\d+[^.]*damage/i.test(String(jutsu.system.description ?? ""));

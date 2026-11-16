@@ -21,7 +21,7 @@ import { rule } from "../rules-settings.mjs";
 import { castableDisciplines, castDisciplineOf } from "../rules/cast-discipline.mjs";
 import { cardFlag } from "./action-card.mjs";
 import { resolveRankValues } from "../rules/jutsu-facts.mjs";
-import { namedActionEffects } from "../rules/cast-options.mjs";
+import { mergeExtraDamage, namedActionEffects } from "../rules/cast-options.mjs";
 import { rankValue } from "../rules/progression.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
@@ -169,7 +169,8 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
 /** The cast card: what was spent, the rules text, and activity buttons. */
 export async function postCastCard(actor, item, plan) {
   const j = item.system;
-  const activities = effectiveActivities(item, { rank: plan.rank });
+  // Crash and other added damage join the jutsu's own damage roll (rules/cast-options.mjs).
+  const { activities, leftover: extraDamage } = mergeExtraDamage(effectiveActivities(item, { rank: plan.rank }), plan.extraDamage ?? []);
   const spent = [plan.costMode === "chakra" ? `${plan.cost} CP` : plan.costMode === "none" ? "No cost" : "Special cost",
     ...Object.entries(plan.pools).map(([k, v]) => `${v} ${{ focus: "Focus", superiorityDice: "Superiority Dice", pyroclasm: "Pyroclasm" }[k] ?? k}`)].join(" · ");
   // STD2: what the chosen Moldings, Maneuvers and feature cast options change about this cast's rolls
@@ -188,7 +189,7 @@ export async function postCastCard(actor, item, plan) {
   extras.push((await import("./clash.mjs")).clashButton(item));
   // Unaware Genjutsu (GEN1, KB 10): its targets don't know they're in it until they identify it.
   if ( castAs === "gen" && j.unaware ) extras.push('<div class="note">Unaware: targets don\'t know they are in this Genjutsu until they succeed on Identify Genjutsu.</div>');
-  for ( const d of plan.extraDamage ?? [] ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen" })}</div>`);
+  for ( const d of extraDamage ) extras.push(`<div class="act-row">${damageButtons([{ formula: d.formula, type: d.type }], { label: d.label, genjutsu: castAs === "gen" })}</div>`);
   // Healing a feature adds (Channeled Healing, Talented Support's temporary HP).
   if ( plan.extraHeals?.length ) extras.push(activityButtons(actor, item, plan.extraHeals.map(h => ({ type: "heal", label: h.label, heal: { formula: h.formula, pool: h.pool } }))));
   if ( plan.extraEffects?.length ) extras.push(activityButtons(actor, item, plan.extraEffects.map(e => ({ type: "effect", label: e.label, effect: e.effect }))));

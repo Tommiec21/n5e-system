@@ -1,3 +1,9 @@
+## 0.62.0-alpha.2 — Crash's damage joins the jutsu's damage roll
+
+- **Fix (King):** Crash's bonus dice (+1d10 to +5d10, halved for areas) are now added to the jutsu's own damage roll, in the jutsu's damage type. Before, they got a separate damage button. Example: a 4d6 + 4 Fire Ninjutsu in Crash rolls 4d6 + 4 + 1d10 Fire.
+- The same goes for other added damage from cast options. A separate button remains only when the jutsu has no damage roll of its own.
+- Not checked in a running Foundry world.
+
 ## 0.62.0-alpha.1 — AMP1c: Amp cards for every Amp button
 
 - **20 Amp cards** in the Amps compendium (folder Classes), one for every class feature whose button started an Amp. Each card carries the book box as its description, a one-line summary, and its mechanics:
