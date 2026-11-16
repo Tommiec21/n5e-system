@@ -18,6 +18,7 @@ export function effectFieldCatalog(config) {
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
     else if ( ["n5e.resist", "n5e.immune"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
     else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
+    else if ( field.key === "n5e.conditionResist" ) { type = "condition"; example = "group:physical"; }
     const custom = field.key.startsWith("n5e.");
     const info = fieldInfo(field.key, config) ?? { name: field.label, category: "Other", what: field.label, enter: "", example, stacks: "", words: "" };
     return { ...field, type, example: info.example ?? example, choices, modes: custom ? [0, 2] : [1, 2, 3, 4, 5], custom,
@@ -45,6 +46,7 @@ export function validateEffectChanges(changes, original, catalog) {
     else if ( field.type === "adjustment" && (!/^([*/])?[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)
       || !Number.isFinite(Number(value.replace(/^[*/]/, ""))) || (/^[*/]/.test(value) && Number(value.slice(1)) <= 0)) ) { try { if ( /^[*/]/.test(value) ) throw new Error("Use a positive multiplier/divisor."); resolveEffectFormula(value, {}, { syntaxOnly: true }); } catch (error) { problem = error.message; } }
     else if ( field.type === "damageType" && !field.choices.includes(value) ) problem = "pick a damage type.";
+    else if ( field.type === "condition" && !/^(group:)?[A-Za-z][\w-]{0,59}$/.test(value) ) problem = "pick a condition or a group.";
     else if ( field.type === "text" && !value ) problem = field.key.startsWith("n5e.mastery.") ? "enter where it comes from, like the Amp's name." : "enter a value.";
     if ( value.length > 1000 ) problem = "value is too long.";
     if ( problem ) {

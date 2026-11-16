@@ -135,3 +135,4 @@ Then back to AMP1b (the Amp audit).
 - 2026-11-16 King: Q-U1 yes, Q-U2 everyone sees the key, Q-U3 both phases at once, Q-U4 yes. Claude: UX1a and UX1b built (0.60.0-alpha.1). One category added beyond the plan: Other (initiative, inventory slots, max concentration, all dice rolls).
 - 2026-11-16 King: the Changes content showed on every tab. Claude: fixed in 0.60.0-alpha.2 (the new flex layout overrode Foundry's hiding of inactive tabs).
 - 2026-11-16 King: add Ability Check Mastery (covers the ability's whole skill suite). Claude: n5e.mastery.check.<ability> in 0.60.0-alpha.3; it also applies to the plain ability check; distinct sources count once together with each skill's own.
+- 2026-11-16 King: Condition Resistance (advantage on saves to resist a named condition or a condition group). Claude: n5e.conditionResist in 0.60.0-alpha.4; also applies to end-of-turn saves to end the condition.

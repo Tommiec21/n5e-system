@@ -1,3 +1,15 @@
+## 0.60.0-alpha.4 — Condition Resistance in effects
+
+- **New effect field (King): Condition Resistance** (`n5e.conditionResist`), under Defense. Pick one condition (Bruised) or a whole group (All Physical / Mental / Sensory / Elemental / Fatigue conditions).
+- A creature that resists a condition makes saving throws against it with advantage. This covers:
+  - the save when a jutsu or feature would inflict it;
+  - the end-of-turn save to end it.
+  
+  It also works for class and clan condition cards, by their own group tags.
+- NPC condition resistances can name a group too.
+- The existing GM rule "Condition resistance and immunity" still turns this on or off.
+- Not checked in a running Foundry world.
+
 ## 0.60.0-alpha.3 — Ability Check Mastery
 
 - **New effect fields (King):** **Strength / Dexterity / Constitution / Intelligence / Wisdom / Charisma Check Mastery** (`n5e.mastery.check.<ability>`), under Skills & Mastery in the field picker.

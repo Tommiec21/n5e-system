@@ -17,12 +17,16 @@ const cap = s => (s ? s[0].toUpperCase() + s.slice(1) : s);
 /* -------------------------------------------- */
 
 /** One change in plain words. catalog: effectFieldCatalog(N5E). */
-export function describeChange(change, catalog = []) {
+export function describeChange(change, catalog = [], N5E = {}) {
   const field = catalog.find(f => f.key === change?.key);
   const name = field?.name ?? change?.key ?? "?";
   const v = String(change?.value ?? "").trim();
   if ( !field ) return `${name}: ${v}`;
   if ( field.key.startsWith("n5e.mastery.") ) return `${name}${v ? ` (from ${v})` : ""}`;
+  if ( field.type === "condition" ) {
+    const label = v.startsWith("group:") ? `all ${cap(v.slice(6))} conditions` : N5E.conditions?.[v]?.label ?? N5E.clanConditions?.[v]?.label ?? v;
+    return `${name}: ${label}`;
+  }
   if ( field.type === "number" || field.type === "adjustment" ) {
     if ( /^[*/]/.test(v) ) return `${name} ${v.startsWith("*") ? "×" : "÷"}${v.slice(1)}`;
     if ( Number.isFinite(Number(v)) ) {

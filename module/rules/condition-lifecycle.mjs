@@ -98,9 +98,21 @@ export function removalResult(option, total, currentRanks = 1) {
   return { success: true, ranks: ranks >= currentRanks ? "all" : ranks, raiseDC: 0 };
 }
 
-/** Advantage on a save against conditions the saver resists. */
+/** The condition groups (tags) a condition belongs to. */
+export const CONDITION_GROUPS = { physical: "Physical", mental: "Mental", sensory: "Sensory", elemental: "Elemental", fatigue: "Fatigue" };
+
+/**
+ * Advantage on a save against conditions the saver resists (King 2026-11-16): resisting the condition
+ * itself (its key) or a group it belongs to ("group:physical" resists every Physical condition).
+ */
 export function resistsAny(actor, keys) {
   if ( !rule("conditionResistance") ) return false;
   const r = actor.system?.traits?.conditionResist;
-  return list(keys).some(k => (r instanceof Set ? r.has(k) : list(r).includes(k)));
+  const has = k => (r instanceof Set ? r.has(k) : list(r).includes(k));
+  const cfg = n5eConfig();
+  return list(keys).some(k => {
+    if ( has(k) ) return true;
+    const def = cfg.conditions?.[k] ?? cfg.clanConditions?.[k] ?? coreConditions[k];
+    return list(def?.tags).some(t => has(`group:${t}`));
+  });
 }

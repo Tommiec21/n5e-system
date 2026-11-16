@@ -856,3 +856,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 | Path | Meaning |
 | --- | --- |
 | Change key `n5e.mastery.check.<ability>` | Ability Check Mastery: a Mastery source for that ability's checks (target `check.<ability>`) and every skill whose ability it is. |
+
+## Added in 0.60.0-alpha.4
+
+| Path | Meaning |
+| --- | --- |
+| Change key `n5e.conditionResist` | Condition resistance from an effect: a condition key (`bruised`) or a group (`group:physical`, `group:mental`, `group:sensory`, `group:elemental`, `group:fatigue`); joins `system.traits.conditionResist`. |
+| `traits.conditionResist` values `group:<tag>` | Resists every condition with that tag (rules/condition-lifecycle.mjs `resistsAny`). |

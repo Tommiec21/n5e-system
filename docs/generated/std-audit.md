@@ -27,7 +27,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 ### State checks named in code (1)
 
-- `module/workflow/trackers.mjs:60`
+- `module/workflow/trackers.mjs:61`
 
 ### Condition mechanics named in engines (33)
 
@@ -62,7 +62,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
-- `module/workflow/trackers.mjs:225`
+- `module/workflow/trackers.mjs:226`
 - `module/workflow/turn.mjs:54`
 
 ### Text fallback (description parsed at play time) (7)

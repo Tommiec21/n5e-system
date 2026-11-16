@@ -165,3 +165,21 @@ test("Ability Check Mastery raises the ability's checks and every skill that use
   assert.equal(s.skills.ath.mastery, 2, "Athletics: White Wolf counts once, plus Training");
   assert.equal(s.skills.acr.mastery, 0, "a Dexterity skill is unaffected");
 });
+
+// King 2026-11-16: Condition resistance: advantage on saves against a condition or a condition group.
+import { resistsAny } from "../module/rules/condition-lifecycle.mjs";
+test("Condition Resistance: an effect field for a condition or a whole group, giving advantage on its saves", () => {
+  assert.equal(fieldInfo("n5e.conditionResist", N5E).name, "Condition Resistance");
+  const [card] = changeCards([{ key: "n5e.conditionResist", mode: 2, value: "group:physical" }], catalog, {}, N5E);
+  assert.equal(card.input, "select");
+  assert.ok(card.options.find(o => o.value === "group:physical" && o.selected));
+  assert.ok(card.options.some(o => o.value === "bruised"));
+  assert.equal(describeChange({ key: "n5e.conditionResist", value: "group:physical" }, catalog, N5E), "Condition Resistance: all Physical conditions");
+  assert.equal(validateEffectChanges([{ key: "n5e.conditionResist", mode: 2, value: "bruised" }], [], catalog).errors.length, 0);
+  const a = makeActor({ system: baseAbilities, items: [taiSpec(1)], n5eChanges: [{ key: "n5e.conditionResist", value: "group:physical", mode: 2 }, { key: "n5e.conditionResist", value: "dazed", mode: 2 }] });
+  const physical = Object.entries(N5E.conditions).find(([, d]) => (d.tags ?? []).includes("physical") && !(d.tags ?? []).includes("mental"))[0];
+  const mentalOnly = Object.entries(N5E.conditions).find(([k, d]) => (d.tags ?? []).length && (d.tags ?? []).every(t => t === "mental") && k !== "dazed")[0];
+  assert.ok(resistsAny(a, [physical]), `${physical} is Physical`);
+  assert.ok(resistsAny(a, ["dazed"]), "a named condition");
+  assert.ok(!resistsAny(a, [mentalOnly]), `${mentalOnly} isn't resisted`);
+});

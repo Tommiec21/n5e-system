@@ -18,6 +18,7 @@ import { createN5eRoll } from "../dice/n5e-roll.mjs";
  */
 import { chilledMove, gainFury, spendFury, furyTurnEnd, jutsuTrackers, trackerEffectData, marksToExpire, gateChanges, nextGate, closeGatesPlan, resavesDue, expiringEffects } from "../rules/trackers.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
+import { resistsAny } from "../rules/condition-lifecycle.mjs";
 import { innerGates } from "../config/combat.mjs";
 import { applyButtons } from "./activity-buttons.mjs";
 import { rollWithSpec } from "../dice/roll.mjs";
@@ -301,6 +302,8 @@ export async function rollResave(btn, event, { message } = {}) {
   const r = effect.flags.n5e.resave;
   btn.disabled = true;
   const spec = { ...rollSpec(actor, "save", r.ability), label: `${abilities[r.ability]?.label ?? r.ability} save: end ${effect.name}` };
+  // Condition resistance (King 2026-11-16): a save to end a resisted condition is made with advantage.
+  if ( effect.type === "condition" && resistsAny(actor, [effect.system?.key]) ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];
   return rollWithSpec(actor, spec, { event, dc: r.dc, onResult: async res => {
     if ( !res.success ) return;
     await effect.delete();

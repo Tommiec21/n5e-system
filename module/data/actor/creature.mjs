@@ -195,7 +195,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.conditionPenalties = pen;
     this.modifiers = mods;
     // n5e.resist / n5e.immune (NPC3): resistances and immunities from effects join the creature's own.
-    for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune]] ) {
+    // n5e.conditionResist: condition resistances (a condition key or group:<tag>) join traits.conditionResist.
+    for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune], ["conditionResist", mods.conditionResist ?? []]] ) {
       if ( !list.length ) continue;
       const set = this.traits[field] instanceof Set ? this.traits[field] : new Set(this.traits[field] ?? []);
       for ( const type of list ) set.add(type);

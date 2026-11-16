@@ -529,7 +529,7 @@ function ampBuffSection(item, source) {
   const effects = list(item.effects).filter(e => !e.disabled);
   const changes = [...list(source.changes), ...effects.flatMap(e => list(e.changes))];
   const rules = [...list(item.flags?.n5e?.rules), ...effects.flatMap(e => list(e.flags?.n5e?.rules))];
-  const lines = [...changes.filter(c => c?.key).map(c => describeChange(c, catalog)), ...rules.map(r => describeRule(r, N5E))];
+  const lines = [...changes.filter(c => c?.key).map(c => describeChange(c, catalog, N5E)), ...rules.map(r => describeRule(r, N5E))];
   return section("What it does", [{ kind: "lines", lines, empty: "Nothing yet. Press Edit to add what this Amp changes.", action: "editAmpBuff", actionLabel: lines.length ? "Edit" : "Add what it does" }]);
 }
 
