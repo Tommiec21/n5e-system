@@ -1,6 +1,6 @@
 # CCOND1 function spec: class and clan conditions
 
-Status: **spec written 2026-11-15 (King: "plan a system for Conditions unique to Classes and Clans … only they can apply them … condition cards that can be dragged and dropped on top of creatures or automatically applied via an apply button"). Awaiting answers and approval.**
+Status: **spec written 2026-11-15 (King: "plan a system for Conditions unique to Classes and Clans … only they can apply them … condition cards that can be dragged and dropped on top of creatures or automatically applied via an apply button"). King answered Q-CC1–Q-CC7 the same day; Q-CC6 found in the books. Awaiting approval to build.**
 
 ## The problem
 
@@ -39,8 +39,9 @@ Foundry supports every piece:
 
 - A card can only be applied by a creature that has its class (or subclass) or its clan. Every route checks this: drag and drop, apply buttons, the sheet and the API.
 - The GM can always apply or remove any card (for adversaries, house rules and fixing mistakes).
-- **Players and creatures they don't own:** applying to an enemy goes through the existing GM review (multiplayer coordination), the same as damage today. An apply button on a card whose save the target failed can go straight through (Q-CC4).
+- **Players and creatures they don't own:** the card is applied through the GM's client automatically, with no approval step (King Q-CC4).
 - Class and clan conditions are left out of the token HUD's status list for players, so the HUD can't bypass the owner rule.
+- **King Q-CC2:** whether a summon, clone or ally may apply one depends on the feature, so the rule is enforced at the table: any **player or the GM** can apply a card. The owner check is a warning (the applier has no matching class or clan), not a block.
 
 ### 4. Ways to apply
 
@@ -55,22 +56,66 @@ Foundry supports every piece:
 - **Medical-Nin:** Blighted, Curse of the Reaper.
 - **The other classes and the clans:** their conditions as each is reviewed (STD6d, STD6e).
 - The current marker activities become apply buttons for the cards.
-- Life Pulse and Hemorrhage Vitality stay effects (they are jutsu-like states, not conditions), unless King says otherwise.
+- Life Pulse and Hemorrhage Vitality are Physical conditions in the book's boxes, so they become cards too.
+
+### 6. Rules from King's answers
+
+- **Tags (Q-CC1):** a class condition counts as its tag for everything (ending, resisting and immunity to Physical, Mental… conditions).
+- **Stacking (Q-CC3):** each card says whether it stacks (ranks) or not; when it doesn't, applying it again replaces it and the new duration wins.
+- **No approval step (Q-CC4):** a player's card goes straight onto the target (through the GM's client when the player doesn't own it), with a chat line saying who applied what.
+- **Applier gone (Q-CC5):** a class condition ends when the creature that applied it dies (0 HP and dead) or leaves the combat.
+- **Visibility (Q-CC7):** a world setting the GM controls: players see a card's full rules on creatures they don't own, or only its name.
+
+### 7. Class conditions found in the books (King Q-CC6: review the books first)
+
+Swept from the docx books in the context folder (2026-11-15). The class conditions sit in text boxes that the class import missed, which is why the features only name them.
+
+| Condition | Tag | Class (feature) |
+| --- | --- | --- |
+| Balance Broken | Physical | Taijutsu Specialist (Moment of Stillness) |
+| Bone Broken | Physical | Taijutsu Specialist (Moment of Stillness) |
+| Flow Broken | Physical | Taijutsu Specialist (Moment of Stillness) |
+| Shattered | Physical | Taijutsu Specialist, Talented Genius (Shatterpoint) |
+| Blighted | Elemental | Medical-Nin, Black Medicine (Toxic Chakra) |
+| Curse of the Reaper (Cursed) | Mental | Medical-Nin, Reaper (Reapers Arsenal) |
+| Life Pulse | Physical | Medical-Nin (Supreme Medic) |
+| Hemorrhage Vitality | Physical | Medical-Nin (Supreme Medic) |
+| Suppressed | Physical | Hunter-Nin (Twisted Medicine) |
+| Disoriented | Mental | Scout-Nin, Cloning Scout (Clones Everywhere) |
+| Ghostburn | Mental | Scout-Nin, Phantom Scout (Phantasmic Eruption) |
+| Momentary Flaw | Elemental | Scout-Nin, Elemental Scout (Perceived Weakness) |
+| Hobbled | Physical | Weapon Specialist (Savage Assault) |
+| Shaken (Savage Assault's box) | Physical | Weapon Specialist: compare with the core Shaken in CCOND1b |
+| Provoked | Mental | Obsidian Guard |
+| Reaver Echo | Physical | Reaver |
+| Transfiguration | Physical | Medical-Nin, Transmuter (Transfigured Technique) |
+| Psychosis | Mental | Genjutsu Specialist (Venom Strike Expert) |
+| Identity Crisis | Mental | Genjutsu Specialist (Betray Yourself) |
+
+- **Bone Broken (Physical):** disadvantage on Constitution saves; can't Dash, Disengage or Dodge; DR reduced to 0; disarmed of everything it holds and can't hold weapons or items; ends at the end of its turn.
+- **Flow Broken (Physical):** disadvantage on Dexterity saves; can't cast jutsu that share a keyword with a jutsu it cast since the start of its last turn; initiative count −4 (it moves in the order at the start of the next round); ends at the end of its turn.
+- **Not class or clan conditions:** Infested (Tsunade's) and Psychic Malignance (Jiraiya's) belong to jutsu; Slowed and Shaken from jutsu are core conditions.
+- **Clans:** no clan condition is worded the same way in the books; the clan pass (STD6e, CCOND1c) reads each clan for them.
+- **Text issue:** the class conditions' boxes were not carried into the transcription (`N5e-Rules-KB` has them only for the Moment of Stillness three).
 
 ## Phases
 
 | Phase | What |
 | --- | --- |
 | CCOND1a | The `condition` item type and card sheet, the registry, owner checks, drag onto tokens and sheets, apply buttons, the GM override, the Features-tab Conditions section, tests. |
-| CCOND1b | Cards for the reviewed classes (Taijutsu Specialist, Medical-Nin, Ninjutsu Specialist) with King's definitions of Bone Broken and Flow Broken. |
+| CCOND1b | Cards for every class condition in the table above (text from the books' boxes), and the class features' apply buttons pointed at them. |
 | CCOND1c | The other classes' cards as STD6d reaches them, then the clans' cards with STD6e. |
 
 ## Questions for King
 
+Answered 2026-11-15:
+- Q-CC1 yes. Q-CC2 any player or GM can apply (it depends on the feature). Q-CC3 depends on the condition; generally the new duration wins. Q-CC4 no approval, let it go through. Q-CC5 yes. Q-CC6 review the books first (done: section 7). Q-CC7 a GM-controlled toggle.
+
+Original questions:
 - **Q-CC1 Tags:** do class conditions count as their tag for everything (for example "Balance Broken is treated as a Physical condition", so features that end, resist or make you immune to Physical conditions work on it)?
 - **Q-CC2 Who:** only the creature with the class or clan, or also things it controls (summons, clones, a jutsu it gave an ally)? And the GM can always apply any card?
 - **Q-CC3 Stacking:** if two creatures with the same class apply the same condition to one target, is it one instance (refreshed, the higher DC kept) or two?
-- **Q-CC4 Players applying to enemies:** GM approval every time, or straight through when it comes from a save the target failed (or a hit) on the card?
+- **Q-CC4 Players applying to enemies:** GM approval every time, or straight through?
 - **Q-CC5 Applier gone:** does a class condition end when the creature that applied it dies or leaves the fight?
 - **Q-CC6 Definitions:** the full text of Bone Broken and Flow Broken (and any other class or clan condition missing from the books).
 - **Q-CC7 Visibility:** should players see a card's full rules when an enemy applies it to them (hover text), or only its name?
@@ -78,3 +123,4 @@ Foundry supports every piece:
 ## Progress log
 
 - 2026-11-15 Claude: spec written from King's request; existing class conditions surveyed from the feature text.
+- 2026-11-15 King: answers Q-CC1–Q-CC7. Claude: swept the books for class conditions (19 found, Bone and Flow Broken defined); spec updated.
