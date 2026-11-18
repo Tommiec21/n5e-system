@@ -63,3 +63,13 @@ Journal Desk now implements its own library, open-entry tabs, rich-text editor, 
 GM03b remains: UUID relationship controls, campaign filtering, navigation history, persisted open tabs and optional templates. GM04 provides curated starter data; GM05 adds richer suggestion filters and mission/adversary adapters. GM06 includes visual/user acceptance polish and safe sharing. B/D/C remain GM08/09/10.
 
 Offline evidence: four storage regression tests passed on attempt 1; focused lint passed. CI is reserved as attempt 2 for these scenarios. No live testing or local installation. UI behavior and visual fidelity await user testing; this is a functional first slice, not a claim of complete A parity.
+
+## GM03b — implemented 2026-11-18
+
+Adds campaign assignment and library filtering, labeled links to workspace records/Actors/Scenes, Back/Forward navigation, remembered saved tabs and optional starter headings. Missing links display a warning; removing a link never deletes its target. Advanced UUID input supports other native journals without converting them.
+
+Campaign/link edits remain drafts until Save. Templates append headings and never replace existing text. User preferences contain tab references, not unsaved writing; closing with unsaved changes still requires confirmation. Last 30 tabs are remembered and deleted/unsupported documents are skipped. History is local to the open window. External documents open through their own sheets.
+
+Validation: five new navigation/draft tests passed on local attempt 1; focused lint passed. UI changes after that check are included in the reserved PR CI attempt 2; main CI is reserved as attempt 3. No live testing or local installation. Visual acceptance and broader usability refinements remain GM06; curated starter lore remains GM04.
+
+GM03a release confirmed: v0.65.0-alpha.1. GM03b prepared version: 0.65.0-alpha.2; publication pending.

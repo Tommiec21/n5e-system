@@ -1,3 +1,4 @@
+import { relationshipUpdate } from "./workspace-navigation.mjs";
 export const ENTRY_KINDS = ["note", "campaign", "session", "mission", "character", "faction", "country", "village", "location", "idea"];
 
 /** Only workspace text pages are editable here; other journal types retain their own editors. */
@@ -36,6 +37,7 @@ export async function saveEntry(page, draft) {
   if (!game.user.isGM || !page.testUserPermission(game.user, "OWNER")) throw new Error("This entry is not editable.");
   if (!isWorkspacePage(page)) throw new Error("Open this entry in its original journal editor.");
   if (pageSnapshot(page) !== draft.base) throw new Error("This entry changed elsewhere. Keep your draft, or reload the saved entry before editing again.");
-  await page.update(entryUpdate(draft));
+  const metadata = "links" in draft ? relationshipUpdate(draft) : {};
+  await page.update({ ...entryUpdate(draft), ...metadata });
   return pageSnapshot(page);
 }

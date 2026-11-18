@@ -1,4 +1,5 @@
 import { ENTRY_KINDS, isWorkspacePage, pageSnapshot, createEntry, saveEntry } from "./workspace-store.mjs";
+import { cleanSession, visit, starterText } from "./workspace-navigation.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -11,7 +12,10 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     form: { handler: JournalDesk.onSave, closeOnSubmit: false },
     actions: { open: JournalDesk.onOpen, create: JournalDesk.onCreate, ideas: JournalDesk.onIdeas,
       favorite: JournalDesk.onFavorite, reload: JournalDesk.onReload, closeTab: JournalDesk.onCloseTab,
-      search: JournalDesk.onSearch, insert: JournalDesk.onInsert, original: JournalDesk.onOriginal }
+      search: JournalDesk.onSearch, insert: JournalDesk.onInsert, original: JournalDesk.onOriginal,
+      back: JournalDesk.onBack, forward: JournalDesk.onForward, filter: JournalDesk.onFilter,
+      link: JournalDesk.onLink, unlink: JournalDesk.onUnlink, follow: JournalDesk.onFollow,
+      template: JournalDesk.onTemplate }
   };
   static PARTS = { body: { template: "systems/n5e/templates/apps/journal-desk.hbs" } };
   drafts = new Map();
@@ -19,6 +23,40 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
   query = "";
   showIdeas = false;
   busy = false;
+  restored = false;
+  campaign = "";
+  history = [];
+  cursor = -1;
+
+  /** Recreate saved tabs from documents, ignoring deleted or unsupported records. */
+  async restoreTabs() {
+    if (this.restored) return;
+    this.restored = true;
+    const session = cleanSession(game.user.getFlag("n5e", "deskSession") ?? {});
+    for (const uuid of session.tabs) {
+      try { const page = await fromUuid(uuid); if (isWorkspacePage(page)) this.drafts.set(uuid, this.readDraft(page)); }
+      catch { /* A missing reference does not prevent the workspace opening. */ }
+    }
+    this.active = this.drafts.has(session.active) ? session.active : this.drafts.keys().next().value ?? null;
+    this.campaign = session.campaign;
+    this.showIdeas = session.ideas;
+    if (this.active) Object.assign(this, visit([], -1, this.active));
+  }
+
+  /** Read only workspace-owned fields into the unsaved editor state. */
+  readDraft(page) {
+    const meta = page.flags.n5e.preparation;
+    const draft = { name: page.name, content: page.text?.content ?? "", kind: meta.kind,
+      campaignUuid: meta.campaignUuid ?? "", links: structuredClone(meta.links ?? []),
+      base: pageSnapshot(page), savedName: page.name, savedContent: page.text?.content ?? "" };
+    draft.savedRelationships = JSON.stringify([draft.campaignUuid, draft.links]);
+    return draft;
+  }
+
+  async rememberTabs() {
+    await game.user.setFlag("n5e", "deskSession", cleanSession({ tabs: [...this.drafts.keys()],
+      active: this.active, campaign: this.campaign, ideas: this.showIdeas }));
+  }
 
   /** Show unsaved status without rerendering or interrupting the text cursor. */
   _onRender(context, options) {
@@ -40,34 +78,53 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     const form = new foundry.applications.ux.FormDataExtended(this.element).object;
     draft.name = form.name ?? draft.name;
     draft.content = form.content ?? draft.content;
+    draft.campaignUuid = form.campaignUuid ?? draft.campaignUuid;
   }
 
   /** Unsaved text remains in its tab until explicitly saved or discarded. */
-  dirty(draft) { return draft.name !== draft.savedName || draft.content !== draft.savedContent; }
+  dirty(draft) { return draft.name !== draft.savedName || draft.content !== draft.savedContent
+    || JSON.stringify([draft.campaignUuid, draft.links]) !== draft.savedRelationships; }
 
   async _prepareContext() {
     if (!game.user.isGM) throw new Error("Journal Desk is GM-only.");
+    await this.restoreTabs();
     const favorites = game.user.getFlag("n5e", "deskFavorites") ?? [];
     const entries = game.journal.contents.flatMap(j => j.pages.contents.filter(isWorkspacePage)
-      .map(p => ({ uuid: p.uuid, name: p.name, kind: p.flags.n5e.preparation.kind, favorite: favorites.includes(p.uuid) })));
+      .map(p => ({ uuid: p.uuid, name: p.name, kind: p.flags.n5e.preparation.kind,
+        campaignUuid: p.flags.n5e.preparation.campaignUuid ?? "", favorite: favorites.includes(p.uuid) })));
     entries.sort((a, b) => Number(b.favorite) - Number(a.favorite) || a.name.localeCompare(b.name));
     const draft = this.drafts.get(this.active);
-    return { entries: entries.filter(e => `${e.name} ${e.kind}`.toLowerCase().includes(this.query.toLowerCase())),
+    const campaigns = entries.filter(e => e.kind === "campaign");
+    for (const uuid of [draft?.campaignUuid, this.campaign].filter(Boolean)) {
+      if (!campaigns.some(e => e.uuid === uuid)) campaigns.push({ uuid, name: "Missing campaign (clear to remove)" });
+    }
+    const records = [...entries, ...game.actors.contents.map(a => ({ uuid: a.uuid, name: a.name, kind: "Actor" })),
+      ...game.scenes.contents.map(s => ({ uuid: s.uuid, name: s.name, kind: "Scene" }))].filter(e => e.uuid !== this.active);
+    const linked = await Promise.all((draft?.links ?? []).map(async l => {
+      try { const doc = await fromUuid(l.uuid); return { ...l, name: doc?.name ?? "Missing record", missing: !doc }; }
+      catch { return { ...l, name: "Missing record", missing: true }; }
+    }));
+    return { entries: entries.filter(e => (!this.campaign || e.uuid === this.campaign || e.campaignUuid === this.campaign)
+        && `${e.name} ${e.kind}`.toLowerCase().includes(this.query.toLowerCase())),
+      records, campaigns: campaigns.filter(e => e.uuid !== this.active).map(e => ({ ...e, selected: e.uuid === draft?.campaignUuid })),
+      filters: campaigns.map(e => ({ ...e, selected: e.uuid === this.campaign })), linked,
+      canBack: this.cursor > 0, canForward: this.cursor < this.history.length - 1,
       kinds: ENTRY_KINDS, query: this.query, showIdeas: this.showIdeas, draft, active: this.active,
       tabs: [...this.drafts].map(([uuid, d]) => ({ uuid, name: d.name, active: uuid === this.active, dirty: this.dirty(d) })),
       dirty: draft && this.dirty(draft), favorite: favorites.includes(this.active),
       ideas: entries.filter(e => e.kind === "idea" && e.uuid !== this.active).slice(0, 30) };
   }
 
-  async openPage(uuid) {
+  async openPage(uuid, recordHistory = true) {
     this.capture();
     if (!this.drafts.has(uuid)) {
       const page = await fromUuid(uuid);
       if (!isWorkspacePage(page)) throw new Error("This entry needs its original editor.");
-      this.drafts.set(uuid, { name: page.name, content: page.text?.content ?? "", kind: page.flags.n5e.preparation.kind,
-        base: pageSnapshot(page), savedName: page.name, savedContent: page.text?.content ?? "" });
+      this.drafts.set(uuid, this.readDraft(page));
     }
     this.active = uuid;
+    if (recordHistory) Object.assign(this, visit(this.history, this.cursor, uuid));
+    await this.rememberTabs();
     return this.render({ force: true });
   }
 
@@ -86,9 +143,12 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     this.busy = true;
     try {
       const draft = this.drafts.get(this.active);
-      draft.base = await saveEntry(await fromUuid(this.active), draft);
-      draft.savedName = draft.name;
-      draft.savedContent = draft.content;
+      const submitted = structuredClone(draft);
+      draft.base = await saveEntry(await fromUuid(this.active), submitted);
+      this.capture();
+      draft.savedName = submitted.name;
+      draft.savedContent = submitted.content;
+      draft.savedRelationships = JSON.stringify([submitted.campaignUuid, submitted.links]);
       ui.notifications.info("Entry saved.");
       await this.render();
     } catch (error) { ui.notifications.error(error.message); }
@@ -116,6 +176,9 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     if (!await this.confirmDiscard([this.drafts.get(uuid)])) return;
     this.drafts.delete(uuid);
     if (this.active === uuid) this.active = this.drafts.keys().next().value ?? null;
+    this.history = this.history.filter(u => u !== uuid);
+    this.cursor = this.active ? this.history.lastIndexOf(this.active) : -1;
+    await this.rememberTabs();
     return this.render();
   }
   static async onInsert(event, target) {
@@ -139,6 +202,50 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
   async close(options = {}) {
     this.capture();
     if (this.busy || !await this.confirmDiscard([...this.drafts.values()])) return this;
+    await this.rememberTabs();
     return super.close(options);
+  }
+
+  async navigate(step) {
+    const next = this.cursor + step;
+    if (next < 0 || next >= this.history.length) return;
+    try { await this.openPage(this.history[next], false); this.cursor = next; return this.render(); }
+    catch (error) { ui.notifications.warn(error.message); }
+  }
+  static onBack() { return this.navigate(-1); }
+  static onForward() { return this.navigate(1); }
+  static async onFilter() {
+    this.capture(); this.campaign = this.element.querySelector("[name=campaignFilter]").value;
+    await this.rememberTabs(); return this.render();
+  }
+  static async onLink() {
+    this.capture();
+    const draft = this.drafts.get(this.active);
+    const uuid = this.element.querySelector("[name=linkUuid]").value.trim()
+      || this.element.querySelector("[name=linkRecord]").value;
+    try {
+      const doc = await fromUuid(uuid);
+      if (!doc || !["Actor", "JournalEntry", "JournalEntryPage", "Scene"].includes(doc.documentName)) throw new Error("Choose an Actor, Scene or journal document UUID.");
+      if (uuid === this.active) throw new Error("Choose a different record.");
+      if (!draft.links.some(l => l.uuid === uuid)) draft.links.push({ uuid, label: this.element.querySelector("[name=linkLabel]").value.trim() || "Related" });
+      return this.render();
+    } catch (error) { ui.notifications.warn(error.message); }
+  }
+  static onUnlink(event, target) {
+    this.capture(); const draft = this.drafts.get(this.active);
+    draft.links = draft.links.filter(l => l.uuid !== target.dataset.uuid); return this.render();
+  }
+  static async onFollow(event, target) {
+    this.capture();
+    try {
+      const doc = await fromUuid(target.dataset.uuid);
+      if (!doc) return ui.notifications.warn("This linked record no longer exists.");
+      if (isWorkspacePage(doc)) return this.openPage(doc.uuid);
+      return doc.sheet?.render(true);
+    } catch (error) { ui.notifications.warn(error.message); }
+  }
+  static onTemplate() {
+    this.capture(); const draft = this.drafts.get(this.active);
+    draft.content += starterText(draft.kind); return this.render();
   }
 }
