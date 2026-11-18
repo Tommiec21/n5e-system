@@ -495,3 +495,13 @@ The single action card is a layer over the existing handlers. Do not move rollin
 ## UX1 — Claude, 2026-11-16 (published 0.60.0-alpha.1)
 - Adding an effect change key: also add its plain entry in `config/effect-fields.mjs` (tests/ux1 fails otherwise). Descriptions: at most 2 sentences.
 - The effect editor's roll rules come from the builder rows (`n5eRules.*`), not a JSON box; `rowToRule` keeps every field the builder doesn't show, and tests/ux1 checks that every content rule survives the builder unchanged.
+
+## GM02 — Codex, 2026-11-18
+
+User approved starting the GM workspace batches after selecting A Journal Desk. Source baseline: 97bfa93 / 0.64.0-alpha.1. Integration contract: docs/GM_WORKSPACE.md. GM02 review is complete; GM03 runtime implementation is next, not yet implemented. No journal-workspace ownership overlap found in the inspected ledger.
+
+Use a dedicated ApplicationV2 workspace over native journals, without replacing Monk's sheets or directory hooks. Preserve mission planner records; preparation prose uses a separate linked page. B, D and C remain optional future layouts sharing the same data. No tests, live verification, deployment or release performed in this documentation-only batch.
+
+## GM03a — Codex, 2026-11-18
+
+Implemented native Journal Desk first slice; see docs/GM_WORKSPACE.md for scope and remaining GM03b. No Monk's dependency or assumed compatibility. Tests: storage scenarios 1/3 passed (4 tests); focused lint passed. CI reserved as attempt 2. No live testing/local installation. Publishing pending.

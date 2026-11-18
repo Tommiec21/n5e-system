@@ -11,6 +11,7 @@ import { registerMigrationSetting } from "./migration/runner.mjs";
 import RulesConfig from "./applications/settings/rules-config.mjs";
 import AutomationRecovery from "./applications/gm/automation-recovery.mjs";
 import ChatAppearanceConfig from "./applications/settings/chat-appearance.mjs";
+import JournalDesk from "./applications/gm/journal-desk.mjs";
 import { applyChatAppearance } from "./workflow/chat-appearance.mjs";
 
 /**
@@ -18,6 +19,8 @@ import { applyChatAppearance } from "./workflow/chat-appearance.mjs";
  * panel, registered here as a settings menu), plus the migration version setting.
  */
 export function registerSettings() {
+  game.settings.registerMenu("n5e", "journalDesk", { name: "N5e Journal Desk", label: "Open Journal Desk",
+    hint: "Write and organize campaigns, missions, characters and ideas.", icon: "fa-solid fa-book-open", type: JournalDesk, restricted: true });
   // Per user (King Q-R1): skip the roll dialog. Off by default; visible in Configure Settings.
   game.settings.register("n5e", "rollWithoutDialog", {
     name: "Roll without the dialog", scope: "client", config: true, type: Boolean, default: false,

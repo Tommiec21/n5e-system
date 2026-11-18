@@ -1,3 +1,10 @@
+## 0.65.0-alpha.1 — Native Journal Desk (GM03a)
+
+- GM writing workspace with library, tabs, rich text, search, favorites and saved ideas.
+- Create private campaign, mission, session, character and world notes without Monk's.
+- Protect dirty drafts and reject stale saves; existing mission and third-party pages stay with their own editors.
+- Configure Settings > N5e Journal Desk. No live Foundry verification; remaining layout features are tracked in docs/GM_WORKSPACE.md.
+
 ## 0.64.0-alpha.1 — CHATUI1: chat font sizes and fonts
 
 King's answers: the GM sets everyone's default and each user can use their own (Q-F1), a heading font and a body font (Q-F2), all N5e chat messages (Q-F3).
