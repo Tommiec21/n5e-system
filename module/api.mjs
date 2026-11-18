@@ -152,7 +152,15 @@ export async function endAmp(actor, idOrKey) {
   return (await import("./workflow/amp-cards.mjs")).endAmp(actor, idOrKey);
 }
 
+/** Open the native GM writing workspace without requiring a journal module. */
+export async function journalDesk() {
+  if (!game.user.isGM) return ui.notifications.warn("Journal Desk is GM-only.");
+  const { default: Desk } = await import("./applications/gm/journal-desk.mjs");
+  return new Desk().render({ force: true });
+}
+
 export default {
+  journalDesk,
   emitEffectEvent, registerAppearanceProvider, refreshEffectAppearances, approveEffectMacros,
   coordinateCommand, registerReaction, listReactions, chooseReaction, resolveReactionChain,
   observerVisibility,

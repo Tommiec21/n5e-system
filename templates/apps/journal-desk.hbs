@@ -1,0 +1,19 @@
+<section class="jd-shell">
+  <header class="jd-toolbar"><strong>Journal Desk</strong><select name="kind" aria-label="New entry type">{{#each kinds}}<option value="{{this}}">{{this}}</option>{{/each}}</select><button type="button" data-action="create">New entry</button><button type="button" data-action="ideas" aria-expanded="{{showIdeas}}">Ideas</button></header>
+  <div class="jd-layout {{#if showIdeas}}with-ideas{{/if}}">
+    <nav class="jd-library" aria-label="Workspace library">
+      <label>Find an entry<input name="search" type="search" value="{{query}}" placeholder="Title or type"></label><button type="button" data-action="search">Search</button>
+      <h3>Library</h3>{{#each entries}}<button type="button" class="jd-entry" data-action="open" data-uuid="{{uuid}}">{{#if favorite}}★ {{/if}}{{name}}<small>{{kind}}</small></button>{{else}}<p>Create an entry to start writing.</p>{{/each}}
+    </nav>
+    <main class="jd-main">
+      <nav class="jd-tabs" aria-label="Open entries">{{#each tabs}}<span class="{{#if active}}active{{/if}}"><button type="button" data-action="open" data-uuid="{{uuid}}">{{name}}{{#if dirty}} •{{/if}}</button><button type="button" data-action="closeTab" data-uuid="{{uuid}}" aria-label="Close {{name}}">×</button></span>{{/each}}</nav>
+      {{#if draft}}
+      <div class="jd-heading"><label>Title<input name="name" value="{{draft.name}}"></label><button type="button" data-action="favorite">{{#if favorite}}★ Favorite{{else}}☆ Favorite{{/if}}</button></div>
+      <div class="jd-meta"><span>{{draft.kind}} · GM journal</span><span data-save-state aria-live="polite">{{#if dirty}}Unsaved changes{{else}}Saved{{/if}}</span></div>
+      <prose-mirror name="content" value="{{draft.content}}"></prose-mirror>
+      <footer><button type="button" data-action="original">Open journal</button><button type="button" data-action="reload">Reload saved</button><button type="submit" class="jd-save">Save entry</button></footer>
+      {{else}}<div class="jd-empty"><h2>A place for your next story</h2><p>Write a mission, collect a character idea, or start a campaign. Choose an entry type and select New entry.</p><p>Ideas are optional. Your writing can start with a blank page.</p></div>{{/if}}
+    </main>
+    {{#if showIdeas}}<aside class="jd-ideas"><h3>Saved ideas</h3><p>Your idea entries, ready to reuse.</p>{{#each ideas}}<article><button type="button" data-action="open" data-uuid="{{uuid}}">{{name}}</button>{{#if ../draft}}<button type="button" data-action="insert" data-uuid="{{uuid}}">Insert text</button>{{/if}}</article>{{else}}<p>Choose “idea” and New entry to save inspiration here. The starter suggestion library comes in a later batch.</p>{{/each}}</aside>{{/if}}
+  </div>
+</section>
