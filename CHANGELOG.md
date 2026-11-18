@@ -1,3 +1,10 @@
+## 0.65.0-alpha.2 — Journal Desk navigation (GM03b)
+
+- Campaign assignment/filtering and labeled links to existing records.
+- Back/Forward navigation, remembered saved tabs, and optional appended starter headings.
+- Unsaved writing remains in drafts; preferences store only references.
+- Offline checks only; no live Foundry verification.
+
 ## 0.65.0-alpha.1 — Native Journal Desk (GM03a)
 
 - GM writing workspace with library, tabs, rich text, search, favorites and saved ideas.

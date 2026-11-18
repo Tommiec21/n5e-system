@@ -505,3 +505,9 @@ Use a dedicated ApplicationV2 workspace over native journals, without replacing 
 ## GM03a — Codex, 2026-11-18
 
 Implemented native Journal Desk first slice; see docs/GM_WORKSPACE.md for scope and remaining GM03b. No Monk's dependency or assumed compatibility. Tests: storage scenarios 1/3 passed (4 tests); focused lint passed. CI reserved as attempt 2. No live testing/local installation. Publishing pending.
+
+## GM03b — Codex ownership, 2026-11-18
+
+Scope: linked records, campaign assignment/filtering, navigation history, remembered tabs and optional starter headings. GM03a released as v0.65.0-alpha.1 after PR and main validation passed. Editing only Journal Desk files and batch documentation. No live testing or local installation. Validation budget: new navigation scenarios local attempt 1, then PR/main CI; no local full-suite rerun.
+
+GM03b implementation complete; five new offline tests and focused lint passed. PR and main release validation remain reserved; no live verification/local installation. See docs/GM_WORKSPACE.md for remembered-tab limits and outstanding content/UI batches.
