@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "dragons-rage",
-    "description": "<p><b>Battle Amp</b></p><p>Draconic Presence. You gain a +1 bonus to your AC and a +10 bonus to your speed. This increases to +2 AC and +20 speed at 15th level.</p><p>Dragon Claws. Your [Unarmed Damage] damage type becomes your chosen nature releases damage type.</p><p>Wyrm Surge. Non Hijutsu you cast with your chosen nature release gains the Wyrm Surge Keyword as part of their casting. Jutsu with this keyword will always inflict 1 rank of their associated condition on a failed save or if the attack is a critical hit, unless the jutsu already inflicts the associated condition on a failure. This increases to 2 ranks at 7th and 3 ranks at15th level. (Earth Release: Shaken, Wind Release: Bleed, Fire Release: Burned, Water Release: Chilled, Lightning Release: Shocked).</p><p>Ascended (7th Level +)</p><p>Superior Release. When you Clash using a jutsu with your chosen nature release keyword, you gain a rank of Mastery to the check. This increases to two ranks at 15th level.</p><p>Seal Consumption. While in Dragons Rage, at the end of each of your turns, remove 1 rank of a Mental Condition you have, and gain 4 Temporary Chakra Points if you do.</p><p>Awakened (15th Level +)</p><p>Unbound Savagery. Ryu Clan Hijutsu you cast cannot have its damage reduced or altered by hostile jutsu effects or conditions you may have.</p><p>Draconic Supremacy. Ryu Clan Hijutsu you cast at D-Rank, are cast at no Chakra cost.</p>",
+    "description": "<p><b>Battle Amp</b></p><p>Draconic Presence. You gain a +1 bonus to your AC and a +10 bonus to your speed.</p><p>Dragon Claws. Your [Unarmed Damage] damage type becomes your chosen nature releases damage type.</p><p>Wyrm Surge. Non Hijutsu you cast with your chosen nature release gains the Wyrm Surge Keyword as part of their casting. Jutsu with this keyword will always inflict 2 ranks of their associated condition on a failed save or if the attack is a critical hit, unless the jutsu already inflicts the associated condition on a failure. (Earth Release: Shaken, Wind Release: Bleed, Fire Release: Burned, Water Release: Chilled, Lightning Release: Shocked).</p><p>Ascended</p><p>Superior Release. When you Clash using a jutsu with your chosen nature release keyword, you gain a rank of Mastery to the check.</p><p>Seal Consumption. While in Dragons Rage, at the end of each of your turns, remove 1 rank of a Mental Condition you have, and gain 4 Temporary Chakra Points if you do.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "non-clan-latent-latent-ryu-latent-dragons-rage-i-variant-1",
       "subclass": ""
     },
-    "summary": "+1 AC and +10 speed (+2 and +20 at 15th). Dragon Claws take your release's damage type and Wyrm Surge adds conditions; more at 7th and 15th.",
+    "summary": "+1 AC and +10 speed. Dragon Claws take your release's damage type and Wyrm Surge adds 2 ranks of conditions.",
     "activation": "action",
     "giveable": false,
     "startOnInitiative": "",
@@ -45,16 +45,18 @@
     "changes": [
       {
         "key": "system.bonuses.ac",
-        "value": "lvl(1:1,15:2)",
+        "value": "1",
         "mode": 2
       },
       {
         "key": "system.bonuses.speed",
-        "value": "lvl(1:10,15:20)",
+        "value": "10",
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "dragons-rage",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -69,7 +71,34 @@
           "text": "Dragon Claws: unarmed attacks can use Constitution in place of Strength."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>Draconic Presence. You gain a +1 bonus to your AC and a +10 bonus to your speed. This increases to +2 AC and +20 speed at 15th level.</p><p>Dragon Claws. Your [Unarmed Damage] damage type becomes your chosen nature releases damage type.</p><p>Wyrm Surge. Non Hijutsu you cast with your chosen nature release gains the Wyrm Surge Keyword as part of their casting. Jutsu with this keyword will always inflict 1 rank of their associated condition on a failed save or if the attack is a critical hit, unless the jutsu already inflicts the associated condition on a failure. This increases to 2 ranks at 7th and 3 ranks at15th level. (Earth Release: Shaken, Wind Release: Bleed, Fire Release: Burned, Water Release: Chilled, Lightning Release: Shocked).</p><p>Ascended (7th Level +)</p><p>Superior Release. When you Clash using a jutsu with your chosen nature release keyword, you gain a rank of Mastery to the check. This increases to two ranks at 15th level.</p><p>Seal Consumption. While in Dragons Rage, at the end of each of your turns, remove 1 rank of a Mental Condition you have, and gain 4 Temporary Chakra Points if you do.</p><p>Awakened (15th Level +)</p><p>Unbound Savagery. Ryu Clan Hijutsu you cast cannot have its damage reduced or altered by hostile jutsu effects or conditions you may have.</p><p>Draconic Supremacy. Ryu Clan Hijutsu you cast at D-Rank, are cast at no Chakra cost.</p>",
+        "summary": "+1 AC and +10 speed (+2 and +20 at 15th). Dragon Claws take your release's damage type and Wyrm Surge adds conditions; more at 7th and 15th.",
+        "changes": [
+          {
+            "key": "system.bonuses.ac",
+            "value": "lvl(1:1,15:2)",
+            "mode": 2
+          },
+          {
+            "key": "system.bonuses.speed",
+            "value": "lvl(1:10,15:20)",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Can't be ended early."
+          },
+          {
+            "key": "note",
+            "text": "Dragon Claws: unarmed attacks can use Constitution in place of Strength."
+          }
+        ],
+        "name": "Dragons Rage"
+      }
     }
   },
   "_stats": {

@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "crash-maelstrom",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -62,14 +64,41 @@
         },
         {
           "key": "note",
-          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (half the dice for an area). This is added automatically when you cast."
         },
         {
           "key": "note",
           "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>When you enter your Crash state, by spending 1 Focus, you become a Maelstrom. You can benefit from two stances from Shift Tides at once, and once per turn, when you deal Cold damage to a creature with a Water Release Ninjutsu, you can inflict one of the affected creatures with Tidal Draw until the beginning of your next turn.</p>",
+        "summary": "Crash, plus two Shift Tides stances at once and Tidal Draw from Water Release cold damage once per turn.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Two Shift Tides stances at once; once per turn, Water Release cold damage can inflict Tidal Draw until your next turn (when it casts a chakra-molding jutsu you gain temporary chakra: 1d4 D/C, 1d8 B/A, 1d12 S). Each instance of damage you take +2.",
+            "label": "Chakra Surge: Crash (Maelstrom)"
+          },
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          },
+          {
+            "key": "note",
+            "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+          }
+        ],
+        "name": "Crash: Maelstrom"
+      }
     }
   },
   "_stats": {

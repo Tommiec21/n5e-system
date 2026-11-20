@@ -102,6 +102,15 @@ Its own larger release line (0.6x), in pieces:
 | AMP1e | Typeless cards for the self-buff states (Feral, Well Rested, Coordinated, DYNAMIC FORM!, Flawless, stances…). |
 | AMP1f | Jutsu Amps from the audit's candidates, in batches (about 125 to review), typeless unless the jutsu names a type. |
 
+
+## AMP1g: versions (King 2026-11-20)
+
+- **Rule:** every Amp that grows by level is a separate card per version; a character sees and starts only the highest version their character level reaches (Q-G1: character level; there is no multiclassing).
+- **Names:** "[Name] (level)" (Q-G2): Chakra Surge: Flow, Flow (11th), Flow (19th).
+- **Text:** each version shows only its own numbers; lines that start at a level appear only from that version.
+- **Upgrades chosen through a feature** (Perfected, Strength of 100 and 1000, Overheat, Burnout) stay separate cards owned by that feature (0.67.0-alpha.2).
+- **Uses and the reuse wait** are shared by all versions of one Amp.
+
 ## Questions for King
 
 Answered 2026-11-16: Q-A1 clan-provided Amps are Clan Amps. Q-A2 anyone, with a confirmation or warning. Q-A3 the creature picks. Q-A4 the self-buff states and jutsu become typeless Amps, labelled in the audit. Q-A5 both, as a GM setting ("Amps that end on a condition": automatically or a reminder at the table). Q-A6 the order above is approved.
@@ -132,3 +141,4 @@ Original questions:
 - 2026-11-20 King: Blazing's start is in the clan; Caloric Ignition's duration is in the feature. Claude: Blazing from Will of Fire Incarnate (Bonus action, 1 minute, once per long rest); Caloric Ignition 1 minute with a 10-minute wait (0.66.0-alpha.2).
 - 2026-11-20 King: start the next batch. Claude: the 5 class Amp cards (Flash, Elemental Flux, Chained Cascade, Crash Duality, Flow Duality) with buttons; Crash Duality dice as a cast option; Flow's double turn-start Focus fixed (0.67.0-alpha.1). AMP1d done; next AMP1e (typeless self-buff states).
 - 2026-11-20 King (playtest): Crash and Flow came with the 20th-level versions. Claude: class Amp cards belong to their granting feature, not the class (0.67.0-alpha.2). King: every upgrade should be its own version of the Amp; standard drafted (AMP1g).
+- 2026-11-20 King: Q-G1 character level (no multiclassing), Q-G2 '[Name] (level)'. Claude: AMP1g built (0.68.0-alpha.1): 32 Amps versioned into 68 version cards (tools/content/build-amp-versions.py), series/level fields, ampVersionFor, panel shows the highest reached version, shared uses and cooldowns, Mastery ranks by version.

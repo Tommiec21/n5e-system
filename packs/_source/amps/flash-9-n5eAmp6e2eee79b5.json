@@ -1,0 +1,93 @@
+{
+  "_id": "n5eAmp6e2eee79b5",
+  "name": "Flash (9th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2201,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "flash-9",
+    "description": "<p><b>Reflex Amp</b></p><p>Your movement speed is increased by +10.</p><p>You gain a Rank of Mastery to Dexterity based checks.</p><p>You gain a +2 bonus to your Dexterity saving throws and your AC.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "reflex",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "burst-of-speed-pathfinder-scout",
+      "subclass": ""
+    },
+    "summary": "+10 speed, Mastery on Dexterity checks, and +2 to Dexterity saves and AC. Lasts 1 minute.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "10",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.check.dex",
+        "value": "Flash",
+        "mode": 2
+      },
+      {
+        "key": "n5e.save.dex",
+        "value": "2",
+        "mode": 2
+      },
+      {
+        "key": "system.bonuses.ac",
+        "value": "2",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "flash",
+    "level": 9
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Start: a Bonus action on your turn, or when you cast a jutsu granted by Mobile Savant."
+        },
+        {
+          "key": "note",
+          "text": "Ends early with Speed Blitz (an attack with Jack of All: Combat that can't be reacted to) or Burst Rush (Dash as a teleport, bringing an adjacent willing ally)."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp6e2eee79b5"
+}

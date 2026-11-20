@@ -63,7 +63,9 @@ export function ampDefinition(card) {
     duration: { seconds: Number(s.duration?.seconds) || 0, until: s.duration?.until ?? "", concentration: !!s.duration?.concentration },
     uses: { max: String(s.uses?.max ?? ""), per: s.uses?.per ?? "" }, cooldown: Number(s.cooldown) || 0,
     exclusive: s.exclusive ?? "", state: s.state ?? "", tempHp: s.tempHp ?? "",
-    endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS)
+    endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS),
+    // AMP1g: versions of one Amp share a series (the base key) and start at a character level.
+    series: s.series ?? "", level: Number(s.level) || 0
   };
   // UX1: the buff can be written on the card (its Changes, its rules) or in the card's own Active
   // Effects (the effect editor); switched-off effects are left out. All of it applies together.
@@ -106,13 +108,33 @@ export function ownsAmp(actor, def) {
 export function ampUsesLeft(actor, key, def, resolve = v => Number(v)) {
   if ( !def?.uses?.max ) return null;
   const max = Math.max(0, Number(resolve(def.uses.max)) || 0);
-  const spent = Number(actor?.flags?.n5e?.ampUses?.[key]?.spent) || 0;
+  const spent = Number(actor?.flags?.n5e?.ampUses?.[trackKey(key, def)]?.spent) || 0;
   return { max, left: Math.max(0, max - spent), spent };
 }
 
+/** AMP1g (King Q-G1): character level. */
+export const actorLevel = actor => Number(actor?.system?.level ?? actor?.system?.details?.level) || 0;
+
+/**
+ * AMP1g: the version of an Amp for a character: the highest version of the key's series that the
+ * level reaches (the key itself when it has no versions, or none is reached).
+ */
+export function ampVersionFor(registry = {}, key, level = 0) {
+  const series = registry[key]?.series || key;
+  let best = key, bestLevel = -1;
+  for ( const [k, def] of Object.entries(registry) ) {
+    if ( (def.series || k) !== series || (def.level || 0) > level ) continue;
+    if ( (def.level || 0) > bestLevel ) { best = k; bestLevel = def.level || 0; }
+  }
+  return best;
+}
+
+/** AMP1g: the key uses and cooldowns are kept under (one pool for every version of an Amp). */
+export const trackKey = (key, def) => def?.series || key;
+
 /** Seconds of cooldown left (0: ready). */
-export function ampCooldownLeft(actor, key, worldTime = 0) {
-  const until = Number(actor?.flags?.n5e?.ampUses?.[key]?.cooldownUntil) || 0;
+export function ampCooldownLeft(actor, key, worldTime = 0, def = null) {
+  const until = Number(actor?.flags?.n5e?.ampUses?.[trackKey(key, def)]?.cooldownUntil) || 0;
   return Math.max(0, until - worldTime);
 }
 
@@ -129,13 +151,23 @@ export function activeAmpCards(actor) {
  */
 export function ampCardsFor(actor, registry = {}, { worldTime = 0, resolve } = {}) {
   const active = activeAmpCards(actor);
-  return Object.entries(registry).filter(([, def]) => def.owner?.kind !== "any" && def.owner?.id && ownsAmp(actor, def))
+  const level = actorLevel(actor);
+  // AMP1g: of each Amp's versions, only the highest the character's level reaches.
+  const best = new Map();
+  for ( const [key, def] of Object.entries(registry) ) {
+    if ( def.owner?.kind === "any" || !def.owner?.id || !ownsAmp(actor, def) || (def.level || 0) > level ) continue;
+    const s = def.series || key;
+    if ( !best.has(s) || (def.level || 0) > (registry[best.get(s)].level || 0) ) best.set(s, key);
+  }
+  const shown = new Set(best.values());
+  return Object.entries(registry).filter(([key]) => shown.has(key))
     .map(([key, def]) => {
       const uses = ampUsesLeft(actor, key, def, resolve);
       return { key, label: def.label, icon: def.icon, summary: def.summary, card: def.card, type: def.ampType,
         typeLabel: ampTypeLabel(def.ampType), namedType: def.namedType, giveable: def.giveable,
         uses, pips: uses ? Array.from({ length: Math.min(uses.max, 10) }, (_, i) => i < uses.left) : [],
-        cooldown: ampCooldownLeft(actor, key, worldTime), active: !!active[key] };
+        cooldown: ampCooldownLeft(actor, key, worldTime, def),
+        active: Object.keys(active).some(k => trackKey(k, registry[k]) === trackKey(key, def)) };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
 }
@@ -161,7 +193,7 @@ export function ampWarnings(def, { applier = null, target, worldTime = 0, key = 
   if ( owns ) {
     const uses = ampUsesLeft(who, key, def, resolve);
     if ( uses && uses.left <= 0 ) warnings.push(`No uses of ${def.label} left (${uses.max} per ${def.uses.per || "use"}).`);
-    const cd = ampCooldownLeft(who, key, worldTime);
+    const cd = ampCooldownLeft(who, key, worldTime, def);
     if ( cd > 0 ) warnings.push(`${def.label} is cooling down (${Math.ceil(cd / 60)} min left).`);
   }
   return warnings;
@@ -172,16 +204,17 @@ export function ampWarnings(def, { applier = null, target, worldTime = 0, key = 
  */
 export function ampSpendUpdate(actor, key, def, worldTime = 0) {
   if ( !def?.uses?.max && !def?.cooldown ) return null;
-  const prev = actor?.flags?.n5e?.ampUses?.[key] ?? {};
+  const k = trackKey(key, def);
+  const prev = actor?.flags?.n5e?.ampUses?.[k] ?? {};
   const next = { ...prev };
   if ( def.uses?.max ) Object.assign(next, { spent: (Number(prev.spent) || 0) + 1, per: def.uses.per });
-  return { [`flags.n5e.ampUses.${key}`]: next };
+  return { [`flags.n5e.ampUses.${k}`]: next };
 }
 
 /** The cooldown starts when the Amp ends ("10 minutes before re-entry"). */
 export function ampCooldownUpdate(key, def, worldTime = 0, prev = {}) {
   if ( !def?.cooldown ) return null;
-  return { [`flags.n5e.ampUses.${key}`]: { ...prev, cooldownUntil: worldTime + def.cooldown } };
+  return { [`flags.n5e.ampUses.${trackKey(key, def)}`]: { ...prev, cooldownUntil: worldTime + def.cooldown } };
 }
 
 /**

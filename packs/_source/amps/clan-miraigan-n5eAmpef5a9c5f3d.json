@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "miraigan",
-    "description": "<p><b>Will Amp</b></p><p>Your Miraigan grants you the following benefits</p><p>Prophetic Vision. You cannot be surprised and hostile creatures cannot gain advantage on attacks against you for being unseen or Hidden.</p><p>Déjà vu. Once per turn, when a hostile creature casts a Jutsu while within 60 feet of you, you can spend 1 Foresight, to make a Read the Enemy or Identify Jutsu check at No reaction or action cost.</p><p>Eyes of the Wolf. Your foresight extends into social and environmental situations. You gain a rank of Mastery to Insight checks and checks to Identify Jutsu and Read the Enemy. This increases to 2 ranks at 7th level and 3 ranks at 15th level.</p>",
+    "description": "<p><b>Will Amp</b></p><p>Your Miraigan grants you the following benefits</p><p>Prophetic Vision. You cannot be surprised and hostile creatures cannot gain advantage on attacks against you for being unseen or Hidden.</p><p>Déjà vu. Once per turn, when a hostile creature casts a Jutsu while within 60 feet of you, you can spend 1 Foresight, to make a Read the Enemy or Identify Jutsu check at No reaction or action cost.</p><p>Eyes of the Wolf. Your foresight extends into social and environmental situations. You gain a rank of Mastery to Insight checks and checks to Identify Jutsu and Read the Enemy.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -49,7 +49,9 @@
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "miraigan",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -61,10 +63,32 @@
         },
         {
           "key": "note",
-          "text": "Eyes of the Wolf: 1 rank of Mastery (2 at 7th, 3 at 15th); add the extra ranks at the table."
+          "text": "Eyes of the Wolf: the Mastery on Identify Jutsu and Read the Enemy is applied at the table (Insight is automatic)."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>Your Miraigan grants you the following benefits</p><p>Prophetic Vision. You cannot be surprised and hostile creatures cannot gain advantage on attacks against you for being unseen or Hidden.</p><p>Déjà vu. Once per turn, when a hostile creature casts a Jutsu while within 60 feet of you, you can spend 1 Foresight, to make a Read the Enemy or Identify Jutsu check at No reaction or action cost.</p><p>Eyes of the Wolf. Your foresight extends into social and environmental situations. You gain a rank of Mastery to Insight checks and checks to Identify Jutsu and Read the Enemy. This increases to 2 ranks at 7th level and 3 ranks at 15th level.</p>",
+        "summary": "You can't be surprised, and being unseen gives foes no advantage on you. Free Read the Enemy or Identify, and Mastery on Insight, Identify and Read the Enemy.",
+        "changes": [
+          {
+            "key": "n5e.mastery.skill.ins",
+            "value": "Miraigan",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "At initiative it lasts until combat ends; as a Bonus action, 10 minutes, then 10 minutes of non-use."
+          },
+          {
+            "key": "note",
+            "text": "Eyes of the Wolf: 1 rank of Mastery (2 at 7th, 3 at 15th); add the extra ranks at the table."
+          }
+        ],
+        "name": "Miraigan"
+      }
     }
   },
   "_stats": {

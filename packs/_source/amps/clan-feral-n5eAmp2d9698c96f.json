@@ -54,7 +54,9 @@
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "feral",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -66,14 +68,41 @@
         },
         {
           "key": "note",
-          "text": "From 11th: below half HP, Feral for 1 minute ignoring Calming (once per rest)."
-        },
-        {
-          "key": "note",
           "text": "Ferocious: +1 damage die (the largest size) on your damage."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Rabid. You gain a +2 bonus to your AC and Dexterity saving throws.</p><p>Ferocious. You increase damage you deal by +1 damage die. If multiple damage die of different sizes are rolled, add one additional die of the largest size.</p><p>Hunting. You are always s aware of the location of creatures with less than full hit points so long as they are within 60 feet of you.</p><p>Calming. You exit Feral at the end of your next turn.</p>",
+        "summary": "+2 AC and Dexterity saves, +1 damage die, and you sense wounded creatures within 60 feet. Ends at the end of your next turn.",
+        "changes": [
+          {
+            "key": "system.bonuses.ac",
+            "value": "2",
+            "mode": 2
+          },
+          {
+            "key": "n5e.save.dex",
+            "value": "2",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Starts when you or your Nin-Dog score a critical hit."
+          },
+          {
+            "key": "note",
+            "text": "From 11th: below half HP, Feral for 1 minute ignoring Calming (once per rest)."
+          },
+          {
+            "key": "note",
+            "text": "Ferocious: +1 damage die (the largest size) on your damage."
+          }
+        ],
+        "name": "Feral"
+      }
     }
   },
   "_stats": {

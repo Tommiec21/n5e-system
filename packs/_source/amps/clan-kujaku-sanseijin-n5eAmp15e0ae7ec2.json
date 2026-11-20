@@ -45,11 +45,13 @@
     "changes": [
       {
         "key": "system.bonuses.speed",
-        "value": "lvl(1:10,11:20)",
+        "value": "10",
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "kujaku-sanseijin",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -60,7 +62,25 @@
           "text": "Starts when you spend 6+ Star Chakra between the start of your last turn and the start of your next; lasts until the end of your next turn and can't be extended."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Fortitude Amp</b></p><p>Your chakra made tail feathers are more beautiful than you could imagine.</p><p>Brilliant Plumage. You gain the benefits of Kujaku Mode for the duration.</p><p>Stars Momentum. You gain the Star Momentum special action once per activation of this state. You can use this special action to cast or use any Hoshi Clan Hijutsu or Celestial Trait, that costs an Action, Bonus Action or Reaction.</p><p>Irradiated Reflexes. All Hoshi clan Hijutsu you cast for the duration, gain their Irradiated Effect, without spending additional Star Chakra.</p><p>Star Control. Star Chakra you spend while in this state, does not count towards gaining Star Sickness.</p>",
+        "summary": "Kujaku Mode's benefits, a Star Momentum special action, free Irradiated effects, and Star Chakra that doesn't cause Star Sickness.",
+        "changes": [
+          {
+            "key": "system.bonuses.speed",
+            "value": "lvl(1:10,11:20)",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Starts when you spend 6+ Star Chakra between the start of your last turn and the start of your next; lasts until the end of your next turn and can't be extended."
+          }
+        ],
+        "name": "Kujaku Sanseijin"
+      }
     }
   },
   "_stats": {

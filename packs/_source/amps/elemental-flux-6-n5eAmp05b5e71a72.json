@@ -1,0 +1,76 @@
+{
+  "_id": "n5eAmp05b5e71a72",
+  "name": "Elemental Flux (6th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2101,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "elemental-flux-6",
+    "description": "<p><b>Battle Amp</b></p><p>Your flux type is equal to the nature release that you most recently cast. You benefit from the associated effect based on the keyword listed.</p><p>Earth Release Type</p><p>Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast grants you a minor barrier of defensive chakra, granting you an amount of temporary hit points equal to the rank of the jutsu cast (D-Rank: 4, C-Rank: 8, B-Rank: 12, A-Rank: 16, S-Rank: 20).</p><p>Ninjutsu. You create a 10-foot radius of difficult terrain around you, which you and allied creatures are immune to.</p><p>Genjutsu. Heavy stone weighs down the thoughts of one affected creature. That creature cannot take the dash action and has its movement speed reduced by 20 feet until the end of their next turn as they believe their weight has multiplied.</p><p>Wind Release Type</p><p>Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, grants you a +20 bonus to speed and you can move as part of its casting, either before or after its attacks/effects are applied.</p><p>Ninjutsu. You create a zone of turbulence in a 5-foot radius around you. All attacks that would target a creature within 5 feet of you, suffer a -2 penalty to hit. This turbulence lasts until the end of your next turn.</p><p>Genjutsu. Whispering wind distorts thoughts; Select one creature you can see. Creatures affected by this Genjutsu must target the selected creature with hostile effects it until the beginning of your next turn.</p><p>Fire Release Type</p><p>Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, grants you a +1 bonus to your critical threat range.</p><p>Ninjutsu. Ninjutsu you cast ignores 4 of a creatures DR.</p><p>Genjutsu. Your illusion manifests smothering heat in the mind of the enemy. Until the beginning of your next turn, all affected creatures suffer disadvantage on chakra control checks.</p><p>Water Release Type</p><p>Taijutsu/Bukijutsu. Affected creatures suffer a -10 penalty to their speed and cannot gain bonuses to their speed until the beginning of your next turn.</p><p>Ninjutsu. Ninjutsu you cast with the same nature release as your Flux type, reduces their cost by an amount equal to their ranks. (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5)</p><p>Genjutsu. Genjutsu you cast that affects a creature increases the next jutsu they cast before the start of your next turn by +4.</p><p>Lightning Release Type</p><p>Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, ignores resistance once per turn.</p><p>Ninjutsu. Ninjutsu you cast with the same nature release as your Flux type, that scores a critical hit, increases the damage they deal by Xd6 lightning damage, where X is based on the rank the jutsu was cast at. (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5)</p><p>Genjutsu. Your illusions create false shocks and jolts in the body of your foes. Affected creatures increase the chakra cost to maintain jutsu they are concentrating on by +8, until the beginning of your next turn.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "battle",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "elemental-flux-elemental-scout",
+      "subclass": ""
+    },
+    "summary": "Benefits by your Flux type (the nature release you last cast) and the discipline you cast. Lasts until the end of your next turn.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "nextTurnEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "series": "elemental-flux",
+    "level": 6
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starts in combat when you cast a jutsu with a nature release keyword. The same release again extends it by 1 round; a different release changes the type and resets the duration."
+        },
+        {
+          "key": "note",
+          "text": "Elemental Aura: resistance to your current Flux type's damage."
+        },
+        {
+          "key": "note",
+          "text": "Once per turn, a jutsu that applies or benefits from Follow Up or Set-Up while in Flux regains 1 Superiority Die."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp05b5e71a72"
+}

@@ -927,3 +927,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `flash`, `elemental-flux`, `chained-cascade`, `crash-duality`, `flow-duality` in `packs/_source/amps`, built by `tools/content/build-amp-cards.py` (entries may now carry `changes`).
 - Crash Duality's damage: cast option on `summoning-duality-summoner` (content/automation/ninjutsu-specialist.json), `requiresState: "crashDuality"`, `lvl(6:1d10,11:2d10,19:3d10)`.
 - Flow's turn-start Focus comes from the `flow` state only (rules/turn-start.mjs); Amp cards in that state carry no turn-start Focus rule.
+
+### Amp versions (AMP1g, 0.68.0-alpha.1)
+
+- `system.series`: the base Amp's identifier on each version; `system.level`: the character level a version starts at (0 on the base).
+- Version cards: identifier `<base>-<level>`, name "<Base name> (<level>th)". Built by `tools/content/build-amp-versions.py` from the base cards (the base keeps its unversioned text in `flags.n5e.versionSource`). Build order: build-amp-cards.py, build-clan-amp-cards.py, build-amp-versions.py.
+- `ampVersionFor(registry, key, level)` (rules/amp-cards.mjs) picks the version; `applyAmp` uses it (the applier's level). `ampCardsFor` shows only the highest reached version per series.
+- Uses and cooldowns: `flags.n5e.ampUses.<series>` (trackKey).

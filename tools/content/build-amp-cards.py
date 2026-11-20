@@ -312,7 +312,9 @@ def main():
         prev = carried.get(c["key"])
         if prev is None and old:
             # Later runs: the mechanics moved from the button live on the card.
-            prev = {"changes": old["system"].get("changes", []), "rules": [r for r in old["flags"]["n5e"].get("rules", []) if r.get("label") != "__amp1c"],
+            # AMP1g: a versioned base keeps its unversioned changes and rules in versionSource.
+            vs = old["flags"]["n5e"].get("versionSource") or {}
+            prev = {"changes": vs.get("changes", old["system"].get("changes", [])), "rules": [r for r in vs.get("rules", old["flags"]["n5e"].get("rules", [])) if r.get("label") != "__amp1c"],
                     "seconds": old["system"]["duration"]["seconds"], "target": "self"}
             prev["rules"] = [r for r in prev["rules"] if r not in c.get("rules", [])]
         prev = prev or {"changes": [], "rules": [], "seconds": 60, "target": "self"}

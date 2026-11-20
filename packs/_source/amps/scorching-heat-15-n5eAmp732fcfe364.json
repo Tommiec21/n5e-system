@@ -1,0 +1,74 @@
+{
+  "_id": "n5eAmp732fcfe364",
+  "name": "Scorching Heat (15th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 3002,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "scorching-heat-15",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Hotter Still. You gain a +6 bonus to fire damage you deal.</p><p>Fuel to the flame. When you deal Wind or Fire Damage to a creature with ranks of Burned, you convert 1 rank of Burned a creature has to 1 rank of Immolation.</p><p>Scorch Magnification. You can spend Scorch Charges to use the Scorch effect of Shakuton Hijutsu you cast.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "clan",
+      "id": "shakuton",
+      "subclass": ""
+    },
+    "summary": "+6 fire damage. Wind or fire damage turns Burned into Immolation, and Scorch Charges fuel Scorch effects.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "series": "scorching-heat",
+    "level": 15
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage:fire",
+          "value": 6,
+          "label": "Scorching Heat: Hotter Still"
+        },
+        {
+          "key": "note",
+          "text": "You're in this state while you have Scorch Charges (they fade after 1 minute). With Scorching Dominion, always."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp732fcfe364"
+}

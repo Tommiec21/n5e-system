@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "ultra-focus",
-    "description": "<p><b>Fortitude Amp</b></p><p>Your back is against the wall and you need to focus, going beyond what your limits suggest;</p><p>Uncapped Strength. You gain a +2 bonus to damage you deal. This increases to +4 at 11th level.</p><p>Broken Limits. Once per turn on your turn, you can spend 3 Drive, spending your Bonus Action, to gain an Action.</p><p>Always Push Forward. You gain advantage on saving throws and checks to resist being Grappled, Restrained, Stunned, Staggered having your speed reduced by hostile effects.</p><p>Stress. At the end of each of your turns, make a Constitution ability check vs a DC 20. On a success, you persist in this state and it doesn’t end. On a failure, this state ends.</p>",
+    "description": "<p><b>Fortitude Amp</b></p><p>Your back is against the wall and you need to focus, going beyond what your limits suggest;</p><p>Uncapped Strength. You gain a +2 bonus to damage you deal.</p><p>Broken Limits. Once per turn on your turn, you can spend 3 Drive, spending your Bonus Action, to gain an Action.</p><p>Always Push Forward. You gain advantage on saving throws and checks to resist being Grappled, Restrained, Stunned, Staggered having your speed reduced by hostile effects.</p><p>Stress. At the end of each of your turns, make a Constitution ability check vs a DC 20. On a success, you persist in this state and it doesn’t end. On a failure, this state ends.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "non-clan-nindo-always-go-beyond",
       "subclass": ""
     },
-    "summary": "+2 damage (+4 at 11th), Drive for an extra Action, and advantage to resist grapples, restraints, stuns and Staggered. A DC 20 Con check each turn keeps it going.",
+    "summary": "+2 damage, Drive for an extra Action, and advantage to resist grapples, restraints, stuns and Staggered. A DC 20 Con check each turn keeps it going.",
     "activation": "trigger",
     "giveable": false,
     "startOnInitiative": "",
@@ -64,7 +64,9 @@
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "ultra-focus",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -73,7 +75,7 @@
         {
           "key": "modifier",
           "selector": "damage",
-          "value": "lvl(1:2,11:4)",
+          "value": 2,
           "label": "Ultra Focus: Uncapped Strength"
         },
         {
@@ -85,7 +87,50 @@
           "text": "Stress: at the end of each of your turns, a DC 20 Constitution check; on a failure it ends."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Fortitude Amp</b></p><p>Your back is against the wall and you need to focus, going beyond what your limits suggest;</p><p>Uncapped Strength. You gain a +2 bonus to damage you deal. This increases to +4 at 11th level.</p><p>Broken Limits. Once per turn on your turn, you can spend 3 Drive, spending your Bonus Action, to gain an Action.</p><p>Always Push Forward. You gain advantage on saving throws and checks to resist being Grappled, Restrained, Stunned, Staggered having your speed reduced by hostile effects.</p><p>Stress. At the end of each of your turns, make a Constitution ability check vs a DC 20. On a success, you persist in this state and it doesn’t end. On a failure, this state ends.</p>",
+        "summary": "+2 damage (+4 at 11th), Drive for an extra Action, and advantage to resist grapples, restraints, stuns and Staggered. A DC 20 Con check each turn keeps it going.",
+        "changes": [
+          {
+            "key": "n5e.stateResist",
+            "value": "grappled",
+            "mode": 2
+          },
+          {
+            "key": "n5e.stateResist",
+            "value": "restrained",
+            "mode": 2
+          },
+          {
+            "key": "n5e.stateResist",
+            "value": "stunned",
+            "mode": 2
+          },
+          {
+            "key": "n5e.conditionResist",
+            "value": "staggered",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "modifier",
+            "selector": "damage",
+            "value": "lvl(1:2,11:4)",
+            "label": "Ultra Focus: Uncapped Strength"
+          },
+          {
+            "key": "note",
+            "text": "Starts the first time you fall below half your hit or chakra points."
+          },
+          {
+            "key": "note",
+            "text": "Stress: at the end of each of your turns, a DC 20 Constitution check; on a failure it ends."
+          }
+        ],
+        "name": "Ultra Focus"
+      }
     }
   },
   "_stats": {

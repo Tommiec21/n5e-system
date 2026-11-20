@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "synthetic-chakra-mode",
-    "description": "<p><b>Battle Amp</b></p><p>Your chakra engine roars to life allowing you to emulate the power of Senjutsu. You have the following base benefits:</p><p>Synthetic Surge. You gain a +1 bonus to Unarmed Attacks, or Attacks made as a result of Jinzo Hijutsu. This increases to +2 at 15th level.</p><p>Accelerated Biology. Your movement speed increases by +20 feet, and you gain immunity to the Slowed condition and cannot have your speed reduced by hostile effects</p><p>Then you gain benefits based on which Branch you hail from;</p><p>Bio Branch</p><p>Unleashed Physique. Your Soft Physique feature is enhanced by providing an additional +1 rank of Reach.</p><p>Shedding Response. When you take damage that would reduce you to 0 hit points, you can spend your reaction to end your Synthetic Chakra Mode and roll 6d6.Your hit points fall to 0 but you remain conscious, and at the end of the current turn, you regain the result of the roll dice as hit points.</p><p>Shin Branch</p><p>Overclock. You can benefit from both Shin-Pet and Shin-Seal at the same time, and once per turn, at the beginning of your turn, you can select one creature within 60 feet of you, marking them with a Shin-Seal.</p><p>Anchor Latch. While your Bio-Pet is Latched to a creature, that creature cannot teleport, lose their fly speed if any and cannot benefit from effects that would increase their movement speed.</p><p>Finally, you gain benefits based on which Bio-Pet you have beginning at 15th level.</p><p>Bio-Amphibian</p><p>Oil Field. Yor Bio-Amphibians oil glands go into overdrive. All hostile creatures that begins or ends their turn within 5 feet of the Bio-Pet, gains 1 rank of Doused.</p><p>Bio-Serpent</p><p>Chakra Serpent Projection. Your Bio-Serpent merges into your form, being manifested as a chakra construct connected to your lashing aura. It is always connected to you and can no longer be targeted for attacks or hostile effects. It can now only reach and affect creatures no more than 30 feet from you. It retains all of its abilities, and attacks. For the duration, you gain the Chakra Serpent Special Action.</p><p>Chakra Serpent. Once per turn, on your turn, you can spend this action to command your Bio-Serpent, in place of a Bonus action.</p>",
+    "description": "<p><b>Battle Amp</b></p><p>Your chakra engine roars to life allowing you to emulate the power of Senjutsu. You have the following base benefits:</p><p>Synthetic Surge. You gain a +1 bonus to Unarmed Attacks, or Attacks made as a result of Jinzo Hijutsu.</p><p>Accelerated Biology. Your movement speed increases by +20 feet, and you gain immunity to the Slowed condition and cannot have your speed reduced by hostile effects</p><p>Then you gain benefits based on which Branch you hail from;</p><p>Bio Branch</p><p>Unleashed Physique. Your Soft Physique feature is enhanced by providing an additional +1 rank of Reach.</p><p>Shedding Response. When you take damage that would reduce you to 0 hit points, you can spend your reaction to end your Synthetic Chakra Mode and roll 6d6.Your hit points fall to 0 but you remain conscious, and at the end of the current turn, you regain the result of the roll dice as hit points.</p><p>Shin Branch</p><p>Overclock. You can benefit from both Shin-Pet and Shin-Seal at the same time, and once per turn, at the beginning of your turn, you can select one creature within 60 feet of you, marking them with a Shin-Seal.</p><p>Anchor Latch. While your Bio-Pet is Latched to a creature, that creature cannot teleport, lose their fly speed if any and cannot benefit from effects that would increase their movement speed.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "jinzo-synthetic-battle-aura",
       "subclass": ""
     },
-    "summary": "+1 (+2 at 15th) to unarmed and Jinzo Hijutsu attacks, +20 speed and immunity to Slowed. Branch and Bio-Pet benefits on the card text.",
+    "summary": "+1 to unarmed and Jinzo Hijutsu attacks, +20 speed and immunity to Slowed. Branch benefits on the card text.",
     "activation": "bonus",
     "giveable": false,
     "startOnInitiative": "",
@@ -45,7 +45,7 @@
     "changes": [
       {
         "key": "n5e.attack.unarmed",
-        "value": "lvl(1:1,15:2)",
+        "value": "1",
         "mode": 2
       },
       {
@@ -59,7 +59,9 @@
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "synthetic-chakra-mode",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -74,7 +76,39 @@
           "text": "Your speed can't be reduced by hostile effects."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>Your chakra engine roars to life allowing you to emulate the power of Senjutsu. You have the following base benefits:</p><p>Synthetic Surge. You gain a +1 bonus to Unarmed Attacks, or Attacks made as a result of Jinzo Hijutsu. This increases to +2 at 15th level.</p><p>Accelerated Biology. Your movement speed increases by +20 feet, and you gain immunity to the Slowed condition and cannot have your speed reduced by hostile effects</p><p>Then you gain benefits based on which Branch you hail from;</p><p>Bio Branch</p><p>Unleashed Physique. Your Soft Physique feature is enhanced by providing an additional +1 rank of Reach.</p><p>Shedding Response. When you take damage that would reduce you to 0 hit points, you can spend your reaction to end your Synthetic Chakra Mode and roll 6d6.Your hit points fall to 0 but you remain conscious, and at the end of the current turn, you regain the result of the roll dice as hit points.</p><p>Shin Branch</p><p>Overclock. You can benefit from both Shin-Pet and Shin-Seal at the same time, and once per turn, at the beginning of your turn, you can select one creature within 60 feet of you, marking them with a Shin-Seal.</p><p>Anchor Latch. While your Bio-Pet is Latched to a creature, that creature cannot teleport, lose their fly speed if any and cannot benefit from effects that would increase their movement speed.</p><p>Finally, you gain benefits based on which Bio-Pet you have beginning at 15th level.</p><p>Bio-Amphibian</p><p>Oil Field. Yor Bio-Amphibians oil glands go into overdrive. All hostile creatures that begins or ends their turn within 5 feet of the Bio-Pet, gains 1 rank of Doused.</p><p>Bio-Serpent</p><p>Chakra Serpent Projection. Your Bio-Serpent merges into your form, being manifested as a chakra construct connected to your lashing aura. It is always connected to you and can no longer be targeted for attacks or hostile effects. It can now only reach and affect creatures no more than 30 feet from you. It retains all of its abilities, and attacks. For the duration, you gain the Chakra Serpent Special Action.</p><p>Chakra Serpent. Once per turn, on your turn, you can spend this action to command your Bio-Serpent, in place of a Bonus action.</p>",
+        "summary": "+1 (+2 at 15th) to unarmed and Jinzo Hijutsu attacks, +20 speed and immunity to Slowed. Branch and Bio-Pet benefits on the card text.",
+        "changes": [
+          {
+            "key": "n5e.attack.unarmed",
+            "value": "lvl(1:1,15:2)",
+            "mode": 2
+          },
+          {
+            "key": "system.bonuses.speed",
+            "value": "20",
+            "mode": 2
+          },
+          {
+            "key": "n5e.conditionImmune",
+            "value": "slowed",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Synthetic Surge also applies to attacks made by Jinzo Hijutsu (at the table)."
+          },
+          {
+            "key": "note",
+            "text": "Your speed can't be reduced by hostile effects."
+          }
+        ],
+        "name": "Synthetic Chakra Mode"
+      }
     }
   },
   "_stats": {

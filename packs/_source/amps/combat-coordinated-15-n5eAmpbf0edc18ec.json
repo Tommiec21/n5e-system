@@ -1,0 +1,84 @@
+{
+  "_id": "n5eAmpbf0edc18ec",
+  "name": "Combat Coordinated (15th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2702,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "combat-coordinated-15",
+    "description": "<p><b>Will Amp</b></p><p>You move as a team, with your team.</p><p>Coordinated Start. As part of rolling initiative, you gain 3 ranks of Mastery to your initiative.</p><p>Team Coordination. You can select a willing allies creature to go in your place in initiative. This counts as their turn for initiative. If you take another Combat Coordinated creatures place in initiative, you must give your place in initiative to another Combat Coordinated creature.</p><p>Coordinated Support. If another Combat Coordinated creature is under the effect of a condition or hostile effect that requires an ability or skill check, or a saving throw, you can spend your reaction to make that check or saving throw for them using your statistics.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Will Amp",
+    "owner": {
+      "kind": "clan",
+      "id": "nara",
+      "subclass": ""
+    },
+    "summary": "Mastery on initiative, swap initiative places with an ally, and make checks or saves for another Coordinated creature.",
+    "activation": "",
+    "giveable": true,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "combatEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.mastery.initiative",
+        "value": "Combat Coordinated",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.initiative",
+        "value": "Combat Coordinated (2nd rank)",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.initiative",
+        "value": "Combat Coordinated (3rd rank)",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "combat-coordinated",
+    "level": 15
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Team Coordination gives it to all allies until initiative ends."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmpbf0edc18ec"
+}

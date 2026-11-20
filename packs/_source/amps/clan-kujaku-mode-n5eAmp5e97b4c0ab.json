@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "kujaku-mode",
-    "description": "<p><b>Fortitude Amp</b></p><p>Your body manifests 8 fluttering tail feathers made of Star Chakra;</p><p>Cosmic Plumage. You gain temporary hit points equal to twice your maximum Star Chakra. If you begin your turn without these temporary hit points, you regain them.</p><p>Meteoric Speed. You gain a +10 bonus to your speed. This increases to +20 at 11th level.</p><p>Star Power. At the beginning of each of your turns, you gain Temporary Star Chakra equal to half of your maximum Star Chakra.</p><p>Star Sickness Boon(s)</p><p>Star Sickness (1+ Rank): When you take Chakra damage, you siphon some of the attacks chakra, turning it into Temporary Star Chakra, gaining an amount equal to half the chakra damage they rolled.</p><p>Star Sickness (2+ Ranks): Hoshi clan Hijutsu you cast cannot be dispelled except by effects at least 1 rank higher than it.</p><p>Star Sickness (3+ Ranks): Increase damage you deal with Hoshi Clan Hijutsu by 1d6 force damage. This increases to 2d6 at 7th level and 3d6 at 15th level.</p><p>Star Sickness (4+ Ranks): You gain an additional Reaction each round, which can only be used to cast a Hoshi Hijutsu or use a Hoshi clan feature.</p><p>Star Sickness (5 Ranks): Hoshi Hijutsu and Kujaku abilities that inflicts ranks of Weakened or Bruised, now instead inflicts ranks of Star Sickness on hostile creatures.</p>",
+    "description": "<p><b>Fortitude Amp</b></p><p>Your body manifests 8 fluttering tail feathers made of Star Chakra;</p><p>Cosmic Plumage. You gain temporary hit points equal to twice your maximum Star Chakra. If you begin your turn without these temporary hit points, you regain them.</p><p>Meteoric Speed. You gain a +10 bonus to your speed.</p><p>Star Power. At the beginning of each of your turns, you gain Temporary Star Chakra equal to half of your maximum Star Chakra.</p><p>Star Sickness Boon(s)</p><p>Star Sickness (1+ Rank): When you take Chakra damage, you siphon some of the attacks chakra, turning it into Temporary Star Chakra, gaining an amount equal to half the chakra damage they rolled.</p><p>Star Sickness (2+ Ranks): Hoshi clan Hijutsu you cast cannot be dispelled except by effects at least 1 rank higher than it.</p><p>Star Sickness (3+ Ranks): Increase damage you deal with Hoshi Clan Hijutsu by 1d6 force damage.</p><p>Star Sickness (4+ Ranks): You gain an additional Reaction each round, which can only be used to cast a Hoshi Hijutsu or use a Hoshi clan feature.</p><p>Star Sickness (5 Ranks): Hoshi Hijutsu and Kujaku abilities that inflicts ranks of Weakened or Bruised, now instead inflicts ranks of Star Sickness on hostile creatures.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "hoshi-kujaku-peacock-plume",
       "subclass": ""
     },
-    "summary": "Temp HP of twice your max Star Chakra, renewed each turn. +10 speed (+20 at 11th), Temporary Star Chakra each turn, and Star Sickness boons.",
+    "summary": "Temp HP of twice your max Star Chakra, renewed each turn. +10 speed, Temporary Star Chakra each turn, and Star Sickness boons.",
     "activation": "bonus",
     "giveable": false,
     "startOnInitiative": "",
@@ -45,11 +45,13 @@
     "changes": [
       {
         "key": "system.bonuses.speed",
-        "value": "lvl(1:10,11:20)",
+        "value": "10",
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "kujaku-mode",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -64,7 +66,29 @@
           "text": "Star Sickness penalties are suppressed while it lasts."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Fortitude Amp</b></p><p>Your body manifests 8 fluttering tail feathers made of Star Chakra;</p><p>Cosmic Plumage. You gain temporary hit points equal to twice your maximum Star Chakra. If you begin your turn without these temporary hit points, you regain them.</p><p>Meteoric Speed. You gain a +10 bonus to your speed. This increases to +20 at 11th level.</p><p>Star Power. At the beginning of each of your turns, you gain Temporary Star Chakra equal to half of your maximum Star Chakra.</p><p>Star Sickness Boon(s)</p><p>Star Sickness (1+ Rank): When you take Chakra damage, you siphon some of the attacks chakra, turning it into Temporary Star Chakra, gaining an amount equal to half the chakra damage they rolled.</p><p>Star Sickness (2+ Ranks): Hoshi clan Hijutsu you cast cannot be dispelled except by effects at least 1 rank higher than it.</p><p>Star Sickness (3+ Ranks): Increase damage you deal with Hoshi Clan Hijutsu by 1d6 force damage. This increases to 2d6 at 7th level and 3d6 at 15th level.</p><p>Star Sickness (4+ Ranks): You gain an additional Reaction each round, which can only be used to cast a Hoshi Hijutsu or use a Hoshi clan feature.</p><p>Star Sickness (5 Ranks): Hoshi Hijutsu and Kujaku abilities that inflicts ranks of Weakened or Bruised, now instead inflicts ranks of Star Sickness on hostile creatures.</p>",
+        "summary": "Temp HP of twice your max Star Chakra, renewed each turn. +10 speed (+20 at 11th), Temporary Star Chakra each turn, and Star Sickness boons.",
+        "changes": [
+          {
+            "key": "system.bonuses.speed",
+            "value": "lvl(1:10,11:20)",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Cosmic Plumage: temp HP equal to twice your maximum Star Chakra; regain them if you start your turn without them."
+          },
+          {
+            "key": "note",
+            "text": "Star Sickness penalties are suppressed while it lasts."
+          }
+        ],
+        "name": "Kujaku Mode"
+      }
     }
   },
   "_stats": {

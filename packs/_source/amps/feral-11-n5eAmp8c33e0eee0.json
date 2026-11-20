@@ -1,0 +1,87 @@
+{
+  "_id": "n5eAmp8c33e0eee0",
+  "name": "Feral (11th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2001,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "feral-11",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Rabid. You gain a +2 bonus to your AC and Dexterity saving throws.</p><p>Ferocious. You increase damage you deal by +1 damage die. If multiple damage die of different sizes are rolled, add one additional die of the largest size.</p><p>Hunting. You are always s aware of the location of creatures with less than full hit points so long as they are within 60 feet of you.</p><p>Calming. You exit Feral at the end of your next turn.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "inuzuka-savage-attacker",
+      "subclass": ""
+    },
+    "summary": "+2 AC and Dexterity saves, +1 damage die, and you sense wounded creatures within 60 feet. Ends at the end of your next turn.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "nextTurnEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "2",
+        "mode": 2
+      },
+      {
+        "key": "n5e.save.dex",
+        "value": "2",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "feral",
+    "level": 11
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starts when you or your Nin-Dog score a critical hit."
+        },
+        {
+          "key": "note",
+          "text": "Below half HP: Feral for 1 minute, ignoring Calming (once per rest)."
+        },
+        {
+          "key": "note",
+          "text": "Ferocious: +1 damage die (the largest size) on your damage."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp8c33e0eee0"
+}

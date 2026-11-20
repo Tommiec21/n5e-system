@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "elemental-cloak",
-    "description": "<p><b>Fortitude Amp</b></p><p>Taijutsu you cast deal its nature release's associated damage type and your chosen nature release grants your cloak different benefits.</p><p>Earth Release: You gain +4 DR. This DR cannot be reduced by any means. When you reach 10th, you gain 30 feet of tremor sense. Increase DR to +6 at 17th level.</p><p>Wind Release: You gain a +1 Bonus to AC, and damage you deal with Taijutsu penetrates 2 of a creature's DR. At 10th level, you gain immunity to the Grappled and Restrained conditions. At 17th level, your bonuses become +2 to AC and penetrate 4 DR.</p><p>Fire Release: You gain a rank of Mastery to [Unarmed Damage]. This becomes two ranks of Mastery at 10th and three ranks at 17th level.</p><p>Water Release: Your unarmed attacks gain the Reach 1 and Trip weapon properties. Beginning at 10th level the first time each turn you deal [Unarmed Damage] to a creature you can move them up to 10 feet in any direction of your choice. At 17th level, creatures cannot gain jutsu based bonuses to their saving throws vs Taijutsu you cast.</p><p>Lightning Release: Your unarmed and Taijutsu attacks gain a +1 bonus to their critical threat range and a +10 to speed. Beginning at 10th level, when you score a critical with an unarmed attack, you may add 1 unarmed damage die to the result. At 17th level, [Unarmed Damage] you deal cannot have its damage intercepted.</p><p>Lasts 1 minute or until you end it with a Bonus Action; 10 minutes of meditation before entering again.</p>",
+    "description": "<p><b>Fortitude Amp</b></p><p>Taijutsu you cast deal its nature release&#x27;s associated damage type and your chosen nature release grants your cloak different benefits.</p><p>Earth Release: You gain +4 DR. This DR cannot be reduced by any means.</p><p>Wind Release: You gain a +1 Bonus to AC, and damage you deal with Taijutsu penetrates 2 of a creature&#x27;s DR.</p><p>Fire Release: You gain a rank of Mastery to [Unarmed Damage].</p><p>Water Release: Your unarmed attacks gain the Reach 1 and Trip weapon properties.</p><p>Lightning Release: Your unarmed and Taijutsu attacks gain a +1 bonus to their critical threat range and a +10 to speed.</p><p>Lasts 1 minute or until you end it with a Bonus Action; 10 minutes of meditation before entering again.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "elemental-cloak",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -55,14 +57,34 @@
         },
         {
           "key": "note",
-          "text": "Earth: +4 DR that can't be reduced (+6 at 17th); 30 ft tremor sense at 10th. Wind: +1 AC and Taijutsu pierce 2 DR (+2 and 4 at 17th); immune to Grappled and Restrained at 10th. Fire: a rank of Mastery to [Unarmed Damage] (two at 10th, three at 17th). Water: unarmed attacks gain Reach 1 and Trip; at 10th push 10 ft the first time each turn; at 17th no jutsu bonuses to saves vs your Taijutsu. Lightning: +1 critical range on unarmed and Taijutsu and +10 speed; at 10th +1 unarmed die on a crit; at 17th your [Unarmed Damage] can't be intercepted."
+          "text": "Earth: +4 DR that can't be reduced. Wind: +1 AC and Taijutsu pierce 2 DR. Fire: a rank of Mastery to [Unarmed Damage]. Water: unarmed attacks gain Reach 1 and Trip. Lightning: +1 critical range on unarmed and Taijutsu and +10 speed."
         },
         {
           "key": "note",
           "text": "Add your release's numbers as changes on this Amp's effect (or a copy of this card per release) to automate them."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Fortitude Amp</b></p><p>Taijutsu you cast deal its nature release's associated damage type and your chosen nature release grants your cloak different benefits.</p><p>Earth Release: You gain +4 DR. This DR cannot be reduced by any means. When you reach 10th, you gain 30 feet of tremor sense. Increase DR to +6 at 17th level.</p><p>Wind Release: You gain a +1 Bonus to AC, and damage you deal with Taijutsu penetrates 2 of a creature's DR. At 10th level, you gain immunity to the Grappled and Restrained conditions. At 17th level, your bonuses become +2 to AC and penetrate 4 DR.</p><p>Fire Release: You gain a rank of Mastery to [Unarmed Damage]. This becomes two ranks of Mastery at 10th and three ranks at 17th level.</p><p>Water Release: Your unarmed attacks gain the Reach 1 and Trip weapon properties. Beginning at 10th level the first time each turn you deal [Unarmed Damage] to a creature you can move them up to 10 feet in any direction of your choice. At 17th level, creatures cannot gain jutsu based bonuses to their saving throws vs Taijutsu you cast.</p><p>Lightning Release: Your unarmed and Taijutsu attacks gain a +1 bonus to their critical threat range and a +10 to speed. Beginning at 10th level, when you score a critical with an unarmed attack, you may add 1 unarmed damage die to the result. At 17th level, [Unarmed Damage] you deal cannot have its damage intercepted.</p><p>Lasts 1 minute or until you end it with a Bonus Action; 10 minutes of meditation before entering again.</p>",
+        "summary": "Taijutsu deal your chosen release's damage type; your release's cloak benefit (Earth DR, Wind AC, Fire Mastery, Water Reach and Trip, Lightning crit and speed).",
+        "changes": [],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Your Taijutsu deal your chosen nature release's damage type."
+          },
+          {
+            "key": "note",
+            "text": "Earth: +4 DR that can't be reduced (+6 at 17th); 30 ft tremor sense at 10th. Wind: +1 AC and Taijutsu pierce 2 DR (+2 and 4 at 17th); immune to Grappled and Restrained at 10th. Fire: a rank of Mastery to [Unarmed Damage] (two at 10th, three at 17th). Water: unarmed attacks gain Reach 1 and Trip; at 10th push 10 ft the first time each turn; at 17th no jutsu bonuses to saves vs your Taijutsu. Lightning: +1 critical range on unarmed and Taijutsu and +10 speed; at 10th +1 unarmed die on a crit; at 17th your [Unarmed Damage] can't be intercepted."
+          },
+          {
+            "key": "note",
+            "text": "Add your release's numbers as changes on this Amp's effect (or a copy of this card per release) to automate them."
+          }
+        ],
+        "name": "Elemental Cloak"
+      }
     }
   },
   "_stats": {

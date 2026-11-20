@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "torque",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -55,10 +57,26 @@
         },
         {
           "key": "note",
-          "text": "Horse Power (1 Pressure at turn start): Deadly 2 (Deadly 4 at 15th) on unarmed and weapon attacks that turn."
+          "text": "Horse Power (1 Pressure at turn start): Deadly 2 on unarmed and weapon attacks that turn."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>Each step fires a steam piston within you, building pressure;</p><p>Higher Horsepower. You can maintain up to 6 Pressure at once.</p><p>Piston Break. You can build up to 2 Pressure per turn, instead of one.</p>",
+        "summary": "Hold up to 6 Pressure and build 2 per turn.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Start: spend 2 Pressure (once per rest)."
+          },
+          {
+            "key": "note",
+            "text": "Horse Power (1 Pressure at turn start): Deadly 2 (Deadly 4 at 15th) on unarmed and weapon attacks that turn."
+          }
+        ],
+        "name": "Torque"
+      }
     }
   },
   "_stats": {

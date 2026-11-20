@@ -98,8 +98,8 @@ test("Ninjutsu Specialist: clash advantage by keywords, Flow's concentration adv
   // AMP1d fix: the Focus at the start of the turn comes from the "flow" state (rules/turn-start.mjs) only.
   assert.ok(!flow.rules.some(r => r.on === "turnStart" && r.pool === "focus"));
 
-  const overheat = ampCard("crash-overheat");
-  const hot = level => ({ system: { level }, statuses: new Set(), items: [], effects: [{ name: "Overheat", flags: { n5e: { rules: overheat.rules } } }] });
+  // AMP1g: each Overheat version carries its own number (+2, +4 from 10th).
+  const hot = level => ({ system: { level }, statuses: new Set(), items: [], effects: [{ name: "Overheat", flags: { n5e: { rules: ampCard(level >= 10 ? "crash-overheat-10" : "crash-overheat").rules } } }] });
   const fire = { kind: "damage", type: "damage", facts: jutsuFacts(jutsu("Fire Ball", ["fireRelease"])) };
   assert.equal(contextualModifiers(hot(6), fire).bonus, 2);
   assert.equal(contextualModifiers(hot(10), fire).bonus, 4);

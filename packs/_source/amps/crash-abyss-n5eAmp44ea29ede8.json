@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "crash-abyss",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -62,14 +64,41 @@
         },
         {
           "key": "note",
-          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (half the dice for an area). This is added automatically when you cast."
         },
         {
           "key": "note",
           "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>When you would become a Maelstrom, by spending 2 Focus, you instead become an Abyss. You gain the benefits of being a Maelstrom, you can inflict Tidal Draw on all creatures affected by a Water Release Ninjutsu you cast and each time you deal Chakra damage to a creature, you regain 1 Focus.</p><p>While an Abyss, you increase each instance of damage you take by +4.</p>",
+        "summary": "Maelstrom, plus Tidal Draw on every creature your Water Release Ninjutsu affect and 1 Focus per chakra damage dealt; take +4 from each instance of damage.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Maelstrom's benefits; Tidal Draw on every creature your Water Release Ninjutsu affects; each time you deal chakra damage, regain 1 Focus. Each instance of damage you take +4.",
+            "label": "Chakra Surge: Crash (Abyss)"
+          },
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          },
+          {
+            "key": "note",
+            "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+          }
+        ],
+        "name": "Crash: Abyss"
+      }
     }
   },
   "_stats": {

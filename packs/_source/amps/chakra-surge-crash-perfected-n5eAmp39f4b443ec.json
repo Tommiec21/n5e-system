@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "chakra-surge-crash-perfected",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -69,14 +71,48 @@
         },
         {
           "key": "note",
-          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          "text": "Once per casting, Ninjutsu you cast deal +5d10 damage (half the dice for an area). This is added automatically when you cast."
         },
         {
           "key": "note",
           "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>Starting at 20th level, when you would enter your Crash state, you can spend 4 Focus, perfecting it for the next minute. Once you do this, you cannot do so again for 10 minutes.</p>",
+        "summary": "Perfected Crash (20th level, 4 Focus): Crash's benefits, perfected for 1 minute.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "damageHandling",
+            "selector": "damage",
+            "predicate": "jutsu:discipline:nin",
+            "immunityAsResistance": true,
+            "label": "Crash (Perfected)"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting +5d10 Ninjutsu damage (the Crash option); three or more Moldings on one casting; your Ninjutsu treat immunity as resistance (on this effect).",
+            "label": "Chakra Surge: Crash (Perfected)"
+          },
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          },
+          {
+            "key": "note",
+            "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+          }
+        ],
+        "name": "Chakra Surge: Crash (Perfected)"
+      }
     }
   },
   "_stats": {

@@ -1,0 +1,110 @@
+{
+  "_id": "n5eAmp7132218d95",
+  "name": "Crash: Typhoon (19th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 904,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "crash-typhoon-19",
+    "description": "<p><b>Will Amp</b></p><p>When you would act as a Herald, by spending 2 Focus, you instead become a Typhoon. You gain the benefits of being a Herald, you gain 1 Pressure at the end of each of your turns and you may use the base effects of Gale Burst, Sharpening or Dragwind once per turn at no Pressure cost.</p><p>While a Typhoon, hostile creatures gain a +2 bonus to their attack rolls and +1 critical threat range when attacking you.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "storm-herald-typhoon-storm-terror",
+      "subclass": ""
+    },
+    "summary": "Herald, plus 1 Pressure at the end of each turn and a free Gale Burst, Sharpening or Dragwind once per turn; hostiles get +2 to attack you and +1 critical range.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "crash",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.traits.speed.fly",
+        "value": "40",
+        "mode": 4
+      }
+    ],
+    "aura": {},
+    "series": "crash-typhoon",
+    "level": 19
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "attack",
+          "direction": "against",
+          "value": 2,
+          "label": "Typhoon"
+        },
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "direction": "against",
+          "value": 1,
+          "label": "Typhoon"
+        },
+        {
+          "key": "resource",
+          "on": "turnEnd",
+          "pool": "pressure",
+          "amount": 1,
+          "label": "Typhoon"
+        },
+        {
+          "key": "note",
+          "text": "Herald's benefits; +1 Pressure at the end of each turn; attacks against you +2 and +1 critical range (on this effect). Once per turn one base Gale Burst, Sharpening or Dragwind at no Pressure cost. Also spend 1 Pressure.",
+          "label": "Chakra Surge: Crash (Typhoon)"
+        },
+        {
+          "key": "costReduction",
+          "selector": "cast",
+          "value": 0,
+          "label": "Crash: no cost reduction"
+        },
+        {
+          "key": "note",
+          "text": "Once per casting, Ninjutsu you cast deal +5d10 damage (half the dice for an area). This is added automatically when you cast."
+        },
+        {
+          "key": "note",
+          "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp7132218d95"
+}

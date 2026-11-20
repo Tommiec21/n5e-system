@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "crash-burnout",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -53,7 +55,7 @@
           "key": "modifier",
           "selector": "damage",
           "predicate": "jutsu:keyword:fireRelease",
-          "value": "lvl(6:2,10:4,18:6)",
+          "value": 2,
           "label": "Overheat"
         },
         {
@@ -84,14 +86,63 @@
         },
         {
           "key": "note",
-          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (half the dice for an area). This is added automatically when you cast."
         },
         {
           "key": "note",
           "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>When you would enter Overheat, by spending 2 Focus, you enter Burnout. You gain the benefits of Overheat, you gain 1 Pyroclasm at the end of each of your turns and you may use the Detonate ability as a bonus action, treating it as a Ninjutsu with the Release being cast.</p><p>While in Burnout, you take 3d6 fire damage at the end of each of your turns. This damage cannot be reduced, resisted or ignored by any means.</p>",
+        "summary": "Overheat, plus 1 Pyroclasm at the end of each turn and Detonate as a Bonus Action; take 3d6 fire at the end of each of your turns.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "modifier",
+            "selector": "damage",
+            "predicate": "jutsu:keyword:fireRelease",
+            "value": "lvl(6:2,10:4,18:6)",
+            "label": "Overheat"
+          },
+          {
+            "key": "resource",
+            "on": "turnEnd",
+            "pool": "pyroclasm",
+            "amount": 1,
+            "label": "Burnout"
+          },
+          {
+            "key": "damage",
+            "on": "turnEnd",
+            "formula": "3d6",
+            "damageType": "fire",
+            "unreducible": true,
+            "label": "Burnout"
+          },
+          {
+            "key": "note",
+            "text": "Overheat's damage bonus, +1 Pyroclasm and 3d6 unreduced fire damage to you at the end of each turn (on this effect); Detonate as a Bonus Action, treated as a Fire Release Ninjutsu. Also spend 1 Pyroclasm.",
+            "label": "Chakra Surge: Crash (Burnout)"
+          },
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          },
+          {
+            "key": "note",
+            "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+          }
+        ],
+        "name": "Crash: Burnout"
+      }
     }
   },
   "_stats": {

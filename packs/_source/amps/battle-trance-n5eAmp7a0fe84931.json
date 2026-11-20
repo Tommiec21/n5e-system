@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "battle-trance",
-    "description": "<p><b>Battle Amp</b></p><p>Furious Advantage. You have advantage on Checks and saving throws using your Taijutsu Ability score.</p><p>Furious Resilience. You have resistance to one damage type of your choice, which you pick when you enter Battle Trance. This increases to two choices at 10th and three choices at 17th.</p><p>Furious Focus. You cannot maintain concentration on non Taijutsu or Bukijutsu based effects for the duration of your Battle Trance.</p><p>Level 6 — Frenzied Assault. When you deal damage with an attack or Bukijutsu that uses Polearm or Flail weapons, you add +2 damage. This increases to +4 at 14th level. At the start of your turn, you can forgo this damage bonus to gain advantage on the first attack you make that uses a Polearm or Flail weapon.</p><p>Frenzy Roar and Undying Frenzy: see the feature.</p><p>Lasts 1 minute or until you fall unconscious; 10 minutes of meditation before entering again (or +1 Discipline per extra use).</p>",
+    "description": "<p><b>Battle Amp</b></p><p>Furious Advantage. You have advantage on Checks and saving throws using your Taijutsu Ability score.</p><p>Furious Resilience. You have resistance to one damage type of your choice, which you pick when you enter Battle Trance.</p><p>Furious Focus. You cannot maintain concentration on non Taijutsu or Bukijutsu based effects for the duration of your Battle Trance.</p><p>Frenzy Roar and Undying Frenzy: see the feature.</p><p>Lasts 1 minute or until you fall unconscious; 10 minutes of meditation before entering again (or +1 Discipline per extra use).</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "fang-breaker-fury",
       "subclass": ""
     },
-    "summary": "Advantage on checks and saves with your Taijutsu ability; resistance to damage types you pick; from 6th, +2 (+4 at 14th) Polearm and Flail damage.",
+    "summary": "Advantage on checks and saves with your Taijutsu ability; resistance to one damage type you pick.",
     "activation": "bonus",
     "giveable": false,
     "startOnInitiative": "",
@@ -45,7 +45,9 @@
       "unconscious"
     ],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "battle-trance",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -61,31 +63,56 @@
           "label": "Battle Trance: Furious Advantage"
         },
         {
-          "key": "modifier",
-          "selector": "damage",
-          "predicate": {
-            "any": [
-              "weapon:group:polearm",
-              "weapon:group:flail"
-            ]
-          },
-          "value": "lvl(1:0,6:2,14:4)",
-          "label": "Battle Trance: Frenzied Assault"
-        },
-        {
           "key": "note",
-          "text": "Furious Resilience: resistance to one damage type you pick on entering (two at 10th, three at 17th): add it as Damage Resistance on this Amp's effect, or at the table."
+          "text": "Furious Resilience: resistance to one damage type you pick on entering: add it as Damage Resistance on this Amp's effect, or at the table."
         },
         {
           "key": "note",
           "text": "Furious Focus: you can't maintain concentration on effects that aren't Taijutsu or Bukijutsu."
-        },
-        {
-          "key": "note",
-          "text": "6th level: forgo Frenzied Assault at the start of your turn for advantage on your first Polearm or Flail attack. Frenzy Roar (Reaction, 2 Discipline) and Undying Frenzy (3 Discipline: drop to 1 HP instead, ending the trance) are on the feature."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>Furious Advantage. You have advantage on Checks and saving throws using your Taijutsu Ability score.</p><p>Furious Resilience. You have resistance to one damage type of your choice, which you pick when you enter Battle Trance. This increases to two choices at 10th and three choices at 17th.</p><p>Furious Focus. You cannot maintain concentration on non Taijutsu or Bukijutsu based effects for the duration of your Battle Trance.</p><p>Level 6 — Frenzied Assault. When you deal damage with an attack or Bukijutsu that uses Polearm or Flail weapons, you add +2 damage. This increases to +4 at 14th level. At the start of your turn, you can forgo this damage bonus to gain advantage on the first attack you make that uses a Polearm or Flail weapon.</p><p>Frenzy Roar and Undying Frenzy: see the feature.</p><p>Lasts 1 minute or until you fall unconscious; 10 minutes of meditation before entering again (or +1 Discipline per extra use).</p>",
+        "summary": "Advantage on checks and saves with your Taijutsu ability; resistance to damage types you pick; from 6th, +2 (+4 at 14th) Polearm and Flail damage.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "advantage",
+            "selector": [
+              "check",
+              "save"
+            ],
+            "predicate": "ability:tai",
+            "label": "Battle Trance: Furious Advantage"
+          },
+          {
+            "key": "modifier",
+            "selector": "damage",
+            "predicate": {
+              "any": [
+                "weapon:group:polearm",
+                "weapon:group:flail"
+              ]
+            },
+            "value": "lvl(1:0,6:2,14:4)",
+            "label": "Battle Trance: Frenzied Assault"
+          },
+          {
+            "key": "note",
+            "text": "Furious Resilience: resistance to one damage type you pick on entering (two at 10th, three at 17th): add it as Damage Resistance on this Amp's effect, or at the table."
+          },
+          {
+            "key": "note",
+            "text": "Furious Focus: you can't maintain concentration on effects that aren't Taijutsu or Bukijutsu."
+          },
+          {
+            "key": "note",
+            "text": "6th level: forgo Frenzied Assault at the start of your turn for advantage on your first Polearm or Flail attack. Frenzy Roar (Reaction, 2 Discipline) and Undying Frenzy (3 Discipline: drop to 1 HP instead, ending the trance) are on the feature."
+          }
+        ],
+        "name": "Battle Trance"
+      }
     }
   },
   "_stats": {

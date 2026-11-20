@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "ascension",
-    "description": "<p><b>Will Amp</b></p><p>Once per turn, when you restore hit points or grant temporary hit points to a creature with a Jutsu you cast, you gain 1 Healing Surge (Max 3).</p><p>Battle Surge. As an Action, by spending 1 surge, all allied creatures of your choice, excluding yourself, within a 15-foot radius gain 1 Battle Surge (Max 1) for 1 minute or until used, usable in place of any 1 Class or Subclass based special resource. A creature can benefit from Battle Surge once every other turn.</p><p>Healing Burst. As a bonus action, by spending 1 surge, all willing allied creatures of your choice within 20 feet regain Hit points equal to 1 Hit Die + their Constitution Modifier (2 Hit Die at 10th level). Not on creatures at 0 Hit points.</p><p>Vitality Guard. When an allied creature within 30 feet of you takes damage, you can spend your Reaction and 1 Surge to grant it resistance to the triggering damage.</p><p>Lasts 1 minute; 10 minutes of meditation and recovery before entering again.</p>",
+    "description": "<p><b>Will Amp</b></p><p>Once per turn, when you restore hit points or grant temporary hit points to a creature with a Jutsu you cast, you gain 1 Healing Surge (Max 3).</p><p>Battle Surge. As an Action, by spending 1 surge, all allied creatures of your choice, excluding yourself, within a 15-foot radius gain 1 Battle Surge (Max 1) for 1 minute or until used, usable in place of any 1 Class or Subclass based special resource. A creature can benefit from Battle Surge once every other turn.</p><p>Healing Burst. As a bonus action, by spending 1 surge, all willing allied creatures of your choice within 20 feet regain Hit points equal to 1 Hit Die + their Constitution Modifier. Not on creatures at 0 Hit points.</p><p>Vitality Guard. When an allied creature within 30 feet of you takes damage, you can spend your Reaction and 1 Surge to grant it resistance to the triggering damage.</p><p>Lasts 1 minute; 10 minutes of meditation and recovery before entering again.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "ascension",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -55,10 +57,26 @@
         },
         {
           "key": "note",
-          "text": "Battle Surge (Action, 1 surge): allies of your choice within 15 feet gain 1 Battle Surge, usable in place of 1 class or subclass resource. Healing Burst (Bonus Action, 1 surge): willing allies within 20 feet regain 1 Hit Die + Con (2 Hit Die at 10th). Vitality Guard (Reaction, 1 surge): an ally within 30 feet gains resistance to the triggering damage."
+          "text": "Battle Surge (Action, 1 surge): allies of your choice within 15 feet gain 1 Battle Surge, usable in place of 1 class or subclass resource. Healing Burst (Bonus Action, 1 surge): willing allies within 20 feet regain 1 Hit Die + Con. Vitality Guard (Reaction, 1 surge): an ally within 30 feet gains resistance to the triggering damage."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>Once per turn, when you restore hit points or grant temporary hit points to a creature with a Jutsu you cast, you gain 1 Healing Surge (Max 3).</p><p>Battle Surge. As an Action, by spending 1 surge, all allied creatures of your choice, excluding yourself, within a 15-foot radius gain 1 Battle Surge (Max 1) for 1 minute or until used, usable in place of any 1 Class or Subclass based special resource. A creature can benefit from Battle Surge once every other turn.</p><p>Healing Burst. As a bonus action, by spending 1 surge, all willing allied creatures of your choice within 20 feet regain Hit points equal to 1 Hit Die + their Constitution Modifier (2 Hit Die at 10th level). Not on creatures at 0 Hit points.</p><p>Vitality Guard. When an allied creature within 30 feet of you takes damage, you can spend your Reaction and 1 Surge to grant it resistance to the triggering damage.</p><p>Lasts 1 minute; 10 minutes of meditation and recovery before entering again.</p>",
+        "summary": "Gain Healing Surges (max 3) when your jutsu heal; spend them on Battle Surge, Healing Burst or Vitality Guard.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Once per turn, when a jutsu you cast restores HP or grants temporary HP, gain 1 Healing Surge (max 3)."
+          },
+          {
+            "key": "note",
+            "text": "Battle Surge (Action, 1 surge): allies of your choice within 15 feet gain 1 Battle Surge, usable in place of 1 class or subclass resource. Healing Burst (Bonus Action, 1 surge): willing allies within 20 feet regain 1 Hit Die + Con (2 Hit Die at 10th). Vitality Guard (Reaction, 1 surge): an ally within 30 feet gains resistance to the triggering damage."
+          }
+        ],
+        "name": "Ascension"
+      }
     }
   },
   "_stats": {

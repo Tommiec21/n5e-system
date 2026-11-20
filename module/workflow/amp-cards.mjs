@@ -14,7 +14,7 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
-import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn,
+import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -89,6 +89,8 @@ async function confirmWarnings(def, warnings) {
  * @param {boolean} [o.confirm=true] false: skip the confirmation (initiative "auto")
  */
 export async function applyAmp(target, key, { applier = null, item = null, confirm = true } = {}) {
+  // AMP1g (King 2026-11-20): start the version the character's level reaches (Flow (11th) at 11th).
+  key = ampVersionFor(registry(), key, actorLevel(applier ?? target));
   const def = registry()[key];
   if ( !def ) throw new Error(`Unknown Amp: ${key}`);
   if ( !target ) throw new Error("Drop the Amp on a creature.");
@@ -279,7 +281,7 @@ export function registerAmpCards() {
     const source = effect.system.sourceUuid ? await fromUuid(effect.system.sourceUuid) : effect.parent;
     const who = source?.actor ?? source;
     if ( !(who instanceof Actor) || !canModify(game.user, who) || !ownsAmp(who, def) ) return;
-    await who.update(ampCooldownUpdate(key, def, game.time.worldTime, who.flags?.n5e?.ampUses?.[key] ?? {}));
+    await who.update(ampCooldownUpdate(key, def, game.time.worldTime, who.flags?.n5e?.ampUses?.[trackKey(key, def)] ?? {}));
   });
   Hooks.on("updateCombatant", (combatant, change) => {
     if ( change?.initiative != null ) void startOnInitiative(combatant);

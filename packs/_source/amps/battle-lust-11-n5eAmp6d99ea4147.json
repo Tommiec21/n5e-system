@@ -1,0 +1,83 @@
+{
+  "_id": "n5eAmp6d99ea4147",
+  "name": "Battle Lust (11th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2201,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "battle-lust-11",
+    "description": "<p><b>Battle Amp, Max Rank: 5</b></p><p>Your clans inherent lust for combat rises to the surface increasing your combat potential. You can spend Battle lust to enhance Kaguya Clan Hijutsu;</p><p>Accelerated Assault. You gain a +5 bonus to speed, for each rank you have.</p><p>Battle Focus. You gain an additional reaction, which you can only take to perform opportunity attacks, for each rank you have, per round.</p><p>Violent Desire. Damage you deal to creature with ranks of Bleed is increased by +4.</p><p>Calming Down. If you did not deal or take damage before the end of your turn, you lose a rank of Battle Lust.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "clan",
+      "id": "kaguya",
+      "subclass": ""
+    },
+    "summary": "Ranks up to 5: +5 speed and an extra opportunity-attack reaction per rank. +4 damage to bleeding creatures.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "combatEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "series": "battle-lust",
+    "level": 11
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage",
+          "value": 4,
+          "label": "Battle Lust: Violent Desire",
+          "predicate": "target:status:bleed"
+        },
+        {
+          "key": "note",
+          "text": "Ranks come from Shikotsumyaku Stance, Desire for Battle and Dance of the Pale Tyrant; Kaguya Hijutsu spend them."
+        },
+        {
+          "key": "note",
+          "text": "Per rank: +5 speed and one extra reaction for opportunity attacks (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "Calming Down: lose a rank if you neither dealt nor took damage by the end of your turn."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp6d99ea4147"
+}

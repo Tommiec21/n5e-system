@@ -1,0 +1,83 @@
+{
+  "_id": "n5eAmp49a904e832",
+  "name": "Chakra Surge: Flow (11th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 301,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "chakra-surge-flow-11",
+    "description": "<p><b>Will Amp</b></p><p>Flow symbolizes you controlling and refining your chakra, making slight adjustments to it as the battle progresses.</p><p>You gain a +2 bonus to your Ninjutsu Save DC.</p><p>When you begin your turn in this state, you regain 1 Focus.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu or features that boosts the damage you deal with Ninjutsu.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "chakra-surge",
+      "subclass": ""
+    },
+    "summary": "+2 Ninjutsu save DC; regain 1 Focus at the start of your turn; advantage on Ninjutsu concentration checks.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "flow",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.saveDC.nin",
+        "value": "2",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "chakra-surge-flow",
+    "level": 11
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "predicate": [
+            "concentration",
+            "concentration:discipline:nin"
+          ],
+          "label": "Flow"
+        },
+        {
+          "key": "note",
+          "text": "You cannot benefit from jutsu or features that boost the damage you deal with Ninjutsu."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp49a904e832"
+}

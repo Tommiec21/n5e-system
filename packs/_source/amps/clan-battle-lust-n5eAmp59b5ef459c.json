@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "battle-lust",
-    "description": "<p><b>Battle Amp, Max Rank: 5</b></p><p>Your clans inherent lust for combat rises to the surface increasing your combat potential. You can spend Battle lust to enhance Kaguya Clan Hijutsu;</p><p>Accelerated Assault. You gain a +5 bonus to speed, for each rank you have.</p><p>Battle Focus. You gain an additional reaction, which you can only take to perform opportunity attacks, for each rank you have, per round.</p><p>Violent Desire. Damage you deal to creature with ranks of Bleed is increased by +2. This increases to +4 at 11th level.</p><p>Calming Down. If you did not deal or take damage before the end of your turn, you lose a rank of Battle Lust.</p>",
+    "description": "<p><b>Battle Amp, Max Rank: 5</b></p><p>Your clans inherent lust for combat rises to the surface increasing your combat potential. You can spend Battle lust to enhance Kaguya Clan Hijutsu;</p><p>Accelerated Assault. You gain a +5 bonus to speed, for each rank you have.</p><p>Battle Focus. You gain an additional reaction, which you can only take to perform opportunity attacks, for each rank you have, per round.</p><p>Violent Desire. Damage you deal to creature with ranks of Bleed is increased by +2.</p><p>Calming Down. If you did not deal or take damage before the end of your turn, you lose a rank of Battle Lust.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "kaguya",
       "subclass": ""
     },
-    "summary": "Ranks up to 5: +5 speed and an extra opportunity-attack reaction per rank. +2 damage (+4 at 11th) to bleeding creatures.",
+    "summary": "Ranks up to 5: +5 speed and an extra opportunity-attack reaction per rank. +2 damage to bleeding creatures.",
     "activation": "",
     "giveable": false,
     "startOnInitiative": "",
@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "battle-lust",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -52,7 +54,7 @@
         {
           "key": "modifier",
           "selector": "damage",
-          "value": "lvl(1:2,11:4)",
+          "value": 2,
           "label": "Battle Lust: Violent Desire",
           "predicate": "target:status:bleed"
         },
@@ -69,7 +71,34 @@
           "text": "Calming Down: lose a rank if you neither dealt nor took damage by the end of your turn."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp, Max Rank: 5</b></p><p>Your clans inherent lust for combat rises to the surface increasing your combat potential. You can spend Battle lust to enhance Kaguya Clan Hijutsu;</p><p>Accelerated Assault. You gain a +5 bonus to speed, for each rank you have.</p><p>Battle Focus. You gain an additional reaction, which you can only take to perform opportunity attacks, for each rank you have, per round.</p><p>Violent Desire. Damage you deal to creature with ranks of Bleed is increased by +2. This increases to +4 at 11th level.</p><p>Calming Down. If you did not deal or take damage before the end of your turn, you lose a rank of Battle Lust.</p>",
+        "summary": "Ranks up to 5: +5 speed and an extra opportunity-attack reaction per rank. +2 damage (+4 at 11th) to bleeding creatures.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "modifier",
+            "selector": "damage",
+            "value": "lvl(1:2,11:4)",
+            "label": "Battle Lust: Violent Desire",
+            "predicate": "target:status:bleed"
+          },
+          {
+            "key": "note",
+            "text": "Ranks come from Shikotsumyaku Stance, Desire for Battle and Dance of the Pale Tyrant; Kaguya Hijutsu spend them."
+          },
+          {
+            "key": "note",
+            "text": "Per rank: +5 speed and one extra reaction for opportunity attacks (at the table)."
+          },
+          {
+            "key": "note",
+            "text": "Calming Down: lose a rank if you neither dealt nor took damage by the end of your turn."
+          }
+        ],
+        "name": "Battle Lust"
+      }
     }
   },
   "_stats": {

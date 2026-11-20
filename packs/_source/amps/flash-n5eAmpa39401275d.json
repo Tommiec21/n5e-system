@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "flash",
-    "description": "<p><b>Reflex Amp</b></p><p>Your movement speed is increased by +10.</p><p>You gain a Rank of Mastery to Dexterity based checks.</p><p>You gain a +1 bonus to your Dexterity saving throws and your AC. This increases to +2 at 9th level.</p>",
+    "description": "<p><b>Reflex Amp</b></p><p>Your movement speed is increased by +10.</p><p>You gain a Rank of Mastery to Dexterity based checks.</p><p>You gain a +1 bonus to your Dexterity saving throws and your AC.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "burst-of-speed-pathfinder-scout",
       "subclass": ""
     },
-    "summary": "+10 speed, Mastery on Dexterity checks, and +1 to Dexterity saves and AC (+2 at 9th). Lasts 1 minute.",
+    "summary": "+10 speed, Mastery on Dexterity checks, and +1 to Dexterity saves and AC. Lasts 1 minute.",
     "activation": "bonus",
     "giveable": false,
     "startOnInitiative": "",
@@ -55,16 +55,18 @@
       },
       {
         "key": "n5e.save.dex",
-        "value": "lvl(1:1,9:2)",
+        "value": "1",
         "mode": 2
       },
       {
         "key": "system.bonuses.ac",
-        "value": "lvl(1:1,9:2)",
+        "value": "1",
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "flash",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -79,7 +81,44 @@
           "text": "Ends early with Speed Blitz (an attack with Jack of All: Combat that can't be reacted to) or Burst Rush (Dash as a teleport, bringing an adjacent willing ally)."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Reflex Amp</b></p><p>Your movement speed is increased by +10.</p><p>You gain a Rank of Mastery to Dexterity based checks.</p><p>You gain a +1 bonus to your Dexterity saving throws and your AC. This increases to +2 at 9th level.</p>",
+        "summary": "+10 speed, Mastery on Dexterity checks, and +1 to Dexterity saves and AC (+2 at 9th). Lasts 1 minute.",
+        "changes": [
+          {
+            "key": "system.bonuses.speed",
+            "value": "10",
+            "mode": 2
+          },
+          {
+            "key": "n5e.mastery.check.dex",
+            "value": "Flash",
+            "mode": 2
+          },
+          {
+            "key": "n5e.save.dex",
+            "value": "lvl(1:1,9:2)",
+            "mode": 2
+          },
+          {
+            "key": "system.bonuses.ac",
+            "value": "lvl(1:1,9:2)",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Start: a Bonus action on your turn, or when you cast a jutsu granted by Mobile Savant."
+          },
+          {
+            "key": "note",
+            "text": "Ends early with Speed Blitz (an attack with Jack of All: Combat that can't be reacted to) or Burst Rush (Dash as a teleport, bringing an adjacent willing ally)."
+          }
+        ],
+        "name": "Flash"
+      }
     }
   },
   "_stats": {

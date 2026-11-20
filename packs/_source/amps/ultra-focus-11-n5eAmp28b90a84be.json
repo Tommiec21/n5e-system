@@ -1,0 +1,99 @@
+{
+  "_id": "n5eAmp28b90a84be",
+  "name": "Ultra Focus (11th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2801,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "ultra-focus-11",
+    "description": "<p><b>Fortitude Amp</b></p><p>Your back is against the wall and you need to focus, going beyond what your limits suggest;</p><p>Uncapped Strength. You gain a +4 bonus to damage you deal.</p><p>Broken Limits. Once per turn on your turn, you can spend 3 Drive, spending your Bonus Action, to gain an Action.</p><p>Always Push Forward. You gain advantage on saving throws and checks to resist being Grappled, Restrained, Stunned, Staggered having your speed reduced by hostile effects.</p><p>Stress. At the end of each of your turns, make a Constitution ability check vs a DC 20. On a success, you persist in this state and it doesn’t end. On a failure, this state ends.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Fortitude Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "non-clan-nindo-always-go-beyond",
+      "subclass": ""
+    },
+    "summary": "+4 damage, Drive for an extra Action, and advantage to resist grapples, restraints, stuns and Staggered. A DC 20 Con check each turn keeps it going.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "dismissed",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "sr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.stateResist",
+        "value": "grappled",
+        "mode": 2
+      },
+      {
+        "key": "n5e.stateResist",
+        "value": "restrained",
+        "mode": 2
+      },
+      {
+        "key": "n5e.stateResist",
+        "value": "stunned",
+        "mode": 2
+      },
+      {
+        "key": "n5e.conditionResist",
+        "value": "staggered",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "ultra-focus",
+    "level": 11
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage",
+          "value": 4,
+          "label": "Ultra Focus: Uncapped Strength"
+        },
+        {
+          "key": "note",
+          "text": "Starts the first time you fall below half your hit or chakra points."
+        },
+        {
+          "key": "note",
+          "text": "Stress: at the end of each of your turns, a DC 20 Constitution check; on a failure it ends."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp28b90a84be"
+}

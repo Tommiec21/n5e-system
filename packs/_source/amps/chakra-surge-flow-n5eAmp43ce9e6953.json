@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "chakra-surge-flow",
-    "description": "<p><b>Will Amp</b></p><p>Flow symbolizes you controlling and refining your chakra, making slight adjustments to it as the battle progresses.</p><p>You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 11th level and +3 at 19th level.</p><p>When you begin your turn in this state, you regain 1 Focus.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu or features that boosts the damage you deal with Ninjutsu.</p>",
+    "description": "<p><b>Will Amp</b></p><p>Flow symbolizes you controlling and refining your chakra, making slight adjustments to it as the battle progresses.</p><p>You gain a +1 bonus to your Ninjutsu Save DC.</p><p>When you begin your turn in this state, you regain 1 Focus.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu or features that boosts the damage you deal with Ninjutsu.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "chakra-surge",
       "subclass": ""
     },
-    "summary": "+1 Ninjutsu save DC (+2 at 11th, +3 at 19th); regain 1 Focus at the start of your turn; advantage on Ninjutsu concentration checks.",
+    "summary": "+1 Ninjutsu save DC; regain 1 Focus at the start of your turn; advantage on Ninjutsu concentration checks.",
     "activation": "bonus",
     "giveable": false,
     "startOnInitiative": "",
@@ -45,11 +45,13 @@
     "changes": [
       {
         "key": "n5e.saveDC.nin",
-        "value": "lvl(3:1,11:2,19:3)",
+        "value": "1",
         "mode": 2
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "chakra-surge-flow",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -69,7 +71,34 @@
           "text": "You cannot benefit from jutsu or features that boost the damage you deal with Ninjutsu."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>Flow symbolizes you controlling and refining your chakra, making slight adjustments to it as the battle progresses.</p><p>You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 11th level and +3 at 19th level.</p><p>When you begin your turn in this state, you regain 1 Focus.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu or features that boosts the damage you deal with Ninjutsu.</p>",
+        "summary": "+1 Ninjutsu save DC (+2 at 11th, +3 at 19th); regain 1 Focus at the start of your turn; advantage on Ninjutsu concentration checks.",
+        "changes": [
+          {
+            "key": "n5e.saveDC.nin",
+            "value": "lvl(3:1,11:2,19:3)",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "advantage",
+            "selector": "check",
+            "predicate": [
+              "concentration",
+              "concentration:discipline:nin"
+            ],
+            "label": "Flow"
+          },
+          {
+            "key": "note",
+            "text": "You cannot benefit from jutsu or features that boost the damage you deal with Ninjutsu."
+          }
+        ],
+        "name": "Chakra Surge: Flow"
+      }
     }
   },
   "_stats": {

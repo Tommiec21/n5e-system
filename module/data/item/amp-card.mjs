@@ -15,6 +15,7 @@
  *   endsOn      staggered, blinded, unconscious, noChakra, stanceLeave (King Q-A5: the GM's setting
  *               decides whether these end it automatically or at the table)
  *   changes, tempHp, state, aura, and rule elements in flags.n5e.rules: the buff itself
+ *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
 import * as S from "../fields/shared.mjs";
 import { baseFields } from "./templates.mjs";
@@ -41,7 +42,10 @@ export class AmpCardData extends TDM() {
       tempHp: S.str(),
       endsOn: S.set(),
       changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })),
-      aura: object()
+      aura: object(),
+      // AMP1g: versions of one Amp (King 2026-11-20): the base key, and the character level it starts at.
+      series: S.str(),
+      level: S.int(0, { min: 0 })
     };
   }
 }

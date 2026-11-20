@@ -1,0 +1,83 @@
+{
+  "_id": "n5eAmp85d6ce6b9b",
+  "name": "Crash: Maelstrom (7th)",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 1001,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "crash-maelstrom-7",
+    "description": "<p><b>Will Amp</b></p><p>When you enter your Crash state, by spending 1 Focus, you become a Maelstrom. You can benefit from two stances from Shift Tides at once, and once per turn, when you deal Cold damage to a creature with a Water Release Ninjutsu, you can inflict one of the affected creatures with Tidal Draw until the beginning of your next turn.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "surging-maelstrom-tsunami",
+      "subclass": ""
+    },
+    "summary": "Crash, plus two Shift Tides stances at once and Tidal Draw from Water Release cold damage once per turn.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "crash",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "series": "crash-maelstrom",
+    "level": 7
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Shift Tides stances at once; once per turn, Water Release cold damage can inflict Tidal Draw until your next turn (when it casts a chakra-molding jutsu you gain temporary chakra: 1d4 D/C, 1d8 B/A, 1d12 S). Each instance of damage you take +2.",
+          "label": "Chakra Surge: Crash (Maelstrom)"
+        },
+        {
+          "key": "costReduction",
+          "selector": "cast",
+          "value": 0,
+          "label": "Crash: no cost reduction"
+        },
+        {
+          "key": "note",
+          "text": "Once per casting, Ninjutsu you cast deal +2d10 damage (half the dice for an area). This is added automatically when you cast."
+        },
+        {
+          "key": "note",
+          "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp85d6ce6b9b"
+}

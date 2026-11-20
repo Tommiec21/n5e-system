@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "scorching-heat",
-    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Hotter Still. You gain a +2 bonus to fire damage you deal. This increases to +4 at 7th and +6 at 15th levels</p><p>Fuel to the flame. When you deal Wind or Fire Damage to a creature with ranks of Burned, you convert 1 rank of Burned a creature has to 1 rank of Immolation.</p><p>Scorch Magnification. You can spend Scorch Charges to use the Scorch effect of Shakuton Hijutsu you cast.</p>",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Hotter Still. You gain a +2 bonus to fire damage you deal.</p><p>Fuel to the flame. When you deal Wind or Fire Damage to a creature with ranks of Burned, you convert 1 rank of Burned a creature has to 1 rank of Immolation.</p><p>Scorch Magnification. You can spend Scorch Charges to use the Scorch effect of Shakuton Hijutsu you cast.</p>",
     "source": {
       "book": "N5e 4.0 Clans",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "shakuton",
       "subclass": ""
     },
-    "summary": "+2 fire damage (+4 at 7th, +6 at 15th). Wind or fire damage turns Burned into Immolation, and Scorch Charges fuel Scorch effects.",
+    "summary": "+2 fire damage. Wind or fire damage turns Burned into Immolation, and Scorch Charges fuel Scorch effects.",
     "activation": "trigger",
     "giveable": false,
     "startOnInitiative": "",
@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "scorching-heat",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -52,15 +54,33 @@
         {
           "key": "modifier",
           "selector": "damage:fire",
-          "value": "lvl(1:2,7:4,15:6)",
+          "value": 2,
           "label": "Scorching Heat: Hotter Still"
         },
         {
           "key": "note",
-          "text": "You're in this state while you have Scorch Charges (they fade after 1 minute). From 15th (Scorching Dominion), always."
+          "text": "You're in this state while you have Scorch Charges (they fade after 1 minute)."
         }
       ],
-      "amp1d": true
+      "amp1d": true,
+      "versionSource": {
+        "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Hotter Still. You gain a +2 bonus to fire damage you deal. This increases to +4 at 7th and +6 at 15th levels</p><p>Fuel to the flame. When you deal Wind or Fire Damage to a creature with ranks of Burned, you convert 1 rank of Burned a creature has to 1 rank of Immolation.</p><p>Scorch Magnification. You can spend Scorch Charges to use the Scorch effect of Shakuton Hijutsu you cast.</p>",
+        "summary": "+2 fire damage (+4 at 7th, +6 at 15th). Wind or fire damage turns Burned into Immolation, and Scorch Charges fuel Scorch effects.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "modifier",
+            "selector": "damage:fire",
+            "value": "lvl(1:2,7:4,15:6)",
+            "label": "Scorching Heat: Hotter Still"
+          },
+          {
+            "key": "note",
+            "text": "You're in this state while you have Scorch Charges (they fade after 1 minute). From 15th (Scorching Dominion), always."
+          }
+        ],
+        "name": "Scorching Heat"
+      }
     }
   },
   "_stats": {

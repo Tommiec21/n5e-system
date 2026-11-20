@@ -10,7 +10,7 @@
   },
   "system": {
     "identifier": "crash-duality",
-    "description": "<p><b>Will Amp</b></p><p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 11th, and 3d10 at 19th level.</p><p>You can use two or more Moldings at once as part of the same casting.</p><p>You can use the Draw Reserves skill Action, as an Action.</p><p>You do not benefit from the cost reduction any source. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>",
+    "description": "<p><b>Will Amp</b></p><p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast.</p><p>You can use two or more Moldings at once as part of the same casting.</p><p>You can use the Draw Reserves skill Action, as an Action.</p><p>You do not benefit from the cost reduction any source. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>",
     "source": {
       "book": "Orochimaru's Observation Compendium",
       "page": "",
@@ -24,7 +24,7 @@
       "id": "summoning-duality-summoner",
       "subclass": ""
     },
-    "summary": "Once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction.",
+    "summary": "Once per casting +1d10 Ninjutsu damage, two or more Moldings, Draw Reserves as an Action, no cost reduction.",
     "activation": "",
     "giveable": false,
     "startOnInitiative": "",
@@ -43,7 +43,9 @@
     "tempHp": "",
     "endsOn": [],
     "changes": [],
-    "aura": {}
+    "aura": {},
+    "series": "crash-duality",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -64,7 +66,29 @@
           "text": "The bonus damage is added automatically when you cast."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 11th, and 3d10 at 19th level.</p><p>You can use two or more Moldings at once as part of the same casting.</p><p>You can use the Draw Reserves skill Action, as an Action.</p><p>You do not benefit from the cost reduction any source. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>",
+        "summary": "Once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction.",
+        "changes": [],
+        "rules": [
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Start: when you enter Crash or Flow, spend 1 Focus; your Bonded creature enters Flow Duality (give it that card). It loses 2 jutsu slots at the end of each of your turns."
+          },
+          {
+            "key": "note",
+            "text": "The bonus damage is added automatically when you cast."
+          }
+        ],
+        "name": "Crash Duality"
+      }
     }
   },
   "_stats": {

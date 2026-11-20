@@ -192,7 +192,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.length, 59, "20 cards for the Amp buttons (AMP1c), 34 clan and 5 class cards (AMP1d)");
+  assert.equal(cards.filter(c => !c.system.level).length, 59, "20 cards for the Amp buttons (AMP1c), 34 clan and 5 class cards (AMP1d); the rest are AMP1g versions");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -266,8 +266,8 @@ test("AMP1d: 34 clan Amp cards, typed Clan, owned by a real clan feature, with v
   }
   const wolf = cards.find(c => c.system.identifier === "white-wolf");
   assert.deepEqual([wolf.system.activation, wolf.system.duration.seconds, wolf.system.uses.per], ["bonus", 60, "lr"]);
-  const kujaku = cards.find(c => c.system.identifier === "kujaku-mode");
-  assert.equal(resolveLevelTables(kujaku.system.changes[0].value, 11), "20");
+  // AMP1g: the speed is fixed per version (+10, then +20 from 11th).
+  assert.equal(cards.find(c => c.system.identifier === "kujaku-mode").system.changes[0].value, "10");
 });
 
 test("AMP1d fix: level tables in effect changes resolve by level (Flow's save DC was dropped)", () => {
@@ -289,7 +289,8 @@ test("AMP1d: the class Amp boxes (Flash, Elemental Flux, Chained Cascade, Crash 
   const cards = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))).map(c => [c.system.identifier, c]));
   const flash = cards.flash.system;
   assert.deepEqual([flash.ampType, flash.owner.id, flash.duration.seconds], ["reflex", "burst-of-speed-pathfinder-scout", 60]);
-  assert.ok(flash.changes.some(c => c.key === "system.bonuses.ac" && c.value === "lvl(1:1,9:2)"));
+  assert.ok(flash.changes.some(c => c.key === "system.bonuses.ac" && c.value === "1"));
+  assert.ok(cards["flash-9"].system.changes.some(c => c.key === "system.bonuses.ac" && c.value === "2"), "AMP1g: +2 from 9th is its own version");
   assert.equal(cards["elemental-flux"].system.duration.until, "nextTurnEnd");
   assert.equal(cards["chained-cascade"].system.duration.until, "nextTurnEnd");
   assert.equal(cards["crash-duality"].system.state, "crashDuality", "not Crash's own dice table");
@@ -315,4 +316,45 @@ test("King 2026-11-20: an Amp card appears only once the character has the featu
   assert.deepEqual(keys([cls, feat("chakra-surge"), feat("ninjutsu-master")]),
     ["chakra-surge-crash", "chakra-surge-crash-perfected", "chakra-surge-flow", "chakra-surge-flow-perfected"], "20th level: the upgrades join");
   for ( const [k, d] of Object.entries(registry) ) assert.equal(d.owner.kind === "feat" || d.owner.kind === "clan", true, `${k} belongs to a feature or a clan`);
+});
+
+// AMP1g (King 2026-11-20): every Amp that grows by level is a separate card per version.
+test("AMP1g: versions are separate cards with only their own numbers", () => {
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const cards = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))).map(c => [c.system.identifier, c]));
+  const text = c => c.system.description.replace(/<[^>]+>/g, " ");
+  assert.deepEqual(["chakra-surge-flow", "chakra-surge-flow-11", "chakra-surge-flow-19"].map(k => [cards[k].name, cards[k].system.level, cards[k].system.changes[0].value]),
+    [["Chakra Surge: Flow", 0, "1"], ["Chakra Surge: Flow (11th)", 11, "2"], ["Chakra Surge: Flow (19th)", 19, "3"]]);
+  assert.ok(text(cards["chakra-surge-flow-11"]).includes("+2 bonus to your Ninjutsu Save DC") && !/at 11th|at 19th/.test(text(cards["chakra-surge-flow-11"])));
+  for ( const c of Object.values(cards) ) {
+    assert.ok(!JSON.stringify([c.system.changes, c.flags.n5e.rules]).includes("lvl(") || !c.system.series, `${c.system.identifier}: a versioned card has fixed numbers`);
+    if ( c.system.level ) {
+      assert.ok(cards[c.system.series], `${c.system.identifier}: its base exists`);
+      assert.equal(c.system.owner.id, cards[c.system.series].system.owner.id, "a version belongs to the same feature");
+    }
+  }
+  assert.equal(cards["miraigan-15"].system.changes.filter(ch => ch.key === "n5e.mastery.skill.ins").length, 3, "3 ranks of Mastery at 15th");
+  assert.ok(!text(cards["dragons-rage"]).includes("Unbound Savagery") && text(cards["dragons-rage-15"]).includes("Unbound Savagery"));
+  assert.equal(cards["crash-overheat"].flags.n5e.rules.find(r => r.label === "Overheat").value, 2, "Overheat's first version is +2, not 0");
+});
+
+test("AMP1g: the panel and the buttons use the highest version the character's level reaches; versions share uses", async () => {
+  const { ampCardsFor, ampDefinition, ampVersionFor, ampSpendUpdate, ampUsesLeft } = await import("../module/rules/amp-cards.mjs");
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const registry = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")))
+    .map(c => [c.system.identifier, ampDefinition(c)]));
+  const feat = id => ({ type: "feat", name: id, system: { identifier: id } });
+  const ninja = level => ({ system: { level }, items: [feat("chakra-surge")], effects: [], flags: {} });
+  const labels = level => ampCardsFor(ninja(level), registry).map(c => c.label).sort();
+  assert.deepEqual(labels(3), ["Chakra Surge: Crash", "Chakra Surge: Flow"]);
+  assert.deepEqual(labels(12), ["Chakra Surge: Crash (11th)", "Chakra Surge: Flow (11th)"]);
+  assert.equal(ampVersionFor(registry, "chakra-surge-flow", 20), "chakra-surge-flow-19");
+  assert.equal(ampVersionFor(registry, "chakra-surge-flow", 5), "chakra-surge-flow");
+  assert.equal(ampVersionFor(registry, "white-wolf", 20), "white-wolf", "an Amp without versions is itself");
+  const spend = ampSpendUpdate({ flags: {} }, "white-wolf", registry["white-wolf"]);
+  assert.ok(spend["flags.n5e.ampUses.white-wolf"]);
+  const kujaku = ampSpendUpdate({ flags: {} }, "kujaku-mode-11", registry["kujaku-mode-11"]);
+  assert.ok(kujaku["flags.n5e.ampUses.kujaku-mode"], "a version spends the Amp's one pool of uses");
+  const used = { flags: { n5e: { ampUses: { "kujaku-mode": { spent: 1 } } } } };
+  assert.equal(ampUsesLeft(used, "kujaku-mode-15", registry["kujaku-mode-15"]).left, 0);
 });

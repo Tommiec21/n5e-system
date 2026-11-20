@@ -1,3 +1,16 @@
+## 0.68.0-alpha.1 — AMP1g: a separate card for each version of an Amp
+
+King 2026-11-20: "Anytime an Amp would upgrade/grow in power, there should be a separate version." Q-G1: the level is character level. Q-G2: versions are named "[Name] (level)".
+
+- **32 Amps that grow by level now have one card per version: 68 version cards.** For example, Chakra Surge: Flow (+1 Ninjutsu save DC), Flow (11th) (+2), Flow (19th) (+3).
+  - Each card shows only its own numbers and text; no "this increases at 11th" lines.
+  - Lines that start at a level (Dragons Rage's Awakened, Synthetic Chakra Mode's Bio-Pets) appear only on the version that has them.
+  - Scaling Mastery is now automatic: Miraigan (Insight) and Combat Coordinated (initiative) get 2 ranks at 7th and 3 at 15th.
+- **Only your version shows.** The Amps panel offers the highest version your character level reaches, and the feature's button starts that version.
+- **One pool of uses and one reuse wait** per Amp, shared by all its versions.
+- **Card sheet:** Advanced has "Version of" and "From level" for your own versions.
+- Builders: `tools/content/build-amp-versions.py` (run after build-amp-cards.py and build-clan-amp-cards.py).
+
 ## 0.67.0-alpha.2 — Amp cards appear at the right level
 
 ### Fixed

@@ -11,9 +11,10 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | `module/data/item/character-options.mjs` | extra-attack, switch-hitter |
 | `module/data/item/templates.mjs` | scout-nin, superior-assault |
 | `module/rules/features.mjs` | genjutsu-specialist, hunter-nin, jack-of-all, medical-nin, ninjutsu-specialist, scout-nin, superior-assault, switch-hitter, taijutsu-specialist, weapon-specialist |
+| `module/view-models/item.mjs` | chakra-surge-flow |
 | `module/workflow/clan.mjs` | non-clan |
 
-17 names in 6 files. `npm run check` fails on any new one.
+18 names in 7 files. `npm run check` fails on any new one.
 
 ## 2. Other content-driven code
 
@@ -60,7 +61,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:197`
+- `module/workflow/amp-cards.mjs:199`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -81,7 +82,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 59 | 0 | 0 | 56 | 55 | 0 |
+| amps | 127 | 0 | 0 | 124 | 123 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 0 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
@@ -98,12 +99,12 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp |
 | --- | --- | --- | --- | --- | --- |
-| amps | 59 | 0 | 0 | 0 | 0 |
+| amps | 127 | 0 | 0 | 0 | 0 |
 | clans | 0 | 0 | 0 | 122 | 0 |
 | features | 0 | 0 | 21 | 25 | 0 |
 | jutsu | 0 | 0 | 0 | 66 | 0 |
 | stances | 0 | 0 | 0 | 24 | 0 |
-| **Total** | **59** | **0** | **21** | **237** | **0** |
+| **Total** | **127** | **0** | **21** | **237** | **0** |
 
 ### clans: 122 candidates
 

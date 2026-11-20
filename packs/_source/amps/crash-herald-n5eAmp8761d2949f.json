@@ -49,7 +49,9 @@
         "mode": 4
       }
     ],
-    "aura": {}
+    "aura": {},
+    "series": "crash-herald",
+    "level": 0
   },
   "effects": [],
   "flags": {
@@ -75,7 +77,7 @@
         },
         {
           "key": "note",
-          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (half the dice for an area). This is added automatically when you cast."
         },
         {
           "key": "note",
@@ -86,7 +88,51 @@
           "text": "Herald: you may halve Crash's damage dice and apply the halved amount to two separate jutsu cast in this state."
         }
       ],
-      "amp1c": true
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Will Amp</b></p><p>When you enter your Crash state, by spending 1 Pressure, you become a Herald of storms. You gain a 40-foot fly speed and you may halve the damage dice granted by Crash, applying the halved amount to two separate jutsu cast while in this state.</p><p>While a Herald, hostile creatures gain a +1 bonus to their attack rolls when attacking you.</p>",
+        "summary": "Crash, plus a 40-foot fly speed; hostile creatures get +1 to attack you.",
+        "changes": [
+          {
+            "key": "system.traits.speed.fly",
+            "value": "40",
+            "mode": 4
+          }
+        ],
+        "rules": [
+          {
+            "key": "modifier",
+            "selector": "attack",
+            "direction": "against",
+            "value": 1,
+            "label": "Herald"
+          },
+          {
+            "key": "note",
+            "text": "40-ft fly speed and +1 to attacks against you (on this effect). Crash's damage dice can be halved and applied to two jutsu.",
+            "label": "Chakra Surge: Crash (Herald)"
+          },
+          {
+            "key": "costReduction",
+            "selector": "cast",
+            "value": 0,
+            "label": "Crash: no cost reduction"
+          },
+          {
+            "key": "note",
+            "text": "Once per casting, Ninjutsu you cast deal +1d10 damage (2d10 at 7th, 3d10 at 11th, 4d10 at 15th, 5d10 at 19th; half the dice for an area). This is added automatically when you cast."
+          },
+          {
+            "key": "note",
+            "text": "You can use two or more Moldings on one casting; you can use the Draw Reserves skill action as an Action."
+          },
+          {
+            "key": "note",
+            "text": "Herald: you may halve Crash's damage dice and apply the halved amount to two separate jutsu cast in this state."
+          }
+        ],
+        "name": "Crash: Herald"
+      }
     }
   },
   "_stats": {
