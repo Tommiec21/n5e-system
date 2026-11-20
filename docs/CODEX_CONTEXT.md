@@ -520,3 +520,7 @@ Owner: Codex, additive starter-library slice based on 4093844. Recent Amp change
 ## GM04b — Codex, 2026-11-20
 
 Additive atlas slice based on 55f5a70; 13 new entries, 20 total, relationships only on newly imported entries. Existing GM data untouched. Three changed-content/import checks passed locally plus lint; PR/main reserved. No live verification/local install. GM04c outstanding scope is in docs/GM_WORKSPACE.md. GM04a release confirmed v0.68.1-alpha.1.
+
+## GM04c — Codex, 2026-11-20
+
+Additive selective-import batch based on 2d04d62. Seven new entries (27 total), opt-in missing-link additions and screenshot-driven contrast correction. No recent work deleted or regenerated. Five focused tests/lint passed; PR/main reserved. No live testing or installed changes. GM04d additional geography/figures and GM06 design polish remain documented; GM05 next.

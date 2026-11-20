@@ -21,6 +21,13 @@ export function starterLinks(record, references) {
     .map(r => ({ uuid: references.get(r.id), label: r.label }));
 }
 
+/** Add missing curated links without replacing labels or removing GM-authored relationships. */
+export function mergeStarterLinks(current, suggested) {
+  const merged = structuredClone(current ?? []);
+  for (const link of suggested) if (!merged.some(l => l.uuid === link.uuid)) merged.push(link);
+  return merged;
+}
+
 /** Import missing starter records only; existing entries and GM edits are never updated. */
 export async function importStarter() {
   if (!game.user.isGM || importing) return;
@@ -33,11 +40,16 @@ export async function importStarter() {
       .filter(p => p.flags?.n5e?.preparation?.starterId)
       .map(p => [p.flags.n5e.preparation.starterId, p.uuid])));
     const existing = new Set(references.keys());
-    const missing = bundle.records.filter(r => !existing.has(r.id));
-    if (!missing.length) return ui.notifications.info("These starter entries are already in your library. Your edits were preserved.");
-    const accepted = await foundry.applications.api.DialogV2.confirm({ window: { title: "Import Part I starter entries?" },
-      content: `<p>Add ${missing.length} private journal entries? Includes the five major countries and villages, Part I figures and original ideas. Existing entries and their relationships will not be replaced.</p>` });
-    if (!accepted) return;
+    const groups = [...new Set(bundle.records.map(r => r.kind))];
+    const selected = await foundry.applications.api.DialogV2.prompt({ window: { title: "Choose Part I starter entries" }, position: { width: 600 },
+      content: `<p>Select entries to add. Existing text is never replaced. Links to unselected, unimported entries are omitted.</p><div style="max-height:380px;overflow:auto">`
+        + groups.map(kind => `<fieldset><legend>${esc(kind)}</legend>${bundle.records.map((r, i) => r.kind === kind
+          ? `<label style="display:block"><input type="checkbox" name="record${i}"> ${esc(r.name)}${existing.has(r.id) ? " (already imported)" : ""}</label>` : "").join("")}</fieldset>`).join("")
+        + `</div><label><input type="checkbox" name="reconcile"> Add missing starter links to selected existing entries</label><p>This preserves your text and existing links. It does not delete broken links.</p>`,
+      ok: { label: "Apply selection", callback: (event, button) => ({ ids: bundle.records.filter((r, i) => button.form.elements[`record${i}`].checked).map(r => r.id), reconcile: button.form.elements.reconcile.checked }) }, rejectClose: false });
+    if (!selected?.ids?.length) return;
+    const chosen = bundle.records.filter(r => selected.ids.includes(r.id));
+    const missing = chosen.filter(r => !existing.has(r.id));
     const plans = missing.map(record => {
       const data = starterEntry(record, game.user.id);
       data._id = foundry.utils.randomID();
@@ -48,6 +60,13 @@ export async function importStarter() {
     for (const { record, data } of plans) {
       data.pages[0].flags.n5e.preparation.links = starterLinks(record, references);
       await CONFIG.JournalEntry.documentClass.create(data, { keepId: true });
+    }
+    if (selected.reconcile) for (const record of chosen.filter(r => existing.has(r.id))) {
+      const page = await fromUuid(references.get(record.id));
+      if (!page?.testUserPermission(game.user, "OWNER")) continue;
+      const current = page.flags?.n5e?.preparation?.links ?? [];
+      const links = mergeStarterLinks(current, starterLinks(record, references));
+      if (links.length !== current.length) await page.update({ "flags.n5e.preparation.links": links });
     }
     ui.notifications.info(`Added ${missing.length} starter entries.`);
   } finally { importing = false; }

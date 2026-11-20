@@ -33,3 +33,9 @@
 .n5e-journal-desk .jd-links summary { cursor:pointer; font-weight:600; }
 .n5e-journal-desk .jd-link-row { margin:6px 0; flex-wrap:wrap; }
 .n5e-journal-desk .jd-links p { font-size:12px; }
+/* Explicit paper-surface colors prevent inherited dark-theme headings becoming unreadable. */
+.n5e-journal-desk .jd-shell :is(h2,h3,h4,label,summary) { color:#24372e; text-shadow:none; }
+.n5e-journal-desk .jd-shell :is(input,select,button) { background:#fffdf7; color:#24372e; border:1px solid #a49c88; }
+.n5e-journal-desk .jd-shell button:hover:not(:disabled) { background:#e0e8db; }
+.n5e-journal-desk .jd-shell button:disabled { background:#e2dfd5; color:#65665e; opacity:1; }
+.n5e-journal-desk .jd-shell .jd-save { background:#24372e; color:#fff; }
