@@ -31,6 +31,10 @@ CRASH_NOTES = [
 
 # key, name, owner (kind, id, subclass), type, legacy button name (to find and convert), extra fields
 
+# The feature whose box the card comes from, where the button sits on another feature.
+OWNER_FEATURE = {"battle-medic": "chakra-enhanced-combat-combat-medic"}
+
+
 def ch(key, value, mode=2):
     return {"key": key, "value": str(value), "mode": mode}
 
@@ -295,6 +299,13 @@ def main():
             if not eff.get("amp"):
                 carried[card["key"]] = {"changes": eff.get("changes") or [], "rules": eff.get("rules") or [], "seconds": eff.get("seconds") or 60,
                                         "target": eff.get("target") or "self"}
+    granting = {}
+    for f, data, found in buttons:
+        for holder, eff in found:
+            k = eff.get("amp") or (by_legacy.get(eff.get("name")) or {}).get("key")
+            ident = data.get("system", {}).get("identifier")
+            if k and ident and "/packs/" in f:
+                granting.setdefault(k, ident)
     written = 0
     for i, c in enumerate(CARDS):
         old = existing_card(c["key"])
@@ -307,7 +318,11 @@ def main():
         prev = prev or {"changes": [], "rules": [], "seconds": 60, "target": "self"}
         cid = card_id(c["key"])
         kind, oid, sub = c["owner"]
-        owner = {"kind": "class", "id": oid, "subclass": sub}
+        # King 2026-11-20: a card belongs to the feature that grants it, so it appears only once the
+        # character has that feature (Perfected at 20th, Overheat at its level), not for the whole class.
+        owner = {"kind": "feat", "id": OWNER_FEATURE.get(c["key"]) or granting.get(c["key"]) or "", "subclass": ""}
+        if not owner["id"]:
+            owner = {"kind": "class", "id": oid, "subclass": sub}
         rules = []
         for r in [*prev["rules"], *c.get("rules", [])]:
             if r not in rules:

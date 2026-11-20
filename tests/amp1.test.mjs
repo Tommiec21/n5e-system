@@ -288,7 +288,7 @@ test("AMP1d: the class Amp boxes (Flash, Elemental Flux, Chained Cascade, Crash 
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))).map(c => [c.system.identifier, c]));
   const flash = cards.flash.system;
-  assert.deepEqual([flash.ampType, flash.owner.subclass, flash.duration.seconds], ["reflex", "pathfinder-scout", 60]);
+  assert.deepEqual([flash.ampType, flash.owner.id, flash.duration.seconds], ["reflex", "burst-of-speed-pathfinder-scout", 60]);
   assert.ok(flash.changes.some(c => c.key === "system.bonuses.ac" && c.value === "lvl(1:1,9:2)"));
   assert.equal(cards["elemental-flux"].system.duration.until, "nextTurnEnd");
   assert.equal(cards["chained-cascade"].system.duration.until, "nextTurnEnd");
@@ -301,4 +301,18 @@ test("AMP1d: the class Amp boxes (Flash, Elemental Flux, Chained Cascade, Crash 
   }
   const auto = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/ninjutsu-specialist.json"), "utf8"));
   assert.equal(auto.features["summoning-duality-summoner"].castOptions[0].requiresState, "crashDuality");
+});
+
+test("King 2026-11-20: an Amp card appears only once the character has the feature that grants it", async () => {
+  const { ampCardsFor, ampDefinition } = await import("../module/rules/amp-cards.mjs");
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const registry = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")))
+    .map(c => [c.system.identifier, ampDefinition(c)]));
+  const feat = id => ({ type: "feat", name: id, system: { identifier: id } });
+  const cls = { type: "class", name: "Ninjutsu Specialist", system: { identifier: "ninjutsu-specialist" } };
+  const keys = items => ampCardsFor({ items, effects: [], flags: {} }, registry).map(c => c.key).sort();
+  assert.deepEqual(keys([cls, feat("chakra-surge")]), ["chakra-surge-crash", "chakra-surge-flow"], "3rd level: no Perfected versions");
+  assert.deepEqual(keys([cls, feat("chakra-surge"), feat("ninjutsu-master")]),
+    ["chakra-surge-crash", "chakra-surge-crash-perfected", "chakra-surge-flow", "chakra-surge-flow-perfected"], "20th level: the upgrades join");
+  for ( const [k, d] of Object.entries(registry) ) assert.equal(d.owner.kind === "feat" || d.owner.kind === "clan", true, `${k} belongs to a feature or a clan`);
 });

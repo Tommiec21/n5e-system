@@ -1,3 +1,9 @@
+## 0.67.0-alpha.2 — Amp cards appear at the right level
+
+### Fixed
+- **Class Amp cards appeared at any level** (King's playtest: a Ninjutsu Specialist was offered Crash and Flow (Perfected)). They belonged to the whole class or subclass. Each now belongs to the feature that grants it (Perfected: Ninjutsu Master; Overheat: Over the Limit...), so the Amps panel offers a card only once the character has that feature.
+- **Battle Medic** belongs to Chakra Enhanced Combat (Combat Medic), where its box is.
+
 ## 0.67.0-alpha.1 — AMP1d: class Amp cards
 
 - **5 class Amp cards**, each with a button on its feature:
