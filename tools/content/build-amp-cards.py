@@ -30,6 +30,11 @@ CRASH_NOTES = [
 ]
 
 # key, name, owner (kind, id, subclass), type, legacy button name (to find and convert), extra fields
+
+def ch(key, value, mode=2):
+    return {"key": key, "value": str(value), "mode": mode}
+
+
 CARDS = [
     dict(key="reality-shift", name="Reality Shift", owner=("subclass", "genjutsu-specialist", "layered-reality"), type="will", legacy="Reality Shift",
          summary="+1 Genjutsu save DC; your Genjutsu save DC can be your AC; Genjutsu saves can become Intelligence.", state="realityShift",
@@ -166,6 +171,67 @@ CARDS = [
               "Carnivoran: You gain a bonus to your [Unarmed Damage] and [Weapon Damage] equal to the Medical-Nin's Channeled Healing bonus.",
               "Herbivore: You gain DR equal to the Medical-Nin's Channeled Healing bonus.", "Insectoid: You gain Darkvision and Chakra Sight out to 60ft and resistance to Chakra Damage.",
               "Lasts 1 minute. Only one allied creature at a time."]),
+    # AMP1d (King 2026-11-20): the class Amp boxes with no button before.
+    dict(key="elemental-flux", name="Elemental Flux", owner=("subclass", "scout-nin", "elemental-scout"), type="battle", legacy="Elemental Flux",
+         summary="Benefits by your Flux type (the nature release you last cast) and the discipline you cast. Lasts until the end of your next turn.",
+         activation="trigger", until="nextTurnEnd",
+         rules=[note("Starts in combat when you cast a jutsu with a nature release keyword. The same release again extends it by 1 round; a different release changes the type and resets the duration."),
+                note("From 6th (Elemental Aura): resistance to your current Flux type's damage."),
+                note("Once per turn, a jutsu that applies or benefits from Follow Up or Set-Up while in Flux regains 1 Superiority Die.")],
+         box=["Battle Amp", "Your flux type is equal to the nature release that you most recently cast. You benefit from the associated effect based on the keyword listed.",
+              "Earth Release Type", "Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast grants you a minor barrier of defensive chakra, granting you an amount of temporary hit points equal to the rank of the jutsu cast (D-Rank: 4, C-Rank: 8, B-Rank: 12, A-Rank: 16, S-Rank: 20).",
+              "Ninjutsu. You create a 10-foot radius of difficult terrain around you, which you and allied creatures are immune to.",
+              "Genjutsu. Heavy stone weighs down the thoughts of one affected creature. That creature cannot take the dash action and has its movement speed reduced by 20 feet until the end of their next turn as they believe their weight has multiplied.",
+              "Wind Release Type", "Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, grants you a +20 bonus to speed and you can move as part of its casting, either before or after its attacks/effects are applied.",
+              "Ninjutsu. You create a zone of turbulence in a 5-foot radius around you. All attacks that would target a creature within 5 feet of you, suffer a -2 penalty to hit. This turbulence lasts until the end of your next turn.",
+              "Genjutsu. Whispering wind distorts thoughts; Select one creature you can see. Creatures affected by this Genjutsu must target the selected creature with hostile effects it until the beginning of your next turn.",
+              "Fire Release Type", "Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, grants you a +1 bonus to your critical threat range.",
+              "Ninjutsu. Ninjutsu you cast ignores 4 of a creatures DR.",
+              "Genjutsu. Your illusion manifests smothering heat in the mind of the enemy. Until the beginning of your next turn, all affected creatures suffer disadvantage on chakra control checks.",
+              "Water Release Type", "Taijutsu/Bukijutsu. Affected creatures suffer a -10 penalty to their speed and cannot gain bonuses to their speed until the beginning of your next turn.",
+              "Ninjutsu. Ninjutsu you cast with the same nature release as your Flux type, reduces their cost by an amount equal to their ranks. (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5)",
+              "Genjutsu. Genjutsu you cast that affects a creature increases the next jutsu they cast before the start of your next turn by +4.",
+              "Lightning Release Type", "Taijutsu/Bukijutsu. Taijutsu and Bukijutsu you cast, ignores resistance once per turn.",
+              "Ninjutsu. Ninjutsu you cast with the same nature release as your Flux type, that scores a critical hit, increases the damage they deal by Xd6 lightning damage, where X is based on the rank the jutsu was cast at. (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5)",
+              "Genjutsu. Your illusions create false shocks and jolts in the body of your foes. Affected creatures increase the chakra cost to maintain jutsu they are concentrating on by +8, until the beginning of your next turn."]),
+    dict(key="flash", name="Flash", owner=("subclass", "scout-nin", "pathfinder-scout"), type="reflex", legacy="Flash",
+         summary="+10 speed, Mastery on Dexterity checks, and +1 to Dexterity saves and AC (+2 at 9th). Lasts 1 minute.",
+         activation="bonus",
+         changes=[ch("system.bonuses.speed", 10), ch("n5e.mastery.check.dex", "Flash"), ch("n5e.save.dex", "lvl(1:1,9:2)"), ch("system.bonuses.ac", "lvl(1:1,9:2)")],
+         rules=[note("Start: a Bonus action on your turn, or when you cast a jutsu granted by Mobile Savant."),
+                note("Ends early with Speed Blitz (an attack with Jack of All: Combat that can't be reacted to) or Burst Rush (Dash as a teleport, bringing an adjacent willing ally).")],
+         box=["Reflex Amp", "Your movement speed is increased by +10.", "You gain a Rank of Mastery to Dexterity based checks.",
+              "You gain a +1 bonus to your Dexterity saving throws and your AC. This increases to +2 at 9th level."]),
+    dict(key="chained-cascade", name="Chained Cascade", owner=("subclass", "weapon-specialist", "primal-weapon"), type="battle", legacy="Chained Cascade",
+         summary="Temp chakra of twice the Chain rank, Mastery on Ninjutsu attacks and +1 Ninjutsu save DC. Lasts until the end of your next turn.",
+         activation="trigger", until="nextTurnEnd",
+         changes=[ch("n5e.mastery.attack.nin", "Chained Cascade"), ch("n5e.saveDC.nin", 1)],
+         rules=[note("Starts after the Bukijutsu cast with the Chained Cascade feature (3 Discipline). Entering it again extends it by 1 round."),
+                note("Chained Empowerment: temporary chakra equal to twice the Chain rank you benefited from; it fades when the state ends."),
+                note("Protective Barrier: as a reaction, give your remaining Chained Cascade temporary points to an ally within 10 feet who takes damage.")],
+         box=["Battle Amp", "Your chakra surges outward in a relentless cascade.",
+              "Chained Empowerment. You gain a number of temporary Chakra equal to twice the Chain rank you benefitted from as part of the Bukijutsu cast with your Chained Cascade feature. These temporary chakra points dissipate when this state ends.",
+              "Cascading Chakra. You gain a rank of Mastery to your Ninjutsu attacks and a +1 bonus to your Ninjutsu save DC.",
+              "Protective Barrier. As a reaction to an allied creature within 10 feet of you taking damage you can transfer all remaining temporary hit points granted by Chained Cascade to them, allowing the transferred temporary hit points to be applied to the triggering damage."]),
+    dict(key="crash-duality", name="Crash Duality", owner=("subclass", "ninjutsu-specialist", "summoner"), type="will", legacy="Crash Duality",
+         summary="Once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction.",
+         activation="", state="crashDuality", exclusive="surge", cooldown=600,
+         rules=[NO_COST_REDUCTION, note("Start: when you enter Crash or Flow, spend 1 Focus; your Bonded creature enters Flow Duality (give it that card). It loses 2 jutsu slots at the end of each of your turns."),
+                note("The bonus damage is added automatically when you cast.")],
+         box=["Will Amp", "Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 11th, and 3d10 at 19th level.",
+              "You can use two or more Moldings at once as part of the same casting.", "You can use the Draw Reserves skill Action, as an Action.",
+              "You do not benefit from the cost reduction any source. Casting a Jutsu at 0 Cost does not count as cost reduction."]),
+    dict(key="flow-duality", name="Flow Duality", owner=("subclass", "ninjutsu-specialist", "summoner"), type="will", legacy="Flow Duality",
+         summary="+1 Ninjutsu save DC (+2 at 15th), 1 Focus at the start of your turn (a Bonded creature: a jutsu slot), Ninjutsu concentration at advantage, no damage boosts.",
+         activation="", state="flow", exclusive="surge", cooldown=600, giveable=True,
+         changes=[ch("n5e.saveDC.nin", "lvl(1:1,15:2)")],
+         rules=[{"key": "advantage", "selector": "check", "predicate": ["concentration", "concentration:discipline:nin"], "label": "Flow Duality"},
+                note("Start: when you enter Crash or Flow, spend 1 Focus; your Bonded creature enters Crash Duality (give it that card)."),
+                note("A Bonded creature regains 1 jutsu slot instead of Focus at the start of its turn (at the table)."),
+                note("You cannot benefit from jutsu, features or traits that boost the damage you deal with Ninjutsu.")],
+         box=["Will Amp", "You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 15th level.", "When you being your turn in this state, you regain 1 Focus.",
+              "If you are a Bonded creature, you instead regain 1 Jutsu Slot.", "You make Concentration checks to maintain Ninjutsu at advantage.",
+              "You cannot benefit from Jutsu, features or traits that boosts the damage you deal with Ninjutsu."]),
 ]
 
 
@@ -246,7 +312,8 @@ def main():
         for r in [*prev["rules"], *c.get("rules", [])]:
             if r not in rules:
                 rules.append(r)
-        prev["changes"] = [ch for i2, ch in enumerate(prev["changes"]) if ch not in prev["changes"][:i2]]
+        prev["changes"] = [*prev["changes"], *[x for x in c.get("changes", []) if x not in prev["changes"]]]
+        prev["changes"] = [x for i2, x in enumerate(prev["changes"]) if x not in prev["changes"][:i2]]
         desc = "".join(f"<p>{'<b>' + t + '</b>' if j == 0 else t}</p>" for j, t in enumerate(c["box"]))
         doc = {
             "_id": cid, "name": c["name"], "type": "amp", "img": "icons/svg/upgrade.svg", "folder": CLASS_FOLDER, "sort": (i + 1) * 100,

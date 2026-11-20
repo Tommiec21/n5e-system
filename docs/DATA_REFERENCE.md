@@ -921,3 +921,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `system.ampType` "clan"; `system.namedType` the box's type ("Battle Amp"); `system.owner` {kind: "feat", id: <granting feature identifier>} or {kind: "clan", id: <clan>}.
 - `system.duration.until` adds `dismissed`: no time limit (`ampEffectPlan` → `permanent`, the effect gets no duration).
 - Effect change values may hold `lvl(level:value,...)`; `resolveLevelTables` (rules/effect-services.mjs) resolves them in `applyActiveEffects`.
+
+### Class Amp cards (AMP1d, 0.67.0-alpha.1)
+
+- `flash`, `elemental-flux`, `chained-cascade`, `crash-duality`, `flow-duality` in `packs/_source/amps`, built by `tools/content/build-amp-cards.py` (entries may now carry `changes`).
+- Crash Duality's damage: cast option on `summoning-duality-summoner` (content/automation/ninjutsu-specialist.json), `requiresState: "crashDuality"`, `lvl(6:1d10,11:2d10,19:3d10)`.
+- Flow's turn-start Focus comes from the `flow` state only (rules/turn-start.mjs); Amp cards in that state carry no turn-start Focus rule.

@@ -1,0 +1,76 @@
+{
+  "_id": "n5eAmp0d2e890632",
+  "name": "Crash Duality",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2400,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "crash-duality",
+    "description": "<p><b>Will Amp</b></p><p>Once per casting, you gain a +1d10 bonus to damage you deal with Ninjutsu you cast. This increases to +2d10 at 11th, and 3d10 at 19th level.</p><p>You can use two or more Moldings at once as part of the same casting.</p><p>You can use the Draw Reserves skill Action, as an Action.</p><p>You do not benefit from the cost reduction any source. Casting a Jutsu at 0 Cost does not count as cost reduction.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "ninjutsu-specialist",
+      "subclass": "summoner"
+    },
+    "summary": "Once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "crashDuality",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "costReduction",
+          "selector": "cast",
+          "value": 0,
+          "label": "Crash: no cost reduction"
+        },
+        {
+          "key": "note",
+          "text": "Start: when you enter Crash or Flow, spend 1 Focus; your Bonded creature enters Flow Duality (give it that card). It loses 2 jutsu slots at the end of each of your turns."
+        },
+        {
+          "key": "note",
+          "text": "The bonus damage is added automatically when you cast."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp0d2e890632"
+}

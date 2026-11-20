@@ -95,7 +95,8 @@ test("Ninjutsu Specialist: clash advantage by keywords, Flow's concentration adv
   const conc = d => ({ kind: "check", type: "skill", key: "cha", facts: ["concentration", `concentration:discipline:${d}`] });
   assert.deepEqual(contextualAdvantage(inFlow, conc("nin")).advantage, ["Flow"]);
   assert.deepEqual(contextualAdvantage(inFlow, conc("gen")).advantage, []);
-  assert.ok(flow.rules.some(r => r.on === "turnStart" && r.pool === "focus"));
+  // AMP1d fix: the Focus at the start of the turn comes from the "flow" state (rules/turn-start.mjs) only.
+  assert.ok(!flow.rules.some(r => r.on === "turnStart" && r.pool === "focus"));
 
   const overheat = ampCard("crash-overheat");
   const hot = level => ({ system: { level }, statuses: new Set(), items: [], effects: [{ name: "Overheat", flags: { n5e: { rules: overheat.rules } } }] });

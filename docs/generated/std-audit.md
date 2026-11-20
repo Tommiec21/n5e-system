@@ -81,14 +81,14 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 54 | 0 | 0 | 51 | 50 | 0 |
+| amps | 59 | 0 | 0 | 56 | 55 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 0 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 52 | 0 | 0 | 52 | 47 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 163 | 28 | 161 | 147 | 11 |
+| features | 700 | 167 | 28 | 161 | 147 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
 
@@ -98,12 +98,12 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp |
 | --- | --- | --- | --- | --- | --- |
-| amps | 54 | 0 | 0 | 0 | 0 |
+| amps | 59 | 0 | 0 | 0 | 0 |
 | clans | 0 | 0 | 0 | 122 | 0 |
-| features | 0 | 0 | 17 | 28 | 0 |
+| features | 0 | 0 | 21 | 25 | 0 |
 | jutsu | 0 | 0 | 0 | 66 | 0 |
 | stances | 0 | 0 | 0 | 24 | 0 |
-| **Total** | **54** | **0** | **17** | **240** | **0** |
+| **Total** | **59** | **0** | **21** | **237** | **0** |
 
 ### clans: 122 candidates
 
@@ -230,15 +230,13 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - A · **Demonic Instrument: Chains of Fantasia**: Lasting bonus: "…Your attack bonus to…"
 - A · **Lotus Nonself Connected Cannons**: Lasting bonus: "…You gain a bonus…"
 
-### features: 28 candidates
+### features: 25 candidates
 
 - **Superego Manifestation (Void heart Scout)**: Lasting bonus: "…You have advantage on…"
-- **Burst of Speed (Pathfinder Scout)**: Its text names a Reflex Amp.
 - **Tempest Pressure (Storm Terror)**: Lasting bonus: "…you begin your turn with you gain +2…"
 - **Clones Support**: Lasting bonus: "…You gain a +1…"
 - **Circuit**: Lasting bonus: "…you gain immunity…"
 - **Overdrive**: Its text names a Will Amp.
-- **Summoning Duality (Summoner)**: Lasting bonus: "…your Bonded creature gains additional…"
 - **Tag-Team (Summoner)**: Its text names a Will Amp.
 - **Circuit (15th-level benefit)**: Lasting bonus: "…you gain immunity…"
 - **Overdrive (15th-level benefit)**: Its text names a Will Amp.
@@ -259,7 +257,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Chakra Enhanced Combat (Combat Medic)**: Its text names a Fortitude Amp.
 - **Wolf’s Proficiency**: Lasting bonus: "…you, you can gain resistance…"
 - **Vital Conductor (Adept Medic)**: Lasting bonus: "…you cast, they gain +10…"
-- **Chained Cascade (Primal Weapon)**: Its text names a Battle Amp.
 
 ### jutsu: 66 candidates
 

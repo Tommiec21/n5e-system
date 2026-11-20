@@ -1,0 +1,89 @@
+{
+  "_id": "n5eAmp8b4e7370d9",
+  "name": "Flow Duality",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2500,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "flow-duality",
+    "description": "<p><b>Will Amp</b></p><p>You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 15th level.</p><p>When you being your turn in this state, you regain 1 Focus.</p><p>If you are a Bonded creature, you instead regain 1 Jutsu Slot.</p><p>You make Concentration checks to maintain Ninjutsu at advantage.</p><p>You cannot benefit from Jutsu, features or traits that boosts the damage you deal with Ninjutsu.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "will",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "ninjutsu-specialist",
+      "subclass": "summoner"
+    },
+    "summary": "+1 Ninjutsu save DC (+2 at 15th), 1 Focus at the start of your turn (a Bonded creature: a jutsu slot), Ninjutsu concentration at advantage, no damage boosts.",
+    "activation": "",
+    "giveable": true,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 600,
+    "exclusive": "surge",
+    "state": "flow",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.saveDC.nin",
+        "value": "lvl(1:1,15:2)",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "check",
+          "predicate": [
+            "concentration",
+            "concentration:discipline:nin"
+          ],
+          "label": "Flow Duality"
+        },
+        {
+          "key": "note",
+          "text": "Start: when you enter Crash or Flow, spend 1 Focus; your Bonded creature enters Crash Duality (give it that card)."
+        },
+        {
+          "key": "note",
+          "text": "A Bonded creature regains 1 jutsu slot instead of Focus at the start of its turn (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "You cannot benefit from jutsu, features or traits that boost the damage you deal with Ninjutsu."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp8b4e7370d9"
+}

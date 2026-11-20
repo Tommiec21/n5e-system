@@ -33,7 +33,31 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eFSCHGU2hGvZSO",
+        "type": "effect",
+        "label": "Enter Crash Duality",
+        "effect": {
+          "name": "Crash Duality",
+          "target": "self",
+          "amp": "crash-duality"
+        },
+        "activation": ""
+      },
+      {
+        "id": "n5elGVFTdxVDAGSS",
+        "type": "effect",
+        "label": "Enter Flow Duality",
+        "effect": {
+          "name": "Flow Duality",
+          "target": "self",
+          "amp": "flow-duality"
+        },
+        "activation": ""
+      }
+    ]
   },
   "effects": [],
   "flags": {
@@ -50,7 +74,19 @@
           "key": "note",
           "text": "Crash Duality: once per casting +1d10 Ninjutsu damage (2d10 at 11th, 3d10 at 19th), two or more Moldings, Draw Reserves as an Action, no cost reduction. Flow Duality: +1 Ninjutsu save DC (+2 at 15th), a Focus (a Bonded creature: a jutsu slot) at the start of your turn, concentration at advantage, no damage boosts."
         }
-      ]
+      ],
+      "castOption": {
+        "label": "Crash Duality: bonus damage",
+        "requiresState": "crashDuality",
+        "auto": true,
+        "appliesTo": {
+          "discipline": "nin",
+          "requiresDamage": true
+        },
+        "damage": {
+          "formula": "lvl(6:1d10,11:2d10,19:3d10)"
+        }
+      }
     }
   },
   "ownership": {

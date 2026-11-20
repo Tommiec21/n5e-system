@@ -1,0 +1,85 @@
+{
+  "_id": "n5eAmpd6b0b49c42",
+  "name": "Chained Cascade",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "chained-cascade",
+    "description": "<p><b>Battle Amp</b></p><p>Your chakra surges outward in a relentless cascade.</p><p>Chained Empowerment. You gain a number of temporary Chakra equal to twice the Chain rank you benefitted from as part of the Bukijutsu cast with your Chained Cascade feature. These temporary chakra points dissipate when this state ends.</p><p>Cascading Chakra. You gain a rank of Mastery to your Ninjutsu attacks and a +1 bonus to your Ninjutsu save DC.</p><p>Protective Barrier. As a reaction to an allied creature within 10 feet of you taking damage you can transfer all remaining temporary hit points granted by Chained Cascade to them, allowing the transferred temporary hit points to be applied to the triggering damage.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "battle",
+    "namedType": "",
+    "owner": {
+      "kind": "class",
+      "id": "weapon-specialist",
+      "subclass": "primal-weapon"
+    },
+    "summary": "Temp chakra of twice the Chain rank, Mastery on Ninjutsu attacks and +1 Ninjutsu save DC. Lasts until the end of your next turn.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "nextTurnEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.mastery.attack.nin",
+        "value": "Chained Cascade",
+        "mode": 2
+      },
+      {
+        "key": "n5e.saveDC.nin",
+        "value": "1",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starts after the Bukijutsu cast with the Chained Cascade feature (3 Discipline). Entering it again extends it by 1 round."
+        },
+        {
+          "key": "note",
+          "text": "Chained Empowerment: temporary chakra equal to twice the Chain rank you benefited from; it fades when the state ends."
+        },
+        {
+          "key": "note",
+          "text": "Protective Barrier: as a reaction, give your remaining Chained Cascade temporary points to an ally within 10 feet who takes damage."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmpd6b0b49c42"
+}

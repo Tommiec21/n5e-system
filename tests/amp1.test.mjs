@@ -192,7 +192,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.length, 54, "20 class and feature cards (AMP1c) and 34 clan cards (AMP1d)");
+  assert.equal(cards.length, 59, "20 cards for the Amp buttons (AMP1c), 34 clan and 5 class cards (AMP1d)");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -212,7 +212,7 @@ test("AMP1c: every Amp card is valid, and every Amp button names an existing car
       if ( a.effect?.amp ) { buttons++; assert.ok(keys.has(a.effect.amp), `${f}: unknown card ${a.effect.amp}`); }
     }
   }
-  assert.equal(buttons, 20);
+  assert.equal(buttons, 25);
 });
 
 test("AMP1c: checks and saves know the ability they use (Battle Trance: your Taijutsu ability)", async () => {
@@ -282,4 +282,23 @@ test("AMP1d: an Amp that lasts until dismissed has no time limit", async () => {
   const p = ampEffectPlan("crimson-pact", { label: "Crimson Pact", duration: { seconds: 0, until: "dismissed" } });
   assert.deepEqual([p.permanent, p.seconds, p.until], [true, 0, ""]);
   assert.equal(ampEffectPlan("x", { label: "X", duration: { seconds: 0, until: "" } }).seconds, 60, "no duration given is still a minute");
+});
+
+test("AMP1d: the class Amp boxes (Flash, Elemental Flux, Chained Cascade, Crash and Flow Duality)", () => {
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const cards = Object.fromEntries(fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))).map(c => [c.system.identifier, c]));
+  const flash = cards.flash.system;
+  assert.deepEqual([flash.ampType, flash.owner.subclass, flash.duration.seconds], ["reflex", "pathfinder-scout", 60]);
+  assert.ok(flash.changes.some(c => c.key === "system.bonuses.ac" && c.value === "lvl(1:1,9:2)"));
+  assert.equal(cards["elemental-flux"].system.duration.until, "nextTurnEnd");
+  assert.equal(cards["chained-cascade"].system.duration.until, "nextTurnEnd");
+  assert.equal(cards["crash-duality"].system.state, "crashDuality", "not Crash's own dice table");
+  assert.equal(cards["flow-duality"].system.state, "flow", "Flow's turn-start Focus and no-damage-boost rules apply");
+  assert.equal(cards["crash-duality"].system.exclusive, "surge");
+  // King 2026-11-20 batch: the "flow" state already gives the turn-start Focus; the card's rule doubled it.
+  for ( const k of ["chakra-surge-flow", "chakra-surge-flow-perfected", "flow-duality"] ) {
+    assert.ok(!cards[k].flags.n5e.rules.some(r => r.key === "resource" && r.on === "turnStart" && r.pool === "focus"), `${k}: one Focus, not two`);
+  }
+  const auto = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/ninjutsu-specialist.json"), "utf8"));
+  assert.equal(auto.features["summoning-duality-summoner"].castOptions[0].requiresState, "crashDuality");
 });

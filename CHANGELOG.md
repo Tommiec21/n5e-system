@@ -1,3 +1,14 @@
+## 0.67.0-alpha.1 — AMP1d: class Amp cards
+
+- **5 class Amp cards**, each with a button on its feature:
+  - **Flash** (Pathfinder Scout, Burst of Speed): +10 speed, Mastery on Dexterity checks, +1 Dexterity saves and AC (+2 at 9th). Bonus action, 1 minute.
+  - **Elemental Flux** (Elemental Scout): until the end of your next turn; the Flux types by release and discipline are on the card, played at the table.
+  - **Chained Cascade** (Primal Weapon): Mastery on Ninjutsu attacks and +1 Ninjutsu save DC, until the end of your next turn.
+  - **Crash Duality** and **Flow Duality** (Summoner, Summoning Duality): buttons on Summoning Duality. Crash Duality adds +1d10 Ninjutsu damage when you cast (2d10 at 11th, 3d10 at 19th) with no cost reduction. Flow Duality gives +1 Ninjutsu save DC (+2 at 15th), a Focus each turn and concentration advantage. Each replaces Crash or Flow (one surge at a time); give your Bonded creature the opposite card.
+
+### Fixed
+- **Flow gave 2 Focus at the start of your turn** instead of 1 (its state and a rule on the card both added one). The card's duplicate rule is removed, for Flow and Flow (Perfected).
+
 ## 0.66.0-alpha.2 — AMP1d fixes: Blazing and Caloric Ignition
 
 - **Blazing (Sarutobi):** it starts from Will of Fire Incarnate (15th level): a Bonus action for 1 minute, once per long rest. The card now belongs to that feature and counts the use.
