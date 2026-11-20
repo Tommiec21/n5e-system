@@ -73,3 +73,11 @@ Campaign/link edits remain drafts until Save. Templates append headings and neve
 Validation: five new navigation/draft tests passed on local attempt 1; focused lint passed. UI changes after that check are included in the reserved PR CI attempt 2; main CI is reserved as attempt 3. No live testing or local installation. Visual acceptance and broader usability refinements remain GM06; curated starter lore remains GM04.
 
 GM03a release confirmed: v0.65.0-alpha.1. GM03b prepared version: 0.65.0-alpha.2; publication pending.
+
+## GM04a — 2026-11-20
+
+Based on current main 4093844 (0.68.0-alpha.1), preserving all intervening Amp work. Adds seven reviewed Part I starter records and a create-only importer; repeat imports skip source IDs without updating GM text. Records: Land of Waves, Tazuna, Zabuza, Hiruzen, Tsunade and two original mission ideas. Canon summaries cite official episode/comic/retrospective pages in the data; milestones distinguish leadership periods. This is the first content slice, not the complete atlas.
+
+GM04b remains: five major country/village pairs and linked figures. GM04c remains: additional minor countries/villages, selective import filters and relationship mapping. GM05 retains mission-builder integration. Concurrent import from multiple GM clients is not an atomic transaction; use one importing GM.
+
+Two focused offline tests passed once, including preservation of an edited existing entry; lint passed. No live testing or local installation. Package includes only content/world, not unrelated source datasets. Publishing pending.

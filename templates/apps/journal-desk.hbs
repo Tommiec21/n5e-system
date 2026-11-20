@@ -4,6 +4,7 @@
     <nav class="jd-library" aria-label="Workspace library">
       <label>Find an entry<input name="search" type="search" value="{{query}}" placeholder="Title or type"></label><button type="button" data-action="search">Search</button>
       <label>Campaign<select name="campaignFilter"><option value="">All campaigns</option>{{#each filters}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><button type="button" data-action="filter">Filter library</button>
+      <button type="button" data-action="starter">Import Part I starter entries</button>
       <h3>Library</h3>{{#each entries}}<button type="button" class="jd-entry" data-action="open" data-uuid="{{uuid}}">{{#if favorite}}★ {{/if}}{{name}}<small>{{kind}}</small></button>{{else}}<p>Create an entry to start writing.</p>{{/each}}
     </nav>
     <main class="jd-main">

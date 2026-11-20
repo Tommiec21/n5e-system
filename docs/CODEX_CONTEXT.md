@@ -512,3 +512,7 @@ Scope: linked records, campaign assignment/filtering, navigation history, rememb
 
 GM03b implementation complete; five new offline tests and focused lint passed. PR and main release validation remain reserved; no live verification/local installation. See docs/GM_WORKSPACE.md for remembered-tab limits and outstanding content/UI batches.
 - 2026-11-20 (Claude, AMP1g): Amp cards are generated. Rebuild in order: tools/content/build-amp-cards.py, build-clan-amp-cards.py, build-amp-versions.py. Versions carry system.series/level; uses and cooldowns are kept under the series key.
+
+## GM04a — Codex, 2026-11-20
+
+Owner: Codex, additive starter-library slice based on 4093844. Recent Amp changes preserved by fast-forward update; no content regeneration, reset or deletion. See docs/GM_WORKSPACE.md for exact coverage and GM04b/c remaining work. Two tests passed on attempt 1; PR/main reserved as attempts 2/3. No live tests or installation.
