@@ -81,3 +81,12 @@ Based on current main 4093844 (0.68.0-alpha.1), preserving all intervening Amp w
 GM04b remains: five major country/village pairs and linked figures. GM04c remains: additional minor countries/villages, selective import filters and relationship mapping. GM05 retains mission-builder integration. Concurrent import from multiple GM clients is not an atomic transaction; use one importing GM.
 
 Two focused offline tests passed once, including preservation of an edited existing entry; lint passed. No live testing or local installation. Package includes only content/world, not unrelated source datasets. Publishing pending.
+
+## GM04b — 2026-11-20
+
+Owner: Codex; based on 55f5a70, preserving recent Amp work. Added 13 entries: five major countries, their five villages, Gaara, Temari and Kankuro. Library total: 20. Country/village mapping cites Narutopedia explicitly as a secondary source; Sand figures cite the official Part I episode synopsis. No later-era Kage titles assigned.
+
+New imports resolve curated relationships using planned native document IDs, including links to previously imported entries. Existing entries and relationships are never updated. Consequently previously imported Hiruzen/Tsunade entries do not gain new links automatically; new Konoha entries link to them. Partial import failures can leave links to uncreated records; importing the remainder does not repair these automatically. Relink those entries manually; no rollback or deletion occurs.
+
+Three focused tests and lint passed (attempt 1); reserve PR/main checks as attempts 2/3. No live testing or local installation. GM04c remains: minor-country coverage, source-reviewed additional village figures, selective import and explicit opt-in reconciliation for old links. No unsourced Part I leadership assumptions.
+
