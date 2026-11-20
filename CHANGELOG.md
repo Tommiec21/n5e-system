@@ -1,3 +1,8 @@
+## 0.66.0-alpha.2 — AMP1d fixes: Blazing and Caloric Ignition
+
+- **Blazing (Sarutobi):** it starts from Will of Fire Incarnate (15th level): a Bonus action for 1 minute, once per long rest. The card now belongs to that feature and counts the use.
+- **Caloric Ignition (Akimichi):** lasts 1 minute, then 10 minutes to recover before reuse (it was set to last until ended).
+
 ## 0.66.0-alpha.1 — AMP1d: clan Amp cards
 
 - **34 clan Amp cards** in the Amps compendium (Clans folder), one per named Amp box in the clan features. King Q-A1: they're Clan Amps; the box's own type (Battle Amp, Will Amp...) is shown as the named type.
