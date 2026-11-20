@@ -1,3 +1,7 @@
+## 0.68.1-alpha.2 — GM04b major-country atlas
+
+Adds five country/village pairs and three Part I Sand figures (20 starter entries total). Newly imported entries receive curated links; existing GM entries remain untouched. Additional figures and minor-country coverage remain GM04c.
+
 ## 0.68.1-alpha.1 — GM04a starter library
 
 Seven source-labeled Part I entries, imported privately from Journal Desk. Repeat imports preserve existing GM edits. Full atlas coverage remains GM04b/c; no live verification.

@@ -516,3 +516,7 @@ GM03b implementation complete; five new offline tests and focused lint passed. P
 ## GM04a — Codex, 2026-11-20
 
 Owner: Codex, additive starter-library slice based on 4093844. Recent Amp changes preserved by fast-forward update; no content regeneration, reset or deletion. See docs/GM_WORKSPACE.md for exact coverage and GM04b/c remaining work. Two tests passed on attempt 1; PR/main reserved as attempts 2/3. No live tests or installation.
+
+## GM04b — Codex, 2026-11-20
+
+Additive atlas slice based on 55f5a70; 13 new entries, 20 total, relationships only on newly imported entries. Existing GM data untouched. Three changed-content/import checks passed locally plus lint; PR/main reserved. No live verification/local install. GM04c outstanding scope is in docs/GM_WORKSPACE.md. GM04a release confirmed v0.68.1-alpha.1.
