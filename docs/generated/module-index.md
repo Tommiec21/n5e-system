@@ -22,9 +22,9 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `api.mjs` | 168 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll`, `applyConditionCard`, `applyAmp`, `endAmp` |
+| `api.mjs` | 176 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll`, `applyConditionCard`, `applyAmp`, `endAmp`, `journalDesk` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
-| `settings.mjs` | 75 | World settings. | `registerSettings` |
+| `settings.mjs` | 78 | World settings. | `registerSettings` |
 
 ## module/applications/actor
 
@@ -66,9 +66,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation-audit.mjs` | 144 | GM Automation Audit (STD5; docs/STD_SPEC.md "Reviewable in game"). | `AutomationAudit`, `auditLabel` |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
+| `journal-desk.mjs` | 252 | Journal Desk owns its window, not Foundry's journal sheets or navigation hooks. | `JournalDesk` |
 | `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
 | `party-overview.mjs` | 106 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
+| `workspace-navigation.mjs` | 30 | Retain unique tab references; drafts are never saved in user preferences. | `cleanSession`, `visit`, `starterText`, `relationshipUpdate` |
+| `workspace-store.mjs` | 44 | Only workspace text pages are editable here; other journal types retain their own editors. | `ENTRY_KINDS`, `isWorkspacePage`, `pageSnapshot`, `entryUpdate`, `entryData`, `createEntry`, `saveEntry` |
 
 ## module/applications/item
 
@@ -201,7 +204,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 93 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 231 | N5e Actor document. | `N5eActor` |
+| `actor.mjs` | 233 | N5e Actor document. | `N5eActor` |
 | `combat.mjs` | 73 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
@@ -228,7 +231,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `adversary-builder.mjs` | 120 | The Adversary Builder's logic (pure; NPC2). | `blankDraft`, `draftFromActor`, `assignLine`, `rebaseMods`, `suggestedRanksFor`, `draftProfile`, `stepNotes`, `draftToUpdate` |
 | `adversary.mjs` | 155 | Adversary math (pure; the Bingo Book's "Final Calculation(s)"; NPC1). | `ABILITY_KEYS`, `adversaryProf`, `statLine`, `rankPoints`, `abilityBudget`, `fullSaveCount`, `fullSaves`, `soloMultiplier`, `adversaryPools`, `adversaryAC`, `adversaryDR`, `adversaryParts`, `adversarySpeedBonus`, `autoFailsSaves`, `suggestedCounts`, `adversaryWarnings` |
 | `amp-audit.mjs` | 90 | The Amp audit (AMP1b; docs/AMP1_SPEC.md §8), pure. | `AMP_AUDIT_STATUSES`, `namedAmpType`, `ampAuditOf`, `ampAuditCounts`, `AMP_TYPE_CHOICES` |
-| `amp-cards.mjs` | 285 | Amp cards, pure rules (AMP1a; docs/AMP1_SPEC.md). | `AMP_TYPES`, `AMP_END_TRIGGERS`, `ampKey`, `effectiveAmpType`, `ampTypeLabel`, `ampDefinition`, `ownsAmp`, `ampUsesLeft`, `ampCooldownLeft`, `activeAmpCards`, `ampCardsFor`, `ampWarnings`, `ampSpendUpdate`, `ampCooldownUpdate`, `ampEffectPlan`, `ampLimitConflict`, `ampsEndingOn`, `ampUsesAfterRest`, `ampDefFor`, `effectLines`, `ampEffectView` |
+| `amp-cards.mjs` | 287 | Amp cards, pure rules (AMP1a; docs/AMP1_SPEC.md). | `AMP_TYPES`, `AMP_END_TRIGGERS`, `ampKey`, `effectiveAmpType`, `ampTypeLabel`, `ampDefinition`, `ownsAmp`, `ampUsesLeft`, `ampCooldownLeft`, `activeAmpCards`, `ampCardsFor`, `ampWarnings`, `ampSpendUpdate`, `ampCooldownUpdate`, `ampEffectPlan`, `ampLimitConflict`, `ampsEndingOn`, `ampUsesAfterRest`, `ampDefFor`, `effectLines`, `ampEffectView` |
 | `area.mjs` | 185 | Jutsu areas (KB 04 "Range, targets, areas"): reading a jutsu's area, sizing it for the cast rank, turning it into Foundry template data, and testing which po... | `CONE_ANGLE`, `DEFAULT_LINE_WIDTH`, `parseArea`, `areaOf`, `areaLabel`, `templateFields`, `pointInTemplate`, `tokensInTemplate`, `areaLifetime`, `areaExpired` |
 | `auras.mjs` | 40 | Auras and zones (ENG1d; docs/ENG1_SPEC.md). | `auraCounts`, `auraPlan` |
 | `authored-reactions.mjs` | 81 | Declarative before-damage recipes. | `validateReactionRecipe`, `allyReactionOffers`, `authoredReactionOffers` |
@@ -256,7 +259,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
 | `effect-authoring.mjs` | 218 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
-| `effect-services.mjs` | 44 |  | `EFFECT_EVENTS`, `effectFormulaData`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
+| `effect-services.mjs` | 55 | AMP1d fix: "lvl(3:1,11:2)" in an effect change is the value for the actor's level. | `EFFECT_EVENTS`, `effectFormulaData`, `resolveLevelTables`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 403 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `rollBonusApplies`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
 | `environment.mjs` | 94 | Environment (pure; ENV1, KB 06). | `terrainExposure`, `worstExposure`, `indirectExposure`, `mayBeImmune`, `breathSeconds`, `breathState`, `outOfBreathStatus`, `breathTurns`, `suffocationStep`, `fallDamage` |
@@ -382,7 +385,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-actions.mjs` | 176 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
 | `social.mjs` | 235 | Social encounters (PRESTD1 Part F, SOCIAL1; the Bingo Book). | `startSocialEncounter`, `onSocialClick`, `receiveSocial`, `onSocialGMClick`, `registerSocial` |
 | `table-options.mjs` | 81 | PRESTD1 A-ii (King 2026-11-15): optional table rules that act on tokens and the combat tracker. | `registerTableOptions` |
-| `trackers.mjs` | 460 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `trackers.mjs` | 461 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 204 | Item transfer between actors (Foundry side; FIN1). | `moveItem`, `transferItem`, `receiveTransfer`, `transferFromDrop`, `transferRyo`, `receiveRyo`, `promptGiveRyo`, `registerTransfer` |
 | `triggers.mjs` | 78 | Firing trigger elements (STD4; rules/triggers.mjs). | `fireTriggers` |
 | `turn.mjs` | 162 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |

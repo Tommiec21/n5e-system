@@ -295,9 +295,9 @@ const DETAILS = {
     section("How long it lasts", [
       F.num(src, "duration.seconds", "Duration (seconds)", { small: true, hint: "60 = 1 minute, 600 = 10 minutes, 3600 = 1 hour." }),
       F.select(src, "duration.until", "Or until", { "": "Its duration runs out", turnStart: "The start of your next turn", turnEnd: "The end of your turn",
-        nextTurnEnd: "The end of your next turn", combatEnd: "The end of combat", rest: "Your next rest" }, { hints: {
+        nextTurnEnd: "The end of your next turn", combatEnd: "The end of combat", rest: "Your next rest", dismissed: "You end it (no time limit)" }, { hints: {
         "": "Ends when the duration above runs out.", turnStart: "Ends when your next turn starts.", turnEnd: "Ends when this turn ends.",
-        nextTurnEnd: "Ends at the end of your next turn.", combatEnd: "Lasts the whole fight, then ends.", rest: "Lasts until you take any rest." } }),
+        nextTurnEnd: "Ends at the end of your next turn.", combatEnd: "Lasts the whole fight, then ends.", rest: "Lasts until you take any rest.", dismissed: "No time limit: it lasts until you end it." } }),
       F.check(src, "duration.concentration", "Needs concentration", { hint: "Shown on the card. Tracked automatically only when started from a concentration jutsu." })
     ], { structured: true }),
     section("What ends it early", [

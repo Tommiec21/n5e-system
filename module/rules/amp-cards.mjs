@@ -193,9 +193,11 @@ export function ampEffectPlan(key, def) {
   const turnBased = ["turnStart", "turnEnd", "nextTurnEnd"].includes(d.until);
   return {
     name: def.label, target: "self", changes: def.changes ?? [], rules: def.rules ?? [], aura: def.aura,
-    seconds: d.seconds || (turnBased ? 0 : d.until ? 86400 : 60), expires: turnBased ? d.until : "",
+    // AMP1d: "dismissed" has no time limit (Crimson Pact, Caloric Ignition): it ends when ended.
+    seconds: d.until === "dismissed" ? 0 : d.seconds || (turnBased ? 0 : d.until ? 86400 : 60), expires: turnBased ? d.until : "",
+    permanent: d.until === "dismissed",
     tempHp: def.tempHp ?? "", state: def.state ?? "", exclusive: def.exclusive ?? "",
-    ampType: def.ampType ?? "", ampKey: key, img: def.icon, endsOn: def.endsOn ?? [], until: turnBased ? "" : d.until ?? "",
+    ampType: def.ampType ?? "", ampKey: key, img: def.icon, endsOn: def.endsOn ?? [], until: turnBased || d.until === "dismissed" ? "" : d.until ?? "",
     concentration: !!d.concentration
   };
 }

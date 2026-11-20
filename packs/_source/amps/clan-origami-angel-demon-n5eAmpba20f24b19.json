@@ -1,0 +1,69 @@
+{
+  "_id": "n5eAmpba20f24b19",
+  "name": "Origami Angel/Demon",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 3100,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "origami-angel-demon",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Living Paper. You instead generate 2 Rei at the start of each of your turns.</p><p>Paper Shroud. You gain temporary hit points equal to your proficiency bonus at the beginning of each of your turns.</p><p>Angel Form</p><p>These benefits are only available to Shikigami with Binding Veil or Explosive Veil as their first Canvas Type.</p><p>Paper Wings. White angel like wings of paper grants you’re a 60-foot fly speed.</p><p>Veil Enhancement (Binding). Increase the number of Binding Fields you can have to 4.</p><p>Veil Enhancement (Explosive). Your Set Trap Detonations force the triggering creature to make their saving throws at disadvantage.</p><p>Demon Form</p><p>These benefits are only available to Shikigami with Serrated Veil or Weaving Veil as their first Canvas Type.</p><p>Paper Surge. Dark paper covers your body, allowing you to, once per turn as a Bonus Action, surge forward, teleporting into a space you can see within 30 feet of you. Draw a line from your previous space to your new space, recording it. If you are using Serrated Veil, each creature this line pass through or by, within 5 feet suffers the effects of your serrated aura, making their saving throw as normal. If you are using Weaving Veil, you can make one unarmed strike against each creature the line passes through or by, within 5 feet, adding +2d6 to the damage result.</p><p>Veil Enhancement (Serrated). Your aura expands, doubling in size.</p><p>Veil Enhancement (Weaving). When you take the Attack Action, increase the number of attacks you can make by +1. Also, Spiral Weave and Extinction Weave saving throws cannot be made at advantage.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "shikigami-kamis-salvation-akumas-damnation",
+      "subclass": ""
+    },
+    "summary": "2 Rei and temp HP equal to your proficiency bonus each turn. Angel or Demon benefits by your first Canvas Type.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "sr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "formula": "@prof",
+          "pool": "tempHp",
+          "label": "Origami: Paper Shroud"
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmpba20f24b19"
+}

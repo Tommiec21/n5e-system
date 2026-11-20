@@ -1,0 +1,77 @@
+{
+  "_id": "n5eAmpb15b29cef9",
+  "name": "Event Horizon",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "event-horizon",
+    "description": "<p><b>Battle Amp</b></p><p>Your Body radiates light so intensely, it becomes imperceivable as you radiate an aura closer to that of a blackholes. For the duration you gain the following benefits. You gain additional benefits based on the number of Starlight’s consumed.</p><p>Stellar Presence. Creatures within 40 feet of you cannot gain the benefits of being invisible you gain immunity to the Blinded and Dazzled conditions.</p><p>Transcendent Charge. At the beginning of each of your turns, you can summon 2 Starlight’s instead of one.</p><p>Infinite Horizon. Once per round, on your turn, you can gain 2 Stellar Charges, from any one trigger of your choice.</p><p>Starlight’s Consumed</p><p>1 Starlight. Up to twice per turn, on your turn, by spending 10 feet of movement or by spending a reaction at the beginning of other creatures turn, you can teleport to one active Starlight, into a space affected by the Starlight’s light.</p><p>2 Starlight’s. Convergence can now trigger on any damage, regardless of the effects keyword. Select the effect you want to apply when its triggered, even if its triggered by another creature.</p><p>3 Starlight’s. All active Starlight’s can enter Fusion of Fission. If you choose to do this, All creatures that are Converged are teleported into a space of your choice, as close to a Starlight as possible.</p><p>4 Starlight’s. You can maintain Starlight Fission’s or Fusions, for the duration of your Event Horizon, instead of them detonating at the beginning of your next turn.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "keton-event-horizon",
+      "subclass": ""
+    },
+    "summary": "Nothing within 40 feet is invisible, and you're immune to Blinded and Dazzled. Extra Starlights and Stellar Charges, plus benefits for each Starlight consumed.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "lr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.conditionImmune",
+        "value": "blinded",
+        "mode": 2
+      },
+      {
+        "key": "n5e.conditionImmune",
+        "value": "dazzled",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Start: Bonus action, 4 Stellar Charges, and consume up to 4 Starlights (their benefits stack by count)."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmpb15b29cef9"
+}

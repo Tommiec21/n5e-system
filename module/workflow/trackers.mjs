@@ -389,7 +389,8 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   const seconds = eff.seconds || (eff.expires ? 12 : 60);
   const data = { name: eff.name || label, img: eff.img || item?.img || "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
-    duration: { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
+    // AMP1d: a card that lasts until dismissed gets no duration.
+    duration: eff.permanent ? { startTime: game.time.worldTime } : { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
       // AMP1a: what ends an Amp card's effect (rules/amp-cards.mjs ampsEndingOn; King Q-A5).

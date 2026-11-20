@@ -1,0 +1,73 @@
+{
+  "_id": "n5eAmp717d3bf360",
+  "name": "Mercury Foundry",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 2400,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "mercury-foundry",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>You generate +1 Ingot at the beginning of each of your turns.</p><p>You DR is set at 12. If your DR is instead higher than 12, increase your DR by +2.</p><p>At the beginning of each of your turns, you gain 8 Temporary hit points.</p><p>Weapons made by your Liquid Metal trait, or under the effects of your Metallurgy clan feature, count as any weapon group, for the purposes of casting Bukijutsu.</p><p>Armor made by Metallurgy can gain a second trait.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "konjiki-liquid-mercury-foundry",
+      "subclass": ""
+    },
+    "summary": "An Ingot and 8 temp HP each turn, DR set to 12 (or +2 if higher). Your metal weapons count as any group, and armor takes a second trait.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "sr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "formula": "8",
+          "pool": "tempHp",
+          "label": "Mercury Foundry"
+        },
+        {
+          "key": "note",
+          "text": "DR becomes 12; if it's already higher, +2 (at the table)."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp717d3bf360"
+}

@@ -1,0 +1,81 @@
+{
+  "_id": "n5eAmp865f463708",
+  "name": "Caloric Ignition",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 200,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "caloric-ignition",
+    "description": "<p><b>Battle Amp</b></p><p>While in this state, you gain the following benefits;</p><p>Your Unarmed Damage die increase in size by 1 step to a max of d12.</p><p>You have a rank of Mastery on Strength based skill and ability checks.</p><p>While standing on the ground, you have advantage on checks and saves to resist being moved, knocked prone, grappled, restrained or Exhausted.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "akimichi-caloric-arts",
+      "subclass": ""
+    },
+    "summary": "Unarmed die up one step and Mastery on Strength checks. Advantage to resist being moved, knocked prone, grappled, restrained or Exhausted while on the ground.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "dismissed",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.unarmed.step",
+        "value": "1",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.check.str",
+        "value": "Caloric Ignition",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Start: Bonus action, 2 Calories and an Akimichi food pill. The feature gives no duration: end it at the table."
+        },
+        {
+          "key": "note",
+          "text": "While standing on the ground: advantage on checks and saves to resist being moved, knocked prone, grappled, restrained or Exhausted."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp865f463708"
+}

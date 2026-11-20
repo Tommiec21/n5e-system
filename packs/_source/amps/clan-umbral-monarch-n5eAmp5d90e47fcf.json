@@ -1,0 +1,77 @@
+{
+  "_id": "n5eAmp5d90e47fcf",
+  "name": "Umbral Monarch",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 900,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "umbral-monarch",
+    "description": "<p><b>Battle Amp</b></p><p>You become a shadow wreathed beast of the night.</p><p>Nocturnal Wings. You gain a fly speed equal to your movement speed, with wings attached to your arms</p><p>Sonar. You always have the benefit of Echolocation, and can use Pinging once per turn, on your turn at no action cost.</p><p>Beast Claws. Your [Unarmed Damage], while in your Claws of the Night stance, increases by +2. This increases to +4 at 15th level.</p><p>Fearless. If you begin your turn with 1 rank of Demoralized or Shaken, you reduce the ranks of said conditions to 0.</p><p>Crimson Feast. Once per turn, when you deal [Unarmed Damage] or [Weapon Damage] to a creature with ranks of Crimson Hemorrhage, you can reduce their ranks of said condition to 0. If you do, you regain 1d10 hit points for each rank removed.</p><p>Sonic Lance. As an Action, you can fire a 60-foot long, 5-foot-wide beam of destructive sound force. All creatures in the affected area must make a Constitution saving throw vs your highest jutsu save DC. On a failure, they take 6d6 force damage and are Deafened until the end of their next turn, or half as much damage on a success.</p><p>Umbral Shockwave. As an Action, you release a Pulse of darkness centered on you, filling a 20-foot radius. Creatures in range must make a Wisdom saving throw vs your highest jutsu save DC. This counts as a Genjutsu, with the Visual, Auditory and Tactile keywords.</p><p>Success: Affected creature are Dazzled until the end of their next turn.</p><p>Failure: Affected creature are Blinded, until the end of their next turn.</p><p>Critical Failure: Same as failure, but are also Confused for the same duration.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "vesper-umbral-transmutation",
+      "subclass": ""
+    },
+    "summary": "Fly speed, Echolocation and free Pinging. Unarmed +2 (+4 at 15th) in Claws of the Night; Sonic Lance and Umbral Shockwave actions.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "lr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage:unarmed",
+          "value": "lvl(1:2,15:4)",
+          "label": "Umbral Monarch: Beast Claws",
+          "predicate": "self:stance:vesper-stance-claws-of-the-night"
+        },
+        {
+          "key": "note",
+          "text": "Nocturnal Wings: fly speed equal to your speed (set at the table)."
+        },
+        {
+          "key": "note",
+          "text": "Entering again before a long rest: 1 rank of exhaustion."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp5d90e47fcf"
+}

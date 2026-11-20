@@ -1,3 +1,15 @@
+## 0.66.0-alpha.1 — AMP1d: clan Amp cards
+
+- **34 clan Amp cards** in the Amps compendium (Clans folder), one per named Amp box in the clan features. King Q-A1: they're Clan Amps; the box's own type (Battle Amp, Will Amp...) is shown as the named type.
+  - Each card carries its box text word for word, a short summary, and how it starts: action, duration, uses per rest and the wait before reuse.
+  - **Owner:** the feature that grants it (White Wolf, Sharingan, Kujaku Peacock Plume...), so it appears in the Amps panel for creatures that have that feature. Blazing, Signal Boosted, Battle Lust, Combat Coordinated and Scorching Heat belong to their clan.
+  - **Automated** where the text gives a flat bonus: AC, speed, resistances, condition immunities, Mastery, level-scaled damage and attack bonuses, and temp HP at the start of your turn. The rest are notes on the card, played at the table.
+  - **Sharingan and Miraigan** ask to start when you roll initiative.
+- **New duration "until you end it"** for Amps with no time limit (Crimson Pact, Caloric Ignition, Ultra Focus). Before, an Amp with no duration ran out after a minute.
+
+### Fixed
+- **Level-scaled values in effects** (`lvl(3:1,11:2)`) were dropped as invalid formulas, so Chakra Surge: Flow's save DC bonus did nothing. They now resolve by the actor's level.
+
 ## 0.65.0-alpha.2 — Journal Desk navigation (GM03b)
 
 - Campaign assignment/filtering and labeled links to existing records.

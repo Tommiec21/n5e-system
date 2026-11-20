@@ -1,0 +1,105 @@
+{
+  "_id": "n5eAmpe5caee2cef",
+  "name": "Tidal Gains",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 600,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "tidal-gains",
+    "description": "<p><b>Battle Amp</b></p><p>You embolden your physical strength to new heights, enlarging your muscles and reinforcing your brutal physique.</p><p>Colossus. Your size increases to Lear, melee weapon and unarmed attacks you make gain the Reach 1 Property, if they didn’t already. You make Athletics checks at advantage.</p><p>Muscular Overdrive. You gain the benefits of the Water Muscles Liquification techniques for the duration, at no Hydration cost.</p><p>Water Canons. Increase Cold damage you deal as a result of casting a jutsu with the Water Release keyword by +1 die.</p><p>Hydro Armor. You gain resistance to bludgeoning, piercing. Slashing, cold and fire damage.</p><p>Water Pressure. Once per turn, when you deal [Weapon Damage] or [Unarmed Damage] to a large or smaller creature, you can force them to make a Strength saving throw vs your highest jutsu save DC. On a failure, they gain 2 ranks of Weakened and are knocked Prone</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "hozuki-heir-of-the-mist",
+      "subclass": ""
+    },
+    "summary": "Large, Reach 1, advantage on Athletics. Resistance to bludgeoning, piercing, slashing, cold and fire; Water Release cold damage +1 die.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "sr"
+    },
+    "cooldown": 0,
+    "exclusive": "hozuki-tidal-state",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.resist",
+        "value": "bludgeoning",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "piercing",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "slashing",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "cold",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "fire",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "skill:ath",
+          "label": "Tidal Gains: Colossus"
+        },
+        {
+          "key": "note",
+          "text": "Start: Bonus action and 4 Hydration, for your chosen Tidal State (chosen each long rest). Once per rest."
+        },
+        {
+          "key": "note",
+          "text": "Colossus: size Large and Reach 1 on melee weapon and unarmed attacks (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "Water Cannons (+1 cold die on Water Release jutsu) and Water Pressure: at the table."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmpe5caee2cef"
+}

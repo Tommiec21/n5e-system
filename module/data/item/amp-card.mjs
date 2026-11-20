@@ -8,7 +8,7 @@
  *   activation  action | bonus | reaction | initiative | trigger | "" (text on the card)
  *   giveable    can be given to other creatures (Battle Medic, Ascension); otherwise giving one asks
  *   startOnInitiative  "" | "ask" | "auto": start it when its owner rolls initiative
- *   duration    {seconds, until: "" | turnStart | turnEnd | nextTurnEnd | combatEnd | rest, concentration}
+ *   duration    {seconds, until: "" | turnStart | turnEnd | nextTurnEnd | combatEnd | rest | dismissed, concentration}
  *   uses        {max (number or formula: "@prof", "lvl(1:1,11:2)"), per: sr | lr | fr | day}
  *   cooldown    seconds before it can start again once it ends ("10 minutes before re-entry": 600)
  *   exclusive   group: starting one ends the others (Crash / Flow)

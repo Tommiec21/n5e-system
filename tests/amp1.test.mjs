@@ -192,7 +192,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.length, 20);
+  assert.equal(cards.length, 54, "20 class and feature cards (AMP1c) and 34 clan cards (AMP1d)");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -240,4 +240,46 @@ test("a save jutsu with damage (Fireball) records its damage on the card", () =>
   const s = cardSections({ kind: "jutsu", area: true, activities: [{ type: "save", save: { ability: "dex" }, damage: { parts: [{ formula: "4d6+4", type: "fire" }] } }] });
   assert.ok(s.includes("damage") && s.includes("saves") && s.includes("area"));
   assert.ok(!cardSections({ kind: "jutsu", activities: [{ type: "save", save: { ability: "wis" } }] }).includes("damage"));
+});
+
+// AMP1d: the clan Amp cards (King Q-A1: Clan Amps, the box's type kept as namedType).
+import { validateEffectChanges, effectFieldCatalog } from "../module/rules/effect-authoring.mjs";
+import { N5E as N5E_CONFIG } from "../module/config/index.mjs";
+import { resolveLevelTables } from "../module/rules/effect-services.mjs";
+test("AMP1d: 34 clan Amp cards, typed Clan, owned by a real clan feature, with valid changes", () => {
+  const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
+  const cards = fs.readdirSync(dir).filter(f => f.startsWith("clan-")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
+  assert.equal(cards.length, 34);
+  const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".json") ? [path.join(d, e.name)] : []);
+  const ids = new Set(walk(path.join(import.meta.dirname, "..", "packs/_source/clans")).map(f => JSON.parse(fs.readFileSync(f, "utf8"))).filter(d => d?.system).map(d => d.system.identifier));
+  const catalog = effectFieldCatalog(N5E_CONFIG);
+  for ( const c of cards ) {
+    assert.equal(c.system.ampType, "clan", c.name);
+    assert.match(c.system.namedType, /^(Battle|Will|Fortitude|Reflex) Amp$/, c.name);
+    assert.equal(c.folder, "n5eAmpFoldClan01");
+    assert.ok(ids.has(c.system.owner.id), `${c.name}: owner ${c.system.owner.id} exists`);
+    assert.ok(["", "turnStart", "turnEnd", "nextTurnEnd", "combatEnd", "rest", "dismissed"].includes(c.system.duration.until), c.name);
+    validateCardRules(c.flags.n5e.rules);
+    const resolved = c.system.changes.map(ch => ({ ...ch, value: resolveLevelTables(ch.value, 11) }));
+    assert.deepEqual(validateEffectChanges(resolved, [], catalog).errors, [], c.name);
+    assert.ok(c.system.description.includes(c.system.namedType.split(" ")[0]), `${c.name}: the box text is on the card`);
+  }
+  const wolf = cards.find(c => c.system.identifier === "white-wolf");
+  assert.deepEqual([wolf.system.activation, wolf.system.duration.seconds, wolf.system.uses.per], ["bonus", 60, "lr"]);
+  const kujaku = cards.find(c => c.system.identifier === "kujaku-mode");
+  assert.equal(resolveLevelTables(kujaku.system.changes[0].value, 11), "20");
+});
+
+test("AMP1d fix: level tables in effect changes resolve by level (Flow's save DC was dropped)", () => {
+  assert.equal(resolveLevelTables("lvl(3:1,11:2,19:3)", 2), "0");
+  assert.equal(resolveLevelTables("lvl(3:1,11:2,19:3)", 11), "2");
+  assert.equal(resolveLevelTables("lvl(1:-2,10:-4)", 12), "-4");
+  assert.equal(resolveLevelTables("5", 12), "5");
+});
+
+test("AMP1d: an Amp that lasts until dismissed has no time limit", async () => {
+  const { ampEffectPlan } = await import("../module/rules/amp-cards.mjs");
+  const p = ampEffectPlan("crimson-pact", { label: "Crimson Pact", duration: { seconds: 0, until: "dismissed" } });
+  assert.deepEqual([p.permanent, p.seconds, p.until], [true, 0, ""]);
+  assert.equal(ampEffectPlan("x", { label: "X", duration: { seconds: 0, until: "" } }).seconds, 60, "no duration given is still a minute");
 });

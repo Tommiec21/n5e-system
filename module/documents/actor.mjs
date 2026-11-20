@@ -1,4 +1,4 @@
-import { effectFormulaData, resolveEffectFormula } from "../rules/effect-services.mjs";
+import { effectFormulaData, resolveEffectFormula, resolveLevelTables } from "../rules/effect-services.mjs";
 import { effectFieldCatalog } from "../rules/effect-authoring.mjs";
 import { getPath } from "../rules/formula.mjs";
 /**
@@ -89,6 +89,8 @@ export default class N5eActor extends Actor {
       for ( const change of effect.changes ) {
         const c = foundry.utils.deepClone(change);
         c.effect = effect;
+        // AMP1d fix: level-scaled values (Flow's "lvl(3:1,11:2,19:3)") were dropped as invalid formulas.
+        if ( typeof c.value === "string" && c.value.includes("lvl(") ) c.value = resolveLevelTables(c.value, formulaData.level);
         const field = fields.get(c.key);
         if ( field && ["number", "adjustment"].includes(field.type) && String(c.value).trim() && !Number.isFinite(Number(c.value))
           && !(field.type === "adjustment" && /^[*/][+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(String(c.value))) ) {

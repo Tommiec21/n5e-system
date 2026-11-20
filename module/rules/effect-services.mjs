@@ -5,7 +5,18 @@ export const EFFECT_EVENTS = ["apply", "remove", "enable", "disable", "turnStart
 export function effectFormulaData(actor) {
   const system = structuredClone(actor?._source?.system ?? {});
   const abilities = Object.fromEntries(Object.entries(system.abilities ?? {}).map(([key, value]) => [key, { ...value, mod: abilityMod(value.value ?? 10) }]));
-  return { ...system, system, abilities, level: actor?.system?.level ?? system.level ?? 0, prof: actor?.system?.prof ?? system.prof ?? 0 };
+  // AMP1d fix: derived level isn't ready while effects apply; read it from the class items' stored levels.
+  const classLevels = [...(actor?.items ?? [])].filter(i => i.type === "class").reduce((t, c) => t + (Number(c._source?.system?.levels ?? c.system?.levels) || 0), 0);
+  return { ...system, system, abilities, level: actor?.system?.level || system.level || classLevels || 0, prof: actor?.system?.prof ?? system.prof ?? 0 };
+}
+
+/** AMP1d fix: "lvl(3:1,11:2)" in an effect change is the value for the actor's level. */
+export function resolveLevelTables(value, level = 0) {
+  return String(value).replace(/lvl\(([^)]*)\)/g, (_, t) => {
+    let out = 0;
+    for ( const [, l, v] of t.matchAll(/(\d+)\s*:\s*(-?\d+)/g) ) if ( level >= Number(l) ) out = Number(v);
+    return String(out);
+  });
 }
 export function resolveEffectFormula(value, data, { syntaxOnly = false } = {}) {
   let expression = String(value).trim().replace(/^=/, "");

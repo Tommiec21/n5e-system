@@ -1,0 +1,87 @@
+{
+  "_id": "n5eAmp2ffd478b7d",
+  "name": "Apex Predator",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 1800,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "apex-predator",
+    "description": "<p><b>Battle Amp</b></p><p>You embody the power of the Apex of the sea.</p><p>Ocean Bond. When Water Walking or swimming, double your movement speed.</p><p>Cold Blooded. Creatures with the following conditions, increase the damage they take from you by +2. This increases to +4 at 7th level and +6 at 15th levels (Bleed, Concussed, Dazed, Demoralized, Grappled, Restrained or Shaken)</p><p>Ravenous Aura. [Unarmed Damage] and [Weapon Damage] you deal can trigger your Ravenous Chakra clan feature, as if it were a C-Rank Jutsu. You cannot gain temporary chakra using Ravenous Chakra this way.</p><p>Limitless Blue. Jutsu you cast with the Water Release keyword gain their additional effects as if near a sufficient source of Water.</p><p>Efficient Recovery. Once per turn, increase Temporary Hit points gained from allied or self-sourced effects by +4. This increases to +6 at 7th level and +8 at 15th level.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "hoshigaki-apex-berserker",
+      "subclass": ""
+    },
+    "summary": "Double speed swimming or water walking. +2 damage (+4 at 7th, +6 at 15th) to creatures with listed conditions; unarmed and weapon hits trigger Ravenous Chakra.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "damage",
+          "value": "lvl(1:2,7:4,15:6)",
+          "label": "Apex Predator: Cold Blooded",
+          "predicate": {
+            "any": [
+              "target:status:bleed",
+              "target:status:concussed",
+              "target:status:dazed",
+              "target:status:demoralized",
+              "target:status:grappled",
+              "target:status:restrained",
+              "target:status:shaken"
+            ]
+          }
+        },
+        {
+          "key": "note",
+          "text": "Entering again before a long rest: 1 rank of exhaustion (once per rest free from 11th)."
+        },
+        {
+          "key": "note",
+          "text": "Efficient Recovery: +4 temp HP once per turn (+6 at 7th, +8 at 15th) on temp HP you gain."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp2ffd478b7d"
+}

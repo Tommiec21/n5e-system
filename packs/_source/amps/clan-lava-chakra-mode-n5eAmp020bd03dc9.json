@@ -1,0 +1,76 @@
+{
+  "_id": "n5eAmp020bd03dc9",
+  "name": "Lava Chakra Mode",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClan01",
+  "sort": 3400,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "lava-chakra-mode",
+    "description": "<p><b>Battle Amp</b></p><p>Your body is engulfed in Lava in the shape of a battle armor of your design. You gain the following benefits for the duration;</p><p>You gain a +2 Bonus to your AC.</p><p>When you create a Molten Terrain, as a result of the Magma Domain feature, you can creature 2 Molten Terrains simultaneously.</p><p>Hostile creatures that deal damage to you as a result of a melee attack, takes 10 fire damage.</p><p>Difficult terrain you create using jutsu with the Earth Release keyword can be treated as Molten Terrain.</p><p>When you inflict ranks of Burned as a result of a jutsu with the Fire Release keyword, you can instead inflict the Molten condition.</p>",
+    "source": {
+      "book": "N5e 4.0 Clans",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "clan",
+    "namedType": "Battle Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "yoton-lava-chakra-mode",
+      "subclass": ""
+    },
+    "summary": "+2 AC and two Molten Terrains at once. Melee attackers take 10 fire damage, and your Earth and Fire jutsu turn molten.",
+    "activation": "bonus",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "1",
+      "per": "lr"
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "2",
+        "mode": 2
+      }
+    ],
+    "aura": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Also: a Bonus action inside two overlapping Molten Terrains (dispelling both), once per long rest."
+        },
+        {
+          "key": "note",
+          "text": "Hostile creatures that damage you with a melee attack take 10 fire damage (at the table)."
+        }
+      ],
+      "amp1d": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.66.0"
+  },
+  "_key": "!items!n5eAmp020bd03dc9"
+}

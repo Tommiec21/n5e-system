@@ -914,3 +914,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `n5e.chatAppearance` (world): `{scale, fonts: {head, body}, sizes: {body, speaker, title, subtitle, button, small, tag, tileHead, total, formula, section, target, apply, note}}`. Sizes in px; scale in %.
 - `n5e.chatAppearanceMine` (client): the same plus `use` (boolean). Used instead of the world's when `use` is on.
 - Applied as CSS custom properties on the page root: `--n5e-fs-<field>` (px, scaled) and `--n5e-ff-head` / `--n5e-ff-body`. N5e chat messages get the class `n5e-msg`.
+
+### Clan Amp cards (AMP1d, 0.66.0-alpha.1)
+
+- `packs/_source/amps/clan-*.json`, built by `tools/content/build-clan-amp-cards.py` (idempotent; box text read from the clan features at build time).
+- `system.ampType` "clan"; `system.namedType` the box's type ("Battle Amp"); `system.owner` {kind: "feat", id: <granting feature identifier>} or {kind: "clan", id: <clan>}.
+- `system.duration.until` adds `dismissed`: no time limit (`ampEffectPlan` → `permanent`, the effect gets no duration).
+- Effect change values may hold `lvl(level:value,...)`; `resolveLevelTables` (rules/effect-services.mjs) resolves them in `applyActiveEffects`.
