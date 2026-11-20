@@ -310,7 +310,7 @@ const DETAILS = {
       F.text(src, "exclusive", "Exclusive group", { placeholder: "surge", hint: "Starting one Amp of the group ends the others (Crash and Flow)." }),
       F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
       F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." }),
-      F.text(src, "series", "Version of", { placeholder: "chakra-surge-flow", hint: "The identifier of the Amp this is a stronger version of. Blank: not a version." }),
+      F.text(src, "series", "Version of", { placeholder: "base Amp identifier", hint: "The identifier of the Amp this is a stronger version of. Blank: not a version." }),
       F.num(src, "level", "From level", { small: true, hint: "The character level this version starts at. A character gets the highest version their level reaches." })
     ], { collapsed: true, structured: true })
   ],
