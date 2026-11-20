@@ -1,3 +1,7 @@
+## 0.68.1-alpha.1 — GM04a starter library
+
+Seven source-labeled Part I entries, imported privately from Journal Desk. Repeat imports preserve existing GM edits. Full atlas coverage remains GM04b/c; no live verification.
+
 ## 0.68.0-alpha.1 — AMP1g: a separate card for each version of an Amp
 
 King 2026-11-20: "Anytime an Amp would upgrade/grow in power, there should be a separate version." Q-G1: the level is character level. Q-G2: versions are named "[Name] (level)".

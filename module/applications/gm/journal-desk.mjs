@@ -1,5 +1,6 @@
 import { ENTRY_KINDS, isWorkspacePage, pageSnapshot, createEntry, saveEntry } from "./workspace-store.mjs";
 import { cleanSession, visit, starterText } from "./workspace-navigation.mjs";
+import { importStarter } from "./workspace-starter.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -15,7 +16,7 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
       search: JournalDesk.onSearch, insert: JournalDesk.onInsert, original: JournalDesk.onOriginal,
       back: JournalDesk.onBack, forward: JournalDesk.onForward, filter: JournalDesk.onFilter,
       link: JournalDesk.onLink, unlink: JournalDesk.onUnlink, follow: JournalDesk.onFollow,
-      template: JournalDesk.onTemplate }
+      template: JournalDesk.onTemplate, starter: JournalDesk.onStarter }
   };
   static PARTS = { body: { template: "systems/n5e/templates/apps/journal-desk.hbs" } };
   drafts = new Map();
@@ -247,5 +248,10 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
   static onTemplate() {
     this.capture(); const draft = this.drafts.get(this.active);
     draft.content += starterText(draft.kind); return this.render();
+  }
+  static async onStarter() {
+    this.capture();
+    try { await importStarter(); await this.render(); }
+    catch (error) { ui.notifications.error(error.message); }
   }
 }

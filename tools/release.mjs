@@ -50,7 +50,7 @@ fs.mkdirSync(DIST, { recursive: true });
 fs.writeFileSync(path.join(DIST, "system.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 
 // Everything Foundry needs at runtime; sources, tests and tooling stay out of the zip.
-const INCLUDE = ["n5e.mjs", "module", "templates", "styles", "lang", "assets", "LICENSE", "LICENSES", "README.md", "CHANGELOG.md"];
+const INCLUDE = ["n5e.mjs", "module", "templates", "styles", "lang", "assets", "content/world", "LICENSE", "LICENSES", "README.md", "CHANGELOG.md"];
 const output = fs.createWriteStream(path.join(DIST, "n5e.zip"));
 const zip = archiver("zip", { zlib: { level: 9 } });
 zip.pipe(output);
