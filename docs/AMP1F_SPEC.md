@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1; batch 2 (C-Rank) next.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 (C-Rank) proposed; waiting for King's verdicts, Q-F6–Q-F9 and the go-ahead.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -13,9 +13,9 @@ For each jutsu King confirms, a card is built from its text and the jutsu's own 
 | Batch | Ranks | Jutsu |
 | --- | --- | --- |
 | 1 | E and D | 30 |
-| 2 | C | 24 |
+| 2 | C | 25 |
 | 3 | B | 17 |
-| 4 | A and S | 19 |
+| 4 | A and S | 18 |
 
 Each batch: Claude proposes a verdict and a type for every jutsu; King approves or changes them; Claude builds that batch's cards and marks the rest; the next batch starts on King's go-ahead.
 
@@ -83,8 +83,50 @@ All typeless. "Cards" counts the rank versions (Q-F1): D-Rank first, then each r
 
 Batch 1 tally: 23 Amps as about 72 cards, 7 not Amps.
 
+## Batch 2 (C-Rank), Claude's proposals
+
+All typeless (Q-F3). "Cards" counts the rank versions (Q-F1): C-Rank first, then each rank whose effects change.
+
+| Rank | Jutsu | Proposal | Cards | Options menu |
+| --- | --- | --- | --- | --- |
+| C | Adamantine Barrier | Not an Amp: a barrier zone (its 5-Pronged Seal box is a condition) | — | |
+| C | Conqueror’s Art: Wyrmcaller’s Pulse | Amp, given to allies (Wyrmlings: +1 AC, 14 temporary HP, +4 a rank); the Prey save stays on the jutsu | 4 (C, B, A, S) | |
+| C | Crystal Release: Crystal Wheel | Amp: +30 speed, ignore terrain, earth damage to opportunity attackers | 4 (+1d6 a rank; B area-save advantage; S +60 speed and 4d6 proximity) | |
+| C | Hanami Style: Defensive Cloak | Amp: melee attackers take necrotic, you gain temporary HP | 4 (+1d6 a rank; A full temporary HP) | |
+| C | Magnet Release: Dust Mesh | Not an Amp: terrain in an area | — | |
+| C | Synthetic Art: Adaptive Biology | Amp: resistance to a damage type or condition you suffered this initiative | 2 (C, A two picks: Q-F7) | Which damage type or condition |
+| C | Test Cutting: Senta Piercing | Not an Amp: an instant attack; its temporary HP and chakra have no lasting rider | — | |
+| C | Uzumaki Art: Red Hot-Blooded Vitality | Amp: Mastery on Str, Dex and Con checks, advantage on Concentration checks | 1 | |
+| C | Breath of Sound: Score | Amp: a tempo each turn (Moderato, Allegretto, Vivacissimo, Andante) | 1 | Tempo (Q-F9) |
+| C | Earth Release: Sand Armor | Amp: temporary HP that resist piercing, slashing, bludgeoning and cold; lightning ends it; 1 hour | 4 (+8 a rank) | |
+| C | Fire Release: Flame Armor | Amp: temporary HP, fire resistance while they last, immune to Burned, fire to melee attackers; 1 hour | 4 (+4 a rank) | |
+| C | Fire Release: Heated Body | Not an Amp (Q-F8): cold-weather immunity, like Q-F5's Amp-less buffs | — | |
+| C | Guardian Knight | Amp: benefits by armor worn | 1 | Light, Medium or Heavy |
+| C | Lightning Release: Jolt | Amp, given to a creature: temporary HP with +10 speed and +2 Dex saves while they last | 4 (+1d8 and +5 speed a rank) | |
+| C | Lightning Release: Lightning Chakra Armor | Amp: +1 AC, +20 speed, Mastery on Dex saves, Dash as a Bonus action | 4 (B +1d10 lightning, A DR, S +2 AC and 2d10) | |
+| C | Lightning Release: Lightning King’s Mantle | Amp with an aura (Q-F6): allies' [Weapon Damage] +1d6 lightning | 4 (radius +10 a rank; B pierce 4 DR, Shocked on crits) | |
+| C | Medical Release: Medical Aura | Amp with an aura (Q-F6): necrotic resistance, Bleeding immunity, 1 HP at 0 | 1 | |
+| C | Outflank | Not an Amp: it marks a foe | — | |
+| C | Royal Flush | Amp: +2 Royal Shield charges, +1 to Taijutsu AC bonuses, +1 die on Taijutsu temporary HP | 2 (C, S Royal Guard half cost) | |
+| C | Shadow Clone Technique | Not an Amp: summons clones | — | |
+| C | Sparking Flail | Amp: fully obscured from the chosen foe, Chain 1 crit range, Chain 2 invisibility on a crit | 1 | |
+| C | Water Release: Blessing of Poseidon | Amp: swim 60, water breathing, tremorsense 60, Atlantean Trident | 2 (C, A trident +1d8 and crit range) | |
+| C | Water Release: Heavenly Mirror of Pain | Not an Amp: binds a foe's reflection | — | |
+| C | Wind Release: Vacuum Field | Not an Amp: a hazard zone | — | |
+| C | Wind Release: Wind Rider | Amp: 30 ft flying speed, no fall damage or Prone | 3 (C, B no descent, A dash +60 fly) | |
+
+Batch 2 tally: 17 Amps as 46 cards, 8 not Amps.
+
+### Questions for batch 2
+
+- **Q-F6 Auras** (Lightning King's Mantle, Medical Aura): the caster has the Amp, and the aura gives its effect to allies inside it. Should the aura count as an Amp on each ally (taking one of their Rule of 3's places), or only on the caster? Claude's suggestion: only on the caster.
+- **Q-F7 Adaptive Biology at A-Rank** picks two damage types or conditions. Let the options menu allow two picks?
+- **Q-F8 Heated Body** (immunity to cold weather for 1 hour): an Amp-less buff like Chakra Skin (Q-F5)?
+- **Q-F9 Score's tempo** can change at the start of each of your turns: a "Change tempo" button on the Amp that reopens the menu?
+
 ## Progress log
 
 - 2026-11-20 King: "The next batch." Claude: AMP1f spec and review batch 1 written; 90 jutsu candidates after AMP1e.
 - 2026-11-20 King: Q-F1 a card per cast rank, an options menu for picks; Q-F2 Hijutsu are not Clan; Q-F3 typeless; Q-F4 temporary-HP jutsu are Amps; Q-F5 Chakra Skin and Geo Breastplate are not Amps (Amp-less buffs). Claude: spec and batch 1 revised.
 - 2026-11-20 King: "Build". Claude: batch 1 built (0.70.0-alpha.1): 23 jutsu as 75 cards (Gaslight's level versions included), 7 marked not Amps. Differences from the plan: Viscous Water Mass has no options menu, since its near-water pick (−2 chakra or one more creature) is made when casting, not part of the Amp; Gaslight and Environmental Affinity got menus (Action or Reaction; in or out of combat), and an option can change the card's duration. Next: batch 2 (C-Rank, 24 jutsu).
+- 2026-11-20 King: "Next batch." Claude: batch 2 (C-Rank, 25 jutsu) proposed with Q-F6–Q-F9 (batch sizes corrected: C 25, A and S 18).
