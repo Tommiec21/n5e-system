@@ -1,6 +1,7 @@
 import { ENTRY_KINDS, isWorkspacePage, pageSnapshot, createEntry, saveEntry } from "./workspace-store.mjs";
 import { cleanSession, visit, starterText } from "./workspace-navigation.mjs";
 import { importStarter } from "./workspace-starter.mjs";
+import { MISSION_IDEAS, filterIdeas, ideaText } from "./workspace-ideas.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -16,7 +17,9 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
       search: JournalDesk.onSearch, insert: JournalDesk.onInsert, original: JournalDesk.onOriginal,
       back: JournalDesk.onBack, forward: JournalDesk.onForward, filter: JournalDesk.onFilter,
       link: JournalDesk.onLink, unlink: JournalDesk.onUnlink, follow: JournalDesk.onFollow,
-      template: JournalDesk.onTemplate, starter: JournalDesk.onStarter }
+      template: JournalDesk.onTemplate, starter: JournalDesk.onStarter,
+      ideaFilter: JournalDesk.onIdeaFilter, ideaAppend: JournalDesk.onIdeaAppend, ideaSave: JournalDesk.onIdeaSave,
+      missionBudget: JournalDesk.onMissionBudget, adversary: JournalDesk.onAdversary, social: JournalDesk.onSocial }
   };
   static PARTS = { body: { template: "systems/n5e/templates/apps/journal-desk.hbs" } };
   drafts = new Map();
@@ -28,6 +31,7 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
   campaign = "";
   history = [];
   cursor = -1;
+  ideaFilters = { theme: "", region: "", rank: "" };
 
   /** Recreate saved tabs from documents, ignoring deleted or unsupported records. */
   async restoreTabs() {
@@ -99,7 +103,9 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     for (const uuid of [draft?.campaignUuid, this.campaign].filter(Boolean)) {
       if (!campaigns.some(e => e.uuid === uuid)) campaigns.push({ uuid, name: "Missing campaign (clear to remove)" });
     }
-    const records = [...entries, ...game.actors.contents.map(a => ({ uuid: a.uuid, name: a.name, kind: "Actor" })),
+    const budgets = game.journal.contents.flatMap(j => j.pages.contents.filter(p => p.flags?.n5e?.mission)
+      .map(p => ({ uuid: p.uuid, name: p.name, kind: "Mission budget" })));
+    const records = [...entries, ...budgets, ...game.actors.contents.map(a => ({ uuid: a.uuid, name: a.name, kind: "Actor" })),
       ...game.scenes.contents.map(s => ({ uuid: s.uuid, name: s.name, kind: "Scene" }))].filter(e => e.uuid !== this.active);
     const linked = await Promise.all((draft?.links ?? []).map(async l => {
       try { const doc = await fromUuid(l.uuid); return { ...l, name: doc?.name ?? "Missing record", missing: !doc }; }
@@ -107,6 +113,8 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     }));
     return { entries: entries.filter(e => (!this.campaign || e.uuid === this.campaign || e.campaignUuid === this.campaign)
         && `${e.name} ${e.kind}`.toLowerCase().includes(this.query.toLowerCase())),
+      suggestions: filterIdeas(this.ideaFilters),
+      ideaOptions: Object.fromEntries(["theme", "region", "rank"].map(key => [key, [...new Set(MISSION_IDEAS.map(i => i[key]))].map(value => ({ value, selected: this.ideaFilters[key] === value }))])),
       records, campaigns: campaigns.filter(e => e.uuid !== this.active).map(e => ({ ...e, selected: e.uuid === draft?.campaignUuid })),
       filters: campaigns.map(e => ({ ...e, selected: e.uuid === this.campaign })), linked,
       canBack: this.cursor > 0, canForward: this.cursor < this.history.length - 1,
@@ -253,5 +261,49 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     this.capture();
     try { await importStarter(); await this.render(); }
     catch (error) { ui.notifications.error(error.message); }
+  }
+  static onIdeaFilter() {
+    this.capture();
+    for (const key of ["theme", "region", "rank"]) this.ideaFilters[key] = this.element.querySelector(`[name=idea${key}]`).value;
+    return this.render();
+  }
+  static onIdeaAppend(event, target) {
+    this.capture();
+    const idea = MISSION_IDEAS.find(i => i.id === target.dataset.idea);
+    const draft = this.drafts.get(this.active);
+    if (idea && draft) draft.content += ideaText(idea);
+    return this.render();
+  }
+  static async onIdeaSave(event, target) {
+    if (this.busy) return;
+    this.capture(); this.busy = true;
+    try {
+      const idea = MISSION_IDEAS.find(i => i.id === target.dataset.idea);
+      if (!idea) return;
+      const page = await createEntry("idea");
+      await saveEntry(page, { name: idea.name, content: ideaText(idea), base: pageSnapshot(page) });
+      await this.openPage(page.uuid);
+    } catch (error) { ui.notifications.error(error.message); }
+    finally { this.busy = false; }
+  }
+  static async onMissionBudget() {
+    this.capture();
+    const { default: Planner } = await import("./mission-planner.mjs");
+    const draft = this.drafts.get(this.active);
+    for (const link of draft?.links ?? []) {
+      const page = await fromUuid(link.uuid).catch(() => null);
+      if (page?.flags?.n5e?.mission) return Planner.open(page);
+    }
+    const planner = new Planner();
+    if (draft) planner.plan.name = draft.name;
+    return planner.render({ force: true });
+  }
+  static async onAdversary() {
+    this.capture();
+    return (await import("../npc/adversary-builder.mjs")).default.open();
+  }
+  static async onSocial() {
+    this.capture();
+    return (await import("../../workflow/social.mjs")).startSocialEncounter();
   }
 }

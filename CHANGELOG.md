@@ -1,3 +1,7 @@
+## 0.69.0-alpha.1 — GM05 mission ideas and tools
+
+Six filterable original mission prompts, editable idea saving/insertion, and links to native mission budgets, adversary building and social encounter setup. Existing rules and saved entries are preserved. No live verification; Design A polish remains GM06.
+
 ## 0.68.1-alpha.3 — GM04c selective starter import
 
 Choose individual starter entries; optionally add missing source links without replacing GM writing. Seven new entries bring the library to 27. Corrects Journal Desk heading/button contrast. Full design polish remains GM06; no live verification.

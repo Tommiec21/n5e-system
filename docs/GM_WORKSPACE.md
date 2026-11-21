@@ -100,3 +100,11 @@ Seven additions (27 total): Amegakure, Kusagakure, Takigakure, Land of Sound/Ric
 Scoped CSS correction sets readable paper-surface headings, inputs and buttons based on the user's screenshot. Full Design A refinement remains GM06. Five focused tests and lint passed on attempt 1; PR/main reserved as 2/3. No live tests or local installation.
 
 GM04 initial starter-library slice complete, not an exhaustive Naruto encyclopedia. Additional figure/region coverage is GM04d (Data Conversion System), including source-reviewed Mist/Cloud/Stone figures and remaining minor territories. GM05 remains the next gameplay batch: usable mission ideas and existing tool integration. GM04b published v0.68.1-alpha.2.
+
+## GM05 — 2026-11-20
+
+Based on 7f344c0. Six original offline mission prompts with theme/region/suggested-rank filters, objective, obstacle, approaches, adversary concept, twist and consequences. Insert appends to the current unsaved draft; Save as idea explicitly creates a private editable idea. Rank labels are suggestions, not encounter-balance certification. Source: module/applications/gm/workspace-ideas.mjs.
+
+GM tools open existing systems: a linked native mission budget opens directly; otherwise a new unsaved planner receives the draft title only. Save the budget in its own window and link it through the newly included Mission budget records. No duplicated budget/reward math. Adversary Builder opens a fresh draft; Social Encounter uses the selected NPC token and its existing setup dialog. Neither an idea preview nor insertion creates actors or starts combat.
+
+Three focused suggestion/filter/escaping checks and lint passed on attempt 1. PR/main reserved as 2/3; integration is source-inspected, not live verified. No local installation. The six prompts are the initial library; expanded recipes and direct selection of linked NPCs for social setup are GM05b (Gameplay System). GM06 remains the next main batch for Design A polish; GM04d broader atlas coverage and optional B/D/C layouts remain.
