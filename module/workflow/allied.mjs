@@ -21,12 +21,14 @@ export function canSummonAllied(user) {
  * Token data for Allied NPCs (pure; tested in Node). `base` is the template's token source.
  * @returns {object[]} token sources ready for createEmbeddedDocuments
  */
-export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {} }) {
+export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {}, look = null }) {
   const out = [];
   for ( let i = 0; i < count; i++ ) {
     const source = structuredClone(base);
     delete source._id;
     source.actorLink = false;
+    // King Q-D27 (Duplicity, "a perfect visual illusion of yourself"): the summoner's name, image and size.
+    if ( look ) Object.assign(source, structuredClone(look));
     Object.assign(source, positions[i] ?? positions[positions.length - 1] ?? {});
     source.disposition = 1; // friendly
     source.delta ??= {};
@@ -40,6 +42,13 @@ export function alliedTokenData(base, { count, positions, ownerId, casterUuid, i
     out.push(source);
   }
   return out;
+}
+
+/** The summoner's look for a summon that is an illusion of them (pure): its token, or else its prototype token. */
+export function summonerLook(token, actor) {
+  const src = token ?? actor?.prototypeToken ?? {};
+  const texture = src.texture?.toObject?.() ?? src.texture;
+  return { name: src.name ?? actor?.name ?? "", width: src.width ?? 1, height: src.height ?? 1, ...(texture ? { texture: structuredClone(texture) } : {}) };
 }
 
 /** Grid positions in a row beside the origin (pure). */
@@ -67,8 +76,9 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const positions = rowPositions({ x: Number.isFinite(x) ? x : origin.x + origin.width * size,
     y: Number.isFinite(y) ? y : origin.y, width: template.prototypeToken?.width ?? 1, size, count });
   const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system));
+  const look = template.flags?.n5e?.summonerLook ? summonerLook(origin, caster) : null;
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
-    concentration, expires: game.time.worldTime + seconds, linked });
+    concentration, expires: game.time.worldTime + seconds, linked, look });
   const tokens = await scene.createEmbeddedDocuments("Token", data);
   await addAlliedCombatants(caster, tokens, initiative);
   Hooks.callAll("n5e.summoned", caster, item, tokens);

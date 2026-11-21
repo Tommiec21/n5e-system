@@ -11,7 +11,7 @@
       "template": "summon",
       "creatureType": "humanoid",
       "blurb": "Beguiler: Beguiling Duplicity",
-      "biography": "<p><em>Beguiling Duplicity (Beguiler, 2nd level).</em> A perfect visual illusion of yourself, summoned as a Bonus Action into an unoccupied space you can see within 15 feet. It lasts 1 minute, or until you dismiss it on your turn (no action) or are incapacitated. Up to 3 at once; you command one at a time. It's intangible, doesn't occupy its space, and is a Genjutsu you cast of the highest rank you can cast.</p><p><strong>Armor Class</strong> your Genjutsu save DC · <strong>Hit Points</strong> 1 (at 0 it's dispelled) · <strong>Speed</strong> your speed (no flying unless you can fly).</p><p><strong>Linked to you when summoned:</strong> its level, AC and speed are set from yours.</p>",
+      "biography": "<p><em>Beguiling Duplicity (Beguiler, 2nd level).</em> A perfect visual illusion of yourself, summoned as a Bonus Action into an unoccupied space you can see within 15 feet. It lasts 1 minute, or until you dismiss it on your turn (no action) or are incapacitated. Up to 3 at once; you command one at a time. It's intangible, doesn't occupy its space, and is a Genjutsu you cast of the highest rank you can cast.</p><p><strong>Armor Class</strong> your Genjutsu save DC · <strong>Hit Points</strong> 1 (at 0 it's dispelled) · <strong>Speed</strong> your speed (no flying unless you can fly).</p><p><strong>Linked to you when summoned:</strong> it looks like you (your token's name, image and size), and its level, AC, speed and fly speed are set from yours.</p>",
       "summonRole": "Duplicity"
     },
     "abilities": {
@@ -209,8 +209,11 @@
       "fromSummoner": {
         "details.level": "@level",
         "attributes.ac.flat": "@dc.gen",
-        "traits.speed.walk": "@speed"
-      }
+        "traits.size": "@size",
+        "traits.speed.walk": "@speeds.walk",
+        "traits.speed.fly": "@speeds.fly"
+      },
+      "summonerLook": true
     }
   },
   "prototypeToken": {

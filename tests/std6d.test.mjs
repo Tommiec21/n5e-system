@@ -210,3 +210,50 @@ test("Genjutsu Specialist: Duplicity and Phantasm summons, Mentally Compromised"
     assert.equal(load("features", id).system.activities.find(x => x.type === "effect").effect.condition, "mentally-compromised", id);
   }
 });
+
+test("King Q-D26: the Genjutsu ability is the higher by default, or the player's pick on the sheet", () => {
+  const abilities = { abilities: { str: { value: 10 }, dex: { value: 10 }, con: { value: 12 }, int: { value: 10 }, wis: { value: 12 }, cha: { value: 18 } } };
+  const changes = [{ key: "n5e.keywordAbility.discipline:gen", value: "cha" }];
+  const withPick = pick => {
+    const cls = taiSpec(1);
+    cls.flags = { n5e: { abilityChoice: { gen: pick } } };
+    const a = makeActor({ system: abilities, items: [cls, load("jutsu", "shadow-bite")], n5eChanges: changes });
+    return a.items.find(i => i.type === "jutsu").system.live.ability;
+  };
+  assert.equal(withPick(""), "cha", "Auto: the higher");
+  assert.equal(withPick("wis"), "wis", "a manual pick of the discipline's own ability");
+  assert.equal(withPick("cha"), "cha");
+  assert.equal(withPick("str"), "cha", "a pick that isn't one of its abilities is ignored");
+});
+
+test("King Q-D28: Illusory items worn over armor change the AC (Armor of Psychosis; Reality Shift's save DC)", async () => {
+  const { overlayAC, computeAC } = await import("../module/rules/ac.mjs");
+  const f = { abilityMod: k => ({ dex: 1, cha: 4 })[k] ?? 0, discipline: d => (d === "gen" ? { mod: 4, dc: 17 } : null), disciplineLabel: () => "Genjutsu" };
+  const psychosis = overlayAC([{ name: "Armor of Psychosis", ability: "gen" }], f);
+  assert.equal(psychosis.dexMod, 4);
+  assert.equal(computeAC({ dexMod: psychosis.dexMod, dexLabel: psychosis.dexLabel, prof: 2 }).value, 10 + 4 + 1);
+  const shift = [{ name: "Reality Shift", fromDC: "gen", whileState: "realityShift" }];
+  assert.equal(overlayAC(shift, { ...f, hasState: () => false }).baseFloor, undefined, "only in the Reality Shift");
+  const inShift = overlayAC(shift, { ...f, hasState: s => s === "realityShift" });
+  assert.equal(computeAC({ dexMod: 1, prof: 2, baseFloor: inShift.baseFloor, bonus: 1 }).value, 17 + 1, "the DC when higher, then bonuses");
+  assert.equal(computeAC({ dexMod: 1, prof: 2, baseFloor: { label: "x", value: 5 } }).value, 12, "not when lower");
+  const item = load("equipment", "armor-of-psychosis");
+  assert.deepEqual([item.system.category, item.system.overlay.ability], ["illusory", "gen"]);
+  const a = makeActor({ system: { abilities: { str: { value: 10 }, dex: { value: 12 }, con: { value: 10 }, int: { value: 10 }, wis: { value: 18 }, cha: { value: 10 } } },
+    items: [taiSpec(1), { ...item, system: { ...item.system, equipped: true } }] });
+  const b = makeActor({ system: { abilities: { str: { value: 10 }, dex: { value: 12 }, con: { value: 10 }, int: { value: 10 }, wis: { value: 18 }, cha: { value: 10 } } },
+    items: [taiSpec(1)] });
+  assert.equal(a.system.ac.value - b.system.ac.value, a.system.disciplines.gen.mod - 1, "the Genjutsu modifier in place of Dex +1");
+});
+
+test("King Q-D27: the Duplicity is an illusion of you: your look, size and speeds", async () => {
+  const { summonerLook, alliedTokenData } = await import("../module/workflow/allied.mjs");
+  const { summonerData, summonerDelta } = await import("../module/rules/summoner-links.mjs");
+  const dup = load("summons", "duplicity-");
+  assert.equal(dup.flags.n5e.summonerLook, true);
+  const look = summonerLook({ name: "Kurenai", width: 1, height: 1, texture: { src: "k.webp", scaleX: 1 } }, null);
+  const [t] = alliedTokenData({ name: "Duplicity", texture: { src: "d.webp" } }, { count: 1, positions: [{ x: 5, y: 5 }], ownerId: "u", casterUuid: "Actor.k", look });
+  assert.deepEqual([t.name, t.texture.src, t.x], ["Kurenai", "k.webp", 5]);
+  const linked = summonerDelta(dup.flags.n5e.fromSummoner, summonerData({ level: 7, traits: { size: "small", speed: { walk: 35, fly: 20 } }, disciplines: { gen: { dc: 15 } } }));
+  assert.deepEqual([linked.traits.size, linked.traits.speed.walk, linked.traits.speed.fly, linked.attributes.ac.flat], ["small", 35, 20, 15]);
+});

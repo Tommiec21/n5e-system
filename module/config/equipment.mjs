@@ -65,7 +65,10 @@ export const weaponProperties = {
 export const armorCategories = {
   light: { label: "Light", dexCap: 5, don: 1, doff: 1 },
   medium: { label: "Medium", dexCap: 3, don: 5, doff: 1 },
-  heavy: { label: "Heavy", dexCap: 0, don: 10, doff: 5 }
+  heavy: { label: "Heavy", dexCap: 0, don: 10, doff: 5 },
+  // King Q-D28: worn over your armor (Armor of Psychosis, Reality Shift): it changes how AC is worked
+  // out (system.overlay) rather than being armor itself.
+  illusory: { label: "Illusory (worn over armor)", dexCap: null, don: 0, doff: 0, overlay: true }
 };
 
 /** KB 08: armor properties. */

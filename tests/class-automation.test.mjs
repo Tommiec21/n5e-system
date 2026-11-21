@@ -33,10 +33,12 @@ test("counter pools: Carnage starts empty and has gain and spend buttons", () =>
   assert.ok(c.activities.some(x => x.cost.pool === "carnage" && !x.cost.gain));
 });
 
-test("Rending Thoughts: a Wisdom save on the Genjutsu DC plus one damage button per tier", () => {
+test("Rending Thoughts: a Wisdom save on the Genjutsu DC plus one damage button per tier (by level) and the penalty die", () => {
   const acts = load("features", "rending-thoughts").system.activities;
   assert.deepEqual([acts[0].save.abilities[0], acts[0].save.dc.source], ["wis", "gen"]);
-  assert.deepEqual(acts.slice(1).map(x => x.damage.parts[0].formula), ["1d6", "2d6", "3d6"]);
+  assert.deepEqual(acts.filter(x => x.type === "damage").map(x => x.damage.parts[0].formula),
+    ["lvl(1:1d6,6:2d6,10:3d6,14:4d6)", "lvl(1:2d6,6:3d6,10:4d6,14:5d6)", "lvl(1:3d6,6:4d6,10:5d6,14:6d6)"]);
+  assert.equal(acts.find(x => x.type === "roll").roll.formula, "lvl(1:1d4,6:1d6,10:1d8,14:1d10)");
 });
 
 test("cast options: Channeled Healing (medical healing, once per turn) and Tyrant (Taijutsu stance)", () => {

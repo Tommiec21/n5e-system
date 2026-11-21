@@ -1001,3 +1001,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Roll fact `jutsu:id:<identifier>`: on every roll from a jutsu's cast card (and `against:jutsu:id:<identifier>` on saves against it).
 - Change key `n5e.keywordAbility.discipline:<nin|tai|gen>`: every jutsu cast as that discipline may use this ability when it's higher.
 - Summons: Duplicity (`fromSummoner`: level, AC = `@dc.gen`, speed) and Phantasm (level, Genjutsu attack bonus and save DC, senses).
+- Class item `flags.n5e.abilityChoice.<disc>`: the player's pick of the ability for that discipline's jutsu when an effect offers another ("" = the higher). Read into `system.grants.disciplineAbilityChoice`.
+- Armor category `illusory` (worn over armor) with `system.overlay`: `ability` (replaces Dex in AC: an ability or a discipline nin|tai|gen), `fromDC` (that discipline's save DC is the AC when higher), `whileState` (only in that named state). Rules: `rules/ac.mjs` overlayAC.
+- Summon template `flags.n5e.summonerLook: true`: the placed token takes the summoner's token name, image and size. Summoner data adds `@speeds.<walk|climb|swim|fly|burrow>` and `@size`.
+

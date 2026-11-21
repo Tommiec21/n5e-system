@@ -71,6 +71,10 @@ export class ArmorData extends TDM() {
       ...physicalFields(),
       category: S.str({ initial: "light" }),          // light | medium | heavy
       armor: S.obj({ value: S.int(1, { min: 0 }), dexCap: S.num(null, { min: 0 }) }),
+      // King Q-D28, the Illusory category: `ability` replaces Dex in your AC (an ability, or a discipline's
+      // ability: nin|tai|gen); `fromDC` lets that discipline's save DC be your AC when it's higher;
+      // `whileState` limits it to a named state (Reality Shift: "realityShift").
+      overlay: S.obj({ ability: S.str(), fromDC: S.str(), whileState: S.str() }),
       properties: propertyMap(),
       strRequirement: S.num(null, { min: 0 }),
       proficient: S.bool(true),

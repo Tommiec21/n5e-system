@@ -33,12 +33,12 @@ import { coverFrom } from "../../rules/positioning.mjs";
 import * as S from "../fields/shared.mjs";
 import { abilities, skills, toolkits, castingDisciplines, disciplines, dcTables } from "../../config/core.mjs";
 import { critRangeCap } from "../../config/combat.mjs";
-import { containerTypes } from "../../config/equipment.mjs";
+import { containerTypes, armorCategories } from "../../config/equipment.mjs";
 import {
   abilityMod, proficiencyFor, masteryRank, masteryBonus, poolMax, inventorySlots, asiCount, masteryCap
 } from "../../rules/progression.mjs";
 import { aggregatePenalties } from "../../rules/conditions.mjs";
-import { computeAC } from "../../rules/ac.mjs";
+import { computeAC, overlayAC } from "../../rules/ac.mjs";
 import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
 import { staminaPool } from "../../rules/trackers.mjs";
@@ -376,10 +376,14 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     // CCOND1: a condition flag that sets DR to 0 (Bone Broken).
     this.dr = pen.flags?.drZero ? 0 : Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
+    const overlay = overlayAC(grants.acOverlays, {
+      abilityMod: k => mod(k), abilityLabel: k => abilities[k]?.abbr ?? k,
+      discipline: d => this.disciplines?.[d], disciplineLabel: d => disciplines[d]?.label ?? d,
+      hasState: st => [...(this.parent?.effects ?? [])].some(e => !e.disabled && e.flags?.n5e?.state === st) });
     const ac = this._baseAC({ bonus: this.bonuses.ac, penalty: pen.ac }) ?? computeAC({
-      calc: this.attributes.ac.calc, dexMod: mod("dex"), prof: this.prof, armor: grants.armor,
+      calc: this.attributes.ac.calc, dexMod: overlay.dexMod ?? mod("dex"), dexLabel: overlay.dexLabel, prof: this.prof, armor: grants.armor,
       flat: this.attributes.ac.flat, formula: this.attributes.ac.formula, rollData,
-      blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac
+      blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac, baseFloor: overlay.baseFloor
     });
     // Cover (POS1): +2 or +4 to AC from the token's cover status (the highest only).
     const cover = coverFrom(this.parent?.statuses);
@@ -463,6 +467,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       switch ( item.type ) {
         case "class":
           g.classItem ??= item;
+          // King Q-D26: the player's pick of a discipline's ability ("" = the higher), kept on the class item.
+          g.disciplineAbilityChoice = { ...(g.disciplineAbilityChoice ?? {}), ...(item.flags?.n5e?.abilityChoice ?? {}) };
           g.hitDie ||= sys.hitDie;
           g.chakraDie ||= sys.chakraDie;
           for ( const s of sys.saves ?? [] ) g.saves.add(s);
@@ -494,6 +500,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           if ( sys.tool ) g.tools.add(sys.tool);
           break;
         case "armor":
+          // King Q-D28: Illusory items are worn over armor and change how AC is worked out.
+          if ( sys.equipped && armorCategories[sys.category]?.overlay ) { (g.acOverlays ??= []).push({ name: item.name, ...sys.overlay }); break; }
           if ( sys.equipped ) {
             g.armor = { name: item.name, bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category,
               strRequirement: sys.strRequirement || sys.properties?.heavyweight || null, item };

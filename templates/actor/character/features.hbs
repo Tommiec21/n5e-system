@@ -30,6 +30,14 @@
   {{#each vm.groups}}
     <div class="feature-group {{key}}">
       <div class="section-head"><h2>{{label}}</h2>
+        {{#each abilityChoices}}
+          <label class="hijutsu" data-item-id="{{itemId}}" data-tooltip="Which ability these jutsu use: Auto takes the higher">{{label}}
+            <select data-item-field="{{field}}" {{#unless @root.editable}}disabled{{/unless}}>
+              <option value="" {{#unless picked}}selected{{/unless}}>Auto (higher)</option>
+              {{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}
+            </select>
+          </label>
+        {{/each}}
         {{#if clan}}{{#with @root.vm.clanCard}}{{#if hijutsu.length}}
           <label class="hijutsu" data-item-id="{{id}}" data-tooltip="Hijutsu Flexibility: which ability your Hijutsu use">Hijutsu ability
             <select data-item-field="system.hijutsuChoice" {{#unless @root.editable}}disabled{{/unless}}>

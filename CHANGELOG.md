@@ -9,6 +9,11 @@ King 2026-11-21: "Next batch."
 - **New summons** (Class & Clan Summons, Genjutsu Specialist folder): the Duplicity (Beguiler) and the Phantasm (Illusionist), with summon buttons.
 - **New condition:** Mentally Compromised (Corrupt Thoughts).
 - Engine: rolls know which jutsu they're from (`jutsu:id:<identifier>`); a discipline can use another ability when it's higher (`n5e.keywordAbility.discipline:gen`).
+- King's answers (Q-D26 to Q-D29):
+  - **Genjutsu ability pick:** Features tab, class header: Auto (higher), Wisdom or Charisma.
+  - **Duplicity:** a perfect visual illusion of you: the token takes your name, image and size, and your speed and fly speed.
+  - **Illusory items** (new armor category, worn over armor; Equipment compendium › Class Items): Armor of Psychosis (Genjutsu modifier in place of Dex in your AC) and Reality Shift: Genjutsu Save DC as AC (while the Amp is active, when higher).
+  - **Mind Over Matter:** stays a manual tick.
 
 ## 0.77.1-alpha.1 — Lethal Attack as a damage toggle
 

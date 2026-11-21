@@ -175,6 +175,12 @@ const DETAILS = {
       F.num(src, "strRequirement", "Str required", { small: true }),
       F.check(src, "proficient", "Proficient")
     ]),
+    ...(armorCategories[src.category]?.overlay ? [section("Worn over armor", [
+      F.select(src, "overlay.ability", "In place of Dex", { "": "—", nin: "Ninjutsu ability", tai: "Taijutsu ability", gen: "Genjutsu ability",
+        ...Object.fromEntries(Object.entries(abilities).map(([k, v]) => [k, v.label])) }),
+      F.select(src, "overlay.fromDC", "Save DC as AC", { "": "—", nin: "Ninjutsu save DC", tai: "Taijutsu save DC", gen: "Genjutsu save DC" }),
+      F.text(src, "overlay.whileState", "Only while in", { placeholder: "a state, e.g. realityShift" })
+    ])] : []),
     section("Properties", [F.props(src, "properties", "", armorProperties)]),
     physical(src)
   ],

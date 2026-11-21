@@ -505,9 +505,17 @@ export function featuresVM(actor) {
   const featSubs = cats.map(c => sub(c, featCategories[c] ?? titleCase(c), general.filter(i => groupOf(i) === c).map(featRow)
     .sort((a, b) => a.name.localeCompare(b.name))));
 
-  return {
+  const vm = {
     classCard: cls ? { id: cls.id, name: cls.name, levels: cls.system.levels, hitDie: cls.system.hitDie,
-      chakraDie: cls.system.chakraDie, tier: cls.system.jutsuTier, subclass: subclass?.name ?? "" } : null,
+      chakraDie: cls.system.chakraDie, tier: cls.system.jutsuTier, subclass: subclass?.name ?? "",
+      // King Q-D26: a discipline that may use another ability (Actualization): Auto (higher) or a manual pick.
+      abilityChoices: Object.entries(sys.modifiers?.keywordAbility ?? {}).filter(([k]) => k.startsWith("discipline:")).map(([k, alts]) => {
+        const d = k.slice("discipline:".length);
+        const own = sys.disciplines?.[d]?.ability;
+        const picked = cls.flags?.n5e?.abilityChoice?.[d] ?? "";
+        return { field: `flags.n5e.abilityChoice.${d}`, itemId: cls.id, label: `${disciplines[d]?.label ?? d} ability`, picked,
+          options: [...new Set([...(own ? [own] : []), ...alts])].map(a => ({ value: a, label: abilities[a]?.abbr ?? a, selected: picked === a })) };
+      }) } : null,
     clanCard: clan ? { id: clan.id, name: clan.name, affinities: [...(sys.grants?.affinities ?? [])].join(", "),
       hijutsu: [...(clan.system.hijutsuAbilities ?? [])].map(a => ({ value: a, label: abilities[a]?.abbr ?? a,
         selected: clan.system.hijutsuChoice === a })),
@@ -516,13 +524,15 @@ export function featuresVM(actor) {
     stances: ofType(actor, "stance").map(i => ({ id: i.id, name: i.name, active: sys.combat?.activeStance === i.id,
       categories: [...i.system.categories].join(", ") })),
     groups: [
-      { key: "class", label: cls?.name ?? "Class features", subgroups: classSubs },
+      { key: "class", label: cls?.name ?? "Class features", subgroups: classSubs, abilityChoices: null },
       { key: "clan", label: clan?.name ?? "Clan features", clan: true,
         // Background features are Clan Features (King 2026-11-13).
         subgroups: [sub("clan", "Clan features and options", feats.filter(i => ["clanFeature", "clanFeatureOption"].includes(kind(i)) || i.system.category === "clan").map(featRow).sort(byLevel))] },
       { key: "feats", label: "Feats", subgroups: featSubs.length ? featSubs : [sub("none", "", [])] }
     ]
   };
+  vm.groups[0].abilityChoices = vm.classCard?.abilityChoices?.length ? vm.classCard.abilityChoices : null;
+  return vm;
 }
 
 /** Effects tab: every Active Effect grouped (conditions, states, Amps, concentration, other). */

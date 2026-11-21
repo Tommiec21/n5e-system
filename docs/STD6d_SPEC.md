@@ -153,7 +153,8 @@ Highlights:
 - **Inceptions:** Hallucinatory Instrument, Illusory Weapon, Reality Marble (−2 concentration cost at 7th) and Temporal Stopwatch buttons, with their 11th-level reactions; the 7th-level choices (Rewind, Fast Forward, Words of Affirmation, Words of Detriment) have buttons.
 - **Summons** (Class & Clan Summons): the **Duplicity** (Beguiler; AC your Genjutsu save DC, 1 HP, your speed) and the **Phantasm** (Illusionist; its stat block: AC 20, 10 HP, Ghastly Strike, Maddening Echo; your Genjutsu attack bonus, save DC and senses). Summon buttons on Beguiling Duplicity, Phantasm and Phantasmic Double.
 - **Mentally Compromised:** a new condition card (Conditions compendium, Genjutsu Specialist folder), applied by Collapsing your World and Corrupt Influence.
-- **At the table:** AC from your Genjutsu modifier (Armor of Psychosis, Reality Shift), area and target changes, identification blocking, the degree-of-success features (Master of Illusion, The Prestige) and the Pledges' passives.
+- **AC** (King Q-D28): the Illusory items Armor of Psychosis and Reality Shift: Genjutsu Save DC as AC.
+- **At the table:** area and target changes, identification blocking, the degree-of-success features (Master of Illusion, The Prestige) and the Pledges' passives.
 
 ## Class & Clan Limits (0.77.0-alpha.1)
 
@@ -192,10 +193,10 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
 - **Q-D24 Skilled Exploits:** answered (King 2026-11-21): 1 + proficiency bonus per Long Rest, changeable in the Class & Clan Limits menu.
 - **Q-D25 Lethal Attack:** answered (King 2026-11-21): a damage toggle in the damage window of every attack and jutsu; players decide when to tick it, no further automation. Built in 0.77.1-alpha.1.
-- **Q-D26 Actualization's Charisma:** "may use Charisma instead of Wisdom" is built as "Charisma when it's higher" for every Genjutsu. Fine, or should it be a fixed choice?
-- **Q-D27 Duplicity:** it has no stat block; the NPC is built from its text (AC your Genjutsu save DC, 1 hit point, your speed, its four abilities as traits). Fine?
-- **Q-D28 Armor of Psychosis and Reality Shift's AC:** both are notes (set your AC on the sheet). Should the sheet work them out?
-- **Q-D29 Mind Over Matter:** it's its own cast dialog tick (tick it with an Actualization option). Should it tick itself whenever an Actualization option is ticked?
+- **Q-D26 Actualization's Charisma:** answered (King 2026-11-21): the higher by default, plus a manual pick on the sheet (Features tab, class header: "Genjutsu ability", Auto (higher), Wis or Cha; kept on the class item as `flags.n5e.abilityChoice.gen`).
+- **Q-D27 Duplicity:** answered (King 2026-11-21, "Read the class again"): it's "a perfect visual illusion of yourself", so the summoned token takes your token's name, image and size (`flags.n5e.summonerLook`), and your speed and fly speed ("it cannot fly unless you have a fly speed").
+- **Q-D28 Armor of Psychosis and Reality Shift's AC:** answered (King 2026-11-21): equippable items. New armor category Illusory (worn over armor): Armor of Psychosis (Genjutsu modifier in place of Dex) and Reality Shift: Genjutsu Save DC as AC (only while the Amp is active, when higher), Equipment compendium › Class Items.
+- **Q-D29 Mind Over Matter:** answered (King 2026-11-21): a manual tick (as built).
 - **Genjutsu Specialist text issues** (for the errata list): Venom Strike Adept (2nd) holds Venom Strike Expert's Psychosis box; Mind Leech holds the Mentally Compromised box; Who are you Fighting? holds Betray Yourself's Identity Crisis box; Phantasmic Influence holds the Phantasm stat block; "Rend Thoughts" for Rending Thoughts (Denial is a River, Vindictive Thoughts); "Inhale" for Inhaled (Venom Strike Expert); "you your" (Mind Over Matter); "They 5d6" (Nightmare Rain); Fighting Mirage's prerequisite "Illusionary Weapon" (Illusory Weapon); One with Shadows' prerequisite "Reality Marble Genjutsu pledge" (Reality Marble is an Inception).
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
@@ -213,4 +214,4 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.
 - 2026-11-21 King: "Next batch." and "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & class setting menu..." Claude: Hunter-Nin built (86 features), D25 option-gated effects, D26 Class & Clan Limits menu, published 0.77.0-alpha.1. Q-D25 asked; nothing waits on it.
 - 2026-11-21 King: "Qd25. Lethal attack should be a damage toggle in the Attack/Damage window..." Claude: optional damage elements; Lethal Attack as full and half rows, published 0.77.1-alpha.1.
-- 2026-11-21 King: "Next batch." Claude: Genjutsu Specialist built (107 features), D27–D29, Duplicity and Phantasm summons, Mentally Compromised; published 0.78.0-alpha.1. Q-D26–Q-D29 asked; nothing waits on them.
+- 2026-11-21 King: "Next batch." Claude: Genjutsu Specialist built (107 features), D27–D29, Duplicity and Phantasm summons, Mentally Compromised; published 0.78.0-alpha.1. King answered Q-D26–Q-D29 the same day (manual Genjutsu ability pick, the Duplicity looks like you, Illusory AC items, Mind Over Matter a manual tick).

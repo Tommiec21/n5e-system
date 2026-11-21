@@ -153,15 +153,18 @@ const DAMAGE = ["bludgeoning", "piercing", "slashing", "acid", "cold", "earth", 
 const CONDITIONS = ["exhaustion", "envenomed", "burned", "chilled", "corroded", "shocked", "petrified", "bruised", "staggered", "bleed", "dazed", "shaken", "weakened",
   "concussed", "demoralized", "berserk", "charmed", "confused", "slowed", "sealed", "blinded", "dazzled", "invisible", "deafened"];
 const STATES = ["prone", "grappled", "restrained", "suffocating", "incapacitated", "stunned", "unconscious"];
+// A perfect visual illusion of yourself (King Q-D27): your look (flags.n5e.summonerLook), size and speeds.
 const duplicityLinks = {
   "details.level": "@level",
   "attributes.ac.flat": "@dc.gen",
-  "traits.speed.walk": "@speed"
+  "traits.size": "@size",
+  "traits.speed.walk": "@speeds.walk",
+  "traits.speed.fly": "@speeds.fly"
 };
 const duplicityBio = html(
   "<p><em>Beguiling Duplicity (Beguiler, 2nd level).</em> A perfect visual illusion of yourself, summoned as a Bonus Action into an unoccupied space you can see within 15 feet. It lasts 1 minute, or until you dismiss it on your turn (no action) or are incapacitated. Up to 3 at once; you command one at a time. It's intangible, doesn't occupy its space, and is a Genjutsu you cast of the highest rank you can cast.</p>",
   "<p><strong>Armor Class</strong> your Genjutsu save DC · <strong>Hit Points</strong> 1 (at 0 it's dispelled) · <strong>Speed</strong> your speed (no flying unless you can fly).</p>",
-  "<p><strong>Linked to you when summoned:</strong> its level, AC and speed are set from yours.</p>");
+  "<p><strong>Linked to you when summoned:</strong> it looks like you (your token's name, image and size), and its level, AC, speed and fly speed are set from yours.</p>");
 const duplicityItems = id => [
   item(id, "Displaced Genjutsu", "npcTraits", html("You can cast Genjutsu as if you were in the Duplicity's space, but you must use your own senses.")),
   item(id, "Illusory Body", "npcTraits", html("While the Duplicity doesn't occupy space it can be attacked. It has an AC equal to your Genjutsu Save DC and 1 hit point. If its hit points are reduced to 0, it is dispelled. Creatures cannot discern which of you are real unless they take the Identify Genjutsu skill-Action. A creature with Chakra Sight, Chakra Sensing, True Sight or Tremor Sense can always tell which of you are real, becoming immune to Illusory Distraction.")),
@@ -175,6 +178,7 @@ const duplicity = actor("duplicity", "Duplicity", beguiler._id, {
   traits: { size: "medium", speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false } },
   hpMax: 1, cpMax: 0, diesAtZero: true
 }, duplicityItems, duplicityLinks, "icons/svg/mystery-man.svg");
+duplicity.flags.n5e.summonerLook = true;
 
 /* -------------------------------------------- */
 /*  Genjutsu Specialist: Phantasm (Illusionist) */

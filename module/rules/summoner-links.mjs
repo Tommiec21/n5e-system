@@ -26,6 +26,9 @@ export function summonerData(system = {}) {
     hp: { max: Number(system.hp?.max) || 0 },
     cp: { max: Number(system.cp?.max) || 0 },
     speed: Number(system.speed?.walk ?? system.traits?.speed?.walk) || 0,
+    // Every speed and the size (King Q-D27: the Duplicity flies only if you can, and is your size).
+    speeds: Object.fromEntries(["walk", "climb", "swim", "fly", "burrow"].map(k => [k, Number(system.speed?.[k] ?? system.traits?.speed?.[k]) || 0])),
+    size: system.traits?.size ?? "medium",
     saves: Object.fromEntries(Object.entries(system.saves ?? {}).map(([k, s]) => [k, { proficient: !!s?.proficient }])),
     skills: Object.fromEntries(Object.entries(system.skills ?? {}).map(([k, s]) => [k, { total: Number(s?.total) || 0, passive: Number(s?.passive) || 0 }])),
     senses: Object.fromEntries(Object.entries(system.traits?.senses ?? {}).map(([k, v]) => [k, Number(v) || 0])),
