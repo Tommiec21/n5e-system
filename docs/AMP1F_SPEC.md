@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 built in 0.72.0-alpha.1. Batch 4 (A and S) next.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 built in 0.72.0-alpha.1. Batch 4 (A and S) proposed, awaiting King's answers.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -162,6 +162,45 @@ Batch 3 tally: 11 Amps as 16 cards, 6 not Amps.
 - **Q-F13 Strength of 100's aftermath** (disadvantage on Strength checks for an hour or until a short rest, after the jutsu ends): apply it automatically when the Amp ends, as a penalty effect (not an Amp), or a note?
 - **Q-F14 Light Binding Step's A-Rank line** mentions "the special reaction granted by this jutsu", but the jutsu grants no reaction. Claude reads it as leftover text: it goes to the text-issues list, and the cards ignore it. Agree?
 
+## Batch 4 (A and S-Rank), Claude's proposals
+
+All typeless (Q-F3). "Cards" counts the rank versions (Q-F1).
+
+| Rank | Jutsu | Proposal | Cards | Options menu |
+| --- | --- | --- | --- | --- |
+| A | Boil Release: Freight Train | Amp: +30 speed; immune to Prone, Slowed, Shaken and Grappled; can't be moved against your will; difficult terrain doesn't affect you; Impact Engine (once per turn: Strength save or Prone, Bruised and Scald) as a note; Overheat when it ends (Q-F16) | 1 | |
+| A | Lotus Nonself Connected Cannons | Amp for the maintained cannon (Q-F18): speed 0, +10 DR, can't be moved, knocked Prone or Stunned; the beam and refiring stay on the jutsu | 1 (upcasts only change the beam) | |
+| A | Demonic Instrument: Chains of Fantasia | Not an Amp: a genjutsu on foes, and a summon | — | |
+| A | Demon Hunter | Amp: against your Demon, +20 speed (in initiative) and polearm damage ignores resistance and treats immunity as resistance; Bukijutsu with that polearm +1 save DC and +5 feet range; Chain 2 and 3 as notes | 1 | |
+| A | Moon-Fang Piercer | Not an Amp: an attack (Chain 3's +6 DR until your next turn stays a rider on the jutsu) | — | |
+| A | Overcomer | Amp: +1d4 to Strength saves; at half HP or less, 10 temporary HP each turn and you can't be moved against your will | 1 | |
+| A | Unlimited Pleasure | Amp on up to 3 willing creatures (4 at S): temporary HP they gain also heal them by that much | 1 | |
+| A | Earth Release: Diamond Bone Hardening | Amp: 14 DR while not wearing armor; S: 16 DR and 2d6 + 4 temporary HP each turn | 2 (A; S) | |
+| A | Medical Release: Aura of Power | Amp with an aura (Q-F6): allies chosen at casting +2 to saves against Ninjutsu; hostile creatures in it −2 (Q-F15) | 2 (the aura; in the aura) | |
+| A | Wind Release: Neverending Breath | Amp: no need to breathe for 10 hours, can't be suffocated or drowned, immune to Inhaled jutsu, +4 Constitution saves | 1 | |
+| A | Magnum Knuckle | Amp: advantage on opportunity attacks; twice per turn +1 unarmed die and a Constitution save or −15 speed (notes) | 1 | |
+| A | Supreme Violence | Amp: + half your Taijutsu modifier to AC; Violent Reprisal (a reaction) as a note; no Ninjutsu or Genjutsu concentration | 1 | |
+| A | Tiger Lily | Amp: 60 feet of blindsight | 1 | |
+| S | The Zone | Amp: Weapon and Taijutsu attacks can't be reacted to and pierce resistance; speed doubled, +2 AC; advantage on Weapon and Taijutsu attacks; +1 Taijutsu save DC; can't lose concentration on it (Q-F20) | 1 | |
+| S | Fire Release: Body of Dawn | Amp: immune to wind, fire, bludgeoning, piercing and slashing; vulnerable to cold; fire heals you by half (note); the blinding flash stays on the jutsu | 1 | |
+| S | Medical Release: Heal | Not an Amp: instant healing | — | |
+| S | Medical Release: Strength of 1000 | Amp: [Unarmed Damage] 3d8, regain 2d4 + 8 HP each turn, Distortion Impact and Critical Break as notes; lasts as long as Strength of 100 (Q-F17) | 1 | |
+| S | Water Release: Water Heavens Convergence | Not an Amp (Q-F19): it grants actions and a reaction | — | |
+
+Batch 4 tally: 14 Amps as 16 cards, 4 not Amps.
+
+### Questions for batch 4
+
+- **Q-F15 Aura of Power's −2:** the hostile creatures in the aura get a penalty effect (−2 to saves against Ninjutsu, not an Amp), placed by the aura like the allies' card. Agree?
+- **Q-F16 Freight Train's Overheat** (Incapacitated until the end of your next turn, when it ends): like Strength of 100 (Q-F13), a unique condition "Freight Train: Overheated" applied when the Amp ends?
+- **Q-F17 Strength of 1000:**
+  - It lasts as long as Strength of 100, which keeps going without concentration. Claude's suggestion: Strength of 1000 ends when Strength of 100 ends (both leave their own condition then).
+  - When it ends: you can't cast it, or Medical jutsu that need concentration, until a Full Rest. A unique condition "Strength of 1000: Shock" until a full rest?
+  - The text says "jutsu with both the Medical keyword that requires concentration": "both" looks like a leftover word. Logged as a text issue unless you say otherwise.
+- **Q-F18 Lotus Nonself Connected Cannons:** is the maintained cannon (speed 0, +10 DR, can't be moved, Prone or Stunned) an Amp, started from a "Maintain the cannon" button after the first beam?
+- **Q-F19 Water Heavens Convergence** (Water Drill and Watery Chains as Actions, Water Armor as a reaction): not an Amp, as with Twin Rising Dragons (Q-F10)?
+- **Q-F20 The Zone's reuse:** "You can end this jutsu early as a bonus action, and you may reactivate it as a bonus action, spending half of the initial cost. Once this jutsu ends you cannot use this jutsu again until you finish a full rest." Claude's reading: ending it with the bonus action pauses it (reactivate for half the cost); any other end (duration, concentration) uses it up until a full rest. Right?
+
 ## Progress log
 
 - 2026-11-20 King: "The next batch." Claude: AMP1f spec and review batch 1 written; 90 jutsu candidates after AMP1e.
@@ -172,3 +211,4 @@ Batch 3 tally: 11 Amps as 16 cards, 6 not Amps.
 - 2026-11-20 King: "Next batch." Claude: batch 3 (B-Rank, 17 jutsu) proposed with Q-F10–Q-F14: 11 Amps as 16 cards, 6 not Amps.
 - 2026-11-20 King: Q-F10 not an Amp, Q-F11 yes (button), Q-F12 yes, Q-F13 a unique condition, Q-F14 show the full jutsu text. Claude: batch 3 built (0.72.0-alpha.1): 11 jutsu as 16 cards, 6 not Amps; Amp buttons, Amp statuses, a condition when an Amp ends (Strength of 100: Overexerted), conditions ending on a rest, n5e.vulnerable. Light Binding Step's A-Rank line: full text shown to King, awaiting his call.
 - 2026-11-21 King: Q-F14, Light Binding Step's A-Rank reaction line is a mistake and isn't there. Claude: no card change needed; logged in the text-issues list.
+- 2026-11-21 King: "Next batch." Claude: batch 4 (A and S, 18 jutsu) proposed with Q-F15–Q-F20: 14 Amps as 16 cards, 4 not Amps.
