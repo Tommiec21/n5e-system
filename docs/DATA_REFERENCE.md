@@ -944,3 +944,10 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Condition cards: `lvl(…)` in `changes` (and `choose` options) is read from the applier's character level when placed (King Q-E5: a feature's level is the character level of the character who has it); with no applier it is left for the bearer.
 - Mastery change value `"Source ×N"`: N steps from one source (`Source 1` … `Source N`).
 - `nara-combat-coordinated` and `nara-diplomatic-coordinated` (conditions pack), applied by Team Coordination's two buttons. The Combat Coordinated Amp cards (`combat-coordinated`, `-7`, `-15`) are gone (King Q-E4).
+
+### Jutsu Amps (AMP1f, 0.70.0-alpha.1)
+
+- Amp card owner kind `jutsu` (`owner.id`: the jutsu's identifier): owned by knowing the jutsu (`ownsAmp`), never offered by `ampCardsFor`; started by the jutsu's effect activity `{amp: key}`.
+- `system.rank` (E–S): the cast rank a version starts at; versions share `system.series`. `ampVersionFor(registry, key, level, rank)` picks the highest rank at or below the cast (no rank: the base). The cast rank comes from the cast card's `flags.n5e.cast.rank` (activity-buttons.mjs → applyActivityEffect `rank` → applyAmp).
+- `system.choose` `{prompt, options: [{label, changes, rules, duration}]}`: `applyAmp` opens the menu (`pickOption`); several targets pick once (`pickAmpOption`). `withChoice(plan, def, choice)` adds the option; an option `duration` replaces the card's. The applyAmp intent carries `choice`.
+- Cards: `tools/content/build-jutsu-amp-cards.py` (keys `jutsu-<identifier>`, `-<rank>` or `-<level>` for versions; folder "Self-buffs and jutsu"). Rejected jutsu: `flags.n5e.notAmp`.

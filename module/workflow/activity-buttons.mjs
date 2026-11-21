@@ -340,7 +340,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "effect": {
       if ( !caster?.isOwner ) return fail("warn", "Only the owner can use this.");
       const { applyActivityEffect } = await import("./trackers.mjs");
-      return applyActivityEffect(caster, JSON.parse(d.effect || "{}"), { label: d.label, item: caster.items.get(d.item), poolRoll });
+      // AMP1f: the cast rank picks a jutsu Amp's version.
+      return applyActivityEffect(caster, JSON.parse(d.effect || "{}"), { label: d.label, item: caster.items.get(d.item), poolRoll, rank: message?.getFlag?.("n5e", "cast")?.rank ?? "" });
     }
     case "attack": {
       if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");

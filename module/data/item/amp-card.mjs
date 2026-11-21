@@ -16,6 +16,10 @@
  *               decides whether these end it automatically or at the table)
  *   changes, tempHp, state, aura, and rule elements in flags.n5e.rules: the buff itself
  *   outsideLimits  AMP1e (King Q-E3): doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)
+ *   rank        AMP1f (King Q-F1): the cast rank this version starts at (E–S; "" not a rank version)
+ *   choose      AMP1f: {prompt, options: [{label, changes, rules, duration}]}: picked in a menu when the Amp
+ *               starts; an option's duration (when its seconds or until is set) replaces the card's
+ *   owner kind "jutsu" (AMP1f): only casting that jutsu starts it (id: the jutsu's identifier)
  *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
 import * as S from "../fields/shared.mjs";
@@ -48,7 +52,11 @@ export class AmpCardData extends TDM() {
       outsideLimits: S.bool(),
       // AMP1g: versions of one Amp (King 2026-11-20): the base key, and the character level it starts at.
       series: S.str(),
-      level: S.int(0, { min: 0 })
+      level: S.int(0, { min: 0 }),
+      // AMP1f (King Q-F1): a version per cast rank, and the caster's picks.
+      rank: S.str(),
+      choose: S.obj({ prompt: S.str(), options: S.arr(S.obj({ label: S.str(), changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })), rules: S.arr(object()),
+        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }) })) })
     };
   }
 }

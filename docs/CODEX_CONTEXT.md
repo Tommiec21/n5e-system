@@ -531,3 +531,7 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Stances are audit status `stance`; `flags.n5e.notAmp` keeps a document out of the Amp audit.
 - Condition cards: `system.choose` (bearer picks in chat), `lvl()` in changes read from the applier's character level at placement. Mastery value "Source ×N" = N ranks.
 - Coordinated is a condition (King Q-E4): `nara-combat-coordinated`, `nara-diplomatic-coordinated`; no Combat Coordinated Amp cards.
+
+## AMP1f batch 1 — Claude, 2026-11-20 (0.70.0-alpha.1)
+- Jutsu Amps: owner kind `jutsu`, typeless (Hijutsu too, King Q-F2/Q-F3), a card per cast rank (`system.rank`, King Q-F1), picked by the cast card's rank. Options menu: `system.choose` on the card.
+- Rebuild with tools/content/build-jutsu-amp-cards.py after the other Amp builders. Rejected jutsu carry `flags.n5e.notAmp`.

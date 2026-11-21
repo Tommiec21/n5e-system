@@ -75,7 +75,9 @@ export function validateIntent(type, data = {}) {
     }
     case "applyAmp": {
       if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid) ) throw new Error("Invalid Amp request.");
-      return { key: data.key, targetUuid: data.targetUuid };
+      const choice = data.choice == null ? null : Number(data.choice);
+      if ( choice != null && (!Number.isSafeInteger(choice) || choice < 0 || choice > 20) ) throw new Error("Invalid Amp request.");
+      return { key: data.key, targetUuid: data.targetUuid, ...(choice == null ? {} : { choice }) };
     }
     case "transferRyo": {
       const amount = Number(data.amount);

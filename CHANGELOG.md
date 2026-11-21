@@ -1,3 +1,16 @@
+## 0.70.0-alpha.1 — AMP1f batch 1: jutsu Amps (E and D ranks)
+
+King 2026-11-20: Q-F1 a card per cast rank and an options menu for picks, Q-F2 Hijutsu aren't Clan Amps, Q-F3 typeless for now, Q-F4 temporary-HP jutsu are Amps, Q-F5 Chakra Skin and Geo Breastplate are Amp-less buffs.
+
+- **23 E and D-Rank jutsu now start Amp cards (75 cards).** Casting the jutsu and clicking its button starts the card for the rank you cast at, for example Medical Release: Acid Armor (C-Rank).
+  - A rank gets its own card only when its effects change; a cast in between uses the card below it (Crystal Armor at C uses the D card).
+  - Gaslight grows by character level, so it has level versions (5th, 11th, 17th).
+  - Every jutsu Amp is typeless for now (Hijutsu included) and still counts toward Rule of 3's.
+- **Options menu when an Amp starts.** Beast Fist: Rushing Lion asks Strength or Dexterity; Gaslight asks Action or Reaction (its duration changes); Environmental Affinity asks in or out of combat. Given to several creatures, the caster picks once.
+- **Jutsu Amps aren't on the Amps panel's start list**: they start only by casting the jutsu, and show on the panel while active.
+- **7 jutsu marked not Amps** and gone from the audit: Misty Hallucination, Chakra Skin, Bedrock Coffin, Geo Breastplate, Resonating Geo Isotoma, Fox Fire, Chakra Mark.
+- Parts that need the table (retaliation damage, barriers, triggers, the resistance that lasts only while temporary HP last) are notes on each card.
+
 ## 0.69.0-alpha.1 — AMP1e: self-buff states, stances, Coordinated
 
 King 2026-11-20: Q-E1 stances stay stances, Q-E2 Feral and Well Rested stay Clan Amps, Q-E3 DYNAMIC FORM! and Flawless become cards that don't count toward Rule of 3's, Q-E4 Coordinated is a condition, Q-E5 a feature's level is the character level of whoever has it.

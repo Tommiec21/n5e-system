@@ -14,7 +14,7 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
-import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey,
+import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -88,9 +88,10 @@ async function confirmWarnings(def, warnings) {
  * @param {Item|null} [o.item]       the feature or jutsu it came from (concentration, origin)
  * @param {boolean} [o.confirm=true] false: skip the confirmation (initiative "auto")
  */
-export async function applyAmp(target, key, { applier = null, item = null, confirm = true } = {}) {
+export async function applyAmp(target, key, { applier = null, item = null, confirm = true, rank = "", choice = null } = {}) {
   // AMP1g (King 2026-11-20): start the version the character's level reaches (Flow (11th) at 11th).
-  key = ampVersionFor(registry(), key, actorLevel(applier ?? target));
+  // AMP1f (King Q-F1): and the version for the rank the jutsu was cast at.
+  key = ampVersionFor(registry(), key, actorLevel(applier ?? target), rank);
   const def = registry()[key];
   if ( !def ) throw new Error(`Unknown Amp: ${key}`);
   if ( !target ) throw new Error("Drop the Amp on a creature.");
@@ -98,23 +99,49 @@ export async function applyAmp(target, key, { applier = null, item = null, confi
   const resolve = resolver(who);
   const warnings = ampWarnings(def, { applier: who, target, worldTime: game.time.worldTime, key, resolve });
   if ( confirm && !(await confirmWarnings(def, warnings)) ) return null;
+  // AMP1f (King Q-F1): the caster picks from the card's options in a menu.
+  if ( def.choose && choice == null ) {
+    choice = await pickOption(def);
+    if ( choice == null ) return null;
+  }
   // Uses are spent by whoever starts it, when it is theirs to start.
   if ( ownsAmp(who, def) && def.uses?.max && canModify(game.user, who) ) {
     const spend = ampSpendUpdate(who, key, def);
     if ( spend ) await who.update(spend);
   }
-  if ( canModify(game.user, target) ) return placeAmp(target, key, { applier: who, item });
+  if ( canModify(game.user, target) ) return placeAmp(target, key, { applier: who, item, choice });
   if ( !canModify(game.user, who) ) throw new Error("Select a token you own (or assign your character) to apply this.");
-  return submitIntent(who, "applyAmp", { key, targetUuid: target.uuid });
+  return submitIntent(who, "applyAmp", { key, targetUuid: target.uuid, ...(choice == null ? {} : { choice }) });
+}
+
+/**
+ * AMP1f: for an Amp given to several creatures, the caster picks once (the cast's one choice).
+ * @returns {number|null|false}  the option, null when the card has no options, false when closed
+ */
+export async function pickAmpOption(key, applier, rank = "") {
+  const def = registry()[ampVersionFor(registry(), key, actorLevel(applier), rank)];
+  if ( !def?.choose ) return null;
+  const choice = await pickOption(def);
+  return choice == null ? false : choice;
+}
+
+/** AMP1f: the options menu (every option in view). Returns the option's index, or null when closed. */
+async function pickOption(def) {
+  const rows = def.choose.options.map((o, i) => `<label class="checkbox"><input type="radio" name="choice" value="${i}" ${i === 0 ? "checked" : ""}> ${esc(o.label)}</label>`).join("");
+  const picked = await foundry.applications.api.DialogV2.prompt({
+    window: { title: def.label }, content: `<p>${esc(def.choose.prompt)}</p>${rows}`,
+    ok: { label: "Start", callback: (event, button) => Number(button.form.elements.choice.value) }, rejectClose: false
+  });
+  return Number.isInteger(picked) ? picked : null;
 }
 
 /** Create the Amp effect from the card (runs on a client that can modify the target). */
-export async function placeAmp(target, key, { applier = null, item = null } = {}) {
+export async function placeAmp(target, key, { applier = null, item = null, choice = null } = {}) {
   const def = registry()[key];
   if ( !def ) return null;
   const { applyActivityEffect } = await import("./trackers.mjs");
   const source = item ?? { img: def.icon, uuid: def.card, name: def.label, id: null, system: { description: def.summary } };
-  await applyActivityEffect(applier ?? target, ampEffectPlan(key, def), { label: def.label, item: source, targetActors: [target] });
+  await applyActivityEffect(applier ?? target, withChoice(ampEffectPlan(key, def), def, choice), { label: def.label, item: source, targetActors: [target] });
   return { applied: target.name, key };
 }
 
@@ -246,7 +273,7 @@ export function registerAmpCards() {
     const doc = await fromUuid(data.targetUuid);
     const target = doc?.actor ?? doc;
     if ( !(target instanceof Actor) ) throw new Error("That creature no longer exists.");
-    return placeAmp(target, data.key, { applier: actor });
+    return placeAmp(target, data.key, { applier: actor, choice: data.choice ?? null });
   });
   for ( const hook of ["createItem", "updateItem"] ) {
     Hooks.on(hook, item => { if ( item.type === "amp" && !item.parent ) registerAmp(item); });

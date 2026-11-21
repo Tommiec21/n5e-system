@@ -345,7 +345,7 @@ const evalNumber = expr => {
  * @param {Item|null} [o.item]    source item (image, origin, description)
  * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
-export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null } = {}) {
+export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null, rank = "" } = {}) {
   // STD6d: class table values (@scale.medicalNin.channeledHealing) resolve from the caster's roll data.
   const rollData = actor.getRollData?.() ?? {};
   // ENG1a: and the caster's save DCs (@dc.nin), so an effect on another creature keeps the caster's numbers.
@@ -371,10 +371,13 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // AMP1a: an effect activity naming an Amp card ({amp: key}) starts that Amp (King Q-A2 confirmation,
   // uses and cooldown, GM relay for creatures this user doesn't own).
   if ( eff.amp ) {
-    const { applyAmp } = await import("./amp-cards.mjs");
+    const { applyAmp, pickAmpOption } = await import("./amp-cards.mjs");
     const done = [];
+    const choice = targets.length > 1 ? await pickAmpOption(eff.amp, actor, rank) : null;
+    if ( choice === false ) return null;
     for ( const t of targets ) {
-      try { if ( await applyAmp(t, eff.amp, { applier: actor, item }) ) done.push(t.name); }
+      // AMP1f: a jutsu's Amp starts at the version for the rank it was cast at (and asks for one pick, not one per target).
+      try { if ( await applyAmp(t, eff.amp, { applier: actor, item, rank, choice }) ) done.push(t.name); }
       catch(e) { ui.notifications.warn(e.message); }
     }
     return done.length ? { applied: done } : null;

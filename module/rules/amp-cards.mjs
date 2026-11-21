@@ -29,6 +29,7 @@ const escHTML = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;"
 const slug = s => String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const AMP_TYPES = ["battle", "reflex", "fortitude", "will", "clan"];
+const RANKS = ["E", "D", "C", "B", "A", "S"];
 
 /** What can end an Amp (the card's endsOn), with labels for chat and the card sheet. */
 export const AMP_END_TRIGGERS = {
@@ -69,8 +70,15 @@ export function ampDefinition(card) {
     outsideLimits: !!s.outsideLimits,
     endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS),
     // AMP1g: versions of one Amp share a series (the base key) and start at a character level.
-    series: s.series ?? "", level: Number(s.level) || 0
+    series: s.series ?? "", level: Number(s.level) || 0,
+    // AMP1f: the cast rank this version starts at, and the caster's picks.
+    rank: RANKS.includes(s.rank) ? s.rank : ""
   };
+  const options = list(s.choose?.options).filter(o => o?.label);
+  if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
+    options: options.map(o => ({ label: o.label, changes: list(o.changes).filter(c => c?.key).map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) })),
+      rules: structuredClone(list(o.rules)),
+      ...(o.duration?.seconds || o.duration?.until ? { duration: { seconds: Number(o.duration.seconds) || 0, until: o.duration.until ?? "", concentration: !!o.duration.concentration } } : {}) })) };
   // UX1: the buff can be written on the card (its Changes, its rules) or in the card's own Active
   // Effects (the effect editor); switched-off effects are left out. All of it applies together.
   const effects = list(card.effects).filter(e => e && !e.disabled);
@@ -83,9 +91,9 @@ export function ampDefinition(card) {
   return def;
 }
 
-/** The identifiers an actor has: its classes, subclasses, clan and feats. */
+/** The identifiers an actor has: its classes, subclasses, clan, feats and jutsu. */
 function identities(actor) {
-  const ids = { class: new Set(), subclass: new Set(), clan: new Set(), feat: new Set() };
+  const ids = { class: new Set(), subclass: new Set(), clan: new Set(), feat: new Set(), jutsu: new Set() };
   for ( const i of list(actor?.items) ) {
     if ( !ids[i.type] ) continue;
     if ( i.system?.identifier ) ids[i.type].add(i.system.identifier);
@@ -101,6 +109,7 @@ export function ownsAmp(actor, def) {
   const ids = identities(actor);
   if ( o.kind === "clan" ) return ids.clan.has(o.id);
   if ( o.kind === "feat" ) return ids.feat.has(o.id);
+  if ( o.kind === "jutsu" ) return ids.jutsu.has(o.id);
   if ( o.kind === "subclass" ) return ids.subclass.has(o.id);
   return ids.class.has(o.id) && (!o.subclass || ids.subclass.has(o.subclass));
 }
@@ -123,14 +132,32 @@ export const actorLevel = actor => Number(actor?.system?.level ?? actor?.system?
  * AMP1g: the version of an Amp for a character: the highest version of the key's series that the
  * level reaches (the key itself when it has no versions, or none is reached).
  */
-export function ampVersionFor(registry = {}, key, level = 0) {
+export function ampVersionFor(registry = {}, key, level = 0, rank = "") {
   const series = registry[key]?.series || key;
-  let best = key, bestLevel = -1;
+  // AMP1f (King Q-F1): rank versions: the highest at or below the cast rank (a C cast of a D/B/S Amp is D).
+  const at = RANKS.indexOf(rank);
+  let best = key, bestLevel = -1, bestRank = -1;
   for ( const [k, def] of Object.entries(registry) ) {
     if ( (def.series || k) !== series || (def.level || 0) > level ) continue;
-    if ( (def.level || 0) > bestLevel ) { best = k; bestLevel = def.level || 0; }
+    const r = def.rank ? RANKS.indexOf(def.rank) : -1;
+    if ( r > -1 && (at < 0 || r > at) && k !== key ) continue;
+    if ( (def.level || 0) > bestLevel || ((def.level || 0) === bestLevel && r > bestRank) ) { best = k; bestLevel = def.level || 0; bestRank = r; }
   }
   return best;
+}
+
+/**
+ * AMP1f: the plan with the caster's pick (an option of the card's choose) added to its changes and rules.
+ * @param {object} plan   ampEffectPlan(...)
+ * @param {object} def
+ * @param {number|null} choice
+ */
+export function withChoice(plan, def, choice) {
+  const option = def?.choose?.options?.[choice];
+  if ( !option ) return plan;
+  // An option with its own duration (Gaslight as a Reaction lasts until the end of your next turn).
+  if ( option.duration ) plan = ampEffectPlan(plan.ampKey, { ...def, duration: option.duration });
+  return { ...plan, name: `${plan.name}: ${option.label}`, changes: [...(plan.changes ?? []), ...option.changes], rules: [...(plan.rules ?? []), ...option.rules] };
 }
 
 /** AMP1g: the key uses and cooldowns are kept under (one pool for every version of an Amp). */
@@ -159,7 +186,8 @@ export function ampCardsFor(actor, registry = {}, { worldTime = 0, resolve } = {
   // AMP1g: of each Amp's versions, only the highest the character's level reaches.
   const best = new Map();
   for ( const [key, def] of Object.entries(registry) ) {
-    if ( def.owner?.kind === "any" || !def.owner?.id || !ownsAmp(actor, def) || (def.level || 0) > level ) continue;
+    // AMP1f: a jutsu's Amp starts only by casting the jutsu, so it isn't offered here (it shows when active).
+    if ( def.owner?.kind === "any" || def.owner?.kind === "jutsu" || !def.owner?.id || !ownsAmp(actor, def) || (def.level || 0) > level ) continue;
     const s = def.series || key;
     if ( !best.has(s) || (def.level || 0) > (registry[best.get(s)].level || 0) ) best.set(s, key);
   }

@@ -1,0 +1,88 @@
+{
+  "_id": "n5eAmp905ac2c556",
+  "name": "Lightning Release: Spark (A-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 101403,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-lightning-release-spark-a",
+    "description": "<p><b>Lightning Release: Spark</b> · cast at A-Rank · no type</p><p>5d6 + your Ninjutsu modifier temporary hit points for 1 minute (and 1 hit point).</p><p>Resistance to lightning damage while you have them.</p><p>Overcharge: the first time you'd take lightning damage, gain bonus temporary hit points equal to half of it instead.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2833",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "lightning-release-spark",
+      "subclass": ""
+    },
+    "summary": "5d6 + your Ninjutsu modifier temporary hit points for 1 minute (and 1 hit point). Resistance to lightning damage while you have them. Overcharge: the first time you'd take lightning damage, gain bonus temporary hit points equal to half of it instead.",
+    "activation": "",
+    "giveable": true,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "5d6 + @disciplines.nin.mod",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.resist",
+        "value": "lightning",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-lightning-release-spark",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "The creature also gains 1 hit point (the jutsu's own heal)."
+        },
+        {
+          "key": "note",
+          "text": "The resistance lasts only while it has temporary hit points from this jutsu: end the Amp when they're gone."
+        },
+        {
+          "key": "note",
+          "text": "Overcharge: the first time it would take lightning damage, it instead gains temporary hit points equal to half the damage."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp905ac2c556"
+}

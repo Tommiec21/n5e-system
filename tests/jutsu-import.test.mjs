@@ -121,6 +121,10 @@ test("header parser retains pre-header boxes, plain titles and documented source
 
 test("existing starter authoring remains compatible with preparation and source-scoped effects", () => {
   const bull = load("jutsu", "forceful-bull");
-  assert.equal(bull.system.activities[0].effect.changes[0].value, "18"); assert.equal(bull.system.activities[0].effect.tempHp, "8");
+  // AMP1f: the buff moved onto the jutsu's Amp card; the button starts it, and the Refresh button stays.
+  assert.equal(bull.system.activities[0].effect.amp, "jutsu-beast-fist-forceful-bull");
+  assert.ok(bull.system.activities.some(a => a.id === "refreshBull"));
+  const card = load("amps", "jutsu-beast-fist-forceful-bull");
+  assert.equal(card.system.changes[0].value, "18"); assert.equal(card.system.tempHp, "8");
   assert.ok(byName("Fire Release: Fox Fire").system.activities.some(a => a.effect?.expires === "nextTurnEnd"));
 });

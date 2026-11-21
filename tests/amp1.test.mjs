@@ -195,7 +195,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.filter(c => !c.system.level).length, 60, "20 cards for the Amp buttons (AMP1c), 33 clan and 5 class cards (AMP1d; Combat Coordinated is a condition, King Q-E4), DYNAMIC FORM! and Flawless (AMP1e); the rest are AMP1g versions");
+  assert.equal(cards.filter(c => !c.system.level && c.system.owner?.kind !== "jutsu").length, 60, "20 cards for the Amp buttons (AMP1c), 33 clan and 5 class cards (AMP1d; Combat Coordinated is a condition, King Q-E4), DYNAMIC FORM! and Flawless (AMP1e); the rest are AMP1g versions");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -318,7 +318,7 @@ test("King 2026-11-20: an Amp card appears only once the character has the featu
   assert.deepEqual(keys([cls, feat("chakra-surge")]), ["chakra-surge-crash", "chakra-surge-flow"], "3rd level: no Perfected versions");
   assert.deepEqual(keys([cls, feat("chakra-surge"), feat("ninjutsu-master")]),
     ["chakra-surge-crash", "chakra-surge-crash-perfected", "chakra-surge-flow", "chakra-surge-flow-perfected"], "20th level: the upgrades join");
-  for ( const [k, d] of Object.entries(registry) ) assert.equal(d.owner.kind === "feat" || d.owner.kind === "clan", true, `${k} belongs to a feature or a clan`);
+  for ( const [k, d] of Object.entries(registry) ) assert.equal(["feat", "clan", "jutsu"].includes(d.owner.kind), true, `${k} belongs to a feature, a clan or a jutsu (AMP1f)`);
 });
 
 // AMP1g (King 2026-11-20): every Amp that grows by level is a separate card per version.

@@ -60,7 +60,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:200`
+- `module/workflow/amp-cards.mjs:227`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -81,9 +81,9 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 126 | 0 | 0 | 123 | 122 | 0 |
+| amps | 201 | 0 | 0 | 195 | 194 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1712 | 1 | 0 | 0 | 0 | 0 |
+| clans | 1712 | 6 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 54 | 0 | 0 | 54 | 49 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
@@ -98,14 +98,14 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 124 | 2 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 0 | 95 | 0 | 26 |
+| amps | 124 | 77 | 0 | 0 | 0 | 0 |
+| clans | 0 | 0 | 5 | 89 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
-| jutsu | 0 | 0 | 0 | 66 | 0 | 0 |
+| jutsu | 0 | 0 | 18 | 42 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **2** | **23** | **186** | **0** | **50** |
+| **Total** | **124** | **77** | **46** | **156** | **0** | **50** |
 
-### clans: 95 candidates
+### clans: 89 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -178,12 +178,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
 - **Wrath of the Dragon**: Its text names a Battle Amp.
-- D · **Misty Hallucination**: Lasting bonus: "…Your allies are immune to…"
-- D · **Basilisk Art: Adaptive Camouflage**: Lasting bonus: "…you gain a +4…"
-- D · **Hanami Style: Sapping Fist**: Lasting bonus: "…you deal [Unarmed Damage] to a creature, you gain temporary hit points…"
-- D · **Boil Release: Erupting Steam Wall**: Lasting bonus: "…you gain 10 temporary hit points…"
-- D · **Magnet Release: Dust Coat**: Lasting bonus: "…you don Heavy armor or you end it as a bonus action on your turn; A +2 bonus to…"
-- D · **Crystal Release: Crystal Armor**: Lasting bonus: "…You gain resistance…"
 - C · **Conqueror’s Art: Wyrmcaller’s Pulse**: Lasting bonus: "…your Dragon Rage State, for every creature, hostile or allied, that are affected by this j…"
 - C · **Adamantine Barrier**: Lasting bonus: "…you can dispel one rank of that creatures Sealed condition to grant the barrier a number o…"
 - C · **Uzumaki Art: Red Hot-Blooded Vitality**: Lasting bonus: "…You have advantage on…"
@@ -231,32 +225,8 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Wolf’s Proficiency**: Lasting bonus: "…you, you can gain resistance…"
 - **Vital Conductor (Adept Medic)**: Lasting bonus: "…you cast, they gain +10…"
 
-### jutsu: 66 candidates
+### jutsu: 42 candidates
 
-- E · **Gaslight**: Lasting bonus: "…you gain a +2…"
-- D · **Wind Release: Zephyr Strike**: Lasting bonus: "…your movement doesn’t provoke opportunity attacks and you gain a +20…"
-- D · **Enhanced Blocking**: Lasting bonus: "…you may add your Blocking property bonus to…"
-- D · **Water Release: Viscous Water Mass**: Lasting bonus: "…you instead double…"
-- D · **Warriors Zone**: Lasting bonus: "…you gain +4…"
-- D · **Psionics: Fortress**: Lasting bonus: "…you a +1 bonus to…"
-- D · **Psionics: Keen Meditation**: Lasting bonus: "…you gain an additional…"
-- D · **Earth Release: Bedrock Coffin**: Lasting bonus: "…your Ninjutsu Save DC, 25 Hit Points, Resistance to…"
-- D · **Earth Release: Geo Breastplate**: Lasting bonus: "…you gain +2…"
-- D · **Earth Release: Jade Devotion**: Lasting bonus: "…creatures of your choice within a 10-foot sphere centering on you, gain 3d6 temporary hit …"
-- D · **Earth Release: Resonating Geo Isotoma**: Lasting bonus: "…creatures of your choice within 30 feet of the chosen construct gains a +1…"
-- D · **Lightning Release: Spark**: Lasting bonus: "…you touch gains 1 Hit point and a number of temporary hit points…"
-- D · **Beast Fist: Forceful Bull**: Lasting bonus: "…You gain +8…"
-- D · **Beast Fist: Graceful Cat**: Lasting bonus: "…your movement speed is increased…"
-- D · **Beast Fist: Rushing Lion**: Lasting bonus: "…Your Jump height is double…"
-- D · **Beast Fist: Wise Turtle**: Lasting bonus: "…Your lifting strength is double…"
-- D · **Medical Release: Acid Armor**: Lasting bonus: "…You gain 10 temporary hit points…"
-- D · **Medical Release: Grim Mask**: Lasting bonus: "…you make scores a critical hit, you may double…"
-- D · **Semblance of Dread**: Lasting bonus: "…you gain advantage…"
-- D · **Cloak of Shadows**: Lasting bonus: "…You cloak a willing creature you touch in illusionary darkness, granting it a +1d4 bonus t…"
-- D · **Environmental Affinity**: Lasting bonus: "…your Genjutsu Save DC at advantage, gaining immunity to…"
-- D · **Chakra Skin**: Lasting bonus: "…you gain 8 Temporary hit points…"
-- D · **Sealing Art: Chakra Mark**: Lasting bonus: "…you gain a +2…"
-- D · **Fire Release: Fox Fire**: Lasting bonus: "…your next turn, and creatures have advantage on…"
 - C · **Breath of Sound: Score**: Lasting bonus: "…You have advantage on…"
 - C · **Guardian Knight**: Lasting bonus: "…you gain bonus…"
 - C · **Medical Release: Medical Aura**: Lasting bonus: "…you) has resistance to…"
