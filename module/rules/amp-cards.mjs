@@ -72,7 +72,12 @@ export function ampDefinition(card) {
     // AMP1g: versions of one Amp share a series (the base key) and start at a character level.
     series: s.series ?? "", level: Number(s.level) || 0,
     // AMP1f: the cast rank this version starts at, and the caster's picks.
-    rank: RANKS.includes(s.rank) ? s.rank : ""
+    rank: RANKS.includes(s.rank) ? s.rank : "",
+    // AMP1f batch 3 (King Q-F11): buttons on the active Amp.
+    buttons: list(s.buttons).filter(b => b?.label && b?.effect).map(b => ({ label: b.label, activation: b.activation ?? "", text: b.text ?? "", effect: structuredClone(b.effect) })),
+    // AMP1f batch 3 (King Q-F13): a condition applied when the Amp ends.
+    onEnd: s.onEnd?.condition ? { condition: s.onEnd.condition } : null,
+    statuses: list(s.statuses).filter(Boolean)
   };
   const options = list(s.choose?.options).filter(o => o?.label);
   if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
@@ -282,7 +287,9 @@ export function ampEffectPlan(key, def) {
     permanent: d.until === "dismissed",
     tempHp: def.tempHp ?? "", state: def.state ?? "", exclusive: def.exclusive ?? "",
     ampType: def.ampType ?? "", ampKey: key, img: def.icon, endsOn: def.endsOn ?? [], until: turnBased || d.until === "dismissed" ? "" : d.until ?? "",
-    concentration: !!d.concentration, outsideLimits: !!def.outsideLimits
+    concentration: !!d.concentration, outsideLimits: !!def.outsideLimits,
+    // AMP1f batch 3 (King Q-F12): conditions the Amp carries while it lasts (Misleading Duplicate: Invisible).
+    statuses: def.statuses ?? []
   };
 }
 

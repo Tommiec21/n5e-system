@@ -393,7 +393,9 @@ export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = g
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, ...ampEffectView(e, registry, n5eConfig()), disabled: !!e.disabled,
     type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "",
     // AMP1f (King Q-F9): a pick that can change while active (Score's tempo).
-    canChange: !!ampDefFor(e, registry)?.choose?.changeable }));
+    canChange: !!ampDefFor(e, registry)?.choose?.changeable,
+    // AMP1f batch 3 (King Q-F11): the card's buttons (Blade Heart: Parrying stance).
+    buttons: (ampDefFor(e, registry)?.buttons ?? []).map((b, index) => ({ index, label: b.label, tip: [b.activation && `${b.activation[0].toUpperCase()}${b.activation.slice(1)}`, b.text].filter(Boolean).join(": ") })) }));
   const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
   const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,
     cooling: c.cooldown > 0 ? `${Math.ceil(c.cooldown / 60)} min` : "", spent: !!c.uses && c.uses.left <= 0 }));

@@ -117,6 +117,8 @@ export function ownsCondition(actor, def) {
   if ( !isCard(def) ) return true;
   const ids = identities(actor);
   if ( def.owner.kind === "clan" ) return ids.clan.has(def.owner.id);
+  // AMP1f batch 3: a jutsu's condition (an Amp's aftermath) is applied by that Amp, not offered by class.
+  if ( def.owner.kind === "jutsu" ) return false;
   return ids.class.has(def.owner.id) && (!def.owner.subclass || ids.subclass.has(def.owner.subclass));
 }
 

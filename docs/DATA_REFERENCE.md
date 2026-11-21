@@ -952,3 +952,11 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `system.choose` `{prompt, options: [{label, changes, rules, duration}]}`: `applyAmp` opens the menu (`pickOption`); several targets pick once (`pickAmpOption`). `withChoice(plan, def, choice)` adds the option; an option `duration` replaces the card's. The applyAmp intent carries `choice`.
 - Cards: `tools/content/build-jutsu-amp-cards.py` (keys `jutsu-<identifier>`, `-<rank>` or `-<level>` for versions; folder "Self-buffs and jutsu"). Rejected jutsu: `flags.n5e.notAmp`.
 - AMP1f batch 2 (0.71.0-alpha.1): `choose.count` (picks, King Q-F7), `choose.changeable` (the Amps panel's Change button, `changeAmpChoice`, `ampChoiceUpdate`; King Q-F9), option `tempHp`; the picks are kept in `flags.n5e.ampChoice`. An aura child `{amp: key}` (workflow/auras.mjs) is that card's Amp effect on each creature in range (King Q-F6); the aura card is `outsideLimits`. Build entries may set `key`, `button: false` (the "in the aura" companion cards) and `drop` (activity ids the card replaces).
+
+### Amp card fields added in AMP1f batch 3 (0.72.0-alpha.1)
+
+- `system.buttons`: [{label, activation, text, effect}]; shown on the active Amp's row in the Amps panel; `effect` is an activity effect (changes, expires...) applied to the bearer (`useAmpButton`).
+- `system.onEnd.condition`: a condition card key applied to the bearer when the Amp ends (not on a swap).
+- `system.statuses`: token statuses the Amp effect carries while it lasts (`invisible`).
+- Condition cards: `system.endsAt: "rest"` keeps the duration and also ends on any rest.
+- Change key `n5e.vulnerable` (value: damage type) adds to `traits.vuln`.

@@ -1,0 +1,75 @@
+{
+  "_id": "n5eCondStr100Ovr",
+  "name": "Strength of 100: Overexerted",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5eCondFoldJutsu",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "medical-release-strength-of-100-overexerted",
+    "description": "<p>After Medical Release: Strength of 100 ends, you suffer the consequences of pushing your body to its limit.</p><p>You have disadvantage on Strength based ability and skill checks for the next hour or until you take a short rest.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1509",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "jutsu",
+      "id": "medical-release-strength-of-100",
+      "subclass": ""
+    },
+    "summary": "Disadvantage on Strength ability and skill checks for 1 hour or until a rest (after Strength of 100).",
+    "tags": [
+      "physical"
+    ],
+    "maxRanks": 0,
+    "endsAt": "rest",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 3600,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "disadvantage",
+          "selector": "check",
+          "predicate": "ability:str",
+          "label": "Strength of 100: Overexerted"
+        }
+      ],
+      "ccond1": true,
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.72.0"
+  },
+  "_key": "!items!n5eCondStr100Ovr"
+}

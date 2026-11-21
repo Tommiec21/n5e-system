@@ -58,7 +58,14 @@ export class AmpCardData extends TDM() {
       // AMP1f (King Q-F1): a version per cast rank, and the caster's picks.
       rank: S.str(),
       choose: S.obj({ prompt: S.str(), count: S.int(1, { min: 1 }), changeable: S.bool(), options: S.arr(S.obj({ label: S.str(), changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })), rules: S.arr(object()),
-        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }), tempHp: S.str() })) })
+        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }), tempHp: S.str() })) }),
+      // AMP1f batch 3 (King Q-F11): buttons on the active Amp in the Amps panel (Blade Heart's Parrying
+      // stance); each applies its effect (an activity effect: changes, expires...) to the Amp's bearer.
+      buttons: S.arr(S.obj({ label: S.str(), activation: S.str(), text: S.str(), effect: object() })),
+      // AMP1f batch 3 (King Q-F13): a condition card applied to the bearer when the Amp ends.
+      onEnd: S.obj({ condition: S.str() }),
+      // AMP1f batch 3 (King Q-F12): token statuses the Amp carries while it lasts (invisible).
+      statuses: S.arr(S.str())
     };
   }
 }

@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) proposed, awaiting King's answers.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 built in 0.72.0-alpha.1. Batch 4 (A and S) next.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -150,7 +150,11 @@ All typeless (Q-F3). "Cards" counts the rank versions (Q-F1): B-Rank first, then
 
 Batch 3 tally: 11 Amps as 16 cards, 6 not Amps.
 
-### Questions for batch 3
+### King's answers for batch 3 (2026-11-20)
+
+- **Q-F10:** not an Amp. **Q-F11:** yes, a Parrying stance button on the Amp. **Q-F12:** yes. **Q-F13:** yes: a unique condition, Strength of 100: Overexerted. **Q-F14:** King asked for the jutsu's full text to decide.
+
+### Questions for batch 3 (as asked)
 
 - **Q-F10 Twin Rising Dragons** (float 30 feet, an Action for up to 3 ranged Taijutsu attacks, for 1 minute): Claude proposes not an Amp, since it grants attacks rather than boosting a statistic. Agree, or an Amp?
 - **Q-F11 Blade Heart's Parrying stance** (+2 AC and Dexterity saves until the start of your next turn, entered as a Bonus action or a reaction to taking damage, as often as you like while the jutsu lasts): a "Parrying stance" button on the Amp that applies a short effect, or a note played at the table?
@@ -166,3 +170,4 @@ Batch 3 tally: 11 Amps as 16 cards, 6 not Amps.
 - 2026-11-20 King: "Next batch." Claude: batch 2 (C-Rank, 25 jutsu) proposed with Q-F6–Q-F9 (batch sizes corrected: C 25, A and S 18).
 - 2026-11-20 King: Q-F6 an aura that applies the Amp, Q-F7 two picks, Q-F8 Heated Body an Amp-less buff, Q-F9 yes; "Build". Claude: batch 2 built (0.71.0-alpha.1): 17 jutsu as 49 cards (3 are the "in the aura" cards the auras apply), 8 marked not Amps. Reading of Q-F6: each creature in the aura (the caster too) gets the Amp card, and it counts as theirs; the aura card on the caster is outside the limits. Jolt got a menu for Overcharge (d8 or d10 temporary hit points). Next: batch 3 (B-Rank, 17 jutsu).
 - 2026-11-20 King: "Next batch." Claude: batch 3 (B-Rank, 17 jutsu) proposed with Q-F10–Q-F14: 11 Amps as 16 cards, 6 not Amps.
+- 2026-11-20 King: Q-F10 not an Amp, Q-F11 yes (button), Q-F12 yes, Q-F13 a unique condition, Q-F14 show the full jutsu text. Claude: batch 3 built (0.72.0-alpha.1): 11 jutsu as 16 cards, 6 not Amps; Amp buttons, Amp statuses, a condition when an Amp ends (Strength of 100: Overexerted), conditions ending on a rest, n5e.vulnerable. Light Binding Step's A-Rank line: full text shown to King, awaiting his call.

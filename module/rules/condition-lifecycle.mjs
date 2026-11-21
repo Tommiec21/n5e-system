@@ -22,7 +22,8 @@ const defOf = (key, registry) => registry[key] ?? n5eConfig().clanConditions?.[k
 /** Duration data for a newly applied condition (none for [Persists] or turn-end conditions). */
 export function defaultDuration(key, registry = coreConditions) {
   const def = defOf(key, registry);
-  if ( !rule("conditionDurations") || !def || def.persists || def.endsAt ) return null;
+  // AMP1f batch 3: "rest" keeps its duration and also ends on a rest (workflow/rest.mjs).
+  if ( !rule("conditionDurations") || !def || def.persists || (def.endsAt && def.endsAt !== "rest") ) return null;
   // CCOND1: a card may set its own duration (5-Pronged Seal: 1 hour).
   const seconds = Number(def.seconds) > 0 ? Number(def.seconds) : defaultConditionDuration.value * 60;
   return { seconds, rounds: seconds / 6 };

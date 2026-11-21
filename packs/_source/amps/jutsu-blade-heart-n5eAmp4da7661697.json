@@ -1,0 +1,111 @@
+{
+  "_id": "n5eAmp4da7661697",
+  "name": "Blade Heart",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 104600,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-blade-heart",
+    "description": "<p><b>Blade Heart</b> · cast at B-Rank to S-Rank · no type</p><p>As a Bonus action on your turn, or as a reaction to taking damage, you can assume your Parrying stance until the beginning of your next turn: +2 AC and Dexterity saving throws.</p><p>When you score a critical hit with your weapon with a weapon or Taijutsu attack, the target gains 1 rank of Bleed.</p><p>If you are disarmed, this jutsu ends.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5836",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "blade-heart",
+      "subclass": ""
+    },
+    "summary": "As a Bonus action on your turn, or as a reaction to taking damage, you can assume your Parrying stance until the beginning of your next turn: +2 AC and Dexterity saving throws. When you score a critical hit with your weapon with a weapon or Taijutsu attack, the target gains 1 rank of Bleed. If you a",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [
+      {
+        "label": "Parrying stance",
+        "activation": "bonus",
+        "text": "As a Bonus action on your turn, or a reaction to taking damage: +2 AC and Dexterity saves until the start of your next turn.",
+        "effect": {
+          "name": "Blade Heart: Parrying stance",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        }
+      }
+    ],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": []
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Parrying stance: the button on this Amp (+2 AC and Dexterity saves until the start of your next turn)."
+        },
+        {
+          "key": "note",
+          "text": "A critical hit with your weapon (weapon or Taijutsu attack): the target gains 1 rank of Bleed."
+        },
+        {
+          "key": "note",
+          "text": "Ends if you are disarmed."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp4da7661697"
+}

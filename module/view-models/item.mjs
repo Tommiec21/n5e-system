@@ -256,7 +256,7 @@ const DETAILS = {
     section("Rules", [
       F.tags(src, "tags", "Counts as", { physical: "Physical", mental: "Mental", sensory: "Sensory", elemental: "Elemental", fatigue: "Fatigue" }),
       F.num(src, "maxRanks", "Max ranks", { small: true, placeholder: "none" }),
-      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn" }),
+      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn", rest: "After its duration, or any rest, whichever comes first" }),
       F.check(src, "persists", "Persists"),
       F.num(src, "initiativeShift", "Initiative change", { small: true }),
       F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),

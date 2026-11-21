@@ -43,13 +43,13 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/config/condition-text.mjs:160`
 - `module/config/condition-text.mjs:177`
 - `module/config/conditions.mjs:209`
-- `module/config/effect-fields.mjs:41`
+- `module/config/effect-fields.mjs:43`
 - `module/config/jutsu.mjs:58`
 - `module/config/jutsu.mjs:61`
 - `module/rules/authored-reactions.mjs:20`
 - `module/rules/authored-reactions.mjs:61`
 - `module/rules/concentration.mjs:10`
-- `module/rules/condition-lifecycle.mjs:114`
+- `module/rules/condition-lifecycle.mjs:115`
 - `module/rules/jutsu-defense.mjs:37`
 - `module/rules/positioning.mjs:38`
 - `module/rules/positioning.mjs:39`
@@ -60,7 +60,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:242`
+- `module/workflow/amp-cards.mjs:251`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -81,11 +81,11 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 250 | 0 | 0 | 241 | 239 | 0 |
+| amps | 266 | 0 | 0 | 256 | 254 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1712 | 11 | 0 | 0 | 0 | 0 |
+| clans | 1712 | 15 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
-| conditions | 54 | 0 | 0 | 54 | 49 | 0 |
+| conditions | 55 | 0 | 0 | 55 | 49 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
 | features | 700 | 167 | 28 | 161 | 147 | 11 |
@@ -98,14 +98,14 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 124 | 126 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 10 | 81 | 0 | 26 |
+| amps | 124 | 142 | 0 | 0 | 0 | 0 |
+| clans | 0 | 0 | 14 | 74 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
-| jutsu | 0 | 0 | 30 | 25 | 0 | 0 |
+| jutsu | 0 | 0 | 37 | 15 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **126** | **63** | **131** | **0** | **50** |
+| **Total** | **124** | **142** | **74** | **114** | **0** | **50** |
 
-### clans: 81 candidates
+### clans: 74 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -178,13 +178,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
 - **Wrath of the Dragon**: Its text names a Battle Amp.
-- B · **Spider Art: Silk Burial**: Lasting bonus: "…your jutsu save DC, 40 hit points, 10 DR immunity to…"
-- B · **Lava Release: Rubber Wall Enhancement**: Lasting bonus: "…your Ninjutsu save DC, 4d10+15 hit points, resistance to…"
-- B · **Plasma Release: Light Binding Step**: Lasting bonus: "…Your movement speed is increased…"
-- B · **Conqueror’s Art: Dragon Cloak**: Lasting bonus: "…You gain the following; 2d12 + 15 temporary hit points…"
-- B · **Kujaku Art: Star Wall**: Lasting bonus: "…your Ninjutsu save DC, 40 Hit points, and immunity to…"
-- B · **Full Sage: Nature Transfiguration**: Lasting bonus: "…you gain the following benefits: AC increases…"
-- B · **Basilisk Art: Pythons Gaze**: Lasting bonus: "…you cast cannot be made at disadvantage and creatures within range cannot gain advantage…"
 - A · **Boil Release: Freight Train**: Lasting bonus: "…Your speed is increased…"
 - A · **Demonic Instrument: Chains of Fantasia**: Lasting bonus: "…Your attack bonus to…"
 - A · **Lotus Nonself Connected Cannons**: Lasting bonus: "…You gain a bonus…"
@@ -217,18 +210,8 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Wolf’s Proficiency**: Lasting bonus: "…you, you can gain resistance…"
 - **Vital Conductor (Adept Medic)**: Lasting bonus: "…you cast, they gain +10…"
 
-### jutsu: 25 candidates
+### jutsu: 15 candidates
 
-- B · **Twin Rising Dragons**: Lasting bonus: "…You grasp two of the scrolls with throwing weapons Sealed into them and unleash them in a …"
-- B · **Memory Domination**: Lasting bonus: "…you are fighting the creature, it has advantage on…"
-- B · **Encroaching Darkness**: Lasting bonus: "…Yourself and up to 3 creatures of your choice are immune to…"
-- B · **Blade Heart**: Lasting bonus: "…you gain a +2…"
-- B · **Fire Release: Investiture of Flame**: Lasting bonus: "…you gain the following benefits: You are immune to…"
-- B · **Bestial Art: Hunter**: Lasting bonus: "…You gain a +20…"
-- B · **Sealing Art: Gift of the Apex**: Lasting bonus: "…You gain advantage…"
-- B · **Medical Release: Investiture of Acid**: Lasting bonus: "…you gain the following benefits; You are immune to…"
-- B · **Medical Release: Strength of 100**: Lasting bonus: "…Your jump height and distance are double…"
-- B · **Misleading Duplicate**: Lasting bonus: "…You become invisible at the same time that an illusory double…"
 - A · **Wind Release: Neverending Breath**: Lasting bonus: "…You gain immunity…"
 - A · **Demon Hunter**: Lasting bonus: "…your Demon you gain a +20…"
 - A · **Moon-Fang Piercer**: Lasting bonus: "…your next turn, you gain +6…"

@@ -137,6 +137,8 @@ async function executeRest(actor, type, { hd = 0, cd = 0, food = true } = {}) {
   await actor.update(plan.update);
   if ( plan.items.length ) await actor.updateEmbeddedDocuments("Item", plan.items);
   for ( const c of plan.conditions ) await actor.removeCondition(c.key, c.ranks);
+  // AMP1f batch 3: condition cards that end on any rest (Strength of 100: Overexertion).
+  for ( const key of [...(actor.statuses ?? [])] ) if ( CONFIG.N5E.clanConditions?.[key]?.endsAt === "rest" ) await actor.toggleStatusEffect(key, { active: false });
   // AMP1a: Amps that last until a rest end.
   await (await import("./amp-cards.mjs")).endAmpsOn(actor, "rest");
   // PRESTD1 Part D: a Long or Full Rest recharges wands.

@@ -150,6 +150,15 @@ export async function changeAmpChoice(actor, effectId) {
   return effect.update(ampChoiceUpdate(def, picked));
 }
 
+/** AMP1f batch 3 (King Q-F11): a button on an active Amp applies its effect to the Amp's bearer. */
+export async function useAmpButton(actor, effectId, index) {
+  const effect = actor.effects.get(effectId);
+  const button = effect ? ampDefFor(effect, registry())?.buttons?.[index] : null;
+  if ( !button ) return null;
+  const { applyActivityEffect } = await import("./trackers.mjs");
+  return applyActivityEffect(actor, { ...button.effect, target: "self" }, { label: button.label, item: { name: effect.name, img: effect.img, id: null, uuid: effect.uuid }, targetActors: [actor] });
+}
+
 /** Create the Amp effect from the card (runs on a client that can modify the target). */
 export async function placeAmp(target, key, { applier = null, item = null, choice = null } = {}) {
   const def = registry()[key];
@@ -314,6 +323,16 @@ export function registerAmpCards() {
     const cp = foundry.utils.getProperty(change, "system.cp.value");
     if ( cp != null && cp <= 0 ) void endAmpsOn(actor, "noChakra");
     if ( foundry.utils.hasProperty(change, "system.combat.activeStance") ) void endAmpsOn(actor, "stanceLeave");
+  });
+  // AMP1f batch 3 (King Q-F13): an Amp that leaves a condition behind when it ends (Strength of 100's
+  // aftermath). Not on a swap or a version change; placed by the bearer's responsible client.
+  Hooks.on("deleteActiveEffect", async (effect, options) => {
+    const key = effect.type === "amp" ? effect.system?.key : null;
+    const after = key ? registry()[key]?.onEnd?.condition : null;
+    const actor = effect.parent;
+    if ( !after || options?.n5eAmpSwap || !(actor instanceof Actor) || !isResponsible(actor) ) return;
+    const { applyConditionCard } = await import("./condition-cards.mjs");
+    await applyConditionCard(actor, after, { applier: actor }).catch(e => console.warn("n5e | Amp aftermath", e));
   });
   // The cooldown starts when an Amp card's effect ends, on whoever starts it.
   Hooks.on("deleteActiveEffect", async (effect, options, userId) => {

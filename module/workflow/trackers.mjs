@@ -391,6 +391,8 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // hook never runs, e.g. out of combat) and 1 minute for the rest.
   const seconds = eff.seconds || (eff.expires ? 12 : 60);
   const data = { name: eff.name || label, img: eff.img || item?.img || "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
+    // AMP1f batch 3: statuses the effect carries while it lasts (an Amp's Invisible).
+    ...(eff.statuses?.length ? { statuses: [...eff.statuses] } : {}),
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
     // AMP1d: a card that lasts until dismissed gets no duration.
     duration: eff.permanent ? { startTime: game.time.worldTime } : { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },

@@ -260,7 +260,9 @@ def main():
     cards = card_files()
     # Old version files are rewritten from the base each run.
     for key, (f, d) in list(cards.items()):
-        if d["system"].get("series") and d["system"]["series"] != key:
+        # Only this script's level versions (their base is in VERSIONS); the jutsu rank versions
+        # (build-jutsu-amp-cards.py, AMP1f) also carry a series and must stay.
+        if d["system"].get("series") in VERSIONS and d["system"]["series"] != key and not d["flags"]["n5e"].get("amp1f"):
             os.remove(f)
             del cards[key]
     made = 0

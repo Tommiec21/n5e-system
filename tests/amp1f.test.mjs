@@ -35,7 +35,7 @@ test("AMP1f batch 1: every confirmed jutsu starts its typeless, jutsu-owned card
     assert.deepEqual(def.owner, { kind: "jutsu", id: j.system.identifier, subclass: "" });
     assert.equal(ampAuditOf(j).status, "linked", `${name} leaves the candidates`);
   }
-  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 124, "batch 1: 75; batch 2: 49 (3 in-the-aura cards)");
+  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 140, "batch 1: 75; batch 2: 49 (3 in-the-aura cards); batch 3: 16");
 });
 
 test("King Q-F5 and batch 1 verdicts: rejected jutsu carry notAmp and leave the audit", () => {
@@ -139,4 +139,50 @@ test("King Q-F7 and Q-F9: two picks at A-Rank, and a changeable pick", async () 
   assert.deepEqual(swap["flags.n5e.ampChoice"], [3]);
   const jolt = registry["jutsu-lightning-release-jolt-b"];
   assert.equal(withChoice(ampEffectPlan("jutsu-lightning-release-jolt-b", jolt), jolt, 1).tempHp, "5d10", "Overcharge steps the die up");
+});
+
+// AMP1f batch 3 (B-Rank), King 2026-11-20: Q-F10–Q-F14.
+const BATCH3 = ["Plasma Release: Light Binding Step", "Full Sage: Nature Transfiguration", "Basilisk Art: Pythons Gaze", "Conqueror’s Art: Dragon Cloak", "Blade Heart",
+  "Misleading Duplicate", "Fire Release: Investiture of Flame", "Medical Release: Investiture of Acid", "Medical Release: Strength of 100", "Bestial Art: Hunter",
+  "Sealing Art: Gift of the Apex"];
+const REJECTED3 = ["Lava Release: Rubber Wall Enhancement", "Spider Art: Silk Burial", "Kujaku Art: Star Wall", "Twin Rising Dragons", "Encroaching Darkness", "Memory Domination"];
+
+test("AMP1f batch 3: 11 B-Rank jutsu start their cards; 6 marked not Amps (Q-F10 Twin Rising Dragons)", () => {
+  for ( const name of BATCH3 ) {
+    const button = jutsu[name].system.activities.find(a => a.effect?.amp);
+    assert.ok(button && registry[button.effect.amp], `${name}: its button starts a card`);
+    assert.equal(registry[button.effect.amp].ampType, "", `${name}: typeless (Q-F3)`);
+  }
+  for ( const name of REJECTED3 ) assert.ok(jutsu[name].flags?.n5e?.notAmp, `${name}: marked not an Amp`);
+  assert.match(jutsu["Twin Rising Dragons"].flags.n5e.notAmp, /Q-F10/);
+  assert.deepEqual(["B", "A", "S"].map(r => ampVersionFor(registry, "jutsu-ryu-conquerors-art-dragon-cloak", 20, r)).map(k => registry[k].tempHp),
+    ["2d12 + 15", "3d12 + 15", "4d12 + 15"]);
+});
+
+test("King Q-F11: Blade Heart's Parrying stance is a button on the active Amp", () => {
+  const def = registry["jutsu-blade-heart"];
+  assert.equal(def.buttons.length, 1);
+  const b = def.buttons[0];
+  assert.deepEqual([b.label, b.activation, b.effect.expires], ["Parrying stance", "bonus", "turnStart"]);
+  assert.deepEqual(b.effect.changes.map(c => [c.key, c.value]), [["system.bonuses.ac", "2"], ["n5e.save.dex", "2"]]);
+});
+
+test("King Q-F12: Misleading Duplicate's Amp carries the Invisible status", () => {
+  const def = registry["jutsu-misleading-duplicate"];
+  assert.deepEqual(def.statuses, ["invisible"]);
+  assert.deepEqual(ampEffectPlan("jutsu-misleading-duplicate", def).statuses, ["invisible"]);
+});
+
+test("King Q-F13: Strength of 100 leaves its own condition, Overexerted, ending after an hour or a rest", () => {
+  const def = registry["jutsu-medical-release-strength-of-100"];
+  assert.equal(def.onEnd.condition, "medical-release-strength-of-100-overexerted");
+  const card = JSON.parse(fs.readFileSync(path.join(root, "packs/_source/conditions/medical-release-strength-of-100-overexerted-n5eCondStr100Ovr.json"), "utf8"));
+  assert.deepEqual([card.name, card.system.seconds, card.system.endsAt, card._id.length], ["Strength of 100: Overexerted", 3600, "rest", 16]);
+  assert.deepEqual(card.flags.n5e.rules[0], { key: "disadvantage", selector: "check", predicate: "ability:str", label: "Strength of 100: Overexerted" });
+});
+
+test("AMP1f batch 3: n5e.vulnerable adds a damage vulnerability (the Investitures)", async () => {
+  const { parseN5eChanges } = await import("../module/rules/change-keys.mjs");
+  assert.deepEqual(parseN5eChanges([{ key: "n5e.vulnerable", value: "cold", mode: 2 }]).vulnerable, ["cold"]);
+  assert.ok(registry["jutsu-fire-release-investiture-of-flame"].changes.some(c => c.key === "n5e.vulnerable" && c.value === "cold"));
 });

@@ -1,3 +1,19 @@
+## 0.72.0-alpha.1 — AMP1f batch 3: jutsu Amps (B-Rank)
+
+King 2026-11-20: Q-F10 Twin Rising Dragons isn't an Amp; Q-F11 a Parrying stance button on Blade Heart's Amp; Q-F12 Misleading Duplicate's invisibility is an Amp; Q-F13 Strength of 100 leaves a condition of its own when it ends.
+
+- **11 B-Rank jutsu now start Amp cards (16 cards):** Light Binding Step (B, S), Nature Transfiguration, Pythons Gaze, Dragon Cloak (B, A, S), Blade Heart, Misleading Duplicate, Investiture of Flame, Investiture of Acid, Strength of 100, Bestial Art: Hunter (B, A, S), Gift of the Apex.
+- **Options menus:** Nature Transfiguration (Amplified: no concentration), Bestial Art: Hunter (Strength 22 or Dexterity 18), Gift of the Apex (the beast).
+- **Buttons on an active Amp** (new): shown on the Amp's row in the Amps panel. Blade Heart: **Parrying stance**, +2 AC and Dexterity saves until the start of your next turn, as often as you need while the jutsu lasts.
+- **Amps that carry a status** (new): Misleading Duplicate makes you **Invisible** while it lasts.
+- **A condition when an Amp ends** (new): Strength of 100 leaves **Strength of 100: Overexerted** (disadvantage on Strength checks for 1 hour or until you rest). It's in the Conditions compendium, Jutsu folder.
+- **Conditions can end on a rest** (new "Ends" option on condition cards: after the duration or any rest, whichever comes first).
+- **Damage vulnerability** in effects (new change `n5e.vulnerable`): the Investitures' cold and earth vulnerability.
+- **6 jutsu marked not Amps:** Rubber Wall Enhancement, Silk Burial, Star Wall, Twin Rising Dragons, Encroaching Darkness, Memory Domination.
+
+### Fixed
+- The AMP1g level-versions builder deleted the jutsu rank cards when run after the jutsu builder. It now removes only its own versions.
+
 ## 0.71.0-alpha.1 — AMP1f batch 2: jutsu Amps (C-Rank)
 
 King 2026-11-20: Q-F6 an aura applies the Amp to each creature in it, Q-F7 two picks, Q-F8 Heated Body is an Amp-less buff, Q-F9 a Change button for picks that can change.

@@ -369,6 +369,119 @@ JUTSU += [
 ]
 
 # King's batch 1 verdicts: not Amps.
+
+JUTSU += [
+    # AMP1f batch 3 (B-Rank), King 2026-11-20: Q-F10 Twin Rising Dragons not an Amp; Q-F11 a Parrying stance
+    # button on Blade Heart's Amp; Q-F12 Misleading Duplicate's invisibility is an Amp; Q-F13 Strength of 100
+    # leaves a unique condition when it ends; Q-F14 Light Binding Step's A-Rank reaction line is leftover text.
+    dict(id="keton-plasma-release-light-binding-step", name="Plasma Release: Light Binding Step", target="self", duration=CONC,
+         versions=[V("B", ["Your speed is increased by +30.", "Ranged attacks that target you have disadvantage."],
+                     changes=[ch("system.bonuses.speed", 30)],
+                     rules=[{"key": "disadvantage", "selector": "attack", "direction": "against", "predicate": "attack:ranged", "label": "Light Binding Step"}],
+                     notes=["In the light of one of your Starlights: the bolt of light (an Action, Charisma save) is on the jutsu."]),
+                   V("S", ["Your speed is tripled.", "Ranged attacks that target you have disadvantage."],
+                     changes=[ch("system.attributes.speed.walk", 3, 1)],
+                     rules=[{"key": "disadvantage", "selector": "attack", "direction": "against", "predicate": "attack:ranged", "label": "Light Binding Step"}],
+                     notes=["Your speed is tripled (set here as your walking speed ×3).",
+                            "In the light of one of your Starlights: the bolt of light (an Action, Charisma save) is on the jutsu."])]),
+    dict(id="jugo-full-sage-nature-transfiguration", name="Full Sage: Nature Transfiguration", target="self", duration=CONC,
+         choose={"prompt": "Nature Transfiguration: was it Amplified?", "options": [
+             {"label": "Not Amplified (concentration, up to 1 minute)", "changes": [], "rules": [], "duration": {"seconds": 60, "until": "", "concentration": True}},
+             {"label": "Amplified: 6 Natural Energy (1 minute, no concentration)", "changes": [], "rules": [], "duration": {"seconds": 60, "until": "", "concentration": False}}]},
+         versions=[V("B", ["AC increases by +2.", "Resistance to bludgeoning, piercing and slashing damage.",
+                           "Jugo Clan Hijutsu with a casting time of Special halve the Nature Energy cost of their Amplify effects (minimum 1).",
+                           "With the Nature Endurance bonus: advantage on Strength and Constitution saving throws.",
+                           "With the Feral Endurance instinct: hostile creatures can't reduce your DR, ignore your resistances or treat your immunities as resistance."],
+                     changes=[ch("system.bonuses.ac", 2)] + resist(*BPS),
+                     notes=["Jugo Clan Hijutsu with a casting time of Special: Amplify costs half the Nature Energy (minimum 1).",
+                            "With the Nature Endurance bonus: advantage on Strength and Constitution saving throws (at the table).",
+                            "With the Feral Endurance instinct: your DR, resistances and immunities can't be reduced or ignored."])]),
+    dict(id="hebi-basilisk-art-pythons-gaze", name="Basilisk Art: Pythons Gaze", target="self", duration=CONC,
+         versions=[V("B", ["Your melee weapon attacks and Hebi clan Bukijutsu can't be made at disadvantage.",
+                           "Creatures within range can't gain advantage against your Hebi clan Bukijutsu."],
+                     notes=["Your melee weapon attacks and Hebi clan Bukijutsu can't be made at disadvantage (at the table).",
+                            "Creatures within range can't gain advantage against your Hebi clan Bukijutsu (at the table)."])]),
+    dict(id="ryu-conquerors-art-dragon-cloak", name="Conqueror’s Art: Dragon Cloak", target="self", duration=CONC,
+         versions=[V(r, [f"{d}d12 + 15 temporary hit points that last for the duration.", "Your [Unarmed Damage] die becomes a d10.",
+                         "All Ryu Clan Hijutsu gain the Wyrm Surge keyword (see Dragons Rage).",
+                         "In your Dragon Rage State: if you begin your turn with less than 5 temporary hit points, you regain 2d12."],
+                     tempHp=f"{d}d12 + 15", changes=[ch("n5e.unarmed.die", "1d10", 0)],
+                     notes=["All Ryu Clan Hijutsu gain the Wyrm Surge keyword (see Dragons Rage).",
+                            "In your Dragon Rage State: if you begin your turn with less than 5 temporary hit points, you regain 2d12 (at the table)."])
+                   for r, d in [("B", 2), ("A", 3), ("S", 4)]]),
+    dict(id="blade-heart", name="Blade Heart", target="self", duration=CONC,
+         buttons=[{"label": "Parrying stance", "activation": "bonus", "text": "As a Bonus action on your turn, or a reaction to taking damage: +2 AC and Dexterity saves until the start of your next turn.",
+                   "effect": {"name": "Blade Heart: Parrying stance", "target": "self", "changes": [ch("system.bonuses.ac", 2), ch("n5e.save.dex", 2)], "expires": "turnStart", "seconds": 0}}],
+         versions=[V("B", ["As a Bonus action on your turn, or as a reaction to taking damage, you can assume your Parrying stance until the beginning of your next turn: +2 AC and Dexterity saving throws.",
+                           "When you score a critical hit with your weapon with a weapon or Taijutsu attack, the target gains 1 rank of Bleed.",
+                           "If you are disarmed, this jutsu ends."],
+                     notes=["Parrying stance: the button on this Amp (+2 AC and Dexterity saves until the start of your next turn).",
+                            "A critical hit with your weapon (weapon or Taijutsu attack): the target gains 1 rank of Bleed.",
+                            "Ends if you are disarmed."])]),
+    dict(id="misleading-duplicate", name="Misleading Duplicate", target="self", duration=CONC, statuses=["invisible"],
+         versions=[V("B", ["You are invisible. The invisibility ends if you attack or cast a jutsu.",
+                           "An illusory double of you appears where you stood (moved with your Action, up to twice your speed; up to 120 feet away)."],
+                     notes=["You are invisible while the Amp lasts. Attacking or casting a jutsu ends the invisibility: end this Amp then (the double stays with the jutsu).",
+                            "Switching to the double's senses (a Bonus action) leaves you Blinded and Deafened to your own surroundings."])]),
+    dict(id="fire-release-investiture-of-flame", name="Fire Release: Investiture of Flame", target="self", duration=dict(seconds=600, until="", concentration=True),
+         versions=[V("B", ["You are immune to fire and wind damage.", "Resistance to bludgeoning, piercing and slashing damage.", "Vulnerability to cold damage.",
+                           "Bright light in a 30-foot radius and dim light for a further 20 feet.",
+                           "As a Bonus action: a 15-foot cone of fire, Dexterity save, 3d10 + 3 fire damage and Burned (half on a success)."],
+                     changes=immune("fire", "wind") + resist(*BPS) + [ch("n5e.vulnerable", "cold")],
+                     notes=["You shed bright light in a 30-foot radius and dim light for a further 20 feet.",
+                            "As a Bonus action: a 15-foot cone of fire; each creature makes a Dexterity save, taking 3d10 + 3 fire damage and Burned on a failure, or half on a success."])]),
+    dict(id="medical-release-investiture-of-acid", name="Medical Release: Investiture of Acid", target="self", duration=dict(seconds=600, until="", concentration=True),
+         versions=[V("B", ["You are immune to acid damage.", "Resistance to bludgeoning, piercing and slashing damage.", "Vulnerability to earth damage.",
+                           "You cross difficult terrain on solid ground without extra movement.",
+                           "The ground within 10 feet of you is acid: difficult terrain for creatures other than you, moving with you.",
+                           "As an Action: a 15-foot cone of acid, Constitution save, 4d8 acid damage and Corroded (half on a success)."],
+                     changes=immune("acid") + resist(*BPS) + [ch("n5e.vulnerable", "earth")],
+                     notes=["You cross difficult terrain on solid ground without spending extra movement.",
+                            "The ground within 10 feet of you is acid: difficult terrain for creatures other than you; it moves with you.",
+                            "As an Action: a 15-foot cone of acid; each creature makes a Constitution save, taking 4d8 acid damage and Corroded on a failure, or half on a success."])]),
+    dict(id="medical-release-strength-of-100", name="Medical Release: Strength of 100", target="self", duration=CONC,
+         onEnd="medical-release-strength-of-100-overexerted",
+         versions=[V("B", ["Your Strength becomes 20.", "Your jump height and distance are doubled.",
+                           "Advantage on Strength and Constitution ability checks, skill checks and saving throws.", "Your [Unarmed Damage] die becomes 2d8.",
+                           "When it ends: Strength of 100: Overexerted (disadvantage on Strength ability and skill checks for 1 hour or until a short rest)."],
+                     changes=[ch("system.abilities.str.value", 20, 5), ch("n5e.unarmed.die", "2d8", 0)],
+                     rules=[{"key": "advantage", "selector": ["check", "save"], "predicate": {"any": ["ability:str", "ability:con"]}, "label": "Strength of 100"}],
+                     notes=["Your jump height and distance are doubled.",
+                            "When it ends, you gain the condition Strength of 100: Overexerted (applied automatically)."])]),
+    dict(id="bestial-art-hunter", name="Bestial Art: Hunter", target="self", duration=CONC,
+         choose={"prompt": "Bestial Art: Hunter: which score changes?", "options": [
+             {"label": "Strength becomes 22", "changes": [ch("system.abilities.str.value", 22, 5)], "rules": [note("Your unarmed attacks can use Strength.")]},
+             {"label": "Dexterity becomes 18", "changes": [ch("system.abilities.dex.value", 18, 5)], "rules": [note("Your unarmed attacks can use Dexterity.")]}]},
+         versions=[V(r, ["Your Strength becomes 22 or your Dexterity becomes 18 (your choice).",
+                         "Your [Unarmed Damage] die becomes 2d8 slashing, using the changed ability for your unarmed attacks.", "+20 speed.",
+                         "Opportunity attacks you make are at advantage.",
+                         "When you take the Attack action, you make two attacks instead of one; if you already can, one additional unarmed attack."]
+                        + (["You can't be seen by Chakra Sight or sensed by effects that sense chakra."] if r in "AS" else [])
+                        + (["It lasts 1 minute without concentration."] if r == "S" else []),
+                     changes=[ch("n5e.unarmed.die", "2d8", 0), ch("system.bonuses.speed", 20)],
+                     rules=[{"key": "attacks", "value": 2, "label": "Bestial Art: Hunter"}],
+                     duration=MINUTE if r == "S" else None,
+                     notes=["Your unarmed damage is slashing.", "Opportunity attacks you make are at advantage.",
+                            "If you already make two or more attacks with the Attack action, you instead make one additional unarmed attack (at the table)."]
+                     + (["You can't be seen by Chakra Sight or sensed by effects that sense chakra."] if r in "AS" else []))
+                   for r in ["B", "A", "S"]]),
+    dict(id="sealing-art-gift-of-the-apex", name="Sealing Art: Gift of the Apex", target="self", duration=CONC,
+         choose={"prompt": "Gift of the Apex: which beast?", "options": [
+             {"label": "Bear's Endurance", "changes": [], "rules": [{"key": "advantage", "selector": "save:con", "label": "Bear's Endurance"},
+              note("Kuma Fortitude (reaction): when saving against a Physical, Elemental or Sensory condition, gain 1 rank fewer of one condition type that can have ranks.")]},
+             {"label": "Bull's Strength", "changes": [], "rules": [{"key": "advantage", "selector": "save:str", "label": "Bull's Strength"},
+              note("Bulls Rush: in place of an attack, an unarmed attack within 5 feet for 2d12 + Strength piercing; the target makes a Strength save against the damage or is knocked Prone.")]},
+             {"label": "Cat's Grace", "changes": [], "rules": [{"key": "advantage", "selector": "save:dex", "label": "Cat's Grace"},
+              note("Cats Pounce (once per turn, with the Attack action): an unarmed attack for 2d8 + Dexterity slashing; the target makes a Dexterity save against the damage or gains 1 rank of Bleed.")]},
+             {"label": "Eagle's Splendor", "changes": [], "rules": [{"key": "advantage", "selector": "save:wis", "label": "Eagle's Splendor"},
+              note("Eagle Eye: the Search skill action as a Bonus action, seeing clearly up to 500 feet without obstructions.")]},
+             {"label": "Fox's Cunning", "changes": [], "rules": [{"key": "advantage", "selector": "save:int", "label": "Fox's Cunning"},
+              note("You can concentrate on one additional jutsu.")]},
+             {"label": "Lion's Presence", "changes": [], "rules": [{"key": "advantage", "selector": "save:cha", "label": "Lion's Presence"},
+              note("Tora Growl: Coerce, Demoralize and Make an Impression can't be made at disadvantage; creatures contesting them take a −2 penalty.")]}]},
+         versions=[V("B", ["You gain one beast's traits: advantage on one kind of saving throw and that beast's ability (Bear, Bull, Cat, Eagle, Fox or Lion)."])]),
+]
+
 NOT_AMPS = {
     "Misty Hallucination": "An area attack; allies being immune only excludes them (King, AMP1f batch 1).",
     "Chakra Skin": "An Amp-less buff / stat override (King Q-F5).",
@@ -386,6 +499,13 @@ NOT_AMPS = {
     "Shadow Clone Technique": "It summons clones (King, AMP1f batch 2).",
     "Water Release: Heavenly Mirror of Pain": "It binds a foe's reflection (King, AMP1f batch 2).",
     "Wind Release: Vacuum Field": "A hazard zone (King, AMP1f batch 2).",
+    # Batch 3 (B-Rank).
+    "Lava Release: Rubber Wall Enhancement": "A wall (King, AMP1f batch 3).",
+    "Spider Art: Silk Burial": "It cocoons foes (King, AMP1f batch 3).",
+    "Kujaku Art: Star Wall": "A wall (King, AMP1f batch 3).",
+    "Twin Rising Dragons": "It grants an attack action; floating is positioning (King Q-F10).",
+    "Encroaching Darkness": "A darkness zone; the chosen creatures' immunity is part of the zone (King, AMP1f batch 3).",
+    "Memory Domination": "It charms a foe (King, AMP1f batch 3).",
 }
 
 
@@ -453,7 +573,9 @@ def main():
                     "uses": {"max": "", "per": ""}, "cooldown": 0, "exclusive": "", "state": "", "tempHp": v["tempHp"],
                     "endsOn": [], "changes": v["changes"], "aura": aura, "outsideLimits": bool(v.get("outside")),
                     "series": "" if is_base else base, "level": v["level"], "rank": v["rank"] if not v["level"] else "",
-                    "choose": choose or {"prompt": "", "options": []}
+                    "choose": choose or {"prompt": "", "options": []},
+                    # AMP1f batch 3: buttons on the active Amp (Q-F11) and a condition when it ends (Q-F13).
+                    "buttons": j.get("buttons", []), "onEnd": {"condition": j.get("onEnd", "")}, "statuses": j.get("statuses", [])
                 },
                 "effects": [],
                 "flags": {"n5e": {"rules": [*v["rules"], *[note(t) for t in v["notes"]]], "amp1f": True}},

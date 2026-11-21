@@ -997,10 +997,10 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2.n5e-item .plain-lines li { margin: 2px 0; }
 
 /* Amps panel rows (King 2026-11-16): type badge, name, time left and controls each in their own column. */
-.n5e-v2 .amps .amp-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto; align-items: center; gap: 8px;
+.n5e-v2 .amps .amp-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px;
   padding: 5px 0; border-bottom: 1px solid var(--n5e-line-soft); }
 .n5e-v2 .amps .amp-row.off { opacity: .55; }
-.n5e-v2 .amps .amp-row .nm { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.n5e-v2 .amps .amp-row .nm { flex: 1 1 0; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .n5e-v2 .amps .amp-row .amp-time { font-size: 12px; font-weight: 700; white-space: nowrap; }
 .n5e-v2 .amps .amp-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap;
   padding: 1px 6px; border-radius: 9px; border: 1px solid var(--amp-color, var(--n5e-muted)); color: var(--amp-color, var(--n5e-muted)); }
@@ -1050,3 +1050,6 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-audit .amp-audit .amp-status.candidate { color: var(--n5e-accent); font-weight: 600; }
 .n5e-audit .amp-audit .amp-status.dismissed, .n5e-audit .amp-audit tr.amp-dismissed { opacity: .6; }
 .n5e-audit .amp-audit button, .n5e-audit .amp-audit select { width: auto; font-size: 11px; }
+
+/* AMP1f batch 3 (King Q-F11): buttons on an active Amp (Blade Heart: Parrying stance). */
+.n5e-v2 .amps .amp-row .amp-btn { flex: 0 0 auto; width: auto; margin: 0; padding: 0 6px; min-height: 20px; line-height: 18px; font-size: 11px; }

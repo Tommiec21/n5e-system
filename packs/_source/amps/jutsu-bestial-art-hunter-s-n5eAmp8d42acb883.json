@@ -1,0 +1,142 @@
+{
+  "_id": "n5eAmp8d42acb883",
+  "name": "Bestial Art: Hunter (S-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 105102,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-bestial-art-hunter-s",
+    "description": "<p><b>Bestial Art: Hunter</b> · cast at S-Rank · no type</p><p>Your Strength becomes 22 or your Dexterity becomes 18 (your choice).</p><p>Your [Unarmed Damage] die becomes 2d8 slashing, using the changed ability for your unarmed attacks.</p><p>+20 speed.</p><p>Opportunity attacks you make are at advantage.</p><p>When you take the Attack action, you make two attacks instead of one; if you already can, one additional unarmed attack.</p><p>You can't be seen by Chakra Sight or sensed by effects that sense chakra.</p><p>It lasts 1 minute without concentration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1021",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "bestial-art-hunter",
+      "subclass": ""
+    },
+    "summary": "Your Strength becomes 22 or your Dexterity becomes 18 (your choice). Your [Unarmed Damage] die becomes 2d8 slashing, using the changed ability for your unarmed attacks. +20 speed. Opportunity attacks you make are at advantage. When you take the Attack action, you make two attacks instead of one; if ",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.unarmed.die",
+        "value": "2d8",
+        "mode": 0
+      },
+      {
+        "key": "system.bonuses.speed",
+        "value": "20",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-bestial-art-hunter",
+    "level": 0,
+    "rank": "S",
+    "choose": {
+      "prompt": "Bestial Art: Hunter: which score changes?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "Strength becomes 22",
+          "changes": [
+            {
+              "key": "system.abilities.str.value",
+              "value": "22",
+              "mode": 5
+            }
+          ],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Your unarmed attacks can use Strength."
+            }
+          ]
+        },
+        {
+          "label": "Dexterity becomes 18",
+          "changes": [
+            {
+              "key": "system.abilities.dex.value",
+              "value": "18",
+              "mode": 5
+            }
+          ],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Your unarmed attacks can use Dexterity."
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": []
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Bestial Art: Hunter"
+        },
+        {
+          "key": "note",
+          "text": "Your unarmed damage is slashing."
+        },
+        {
+          "key": "note",
+          "text": "Opportunity attacks you make are at advantage."
+        },
+        {
+          "key": "note",
+          "text": "If you already make two or more attacks with the Attack action, you instead make one additional unarmed attack (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "You can't be seen by Chakra Sight or sensed by effects that sense chakra."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp8d42acb883"
+}

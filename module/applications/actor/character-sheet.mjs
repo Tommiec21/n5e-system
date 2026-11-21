@@ -77,6 +77,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       activateAmp: CharacterSheet.#onActivateAmp,
       endAmp: CharacterSheet.#onEndAmp,
       changeAmpChoice: CharacterSheet.#onChangeAmpChoice,
+      ampButton: CharacterSheet.#onAmpButton,
       giveRyo: CharacterSheet.#onGiveRyo,
       craft: CharacterSheet.#onCraft,
       toggleMode: CharacterSheet.#onToggleMode,
@@ -534,6 +535,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !id ) return;
     const { changeAmpChoice } = await import("../../workflow/amp-cards.mjs");
     return changeAmpChoice(this.actor, id);
+  }
+
+  /** AMP1f batch 3 (King Q-F11): a button on an active Amp (Blade Heart: Parrying stance). */
+  static async #onAmpButton(event, target) {
+    const id = target.closest("[data-effect-id]")?.dataset.effectId;
+    if ( !id ) return;
+    const { useAmpButton } = await import("../../workflow/amp-cards.mjs");
+    return useAmpButton(this.actor, id, Number(target.dataset.index));
   }
 
   /** AMP1a: End on an active Amp. */

@@ -17,7 +17,7 @@ export function effectFieldCatalog(config) {
     else if ( /^n5e\.(discipline|keyword)Ability\./.test(field.key) ) { type = "ability"; choices = ["str", "dex", "con", "int", "wis", "cha"]; example = "wis"; }
     else if ( ["n5e.unarmed.dice", "n5e.unarmed.die"].includes(field.key) ) { type = "dice"; example = field.key.endsWith("die") ? "1d12" : "1d8"; }
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
-    else if ( ["n5e.resist", "n5e.immune"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
+    else if ( ["n5e.resist", "n5e.immune", "n5e.vulnerable"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
     else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
     else if ( /^n5e\.(attack\.\w+|save\.\w+|check\.\w+|initiative)$/.test(field.key) ) { type = "bonus"; example = "1d4"; }
     else if ( ["n5e.conditionResist", "n5e.conditionImmune"].includes(field.key) ) { type = "condition"; example = "group:physical"; }

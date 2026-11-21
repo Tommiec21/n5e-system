@@ -12,7 +12,8 @@
  *   immunityFrom  "damage:acid" or "condition:envenomed": that immunity also makes the creature immune to
  *              this; "all:damage:fire,damage:earth" needs every one
  *   seconds    its duration in seconds when not the default 1 minute (0: default)
- *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd"
+ *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd" | "rest" (its
+ *              duration, or any rest, whichever comes first; AMP1f batch 3)
  *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
  *              source discipline: tai, nin, gen, buki)
  *   initiativeShift  each time it is applied in combat, the creature's initiative changes by this; the
