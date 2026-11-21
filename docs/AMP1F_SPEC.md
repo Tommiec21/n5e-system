@@ -23,7 +23,7 @@ Each batch: Claude proposes a verdict and a type for every jutsu; King approves 
 
 - **Q-F1 Upcasting:** every upcast that changes an Amp's effects gets its **own card per cast rank**, carrying all the effects valid at that rank. When the jutsu has effects the caster must pick, an **options menu** opens listing them.
 - **Q-F2 Hijutsu:** **not** Clan Amps. They are jutsu like the rest (Will, Fortitude or Reflex later, when King types them).
-- **Q-F3 Types:** every jutsu Amp is **typeless** for now; King will give jutsu their Amp types later.
+- **Q-F3 Types:** every jutsu Amp is **typeless** for now; King will give jutsu their Amp types later. King 2026-11-21: they stay typeless; typing them is a post-launch task (docs/DEV_PLAN.md).
 - **Q-F4 Temporary hit points** with a rider while they last: **Amps**.
 - **Q-F5 Chakra Skin, Geo Breastplate** (8-hour AC calculations): **not Amps**; they are Amp-less buffs and stat overrides.
 
@@ -222,3 +222,4 @@ Batch 4 tally: 14 Amps as 16 cards, 4 not Amps.
 - 2026-11-21 King: Q-F14, Light Binding Step's A-Rank reaction line is a mistake and isn't there. Claude: no card change needed; logged in the text-issues list.
 - 2026-11-21 King: "Next batch." Claude: batch 4 (A and S, 18 jutsu) proposed with Q-F15–Q-F20: 14 Amps as 16 cards, 4 not Amps.
 - 2026-11-21 King: Q-F15–Q-F20 answered; "Build the batch." Claude: batch 4 built (0.73.0-alpha.1): 14 jutsu as 16 cards, 4 not Amps; Amps ending with another, a pause button, aura second groups, conditions with statuses and a full-rest ending, saves carrying what they're against. The AMP1f review is complete.
+- 2026-11-21 King: keep jutsu Amps typeless; typing them is a post-launch task. Claude: added to DEV_PLAN's Post-launch list.
