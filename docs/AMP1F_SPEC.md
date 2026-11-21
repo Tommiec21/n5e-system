@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). Waiting for King's answers to Q-F1–Q-F5 and his verdicts on review batch 1.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. Waiting for King's go-ahead to build batch 1.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -19,53 +19,71 @@ For each jutsu King confirms, a card is built from its text and the jutsu's own 
 
 Each batch: Claude proposes a verdict and a type for every jutsu; King approves or changes them; Claude builds that batch's cards and marks the rest; the next batch starts on King's go-ahead.
 
-## Questions for King
+## King's answers (2026-11-20)
 
-- **Q-F1 Upcasting:** many of these jutsu grow when cast at a higher rank (Crystal Armor adds Earth, Fire, Cold and Wind resistance at B-Rank; Zephyr Strike adds +1 AC at C-Rank). Does the AMP1g standard apply here, one card per cast rank ("Crystal Armor (B-Rank)"), started by the rank the jutsu is cast at? Or one card, with the upcast parts applied when cast higher?
-- **Q-F2 Clan Hijutsu:** Q-A1 says anything a clan provides is a Clan Amp. The 24 Hijutsu are clan jutsu, so they'd all be Clan. Confirm?
-- **Q-F3 Types for the other jutsu:** almost none name an Amp type, so by Q-A4 they'd be typeless. Should Claude instead propose a type for each from the type definitions (Battle: attacks, damage, save DCs; Reflex: Dex, AC, speed; Fortitude: Str, Con, DR, resistances; Will: Wis, Cha, chakra, healing, mental) for King to approve?
-- **Q-F4 Temporary hit points:** jutsu whose lasting part is temporary HP with a rider while they last (Spark, Acid Armor, Jade Devotion, Erupting Steam Wall). Amps, or not?
-- **Q-F5 Long armor jutsu:** Chakra Skin and Geo Breastplate replace your AC calculation for 8 hours. As Amps they'd hold one of the three Rule of 3's places all day. Amps (maybe outside the limits, like DYNAMIC FORM!), or not Amps?
+- **Q-F1 Upcasting:** every upcast that changes an Amp's effects gets its **own card per cast rank**, carrying all the effects valid at that rank. When the jutsu has effects the caster must pick, an **options menu** opens listing them.
+- **Q-F2 Hijutsu:** **not** Clan Amps. They are jutsu like the rest (Will, Fortitude or Reflex later, when King types them).
+- **Q-F3 Types:** every jutsu Amp is **typeless** for now; King will give jutsu their Amp types later.
+- **Q-F4 Temporary hit points** with a rider while they last: **Amps**.
+- **Q-F5 Chakra Skin, Geo Breastplate** (8-hour AC calculations): **not Amps**; they are Amp-less buffs and stat overrides.
 
-## Batch 1 (E and D), Claude's proposals
+## What gets built
 
-Clan Hijutsu show "Clan" (Q-F2). Types for the rest follow Q-F3's definitions and are only proposals.
+### 1. Jutsu-owned Amp cards
+- Owner kind **jutsu** (`owner: {kind: "jutsu", id: <jutsu identifier>}`): only casting the jutsu starts the card; the Amps panel lists it while active. Never Clan, Hijutsu included (Q-F2). Type empty (Q-F3).
+- The jutsu's activity names the card (`{amp: key}`), and concentration on the jutsu ends it (`dependentOn`, AMP1a).
 
-| Rank | Jutsu | Proposal | Type | What lasts |
+### 2. A card per cast rank (Q-F1)
+- Card field `rank` (E–S) beside AMP1g's `series`: "Acid Armor (C-Rank)", "Acid Armor (B-Rank)"… A rank gets its own card only when its effects differ from the rank below; a cast at a rank in between uses the highest version at or below it (like AMP1g by level).
+- The cast passes its rank to the activity, which starts that rank's card. Uses and cooldowns stay shared by the series.
+
+### 3. Options menu when starting a card (Q-F1)
+- Card field `choose` `{prompt, options: [{label, changes, rules}]}`. Starting the card opens a menu listing the options, in plain view (no key shortcuts), and the picked option's changes and rules join the Amp.
+- Batch 1 uses: Beast Fist: Rushing Lion (Strength or Dexterity), Water Release: Viscous Water Mass (near water: −2 chakra or one more creature).
+
+### 4. Rejected jutsu
+- `flags.n5e.notAmp` with King's reason, so they leave the audit. Chakra Skin and Geo Breastplate: "An Amp-less buff / stat override (King Q-F5)".
+
+## Batch 1 (E and D), revised after King's answers
+
+All typeless. "Cards" counts the rank versions (Q-F1): D-Rank first, then each rank whose effects change.
+
+| Rank | Jutsu | Verdict | Cards | Options menu |
 | --- | --- | --- | --- | --- |
-| E | Gaslight | Amp | Will | +2 to Charisma skill checks against one creature (concentration, 1 minute) |
-| D | Basilisk Art: Adaptive Camouflage | Amp | Clan | +4 to Hide and Sneak, no tracks, Serpent Coil damage |
-| D | Boil Release: Erupting Steam Wall | Amp (Q-F4) | Clan | 10 temporary HP that refill each turn, 5 acid to melee attackers |
-| D | Crystal Release: Crystal Armor | Amp | Clan | Resistance to bludgeoning, piercing, slashing (more at B-Rank, Q-F1) |
-| D | Hanami Style: Sapping Fist | Amp | Clan | Temporary HP from unarmed damage, necrotic unarmed damage, bonus die |
-| D | Magnet Release: Dust Coat | Amp | Clan | +2 AC, +2 DR, a Barrier each turn |
-| D | Misty Hallucination | Not an Amp | — | An area attack; "allies are immune" only excludes them |
-| D | Beast Fist: Forceful Bull | Amp | Fortitude | Strength 18, 8 temporary HP you can refresh |
-| D | Beast Fist: Graceful Cat | Amp | Reflex | Dexterity 18, +10 speed, no short fall damage |
-| D | Beast Fist: Rushing Lion | Amp | Fortitude | Strength or Dexterity 18, double jump, larger Taijutsu areas |
-| D | Beast Fist: Wise Turtle | Amp | Fortitude | Strength 18, double lifting, Mastery on Strength checks |
-| D | Chakra Skin | Q-F5 | Reflex | AC 13 + Int + half proficiency for 8 hours |
-| D | Cloak of Shadows | Amp, given to a willing creature | Reflex | +1d4 to Hide and Sneak |
-| D | Earth Release: Bedrock Coffin | Not an Amp | — | Restrains a target; the HP and resistances are the coffin's |
-| D | Earth Release: Geo Breastplate | Q-F5 | Fortitude | AC 13 + Int or Con + half proficiency, 2 DR, 8 hours |
-| D | Earth Release: Jade Devotion | Amp (Q-F4), given to allies | Fortitude | 3d6 temporary HP; resistance to bludgeoning, piercing, slashing while they last |
-| D | Earth Release: Resonating Geo Isotoma | Not an Amp | — | An aura around an Earthen Artifact, not on a creature |
-| D | Enhanced Blocking | Amp | Reflex | Blocking 2 on your polearm, its bonus on Str and Dex saves |
-| D | Environmental Affinity | Amp | Will | Advantage on your next initiative (1 hour), or a defense in combat |
-| D | Fire Release: Fox Fire | Not an Amp | — | A light and an attack |
-| D | Lightning Release: Spark | Amp (Q-F4), given to a creature | Will | Temporary HP and lightning resistance while they last |
-| D | Medical Release: Acid Armor | Amp (Q-F4) | Fortitude | 10 temporary HP, 6 acid to melee attackers |
-| D | Medical Release: Grim Mask | Amp | Battle | +2 necrotic damage (+4 against conditioned targets) |
-| D | Psionics: Fortress | Amp | Reflex | +1 AC (+2 against Genjutsu attacks), psychic feedback |
-| D | Psionics: Keen Meditation | Amp | Battle | Mastery on Genjutsu attacks, +1d12 critical damage |
-| D | Sealing Art: Chakra Mark | Not an Amp | — | A mark for tracking |
-| D | Semblance of Dread | Amp | Will | Creatures can't approach without a save; advantage on saves against Demoralized and Shaken |
-| D | Warriors Zone | Amp | Fortitude | +4 DR, damage to creatures entering your weapon's reach |
-| D | Water Release: Viscous Water Mass | Amp, given to a willing creature | Fortitude | +1 AC, +4 DR (double against fire) |
-| D | Wind Release: Zephyr Strike | Amp | Reflex | No opportunity attacks, +20 speed (+1 AC at C-Rank, Q-F1) |
+| E | Gaslight | Amp | 1 | |
+| D | Basilisk Art: Adaptive Camouflage | Amp | 1 | |
+| D | Boil Release: Erupting Steam Wall | Amp | 5 (temporary HP and acid each rank; shockwave from B) | |
+| D | Crystal Release: Crystal Armor | Amp | 3 (D, B elements, S immunity) | |
+| D | Hanami Style: Sapping Fist | Amp | 3 (D, B healing, S twice per turn) | |
+| D | Magnet Release: Dust Coat | Amp | 5 (barrier C, AC/DR B, 1 hour A, AC/DR S) | |
+| D | Misty Hallucination | Not an Amp | — | |
+| D | Beast Fist: Forceful Bull | Amp | 1 | |
+| D | Beast Fist: Graceful Cat | Amp | 1 | |
+| D | Beast Fist: Rushing Lion | Amp | 1 | Strength or Dexterity |
+| D | Beast Fist: Wise Turtle | Amp | 1 | |
+| D | Chakra Skin | Not an Amp (Q-F5) | — | |
+| D | Cloak of Shadows | Amp, given to a willing creature | 3 (D, B 10 minutes, A 1 hour) | |
+| D | Earth Release: Bedrock Coffin | Not an Amp | — | |
+| D | Earth Release: Geo Breastplate | Not an Amp (Q-F5) | — | |
+| D | Earth Release: Jade Devotion | Amp, given to allies | 5 (+1d6 temporary HP each rank) | |
+| D | Earth Release: Resonating Geo Isotoma | Not an Amp | — | |
+| D | Enhanced Blocking | Amp | 2 (D, B Blocking +1) | |
+| D | Environmental Affinity | Amp | 2 (D, B no concentration) | |
+| D | Fire Release: Fox Fire | Not an Amp | — | |
+| D | Lightning Release: Spark | Amp, given to a creature | 5 (+1d6 temporary HP each rank) | |
+| D | Medical Release: Acid Armor | Amp | 5 (temporary HP, acid, Acid Tail each rank) | |
+| D | Medical Release: Grim Mask | Amp | 1 | |
+| D | Psionics: Fortress | Amp | 3 (D, B 5 psychic DR, S 10) | |
+| D | Psionics: Keen Meditation | Amp | 4 (D, C, B, A) | |
+| D | Sealing Art: Chakra Mark | Not an Amp | — | |
+| D | Semblance of Dread | Amp | 5 (+5 feet radius each rank) | |
+| D | Warriors Zone | Amp | 5 (+1d6 each rank; DR at B and S) | |
+| D | Water Release: Viscous Water Mass | Amp, given to a willing creature | 5 (C, B, A, S each change) | Near water: −2 chakra or +1 creature |
+| D | Wind Release: Zephyr Strike | Amp | 5 (C AC, B Friction Break, A Dex saves, S no concentration) | |
 
-Batch 1 tally: 25 Amps (2 waiting on Q-F5), 5 not Amps.
+Batch 1 tally: 23 Amps as about 72 cards, 7 not Amps.
 
 ## Progress log
 
 - 2026-11-20 King: "The next batch." Claude: AMP1f spec and review batch 1 written; 90 jutsu candidates after AMP1e.
+- 2026-11-20 King: Q-F1 a card per cast rank, an options menu for picks; Q-F2 Hijutsu are not Clan; Q-F3 typeless; Q-F4 temporary-HP jutsu are Amps; Q-F5 Chakra Skin and Geo Breastplate are not Amps (Amp-less buffs). Claude: spec and batch 1 revised.
