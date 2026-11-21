@@ -79,7 +79,7 @@ export function d20DialogHTML({ parts, mode = "normal", sources = {}, stake = ""
  */
 export function diceDialogHTML({ parts, mode = "own", sources = {}, crit = false, showCrit = false, types = null, useMode = true }) {
   const typeLabel = k => (k && types?.[k] ? ` ${types[k].label ?? types[k]}` : k ? ` ${k}` : "");
-  const rows = parts.map(p => `<label class="n5e-rd-part"><input type="checkbox" name="on_${p.id}" checked>
+  const rows = parts.map(p => `<label class="n5e-rd-part ${p.situational ? "situational" : ""}"><input type="checkbox" name="on_${p.id}" ${p.situational ? "" : "checked"}>
     <span class="label">${esc(p.label)}</span><span class="value">${esc(p.flat ? signed(Number(p.formula) || 0) : p.formula)}${esc(typeLabel(p.type))}</span></label>`).join("");
   return `<div class="n5e-roll-dialog dice">
     <div class="n5e-rd-parts">${rows}</div>

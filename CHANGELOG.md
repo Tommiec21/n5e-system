@@ -1,3 +1,11 @@
+## 0.77.1-alpha.1 — Lethal Attack as a damage toggle
+
+King 2026-11-21 (Q-D25): "Lethal attack should be a damage toggle in the Attack/Damage window when clicking an attack or Jutsu. Players can determine how it toggles on their own."
+
+- **Lethal Attack:** two unticked rows in the damage window of every attack and jutsu: the full dice, and half (rounded up) for an attack of the Attack action or a weapon attack. Tick one when it applies; it takes the roll's damage type.
+- The separate Lethal Attack buttons are gone. Combat Exploits keep their buttons (Lethal Attack with their dice forgone).
+- Damage rule elements can be optional (`optional: true`): an unticked row in the damage window.
+
 ## 0.77.0-alpha.1 — Hunter-Nin automation and the Class & Clan Limits menu
 
 King 2026-11-21: "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & clan setting menu."

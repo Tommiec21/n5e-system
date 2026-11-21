@@ -991,3 +991,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 - World setting `limitRecovery`: `{ "<owner identifier>.<pool id>": "<choice>", "amp:<amp key>": "<choice>" }`. Pool choices: rest10m, sr, halfSrFullLr, lr, fr, day, initiative (recovers on encounter), round, turn, never. Amp choices: rest10m, sr, lr, fr, day. A choice replaces the written recovery (rules/recovery-overrides.mjs).
 - Effect `flags.n5e.requiresOption: "<option key>:<value>"`: the effect is suppressed unless a class's level-up option with that key has that value chosen. Automation tables pass `requiresOption` through on effects.
+
+### Optional damage elements (0.77.1-alpha.1)
+
+- Rule element `{key: "damage", selector, formula, optional: true, label}`: shown unticked in the damage roll window and added only when ticked. With no `damageType` it takes the roll's first damage type. Lethal Attack uses two (full and half).

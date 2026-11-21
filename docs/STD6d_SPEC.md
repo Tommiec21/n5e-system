@@ -133,7 +133,7 @@ Highlights:
 Review table: `docs/classes/hunter-nin-automation.md` (86 features: 2 automated, 66 partly automated, 17 notes only, 1 no mechanics).
 
 Highlights:
-- **Lethal Attack:** the full and half buttons (once per turn). Every Combat Exploit rolls Lethal Attack with its dice already forgone, with the save or effect it calls for.
+- **Lethal Attack** (King Q-D25): unticked full and half rows in the damage window of every attack and jutsu; tick one when it applies. Every Combat Exploit rolls Lethal Attack with its dice already forgone, with the save or effect it calls for.
 - **Skilled Exploits** (King Q-D24): 1 + proficiency bonus uses per Long Rest (the Skilled Exploits pool on Hunters Exploits); every Skilled Exploit's check button spends one.
 - **Lethal Precision:** Taijutsu or Bukijutsu with Dexterity, by the level-up choice (D25).
 - **Creeds:** Carnage, Posture, the Black Medicine Array, the Dread Arsenal, Void Anchors and Prosthetic Tools from their pools and buttons; Uncanny Dodge keeps its automatic halving reaction.
@@ -175,7 +175,7 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - **Q-D22 One maneuver per turn:** the limit isn't enforced (The Elite and Exceeding Expectations raise it). Enforce it on the maneuver buttons?
 - **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
 - **Q-D24 Skilled Exploits:** answered (King 2026-11-21): 1 + proficiency bonus per Long Rest, changeable in the Class & Clan Limits menu.
-- **Q-D25 Lethal Attack's Creed conditions:** the conditions that let a Creed use Lethal Attack (Bruised, Weakened, Sealed...) are notes; you press the button when they apply. Fine, or should the button check the target?
+- **Q-D25 Lethal Attack:** answered (King 2026-11-21): a damage toggle in the damage window of every attack and jutsu; players decide when to tick it, no further automation. Built in 0.77.1-alpha.1.
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -191,3 +191,4 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - 2026-11-21 King: "Next batch." Claude: engine D23 and Scout-Nin built (187 features), published 0.75.0-alpha.1. Q-D19–Q-D23 asked; nothing waits on them.
 - 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.
 - 2026-11-21 King: "Next batch." and "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & class setting menu..." Claude: Hunter-Nin built (86 features), D25 option-gated effects, D26 Class & Clan Limits menu, published 0.77.0-alpha.1. Q-D25 asked; nothing waits on it.
+- 2026-11-21 King: "Qd25. Lethal attack should be a damage toggle in the Attack/Damage window..." Claude: optional damage elements; Lethal Attack as full and half rows, published 0.77.1-alpha.1.

@@ -149,3 +149,21 @@ test("Lethal Precision's Dexterity follows the level-up choice (effects gated by
   assert.equal(optionChosen(actor(["tai"]), "lethalPrecision:buki"), false);
   assert.equal(optionChosen(actor([]), "lethalPrecision:tai"), false);
 });
+
+test("Lethal Attack (King Q-D25): unticked full and half rows in the damage window, counted only when ticked", async () => {
+  const { diceParts, composeDice } = await import("../module/rules/roll-math.mjs");
+  const { diceDialogHTML } = await import("../module/dice/roll-dialog.mjs");
+  const { validateConditionalRules } = await import("../module/rules/effect-authoring.mjs");
+  const rules = load("features", "lethal-attack").flags.n5e.rules.filter(r => r.key === "damage");
+  assert.deepEqual(rules.map(r => [r.formula, r.optional]), [["(@scale.hunterNin.lethalAttack)d8", true], ["(ceil(@scale.hunterNin.lethalAttack/2))d8", true]]);
+  assert.doesNotThrow(() => validateConditionalRules(rules));
+  assert.throws(() => validateConditionalRules([{ key: "modifier", selector: "attack", value: 1, optional: true }]));
+  assert.equal(load("features", "lethal-attack").system.activities.length, 0, "no separate buttons");
+  const parts = diceParts([{ formula: "1d8", type: "slashing" }, { formula: "3d8", type: "slashing", label: "Lethal Attack (3d8)", optional: true }]);
+  assert.equal(parts[1].situational, true);
+  const html = diceDialogHTML({ parts });
+  assert.match(html, /name="on_d0" checked/);
+  assert.doesNotMatch(html, /name="on_d1" checked/);
+  assert.deepEqual(composeDice(parts, {}).parts.map(p => p.formula), ["1d8"]);
+  assert.deepEqual(composeDice(parts, { on: ["d1"] }).parts.map(p => p.formula), ["1d8", "3d8"]);
+});

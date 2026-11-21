@@ -260,7 +260,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage-trace.mjs` | 42 | Lossless association of damage amounts with saved rolls. | `damageRollTrace`, `damageFromMessage`, `damageApplicationTrace` |
 | `damage.mjs` | 222 | Damage, healing, concentration on damage, and death saves (pure). | `dealtDamagePenalty`, `reduceInstances`, `exhaustedRollTotal`, `damagePlan`, `healPlan`, `concentrationOnDamage`, `deathSaveResult` |
 | `degree.mjs` | 31 | Degree of success: one resolver for Genjutsu four-tier saves and toolkit "beat by 5" tables. | `DEGREE`, `DEGREE_KEYS`, `degreeOfSuccess` |
-| `effect-authoring.mjs` | 221 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
+| `effect-authoring.mjs` | 222 | Effect authoring contracts. | `effectFieldCatalog`, `validateEffectChanges`, `validateConditionalRules`, `editorFlags`, `EFFECT_PRESETS`, `effectPreview`, `portableEffect`, `importEffect` |
 | `effect-services.mjs` | 55 | AMP1d fix: "lvl(3:1,11:2)" in an effect change is the value for the actor's level. | `EFFECT_EVENTS`, `effectFormulaData`, `resolveLevelTables`, `resolveEffectFormula`, `validateServiceConfig`, `expirationStep` |
 | `elements.mjs` | 411 | Contextual rule elements. | `ELEMENT_KEYS`, `ELEMENT_DIRECTIONS`, `ELEMENT_SCOPES`, `ELEMENT_TARGETS`, `ELEMENT_EVENTS`, `actsFromActor`, `levelValue`, `castShaping`, `elementValue`, `selectorNames`, `gatherElements`, `contextualRoll`, `maximizeAfterBonus`, `mergeHandling`, `attackElements`, `initiativeChoices`, `costReductionAllowed`, `shapeDice`, `rollOptions`, `testPredicate`, `ruleSources`, `ruleToggles`, `contextualModifiers`, `rollBonusApplies`, `contextualAdvantage`, `keptIndex`, `contextualSpec` |
 | `enrichers.mjs` | 155 | Shortcuts in text (pure parsing). | `splitArgs`, `parseInflicts`, `parseRollLink`, `parseConditionLink` |
@@ -293,7 +293,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `resources.mjs` | 14 | Positive integer costs only; explicit zero is a free operation, never an implicit spend of one. | `resourceChange` |
 | `rest.mjs` | 190 | Rests (pure). | `REST_LABELS`, `restCheck`, `shortRestDice`, `restPlan` |
 | `riders.mjs` | 228 | Feature riders on the action card (pure; CARD1d, King 2026-11-14; plan docs/CARD1D_SPEC.md). | `NATURE_RELEASES`, `riderFits`, `triggerRiders`, `targetFacts`, `triggered`, `saveEffect`, `eventSave`, `resolveAmount`, `riderOnTarget`, `adjustedInflicts`, `riderEntry`, `validateRider` |
-| `roll-math.mjs` | 159 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
+| `roll-math.mjs` | 161 | Roll math for the roll dialog (pure; ROLL1). | `ADDED_PATTERN`, `parseAdded`, `d20Parts`, `situationalParts`, `composeD20`, `groupParts`, `choiceForMember`, `diceParts`, `composeDice`, `readChoice` |
 | `scrolls.mjs` | 46 | PRESTD1 Part B: jutsu scrolls (King 2026-11-15, Q-P3, Q-P4, Q-P11). | `scrollDiscipline`, `scrollSkill`, `scrollNumbers`, `skillTier`, `tierAllows`, `tierMaxRank`, `scrollName` |
 | `senses.mjs` | 77 | Senses → token vision (pure). | `SENSE_MODES`, `visionFromSenses`, `movementCost`, `speedBand` |
 | `settings.mjs` | 22 | Optional-rule lookup for the shared core (SHARED1). | `setRuleProvider`, `rule` |
@@ -342,7 +342,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `action-card.mjs` | 616 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `pendingSaveActors`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
-| `activity-buttons.mjs` | 546 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
+| `activity-buttons.mjs` | 549 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 146 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |

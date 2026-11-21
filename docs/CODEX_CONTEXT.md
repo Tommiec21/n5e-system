@@ -556,4 +556,4 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - `content/automation/hunter-nin.json` (86 features); Skilled Exploits pool 1 + prof per Long Rest (King Q-D24).
 - New world setting `limitRecovery` and menu `limitsConfig` (applications/settings/limits-config.mjs, templates/apps/limits-config.hbs, rules/recovery-overrides.mjs); applied in data/actor/creature.mjs (pools) and workflow/amp-cards.mjs (Amp uses). Option-gated effects: `flags.n5e.requiresOption` (documents/active-effect.mjs, rules/features.mjs optionChosen).
 - Only lines were added to shared files (module/settings.mjs). Codex's Journal Desk files untouched.
-
+- 0.77.1-alpha.1 (King Q-D25): damage rule elements take `optional: true`: an unticked row in the damage window (rules/roll-math.mjs diceParts/composeDice `on`, dice/roll-dialog.mjs). Lethal Attack uses it.

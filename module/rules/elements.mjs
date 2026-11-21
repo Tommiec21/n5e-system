@@ -166,7 +166,7 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
       case "rerollBelow": out.rerollBelow = Math.max(out.rerollBelow, Math.trunc(Number(e.value) || 0)); break;
       case "maximizeAfter": out.maximizeAfter += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "critAbilityMod": out.critAbilityMod += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
-      case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label }); break;
+      case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label, ...(e.optional ? { optional: true } : {}) }); break;
       case "damageHandling": out.handling = mergeHandling(out.handling, e); break;
       case "addRanks": out.addRanks += Math.trunc(Number(e.value) || 0); break;
       case "note": out.notes.push(`${label}: ${e.text ?? ""}`.trim()); break;

@@ -83,7 +83,7 @@ const FIELDS = {
   attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
   modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"], critAbilityMod: ["value"], maximizeAfter: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
-  reroll: ["mode"], damage: ["formula", "damageType", "who", "unreducible"], heal: ["formula", "pool", "who"], resave: ["ability", "dc"], areaSize: ["value", "shapes"], ignoreComponent: ["component"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
+  reroll: ["mode"], damage: ["formula", "damageType", "who", "unreducible", "optional"], heal: ["formula", "pool", "who"], resave: ["ability", "dc"], areaSize: ["value", "shapes"], ignoreComponent: ["component"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
 };
 export function validateConditionalRules(rules) {
@@ -128,6 +128,7 @@ export function validateConditionalRules(rules) {
     if ( r.key === "resource" && (typeof r.pool !== "string" || !/^[a-zA-Z][\w-]{0,59}$/.test(r.pool) || !Number.isFinite(Number(r.amount))) ) throw new Error("resource needs a pool and an amount.");
     if ( r.key === "inflict" && r.who !== undefined && !["self", "target"].includes(r.who) ) throw new Error("inflict who is self or target.");
     if ( r.label !== undefined && (typeof r.label !== "string" || r.label.length > 120) ) throw new Error("label is text of at most 120 characters.");
+    if ( r.optional !== undefined && (r.key !== "damage" || typeof r.optional !== "boolean") ) throw new Error("optional (true or false) is for damage elements: an unticked row in the damage window.");
   }
   return rules;
 }

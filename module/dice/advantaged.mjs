@@ -90,7 +90,7 @@ export function diceSources(actor, spec = {}, target = null) {
 export async function promptDice(actor, o) {
   const parts = diceParts(o.parts, o.modifiers ?? []);
   const sources = diceSources(actor, { kind: o.kind, ...(o.spec ?? {}) }, o.target ?? null);
-  let choice = { off: [], added: [], mode: "own", crit: !!o.crit };
+  let choice = { off: [], on: [], added: [], mode: "own", crit: !!o.crit };
   if ( wantsDialog() ) {
     choice = await dialogs.dice({ title: o.title, parts, sources, crit: !!o.crit, showCrit: !!o.showCrit, types: o.types ?? null,
       cancellable: o.cancellable, mode: "own" });

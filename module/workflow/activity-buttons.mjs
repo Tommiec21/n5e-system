@@ -375,7 +375,10 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
       const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0, maximizeAfter: 0, sources: [] };
-      parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
+      // King Q-D25: an optional damage element (Lethal Attack) is an unticked row the roller ticks when it
+      // applies; without a type of its own it takes the roll's first damage type.
+      parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type || (p.optional ? parts[0]?.type ?? "" : ""), label: p.optional ? `${p.label} (${p.formula})` : p.label, abilityMod: 0,
+        ...(p.optional ? { optional: true } : {}) })));
       const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
       // Critical (preset from the attack) and the mode. Flat modifiers fold into the first part.
