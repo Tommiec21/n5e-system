@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) next.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) proposed, awaiting King's answers.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -124,6 +124,40 @@ Batch 2 tally: 17 Amps as 46 cards, 8 not Amps.
 - **Q-F8 Heated Body** (immunity to cold weather for 1 hour): an Amp-less buff like Chakra Skin (Q-F5)?
 - **Q-F9 Score's tempo** can change at the start of each of your turns: a "Change tempo" button on the Amp that reopens the menu?
 
+## Batch 3 (B-Rank), Claude's proposals
+
+All typeless (Q-F3). "Cards" counts the rank versions (Q-F1): B-Rank first, then each rank whose effects change. Upcasts that only raise the cost, or change only the casting time, get no card of their own.
+
+| Rank | Jutsu | Proposal | Cards | Options menu |
+| --- | --- | --- | --- | --- |
+| B | Lava Release: Rubber Wall Enhancement | Not an Amp: a wall | — | |
+| B | Plasma Release: Light Binding Step | Amp: +30 speed, ranged attacks against you at disadvantage; the Starlight bolt (an Action) stays on the jutsu | 2 (B; S speed tripled) | |
+| B | Full Sage: Nature Transfiguration | Amp: +2 AC, resistance to bludgeoning, piercing and slashing; Nature Endurance and Feral Endurance riders as notes | 1 | Amplified (6 Natural Energy: no concentration, 1 minute) |
+| B | Spider Art: Silk Burial | Not an Amp: cocoons foes | — | |
+| B | Basilisk Art: Pythons Gaze | Amp: your melee weapon attacks and Hebi Bukijutsu can't be at disadvantage; creatures in range can't gain advantage against your Hebi Bukijutsu | 1 (A only changes the casting time) | |
+| B | Kujaku Art: Star Wall | Not an Amp: a wall | — | |
+| B | Conqueror’s Art: Dragon Cloak | Amp (Q-F4): 2d12 + 15 temporary HP, [Unarmed Damage] die d10, Ryu Hijutsu gain Wyrm Surge, 2d12 back in Dragon Rage | 3 (B; A and S +1d12 a rank) | |
+| B | Blade Heart | Amp: a weapon or Taijutsu crit adds 1 rank of Bleed; the Parrying stance on demand (Q-F11) | 1 | |
+| B | Twin Rising Dragons | Not an Amp (Q-F10): it grants an attack action; floating is positioning | — | |
+| B | Encroaching Darkness | Not an Amp: a darkness zone (the chosen creatures' immunity is part of the zone) | — | |
+| B | Memory Domination | Not an Amp: charms a foe | — | |
+| B | Misleading Duplicate | Amp (Q-F12): invisible until you attack or cast a jutsu; the double stays on the jutsu | 1 | |
+| B | Fire Release: Investiture of Flame | Amp: immune to fire and wind, resistance to bludgeoning, piercing and slashing, vulnerable to cold; the bonus-action fire cone as a note | 1 | |
+| B | Medical Release: Investiture of Acid | Amp: immune to acid, resistance to bludgeoning, piercing and slashing, vulnerable to earth, ignore difficult terrain on solid ground; the acid ground and the acid cone as notes | 1 | |
+| B | Medical Release: Strength of 100 | Amp: Strength 20, jumps doubled, advantage on Strength and Constitution checks and saves, [Unarmed Damage] die 2d8; the aftermath (Q-F13) | 1 | |
+| B | Bestial Art: Hunter | Amp: Strength 22 or Dexterity 18, 2d8 slashing unarmed with that ability, +20 speed, opportunity attacks at advantage, an extra attack | 3 (B; A hidden from Chakra Sight and chakra sensing; S 1 minute without concentration) | Strength 22 or Dexterity 18 |
+| B | Sealing Art: Gift of the Apex | Amp: one beast's save advantage and its ability | 1 | Bear, Bull, Cat, Eagle, Fox or Lion |
+
+Batch 3 tally: 11 Amps as 16 cards, 6 not Amps.
+
+### Questions for batch 3
+
+- **Q-F10 Twin Rising Dragons** (float 30 feet, an Action for up to 3 ranged Taijutsu attacks, for 1 minute): Claude proposes not an Amp, since it grants attacks rather than boosting a statistic. Agree, or an Amp?
+- **Q-F11 Blade Heart's Parrying stance** (+2 AC and Dexterity saves until the start of your next turn, entered as a Bonus action or a reaction to taking damage, as often as you like while the jutsu lasts): a "Parrying stance" button on the Amp that applies a short effect, or a note played at the table?
+- **Q-F12 Misleading Duplicate:** is turning invisible an Amp (it ends when you attack or cast)? Claude's suggestion: yes.
+- **Q-F13 Strength of 100's aftermath** (disadvantage on Strength checks for an hour or until a short rest, after the jutsu ends): apply it automatically when the Amp ends, as a penalty effect (not an Amp), or a note?
+- **Q-F14 Light Binding Step's A-Rank line** mentions "the special reaction granted by this jutsu", but the jutsu grants no reaction. Claude reads it as leftover text: it goes to the text-issues list, and the cards ignore it. Agree?
+
 ## Progress log
 
 - 2026-11-20 King: "The next batch." Claude: AMP1f spec and review batch 1 written; 90 jutsu candidates after AMP1e.
@@ -131,3 +165,4 @@ Batch 2 tally: 17 Amps as 46 cards, 8 not Amps.
 - 2026-11-20 King: "Build". Claude: batch 1 built (0.70.0-alpha.1): 23 jutsu as 75 cards (Gaslight's level versions included), 7 marked not Amps. Differences from the plan: Viscous Water Mass has no options menu, since its near-water pick (−2 chakra or one more creature) is made when casting, not part of the Amp; Gaslight and Environmental Affinity got menus (Action or Reaction; in or out of combat), and an option can change the card's duration. Next: batch 2 (C-Rank, 24 jutsu).
 - 2026-11-20 King: "Next batch." Claude: batch 2 (C-Rank, 25 jutsu) proposed with Q-F6–Q-F9 (batch sizes corrected: C 25, A and S 18).
 - 2026-11-20 King: Q-F6 an aura that applies the Amp, Q-F7 two picks, Q-F8 Heated Body an Amp-less buff, Q-F9 yes; "Build". Claude: batch 2 built (0.71.0-alpha.1): 17 jutsu as 49 cards (3 are the "in the aura" cards the auras apply), 8 marked not Amps. Reading of Q-F6: each creature in the aura (the caster too) gets the Amp card, and it counts as theirs; the aura card on the caster is outside the limits. Jolt got a menu for Overcharge (d8 or d10 temporary hit points). Next: batch 3 (B-Rank, 17 jutsu).
+- 2026-11-20 King: "Next batch." Claude: batch 3 (B-Rank, 17 jutsu) proposed with Q-F10–Q-F14: 11 Amps as 16 cards, 6 not Amps.
