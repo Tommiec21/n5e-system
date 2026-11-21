@@ -17,6 +17,24 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Fire Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet radius per rank."
+        }
+      ],
+      "castOption": {
+        "label": "Scorch: focus (3 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Hellfire Murder"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 3
+        },
+        "note": "One creature in the radius saves at disadvantage; failing by 5: 4 ranks of Immolation instead."
       }
     }
   },
@@ -110,7 +128,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5er5vDoP7LLhYcg",
+        "type": "save",
+        "label": "Hellfire Murder",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shakuton-immolation",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Immolation"
+          }
+        ],
+        "text": "Every creature but you in 30 feet. Failure: the damage and 2 ranks of Immolation; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

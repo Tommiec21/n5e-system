@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hanami",
-      "sourceLine": 2954
+      "sourceLine": 2954,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a short or long rest, make 1 + proficiency bonus Boons or Banes (the pool); unused ones become inert at the next rest. One Boon at a time per creature. 7th: Fused Boons/Banes (two in one, only for you). Banes' saves use your highest jutsu save DC."
+        }
+      ]
     }
   },
   "ownership": {
@@ -44,6 +51,46 @@
     "prerequisites": [
       "You learn to make different medicines that can heal or enhance combat capabilities or infuse into jutsu or, known as Hanami Boons/Banes. When you complete a short or long rest, you can select Boons or Banes each with a single use. You can create a number of Boons or Banes equal to 1 + your proficiency bonus. You can prepare multiple copies of the same Boon or Bane. You can give a Boon to a willing creature at no action cost on the consuming creature turn, or on your turn, so long as they are within 5 feet of you. They must still consume it. Consuming a Boon costs 1 Bonus action. Banes have their infusion requirements listed in their text and use your highest jutsu save DC if it calls for a saving throw. Any unused Boons or Banes become inert, losing their potency when you complete a short or long rest."
     ],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eYixainhqNbpUw",
+        "type": "roll",
+        "label": "Use a Boon or Bane",
+        "roll": {
+          "formula": "",
+          "note": "Give a Boon (a Bonus action to consume; none at 11th) or infuse a Bane into a Hanami Hijutsu that forces a save."
+        },
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "boonsBanes",
+        "label": "Boons/Banes",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

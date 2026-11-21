@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "konjiki",
-      "sourceLine": 3364
+      "sourceLine": 3364,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Liquid Metal Ingots: 1 + proficiency bonus, back on a short rest (the pool). One Alomancy Technique (more at 7th and 15th). Their attacks and saves use your highest jutsu attack bonus or save DC."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,25 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "resourcePools": [
+      {
+        "id": "ingots",
+        "label": "Liquid Metal Ingots",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

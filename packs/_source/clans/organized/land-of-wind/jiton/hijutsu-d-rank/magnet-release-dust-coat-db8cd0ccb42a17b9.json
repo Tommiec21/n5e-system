@@ -17,7 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release, Barrier, Stable, Efficient",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives +2 AC and +2 DR (+1 each at B and S); A-Rank or higher lasts 1 hour. Ends early in Heavy armor or as a bonus action. Choose one Barrier when you have two."
+        }
+      ]
     }
   },
   "ownership": {
@@ -123,6 +130,16 @@
           "amp": "jutsu-jiton-magnet-release-dust-coat"
         },
         "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eTMHXp8kKPP5hT",
+        "type": "heal",
+        "label": "Dust Coat: barrier",
+        "heal": {
+          "formula": "8",
+          "pool": "tempHp"
+        },
+        "text": "At the start of each of your turns (10 from C-Rank)."
       }
     ],
     "featureType": "active",

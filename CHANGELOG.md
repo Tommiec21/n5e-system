@@ -1,3 +1,15 @@
+## 0.80.0-alpha.1 — Clans as data: E2 Land of Wind (Fūshin, Hanami, Jiton, Konjiki, Shakuton)
+
+King 2026-11-21: "Next batch."
+
+- **115 clan items reviewed:** see `docs/clans/`.
+  - **Fūshin:** High Pressure (each lasts 1 minute) with Swirl and every Wind Whisper; Wind Scythe's Jet Needle and Cleave.
+  - **Hanami:** Boons/Banes with a button each; the Medical Fist stance; Monstrous Burst and Healers Touch as cast options on every Hanami Hijutsu.
+  - **Jiton:** Magnetic Charges with every Magnetic Tag; the Dust Veil particles' saves and conditions (Volatile, Heavy, Brined, Unstable); Magnetic Surge.
+  - **Konjiki:** Liquid Metal Ingots with every Alomancy; Alomancy Infusions as cast options.
+  - **Shakuton:** Scorch Charges (each lasts 1 minute) with every Desiccated Heat ability; each Hijutsu's Scorch effect as a cast option that spends its charges.
+- Every Hijutsu has its buttons, tiers and upcast dice.
+
 ## 0.79.2-alpha.1 — Primes and Pressure last 1 minute
 
 King 2026-11-21 (Q-E6): "1 minute cleanse unless spent."

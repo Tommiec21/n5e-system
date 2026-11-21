@@ -567,4 +567,4 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Clan tables `content/automation/clans/*.json` (bakuton, futton, shi-hou, yoton), applied by tools/content/apply-automation.mjs (clanItems); review tables docs/clans/. Summons: Clay Spider, Bird, Centipede, Dragon (folder Bakuton).
 - Engine: save DC source / attack discipline "highest" (workflow/activity-buttons.mjs highestDiscipline); summon rank → `@rankValue` in summoner links (workflow/allied.mjs, rules/summoner-links.mjs); table entry `system` fields.
 - Codex's Journal Desk files untouched.
-
+- 0.80.0-alpha.1 STD6e E2 Land of Wind: clan tables fushin, hanami, jiton, konjiki, shakuton. Hijutsu can carry their own cast options (Scorch, Alomancy Infusion, Monstrous Burst/Healers Touch).

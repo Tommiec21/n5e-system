@@ -17,6 +17,24 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet to the cube per rank."
+        }
+      ],
+      "castOption": {
+        "label": "Scorch: cage (2 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Blazing Murder"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 2
+        },
+        "note": "Failing creatures are Restrained by the cage; it becomes Concentration, up to 1 minute."
       }
     }
   },
@@ -109,7 +127,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRJJnFjV8EBK7r",
+        "type": "save",
+        "label": "Blazing Murder",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "A 15-foot cube within 60 feet. Failure: the damage and 1 rank of Burned.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e3dhzJwNSRhoF8",
+        "type": "damage",
+        "label": "Scorch: caged",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "With the Scorch option: Restrained creatures starting their turn caged (Strength save at the start of each of their turns ends it)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

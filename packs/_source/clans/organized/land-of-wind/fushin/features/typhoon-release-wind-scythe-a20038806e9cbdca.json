@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "fushin",
-      "sourceLine": 2754
+      "sourceLine": 2754,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Jutsu without Wind Release can gain Swirl for 1 High Pressure. Slashing or wind damage: change the type when you roll."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,96 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eRUrO1GkIsiI7U",
+        "type": "effect",
+        "label": "Wind Scythe",
+        "effect": {
+          "name": "Wind Scythe",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "windScythe"
+        },
+        "text": "Bonus action, 1 minute, once per Long Rest: both Pressure Front and Razor Jet in your Divine Wind stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e39vQ7xTOKJ88Q",
+        "type": "save",
+        "label": "Jet Needle (Action)",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 5-foot-wide line (its length by level). Failure: the damage; success: half.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eI6FNaZAj7Cmj5",
+        "type": "save",
+        "label": "Cleave (Action)",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Lines through three points. Failure: the damage and 2 ranks of Bleed; success: half.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e4n0dBjaEZuJmj",
+        "type": "roll",
+        "label": "Bleed all damaged (1 High Pressure)",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, dealing slashing or wind damage: 1 rank of Bleed to every damaged creature."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "highPressure",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

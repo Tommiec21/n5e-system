@@ -17,6 +17,65 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release, Wind Release.",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: one extra attack can repeat a creature; A-Rank or higher: +1d10 of each; S-Rank: one roll against up to 4 creatures' AC."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ePFZITeZqKGjlC",
+              "type": "attack",
+              "label": "Dust Shuriken Storm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "slashing"
+                  },
+                  {
+                    "formula": "3d10",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ePFZITeZqKGjlC",
+              "type": "attack",
+              "label": "Dust Shuriken Storm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "slashing"
+                  },
+                  {
+                    "formula": "3d10",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +169,31 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ePFZITeZqKGjlC",
+        "type": "attack",
+        "label": "Dust Shuriken Storm",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "4 more chakra each: another attack on a different creature (up to three more). A critical hit refunds that attack's chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "slashing"
+            },
+            {
+              "formula": "2d10",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

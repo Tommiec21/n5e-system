@@ -1,0 +1,2166 @@
+{
+  "clan": "fushin",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "fushin-divine-winds": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efWwkfnZlVnA9j",
+          "type": "roll",
+          "label": "High Pressure (Pressure Front)",
+          "roll": {
+            "formula": "",
+            "note": "Each Wind Release jutsu you cast (not the action that spends it). Up to 4 (6 at 11th); each lasts 1 minute."
+          },
+          "cost": {
+            "pool": "highPressure",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5e837Yoc3AqaaXy",
+          "type": "roll",
+          "label": "Swirl (1 High Pressure)",
+          "roll": {
+            "formula": "",
+            "note": "As part of casting a Wind Release jutsu: it gains the Swirl effect."
+          },
+          "cost": {
+            "pool": "highPressure",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "highPressure",
+          "label": "High Pressure",
+          "value": 0,
+          "max": "lvl(1:4,11:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Divine Wind chakra stance (Bonus action), with two forms you swap at the start of your turns; in either you float 1 foot up and take no falling damage from 50 feet or less. Pressure Front: High Pressure (the pool), Swirl, and your Hijutsu gain the listed critical effects. Razor Jet: each Wind Release jutsu marks one affected creature with Low Pressure for 1 minute; spend it when you damage it to push it 10 feet; Wind Release area jutsu can be a Jet Needle (5 by 30 feet, −2 to saves, +30 feet at 7th, 11th and 15th) or a Cleave (a line between two points within 60 feet, creatures within 5 feet save; failure: +1 rank of Bleed)."
+        }
+      ]
+    },
+    "fushin-forceful-gale-wind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elBOdPXHkRp0nW",
+          "type": "roll",
+          "label": "Forceful Gale Wind",
+          "roll": {
+            "formula": "",
+            "note": "A Wind Release jutsu targeting a creature with Low Pressure (spend it too): its effects land before the creature's reaction, even an Interrupt."
+          },
+          "cost": {
+            "pool": "highPressure",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "fushin-raging-tempests": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIZi5SwnlyPp9J",
+          "type": "effect",
+          "label": "Vortex Burst: fly (2 High Pressure)",
+          "effect": {
+            "name": "Vortex Burst flight",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "A fly speed equal to your speed until the end of your next turn.",
+          "cost": {
+            "pool": "highPressure",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e41sWZJUVuLR0l",
+          "type": "roll",
+          "label": "Blade Spiral: sharpen (1 High Pressure)",
+          "roll": {
+            "formula": "lvl(3:1d6,11:2d6)",
+            "note": "Until the start of your next turn, your weapon deals this extra wind damage."
+          },
+          "cost": {
+            "pool": "highPressure",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e5IKy9G8UIP0w0",
+          "type": "damage",
+          "label": "Blade Spiral: Low Pressure reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,7:4d6,15:6d6)",
+                "type": "slashing"
+              }
+            ]
+          },
+          "text": "Reaction, a creature with Low Pressure attacks you in melee: spend its pressure (slashing or wind)."
+        },
+        {
+          "id": "n5efqVH4ypBUckc9",
+          "type": "heal",
+          "label": "Storm Wall: wind shield (2 High Pressure)",
+          "heal": {
+            "formula": "2 * @level",
+            "pool": "tempHp"
+          },
+          "text": "As part of casting a Wind Release jutsu: temporary hit points until the start of your next turn.",
+          "cost": {
+            "pool": "highPressure",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5emxanXq5vPx7yr",
+          "type": "roll",
+          "label": "Rending Jetstream: rend DR",
+          "roll": {
+            "formula": "2 * @amount",
+            "note": "Dealing wind or slashing damage: the creature's DR is 2 lower per High Pressure spent (up to 2) until the start of your next turn."
+          },
+          "cost": {
+            "pool": "highPressure",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5ezlEpZOIFmBGOv",
+          "type": "save",
+          "label": "Rending Jetstream: tendons",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Reaction, a creature with Low Pressure casts a Mobility jutsu: spend its pressure. Failure: 1 rank of Bleed and Shaken.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Wind Whisper (more at 7th and 15th). Vortex Burst: Wind Release areas and Swirls +5 feet (+10 at 11th); Low Pressure: on a failed save, slam it Prone with speed 0 until the end of its next turn. Blade Spiral: with an Action Hijutsu that inflicts Bleed, a Bonus action triggers Swirl and its creatures save too (+1 rank of Bleed). Storm Wall: your Wind Release Barriers gain 4 DR (6 at 11th); casting dispels vapors and gases within 10 feet; Low Pressure halves a Barrier's hit points or DR. Whispering Breeze: Auditory Genjutsu affect deafened creatures and Inhale ones affect creatures holding breath; High Pressure: a failed save also Deafens and Dazes until the end of its next turn; Low Pressure: it suffers the Critical Failure instead. Rending Jetstream: casting a Fūshin Hijutsu, move up to 20 feet without provoking."
+        }
+      ]
+    },
+    "fushin-secrets-of-the-wind": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes of focus: for 1 hour, whisper with creatures of your choice you can see within 90 feet (you hear their whispers too). Blocked by walls 1 inch thick; ends for creatures you lose sight of."
+        }
+      ]
+    },
+    "fushin-stance-divine-wind": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Divine Wind chakra stance: its benefits are in Divine Winds (Pressure Front and Razor Jet forms). Its text holds the Wind Scythe feature's (errata list)."
+        }
+      ]
+    },
+    "fushin-typhoon-release-high-wind-destruction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHzJA25eYTAYRm",
+          "type": "save",
+          "label": "High Wind Destruction",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "Entering first on a turn or starting a turn in the 40-foot radius (up to 6 creatures and you are unaffected). Failure: Prone, Blinded and Deafened until the start of its next turn; success: difficult terrain. Flying creatures save at disadvantage.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Heavily obscured inside. Upcast: +5 feet to the radius."
+        }
+      ]
+    },
+    "fushin-typhoon-release-jettison": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMractk5oo85Qx",
+          "type": "effect",
+          "label": "Jettison: +4 AC",
+          "effect": {
+            "name": "Jettison",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Until the start of your next turn."
+        },
+        {
+          "id": "n5euykfW71QawICW",
+          "type": "save",
+          "label": "Jettison: blast",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures in the area. Failure: the damage and pushed to its edge.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet to the area per rank."
+        }
+      ]
+    },
+    "fushin-typhoon-release-severe-wind-destruction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYDtDs7ReK9ugP",
+          "type": "save",
+          "label": "Severe Wind Destruction",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature starting its turn in the 45-foot cylinder. Failure: pulled toward the center and Restrained while in motion.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eFXD9SF9i4MF9b",
+          "type": "damage",
+          "label": "Severe Wind Destruction: each of your turns",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d12",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "At the start of each of your turns, to every creature and object in the cylinder."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain for others (flying too). Three consecutive turns inside: flung out with falling damage and Prone."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eYDtDs7ReK9ugP",
+                "type": "save",
+                "label": "Severe Wind Destruction",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "A creature starting its turn in the 45-foot cylinder. Failure: pulled toward the center and Restrained while in motion.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eFXD9SF9i4MF9b",
+                "type": "damage",
+                "label": "Severe Wind Destruction: each of your turns",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d12) + (2d12)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "At the start of each of your turns, to every creature and object in the cylinder."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fushin-typhoon-release-soaring-wind-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e79OFSJnI0sYuM",
+          "type": "save",
+          "label": "Soaring Wind Veil",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 3d6 wind.",
+              "success": "Success: half of 3d6 wind and Bruised.",
+              "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+              "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eNITD2H69DF7Bz",
+          "type": "damage",
+          "label": "Wind Veil: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5ea98xLyfo6EikM",
+          "type": "damage",
+          "label": "Wind Veil: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside is heavily obscured both ways (you see through it at B-Rank or higher). S-Rank: ranged attacks against you deal 3d6 less, and it gains the Barrier keyword."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e79OFSJnI0sYuM",
+                "type": "save",
+                "label": "Soaring Wind Veil",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d6 wind.",
+                    "success": "Success: half of 3d6 wind and Bruised.",
+                    "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                    "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eNITD2H69DF7Bz",
+                "type": "damage",
+                "label": "Wind Veil: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ea98xLyfo6EikM",
+                "type": "damage",
+                "label": "Wind Veil: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e79OFSJnI0sYuM",
+                "type": "save",
+                "label": "Soaring Wind Veil",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d6 wind.",
+                    "success": "Success: half of 3d6 wind and Bruised.",
+                    "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                    "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eNITD2H69DF7Bz",
+                "type": "damage",
+                "label": "Wind Veil: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ea98xLyfo6EikM",
+                "type": "damage",
+                "label": "Wind Veil: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e79OFSJnI0sYuM",
+                "type": "save",
+                "label": "Soaring Wind Veil",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d6 wind.",
+                    "success": "Success: half of 3d6 wind and Bruised.",
+                    "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                    "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eNITD2H69DF7Bz",
+                "type": "damage",
+                "label": "Wind Veil: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ea98xLyfo6EikM",
+                "type": "damage",
+                "label": "Wind Veil: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e79OFSJnI0sYuM",
+                "type": "save",
+                "label": "Soaring Wind Veil",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d6 wind.",
+                    "success": "Success: half of 3d6 wind and Bruised.",
+                    "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                    "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eNITD2H69DF7Bz",
+                "type": "damage",
+                "label": "Wind Veil: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ea98xLyfo6EikM",
+                "type": "damage",
+                "label": "Wind Veil: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fushin-typhoon-release-storm-bastion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e74SPcKREkBGPr",
+          "type": "heal",
+          "label": "Storm Bastion",
+          "heal": {
+            "formula": "2d8 + 10",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: a Barrier with these hit points and 2 DR on the protected creature until the start of your next turn."
+        },
+        {
+          "id": "n5eWKdHjfOHnjwBA",
+          "type": "save",
+          "label": "Storm Bastion: burst",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "The Barrier drops to 0: creatures within 10 feet of the protected creature but you. Failure: pushed 20 feet and Dazed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d8 + 4 hit points per rank (add them)."
+        }
+      ]
+    },
+    "fushin-typhoon-release-storm-geyser": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGiXkvghAgBoJS",
+          "type": "save",
+          "label": "Storm Geyser",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 2d8 wind.",
+              "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+              "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+              "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A creature you can see within range.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e9Xyb9P8TDg04f",
+          "type": "damage",
+          "label": "Storm Geyser: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5ekP5pTxqbRwQkO",
+          "type": "damage",
+          "label": "Storm Geyser: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eGiXkvghAgBoJS",
+                "type": "save",
+                "label": "Storm Geyser",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d8 wind.",
+                    "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9Xyb9P8TDg04f",
+                "type": "damage",
+                "label": "Storm Geyser: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekP5pTxqbRwQkO",
+                "type": "damage",
+                "label": "Storm Geyser: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eGiXkvghAgBoJS",
+                "type": "save",
+                "label": "Storm Geyser",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d8 wind.",
+                    "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9Xyb9P8TDg04f",
+                "type": "damage",
+                "label": "Storm Geyser: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekP5pTxqbRwQkO",
+                "type": "damage",
+                "label": "Storm Geyser: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eGiXkvghAgBoJS",
+                "type": "save",
+                "label": "Storm Geyser",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d8 wind.",
+                    "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9Xyb9P8TDg04f",
+                "type": "damage",
+                "label": "Storm Geyser: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekP5pTxqbRwQkO",
+                "type": "damage",
+                "label": "Storm Geyser: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eGiXkvghAgBoJS",
+                "type": "save",
+                "label": "Storm Geyser",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d8 wind.",
+                    "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9Xyb9P8TDg04f",
+                "type": "damage",
+                "label": "Storm Geyser: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (4d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekP5pTxqbRwQkO",
+                "type": "damage",
+                "label": "Storm Geyser: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fushin-typhoon-release-tempest-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eItOWoEebYpkKN",
+          "type": "save",
+          "label": "Tempest Step",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Move up to 30 feet (any direction, up too) without provoking; creatures you pass within 5 feet. Failure: Prone.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet per rank. B-Rank: a second move; S-Rank: a third (each creature once per casting)."
+        }
+      ]
+    },
+    "fushin-typhoon-release-vacuum-collapse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ef5Ugh11xKxkiX",
+          "type": "attack",
+          "label": "Vacuum Collapse",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "wind"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eP8TnAocGgJBay",
+          "type": "save",
+          "label": "Vacuum Collapse: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: 1 rank of Weakened until the end of its next turn.",
+              "failure": "Failure: 1 rank of Weakened.",
+              "critFailure": "Critical Failure: 2 ranks of Weakened."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 rank of Weakened per rank."
+        }
+      ]
+    },
+    "fushin-typhoon-release-vicious-vortex": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euXNe5ULrVBEBq",
+          "type": "save",
+          "label": "Vicious Vortex",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 5d6 wind.",
+              "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+              "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+              "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 15-foot radius on a point within 60 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e7MHTUTpJhAo0Y",
+          "type": "damage",
+          "label": "Vicious Vortex: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5ewSWkOQT9sQhJQ",
+          "type": "damage",
+          "label": "Vicious Vortex: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "7d6",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Structures and objects treat its damage as if vulnerable. Upcast: +5 feet to the radius."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5euXNe5ULrVBEBq",
+                "type": "save",
+                "label": "Vicious Vortex",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 wind.",
+                    "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                    "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius on a point within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e7MHTUTpJhAo0Y",
+                "type": "damage",
+                "label": "Vicious Vortex: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ewSWkOQT9sQhJQ",
+                "type": "damage",
+                "label": "Vicious Vortex: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(7d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5euXNe5ULrVBEBq",
+                "type": "save",
+                "label": "Vicious Vortex",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 wind.",
+                    "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                    "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius on a point within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e7MHTUTpJhAo0Y",
+                "type": "damage",
+                "label": "Vicious Vortex: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ewSWkOQT9sQhJQ",
+                "type": "damage",
+                "label": "Vicious Vortex: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(7d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5euXNe5ULrVBEBq",
+                "type": "save",
+                "label": "Vicious Vortex",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 wind.",
+                    "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                    "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius on a point within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e7MHTUTpJhAo0Y",
+                "type": "damage",
+                "label": "Vicious Vortex: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ewSWkOQT9sQhJQ",
+                "type": "damage",
+                "label": "Vicious Vortex: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(7d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fushin-typhoon-release-whirlwind-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evBgoxYLWcITGz",
+          "type": "attack",
+          "label": "Whirlwind Bomb",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "wind"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eWrUpe3Y4uKJXa",
+          "type": "save",
+          "label": "Whirlwind Bomb: blast",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 4d6 wind.",
+              "success": "Success: half of 4d6 wind and Dazzled.",
+              "failure": "Failure: 4d6 wind and Dazed.",
+              "critFailure": "Critical Failure: the original target's damage and Dazed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Hit or miss, each other creature within 15 feet of the target.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eVFI0F0jo27qX1",
+          "type": "damage",
+          "label": "Whirlwind Bomb: blast damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5evBgoxYLWcITGz",
+                "type": "attack",
+                "label": "Whirlwind Bomb",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eWrUpe3Y4uKJXa",
+                "type": "save",
+                "label": "Whirlwind Bomb: blast",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 wind.",
+                    "success": "Success: half of 4d6 wind and Dazzled.",
+                    "failure": "Failure: 4d6 wind and Dazed.",
+                    "critFailure": "Critical Failure: the original target's damage and Dazed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Hit or miss, each other creature within 15 feet of the target.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVFI0F0jo27qX1",
+                "type": "damage",
+                "label": "Whirlwind Bomb: blast damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5evBgoxYLWcITGz",
+                "type": "attack",
+                "label": "Whirlwind Bomb",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eWrUpe3Y4uKJXa",
+                "type": "save",
+                "label": "Whirlwind Bomb: blast",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 wind.",
+                    "success": "Success: half of 4d6 wind and Dazzled.",
+                    "failure": "Failure: 4d6 wind and Dazed.",
+                    "critFailure": "Critical Failure: the original target's damage and Dazed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Hit or miss, each other creature within 15 feet of the target.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVFI0F0jo27qX1",
+                "type": "damage",
+                "label": "Whirlwind Bomb: blast damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fushin-typhoon-release-wind-scythe": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRUrO1GkIsiI7U",
+          "type": "effect",
+          "label": "Wind Scythe",
+          "effect": {
+            "name": "Wind Scythe",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "windScythe"
+          },
+          "text": "Bonus action, 1 minute, once per Long Rest: both Pressure Front and Razor Jet in your Divine Wind stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e39vQ7xTOKJ88Q",
+          "type": "save",
+          "label": "Jet Needle (Action)",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 5-foot-wide line (its length by level). Failure: the damage; success: half.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eI6FNaZAj7Cmj5",
+          "type": "save",
+          "label": "Cleave (Action)",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Lines through three points. Failure: the damage and 2 ranks of Bleed; success: half.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e4n0dBjaEZuJmj",
+          "type": "roll",
+          "label": "Bleed all damaged (1 High Pressure)",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, dealing slashing or wind damage: 1 rank of Bleed to every damaged creature."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "highPressure",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Jutsu without Wind Release can gain Swirl for 1 High Pressure. Slashing or wind damage: change the type when you roll."
+        }
+      ]
+    },
+    "fushin-typhoon-release-wind-serpents-maw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enBlllt6DRMrFD",
+          "type": "save",
+          "label": "Wind Serpent's Maw",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 4d8 wind.",
+              "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+              "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+              "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "A 45-foot cone.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e22O9h9jvEoc4q",
+          "type": "damage",
+          "label": "Serpent's Maw: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5en8DkYwX44HuCv",
+          "type": "damage",
+          "label": "Serpent's Maw: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pushed into a solid object: it stops and takes falling damage for the distance. A-Rank or higher: creatures can spend their reaction to plant themselves, or save at −2."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5enBlllt6DRMrFD",
+                "type": "save",
+                "label": "Wind Serpent's Maw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d8 wind.",
+                    "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                    "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 45-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e22O9h9jvEoc4q",
+                "type": "damage",
+                "label": "Serpent's Maw: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5en8DkYwX44HuCv",
+                "type": "damage",
+                "label": "Serpent's Maw: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5enBlllt6DRMrFD",
+                "type": "save",
+                "label": "Wind Serpent's Maw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d8 wind.",
+                    "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                    "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 45-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e22O9h9jvEoc4q",
+                "type": "damage",
+                "label": "Serpent's Maw: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5en8DkYwX44HuCv",
+                "type": "damage",
+                "label": "Serpent's Maw: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5enBlllt6DRMrFD",
+                "type": "save",
+                "label": "Wind Serpent's Maw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d8 wind.",
+                    "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                    "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                    "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 45-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e22O9h9jvEoc4q",
+                "type": "damage",
+                "label": "Serpent's Maw: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5en8DkYwX44HuCv",
+                "type": "damage",
+                "label": "Serpent's Maw: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (3d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

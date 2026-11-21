@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jiton",
       "sourceLine": 3175,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The cloud counts as 2 ranks of Volatile. Potency II: two points, heavily obscured and difficult terrain."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,51 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUvN9DCRp6Kmf4",
+        "type": "save",
+        "label": "Carbon cloud",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Action in the Dust Veil: a 20-foot cube within 60 feet, lightly obscured, 1 minute. Starting a turn in it. Failure: Envenomed (critical Potency II: also Blinded until the end of its following turn).",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eii13aZsXsF1r7",
+        "type": "effect",
+        "label": "Potency I: Volatile",
+        "effect": {
+          "name": "Volatile",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "condition": "jiton-volatile"
+        },
+        "text": "Once per turn, damaging a creature with a Jiton Hijutsu.",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

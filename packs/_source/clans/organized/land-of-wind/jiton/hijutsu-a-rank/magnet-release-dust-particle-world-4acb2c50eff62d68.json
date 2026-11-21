@@ -17,7 +17,14 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release.",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain; Perception through it at disadvantage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9ykjnmBnW0Qww",
+        "type": "save",
+        "label": "Dust Particle World",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Sealed"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Creatures of your choice entering first on a turn or starting there, in the 40-foot sphere. Failure: the damage, Restrained for the duration and 2 ranks of Sealed; success: half. Already Grappled or Restrained by your Jiton Hijutsu or features and failing: also Stunned until the end of its next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "piercing"
+            },
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

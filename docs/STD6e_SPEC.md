@@ -1,6 +1,6 @@
 # STD6e function spec: clans as data
 
-Status: **Approved by King 2026-11-21 ("Begin."). E1 Land of Earth built (0.79.0-alpha.1). Next: E2 Land of Wind.**
+Status: **Approved by King 2026-11-21 ("Begin."). E1 Land of Earth built (0.79.0–0.79.2); E2 Land of Wind built (0.80.0-alpha.1). Next: E3 Land of Lightning.**
 
 Plan: `docs/STD_SPEC.md` (STD6e: "Clan traits, hijutsu, clan conditions and keywords as data; `workflow/clan.mjs` name branches removed"). Same method as the class pass (`docs/STD6d_SPEC.md`).
 
@@ -72,11 +72,26 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 - **Yoton:** Molten Terrain, Onyx, Volcanic and the Foundations with saves; World Forge; every Hijutsu.
 - **At the table:** areas and movement, the second nature release (set it on the sheet), damage-type swaps, Spirit Bonded weapon properties.
 
+## E2 Land of Wind (0.80.0-alpha.1)
+
+Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton-automation.md`, `konjiki-automation.md`, `shakuton-automation.md` (115 items: 100 partly automated, 15 notes only).
+
+- **Fūshin:** High Pressure (pool, each lasts 1 minute) with Swirl and every Wind Whisper's spend; Wind Scythe with Jet Needle and Cleave; every Hijutsu with its tiers and upcast dice.
+- **Hanami:** Boons/Banes (pool, back on a short or long rest) with a button for each; the Medical Fist stance (d6 Unarmed Damage, Athletics Mastery); Monstrous Burst and Healers Touch as cast dialog options on every Hanami Hijutsu; every Hijutsu (Sapping Fist and Defensive Cloak keep their Amp buttons).
+- **Jiton:** Magnetic Charges (pool, +1 at the start of your turns) with every Magnetic Tag; each Dust Veil particle's save and Potency I condition (Volatile, Heavy, Brined, Unstable); Magnetic Surge; every Hijutsu (Dust Coat keeps its Amp button).
+- **Konjiki:** Liquid Metal Ingots (pool, back on a short rest) with every Alomancy; Alomancy Infusions as cast dialog options on the Hijutsu; every Hijutsu.
+- **Shakuton:** Scorch Charges (pool, each lasts 1 minute) with every Desiccated Heat ability; each Hijutsu's Scorch effect as a cast dialog option that spends its charges.
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
 - **Q-E6 Primes and Pressure:** answered (King 2026-11-21, after reading the full features): "1 minute cleanse unless spent". Each Prime and each Pressure lasts 1 minute from when it's gained unless spent first (pool `lifetime: 60`; spending uses the oldest; 0.79.2-alpha.1).
 - **Q-E7 Ballistic Knuckle:** answered (King 2026-11-21): dropped automatically (stance field `unarmedNoMod`; 0.79.1-alpha.1).
+
+- **Q-E8 Hanami Combo/Finisher Boon:** it has no option item of its own: its text sits inside the Boosting Boon option. Make it its own option (as Q-E5)?
+- **Q-E9 Fūshin Divine Wind stance:** the stance item holds Wind Scythe's text; the stance's real benefits are in Divine Winds. Replace the stance's text with Divine Winds' stance part?
+- **Q-E10 Blazing Aura:** "increase the damage this aura deals by +1d6 at 7th and 15th" but no base damage is given. What is it?
+- **Q-E11 Jiton Magnetic Charges:** each lasts 1 minute; the ones from buttons carry the timer, but the one gained at the start of your turn doesn't (it's added by the turn). Fine, or should turn gains expire too?
 
 ## Text issues (for the errata list)
 
@@ -90,3 +105,8 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 - 2026-11-21 King: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin." Claude: E1 Land of Earth built (117 items), engine E-D1–E-D5, Clay construct summons; published 0.79.0-alpha.1. Q-E5–Q-E7 asked; nothing waits on them.
 - 2026-11-21 King: "Q5. Make them as its own item. Q6. Populate the entire feature. Q7. Drop it automatically." Claude: Clay Centipede and Chain Reaction Blitz as their own Hijutsu; Ballistic Knuckle drops the ability modifier; published 0.79.1-alpha.1. Full Priming Cataclysm, Broiling Rampart and Steam Engine text posted for Q-E6.
 - 2026-11-21 King: "1 minute cleanse unless spent." Claude: pool unit lifetimes (E-D6); Primes and Pressure last 1 minute each; published 0.79.2-alpha.1.
+- Fūshin: Divine Wind stance holds Wind Scythe's text (Q-E9); "tuns"; Storm Bastion's upcast starts "above D-Rank" (it's C-Rank); Soaring Wind Veil, Storm Geyser, Vicious Vortex and Wind Serpent's Maw repeat their results above their tier list.
+- Hanami: "Marital Arts"; the Boosting Boon option holds the Combo/Finisher Boon (Q-E8); Blazing Aura has no base damage (Shakuton, Q-E10).
+- Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
+- Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
+- 2026-11-21 King: "Next batch." Claude: E2 Land of Wind built (115 items); published 0.80.0-alpha.1. Q-E8–Q-E11 asked; nothing waits on them.

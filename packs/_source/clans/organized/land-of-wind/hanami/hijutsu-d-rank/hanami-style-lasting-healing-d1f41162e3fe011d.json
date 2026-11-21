@@ -17,6 +17,99 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Medical",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eRp8pYrQVSfbqv",
+              "type": "heal",
+              "label": "Lasting Healing",
+              "heal": {
+                "formula": "3d6",
+                "pool": "hp"
+              },
+              "text": "A creature you touch."
+            },
+            {
+              "id": "n5euwX1zPbxYoAqp",
+              "type": "heal",
+              "label": "Lasting Healing: each turn",
+              "heal": {
+                "formula": "1d6",
+                "pool": "hp"
+              },
+              "text": "At the start of each of its turns for the duration."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eRp8pYrQVSfbqv",
+              "type": "heal",
+              "label": "Lasting Healing",
+              "heal": {
+                "formula": "4d6",
+                "pool": "hp"
+              },
+              "text": "A creature you touch."
+            },
+            {
+              "id": "n5euwX1zPbxYoAqp",
+              "type": "heal",
+              "label": "Lasting Healing: each turn",
+              "heal": {
+                "formula": "2d6",
+                "pool": "hp"
+              },
+              "text": "At the start of each of its turns for the duration."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRp8pYrQVSfbqv",
+              "type": "heal",
+              "label": "Lasting Healing",
+              "heal": {
+                "formula": "5d6",
+                "pool": "hp"
+              },
+              "text": "A creature you touch."
+            },
+            {
+              "id": "n5euwX1zPbxYoAqp",
+              "type": "heal",
+              "label": "Lasting Healing: each turn",
+              "heal": {
+                "formula": "2d6",
+                "pool": "hp"
+              },
+              "text": "At the start of each of its turns for the duration."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRp8pYrQVSfbqv",
+              "type": "heal",
+              "label": "Lasting Healing",
+              "heal": {
+                "formula": "6d6",
+                "pool": "hp"
+              },
+              "text": "A creature you touch."
+            },
+            {
+              "id": "n5euwX1zPbxYoAqp",
+              "type": "heal",
+              "label": "Lasting Healing: each turn",
+              "heal": {
+                "formula": "3d6",
+                "pool": "hp"
+              },
+              "text": "At the start of each of its turns for the duration."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +201,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRp8pYrQVSfbqv",
+        "type": "heal",
+        "label": "Lasting Healing",
+        "heal": {
+          "formula": "2d6",
+          "pool": "hp"
+        },
+        "text": "A creature you touch."
+      },
+      {
+        "id": "n5euwX1zPbxYoAqp",
+        "type": "heal",
+        "label": "Lasting Healing: each turn",
+        "heal": {
+          "formula": "1d6",
+          "pool": "hp"
+        },
+        "text": "At the start of each of its turns for the duration (+1d6 at B and S)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

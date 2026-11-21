@@ -17,6 +17,340 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Wind Release, Fire Release",
         "components": "HS, CM, M, W(Any)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eZ9DtSBmkdUp0D",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (unarmed)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(5d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCzPtntqGNgPo7",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (weapon)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(4d8) + (1d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFn9VuG48UL64E",
+              "type": "save",
+              "label": "Violent Slaughtering Flame: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eKbY73XZ7W5D0G",
+              "type": "save",
+              "label": "Scorch: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZ9DtSBmkdUp0D",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (unarmed)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(5d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCzPtntqGNgPo7",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (weapon)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(4d8) + (2d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFn9VuG48UL64E",
+              "type": "save",
+              "label": "Violent Slaughtering Flame: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eKbY73XZ7W5D0G",
+              "type": "save",
+              "label": "Scorch: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZ9DtSBmkdUp0D",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (unarmed)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(5d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCzPtntqGNgPo7",
+              "type": "attack",
+              "label": "Violent Slaughtering Flame (weapon)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(4d8) + (3d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFn9VuG48UL64E",
+              "type": "save",
+              "label": "Violent Slaughtering Flame: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eKbY73XZ7W5D0G",
+              "type": "save",
+              "label": "Scorch: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Scorch: shockwave (3 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Violent Slaughtering Flame"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 3
+        },
+        "note": "A 20-foot shockwave on the target (the Scorch: shockwave button)."
       }
     }
   },
@@ -111,7 +445,110 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZ9DtSBmkdUp0D",
+        "type": "attack",
+        "label": "Violent Slaughtering Flame (unarmed)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "5d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eCzPtntqGNgPo7",
+        "type": "attack",
+        "label": "Violent Slaughtering Flame (weapon)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eFn9VuG48UL64E",
+        "type": "save",
+        "label": "Violent Slaughtering Flame: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shakuton-immolation",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Immolation"
+          }
+        ],
+        "text": "Failure: Immolated.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eKbY73XZ7W5D0G",
+        "type": "save",
+        "label": "Scorch: shockwave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

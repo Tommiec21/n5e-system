@@ -17,6 +17,159 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5evBgoxYLWcITGz",
+              "type": "attack",
+              "label": "Whirlwind Bomb",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWrUpe3Y4uKJXa",
+              "type": "save",
+              "label": "Whirlwind Bomb: blast",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 wind.",
+                  "success": "Success: half of 4d6 wind and Dazzled.",
+                  "failure": "Failure: 4d6 wind and Dazed.",
+                  "critFailure": "Critical Failure: the original target's damage and Dazed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Hit or miss, each other creature within 15 feet of the target.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVFI0F0jo27qX1",
+              "type": "damage",
+              "label": "Whirlwind Bomb: blast damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evBgoxYLWcITGz",
+              "type": "attack",
+              "label": "Whirlwind Bomb",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWrUpe3Y4uKJXa",
+              "type": "save",
+              "label": "Whirlwind Bomb: blast",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 wind.",
+                  "success": "Success: half of 4d6 wind and Dazzled.",
+                  "failure": "Failure: 4d6 wind and Dazed.",
+                  "critFailure": "Critical Failure: the original target's damage and Dazed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Hit or miss, each other creature within 15 feet of the target.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVFI0F0jo27qX1",
+              "type": "damage",
+              "label": "Whirlwind Bomb: blast damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +262,80 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5evBgoxYLWcITGz",
+        "type": "attack",
+        "label": "Whirlwind Bomb",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "wind"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eWrUpe3Y4uKJXa",
+        "type": "save",
+        "label": "Whirlwind Bomb: blast",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 4d6 wind.",
+            "success": "Success: half of 4d6 wind and Dazzled.",
+            "failure": "Failure: 4d6 wind and Dazed.",
+            "critFailure": "Critical Failure: the original target's damage and Dazed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Hit or miss, each other creature within 15 feet of the target.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eVFI0F0jo27qX1",
+        "type": "damage",
+        "label": "Whirlwind Bomb: blast damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

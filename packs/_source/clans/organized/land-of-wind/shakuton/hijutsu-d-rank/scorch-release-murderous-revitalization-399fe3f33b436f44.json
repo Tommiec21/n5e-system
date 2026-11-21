@@ -17,6 +17,18 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Medical, Wind Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Scorch: everyone around you (1 Scorch Charge)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Murderous Revitalization"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        },
+        "note": "The range becomes Self (10 feet): all creatures of your choice in range."
       }
     }
   },
@@ -110,7 +122,17 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2Niz3hf6N2FIA",
+        "type": "roll",
+        "label": "Murderous Revitalization",
+        "roll": {
+          "formula": "",
+          "note": "An ally you touch: one condition a hostile creature applied loses 1 rank (+1 rank per rank above D)."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

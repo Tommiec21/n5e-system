@@ -5,11 +5,51 @@
   "name": "Medical Fist",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "e747c8e12f66e95c",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eDHse5sKtjLWSP",
+      "name": "Medical Fist: Athletics Mastery",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.mastery.skill.ath",
+          "value": "Medical Fist",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!2580974011894e05.n5eDHse5sKtjLWSP"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "hanami",
-      "sourceLine": 2945
+      "sourceLine": 2945,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your [Unarmed Damage] die is a d6 (the stance); choose bludgeoning, piercing or slashing when you roll. Melee attacks gain Reach (or +1 Reach; +2 at 7th, +3 at 15th). Hanami Hijutsu offer Monstrous Burst or Healers Touch (cast dialog options while in it). A rank of Mastery in Athletics. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +69,7 @@
     ],
     "clan": "hanami",
     "featureType": "passive",
-    "requirement": "Hanami clan"
+    "requirement": "Hanami clan",
+    "unarmedDie": "1d6"
   }
 }

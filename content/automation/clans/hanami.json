@@ -1,0 +1,1916 @@
+{
+  "clan": "hanami",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hanami-empowered-medicine": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your First Aid Kits apply over 10 minutes instead of a rest, can affect a creature twice per rest, never run out, and count as Medicine Kits for Medical Check Up."
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYixainhqNbpUw",
+          "type": "roll",
+          "label": "Use a Boon or Bane",
+          "roll": {
+            "formula": "",
+            "note": "Give a Boon (a Bonus action to consume; none at 11th) or infuse a Bane into a Hanami Hijutsu that forces a save."
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "boonsBanes",
+          "label": "Boons/Banes",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            },
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a short or long rest, make 1 + proficiency bonus Boons or Banes (the pool); unused ones become inert at the next rest. One Boon at a time per creature. 7th: Fused Boons/Banes (two in one, only for you). Banes' saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-blessed-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqDre6BoRHoqlt",
+          "type": "effect",
+          "label": "Blessed Boon",
+          "effect": {
+            "name": "Blessed Boon",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.attack.all",
+                "value": "1d4",
+                "mode": 2
+              },
+              {
+                "key": "n5e.check.all",
+                "value": "1d4",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.all",
+                "value": "1d4",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 12
+          },
+          "text": "+1d4 to attacks, checks and saves until the end of its next turn.",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-boosting-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edBJIx23Z6Lcvl",
+          "type": "effect",
+          "label": "Boosting Boon",
+          "effect": {
+            "name": "Boosting Boon",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.critRange.all",
+                "value": "lvl(3:1,11:2)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "+1 critical range for melee attacks for 1 minute (+2 at 11th).",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A critical hit with an unarmed attack adds 1d12 (2d12 at 7th). The range applies to melee attacks only."
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-dispelling-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUGVMss9KDNFPB",
+          "type": "roll",
+          "label": "Dispelling Bane",
+          "roll": {
+            "formula": "",
+            "note": "Failing creatures lose one jutsu of the same rank or lower they concentrate on."
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-dispirited-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7yOpxPJMC51Fh",
+          "type": "save",
+          "label": "Dispirited Bane",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Infused: a failing creature is Confused for 1 minute (it ends with the jutsu's resave, or a Constitution save at the end of each of its turns).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-fragile-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCaIkGBbEW63z9",
+          "type": "roll",
+          "label": "Fragile Bane",
+          "roll": {
+            "formula": "",
+            "note": "Infused: for 1 minute Bruised can stack to 5 ranks on a failing creature; each rank past the first adds +4 to its bonus damage."
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-gambling-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDjOSFiIEAsB6u",
+          "type": "roll",
+          "label": "Gambling Bane",
+          "roll": {
+            "formula": "1d6",
+            "note": "Each failing creature rolls: 1, it loses its next action; 2–4, its bonus action; 5–6, nothing."
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-hindering-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6ORQXCbAVObff",
+          "type": "roll",
+          "label": "Hindering Bane",
+          "roll": {
+            "formula": "1d4",
+            "note": "Infused into a Medical or Inhaled jutsu: a failing creature takes a d4 penalty to attacks or saves with Strength, Intelligence or Wisdom (pick) for 1 minute (ends as Dispirited Bane)."
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-lucky-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7WDntLoC2ZfMz",
+          "type": "effect",
+          "label": "Lucky Boon",
+          "effect": {
+            "name": "Lucky Boon",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 6
+          },
+          "text": "Its next d20 before its next turn treats a roll below 10 as a 10.",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-restoring-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eE3Jk3uAZCBStH",
+          "type": "heal",
+          "label": "Restoring Boon",
+          "heal": {
+            "formula": "lvl(3:2,7:3,15:4)d8",
+            "pool": "hp"
+          },
+          "text": "It rolls two of its own Hit Dice (three at 7th, four at 15th) + its Constitution modifier: use its die size and modifier.",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-sluggish-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejYgZJKH8BIs5l",
+          "type": "save",
+          "label": "Sluggish Bane",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "Infused: a failing creature is Slowed (ends as Dispirited Bane).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-swift-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eg4ARm8ImuE9jB",
+          "type": "effect",
+          "label": "Swift Boon",
+          "effect": {
+            "name": "Swift Boon",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "lvl(3:10,7:15,15:20)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "+10 speed (+15 at 7th, +20 at 15th) and it ignores difficult terrain for 1 minute.",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-warding-boon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTknXJsnjfYCn1",
+          "type": "effect",
+          "label": "Warding Boon",
+          "effect": {
+            "name": "Warding Boon",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Resistance to one damage type of its choice for 1 minute (two at 11th; add them on its sheet).",
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-boons-banes-weakening-bane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejm4wGRiuadPxb",
+          "type": "save",
+          "label": "Weakening Bane",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Infused: a failing creature gains 1 rank of Weakened for 1 minute; a failed Constitution save at the end of its turns adds another; three successes end it all.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "boonsBanes",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hanami-hanami-style-blooming-cherry-blossom": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDo1QspzhCeHnz",
+          "type": "attack",
+          "label": "Blooming Cherry Blossom",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "1d6",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two or more hits: Prone. Healers Touch: the next healing jutsu restores 1d6 more. Upcast: +1d6 damage and healing per rank; +1 attack at B and S."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eDo1QspzhCeHnz",
+                "type": "attack",
+                "label": "Blooming Cherry Blossom",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eDo1QspzhCeHnz",
+                "type": "attack",
+                "label": "Blooming Cherry Blossom",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eDo1QspzhCeHnz",
+                "type": "attack",
+                "label": "Blooming Cherry Blossom",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDo1QspzhCeHnz",
+                "type": "attack",
+                "label": "Blooming Cherry Blossom",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (4d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Blooming Cherry Blossom",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): the attacks have +1 critical range."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Blooming Cherry Blossom",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): the next jutsu you cast that restores hit points restores 1d6 more."
+        }
+      ]
+    },
+    "hanami-hanami-style-cherry-blossom-finale": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eusz0fU4kXsiuG",
+          "type": "save",
+          "label": "Cherry Blossom Finale",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Envenomed"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "A 40-foot cone; Prone creatures save at disadvantage. Failure: the damage; success: half. Finisher: failing creatures gain 2 ranks of Envenomed and are Bruised while Envenomed.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "@unarmed",
+                "type": "bludgeoning"
+              },
+              {
+                "formula": "4d8",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The area becomes difficult terrain."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eusz0fU4kXsiuG",
+                "type": "save",
+                "label": "Cherry Blossom Finale",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A 40-foot cone; Prone creatures save at disadvantage. Failure: the damage; success: half. Finisher: failing creatures gain 2 ranks of Envenomed and are Bruised while Envenomed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "@unarmed",
+                      "type": "bludgeoning"
+                    },
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eusz0fU4kXsiuG",
+                "type": "save",
+                "label": "Cherry Blossom Finale",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A 40-foot cone; Prone creatures save at disadvantage. Failure: the damage; success: half. Finisher: failing creatures gain 2 ranks of Envenomed and are Bruised while Envenomed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "@unarmed",
+                      "type": "bludgeoning"
+                    },
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Cherry Blossom Finale",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): a 60-foot cone, and creatures within 10 feet of you save at −2."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Cherry Blossom Finale",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): willing allies of your choice are thrown harmlessly to the end of the area."
+        }
+      ]
+    },
+    "hanami-hanami-style-colossal-impact": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekvaq84UEF9WWj",
+          "type": "attack",
+          "label": "Colossal Impact",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "4d6",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eHVZwkKGR7Ucmu",
+          "type": "save",
+          "label": "Colossal Impact: shockwave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ePVJKEU6p372iN",
+          "type": "save",
+          "label": "Colossal Impact: Finisher",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "The original target. Failure: Staggered and Bruised.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ekvaq84UEF9WWj",
+                "type": "attack",
+                "label": "Colossal Impact",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d6) + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHVZwkKGR7Ucmu",
+                "type": "save",
+                "label": "Colossal Impact: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePVJKEU6p372iN",
+                "type": "save",
+                "label": "Colossal Impact: Finisher",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "The original target. Failure: Staggered and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ekvaq84UEF9WWj",
+                "type": "attack",
+                "label": "Colossal Impact",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d6) + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHVZwkKGR7Ucmu",
+                "type": "save",
+                "label": "Colossal Impact: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePVJKEU6p372iN",
+                "type": "save",
+                "label": "Colossal Impact: Finisher",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "The original target. Failure: Staggered and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ekvaq84UEF9WWj",
+                "type": "attack",
+                "label": "Colossal Impact",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d6) + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHVZwkKGR7Ucmu",
+                "type": "save",
+                "label": "Colossal Impact: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePVJKEU6p372iN",
+                "type": "save",
+                "label": "Colossal Impact: Finisher",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "The original target. Failure: Staggered and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Colossal Impact",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): creatures within 5 feet of you save at disadvantage."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Colossal Impact",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): allies in range are unaffected and gain temporary hit points equal to half the area damage."
+        }
+      ]
+    },
+    "hanami-hanami-style-defensive-cloak": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp9599882a4a519",
+          "type": "effect",
+          "label": "Hanami Style: Defensive Cloak",
+          "effect": {
+            "name": "Hanami Style: Defensive Cloak",
+            "target": "self",
+            "amp": "jutsu-hanami-hanami-style-defensive-cloak"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5eDxicAjqqiMPzo",
+          "type": "damage",
+          "label": "Defensive Cloak: melee attacker",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "A creature that hits you in melee (twice per turn); you gain temporary hit points equal to half (all at A-Rank or higher)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Defensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): each melee hit on you splashes on all creatures of your choice within 10 feet."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Defensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): it also triggers when an ally within 10 feet takes melee damage, on the attacker."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 damage per rank (add it)."
+        }
+      ]
+    },
+    "hanami-hanami-style-falling-blossom-reprise": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eR0C8Hue1kBE9H",
+          "type": "damage",
+          "label": "Falling Blossom: melee attacker",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "A creature that hits you in melee; you regain as many hit points."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Needs Medical Fist, Defensive Cloak and Offensive Cloak (it ends both cloaks). Your [Unarmed Damage] die is 3d6, poison or necrotic; your melee damage stops healing until the end of its next turn; critical Medical or Taijutsu hits triple your unarmed die. When it ends, you can't mold chakra until you rest."
+        }
+      ]
+    },
+    "hanami-hanami-style-foxglove-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFCRbFCu4M9eom",
+          "type": "save",
+          "label": "Foxglove Petals",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "berserk",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Berserk"
+            }
+          ],
+          "text": "A 10-foot cube on a point in range. Failure: 1 rank of Envenomed and Confused; critical failure: also Berserk while Envenomed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet range per rank; +5 feet to the cube at B and S."
+        }
+      ]
+    },
+    "hanami-hanami-style-healing-cloak": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er2HDHoIPDCD62",
+          "type": "heal",
+          "label": "Healing Cloak",
+          "heal": {
+            "formula": "3d8",
+            "pool": "hp"
+          },
+          "text": "When cast."
+        },
+        {
+          "id": "n5eyICTk8GccaQEv",
+          "type": "heal",
+          "label": "Hanami Resilience (per point)",
+          "heal": {
+            "formula": "1d8",
+            "pool": "hp"
+          },
+          "text": "At the start of your turn: 1d8 per Hanami Resilience (press once per point), then it resets to 0."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Each time you take damage: +1 Hanami Resilience (keep count)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Healing Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): two or more melee hits in a turn: +1 Hanami Resilience."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Healing Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): pick a damage type: once per turn, damage of that type gives 2 Hanami Resilience."
+        }
+      ]
+    },
+    "hanami-hanami-style-lasting-healing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRp8pYrQVSfbqv",
+          "type": "heal",
+          "label": "Lasting Healing",
+          "heal": {
+            "formula": "2d6",
+            "pool": "hp"
+          },
+          "text": "A creature you touch."
+        },
+        {
+          "id": "n5euwX1zPbxYoAqp",
+          "type": "heal",
+          "label": "Lasting Healing: each turn",
+          "heal": {
+            "formula": "1d6",
+            "pool": "hp"
+          },
+          "text": "At the start of each of its turns for the duration (+1d6 at B and S)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eRp8pYrQVSfbqv",
+                "type": "heal",
+                "label": "Lasting Healing",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "hp"
+                },
+                "text": "A creature you touch."
+              },
+              {
+                "id": "n5euwX1zPbxYoAqp",
+                "type": "heal",
+                "label": "Lasting Healing: each turn",
+                "heal": {
+                  "formula": "1d6",
+                  "pool": "hp"
+                },
+                "text": "At the start of each of its turns for the duration."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eRp8pYrQVSfbqv",
+                "type": "heal",
+                "label": "Lasting Healing",
+                "heal": {
+                  "formula": "4d6",
+                  "pool": "hp"
+                },
+                "text": "A creature you touch."
+              },
+              {
+                "id": "n5euwX1zPbxYoAqp",
+                "type": "heal",
+                "label": "Lasting Healing: each turn",
+                "heal": {
+                  "formula": "2d6",
+                  "pool": "hp"
+                },
+                "text": "At the start of each of its turns for the duration."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eRp8pYrQVSfbqv",
+                "type": "heal",
+                "label": "Lasting Healing",
+                "heal": {
+                  "formula": "5d6",
+                  "pool": "hp"
+                },
+                "text": "A creature you touch."
+              },
+              {
+                "id": "n5euwX1zPbxYoAqp",
+                "type": "heal",
+                "label": "Lasting Healing: each turn",
+                "heal": {
+                  "formula": "2d6",
+                  "pool": "hp"
+                },
+                "text": "At the start of each of its turns for the duration."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRp8pYrQVSfbqv",
+                "type": "heal",
+                "label": "Lasting Healing",
+                "heal": {
+                  "formula": "6d6",
+                  "pool": "hp"
+                },
+                "text": "A creature you touch."
+              },
+              {
+                "id": "n5euwX1zPbxYoAqp",
+                "type": "heal",
+                "label": "Lasting Healing: each turn",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "hp"
+                },
+                "text": "At the start of each of its turns for the duration."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "hanami-hanami-style-offensive-cloak": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezDdsgAL8f8ClE",
+          "type": "damage",
+          "label": "Offensive Cloak: bonus damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "With [Unarmed Damage] from an attack (poison or necrotic, chosen when cast)."
+        },
+        {
+          "id": "n5eHHZylN43l41f0",
+          "type": "save",
+          "label": "Offensive Cloak: no healing",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, an affected creature. Failure: it can't regain hit points until the end of its next turn.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Offensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): your unarmed attacks gain Pierce 6."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Offensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): if a creature that failed would regain hit points before the end of its next turn, you regain as much."
+        }
+      ]
+    },
+    "hanami-hanami-style-sapping-fist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampb3468c6c14253",
+          "type": "effect",
+          "label": "Hanami Style: Sapping Fist",
+          "effect": {
+            "name": "Hanami Style: Sapping Fist",
+            "target": "self",
+            "amp": "jutsu-hanami-hanami-style-sapping-fist"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Fist",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): your [Unarmed Damage] can be necrotic; a 5 or 6 on its die adds 1d6 (up to 4 times a turn)."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Fist",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): dealing [Unarmed Damage], a willing creature within 10 feet gains that much temporary hit points."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives the temporary hit points (once per turn, equal to the [Unarmed Damage] dealt). B-Rank or higher: you also regain that many hit points; S-Rank: twice per turn, stacking."
+        }
+      ]
+    },
+    "hanami-hanami-style-sapping-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edr7VRLPX26BIT",
+          "type": "attack",
+          "label": "Sapping Strike",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Necrotic; regain hit points equal to half the damage dealt (all of it at A-Rank or higher).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "2d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eBFdSHBWCrNm1X",
+          "type": "attack",
+          "label": "Sapping Strike: Finisher",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Finisher: a second attack on the same creature, as chakra damage; temporary chakra equal to half the d8s.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "2d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ehs5GcNpjOpxjF",
+          "type": "save",
+          "label": "Sapping Strike: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Monstrous Burst: Bruised. Healers Touch: one of your Physical conditions loses a rank and it gains a rank of the same.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5edr7VRLPX26BIT",
+                "type": "attack",
+                "label": "Sapping Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Necrotic; regain hit points equal to half the damage dealt (all of it at A-Rank or higher).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eBFdSHBWCrNm1X",
+                "type": "attack",
+                "label": "Sapping Strike: Finisher",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Finisher: a second attack on the same creature, as chakra damage; temporary chakra equal to half the d8s.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ehs5GcNpjOpxjF",
+                "type": "save",
+                "label": "Sapping Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Monstrous Burst: Bruised. Healers Touch: one of your Physical conditions loses a rank and it gains a rank of the same.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5edr7VRLPX26BIT",
+                "type": "attack",
+                "label": "Sapping Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Necrotic; regain hit points equal to half the damage dealt (all of it at A-Rank or higher).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eBFdSHBWCrNm1X",
+                "type": "attack",
+                "label": "Sapping Strike: Finisher",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Finisher: a second attack on the same creature, as chakra damage; temporary chakra equal to half the d8s.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ehs5GcNpjOpxjF",
+                "type": "save",
+                "label": "Sapping Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Monstrous Burst: Bruised. Healers Touch: one of your Physical conditions loses a rank and it gains a rank of the same.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5edr7VRLPX26BIT",
+                "type": "attack",
+                "label": "Sapping Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Necrotic; regain hit points equal to half the damage dealt (all of it at A-Rank or higher).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eBFdSHBWCrNm1X",
+                "type": "attack",
+                "label": "Sapping Strike: Finisher",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Finisher: a second attack on the same creature, as chakra damage; temporary chakra equal to half the d8s.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ehs5GcNpjOpxjF",
+                "type": "save",
+                "label": "Sapping Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Monstrous Burst: Bruised. Healers Touch: one of your Physical conditions loses a rank and it gains a rank of the same.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5edr7VRLPX26BIT",
+                "type": "attack",
+                "label": "Sapping Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Necrotic; regain hit points equal to half the damage dealt (all of it at A-Rank or higher).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (4d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eBFdSHBWCrNm1X",
+                "type": "attack",
+                "label": "Sapping Strike: Finisher",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Finisher: a second attack on the same creature, as chakra damage; temporary chakra equal to half the d8s.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (4d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ehs5GcNpjOpxjF",
+                "type": "save",
+                "label": "Sapping Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Monstrous Burst: Bruised. Healers Touch: one of your Physical conditions loses a rank and it gains a rank of the same.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Strike",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): on a hit, a Constitution save or Bruised."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Strike",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): on a hit, a Constitution save: on a failure, one Physical condition of yours loses a rank and it gains a rank of the same."
+        }
+      ]
+    },
+    "hanami-hardened-body-mind": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Against a hostile Physical or Mental condition, you can save with the higher of Strength and Intelligence (pick it when you roll). Banes can be infused into any Medical or Inhaled jutsu you cast."
+        }
+      ]
+    },
+    "hanami-medical-fist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Medical Fist Taijutsu stance as a Bonus action (the clan's stance item)."
+        }
+      ]
+    },
+    "hanami-overloaded-medicine": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ88fRdXxrChrF",
+          "type": "roll",
+          "label": "Overloaded Medicine",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Medical jutsu that heals, cleanses or damages: an ally within 30 feet loses 1 rank of a Physical, Mental or Sensory condition and is immune to it until the end of your next turn. Or a Combo or Finisher's damage: its next save against such a condition is at disadvantage."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "hanami-stance-medical-fist": {
+      "status": "partial",
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "effects": [
+        {
+          "name": "Medical Fist: Athletics Mastery",
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.ath",
+              "value": "Medical Fist",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your [Unarmed Damage] die is a d6 (the stance); choose bludgeoning, piercing or slashing when you roll. Melee attacks gain Reach (or +1 Reach; +2 at 7th, +3 at 15th). Hanami Hijutsu offer Monstrous Burst or Healers Touch (cast dialog options while in it). A rank of Mastery in Athletics. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    }
+  }
+}

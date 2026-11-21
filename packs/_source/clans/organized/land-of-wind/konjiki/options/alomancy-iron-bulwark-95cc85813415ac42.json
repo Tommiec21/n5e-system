@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "konjiki",
       "sourceLine": 3368,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,23 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eG6Qwui5e5x3Hq",
+        "type": "heal",
+        "label": "Iron Bulwark",
+        "heal": {
+          "formula": "lvl(1:2d6,7:3d6,15:4d6) + 6",
+          "pool": "tempHp"
+        },
+        "text": "Reaction, an ally within 30 feet takes damage: a Barrier with these hit points and DR equal to your highest ability modifier until the start of your next turn.",
+        "activation": "reaction",
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

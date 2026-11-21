@@ -17,6 +17,334 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Wind Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eOZQisKlr4dpn5",
+              "type": "save",
+              "label": "Slaughtering Flame",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d12 fire.",
+                  "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                  "failure": "Failure: 2d12 fire and Burned.",
+                  "critFailure": "Critical Failure: as a failure, and Weakened."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVOX9anZp5zF5V",
+              "type": "damage",
+              "label": "Slaughtering Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e5J4HzvuGJdYGK",
+              "type": "attack",
+              "label": "Scorch: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d12) + (1d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eOZQisKlr4dpn5",
+              "type": "save",
+              "label": "Slaughtering Flame",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d12 fire.",
+                  "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                  "failure": "Failure: 2d12 fire and Burned.",
+                  "critFailure": "Critical Failure: as a failure, and Weakened."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVOX9anZp5zF5V",
+              "type": "damage",
+              "label": "Slaughtering Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e5J4HzvuGJdYGK",
+              "type": "attack",
+              "label": "Scorch: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d12) + (2d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eOZQisKlr4dpn5",
+              "type": "save",
+              "label": "Slaughtering Flame",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d12 fire.",
+                  "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                  "failure": "Failure: 2d12 fire and Burned.",
+                  "critFailure": "Critical Failure: as a failure, and Weakened."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVOX9anZp5zF5V",
+              "type": "damage",
+              "label": "Slaughtering Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e5J4HzvuGJdYGK",
+              "type": "attack",
+              "label": "Scorch: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d12) + (3d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eOZQisKlr4dpn5",
+              "type": "save",
+              "label": "Slaughtering Flame",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d12 fire.",
+                  "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                  "failure": "Failure: 2d12 fire and Burned.",
+                  "critFailure": "Critical Failure: as a failure, and Weakened."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVOX9anZp5zF5V",
+              "type": "damage",
+              "label": "Slaughtering Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e5J4HzvuGJdYGK",
+              "type": "attack",
+              "label": "Scorch: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d12) + (4d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Scorch: melee (2 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Slaughtering Flame"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 2
+        },
+        "note": "It becomes a melee attack ([Unarmed Damage] + its damage), then a Constitution save."
       }
     }
   },
@@ -112,7 +440,84 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eOZQisKlr4dpn5",
+        "type": "save",
+        "label": "Slaughtering Flame",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 2d12 fire.",
+            "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+            "failure": "Failure: 2d12 fire and Burned.",
+            "critFailure": "Critical Failure: as a failure, and Weakened."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eVOX9anZp5zF5V",
+        "type": "damage",
+        "label": "Slaughtering Flame: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5e5J4HzvuGJdYGK",
+        "type": "attack",
+        "label": "Scorch: melee",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,7 +17,32 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Stable",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives the temporary hit points (once per turn, equal to the [Unarmed Damage] dealt). B-Rank or higher: you also regain that many hit points; S-Rank: twice per turn, stacking."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Fist",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): your [Unarmed Damage] can be necrotic; a 5 or 6 on its die adds 1d6 (up to 4 times a turn)."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Sapping Fist",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): dealing [Unarmed Damage], a willing creature within 10 feet gains that much temporary hit points."
+        }
+      ]
     }
   },
   "ownership": {

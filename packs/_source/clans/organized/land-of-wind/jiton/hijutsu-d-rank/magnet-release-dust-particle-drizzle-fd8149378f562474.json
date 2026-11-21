@@ -17,6 +17,349 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile) Earth Release, Wind Release.",
         "components": "CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank: +1 rank of Sealed; B-Rank: +10 feet to the cone; A-Rank: +1 rank of Dazzled; S-Rank: +10 more feet."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eAj8g28HSqOXZ6",
+              "type": "save",
+              "label": "Dust Particle Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                  "success": "Success: half, and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                  "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures of your choice in a 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVmefsHgqUtuhA",
+              "type": "damage",
+              "label": "Drizzle: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e9JghsnNANvLz9",
+              "type": "damage",
+              "label": "Drizzle: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eAj8g28HSqOXZ6",
+              "type": "save",
+              "label": "Dust Particle Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                  "success": "Success: half, and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                  "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures of your choice in a 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVmefsHgqUtuhA",
+              "type": "damage",
+              "label": "Drizzle: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e9JghsnNANvLz9",
+              "type": "damage",
+              "label": "Drizzle: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eAj8g28HSqOXZ6",
+              "type": "save",
+              "label": "Dust Particle Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                  "success": "Success: half, and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                  "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures of your choice in a 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVmefsHgqUtuhA",
+              "type": "damage",
+              "label": "Drizzle: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e9JghsnNANvLz9",
+              "type": "damage",
+              "label": "Drizzle: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eAj8g28HSqOXZ6",
+              "type": "save",
+              "label": "Dust Particle Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                  "success": "Success: half, and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                  "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures of your choice in a 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVmefsHgqUtuhA",
+              "type": "damage",
+              "label": "Drizzle: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (4d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(1d12) + (4d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e9JghsnNANvLz9",
+              "type": "damage",
+              "label": "Drizzle: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "earth"
+                  },
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +455,89 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eAj8g28HSqOXZ6",
+        "type": "save",
+        "label": "Dust Particle Drizzle",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+            "success": "Success: half, and Dazzled until the end of its next turn.",
+            "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+            "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Creatures of your choice in a 30-foot cone.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eVmefsHgqUtuhA",
+        "type": "damage",
+        "label": "Drizzle: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "earth"
+            },
+            {
+              "formula": "1d12",
+              "type": "piercing"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5e9JghsnNANvLz9",
+        "type": "damage",
+        "label": "Drizzle: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "earth"
+            },
+            {
+              "formula": "2d12",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

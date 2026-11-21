@@ -17,7 +17,14 @@
         "cost": "Special (25 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fuinjutsu",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside walls: AC 20, 100 hit points, 20 DR; outside: AC 10, 50 hit points, 10 DR; either at 0 ends it. Area effects on both hit the prison only."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDk5k3fp7hA5py",
+        "type": "save",
+        "label": "Metal Prison",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature within 30 feet. Failure: Restrained inside a 10-foot cage (total cover from outside, heavily obscured out).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

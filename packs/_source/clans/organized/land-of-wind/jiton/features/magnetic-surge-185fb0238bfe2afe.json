@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jiton",
-      "sourceLine": 3229
+      "sourceLine": 3229,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 6 Magnetic Charges. In the Surge: your Jiton Hijutsu and Dust Veil abilities can originate anywhere you see in the radius; creatures of your choice treat it as difficult terrain; once per turn, forced movement +10 feet; 2 Magnetic Charges at the start of your turns (press Gain once more)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,23 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ePv28UquxU703D",
+        "type": "effect",
+        "label": "Magnetic Surge",
+        "effect": {
+          "name": "Magnetic Surge",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "magneticSurge"
+        },
+        "text": "Bonus action, 1 minute, once per rest: a 40-foot radius of dominion.",
+        "activation": "bonus"
+      }
+    ]
   }
 }

@@ -87,6 +87,8 @@ export function appliedDoc(doc, entry) {
   const n5e = out.flags.n5e ??= {};
   n5e.reviewed = true;
   if ( entry.rules ) { if ( entry.rules.length ) n5e.rules = entry.rules; else delete n5e.rules; }
+  // Flags first, so cast options (deleted and re-added below) always land after them: re-applying is stable.
+  for ( const [k, v] of Object.entries(entry.flags ?? {}) ) n5e[k] = v;
   if ( entry.castOptions ) {
     const riders = [n5e.castOption, ...(n5e.castOptions ?? [])].filter(o => o?.rider);
     const all = [...entry.castOptions, ...riders];
@@ -94,7 +96,6 @@ export function appliedDoc(doc, entry) {
     if ( all.length === 1 ) n5e.castOption = all[0];
     else if ( all.length ) n5e.castOptions = all;
   }
-  for ( const [k, v] of Object.entries(entry.flags ?? {}) ) n5e[k] = v;
   if ( entry.activities ) out.system.activities = entry.activities;
   // STD6e: item fields set by the table (a stance's unarmedDie and unarmedType).
   for ( const [k, v] of Object.entries(entry.system ?? {}) ) out.system[k] = v;

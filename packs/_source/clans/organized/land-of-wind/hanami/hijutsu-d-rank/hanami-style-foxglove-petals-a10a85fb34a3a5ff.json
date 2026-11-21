@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile) Medical",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet range per rank; +5 feet to the cube at B and S."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +118,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFCRbFCu4M9eom",
+        "type": "save",
+        "label": "Foxglove Petals",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          },
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "berserk",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Berserk"
+          }
+        ],
+        "text": "A 10-foot cube on a point in range. Failure: 1 rank of Envenomed and Confused; critical failure: also Berserk while Envenomed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,224 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pushed into a solid object: it stops and takes falling damage for the distance. A-Rank or higher: creatures can spend their reaction to plant themselves, or save at −2."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5enBlllt6DRMrFD",
+              "type": "save",
+              "label": "Wind Serpent's Maw",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d8 wind.",
+                  "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                  "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 45-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e22O9h9jvEoc4q",
+              "type": "damage",
+              "label": "Serpent's Maw: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5en8DkYwX44HuCv",
+              "type": "damage",
+              "label": "Serpent's Maw: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5enBlllt6DRMrFD",
+              "type": "save",
+              "label": "Wind Serpent's Maw",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d8 wind.",
+                  "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                  "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 45-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e22O9h9jvEoc4q",
+              "type": "damage",
+              "label": "Serpent's Maw: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5en8DkYwX44HuCv",
+              "type": "damage",
+              "label": "Serpent's Maw: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5enBlllt6DRMrFD",
+              "type": "save",
+              "label": "Wind Serpent's Maw",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d8 wind.",
+                  "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+                  "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 45-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e22O9h9jvEoc4q",
+              "type": "damage",
+              "label": "Serpent's Maw: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5en8DkYwX44HuCv",
+              "type": "damage",
+              "label": "Serpent's Maw: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (3d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +327,75 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5enBlllt6DRMrFD",
+        "type": "save",
+        "label": "Wind Serpent's Maw",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 4d8 wind.",
+            "success": "Success: half of 4d8 wind and Shaken until the end of its next turn.",
+            "failure": "Failure: 4d8 wind, pushed 30 feet and 1 rank of Bleed.",
+            "critFailure": "Critical Failure: 6d8 wind and 2 ranks of Bleed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          },
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "A 45-foot cone.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e22O9h9jvEoc4q",
+        "type": "damage",
+        "label": "Serpent's Maw: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5en8DkYwX44HuCv",
+        "type": "damage",
+        "label": "Serpent's Maw: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

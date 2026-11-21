@@ -17,6 +17,41 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Efficient",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: d10s."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eUCKfU0ctM8L9Q",
+              "type": "heal",
+              "label": "Steel Suit",
+              "heal": {
+                "formula": "9d6",
+                "pool": "tempHp"
+              },
+              "text": "A willing ally: these temporary hit points, and 5 DR while they last."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eUCKfU0ctM8L9Q",
+              "type": "heal",
+              "label": "Steel Suit",
+              "heal": {
+                "formula": "10d10",
+                "pool": "tempHp"
+              },
+              "text": "A willing ally: these temporary hit points, and 5 DR while they last."
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +144,18 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eUCKfU0ctM8L9Q",
+        "type": "heal",
+        "label": "Steel Suit",
+        "heal": {
+          "formula": "8d6",
+          "pool": "tempHp"
+        },
+        "text": "A willing ally: these temporary hit points, and 5 DR while they last (an Earthen Artifact). It ends when they reach 0."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -17,7 +17,14 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release.",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Not again until the end of your following turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,52 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ekMkw6OPWe3Sbh",
+        "type": "save",
+        "label": "Imperial Dust Funeral",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "A 60-foot cone. Failure: the damage, Restrained, Weakened, Bruised and pushed to its end. Creatures Grappled or Restrained by your Jiton Hijutsu or features fail automatically and take the damage as if vulnerable.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

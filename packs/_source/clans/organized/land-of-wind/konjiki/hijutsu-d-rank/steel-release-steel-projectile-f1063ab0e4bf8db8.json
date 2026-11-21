@@ -17,6 +17,24 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
         "components": "HS, CM, W (Bulk 2 or lower)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 attack each."
+        }
+      ],
+      "castOption": {
+        "label": "Alomancy Infusion: shrapnel (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Steel Projectile"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Metallic Thorns. Per attack: Metallic Thorns in a 5-foot radius around the target."
       }
     }
   },
@@ -109,7 +127,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e50dC10hoyXLsT",
+        "type": "attack",
+        "label": "Steel Projectile",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Piercing, slashing or bludgeoning.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5egltU7i3H630IZ",
+        "type": "roll",
+        "label": "Its next save",
+        "roll": {
+          "formula": "1d4",
+          "note": "Subtract this from its next saving throw (doesn't stack)."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,94 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
         "components": "HS, CM, W (Bulk 2 or higher)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eAIbX2FpsF7kQG",
+              "type": "attack",
+              "label": "Steel Spear",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A critical hit triples the damage dice instead of doubling them.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(5d8) + (1d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eAIbX2FpsF7kQG",
+              "type": "attack",
+              "label": "Steel Spear",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A critical hit triples the damage dice instead of doubling them.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(5d8) + (2d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eAIbX2FpsF7kQG",
+              "type": "attack",
+              "label": "Steel Spear",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A critical hit triples the damage dice instead of doubling them.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(5d8) + (3d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Alomancy Infusion: keen (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Steel Spear"
+        },
+        "cost": {
+          "pool": "ingots",
+          "choose": true
+        },
+        "note": "Needs Steel Reinforcement or Supersharp. +1 critical range per Ingot (up to 2)."
       }
     }
   },
@@ -109,7 +197,30 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eAIbX2FpsF7kQG",
+        "type": "attack",
+        "label": "Steel Spear",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A critical hit triples the damage dice instead of doubling them.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "5d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

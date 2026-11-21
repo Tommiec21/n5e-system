@@ -17,7 +17,273 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Finisher",
         "components": "CM, M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ekvaq84UEF9WWj",
+              "type": "attack",
+              "label": "Colossal Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHVZwkKGR7Ucmu",
+              "type": "save",
+              "label": "Colossal Impact: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePVJKEU6p372iN",
+              "type": "save",
+              "label": "Colossal Impact: Finisher",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "The original target. Failure: Staggered and Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekvaq84UEF9WWj",
+              "type": "attack",
+              "label": "Colossal Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHVZwkKGR7Ucmu",
+              "type": "save",
+              "label": "Colossal Impact: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePVJKEU6p372iN",
+              "type": "save",
+              "label": "Colossal Impact: Finisher",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "The original target. Failure: Staggered and Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekvaq84UEF9WWj",
+              "type": "attack",
+              "label": "Colossal Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHVZwkKGR7Ucmu",
+              "type": "save",
+              "label": "Colossal Impact: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePVJKEU6p372iN",
+              "type": "save",
+              "label": "Colossal Impact: Finisher",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "The original target. Failure: Staggered and Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Colossal Impact",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): creatures within 5 feet of you save at disadvantage."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Colossal Impact",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): allies in range are unaffected and gain temporary hit points equal to half the area damage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +376,87 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ekvaq84UEF9WWj",
+        "type": "attack",
+        "label": "Colossal Impact",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eHVZwkKGR7Ucmu",
+        "type": "save",
+        "label": "Colossal Impact: shockwave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Each creature within 20 feet but you and the target. Failure: the damage; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePVJKEU6p372iN",
+        "type": "save",
+        "label": "Colossal Impact: Finisher",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "The original target. Failure: Staggered and Bruised.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

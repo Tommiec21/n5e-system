@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hanami",
       "sourceLine": 2960,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqDre6BoRHoqlt",
+        "type": "effect",
+        "label": "Blessed Boon",
+        "effect": {
+          "name": "Blessed Boon",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.attack.all",
+              "value": "1d4",
+              "mode": 2
+            },
+            {
+              "key": "n5e.check.all",
+              "value": "1d4",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.all",
+              "value": "1d4",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 12
+        },
+        "text": "+1d4 to attacks, checks and saves until the end of its next turn.",
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

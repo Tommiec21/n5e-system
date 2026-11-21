@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shakuton",
-      "sourceLine": 3576
+      "sourceLine": 3576,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Scorch Charges: up to 2 (+2 at 3rd, 7th, 11th and 15th), each lasts 1 minute (the pool). While you have any, you're in the Scorching Heat state (the Scorching Heat Amp)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,36 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eA1mLi68NlmCOP",
+        "type": "roll",
+        "label": "Build a Scorch Charge",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a Shakuton Hijutsu or a Fire or Wind Release jutsu (not the turn you spend them on a jutsu)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "scorchCharges",
+        "label": "Scorch Charges",
+        "value": 0,
+        "max": "lvl(1:2,3:4,7:6,11:8,15:10)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

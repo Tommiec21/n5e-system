@@ -17,7 +17,128 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Combo",
         "components": "M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two or more hits: Prone. Healers Touch: the next healing jutsu restores 1d6 more. Upcast: +1d6 damage and healing per rank; +1 attack at B and S."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDo1QspzhCeHnz",
+              "type": "attack",
+              "label": "Blooming Cherry Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDo1QspzhCeHnz",
+              "type": "attack",
+              "label": "Blooming Cherry Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDo1QspzhCeHnz",
+              "type": "attack",
+              "label": "Blooming Cherry Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDo1QspzhCeHnz",
+              "type": "attack",
+              "label": "Blooming Cherry Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (4d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Blooming Cherry Blossom",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): the attacks have +1 critical range."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Blooming Cherry Blossom",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): the next jutsu you cast that restores hit points restores 1d6 more."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +231,29 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDo1QspzhCeHnz",
+        "type": "attack",
+        "label": "Blooming Cherry Blossom",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

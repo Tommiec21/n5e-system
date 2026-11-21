@@ -1,0 +1,1791 @@
+{
+  "clan": "jiton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "jiton-dust-veil": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Dust Veil chakra stance as a Bonus action (the clan's stance item). One particle type (another, or Potency I and II of one, at 7th and 15th). Lightning damage or falling unconscious dispels it. Its saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "jiton-dust-veil-carbon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUvN9DCRp6Kmf4",
+          "type": "save",
+          "label": "Carbon cloud",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "Action in the Dust Veil: a 20-foot cube within 60 feet, lightly obscured, 1 minute. Starting a turn in it. Failure: Envenomed (critical Potency II: also Blinded until the end of its following turn).",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eii13aZsXsF1r7",
+          "type": "effect",
+          "label": "Potency I: Volatile",
+          "effect": {
+            "name": "Volatile",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "condition": "jiton-volatile"
+          },
+          "text": "Once per turn, damaging a creature with a Jiton Hijutsu.",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The cloud counts as 2 ranks of Volatile. Potency II: two points, heavily obscured and difficult terrain."
+        }
+      ]
+    },
+    "jiton-dust-veil-gold": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e03NdzfhfpC07E",
+          "type": "save",
+          "label": "Gold wave",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "Once per turn, Bonus action: a 20-foot cone (40-foot at Potency II). Failure: Grappled until the end of its turn (Potency II: also Heavy and Slowed until the end of its following turn).",
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5evKtwRrXsLnWNg",
+          "type": "effect",
+          "label": "Potency I: Heavy",
+          "effect": {
+            "name": "Heavy",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 6,
+            "condition": "jiton-heavy"
+          },
+          "text": "Once per turn, a creature fails a save against your Jiton Hijutsu: Heavy until the start of your next turn.",
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "jiton-dust-veil-iron": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5esohSwarJr37HG",
+          "type": "save",
+          "label": "Iron aura",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A creature of your choice casts a Mobility jutsu within your 10-foot aura. Failure: if it has Bleed, it suffers Bleed as if its turn started.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Potency I: once per turn, a failed save against your Jiton Hijutsu adds a rank of Bleed. Potency II: 10 minutes coats the particles in a poison; failing creatures can suffer it instead."
+        }
+      ]
+    },
+    "jiton-dust-veil-salt": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en7uwBeSQAUmFq",
+          "type": "save",
+          "label": "Salt in the wounds",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A creature below its maximum hit points starting its turn within 15 feet. Failure: it loses its reaction or takes 1d6 earth or poison per rank of its Physical conditions.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eF0muhc3jC2VgH",
+          "type": "effect",
+          "label": "Potency I: Brined",
+          "effect": {
+            "name": "Brined",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "condition": "jiton-brined"
+          },
+          "text": "Once per turn, damaging a creature with a Jiton Hijutsu.",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Potency II: Brined creatures can't regain hit or chakra points, the DC to end their conditions is 5 higher, and their conditions count as B-Rank."
+        }
+      ]
+    },
+    "jiton-dust-veil-sand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eW247glPW7673g",
+          "type": "effect",
+          "label": "Potency I: Unstable",
+          "effect": {
+            "name": "Unstable",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 12,
+            "condition": "jiton-unstable"
+          },
+          "text": "In the stance, a creature takes damage from your Jiton Hijutsu."
+        },
+        {
+          "id": "n5eL86leCLVXEW6z",
+          "type": "roll",
+          "label": "Potency II: sand construct",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, once per rest: cast your chosen jutsu (Beast Imitating Art: Predator, Sealing Art: Inanimate Puppet, Beast Imitating Art: Oni Twins, Earth Release: Mud Wolf or Stone Dragon) at A-Rank for no chakra (up to two summons)."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the Dust Veil: DR against attack damage equal to your highest ability modifier (add it while the stance is active)."
+        }
+      ]
+    },
+    "jiton-magnet-release-concealed-sand-cat": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 40-foot cube within 60 feet for 1 minute: creatures moving in it reveal themselves to you; invisible creatures in it become visible. Upcast: +10 feet per rank; A-Rank lasts 1 hour."
+        }
+      ]
+    },
+    "jiton-magnet-release-dust-arm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euGikWSRTYHi1F",
+          "type": "attack",
+          "label": "Dust Arm",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5elzT1cdZazYQXe",
+          "type": "save",
+          "label": "Dust Arm: on a hit",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two arms; +1 at B and S."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5euGikWSRTYHi1F",
+                "type": "attack",
+                "label": "Dust Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5elzT1cdZazYQXe",
+                "type": "save",
+                "label": "Dust Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5euGikWSRTYHi1F",
+                "type": "attack",
+                "label": "Dust Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5elzT1cdZazYQXe",
+                "type": "save",
+                "label": "Dust Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5euGikWSRTYHi1F",
+                "type": "attack",
+                "label": "Dust Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5elzT1cdZazYQXe",
+                "type": "save",
+                "label": "Dust Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5euGikWSRTYHi1F",
+                "type": "attack",
+                "label": "Dust Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5elzT1cdZazYQXe",
+                "type": "save",
+                "label": "Dust Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jiton-magnet-release-dust-coat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp5403bb727bfd6",
+          "type": "effect",
+          "label": "Magnet Release: Dust Coat",
+          "effect": {
+            "name": "Magnet Release: Dust Coat",
+            "target": "self",
+            "amp": "jutsu-jiton-magnet-release-dust-coat"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5eTMHXp8kKPP5hT",
+          "type": "heal",
+          "label": "Dust Coat: barrier",
+          "heal": {
+            "formula": "8",
+            "pool": "tempHp"
+          },
+          "text": "At the start of each of your turns (10 from C-Rank)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives +2 AC and +2 DR (+1 each at B and S); A-Rank or higher lasts 1 hour. Ends early in Heavy armor or as a bonus action. Choose one Barrier when you have two."
+        }
+      ]
+    },
+    "jiton-magnet-release-dust-mesh": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 20-foot cube within 60 feet: creatures of your choice in it are immune to environmental hazards and difficult terrain and can walk across it, even over a ravine."
+        }
+      ]
+    },
+    "jiton-magnet-release-dust-particle-drizzle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAj8g28HSqOXZ6",
+          "type": "save",
+          "label": "Dust Particle Drizzle",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+              "success": "Success: half, and Dazzled until the end of its next turn.",
+              "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+              "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Creatures of your choice in a 30-foot cone.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eVmefsHgqUtuhA",
+          "type": "damage",
+          "label": "Drizzle: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "earth"
+              },
+              {
+                "formula": "1d12",
+                "type": "piercing"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5e9JghsnNANvLz9",
+          "type": "damage",
+          "label": "Drizzle: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "earth"
+              },
+              {
+                "formula": "2d12",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank: +1 rank of Sealed; B-Rank: +10 feet to the cone; A-Rank: +1 rank of Dazzled; S-Rank: +10 more feet."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eAj8g28HSqOXZ6",
+                "type": "save",
+                "label": "Dust Particle Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                    "success": "Success: half, and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                    "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Creatures of your choice in a 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVmefsHgqUtuhA",
+                "type": "damage",
+                "label": "Drizzle: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (1d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(1d12) + (1d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e9JghsnNANvLz9",
+                "type": "damage",
+                "label": "Drizzle: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eAj8g28HSqOXZ6",
+                "type": "save",
+                "label": "Dust Particle Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                    "success": "Success: half, and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                    "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Creatures of your choice in a 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVmefsHgqUtuhA",
+                "type": "damage",
+                "label": "Drizzle: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (2d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(1d12) + (2d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e9JghsnNANvLz9",
+                "type": "damage",
+                "label": "Drizzle: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eAj8g28HSqOXZ6",
+                "type": "save",
+                "label": "Dust Particle Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                    "success": "Success: half, and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                    "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Creatures of your choice in a 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVmefsHgqUtuhA",
+                "type": "damage",
+                "label": "Drizzle: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (3d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(1d12) + (3d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e9JghsnNANvLz9",
+                "type": "damage",
+                "label": "Drizzle: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eAj8g28HSqOXZ6",
+                "type": "save",
+                "label": "Dust Particle Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 1d12 earth and 1d12 piercing.",
+                    "success": "Success: half, and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 1d12 earth and 1d12 piercing, Sealed and Bruised.",
+                    "critFailure": "Critical Failure: as a failure, with 2d12 of each."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Creatures of your choice in a 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVmefsHgqUtuhA",
+                "type": "damage",
+                "label": "Drizzle: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (4d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(1d12) + (4d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e9JghsnNANvLz9",
+                "type": "damage",
+                "label": "Drizzle: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "earth"
+                    },
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jiton-magnet-release-dust-particle-world": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9ykjnmBnW0Qww",
+          "type": "save",
+          "label": "Dust Particle World",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Sealed"
+            },
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "Creatures of your choice entering first on a turn or starting there, in the 40-foot sphere. Failure: the damage, Restrained for the duration and 2 ranks of Sealed; success: half. Already Grappled or Restrained by your Jiton Hijutsu or features and failing: also Stunned until the end of its next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "piercing"
+              },
+              {
+                "formula": "4d8",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain; Perception through it at disadvantage."
+        }
+      ]
+    },
+    "jiton-magnet-release-dust-shield": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDjnALfscMSP6T",
+          "type": "heal",
+          "label": "Dust Shield (Action)",
+          "heal": {
+            "formula": "18",
+            "pool": "tempHp"
+          },
+          "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+        },
+        {
+          "id": "n5ePOSG43G7pZMBf",
+          "type": "heal",
+          "label": "Dust Shield (Reaction)",
+          "heal": {
+            "formula": "12",
+            "pool": "tempHp"
+          },
+          "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Barrier resists cold and earth, is vulnerable to lightning. B-Rank or higher: the protected creature can't be moved against its will."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eDjnALfscMSP6T",
+                "type": "heal",
+                "label": "Dust Shield (Action)",
+                "heal": {
+                  "formula": "(18) + 8",
+                  "pool": "tempHp"
+                },
+                "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+              },
+              {
+                "id": "n5ePOSG43G7pZMBf",
+                "type": "heal",
+                "label": "Dust Shield (Reaction)",
+                "heal": {
+                  "formula": "(12) + 8",
+                  "pool": "tempHp"
+                },
+                "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eDjnALfscMSP6T",
+                "type": "heal",
+                "label": "Dust Shield (Action)",
+                "heal": {
+                  "formula": "(18) + 16",
+                  "pool": "tempHp"
+                },
+                "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+              },
+              {
+                "id": "n5ePOSG43G7pZMBf",
+                "type": "heal",
+                "label": "Dust Shield (Reaction)",
+                "heal": {
+                  "formula": "(12) + 16",
+                  "pool": "tempHp"
+                },
+                "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eDjnALfscMSP6T",
+                "type": "heal",
+                "label": "Dust Shield (Action)",
+                "heal": {
+                  "formula": "(18) + 24",
+                  "pool": "tempHp"
+                },
+                "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+              },
+              {
+                "id": "n5ePOSG43G7pZMBf",
+                "type": "heal",
+                "label": "Dust Shield (Reaction)",
+                "heal": {
+                  "formula": "(12) + 24",
+                  "pool": "tempHp"
+                },
+                "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDjnALfscMSP6T",
+                "type": "heal",
+                "label": "Dust Shield (Action)",
+                "heal": {
+                  "formula": "(18) + 32",
+                  "pool": "tempHp"
+                },
+                "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+              },
+              {
+                "id": "n5ePOSG43G7pZMBf",
+                "type": "heal",
+                "label": "Dust Shield (Reaction)",
+                "heal": {
+                  "formula": "(12) + 32",
+                  "pool": "tempHp"
+                },
+                "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jiton-magnet-release-dust-shuriken-storm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePFZITeZqKGjlC",
+          "type": "attack",
+          "label": "Dust Shuriken Storm",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "4 more chakra each: another attack on a different creature (up to three more). A critical hit refunds that attack's chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "slashing"
+              },
+              {
+                "formula": "2d10",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: one extra attack can repeat a creature; A-Rank or higher: +1d10 of each; S-Rank: one roll against up to 4 creatures' AC."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ePFZITeZqKGjlC",
+                "type": "attack",
+                "label": "Dust Shuriken Storm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "slashing"
+                    },
+                    {
+                      "formula": "3d10",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ePFZITeZqKGjlC",
+                "type": "attack",
+                "label": "Dust Shuriken Storm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "slashing"
+                    },
+                    {
+                      "formula": "3d10",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jiton-magnet-release-dust-world-order": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLrOoh0f6cwbv6",
+          "type": "save",
+          "label": "Dust World Order",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 6d6 earth.",
+              "success": "Success: half of 6d6 earth and Staggered.",
+              "failure": "Failure: 6d6 earth, Dazed and Staggered.",
+              "critFailure": "Critical Failure: 8d6 earth and Stunned."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "A 20-foot radius within 60 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eBUz43qPY18p7K",
+          "type": "damage",
+          "label": "Dust World Order: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "earth"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5eroHE4rX68VJi2",
+          "type": "damage",
+          "label": "Dust World Order: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet to the area per rank."
+        }
+      ]
+    },
+    "jiton-magnet-release-gathering-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoSmcNsCHtvdWM",
+          "type": "attack",
+          "label": "Gathering Assault",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature: it lands on top of the target.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d10",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eyCFAfKnXOJuyu",
+          "type": "save",
+          "label": "Gathering Assault: weapons",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "On a space: destroys the ground (falls through if under 5 feet thick); a 15 by 20-foot structure lands. Upcast: +1 structure or attack per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eoSmcNsCHtvdWM",
+                "type": "attack",
+                "label": "Gathering Assault",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A creature: it lands on top of the target.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d10) + (1d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyCFAfKnXOJuyu",
+                "type": "save",
+                "label": "Gathering Assault: weapons",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eoSmcNsCHtvdWM",
+                "type": "attack",
+                "label": "Gathering Assault",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A creature: it lands on top of the target.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d10) + (2d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyCFAfKnXOJuyu",
+                "type": "save",
+                "label": "Gathering Assault: weapons",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jiton-magnet-release-imperial-dust-funeral": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekMkw6OPWe3Sbh",
+          "type": "save",
+          "label": "Imperial Dust Funeral",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "A 60-foot cone. Failure: the damage, Restrained, Weakened, Bruised and pushed to its end. Creatures Grappled or Restrained by your Jiton Hijutsu or features fail automatically and take the damage as if vulnerable.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Not again until the end of your following turn."
+        }
+      ]
+    },
+    "jiton-magnet-release-magnetic-polarization": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euGNLZ9LIk3pmH",
+          "type": "save",
+          "label": "Magnetic Polarization",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "A 10-foot cube on a point within 60 feet. Failure: for the duration the first weapon attack against it each turn has advantage, and it gains a rank of Sealed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet to the cube per rank."
+        }
+      ]
+    },
+    "jiton-magnet-release-manifestation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elf7l7KyHF7NN3",
+          "type": "roll",
+          "label": "Dust platform",
+          "roll": {
+            "formula": "",
+            "note": "Action, 10 minutes: a floating 5-foot-radius disc (10 feet at 15th), 40-foot fly speed, up to 4 creatures or 500 lbs (8 or 1,000 at 15th). Riding it, use its speed."
+          },
+          "activation": "action"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Earth or Wind; set it on the sheet); Earth or Wind Release jutsu can deal Wind or Earth damage respectively."
+        }
+      ]
+    },
+    "jiton-magnetic-surge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePv28UquxU703D",
+          "type": "effect",
+          "label": "Magnetic Surge",
+          "effect": {
+            "name": "Magnetic Surge",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "magneticSurge"
+          },
+          "text": "Bonus action, 1 minute, once per rest: a 40-foot radius of dominion.",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 6 Magnetic Charges. In the Surge: your Jiton Hijutsu and Dust Veil abilities can originate anywhere you see in the radius; creatures of your choice treat it as difficult terrain; once per turn, forced movement +10 feet; 2 Magnetic Charges at the start of your turns (press Gain once more)."
+        }
+      ]
+    },
+    "jiton-magnetic-tagging": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3d8RgDdAv8SOA",
+          "type": "roll",
+          "label": "Magnetic Pulse",
+          "roll": {
+            "formula": "lvl(3:1d4,11:1d6)",
+            "note": "A metallic weapon attacks in range: subtract this from the attack."
+          },
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eGNMXm8QOoDtb8",
+          "type": "roll",
+          "label": "Magnetic Shield",
+          "roll": {
+            "formula": "",
+            "note": "A metallic weapon attacks in range: its damage die is 1 step smaller (2 at 7th, 3 at 15th), or one fewer die."
+          },
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eJeCcWJAdDnjyV",
+          "type": "save",
+          "label": "Magnetic Snatch",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action: an unwilling creature's held weapon in range (one more creature at 7th and 15th). Failure: the weapon is pulled to you.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eknPQKpaU2iazH",
+          "type": "attack",
+          "label": "Magnetic Vectors",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "2 charges and your reaction: a metallic ranged attack in range is redirected; on a hit, the original attack's effect lands on the new target.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ed0omQYF2QaHyw",
+          "type": "save",
+          "label": "Magnetic Puppetry",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action, 3 charges: a creature wielding a metallic weapon. Failure: it attacks the closest creature of your choice with its weapon's damage + 2d8 (+1d8 and +1 creature at 7th, 11th and 15th).",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5eh2NQcWHkCYFWK",
+          "type": "roll",
+          "label": "Gain a Magnetic Charge",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Jiton Hijutsu (the start of your turn adds one by itself)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "magneticCharges",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "magneticCharges",
+          "label": "Magnetic Charges",
+          "value": 0,
+          "max": "lvl(3:4,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "turn",
+              "amount": "formula",
+              "formula": "1",
+              "requires": ""
+            }
+          ],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Magnetic Charges: +1 at the start of each of your turns and once per turn casting a Jiton Hijutsu (the buttons), up to 4 (6 at 15th); each lasts 1 minute. Spend once per turn."
+        }
+      ]
+    },
+    "jiton-stance-dust-veil": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Dust Veil chakra stance: your particle type's benefits (the Dust Veil options: Carbon, Gold, Iron, Salt, Sand). Lightning damage or falling unconscious dispels it."
+        }
+      ]
+    },
+    "jiton-swirling-currents": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a short or long rest, resistance to two of bludgeoning, piercing, slashing, earth or wind damage from attacks until your next short rest (add them on the sheet)."
+        }
+      ]
+    }
+  }
+}

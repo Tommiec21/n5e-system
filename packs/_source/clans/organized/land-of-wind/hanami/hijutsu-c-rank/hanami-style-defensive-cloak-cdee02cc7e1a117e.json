@@ -17,7 +17,32 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Medical, Efficient",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 damage per rank (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Monstrous Burst",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Defensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Monstrous Burst (in Medical Fist; not with Healers Touch): each melee hit on you splashes on all creatures of your choice within 10 feet."
+        },
+        {
+          "label": "Healers Touch",
+          "appliesTo": {
+            "namePrefix": "Hanami Style: Defensive Cloak",
+            "stance": "taijutsu"
+          },
+          "note": "Healers Touch (in Medical Fist; not with Monstrous Burst): it also triggers when an ally within 10 feet takes melee damage, on the attacker."
+        }
+      ]
     }
   },
   "ownership": {
@@ -120,6 +145,20 @@
           "amp": "jutsu-hanami-hanami-style-defensive-cloak"
         },
         "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eDxicAjqqiMPzo",
+        "type": "damage",
+        "label": "Defensive Cloak: melee attacker",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "A creature that hits you in melee (twice per turn); you gain temporary hit points equal to half (all at A-Rank or higher)."
       }
     ],
     "featureType": "active",

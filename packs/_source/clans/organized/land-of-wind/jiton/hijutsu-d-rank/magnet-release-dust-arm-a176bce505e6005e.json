@@ -17,6 +17,209 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Wind Release, Stable",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two arms; +1 at B and S."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5euGikWSRTYHi1F",
+              "type": "attack",
+              "label": "Dust Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elzT1cdZazYQXe",
+              "type": "save",
+              "label": "Dust Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5euGikWSRTYHi1F",
+              "type": "attack",
+              "label": "Dust Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elzT1cdZazYQXe",
+              "type": "save",
+              "label": "Dust Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5euGikWSRTYHi1F",
+              "type": "attack",
+              "label": "Dust Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elzT1cdZazYQXe",
+              "type": "save",
+              "label": "Dust Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5euGikWSRTYHi1F",
+              "type": "attack",
+              "label": "Dust Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elzT1cdZazYQXe",
+              "type": "save",
+              "label": "Dust Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +314,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5euGikWSRTYHi1F",
+        "type": "attack",
+        "label": "Dust Arm",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "On casting and as a Bonus action: each arm attacks a different creature within 10 feet of it (and can move 30 feet).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5elzT1cdZazYQXe",
+        "type": "save",
+        "label": "Dust Arm: on a hit",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Failure: Grappled by the arm (Strength or Dexterity save at the end of each of its turns).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

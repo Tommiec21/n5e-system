@@ -17,6 +17,24 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank or higher: cast it on a Strength or Constitution save for advantage on it."
+        }
+      ],
+      "castOption": {
+        "label": "Alomancy Infusion: for an ally (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Impervious Armor"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Iron Bulwark. Cast it as an ally within 30 feet takes damage, on them too."
       }
     }
   },
@@ -109,7 +127,21 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKDCQ38VdpmUYk",
+        "type": "effect",
+        "label": "Impervious Armor",
+        "effect": {
+          "name": "Impervious Armor",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Resistance to the triggering damage type (not lightning) for the round (add it)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "hanami",
       "sourceLine": 2962,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A critical hit with an unarmed attack adds 1d12 (2d12 at 7th). The range applies to melee attacks only."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,31 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5edBJIx23Z6Lcvl",
+        "type": "effect",
+        "label": "Boosting Boon",
+        "effect": {
+          "name": "Boosting Boon",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.critRange.all",
+              "value": "lvl(3:1,11:2)",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "+1 critical range for melee attacks for 1 minute (+2 at 11th).",
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

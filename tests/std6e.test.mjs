@@ -10,9 +10,9 @@ import { load } from "./helpers/actor.mjs";
 /** A clan item by its identifier. */
 const item = (clan, id) => clanItems(clan).get(id).doc;
 
-test("E1 clan tables: every Land of Earth clan item has an entry and is marked reviewed", () => {
+test("E1 and E2 clan tables: every Land of Earth and Land of Wind clan item has an entry and is marked reviewed", () => {
   const tables = Object.fromEntries(clanTables().map(t => [t.clan, t]));
-  for ( const clan of ["bakuton", "futton", "shi-hou", "yoton"] ) {
+  for ( const clan of ["bakuton", "futton", "shi-hou", "yoton", "fushin", "hanami", "jiton", "konjiki", "shakuton"] ) {
     const items = clanItems(clan);
     assert.ok(items.size > 10, clan);
     for ( const [id, { doc }] of items ) {
@@ -91,4 +91,20 @@ test("King Q-E6: Primes and Pressure last 1 minute each unless spent (oldest spe
   const primes = item("bakuton", "bakuton-priming-cataclysm").system.resourcePools[0];
   const pressure = item("futton", "futton-broiling-rampart").system.resourcePools[0];
   assert.deepEqual([primes.lifetime, primes.recovery, pressure.lifetime, pressure.recovery], [60, [], 60, []]);
+});
+
+test("E2: Scorch options spend Scorch Charges on their own Hijutsu; clan pools", () => {
+  const flame = item("shakuton", "shakuton-scorch-release-murderous-flame");
+  const opt = flame.flags.n5e.castOption ?? flame.flags.n5e.castOptions[0];
+  assert.deepEqual([opt.appliesTo.namePrefix, opt.cost], ["Scorch Release: Murderous Flame", { pool: "scorchCharges", amount: 2 }]);
+  const scorch = item("shakuton", "shakuton-heating-up").system.resourcePools[0];
+  assert.deepEqual([scorch.max, scorch.lifetime], ["lvl(1:2,3:4,7:6,11:8,15:10)", 60]);
+  assert.equal(item("fushin", "fushin-divine-winds").system.resourcePools[0].lifetime, 60);
+  assert.deepEqual(item("konjiki", "konjiki-alomancy").system.resourcePools[0].recovery.map(r => r.on), ["sr"]);
+  assert.equal(item("hanami", "hanami-hanami-boons-banes").system.resourcePools[0].max, "1 + @prof");
+  const fist = item("hanami", "hanami-stance-medical-fist");
+  assert.equal(fist.system.unarmedDie, "1d6");
+  assert.ok(fist.effects.some(e => e.changes.some(c => c.key === "n5e.mastery.skill.ath")));
+  const drizzle = effectiveActivities(item("jiton", "jiton-magnet-release-dust-particle-drizzle"), { rank: "C" }).find(a => a.label === "Drizzle: damage").damage.parts.map(p => p.formula);
+  assert.deepEqual(drizzle, ["(1d12) + (1d12)", "(1d12) + (1d12)"]);
 });
