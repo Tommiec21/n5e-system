@@ -6,6 +6,8 @@
  *   jutsu:keyword:<k>        each keyword (medical, fireRelease, clash...)
  *   jutsu:rank:<R>           the rank it was cast at (D, C, B, A, S)
  *   jutsu:discipline:<d>     the discipline it was cast as (nin, tai, gen, buki)
+ * A save against a cast card carries the same facts prefixed "against:" (AMP1f batch 4: Aura of
+ * Power, "against:jutsu:discipline:nin").
  * Pure: plain item data in.
  */
 const list = v => (Array.isArray(v) ? v : v ? [...v] : []);

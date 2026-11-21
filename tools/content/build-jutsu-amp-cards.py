@@ -482,6 +482,128 @@ JUTSU += [
          versions=[V("B", ["You gain one beast's traits: advantage on one kind of saving throw and that beast's ability (Bear, Bull, Cat, Eagle, Fox or Lion)."])]),
 ]
 
+JUTSU += [
+    # AMP1f batch 4 (A and S-Rank), King 2026-11-21: Q-F15 Aura of Power's −2 on hostile creatures, placed
+    # by the aura; Q-F16 Freight Train leaves Freight Train: Overheated; Q-F17 Strength of 1000 ends with
+    # Strength of 100 and leaves Strength of 1000: Shock until a full rest ("both" is a text issue);
+    # Q-F18 Lotus Cannons' maintained cannon is an Amp; Q-F19 Water Heavens Convergence isn't;
+    # Q-F20 The Zone: ending it with its bonus action pauses it, any other end uses it up until a full rest.
+    dict(id="futton-boil-release-freight-train", name="Boil Release: Freight Train", target="self", duration=CONC,
+         onEnd="boil-release-freight-train-overheated",
+         versions=[V("A", ["Relentless Motion: your speed is increased by +30 feet.",
+                           "Impact Engine: once per turn, when you deal [Unarmed Damage] or [Weapon Damage] to a creature, it makes a Strength save: on a failure it is knocked Prone, Bruised and gains a rank of Scald; on a success it is pushed 5 feet.",
+                           "Unstoppable Force: immunity to Prone, Slowed, Shaken and Grappled; you can't be moved against your will and difficult terrain doesn't affect you.",
+                           "Overheat: when it ends, Freight Train: Overheated (Incapacitated until the end of your next turn)."],
+                     changes=[ch("system.bonuses.speed", 30), ch("n5e.conditionImmune", "slowed"), ch("n5e.conditionImmune", "shaken"),
+                              ch("n5e.stateImmune", "prone"), ch("n5e.stateImmune", "grappled")],
+                     notes=["Impact Engine (once per turn): when you deal [Unarmed Damage] or [Weapon Damage] to a creature, it makes a Strength save. Failure: knocked Prone, Bruised and a rank of Scald. Success: pushed 5 feet.",
+                            "You can't be moved against your will, and difficult terrain doesn't affect you.",
+                            "When it ends, you gain the condition Freight Train: Overheated (applied automatically)."])]),
+    dict(id="jugo-lotus-nonself-connected-cannons", name="Lotus Nonself Connected Cannons", target="self", duration=CONC, label="Maintain the cannon",
+         versions=[V("A", ["Your speed is set to 0.", "You gain a bonus 10 DR.", "You can't be moved against your will, knocked Prone or Stunned.",
+                           "As an Action on your turn, you may fire the beam again in any direction (it penetrates environmental structures not made by a jutsu).",
+                           "At the start of each of your turns, you may end the jutsu and de-form the cannon."],
+                     changes=[ch("system.attributes.speed.walk", 0, 1), ch("n5e.dr", 10), ch("n5e.stateImmune", "prone"), ch("n5e.stateImmune", "stunned")],
+                     notes=["You can't be moved against your will.",
+                            "Refire: as an Action, the jutsu's beam again (its save button), from you in any direction; it ignores the hit points and resistances of environmental structures not made by a jutsu.",
+                            "You pay the jutsu's concentration cost only when you refire the beam.",
+                            "At the start of each of your turns you may end the jutsu and de-form the cannon."])]),
+    dict(id="demon-hunter", name="Demon Hunter", target="self", duration=CONC,
+         versions=[V("A", ["One creature you can see in range becomes your hunted Demon.",
+                           "While in initiative with your Demon: +20 speed, and damage you deal with your polearm to it ignores resistance and treats immunity as resistance.",
+                           "Bukijutsu cast with the same polearm: +1 to their save DCs and +5 feet to the range of their attacks.",
+                           "Chain 2: one additional creature can be your hunted Demon.",
+                           "Chain 3: an opportunity attack against your Demon can be two weapon attacks; if one hits, you regain the reaction."],
+                     changes=[ch("system.bonuses.speed", 20)],
+                     notes=["The +20 speed applies while you're in initiative with your Demon.",
+                            "Your polearm's damage against your Demon ignores resistance and treats immunity as resistance.",
+                            "Bukijutsu cast with the same polearm: +1 to their save DCs and +5 feet to their attack range.",
+                            "Chain 2: you can select one additional creature as a hunted Demon.",
+                            "Chain 3: when your Demon triggers an opportunity attack from you, make two weapon attacks against it; if at least one hits, regain the reaction."])]),
+    dict(id="overcomer", name="Overcomer", target="self", duration=CONC,
+         versions=[V("A", ["+1d4 to your Strength saving throws.",
+                           "While at half your hit points or less: 10 temporary hit points at the beginning of each turn, and effects that would move you against your will fail (their damage still applies)."],
+                     changes=[ch("n5e.save.str", "1d4")],
+                     rules=[{"key": "heal", "on": "turnStart", "predicate": "self:bloodied", "formula": "10", "pool": "tempHp", "who": "self", "label": "Overcomer"}],
+                     notes=["While at half your hit points or less, effects that would move you against your will fail; damage they deal still applies."])]),
+    dict(id="unlimited-pleasure", name="Unlimited Pleasure", target="targets", duration=CONC,
+         versions=[V("A", ["When you gain temporary hit points, you also regain that many hit points."],
+                     notes=["When you gain temporary hit points, also regain hit points equal to the temporary hit points gained (at the table).",
+                            "Three creatures at A-Rank, one more for each rank above it."])]),
+    dict(id="earth-release-diamond-bone-hardening", name="Earth Release: Diamond Bone Hardening", target="self", duration=CONC,
+         versions=[V("A", ["While you are not wearing armor, you gain 14 DR."], changes=[ch("n5e.dr", 14)],
+                     notes=["Only while you aren't wearing armor."]),
+                   V("S", ["While you are not wearing armor, you gain 16 DR.", "At the beginning of each of your turns, you gain 2d6 + 4 temporary hit points."],
+                     changes=[ch("n5e.dr", 16)],
+                     rules=[{"key": "heal", "on": "turnStart", "formula": "2d6 + 4", "pool": "tempHp", "who": "self", "label": "Diamond Bone Hardening"}],
+                     notes=["The DR applies only while you aren't wearing armor."])]),
+    dict(id="medical-release-aura-of-power", name="Medical Release: Aura of Power", target="self", duration=CONC,
+         versions=[V("A", ["A 10-foot radius of blue light around you: allied creatures of your choice in it get Aura of Power (+2 to saving throws against Ninjutsu); hostile creatures in it have a −2 penalty on saving throws against Ninjutsu."],
+                     aura={"radius": 10, "includeSelf": False, "amp": "jutsu-medical-release-aura-of-power-aura",
+                           "also": [{"who": "hostile", "effect": {"name": "Aura of Power: −2 to saves against Ninjutsu",
+                                     "rules": [{"key": "modifier", "selector": "save", "predicate": "against:jutsu:discipline:nin", "value": -2, "label": "Aura of Power"}]}}]},
+                     outside=True,
+                     notes=["The aura gives allies the Amp and hostile creatures the −2 penalty (not an Amp); this card itself doesn't count toward Rule of 3's."])]),
+    dict(id="medical-release-aura-of-power", key="jutsu-medical-release-aura-of-power-aura", button=False, name="Aura of Power (in the aura)", target="self", duration=CONC,
+         versions=[V("A", ["+2 to saving throws against Ninjutsu."],
+                     rules=[{"key": "modifier", "selector": "save", "predicate": "against:jutsu:discipline:nin", "value": 2, "label": "Aura of Power"}])]),
+    dict(id="wind-release-neverending-breath", name="Wind Release: Neverending Breath", target="self", duration=dict(seconds=3600, until="", concentration=True),
+         versions=[V("A", ["You don't need to breathe for up to 10 hours; you can't be suffocated or drowned.",
+                           "Immunity to jutsu with the Inhaled keyword.", "+4 to Constitution saving throws."],
+                     changes=[ch("n5e.save.con", 4)],
+                     notes=["You don't need to breathe for up to 10 hours, and can't be suffocated or drowned.",
+                            "You're immune to jutsu with the Inhaled keyword."])]),
+    dict(id="magnum-knuckle", name="Magnum Knuckle", target="self", duration=CONC,
+         versions=[V("A", ["Advantage on opportunity attacks.", "Twice per turn, your unarmed attacks deal an additional die of damage.",
+                           "Up to twice per turn, when you make an unarmed attack, the target makes a Constitution save or its speed is reduced by 15 until the end of its next turn."],
+                     rules=[{"key": "advantage", "selector": "attack", "predicate": "attack:opportunity", "label": "Magnum Knuckle"}],
+                     notes=["Twice per turn, your unarmed attacks deal one more damage die (add it in the damage dialog).",
+                            "Up to twice per turn, an unarmed attack's target makes a Constitution save (the jutsu's save button) or has −15 speed until the end of its next turn."])]),
+    dict(id="supreme-violence", name="Supreme Violence", target="self", duration=CONC,
+         versions=[V("A", ["A bonus to your AC equal to half your Taijutsu modifier.",
+                           "Violent Reprisal: when a creature would make a melee attack against you, your reaction casts a Taijutsu with a casting time of 1 action that makes no more than two attacks against it.",
+                           "You can't concentrate on any Ninjutsu or Genjutsu for the duration."],
+                     changes=[ch("system.bonuses.ac", "floor(@disciplines.tai.mod / 2)")],
+                     notes=["The AC bonus is half your Taijutsu modifier when the Amp starts.",
+                            "Violent Reprisal (reaction): when a creature would make a melee attack against you, cast a Taijutsu with a casting time of 1 action that makes no more than two attacks against it.",
+                            "You can't concentrate on any Ninjutsu or Genjutsu while it lasts."])]),
+    dict(id="tiger-lily", name="Tiger Lily", target="self", duration=CONC,
+         versions=[V("A", ["You gain 60 feet of blindsight."], changes=[ch("system.traits.senses.blindsight", 60, 4)])]),
+    dict(id="the-zone", name="The Zone", target="self", duration=CONC, onEnd="the-zone-spent",
+         buttons=[{"label": "End early (pause)", "activation": "bonus", "text": "As a bonus action: end it early. You may reactivate it as a bonus action for half the initial cost.", "end": "pause"}],
+         versions=[V("S", ["Your Weapon and Taijutsu attacks can't be reacted to, treat damage immunity as resistance and ignore resistance.",
+                           "Your movement speed is doubled and your AC is increased by 2.",
+                           "Advantage on Weapon and Taijutsu attack rolls; +1 to your Taijutsu save DC.",
+                           "You can't lose concentration on it from a failed concentration check, and can't concentrate on any other jutsu.",
+                           "End it early as a bonus action and reactivate it as a bonus action for half the initial cost; once it ends otherwise, you can't use it again until a full rest."],
+                     changes=[ch("system.attributes.speed.walk", 2, 1), ch("system.bonuses.ac", 2), ch("n5e.saveDC.tai", 1)],
+                     rules=[{"key": "advantage", "selector": "attack", "predicate": {"any": ["weapon", "jutsu:discipline:tai"]}, "label": "The Zone"}],
+                     notes=["Your Weapon and Taijutsu attacks can't be reacted to; their damage treats immunity as resistance and ignores resistance.",
+                            "Your speed is doubled (set here as your walking speed ×2).",
+                            "A failed concentration check doesn't end it. You can't concentrate on any other jutsu.",
+                            "End early (pause): the button on this Amp; reactivate it by casting it again as a bonus action for half the initial cost.",
+                            "Any other ending (its duration, losing concentration) gives you The Zone: Spent until a full rest (applied automatically)."])]),
+    dict(id="fire-release-body-of-dawn", name="Fire Release: Body of Dawn", target="self", duration=CONC,
+         versions=[V("S", ["Immunity to wind, fire, bludgeoning, piercing and slashing damage.", "Vulnerability to cold damage.",
+                           "Fire damage, or an effect of a jutsu with only the Fire Release keyword, instead heals you by half the damage it would deal.",
+                           "In water: a 5-foot radius of steam grants you partial concealment, and you take 8d6 cold damage each round you remain in it."],
+                     changes=immune("wind", "fire", *BPS) + [ch("n5e.vulnerable", "cold")],
+                     notes=["When you'd take fire damage, or suffer an effect of a jutsu with only the Fire Release keyword, regain hit points equal to half the damage it would deal instead.",
+                            "In water: a 5-foot radius of steam and bubbles gives you partial concealment; you take 8d6 cold damage each round you remain in the water."])]),
+    dict(id="medical-release-strength-of-1000", name="Medical Release: Strength of 1000", target="self", duration=MINUTE,
+         onEnd="medical-release-strength-of-1000-shock", endsWith="jutsu-medical-release-strength-of-100",
+         versions=[V("S", ["Lasts for the remainder of Strength of 100, which no longer needs concentration.",
+                           "Your [Unarmed Damage] die becomes 3d8.", "You regenerate 2d4 + 8 hit points at the start of each of your turns.",
+                           "Distortion Impact and Critical Break, once per turn each, in place of an attack from the Attack action or once in addition to a melee Taijutsu attack.",
+                           "When it ends: Strength of 1000: Shock (no recasting it, or Medical jutsu that require concentration, until a full rest)."],
+                     changes=[ch("n5e.unarmed.die", "3d8", 0)],
+                     rules=[{"key": "heal", "on": "turnStart", "formula": "2d4 + 8", "pool": "hp", "who": "self", "label": "Strength of 1000"}],
+                     notes=["Starting it frees Strength of 100 from concentration; it ends when Strength of 100 ends.",
+                            "Distortion Impact (once per turn): on a hit with a melee Unarmed or Taijutsu attack, creatures of your choice within 20 feet of the target make a Dexterity save against your Taijutsu (or Ninjutsu) DC: your unarmed damage, half on a success.",
+                            "Critical Break (once per turn): the melee Unarmed or Taijutsu attack has +2 critical threat range; on a critical hit, triple your unarmed damage dice instead.",
+                            "When it ends, you gain the condition Strength of 1000: Shock (applied automatically)."])]),
+]
+
 NOT_AMPS = {
     "Misty Hallucination": "An area attack; allies being immune only excludes them (King, AMP1f batch 1).",
     "Chakra Skin": "An Amp-less buff / stat override (King Q-F5).",
@@ -506,6 +628,11 @@ NOT_AMPS = {
     "Twin Rising Dragons": "It grants an attack action; floating is positioning (King Q-F10).",
     "Encroaching Darkness": "A darkness zone; the chosen creatures' immunity is part of the zone (King, AMP1f batch 3).",
     "Memory Domination": "It charms a foe (King, AMP1f batch 3).",
+    # Batch 4 (A and S-Rank).
+    "Demonic Instrument: Chains of Fantasia": "A genjutsu on foes, and a summon (King, AMP1f batch 4).",
+    "Moon-Fang Piercer": "An attack; Chain 3's +6 DR stays a rider on the jutsu (King, AMP1f batch 4).",
+    "Medical Release: Heal": "Instant healing (King, AMP1f batch 4).",
+    "Water Release: Water Heavens Convergence": "It grants actions and a reaction (King Q-F19).",
 }
 
 
@@ -550,7 +677,7 @@ def main():
             if choose:
                 choose = {"prompt": choose["prompt"], "count": choose.get("count", 1), "changeable": choose.get("changeable", False), "options": choose["options"]}
             aura = {"radius": v["aura"]["radius"], "who": v["aura"].get("who", "friendly"), "includeSelf": v["aura"].get("includeSelf", True),
-                    "effect": {"amp": v["aura"]["amp"]}} if v.get("aura") else {}
+                    "effect": {"amp": v["aura"]["amp"]}, **({"also": v["aura"]["also"]} if v["aura"].get("also") else {})} if v.get("aura") else {}
             rank_versions = [x["rank"] for x in j["versions"] if not x["level"]]
             if v["level"] or any(x["level"] for x in j["versions"]):
                 where = f"{v['level']}th level" if v["level"] else "1st level"
@@ -575,7 +702,9 @@ def main():
                     "series": "" if is_base else base, "level": v["level"], "rank": v["rank"] if not v["level"] else "",
                     "choose": choose or {"prompt": "", "options": []},
                     # AMP1f batch 3: buttons on the active Amp (Q-F11) and a condition when it ends (Q-F13).
-                    "buttons": j.get("buttons", []), "onEnd": {"condition": j.get("onEnd", "")}, "statuses": j.get("statuses", [])
+                    "buttons": j.get("buttons", []), "onEnd": {"condition": j.get("onEnd", "")}, "statuses": j.get("statuses", []),
+                    # AMP1f batch 4 (King Q-F17): ends with another Amp (Strength of 1000 with Strength of 100).
+                    "endsWith": j.get("endsWith", "")
                 },
                 "effects": [],
                 "flags": {"n5e": {"rules": [*v["rules"], *[note(t) for t in v["notes"]]], "amp1f": True}},
@@ -596,7 +725,7 @@ def main():
                 and not (a.get("type") == "effect" and not (a.get("effect") or {}).get("amp"))
                 and not (a.get("type") == "roll" and str(a.get("id", "")).startswith("sourceRoll") and j["id"] in ("cloak-of-shadows", "lightning-release-spark", "medical-release-grim-mask", "warriors-zone"))
                 and a.get("id") not in j.get("drop", ())]
-        button = {"id": "amp" + hashlib.md5(j["id"].encode()).hexdigest()[:13], "type": "effect", "label": j["name"],
+        button = {"id": "amp" + hashlib.md5(j["id"].encode()).hexdigest()[:13], "type": "effect", "label": j.get("label", j["name"]),
                   "effect": {"name": j["name"], "target": j["target"], "amp": base},
                   "text": "Starts the jutsu's Amp at the rank it was cast at." + (" Target the creatures first." if j["target"] == "targets" else "")}
         acts = [button] + [a for a in acts if (a.get("effect") or {}).get("amp") != base]

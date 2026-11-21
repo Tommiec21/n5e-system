@@ -57,7 +57,8 @@ export default class N5eActiveEffect extends ActiveEffect {
       img: def?.icon ?? "icons/svg/aura.svg",
       type: "condition",
       // The status id puts the condition's icon on the token and lets the HUD toggle it off.
-      statuses: [key],
+      // AMP1f batch 4: a condition card's extra statuses (Freight Train: Overheated is Incapacitated).
+      statuses: [key, ...(def?.owner && Array.isArray(def.statuses) ? def.statuses.filter(x => x !== key) : [])],
       origin,
       system: { key, ranks, sourceRank },
       // CCOND1: a condition card's rule elements ride on the effect, so the rules engine reads them

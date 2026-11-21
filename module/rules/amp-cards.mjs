@@ -74,10 +74,13 @@ export function ampDefinition(card) {
     // AMP1f: the cast rank this version starts at, and the caster's picks.
     rank: RANKS.includes(s.rank) ? s.rank : "",
     // AMP1f batch 3 (King Q-F11): buttons on the active Amp.
-    buttons: list(s.buttons).filter(b => b?.label && b?.effect).map(b => ({ label: b.label, activation: b.activation ?? "", text: b.text ?? "", effect: structuredClone(b.effect) })),
+    buttons: list(s.buttons).filter(b => b?.label && (b?.effect || b?.end)).map(b => ({ label: b.label, activation: b.activation ?? "", text: b.text ?? "",
+      ...(b.end ? { end: b.end } : { effect: structuredClone(b.effect) }) })),
     // AMP1f batch 3 (King Q-F13): a condition applied when the Amp ends.
     onEnd: s.onEnd?.condition ? { condition: s.onEnd.condition } : null,
-    statuses: list(s.statuses).filter(Boolean)
+    statuses: list(s.statuses).filter(Boolean),
+    // AMP1f batch 4 (King Q-F17): ends with another Amp (Strength of 1000 with Strength of 100).
+    endsWith: s.endsWith ?? ""
   };
   const options = list(s.choose?.options).filter(o => o?.label);
   if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
@@ -376,4 +379,32 @@ export function ampEffectView(effect, registry = {}, N5E = {}) {
     lines.length ? `<ul>${lines.map(l => `<li>${escHTML(l)}</li>`).join("")}</ul>` : "<div><i>Changes nothing by itself; see the card.</i></div>",
     effect?.disabled ? "<div><i>Switched off (Amp limit).</i></div>" : ""].filter(Boolean).join("");
   return { name, tip };
+}
+
+/* -------------------------------------------- */
+/*  Amps that end with another (AMP1f batch 4)  */
+/* -------------------------------------------- */
+
+/** The series an Amp key belongs to (its base key). */
+export const seriesOf = (key, registry = {}) => registry[key]?.series || key;
+
+/**
+ * King Q-F17: when an Amp ends, the bearer's Amps whose card ends with it end too (Strength of 1000
+ * with Strength of 100). Versions count as their series.
+ * @param {object[]} effects     the bearer's effects
+ * @param {string} endedKey      the key of the Amp that ended
+ * @returns {string[]}           ids of the effects to end
+ */
+export function ampsEndingWith(effects, endedKey, registry = {}) {
+  if ( !endedKey ) return [];
+  const series = seriesOf(endedKey, registry);
+  return list(effects).filter(e => e.type === "amp" && e.system?.key !== endedKey)
+    .filter(e => { const w = ampDefFor(e, registry)?.endsWith; return w && seriesOf(w, registry) === series; })
+    .map(e => e.id ?? e._id);
+}
+
+/** The bearer's active Amp effect of this key or series (the one an endsWith card leans on). */
+export function activeAmpOfSeries(effects, key, registry = {}) {
+  const series = seriesOf(key, registry);
+  return list(effects).find(e => e.type === "amp" && !e.disabled && e.system?.key && seriesOf(e.system.key, registry) === series) ?? null;
 }

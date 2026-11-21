@@ -60,7 +60,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:251`
+- `module/workflow/amp-cards.mjs:275`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -81,11 +81,11 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 266 | 0 | 0 | 256 | 254 | 0 |
+| amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1712 | 15 | 0 | 0 | 0 | 0 |
+| clans | 1712 | 17 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
-| conditions | 55 | 0 | 0 | 55 | 49 | 0 |
+| conditions | 58 | 0 | 0 | 57 | 51 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
 | features | 700 | 167 | 28 | 161 | 147 | 11 |
@@ -98,14 +98,14 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 124 | 142 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 14 | 74 | 0 | 26 |
+| amps | 124 | 158 | 0 | 0 | 0 | 0 |
+| clans | 0 | 0 | 16 | 71 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
-| jutsu | 0 | 0 | 37 | 15 | 0 | 0 |
+| jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **142** | **74** | **114** | **0** | **50** |
+| **Total** | **124** | **158** | **88** | **96** | **0** | **50** |
 
-### clans: 74 candidates
+### clans: 71 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -178,9 +178,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
 - **Wrath of the Dragon**: Its text names a Battle Amp.
-- A · **Boil Release: Freight Train**: Lasting bonus: "…Your speed is increased…"
-- A · **Demonic Instrument: Chains of Fantasia**: Lasting bonus: "…Your attack bonus to…"
-- A · **Lotus Nonself Connected Cannons**: Lasting bonus: "…You gain a bonus…"
 
 ### features: 25 candidates
 
@@ -209,21 +206,3 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Chakra Enhanced Combat (Combat Medic)**: Its text names a Fortitude Amp.
 - **Wolf’s Proficiency**: Lasting bonus: "…you, you can gain resistance…"
 - **Vital Conductor (Adept Medic)**: Lasting bonus: "…you cast, they gain +10…"
-
-### jutsu: 15 candidates
-
-- A · **Wind Release: Neverending Breath**: Lasting bonus: "…You gain immunity…"
-- A · **Demon Hunter**: Lasting bonus: "…your Demon you gain a +20…"
-- A · **Moon-Fang Piercer**: Lasting bonus: "…your next turn, you gain +6…"
-- A · **Overcomer**: Lasting bonus: "…you would make a Strength saving throw you gain a +1…"
-- A · **Medical Release: Aura of Power**: Lasting bonus: "…creatures of your choice in the radius when you cast this jutsu have a +2 bonus on…"
-- A · **Earth Release: Diamond Bone Hardening**: Lasting bonus: "…your turns, gain 2d6+4 temporary hit points…"
-- A · **Unlimited Pleasure**: Lasting bonus: "…you can see within range who would gain temporary hit points…"
-- A · **Magnum Knuckle**: Lasting bonus: "…you have advantage on…"
-- A · **Supreme Violence**: Lasting bonus: "…you gain a bonus…"
-- A · **Tiger Lily**: Lasting bonus: "…you gain 60 feet…"
-- S · **The Zone**: Lasting bonus: "…Your movement speed is double…"
-- S · **Medical Release: Heal**: Lasting bonus: "…You cannot reduce the cost…"
-- S · **Medical Release: Strength of 1000**: Lasting bonus: "…you strike with intense focus, making the triggering attack have a +2 bonus to…"
-- S · **Fire Release: Body of Dawn**: Lasting bonus: "…You gain immunity…"
-- S · **Water Release: Water Heavens Convergence**: Lasting bonus: "…You gain additional…"

@@ -35,7 +35,7 @@ test("AMP1f batch 1: every confirmed jutsu starts its typeless, jutsu-owned card
     assert.deepEqual(def.owner, { kind: "jutsu", id: j.system.identifier, subclass: "" });
     assert.equal(ampAuditOf(j).status, "linked", `${name} leaves the candidates`);
   }
-  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 140, "batch 1: 75; batch 2: 49 (3 in-the-aura cards); batch 3: 16");
+  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 156, "batch 1: 75; batch 2: 49 (3 in-the-aura cards); batch 3: 16; batch 4: 16 (1 in-the-aura card)");
 });
 
 test("King Q-F5 and batch 1 verdicts: rejected jutsu carry notAmp and leave the audit", () => {
@@ -185,4 +185,75 @@ test("AMP1f batch 3: n5e.vulnerable adds a damage vulnerability (the Investiture
   const { parseN5eChanges } = await import("../module/rules/change-keys.mjs");
   assert.deepEqual(parseN5eChanges([{ key: "n5e.vulnerable", value: "cold", mode: 2 }]).vulnerable, ["cold"]);
   assert.ok(registry["jutsu-fire-release-investiture-of-flame"].changes.some(c => c.key === "n5e.vulnerable" && c.value === "cold"));
+});
+
+/* AMP1f batch 4 (A and S-Rank), King 2026-11-21: Q-F15–Q-F20. */
+const BATCH4 = ["Boil Release: Freight Train", "Lotus Nonself Connected Cannons", "Demon Hunter", "Overcomer", "Unlimited Pleasure",
+  "Earth Release: Diamond Bone Hardening", "Medical Release: Aura of Power", "Wind Release: Neverending Breath", "Magnum Knuckle", "Supreme Violence",
+  "Tiger Lily", "The Zone", "Fire Release: Body of Dawn", "Medical Release: Strength of 1000"];
+const REJECTED4 = ["Demonic Instrument: Chains of Fantasia", "Moon-Fang Piercer", "Medical Release: Heal", "Water Release: Water Heavens Convergence"];
+const condCard = file => JSON.parse(fs.readFileSync(path.join(root, "packs/_source/conditions", file), "utf8"));
+
+test("AMP1f batch 4: 14 A and S-Rank jutsu start their cards; 4 marked not Amps (Q-F19 Water Heavens Convergence)", () => {
+  for ( const name of BATCH4 ) {
+    const button = jutsu[name].system.activities.find(a => a.effect?.amp);
+    assert.ok(button && registry[button.effect.amp], `${name}: its button starts a card`);
+    assert.equal(registry[button.effect.amp].ampType, "", `${name}: typeless (Q-F3)`);
+  }
+  for ( const name of REJECTED4 ) assert.ok(jutsu[name].flags?.n5e?.notAmp, `${name}: marked not an Amp`);
+  assert.match(jutsu["Water Release: Water Heavens Convergence"].flags.n5e.notAmp, /Q-F19/);
+  assert.deepEqual(["A", "S"].map(r => registry[ampVersionFor(registry, "jutsu-earth-release-diamond-bone-hardening", 20, r)].changes.find(c => c.key === "n5e.dr").value), ["14", "16"]);
+  assert.equal(jutsu["Lotus Nonself Connected Cannons"].system.activities.find(a => a.effect?.amp).label, "Maintain the cannon", "Q-F18");
+});
+
+test("King Q-F15: Aura of Power gives allies the Amp and hostile creatures a −2 on saves against Ninjutsu", async () => {
+  const { expandAuras, auraPlan } = await import("../module/rules/auras.mjs");
+  const aura = registry["jutsu-medical-release-aura-of-power"].aura;
+  assert.equal(aura.effect.amp, "jutsu-medical-release-aura-of-power-aura");
+  assert.equal(aura.also[0].who, "hostile");
+  assert.equal(registry["jutsu-medical-release-aura-of-power"].outsideLimits, true);
+  const auras = expandAuras([{ uuid: "A", actorUuid: "me", disposition: 1, aura }]);
+  assert.deepEqual(auras.map(a => [a.uuid, a.aura.who]), [["A", "friendly"], ["A#also0", "hostile"]]);
+  const near = () => 5;
+  const plan = auraPlan(auras, [{ actorUuid: "me", disposition: 1, distanceTo: near, children: [] }, { actorUuid: "ally", disposition: 1, distanceTo: near, children: [] },
+    { actorUuid: "foe", disposition: -1, distanceTo: near, children: [] }]);
+  assert.deepEqual(plan.add, [{ actorUuid: "ally", auraUuid: "A" }, { actorUuid: "foe", auraUuid: "A#also0" }], "not the caster (its allies of choice)");
+  assert.deepEqual(registry["jutsu-medical-release-aura-of-power-aura"].rules[0], { key: "modifier", selector: "save", predicate: "against:jutsu:discipline:nin", value: 2, label: "Aura of Power" });
+  assert.equal(aura.also[0].effect.rules[0].value, -2);
+});
+
+test("King Q-F16: Freight Train leaves Freight Train: Overheated, Incapacitated until the end of your next turn", async () => {
+  const { cardDefinition } = await import("../module/rules/condition-cards.mjs");
+  assert.equal(registry["jutsu-futton-boil-release-freight-train"].onEnd.condition, "boil-release-freight-train-overheated");
+  const card = condCard("boil-release-freight-train-overheated-n5eCondFrtTrOvht.json");
+  assert.deepEqual([card.name, card.system.endsAt, card._id.length], ["Freight Train: Overheated", "nextTurnEnd", 16]);
+  assert.deepEqual(cardDefinition(card).statuses, ["incapacitated"]);
+});
+
+test("King Q-F17: Strength of 1000 ends with Strength of 100 and leaves Shock until a full rest", async () => {
+  const { ampsEndingWith, activeAmpOfSeries } = await import("../module/rules/amp-cards.mjs");
+  const def = registry["jutsu-medical-release-strength-of-1000"];
+  assert.equal(def.endsWith, "jutsu-medical-release-strength-of-100");
+  assert.equal(def.onEnd.condition, "medical-release-strength-of-1000-shock");
+  assert.equal(def.duration.concentration, false);
+  const effects = [{ id: "s100", type: "amp", system: { key: "jutsu-medical-release-strength-of-100" } }, { id: "s1000", type: "amp", system: { key: "jutsu-medical-release-strength-of-1000" } },
+    { id: "other", type: "amp", system: { key: "jutsu-tiger-lily" } }];
+  assert.deepEqual(ampsEndingWith(effects, "jutsu-medical-release-strength-of-100", registry), ["s1000"]);
+  assert.deepEqual(ampsEndingWith(effects, "jutsu-tiger-lily", registry), []);
+  assert.equal(activeAmpOfSeries(effects, def.endsWith, registry).id, "s100");
+  const card = condCard("medical-release-strength-of-1000-shock-n5eCondStr1kShck.json");
+  assert.deepEqual([card.name, card.system.endsAt], ["Strength of 1000: Shock", "fullRest"]);
+});
+
+test("King Q-F20: The Zone's pause button ends it without The Zone: Spent; any other end leaves it until a full rest", () => {
+  const def = registry["jutsu-the-zone"];
+  assert.deepEqual(def.buttons.map(b => [b.label, b.end]), [["End early (pause)", "pause"]]);
+  assert.equal(def.onEnd.condition, "the-zone-spent");
+  assert.equal(condCard("the-zone-spent-n5eCondZoneSpent.json").system.endsAt, "fullRest");
+  assert.ok(def.changes.some(c => c.key === "n5e.saveDC.tai" && c.value === "1"));
+});
+
+test("AMP1f batch 4: Supreme Violence's AC is half the Taijutsu modifier; Tiger Lily 60 ft blindsight", () => {
+  assert.deepEqual(registry["jutsu-supreme-violence"].changes[0], { key: "system.bonuses.ac", value: "floor(@disciplines.tai.mod / 2)", mode: 2 });
+  assert.deepEqual(registry["jutsu-tiger-lily"].changes[0], { key: "system.traits.senses.blindsight", value: "60", mode: 4 });
 });

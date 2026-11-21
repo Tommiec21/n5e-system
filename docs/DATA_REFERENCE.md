@@ -960,3 +960,12 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `system.statuses`: token statuses the Amp effect carries while it lasts (`invisible`).
 - Condition cards: `system.endsAt: "rest"` keeps the duration and also ends on any rest.
 - Change key `n5e.vulnerable` (value: damage type) adds to `traits.vuln`.
+
+### Fields added in AMP1f batch 4 (0.73.0-alpha.1)
+
+- Amp card `system.endsWith`: an Amp key or series; the Amp ends when that Amp ends on its bearer, and starting it clears that Amp's `flags.n5e.dependentOn` and takes its jutsu off `system.combat.concentrating` (`ampsEndingWith`, `activeAmpOfSeries`).
+- Amp card `system.buttons[].end: "pause"`: the button ends the Amp with `{n5eAmpPause: true}`, so `onEnd.condition` isn't applied.
+- Aura `also: [{who, effect}]`: more creatures the same aura gives another child effect (`expandAuras`; children's `auraFrom` is `<uuid>#also<i>`).
+- Condition cards: `system.statuses` (more token statuses the condition carries) and `system.endsAt: "fullRest"` (ends only on a full rest).
+- Saves rolled from a cast card carry the jutsu's facts prefixed `against:` (`against:jutsu:discipline:nin`).
+- Activity effect values: `@disciplines.<d>.mod` and `floor()`/`ceil()` are resolved when the effect is placed.

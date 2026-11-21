@@ -14,7 +14,7 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
-import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice, ampChoiceUpdate, ampDefFor,
+import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice, ampChoiceUpdate, ampDefFor, ampsEndingWith, activeAmpOfSeries,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -155,6 +155,8 @@ export async function useAmpButton(actor, effectId, index) {
   const effect = actor.effects.get(effectId);
   const button = effect ? ampDefFor(effect, registry())?.buttons?.[index] : null;
   if ( !button ) return null;
+  // AMP1f batch 4 (King Q-F20): end it early without its aftermath (The Zone can be reactivated).
+  if ( button.end === "pause" ) { await effect.delete({ n5eAmpPause: true }); return effect.name; }
   const { applyActivityEffect } = await import("./trackers.mjs");
   return applyActivityEffect(actor, { ...button.effect, target: "self" }, { label: button.label, item: { name: effect.name, img: effect.img, id: null, uuid: effect.uuid }, targetActors: [actor] });
 }
@@ -165,8 +167,30 @@ export async function placeAmp(target, key, { applier = null, item = null, choic
   if ( !def ) return null;
   const { applyActivityEffect } = await import("./trackers.mjs");
   const source = item ?? { img: def.icon, uuid: def.card, name: def.label, id: null, system: { description: def.summary } };
+  if ( def.endsWith ) await releaseFor(target, def);
   await applyActivityEffect(applier ?? target, withChoice(ampEffectPlan(key, def), def, choice), { label: def.label, item: source, targetActors: [target] });
   return { applied: target.name, key };
+}
+
+/**
+ * AMP1f batch 4 (King Q-F17): an Amp that ends with another (Strength of 1000 with Strength of 100)
+ * frees that Amp from its concentration: it keeps its duration, and the jutsu leaves the
+ * concentration list. Without that Amp on the bearer, a warning (the jutsu requires it).
+ */
+async function releaseFor(target, def) {
+  const other = activeAmpOfSeries(target.effects, def.endsWith, registry());
+  if ( !other ) {
+    ui.notifications.warn(`${def.label}: ${target.name} isn't under ${registry()[def.endsWith]?.label ?? def.endsWith}.`);
+    return;
+  }
+  const dep = other.flags?.n5e?.dependentOn;
+  if ( !dep ) return;
+  await other.update({ "flags.n5e.dependentOn": null });
+  const caster = dep.actorUuid === target.uuid ? target : await fromUuid(dep.actorUuid).catch(() => null);
+  const held = caster?.system?.combat?.concentrating ?? [];
+  if ( caster && held.includes(dep.itemId) && canModify(game.user, caster) ) {
+    await caster.update({ "system.combat.concentrating": held.filter(id => id !== dep.itemId) });
+  }
 }
 
 /** End an Amp (by effect id or card key). The cooldown starts (deleteActiveEffect hook). */
@@ -330,9 +354,17 @@ export function registerAmpCards() {
     const key = effect.type === "amp" ? effect.system?.key : null;
     const after = key ? registry()[key]?.onEnd?.condition : null;
     const actor = effect.parent;
-    if ( !after || options?.n5eAmpSwap || !(actor instanceof Actor) || !isResponsible(actor) ) return;
+    if ( !after || options?.n5eAmpSwap || options?.n5eAmpPause || !(actor instanceof Actor) || !isResponsible(actor) ) return;
     const { applyConditionCard } = await import("./condition-cards.mjs");
     await applyConditionCard(actor, after, { applier: actor }).catch(e => console.warn("n5e | Amp aftermath", e));
+  });
+  // AMP1f batch 4 (King Q-F17): Amps that end with this one end too (each leaves its own aftermath).
+  Hooks.on("deleteActiveEffect", async (effect, options) => {
+    const key = effect.type === "amp" ? effect.system?.key : null;
+    const actor = effect.parent;
+    if ( !key || options?.n5eAmpSwap || !(actor instanceof Actor) || !isResponsible(actor) ) return;
+    const ids = ampsEndingWith(actor.effects, key, registry()).filter(id => actor.effects.has(id));
+    if ( ids.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", ids).catch(e => console.warn("n5e | Amp ends with", e));
   });
   // The cooldown starts when an Amp card's effect ends, on whoever starts it.
   Hooks.on("deleteActiveEffect", async (effect, options, userId) => {

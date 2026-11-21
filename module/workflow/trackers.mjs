@@ -351,7 +351,10 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // ENG1a: and the caster's save DCs (@dc.nin), so an effect on another creature keeps the caster's numbers.
   const scale = v => v.replace(/@scale\.([\w.]+)/g, (m, p) => String(p.split(".").reduce((o, k) => o?.[k], rollData.scale) ?? 0))
     .replace(/@dc\.(nin|tai|gen|buki)\b/g, (m, d) => String(actor.system?.disciplines?.[d === "buki" ? "tai" : d]?.dc ?? 10));
-  const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))), actor);
+  // AMP1f batch 4: "@disciplines.tai.mod" is the caster's discipline modifier when the effect is placed
+  // (Supreme Violence: + half your Taijutsu modifier to AC, "floor(@disciplines.tai.mod / 2)").
+  const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))
+    .replace(/@disciplines\.(\w+)\.mod/g, (m, d) => String(Number(actor?.system?.disciplines?.[d]?.mod) || 0))), actor);
   const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");
@@ -385,7 +388,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   const now = nowTurn();
   const changes = (eff.changes ?? []).map(c => {
     const v = sub(c.value);
-    return { key: c.key, mode: c.mode ?? 2, value: /^[-+*/\d\s().]+$/.test(v) ? String(evalNumber(v)) : v };
+    return { key: c.key, mode: c.mode ?? 2, value: /^(?:[-+*/\d\s().]|floor|ceil)+$/.test(v) ? String(evalNumber(v)) : v };
   });
   // Duration: the given seconds; otherwise 2 rounds for turn-ended effects (a safety net if the turn
   // hook never runs, e.g. out of combat) and 1 minute for the rest.

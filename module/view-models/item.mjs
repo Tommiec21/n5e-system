@@ -256,7 +256,7 @@ const DETAILS = {
     section("Rules", [
       F.tags(src, "tags", "Counts as", { physical: "Physical", mental: "Mental", sensory: "Sensory", elemental: "Elemental", fatigue: "Fatigue" }),
       F.num(src, "maxRanks", "Max ranks", { small: true, placeholder: "none" }),
-      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn", rest: "After its duration, or any rest, whichever comes first" }),
+      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn", rest: "After its duration, or any rest, whichever comes first", fullRest: "A full rest (no other end)" }),
       F.check(src, "persists", "Persists"),
       F.num(src, "initiativeShift", "Initiative change", { small: true }),
       F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),
@@ -312,7 +312,8 @@ const DETAILS = {
       F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
       F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." }),
       F.text(src, "series", "Version of", { placeholder: "base Amp identifier", hint: "The identifier of the Amp this is a stronger version of. Blank: not a version." }),
-      F.num(src, "level", "From level", { small: true, hint: "The character level this version starts at. A character gets the highest version their level reaches." })
+      F.num(src, "level", "From level", { small: true, hint: "The character level this version starts at. A character gets the highest version their level reaches." }),
+      F.text(src, "endsWith", "Ends with", { placeholder: "another Amp's identifier", hint: "This Amp ends when that Amp ends, and starting it frees that Amp from concentration. Blank: none." })
     ], { collapsed: true, structured: true })
   ],
   background: src => [

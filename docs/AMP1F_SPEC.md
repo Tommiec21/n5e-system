@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 built in 0.72.0-alpha.1. Batch 4 (A and S) proposed, awaiting King's answers.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 built in 0.72.0-alpha.1. Batch 4 built in 0.73.0-alpha.1: the review is complete.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -189,7 +189,11 @@ All typeless (Q-F3). "Cards" counts the rank versions (Q-F1).
 
 Batch 4 tally: 14 Amps as 16 cards, 4 not Amps.
 
-### Questions for batch 4
+### King's answers for batch 4 (2026-11-21)
+
+- **Q-F15:** yes, the −2 on hostile creatures is placed by the aura (not an Amp). **Q-F16:** yes, Freight Train: Overheated. **Q-F17:** yes (ends with Strength of 100), yes (Strength of 1000: Shock until a full rest), and "both" is a text issue. **Q-F18:** yes, an Amp from a "Maintain the cannon" button. **Q-F19:** agreed, not an Amp. **Q-F20:** correct.
+
+### Questions for batch 4 (as asked)
 
 - **Q-F15 Aura of Power's −2:** the hostile creatures in the aura get a penalty effect (−2 to saves against Ninjutsu, not an Amp), placed by the aura like the allies' card. Agree?
 - **Q-F16 Freight Train's Overheat** (Incapacitated until the end of your next turn, when it ends): like Strength of 100 (Q-F13), a unique condition "Freight Train: Overheated" applied when the Amp ends?
@@ -200,6 +204,11 @@ Batch 4 tally: 14 Amps as 16 cards, 4 not Amps.
 - **Q-F18 Lotus Nonself Connected Cannons:** is the maintained cannon (speed 0, +10 DR, can't be moved, Prone or Stunned) an Amp, started from a "Maintain the cannon" button after the first beam?
 - **Q-F19 Water Heavens Convergence** (Water Drill and Watery Chains as Actions, Water Armor as a reaction): not an Amp, as with Twin Rising Dragons (Q-F10)?
 - **Q-F20 The Zone's reuse:** "You can end this jutsu early as a bonus action, and you may reactivate it as a bonus action, spending half of the initial cost. Once this jutsu ends you cannot use this jutsu again until you finish a full rest." Claude's reading: ending it with the bonus action pauses it (reactivate for half the cost); any other end (duration, concentration) uses it up until a full rest. Right?
+
+## Text issues (for the errata list)
+
+- Plasma Release: Light Binding Step: the A-Rank upcast line mentions "the special reaction granted by this jutsu"; the jutsu grants none (King Q-F14: a mistake).
+- Medical Release: Strength of 1000: "jutsu with both the Medical keyword that requires concentration": "both" is a leftover word (King Q-F17).
 
 ## Progress log
 
@@ -212,3 +221,4 @@ Batch 4 tally: 14 Amps as 16 cards, 4 not Amps.
 - 2026-11-20 King: Q-F10 not an Amp, Q-F11 yes (button), Q-F12 yes, Q-F13 a unique condition, Q-F14 show the full jutsu text. Claude: batch 3 built (0.72.0-alpha.1): 11 jutsu as 16 cards, 6 not Amps; Amp buttons, Amp statuses, a condition when an Amp ends (Strength of 100: Overexerted), conditions ending on a rest, n5e.vulnerable. Light Binding Step's A-Rank line: full text shown to King, awaiting his call.
 - 2026-11-21 King: Q-F14, Light Binding Step's A-Rank reaction line is a mistake and isn't there. Claude: no card change needed; logged in the text-issues list.
 - 2026-11-21 King: "Next batch." Claude: batch 4 (A and S, 18 jutsu) proposed with Q-F15–Q-F20: 14 Amps as 16 cards, 4 not Amps.
+- 2026-11-21 King: Q-F15–Q-F20 answered; "Build the batch." Claude: batch 4 built (0.73.0-alpha.1): 14 jutsu as 16 cards, 4 not Amps; Amps ending with another, a pause button, aura second groups, conditions with statuses and a full-rest ending, saves carrying what they're against. The AMP1f review is complete.

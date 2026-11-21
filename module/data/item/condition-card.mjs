@@ -13,7 +13,9 @@
  *              this; "all:damage:fire,damage:earth" needs every one
  *   seconds    its duration in seconds when not the default 1 minute (0: default)
  *   endsAt     "" (1 minute unless persists) | "turnEnd" (the end of its turn) | "nextTurnEnd" | "rest" (its
- *              duration, or any rest, whichever comes first; AMP1f batch 3)
+ *              duration, or any rest, whichever comes first; AMP1f batch 3) | "fullRest" (only a full rest;
+ *              AMP1f batch 4, Strength of 1000: Shock)
+ *   statuses   more token statuses it carries (AMP1f batch 4: Freight Train: Overheated is Incapacitated)
  *   resave     an end-of-turn save that ends it: ability, and the DC (a fixed dc, or the applier's DC for the
  *              source discipline: tai, nin, gen, buki)
  *   initiativeShift  each time it is applied in combat, the creature's initiative changes by this; the
@@ -43,6 +45,7 @@ export class ConditionCardData extends TDM() {
       seconds: S.int(0, { min: 0 }),
       immunityFrom: S.arr(S.str()),
       changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })),
+      statuses: S.arr(S.str()),
       resave: S.obj({ ability: S.str(), source: S.str(), dc: S.num(null, { nullable: true }) }),
       turnStartDamage: S.obj({ die: S.str(), type: S.str(), perRank: S.bool() }),
       perRank: object(),

@@ -1,0 +1,114 @@
+{
+  "_id": "n5eAmpdbeae2c65f",
+  "name": "Boil Release: Freight Train",
+  "type": "amp",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 105300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-futton-boil-release-freight-train",
+    "description": "<p><b>Boil Release: Freight Train</b> · cast at A-Rank to S-Rank · no type</p><p>Relentless Motion: your speed is increased by +30 feet.</p><p>Impact Engine: once per turn, when you deal [Unarmed Damage] or [Weapon Damage] to a creature, it makes a Strength save: on a failure it is knocked Prone, Bruised and gains a rank of Scald; on a success it is pushed 5 feet.</p><p>Unstoppable Force: immunity to Prone, Slowed, Shaken and Grappled; you can't be moved against your will and difficult terrain doesn't affect you.</p><p>Overheat: when it ends, Freight Train: Overheated (Incapacitated until the end of your next turn).</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5234; contextual rules require adjudication."
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "futton-boil-release-freight-train",
+      "subclass": ""
+    },
+    "summary": "Relentless Motion: your speed is increased by +30 feet. Impact Engine: once per turn, when you deal [Unarmed Damage] or [Weapon Damage] to a creature, it makes a Strength save: on a failure it is knocked Prone, Bruised and gains a rank of Scald; on a success it is pushed 5 feet. Unstoppable Force: i",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "30",
+        "mode": 2
+      },
+      {
+        "key": "n5e.conditionImmune",
+        "value": "slowed",
+        "mode": 2
+      },
+      {
+        "key": "n5e.conditionImmune",
+        "value": "shaken",
+        "mode": 2
+      },
+      {
+        "key": "n5e.stateImmune",
+        "value": "prone",
+        "mode": 2
+      },
+      {
+        "key": "n5e.stateImmune",
+        "value": "grappled",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": "boil-release-freight-train-overheated"
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Impact Engine (once per turn): when you deal [Unarmed Damage] or [Weapon Damage] to a creature, it makes a Strength save. Failure: knocked Prone, Bruised and a rank of Scald. Success: pushed 5 feet."
+        },
+        {
+          "key": "note",
+          "text": "You can't be moved against your will, and difficult terrain doesn't affect you."
+        },
+        {
+          "key": "note",
+          "text": "When it ends, you gain the condition Freight Train: Overheated (applied automatically)."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpdbeae2c65f"
+}

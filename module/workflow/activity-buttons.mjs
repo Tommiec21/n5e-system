@@ -454,9 +454,13 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       let rolled = 0;
       // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.
       const immune = await stimuliImmune(message, targets);
+      // AMP1f batch 4 (King Q-F15): the saver's rules can name what it saves against
+      // ("against:jutsu:discipline:nin": Aura of Power's saves against Ninjutsu).
+      const against = (await castFacts(message)).map(f => `against:${f}`);
+      const saveSpec = t => { const sp = rollSpec(t, "save", d.ability); return against.length ? { ...sp, facts: [...(sp.facts ?? []), ...against] } : sp; };
       // Several creatures: one roll dialog for the group (King Q-R2).
       const rollers = targets.filter(t => t.isOwner && !immune.has(t));
-      const prepared = await groupRollChoice(rollers.map(t => ({ actor: t, spec: rollSpec(t, "save", d.ability) })),
+      const prepared = await groupRollChoice(rollers.map(t => ({ actor: t, spec: saveSpec(t) })),
         `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}`);
       if ( prepared === null ) return null;
       for ( const t of targets ) {
@@ -466,7 +470,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
             content: `<div class="n5e-roll-card"><b>${esc(t.name)}: immune to ${esc(d.label)}</b><div class="note">${esc(immune.get(t).join(", "))}</div></div>` });
           continue;
         }
-        const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
+        const spec = { ...saveSpec(t), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
         // What a failure inflicts becomes Apply buttons on the save card (not automatic: many jutsu
         // only inflict under conditions in their text). With a resave, the applied condition remembers
         // the save so the end-of-turn card can offer it again (workflow/trackers.mjs).

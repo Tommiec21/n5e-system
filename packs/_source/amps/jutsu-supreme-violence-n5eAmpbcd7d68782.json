@@ -1,0 +1,94 @@
+{
+  "_id": "n5eAmpbcd7d68782",
+  "name": "Supreme Violence",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 106300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-supreme-violence",
+    "description": "<p><b>Supreme Violence</b> · cast at A-Rank to S-Rank · no type</p><p>A bonus to your AC equal to half your Taijutsu modifier.</p><p>Violent Reprisal: when a creature would make a melee attack against you, your reaction casts a Taijutsu with a casting time of 1 action that makes no more than two attacks against it.</p><p>You can't concentrate on any Ninjutsu or Genjutsu for the duration.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5064",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "supreme-violence",
+      "subclass": ""
+    },
+    "summary": "A bonus to your AC equal to half your Taijutsu modifier. Violent Reprisal: when a creature would make a melee attack against you, your reaction casts a Taijutsu with a casting time of 1 action that makes no more than two attacks against it. You can't concentrate on any Ninjutsu or Genjutsu for the d",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "floor(@disciplines.tai.mod / 2)",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "The AC bonus is half your Taijutsu modifier when the Amp starts."
+        },
+        {
+          "key": "note",
+          "text": "Violent Reprisal (reaction): when a creature would make a melee attack against you, cast a Taijutsu with a casting time of 1 action that makes no more than two attacks against it."
+        },
+        {
+          "key": "note",
+          "text": "You can't concentrate on any Ninjutsu or Genjutsu while it lasts."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpbcd7d68782"
+}

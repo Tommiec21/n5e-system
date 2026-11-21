@@ -1,0 +1,95 @@
+{
+  "_id": "n5eAmpc06f928122",
+  "name": "Overcomer",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 105600,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-overcomer",
+    "description": "<p><b>Overcomer</b> · cast at A-Rank to S-Rank · no type</p><p>+1d4 to your Strength saving throws.</p><p>While at half your hit points or less: 10 temporary hit points at the beginning of each turn, and effects that would move you against your will fail (their damage still applies).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 6465",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "overcomer",
+      "subclass": ""
+    },
+    "summary": "+1d4 to your Strength saving throws. While at half your hit points or less: 10 temporary hit points at the beginning of each turn, and effects that would move you against your will fail (their damage still applies).",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.save.str",
+        "value": "1d4",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "predicate": "self:bloodied",
+          "formula": "10",
+          "pool": "tempHp",
+          "who": "self",
+          "label": "Overcomer"
+        },
+        {
+          "key": "note",
+          "text": "While at half your hit points or less, effects that would move you against your will fail; damage they deal still applies."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpc06f928122"
+}

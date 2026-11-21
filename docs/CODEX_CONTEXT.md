@@ -535,3 +535,4 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 ## AMP1f batch 1 — Claude, 2026-11-20 (0.70.0-alpha.1)
 - Jutsu Amps: owner kind `jutsu`, typeless (Hijutsu too, King Q-F2/Q-F3), a card per cast rank (`system.rank`, King Q-F1), picked by the cast card's rank. Options menu: `system.choose` on the card.
 - Rebuild with tools/content/build-jutsu-amp-cards.py after the other Amp builders. Rejected jutsu carry `flags.n5e.notAmp`.
+- Batch 4 (0.73.0-alpha.1) finishes AMP1f's review (all 4 batches). New: `system.endsWith` on Amp cards (ends with another Amp, frees its concentration), a pause button (`end: "pause"`, no aftermath), aura `also` groups (rules/auras.mjs `expandAuras`), condition cards' `statuses` and `endsAt: "fullRest"`, and saves against a cast card carry `against:<jutsu fact>`. Codex's Journal Desk files untouched.

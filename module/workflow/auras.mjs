@@ -3,7 +3,7 @@
  * when tokens move, effects change and turns change. AMP1f: a child naming an Amp card ({amp: key})
  * is that card's Amp effect on each creature in range.
  */
-import { auraPlan } from "../rules/auras.mjs";
+import { auraPlan, expandAuras } from "../rules/auras.mjs";
 
 let pending = null;
 
@@ -18,8 +18,8 @@ export async function syncAuras() {
   if ( !game.users.activeGM?.isSelf || !canvas?.ready ) return;
   const tokens = canvas.tokens.placeables.filter(t => t.actor);
   const byActor = new Map(tokens.map(t => [t.actor.uuid, t]));
-  const auras = tokens.flatMap(t => t.actor.effects.filter(e => !e.disabled && e.flags?.n5e?.aura)
-    .map(e => ({ uuid: e.uuid, actorUuid: t.actor.uuid, disposition: t.document.disposition, aura: e.flags.n5e.aura, effect: e })));
+  const auras = expandAuras(tokens.flatMap(t => t.actor.effects.filter(e => !e.disabled && e.flags?.n5e?.aura)
+    .map(e => ({ uuid: e.uuid, actorUuid: t.actor.uuid, disposition: t.document.disposition, aura: e.flags.n5e.aura, effect: e }))));
   const creatures = tokens.map(t => ({
     actorUuid: t.actor.uuid, disposition: t.document.disposition,
     distanceTo: uuid => { const o = byActor.get(uuid); return o ? canvas.grid.measurePath([t.center, o.center]).distance : Infinity; },

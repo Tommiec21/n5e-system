@@ -22,6 +22,7 @@
  *               count: how many picks (Adaptive Biology at A-Rank: 2); changeable: a Change button on the
  *               active Amp reopens the menu (Breath of Sound: Score's tempo, King Q-F9)
  *   owner kind "jutsu" (AMP1f): only casting that jutsu starts it (id: the jutsu's identifier)
+ *   endsWith    AMP1f batch 4: ends with another Amp on the bearer and frees that Amp's concentration
  *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
 import * as S from "../fields/shared.mjs";
@@ -61,11 +62,16 @@ export class AmpCardData extends TDM() {
         duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }), tempHp: S.str() })) }),
       // AMP1f batch 3 (King Q-F11): buttons on the active Amp in the Amps panel (Blade Heart's Parrying
       // stance); each applies its effect (an activity effect: changes, expires...) to the Amp's bearer.
-      buttons: S.arr(S.obj({ label: S.str(), activation: S.str(), text: S.str(), effect: object() })),
+      // AMP1f batch 4 (King Q-F20): a button can instead end the Amp early without its aftermath
+      // (end: "pause", The Zone: it can be reactivated).
+      buttons: S.arr(S.obj({ label: S.str(), activation: S.str(), text: S.str(), effect: object(), end: S.str() })),
       // AMP1f batch 3 (King Q-F13): a condition card applied to the bearer when the Amp ends.
       onEnd: S.obj({ condition: S.str() }),
       // AMP1f batch 3 (King Q-F12): token statuses the Amp carries while it lasts (invisible).
-      statuses: S.arr(S.str())
+      statuses: S.arr(S.str()),
+      // AMP1f batch 4 (King Q-F17): the Amp ends when this Amp (a key or series) ends on its bearer, and
+      // starting it releases the concentration that one was held by (Strength of 1000 on Strength of 100).
+      endsWith: S.str()
     };
   }
 }

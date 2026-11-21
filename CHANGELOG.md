@@ -1,3 +1,20 @@
+## 0.73.0-alpha.1 — AMP1f batch 4: jutsu Amps (A and S-Rank)
+
+King 2026-11-21: Q-F15 Aura of Power's −2 goes on hostile creatures through the aura; Q-F16 Freight Train leaves a condition when it ends; Q-F17 Strength of 1000 ends with Strength of 100 and leaves a shock until a full rest; Q-F18 the maintained Lotus cannon is an Amp; Q-F19 Water Heavens Convergence isn't; Q-F20 The Zone pauses when you end it early. This finishes the AMP1f review.
+
+- **14 A and S-Rank jutsu now start Amp cards (16 cards):** Freight Train, Lotus Nonself Connected Cannons ("Maintain the cannon"), Demon Hunter, Overcomer, Unlimited Pleasure, Diamond Bone Hardening (A, S), Aura of Power (plus "in the aura"), Neverending Breath, Magnum Knuckle, Supreme Violence, Tiger Lily, The Zone, Body of Dawn, Strength of 1000.
+- **Three new conditions** (Conditions compendium, Jutsu folder), applied when the Amp ends:
+  - **Freight Train: Overheated:** Incapacitated until the end of your next turn.
+  - **Strength of 1000: Shock:** no Strength of 1000, or Medical jutsu that need concentration, until a full rest (a reminder; casting isn't blocked).
+  - **The Zone: Spent:** no The Zone until a full rest.
+- **Amps that end with another** (new): Strength of 1000 frees Strength of 100 from concentration and ends when it ends; both leave their own condition.
+- **A pause button on an Amp** (new): The Zone's **End early (pause)** ends it without The Zone: Spent, so you can reactivate it.
+- **Auras with a second group** (new): Aura of Power gives allies its Amp (+2 to saves against Ninjutsu) and hostile creatures a −2 to those saves.
+- **Saves know what they're against** (new): a save rolled from a jutsu's card carries that jutsu's facts, so effects can name "saves against Ninjutsu".
+- **Conditions:** can carry extra statuses (Overheated is Incapacitated) and can end only on a full rest.
+- Effect values can use your discipline modifier when placed (Supreme Violence: half your Taijutsu modifier to AC).
+- **4 jutsu marked not Amps:** Chains of Fantasia, Moon-Fang Piercer, Heal, Water Heavens Convergence.
+
 ## 0.72.0-alpha.1 — AMP1f batch 3: jutsu Amps (B-Rank)
 
 King 2026-11-20: Q-F10 Twin Rising Dragons isn't an Amp; Q-F11 a Parrying stance button on Blade Heart's Amp; Q-F12 Misleading Duplicate's invisibility is an Amp; Q-F13 Strength of 100 leaves a condition of its own when it ends.
