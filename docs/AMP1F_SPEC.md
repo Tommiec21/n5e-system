@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) proposed; waiting for King's verdicts, Q-F10–Q-F12 and the go-ahead.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) proposed; King answered Q-F10–Q-F12; waiting for the go-ahead.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -152,7 +152,15 @@ Batch 3 tally: 11 Amps as 17 cards (Misleading Duplicate included), 6 not Amps.
 
 New engine piece: a vulnerability change (`n5e.vulnerable`), for the two Investitures; damage already doubles for vulnerable types.
 
-### Questions for batch 3
+### King's answers for batch 3 (2026-11-20)
+
+- **Q-F10 Misleading Duplicate:** it gives Invisibility. Claude's reading: not an Amp; its button applies the Invisible status (ending when you attack or cast), and the double stays at the table.
+- **Q-F11 Blade Heart:** not an Amp. The Parrying stance is a separate button (+2 AC and Dexterity saves until the start of your next turn), and the critical-hit Bleed is baked into the jutsu's own effect.
+- **Q-F12 Strength of 100's aftermath:** applied automatically when the Amp ends, as its own condition card, **Strength of 100 Aftermath** (disadvantage on Strength checks for 1 hour or until a short rest).
+
+Revised tally: 9 Amps as 15 cards, 8 not Amps (Blade Heart and Misleading Duplicate get their own buttons instead).
+
+### Questions for batch 3 (answered)
 
 - **Q-F10 Misleading Duplicate:** invisibility until you attack or cast, plus a double you control and can sense through. Is a lasting status like Invisible an Amp?
 - **Q-F11 Blade Heart:** the Parrying stance (+2 AC and Dexterity saves) lasts only until the start of your next turn, so under the Amp definition it isn't an Amp. Keep it as its own button that applies a short effect, with the Amp holding the critical-hit Bleed for the jutsu's duration?
@@ -166,3 +174,4 @@ New engine piece: a vulnerability change (`n5e.vulnerable`), for the two Investi
 - 2026-11-20 King: "Next batch." Claude: batch 2 (C-Rank, 25 jutsu) proposed with Q-F6–Q-F9 (batch sizes corrected: C 25, A and S 18).
 - 2026-11-20 King: Q-F6 an aura that applies the Amp, Q-F7 two picks, Q-F8 Heated Body an Amp-less buff, Q-F9 yes; "Build". Claude: batch 2 built (0.71.0-alpha.1): 17 jutsu as 49 cards (3 are the "in the aura" cards the auras apply), 8 marked not Amps. Reading of Q-F6: each creature in the aura (the caster too) gets the Amp card, and it counts as theirs; the aura card on the caster is outside the limits. Jolt got a menu for Overcharge (d8 or d10 temporary hit points). Next: batch 3 (B-Rank, 17 jutsu).
 - 2026-11-20 King: "Next Batch." Claude: batch 3 (B-Rank, 17 jutsu) proposed with Q-F10–Q-F12.
+- 2026-11-20 King: Q-F10 it gives Invisibility, Q-F11 Blade Heart isn't an Amp (separate stance button, Bleed in its own effect), Q-F12 the aftermath is a condition card applied automatically. Claude: batch 3 revised; waiting for the go-ahead.
