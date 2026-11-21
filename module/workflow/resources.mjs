@@ -3,6 +3,7 @@ import { withActorLock } from "./commands.mjs";
 import { resourceChange } from "../rules/resources.mjs";
 import { esc } from "../view-models/common.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
+import { stampGain, stampSpend } from "../rules/pool-expiry.mjs";
 
 /**
  * Pay an activity's pool cost; roll the pool's die when asked (Superiority Dice: d8).
@@ -51,7 +52,9 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
   // gain: the button adds to the pool instead (Carnage, Momentum, Blight, Mental Refocus...), capped at its max.
   if ( cost.gain ) {
     const value = nextValue;
-    await actor.update({ [`system.resources.${cost.pool}.value`]: value });
+    // King Q-E6: units that last a while remember when they were gained.
+    const stamps = pool.lifetime ? { [`flags.n5e.poolStamps.${cost.pool}`]: stampGain(actor.flags?.n5e?.poolStamps?.[cost.pool], value - (pool.value ?? 0), game.time.worldTime) } : {};
+    await actor.update({ [`system.resources.${cost.pool}.value`]: value, ...stamps });
     ui.notifications.info(`${pool.label || cost.pool}: ${value} / ${pool.maxValue ?? 0}`);
     return { roll: null, amount, gained: true };
   }
@@ -59,7 +62,8 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
     ui.notifications.warn(`Not enough ${pool.label || cost.pool} (${pool.value ?? 0} / ${amount}).`);
     return null;
   }
-  await actor.update({ [`system.resources.${cost.pool}.value`]: nextValue });
+  const spent = pool.lifetime ? { [`flags.n5e.poolStamps.${cost.pool}`]: stampSpend(actor.flags?.n5e?.poolStamps?.[cost.pool], amount) } : {};
+  await actor.update({ [`system.resources.${cost.pool}.value`]: nextValue, ...spent });
   // FIN2b: a chakra-like resource (White Chakra, Calories, Sage Chakra...) ends Suppress Chakra.
   if ( pool.countsAsChakraSpend && amount > 0 ) await (await import("./jutsu-defense.mjs")).endSuppression(actor);
   if ( !cost.roll || !pool.die || !amount ) return { roll: null, amount };
@@ -81,5 +85,30 @@ export async function choosePoolCost(actor, cost) {
   if ( amount == null ) return null;
   if ( !Number.isSafeInteger(amount) || amount < 1 || amount > cap ) throw new Error("Choose a whole amount within the available resource limit.");
   return { ...cost, choose: false, amount };
+}
+
+/**
+ * King Q-E6: drop pool units older than their pool's lifetime, for every actor (the active GM, when
+ * world time moves: combat rounds and time passing).
+ */
+export async function expirePoolUnits() {
+  if ( !game.users?.activeGM?.isSelf ) return;
+  const { expireStamps } = await import("../rules/pool-expiry.mjs");
+  const now = game.time.worldTime;
+  const actors = [...game.actors, ...(canvas?.scene?.tokens ?? []).filter(t => !t.actorLink && t.actor).map(t => t.actor)];
+  for ( const actor of actors ) {
+    const all = actor.flags?.n5e?.poolStamps;
+    if ( !all ) continue;
+    const update = {};
+    for ( const [id, stamps] of Object.entries(all) ) {
+      const pool = actor.system.resources?.[id];
+      if ( !pool?.lifetime ) continue;
+      const out = expireStamps(stamps, { value: pool.value ?? 0, now, lifetime: pool.lifetime });
+      if ( out.stamps.length === (stamps ?? []).length && out.value === (pool.value ?? 0) ) continue;
+      update[`flags.n5e.poolStamps.${id}`] = out.stamps;
+      if ( out.dropped ) update[`system.resources.${id}.value`] = out.value;
+    }
+    if ( Object.keys(update).length ) await actor.update(update);
+  }
 }
 

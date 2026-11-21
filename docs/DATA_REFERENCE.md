@@ -1011,3 +1011,4 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Save `dc.source: "highest"` and attack `discipline: "highest"`: the best casting discipline's DC or attack bonus.
 - Summoner links: `@rankValue` (the summoning jutsu's cast rank, D 1 ... S 5; 0 otherwise).
 - Stance `system.unarmedNoMod` (0.79.1-alpha.1): its [Unarmed Damage] adds no ability modifier.
+- Pool `lifetime` (seconds, 0.79.2-alpha.1): each unit lasts that long unless spent; gain times in the actor's `flags.n5e.poolStamps.<id>` (oldest first, spent first). Rules: `rules/pool-expiry.mjs`.

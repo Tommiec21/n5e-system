@@ -79,3 +79,16 @@ test("King Q-E7: Ballistic Knuckle's Unarmed Damage adds no ability modifier", a
   const spec = unarmedSpec(actor);
   assert.deepEqual([spec.die, spec.type, spec.mod, spec.formula], ["2d8", "force", 0, "2d8"]);
 });
+
+test("King Q-E6: Primes and Pressure last 1 minute each unless spent (oldest spent first)", async () => {
+  const { stampGain, stampSpend, expireStamps } = await import("../module/rules/pool-expiry.mjs");
+  let stamps = stampGain([], 2, 100);
+  stamps = stampGain(stamps, 1, 130);
+  assert.deepEqual(stampSpend(stamps, 1), [100, 130], "spending uses the oldest");
+  assert.deepEqual(expireStamps(stamps, { value: 3, now: 159, lifetime: 60 }), { stamps: [100, 100, 130], dropped: 0, value: 3 });
+  assert.deepEqual(expireStamps(stamps, { value: 3, now: 160, lifetime: 60 }), { stamps: [130], dropped: 2, value: 1 });
+  assert.deepEqual(expireStamps(stamps, { value: 1, now: 120, lifetime: 60 }).stamps, [130], "a value lowered by hand drops the oldest");
+  const primes = item("bakuton", "bakuton-priming-cataclysm").system.resourcePools[0];
+  const pressure = item("futton", "futton-broiling-rampart").system.resourcePools[0];
+  assert.deepEqual([primes.lifetime, primes.recovery, pressure.lifetime, pressure.recovery], [60, [], 60, []]);
+});

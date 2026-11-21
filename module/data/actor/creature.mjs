@@ -237,6 +237,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       this.resources[def.id] = {
         ...def, ...(stored ?? {}), label: stored?.label || def.label, max: stored?.max || def.max,
         recovery: stored?.recovery?.length ? stored.recovery : def.recovery,
+        // King Q-E6: the item's unit lifetime wins over a stored 0.
+        lifetime: def.lifetime || stored?.lifetime || 0,
         value: stored ? stored.value : null, fromItem: def.source, startsFull
       };
     }

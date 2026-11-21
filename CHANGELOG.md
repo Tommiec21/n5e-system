@@ -1,3 +1,10 @@
+## 0.79.2-alpha.1 — Primes and Pressure last 1 minute
+
+King 2026-11-21 (Q-E6): "1 minute cleanse unless spent."
+
+- **Primes (Bakuton) and Pressure (Futton):** each one lasts 1 minute from when you gain it, unless you spend it first. Spending uses the oldest. They no longer empty at the start and end of combat.
+- **Pools can now have a lifetime** (`lifetime`, in seconds): the GM's client drops expired units as world time passes (combat rounds and time passing).
+
 ## 0.79.1-alpha.1 — Bakuton: two Hijutsu of their own; Ballistic Knuckle
 
 King 2026-11-21: "Q5. Make them as its own item. Q7. Drop it automatically."

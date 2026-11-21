@@ -89,6 +89,8 @@ export function resourcePoolFields({ label = "", max = "", recoveryOn = "lr" } =
     })),
     castsJutsu: bool(),
     countsAsChakraSpend: bool(),
+    // King Q-E6: each unit lasts this many seconds unless spent (Primes, Pressure: 60); 0 = no limit.
+    lifetime: int(0, { min: 0 }),
     sort: int(0)
   };
 }

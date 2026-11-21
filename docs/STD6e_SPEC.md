@@ -59,6 +59,7 @@ Plus each clan's stances and (Q-E1) Hijutsu in the same batch.
 | E-D2 | Highest discipline | A feature save's DC source `"highest"` and an attack's discipline `"highest"`: the best of your Ninjutsu, Taijutsu and Genjutsu numbers ("your highest jutsu save DC"). |
 | E-D3 | Hijutsu upcasts | A Hijutsu's per-rank buttons (`flags.n5e.jutsuBookImport.activitiesByRank`) carry the extra dice of each higher rank, like the jutsu importer's. |
 | E-D4 | Cast rank on summons | A summon from a cast card passes its rank; summoner links can use `@rankValue` (D 1 ... S 5): the Clay constructs' hit points. |
+| E-D6 | Pool unit lifetime | A pool's `lifetime` (seconds): each unit lasts that long unless spent (spending uses the oldest; the actor's `flags.n5e.poolStamps`); the active GM drops expired units as world time passes (King Q-E6: Primes, Pressure). |
 | E-D5 | Item fields from tables | A table entry's `system` sets item fields (a stance's `unarmedDie` and `unarmedType`: Ballistic Knuckle). |
 
 ## E1 Land of Earth (0.79.0-alpha.1)
@@ -74,7 +75,7 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
-- **Q-E6 Primes and Pressure:** neither says when it's lost; both pools empty at the start and end of combat. King 2026-11-21: "Populate the entire feature": the full Priming Cataclysm, Broiling Rampart and Steam Engine text was posted for his call (open).
+- **Q-E6 Primes and Pressure:** answered (King 2026-11-21, after reading the full features): "1 minute cleanse unless spent". Each Prime and each Pressure lasts 1 minute from when it's gained unless spent first (pool `lifetime: 60`; spending uses the oldest; 0.79.2-alpha.1).
 - **Q-E7 Ballistic Knuckle:** answered (King 2026-11-21): dropped automatically (stance field `unarmedNoMod`; 0.79.1-alpha.1).
 
 ## Text issues (for the errata list)
@@ -88,3 +89,4 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 - 2026-11-21 Claude: spec written from a survey of the clans pack. Nothing built.
 - 2026-11-21 King: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin." Claude: E1 Land of Earth built (117 items), engine E-D1–E-D5, Clay construct summons; published 0.79.0-alpha.1. Q-E5–Q-E7 asked; nothing waits on them.
 - 2026-11-21 King: "Q5. Make them as its own item. Q6. Populate the entire feature. Q7. Drop it automatically." Claude: Clay Centipede and Chain Reaction Blitz as their own Hijutsu; Ballistic Knuckle drops the ability modifier; published 0.79.1-alpha.1. Full Priming Cataclysm, Broiling Rampart and Steam Engine text posted for Q-E6.
+- 2026-11-21 King: "1 minute cleanse unless spent." Claude: pool unit lifetimes (E-D6); Primes and Pressure last 1 minute each; published 0.79.2-alpha.1.

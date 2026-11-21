@@ -156,7 +156,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character.mjs` | 50 | Player character. | `CharacterData` |
-| `creature.mjs` | 669 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
+| `creature.mjs` | 671 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
 | `npc.mjs` | 257 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
@@ -172,7 +172,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `shared.mjs` | 321 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
+| `shared.mjs` | 323 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
 
 ## module/data/item
 
@@ -282,6 +282,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `parity.mjs` | 61 | dnd5e-parity chat visibility (pure; tested in Node). | `attackTargetRows`, `challengeVisible`, `descriptionVisible`, `ATTACK_RESULT_LABELS`, `visibleRequestEntries` |
 | `pf2e-emulation.mjs` | 78 | PRESTD1 Part D (King Q-PF4: "emulating PF2e for now"): wands, flanking and crafting. | `wandAction`, `overchargeHolds`, `segmentHitsRect`, `flanks`, `flankingEffect`, `CRAFT_RANKS`, `craftNumbers`, `craftOutcome` |
 | `plain-language.mjs` | 274 | Plain-language effects (UX1; docs/UX1_SPEC.md), pure: describeChange(change, catalog)   "+2 Damage Reduction", "Unarmed Damage Die: 1d10" describeRule(rule, ... | `describeChange`, `RULE_KINDS`, `selectorBases`, `WHEN_FACTS`, `RULE_WHO`, `RULE_TRIGGERS`, `describeRule`, `ruleToRow`, `rowToRule`, `NEW_RULE` |
+| `pool-expiry.mjs` | 31 | Pool units that last a while (King Q-E6, 2026-11-21: Primes and Pressure "1 minute cleanse unless spent"). | `stampGain`, `stampSpend`, `expireStamps` |
 | `positioning.mjs` | 105 | Positioning (pure; POS1, KB 03 and 05). | `COVER`, `coverFrom`, `coverBonus`, `untargetable`, `provokingMove`, `opportunityReminders`, `nearestCells`, `edgeGap`, `isEngaged`, `surprisedEconomy`, `surpriseBlocksReaction`, `dodgeActive` |
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 123 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `SLOW_PROFICIENCY`, `proficiencyFor`, `freeFeatCount`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiParts`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
@@ -351,7 +352,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `areas.mjs` | 286 | Jutsu areas on the map (Foundry side). | `tokensInArea`, `areaButton`, `onAreaClick`, `placeArea`, `areasTurnEnd`, `areasTurnStart`, `registerAreaHooks` |
 | `attack.mjs` | 281 | Weapon and unarmed attacks (pure spec + Foundry roll). | `weaponAttackSpec`, `shockedBlock`, `attackGeometry`, `attackWithWeapon`, `inActiveCombat`, `pickWeapon`, `unjamWeapon`, `strikeAttack` |
 | `auras.mjs` | 59 | Aura sync (ENG1d; rules/auras.mjs decides). | `scheduleAuraSync`, `syncAuras`, `registerAuraHooks` |
-| `automation.mjs` | 70 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
+| `automation.mjs` | 72 | Public automation actions. | `setRuleElements`, `coatWeapon`, `removeCoating`, `summonTokens`, `dismissSummons`, `cleanupSummons`, `registerAutomationHooks` |
 | `background.mjs` | 104 | Set up a background before replacing any existing origin; grants stay linked for replacement. | `addBackground` |
 | `card-layout.mjs` | 244 | CARD2 (docs/CARD2_SPEC.md; King 2026-11-16): the action card laid out like King's SW5e card. | `headerHTML`, `tagsHTML`, `tilesHTML`, `compactActions`, `previewDamage`, `applyPanelHTML`, `bindLayout`, `applyAll` |
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
@@ -381,7 +382,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `reactions.mjs` | 183 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
 | `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resolution.mjs` | 66 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |
-| `resources.mjs` | 86 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost` |
+| `resources.mjs` | 115 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost`, `expirePoolUnits` |
 | `rest.mjs` | 161 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |
 | `riders.mjs` | 311 | Feature riders on the action card (Foundry side; CARD1d). | `conditionTags`, `riderDC`, `actionOf`, `castRiderEntries`, `withRiderSections`, `riderView`, `onRiderClick`, `validateRider` |
 | `roll-request.mjs` | 64 | GM roll requests (dnd5e parity: the GM posts a request; each player rolls only for creatures they own). | `postRollRequest`, `renderRollRequest`, `rollForRequest` |
