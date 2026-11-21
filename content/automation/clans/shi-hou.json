@@ -1,0 +1,471 @@
+{
+  "clan": "shi-hou",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "shi-hou-advanced-transformations": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLSPFL5q2dPZii",
+          "type": "effect",
+          "label": "Partial Transformation",
+          "effect": {
+            "name": "Partial Transformation",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action: one of your Partial Transformations for up to 1 minute. 1 Inner Chi on your turn switches forms.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Partial Transformations (two more at 15th)."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-dragon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDIr42GVEnXjcx",
+          "type": "roll",
+          "label": "Dragon: temporary chakra",
+          "roll": {
+            "formula": "floor(@level / 2)",
+            "note": "Once per turn, casting a Finisher or a Chain 3: temporary chakra until the start of your next turn."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-gorilla": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3jyDK9kHlWKCa",
+          "type": "roll",
+          "label": "Gorilla: ranged damage",
+          "roll": {
+            "formula": "lvl(7:2,15:4)",
+            "note": "While transformed: add this to the damage of a ranged attack."
+          }
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-mink": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While transformed: an active clone's damage gains two ranks of Mastery."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-owl": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While transformed: once per turn, a jutsu that forces saves: one creature that passes remakes its save and takes the second result."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-snake": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While transformed: once per turn, a jutsu that affects an area has +10 feet to its size or length."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-tiger": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While transformed: the first melee attack each turn has +2 critical range (add it at the table)."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-turtle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUrCuSmBoR1P1i",
+          "type": "heal",
+          "label": "Turtle: temporary hit points",
+          "heal": {
+            "formula": "@level",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, dealing damage with a jutsu."
+        }
+      ]
+    },
+    "shi-hou-advanced-transformations-wolf": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqUibyoNpIEShB",
+          "type": "save",
+          "label": "Wolf",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Once per turn, a melee attack of a jutsu you cast. Failure: Bleed ranks equal to the jutsu's rank (D 1 ... S 5); against the jutsu's save DC.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "shi-hou-deceptive-strikes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egJ1fTdcOUkBbt",
+          "type": "save",
+          "label": "Confusing Technique",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Once per turn, with an attack of the Attack action. Failure: Confused and Concussed. Once every other round per creature.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deceptive Combat: the Create Diversion skill action with your attack result as the check; on a success, the next ally attacking it adds 1d4. Once every other round per creature."
+        }
+      ]
+    },
+    "shi-hou-golden-strands": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTt7oFFsDUDZt4",
+          "type": "roll",
+          "label": "Golden Strand",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: a strand becomes any non-consumable item of 3 Bulk or less, quality up to Greater, for 1 minute (1 charge)."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shi-hou-inner-chi": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "innerChi",
+          "label": "Inner Chi",
+          "max": "1 + @prof",
+          "die": "",
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inner Chi: 1 + proficiency bonus, back on any rest (the pool). Two Simple Transformations at creation (one more at 7th and 15th), each 1 Inner Chi when its trigger happens; their attacks and saves use your highest jutsu attack bonus or save DC."
+        }
+      ]
+    },
+    "shi-hou-inner-chi-bat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezqHSQQrAkdpbb",
+          "type": "effect",
+          "label": "Bat: Search",
+          "effect": {
+            "name": "Bat",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.senses.blindsight",
+                "value": "15",
+                "mode": 4
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Bonus action: the Search skill action with 15 feet of blindsight this turn and a rank of Mastery on the check.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shi-hou-inner-chi-bear": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0Ov07QqMG2Pgl",
+          "type": "save",
+          "label": "Bear",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Dealing [Unarmed Damage] or [Weapon Damage]. Failure: +1 damage die to your damage, and the next attack on it not from you has advantage.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shi-hou-inner-chi-bull": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGoYJCscgHpB95",
+          "type": "save",
+          "label": "Bull",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Dealing [Unarmed Damage] or [Weapon Damage] after moving 10 feet this turn. Failure: Shaken and thrown 30 feet (thrown upward: you can cast a Finisher as if after a Combo).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shi-hou-inner-chi-hawk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQPELD4Tbb6jEC",
+          "type": "effect",
+          "label": "Hawk",
+          "effect": {
+            "name": "Hawk",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Casting a jutsu: a fly speed equal to your speed and no extra movement costs (difficult terrain) until the start of your next turn.",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A hostile jutsu reduces your speed: you can also gain that much speed until the end of your next turn."
+        }
+      ]
+    },
+    "shi-hou-inner-chi-rabbit": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQtFeBGkfo013D",
+          "type": "effect",
+          "label": "Rabbit",
+          "effect": {
+            "name": "Rabbit",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 6
+          },
+          "text": "Bonus action: double jump distance, no fall damage under 120 feet, and your jutsu attacks against flying creatures have advantage.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shi-hou-inner-chi-squid": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euKYI27ysX8cSj",
+          "type": "check",
+          "label": "Squid: escape",
+          "check": {
+            "skill": "acr"
+          },
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          },
+          "text": "Grappled or Restrained by a hostile creature: Acrobatics or Deception against its lowest jutsu save DC; success ends it."
+        }
+      ]
+    },
+    "shi-hou-monkey-see-monkey-do": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqhshdGt4cA6ko",
+          "type": "roll",
+          "label": "Transform at no action cost",
+          "roll": {
+            "formula": "",
+            "note": "Cast Transform or Advanced Transformation at no action cost."
+          },
+          "cost": {
+            "pool": "innerChi",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While transformed by either: a rank of Mastery to Lie, Impersonate and Make an Impression/Request (2 at 7th, 3 at 15th; add it in the dialog)."
+        }
+      ]
+    },
+    "shi-hou-nirvana": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eapsKxNMv0ZWq0",
+          "type": "roll",
+          "label": "Enter Nirvana",
+          "roll": {
+            "formula": "",
+            "note": "At the start of your turn, once per Long Rest: the Nirvana Amp for 1 minute, with 3 of its effects (start it from your Amps)."
+          },
+          "cost": {
+            "pool": "innerChi",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "shi-hou-primal-vanity": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er5xkFEKAThRYT",
+          "type": "roll",
+          "label": "Primal Vanity",
+          "roll": {
+            "formula": "",
+            "note": "Action: up to four clones as Shadow Clone Technique at A-Rank, with extra hit points and temporary hit points equal to your level (regained at the start of your turns)."
+          },
+          "activation": "action",
+          "cost": {
+            "pool": "innerChi",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "shi-hou-ruyi-jingu-bang": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spirit Bond up to two Polearm weapons (change them after a Full Rest); they gain Reach 1. In combat, each for 1 minute: Shi Zhou Suo (Bonus action: Hidden and Light, not Two-Handed or Heavy, 0 bulk, damage die 1 step smaller), Zengzhang (Bonus action: +1 Reach; +2 at 7th, +3 at 15th), Fāyù (Action: Heavy and Critical 2), Hui (object interaction: end Shi Zhou Suo or Fāyù). Set the weapon's properties on its sheet."
+        }
+      ]
+    }
+  }
+}

@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "bakuton",
       "sourceLine": 4897,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5epqQdPL3XsvPkw",
+        "type": "save",
+        "label": "Payload: Armor Crack",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Triggered by [Unarmed Damage]: a 60-foot line from you. Failure: −2 AC until the end of your next turn (the button).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e5KfvfDtAhmuhi",
+        "type": "effect",
+        "label": "Armor Crack: −2 AC",
+        "effect": {
+          "name": "Armor Crack",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-2",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "On creatures that failed."
+      }
+    ]
   }
 }

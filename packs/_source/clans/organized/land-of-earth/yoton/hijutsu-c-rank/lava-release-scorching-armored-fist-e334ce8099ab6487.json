@@ -17,7 +17,14 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Earth Release, Fire Release",
         "components": "HS, CM, M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire. A-Rank or higher: four attacks."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,43 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ejcWSEYpbFudMH",
+        "type": "attack",
+        "label": "Scorching Armored Fist",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5e3ATML6nlADAZQ",
+        "type": "damage",
+        "label": "Scorching Armored Fist: on a miss",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Each miss still deals this to the target."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

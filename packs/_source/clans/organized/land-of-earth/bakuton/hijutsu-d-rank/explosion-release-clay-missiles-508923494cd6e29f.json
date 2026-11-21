@@ -17,6 +17,176 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Lightning Release, Earth Release",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ignores cover. Upcast: +1 target per rank; +1d10 damage from B-Rank (the B, A and S buttons); at A-Rank the same creature can be targeted twice."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e17Y0K7nmqaQbH",
+              "type": "attack",
+              "label": "Clay Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epfy5R6Ekhw6E6",
+              "type": "save",
+              "label": "Clay Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Failure: Prone and Dazzled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e17Y0K7nmqaQbH",
+              "type": "attack",
+              "label": "Clay Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epfy5R6Ekhw6E6",
+              "type": "save",
+              "label": "Clay Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Failure: Prone and Dazzled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e17Y0K7nmqaQbH",
+              "type": "attack",
+              "label": "Clay Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epfy5R6Ekhw6E6",
+              "type": "save",
+              "label": "Clay Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Failure: Prone and Dazzled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +279,59 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e17Y0K7nmqaQbH",
+        "type": "attack",
+        "label": "Clay Missiles",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epfy5R6Ekhw6E6",
+        "type": "save",
+        "label": "Clay Missiles: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Failure: Prone and Dazzled.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

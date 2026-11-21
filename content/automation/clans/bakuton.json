@@ -1,0 +1,2462 @@
+{
+  "clan": "bakuton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "bakuton-artistic-cataclysm": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Artistic Cataclysm chakra stance as a Bonus action (the clan's stance item: Clay Bombings is its attack button)."
+        }
+      ]
+    },
+    "bakuton-artistic-payloads": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Earth or Lightning; set it on the sheet). Earth or Lightning Release jutsu can deal force damage instead (change the type when you roll). Learn three Payloads (five at 11th) and prepare two (three at 11th) after each rest; one Payload rides one detonation, Dexterity save against your highest jutsu save DC unless it says otherwise."
+        }
+      ]
+    },
+    "bakuton-artistic-payloads-a1-scatter-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeFTHH1Ckhnkhy",
+          "type": "save",
+          "label": "Payload: Scatter Burst",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failing creatures are thrown 30 feet in directions you choose (not airborne, not prone).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-artistic-payloads-a2-smoke-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezJKOB9EcDpqES",
+          "type": "save",
+          "label": "Payload: Smoke Petals",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "A 20-foot radius of smoke heavily obscures vision until the end of your next turn. Failure: 1 rank of Concussed and Dazzled.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-artistic-payloads-a3-seismic-quake": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ez2VY74iIqesZa",
+          "type": "save",
+          "label": "Payload: Seismic Quake",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "The area becomes difficult terrain. Failure: Slowed until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-artistic-payloads-a4-fractal-adhesive": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5uuA3g1pr5xRz",
+          "type": "save",
+          "label": "Payload: Fractal Adhesive",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Failure: Restrained until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-artistic-payloads-a5-cluster-gallery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efBCas3DSjoaSN",
+          "type": "save",
+          "label": "Payload: Cluster Gallery",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "4 mini charges land within 20 feet of the explosion; each a 5-foot radius. Failure: 1 rank of Concussed and Prone. Up to 2 mini charges on a creature (one save).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-ballistic-knuckle": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Ballistic Knuckle Taijutsu stance as a Bonus action (the clan's stance item sets your Unarmed Damage)."
+        }
+      ]
+    },
+    "bakuton-bombfist-brawler": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, once per Long Rest: the Cataclysm Knuckle Amp for 1 minute (start it from your Amps)."
+        }
+      ]
+    },
+    "bakuton-controlled-demolition": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Out of combat, 10 minutes placing a Prime: Breach a 5-foot-wide hole through up to 5 feet of material, even chakra-reinforced. In a hostile negotiation, an Intimidation or Persuasion check while pretending to set a visible charge: on a success the target is very compliant for 1 minute (it sees through a fake Prime with Perception against your highest jutsu save DC)."
+        }
+      ]
+    },
+    "bakuton-explosion-release-absolute-death-bombing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBQQj6xwIo0SLx",
+          "type": "save",
+          "label": "Absolute Death Bombing",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: 3d6 force or poison.",
+              "failure": "Failure: 6d6 force or poison, and Weakened.",
+              "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 30-foot radius on a space within range.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eGfBPESuJy6t2r",
+          "type": "damage",
+          "label": "Absolute Death Bombing: success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eaZzb2XaMpQ7Yn",
+          "type": "damage",
+          "label": "Absolute Death Bombing: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5epvHGA6tAEoYp7",
+          "type": "damage",
+          "label": "Absolute Death Bombing: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "9d6",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison in place of force on a success or failure: change the type when you roll. Its text also holds two other B-Rank Hijutsu (Clay Centipede and Chain Reaction Blitz; see the errata list); the Clay Centipede NPC is in Class & Clan Summons › Bakuton."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eBQQj6xwIo0SLx",
+                "type": "save",
+                "label": "Absolute Death Bombing",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 3d6 force or poison.",
+                    "failure": "Failure: 6d6 force or poison, and Weakened.",
+                    "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot radius on a space within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eGfBPESuJy6t2r",
+                "type": "damage",
+                "label": "Absolute Death Bombing: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eaZzb2XaMpQ7Yn",
+                "type": "damage",
+                "label": "Absolute Death Bombing: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5epvHGA6tAEoYp7",
+                "type": "damage",
+                "label": "Absolute Death Bombing: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(9d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eBQQj6xwIo0SLx",
+                "type": "save",
+                "label": "Absolute Death Bombing",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 3d6 force or poison.",
+                    "failure": "Failure: 6d6 force or poison, and Weakened.",
+                    "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot radius on a space within range.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eGfBPESuJy6t2r",
+                "type": "damage",
+                "label": "Absolute Death Bombing: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eaZzb2XaMpQ7Yn",
+                "type": "damage",
+                "label": "Absolute Death Bombing: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5epvHGA6tAEoYp7",
+                "type": "damage",
+                "label": "Absolute Death Bombing: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(9d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-atomic-missile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3TEUDkPBOAbS1",
+          "type": "save",
+          "label": "Atomic Missile",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Creatures, objects and structures in a 60-foot cone from you. Failure: damage, Staggered and Shaken; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "@unarmed",
+                "type": "force"
+              },
+              {
+                "formula": "4d12",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You propel yourself at a space, creature, object or structure within range first."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5e3TEUDkPBOAbS1",
+                "type": "save",
+                "label": "Atomic Missile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "Creatures, objects and structures in a 60-foot cone from you. Failure: damage, Staggered and Shaken; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "@unarmed",
+                      "type": "force"
+                    },
+                    {
+                      "formula": "(4d12) + (1d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-blast-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1L9r9tcWrIfAm",
+          "type": "save",
+          "label": "Blast Bomb",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: 3d6 force or poison.",
+              "failure": "Failure: 5d6 force or poison, and Dazed.",
+              "critFailure": "Critical Failure: 7d6 force, Dazed and Staggered."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 10-foot cube on a point within 60 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e4JOULAORODFQO",
+          "type": "damage",
+          "label": "Blast Bomb: success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eLaElFK5AX5AmR",
+          "type": "damage",
+          "label": "Blast Bomb: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e4DBE2Bbavsedy",
+          "type": "damage",
+          "label": "Blast Bomb: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "7d6",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison in place of force on a success or failure: change the type when you roll. Upcast: +1 point per rank; a creature in several explosions saves once at −1 per extra explosion."
+        }
+      ]
+    },
+    "bakuton-explosion-release-blast-corridor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKMnR2QWdyXdP0",
+          "type": "save",
+          "label": "Blast Corridor",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d12",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Barriers treat its damage as if vulnerable. A-Rank or higher: a 30-foot cone instead, and creatures with a Barrier save at disadvantage."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eKMnR2QWdyXdP0",
+                "type": "save",
+                "label": "Blast Corridor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (1d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eKMnR2QWdyXdP0",
+                "type": "save",
+                "label": "Blast Corridor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (2d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eKMnR2QWdyXdP0",
+                "type": "save",
+                "label": "Blast Corridor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (3d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-clay-bird": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWl7TCWtOrsPxs",
+          "type": "summon",
+          "label": "Clay Bird",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5elvxF09A0csTLT",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One at a time (two at A-Rank: press the button again); 10 minutes. Command it as an Action or Bonus action."
+        }
+      ]
+    },
+    "bakuton-explosion-release-clay-dragon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er7gVPFUR8OayF",
+          "type": "summon",
+          "label": "Clay Dragon",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eC9Z4DPq8QpWGA",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One at a time; concentration, 10 minutes. Command it as an Action or Bonus action. Its text says \"two centipedes\" (errata list)."
+        }
+      ]
+    },
+    "bakuton-explosion-release-clay-missiles": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e17Y0K7nmqaQbH",
+          "type": "attack",
+          "label": "Clay Missiles",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5epfy5R6Ekhw6E6",
+          "type": "save",
+          "label": "Clay Missiles: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Failure: Prone and Dazzled.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ignores cover. Upcast: +1 target per rank; +1d10 damage from B-Rank (the B, A and S buttons); at A-Rank the same creature can be targeted twice."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e17Y0K7nmqaQbH",
+                "type": "attack",
+                "label": "Clay Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5epfy5R6Ekhw6E6",
+                "type": "save",
+                "label": "Clay Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Failure: Prone and Dazzled.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e17Y0K7nmqaQbH",
+                "type": "attack",
+                "label": "Clay Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5epfy5R6Ekhw6E6",
+                "type": "save",
+                "label": "Clay Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Failure: Prone and Dazzled.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e17Y0K7nmqaQbH",
+                "type": "attack",
+                "label": "Clay Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5epfy5R6Ekhw6E6",
+                "type": "save",
+                "label": "Clay Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Failure: Prone and Dazzled.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-clay-spiders": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evxVxndnTAM2FZ",
+          "type": "summon",
+          "label": "Clay Spider",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eMld2cWHLoSGXQ",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Into spaces within range; up to five at once (a sixth dispels the oldest). Command them as an Action or Bonus action. Upcast above C-Rank: +1 Spider per rank (press the button again). Their hit points and Detonate follow the cast rank."
+        }
+      ]
+    },
+    "bakuton-explosion-release-flight-of-the-tsurubebi": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQvQGmzixLKHfu",
+          "type": "effect",
+          "label": "Explosive Dash",
+          "effect": {
+            "name": "Explosive Dash",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Special action (each turn): a flying speed equal to your speed until the end of your next turn."
+        },
+        {
+          "id": "n5e601cgf2mKFkMk",
+          "type": "save",
+          "label": "Volatile Movement",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Special action (each turn): when you first move or end your movement, creatures within 5 feet. Failure: damage; success: half. Counts as a Hijutsu for Bakuton clan features.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Both special actions come back at the start of each of your turns for the duration."
+        }
+      ]
+    },
+    "bakuton-explosion-release-grenade-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1OHpqw9N0962F",
+          "type": "attack",
+          "label": "Grenade Strike",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "3d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eCxx3MQTdt9jvN",
+          "type": "save",
+          "label": "Grenade Strike: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Failure: pushed 10 feet, Prone and Shaken.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is force. At A-Rank or higher, two attacks."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e1OHpqw9N0962F",
+                "type": "attack",
+                "label": "Grenade Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCxx3MQTdt9jvN",
+                "type": "save",
+                "label": "Grenade Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "Failure: pushed 10 feet, Prone and Shaken.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e1OHpqw9N0962F",
+                "type": "attack",
+                "label": "Grenade Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCxx3MQTdt9jvN",
+                "type": "save",
+                "label": "Grenade Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "Failure: pushed 10 feet, Prone and Shaken.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e1OHpqw9N0962F",
+                "type": "attack",
+                "label": "Grenade Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCxx3MQTdt9jvN",
+                "type": "save",
+                "label": "Grenade Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "Failure: pushed 10 feet, Prone and Shaken.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e1OHpqw9N0962F",
+                "type": "attack",
+                "label": "Grenade Strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (4d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCxx3MQTdt9jvN",
+                "type": "save",
+                "label": "Grenade Strike: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "Failure: pushed 10 feet, Prone and Shaken.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-impact-landmine": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqHczlmUkVyow7",
+          "type": "save",
+          "label": "Impact Landmine",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The area is difficult terrain (not for you) until the end of your next turn. C-Rank or higher: failing creatures are pushed 10 feet."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eqHczlmUkVyow7",
+                "type": "save",
+                "label": "Impact Landmine",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eqHczlmUkVyow7",
+                "type": "save",
+                "label": "Impact Landmine",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eqHczlmUkVyow7",
+                "type": "save",
+                "label": "Impact Landmine",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eqHczlmUkVyow7",
+                "type": "save",
+                "label": "Impact Landmine",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-shielding-demolition": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEKjHwommDMVyW",
+          "type": "roll",
+          "label": "Reduce the damage",
+          "roll": {
+            "formula": "4d6",
+            "note": "Take this off the triggering damage."
+          }
+        },
+        {
+          "id": "n5eo7sw52dx71xHA",
+          "type": "attack",
+          "label": "Deflect back",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "If a creature you can see hit you with a ranged attack: attack it.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 to both per rank (the higher-rank buttons)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eEKjHwommDMVyW",
+                "type": "roll",
+                "label": "Reduce the damage",
+                "roll": {
+                  "formula": "(4d6) + (1d6)",
+                  "note": "Take this off the triggering damage."
+                }
+              },
+              {
+                "id": "n5eo7sw52dx71xHA",
+                "type": "attack",
+                "label": "Deflect back",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "If a creature you can see hit you with a ranged attack: attack it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eEKjHwommDMVyW",
+                "type": "roll",
+                "label": "Reduce the damage",
+                "roll": {
+                  "formula": "(4d6) + (2d6)",
+                  "note": "Take this off the triggering damage."
+                }
+              },
+              {
+                "id": "n5eo7sw52dx71xHA",
+                "type": "attack",
+                "label": "Deflect back",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "If a creature you can see hit you with a ranged attack: attack it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eEKjHwommDMVyW",
+                "type": "roll",
+                "label": "Reduce the damage",
+                "roll": {
+                  "formula": "(4d6) + (3d6)",
+                  "note": "Take this off the triggering damage."
+                }
+              },
+              {
+                "id": "n5eo7sw52dx71xHA",
+                "type": "attack",
+                "label": "Deflect back",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "If a creature you can see hit you with a ranged attack: attack it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEKjHwommDMVyW",
+                "type": "roll",
+                "label": "Reduce the damage",
+                "roll": {
+                  "formula": "(4d6) + (4d6)",
+                  "note": "Take this off the triggering damage."
+                }
+              },
+              {
+                "id": "n5eo7sw52dx71xHA",
+                "type": "attack",
+                "label": "Deflect back",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "If a creature you can see hit you with a ranged attack: attack it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosion-release-soot-pile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLbclVklFwSUFm",
+          "type": "save",
+          "label": "Soot Pile",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+              "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+              "critFailure": "Critical Failure: as a failure, and Confused."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eQzaVr7jFtgdwK",
+          "type": "damage",
+          "label": "Soot Pile: success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eL8NZ8vp0ZBd6w",
+          "type": "damage",
+          "label": "Soot Pile: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: B-Rank +5 feet to the cube, S-Rank +5 more."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eLbclVklFwSUFm",
+                "type": "save",
+                "label": "Soot Pile",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, and Confused."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eQzaVr7jFtgdwK",
+                "type": "damage",
+                "label": "Soot Pile: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eL8NZ8vp0ZBd6w",
+                "type": "damage",
+                "label": "Soot Pile: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eLbclVklFwSUFm",
+                "type": "save",
+                "label": "Soot Pile",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, and Confused."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eQzaVr7jFtgdwK",
+                "type": "damage",
+                "label": "Soot Pile: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eL8NZ8vp0ZBd6w",
+                "type": "damage",
+                "label": "Soot Pile: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eLbclVklFwSUFm",
+                "type": "save",
+                "label": "Soot Pile",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, and Confused."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eQzaVr7jFtgdwK",
+                "type": "damage",
+                "label": "Soot Pile: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eL8NZ8vp0ZBd6w",
+                "type": "damage",
+                "label": "Soot Pile: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eLbclVklFwSUFm",
+                "type": "save",
+                "label": "Soot Pile",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, and Confused."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eQzaVr7jFtgdwK",
+                "type": "damage",
+                "label": "Soot Pile: success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eL8NZ8vp0ZBd6w",
+                "type": "damage",
+                "label": "Soot Pile: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "bakuton-explosive-art": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, once per Long Rest: the Grand Detonator Amp for 1 minute (start it from your Amps)."
+        }
+      ]
+    },
+    "bakuton-priming-cataclysm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiYFgUAGkKDyx5",
+          "type": "roll",
+          "label": "Prime",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, dealing [Unarmed Damage], Clay Bombings or Bakuton Hijutsu damage: Prime every damaged creature. Or a Bonus action: Prime an object or structure you touch. 1 minute or until detonated; a creature can carry several."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "primes",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eV8kSYqN4AF0bh",
+          "type": "save",
+          "label": "Detonate Primes",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action, Bonus Action or Reaction on your turn: every Prime explodes, a 5-foot radius (+5 feet per extra Prime on that creature or object). Each creature takes this damage for every Prime on that same target, half on a success; caught in overlapping explosions, only one (you choose).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,11:3d6)",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "primes",
+          "label": "Primes",
+          "value": 0,
+          "max": "lvl(3:4,7:5,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Primes active at once: 4 (5 at 7th, 6 at 15th), the Primes pool; spend them back (the pool) when they detonate. Damage per Prime on the same target: multiply the damage roll by the count."
+        }
+      ]
+    },
+    "bakuton-reckless-payloads": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Earth or Lightning; set it on the sheet). Earth or Lightning Release jutsu can deal force damage instead. Learn three Payloads (five at 11th), prepare two (three at 11th) after each rest. You can detonate a single Primed creature by dealing [Unarmed Damage] to it; its Payload can reshape the area. You're immune to your own Payloads."
+        }
+      ]
+    },
+    "bakuton-reckless-payloads-b1-knuckle-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyJUyH8AsEPEM7",
+          "type": "save",
+          "label": "Payload: Knuckle Burst",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Triggered by [Unarmed Damage]: a 30-foot cone from you. Failure: 1 rank of Shaken.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-reckless-payloads-b2-armor-crack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epqQdPL3XsvPkw",
+          "type": "save",
+          "label": "Payload: Armor Crack",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Triggered by [Unarmed Damage]: a 60-foot line from you. Failure: −2 AC until the end of your next turn (the button).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e5KfvfDtAhmuhi",
+          "type": "effect",
+          "label": "Armor Crack: −2 AC",
+          "effect": {
+            "name": "Armor Crack",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-2",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "On creatures that failed."
+        }
+      ]
+    },
+    "bakuton-reckless-payloads-b3-flash-bang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enb5HuhnmUNo4w",
+          "type": "save",
+          "label": "Payload: Flash Bang",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Triggered by [Unarmed Damage]: a 20-foot cube from you. Failure: Blinded until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-reckless-payloads-b4-ear-ringer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezClBt4X6wLDbZ",
+          "type": "save",
+          "label": "Payload: Ear Ringer",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            },
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Triggered by [Unarmed Damage]: a 30-foot cone from you. Failure: Deafened and 2 ranks of Concussed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-reckless-payloads-b5-barrier-buster": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enGzN7rWAa6dV4",
+          "type": "save",
+          "label": "Payload: Barrier Buster",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Triggered by [Unarmed Damage]: a 60-foot line from you. Failure: effects from Barrier jutsu on it are dispelled before damage.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "bakuton-stance-artistic-cataclysm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejvxwqtDQbPCYq",
+          "type": "attack",
+          "label": "Clay Bombings",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 60 feet, with your highest jutsu attack bonus. A 12 on a damage die: add 1 more die.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d12,7:2d12)",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In place of any attacks of the Attack action, or of a Bakuton Hijutsu that needs an attack. At 7th, without Extra Attack, the Attack action makes two Clay Bombings; barriers, structures and constructs treat its damage as if vulnerable. Clay constructs you command all act on the same Bonus action."
+        }
+      ]
+    },
+    "bakuton-stance-ballistic-knuckle": {
+      "status": "partial",
+      "system": {
+        "unarmedDie": "2d8",
+        "unarmedType": "force"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your [Unarmed Damage] is 2d8 force (the stance) and adds no ability modifier (take it off the roll). Unarmed attacks have Deadly 1 (Deadly 2 at 7th, 3 at 15th). Resistance to damage from your own clan features. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    }
+  }
+}

@@ -17,7 +17,14 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Stable, Reckless Branch",
         "components": "HS, CM, M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Both special actions come back at the start of each of your turns for the duration."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQvQGmzixLKHfu",
+        "type": "effect",
+        "label": "Explosive Dash",
+        "effect": {
+          "name": "Explosive Dash",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Special action (each turn): a flying speed equal to your speed until the end of your next turn."
+      },
+      {
+        "id": "n5e601cgf2mKFkMk",
+        "type": "save",
+        "label": "Volatile Movement",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Special action (each turn): when you first move or end your movement, creatures within 5 feet. Failure: damage; success: half. Counts as a Hijutsu for Bakuton clan features.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,179 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Lightning Release, Earth Release",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison in place of force on a success or failure: change the type when you roll. Its text also holds two other B-Rank Hijutsu (Clay Centipede and Chain Reaction Blitz; see the errata list); the Clay Centipede NPC is in Class & Clan Summons › Bakuton."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eBQQj6xwIo0SLx",
+              "type": "save",
+              "label": "Absolute Death Bombing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d6 force or poison.",
+                  "failure": "Failure: 6d6 force or poison, and Weakened.",
+                  "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot radius on a space within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eGfBPESuJy6t2r",
+              "type": "damage",
+              "label": "Absolute Death Bombing: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eaZzb2XaMpQ7Yn",
+              "type": "damage",
+              "label": "Absolute Death Bombing: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epvHGA6tAEoYp7",
+              "type": "damage",
+              "label": "Absolute Death Bombing: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBQQj6xwIo0SLx",
+              "type": "save",
+              "label": "Absolute Death Bombing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d6 force or poison.",
+                  "failure": "Failure: 6d6 force or poison, and Weakened.",
+                  "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot radius on a space within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eGfBPESuJy6t2r",
+              "type": "damage",
+              "label": "Absolute Death Bombing: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eaZzb2XaMpQ7Yn",
+              "type": "damage",
+              "label": "Absolute Death Bombing: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epvHGA6tAEoYp7",
+              "type": "damage",
+              "label": "Absolute Death Bombing: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +285,87 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eBQQj6xwIo0SLx",
+        "type": "save",
+        "label": "Absolute Death Bombing",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 3d6 force or poison.",
+            "failure": "Failure: 6d6 force or poison, and Weakened.",
+            "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 30-foot radius on a space within range.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eGfBPESuJy6t2r",
+        "type": "damage",
+        "label": "Absolute Death Bombing: success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eaZzb2XaMpQ7Yn",
+        "type": "damage",
+        "label": "Absolute Death Bombing: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epvHGA6tAEoYp7",
+        "type": "damage",
+        "label": "Absolute Death Bombing: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "9d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

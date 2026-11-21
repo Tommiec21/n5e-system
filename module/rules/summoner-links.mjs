@@ -12,7 +12,7 @@
 const MATH = ["max", "min", "floor", "ceil", "abs", "round"];
 
 /** The summoner numbers a link can name (from a prepared actor's system data). */
-export function summonerData(system = {}) {
+export function summonerData(system = {}, { rank = "" } = {}) {
   const abilities = Object.fromEntries(Object.entries(system.abilities ?? {}).map(([k, a]) => [k, Number(a?.mod) || 0]));
   const disc = system.disciplines ?? {};
   const pick = field => Object.fromEntries(Object.entries(disc).map(([k, d]) => [k, Number(d?.[field]) || 0]));
@@ -29,6 +29,9 @@ export function summonerData(system = {}) {
     // Every speed and the size (King Q-D27: the Duplicity flies only if you can, and is your size).
     speeds: Object.fromEntries(["walk", "climb", "swim", "fly", "burrow"].map(k => [k, Number(system.speed?.[k] ?? system.traits?.speed?.[k]) || 0])),
     size: system.traits?.size ?? "medium",
+    // STD6e: the rank the summoning jutsu was cast at (D 1 ... S 5; 0 outside a cast), for stat blocks
+    // that grow by rank ("10 + 10 for every rank above C-Rank": "10 + 10 * max(0, @rankValue - 2)").
+    rankValue: ({ E: 0, D: 1, C: 2, B: 3, A: 4, S: 5 })[String(rank).toUpperCase()] ?? 0,
     saves: Object.fromEntries(Object.entries(system.saves ?? {}).map(([k, s]) => [k, { proficient: !!s?.proficient }])),
     skills: Object.fromEntries(Object.entries(system.skills ?? {}).map(([k, s]) => [k, { total: Number(s?.total) || 0, passive: Number(s?.passive) || 0 }])),
     senses: Object.fromEntries(Object.entries(system.traits?.senses ?? {}).map(([k, v]) => [k, Number(v) || 0])),

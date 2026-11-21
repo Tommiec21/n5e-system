@@ -17,7 +17,14 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Lightning Release, Earth Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison in place of force on a success or failure: change the type when you roll. Upcast: +1 point per rank; a creature in several explosions saves once at −1 per extra explosion."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,87 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e1L9r9tcWrIfAm",
+        "type": "save",
+        "label": "Blast Bomb",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 3d6 force or poison.",
+            "failure": "Failure: 5d6 force or poison, and Dazed.",
+            "critFailure": "Critical Failure: 7d6 force, Dazed and Staggered."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 10-foot cube on a point within 60 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e4JOULAORODFQO",
+        "type": "damage",
+        "label": "Blast Bomb: success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eLaElFK5AX5AmR",
+        "type": "damage",
+        "label": "Blast Bomb: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e4DBE2Bbavsedy",
+        "type": "damage",
+        "label": "Blast Bomb: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -218,8 +218,79 @@ const phantasm = actor("phantasm", "Phantasm", illusionist._id, {
   hpMax: 10, cpMax: 0, diesAtZero: true
 }, phantasmItems, phantasmLinks, "icons/svg/mystery-man-black.svg");
 
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist] };
+/*  Bakuton: Clay constructs (STD6e)            */
+/* -------------------------------------------- */
+// The Clay Spider, Clay Bird, Clay Centipede and Clay Dragon stat blocks (Bakuton Clan Jutsu). AC is a
+// base plus your Ninjutsu ability modifier; hit points grow with the rank the jutsu was cast at.
+const bakuton = folder("Bakuton", null, "bakuton");
+const NIN_MOD = "(@dc.nin - 8 - @prof)";
+const CLAY_IMMUNE = ["acid", "poison", "psychic"];
+const MENTAL_SENSORY = ["berserk", "charmed", "confused", "demoralized", "shaken", "concussed", "blinded", "dazzled", "deafened"];
+const shock = id => item(id, "Shock Weakness", "npcTraits", html("If this creature takes Lightning damage it cannot perform its Detonate attack, until the end of its casters next turn. It also cannot perform its Detonate attack while it has the Shocked condition."));
+const boom = id => item(id, "Purpose to BOOM", "npcTraits", html("Once summoned this creature has 1 minute before it self Detonates. If it cannot Detonate after this 1-minute duration, it dispels itself."));
+const detonate = (seed, id, text, ranks) => item(id, "Detonate", "npcAbilities", html(text),
+  [act(seed, "Detonate", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "half", resave: false }, text: "Force damage by the rank it was summoned at; half on a success." }),
+   ...ranks.map(([r, f]) => act(seed, `Detonate: ${r}`, "damage", { damage: { parts: [{ formula: f, type: "force" }] }, text: `Summoned at ${r}.` }))]);
+const clay = (seed, name, size, acBase, hp, speed, abil, extra, items, bio, more = {}) => actor(seed, name, bakuton._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: `Bakuton: ${name}`, biography: bio, summonRole: name },
+  abilities: Object.fromEntries(Object.entries(abil).map(([k, mod]) => [k, { value: 10 + 2 * mod }])),
+  attributes: { ac: { calc: "flat", flat: acBase, formula: "" }, init: { bonus: "" } },
+  traits: { size, immune: CLAY_IMMUNE, conditionImmune: [...MENTAL_SENSORY, ...(extra.exhaustion ? ["exhaustion"] : [])], stateImmune: extra.stunned ? ["stunned"] : [],
+    ...(extra.vuln ? { vuln: ["lightning"] } : {}), speed: { walk: speed.walk, climb: speed.climb ?? 0, swim: 0, fly: speed.fly ?? 0, burrow: 0, hover: false } },
+  hpMax: hp, cpMax: 0, diesAtZero: true, ...more
+}, items, { "details.level": "@level", "attributes.ac.flat": `${acBase} + ${NIN_MOD}`, "hpMax": extra.hp,
+  "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof",
+  ...Object.fromEntries(SENSES.map(k => [`traits.senses.${k}`, `@senses.${k}`])) }, "icons/svg/mystery-man-black.svg");
+const castBio = (jutsu, rest) => html(`<p><em>${jutsu} (Bakuton Hijutsu).</em> It uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You command it as an Action or Bonus action.</p>`, rest,
+  "<p><strong>Linked to you when summoned:</strong> its AC (base + your Ninjutsu ability modifier), hit points (by the rank you cast the jutsu at), Ninjutsu attack bonus and save DC, and your senses.</p>");
+const clayStats = (ac, hp, speed, abil, vuln, immunities) => `<p><strong>Armor Class</strong> ${ac} + your ninjutsu ability modifier · <strong>Hit Points</strong> ${hp} · <strong>Speed</strong> ${speed}</p><p><strong>Abilities</strong> ${abil}. ${vuln ? "<strong>Damage Vulnerability</strong> Lightning. " : ""}<strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> ${immunities}. <strong>Senses</strong> Relies on Caster senses.</p>`;
+
+const spider = clay("clay-spider", "Clay Spider", "small", 10, 10, { walk: 30 }, { str: 0, dex: 0, con: 0, int: -5, wis: 0, cha: -5 },
+  { hp: "10 + 10 * max(0, @rankValue - 2)", exhaustion: true, stunned: true },
+  id => [shock(id), boom(id),
+    item(id, "Silent Scurry", "npcTraits", html("When this creature is summoned, make a Stealth check using your highest jutsu modifier vs any hostile creature that can see you. On a success, then Clay Spider is Undetected by creatures that do not have Chakra sight or Chakra sense.")),
+    item(id, "Scurry", "npcAbilities", html("The Spider takes the Dash and Disengage action as part of this action.")),
+    item(id, "Grab", "npcAbilities", html("The Spider attempts to grab onto a creature and hold on to it with sacrificial intent. The target must make a Dexterity saving throw. On a failed save the creature has the spider hold on to it. The creature can attempt to pull the spider free by making a Strength saving throw, pulling the spider free on a success."),
+      [act("clay-spider", "Grab", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, text: "Failure: the spider holds on (it pulls it free with a Strength save)." })]),
+    detonate("clay-spider", id, "The Spider detonates, filling a 5-foot radius. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Spider(s) were summoned at. A creature the spider is grabbing makes their save at disadvantage. If more than one spider is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d6 for each Clay Spider explosion radius they are in. D-Rank/C-Rank: 3d6. B-Rank/A-Rank: 4d6. S-Rank: 5d6.",
+      [["D/C-Rank", "3d6"], ["B/A-Rank", "4d6"], ["S-Rank", "5d6"]])],
+  castBio("Explosion Release: Clay Spiders", clayStats(10, "10 + 10 for every rank above C-Rank", "30 ft.", "STR +0 (save +3), DEX +0 (+3), CON +0 (+3), INT −5, WIS +0, CHA −5", false, "All Mental, All Sensory, Stunned, Exhaustion") + "<p><strong>Skills</strong> Stealth.</p>"));
+const bird = clay("clay-bird", "Clay Bird", "large", 12, 40, { walk: 0, fly: 45 }, { str: 2, dex: 4, con: 3, int: -5, wis: 0, cha: -5 },
+  { hp: "40 + 10 * max(0, @rankValue - 2)", exhaustion: true, stunned: true, vuln: true },
+  id => [shock(id), boom(id),
+    item(id, "Flying Mount", "npcTraits", html("The Clay Birds primary purpose is to be a flying mount. A creature of your choice can mount the Clay Bird. When it does, replace the creatures movement with the Clay Birds. The Clay Bird moves with the mounted creature. If you are mounted to the Clay Bird, you cannot command it to move separate from you unless you dismount by spending 5 feet of your normal movement. Attacks targeting the mounted Creature does not harm the Clay Bird and attacks targeting the Clay Bird does not harm the mounted creature. A mounted creature can spend its reaction to switch targets causing either themselves or the Clay Bird to interpose an attack targeting the other. Effects that target an area affects both the Clay Bird and mounted creature as individuals.")),
+    item(id, "Ram", "npcAbilities", html("If the Clay Bird flies in a straight line for at least 30 feet it can perform the Ram attack. All creatures in a straight line after the bird has moved at least 30 feet must succeed a Dexterity saving throw, taking 6d6 bludgeoning damage on a failed save or half as much on a success."),
+      [act("clay-bird", "Ram", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "half", resave: false }, damage: { parts: [{ formula: "6d6", type: "bludgeoning" }] } })]),
+    detonate("clay-bird", id, "The Clay Bird detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Bird was summoned at. If more than one Clay Bird is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d8 for each additional Clay Bird explosion radius they are in. D-Rank/C-Rank: 4d8. B-Rank/A-Rank: 5d8. S-Rank: 6d8.",
+      [["D/C-Rank", "4d8"], ["B/A-Rank", "5d8"], ["S-Rank", "6d8"]])],
+  castBio("Explosion Release: Clay Bird", clayStats(12, "40 + 10 for every rank above C-Rank", "45 ft. flying", "STR +2 (save +4), DEX +4 (+8), CON +3 (+7), INT −5, WIS +0, CHA −5", true, "All Mental, All Sensory, Stunned, Exhaustion")));
+const centipede = clay("clay-centipede", "Clay Centipede", "large", 14, 30, { walk: 40, climb: 60 }, { str: 2, dex: 4, con: 3, int: -5, wis: 0, cha: -5 },
+  { hp: "30 + 15 * max(0, @rankValue - 3)", vuln: true },
+  id => [shock(id), boom(id),
+    item(id, "Bug Bomb", "npcTraits", html("When this creature falls to 0 hit points it uses its Detonate attack as a reaction.")),
+    item(id, "Pincers", "npcStrikes", html("<em>Multiattack.</em> The Clay Centipede can attack 2 times with its pincers. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 2d6 + 4 piercing damage."),
+      [act("clay-centipede", "Pincers", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "2d6 + 4", type: "piercing" }] } })]),
+    item(id, "Body Wrap", "npcAbilities", html("The Centipede attempts to grapple onto a creature and hold it in place with sacrificial intent. The target must make a Dexterity saving throw. On a failed save the creature is Grappled by the centipede. The creature can attempt to free itself by spending its Action to; or at the end of its turn; make a Strength saving throw, breaking the grapple on a success."),
+      [act("clay-centipede", "Body Wrap", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "grappled", kind: "state", ranks: 1, label: "Grappled" }] })]),
+    detonate("clay-centipede", id, "The Clay Centipede detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Centipede was summoned at. If more than one Clay Centipede is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d6 for each additional Clay Centipede explosion radius they are in. B-Rank/A-Rank: 6d6. S-Rank: 8d6.",
+      [["B/A-Rank", "6d6"], ["S-Rank", "8d6"]])],
+  castBio("Explosion Release: Clay Centipede", clayStats(14, "30 + 15 for every rank above B-Rank", "40 ft., 60 ft. climb", "STR +2 (save +4), DEX +4 (+8), CON +3 (+7), INT −5, WIS +0, CHA −5", true, "All Mental, All Sensory")));
+const dragon = clay("clay-dragon", "Clay Dragon", "huge", 16, 60, { walk: 0, fly: 40 }, { str: 5, dex: 4, con: 5, int: -5, wis: 0, cha: -5 },
+  { hp: "60 + 25 * max(0, @rankValue - 4)", exhaustion: true, stunned: true, vuln: true },
+  id => [shock(id), boom(id),
+    item(id, "Flying Mount", "npcTraits", html("The Clay Dragon primary purpose is to be a flying mount. A creature of your choice can mount the Clay Dragon. When it does, replace the creatures movement with the Clay Dragon. The Clay Dragon moves with the mounted creature. If you are mounted to the Clay Dragon, you cannot command it to move separate from you unless you dismount by spending 5 feet of your normal movement. Attacks targeting the mounted Creature must instead target the Dragon and attacks targeting the Clay Dragon does not harm the mounted creature. Effects that target an area affects only the Clay Dragon.")),
+    item(id, "Tail", "npcStrikes", html("<em>Multiattack.</em> The Clay Dragon can attack 2 times with its Tail. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 3d8 + 5 Earth damage."),
+      [act("clay-dragon", "Tail", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "3d8 + 5", type: "earth" }] } })]),
+    item(id, "Explosive Breath", "npcAbilities", html("The Clay Dragon casts Explosion Release: Clay Missiles at C-Rank as if you had cast it, using your Ninjutsu attack bonus, save DC or ability Modifier when needed.")),
+    detonate("clay-dragon", id, "The Clay Dragon detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Dragon was summoned at. A-Rank: 8d8. S-Rank: 12d8.",
+      [["A-Rank", "8d8"], ["S-Rank", "12d8"]])],
+  castBio("Explosion Release: Clay Dragon", clayStats(16, "60 + 25 for every rank above A-Rank", "40 ft. flying", "STR +5 (save +11), DEX +4 (+10), CON +5 (+11), INT −5, WIS +0, CHA −5", true, "All Mental, All Sensory, Stunned, Exhaustion") + "<p><strong>DR</strong> 6. <strong>Jutsu Slots</strong> 4.</p>"));
+dragon.system.traits.dr = 6;
+
+/* -------------------------------------------- */
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -238,5 +309,7 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("genjutsu-specialist/illusionist/_folder.json", illusionist);
   write(`genjutsu-specialist/beguiler/duplicity-${duplicity._id}.json`, duplicity);
   write(`genjutsu-specialist/illusionist/phantasm-${phantasm._id}.json`, phantasm);
-  console.log(`✓ summons: 4 NPCs (Bunshin ${bunshin._id}, Void Soul ${voidSoul._id}, Duplicity ${duplicity._id}, Phantasm ${phantasm._id}) in 6 folders`);
+  write("bakuton/_folder.json", bakuton);
+  for ( const d of [spider, bird, centipede, dragon] ) write(`bakuton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
+  console.log(`✓ summons: 8 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

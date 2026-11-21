@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "yoton",
       "sourceLine": 5399,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ev7aKrKIGSi7gI",
+        "type": "save",
+        "label": "Shifting",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Starting a turn on the terrain. Failure: Concentration checks at disadvantage and its jutsu cost more (+2; +4 at 7th, +6 at 15th; the effect).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5evw8ucQs3ZKyWY",
+        "type": "effect",
+        "label": "Shifting: cost",
+        "effect": {
+          "name": "Shifting",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.cost.all",
+              "value": "lvl(3:2,7:4,15:6)",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 12
+        },
+        "text": "On a creature that failed."
+      }
+    ]
   }
 }

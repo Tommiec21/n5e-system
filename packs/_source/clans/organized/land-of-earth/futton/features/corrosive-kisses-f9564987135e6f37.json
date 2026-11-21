@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "futton",
-      "sourceLine": 5040
+      "sourceLine": 5040,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,47 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZNWVV4yGdaFhT",
+        "type": "save",
+        "label": "Solid Fog",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          },
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          }
+        ],
+        "text": "Action: a Line (25 by 5 feet, +10 at 7th and 15th), Cone (15 feet, +5) or Sphere (10-foot radius within 30 feet, +5). Failure: damage and 1 rank of Corroded or Deteriorate (pick; +1 rank at 7th and 15th); success: half. A Ninjutsu of your highest rank.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d12,7:2d12,15:3d12)",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

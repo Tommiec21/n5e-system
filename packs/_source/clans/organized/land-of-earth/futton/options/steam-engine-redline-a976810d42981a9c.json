@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "futton",
       "sourceLine": 5101,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,21 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ekWyH54wUH8DmG",
+        "type": "roll",
+        "label": "Redline",
+        "roll": {
+          "formula": "2 * @amount",
+          "note": "Failing a save against a hostile effect: +2 to it per Pressure spent (up to 6). Once every 10 minutes."
+        },
+        "cost": {
+          "pool": "pressure",
+          "choose": true
+        }
+      }
+    ]
   }
 }

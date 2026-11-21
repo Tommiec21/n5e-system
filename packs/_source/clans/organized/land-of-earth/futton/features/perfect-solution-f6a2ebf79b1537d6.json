@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "futton",
-      "sourceLine": 5108
+      "sourceLine": 5108,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hostile Barrier jutsu within 15 feet that roll dice for their effects or hit points roll half the listed value."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,47 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e1ojQzlUijitwB",
+        "type": "save",
+        "label": "Perfect Solution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A hostile creature ends its turn within 15 feet of you in combat. Failure: −1 AC for 1 minute (the effect); passing by 10 or more: immune until you rest.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ehjjXMTKzwXW8h",
+        "type": "effect",
+        "label": "Perfect Solution: −1 AC",
+        "effect": {
+          "name": "Perfect Solution",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-1",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "On a creature that failed."
+      }
+    ]
   }
 }

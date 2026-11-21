@@ -563,3 +563,8 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Engine: `jutsu:id:<identifier>` roll fact (rules/jutsu-facts.mjs); `n5e.keywordAbility.discipline:<d>` (data/item/jutsu.mjs, config/effect-fields.mjs).
 - Codex's Journal Desk files untouched.
 
+## STD6e E1 Land of Earth — Claude, 2026-11-21 (0.79.0-alpha.1)
+- Clan tables `content/automation/clans/*.json` (bakuton, futton, shi-hou, yoton), applied by tools/content/apply-automation.mjs (clanItems); review tables docs/clans/. Summons: Clay Spider, Bird, Centipede, Dragon (folder Bakuton).
+- Engine: save DC source / attack discipline "highest" (workflow/activity-buttons.mjs highestDiscipline); summon rank → `@rankValue` in summoner links (workflow/allied.mjs, rules/summoner-links.mjs); table entry `system` fields.
+- Codex's Journal Desk files untouched.
+

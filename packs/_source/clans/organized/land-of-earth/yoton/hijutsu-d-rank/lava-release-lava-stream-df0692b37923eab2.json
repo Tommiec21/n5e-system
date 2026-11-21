@@ -17,6 +17,169 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank: +10 feet to the cone; B-Rank or higher: a 40-foot cube from you."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGB26Do6UhMIvk",
+              "type": "save",
+              "label": "Lava Stream",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Failure: damage and Molten; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGB26Do6UhMIvk",
+              "type": "save",
+              "label": "Lava Stream",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Failure: damage and Molten; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGB26Do6UhMIvk",
+              "type": "save",
+              "label": "Lava Stream",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Failure: damage and Molten; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGB26Do6UhMIvk",
+              "type": "save",
+              "label": "Lava Stream",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Failure: damage and Molten; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (4d10)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(1d10) + (4d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +272,44 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGB26Do6UhMIvk",
+        "type": "save",
+        "label": "Lava Stream",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          }
+        ],
+        "text": "Failure: damage and Molten; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "fire"
+            },
+            {
+              "formula": "1d10",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

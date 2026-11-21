@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shi-hou",
       "sourceLine": 5271,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A hostile jutsu reduces your speed: you can also gain that much speed until the end of your next turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,25 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQPELD4Tbb6jEC",
+        "type": "effect",
+        "label": "Hawk",
+        "effect": {
+          "name": "Hawk",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Casting a jutsu: a fly speed equal to your speed and no extra movement costs (difficult terrain) until the start of your next turn.",
+        "cost": {
+          "pool": "innerChi",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

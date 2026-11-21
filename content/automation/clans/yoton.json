@@ -1,0 +1,1578 @@
+{
+  "clan": "yoton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "yoton-lava-chakra-mode": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, once per Long Rest: the Lava Chakra Mode Amp for 1 minute (start it from your Amps). Or, in combat, standing in two overlapping Molten Terrains: a Bonus action dispels both and starts it (once per Long Rest that way)."
+        }
+      ]
+    },
+    "yoton-lava-release-ash-stone-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ834x1qiUXjBM",
+          "type": "save",
+          "label": "Ash Stone Seal",
+          "save": {
+            "abilities": [
+              "str",
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            }
+          ],
+          "text": "Strength or Charisma (your choice). Failure: Restrained and Molten for the duration; it remakes the save at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Restrained by this within Molten Terrain: it automatically fails saves against the terrain's effects."
+        }
+      ]
+    },
+    "yoton-lava-release-expanding-flame-rings": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEtfM1pN5A4tpx",
+          "type": "attack",
+          "label": "Expanding Flame Rings",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "3d10",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eqVozVvJCq9xU3",
+          "type": "save",
+          "label": "Flame Rings: splash",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            }
+          ],
+          "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eEtfM1pN5A4tpx",
+                "type": "attack",
+                "label": "Expanding Flame Rings",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(3d10) + (1d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eqVozVvJCq9xU3",
+                "type": "save",
+                "label": "Flame Rings: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eEtfM1pN5A4tpx",
+                "type": "attack",
+                "label": "Expanding Flame Rings",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(3d10) + (2d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eqVozVvJCq9xU3",
+                "type": "save",
+                "label": "Flame Rings: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEtfM1pN5A4tpx",
+                "type": "attack",
+                "label": "Expanding Flame Rings",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(3d10) + (3d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eqVozVvJCq9xU3",
+                "type": "save",
+                "label": "Flame Rings: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-lava-rock": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSSi6yrVC4FCor",
+          "type": "attack",
+          "label": "Lava Rock",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eEiVzhCGaI8kxH",
+          "type": "save",
+          "label": "Lava Rock: splash",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eSSi6yrVC4FCor",
+                "type": "attack",
+                "label": "Lava Rock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEiVzhCGaI8kxH",
+                "type": "save",
+                "label": "Lava Rock: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eSSi6yrVC4FCor",
+                "type": "attack",
+                "label": "Lava Rock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEiVzhCGaI8kxH",
+                "type": "save",
+                "label": "Lava Rock: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eSSi6yrVC4FCor",
+                "type": "attack",
+                "label": "Lava Rock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEiVzhCGaI8kxH",
+                "type": "save",
+                "label": "Lava Rock: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eSSi6yrVC4FCor",
+                "type": "attack",
+                "label": "Lava Rock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEiVzhCGaI8kxH",
+                "type": "save",
+                "label": "Lava Rock: splash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-lava-stream": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGB26Do6UhMIvk",
+          "type": "save",
+          "label": "Lava Stream",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            }
+          ],
+          "text": "Failure: damage and Molten; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "fire"
+              },
+              {
+                "formula": "1d10",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank: +10 feet to the cone; B-Rank or higher: a 40-foot cube from you."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eGB26Do6UhMIvk",
+                "type": "save",
+                "label": "Lava Stream",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Failure: damage and Molten; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (1d10)",
+                      "type": "fire"
+                    },
+                    {
+                      "formula": "(1d10) + (1d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eGB26Do6UhMIvk",
+                "type": "save",
+                "label": "Lava Stream",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Failure: damage and Molten; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (2d10)",
+                      "type": "fire"
+                    },
+                    {
+                      "formula": "(1d10) + (2d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eGB26Do6UhMIvk",
+                "type": "save",
+                "label": "Lava Stream",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Failure: damage and Molten; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (3d10)",
+                      "type": "fire"
+                    },
+                    {
+                      "formula": "(1d10) + (3d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eGB26Do6UhMIvk",
+                "type": "save",
+                "label": "Lava Stream",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  }
+                ],
+                "text": "Failure: damage and Molten; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (4d10)",
+                      "type": "fire"
+                    },
+                    {
+                      "formula": "(1d10) + (4d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-manifestation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Earth or Fire; set it on the sheet); Earth or Fire Release jutsu can deal Earth or Fire damage respectively. 10 minutes of Magma chakra destroys a seal or barrier up to your highest rank; higher ones need an ability check (highest jutsu modifier) against their Standard Jutsu DC."
+        }
+      ]
+    },
+    "yoton-lava-release-planet-branding-blast": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJaRCAciGHKWIQ",
+          "type": "save",
+          "label": "Planet-Branding Blast",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "A 45-foot cube from you; again at the start of each of your turns. Failure: damage, Molten until the end of your next turn and Bruised; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "fire"
+              },
+              {
+                "formula": "3d10",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The area is Molten Terrain for the duration. A Bonus Action in Lava Chakra Mode. Upcast: +5 feet to the cube per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eJaRCAciGHKWIQ",
+                "type": "save",
+                "label": "Planet-Branding Blast",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "A 45-foot cube from you; again at the start of each of your turns. Failure: damage, Molten until the end of your next turn and Bruised; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "fire"
+                    },
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-quicklime-hardening": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDJ4HRqAyWbVrj",
+          "type": "save",
+          "label": "Quicklime Hardening",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            }
+          ],
+          "text": "A 60-foot line. Failure: Grappled in place and Molten until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eWwlStbQKE7eiE",
+          "type": "save",
+          "label": "Quicklime: cold damage",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "petrified",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Petrified"
+            }
+          ],
+          "text": "A creature Molten from this takes cold damage before the end of its next turn. Failure: Petrified until the start of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yoton-lava-release-rubber-defense": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eug5UKsvm1dZyK",
+          "type": "heal",
+          "label": "Rubber Defense",
+          "heal": {
+            "formula": "15",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: you or a willing ally within 30 feet; a Barrier of these hit points (immune to lightning) until the start of your next turn.",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eug5UKsvm1dZyK",
+                "type": "heal",
+                "label": "Rubber Defense",
+                "heal": {
+                  "formula": "(15) + 10",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you or a willing ally within 30 feet; a Barrier of these hit points (immune to lightning) until the start of your next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eug5UKsvm1dZyK",
+                "type": "heal",
+                "label": "Rubber Defense",
+                "heal": {
+                  "formula": "(15) + 20",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you or a willing ally within 30 feet; a Barrier of these hit points (immune to lightning) until the start of your next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eug5UKsvm1dZyK",
+                "type": "heal",
+                "label": "Rubber Defense",
+                "heal": {
+                  "formula": "(15) + 30",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you or a willing ally within 30 feet; a Barrier of these hit points (immune to lightning) until the start of your next turn.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eug5UKsvm1dZyK",
+                "type": "heal",
+                "label": "Rubber Defense",
+                "heal": {
+                  "formula": "(15) + 40",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you or a willing ally within 30 feet; a Barrier of these hit points (immune to lightning) until the start of your next turn.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-rubber-wall-enhancement": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rubber wall (15 by 15 by 10 feet), an Earthen Artifact: AC your Ninjutsu save DC, 4d10 + 15 hit points (+1d10 per rank above B), resistance to piercing and slashing, immunity to bludgeoning. Anchored to a structure: it and the structure gain 15 hit points."
+        }
+      ]
+    },
+    "yoton-lava-release-scorching-armored-fist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejcWSEYpbFudMH",
+          "type": "attack",
+          "label": "Scorching Armored Fist",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 3
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "1d10",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "3"
+          }
+        },
+        {
+          "id": "n5e3ATML6nlADAZQ",
+          "type": "damage",
+          "label": "Scorching Armored Fist: on a miss",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Each miss still deals this to the target."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire. A-Rank or higher: four attacks."
+        }
+      ]
+    },
+    "yoton-lava-release-scorching-stream-rock": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZkIQahOCFu1SM",
+          "type": "save",
+          "label": "Scorching Stream Rock",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 6d8 fire.",
+              "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+              "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+              "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            },
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eiRiORMUFSdjNf",
+          "type": "damage",
+          "label": "Scorching Stream Rock: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eZkIQahOCFu1SM",
+                "type": "save",
+                "label": "Scorching Stream Rock",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 6d8 fire.",
+                    "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+                    "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eiRiORMUFSdjNf",
+                "type": "damage",
+                "label": "Scorching Stream Rock: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZkIQahOCFu1SM",
+                "type": "save",
+                "label": "Scorching Stream Rock",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 6d8 fire.",
+                    "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+                    "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+                    "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yoton-molten",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Molten"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eiRiORMUFSdjNf",
+                "type": "damage",
+                "label": "Scorching Stream Rock: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yoton-lava-release-steam-gas-vent": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQJazg9OQrLDlv",
+          "type": "save",
+          "label": "Steam Gas Vent",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Dazzled until the end of its next turn.",
+              "failure": "Failure: 1 rank of Dazzled and Dazed.",
+              "critFailure": "Critical Failure: as a failure, but Envenomed instead of Dazzled."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "A 15-foot radius on a point in your Molten Terrain.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: +5 feet to the radius."
+        }
+      ]
+    },
+    "yoton-magma-domain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCar557ljo65KF",
+          "type": "roll",
+          "label": "Molten Terrain",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: a 10-foot cube on a point within 60 feet becomes Molten Terrain for 1 minute (each foot costs 1 extra). One at a time (two at 11th); more dispels the oldest."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Magma Variant at 1st (another at 7th and 15th; picking one again gives its Intensity I, then II). Your Hijutsu use your Variant's abilities; their saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "yoton-magma-domain-onyx": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekJ8wBeHmC2I0v",
+          "type": "roll",
+          "label": "Onyx shard",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn with a Hijutsu, or a Bonus action: a shard on a point within 30 feet for 1 minute; creatures within 10 feet save at disadvantage against speed reduction, Grappled, Restrained and Prone. One at a time (+1 at 7th and 15th)."
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Intensity I: your Onyx are Earthen Artifacts; hostile Barriers cast in its aura cost 8 more. Intensity II: standing in two Onyx auras, resistance to the first damage each turn."
+        }
+      ]
+    },
+    "yoton-magma-domain-quicklime": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Molten Terrain is 5 feet larger (+5 at 7th and 15th) and you maintain one more. Intensity I: hostile creatures leaving it make a Strength save or can't leave this turn. Intensity II: hostile Hand Sign jutsu under your Hijutsu need a Strength save first or are Interrupted."
+        }
+      ]
+    },
+    "yoton-magma-domain-rubber": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Fire or Earth jutsu with a range of Self that give temporary hit points, DR or a Barrier can target a willing ally within 30 feet. Earthen Artifacts in your Molten Terrain without hit points gain 20. Intensity I: allies in your Molten Terrain resist bludgeoning, piercing, slashing and lightning; 4 of an Artifact's hit points give one ally another resistance until your next turn. Intensity II: allies can move up to half their damage to an Earthen Artifact with hit points."
+        }
+      ]
+    },
+    "yoton-magma-domain-volcanic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZHoRNX5Y95pbv",
+          "type": "save",
+          "label": "Volcanic",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yoton-molten",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Molten"
+            }
+          ],
+          "text": "A creature first enters your Molten Terrain. Failure: Molten.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Intensity I: your Earth or Fire area jutsu crossing your Molten Terrain gain +10 feet. Intensity II: Bonus-action Molten Terrain is 10 feet larger, and creatures within 5 feet of its point make their next save against Fire or Earth jutsu at disadvantage."
+        }
+      ]
+    },
+    "yoton-scorched-foundation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Three Foundations (one more at 7th and 15th). When you create Molten Terrain, apply two; allies are immune to its harmful effects. Two foundations with saves: one save, both effects on a failure. Saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-buoyant": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Allies starting their turn on it: +15 speed, advantage on saves against forced movement and Prone, and hostile creatures can't make opportunity attacks against their movement."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-dense": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Structures and Barriers from your Earth or Fire jutsu on it gain 4 DR (8 at 7th, 12 at 15th)."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-obscuring": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Lightly obscured for creatures not on it; at 11th, hostile creatures off it can't target creatures on it with attacks."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-reactive-heat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePYTLijg7Sgt5y",
+          "type": "save",
+          "label": "Reactive Heat",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Once per turn, a hostile creature takes acid, earth or fire damage on the terrain. Failure: 1 rank of Burned.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yoton-scorched-foundation-rubbery": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Allies taking damage on it take 4 less (8 at 7th, 12 at 15th)."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-scalding": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIfKkb4QpE1KIv",
+          "type": "damage",
+          "label": "Scalding",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:1d6,7:3d6,15:5d6)",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "A creature starting its turn on the terrain."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-shifting": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ev7aKrKIGSi7gI",
+          "type": "save",
+          "label": "Shifting",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Starting a turn on the terrain. Failure: Concentration checks at disadvantage and its jutsu cost more (+2; +4 at 7th, +6 at 15th; the effect).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5evw8ucQs3ZKyWY",
+          "type": "effect",
+          "label": "Shifting: cost",
+          "effect": {
+            "name": "Shifting",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.cost.all",
+                "value": "lvl(3:2,7:4,15:6)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 12
+          },
+          "text": "On a creature that failed."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-sticky": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBLY3CYPzGgBeb",
+          "type": "save",
+          "label": "Sticky",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Starting a turn on the terrain. Failure: −15 speed, and no Dash, Disengage or Dodge until the end of its next turn (the effect).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eFrBDARTzLDiJ5",
+          "type": "effect",
+          "label": "Sticky: −15 speed",
+          "effect": {
+            "name": "Sticky",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "-15",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 12
+          },
+          "text": "On a creature that failed."
+        }
+      ]
+    },
+    "yoton-scorched-foundation-toxic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elDQ3ndJtz5caZ",
+          "type": "save",
+          "label": "Toxic",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "Once per turn, a hostile creature takes wind, poison or necrotic damage on the terrain. Failure: 1 rank of Envenomed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yoton-world-forge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6US102dwBwylx",
+          "type": "effect",
+          "label": "World Forge",
+          "effect": {
+            "name": "World Forge",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action, 1 minute: a 40-foot aura on you; all terrain in it is Molten Terrain, with up to 4 Foundations.",
+          "activation": "action"
+        },
+        {
+          "id": "n5ebuX2UNEpcOt87",
+          "type": "heal",
+          "label": "World Forge: temporary hit points",
+          "heal": {
+            "formula": "10",
+            "pool": "tempHp"
+          },
+          "text": "At the start of each Molten creature's turn."
+        }
+      ]
+    }
+  }
+}

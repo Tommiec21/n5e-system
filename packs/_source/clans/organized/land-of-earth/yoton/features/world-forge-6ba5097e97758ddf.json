@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "yoton",
-      "sourceLine": 5417
+      "sourceLine": 5417,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,32 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e6US102dwBwylx",
+        "type": "effect",
+        "label": "World Forge",
+        "effect": {
+          "name": "World Forge",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Action, 1 minute: a 40-foot aura on you; all terrain in it is Molten Terrain, with up to 4 Foundations.",
+        "activation": "action"
+      },
+      {
+        "id": "n5ebuX2UNEpcOt87",
+        "type": "heal",
+        "label": "World Forge: temporary hit points",
+        "heal": {
+          "formula": "10",
+          "pool": "tempHp"
+        },
+        "text": "At the start of each Molten creature's turn."
+      }
+    ]
   }
 }

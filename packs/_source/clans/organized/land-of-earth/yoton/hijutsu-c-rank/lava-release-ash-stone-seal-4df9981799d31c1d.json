@@ -17,7 +17,14 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Fire Release",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Restrained by this within Molten Terrain: it automatically fails saves against the terrain's effects."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQ834x1qiUXjBM",
+        "type": "save",
+        "label": "Ash Stone Seal",
+        "save": {
+          "abilities": [
+            "str",
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          }
+        ],
+        "text": "Strength or Charisma (your choice). Failure: Restrained and Molten for the duration; it remakes the save at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

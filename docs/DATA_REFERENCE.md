@@ -1005,3 +1005,8 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Armor category `illusory` (worn over armor) with `system.overlay`: `ability` (replaces Dex in AC: an ability or a discipline nin|tai|gen), `fromDC` (that discipline's save DC is the AC when higher), `whileState` (only in that named state). Rules: `rules/ac.mjs` overlayAC.
 - Summon template `flags.n5e.summonerLook: true`: the placed token takes the summoner's token name, image and size. Summoner data adds `@speeds.<walk|climb|swim|fly|burrow>` and `@size`.
 
+### Clans as data (0.79.0-alpha.1, STD6e)
+
+- Clan tables: `content/automation/clans/<clan>.json` (`{clan, features: {<identifier>: entry}}`), same entry keys as class tables plus `system` (item fields, e.g. a stance's `unarmedDie`, `unarmedType`).
+- Save `dc.source: "highest"` and attack `discipline: "highest"`: the best casting discipline's DC or attack bonus.
+- Summoner links: `@rankValue` (the summoning jutsu's cast rank, D 1 ... S 5; 0 otherwise).

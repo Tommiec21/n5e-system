@@ -17,7 +17,14 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Earth Release, Fire Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: +5 feet to the radius."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQJazg9OQrLDlv",
+        "type": "save",
+        "label": "Steam Gas Vent",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled until the end of its next turn.",
+            "failure": "Failure: 1 rank of Dazzled and Dazed.",
+            "critFailure": "Critical Failure: as a failure, but Envenomed instead of Dazzled."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "A 15-foot radius on a point in your Molten Terrain.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

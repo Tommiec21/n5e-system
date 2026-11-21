@@ -17,7 +17,14 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Water Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dashing, then attacking at the end of the movement this turn: the attack has advantage and its damage is rolled twice, taking the higher."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,27 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eWIFE81pmbyBt2",
+        "type": "effect",
+        "label": "Steam Dash",
+        "effect": {
+          "name": "Steam Dash",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "15",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "+15 speed and Dash as a bonus action for 1 minute."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

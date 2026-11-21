@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "futton",
       "sourceLine": 5080,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eAHmtn1mncnoNC",
+        "type": "save",
+        "label": "Flower Boil",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "A hostile creature moves 10 or more feet into or through your Solid Fog; again for every 10 feet. Failure: 1 rank of Slow.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

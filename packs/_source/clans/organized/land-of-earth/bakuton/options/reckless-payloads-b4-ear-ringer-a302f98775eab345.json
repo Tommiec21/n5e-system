@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "bakuton",
       "sourceLine": 4901,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezClBt4X6wLDbZ",
+        "type": "save",
+        "label": "Payload: Ear Ringer",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          },
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Triggered by [Unarmed Damage]: a 30-foot cone from you. Failure: Deafened and 2 ranks of Concussed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

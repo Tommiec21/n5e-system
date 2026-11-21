@@ -17,6 +17,85 @@
         "cost": "13 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Water Release, Corrosive Branch, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Constructs, structures and Barriers treat its damage as if vulnerable."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eKDid5JRzKNmLq",
+              "type": "save",
+              "label": "Acidic Dragon's Breath",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKDid5JRzKNmLq",
+              "type": "save",
+              "label": "Acidic Dragon's Breath",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +190,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKDid5JRzKNmLq",
+        "type": "save",
+        "label": "Acidic Dragon's Breath",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Deteriorate"
+          }
+        ],
+        "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

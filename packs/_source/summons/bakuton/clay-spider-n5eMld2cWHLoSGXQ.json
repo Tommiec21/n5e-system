@@ -1,0 +1,413 @@
+{
+  "_id": "n5eMld2cWHLoSGXQ",
+  "_key": "!actors!n5eMld2cWHLoSGXQ",
+  "name": "Clay Spider",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Bakuton: Clay Spider",
+      "biography": "<p><em>Explosion Release: Clay Spiders (Bakuton Hijutsu).</em> It uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You command it as an Action or Bonus action.</p><p><strong>Armor Class</strong> 10 + your ninjutsu ability modifier · <strong>Hit Points</strong> 10 + 10 for every rank above C-Rank · <strong>Speed</strong> 30 ft.</p><p><strong>Abilities</strong> STR +0 (save +3), DEX +0 (+3), CON +0 (+3), INT −5, WIS +0, CHA −5. <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Exhaustion. <strong>Senses</strong> Relies on Caster senses.</p><p><strong>Skills</strong> Stealth.</p><p><strong>Linked to you when summoned:</strong> its AC (base + your Ninjutsu ability modifier), hit points (by the rank you cast the jutsu at), Ninjutsu attack bonus and save DC, and your senses.</p>",
+      "summonRole": "Clay Spider"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 10,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "small",
+      "immune": [
+        "acid",
+        "poison",
+        "psychic"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "exhaustion"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 10,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eiwsrh4hiRwxGq",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5eiwsrh4hiRwxGq",
+      "name": "Shock Weakness",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If this creature takes Lightning damage it cannot perform its Detonate attack, until the end of its casters next turn. It also cannot perform its Detonate attack while it has the Shocked condition.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5el1AOpkbvWpsPH",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5el1AOpkbvWpsPH",
+      "name": "Purpose to BOOM",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Once summoned this creature has 1 minute before it self Detonates. If it cannot Detonate after this 1-minute duration, it dispels itself.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eS3gD7aGBmByQC",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5eS3gD7aGBmByQC",
+      "name": "Silent Scurry",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When this creature is summoned, make a Stealth check using your highest jutsu modifier vs any hostile creature that can see you. On a success, then Clay Spider is Undetected by creatures that do not have Chakra sight or Chakra sense.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eaR3dYH6JH4UyC",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5eaR3dYH6JH4UyC",
+      "name": "Scurry",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Spider takes the Dash and Disengage action as part of this action.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eEgm3OEHFa7IOe",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5eEgm3OEHFa7IOe",
+      "name": "Grab",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Spider attempts to grab onto a creature and hold on to it with sacrificial intent. The target must make a Dexterity saving throw. On a failed save the creature has the spider hold on to it. The creature can attempt to pull the spider free by making a Strength saving throw, pulling the spider free on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eLwSm3ihOV1oKQ",
+            "type": "save",
+            "label": "Grab",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "text": "Failure: the spider holds on (it pulls it free with a Strength save)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5egD9OuLx5VymkZ",
+      "_key": "!actors.items!n5eMld2cWHLoSGXQ.n5egD9OuLx5VymkZ",
+      "name": "Detonate",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Spider detonates, filling a 5-foot radius. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Spider(s) were summoned at. A creature the spider is grabbing makes their save at disadvantage. If more than one spider is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d6 for each Clay Spider explosion radius they are in. D-Rank/C-Rank: 3d6. B-Rank/A-Rank: 4d6. S-Rank: 5d6.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eOwqH0ytCjblBR",
+            "type": "save",
+            "label": "Detonate",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "text": "Force damage by the rank it was summoned at; half on a success."
+          },
+          {
+            "id": "n5eroTn8uuXhvCTm",
+            "type": "damage",
+            "label": "Detonate: D/C-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at D/C-Rank."
+          },
+          {
+            "id": "n5eV2wU1bsGqOspF",
+            "type": "damage",
+            "label": "Detonate: B/A-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at B/A-Rank."
+          },
+          {
+            "id": "n5e3y8BvCTnKOuUI",
+            "type": "damage",
+            "label": "Detonate: S-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "5d6",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCOJnly0WDE9lV",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "10 + (@dc.nin - 8 - @prof)",
+        "hpMax": "10 + 10 * max(0, @rankValue - 2)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Clay Spider",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.79.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

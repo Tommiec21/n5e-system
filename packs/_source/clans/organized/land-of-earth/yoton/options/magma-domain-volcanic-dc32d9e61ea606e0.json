@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yoton",
       "sourceLine": 5370,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Intensity I: your Earth or Fire area jutsu crossing your Molten Terrain gain +10 feet. Intensity II: Bonus-action Molten Terrain is 10 feet larger, and creatures within 5 feet of its point make their next save against Fire or Earth jutsu at disadvantage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZHoRNX5Y95pbv",
+        "type": "save",
+        "label": "Volcanic",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          }
+        ],
+        "text": "A creature first enters your Molten Terrain. Failure: Molten.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

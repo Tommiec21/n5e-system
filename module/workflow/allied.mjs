@@ -61,7 +61,7 @@ export function rowPositions({ x, y, width = 1, size, count }) {
  * @returns {Promise<string[]>} created token uuids
  */
 export async function placeAllied({ caster, item, templateUuid, count = 1, x = null, y = null, sceneId = null,
-  seconds = 60, concentration = false, ownerId, initiative = "match" }) {
+  seconds = 60, concentration = false, ownerId, initiative = "match", rank = "" }) {
   if ( !game.user.isGM ) throw new Error("Only the GM's client places tokens for another user.");
   const scene = (sceneId && game.scenes.get(sceneId)) || canvas?.scene;
   if ( !scene || !caster || item?.actor?.uuid !== caster.uuid ) throw new Error("Open a scene and use an item the caster owns.");
@@ -75,7 +75,7 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const base = (await template.getTokenDocument({ actorLink: false })).toObject();
   const positions = rowPositions({ x: Number.isFinite(x) ? x : origin.x + origin.width * size,
     y: Number.isFinite(y) ? y : origin.y, width: template.prototypeToken?.width ?? 1, size, count });
-  const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system));
+  const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system, { rank }));
   const look = template.flags?.n5e?.summonerLook ? summonerLook(origin, caster) : null;
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
     concentration, expires: game.time.worldTime + seconds, linked, look });
@@ -107,12 +107,12 @@ async function addAlliedCombatants(caster, tokens, mode) {
  * Card entry point. The GM places directly; a player asks the GM's client through an owner intent.
  * @returns {Promise<string[]>} token uuids
  */
-export async function summonAllied(caster, item, { uuid, count = 1, x, y, seconds = 60, concentration = false, initiative = "match" } = {}) {
+export async function summonAllied(caster, item, { uuid, count = 1, x, y, seconds = 60, concentration = false, initiative = "match", rank = "" } = {}) {
   if ( !canModify(game.user, caster) ) throw new Error("You must own the summoner.");
   if ( !canSummonAllied(game.user) ) throw new Error("The GM has turned off player summoning.");
-  const request = { itemId: item?.id, templateUuid: uuid, count, seconds, concentration, x, y, initiative, sceneId: canvas?.scene?.id };
+  const request = { itemId: item?.id, templateUuid: uuid, count, seconds, concentration, x, y, initiative, rank, sceneId: canvas?.scene?.id };
   if ( game.user.isGM ) return placeAllied({ caster, item, templateUuid: uuid, count, x, y, sceneId: request.sceneId,
-    seconds, concentration, initiative, ownerId: game.user.id });
+    seconds, concentration, initiative, rank, ownerId: game.user.id });
   return submitIntent(caster, "summonAllied", request);
 }
 
@@ -149,7 +149,7 @@ export function registerAlliedIntents() {
     const item = caster.items.get(data.itemId);
     if ( !item ) throw new Error("The summoning item is not on this actor.");
     return placeAllied({ caster, item, templateUuid: data.templateUuid, count: data.count, x: data.x, y: data.y,
-      sceneId: data.sceneId, seconds: data.seconds, concentration: data.concentration, initiative: data.initiative, ownerId: user.id });
+      sceneId: data.sceneId, seconds: data.seconds, concentration: data.concentration, initiative: data.initiative, rank: data.rank ?? "", ownerId: user.id });
   });
   registerIntentHandler("dismissAllied", async (caster, data) => removeAllied(caster, data.itemId).then(() => true));
 }

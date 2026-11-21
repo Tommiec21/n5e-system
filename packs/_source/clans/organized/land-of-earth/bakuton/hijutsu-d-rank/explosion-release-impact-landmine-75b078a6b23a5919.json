@@ -17,6 +17,153 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The area is difficult terrain (not for you) until the end of your next turn. C-Rank or higher: failing creatures are pushed 10 feet."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eqHczlmUkVyow7",
+              "type": "save",
+              "label": "Impact Landmine",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eqHczlmUkVyow7",
+              "type": "save",
+              "label": "Impact Landmine",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eqHczlmUkVyow7",
+              "type": "save",
+              "label": "Impact Landmine",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eqHczlmUkVyow7",
+              "type": "save",
+              "label": "Impact Landmine",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +258,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eqHczlmUkVyow7",
+        "type": "save",
+        "label": "Impact Landmine",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Every creature but you in 10 feet. Failure: damage and 1 rank of Dazzled; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,123 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Genjutsu (Visual, Tactile), Earth Release, Fire Release",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eZkIQahOCFu1SM",
+              "type": "save",
+              "label": "Scorching Stream Rock",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 6d8 fire.",
+                  "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+                  "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiRiORMUFSdjNf",
+              "type": "damage",
+              "label": "Scorching Stream Rock: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZkIQahOCFu1SM",
+              "type": "save",
+              "label": "Scorching Stream Rock",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 6d8 fire.",
+                  "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+                  "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiRiORMUFSdjNf",
+              "type": "damage",
+              "label": "Scorching Stream Rock: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ]
+        }
       }
     }
   },
@@ -113,7 +230,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZkIQahOCFu1SM",
+        "type": "save",
+        "label": "Scorching Stream Rock",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 6d8 fire.",
+            "success": "Success: half of 6d8 fire and −2 AC until the end of its next turn.",
+            "failure": "Failure: 6d8 fire, Molten until the end of your next turn and 1 rank of Envenomed.",
+            "critFailure": "Critical Failure: as a failure, with 2 ranks of Envenomed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "A 60-foot by 5-foot line; −2 to the save in Molten Terrain.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eiRiORMUFSdjNf",
+        "type": "damage",
+        "label": "Scorching Stream Rock: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

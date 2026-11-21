@@ -10,6 +10,7 @@
  *   rules        rule elements and notes                     → flags.n5e.rules
  *   castOptions  cast dialog options (rider options are kept) → flags.n5e.castOption(s)
  *   activities   buttons                                     → system.activities
+ *   system       item fields (STD6e: a stance's unarmedDie)  → system.<field>
  *   pools        resource pools                              → system.resourcePools
  *   effects      transfer or action effects {name, levels?, changes?, rules?, applyTo?, requiresStance?} → embedded effects
  *                marked flags.n5e.std6d (effects the feature had without that mark are kept)
@@ -28,6 +29,9 @@ import { automationOf } from "../../module/rules/automation-summary.mjs";
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const TABLES = path.join(ROOT, "content/automation");
 const FEATURES = path.join(ROOT, "packs/_source/features");
+// STD6e: clan tables (content/automation/clans/<clan>.json) over the clans pack.
+const CLAN_TABLES = path.join(TABLES, "clans");
+const CLANS = path.join(ROOT, "packs/_source/clans");
 const STATUSES = ["automated", "partial", "note", "none"];
 
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(d => (d.isDirectory() ? walk(path.join(dir, d.name))
@@ -51,6 +55,32 @@ export function automationTables() {
   return fs.readdirSync(TABLES).filter(f => f.endsWith(".json")).map(f => ({ file: f, ...JSON.parse(fs.readFileSync(path.join(TABLES, f), "utf8")) }));
 }
 
+/** STD6e: the clan tables. */
+export function clanTables() {
+  if ( !fs.existsSync(CLAN_TABLES) ) return [];
+  return fs.readdirSync(CLAN_TABLES).filter(f => f.endsWith(".json")).map(f => ({ file: `clans/${f}`, ...JSON.parse(fs.readFileSync(path.join(CLAN_TABLES, f), "utf8")) }));
+}
+
+/**
+ * A clan's items (features, options, stances, Hijutsu; not the clan item): Map identifier → {file, doc}.
+ * The clans pack is organized <land>/<clan>/<kind>/..., so a clan's items are the ones in its folder.
+ */
+export function clanItems(clan) {
+  const out = new Map();
+  for ( const file of walk(CLANS) ) {
+    const parts = path.relative(CLANS, file).split(path.sep);
+    if ( parts[2] !== clan ) continue;
+    const doc = JSON.parse(fs.readFileSync(file, "utf8"));
+    if ( doc.type === "clan" ) continue;
+    out.set(doc.system.identifier, { file, doc });
+  }
+  return out;
+}
+
+/** Every table with its items: class tables over their features, clan tables over their clan's items. */
+const allTables = () => [...automationTables().map(t => ({ t, items: () => classFeatures(t.class), what: t.class })),
+  ...clanTables().map(t => ({ t, items: () => clanItems(t.clan), what: t.clan }))];
+
 /** The feature document an entry produces. */
 export function appliedDoc(doc, entry) {
   const out = structuredClone(doc);
@@ -66,6 +96,8 @@ export function appliedDoc(doc, entry) {
   }
   for ( const [k, v] of Object.entries(entry.flags ?? {}) ) n5e[k] = v;
   if ( entry.activities ) out.system.activities = entry.activities;
+  // STD6e: item fields set by the table (a stance's unarmedDie and unarmedType).
+  for ( const [k, v] of Object.entries(entry.system ?? {}) ) out.system[k] = v;
   if ( entry.pools ) out.system.resourcePools = entry.pools;
   if ( entry.duration ) out.system.duration = { ...(out.system.duration ?? {}), ...entry.duration };
   if ( entry.effects ) {
@@ -90,12 +122,12 @@ export function appliedDoc(doc, entry) {
 
 export function tableProblems() {
   const p = [];
-  for ( const t of automationTables() ) {
-    const features = classFeatures(t.class);
-    for ( const id of features.keys() ) if ( !t.features?.[id] ) p.push(`${t.file}: ${id} has no entry (every feature of a reviewed class needs one)`);
+  for ( const { t, items, what } of allTables() ) {
+    const features = items();
+    for ( const id of features.keys() ) if ( !t.features?.[id] ) p.push(`${t.file}: ${id} has no entry (every item of a reviewed class or clan needs one)`);
     for ( const [id, e] of Object.entries(t.features ?? {}) ) {
       const where = `${t.file} ${id}`;
-      if ( !features.has(id) ) p.push(`${where}: no ${t.class} feature with this identifier`);
+      if ( !features.has(id) ) p.push(`${where}: no ${what} item with this identifier`);
       if ( !STATUSES.includes(e.status) ) p.push(`${where}: status is one of ${STATUSES.join(", ")}`);
       for ( const fld of ["castOptions", "activities"] ) {
         const labels = (e[fld] ?? []).map(o => o.label);
@@ -124,8 +156,8 @@ export function tableProblems() {
 export function applyAutomation({ check = false } = {}) {
   const problems = tableProblems();
   const changed = [];
-  for ( const t of automationTables() ) {
-    const features = classFeatures(t.class);
+  for ( const { t, items } of allTables() ) {
+    const features = items();
     for ( const [id, entry] of Object.entries(t.features ?? {}) ) {
       const f = features.get(id);
       if ( !f ) continue;
@@ -145,5 +177,6 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   if ( check && changed.length ) console.error(`✗ automation tables not applied: ${changed.join(", ")} (run node tools/content/apply-automation.mjs)`);
   if ( problems.length || (check && changed.length) ) process.exit(1);
   const n = automationTables().reduce((t, x) => t + Object.keys(x.features ?? {}).length, 0);
-  console.log(`✓ class automation: ${automationTables().length} classes, ${n} features${check ? "" : `, ${changed.length} files written`}`);
+  const c = clanTables().reduce((t, x) => t + Object.keys(x.features ?? {}).length, 0);
+  console.log(`✓ class automation: ${automationTables().length} classes, ${n} features; ${clanTables().length} clans, ${c} items${check ? "" : `, ${changed.length} files written`}`);
 }

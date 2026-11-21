@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "futton",
-      "sourceLine": 5057
+      "sourceLine": 5057,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two infusions, swapped after a Long Rest. Acidic Mists: a jutsu's Chilled ranks become Deteriorate. Melting Heat: a jutsu's Burned ranks become Scald (each once per turn, then not until the end of your next turn). Great Wall Dissolution on a jutsu effect: a jutsu ability check (highest modifier) against its save DC; +1 rank of Mastery at 7th, 2 at 11th, 3 at 15th."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,43 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMTwenkZRtovnx",
+        "type": "effect",
+        "label": "Caustic Aura",
+        "effect": {
+          "name": "Caustic Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute (ends if you fail a save against Wind Release): weapon bludgeoning, piercing and slashing damage to you is reduced by half your level.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e4WXy1YXtKONJp",
+        "type": "save",
+        "label": "Great Wall Dissolution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, [Unarmed Damage] or [Weapon Damage] to a construct, object or structure. Failure: it loses its resistances and gains vulnerability to acid and one more type until the end of your next turn. Once every 10 minutes per creature.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

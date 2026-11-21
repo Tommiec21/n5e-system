@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "yoton",
       "sourceLine": 5401,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eBLY3CYPzGgBeb",
+        "type": "save",
+        "label": "Sticky",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Starting a turn on the terrain. Failure: −15 speed, and no Dash, Disengage or Dodge until the end of its next turn (the effect).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eFrBDARTzLDiJ5",
+        "type": "effect",
+        "label": "Sticky: −15 speed",
+        "effect": {
+          "name": "Sticky",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-15",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 12
+        },
+        "text": "On a creature that failed."
+      }
+    ]
   }
 }

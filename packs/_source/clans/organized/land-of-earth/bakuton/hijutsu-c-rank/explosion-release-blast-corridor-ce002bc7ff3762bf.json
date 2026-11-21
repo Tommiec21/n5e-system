@@ -17,6 +17,98 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Barriers treat its damage as if vulnerable. A-Rank or higher: a 30-foot cone instead, and creatures with a Barrier save at disadvantage."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eKMnR2QWdyXdP0",
+              "type": "save",
+              "label": "Blast Corridor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eKMnR2QWdyXdP0",
+              "type": "save",
+              "label": "Blast Corridor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKMnR2QWdyXdP0",
+              "type": "save",
+              "label": "Blast Corridor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +202,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKMnR2QWdyXdP0",
+        "type": "save",
+        "label": "Blast Corridor",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 5-foot-wide, 60-foot line. Failure: damage; success: half. Creatures with temporary hit points that fail lose them first.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

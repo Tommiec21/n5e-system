@@ -1,6 +1,6 @@
 # STD6e function spec: clans as data
 
-Status: **Proposed 2026-11-21 (King: "Next batch" after STD6d finished). Waiting on King's approval and Q-E1–Q-E4. Nothing built.**
+Status: **Approved by King 2026-11-21 ("Begin."). E1 Land of Earth built (0.79.0-alpha.1). Next: E2 Land of Wind.**
 
 Plan: `docs/STD_SPEC.md` (STD6e: "Clan traits, hijutsu, clan conditions and keywords as data; `workflow/clan.mjs` name branches removed"). Same method as the class pass (`docs/STD6d_SPEC.md`).
 
@@ -26,7 +26,7 @@ Plan: `docs/STD_SPEC.md` (STD6e: "Clan traits, hijutsu, clan conditions and keyw
 - **Statuses:** automated, partly automated, notes only, no mechanics (as STD6d).
 - **Clan pools** (Sharingan, Byakugan and the like) appear in the Class & Clan Limits menu automatically.
 - **New condition cards** when a clan defines one that isn't a card yet; text issues go on the errata list; unclear mechanics become questions, never guesses.
-- **Non-Clan's ability pattern** becomes clan data (`system.asiPatterns`), and the two `"non-clan"` branches are removed (allowlist shrinks).
+- **Non-Clan** waits (King Q-E3), so its two `"non-clan"` name branches stay on the allowlist for now.
 
 ## Proposed batches (a few clans per release)
 
@@ -40,17 +40,51 @@ Plan: `docs/STD_SPEC.md` (STD6e: "Clan traits, hijutsu, clan conditions and keyw
 | E6 | Land of Fire I | Aburame, Akimichi, Hatake, Hyūga, Iburi, Inuzuka, Kurama | 82 |
 | E7 | Land of Fire II | Namikaze, Nara, Sarutobi, Senju, Uchiha, Uzumaki, Yamanaka | 89 |
 | E8 | Minor Lands | Hebi, Hoshi, Kuru, Ryu, Shikigami | 60 |
-| E9 | Non-Clan | Its own features and options; the Latent Bloodline variants (Q-E3) | 36 + 577 |
+| — | Non-Clan | Not done (King Q-E3: Clan Feats and Latents wait for their overhaul) | — |
 
 Plus each clan's stances and (Q-E1) Hijutsu in the same batch.
 
-## Questions for King
+## King's answers (2026-11-21)
 
-- **Q-E1 Hijutsu:** the plan puts Hijutsu in the clan pass (408 jutsu, about 9 a clan). Do them with their clan in STD6e (each clan done in one go), or move them to STD6f with all other jutsu? Proposed: with their clan.
-- **Q-E2 Clan stances:** do the 26 clan stances with their clan? Proposed: yes.
-- **Q-E3 Latent Bloodlines:** the 577 variants copy other clans' features. Build them in E9 from their source clan's entries, listing only the variants whose text differs from the source for review? Proposed: yes.
-- **Q-E4 Order:** start with E1 (Land of Earth) and go down the table, or another order?
+- **Q-E1:** Hijutsu with their clan, at the same time.
+- **Q-E2:** clan stances with their clan.
+- **Q-E3:** no. Clan Feats and Latents are not done at all: a major overhaul is coming for them.
+- **Q-E4:** E1 first, then down the table.
+
+## Engine additions
+
+| # | Addition | Behaviour |
+| --- | --- | --- |
+| E-D1 | Clan tables | `content/automation/clans/<clan>.json` over the clan's folder in the clans pack (`tools/content/apply-automation.mjs` clanItems); review tables `docs/clans/<clan>-automation.md`. |
+| E-D2 | Highest discipline | A feature save's DC source `"highest"` and an attack's discipline `"highest"`: the best of your Ninjutsu, Taijutsu and Genjutsu numbers ("your highest jutsu save DC"). |
+| E-D3 | Hijutsu upcasts | A Hijutsu's per-rank buttons (`flags.n5e.jutsuBookImport.activitiesByRank`) carry the extra dice of each higher rank, like the jutsu importer's. |
+| E-D4 | Cast rank on summons | A summon from a cast card passes its rank; summoner links can use `@rankValue` (D 1 ... S 5): the Clay constructs' hit points. |
+| E-D5 | Item fields from tables | A table entry's `system` sets item fields (a stance's `unarmedDie` and `unarmedType`: Ballistic Knuckle). |
+
+## E1 Land of Earth (0.79.0-alpha.1)
+
+Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-hou-automation.md`, `yoton-automation.md` (117 items: 95 partly automated, 22 notes only).
+
+- **Bakuton:** Primes (pool) with Prime and Detonate buttons; the ten Payloads as save buttons; the Clay Bombings attack on the Artistic Cataclysm stance; Ballistic Knuckle's 2d8 force; every Hijutsu with its buttons and upcast dice; the Clay Spider, Bird, Centipede and Dragon summons (Class & Clan Summons › Bakuton) with hit points by cast rank.
+- **Futton:** Pressure (pool) with Boil Knuckle, Jet Dash and Vent Strike; Solid Fog; the Alchemical Fog and Steam Engine options; Caustic Aura and Great Wall Dissolution; every Hijutsu (Freight Train and Erupting Steam Wall keep their Amp buttons).
+- **Shí Hóu:** Inner Chi spends on every transformation, Golden Strands, Primal Vanity and Nirvana; Confusing Technique.
+- **Yoton:** Molten Terrain, Onyx, Volcanic and the Foundations with saves; World Forge; every Hijutsu.
+- **At the table:** areas and movement, the second nature release (set it on the sheet), damage-type swaps, Spirit Bonded weapon properties.
+
+## Questions for King (nothing waits on them)
+
+- **Q-E5 Missing Bakuton Hijutsu:** Absolute Death Bombing's text also holds two B-Rank Hijutsu, Explosion Release: Clay Centipede and Explosion Release: Chain Reaction Blitz, which aren't items of their own. Add them as Hijutsu? (The Clay Centipede NPC is built.)
+- **Q-E6 Primes and Pressure:** neither says when it's lost. Both pools empty at the start and end of combat (changeable in Class & Clan Limits). Fine?
+- **Q-E7 Ballistic Knuckle:** "no longer adds your ability modifier" is a note (take it off the roll). Should the stance drop it automatically?
+
+## Text issues (for the errata list)
+
+- Bakuton: Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
+- Futton: Steam Bullet and Hiding in Acid Rain say "Scaled" (Scald); Hiding in Acid Rain's upcast has no cost increase.
+- Yoton: Hijutsu Flexibility says "Futton Clan Hijutsu"; Lava Stream "chape"; Rubber "gin a range"; Quicklime Hardening has no success result.
 
 ## Progress log
 
 - 2026-11-21 Claude: spec written from a survey of the clans pack. Nothing built.
+- 2026-11-21 King: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin." Claude: E1 Land of Earth built (117 items), engine E-D1–E-D5, Clay construct summons; published 0.79.0-alpha.1. Q-E5–Q-E7 asked; nothing waits on them.
+

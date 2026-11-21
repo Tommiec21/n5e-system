@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shi-hou",
-      "sourceLine": 5289
+      "sourceLine": 5289,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deceptive Combat: the Create Diversion skill action with your attack result as the check; on a success, the next ally attacking it adds 1d4. Once every other round per creature."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,42 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egJ1fTdcOUkBbt",
+        "type": "save",
+        "label": "Confusing Technique",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Once per turn, with an attack of the Attack action. Failure: Confused and Concussed. Once every other round per creature.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

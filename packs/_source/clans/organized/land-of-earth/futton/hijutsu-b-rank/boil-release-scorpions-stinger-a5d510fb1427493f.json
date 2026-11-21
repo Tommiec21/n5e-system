@@ -17,6 +17,119 @@
         "cost": "11 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Water Release, Broil Branch, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is acid."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eiuPUcSpcwG5cN",
+              "type": "attack",
+              "label": "Steam Stinger",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action, within 15 feet, for the duration.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d12) + (1d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDmvCvdg4dKflG",
+              "type": "save",
+              "label": "Steam Stinger: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Failure: 3 ranks of Scald.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eiuPUcSpcwG5cN",
+              "type": "attack",
+              "label": "Steam Stinger",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action, within 15 feet, for the duration.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d12) + (2d12)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDmvCvdg4dKflG",
+              "type": "save",
+              "label": "Steam Stinger: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Failure: 3 ranks of Scald.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +225,57 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eiuPUcSpcwG5cN",
+        "type": "attack",
+        "label": "Steam Stinger",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Bonus action, within 15 feet, for the duration.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eDmvCvdg4dKflG",
+        "type": "save",
+        "label": "Steam Stinger: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Scald"
+          }
+        ],
+        "text": "Failure: 3 ranks of Scald.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

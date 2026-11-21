@@ -17,7 +17,8 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fire Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDJ4HRqAyWbVrj",
+        "type": "save",
+        "label": "Quicklime Hardening",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          },
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          }
+        ],
+        "text": "A 60-foot line. Failure: Grappled in place and Molten until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eWwlStbQKE7eiE",
+        "type": "save",
+        "label": "Quicklime: cold damage",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "petrified",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Petrified"
+          }
+        ],
+        "text": "A creature Molten from this takes cold damage before the end of its next turn. Failure: Petrified until the start of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

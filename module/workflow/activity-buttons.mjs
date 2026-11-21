@@ -139,6 +139,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     const src = a.save?.dc?.source;
     // A tool's own DC (FIN2b, Chakra Suppression Tag DC 15/17/19): source "fixed", the number in formula.
     if ( src === "fixed" ) return Number(a.save.dc.formula) || 0;
+    // STD6e: "your highest jutsu save DC" (clan features): the best of the casting disciplines.
+    if ( src === "highest" ) return highestDiscipline(actor, "dc").value;
     const disc = ["nin", "tai", "gen"].includes(src) ? src : (item.system.discipline || featureDiscipline(item));
     return actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.dc;
   };
@@ -218,7 +220,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     // Parsed kinds. Attack bonus: a jutsu's own live bonus (ability, Hijutsu, effects); otherwise the
     // discipline's (Bukijutsu attacks use the Taijutsu numbers).
     if ( a.type === "attack" ) {
-      const disc = a.attack?.discipline || item.system.discipline;
+      // STD6e: "your highest jutsu attack bonus" (clan features: Clay Bombings) uses the best discipline.
+      const disc = a.attack?.discipline === "highest" ? highestDiscipline(actor, "attack").key : (a.attack?.discipline || item.system.discipline);
       // A Freeform Strike on the Weapon/Freeform line reads the adversary's own line (NPC3).
       const own = disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
         : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
@@ -314,7 +317,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       if ( !caster?.isOwner ) return fail("warn", "Only the summoner's owner can summon from this card.");
       const { summonTokens } = await import("./automation.mjs");
       try {
-        return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration });
+        return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration,
+          // STD6e: the cast rank, for summons whose statistics grow by rank (Clay constructs).
+          rank: message?.getFlag?.("n5e", "cast")?.rank ?? "" });
       } catch (error) { return fail("warn", error.message); }
     }
     case "strike": {
@@ -545,4 +550,14 @@ function fail(level, message) {
 /** All activity kinds share validation, turn limits, resource refund and hook handling. */
 export async function onActivityClick(message, button, event, options = {}) {
   return executeActivity(message, button, event, executeActivityClick, targetsOrSelf, options);
+}
+
+/** STD6e: the casting discipline with the highest number ("dc" or "attack"): {key, value}. */
+export function highestDiscipline(actor, field = "dc") {
+  let best = { key: "nin", value: 0 };
+  for ( const key of ["nin", "tai", "gen"] ) {
+    const v = Number(actor?.system?.disciplines?.[key]?.[field]) || 0;
+    if ( v > best.value ) best = { key, value: v };
+  }
+  return best;
 }

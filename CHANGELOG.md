@@ -1,3 +1,16 @@
+## 0.79.0-alpha.1 — Clans as data: E1 Land of Earth (Bakuton, Futton, Shí Hóu, Yoton)
+
+King 2026-11-21: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin."
+
+- **117 clan items reviewed** (features, options, stances and Hijutsu): see `docs/clans/`.
+  - **Bakuton:** Primes with Prime and Detonate buttons, the ten Payloads, Clay Bombings on the Artistic Cataclysm stance, Ballistic Knuckle's 2d8 force, every Hijutsu.
+  - **Futton:** Pressure with Boil Knuckle, Jet Dash and Vent Strike; Solid Fog; the Alchemical Fog and Steam Engine options; every Hijutsu.
+  - **Shí Hóu:** Inner Chi on every transformation, Golden Strands, Primal Vanity and Nirvana.
+  - **Yoton:** Molten Terrain, Onyx, Volcanic, the Foundations, World Forge, every Hijutsu.
+- **Hijutsu upcasts:** each higher rank's buttons carry the extra dice.
+- **New summons** (Class & Clan Summons › Bakuton): Clay Spider, Clay Bird, Clay Centipede and Clay Dragon, with hit points by the rank you cast at.
+- **"Your highest jutsu save DC"** and attack bonus work on clan buttons.
+
 ## 0.78.0-alpha.1 — Genjutsu Specialist automation (the last class)
 
 King 2026-11-21: "Next batch."

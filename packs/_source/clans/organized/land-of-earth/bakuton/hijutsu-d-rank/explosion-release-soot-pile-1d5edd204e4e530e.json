@@ -17,6 +17,313 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Lightning Release, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: B-Rank +5 feet to the cube, S-Rank +5 more."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eLbclVklFwSUFm",
+              "type": "save",
+              "label": "Soot Pile",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, and Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQzaVr7jFtgdwK",
+              "type": "damage",
+              "label": "Soot Pile: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eL8NZ8vp0ZBd6w",
+              "type": "damage",
+              "label": "Soot Pile: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLbclVklFwSUFm",
+              "type": "save",
+              "label": "Soot Pile",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, and Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQzaVr7jFtgdwK",
+              "type": "damage",
+              "label": "Soot Pile: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eL8NZ8vp0ZBd6w",
+              "type": "damage",
+              "label": "Soot Pile: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLbclVklFwSUFm",
+              "type": "save",
+              "label": "Soot Pile",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, and Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQzaVr7jFtgdwK",
+              "type": "damage",
+              "label": "Soot Pile: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eL8NZ8vp0ZBd6w",
+              "type": "damage",
+              "label": "Soot Pile: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLbclVklFwSUFm",
+              "type": "save",
+              "label": "Soot Pile",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+                  "critFailure": "Critical Failure: as a failure, and Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQzaVr7jFtgdwK",
+              "type": "damage",
+              "label": "Soot Pile: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eL8NZ8vp0ZBd6w",
+              "type": "damage",
+              "label": "Soot Pile: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +419,80 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eLbclVklFwSUFm",
+        "type": "save",
+        "label": "Soot Pile",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 2d6 poison and Dazzled until the end of its next turn.",
+            "failure": "Failure: 3d6 poison and 1 rank of Envenomed.",
+            "critFailure": "Critical Failure: as a failure, and Confused."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          },
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "In the cloud when cast, entering it first on a turn, or starting a turn there.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eQzaVr7jFtgdwK",
+        "type": "damage",
+        "label": "Soot Pile: success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eL8NZ8vp0ZBd6w",
+        "type": "damage",
+        "label": "Soot Pile: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

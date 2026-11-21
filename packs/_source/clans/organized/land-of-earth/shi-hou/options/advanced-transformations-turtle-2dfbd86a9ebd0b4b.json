@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shi-hou",
       "sourceLine": 5307,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,18 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUrCuSmBoR1P1i",
+        "type": "heal",
+        "label": "Turtle: temporary hit points",
+        "heal": {
+          "formula": "@level",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, dealing damage with a jutsu."
+      }
+    ]
   }
 }

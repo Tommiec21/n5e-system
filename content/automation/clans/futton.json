@@ -1,0 +1,2829 @@
+{
+  "clan": "futton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "futton-alchemical-fog": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Water or Fire; set it on the sheet); Water or Fire Release jutsu can deal acid damage instead. Solid Fog lasts until the start of your next turn. Two acids (three at 11th), one per trigger; saves against your highest jutsu save DC."
+        }
+      ]
+    },
+    "futton-alchemical-fog-clear-lungs": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZqsQHYV8P8RPF",
+          "type": "roll",
+          "label": "Inhale the fog",
+          "roll": {
+            "formula": "",
+            "note": "A willing ally in your Solid Fog, Bonus action: remove all ranks of one Physical condition. Once every 10 minutes per creature."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Allies of your choice are unaffected by your Solid Fog's harmful effects."
+        }
+      ]
+    },
+    "futton-alchemical-fog-curtain-of-rain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiX2wZj3rHkZkN",
+          "type": "save",
+          "label": "Curtain of Rain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "corroded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Corroded"
+            },
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            }
+          ],
+          "text": "Reaction, a hostile creature moves within 15 feet: a Solid Fog in a 15-foot radius on you, with one of its effects. Failure: damage; success: half.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d12,7:2d12,15:3d12)",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Saves against Inhale Genjutsu inside the Solid Fog are at disadvantage."
+        }
+      ]
+    },
+    "futton-alchemical-fog-flower-boil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAHmtn1mncnoNC",
+          "type": "save",
+          "label": "Flower Boil",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "A hostile creature moves 10 or more feet into or through your Solid Fog; again for every 10 feet. Failure: 1 rank of Slow.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "futton-alchemical-fog-geometric-aerosol": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Solid Fog can make two separate shapes at once (not overlapping); a creature is affected by only one."
+        }
+      ]
+    },
+    "futton-alchemical-fog-perchloric-barrier": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMyoXLziTO6SEH",
+          "type": "save",
+          "label": "Perchloric Barrier",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            }
+          ],
+          "text": "A creature deals melee damage to your Barrier: at the end of the turn, 1 rank of Deteriorate for each hit on a failure.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "futton-boil-release-acidic-apocalypse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqzNUFugHlmhth",
+          "type": "save",
+          "label": "Acidic Apocalypse",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Deteriorate"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Scald"
+            }
+          ],
+          "text": "Creatures, objects and structures of your choice in 20 feet. Failure: damage and 2 ranks of Deteriorate or Scald (pick); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d10",
+                "type": "acid"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ewmMaIGO0LdBKk",
+          "type": "save",
+          "label": "Acidic Apocalypse: lingering",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Scald"
+            }
+          ],
+          "text": "Starting a turn in the radius or entering it first on a turn. Failure: damage and 1 rank of Deteriorate or Scald.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eqzNUFugHlmhth",
+                "type": "save",
+                "label": "Acidic Apocalypse",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Creatures, objects and structures of your choice in 20 feet. Failure: damage and 2 ranks of Deteriorate or Scald (pick); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d10) + (1d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ewmMaIGO0LdBKk",
+                "type": "save",
+                "label": "Acidic Apocalypse: lingering",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Starting a turn in the radius or entering it first on a turn. Failure: damage and 1 rank of Deteriorate or Scald.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-acidic-dragons-breath": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKDid5JRzKNmLq",
+          "type": "save",
+          "label": "Acidic Dragon's Breath",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Deteriorate"
+            }
+          ],
+          "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Constructs, structures and Barriers treat its damage as if vulnerable."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eKDid5JRzKNmLq",
+                "type": "save",
+                "label": "Acidic Dragon's Breath",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eKDid5JRzKNmLq",
+                "type": "save",
+                "label": "Acidic Dragon's Breath",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line. Failure: damage and 2 ranks of Deteriorate; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-corrosive-viper-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9sH0RfBhHcQa9",
+          "type": "attack",
+          "label": "Corrosive Viper Fang",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "2d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is acid. A Corroded target loses Corroded and gains that many ranks of Scald (by Corroded's rank: D 1 ... S 5). Both attacks on the same creature: you can gain 1 Pressure."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e9sH0RfBhHcQa9",
+                "type": "attack",
+                "label": "Corrosive Viper Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e9sH0RfBhHcQa9",
+                "type": "attack",
+                "label": "Corrosive Viper Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e9sH0RfBhHcQa9",
+                "type": "attack",
+                "label": "Corrosive Viper Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-erupting-propulsion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLC086iNCTNOyC",
+          "type": "attack",
+          "label": "Erupting Propulsion",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "3d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eXH4qFHVI0MTH9",
+          "type": "save",
+          "label": "Erupting Propulsion: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Failure: pushed 15 feet and Bruised.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "First move to a space you can see within your speed, next to a hostile creature. B-Rank: a second space and attack; S-Rank: a third."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eLC086iNCTNOyC",
+                "type": "attack",
+                "label": "Erupting Propulsion",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eXH4qFHVI0MTH9",
+                "type": "save",
+                "label": "Erupting Propulsion: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eLC086iNCTNOyC",
+                "type": "attack",
+                "label": "Erupting Propulsion",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eXH4qFHVI0MTH9",
+                "type": "save",
+                "label": "Erupting Propulsion: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eLC086iNCTNOyC",
+                "type": "attack",
+                "label": "Erupting Propulsion",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eXH4qFHVI0MTH9",
+                "type": "save",
+                "label": "Erupting Propulsion: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eLC086iNCTNOyC",
+                "type": "attack",
+                "label": "Erupting Propulsion",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(3d8) + (4d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eXH4qFHVI0MTH9",
+                "type": "save",
+                "label": "Erupting Propulsion: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-erupting-steam-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampf46e3051226e3",
+          "type": "effect",
+          "label": "Boil Release: Erupting Steam Wall",
+          "effect": {
+            "name": "Boil Release: Erupting Steam Wall",
+            "target": "self",
+            "amp": "jutsu-futton-boil-release-erupting-steam-wall"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5ebt0rCzlak7Qnm",
+          "type": "damage",
+          "label": "Erupting Steam Wall: melee attacker",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5",
+                "type": "acid"
+              }
+            ]
+          },
+          "text": "A creature that hits you with a melee attack."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives the temporary hit points (10, +10 per rank) and regains them at the start of your turns. Acid damage +5 per rank above D-Rank (add it). B-Rank or higher: when an attack damages you, expel it as a shockwave on every creature within 10 feet for the acid damage."
+        }
+      ]
+    },
+    "futton-boil-release-freight-train": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampb335e00f8c1b7",
+          "type": "effect",
+          "label": "Boil Release: Freight Train",
+          "effect": {
+            "name": "Boil Release: Freight Train",
+            "target": "self",
+            "amp": "jutsu-futton-boil-release-freight-train"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5eRP3mCsIsniIZo",
+          "type": "save",
+          "label": "Impact Engine",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Scald"
+            }
+          ],
+          "text": "Once per turn, [Unarmed Damage] or [Weapon Damage]. Failure: Prone, Bruised and 1 rank of Scald; success: pushed 5 feet.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives +30 speed and the immunities; when it ends you're Incapacitated until the end of your next turn (Freight Train: Overheated)."
+        }
+      ]
+    },
+    "futton-boil-release-hiding-in-acid-rain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evwSsFnH17dHCu",
+          "type": "save",
+          "label": "Hiding in Acid Rain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 3d8 acid.",
+              "success": "Success: half of 3d8 acid and Dazed.",
+              "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+              "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Scald"
+            }
+          ],
+          "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ezgWAF0YuFSapv",
+          "type": "damage",
+          "label": "Acid Rain: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "acid"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5ekNY0U8c0VDBME",
+          "type": "damage",
+          "label": "Acid Rain: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 30-foot cloud that moves with you: lightly obscured both ways. A-Rank: +10 feet."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5evwSsFnH17dHCu",
+                "type": "save",
+                "label": "Hiding in Acid Rain",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 acid.",
+                    "success": "Success: half of 3d8 acid and Dazed.",
+                    "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                    "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ezgWAF0YuFSapv",
+                "type": "damage",
+                "label": "Acid Rain: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekNY0U8c0VDBME",
+                "type": "damage",
+                "label": "Acid Rain: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5evwSsFnH17dHCu",
+                "type": "save",
+                "label": "Hiding in Acid Rain",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 acid.",
+                    "success": "Success: half of 3d8 acid and Dazed.",
+                    "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                    "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ezgWAF0YuFSapv",
+                "type": "damage",
+                "label": "Acid Rain: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekNY0U8c0VDBME",
+                "type": "damage",
+                "label": "Acid Rain: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5evwSsFnH17dHCu",
+                "type": "save",
+                "label": "Hiding in Acid Rain",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 acid.",
+                    "success": "Success: half of 3d8 acid and Dazed.",
+                    "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                    "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ezgWAF0YuFSapv",
+                "type": "damage",
+                "label": "Acid Rain: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5ekNY0U8c0VDBME",
+                "type": "damage",
+                "label": "Acid Rain: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-rusting-current": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXZrJ3VUXfUraC",
+          "type": "save",
+          "label": "Rusting Current",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 2d10 acid.",
+              "success": "Success: half of 2d10 acid, ignoring temporary hit points and DR.",
+              "failure": "Failure: 2d10 acid; no bonus DR or temporary hit points before your next turn.",
+              "critFailure": "Critical Failure: 4d10 acid, as a failure."
+            }
+          },
+          "inflicts": [],
+          "text": "A 30-foot by 5-foot line.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eO6lnAVDKAaG8X",
+          "type": "damage",
+          "label": "Rusting Current: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "acid"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5eIvHWTVzOgGL1o",
+          "type": "damage",
+          "label": "Rusting Current: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eXZrJ3VUXfUraC",
+                "type": "save",
+                "label": "Rusting Current",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d10 acid.",
+                    "success": "Success: half of 2d10 acid, ignoring temporary hit points and DR.",
+                    "failure": "Failure: 2d10 acid; no bonus DR or temporary hit points before your next turn.",
+                    "critFailure": "Critical Failure: 4d10 acid, as a failure."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eO6lnAVDKAaG8X",
+                "type": "damage",
+                "label": "Rusting Current: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eIvHWTVzOgGL1o",
+                "type": "damage",
+                "label": "Rusting Current: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (1d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eXZrJ3VUXfUraC",
+                "type": "save",
+                "label": "Rusting Current",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d10 acid.",
+                    "success": "Success: half of 2d10 acid, ignoring temporary hit points and DR.",
+                    "failure": "Failure: 2d10 acid; no bonus DR or temporary hit points before your next turn.",
+                    "critFailure": "Critical Failure: 4d10 acid, as a failure."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eO6lnAVDKAaG8X",
+                "type": "damage",
+                "label": "Rusting Current: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eIvHWTVzOgGL1o",
+                "type": "damage",
+                "label": "Rusting Current: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (2d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eXZrJ3VUXfUraC",
+                "type": "save",
+                "label": "Rusting Current",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d10 acid.",
+                    "success": "Success: half of 2d10 acid, ignoring temporary hit points and DR.",
+                    "failure": "Failure: 2d10 acid; no bonus DR or temporary hit points before your next turn.",
+                    "critFailure": "Critical Failure: 4d10 acid, as a failure."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eO6lnAVDKAaG8X",
+                "type": "damage",
+                "label": "Rusting Current: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (3d10)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eIvHWTVzOgGL1o",
+                "type": "damage",
+                "label": "Rusting Current: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (3d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eXZrJ3VUXfUraC",
+                "type": "save",
+                "label": "Rusting Current",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d10 acid.",
+                    "success": "Success: half of 2d10 acid, ignoring temporary hit points and DR.",
+                    "failure": "Failure: 2d10 acid; no bonus DR or temporary hit points before your next turn.",
+                    "critFailure": "Critical Failure: 4d10 acid, as a failure."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eO6lnAVDKAaG8X",
+                "type": "damage",
+                "label": "Rusting Current: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (4d10)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eIvHWTVzOgGL1o",
+                "type": "damage",
+                "label": "Rusting Current: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (4d10)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-scorpions-stinger": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiuPUcSpcwG5cN",
+          "type": "attack",
+          "label": "Steam Stinger",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Bonus action, within 15 feet, for the duration.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "4d12",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eDmvCvdg4dKflG",
+          "type": "save",
+          "label": "Steam Stinger: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Scald"
+            }
+          ],
+          "text": "Failure: 3 ranks of Scald.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is acid."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eiuPUcSpcwG5cN",
+                "type": "attack",
+                "label": "Steam Stinger",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Bonus action, within 15 feet, for the duration.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d12) + (1d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDmvCvdg4dKflG",
+                "type": "save",
+                "label": "Steam Stinger: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Failure: 3 ranks of Scald.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eiuPUcSpcwG5cN",
+                "type": "attack",
+                "label": "Steam Stinger",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Bonus action, within 15 feet, for the duration.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d12) + (2d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDmvCvdg4dKflG",
+                "type": "save",
+                "label": "Steam Stinger: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Scald"
+                  }
+                ],
+                "text": "Failure: 3 ranks of Scald.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-skilled-mist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eofi7g5pvZccxk",
+          "type": "save",
+          "label": "Skilled Mist",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 4d6 acid.",
+              "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+              "failure": "Failure: 4d6 acid and Corroded.",
+              "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "corroded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Corroded"
+            },
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            }
+          ],
+          "text": "In range when cast, or starting a turn in the mist.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5enpRbEHCIIZFQH",
+          "type": "damage",
+          "label": "Skilled Mist: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "acid"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: +20 feet to the area; S-Rank: +20 more."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eofi7g5pvZccxk",
+                "type": "save",
+                "label": "Skilled Mist",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 acid.",
+                    "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                    "failure": "Failure: 4d6 acid and Corroded.",
+                    "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "corroded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Corroded"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "In range when cast, or starting a turn in the mist.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5enpRbEHCIIZFQH",
+                "type": "damage",
+                "label": "Skilled Mist: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eofi7g5pvZccxk",
+                "type": "save",
+                "label": "Skilled Mist",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 acid.",
+                    "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                    "failure": "Failure: 4d6 acid and Corroded.",
+                    "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "corroded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Corroded"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "In range when cast, or starting a turn in the mist.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5enpRbEHCIIZFQH",
+                "type": "damage",
+                "label": "Skilled Mist: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eofi7g5pvZccxk",
+                "type": "save",
+                "label": "Skilled Mist",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 acid.",
+                    "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                    "failure": "Failure: 4d6 acid and Corroded.",
+                    "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "corroded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Corroded"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "In range when cast, or starting a turn in the mist.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5enpRbEHCIIZFQH",
+                "type": "damage",
+                "label": "Skilled Mist: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eofi7g5pvZccxk",
+                "type": "save",
+                "label": "Skilled Mist",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 4d6 acid.",
+                    "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                    "failure": "Failure: 4d6 acid and Corroded.",
+                    "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "corroded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Corroded"
+                  },
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  }
+                ],
+                "text": "In range when cast, or starting a turn in the mist.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5enpRbEHCIIZFQH",
+                "type": "damage",
+                "label": "Skilled Mist: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "acid"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-steam-bullet": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDUYhW0tpsxkh6",
+          "type": "attack",
+          "label": "Steam Bullet",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "acid"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9VQ4at48ki8ft",
+          "type": "save",
+          "label": "Steam Bullet: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Scald"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank and A-Rank: +1 rank of Deteriorate or Scald each. B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eDUYhW0tpsxkh6",
+                "type": "attack",
+                "label": "Steam Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9VQ4at48ki8ft",
+                "type": "save",
+                "label": "Steam Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eDUYhW0tpsxkh6",
+                "type": "attack",
+                "label": "Steam Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9VQ4at48ki8ft",
+                "type": "save",
+                "label": "Steam Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eDUYhW0tpsxkh6",
+                "type": "attack",
+                "label": "Steam Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9VQ4at48ki8ft",
+                "type": "save",
+                "label": "Steam Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDUYhW0tpsxkh6",
+                "type": "attack",
+                "label": "Steam Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "acid"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9VQ4at48ki8ft",
+                "type": "save",
+                "label": "Steam Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "futton-deteriorate",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deteriorate"
+                  },
+                  {
+                    "key": "futton-scald",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Scald"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "futton-boil-release-steam-dash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWIFE81pmbyBt2",
+          "type": "effect",
+          "label": "Steam Dash",
+          "effect": {
+            "name": "Steam Dash",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "15",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "+15 speed and Dash as a bonus action for 1 minute."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dashing, then attacking at the end of the movement this turn: the attack has advantage and its damage is rolled twice, taking the higher."
+        }
+      ]
+    },
+    "futton-boil-release-strangling-vapors": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOj4zDNi4ZzKDl",
+          "type": "save",
+          "label": "Strangling Vapors",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ],
+          "text": "Breathing creatures starting their turn in the 10-foot sphere. Failure: 1 rank of Exhaustion.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: move the globe up to 30 feet."
+        }
+      ]
+    },
+    "futton-boil-release-touch-of-dissolution": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A surface 1 foot thick or less dissolves, leaving a 5-foot-wide hole (6 inches if chakra-enhanced)."
+        }
+      ]
+    },
+    "futton-boil-release-water-evaporation-fire-extinguish": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCjWvT39AU20Rh",
+          "type": "check",
+          "label": "Contested Ninshou",
+          "check": {
+            "skill": "nin"
+          },
+          "text": "Reaction to a creature casting a fire or water jutsu: your Ninshou against its Constitution save. Success: its casting fails and it spends twice the jutsu's cost."
+        }
+      ]
+    },
+    "futton-boiling-synthesis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMTwenkZRtovnx",
+          "type": "effect",
+          "label": "Caustic Aura",
+          "effect": {
+            "name": "Caustic Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute (ends if you fail a save against Wind Release): weapon bludgeoning, piercing and slashing damage to you is reduced by half your level.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e4WXy1YXtKONJp",
+          "type": "save",
+          "label": "Great Wall Dissolution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, [Unarmed Damage] or [Weapon Damage] to a construct, object or structure. Failure: it loses its resistances and gains vulnerability to acid and one more type until the end of your next turn. Once every 10 minutes per creature.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two infusions, swapped after a Long Rest. Acidic Mists: a jutsu's Chilled ranks become Deteriorate. Melting Heat: a jutsu's Burned ranks become Scald (each once per turn, then not until the end of your next turn). Great Wall Dissolution on a jutsu effect: a jutsu ability check (highest modifier) against its save DC; +1 rank of Mastery at 7th, 2 at 11th, 3 at 15th."
+        }
+      ]
+    },
+    "futton-broiling-rampart": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHZnDPDRSXiq96",
+          "type": "roll",
+          "label": "Build Pressure",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: Dash, Disengage, or cast a Fire or Water Release jutsu."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "pressure",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eKoGRUyT09GdAK",
+          "type": "save",
+          "label": "Boil Knuckle",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "On your turn, an attack 5 or more over the target's AC. Failure: Dazed.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ePEdudrnLMZeGN",
+          "type": "save",
+          "label": "Jet Dash",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "corroded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Corroded"
+            },
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Scald"
+            }
+          ],
+          "text": "+20 speed this turn; at the end of the turn, adjacent creatures. Failure: Corroded or Scalded (pick). Counts as a Taijutsu of your highest rank.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5epeWgN7RP672y7",
+          "type": "roll",
+          "label": "Vent Strike",
+          "roll": {
+            "formula": "lvl(1:2,7:4,15:6)",
+            "note": "Once per turn, dealing [Weapon Damage] or [Unarmed Damage]: add this to your damage until the end of the turn."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "pressure",
+          "label": "Pressure",
+          "value": 0,
+          "max": "3",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Taijutsu stance (Broil Branch): unarmed and weapon attacks can use your Hijutsu Flexibility ability in place of Strength (at the table). At 7th, without Extra Attack, the Attack action attacks twice. Pressure: up to 3 (6 in Torque), the pool."
+        }
+      ]
+    },
+    "futton-catastrophic-vent": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Torque you also gain +4 DR, 2 ranks of Mastery in Athletics and Acrobatics, immunity to Dazed and Staggered, and your concentration Hijutsu gain the Stable and Efficient keywords (the 15th-level Torque Amp card)."
+        }
+      ]
+    },
+    "futton-corrosive-kisses": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZNWVV4yGdaFhT",
+          "type": "save",
+          "label": "Solid Fog",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "corroded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Corroded"
+            },
+            {
+              "key": "futton-deteriorate",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deteriorate"
+            }
+          ],
+          "text": "Action: a Line (25 by 5 feet, +10 at 7th and 15th), Cone (15 feet, +5) or Sphere (10-foot radius within 30 feet, +5). Failure: damage and 1 rank of Corroded or Deteriorate (pick; +1 rank at 7th and 15th); success: half. A Ninjutsu of your highest rank.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d12,7:2d12,15:3d12)",
+                "type": "acid"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "futton-perfect-solution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1ojQzlUijitwB",
+          "type": "save",
+          "label": "Perfect Solution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hostile creature ends its turn within 15 feet of you in combat. Failure: −1 AC for 1 minute (the effect); passing by 10 or more: immune until you rest.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ehjjXMTKzwXW8h",
+          "type": "effect",
+          "label": "Perfect Solution: −1 AC",
+          "effect": {
+            "name": "Perfect Solution",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-1",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "On a creature that failed."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hostile Barrier jutsu within 15 feet that roll dice for their effects or hit points roll half the listed value."
+        }
+      ]
+    },
+    "futton-sauna-of-lies": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0kkxRmMG5u9L6",
+          "type": "roll",
+          "label": "Turn up the heat",
+          "roll": {
+            "formula": "1d4",
+            "note": "Reaction: the chosen creature makes a Charisma check against you or your allies; subtract this. Twice per social encounter."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "futton-steam-engine": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Water or Fire; set it on the sheet); Water or Fire Release jutsu can deal acid damage instead. Two Steam Engine maneuvers (three at 11th). Spend 2 Pressure (the pool) to start the Torque Amp for 1 minute, once per rest (start it from your Amps)."
+        }
+      ]
+    },
+    "futton-steam-engine-horse-power": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehr5Jq4M4RRSFC",
+          "type": "roll",
+          "label": "Horse Power",
+          "roll": {
+            "formula": "",
+            "note": "In Torque, at the start of your turn: your unarmed and weapon attacks gain Deadly 2 (Deadly 4 at 15th) until the end of your turn."
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "futton-steam-engine-melting-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5iTwaHusnIcpm",
+          "type": "roll",
+          "label": "Melting Strike",
+          "roll": {
+            "formula": "",
+            "note": "Damaging a Corroded or Burned hostile creature: its Corroded becomes that many ranks of Scald (by Corroded's rank: D 1 ... S 5), or its Burned ranks become Scald."
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "futton-steam-engine-piston": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euZ74gwKvK6Ge6",
+          "type": "roll",
+          "label": "Piston: no opportunity attacks",
+          "roll": {
+            "formula": "",
+            "note": "Dashing: your movement doesn't provoke."
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5edprq4yXk6EG8x",
+          "type": "save",
+          "label": "Piston",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Once per turn, creatures you pass within 5 feet during your Dash. Failure: Dazed and Prone.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dash as a reaction on your turn, or as a reaction when a hostile creature moves away (move up to your speed toward it)."
+        }
+      ]
+    },
+    "futton-steam-engine-redline": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekWyH54wUH8DmG",
+          "type": "roll",
+          "label": "Redline",
+          "roll": {
+            "formula": "2 * @amount",
+            "note": "Failing a save against a hostile effect: +2 to it per Pressure spent (up to 6). Once every 10 minutes."
+          },
+          "cost": {
+            "pool": "pressure",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "futton-steam-engine-steam-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNzsaHl7MtDlZp",
+          "type": "save",
+          "label": "Steam Burst",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "futton-scald",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Scald"
+            }
+          ],
+          "text": "A melee hit, or a hostile creature fails a save against your Hijutsu: it and every creature within 10 feet of you. Failure: 2 ranks of Scald.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "pressure",
+            "amount": 2
+          }
+        }
+      ]
+    }
+  }
+}

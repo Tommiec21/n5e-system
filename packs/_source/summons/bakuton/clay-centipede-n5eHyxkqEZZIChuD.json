@@ -1,0 +1,426 @@
+{
+  "_id": "n5eHyxkqEZZIChuD",
+  "_key": "!actors!n5eHyxkqEZZIChuD",
+  "name": "Clay Centipede",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Bakuton: Clay Centipede",
+      "biography": "<p><em>Explosion Release: Clay Centipede (Bakuton Hijutsu).</em> It uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You command it as an Action or Bonus action.</p><p><strong>Armor Class</strong> 14 + your ninjutsu ability modifier · <strong>Hit Points</strong> 30 + 15 for every rank above B-Rank · <strong>Speed</strong> 40 ft., 60 ft. climb</p><p><strong>Abilities</strong> STR +2 (save +4), DEX +4 (+8), CON +3 (+7), INT −5, WIS +0, CHA −5. <strong>Damage Vulnerability</strong> Lightning. <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, All Sensory. <strong>Senses</strong> Relies on Caster senses.</p><p><strong>Linked to you when summoned:</strong> its AC (base + your Ninjutsu ability modifier), hit points (by the rank you cast the jutsu at), Ninjutsu attack bonus and save DC, and your senses.</p>",
+      "summonRole": "Clay Centipede"
+    },
+    "abilities": {
+      "str": {
+        "value": 14
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 14,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "immune": [
+        "acid",
+        "poison",
+        "psychic"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "stateImmune": [],
+      "vuln": [
+        "lightning"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 60,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 30,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eGpVJAj6CYQpQw",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5eGpVJAj6CYQpQw",
+      "name": "Shock Weakness",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If this creature takes Lightning damage it cannot perform its Detonate attack, until the end of its casters next turn. It also cannot perform its Detonate attack while it has the Shocked condition.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e7L44UOrsKCfqM",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5e7L44UOrsKCfqM",
+      "name": "Purpose to BOOM",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Once summoned this creature has 1 minute before it self Detonates. If it cannot Detonate after this 1-minute duration, it dispels itself.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ekEmTT9323VKIM",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5ekEmTT9323VKIM",
+      "name": "Bug Bomb",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When this creature falls to 0 hit points it uses its Detonate attack as a reaction.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ej9KI6GJMQ7gkX",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5ej9KI6GJMQ7gkX",
+      "name": "Pincers",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Clay Centipede can attack 2 times with its pincers. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 2d6 + 4 piercing damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eKsNbVCBMUNRsb",
+            "type": "attack",
+            "label": "Pincers",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6 + 4",
+                  "type": "piercing"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eESTt4ZXHlumk3",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5eESTt4ZXHlumk3",
+      "name": "Body Wrap",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Centipede attempts to grapple onto a creature and hold it in place with sacrificial intent. The target must make a Dexterity saving throw. On a failed save the creature is Grappled by the centipede. The creature can attempt to free itself by spending its Action to; or at the end of its turn; make a Strength saving throw, breaking the grapple on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eCu1c0U1Bl6mg9",
+            "type": "save",
+            "label": "Body Wrap",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "grappled",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Grappled"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5euSo7R3vpEk4Xo",
+      "_key": "!actors.items!n5eHyxkqEZZIChuD.n5euSo7R3vpEk4Xo",
+      "name": "Detonate",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Centipede detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Centipede was summoned at. If more than one Clay Centipede is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d6 for each additional Clay Centipede explosion radius they are in. B-Rank/A-Rank: 6d6. S-Rank: 8d6.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eH66uR9FQHjZCf",
+            "type": "save",
+            "label": "Detonate",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "text": "Force damage by the rank it was summoned at; half on a success."
+          },
+          {
+            "id": "n5ehZpvMOANS34b0",
+            "type": "damage",
+            "label": "Detonate: B/A-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at B/A-Rank."
+          },
+          {
+            "id": "n5en7yOrCXXjCSDA",
+            "type": "damage",
+            "label": "Detonate: S-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "8d6",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.79.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCOJnly0WDE9lV",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "14 + (@dc.nin - 8 - @prof)",
+        "hpMax": "30 + 15 * max(0, @rankValue - 3)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Clay Centipede",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.79.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

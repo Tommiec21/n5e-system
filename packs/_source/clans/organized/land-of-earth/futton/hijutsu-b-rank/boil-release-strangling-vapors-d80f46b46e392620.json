@@ -17,7 +17,14 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Water Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: move the globe up to 30 feet."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eOj4zDNi4ZzKDl",
+        "type": "save",
+        "label": "Strangling Vapors",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "text": "Breathing creatures starting their turn in the 10-foot sphere. Failure: 1 rank of Exhaustion.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

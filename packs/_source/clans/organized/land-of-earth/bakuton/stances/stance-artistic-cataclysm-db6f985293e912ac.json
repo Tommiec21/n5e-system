@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "bakuton",
-      "sourceLine": 4852
+      "sourceLine": 4852,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In place of any attacks of the Attack action, or of a Bakuton Hijutsu that needs an attack. At 7th, without Extra Attack, the Attack action makes two Clay Bombings; barriers, structures and constructs treat its damage as if vulnerable. Clay constructs you command all act on the same Bonus action."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,27 @@
     ],
     "clan": "bakuton",
     "featureType": "passive",
-    "requirement": "Bakuton clan"
+    "requirement": "Bakuton clan",
+    "activities": [
+      {
+        "id": "n5ejvxwqtDQbPCYq",
+        "type": "attack",
+        "label": "Clay Bombings",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 60 feet, with your highest jutsu attack bonus. A 12 on a damage die: add 1 more die.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d12,7:2d12)",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -17,7 +17,14 @@
         "cost": "16 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Water Release, Broil Branch, Stable",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Amp gives +30 speed and the immunities; when it ends you're Incapacitated until the end of your next turn (Freight Train: Overheated)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -123,6 +130,46 @@
           "amp": "jutsu-futton-boil-release-freight-train"
         },
         "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eRP3mCsIsniIZo",
+        "type": "save",
+        "label": "Impact Engine",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Scald"
+          }
+        ],
+        "text": "Once per turn, [Unarmed Damage] or [Weapon Damage]. Failure: Prone, Bruised and 1 rank of Scald; success: pushed 5 feet.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",

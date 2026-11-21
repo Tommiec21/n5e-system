@@ -17,6 +17,242 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Inhale, Tactile), Fire Release, Water Release, Corrosive Branch",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 30-foot cloud that moves with you: lightly obscured both ways. A-Rank: +10 feet."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5evwSsFnH17dHCu",
+              "type": "save",
+              "label": "Hiding in Acid Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 acid.",
+                  "success": "Success: half of 3d8 acid and Dazed.",
+                  "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                  "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ezgWAF0YuFSapv",
+              "type": "damage",
+              "label": "Acid Rain: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekNY0U8c0VDBME",
+              "type": "damage",
+              "label": "Acid Rain: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5evwSsFnH17dHCu",
+              "type": "save",
+              "label": "Hiding in Acid Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 acid.",
+                  "success": "Success: half of 3d8 acid and Dazed.",
+                  "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                  "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ezgWAF0YuFSapv",
+              "type": "damage",
+              "label": "Acid Rain: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekNY0U8c0VDBME",
+              "type": "damage",
+              "label": "Acid Rain: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evwSsFnH17dHCu",
+              "type": "save",
+              "label": "Hiding in Acid Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 acid.",
+                  "success": "Success: half of 3d8 acid and Dazed.",
+                  "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+                  "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ezgWAF0YuFSapv",
+              "type": "damage",
+              "label": "Acid Rain: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekNY0U8c0VDBME",
+              "type": "damage",
+              "label": "Acid Rain: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -114,7 +350,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5evwSsFnH17dHCu",
+        "type": "save",
+        "label": "Hiding in Acid Rain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 3d8 acid.",
+            "success": "Success: half of 3d8 acid and Dazed.",
+            "failure": "Failure: 3d8 acid and 1 rank of Deteriorate or Scald (pick).",
+            "critFailure": "Critical Failure: as a failure, but 5d8 acid."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Scald"
+          }
+        ],
+        "text": "Creatures of your choice that breathe and start their turn in the cloud.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ezgWAF0YuFSapv",
+        "type": "damage",
+        "label": "Acid Rain: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5ekNY0U8c0VDBME",
+        "type": "damage",
+        "label": "Acid Rain: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",
