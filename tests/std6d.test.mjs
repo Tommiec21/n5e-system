@@ -125,3 +125,28 @@ test("a placed effect's value can name the caster's ability modifier or proficie
   assert.doesNotThrow(() => validateConditionalRules([{ key: "modifier", selector: "save", value: "floor(@abilities.con.mod / 2)" }]));
   assert.throws(() => validateConditionalRules([{ key: "modifier", selector: "save", value: "@something.else" }]));
 });
+
+// ---------------------------------------------------------------- Hunter-Nin (STD6d)
+test("Hunter-Nin: every feature reviewed; Combat Exploits roll Lethal Attack with their dice forgone", () => {
+  const table = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/hunter-nin.json"), "utf8"));
+  assert.equal(Object.keys(table.features).length, 86);
+  const feint = load("features", "feint").system.activities;
+  assert.deepEqual(feint.filter(a => a.type === "damage").map(a => a.damage.parts[0].formula),
+    ["(max(0, @scale.hunterNin.lethalAttack - 2))d8", "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8"]);
+  assert.equal(feint.find(a => a.type === "save").save.abilities[0], "wis");
+  assert.deepEqual(load("features", "hunters-exploits").system.resourcePools, [], "no Skilled Exploits limit in the text (Q-D24)");
+  assert.ok(load("features", "uncanny-dodge").flags.n5e.reaction, "its reaction still halves the damage");
+});
+
+test("Lethal Precision's Dexterity follows the level-up choice (effects gated by requiresOption)", async () => {
+  const { default: N5eActiveEffect } = await import("../module/documents/active-effect.mjs");
+  const get = Object.getOwnPropertyDescriptor(N5eActiveEffect.prototype, "isSuppressed").get;
+  const fx = load("features", "lethal-precision").effects.filter(e => e.flags.n5e.std6d);
+  assert.deepEqual(fx.map(e => [e.flags.n5e.requiresOption, e.changes[0].key]),
+    [["lethalPrecision:tai", "n5e.keywordAbility.taijutsu"], ["lethalPrecision:buki", "n5e.keywordAbility.bukijutsu"]]);
+  const actor = chosen => ({ documentName: "Actor", items: [{ type: "class", system: { advancement: [{ type: "option", key: "lethalPrecision", chosen }] } }] });
+  const suppressed = (e, chosen) => get.call({ flags: e.flags, parent: actor(chosen) });
+  assert.equal(suppressed(fx[0], ["tai"]), false);
+  assert.equal(suppressed(fx[1], ["tai"]), true);
+  assert.equal(suppressed(fx[0], []), true);
+});

@@ -32,7 +32,48 @@
       "hunter-exploit"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5ePvVQ0tepE9Rhi",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eChzjWFmp0a7ll",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5eluuimzMj1RXw0",
+        "type": "roll",
+        "label": "Chakra Recoil",
+        "roll": {
+          "formula": "2d8kh",
+          "note": "Roll the dice you forwent (1 or 2): temporary chakra equal to the highest. Once every 10 minutes, in combat."
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ejmaOfw6CFtZk0",
@@ -43,7 +84,14 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Combat Exploits"
+      "optionGroup": "Combat Exploits",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Forgo 1 or 2 dice; with 1, roll 1d8."
+        }
+      ]
     }
   },
   "_stats": {

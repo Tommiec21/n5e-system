@@ -43,6 +43,16 @@ export default class N5eActiveEffect extends ActiveEffect {
       const cats = st?.system?.categories;
       if ( !st || !(cats instanceof Set ? cats.has(needStance) : [...(cats ?? [])].includes(needStance)) ) return true;
     }
+    // STD6d Hunter-Nin: effects that need a class level-up choice (flags.n5e.requiresOption
+    // "lethalPrecision:tai": Lethal Precision's Dexterity for Taijutsu, only if Taijutsu was chosen).
+    const needOption = this.flags?.n5e?.requiresOption;
+    if ( needOption ) {
+      const actor = item?.documentName === "Item" ? item.actor : item;
+      const [key, value] = String(needOption).split(":");
+      const chosen = (actor?.items?.filter?.(i => i.type === "class") ?? []).flatMap(c => (c.system?.advancement ?? [])
+        .filter(a => a?.type === "option" && a.key === key).flatMap(a => [...(a.chosen ?? [])]));
+      if ( !chosen.includes(value) ) return true;
+    }
     if ( item?.documentName === "Item" && item.type === "stance" && item.actor ) {
       if ( item.actor.system?.combat?.activeStance !== item.id ) return true;
     }

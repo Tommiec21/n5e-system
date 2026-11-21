@@ -33,13 +33,80 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eVeKBy2FCQ5p1f",
+        "type": "heal",
+        "label": "Rejuvenation",
+        "heal": {
+          "formula": "4d10",
+          "pool": "hp"
+        },
+        "cost": {
+          "pool": "blackMedicineArray",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "text": "A willing creature you touch regains 4d10 hit points (once per short rest for each creature)."
+      },
+      {
+        "id": "n5eK8mBcisZ9qh2E",
+        "type": "save",
+        "label": "Suppression",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "suppressed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Suppressed"
+          }
+        ],
+        "text": "Action: a 20-foot radius on a point within 30 feet; DC 19 or your Ninjutsu DC, whichever is higher. Failure: Suppressed.",
+        "activation": "action",
+        "cost": {
+          "pool": "blackMedicineArray",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e0pJH6U9gf8TLs",
+        "type": "roll",
+        "label": "Refresh 2 ampoules",
+        "roll": {
+          "formula": "",
+          "note": "10 minutes of work."
+        },
+        "cost": {
+          "pool": "blackMedicineArray",
+          "amount": 2,
+          "gain": true
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Suppression's DC: use 19 if it's higher than your Ninjutsu DC (at the table)."
+        }
+      ]
     }
   },
   "ownership": {

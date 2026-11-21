@@ -77,6 +77,7 @@ export function appliedDoc(doc, entry) {
       if ( e.rules?.length ) flags.rules = e.rules;
       if ( e.applyTo ) flags.applyTo = e.applyTo;
       if ( e.requiresStance ) flags.requiresStance = e.requiresStance;
+      if ( e.requiresOption ) flags.requiresOption = e.requiresOption;
       return { _id: id, name: e.name, type: "generic", img: doc.img ?? "icons/svg/aura.svg", transfer: e.applyTo !== "action", disabled: false,
         system: { category: "feature" }, changes: (e.changes ?? []).map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2, priority: null })),
         duration: {}, description: "", origin: null, tint: "#ffffff", statuses: [], flags: { n5e: flags }, sort: 0,

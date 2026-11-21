@@ -33,13 +33,98 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eYN0IYGC1Y3D38",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eicNcCWBqjHBWW",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5epHFtD4lojgbve",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5evRkVJwgpIaxhV",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5eroLOzWffSplMd",
+        "type": "roll",
+        "label": "Anatomical Studies: Weakened",
+        "roll": {
+          "formula": "",
+          "note": "Forgo 1: 1 rank of Weakened (apply it)."
+        }
+      },
+      {
+        "id": "n5eqgCEreHKAZp9M",
+        "type": "effect",
+        "label": "Anatomical Studies: next save",
+        "effect": {
+          "name": "Anatomical Studies",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Forgo 2: its next save against a creature other than you, before the start of your next turn, is at disadvantage."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

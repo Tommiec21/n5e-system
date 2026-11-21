@@ -33,13 +33,50 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e2vFAsTT7dEetU",
+        "type": "roll",
+        "label": "Demonic Aura",
+        "roll": {
+          "formula": "",
+          "note": "At the start of your turn: until the end of your next turn, creatures attacking or targeting you take your Lethal Attack when you strike them, even past its limit."
+        },
+        "cost": {
+          "pool": "carnage",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eGte1XCu0BzRgd",
+        "type": "save",
+        "label": "Murderous Aura",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At the start of your turn: creatures within 15 feet. Failure: 2 ranks of Demoralized or Shaken (pick).",
+        "cost": {
+          "pool": "carnage",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

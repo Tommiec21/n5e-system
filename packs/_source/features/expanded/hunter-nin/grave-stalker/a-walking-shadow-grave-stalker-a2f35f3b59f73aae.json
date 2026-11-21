@@ -33,13 +33,50 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMHwPW6N86C0tH",
+        "type": "roll",
+        "label": "Fade Step",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action: teleport into the space of a creature within 30 feet that casts a shadow; ending your turn there, you're pushed to within 5 feet."
+        },
+        "cost": {
+          "pool": "dreadArsenal",
+          "amount": 1
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eHnizrFLgL4GwY",
+        "type": "roll",
+        "label": "Silent Execution",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, dropping a creature to 0: 30 feet of movement and one more Dread Weapon attack this turn (Lethal Attack again on a new creature)."
+        },
+        "cost": {
+          "pool": "dreadArsenal",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hidden from a creature you Stalk: +2 critical range against it (at the table)."
+        }
+      ]
     }
   },
   "ownership": {
