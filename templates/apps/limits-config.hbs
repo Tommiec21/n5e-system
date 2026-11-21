@@ -1,0 +1,34 @@
+{{!-- N5e Class & Clan Limits (applications/settings/limits-config.mjs). Input names are limit keys (rules/recovery-overrides.mjs). --}}
+<section class="rules-panel">
+<div class="rules-head">
+  <p>When each class, subclass and clan limit comes back. "As written" keeps the feature's own text; anything else replaces it for every character in this world.
+  {{#unless gm}}<b>Only the GM can change these.</b>{{/unless}}</p>
+</div>
+<div class="rule-groups">
+  {{#each groups}}
+    {{#if firstOfKind}}<h2 class="limits-kind">{{heading}}</h2>{{/if}}
+    <fieldset class="rule-group">
+      <legend>{{label}}</legend>
+      {{#each sections}}
+        {{#if sub}}<h3 class="limits-sub">{{label}}</h3>{{/if}}
+        {{#each rows}}
+          <div class="rule {{#if changed}}changed{{/if}}">
+            <label class="rule-label" for="n5e-limit-{{key}}">{{feature}} <span class="hint">· {{limit}}</span>{{#if changed}} <span class="tag">changed</span>{{/if}}</label>
+            <span class="rule-input">
+              <select id="n5e-limit-{{key}}" name="{{key}}" {{#unless @root.gm}}disabled{{/unless}}>{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+            </span>
+          </div>
+        {{/each}}
+      {{/each}}
+    </fieldset>
+  {{else}}
+    <p>No limits found in the compendiums.</p>
+  {{/each}}
+</div>
+{{#if gm}}
+  <footer class="rules-foot">
+    <button type="button" data-action="reset"><i class="fa-solid fa-rotate-left"></i> All as written</button>
+    <button type="submit" class="primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+  </footer>
+{{/if}}
+</section>

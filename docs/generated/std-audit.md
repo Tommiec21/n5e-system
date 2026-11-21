@@ -60,7 +60,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:275`
+- `module/workflow/amp-cards.mjs:294`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -88,7 +88,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | conditions | 58 | 0 | 0 | 57 | 51 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 347 | 37 | 274 | 263 | 11 |
+| features | 700 | 379 | 40 | 317 | 305 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
 | summons | 2 | 0 | 0 | 0 | 0 | 0 |

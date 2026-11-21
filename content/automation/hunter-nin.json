@@ -71,7 +71,11 @@
             "skill": "prc"
           },
           "activation": "bonus",
-          "text": "Bonus action: Perception against the target's AC. Success: the first attack against it has advantage; beating it by 10: that attack's critical range +1."
+          "text": "Bonus action: Perception against the target's AC. Success: the first attack against it has advantage; beating it by 10: that attack's critical range +1.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -86,7 +90,11 @@
             "skill": "inv"
           },
           "activation": "bonus",
-          "text": "Bonus action: Investigation contested by its Deception. Success: two of its traits; if its level is yours or lower, its highest save bonus. Once per creature per rest."
+          "text": "Bonus action: Investigation contested by its Deception. Success: two of its traits; if its level is yours or lower, its highest save bonus. Once per creature per rest.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -281,7 +289,11 @@
             "expires": "",
             "seconds": 0
           },
-          "text": "After a long rest: within the two lands you chose, until your next Full-Rest (end it when you leave them)."
+          "text": "After a long rest: within the two lands you chose, until your next Full-Rest (end it when you leave them).",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -505,7 +517,11 @@
             "skill": "ani"
           },
           "activation": "action",
-          "text": "Action: a beast within 30 feet; Animal Handling contested by its Wisdom save. Success: no actions or reactions until the end of your next turn."
+          "text": "Action: a beast within 30 feet; Animal Handling contested by its Wisdom save. Success: no actions or reactions until the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -596,7 +612,11 @@
             "skill": "dec"
           },
           "activation": "reaction",
-          "text": "Reaction, a creature tries to deceive you: contested Deception. Success: one truthful piece of information from the lie."
+          "text": "Reaction, a creature tries to deceive you: contested Deception. Success: one truthful piece of information from the lie.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -620,7 +640,11 @@
             "skill": "per"
           },
           "activation": "action",
-          "text": "Action: a creature within 30 feet who can hear and understand you; Persuasion contested by its Insight (advantage for it if you damaged it in the last hour). Success: its disposition toward you improves."
+          "text": "Action: a creature within 30 feet who can hear and understand you; Persuasion contested by its Insight (advantage for it if you damaged it in the last hour). Success: its disposition toward you improves.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -635,7 +659,11 @@
             "skill": "dec"
           },
           "activation": "reaction",
-          "text": "Reaction on an ally's turn: a creature within 30 feet who can hear you; Deception contested by its Wisdom save. Success: Confused."
+          "text": "Reaction on an ally's turn: a creature within 30 feet who can hear you; Deception contested by its Wisdom save. Success: Confused.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -668,7 +696,11 @@
             "skill": "nat"
           },
           "activation": "action",
-          "text": "Action, hidden from a creature within 60 feet: Nature contested by its Wisdom save. Success: Demoralized or Shaken, and on its turn it Dashes away by the safest route."
+          "text": "Action, hidden from a creature within 60 feet: Nature contested by its Wisdom save. Success: Demoralized or Shaken, and on its turn it Dashes away by the safest route.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -698,7 +730,11 @@
             "skill": "prf"
           },
           "activation": "action",
-          "text": "Action: Performance contested by observers' Insight. Success: imitate a humanoid you've spent 10 minutes with, for up to 1 hour; advantage on Deception to keep it up. Doesn't copy Kekkei Genkai or chakra, or fool jutsu senses."
+          "text": "Action: Performance contested by observers' Insight. Success: imitate a humanoid you've spent 10 minutes with, for up to 1 hour; advantage on Deception to keep it up. Doesn't copy Kekkei Genkai or chakra, or fool jutsu senses.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -881,7 +917,11 @@
             "skill": "slt"
           },
           "activation": "reaction",
-          "text": "Reaction to a creature within 30 feet attacking or casting: Sleight of Hand contested by its Constitution save. Success: Dazzled."
+          "text": "Reaction to a creature within 30 feet attacking or casting: Sleight of Hand contested by its Constitution save. Success: Dazzled.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -899,8 +939,26 @@
       "rules": []
     },
     "hunters-exploits": {
-      "status": "note",
-      "pools": [],
+      "status": "partial",
+      "pools": [
+        {
+          "id": "skilledExploits",
+          "label": "Skilled Exploits",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
       "rules": [
         {
           "key": "note",
@@ -919,7 +977,11 @@
             "skill": "itm"
           },
           "activation": "reaction",
-          "text": "Reaction, a creature would turn hostile in a social encounter: Intimidation contested by its Wisdom save. Failure (theirs): Demoralized or Shaken, and it seeks another way; if combat starts anyway, it acts last."
+          "text": "Reaction, a creature would turn hostile in a social encounter: Intimidation contested by its Wisdom save. Failure (theirs): Demoralized or Shaken, and it seeks another way; if combat starts anyway, it acts last.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -982,7 +1044,11 @@
             "skill": "ins"
           },
           "activation": "action",
-          "text": "Action: a creature within 30 feet; Insight contested by its Deception. Success: See Through Lies and Sense Motive against it."
+          "text": "Action: a creature within 30 feet; Insight contested by its Deception. Success: See Through Lies and Sense Motive against it.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1026,7 +1092,11 @@
             "seconds": 3600
           },
           "text": "Bonus action: mark a lock or creature; the DC to pick it or pickpocket it is 4 lower.",
-          "activation": "bonus"
+          "activation": "bonus",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1115,7 +1185,11 @@
             "skill": "per"
           },
           "activation": "action",
-          "text": "Action, social encounter with a creature that isn't negative or hostile toward you: Persuasion contested by its Insight. Success: Charmed by you for 1 hour."
+          "text": "Action, social encounter with a creature that isn't negative or hostile toward you: Persuasion contested by its Insight. Success: Charmed by you for 1 hour.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1283,7 +1357,11 @@
             "skill": "ins"
           },
           "text": "10th level. Action, observing a creature: Insight contested by its Deception. Success: you learn whether it means harm to you or those near it.",
-          "activation": "action"
+          "activation": "action",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1602,7 +1680,11 @@
             "skill": "ste"
           },
           "activation": "bonus",
-          "text": "Grave Stalker. Bonus action, in dim light, darkness or obscurement: teleport to another such space, then Stealth against hostile passive Perception; success: undetectable by Sensory jutsu until the end of your next turn."
+          "text": "Grave Stalker. Bonus action, in dim light, darkness or obscurement: teleport to another such space, then Stealth against hostile passive Perception; success: undetectable by Sensory jutsu until the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1723,7 +1805,11 @@
             "skill": "his"
           },
           "activation": "reaction",
-          "text": "Reaction to a creature casting or attacking you: History contested by its Charisma save. Success: advantage on your first check or save against it before the end of your next turn."
+          "text": "Reaction to a creature casting or attacking you: History contested by its Charisma save. Success: advantage on your first check or save against it before the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1883,7 +1969,11 @@
             "skill": "acr"
           },
           "activation": "reaction",
-          "text": "Reaction to an attack: Acrobatics against its attack roll. Success: it deals 2 fewer damage dice."
+          "text": "Reaction to an attack: Acrobatics against its attack roll. Success: it deals 2 fewer damage dice.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -1980,7 +2070,11 @@
             "skill": "ste"
           },
           "activation": "action",
-          "text": "Action, while observed: Stealth contested by their Perception. Success: move your speed into concealment and count it as a Hide attempt."
+          "text": "Action, while observed: Stealth contested by their Perception. Success: move your speed into concealment and count it as a Hide attempt.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
         }
       ]
     },
@@ -2117,6 +2211,10 @@
           "roll": {
             "formula": "",
             "note": "Void Hunter. All your movement: teleport within 5 feet of one of your Anchors; next to a creature with an Anchor, your next attack against it can trigger Lethal Attack."
+          },
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
           }
         }
       ]

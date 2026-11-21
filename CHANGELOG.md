@@ -1,3 +1,20 @@
+## 0.77.0-alpha.1 — Hunter-Nin automation and the Class & Clan Limits menu
+
+King 2026-11-21: "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & clan setting menu."
+
+- **Hunter-Nin** (86 features): see `docs/classes/hunter-nin-automation.md`.
+  - Lethal Attack full and half buttons; every Combat Exploit rolls Lethal Attack with its forgone dice and the save or effect it calls for.
+  - Skilled Exploits: 1 + proficiency bonus uses per Long Rest; every Skilled Exploit's button spends one.
+  - Lethal Precision: Taijutsu or Bukijutsu with Dexterity, by the level-up choice.
+  - Creed pools and buttons (Carnage, Posture, Black Medicine Array, Dread Arsenal, Void Anchors, Prosthetic Tools); Uncanny Dodge keeps its automatic halving reaction.
+- **New menu: N5e Class & Clan Limits** (Configure Settings).
+  - Lists every class, subclass and clan limit that comes back: resource pools and Amp card uses.
+  - Classes first (each class's features, then its subclasses), then clans.
+  - Pools: as written, 10 minutes of rest, Short Rest, half on a Short Rest and all on a Long Rest, Long Rest, Full Rest, each day, Initiative, each round, start of your turn, never.
+  - Amp uses: as written, 10 minutes of rest, Short Rest, Long Rest, Full Rest, each day.
+  - The GM saves; changes reach every character straight away. "All as written" clears them.
+- Effects can now turn on only with a class level-up option chosen.
+
 ## 0.76.0-alpha.1 — Class & Clan Summons: the Bunshin and the Void Soul
 
 King 2026-11-21: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders."

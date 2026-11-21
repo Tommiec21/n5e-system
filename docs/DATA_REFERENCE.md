@@ -986,3 +986,8 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Actor pack `summons` ("Class & Clan Summons"); sources from `tools/content/build-summons.mjs`.
 - NPC `flags.n5e.fromSummoner`: `{ "<path under system>": "<formula>" }` over the summoner's numbers (`@level`, `@prof`, `@str`…, `@dc.nin`, `@attack.tai`, `@hp.max`, `@speed`, `@saves.<a>.proficient`, `@skills.<k>.total`, `@senses.<s>`, `@bonuses.attack.<k>`). A single reference keeps its value; otherwise arithmetic with max/min/floor/ceil. Written into the summoned token's `delta.system`, with `details.summoner` (the caster's uuid).
 - Automation table entry `duration`: the feature's `system.duration` (how long its summons last).
+
+### Class & Clan Limits and option-gated effects (0.77.0-alpha.1)
+
+- World setting `limitRecovery`: `{ "<owner identifier>.<pool id>": "<choice>", "amp:<amp key>": "<choice>" }`. Pool choices: rest10m, sr, halfSrFullLr, lr, fr, day, initiative (recovers on encounter), round, turn, never. Amp choices: rest10m, sr, lr, fr, day. A choice replaces the written recovery (rules/recovery-overrides.mjs).
+- Effect `flags.n5e.requiresOption: "<option key>:<value>"`: the effect is suppressed unless a class's level-up option with that key has that value chosen. Automation tables pass `requiresOption` through on effects.

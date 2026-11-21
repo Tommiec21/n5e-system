@@ -552,3 +552,8 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Summoner links: `flags.n5e.fromSummoner` on an Allied NPC template (rules/summoner-links.mjs), applied by workflow/allied.mjs placeAllied; compendium templates are imported once and reused. tools/check.mjs now checks Actor packs.
 - Codex's Journal Desk files untouched.
 
+## STD6d Hunter-Nin and Class & Clan Limits — Claude, 2026-11-21 (0.77.0-alpha.1)
+- `content/automation/hunter-nin.json` (86 features); Skilled Exploits pool 1 + prof per Long Rest (King Q-D24).
+- New world setting `limitRecovery` and menu `limitsConfig` (applications/settings/limits-config.mjs, templates/apps/limits-config.hbs, rules/recovery-overrides.mjs); applied in data/actor/creature.mjs (pools) and workflow/amp-cards.mjs (Amp uses). Option-gated effects: `flags.n5e.requiresOption` (documents/active-effect.mjs, rules/features.mjs optionChosen).
+- Only lines were added to shared files (module/settings.mjs). Codex's Journal Desk files untouched.
+

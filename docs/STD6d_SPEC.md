@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1). Next: Hunter-Nin, Genjutsu Specialist.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1); Hunter-Nin built with the Class & Clan Limits menu (0.77.0-alpha.1). Next: Genjutsu Specialist.**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -39,9 +39,11 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D19 | Unarmed fact | The Unarmed Strike item's damage rolls carry `weapon:unarmed` (Sustained Pressure's predicate). Table effects may require a stance (`requiresStance`). |
 | D20 | Class option facts | A class's level-up options are roll facts: `option:<key>:<value>` (Weapon Focus: `option:weaponFocus:blade`; "Thrown/Ammunition" is `thrown-ammunition`). With a weapon's `weapon:group:<g>`, an element can name "your Weapon Focus". |
 | D21 | Pool cost formulas | An activity cost's `formula` replaces its amount: by level (`lvl(1:1,11:2,20:3)`) or rolled (`1d12`, posted to chat): the Obsidian Ward regains Flurry Dice. |
-| D24 | Summoner links | An Allied NPC template lists the numbers it takes from its summoner (`flags.n5e.fromSummoner`: system path → formula over the summoner, rules/summoner-links.mjs); placing it writes them into the token's actor delta, with `details.summoner`. A compendium template is imported once and reused. Table entries can set a feature's `duration` (how long its summons last). |
 | D22 | Replaced imported effects | A table entry's `dropEffects` removes the feature's imported effects of those names (Critical Focus's blanket +1 on all Bukijutsu). |
 | D23 | Caster values on placement | A placed effect's values (and an aura child's rules) can use the caster's `@prof` and `@abilities.<a>.mod`, fixed when placed (Squad-Mates up to your proficiency bonus; Elemental Aura's half Constitution modifier). The rule validator accepts those placement-time forms. |
+| D24 | Summoner links | An Allied NPC template lists the numbers it takes from its summoner (`flags.n5e.fromSummoner`: system path → formula over the summoner, rules/summoner-links.mjs); placing it writes them into the token's actor delta, with `details.summoner`. A compendium template is imported once and reused. Table entries can set a feature's `duration` (how long its summons last). |
+| D25 | Option-gated effects | `flags.n5e.requiresOption: "<key>:<value>"` turns an effect on only while that class level-up option is chosen (Lethal Precision: `lethalPrecision:tai` or `:buki`; rules/features.mjs `optionChosen`). |
+| D26 | Class & Clan Limits | The world setting `limitRecovery` changes when a pool or Amp's uses come back, from the Class & Clan Limits menu (rules/recovery-overrides.mjs). |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -126,6 +128,27 @@ Highlights:
 
 - **Text issues** (for the errata list): Jack of All repeats Warfare's text; Superior Riposte stops mid-sentence ("If the target"); Clones Support and Primal Storm contain design notes; Specialized Clones' Fire Release has "saving tactical, Phantom or hrow"; Speedy Recovery ends with "..".
 
+## Hunter-Nin (0.77.0-alpha.1)
+
+Review table: `docs/classes/hunter-nin-automation.md` (86 features: 2 automated, 66 partly automated, 17 notes only, 1 no mechanics).
+
+Highlights:
+- **Lethal Attack:** the full and half buttons (once per turn). Every Combat Exploit rolls Lethal Attack with its dice already forgone, with the save or effect it calls for.
+- **Skilled Exploits** (King Q-D24): 1 + proficiency bonus uses per Long Rest (the Skilled Exploits pool on Hunters Exploits); every Skilled Exploit's check button spends one.
+- **Lethal Precision:** Taijutsu or Bukijutsu with Dexterity, by the level-up choice (D25).
+- **Creeds:** Carnage, Posture, the Black Medicine Array, the Dread Arsenal, Void Anchors and Prosthetic Tools from their pools and buttons; Uncanny Dodge keeps its automatic halving reaction.
+- **At the table:** the conditions that let each Creed use Lethal Attack, Stalked's −2 to Perception and Insight, Defensive Tactics and the subclasses' passives.
+
+## Class & Clan Limits (0.77.0-alpha.1)
+
+King 2026-11-21: "make this use limit variable in a new class & clan setting menu… list all classes and subclasses, and Clans under their own sections; each feature that has a limit that recharges on a rest should be changeable."
+
+- **Menu:** Configure Settings › N5e Class & Clan Limits. Classes first (each class's own features, then its subclasses), then clans; everyone can view, the GM saves.
+- **Limits listed:** every resource pool on a class, subclass, feature or clan, and every class- or clan-owned Amp card with uses.
+- **Choices for pools:** as written, 10 minutes of rest, Short Rest, half on a Short Rest and all on a Long Rest, Long Rest, Full Rest, each day, Initiative (combat start and end), each round, start of your turn, never.
+- **Choices for Amp uses:** as written, 10 minutes of rest, Short Rest, Long Rest, Full Rest, each day.
+- A choice replaces the limit's recovery for every character in the world straight away; "All as written" clears them.
+
 ## Questions for King (answer when convenient; nothing waits on them)
 
 - **Q-D1 Toxic Tongue:** "immunity to the Poisoned and Corroded conditions": N5e has no Poisoned condition. Is it Envenomed? (Only Corroded is automated.)
@@ -151,6 +174,8 @@ Highlights:
 - **Q-D21 Clones Everywhere:** the save is against your Stealth DC. Buttons can't use a skill DC yet, so it uses your Ninjutsu DC. Add a Stealth DC source, or keep it at the table?
 - **Q-D22 One maneuver per turn:** the limit isn't enforced (The Elite and Exceeding Expectations raise it). Enforce it on the maneuver buttons?
 - **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
+- **Q-D24 Skilled Exploits:** answered (King 2026-11-21): 1 + proficiency bonus per Long Rest, changeable in the Class & Clan Limits menu.
+- **Q-D25 Lethal Attack's Creed conditions:** the conditions that let a Creed use Lethal Attack (Bruised, Weakened, Sealed...) are notes; you press the button when they apply. Fine, or should the button check the target?
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -165,3 +190,4 @@ Highlights:
 - 2026-11-21 King: "Then let's work on next Batch." Claude: engine D20–D22 and Weapon Specialist built (101 features), published 0.74.0-alpha.1. Q-D14–Q-D18 asked; nothing waits on them.
 - 2026-11-21 King: "Next batch." Claude: engine D23 and Scout-Nin built (187 features), published 0.75.0-alpha.1. Q-D19–Q-D23 asked; nothing waits on them.
 - 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.
+- 2026-11-21 King: "Next batch." and "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & class setting menu..." Claude: Hunter-Nin built (86 features), D25 option-gated effects, D26 Class & Clan Limits menu, published 0.77.0-alpha.1. Q-D25 asked; nothing waits on it.

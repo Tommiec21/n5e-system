@@ -47,6 +47,10 @@ import { resolveFormula } from "../../rules/unarmed.mjs";
 import { rule } from "../../rules-settings.mjs";
 import { expandGrants } from "../../rules/proficiency.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
+import { applyPoolOverride } from "../../rules/recovery-overrides.mjs";
+
+/** The GM's Class & Clan limit choices (world setting; none before settings are ready). */
+const limitOverrides = () => { try { return globalThis.game?.settings?.get?.("n5e", "limitRecovery") ?? {}; } catch { return {}; } };
 
 const F = () => foundry.data.fields;
 
@@ -522,7 +526,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         }
       }
       // Resource pools defined by items (Focus, Superiority Dice, Pyroclasm...).
-      for ( const pool of sys.resourcePools ?? [] ) if ( pool.id ) g.pools.push({ ...pool, source: item.name });
+      // King 2026-11-21: the GM's Class & Clan limits menu can change when a pool comes back.
+      for ( const pool of sys.resourcePools ?? [] ) if ( pool.id ) g.pools.push({ ...applyPoolOverride(pool, sys.identifier, limitOverrides()), source: item.name });
       // Class table columns for formulas: @scale.<classCamelCase>.<column>.
       if ( item.type === "class" && sys.identifier ) {
         // Keyed by camel case so formulas can use them: "scout-nin" -> @scale.scoutNin.<column>.

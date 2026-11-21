@@ -14,6 +14,7 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
+import { ampPer } from "../rules/recovery-overrides.mjs";
 import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice, ampChoiceUpdate, ampDefFor, ampsEndingWith, activeAmpOfSeries,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
@@ -41,8 +42,26 @@ export function registerAmp(card) {
   const key = card.system?.identifier || existing[0] || ampKey(card);
   if ( !key ) return null;
   for ( const k of existing ) if ( k !== key ) delete reg[k];
-  reg[key] = ampDefinition(card);
+  reg[key] = withLimitOverride(key, ampDefinition(card));
   return key;
+}
+
+/**
+ * King 2026-11-21: the GM's Class & Clan limits menu can change when an Amp's uses come back. The
+ * written period stays on the definition (uses.writtenPer) so the choice can be undone.
+ */
+function withLimitOverride(key, def) {
+  if ( !def?.uses ) return def;
+  const written = def.uses.writtenPer ?? def.uses.per;
+  let overrides = {};
+  try { overrides = game.settings.get("n5e", "limitRecovery") ?? {}; } catch { /* settings not ready */ }
+  def.uses = { ...def.uses, writtenPer: written, per: ampPer(key, written, overrides) };
+  return def;
+}
+
+/** The limits menu changed: apply it to every registered Amp. */
+export function refreshAmpLimits() {
+  for ( const [key, def] of Object.entries(registry()) ) withLimitOverride(key, def);
 }
 
 /** Ready hook: register every card from the compendium and the world. */
