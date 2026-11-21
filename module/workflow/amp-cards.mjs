@@ -14,7 +14,7 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
-import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice,
+import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice, ampChoiceUpdate, ampDefFor,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -125,14 +125,29 @@ export async function pickAmpOption(key, applier, rank = "") {
   return choice == null ? false : choice;
 }
 
-/** AMP1f: the options menu (every option in view). Returns the option's index, or null when closed. */
-async function pickOption(def) {
-  const rows = def.choose.options.map((o, i) => `<label class="checkbox"><input type="radio" name="choice" value="${i}" ${i === 0 ? "checked" : ""}> ${esc(o.label)}</label>`).join("");
+/** AMP1f: the options menu (every option in view). Returns the picked indexes, or null when closed. */
+async function pickOption(def, current = []) {
+  const count = def.choose.count ?? 1;
+  const many = count > 1;
+  const rows = def.choose.options.map((o, i) => `<label class="checkbox"><input type="${many ? "checkbox" : "radio"}" name="choice" value="${i}" ${(current.length ? current.includes(i) : i === 0) ? "checked" : ""}> ${esc(o.label)}</label>`).join("");
   const picked = await foundry.applications.api.DialogV2.prompt({
-    window: { title: def.label }, content: `<p>${esc(def.choose.prompt)}</p>${rows}`,
-    ok: { label: "Start", callback: (event, button) => Number(button.form.elements.choice.value) }, rejectClose: false
+    window: { title: def.label }, content: `<p>${esc(def.choose.prompt)}${many ? ` (up to ${count})` : ""}</p>${rows}`,
+    ok: { label: current.length ? "Change" : "Start", callback: (event, button) => [...button.form.querySelectorAll("input[name=choice]:checked")].map(x => Number(x.value)) },
+    rejectClose: false
   });
-  return Number.isInteger(picked) ? picked : null;
+  if ( !Array.isArray(picked) || !picked.length ) return null;
+  if ( picked.length > count ) { ui.notifications.warn(`Pick up to ${count}.`); return null; }
+  return picked;
+}
+
+/** AMP1f (King Q-F9): the Change button on an active Amp whose pick can change (Score's tempo). */
+export async function changeAmpChoice(actor, effectId) {
+  const effect = actor.effects.get(effectId);
+  const def = effect ? ampDefFor(effect, registry()) : null;
+  if ( !def?.choose?.changeable ) return null;
+  const picked = await pickOption(def, effect.flags?.n5e?.ampChoice ?? []);
+  if ( !picked ) return null;
+  return effect.update(ampChoiceUpdate(def, picked));
 }
 
 /** Create the Amp effect from the card (runs on a client that can modify the target). */

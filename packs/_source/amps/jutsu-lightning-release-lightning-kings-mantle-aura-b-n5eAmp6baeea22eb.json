@@ -1,0 +1,90 @@
+{
+  "_id": "n5eAmp6baeea22eb",
+  "name": "Lightning King’s Mantle (in the aura) (B-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 103501,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-lightning-release-lightning-kings-mantle-aura-b",
+    "description": "<p><b>Lightning Release: Lightning King’s Mantle</b> · cast at B-Rank to S-Rank · no type</p><p>When you deal your [Weapon Damage], add +1d6 lightning damage.</p><p>Your [Weapon Damage] penetrates 4 DR; a critical hit with it gives the target +1 rank of Shocked.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2882",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "lightning-release-lightning-kings-mantle",
+      "subclass": ""
+    },
+    "summary": "When you deal your [Weapon Damage], add +1d6 lightning damage. Your [Weapon Damage] penetrates 4 DR; a critical hit with it gives the target +1 rank of Shocked.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-lightning-release-lightning-kings-mantle-aura",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "",
+      "options": []
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "damage",
+          "selector": "damage",
+          "predicate": "kind:attack",
+          "formula": "1d6",
+          "damageType": "lightning",
+          "label": "Lightning King’s Mantle"
+        },
+        {
+          "key": "note",
+          "text": "Only on [Weapon Damage]."
+        },
+        {
+          "key": "note",
+          "text": "Your [Weapon Damage] penetrates 4 DR."
+        },
+        {
+          "key": "note",
+          "text": "A critical hit with a weapon gives the target +1 rank of Shocked."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp6baeea22eb"
+}

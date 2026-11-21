@@ -1,6 +1,7 @@
 /**
  * Aura sync (ENG1d; rules/auras.mjs decides). The active GM keeps every aura's child effects in step
- * when tokens move, effects change and turns change.
+ * when tokens move, effects change and turns change. AMP1f: a child naming an Amp card ({amp: key})
+ * is that card's Amp effect on each creature in range.
  */
 import { auraPlan } from "../rules/auras.mjs";
 
@@ -29,6 +30,16 @@ export async function syncAuras() {
   for ( const a of plan.add ) {
     const src = auras.find(x => x.uuid === a.auraUuid);
     const child = src.aura.effect ?? {};
+    // AMP1f (King Q-F6): an aura that applies an Amp card to each creature in it (it counts as their Amp).
+    const amp = child.amp ? CONFIG.N5E.amps?.[child.amp] : null;
+    if ( amp ) {
+      await byActor.get(a.actorUuid)?.actor.createEmbeddedDocuments("ActiveEffect", [{
+        name: amp.label, img: amp.icon, origin: amp.card ?? src.effect.origin ?? null, type: "amp",
+        system: { ampType: amp.ampType ?? "", key: child.amp, sourceUuid: src.actorUuid, outsideLimits: !!amp.outsideLimits },
+        changes: (amp.changes ?? []).map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2 })),
+        flags: { n5e: { auraFrom: src.uuid, ...(amp.rules?.length ? { rules: amp.rules } : {}), ...(amp.state ? { state: amp.state } : {}) } } }]);
+      continue;
+    }
     await byActor.get(a.actorUuid)?.actor.createEmbeddedDocuments("ActiveEffect", [{
       name: child.name || src.effect.name, img: src.effect.img, origin: src.effect.origin ?? null,
       changes: (child.changes ?? []).map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2 })),

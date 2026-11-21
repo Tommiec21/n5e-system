@@ -18,7 +18,9 @@
  *   outsideLimits  AMP1e (King Q-E3): doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)
  *   rank        AMP1f (King Q-F1): the cast rank this version starts at (E–S; "" not a rank version)
  *   choose      AMP1f: {prompt, options: [{label, changes, rules, duration}]}: picked in a menu when the Amp
- *               starts; an option's duration (when its seconds or until is set) replaces the card's
+ *               starts; an option's duration (when its seconds or until is set) and tempHp replace the card's;
+ *               count: how many picks (Adaptive Biology at A-Rank: 2); changeable: a Change button on the
+ *               active Amp reopens the menu (Breath of Sound: Score's tempo, King Q-F9)
  *   owner kind "jutsu" (AMP1f): only casting that jutsu starts it (id: the jutsu's identifier)
  *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
@@ -55,8 +57,8 @@ export class AmpCardData extends TDM() {
       level: S.int(0, { min: 0 }),
       // AMP1f (King Q-F1): a version per cast rank, and the caster's picks.
       rank: S.str(),
-      choose: S.obj({ prompt: S.str(), options: S.arr(S.obj({ label: S.str(), changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })), rules: S.arr(object()),
-        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }) })) })
+      choose: S.obj({ prompt: S.str(), count: S.int(1, { min: 1 }), changeable: S.bool(), options: S.arr(S.obj({ label: S.str(), changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })), rules: S.arr(object()),
+        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }), tempHp: S.str() })) })
     };
   }
 }

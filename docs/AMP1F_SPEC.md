@@ -1,6 +1,6 @@
 # AMP1f function spec: jutsu Amps from the audit
 
-Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 (C-Rank) proposed; waiting for King's verdicts, Q-F6–Q-F9 and the go-ahead.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 (King: "The next batch"). King answered Q-F1–Q-F5 the same day; batch 1 revised to match. King: "Build". Batch 1 built in 0.70.0-alpha.1. Batch 2 built in 0.71.0-alpha.1. Batch 3 (B-Rank) next.** Part of AMP1 (`docs/AMP1_SPEC.md`). Codex's Journal Desk files are not touched.
 
 ## The work
 
@@ -130,3 +130,4 @@ Batch 2 tally: 17 Amps as 46 cards, 8 not Amps.
 - 2026-11-20 King: Q-F1 a card per cast rank, an options menu for picks; Q-F2 Hijutsu are not Clan; Q-F3 typeless; Q-F4 temporary-HP jutsu are Amps; Q-F5 Chakra Skin and Geo Breastplate are not Amps (Amp-less buffs). Claude: spec and batch 1 revised.
 - 2026-11-20 King: "Build". Claude: batch 1 built (0.70.0-alpha.1): 23 jutsu as 75 cards (Gaslight's level versions included), 7 marked not Amps. Differences from the plan: Viscous Water Mass has no options menu, since its near-water pick (−2 chakra or one more creature) is made when casting, not part of the Amp; Gaslight and Environmental Affinity got menus (Action or Reaction; in or out of combat), and an option can change the card's duration. Next: batch 2 (C-Rank, 24 jutsu).
 - 2026-11-20 King: "Next batch." Claude: batch 2 (C-Rank, 25 jutsu) proposed with Q-F6–Q-F9 (batch sizes corrected: C 25, A and S 18).
+- 2026-11-20 King: Q-F6 an aura that applies the Amp, Q-F7 two picks, Q-F8 Heated Body an Amp-less buff, Q-F9 yes; "Build". Claude: batch 2 built (0.71.0-alpha.1): 17 jutsu as 49 cards (3 are the "in the aura" cards the auras apply), 8 marked not Amps. Reading of Q-F6: each creature in the aura (the caster too) gets the Amp card, and it counts as theirs; the aura card on the caster is outside the limits. Jolt got a menu for Overcharge (d8 or d10 temporary hit points). Next: batch 3 (B-Rank, 17 jutsu).

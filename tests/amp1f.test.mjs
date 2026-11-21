@@ -35,7 +35,7 @@ test("AMP1f batch 1: every confirmed jutsu starts its typeless, jutsu-owned card
     assert.deepEqual(def.owner, { kind: "jutsu", id: j.system.identifier, subclass: "" });
     assert.equal(ampAuditOf(j).status, "linked", `${name} leaves the candidates`);
   }
-  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 75);
+  assert.equal(cards.filter(c => c.system.owner?.kind === "jutsu").length, 124, "batch 1: 75; batch 2: 49 (3 in-the-aura cards)");
 });
 
 test("King Q-F5 and batch 1 verdicts: rejected jutsu carry notAmp and leave the audit", () => {
@@ -73,7 +73,7 @@ test("King Q-F1: an options menu adds the pick's effects (and its duration)", ()
   assert.equal(reaction.expires, "nextTurnEnd", "as a Reaction it lasts until the end of your next turn");
   assert.equal(reaction.concentration, false);
   assert.equal(withChoice(ampEffectPlan("jutsu-gaslight", gas), gas, 0).concentration, true);
-  assert.deepEqual(validateIntent("applyAmp", { key: "jutsu-gaslight", targetUuid: "Actor.abcdefghijklmnop", choice: 1 }), { key: "jutsu-gaslight", targetUuid: "Actor.abcdefghijklmnop", choice: 1 });
+  assert.deepEqual(validateIntent("applyAmp", { key: "jutsu-gaslight", targetUuid: "Actor.abcdefghijklmnop", choice: 1 }), { key: "jutsu-gaslight", targetUuid: "Actor.abcdefghijklmnop", choice: [1] });
 });
 
 test("AMP1f: a jutsu's Amp is owned by knowing the jutsu, starts only by casting, and counts for the limits", () => {
@@ -84,4 +84,59 @@ test("AMP1f: a jutsu's Amp is owned by knowing the jutsu, starts only by casting
   assert.ok(!ampCardsFor(caster, registry).some(c => c.key.startsWith("jutsu-")), "not offered on the Amps panel");
   const amp = id => ({ id, system: { ampType: "" } });
   assert.ok(ampLimitConflict([amp("1"), amp("2"), amp("3")], amp("4"), "ruleOfThree"), "a typeless jutsu Amp still counts for Rule of 3's");
+});
+
+const BATCH2 = ["Conqueror’s Art: Wyrmcaller’s Pulse", "Crystal Release: Crystal Wheel", "Hanami Style: Defensive Cloak", "Synthetic Art: Adaptive Biology",
+  "Uzumaki Art: Red Hot-Blooded Vitality", "Breath of Sound: Score", "Earth Release: Sand Armor", "Fire Release: Flame Armor", "Guardian Knight", "Lightning Release: Jolt",
+  "Lightning Release: Lightning Chakra Armor", "Lightning Release: Lightning King’s Mantle", "Medical Release: Medical Aura", "Royal Flush", "Sparking Flail",
+  "Water Release: Blessing of Poseidon", "Wind Release: Wind Rider"];
+const REJECTED2 = ["Adamantine Barrier", "Magnet Release: Dust Mesh", "Test Cutting: Senta Piercing", "Fire Release: Heated Body", "Outflank", "Shadow Clone Technique",
+  "Water Release: Heavenly Mirror of Pain", "Wind Release: Vacuum Field"];
+
+test("AMP1f batch 2: confirmed C-Rank jutsu start their cards; the rest leave the audit", () => {
+  for ( const name of BATCH2 ) {
+    const button = jutsu[name].system.activities.find(a => a.effect?.amp);
+    assert.ok(registry[button?.effect?.amp], name);
+    assert.equal(ampAuditOf(jutsu[name]).status, "linked", name);
+  }
+  for ( const name of REJECTED2 ) assert.equal(ampAuditOf(jutsu[name]), null, name);
+  assert.match(jutsu["Fire Release: Heated Body"].flags.n5e.notAmp, /Q-F8/);
+});
+
+test("King Q-F6: an aura applies the Amp card; the aura card itself is outside the limits", () => {
+  const mantle = "jutsu-lightning-release-lightning-kings-mantle";
+  const c = registry[mantle];
+  assert.equal(c.outsideLimits, true);
+  assert.equal(c.aura.radius, 10);
+  assert.equal(c.aura.effect.amp, `${mantle}-aura`);
+  assert.equal(registry[ampVersionFor(registry, mantle, 1, "B")].aura.radius, 20);
+  assert.equal(registry[ampVersionFor(registry, mantle, 1, "B")].aura.effect.amp, `${mantle}-aura-b`);
+  const inAura = registry[`${mantle}-aura`];
+  assert.equal(inAura.outsideLimits, false, "the Amp the aura gives counts toward Rule of 3's");
+  assert.equal(inAura.ampType, "");
+  const plan = ampEffectPlan(mantle, c);
+  assert.equal(plan.aura.effect.amp, `${mantle}-aura`, "the effect carries the aura");
+  const medical = registry["jutsu-medical-release-medical-aura-aura"];
+  assert.ok(medical.changes.some(ch => ch.key === "n5e.conditionImmune" && ch.value === "bleed"));
+});
+
+test("King Q-F7 and Q-F9: two picks at A-Rank, and a changeable pick", async () => {
+  const { ampChoiceUpdate } = await import("../module/rules/amp-cards.mjs");
+  const bio = registry["jutsu-jinzo-synthetic-art-adaptive-biology"];
+  const bioA = registry["jutsu-jinzo-synthetic-art-adaptive-biology-a"];
+  assert.equal(bio.choose.count, 1);
+  assert.equal(bioA.choose.count, 2);
+  const fire = bioA.choose.options.findIndex(o => o.label === "Fire damage");
+  const shaken = bioA.choose.options.findIndex(o => o.label === "Shaken (condition)");
+  const plan = withChoice(ampEffectPlan("jutsu-jinzo-synthetic-art-adaptive-biology-a", bioA), bioA, [fire, shaken]);
+  assert.deepEqual(plan.changes.map(c => `${c.key}=${c.value}`), ["n5e.resist=fire", "n5e.conditionResist=shaken"]);
+  assert.deepEqual(plan.ampChoice, [fire, shaken]);
+  const score = registry["jutsu-breath-of-sound-score"];
+  assert.equal(score.choose.changeable, true);
+  const swap = ampChoiceUpdate(score, [3]);
+  assert.equal(swap.name, "Breath of Sound: Score: Andante");
+  assert.ok(swap["flags.n5e.rules"].some(r => /Andante/.test(r.text ?? "")));
+  assert.deepEqual(swap["flags.n5e.ampChoice"], [3]);
+  const jolt = registry["jutsu-lightning-release-jolt-b"];
+  assert.equal(withChoice(ampEffectPlan("jutsu-lightning-release-jolt-b", jolt), jolt, 1).tempHp, "5d10", "Overcharge steps the die up");
 });

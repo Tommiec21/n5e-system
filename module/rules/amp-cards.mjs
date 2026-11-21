@@ -76,8 +76,10 @@ export function ampDefinition(card) {
   };
   const options = list(s.choose?.options).filter(o => o?.label);
   if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
+    count: Math.max(1, Number(s.choose.count) || 1), changeable: !!s.choose.changeable,
     options: options.map(o => ({ label: o.label, changes: list(o.changes).filter(c => c?.key).map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) })),
       rules: structuredClone(list(o.rules)),
+      ...(o.tempHp ? { tempHp: String(o.tempHp) } : {}),
       ...(o.duration?.seconds || o.duration?.until ? { duration: { seconds: Number(o.duration.seconds) || 0, until: o.duration.until ?? "", concentration: !!o.duration.concentration } } : {}) })) };
   // UX1: the buff can be written on the card (its Changes, its rules) or in the card's own Active
   // Effects (the effect editor); switched-off effects are left out. All of it applies together.
@@ -153,11 +155,27 @@ export function ampVersionFor(registry = {}, key, level = 0, rank = "") {
  * @param {number|null} choice
  */
 export function withChoice(plan, def, choice) {
-  const option = def?.choose?.options?.[choice];
-  if ( !option ) return plan;
+  // AMP1f batch 2: one pick or several (King Q-F7), as an index or a list of indexes.
+  const picks = (Array.isArray(choice) ? choice : choice == null ? [] : [choice]).map(Number).filter(i => def?.choose?.options?.[i]);
+  if ( !picks.length ) return plan;
+  const options = picks.map(i => def.choose.options[i]);
   // An option with its own duration (Gaslight as a Reaction lasts until the end of your next turn).
-  if ( option.duration ) plan = ampEffectPlan(plan.ampKey, { ...def, duration: option.duration });
-  return { ...plan, name: `${plan.name}: ${option.label}`, changes: [...(plan.changes ?? []), ...option.changes], rules: [...(plan.rules ?? []), ...option.rules] };
+  const timed = options.find(o => o.duration);
+  if ( timed ) plan = ampEffectPlan(plan.ampKey, { ...def, duration: timed.duration });
+  const temp = options.find(o => o.tempHp)?.tempHp;
+  return { ...plan, name: `${plan.name}: ${options.map(o => o.label).join(", ")}`, ampChoice: picks,
+    ...(temp ? { tempHp: temp } : {}),
+    changes: [...(plan.changes ?? []), ...options.flatMap(o => o.changes)], rules: [...(plan.rules ?? []), ...options.flatMap(o => o.rules)] };
+}
+
+/**
+ * AMP1f (King Q-F9): the update that swaps an active Amp's pick (Score's tempo): the card's own
+ * changes and rules plus the new picks.
+ */
+export function ampChoiceUpdate(def, choice) {
+  const plan = withChoice({ name: def.label, changes: [...(def.changes ?? [])], rules: [...(def.rules ?? [])], ampKey: "" }, def, choice);
+  return { name: plan.name, changes: plan.changes.map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2 })),
+    "flags.n5e.rules": plan.rules, "flags.n5e.ampChoice": plan.ampChoice ?? [] };
 }
 
 /** AMP1g: the key uses and cooldowns are kept under (one pool for every version of an Amp). */

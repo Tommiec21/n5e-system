@@ -1,0 +1,103 @@
+{
+  "_id": "n5eAmp39bc923c47",
+  "name": "Lightning Release: Lightning Chakra Armor (A-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 103302,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-lightning-release-lightning-chakra-armor-a",
+    "description": "<p><b>Lightning Release: Lightning Chakra Armor</b> · cast at A-Rank · no type</p><p>Overdrive: +1 AC, +40 speed, a rank of Mastery in Dexterity saves; Dash as a Bonus action.</p><p>+1d10 lightning damage on your unarmed, Ninjutsu and Taijutsu attacks, twice per turn.</p><p>+4 DR (+8 against earth or lightning damage).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2871",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "lightning-release-lightning-chakra-armor",
+      "subclass": ""
+    },
+    "summary": "Overdrive: +1 AC, +40 speed, a rank of Mastery in Dexterity saves; Dash as a Bonus action. +1d10 lightning damage on your unarmed, Ninjutsu and Taijutsu attacks, twice per turn. +4 DR (+8 against earth or lightning damage).",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "1",
+        "mode": 2
+      },
+      {
+        "key": "system.bonuses.speed",
+        "value": "40",
+        "mode": 2
+      },
+      {
+        "key": "n5e.mastery.save.dex",
+        "value": "Lightning Chakra Armor",
+        "mode": 2
+      },
+      {
+        "key": "n5e.dr",
+        "value": "4",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-lightning-release-lightning-chakra-armor",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Overcharge: you can take the Dash action as a Bonus action."
+        },
+        {
+          "key": "note",
+          "text": "Twice per turn, +1d10 lightning damage on your unarmed, Ninjutsu and Taijutsu attacks."
+        },
+        {
+          "key": "note",
+          "text": "Against earth or lightning damage, the DR is +8: add 4 more."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp39bc923c47"
+}

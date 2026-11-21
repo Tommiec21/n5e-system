@@ -25,7 +25,7 @@ import { canDualWieldLight } from "../rules/weapon-properties.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates } from "../config/combat.mjs";
-import { ampCardsFor, ampTypeLabel, ampEffectView } from "../rules/amp-cards.mjs";
+import { ampCardsFor, ampTypeLabel, ampEffectView, ampDefFor } from "../rules/amp-cards.mjs";
 import { n5eConfig } from "../rules/host.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 
@@ -391,7 +391,9 @@ function marksVM(actor) {
 export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = globalThis.game?.time?.worldTime ?? 0 } = {}) {
   // King 2026-11-16: the card's current name, and a hover listing what the Amp changes.
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, ...ampEffectView(e, registry, n5eConfig()), disabled: !!e.disabled,
-    type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
+    type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "",
+    // AMP1f (King Q-F9): a pick that can change while active (Score's tempo).
+    canChange: !!ampDefFor(e, registry)?.choose?.changeable }));
   const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
   const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,
     cooling: c.cooldown > 0 ? `${Math.ceil(c.cooldown / 60)} min` : "", spent: !!c.uses && c.uses.left <= 0 }));

@@ -1,3 +1,13 @@
+## 0.71.0-alpha.1 — AMP1f batch 2: jutsu Amps (C-Rank)
+
+King 2026-11-20: Q-F6 an aura applies the Amp to each creature in it, Q-F7 two picks, Q-F8 Heated Body is an Amp-less buff, Q-F9 a Change button for picks that can change.
+
+- **17 C-Rank jutsu now start Amp cards (49 cards)**, a card per cast rank where the effects change.
+- **Auras that apply the Amp.** Lightning King's Mantle and Medical Aura start an aura on the caster. You and the creatures in it each get the Amp card (it counts toward their Rule of 3's); it leaves when they step out or the jutsu ends. The aura card itself doesn't count.
+- **Options menus:** Adaptive Biology (a damage type or condition; two picks at A-Rank), Score's tempo, Guardian Knight's armor, Jolt (Overcharged: d10s).
+- **Change button** on an active Amp whose pick can change: Breath of Sound: Score's tempo at the start of each turn.
+- **8 jutsu marked not Amps:** Adamantine Barrier, Dust Mesh, Senta Piercing, Heated Body (an Amp-less buff), Outflank, Shadow Clone Technique, Heavenly Mirror of Pain, Vacuum Field.
+
 ## 0.70.0-alpha.1 — AMP1f batch 1: jutsu Amps (E and D ranks)
 
 King 2026-11-20: Q-F1 a card per cast rank and an options menu for picks, Q-F2 Hijutsu aren't Clan Amps, Q-F3 typeless for now, Q-F4 temporary-HP jutsu are Amps, Q-F5 Chakra Skin and Geo Breastplate are Amp-less buffs.

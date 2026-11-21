@@ -396,6 +396,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
     duration: eff.permanent ? { startTime: game.time.worldTime } : { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
+      ...(eff.ampChoice?.length ? { ampChoice: eff.ampChoice } : {}),
       // AMP1a: what ends an Amp card's effect (rules/amp-cards.mjs ampsEndingOn; King Q-A5).
       ...(eff.ampKey ? { ampEnds: [...(eff.endsOn ?? []), ...(eff.until === "combatEnd" || eff.until === "rest" ? [eff.until] : [])] } : {}),
       // STD6d: class table values ("@scale.…") become numbers here; lvl(...) values are read at roll time.

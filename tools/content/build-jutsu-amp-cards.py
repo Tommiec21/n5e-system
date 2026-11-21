@@ -31,10 +31,25 @@ MINUTE = dict(seconds=60, until="", concentration=False)
 BPS = ("bludgeoning", "piercing", "slashing")
 
 
-def V(rank, lines, changes=(), rules=(), notes=(), tempHp="", duration=None, level=0, choose=None):
-    """One version of a jutsu's Amp: its rank (and character level for AMP1g level versions)."""
+def V(rank, lines, changes=(), rules=(), notes=(), tempHp="", duration=None, level=0, choose=None, aura=None, outside=False):
+    """One version of a jutsu's Amp: its rank (and character level for AMP1g level versions).
+    aura {radius, who, includeSelf, amp}: the card is an aura applying the Amp card `amp` to creatures in it
+    (King Q-F6); the aura card itself is outside the limits (outside=True), the applied Amp counts."""
     return dict(rank=rank, lines=lines, changes=list(changes), rules=list(rules), notes=list(notes), tempHp=tempHp,
-                duration=duration, level=level, choose=choose)
+                duration=duration, level=level, choose=choose, aura=aura, outside=outside)
+
+
+def menu(prompt, options, count=1, changeable=False):
+    """An options menu (King Q-F1): options are (label, changes, rules) or dicts; count picks (Q-F7); changeable (Q-F9)."""
+    opts = []
+    for o in options:
+        if isinstance(o, dict):
+            opts.append({"label": o["label"], "changes": o.get("changes", []), "rules": o.get("rules", []),
+                         **({"duration": o["duration"]} if o.get("duration") else {}), **({"tempHp": o["tempHp"]} if o.get("tempHp") else {})})
+        else:
+            label, changes, rules = o
+            opts.append({"label": label, "changes": list(changes), "rules": list(rules)})
+    return {"prompt": prompt, "count": count, "changeable": changeable, "options": opts}
 
 
 # jutsu identifier, card name, target ("self" | "targets": given to others), default duration, versions
@@ -214,6 +229,145 @@ JUTSU = [
                    for r in ["D", "C", "B", "A", "S"]]),
 ]
 
+DAMAGE = ["bludgeoning", "piercing", "slashing", "acid", "cold", "earth", "fire", "lightning", "poison", "wind", "chakra", "force", "necrotic", "psychic"]
+CONDITIONS = ["exhaustion", "envenomed", "burned", "chilled", "corroded", "shocked", "petrified", "bruised", "staggered", "bleed", "dazed", "shaken",
+              "weakened", "concussed", "demoralized", "berserk", "charmed", "confused", "slowed", "sealed", "blinded", "dazzled", "deafened"]
+cap = lambda k: k[0].upper() + k[1:]
+BIOLOGY = [(f"{cap(d)} damage", [ch("n5e.resist", d)], []) for d in DAMAGE] + [(f"{cap(c)} (condition)", [ch("n5e.conditionResist", c)], []) for c in CONDITIONS]
+TEMPOS = [("Moderato", [], [note("Moderato: the first time each turn you deal damage with an attack from a Breath of Sound Bukijutsu, +1 damage die.")]),
+          ("Allegretto", [], [note("Allegretto: Breath of Sound Bukijutsu you cast have their save DC increased by +1.")]),
+          ("Vivacissimo", [], [note("Vivacissimo: advantage on your first melee weapon attack or Breath of Sound Bukijutsu each turn.")]),
+          ("Andante", [], [note("Andante: a special reaction when you'd take damage, reducing it by your weapon's damage.")])]
+
+JUTSU += [
+    # AMP1f batch 2 (C-Rank), King 2026-11-20.
+    dict(id="ryu-conquerors-art-wyrmcallers-pulse", name="Conqueror’s Art: Wyrmcaller’s Pulse", target="targets", duration=CONC,
+         versions=[V(r, ["A Wyrmling: +1 AC and " + str(t) + " temporary hit points."], changes=[ch("system.bonuses.ac", 1)], tempHp=str(t),
+                     notes=["The caster isn't affected. Prey (hostile creatures) make the jutsu's Wisdom save instead."])
+                   for r, t in [("C", 14), ("B", 18), ("A", 22), ("S", 26)]]),
+    dict(id="shoton-crystal-release-crystal-wheel", name="Crystal Release: Crystal Wheel", target="self", duration=CONC,
+         versions=[V(r, [f"+{spd} speed; you ignore difficult and special terrain.", f"A creature that makes an opportunity attack against you takes {d}d6 earth damage."]
+                        + (["Advantage on saving throws against effects that affect an area."] if r in "BAS" else [])
+                        + (["The first time each turn you move within 5 feet of a hostile creature, or it moves within 5 feet of you, it takes 4d6 earth damage."] if r == "S" else []),
+                     changes=[ch("system.bonuses.speed", spd)],
+                     notes=["You ignore difficult and special terrain.", f"A creature that makes an opportunity attack against you takes {d}d6 earth damage."]
+                     + (["Advantage on saving throws against effects that affect an area."] if r in "BAS" else [])
+                     + (["The first time each turn you move within 5 feet of a hostile creature, or one moves within 5 feet of you, it takes 4d6 earth damage."] if r == "S" else []))
+                   for r, spd, d in [("C", 30, 3), ("B", 30, 4), ("A", 30, 5), ("S", 60, 6)]]),
+    dict(id="hanami-hanami-style-defensive-cloak", name="Hanami Style: Defensive Cloak", target="self", duration=CONC,
+         versions=[V(r, [f"A creature that hits you with a melee attack takes {d}d6 necrotic damage; you gain temporary hit points equal to {'the' if full else 'half the'} necrotic damage (twice per turn).",
+                         "Monstrous Burst: it splashes onto all creatures of your choice within 10 feet instead.",
+                         "Healers Touch: it also triggers when an ally within 10 feet takes damage from a melee attack, affecting the attacker."],
+                     notes=[f"Twice per turn: a creature that hits you with a melee attack takes {d}d6 necrotic damage, and you gain temporary hit points equal to {'the full' if full else 'half the'} necrotic damage.",
+                            "Monstrous Burst: each time you're hit with a melee attack, it affects all creatures of your choice within 10 feet instead.",
+                            "Healers Touch: when an ally within 10 feet takes damage from a melee attack, it triggers against the attacker."])
+                   for r, d, full in [("C", 2, False), ("B", 3, False), ("A", 4, True), ("S", 5, True)]]),
+    dict(id="jinzo-synthetic-art-adaptive-biology", name="Synthetic Art: Adaptive Biology", target="self", duration=CONC,
+         versions=[V("C", ["Resistance to one damage type or condition you've experienced this initiative."],
+                     choose=menu("Adaptive Biology: a damage type or condition you've experienced this initiative", BIOLOGY)),
+                   V("A", ["Resistance to up to two damage types or conditions you've experienced this initiative."],
+                     choose=menu("Adaptive Biology: up to two damage types or conditions you've experienced this initiative", BIOLOGY, count=2))]),
+    dict(id="uzumaki-uzumaki-art-red-hot-blooded-vitality", name="Uzumaki Art: Red Hot-Blooded Vitality", target="self", duration=CONC,
+         versions=[V("C", ["A rank of Mastery to all Strength, Dexterity and Constitution checks.", "Advantage on Concentration checks."],
+                     changes=[ch("n5e.mastery.check.str", "Red Hot-Blooded Vitality"), ch("n5e.mastery.check.dex", "Red Hot-Blooded Vitality"), ch("n5e.mastery.check.con", "Red Hot-Blooded Vitality")],
+                     rules=[{"key": "advantage", "selector": "check", "predicate": "concentration", "label": "Red Hot-Blooded Vitality"}])]),
+    dict(id="breath-of-sound-score", name="Breath of Sound: Score", target="self", duration=CONC,
+         versions=[V("C", ["A tempo of your choice (Moderato, Allegretto, Vivacissimo or Andante); you can change it at the start of each of your turns."],
+                     choose=menu("Score: choose a tempo", TEMPOS, changeable=True),
+                     notes=["Instead of spending chakra to maintain this jutsu, spend a Bonus action.", "At the start of each of your turns you can choose a different tempo (the Change button)."])]),
+    dict(id="earth-release-sand-armor", name="Earth Release: Sand Armor", target="self", duration=dict(seconds=3600, until="", concentration=False),
+         versions=[V(r, [f"{t} temporary hit points, resistant to piercing, slashing, bludgeoning and cold damage.", "Lightning damage ends the jutsu before the damage is calculated."],
+                     tempHp=str(t),
+                     notes=["These temporary hit points are resistant to piercing, slashing, bludgeoning and cold damage (halve that damage before it reaches them).",
+                            "If you'd take lightning damage, the jutsu ends first, with all its benefits; end the Amp."])
+                   for r, t in [("C", 16), ("B", 24), ("A", 32), ("S", 40)]]),
+    dict(id="fire-release-flame-armor", name="Fire Release: Flame Armor", target="self", duration=dict(seconds=3600, until="", concentration=False),
+         versions=[V(r, [f"{t} temporary hit points.", "While you have them: wind damage can't take you below 1 of them, resistance to fire damage, immunity to Burned.",
+                         f"While you have them, melee attacks that strike you deal {t} fire damage to the attacker."],
+                     tempHp=str(t), changes=resist("fire") + [ch("n5e.conditionImmune", "burned")],
+                     notes=["The fire resistance and Burned immunity last only while you have temporary hit points from this jutsu: end the Amp when they're gone.",
+                            "Wind damage can't reduce you below 1 temporary hit point from this jutsu.", f"Melee attacks that strike you deal {t} fire damage to the attacker."])
+                   for r, t in [("C", 12), ("B", 16), ("A", 20), ("S", 24)]]),
+    dict(id="guardian-knight", name="Guardian Knight", target="self", duration=CONC,
+         versions=[V("C", ["Benefits by the armor you're wearing (light, medium or heavy)."],
+                     choose=menu("Guardian Knight: what armor are you wearing?", [
+                         ("Light Guardian", [ch("system.bonuses.speed", 10), ch("n5e.save.dex", 2)],
+                          [note("Light Guardian: as a reaction to taking damage, reduce it by your proficiency bonus.")]),
+                         ("Moderate Guardian", [ch("system.bonuses.ac", 1), ch("n5e.reinforced", 4)],
+                          [note("Moderate Guardian: as a reaction when an ally within 20 feet takes damage, move next to it; it gets +1 AC and +2 DR against that damage.")]),
+                         ("Heavy Metal", [ch("n5e.reinforced", 6)],
+                          [note("Heavy Metal: as a reaction when an ally within 15 feet takes damage, move next to it and take the damage instead, applying your Reinforce value.")])]))]),
+    dict(id="lightning-release-jolt", name="Lightning Release: Jolt", target="targets", duration=MINUTE, drop=("sourceRoll1",),
+         versions=[V(r, [f"{d}d8 temporary hit points for 1 minute (and 5 hit points).", f"While you have them: +{spd} speed and +2 to Dexterity saving throws.",
+                         "A dying creature also gains an additional Bonus action until the end of its next turn."],
+                     tempHp=f"{d}d8", changes=[ch("system.bonuses.speed", spd), ch("n5e.save.dex", 2)],
+                     choose=menu("Jolt: was it Overcharged?", [{"label": "Not Overcharged", "tempHp": f"{d}d8"}, {"label": "Overcharged (d10s)", "tempHp": f"{d}d10"}]),
+                     notes=["The creature also gains 5 hit points (the jutsu's own heal).",
+                            "The speed and save bonus last only while it has temporary hit points from this jutsu: end the Amp when they're gone.",
+                            "A dying creature gains an additional Bonus action until the end of its next turn."])
+                   for r, d, spd in [("C", 4, 10), ("B", 5, 15), ("A", 6, 20), ("S", 7, 25)]]),
+    dict(id="lightning-release-lightning-chakra-armor", name="Lightning Release: Lightning Chakra Armor", target="self", duration=CONC,
+         versions=[V(r, [f"Overdrive: +{ac} AC, +{spd} speed, a rank of Mastery in Dexterity saves; Dash as a Bonus action."]
+                        + ([f"+{dmg}d10 lightning damage on your unarmed, Ninjutsu and Taijutsu attacks, twice per turn."] if dmg else [])
+                        + (["+4 DR (+8 against earth or lightning damage)."] if r in "AS" else []),
+                     changes=[ch("system.bonuses.ac", ac), ch("system.bonuses.speed", spd), ch("n5e.mastery.save.dex", "Lightning Chakra Armor")] + ([ch("n5e.dr", 4)] if r in "AS" else []),
+                     notes=["Overcharge: you can take the Dash action as a Bonus action."]
+                     + ([f"Twice per turn, +{dmg}d10 lightning damage on your unarmed, Ninjutsu and Taijutsu attacks."] if dmg else [])
+                     + (["Against earth or lightning damage, the DR is +8: add 4 more."] if r in "AS" else []))
+                   for r, ac, spd, dmg in [("C", 1, 20, 0), ("B", 1, 30, 1), ("A", 1, 40, 1), ("S", 2, 50, 2)]]),
+    # King Q-F6: an aura that applies the Amp: the jutsu starts the aura (outside the limits); each
+    # creature in it (the caster too) gets the Amp card, which counts as theirs.
+    dict(id="lightning-release-lightning-kings-mantle", name="Lightning Release: Lightning King’s Mantle", target="self", duration=CONC, drop=("parsed1",),
+         versions=[V(r, [f"An aura with a {ft}-foot radius, moving with you: you and creatures of your choice in it get Lightning King’s Mantle."],
+                     aura={"radius": ft, "amp": "jutsu-lightning-release-lightning-kings-mantle-aura" + ("-b" if r != "C" else "")}, outside=True,
+                     notes=["The aura gives the Amp; this card itself doesn't count toward Rule of 3's."])
+                   for r, ft in [("C", 10), ("B", 20), ("A", 30), ("S", 40)]]),
+    dict(id="lightning-release-lightning-kings-mantle", key="jutsu-lightning-release-lightning-kings-mantle-aura", button=False,
+         name="Lightning King’s Mantle (in the aura)", target="self", duration=CONC,
+         versions=[V(r, ["When you deal your [Weapon Damage], add +1d6 lightning damage."] + (["Your [Weapon Damage] penetrates 4 DR; a critical hit with it gives the target +1 rank of Shocked."] if r == "B" else []),
+                     rules=[{"key": "damage", "selector": "damage", "predicate": "kind:attack", "formula": "1d6", "damageType": "lightning", "label": "Lightning King’s Mantle"}],
+                     notes=["Only on [Weapon Damage]."] + (["Your [Weapon Damage] penetrates 4 DR.", "A critical hit with a weapon gives the target +1 rank of Shocked."] if r == "B" else []))
+                   for r in ["C", "B"]]),
+    dict(id="medical-release-medical-aura", name="Medical Release: Medical Aura", target="self", duration=CONC,
+         versions=[V("C", ["An aura with a 15-foot radius, moving with you: you and non-hostile creatures in it get Medical Aura."],
+                     aura={"radius": 15, "amp": "jutsu-medical-release-medical-aura-aura"}, outside=True,
+                     notes=["The aura gives the Amp; this card itself doesn't count toward Rule of 3's."])]),
+    dict(id="medical-release-medical-aura", key="jutsu-medical-release-medical-aura-aura", button=False, name="Medical Aura (in the aura)", target="self", duration=CONC,
+         versions=[V("C", ["Resistance to necrotic damage and immunity to Bleeding.", "A living creature that starts its turn here at 0 hit points regains 1 (once per casting)."],
+                     changes=resist("necrotic") + [ch("n5e.conditionImmune", "bleed")],
+                     notes=["A non-hostile, living creature that starts its turn in the aura at 0 hit points regains 1 hit point (once per casting)."])]),
+    dict(id="royal-flush", name="Royal Flush", target="self", duration=CONC,
+         versions=[V(r, ["+2 to the Royal Shield charges you gain from jutsu.", "Taijutsu that increase your AC: +1 more.", "Taijutsu that grant temporary hit points: +1 die."]
+                        + (["Royal Guard costs half."] if r == "S" else []),
+                     notes=["Jutsu that grant Royal Shield charges grant 2 more.", "Taijutsu you cast that increase your AC increase it by 1 more.",
+                            "Taijutsu you cast that grant temporary hit points grant 1 more die."] + (["Royal Guard costs half."] if r == "S" else []))
+                   for r in ["C", "S"]]),
+    dict(id="sparking-flail", name="Sparking Flail", target="self", duration=CONC,
+         versions=[V("C", ["A haze around you: the chosen hostile creature can't see through it, and you're fully obscured from it.",
+                           "Chain 1: your first weapon or Taijutsu attack each turn has +1 critical threat range.",
+                           "Chain 2: on a critical hit, invisibility and +20 speed until the end of the turn."],
+                     notes=["The haze fills your weapon's range around you and follows you; the chosen creature (one more per rank above C) can't see through it.",
+                            "Chain 1: your first weapon or Taijutsu attack each turn has a +1 bonus to its critical threat range.",
+                            "Chain 2: when you score a critical hit, you become invisible and gain +20 speed until the end of the current turn."])]),
+    dict(id="water-release-blessing-of-poseidon", name="Water Release: Blessing of Poseidon", target="self", duration=CONC,
+         versions=[V(r, ["Swim speed 60 ft, water breathing, tremorsense 60 ft.", "Creatures you deal cold damage to become Shaken until the start of your next turn.",
+                         "Underwater: no disadvantage on attacks and full range.", f"Atlantean Trident in place of a weapon attack: melee {m}d8 or ranged {rg}d8 + Ninjutsu modifier cold."]
+                        + (["The Trident has +1 critical threat range; against a creature with 2+ ranks of Chilled, its ranks can become Shaken (an Elemental condition)."] if r == "A" else []),
+                     notes=["You have a 60-foot swim speed, breathe underwater and have 60 feet of tremorsense.",
+                            "Creatures you deal cold damage to become Shaken until the beginning of your next turn.",
+                            "Attacks made underwater aren't at disadvantage and keep their full range.",
+                            f"Atlantean Trident (in place of a weapon attack): melee Ninjutsu attack, reach 5 ft, {m}d8 + Ninjutsu modifier cold; ranged, 60 ft, {rg}d8 + Ninjutsu modifier cold."]
+                     + (["Atlantean Trident: +1 critical threat range; cold damage to a creature with 2 or more ranks of Chilled can change them to as many ranks of Shaken (an Elemental condition)."] if r == "A" else []))
+                   for r, m, rg in [("C", 2, 1), ("A", 3, 2)]]),
+    dict(id="wind-release-wind-rider", name="Wind Release: Wind Rider", target="self", duration=CONC,
+         versions=[V(r, ["30 ft flying speed" + (", floating down to 1 foot off the ground at the end of your turn." if r == "C" else " (you no longer need to descend)."),
+                         "You take no falling damage and can't be knocked Prone."] + (["When you Dash, +60 fly speed until the end of the turn."] if r == "A" else []),
+                     notes=["You have a 30-foot flying speed" + (". At the end of your turn you float down, ending within 1 foot of the ground." if r == "C" else "; you no longer need to end within 1 foot of the ground."),
+                            "You can't take falling damage or be knocked Prone, and always float at least 1 foot off the ground."]
+                     + (["When you take the Dash action, +60 fly speed until the end of the current turn."] if r == "A" else []))
+                   for r in ["C", "B", "A"]]),
+]
+
 # King's batch 1 verdicts: not Amps.
 NOT_AMPS = {
     "Misty Hallucination": "An area attack; allies being immune only excludes them (King, AMP1f batch 1).",
@@ -223,6 +377,15 @@ NOT_AMPS = {
     "Earth Release: Resonating Geo Isotoma": "An aura around an Earthen Artifact, not on a creature (King, AMP1f batch 1).",
     "Fire Release: Fox Fire": "A light and an attack (King, AMP1f batch 1).",
     "Sealing Art: Chakra Mark": "A mark for tracking (King, AMP1f batch 1).",
+    # Batch 2 (C-Rank).
+    "Adamantine Barrier": "A barrier zone; its 5-Pronged Seal box is a condition (King, AMP1f batch 2).",
+    "Magnet Release: Dust Mesh": "Terrain in an area (King, AMP1f batch 2).",
+    "Test Cutting: Senta Piercing": "An instant attack; its temporary hit points and chakra have no lasting rider (King, AMP1f batch 2).",
+    "Fire Release: Heated Body": "An Amp-less buff, like Chakra Skin (King Q-F8).",
+    "Outflank": "It marks a foe (King, AMP1f batch 2).",
+    "Shadow Clone Technique": "It summons clones (King, AMP1f batch 2).",
+    "Water Release: Heavenly Mirror of Pain": "It binds a foe's reflection (King, AMP1f batch 2).",
+    "Wind Release: Vacuum Field": "A hazard zone (King, AMP1f batch 2).",
 }
 
 
@@ -254,7 +417,7 @@ def main():
     keep = set()
     for i, j in enumerate(JUTSU):
         f, jutsu = files[j["id"]]
-        base = "jutsu-" + j["id"]
+        base = j.get("key") or "jutsu-" + j["id"]
         first = j["versions"][0]
         for n, v in enumerate(j["versions"]):
             is_base = n == 0
@@ -264,6 +427,10 @@ def main():
             dur = v["duration"] or j["duration"]
             cid = card_id(key)
             choose = v["choose"] or j.get("choose")
+            if choose:
+                choose = {"prompt": choose["prompt"], "count": choose.get("count", 1), "changeable": choose.get("changeable", False), "options": choose["options"]}
+            aura = {"radius": v["aura"]["radius"], "who": v["aura"].get("who", "friendly"), "includeSelf": v["aura"].get("includeSelf", True),
+                    "effect": {"amp": v["aura"]["amp"]}} if v.get("aura") else {}
             rank_versions = [x["rank"] for x in j["versions"] if not x["level"]]
             if v["level"] or any(x["level"] for x in j["versions"]):
                 where = f"{v['level']}th level" if v["level"] else "1st level"
@@ -284,7 +451,7 @@ def main():
                     "activation": "", "giveable": j["target"] == "targets", "startOnInitiative": "",
                     "duration": {"seconds": dur["seconds"], "until": dur["until"], "concentration": dur["concentration"]},
                     "uses": {"max": "", "per": ""}, "cooldown": 0, "exclusive": "", "state": "", "tempHp": v["tempHp"],
-                    "endsOn": [], "changes": v["changes"], "aura": {}, "outsideLimits": False,
+                    "endsOn": [], "changes": v["changes"], "aura": aura, "outsideLimits": bool(v.get("outside")),
                     "series": "" if is_base else base, "level": v["level"], "rank": v["rank"] if not v["level"] else "",
                     "choose": choose or {"prompt": "", "options": []}
                 },
@@ -298,12 +465,15 @@ def main():
             keep.add(path)
             write(path, doc)
             written += 1
+        if not j.get("button", True):
+            continue
         # The jutsu's button starts its card (the placeholder "Resolve the source instructions" goes;
         # a temporary-HP heal the card now gives goes; an effect button that built the buff by hand is replaced).
         acts = jutsu["system"].get("activities") or []
         acts = [a for a in acts if a.get("id") != "sourceUtility" and not (a.get("type") == "heal" and (a.get("heal") or {}).get("pool") == "tempHp" and not a.get("activation"))
                 and not (a.get("type") == "effect" and not (a.get("effect") or {}).get("amp"))
-                and not (a.get("type") == "roll" and str(a.get("id", "")).startswith("sourceRoll") and j["id"] in ("cloak-of-shadows", "lightning-release-spark", "medical-release-grim-mask", "warriors-zone"))]
+                and not (a.get("type") == "roll" and str(a.get("id", "")).startswith("sourceRoll") and j["id"] in ("cloak-of-shadows", "lightning-release-spark", "medical-release-grim-mask", "warriors-zone"))
+                and a.get("id") not in j.get("drop", ())]
         button = {"id": "amp" + hashlib.md5(j["id"].encode()).hexdigest()[:13], "type": "effect", "label": j["name"],
                   "effect": {"name": j["name"], "target": j["target"], "amp": base},
                   "text": "Starts the jutsu's Amp at the rank it was cast at." + (" Target the creatures first." if j["target"] == "targets" else "")}

@@ -1,0 +1,108 @@
+{
+  "_id": "n5eAmp96544c5fd5",
+  "name": "Lightning Release: Jolt (B-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 103201,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-lightning-release-jolt-b",
+    "description": "<p><b>Lightning Release: Jolt</b> · cast at B-Rank · no type</p><p>5d8 temporary hit points for 1 minute (and 5 hit points).</p><p>While you have them: +15 speed and +2 to Dexterity saving throws.</p><p>A dying creature also gains an additional Bonus action until the end of its next turn.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 2863",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "lightning-release-jolt",
+      "subclass": ""
+    },
+    "summary": "5d8 temporary hit points for 1 minute (and 5 hit points). While you have them: +15 speed and +2 to Dexterity saving throws. A dying creature also gains an additional Bonus action until the end of its next turn.",
+    "activation": "",
+    "giveable": true,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "5d8",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "15",
+        "mode": 2
+      },
+      {
+        "key": "n5e.save.dex",
+        "value": "2",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-lightning-release-jolt",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "Jolt: was it Overcharged?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "Not Overcharged",
+          "changes": [],
+          "rules": [],
+          "tempHp": "5d8"
+        },
+        {
+          "label": "Overcharged (d10s)",
+          "changes": [],
+          "rules": [],
+          "tempHp": "5d10"
+        }
+      ]
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "The creature also gains 5 hit points (the jutsu's own heal)."
+        },
+        {
+          "key": "note",
+          "text": "The speed and save bonus last only while it has temporary hit points from this jutsu: end the Amp when they're gone."
+        },
+        {
+          "key": "note",
+          "text": "A dying creature gains an additional Bonus action until the end of its next turn."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp96544c5fd5"
+}

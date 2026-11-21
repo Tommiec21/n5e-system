@@ -146,3 +146,4 @@ Original questions:
 - 2026-11-20 King: "Build". Claude: AMP1e built (0.69.0-alpha.1): DYNAMIC FORM! and Flawless cards (typeless, outside the limits), the finisherCast ending, stances labelled Stance in the audit, Combat and Diplomatic Coordinated as condition cards (the Combat Coordinated Amp cards removed). Next AMP1f (jutsu Amps from the audit).
 - 2026-11-20 King: "The next batch." Claude: AMP1f spec (`docs/AMP1F_SPEC.md`): 90 jutsu candidates, 4 review batches by rank, Q-F1–Q-F5, batch 1 proposals.
 - 2026-11-20 King: "Build". Claude: AMP1f batch 1 built (0.70.0-alpha.1): 23 E/D jutsu as 75 jutsu-owned typeless cards (rank versions, options menus), 7 jutsu marked not Amps. Next: batch 2 (C-Rank).
+- 2026-11-20 King: "Build". Claude: AMP1f batch 2 built (0.71.0-alpha.1): 17 C-Rank jutsu as 49 cards, auras that apply Amps, multi-pick and changeable menus; 8 not Amps. Next: batch 3 (B-Rank).
