@@ -1,6 +1,6 @@
 # AMP1e function spec: typeless self-buff states
 
-Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. Waiting for King's approval to build.** Part of AMP1 (`docs/AMP1_SPEC.md`); follows AMP1g (0.68.0-alpha.1). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. All questions answered; waiting for King's go-ahead to build.** Part of AMP1 (`docs/AMP1_SPEC.md`); follows AMP1g (0.68.0-alpha.1). Codex's Journal Desk files are not touched.
 
 ## King's answers (2026-11-20)
 
@@ -46,10 +46,11 @@ Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. Waiting fo
 - `DATA_REFERENCE.md` (the new card field and ending), `DEV_PLAN.md`, `AMP1_SPEC.md` progress log, `CHANGELOG.md`, `CODEX_CONTEXT.md`.
 - Release: **0.69.0-alpha.1**.
 
-## Question for King
+## Answered
 
-- **Q-E5 Coordinated scaling:** the Mastery ranks grow at 7th and 15th level. Whose level: the **Nara** who gives it (Claude's reading, since it comes from their feature), or each **ally**'s own level?
+- **Q-E5 (King 2026-11-20):** a feature's level is **always the character level** of the character who has the feature, never a clan or class level. Coordinated's ranks (1, 2 at 7th, 3 at 15th) use the Nara's character level, fixed when the condition is applied.
 
 ## Progress log
 
 - 2026-11-20 King: Q-E1 (b) stances labelled "Stance" in the audit; Q-E2 Feral and Well Rested stay Clan; Q-E3 DYNAMIC FORM! and Flawless become typeless cards outside Rule of 3's; Q-E4 Coordinated is a condition, the exception. Claude: spec written; waiting for approval.
+- 2026-11-20 King: Q-E5, a feature's level is always the character level of the character who has it. Claude: Coordinated scales by the Nara's character level.

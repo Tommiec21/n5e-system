@@ -524,3 +524,4 @@ Additive atlas slice based on 55f5a70; 13 new entries, 20 total, relationships o
 ## GM04c — Codex, 2026-11-20
 
 Additive selective-import batch based on 2d04d62. Seven new entries (27 total), opt-in missing-link additions and screenshot-driven contrast correction. No recent work deleted or regenerated. Five focused tests/lint passed; PR/main reserved. No live testing or installed changes. GM04d additional geography/figures and GM06 design polish remain documented; GM05 next.
+- 2026-11-20 (King, standing rule): a feature's level always means the character level of the character who has the feature, never a clan or class level. Don't ask which level again.
