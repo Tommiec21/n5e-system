@@ -547,3 +547,8 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Engine: placed effect values resolve the caster's `@prof` and `@abilities.<a>.mod` (workflow/trackers.mjs; aura child rules too); the rule validator accepts those forms.
 - Codex's Journal Desk files untouched.
 
+## Class & Clan Summons — Claude, 2026-11-21 (0.76.0-alpha.1)
+- New Actor compendium `summons` (packs/_source/summons, built by tools/content/build-summons.mjs): Bunshin (Scout-Nin › Cloning Scout) and Void Soul (Scout-Nin › Void Heart Scout).
+- Summoner links: `flags.n5e.fromSummoner` on an Allied NPC template (rules/summoner-links.mjs), applied by workflow/allied.mjs placeAllied; compendium templates are imported once and reused. tools/check.mjs now checks Actor packs.
+- Codex's Journal Desk files untouched.
+

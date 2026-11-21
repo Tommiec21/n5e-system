@@ -3547,11 +3547,23 @@
       ]
     },
     "superior-clones-cloning-scout": {
-      "status": "note",
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKfd1EIuPENRDf",
+          "type": "summon",
+          "label": "Bunshin",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eAlLuGNsHQujqh",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
       "rules": [
         {
           "key": "note",
-          "text": "Two Cloning maneuvers. Shadow Clone Technique as a Bonus action; Bunshins in place of clones (up to 4, 1 minute in combat or 1 hour outside, up to 1 mile; dispelled on entering combat). Commands: Where I say (once per turn, move all), Clone Strike (in place of an attack), Split Focus (Bonus action: a skill action or Help). Bunshins are made at the table."
+          "text": "Two Cloning maneuvers. Shadow Clone Technique as a Bonus action; summon Bunshins in place of its clones with the Bunshin button (once per Bunshin; the Class & Clan Summons NPC, its AC, attacks, DCs, skills and senses from you). Up to 4 (6 at 10th, 8 at 17th); 1 minute in combat or 1 hour outside; up to 1 mile; dispelled if they enter combat another way. Commands: Where I say, Clone Strike, Split Focus."
         }
       ]
     },
@@ -3614,7 +3626,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Four Trickster maneuvers. The Void Soul stat block (AC 8 + Dex + Con + Prof, your hit points and speed, immune to Charmed) is made at the table."
+          "text": "Four Trickster maneuvers. The Void Soul stat block is the Void Soul NPC in Class & Clan Summons (Void Heart Mask's button places it)."
         }
       ]
     },
@@ -4133,7 +4145,17 @@
           "activation": "bonus",
           "roll": {
             "formula": "",
-            "note": "Bonus action: 1 Bunshin (2 at 10th, 3 at 17th)."
+            "note": "Bonus action: 1 Bunshin (2 at 10th, 3 at 17th). Then place them with the Bunshin button (once per Bunshin)."
+          }
+        },
+        {
+          "id": "n5eb0S4KHHVx9RU5",
+          "type": "summon",
+          "label": "Bunshin",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eAlLuGNsHQujqh",
+            "count": 1,
+            "template": ""
           }
         },
         {
@@ -4335,11 +4357,28 @@
       ]
     },
     "void-heart-mask-void-heart-scout": {
-      "status": "note",
+      "status": "partial",
+      "duration": {
+        "value": 1,
+        "unit": "day",
+        "concentration": false
+      },
+      "activities": [
+        {
+          "id": "n5eSN3qzePF0Jgmv",
+          "type": "summon",
+          "label": "Void Soul",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5e4SI1faHafDV8O",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
       "rules": [
         {
           "key": "note",
-          "text": "Your Void Soul: summoned as a Bonus action into your space, commanded with Bonus actions; knows jutsu equal to your proficiency bonus (one keyword you lack), uses your chakra; damage to it costs you hit points (no concentration check); it shares your saves. Ability modifiers +4, +3, +2, +2, +1, +0. Made as an actor at the table."
+          "text": "Bonus action: the Void Soul button places it (the Class & Clan Summons NPC; its level, hit point maximum, speed and save proficiencies come from you). Set its ability scores to your +4, +3, +2, +2, +1, +0 and add its jutsu (as many as your proficiency bonus). Command it with your Bonus Actions; damage to it is lost from your hit points. Dismiss it as a bonus action or when you fall unconscious (it also lapses after a day)."
         }
       ]
     },

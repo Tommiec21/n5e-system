@@ -980,3 +980,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 - Feature pools `chakraBarrier` (max `2 * @level`, full on any rest), `ghostfire` (max `lvl(3:3,10:5)`), `tacticalInsight` (max 4).
 - Placed effect values (changes, limits, aura child rules): `@prof` and `@abilities.<a>.mod` resolve from the caster when placed; the rule validator accepts them (with `floor()`/`ceil()`).
+
+### Class & Clan Summons (0.76.0-alpha.1)
+
+- Actor pack `summons` ("Class & Clan Summons"); sources from `tools/content/build-summons.mjs`.
+- NPC `flags.n5e.fromSummoner`: `{ "<path under system>": "<formula>" }` over the summoner's numbers (`@level`, `@prof`, `@str`…, `@dc.nin`, `@attack.tai`, `@hp.max`, `@speed`, `@saves.<a>.proficient`, `@skills.<k>.total`, `@senses.<s>`, `@bonuses.attack.<k>`). A single reference keeps its value; otherwise arithmetic with max/min/floor/ceil. Written into the summoned token's `delta.system`, with `details.summoner` (the caster's uuid).
+- Automation table entry `duration`: the feature's `system.duration` (how long its summons last).

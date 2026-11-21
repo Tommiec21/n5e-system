@@ -1,3 +1,23 @@
+## 0.76.0-alpha.1 — Class & Clan Summons: the Bunshin and the Void Soul
+
+King 2026-11-21: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders."
+
+- **New compendium, Class & Clan Summons** (Actors), in folders by class and subclass like the features compendium.
+- **Bunshin** (Scout-Nin › Cloning Scout), from its stat block:
+  - 1 HP, 30 ft. speed; its AC is your Ninjutsu save DC; no ability modifiers, saves +0.
+  - Its traits: Limited Casting I, Placement, Basic Tools, Gang Up, Hiding In Plain Sight.
+  - Bunshin Strike (1d6) and Bunshins Cast (2d6 to 6d6 by rank).
+  - When it's summoned, it takes your level, AC, attack bonuses, save DCs, skills and senses.
+- **Void Soul** (Scout-Nin › Void Heart Scout), from its stat block:
+  - Medium Construct, AC 8 + Dex + Con + Prof, immune to Charmed, darkvision 30 ft.
+  - Its traits: Inexhaustible and Shared Being, and an Unarmed Strike (1d6 + Str).
+  - When it's summoned, it takes your level, hit point maximum, speed and save proficiencies. Set its ability scores to your chosen +4, +3, +2, +2, +1, +0 and give it its jutsu.
+- **Summon buttons:**
+  - Tajū Kage Bunshin and Superior Clones place a Bunshin.
+  - Void Heart Mask places the Void Soul, which lasts until dismissed or a day passes.
+  - A compendium summon is copied into the world the first time and reused after that.
+- **For any summon:** an NPC can name numbers it takes from its summoner; they're filled in when it's placed.
+
 ## 0.75.0-alpha.1 — STD6d: Scout-Nin automated
 
 King 2026-11-21: "Next batch." The fifth class in the class pass. Review table: `docs/classes/scout-nin-automation.md` (187 features: 1 automated, 148 partly automated, 36 notes only, 2 no mechanics).

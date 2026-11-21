@@ -10,6 +10,7 @@
 import { rule } from "../rules-settings.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
+import { summonerData, summonerDelta, mergeDeep } from "../rules/summoner-links.mjs";
 
 /** GM, or the world allows players to summon Allied NPCs (dnd5e allowSummoning equivalent). */
 export function canSummonAllied(user) {
@@ -20,7 +21,7 @@ export function canSummonAllied(user) {
  * Token data for Allied NPCs (pure; tested in Node). `base` is the template's token source.
  * @returns {object[]} token sources ready for createEmbeddedDocuments
  */
-export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires }) {
+export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {} }) {
   const out = [];
   for ( let i = 0; i < count; i++ ) {
     const source = structuredClone(base);
@@ -30,7 +31,8 @@ export function alliedTokenData(base, { count, positions, ownerId, casterUuid, i
     source.disposition = 1; // friendly
     source.delta ??= {};
     source.delta.ownership = { ...(source.delta.ownership ?? {}), [ownerId]: 3 };
-    source.delta.system = { ...(source.delta.system ?? {}), allied: true };
+    // King 2026-11-21 (Bunshin, Void Soul): the numbers it takes from its summoner (rules/summoner-links.mjs).
+    source.delta.system = mergeDeep(source.delta.system ?? {}, { ...linked, allied: true, details: { ...(linked.details ?? {}), summoner: casterUuid } });
     source.flags ??= {};
     source.flags.n5e = { ...source.flags.n5e,
       summon: { casterUuid, itemId, itemUuid, concentration: !!concentration, expires },
@@ -54,7 +56,9 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   if ( !game.user.isGM ) throw new Error("Only the GM's client places tokens for another user.");
   const scene = (sceneId && game.scenes.get(sceneId)) || canvas?.scene;
   if ( !scene || !caster || item?.actor?.uuid !== caster.uuid ) throw new Error("Open a scene and use an item the caster owns.");
-  const template = await fromUuid(templateUuid);
+  let template = await fromUuid(templateUuid);
+  // King 2026-11-21: a compendium template (Class & Clan Summons) is imported once and reused.
+  if ( template?.documentName === "Actor" && template.pack ) template = await worldCopy(template, templateUuid);
   if ( template?.documentName !== "Actor" || template.pack || template.isToken ) throw new Error("Choose a world Actor as the summon template; import compendium actors first.");
   const origin = scene.tokens.find(t => t.actor?.uuid === caster.uuid);
   if ( (!Number.isFinite(x) || !Number.isFinite(y)) && !origin ) throw new Error("Place the caster's token on the scene or give placement coordinates.");
@@ -62,12 +66,21 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const base = (await template.getTokenDocument({ actorLink: false })).toObject();
   const positions = rowPositions({ x: Number.isFinite(x) ? x : origin.x + origin.width * size,
     y: Number.isFinite(y) ? y : origin.y, width: template.prototypeToken?.width ?? 1, size, count });
+  const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system));
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
-    concentration, expires: game.time.worldTime + seconds });
+    concentration, expires: game.time.worldTime + seconds, linked });
   const tokens = await scene.createEmbeddedDocuments("Token", data);
   await addAlliedCombatants(caster, tokens, initiative);
   Hooks.callAll("n5e.summoned", caster, item, tokens);
   return tokens.map(t => t.uuid);
+}
+
+/** The world copy of a compendium template: the one imported earlier, or a fresh import. */
+async function worldCopy(template, uuid) {
+  const existing = game.actors.find(a => a._stats?.compendiumSource === uuid || a.flags?.core?.sourceId === uuid);
+  if ( existing ) return existing;
+  const pack = game.packs.get(template.pack);
+  return pack ? game.actors.importFromCompendium(pack, template.id) : template;
 }
 
 /** If the caster is in combat, add the summons (dnd5e summons can match the caster's initiative). */

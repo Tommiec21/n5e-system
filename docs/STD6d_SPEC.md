@@ -39,6 +39,7 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D19 | Unarmed fact | The Unarmed Strike item's damage rolls carry `weapon:unarmed` (Sustained Pressure's predicate). Table effects may require a stance (`requiresStance`). |
 | D20 | Class option facts | A class's level-up options are roll facts: `option:<key>:<value>` (Weapon Focus: `option:weaponFocus:blade`; "Thrown/Ammunition" is `thrown-ammunition`). With a weapon's `weapon:group:<g>`, an element can name "your Weapon Focus". |
 | D21 | Pool cost formulas | An activity cost's `formula` replaces its amount: by level (`lvl(1:1,11:2,20:3)`) or rolled (`1d12`, posted to chat): the Obsidian Ward regains Flurry Dice. |
+| D24 | Summoner links | An Allied NPC template lists the numbers it takes from its summoner (`flags.n5e.fromSummoner`: system path → formula over the summoner, rules/summoner-links.mjs); placing it writes them into the token's actor delta, with `details.summoner`. A compendium template is imported once and reused. Table entries can set a feature's `duration` (how long its summons last). |
 | D22 | Replaced imported effects | A table entry's `dropEffects` removes the feature's imported effects of those names (Critical Focus's blanket +1 on all Bukijutsu). |
 | D23 | Caster values on placement | A placed effect's values (and an aura child's rules) can use the caster's `@prof` and `@abilities.<a>.mod`, fixed when placed (Squad-Mates up to your proficiency bonus; Elemental Aura's half Constitution modifier). The rule validator accepts those placement-time forms. |
 
@@ -163,3 +164,4 @@ Highlights:
 - 2026-11-15 King: Q-D8 Bone Broken and Flow Broken are class conditions, to be built with the class and clan conditions system (`docs/CCOND1_SPEC.md`); Q-D9 yes; Q-D10 upcasting yes, a None-cost Taijutsu keeps None (fixed in code, ships with the next release); Q-D11 no (stance only); Q-D12 yes (3 ranks intended); Q-D13 yes.
 - 2026-11-21 King: "Then let's work on next Batch." Claude: engine D20–D22 and Weapon Specialist built (101 features), published 0.74.0-alpha.1. Q-D14–Q-D18 asked; nothing waits on them.
 - 2026-11-21 King: "Next batch." Claude: engine D23 and Scout-Nin built (187 features), published 0.75.0-alpha.1. Q-D19–Q-D23 asked; nothing waits on them.
+- 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.

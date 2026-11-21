@@ -1,0 +1,241 @@
+{
+  "_id": "n5e4SI1faHafDV8O",
+  "_key": "!actors!n5e4SI1faHafDV8O",
+  "name": "Void Soul",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 3,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Void Heart Scout: Void Heart Mask",
+      "biography": "<p><em>Void Heart Mask (Void Heart Scout, 3rd level).</em> Your Void Soul, a manifestation of your ideal self, always wearing your mask. Summoned as a bonus action into your space; visible to all creatures. You command it by spending your Bonus Actions.</p><p><strong>Medium Construct</strong>, unaligned. <strong>Armor Class</strong> 8 + Dex + Con + Prof · <strong>Hit Points</strong> shares yours · <strong>Speed</strong> equal to yours.</p><p><strong>Ability modifiers</strong> (not scores): distribute +4, +3, +2, +2, +1, +0, one to each ability (set the scores to 18, 16, 14, 14, 12, 10 as you assign them; +1 each from Heat Riser at 9th). <strong>Condition Immunities</strong> Charmed. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10.</p><ul><li>It knows jutsu equal to your proficiency bonus, only ones you could qualify for (keywords, Hijutsu...) plus one keyword you lack (any one nature release or Medical). Switch them when you gain a level. They are on your known list, but only it can cast them; it qualifies with its own ability modifiers.</li><li>Its speed is yours. Ending your turn more than 60 feet from it resummons it in your space.</li><li>It uses your chakra to cast its jutsu.</li><li>Damage it takes is lost from your hit points; you make no concentration check for it.</li><li>It has your saving throw proficiencies. If you and it save against the same effect, you make one save and suffer the effect once.</li><li>Dismiss it as a bonus action on your turn, or when you fall unconscious.</li></ul><p><strong>Linked to you when summoned:</strong> its level (so its proficiency bonus), hit point maximum, speed and save proficiencies are set from yours.</p>",
+      "summonRole": "Void Soul"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 10
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "formula",
+        "flat": 10,
+        "formula": "8 + @dex + @con + @prof"
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "conditionImmune": [
+        "charmed"
+      ],
+      "senses": {
+        "darkvision": 30
+      },
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "disciplines": {
+      "tai": {
+        "ability": "str"
+      }
+    },
+    "cpMax": 0,
+    "diesAtZero": false
+  },
+  "items": [
+    {
+      "_id": "n5ep11qY9ez2XCgW",
+      "_key": "!actors.items!n5e4SI1faHafDV8O.n5ep11qY9ez2XCgW",
+      "name": "Inexhaustible",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Void Soul cannot cast jutsu or use effects that would increase its own ranks of exhaustion.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.76.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ePo71bZKj63dY0",
+      "_key": "!actors.items!n5e4SI1faHafDV8O.n5ePo71bZKj63dY0",
+      "name": "Shared Being",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Hit points shared with you: damage the Void Soul takes is lost from your hit points (apply it to you), with no concentration check for you. It uses your chakra for its jutsu.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.76.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ewr8IUsOGLA7SE",
+      "_key": "!actors.items!n5e4SI1faHafDV8O.n5ewr8IUsOGLA7SE",
+      "name": "Unarmed Strike",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> Str + Prof to hit, reach 5 ft., one creature. <em>Hit:</em> 1d6 + Str bludgeoning damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eQ3wF2whvkXvev",
+            "type": "attack",
+            "label": "Unarmed Strike",
+            "attack": {
+              "discipline": "tai",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6 + @str",
+                  "type": "bludgeoning"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.76.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eNFzAFmD24u9ko",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "hpMax": "@hp.max",
+        "traits.speed.walk": "@speed",
+        "saves.str.proficient": "@saves.str.proficient",
+        "saves.dex.proficient": "@saves.dex.proficient",
+        "saves.con.proficient": "@saves.con.proficient",
+        "saves.int.proficient": "@saves.int.proficient",
+        "saves.wis.proficient": "@saves.wis.proficient",
+        "saves.cha.proficient": "@saves.cha.proficient"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Void Soul",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.76.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

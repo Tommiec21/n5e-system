@@ -13,6 +13,7 @@
  *   pools        resource pools                              → system.resourcePools
  *   effects      transfer or action effects {name, levels?, changes?, rules?, applyTo?, requiresStance?} → embedded effects
  *                marked flags.n5e.std6d (effects the feature had without that mark are kept)
+ *   duration     the feature's duration (how long its summons last: {value, unit})
  *   dropEffects  names of effects the feature had without that mark to remove (an imported effect the table replaces)
  *   flags        other flags.n5e values (castAs ...)
  *   status       automated | partial | note | none: what the review decided (shown in the review table)
@@ -66,6 +67,7 @@ export function appliedDoc(doc, entry) {
   for ( const [k, v] of Object.entries(entry.flags ?? {}) ) n5e[k] = v;
   if ( entry.activities ) out.system.activities = entry.activities;
   if ( entry.pools ) out.system.resourcePools = entry.pools;
+  if ( entry.duration ) out.system.duration = { ...(out.system.duration ?? {}), ...entry.duration };
   if ( entry.effects ) {
     const kept = (out.effects ?? []).filter(e => !e.flags?.n5e?.std6d && !(entry.dropEffects ?? []).includes(e.name));
     const made = entry.effects.map(e => {
