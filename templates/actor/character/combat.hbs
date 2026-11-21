@@ -115,7 +115,7 @@
         {{#each vm.amps.available}}
           <div class="amp-card amp-{{#if type}}{{type}}{{else}}none{{/if}} {{#if active}}on{{/if}}" draggable="true" data-amp-card="{{card}}" data-amp-key="{{key}}" {{#if summary}}data-tooltip-text="{{summary}}"{{/if}}>
             <img src="{{icon}}" alt="" width="28" height="28">
-            <div class="amp-text"><b>{{label}}</b><span class="sub">{{typeLabel}}{{#if namedType}} (box: {{namedType}}){{/if}}{{#if cooling}} · cooling {{cooling}}{{/if}}</span>
+            <div class="amp-text"><b>{{label}}</b><span class="sub">{{typeLabel}}{{#if namedType}} (box: {{namedType}}){{/if}}{{#if outsideLimits}} · Doesn't count toward Rule of 3's{{/if}}{{#if cooling}} · cooling {{cooling}}{{/if}}</span>
               {{#if pips.length}}<span class="amp-pips">{{#each pips}}<i class="pip {{#if this}}full{{/if}}"></i>{{/each}}</span>{{/if}}</div>
             <button type="button" data-action="activateAmp" {{#unless @root.editable}}disabled{{/unless}} {{#if active}}aria-pressed="true"{{/if}}>{{#if active}}On{{else}}Activate{{/if}}</button>
           </div>

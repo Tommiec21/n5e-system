@@ -6,6 +6,8 @@
  * (class and clan alike), so all the code that already looks conditions up there runs them.
  */
 
+import { resolveLevelTables } from "./effect-services.mjs";
+
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const slug = s => String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -40,7 +42,28 @@ export function cardDefinition(card) {
   for ( const k of ["perRank", "flat", "flags", "cast"] ) if ( s[k] && Object.keys(s[k]).length ) def[k] = structuredClone(s[k]);
   const rules = card.flags?.n5e?.rules;
   if ( Array.isArray(rules) && rules.length ) def.rules = structuredClone(rules);
+  const options = list(s.choose?.options).filter(o => o?.key);
+  if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
+    options: options.map(o => ({ label: o.label || o.key, key: o.key, value: String(o.value ?? ""), mode: Number(o.mode ?? 2) })) };
   return def;
+}
+
+/**
+ * AMP1e (King Q-E5): a feature's level is always the character level of the character who has it.
+ * "lvl(…)" in a card's changes (and choices) is read from the applier's character level when the
+ * condition is placed, so it stays fixed on the creature that carries it. Without an applier it is
+ * left for the bearer's own level.
+ * @param {object} def           registry entry
+ * @param {number|null} level    the applier's character level
+ * @returns {{changes: object[]|null, choose: object|null}}
+ */
+export function resolveCardLevels(def, level) {
+  if ( level == null ) return { changes: null, choose: def?.choose ?? null };
+  const fix = c => ({ ...c, value: String(c.value).includes("lvl(") ? resolveLevelTables(c.value, level) : String(c.value) });
+  return {
+    changes: list(def?.changes).some(c => String(c.value).includes("lvl(")) ? list(def.changes).map(fix) : null,
+    choose: def?.choose ? { ...def.choose, options: def.choose.options.map(fix) } : null
+  };
 }
 
 /**

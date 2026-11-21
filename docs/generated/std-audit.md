@@ -11,10 +11,9 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | `module/data/item/character-options.mjs` | extra-attack, switch-hitter |
 | `module/data/item/templates.mjs` | scout-nin, superior-assault |
 | `module/rules/features.mjs` | genjutsu-specialist, hunter-nin, jack-of-all, medical-nin, ninjutsu-specialist, scout-nin, superior-assault, switch-hitter, taijutsu-specialist, weapon-specialist |
-| `module/view-models/item.mjs` | chakra-surge-flow |
 | `module/workflow/clan.mjs` | non-clan |
 
-18 names in 7 files. `npm run check` fails on any new one.
+17 names in 6 files. `npm run check` fails on any new one.
 
 ## 2. Other content-driven code
 
@@ -61,7 +60,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/skill-resolution.mjs:62`
 - `module/rules/skill-resolution.mjs:63`
 - `module/rules/skill-resolution.mjs:64`
-- `module/workflow/amp-cards.mjs:199`
+- `module/workflow/amp-cards.mjs:200`
 - `module/workflow/attack.mjs:138`
 - `module/workflow/positioning.mjs:110`
 - `module/workflow/skill-actions.mjs:38`
@@ -76,17 +75,17 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 - `module/rules/activity-parse.mjs:134`
 - `module/workflow/areas.mjs:267`
 - `module/workflow/cast-plan.mjs:55`
-- `module/workflow/cast.mjs:173`
+- `module/workflow/cast.mjs:176`
 
 ## 3. Coverage per pack
 
 | Pack | Documents | Activities | Active Effects | Rule elements | Notes | Action effects |
 | --- | --- | --- | --- | --- | --- | --- |
-| amps | 127 | 0 | 0 | 124 | 123 | 0 |
+| amps | 126 | 0 | 0 | 123 | 122 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1712 | 0 | 0 | 0 | 0 | 0 |
+| clans | 1712 | 1 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
-| conditions | 52 | 0 | 0 | 52 | 47 | 0 |
+| conditions | 54 | 0 | 0 | 54 | 49 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
 | features | 700 | 167 | 28 | 161 | 147 | 11 |
@@ -97,28 +96,23 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 A scan for lasting bonuses (King: a bonus to a statistic, ability or action lasting longer than one round). It suggests; King decides in the Automation Audit's Amps view.
 
-| Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp |
-| --- | --- | --- | --- | --- | --- |
-| amps | 127 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 0 | 122 | 0 |
-| features | 0 | 0 | 21 | 25 | 0 |
-| jutsu | 0 | 0 | 0 | 66 | 0 |
-| stances | 0 | 0 | 0 | 24 | 0 |
-| **Total** | **127** | **0** | **21** | **237** | **0** |
+| Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
+| --- | --- | --- | --- | --- | --- | --- |
+| amps | 124 | 2 | 0 | 0 | 0 | 0 |
+| clans | 0 | 0 | 0 | 95 | 0 | 26 |
+| features | 0 | 0 | 23 | 25 | 0 | 0 |
+| jutsu | 0 | 0 | 0 | 66 | 0 | 0 |
+| stances | 0 | 0 | 0 | 0 | 0 | 24 |
+| **Total** | **124** | **2** | **23** | **186** | **0** | **50** |
 
-### clans: 122 candidates
+### clans: 95 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
 - **Sirens Voice**: Lasting bonus: "…your song, the initiating creature gains a +4…"
-- **Swarm Chakra**: A stance (King Q-A4: stances become Amps with no type).
-- **Solar Flare**: A stance (King Q-A4: stances become Amps with no type).
 - **Heir of the Mist: Mirage Regent**: Its text names a Battle Amp.
-- **Serpent’s Coil**: A stance (King Q-A4: stances become Amps with no type).
-- **Serpents Coil**: A stance (King Q-A4: stances become Amps with no type).
 - **Advanced Transformations**: Its text names a Battle Amp.
 - **Ravenous Chakra**: Its text names a Battle Amp.
-- **Cross-Style**: A stance (King Q-A4: stances become Amps with no type).
 - **Magma Domain**: Lasting bonus: "…you gain resistance…"
 - **Scorched Foundation**: Its text names a Battle Amp.
 - **Déjà vu**: Its text names a Will Amp.
@@ -127,52 +121,36 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Blood As Thick As Oil**: Its text names a Battle Amp.
 - **Heir of the Mist**: Its text names a Battle Amp.
 - **Mistborn Infiltrator**: Lasting bonus: "…You gain an additional…"
-- **Gentle Fist**: A stance (King Q-A4: stances become Amps with no type).
 - **Catastrophic Vent**: Lasting bonus: "…you enter Torque, you gain the following additional benefits for the duration; You gain +4…"
 - **Steam Engine**: Its text names a Battle Amp.
-- **Black Fang**: A stance (King Q-A4: stances become Amps with no type).
 - **Ember’s Guardian**: Its text names a Battle Amp.
 - **The Legacy of The Past**: Lasting bonus: "…you gain an additional…"
 - **Nocturnal Dominion: Dread Weave**: Its text names a Battle Amp.
-- **Tameshi Itto-Ryu**: A stance (King Q-A4: stances become Amps with no type).
 - **Alomancy**: Lasting bonus: "…You gain an additional…"
 - **Metallurgy**: Its text names a Battle Amp.
 - **Assessment of Tao**: Lasting bonus: "…your sensory range and granting you immunity to…"
 - **Ashen Monarch**: Lasting bonus: "…You also gain immunity…"
 - **Scorched Foundation: Rubbery**: Its text names a Battle Amp.
-- **Dust Veil**: A stance (King Q-A4: stances become Amps with no type).
 - **Steam Engine: Horse Power**: Its text names a Battle Amp.
 - **The Hunter**: Lasting bonus: "…you do, you gain an additional…"
 - **Network Integration**: Its text names a Will Amp.
-- **Mokuton Infusion**: A stance (King Q-A4: stances become Amps with no type).
 - **Ouroboros**: Lasting bonus: "…you fall to 0 hit points, you can spend your reaction to force your body to refuel, granti…"
 - **Serpents Guile**: Its text names a Fortitude Amp.
-- **Operational Contingencies**: Its text names a Will Amp.
 - **Stellar Convergence**: Its text names a Battle Amp.
 - **Controlled Demolition**: Its text names a Battle Amp.
 - **Explosive Art!**: Its text names a Battle Amp.
-- **Ryūken**: A stance (King Q-A4: stances become Amps with no type).
-- **Divine Wind**: A stance (King Q-A4: stances become Amps with no type).
 - **Last to Move, loses**: Its text names a Battle Amp.
 - **Blank Canvas**: Lasting bonus: "…You gain an additional…"
 - **Secret Pages**: Its text names a Battle Amp.
-- **Mind Disruption**: A stance (King Q-A4: stances become Amps with no type).
 - **Blood of the Swift: Speed Burst**: Lasting bonus: "…your turn, you can spend 3 Speed Seals to gain an additional…"
-- **Claws of Night**: A stance (King Q-A4: stances become Amps with no type).
-- **Claws of the Night**: A stance (King Q-A4: stances become Amps with no type).
-- **Smoke Style**: A stance (King Q-A4: stances become Amps with no type).
-- **Expansion Technique**: A stance (King Q-A4: stances become Amps with no type).
 - **Synthetic Awakening**: Lasting bonus: "…your proficiency bonus to…"
 - **Synthetic Battle Aura**: Its text names a Battle Amp.
 - **Web Walker**: Its text names a Battle Amp.
 - **Nocturnal Dominion**: Its text names a Battle Amp.
 - **Stellar Convergence: Aphelion – The Mirror**: Its text names a Battle Amp.
 - **Heavenly Technique**: Lasting bonus: "…you would deal Force damage as a result of the target having 0 chakra, you instead simply …"
-- **Agile Fist**: A stance (King Q-A4: stances become Amps with no type).
-- **Laser Circus**: A stance (King Q-A4: stances become Amps with no type).
 - **Visions of what will be**: Its text names a Battle Amp.
 - **Caloric Arts**: Its text names a Battle Amp.
-- **Shadow Art**: A stance (King Q-A4: stances become Amps with no type).
 - **The Looking Glass**: Lasting bonus: "…you have immunity to…"
 - **Akimichi: Latent Food Pill I**: Lasting bonus: "…you do, you lose 2 calories and gain a +4…"
 - **Chinoike: Latent Ketsuryūgan**: Lasting bonus: "…you have advantage on…"
@@ -187,21 +165,15 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Tsuchigumo: Latent Third Eye I**: Lasting bonus: "…you gain a +2…"
 - **Sharingan**: Its text names a Reflex Amp.
 - **Storm Incarnate**: Lasting bonus: "…you make as a result of Hijutsu you cast gain a +1…"
-- **Four-Legs**: A stance (King Q-A4: stances become Amps with no type).
 - **Nindo**: Its text names a Fortitude Amp.
 - **Celestial Body**: Lasting bonus: "…You begin with resistance to…"
 - **Irradiated Apex**: Its text names a Fortitude Amp.
 - **Swirling Seals**: Lasting bonus: "…You gain an additional…"
-- **Muscle Weave**: A stance (King Q-A4: stances become Amps with no type).
-- **Medical Fist**: A stance (King Q-A4: stances become Amps with no type).
 - **Blood of the Swift**: Lasting bonus: "…You gain an additional…"
 - **Interdiction Seal**: Its text names a Reflex Amp.
-- **Artistic Cataclysm**: A stance (King Q-A4: stances become Amps with no type).
-- **Ballistic Knuckle**: A stance (King Q-A4: stances become Amps with no type).
 - **Nindo: Always Go Beyond**: Its text names a Fortitude Amp.
 - **Crimson Architect**: Its text names a Fortitude Amp.
 - **Crimson Pact**: Its text names a Fortitude Amp.
-- **Binding Chain**: A stance (King Q-A4: stances become Amps with no type).
 - **Dust Veil**: Lasting bonus: "…You gain an additional…"
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
@@ -327,30 +299,3 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - S · **Medical Release: Strength of 1000**: Lasting bonus: "…you strike with intense focus, making the triggering attack have a +2 bonus to…"
 - S · **Fire Release: Body of Dawn**: Lasting bonus: "…You gain immunity…"
 - S · **Water Release: Water Heavens Convergence**: Lasting bonus: "…You gain additional…"
-
-### stances: 24 candidates
-
-- **Bombardment Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Conduit Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Construct Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Neurologist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Psion Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Scroll Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Sensory Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Drunken Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Frog Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Iron Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Lion Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Rabbit Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Serpent Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Titan Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Wolf Fist Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Blade Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Flailing Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Great Weapon Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Guardian Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Polearm Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Power Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Sharpshooter Stance**: A stance (King Q-A4: stances become Amps with no type).
-- **Silent Killing**: A stance (King Q-A4: stances become Amps with no type).
-- **Two-Weapon Stance**: A stance (King Q-A4: stances become Amps with no type).

@@ -408,7 +408,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
         [k, typeof v === "string" && /@(scale|dc|level)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
-  if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid } });
+  if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid, outsideLimits: !!eff.outsideLimits } });
   const notes = [];
   if ( eff.limit ) {
     const max = Math.max(1, Number(evalNumber(sub(String(eff.limit)))) || 1);

@@ -1,0 +1,98 @@
+{
+  "_id": "n5e3444ac136e034",
+  "name": "Diplomatic Coordinated",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5e8C1FcdjA0NY8H",
+  "sort": 200,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "nara-diplomatic-coordinated",
+    "description": "<p><b>Diplomatic Coordinated</b> (from Social Amp, a condition: King Q-E4)</p><p>You move as a team, with your team.</p><p><b>Coordinated Words.</b> You gain a rank of Mastery to either Deception, Persuasion or Intimidation (pick one) for the remainder of this social encounter. This becomes 2 ranks at 7th and 3 ranks at 15th level.</p><p><b>Coordinated Experience.</b> If your Background is related to or associated with the opposing creature, you gain advantage on Insight checks.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "nara",
+      "subclass": ""
+    },
+    "summary": "Mastery in Deception, Persuasion or Intimidation (picked when you get it; 2 ranks at 7th, 3 at 15th, by the Nara's level); advantage on Insight against a creature tied to your background. For the social encounter.",
+    "tags": [],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {},
+    "changes": [],
+    "choose": {
+      "prompt": "Diplomatic Coordinated: pick the skill for Coordinated Words",
+      "options": [
+        {
+          "label": "Deception",
+          "key": "n5e.mastery.skill.dec",
+          "value": "Diplomatic Coordinated ×lvl(1:1,7:2,15:3)",
+          "mode": 2
+        },
+        {
+          "label": "Persuasion",
+          "key": "n5e.mastery.skill.per",
+          "value": "Diplomatic Coordinated ×lvl(1:1,7:2,15:3)",
+          "mode": 2
+        },
+        {
+          "label": "Intimidation",
+          "key": "n5e.mastery.skill.itm",
+          "value": "Diplomatic Coordinated ×lvl(1:1,7:2,15:3)",
+          "mode": 2
+        }
+      ]
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Coordinated Experience: advantage on Insight checks when your background is related to or associated with the opposing creature."
+        },
+        {
+          "key": "note",
+          "text": "Lasts for the remainder of the social encounter; remove it when the encounter ends."
+        }
+      ],
+      "amp1e": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.69.0"
+  },
+  "_key": "!items!n5e3444ac136e034"
+}

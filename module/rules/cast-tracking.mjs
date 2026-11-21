@@ -10,6 +10,9 @@
  */
 const kw = item => (item.system.keywords instanceof Set ? item.system.keywords : new Set(item.system.keywords ?? []));
 
+/** AMP1e: a jutsu with the Finisher keyword (ends DYNAMIC FORM! and other Amps that end on a Finisher). */
+export const isFinisherCast = item => item?.type === "jutsu" && kw(item).has("finisher");
+
 /**
  * Actor update for the trackers when a jutsu is cast: Chain (activates; a 1-Action cast raises it,
  * a Bonus Action / Reaction cast maintains it; marks it touched so it doesn't reset next turn) and

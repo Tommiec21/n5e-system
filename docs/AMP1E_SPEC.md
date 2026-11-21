@@ -1,6 +1,6 @@
 # AMP1e function spec: typeless self-buff states
 
-Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. All questions answered; waiting for King's go-ahead to build.** Part of AMP1 (`docs/AMP1_SPEC.md`); follows AMP1g (0.68.0-alpha.1). Codex's Journal Desk files are not touched.
+Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. King: "Build" (2026-11-20). Built and released in 0.69.0-alpha.1.** Part of AMP1 (`docs/AMP1_SPEC.md`); follows AMP1g (0.68.0-alpha.1). Codex's Journal Desk files are not touched.
 
 ## King's answers (2026-11-20)
 
@@ -54,3 +54,4 @@ Status: **spec written 2026-11-20 from King's answers to Q-E1–Q-E4. All questi
 
 - 2026-11-20 King: Q-E1 (b) stances labelled "Stance" in the audit; Q-E2 Feral and Well Rested stay Clan; Q-E3 DYNAMIC FORM! and Flawless become typeless cards outside Rule of 3's; Q-E4 Coordinated is a condition, the exception. Claude: spec written; waiting for approval.
 - 2026-11-20 King: Q-E5, a feature's level is always the character level of the character who has it. Claude: Coordinated scales by the Nara's character level.
+- 2026-11-20 King: "Build". Claude: AMP1e built (0.69.0-alpha.1). Differences from the plan: the Combat Coordinated Amp cards made in AMP1d/AMP1g (3 cards) were removed, since Coordinated is now a condition; the initiative swap and Coordinated Support are notes on the condition card (a condition has no buttons); casting a Finisher always ends DYNAMIC FORM! (it is the state's duration, not a hostile condition), whatever the "Amps that end on a condition" setting says. New general pieces: condition-card choices in chat, lvl() in a condition card read from the applier, Mastery "Source ×N", flags.n5e.notAmp for the audit.

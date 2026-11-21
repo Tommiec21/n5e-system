@@ -301,12 +301,13 @@ const DETAILS = {
       F.check(src, "duration.concentration", "Needs concentration", { hint: "Shown on the card. Tracked automatically only when started from a concentration jutsu." })
     ], { structured: true }),
     section("What ends it early", [
-      F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance" },
+      F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance", finisherCast: "Casting a Finisher" },
         { hint: "The GM's setting decides whether these end it automatically or as a reminder." })
     ], { structured: true }),
     section("Advanced", [
       F.text(src, "identifier", "Identifier", { hint: "The card's key. Activities name it to start this Amp." }),
       F.text(src, "namedType", "Type the book's box names", { hint: "Kept as a note when the limits use another type (a clan Amp is Clan)." }),
+      F.check(src, "outsideLimits", "Outside the Amp limits", { hint: "Doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)." }),
       F.text(src, "exclusive", "Exclusive group", { placeholder: "surge", hint: "Starting one Amp of the group ends the others (Crash and Flow)." }),
       F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
       F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." }),
@@ -428,6 +429,7 @@ function summary(item) {
       add("Box names", s.namedType && s.namedType !== type ? s.namedType : "");
       add("Uses", s.uses?.max ? `${s.uses.max}${s.uses.per ? ` per ${s.uses.per}` : ""}` : "");
       add("Ends on", list(s.endsOn).join(", "));
+      add("Limits", s.outsideLimits ? "Doesn't count toward Rule of 3's" : "");
       chips = [{ label: "Drag onto a creature to start it", tone: "", tooltip: s.summary ?? "" }];
       break;
     }

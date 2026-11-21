@@ -47,7 +47,9 @@ export class ConditionCardData extends TDM() {
       perRank: object(),
       flat: object(),
       flags: object(),
-      cast: object()
+      cast: object(),
+      // AMP1e: the bearer picks one change when it gets the condition (Diplomatic Coordinated's skill).
+      choose: S.obj({ prompt: S.str(), options: S.arr(S.obj({ label: S.str(), key: S.str(), value: S.str(), mode: S.int(2) })) })
     };
   }
 }

@@ -16,6 +16,9 @@
  *         A typeless Amp has no type to clash with under Singleton; it still counts for Rule of 3's.
  *   Q-A5  Amps that end on Staggered, Blinded, 0 chakra... end automatically or at the table:
  *         the GM's "ampEnding" setting.
+ *
+ * King's answers (2026-11-20, AMP1e): Q-E3 DYNAMIC FORM! and Flawless are typeless cards that don't
+ * count toward Rule of 3's (the card's outsideLimits).
  */
 
 import { effectFieldCatalog } from "./effect-authoring.mjs";
@@ -30,7 +33,7 @@ export const AMP_TYPES = ["battle", "reflex", "fortitude", "will", "clan"];
 /** What can end an Amp (the card's endsOn), with labels for chat and the card sheet. */
 export const AMP_END_TRIGGERS = {
   staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "0 chakra",
-  stanceLeave: "Leaving its stance", combatEnd: "End of combat", rest: "A rest"
+  stanceLeave: "Leaving its stance", finisherCast: "Casting a Finisher", combatEnd: "End of combat", rest: "A rest"
 };
 
 /** The registry key of a card: its identifier, or its name made into one. */
@@ -63,6 +66,7 @@ export function ampDefinition(card) {
     duration: { seconds: Number(s.duration?.seconds) || 0, until: s.duration?.until ?? "", concentration: !!s.duration?.concentration },
     uses: { max: String(s.uses?.max ?? ""), per: s.uses?.per ?? "" }, cooldown: Number(s.cooldown) || 0,
     exclusive: s.exclusive ?? "", state: s.state ?? "", tempHp: s.tempHp ?? "",
+    outsideLimits: !!s.outsideLimits,
     endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS),
     // AMP1g: versions of one Amp share a series (the base key) and start at a character level.
     series: s.series ?? "", level: Number(s.level) || 0
@@ -165,6 +169,7 @@ export function ampCardsFor(actor, registry = {}, { worldTime = 0, resolve } = {
       const uses = ampUsesLeft(actor, key, def, resolve);
       return { key, label: def.label, icon: def.icon, summary: def.summary, card: def.card, type: def.ampType,
         typeLabel: ampTypeLabel(def.ampType), namedType: def.namedType, giveable: def.giveable,
+        outsideLimits: !!def.outsideLimits,
         uses, pips: uses ? Array.from({ length: Math.min(uses.max, 10) }, (_, i) => i < uses.left) : [],
         cooldown: ampCooldownLeft(actor, key, worldTime, def),
         active: Object.keys(active).some(k => trackKey(k, registry[k]) === trackKey(key, def)) };
@@ -231,7 +236,7 @@ export function ampEffectPlan(key, def) {
     permanent: d.until === "dismissed",
     tempHp: def.tempHp ?? "", state: def.state ?? "", exclusive: def.exclusive ?? "",
     ampType: def.ampType ?? "", ampKey: key, img: def.icon, endsOn: def.endsOn ?? [], until: turnBased || d.until === "dismissed" ? "" : d.until ?? "",
-    concentration: !!d.concentration
+    concentration: !!d.concentration, outsideLimits: !!def.outsideLimits
   };
 }
 
@@ -244,7 +249,9 @@ export function ampEffectPlan(key, def) {
  *   candidates: the Amps to choose among (the new one last); keep: how many of them stay on.
  */
 export function ampLimitConflict(amps, added, mode) {
-  const on = list(amps).filter(a => !a.disabled && a !== added && (a.id == null || a.id !== added.id));
+  // AMP1e (King Q-E3): Amps outside the limits neither trigger them nor take a place in them.
+  if ( added?.system?.outsideLimits ) return null;
+  const on = list(amps).filter(a => !a.disabled && !a.system?.outsideLimits && a !== added && (a.id == null || a.id !== added.id));
   if ( mode === "singleton" ) {
     const type = added.system?.ampType;
     if ( !type ) return null;
@@ -259,7 +266,7 @@ export function ampLimitConflict(amps, added, mode) {
 
 /**
  * Which active Amps end on an event (King Q-A5): Staggered, Blinded, Unconscious, 0 chakra,
- * leaving a stance, the end of combat, a rest.
+ * leaving a stance, casting a Finisher (AMP1e), the end of combat, a rest.
  * @param {object} actor
  * @param {string} trigger  a key of AMP_END_TRIGGERS
  * @returns {object[]} effects

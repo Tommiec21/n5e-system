@@ -9,6 +9,10 @@ Idempotent: a button already pointing at a card keeps it; mechanics come from th
 plus whatever the button carried before it was converted (read from git history is not needed: the
 first run moves them onto the card and later runs read them back from the card file).
 
+AMP1e (docs/AMP1E_SPEC.md): self-buff states (DYNAMIC FORM!, Flawless) become typeless cards outside
+the Amp limits (King Q-E3). Their buttons were state effects, so they're found by their state
+(legacyState) instead of an Amp type.
+
     python3 tools/content/build-amp-cards.py
 """
 import glob
@@ -20,6 +24,7 @@ import re
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 AMPS = os.path.join(ROOT, "packs/_source/amps")
 CLASS_FOLDER = "n5eAmpFoldClass1"
+SELF_BUFF_FOLDER = "n5eAmpFoldOther1"
 
 L = lambda *pairs: "lvl(" + ",".join(f"{a}:{b}" for a, b in pairs) + ")"
 note = lambda text: {"key": "note", "text": text}
@@ -236,7 +241,28 @@ CARDS = [
          box=["Will Amp", "You gain a +1 bonus to your Ninjutsu Save DC. This bonus increases to +2 at 15th level.", "When you being your turn in this state, you regain 1 Focus.",
               "If you are a Bonded creature, you instead regain 1 Jutsu Slot.", "You make Concentration checks to maintain Ninjutsu at advantage.",
               "You cannot benefit from Jutsu, features or traits that boosts the damage you deal with Ninjutsu."]),
+    # AMP1e (King Q-E3): typeless self-buff states, outside the Amp limits.
+    dict(key="dynamic-form", name="DYNAMIC FORM!", owner=("subclass", "taijutsu-specialist", "passionate"), type="", legacy="DYNAMIC FORM!", legacyState="dynamicForm",
+         summary="A combat rhythm: Combo Taijutsu build Tempo (max 3), a Finisher spends it. Ends when you cast a Finisher or initiative ends.",
+         activation="trigger", until="combatEnd", endsOn=["finisherCast"], state="dynamicForm", outsideLimits=True, folder=SELF_BUFF_FOLDER,
+         rules=[note("Starts when you cast a Taijutsu with the Combo keyword."),
+                note("Tempo is tracked on the Tempo pool (Gain Tempo, Spend Tempo). Its bonuses depend on how much Tempo you have, so they stay with the pool.")],
+         box=["No type · doesn't count toward Rule of 3's",
+              "When you cast a Taijutsu with the Combo keyword, you enter a state of combat rhythm you call your DYNAMIC FORM!. Which lasts until you cast a Taijutsu with the Finisher keyword or initiative ends, whichever happens first.",
+              "While in your DYNAMIC FORM! state, each time you cast a Taijutsu with the Combo keyword, you gain 1 Tempo (Max 3). You lose 1 Tempo at the end of each of your turns, where you didn’t cast a Taijutsu with the Combo keyword.",
+              "Passive Tempo Benefits. 1 Tempo: a rank of Mastery with Athletics and Acrobatics based skill actions, and you can ignore difficult terrain. 2 Tempo: you can move through enemy spaces, and attacks of opportunity against you are made at disadvantage. 3 Tempo: a +1 bonus to your Taijutsu attacks' critical threat range and your Taijutsu save DC.",
+              "Finisher Tempo Benefits. When you cast a Taijutsu finisher, you spend all tempo you have, gaining cumulative benefits for each tempo spent. 1 Tempo: one Martial Technique at no Martial Die cost. 2 Tempo: if the jutsu requires an attack, compare the attack result to the AC of all creatures in a 5-foot radius around the original target (10 feet at 10th level, 15 feet at 17th). 3 Tempo: on a critical hit, or a failed save by 5 or more, you regain the action spent casting the jutsu."]),
+    dict(key="flawless", name="Flawless", owner=("subclass", "taijutsu-specialist", "talented-genius"), type="", legacy="Flawless", legacyState="flawless",
+         summary="Instinctual self-weaponization for the whole combat: gain Perfection (max 4) when you spend Martial Dice and spend it on Flawless abilities.",
+         activation="initiative", until="combatEnd", startOnInitiative="auto", state="flawless", outsideLimits=True, folder=SELF_BUFF_FOLDER,
+         rules=[note("Perfection is tracked on the Perfection pool: once per turn, gain 1 when you spend at least 1 Martial Die (max 4)."),
+                note("Spend Perfection with the Flawless buttons on Genius Talent.")],
+         box=["No type · doesn't count toward Rule of 3's",
+              "When you roll initiative, your body naturally drifts into a state of instinctual self-weaponization known as becoming Flawless. You remain in this state for the duration of combat, exiting it when combat ends.",
+              "While in your Flawless state you gain access to Perfection. Once per turn, when you spend at least 1 Martial Die, you gain a Perfection, of which, you can maintain up to 4.",
+              "Flawless Disturbance (2 Perfection), Flawless Focus (1), Flawless Stances (1), Flawless Technique (1) and Flawless Tempo (2): see Genius Talent."]),
 ]
+LEGACY_STATES = {c["legacyState"]: c for c in CARDS if c.get("legacyState")}
 
 
 def card_id(key):
@@ -271,7 +297,7 @@ def find_buttons():
         def walk(o):
             if isinstance(o, dict):
                 e = o.get("effect")
-                if isinstance(e, dict) and (e.get("ampType") or e.get("amp")):
+                if isinstance(e, dict) and (e.get("ampType") or e.get("amp") or e.get("state") in LEGACY_STATES):
                     found.append((o, e))
                 for v in o.values():
                     walk(v)
@@ -292,7 +318,7 @@ def main():
     buttons = find_buttons()
     for f, data, found in buttons:
         for holder, eff in found:
-            card = by_key.get(eff.get("amp")) or by_legacy.get(eff.get("name"))
+            card = by_key.get(eff.get("amp")) or by_legacy.get(eff.get("name")) or LEGACY_STATES.get(eff.get("state"))
             if not card:
                 print("no card for", f, eff.get("name"))
                 continue
@@ -302,7 +328,7 @@ def main():
     granting = {}
     for f, data, found in buttons:
         for holder, eff in found:
-            k = eff.get("amp") or (by_legacy.get(eff.get("name")) or {}).get("key")
+            k = eff.get("amp") or (by_legacy.get(eff.get("name")) or LEGACY_STATES.get(eff.get("state")) or {}).get("key")
             ident = data.get("system", {}).get("identifier")
             if k and ident and "/packs/" in f:
                 granting.setdefault(k, ident)
@@ -333,16 +359,17 @@ def main():
         prev["changes"] = [x for i2, x in enumerate(prev["changes"]) if x not in prev["changes"][:i2]]
         desc = "".join(f"<p>{'<b>' + t + '</b>' if j == 0 else t}</p>" for j, t in enumerate(c["box"]))
         doc = {
-            "_id": cid, "name": c["name"], "type": "amp", "img": "icons/svg/upgrade.svg", "folder": CLASS_FOLDER, "sort": (i + 1) * 100,
+            "_id": cid, "name": c["name"], "type": "amp", "img": "icons/svg/upgrade.svg", "folder": c.get("folder", CLASS_FOLDER), "sort": (i + 1) * 100,
             "ownership": {"default": 0},
             "system": {
                 "identifier": c["key"], "description": desc,
                 "source": {"book": "Orochimaru's Observation Compendium", "page": "", "version": "4.0", "custom": ""},
                 "ampType": c["type"], "namedType": c.get("namedNote", ""), "owner": owner, "summary": c["summary"],
-                "activation": c.get("activation", "bonus"), "giveable": bool(c.get("giveable")), "startOnInitiative": "",
+                "activation": c.get("activation", "bonus"), "giveable": bool(c.get("giveable")), "startOnInitiative": c.get("startOnInitiative", ""),
                 "duration": {"seconds": 0 if c.get("until") else prev["seconds"], "until": c.get("until", ""), "concentration": False},
                 "uses": {"max": "", "per": ""}, "cooldown": c.get("cooldown", 0), "exclusive": c.get("exclusive", ""), "state": c.get("state", ""),
-                "tempHp": "", "endsOn": c.get("endsOn", []), "changes": prev["changes"], "aura": {}
+                "tempHp": "", "endsOn": c.get("endsOn", []), "changes": prev["changes"], "aura": {},
+                **({"outsideLimits": True} if c.get("outsideLimits") else {})
             },
             "effects": [],
             "flags": {"n5e": {"rules": rules, "amp1c": True}},
@@ -361,7 +388,7 @@ def main():
     for f, data, found in buttons:
         changed = False
         for holder, eff in found:
-            card = by_key.get(eff.get("amp")) or by_legacy.get(eff.get("name"))
+            card = by_key.get(eff.get("amp")) or by_legacy.get(eff.get("name")) or LEGACY_STATES.get(eff.get("state"))
             if not card:
                 continue
             new = {"name": card["name"], "target": "targets" if card.get("giveable") and eff.get("target") == "targets" else "self", "amp": card["key"]}

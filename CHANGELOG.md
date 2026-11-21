@@ -1,3 +1,20 @@
+## 0.69.0-alpha.1 — AMP1e: self-buff states, stances, Coordinated
+
+King 2026-11-20: Q-E1 stances stay stances, Q-E2 Feral and Well Rested stay Clan Amps, Q-E3 DYNAMIC FORM! and Flawless become cards that don't count toward Rule of 3's, Q-E4 Coordinated is a condition, Q-E5 a feature's level is the character level of whoever has it.
+
+- **DYNAMIC FORM! and Flawless are Amp cards** with no type, marked "Doesn't count toward Rule of 3's". Their feature buttons start them.
+  - DYNAMIC FORM! ends when you cast a Finisher or combat ends. Tempo and its bonuses stay on the Tempo pool.
+  - Flawless starts by itself when you roll initiative and ends with combat. Perfection and the Flawless buttons stay on Genius Talent.
+- **New card option "Outside the Amp limits"** (Advanced): such an Amp never triggers Rule of 3's, never takes one of the three places and is never offered in the keep dialog.
+- **New ending "Casting a Finisher"** on Amp cards.
+- **Stances in the Amp audit** have their own "Stance" label and filter, and no longer appear as candidates.
+- **Combat Coordinated and Diplomatic Coordinated are condition cards** (Nara). Team Coordination has a button for each; target your allies.
+  - Mastery ranks follow the Nara's character level: 1, 2 at 7th, 3 at 15th.
+  - Diplomatic Coordinated: each ally picks Deception, Persuasion or Intimidation from a chat card.
+  - The initiative swap, Coordinated Support and Coordinated Experience are notes on the card (done at the table).
+  - The Combat Coordinated Amp cards are removed, and the Nara box no longer shows in the Amp audit.
+- Condition cards can now ask the bearer to choose, and `lvl()` in their changes uses the applier's level. A Mastery value "Source ×2" gives two ranks.
+
 ## 0.68.1-alpha.3 — GM04c selective starter import
 
 Choose individual starter entries; optionally add missing source links without replacing GM writing. Seven new entries bring the library to 27. Corrects Journal Desk heading/button contrast. Full design polish remains GM06; no live verification.

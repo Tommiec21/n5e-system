@@ -1,0 +1,85 @@
+{
+  "_id": "n5e688097758d167",
+  "name": "Combat Coordinated",
+  "type": "condition",
+  "img": "icons/svg/aura.svg",
+  "folder": "n5e8C1FcdjA0NY8H",
+  "sort": 100,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "nara-combat-coordinated",
+    "description": "<p><b>Combat Coordinated</b> (from Will Amp, a condition: King Q-E4)</p><p>You move as a team, with your team.</p><p><b>Coordinated Start.</b> As part of rolling initiative, you gain a rank of Mastery to your initiative. This becomes 2 ranks at 7th and 3 ranks at 15th level.</p><p><b>Team Coordination.</b> You can select a willing allied creature to go in your place in initiative. This counts as their turn for initiative. If you take another Combat Coordinated creature's place in initiative, you must give your place in initiative to another Combat Coordinated creature.</p><p><b>Coordinated Support.</b> If another Combat Coordinated creature is under the effect of a condition or hostile effect that requires an ability or skill check, or a saving throw, you can spend your reaction to make that check or saving throw for them using your statistics.</p><p>Lasts until initiative ends.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "clan",
+      "id": "nara",
+      "subclass": ""
+    },
+    "summary": "Mastery on initiative (2 ranks at 7th, 3 at 15th, by the Nara's level); swap places in initiative and make checks or saves for each other. Until initiative ends.",
+    "tags": [],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {},
+    "changes": [
+      {
+        "key": "n5e.mastery.initiative",
+        "value": "Combat Coordinated ×lvl(1:1,7:2,15:3)",
+        "mode": 2
+      }
+    ],
+    "choose": {
+      "prompt": "",
+      "options": []
+    }
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Team Coordination: a willing ally can take your place in initiative (it counts as their turn); if you take another Combat Coordinated creature's place, you give yours to another Combat Coordinated creature. Swap the two in the turn order."
+        },
+        {
+          "key": "note",
+          "text": "Coordinated Support: as a reaction, make another Combat Coordinated creature's check or saving throw against a condition or hostile effect, using your statistics."
+        }
+      ],
+      "amp1e": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.69.0"
+  },
+  "_key": "!items!n5e688097758d167"
+}

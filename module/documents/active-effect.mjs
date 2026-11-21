@@ -50,7 +50,7 @@ export default class N5eActiveEffect extends ActiveEffect {
   }
 
   /** Effect data for a condition from the registry. */
-  static conditionData(key, { ranks = 1, sourceRank = "", origin } = {}) {
+  static conditionData(key, { ranks = 1, sourceRank = "", origin, changes = null } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     return {
       name: def?.label ?? key,
@@ -63,7 +63,8 @@ export default class N5eActiveEffect extends ActiveEffect {
       // CCOND1: a condition card's rule elements ride on the effect, so the rules engine reads them
       // (core conditions keep theirs in config and are read by rules/condition-elements.mjs).
       ...(def?.owner && def.rules?.length ? { flags: { n5e: { rules: structuredClone(def.rules) } } } : {}),
-      ...(def?.owner && def.changes?.length ? { changes: structuredClone(def.changes) } : {})
+      // AMP1e: changes resolved from the applier's level replace the card's own.
+      ...(changes?.length ? { changes: structuredClone(changes) } : def?.owner && def.changes?.length ? { changes: structuredClone(def.changes) } : {})
     };
   }
 

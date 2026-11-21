@@ -7,8 +7,9 @@
  *   typed      an Amp card with a type (Battle, Reflex, Fortitude, Will, Clan)
  *   untyped    an Amp card with no type ("Amp: no type", King Q-A4: King's queue to assign)
  *   linked     an item whose button already starts an Amp (an activity naming a card, or an ampType)
- *   candidate  its text gives a lasting bonus, names an Amp type, or it is a stance
+ *   candidate  its text gives a lasting bonus or names an Amp type
  *   dismissed  a candidate the GM marked "not an Amp"
+ *   stance     a stance (King Q-E1, AMP1e: stances stay stances; the audit only labels them)
  */
 import { effectiveAmpType, ampTypeLabel, AMP_TYPES } from "./amp-cards.mjs";
 
@@ -16,7 +17,7 @@ const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 const plain = html => String(html ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
 
 export const AMP_AUDIT_STATUSES = {
-  typed: "Amp card", untyped: "Amp: no type", linked: "Starts an Amp", candidate: "Candidate", dismissed: "Not an Amp"
+  typed: "Amp card", untyped: "Amp: no type", linked: "Starts an Amp", candidate: "Candidate", dismissed: "Not an Amp", stance: "Stance"
 };
 
 /** "Battle Amp", "a Will Amp": the type a text names, or "". */
@@ -60,6 +61,11 @@ export function ampAuditOf(doc, { dismissed = new Set() } = {}) {
   }
   // Whole classes, clans, backgrounds and conditions aren't Amps; their features are scanned one by one.
   if ( ["class", "subclass", "clan", "background", "condition"].includes(doc?.type) ) return null;
+  // AMP1e: content marked not an Amp in its data (flags.n5e.notAmp: why), such as the Nara box that is
+  // the Coordinated condition (King Q-E4).
+  if ( doc?.flags?.n5e?.notAmp ) return null;
+  // King Q-E1: stances stay stances, labelled "Stance" and never offered as Amps.
+  if ( doc?.type === "stance" ) return row("stance", { reason: "Stance" });
   const text = plain(sys.description).replace(UPCAST, " ");
   const named = namedAmpType(text);
   let reason = "";
@@ -67,8 +73,7 @@ export function ampAuditOf(doc, { dismissed = new Set() } = {}) {
     const a = list(sys.activities).find(x => x?.effect?.amp || x?.effect?.ampType)?.effect ?? {};
     return row("linked", { ampType: a.ampType ?? "", typeLabel: a.amp ? `card: ${a.amp}` : ampTypeLabel(a.ampType ?? ""), namedType: named, reason: "Its button starts an Amp." });
   }
-  if ( doc?.type === "stance" ) reason = "A stance (King Q-A4: stances become Amps with no type).";
-  else if ( named ) reason = `Its text names a ${ampTypeLabel(named)} Amp.`;
+  if ( named ) reason = `Its text names a ${ampTypeLabel(named)} Amp.`;
   else if ( (lastingDuration(sys) || LASTING.test(text)) && BUFF.test(text) ) {
     const m = text.match(BUFF);
     reason = `Lasting bonus: "…${m[0].slice(0, 90)}…"`;

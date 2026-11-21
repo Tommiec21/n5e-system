@@ -934,3 +934,13 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Version cards: identifier `<base>-<level>`, name "<Base name> (<level>th)". Built by `tools/content/build-amp-versions.py` from the base cards (the base keeps its unversioned text in `flags.n5e.versionSource`). Build order: build-amp-cards.py, build-clan-amp-cards.py, build-amp-versions.py.
 - `ampVersionFor(registry, key, level)` (rules/amp-cards.mjs) picks the version; `applyAmp` uses it (the applier's level). `ampCardsFor` shows only the highest reached version per series.
 - Uses and cooldowns: `flags.n5e.ampUses.<series>` (trackKey).
+
+### Self-buff states, stances, Coordinated (AMP1e, 0.69.0-alpha.1)
+
+- Amp card `system.outsideLimits` (bool): the Amp limits ignore it (`ampLimitConflict` skips it as the new Amp and as an active one). Carried to the Amp effect as `system.outsideLimits`. DYNAMIC FORM! (`dynamic-form`) and Flawless (`flawless`) use it (King Q-E3).
+- Ending `finisherCast`: casting a jutsu with the Finisher keyword (`isFinisherCast`, rules/cast-tracking.mjs) ends Amps that list it; it always ends them (it is part of the duration), whatever the `ampEnding` setting.
+- Amp audit status `stance` (label "Stance"): every item of type `stance` (King Q-E1). `flags.n5e.notAmp` (a reason) on any document keeps it out of the audit.
+- Condition card `system.choose` `{prompt, options: [{label, key, value, mode}]}`: the bearer's owners pick one option in chat (`flags.n5e.conditionChoice` on the message); it is added to the condition's changes, once (`flags.n5e.chosen`).
+- Condition cards: `lvl(…)` in `changes` (and `choose` options) is read from the applier's character level when placed (King Q-E5: a feature's level is the character level of the character who has it); with no applier it is left for the bearer.
+- Mastery change value `"Source ×N"`: N steps from one source (`Source 1` … `Source N`).
+- `nara-combat-coordinated` and `nara-diplomatic-coordinated` (conditions pack), applied by Team Coordination's two buttons. The Combat Coordinated Amp cards (`combat-coordinated`, `-7`, `-15`) are gone (King Q-E4).

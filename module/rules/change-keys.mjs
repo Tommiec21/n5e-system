@@ -81,9 +81,15 @@ export function parseN5eChanges(changes) {
     const sub = rest.join(".");
     const label = change.effect?.name ?? "Effect";
     switch ( group ) {
-      case "mastery":
-        if ( sub ) out.mastery.push({ target: sub, source: String(change.value || label) });
+      case "mastery": {
+        if ( !sub ) break;
+        // AMP1e: "Source ×N" raises N steps from one source (Coordinated: 1, 2 at 7th, 3 at 15th).
+        const source = String(change.value || label);
+        const m = source.match(/^(.*?)\s*[×x]\s*(\d+)$/);
+        if ( !m ) { out.mastery.push({ target: sub, source }); break; }
+        for ( let n = 1; n <= Number(m[2]); n++ ) out.mastery.push({ target: sub, source: Number(m[2]) > 1 ? `${m[1]} ${n}` : m[1] });
         break;
+      }
       case "dr": out.dr += num(change.value); break;
       case "resist": if ( change.value ) out.resist.push(String(change.value)); break;
       case "immune": if ( change.value ) out.immune.push(String(change.value)); break;

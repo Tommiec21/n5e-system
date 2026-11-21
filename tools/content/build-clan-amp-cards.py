@@ -148,10 +148,7 @@ CARDS = [
          changes=[ch("n5e.mastery.skill.ins", "Miraigan")],
          notes=["At initiative it lasts until combat ends; as a Bonus action, 10 minutes, then 10 minutes of non-use.",
                 "Eyes of the Wolf: 1 rank of Mastery (2 at 7th, 3 at 15th); add the extra ranks at the table."]),
-    dict(key="combat-coordinated", name="Combat Coordinated", box="Combat Coordinated", owner=("clan", "nara"), named="Will", activation="",
-         seconds=0, until="combatEnd", giveable=True, summary="Mastery on initiative, swap initiative places with an ally, and make checks or saves for another Coordinated creature.",
-         changes=[ch("n5e.mastery.initiative", "Combat Coordinated")],
-         notes=["Team Coordination gives it to all allies until initiative ends.", "Coordinated Start: 1 rank of Mastery (2 at 7th, 3 at 15th); add the extra ranks at the table."]),
+    # combat-coordinated: King Q-E4 (AMP1e), a condition card (conditions pack), not an Amp.
     dict(key="ultra-focus", name="Ultra Focus", box="Ultra Focus", owner=("feat", "non-clan-nindo-always-go-beyond"), named="Fortitude", activation="trigger",
          seconds=0, until="dismissed", uses=SR, summary="+2 damage (+4 at 11th), Drive for an extra Action, and advantage to resist grapples, restraints, stuns and Staggered. A DC 20 Con check each turn keeps it going.",
          changes=[ch("n5e.stateResist", "grappled"), ch("n5e.stateResist", "restrained"), ch("n5e.stateResist", "stunned"), ch("n5e.conditionResist", "staggered")],

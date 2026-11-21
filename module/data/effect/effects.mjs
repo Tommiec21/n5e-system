@@ -67,7 +67,9 @@ export class AmpEffectData extends TDM() {
     return {
       ampType: S.str({ initial: "battle" }),
       key: S.str(),
-      sourceUuid: S.str()
+      sourceUuid: S.str(),
+      // AMP1e: the card is outside the Amp limits (rules/amp-cards.mjs ampLimitConflict).
+      outsideLimits: S.bool()
     };
   }
 }

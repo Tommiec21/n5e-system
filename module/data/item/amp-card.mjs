@@ -12,9 +12,10 @@
  *   uses        {max (number or formula: "@prof", "lvl(1:1,11:2)"), per: sr | lr | fr | day}
  *   cooldown    seconds before it can start again once it ends ("10 minutes before re-entry": 600)
  *   exclusive   group: starting one ends the others (Crash / Flow)
- *   endsOn      staggered, blinded, unconscious, noChakra, stanceLeave (King Q-A5: the GM's setting
+ *   endsOn      staggered, blinded, unconscious, noChakra, stanceLeave, finisherCast (King Q-A5: the GM's setting
  *               decides whether these end it automatically or at the table)
  *   changes, tempHp, state, aura, and rule elements in flags.n5e.rules: the buff itself
+ *   outsideLimits  AMP1e (King Q-E3): doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)
  *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
 import * as S from "../fields/shared.mjs";
@@ -43,6 +44,8 @@ export class AmpCardData extends TDM() {
       endsOn: S.set(),
       changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })),
       aura: object(),
+      // AMP1e (King Q-E3): an Amp the Amp limits don't count (it never triggers Rule of 3's).
+      outsideLimits: S.bool(),
       // AMP1g: versions of one Amp (King 2026-11-20): the base key, and the character level it starts at.
       series: S.str(),
       level: S.int(0, { min: 0 })

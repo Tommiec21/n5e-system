@@ -175,13 +175,14 @@ async function pickAmps(actor, clash) {
 /* -------------------------------------------- */
 
 /**
- * End the Amps an event ends. "combatEnd" and "rest" are durations and always end; the others follow
+ * End the Amps an event ends. "combatEnd", "rest" and "finisherCast" are durations and always end; the others follow
  * the GM's setting: automatically, or a reminder to end them at the table.
  */
 export async function endAmpsOn(actor, trigger) {
   const ending = ampsEndingOn(actor, trigger);
   if ( !ending.length ) return 0;
-  const auto = trigger === "combatEnd" || trigger === "rest" || rule("ampEnding") !== "table";
+  // AMP1e: casting a Finisher is part of DYNAMIC FORM!'s duration ("until you cast a Finisher"), so it always ends.
+  const auto = ["combatEnd", "rest", "finisherCast"].includes(trigger) || rule("ampEnding") !== "table";
   const why = AMP_END_TRIGGERS[trigger] ?? trigger;
   if ( auto ) {
     await actor.deleteEmbeddedDocuments("ActiveEffect", ending.map(e => e.id));

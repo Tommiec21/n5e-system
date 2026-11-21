@@ -23,6 +23,7 @@ import { cardFlag } from "./action-card.mjs";
 import { resolveRankValues } from "../rules/jutsu-facts.mjs";
 import { mergeExtraDamage, namedActionEffects } from "../rules/cast-options.mjs";
 import { rankValue } from "../rules/progression.mjs";
+import { isFinisherCast } from "../rules/cast-tracking.mjs";
 
 const RANKS = ["E", "D", "C", "B", "A", "S"];
 // {round, turn} while a combat runs (once-per-turn options and Pyroclasm compare against it), else null.
@@ -160,6 +161,8 @@ export function executeCast(actor, item, sel = {}, { areaPrompt = true } = {}) {
     // Ready (KB 03): the chakra is spent and held; the cast card comes when it is released.
     if ( plan.ready ) return (await import("./concentration.mjs")).postReadyCard(actor, item, plan);
     const message = await postCastCard(actor, item, plan);
+    // AMP1e: casting a Finisher ends the Amps that end on one (DYNAMIC FORM!).
+    if ( isFinisherCast(item) ) await (await import("./amp-cards.mjs")).endAmpsOn(actor, "finisherCast");
     // Jutsu with an area: start placing it on the map (the card keeps a Place area button too).
     if ( areaPrompt && rule("areaPrompt") && canvas?.ready && areaOf(item.system, { rank: plan.rank, grow: plan.shaping?.grow }) ) placeArea(actor, item, { rank: plan.rank, grow: plan.shaping?.grow });
     return message;
