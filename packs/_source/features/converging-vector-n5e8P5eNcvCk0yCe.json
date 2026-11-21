@@ -40,18 +40,73 @@
           "target": "targets",
           "changes": [],
           "expires": "",
-          "seconds": 60
+          "seconds": 60,
+          "state": "vector-seal",
+          "limit": "lvl(3:1,10:2)"
         },
         "activation": "bonus",
         "cost": {
           "pool": "discipline",
           "amount": 1
         },
-        "text": "One at a time."
+        "text": "Mark one creature within 90 feet for 1 minute (two from 10th level, with one bonus action)."
+      },
+      {
+        "id": "n5eFcPzAO4rXUeDG",
+        "type": "roll",
+        "label": "Course Correction",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, missing the marked creature by 5 or less: remake the attack (it can't be a critical hit)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "oncePerTurn": true
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5etJImcxPga8zIT",
+      "name": "Vector Seal: Triangulation",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "predicate": [
+                "target:state:vector-seal",
+                "jutsu:keyword:bukijutsu",
+                "attack:ranged"
+              ],
+              "value": 1,
+              "label": "Triangulation"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e8P5eNcvCk0yCe.n5etJImcxPga8zIT"
+    }
+  ],
   "folder": "n5eeKumLbMLJOu4F",
   "sort": 0,
   "ownership": {
@@ -59,7 +114,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Always Enough: no Ammunition Die against the marked creature. Triangulation: +1 to hit is on its effect for ranged Bukijutsu attacks; with an ally within 15 feet of it, a rank of Mastery instead (at the table). Zeroing In: if it ends its turn without moving 5 feet, advantage on your next attack at it before the end of your next turn."
+        }
+      ]
     }
   },
   "_stats": {

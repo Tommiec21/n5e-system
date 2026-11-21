@@ -29,7 +29,48 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eQ0PqeQBnBy08J",
+        "type": "roll",
+        "label": "Cross Synergy",
+        "roll": {
+          "formula": "",
+          "note": "Casting a Ninjutsu with a nature release keyword: it gains the Chain keyword and the Primal Chain effect (counts as Chain 1, 2 or 3)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eariu459OELo5L",
+        "type": "roll",
+        "label": "Elemental Augmentation",
+        "roll": {
+          "formula": "1d12",
+          "note": "An ally within 15 feet with an Elemental condition: 10+ removes all its ranks, 7+ removes 2, else 1. Until the end of your next turn, your Primal Weapon adds 1 Flurry Die of that condition's damage type (Force if none)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eI64c7UlSFffoz",
+        "type": "roll",
+        "label": "Disperse Chakra",
+        "roll": {
+          "formula": "1d20 + 1d12",
+          "note": "[Weapon Damage] with your Primal Weapon: d20 + 1 Flurry Die against the caster's save DC (or the Standard ability check DC) to Dispel one Ninjutsu or Genjutsu effect on it."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eY6ifdOWhWYH9c",
@@ -39,7 +80,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding your Primal Weapon."
+        }
+      ]
     }
   },
   "_stats": {

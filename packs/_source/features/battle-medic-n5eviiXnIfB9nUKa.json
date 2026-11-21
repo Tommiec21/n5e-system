@@ -39,8 +39,14 @@
         "label": "Battle Medic",
         "roll": {
           "formula": "2d12",
-          "note": "10+: remove 1 Physical condition rank; doubles remove all ranks."
-        }
+          "note": "One willing creature. 10 or more: remove 1 rank of a Physical condition; the same value on both dice: all ranks of it. Twice per rest for each creature."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "oncePerTurn": true
       }
     ],
     "prerequisites": []
@@ -54,7 +60,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Versatility"
+      "optionGroup": "Kata: Versatility",
+      "reviewed": true
     }
   },
   "_stats": {

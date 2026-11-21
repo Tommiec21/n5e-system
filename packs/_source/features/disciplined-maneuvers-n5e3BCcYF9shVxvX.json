@@ -40,12 +40,14 @@
         "cost": {
           "pool": "discipline",
           "amount": 1,
+          "formula": "lvl(1:1,11:2,20:3)",
           "gain": true
         },
         "roll": {
           "formula": "",
-          "note": "Once per turn (2 at 11th, 3 at 20th)."
-        }
+          "note": "Once per turn, taking Trip, Grapple, Shove, Disarm, Maintain Focus, Feint, Demoralize or Read the Enemy on your turn. Not in a turn you regained Discipline from a Chain Bukijutsu, or used Disciplined Strikes."
+        },
+        "oncePerTurn": true
       }
     ],
     "prerequisites": []
@@ -59,7 +61,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Sustain"
+      "optionGroup": "Kata: Sustain",
+      "reviewed": true
     }
   },
   "_stats": {

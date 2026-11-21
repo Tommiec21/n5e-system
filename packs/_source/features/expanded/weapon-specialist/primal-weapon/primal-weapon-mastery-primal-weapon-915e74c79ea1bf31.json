@@ -33,13 +33,70 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ec0z5ZzaZVvHYn",
+        "type": "effect",
+        "label": "Elemental Mark",
+        "effect": {
+          "name": "Elemental Mark",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "limit": 1
+        },
+        "text": "One creature within 60 feet: you sense it as an elemental effect; its jutsu casting can provoke your opportunity attack, which can be a Ninjutsu instead. Ends when you mark another, it dies or leaves your senses.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eyV4iHg1vMpFCz",
+        "type": "roll",
+        "label": "Primal Break",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a Bukijutsu with your Primal Weapon's nature release keyword: its range becomes Self (20-foot radius)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eQ1zdPBJ86LA8F",
+        "type": "save",
+        "label": "Chakra Network Overload",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "[Weapon Damage] with your Primal Weapon. Failure: chakra damage equal to that [Weapon Damage] plus Chakra Strike's bonus (no Discipline for it), and its concentration check from it at disadvantage.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

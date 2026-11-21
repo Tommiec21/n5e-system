@@ -1,3 +1,14 @@
+## 0.74.0-alpha.1 — STD6d: Weapon Specialist automated
+
+King 2026-11-21: "Then let's work on next Batch." The fourth class in the class pass. Review table: `docs/classes/weapon-specialist-automation.md` (101 features: 2 automated, 85 partly automated, 9 notes only, 5 no mechanics).
+
+- **Discipline:** Deflection, Chakra Strike, Chained Momentum (gain Chain for 1, or shift it for 2), and a button to regain Discipline from a Chain Bukijutsu.
+- **Every Kata spends its Discipline from its button**, with the save, dice or effect it calls for, once per turn where the text says so. Elite Focus has its upkeep button; Overwhelming Malice its stance, Retributive Strike and Pensive Shot.
+- **Efficient Bukijutsu** is a cast dialog option (1 Discipline: −1 cost a rank). **Chaining Adept:** Chain 2's cost reduction in the cast dialog, Chain 3's temporary hit points as a button.
+- **Critical Focus** now works only with your Weapon Focus group (+1 critical range, +2 at 11th, +3 at 18th), weapon and Taijutsu attacks alike. It used to add +1 to every Bukijutsu.
+- **Doctrines:** Vector Seal and Quarry marks (two at higher levels), Quarry's bonus [Weapon Damage], Reaver Echoes, the Obsidian Ward pool and its restoration rolls, Aura of Protection for allies, Provoke by level, Savage Assault's Shaken and Hobbled, and buttons for every Flurry Technique of the six Doctrines.
+- **New for every class:** a class's level-up choices (such as the Weapon Focus group) can be named by effects; a resource cost can grow with level or be rolled.
+
 ## 0.73.0-alpha.1 — AMP1f batch 4: jutsu Amps (A and S-Rank)
 
 King 2026-11-21: Q-F15 Aura of Power's −2 goes on hostile creatures through the aura; Q-F16 Freight Train leaves a condition when it ends; Q-F17 Strength of 1000 ends with Strength of 100 and leaves a shock until a full rest; Q-F18 the maintained Lotus cannon is an Amp; Q-F19 Water Heavens Convergence isn't; Q-F20 The Zone pauses when you end it early. This finishes the AMP1f review.

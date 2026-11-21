@@ -2,6 +2,7 @@
 import { withActorLock } from "./commands.mjs";
 import { resourceChange } from "../rules/resources.mjs";
 import { esc } from "../view-models/common.mjs";
+import { resolveFormula } from "../rules/unarmed.mjs";
 
 /**
  * Pay an activity's pool cost; roll the pool's die when asked (Superiority Dice: d8).
@@ -19,6 +20,15 @@ export async function payPoolCost(actor, cost, { locked = false } = {}) {
   if ( !pool ) {
     ui.notifications.warn(`No ${cost.pool} pool.`);
     return null;
+  }
+  // STD6d: an amount by level, or rolled (posted to chat).
+  if ( cost.formula ) {
+    const f = resolveFormula(cost.formula, actor);
+    if ( /d\d/.test(f) ) {
+      const r = (await (await import("../dice/advantaged.mjs")).rollFormula(actor, f, { title: `${actor.name}: ${pool.label || cost.pool}`, kind: "dice", type: "dice", key: cost.pool, cancellable: false })).roll;
+      await r.toMessage({ speaker: CONFIG.ChatMessage.documentClass.getSpeaker({ actor }), flavor: `<div class="n5e-roll-card"><b>${esc(pool.label || cost.pool)}</b></div>` });
+      amount = Math.max(0, Math.trunc(r.total));
+    } else amount = Math.max(0, Math.trunc(Number(f) || 0));
   }
   // "Any number" (Pyroclasm Detonate): the player picks how many.
   if ( cost.choose ) {

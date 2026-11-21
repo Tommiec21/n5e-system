@@ -44,17 +44,20 @@
     "n5e": {
       "generated": true,
       "optionGroup": "Kata: Sustain",
+      "reviewed": true,
       "castOption": {
-        "label": "Efficient Bukijutsu (1 Discipline: cost −rank)",
+        "label": "Efficient Bukijutsu (1 Discipline: cost −1 a rank)",
         "appliesTo": {
-          "discipline": "buki"
+          "keywords": [
+            "bukijutsu"
+          ]
         },
         "oncePerTurn": true,
+        "costDelta": "-rank",
         "cost": {
           "pool": "discipline",
           "amount": 1
-        },
-        "costDelta": "-rank"
+        }
       }
     }
   },

@@ -536,3 +536,8 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Jutsu Amps: owner kind `jutsu`, typeless (Hijutsu too, King Q-F2/Q-F3), a card per cast rank (`system.rank`, King Q-F1), picked by the cast card's rank. Options menu: `system.choose` on the card.
 - Rebuild with tools/content/build-jutsu-amp-cards.py after the other Amp builders. Rejected jutsu carry `flags.n5e.notAmp`.
 - Batch 4 (0.73.0-alpha.1) finishes AMP1f's review (all 4 batches). New: `system.endsWith` on Amp cards (ends with another Amp, frees its concentration), a pause button (`end: "pause"`, no aftermath), aura `also` groups (rules/auras.mjs `expandAuras`), condition cards' `statuses` and `endsAt: "fullRest"`, and saves against a cast card carry `against:<jutsu fact>`. Codex's Journal Desk files untouched.
+
+## STD6d Weapon Specialist — Claude, 2026-11-21 (0.74.0-alpha.1)
+- `content/automation/weapon-specialist.json` (101 features), applied by `tools/content/apply-automation.mjs`; review table `docs/classes/weapon-specialist-automation.md`.
+- Engine: class level-up options as roll facts (`option:<key>:<value>`, rules/elements.mjs rollOptions), activity cost `formula` (by level or rolled; workflow/resources.mjs), table `dropEffects`.
+- Codex's Journal Desk files untouched.

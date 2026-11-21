@@ -33,23 +33,16 @@
   },
   "effects": [
     {
-      "_id": "n5ejZsYjLJxSXN9n",
+      "_id": "n5e9YScHq3WXtm7t",
       "name": "Critical Focus",
       "type": "generic",
-      "img": "icons/svg/aura.svg",
+      "img": "icons/svg/upgrade.svg",
       "transfer": true,
       "disabled": false,
       "system": {
         "category": "feature"
       },
-      "changes": [
-        {
-          "key": "n5e.critRange.buki",
-          "value": "1",
-          "mode": 2,
-          "priority": null
-        }
-      ],
+      "changes": [],
       "duration": {},
       "description": "",
       "origin": null,
@@ -57,11 +50,75 @@
       "statuses": [],
       "flags": {
         "n5e": {
-          "automation": true
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "predicate": {
+                "any": [
+                  {
+                    "all": [
+                      "option:weaponFocus:blade",
+                      {
+                        "any": [
+                          "weapon:group:blade"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:flail",
+                      {
+                        "any": [
+                          "weapon:group:flail"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:polearm",
+                      {
+                        "any": [
+                          "weapon:group:polearm"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:power",
+                      {
+                        "any": [
+                          "weapon:group:power"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:thrown-ammunition",
+                      {
+                        "any": [
+                          "weapon:group:thrown",
+                          "weapon:group:ammunition"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "value": "lvl(5:1,11:2,18:3)",
+              "label": "Critical Focus"
+            }
+          ]
         }
       },
       "sort": 0,
-      "_key": "!items.effects!n5exVSDXotIvM3ER.n5ejZsYjLJxSXN9n"
+      "_key": "!items.effects!n5exVSDXotIvM3ER.n5e9YScHq3WXtm7t"
     }
   ],
   "folder": "n5eKx2AvuYWiyy99",
@@ -71,7 +128,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "+1 critical range with your Weapon Focus, weapon and Taijutsu attacks alike (+2 at 11th, +3 at 18th), from the Weapon Focus group you chose."
+        }
+      ]
     }
   },
   "_stats": {

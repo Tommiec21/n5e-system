@@ -33,13 +33,43 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eNaFap651ojCqt",
+        "type": "roll",
+        "label": "Chaining Adept: Chain 3",
+        "roll": {
+          "formula": "lvl(7:1d12,11:2d12,15:3d12)",
+          "note": "Allies (not you) within 10 feet gain this as temporary HP (2 Flurry Dice at 11th, 3 at 15th); you gain half."
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a Bukijutsu with the Chain keyword, by the Chain rank cast: Chain 1, remake one missed attack; Chain 2, the cost reduction (the cast dialog option); Chain 3, the temporary hit points (the button)."
+        }
+      ],
+      "castOption": {
+        "label": "Chaining Adept: Chain 2 (cost −1 a rank)",
+        "appliesTo": {
+          "keywords": [
+            "chain"
+          ]
+        },
+        "oncePerTurn": true,
+        "costDelta": "-rank",
+        "note": "Only when cast at Chain 2."
+      }
     }
   },
   "ownership": {

@@ -13,6 +13,7 @@
  *   pools        resource pools                              → system.resourcePools
  *   effects      transfer or action effects {name, levels?, changes?, rules?, applyTo?, requiresStance?} → embedded effects
  *                marked flags.n5e.std6d (effects the feature had without that mark are kept)
+ *   dropEffects  names of effects the feature had without that mark to remove (an imported effect the table replaces)
  *   flags        other flags.n5e values (castAs ...)
  *   status       automated | partial | note | none: what the review decided (shown in the review table)
  * Every listed feature gets flags.n5e.reviewed (its text is no longer parsed into buttons).
@@ -66,7 +67,7 @@ export function appliedDoc(doc, entry) {
   if ( entry.activities ) out.system.activities = entry.activities;
   if ( entry.pools ) out.system.resourcePools = entry.pools;
   if ( entry.effects ) {
-    const kept = (out.effects ?? []).filter(e => !e.flags?.n5e?.std6d);
+    const kept = (out.effects ?? []).filter(e => !e.flags?.n5e?.std6d && !(entry.dropEffects ?? []).includes(e.name));
     const made = entry.effects.map(e => {
       const id = stableId(`${doc._id}:std6d:${e.name}`);
       const flags = { automation: true, std6d: true };

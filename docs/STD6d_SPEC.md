@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1). Next: Weapon Specialist, Scout-Nin, Hunter-Nin, Genjutsu Specialist.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1). Next: Scout-Nin, Hunter-Nin, Genjutsu Specialist.**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -37,6 +37,9 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D17 | Best-of-abilities values | A rule element's value `mod(int,wis,cha)` is the highest of those modifiers (Agile's initiative bonus). |
 | D18 | Fixed cost by rank | Change key `n5e.rankCost.<scope>` ("D:3,C:5,B:9,A:14,S:20"): the jutsu costs that for its cast rank, as a Special cost (no reductions); a jutsu already Special keeps its own (Unwasted Movements). |
 | D19 | Unarmed fact | The Unarmed Strike item's damage rolls carry `weapon:unarmed` (Sustained Pressure's predicate). Table effects may require a stance (`requiresStance`). |
+| D20 | Class option facts | A class's level-up options are roll facts: `option:<key>:<value>` (Weapon Focus: `option:weaponFocus:blade`; "Thrown/Ammunition" is `thrown-ammunition`). With a weapon's `weapon:group:<g>`, an element can name "your Weapon Focus". |
+| D21 | Pool cost formulas | An activity cost's `formula` replaces its amount: by level (`lvl(1:1,11:2,20:3)`) or rolled (`1d12`, posted to chat): the Obsidian Ward regains Flurry Dice. |
+| D22 | Replaced imported effects | A table entry's `dropEffects` removes the feature's imported effects of those names (Critical Focus's blanket +1 on all Bukijutsu). |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -86,6 +89,26 @@ Highlights:
 
 - **Text issues** (for the errata list): Extra Attack contains the Balance Broken definition; Iron Body ends with the class design note; Genius Talent has a broken sentence ("You can only use each Flawless"); Bone Broken and Flow Broken are not defined anywhere in the class text.
 
+## Weapon Specialist (0.74.0-alpha.1)
+
+Review table: `docs/classes/weapon-specialist-automation.md` (101 features: 2 automated, 85 partly automated, 9 notes only, 5 no mechanics).
+
+Highlights:
+- **Discipline:** the pool (2 at 1st, by the class table; back on any rest). Deflection, Chakra Strike, Chained Momentum (gain Chain, or shift it for 2) and a Regain Discipline (Chain) button. Saves use your Taijutsu DC; the Flurry Die is a d12.
+- **Every Kata** has a button that spends its Discipline (once per turn where the text says so), with the save, dice or effect it calls for: Battle Boast, Disorienting Strike, Muted Strike, Horrid Aggression, Executioner (with the Cripple save), Overwhelming Malice's stance with Retributive Strike and Pensive Shot, Sensory Augmentation (blindsight or tremorsense), Strider, Elite Focus (and its upkeep), and the rest.
+- **Efficient Bukijutsu:** a cast dialog option, 1 Discipline for −1 cost a rank. **Chaining Adept:** Chain 2's reduction as a cast option, Chain 3's temporary HP as a button.
+- **Critical Focus:** +1 critical range (+2 at 11th, +3 at 18th) only with your Weapon Focus group, weapon and Taijutsu attacks (D20). The imported +1 on every Bukijutsu is removed (D22).
+- **Doctrines:**
+  - Seeker: Vector Seal (two from 10th), Triangulation's +1 on ranged Bukijutsu attacks, Course Correction, Crossfire Aim, Dread Ambusher, Sharpshooting Savant, Seeker of the End.
+  - Reaver: Quarry (two from 17th) with +1/+2/+3 [Weapon Damage] against it, Reaver Echoes (the condition card), Kenjutsu, Severance, Delayed Displacement, Reaver's Judgement.
+  - Obsidian Guard: the Obsidian Ward pool (11 + level, + proficiency from 10th) and Ward Restoration rolling Flurry Dice into it (D21), Aura of Protection (+1/+2 AC and saves to allies), Provoke (more creatures by level), Obsidian Bulwark, Guardian Force.
+  - Fang Breaker: Battle Trance (the AMP1d cards), Savage Assault with Shaken (Okuri-Inu Fang) and Hobbled, Savage Exploits (1 less from 17th), Titanic Wrath.
+  - Battle Dancer: Waltz and Samba (the AMP1d cards), Move in Tandem, Cascade Step, Defensive Dance, Flourish!, Twin Step, Spectacular Form, Dance of the Dawn.
+  - Primal Weapon: Primal Strikes, Chained Cascade (3 Discipline), Primal Weapon Mastery, Reflective Sunder, Break and Reinforce the Seal.
+- **At the table:** the Obsidian Ward taking damage first; Deflection's reduction; Temporary Discipline (Aggressive Reprisal); Dauntless's −1 Kata cost; the Superior Discipline upgrades (notes on each).
+
+- **Text issues** (for the errata list): Superior Discipline contains the class design note; Chained Cascade contains its Battle Amp box; Burst Echo deals damage with no save stated.
+
 ## Questions for King (answer when convenient; nothing waits on them)
 
 - **Q-D1 Toxic Tongue:** "immunity to the Poisoned and Corroded conditions": N5e has no Poisoned condition. Is it Envenomed? (Only Corroded is automated.)
@@ -101,6 +124,11 @@ Highlights:
 - **Q-D12 Saving throw Mastery:** Iron Body (2 ranks of Con at 13th) plus Mastery of Self (1 more) is 3 ranks of Con at 20th, and Iron Will plus Mastery of Self is 3 ranks of Wis. Is that intended?
 - **Q-D13 Quivering Strike:** the damage card is posted with each end-of-turn save; on a success it isn't applied. OK?
 - **Q-D7 Breakers:** advantage on Clash checks only when the jutsu you clash with is a Ninjutsu of the Release against the other's Release. Correct?
+- **Q-D14 Weapon Focus "Thrown/Ammunition":** the cards count weapons of the Thrown and the Ammunition groups. Does a weapon with only the Thrown property (outside those groups) count too?
+- **Q-D15 Critical Focus:** "+1 rank of the Critical property" is read as +1 critical range (+2 at 11th, +3 at 18th), capped at +3 with everything else. Correct?
+- **Q-D16 Blitz:** Chakra Strike without the Discipline cost adds half the Flurry Dice: the button rounds up (1 at 9th, 2 at 11th and 15th, 3 at 20th). Round up or down?
+- **Q-D17 Burst Echo:** no saving throw is stated; the button applies the 2d12 to each creature within 5 feet of the point. Is a save missing?
+- **Q-D18 Dauntless and Titanic Wrath:** the −1 Discipline cost (all Katas at 20th; Savage Exploits at 17th) is built into the Savage Exploits buttons only; Katas at 20th are paid 1 less at the table. Should the Kata buttons cost 1 less from 20th too?
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -112,3 +140,4 @@ Highlights:
 - 2026-11-15 King: Q-D1 Envenomed (Toxic Tongue now gives immunity to Envenomed and Corroded; ships with the next release); Q-D2 character level is right (no multiclassing in N5e); Q-D4–Q-D7 correct; Q-D3 asked for an explanation.
 - 2026-11-15 King: "Lets move on to STD6d". Claude: engine D15–D19 and Taijutsu Specialist built, published 0.55.0-alpha.1. Suites 589 and 180 pass.
 - 2026-11-15 King: Q-D8 Bone Broken and Flow Broken are class conditions, to be built with the class and clan conditions system (`docs/CCOND1_SPEC.md`); Q-D9 yes; Q-D10 upcasting yes, a None-cost Taijutsu keeps None (fixed in code, ships with the next release); Q-D11 no (stance only); Q-D12 yes (3 ranks intended); Q-D13 yes.
+- 2026-11-21 King: "Then let's work on next Batch." Claude: engine D20–D22 and Weapon Specialist built (101 features), published 0.74.0-alpha.1. Q-D14–Q-D18 asked; nothing waits on them.

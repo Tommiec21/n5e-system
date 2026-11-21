@@ -33,13 +33,69 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSX6MsklBYVt1W",
+        "type": "roll",
+        "label": "Siphoning Seal",
+        "roll": {
+          "formula": "",
+          "note": "[Weapon Damage] to a Vector Seal creature: this and each later [Weapon Damage] reduces every marked creature's speed by 10 feet, and they can't gain speed bonuses, until the start of your next turn."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5ec9d36IZPwbeKV",
+        "type": "roll",
+        "label": "Point Blank Shot",
+        "roll": {
+          "formula": "",
+          "note": "A ranged weapon or Taijutsu attack at an adjacent creature: no disadvantage, and advantage; against a Vector Seal creature it's a critical hit if it beats AC by 10."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5ewOtAaFZERCj1n",
+        "type": "save",
+        "label": "Tethering Shot",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "[Weapon Damage] to a Vector Seal creature: the other marked creature saves; on a failure each is pulled 15 feet toward the other (the failed one first).",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Vector Seals at once, marked with one bonus action (the Vector Seal button); only B-Rank Genjutsu dispelling ends them."
+        }
+      ]
     }
   },
   "ownership": {

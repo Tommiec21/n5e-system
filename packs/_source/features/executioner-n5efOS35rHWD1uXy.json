@@ -32,7 +32,47 @@
       "weapon-kata"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5e18OZsXqOS5K1b",
+        "type": "roll",
+        "label": "Executioner",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a Bukijutsu (no Discipline gained from it this turn). On a hit or failed save — Kill: a Standard adversary left at 50 or fewer HP drops to 0. Cripple: a Standard or Elite adversary left at 50 or fewer HP makes a Strength save or is Staggered for 1 minute (resave each turn). Once per creature per long rest."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 4
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5e3A7eTvJyHvkxO",
+        "type": "save",
+        "label": "Executioner: Cripple",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": true
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "The Cripple save (Discipline already spent)."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ecV5gB5Cd9gFuJ",
@@ -43,7 +83,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Pressure"
+      "optionGroup": "Kata: Pressure",
+      "reviewed": true
     }
   },
   "_stats": {

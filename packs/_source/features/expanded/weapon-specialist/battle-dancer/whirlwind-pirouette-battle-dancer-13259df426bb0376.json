@@ -33,13 +33,51 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ehuD0RMjDKQHDX",
+        "type": "save",
+        "label": "Whirlwind Pirouette",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Action: 1 Discipline for each creature within 15 feet you pick; one melee Taijutsu attack as a B-Rank Bukijutsu against each AC. On a hit, [Weapon Damage] + Chakra Strike's damage, then a Strength save or Prone and 3 ranks of Dazzled.",
+        "cost": {
+          "pool": "discipline",
+          "choose": true
+        },
+        "activation": "action"
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

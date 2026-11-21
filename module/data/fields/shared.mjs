@@ -246,7 +246,9 @@ export function activityFields() {
     oncePerTurn: bool(),
     activation: str(),                   // overrides the item's activation for this activity
     // Pool cost paid when the button is clicked (roll: roll the pool's die and post it).
-    cost: obj({ pool: str(), amount: int(1, { min: 0 }), roll: bool(), gain: bool(), choose: bool() }),
+    // STD6d Weapon Specialist: formula, an amount by level ("lvl(1:1,11:2)") or rolled ("1d12": the
+    // Obsidian Ward regains a Flurry Die); it replaces amount when set.
+    cost: obj({ pool: str(), amount: int(1, { min: 0 }), roll: bool(), gain: bool(), choose: bool(), formula: str() }),
     strike: obj({
       kind: str(),                       // unarmed|weapon ("" = not a strike)
       dieSteps: int(0),                  // step the damage die up (+) or down (-)

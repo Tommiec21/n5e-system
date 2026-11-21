@@ -49,9 +49,9 @@ test("cast options: Channeled Healing (medical healing, once per turn) and Tyran
   assert.equal(ty.damage.formula, "lvl(1:2,11:4)");
 });
 
-test("transfer effects: Critical Focus widens the Bukijutsu crit range; Demon Sight grants darkvision", () => {
-  const cf = load("features", "critical-focus").effects[0].changes[0];
-  assert.deepEqual([cf.key, cf.value], ["n5e.critRange.buki", "1"]);
+test("transfer effects: Critical Focus widens the crit range with the Weapon Focus (STD6d); Demon Sight grants darkvision", () => {
+  const cf = load("features", "critical-focus").effects[0].flags.n5e.rules[0];
+  assert.deepEqual([cf.key, cf.value], ["critRange", "lvl(5:1,11:2,18:3)"]);
   const ds = load("features", "demon-sight").effects[0].changes[0];
   assert.deepEqual([ds.key, ds.value, ds.mode], ["system.traits.senses.darkvision", "120", 4]);
 });

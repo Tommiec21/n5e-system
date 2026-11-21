@@ -969,3 +969,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Condition cards: `system.statuses` (more token statuses the condition carries) and `system.endsAt: "fullRest"` (ends only on a full rest).
 - Saves rolled from a cast card carry the jutsu's facts prefixed `against:` (`against:jutsu:discipline:nin`).
 - Activity effect values: `@disciplines.<d>.mod` and `floor()`/`ceil()` are resolved when the effect is placed.
+
+### Fields added in STD6d Weapon Specialist (0.74.0-alpha.1)
+
+- Roll facts `option:<key>:<value>`: each class item's chosen level-up options (advancement type `option`), value slugged ("Thrown/Ammunition" → `thrown-ammunition`).
+- Activity `cost.formula`: replaces `amount`; `lvl(...)` by level, or dice rolled and posted to chat.
+- Automation table entry `dropEffects`: names of imported (non-`std6d`) effects on the feature to remove.

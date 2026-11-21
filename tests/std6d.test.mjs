@@ -74,3 +74,31 @@ test("Taijutsu Specialist: every feature reviewed; Martial Strength and Unwasted
   const agile = load("features", "agile");
   assert.equal(agile.flags.n5e.rules[0].value, "mod(int,wis,cha)");
 });
+
+// ---------------------------------------------------------------- Weapon Specialist (STD6d)
+import { rollOptions } from "../module/rules/elements.mjs";
+
+test("a class's level-up options are roll facts (option:<key>:<value>)", () => {
+  const actor = { items: [{ type: "class", system: { advancement: [{ type: "option", key: "weaponFocus", chosen: ["Thrown/Ammunition"] }, { type: "feature", key: "", chosen: [] }] } }], system: {} };
+  const o = rollOptions(actor, { kind: "attack" });
+  assert.ok(o.has("option:weaponFocus:thrown-ammunition"));
+});
+
+test("Weapon Specialist: every feature reviewed; Critical Focus only with the chosen Weapon Focus group", () => {
+  const table = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/weapon-specialist.json"), "utf8"));
+  assert.equal(Object.keys(table.features).length, 101);
+  const cf = load("features", "critical-focus");
+  assert.equal(cf.effects.length, 1, "the imported blanket +1 is gone");
+  const rule = cf.effects[0].flags.n5e.rules[0];
+  const facts = (...f) => new Set(["self", "kind:attack", ...f]);
+  assert.ok(gatherTest(rule.predicate, facts("option:weaponFocus:blade", "weapon:group:blade")));
+  assert.ok(!gatherTest(rule.predicate, facts("option:weaponFocus:blade", "weapon:group:polearm")));
+  assert.ok(gatherTest(rule.predicate, facts("option:weaponFocus:thrown-ammunition", "weapon:group:ammunition")));
+  assert.equal(rule.value, "lvl(5:1,11:2,18:3)");
+  const eb = load("features", "efficient-bukijutsu").flags.n5e.castOption;
+  assert.deepEqual([eb.costDelta, eb.cost, eb.appliesTo], ["-rank", { pool: "discipline", amount: 1 }, { keywords: ["bukijutsu"] }]);
+  const ward = load("features", "obsidian-ward");
+  assert.equal(ward.system.resourcePools[0].max, "11 + @level + lvl(1:0,10:@prof)");
+  assert.equal(ward.system.activities[0].cost.formula, "lvl(3:1d12,10:2d12,17:3d12)");
+});
+import { testPredicate as gatherTest } from "../module/rules/elements.mjs";

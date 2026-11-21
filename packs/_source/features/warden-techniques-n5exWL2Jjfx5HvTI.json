@@ -41,11 +41,55 @@
           "condition": "provoked",
           "changes": [],
           "expires": "",
-          "seconds": 60
+          "seconds": 60,
+          "limit": "lvl(3:1,6:2,14:3)"
         },
         "cost": {
           "pool": "discipline",
           "amount": 1
+        },
+        "text": "In place of an attack of the Attack action, or a bonus action: one hostile creature within 30 feet that can see or hear you is Provoked until the start of your next turn (2 creatures at 6th, 3 at 14th)."
+      },
+      {
+        "id": "n5ew9JEmCPQ9WIPs",
+        "type": "roll",
+        "label": "Obsidian Projection",
+        "roll": {
+          "formula": "",
+          "note": "Reaction: an ally within 15 feet would take damage; your ward takes it instead (excess to you). Not while the ward has 0 hit points."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eT6ch5EuryMKMQ",
+        "type": "save",
+        "label": "Punishing Guardian",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "text": "[Weapon Damage] to a hostile creature that damaged an ally since the end of your last turn. Failure: 2 ranks of Concussed; success: 1 rank.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
         }
       }
     ]
@@ -58,7 +102,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Power or Flail weapon, or a weapon with the Blocking property."
+        }
+      ]
     }
   },
   "_stats": {
