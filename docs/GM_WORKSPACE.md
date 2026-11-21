@@ -90,3 +90,13 @@ New imports resolve curated relationships using planned native document IDs, inc
 
 Three focused tests and lint passed (attempt 1); reserve PR/main checks as attempts 2/3. No live testing or local installation. GM04c remains: minor-country coverage, source-reviewed additional village figures, selective import and explicit opt-in reconciliation for old links. No unsourced Part I leadership assumptions.
 
+
+## GM04c — 2026-11-20
+
+Based on 2d04d62. Adds selective import by individual entries grouped by type, plus explicit opt-in addition of missing curated links to selected existing records. Text, custom relationship labels and existing links are preserved; broken links are not deleted. Cancel/empty selection creates nothing.
+
+Seven additions (27 total): Amegakure, Kusagakure, Takigakure, Land of Sound/Rice Fields, Otogakure, Orochimaru and Kabuto. Unnamed countries stay unnamed; Sound territory naming is marked as Part I anime material. Sources are stored per record, including secondary-source labels. Unknown leadership remains unspecified.
+
+Scoped CSS correction sets readable paper-surface headings, inputs and buttons based on the user's screenshot. Full Design A refinement remains GM06. Five focused tests and lint passed on attempt 1; PR/main reserved as 2/3. No live tests or local installation.
+
+GM04 initial starter-library slice complete, not an exhaustive Naruto encyclopedia. Additional figure/region coverage is GM04d (Data Conversion System), including source-reviewed Mist/Cloud/Stone figures and remaining minor territories. GM05 remains the next gameplay batch: usable mission ideas and existing tool integration. GM04b published v0.68.1-alpha.2.

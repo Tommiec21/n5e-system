@@ -1,3 +1,7 @@
+## 0.68.1-alpha.3 — GM04c selective starter import
+
+Choose individual starter entries; optionally add missing source links without replacing GM writing. Seven new entries bring the library to 27. Corrects Journal Desk heading/button contrast. Full design polish remains GM06; no live verification.
+
 ## 0.68.1-alpha.2 — GM04b major-country atlas
 
 Adds five country/village pairs and three Part I Sand figures (20 starter entries total). Newly imported entries receive curated links; existing GM entries remain untouched. Additional figures and minor-country coverage remain GM04c.
