@@ -1,3 +1,10 @@
+## 0.79.1-alpha.1 — Bakuton: two Hijutsu of their own; Ballistic Knuckle
+
+King 2026-11-21: "Q5. Make them as its own item. Q7. Drop it automatically."
+
+- **New Hijutsu (Bakuton, B-Rank):** Explosion Release: Clay Centipede (summons two Clay Centipedes) and Explosion Release: Chain Reaction Blitz (attack each chosen creature, blast save, upcast dice), split out of Absolute Death Bombing's text and added to the clan's Hijutsu list.
+- **Ballistic Knuckle:** its [Unarmed Damage] no longer adds your ability modifier (new stance field `unarmedNoMod`).
+
 ## 0.79.0-alpha.1 — Clans as data: E1 Land of Earth (Bakuton, Futton, Shí Hóu, Yoton)
 
 King 2026-11-21: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin."

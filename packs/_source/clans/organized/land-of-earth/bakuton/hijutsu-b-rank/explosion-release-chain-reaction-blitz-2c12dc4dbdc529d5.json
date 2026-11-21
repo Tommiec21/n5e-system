@@ -1,0 +1,320 @@
+{
+  "_id": "2c12dc4dbdc529d5",
+  "_key": "!items!2c12dc4dbdc529d5",
+  "type": "jutsu",
+  "name": "Explosion Release: Chain Reaction Blitz",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "1e0691ec9e03e45a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "Special",
+        "duration": "Instant",
+        "cost": "12 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch",
+        "components": "CM, M"
+      },
+      "splitFrom": "bakuton-explosion-release-absolute-death-bombing",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "At the end, move to a space next to a hostile creature you attacked without provoking. Its upcast also grows \"the size of the cone\" by 5 feet (errata list)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eRxD9AVIm1CZBh",
+              "type": "attack",
+              "label": "Chain Reaction Blitz",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Against each chosen creature you could reach with your speed (one attack each).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d10) + (1d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ekD4f0kOWLVA6B",
+              "type": "save",
+              "label": "Chain Reaction Blitz: blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRxD9AVIm1CZBh",
+              "type": "attack",
+              "label": "Chain Reaction Blitz",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Against each chosen creature you could reach with your speed (one attack each).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d10) + (2d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ekD4f0kOWLVA6B",
+              "type": "save",
+              "label": "Chain Reaction Blitz: blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-chain-reaction-blitz",
+    "description": "<p>You throw a string of chakra laced grenades into the air and use them as guiding lights for your assault. Select a number of creatures you can see, that you could reach with your movement speed as your throw a grenade at each of them. You then dash between each of them, striking the grenade in an attempt to blow each of them to smithereens.</p>\n<p>Make a melee Ninjutsu (or Taijutsu) attack against each chosen creature, dealing your [Unarmed Damage] +4d10 and forcing all creatures, excluding yourself, within 5 feet of the target to make a Dexterity saving throw, taking half the result on a failure or no damage on a success.</p>\n<p>If the original target(s) fail their saving throw, they don’t take half damage, but are instead Blinded, Deafened and Staggered until the end of their next turn.</p>\n<p>At the end of this jutsu’s casting, select a space adjacent to a hostile creature you attacked, and move there. This movement does not provoke attacks of opportunity.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Split from Explosion Release: Absolute Death Bombing (King Q-E5, 2026-11-21)."
+    },
+    "rank": "B",
+    "discipline": "tai",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "taijutsu",
+      "lightningRelease",
+      "earthRelease",
+      "recklessBranch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "special",
+        "value": null,
+        "long": null,
+        "text": "Special"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": null,
+      "unit": "instant",
+      "concentration": false,
+      "text": "Instant"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 12,
+      "text": "12 Chakra"
+    },
+    "components": {
+      "hs": false,
+      "cm": true,
+      "cs": false,
+      "m": true,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "CM, M"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "CM, M"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d10 and the size of the cone by 5 feet.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [
+      {
+        "id": "n5eRxD9AVIm1CZBh",
+        "type": "attack",
+        "label": "Chain Reaction Blitz",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Against each chosen creature you could reach with your speed (one attack each).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ekD4f0kOWLVA6B",
+        "type": "save",
+        "label": "Chain Reaction Blitz: blast",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "featureType": "active",
+    "disciplines": [
+      "nin",
+      "tai"
+    ]
+  }
+}

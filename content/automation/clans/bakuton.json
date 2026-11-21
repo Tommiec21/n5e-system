@@ -299,7 +299,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "Poison in place of force on a success or failure: change the type when you roll. Its text also holds two other B-Rank Hijutsu (Clay Centipede and Chain Reaction Blitz; see the errata list); the Clay Centipede NPC is in Class & Clan Summons › Bakuton."
+          "text": "Poison in place of force on a success or failure: change the type when you roll."
         }
       ],
       "flags": {
@@ -787,6 +787,210 @@
         }
       }
     },
+    "bakuton-explosion-release-chain-reaction-blitz": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRxD9AVIm1CZBh",
+          "type": "attack",
+          "label": "Chain Reaction Blitz",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Against each chosen creature you could reach with your speed (one attack each).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "4d10",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ekD4f0kOWLVA6B",
+          "type": "save",
+          "label": "Chain Reaction Blitz: blast",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "At the end, move to a space next to a hostile creature you attacked without provoking. Its upcast also grows \"the size of the cone\" by 5 feet (errata list)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eRxD9AVIm1CZBh",
+                "type": "attack",
+                "label": "Chain Reaction Blitz",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Against each chosen creature you could reach with your speed (one attack each).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d10) + (1d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ekD4f0kOWLVA6B",
+                "type": "save",
+                "label": "Chain Reaction Blitz: blast",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRxD9AVIm1CZBh",
+                "type": "attack",
+                "label": "Chain Reaction Blitz",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Against each chosen creature you could reach with your speed (one attack each).",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d10) + (2d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ekD4f0kOWLVA6B",
+                "type": "save",
+                "label": "Chain Reaction Blitz: blast",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Every creature but you within 5 feet of a target: half the attack's damage on a failure, none on a success. A target that fails instead takes no half damage but is Blinded, Deafened and Staggered until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
     "bakuton-explosion-release-clay-bird": {
       "status": "partial",
       "activities": [
@@ -805,6 +1009,27 @@
         {
           "key": "note",
           "text": "One at a time (two at A-Rank: press the button again); 10 minutes. Command it as an Action or Bonus action."
+        }
+      ]
+    },
+    "bakuton-explosion-release-clay-centipede": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRdBl3ZZWUd6j2",
+          "type": "summon",
+          "label": "Clay Centipede",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eHyxkqEZZIChuD",
+            "count": 2,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Clay Centipedes in spaces within 10 feet; two active at a time; 1 minute. Command them as an Action or Bonus action."
         }
       ]
     },
@@ -2449,12 +2674,13 @@
       "status": "partial",
       "system": {
         "unarmedDie": "2d8",
-        "unarmedType": "force"
+        "unarmedType": "force",
+        "unarmedNoMod": true
       },
       "rules": [
         {
           "key": "note",
-          "text": "Your [Unarmed Damage] is 2d8 force (the stance) and adds no ability modifier (take it off the roll). Unarmed attacks have Deadly 1 (Deadly 2 at 7th, 3 at 15th). Resistance to damage from your own clan features. At 7th, without Extra Attack, the Attack action attacks twice."
+          "text": "Your [Unarmed Damage] is 2d8 force and adds no ability modifier (the stance, King Q-E7). Unarmed attacks have Deadly 1 (Deadly 2 at 7th, 3 at 15th). Resistance to damage from your own clan features. At 7th, without Extra Attack, the Attack action attacks twice."
         }
       ]
     }

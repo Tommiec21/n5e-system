@@ -73,13 +73,13 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 
 ## Questions for King (nothing waits on them)
 
-- **Q-E5 Missing Bakuton Hijutsu:** Absolute Death Bombing's text also holds two B-Rank Hijutsu, Explosion Release: Clay Centipede and Explosion Release: Chain Reaction Blitz, which aren't items of their own. Add them as Hijutsu? (The Clay Centipede NPC is built.)
-- **Q-E6 Primes and Pressure:** neither says when it's lost. Both pools empty at the start and end of combat (changeable in Class & Clan Limits). Fine?
-- **Q-E7 Ballistic Knuckle:** "no longer adds your ability modifier" is a note (take it off the roll). Should the stance drop it automatically?
+- **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
+- **Q-E6 Primes and Pressure:** neither says when it's lost; both pools empty at the start and end of combat. King 2026-11-21: "Populate the entire feature": the full Priming Cataclysm, Broiling Rampart and Steam Engine text was posted for his call (open).
+- **Q-E7 Ballistic Knuckle:** answered (King 2026-11-21): dropped automatically (stance field `unarmedNoMod`; 0.79.1-alpha.1).
 
 ## Text issues (for the errata list)
 
-- Bakuton: Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
+- Bakuton: Absolute Death Bombing's text held two other Hijutsu (now split out, Q-E5); Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
 - Futton: Steam Bullet and Hiding in Acid Rain say "Scaled" (Scald); Hiding in Acid Rain's upcast has no cost increase.
 - Yoton: Hijutsu Flexibility says "Futton Clan Hijutsu"; Lava Stream "chape"; Rubber "gin a range"; Quicklime Hardening has no success result.
 
@@ -87,4 +87,4 @@ Review tables: `docs/clans/bakuton-automation.md`, `futton-automation.md`, `shi-
 
 - 2026-11-21 Claude: spec written from a survey of the clans pack. Nothing built.
 - 2026-11-21 King: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin." Claude: E1 Land of Earth built (117 items), engine E-D1–E-D5, Clay construct summons; published 0.79.0-alpha.1. Q-E5–Q-E7 asked; nothing waits on them.
-
+- 2026-11-21 King: "Q5. Make them as its own item. Q6. Populate the entire feature. Q7. Drop it automatically." Claude: Clay Centipede and Chain Reaction Blitz as their own Hijutsu; Ballistic Knuckle drops the ability modifier; published 0.79.1-alpha.1. Full Priming Cataclysm, Broiling Rampart and Steam Engine text posted for Q-E6.

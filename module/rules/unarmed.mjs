@@ -58,7 +58,8 @@ export function unarmedSpec(actor) {
   const type = st.unarmedType || "bludgeoning";
   const extra = [...(sys.modifiers?.unarmedDice ?? [])];
   const ability = unarmedAbility(actor);
-  const mod = sys.abilities?.[ability]?.mod ?? 0;
+  // STD6e (King Q-E7): a stance whose Unarmed Damage adds no ability modifier (Ballistic Knuckle).
+  const mod = st.unarmedNoMod ? 0 : sys.abilities?.[ability]?.mod ?? 0;
   const formula = `${die}${extra.map(d => ` + ${d}`).join("")}${mod ? ` ${mod < 0 ? "-" : "+"} ${Math.abs(mod)}` : ""}`;
   return { die, type, extra, mod, ability, formula, source: fromEffect ? "Effect" : stance && die !== "1" ? stance.name : "" };
 }

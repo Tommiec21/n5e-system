@@ -53,15 +53,18 @@ test("every source level-feature heading is present with the full body and the s
   assert.equal(count, 266);
 });
 
-test("all 408 clan Hijutsu retain their rules and usable rank, cost and component data", () => {
+test("all 410 clan Hijutsu retain their rules and usable rank, cost and component data", () => {
   const jutsu = docs.filter(d => d.type === "jutsu");
-  assert.equal(jutsu.length, 408);
+  // 408 imported, plus 2 split out of Absolute Death Bombing's text (King Q-E5, 2026-11-21).
+  assert.equal(jutsu.length, 410);
   for ( const j of jutsu ) {
     assert.ok(["E", "D", "C", "B", "A", "S"].includes(j.system.rank));
     assert.ok(clans.some(c => c.system.identifier === j.system.hijutsu.clan));
+    if ( j.flags.n5e.splitFrom ) { assert.ok(j.system.description, j.name); continue; }
     const at = j.flags.n5e.sourceLine - 1, body = block(at, 4).lines.join("\n").match(/Description:\s*([\s\S]*)/i)?.[1];
     assert.ok(body, j.name);
-    assert.equal(norm(j.system.description), norm(body.replace(/\[\/?BOX\]/g, "")), j.name);
+    if ( j.flags.n5e.splitInto ) assert.ok(norm(body.replace(/\[\/?BOX\]/g, "")).startsWith(norm(j.system.description)), j.name);
+    else assert.equal(norm(j.system.description), norm(body.replace(/\[\/?BOX\]/g, "")), j.name);
     assert.ok(j.flags.n5e.sourceHeader.keywords, j.name);
     assert.ok(j.system.cost.mode === "special" || j.system.cost.value >= 0);
   }

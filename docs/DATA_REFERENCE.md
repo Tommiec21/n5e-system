@@ -1010,3 +1010,4 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Clan tables: `content/automation/clans/<clan>.json` (`{clan, features: {<identifier>: entry}}`), same entry keys as class tables plus `system` (item fields, e.g. a stance's `unarmedDie`, `unarmedType`).
 - Save `dc.source: "highest"` and attack `discipline: "highest"`: the best casting discipline's DC or attack bonus.
 - Summoner links: `@rankValue` (the summoning jutsu's cast rank, D 1 ... S 5; 0 otherwise).
+- Stance `system.unarmedNoMod` (0.79.1-alpha.1): its [Unarmed Damage] adds no ability modifier.

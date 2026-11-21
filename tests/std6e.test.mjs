@@ -58,3 +58,24 @@ test("Clan stances and pools: Ballistic Knuckle's 2d8 force; Primes, Pressure an
   assert.equal(item("futton", "futton-broiling-rampart").system.resourcePools[0].id, "pressure");
   assert.equal(item("shi-hou", "shi-hou-inner-chi").system.resourcePools[0].max, "1 + @prof");
 });
+
+test("King Q-E5: Clay Centipede and Chain Reaction Blitz are their own Hijutsu, out of Absolute Death Bombing", () => {
+  const items = clanItems("bakuton");
+  const centipede = items.get("bakuton-explosion-release-clay-centipede").doc;
+  const blitz = items.get("bakuton-explosion-release-chain-reaction-blitz").doc;
+  assert.deepEqual([centipede.system.rank, centipede.system.cost.value, blitz.system.rank, blitz.system.cost.value], ["B", 14, "B", 12]);
+  assert.equal(centipede.system.activities[0].summon.uuid, `Compendium.n5e.summons.Actor.${load("summons", "clay-centipede-")._id}`);
+  assert.equal(blitz.system.activities[0].strike.extraDice, "4d10");
+  assert.doesNotMatch(items.get("bakuton-explosion-release-absolute-death-bombing").doc.system.description, /Clay Centipede|Chain Reaction/);
+  const clan = load("clans", "clan-378e90e21cd0c9da");
+  for ( const d of [centipede, blitz] ) assert.ok(clan.flags.n5e.hijutsuUuids.includes(`Compendium.n5e.clans.Item.${d._id}`));
+});
+
+test("King Q-E7: Ballistic Knuckle's Unarmed Damage adds no ability modifier", async () => {
+  const { unarmedSpec } = await import("../module/rules/unarmed.mjs");
+  const stance = item("bakuton", "bakuton-stance-ballistic-knuckle");
+  const actor = { system: { combat: { activeStance: "s1" }, abilities: { str: { mod: 3 }, dex: { mod: 1 } }, modifiers: {}, disciplines: { tai: { ability: "str" } } },
+    items: [{ id: "s1", type: "stance", name: stance.name, system: { ...stance.system, categories: new Set(stance.system.categories) } }] };
+  const spec = unarmedSpec(actor);
+  assert.deepEqual([spec.die, spec.type, spec.mod, spec.formula], ["2d8", "force", 0, "2d8"]);
+});
