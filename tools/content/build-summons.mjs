@@ -8,7 +8,9 @@
  * that workflow/allied.mjs fills when the summon is placed.
  *
  * Sources: the Bunshin stat block (Scout-Nin Training Doc, Superior Clones); the Void Soul stat
- * block and rules (Superior Heart and Void Heart Mask, the imported Scout-Nin features).
+ * block and rules (Superior Heart and Void Heart Mask, the imported Scout-Nin features); the
+ * Duplicity (Beguiling Duplicity) and the Phantasm stat block (Phantasm, Illusionist) from the
+ * imported Genjutsu Specialist features.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -140,8 +142,80 @@ const voidSoul = actor("void-soul", "Void Soul", voidHeart._id, {
   cpMax: 0, diesAtZero: false
 }, voidItems, voidLinks, "icons/svg/mystery-man-black.svg");
 
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, folders: [scout, cloning, voidHeart] };
+/*  Genjutsu Specialist: Duplicity (Beguiler)   */
+/* -------------------------------------------- */
+const genjutsu = folder("Genjutsu Specialist", null, "genjutsu-specialist");
+const beguiler = folder("Beguiler", genjutsu._id, "genjutsu-specialist/beguiler");
+const illusionist = folder("Illusionist", genjutsu._id, "genjutsu-specialist/illusionist");
+const DAMAGE = ["bludgeoning", "piercing", "slashing", "acid", "cold", "earth", "fire", "lightning", "poison", "wind", "chakra", "force", "necrotic", "psychic"];
+const CONDITIONS = ["exhaustion", "envenomed", "burned", "chilled", "corroded", "shocked", "petrified", "bruised", "staggered", "bleed", "dazed", "shaken", "weakened",
+  "concussed", "demoralized", "berserk", "charmed", "confused", "slowed", "sealed", "blinded", "dazzled", "invisible", "deafened"];
+const STATES = ["prone", "grappled", "restrained", "suffocating", "incapacitated", "stunned", "unconscious"];
+const duplicityLinks = {
+  "details.level": "@level",
+  "attributes.ac.flat": "@dc.gen",
+  "traits.speed.walk": "@speed"
+};
+const duplicityBio = html(
+  "<p><em>Beguiling Duplicity (Beguiler, 2nd level).</em> A perfect visual illusion of yourself, summoned as a Bonus Action into an unoccupied space you can see within 15 feet. It lasts 1 minute, or until you dismiss it on your turn (no action) or are incapacitated. Up to 3 at once; you command one at a time. It's intangible, doesn't occupy its space, and is a Genjutsu you cast of the highest rank you can cast.</p>",
+  "<p><strong>Armor Class</strong> your Genjutsu save DC · <strong>Hit Points</strong> 1 (at 0 it's dispelled) · <strong>Speed</strong> your speed (no flying unless you can fly).</p>",
+  "<p><strong>Linked to you when summoned:</strong> its level, AC and speed are set from yours.</p>");
+const duplicityItems = id => [
+  item(id, "Displaced Genjutsu", "npcTraits", html("You can cast Genjutsu as if you were in the Duplicity's space, but you must use your own senses.")),
+  item(id, "Illusory Body", "npcTraits", html("While the Duplicity doesn't occupy space it can be attacked. It has an AC equal to your Genjutsu Save DC and 1 hit point. If its hit points are reduced to 0, it is dispelled. Creatures cannot discern which of you are real unless they take the Identify Genjutsu skill-Action. A creature with Chakra Sight, Chakra Sensing, True Sight or Tremor Sense can always tell which of you are real, becoming immune to Illusory Distraction.")),
+  item(id, "Illusory Distraction", "npcTraits", html("While you and your Duplicity are within 5 feet of the same hostile creature, melee attacks made by that creature always target your Duplicity first.")),
+  item(id, "Moving Illusion", "npcTraits", html("As part of the action used to summon it and as a Bonus Action, you can move your Duplicity up to your movement speed to a space you can see within 120 feet of yourself. It cannot fly unless you have a fly speed."))
+];
+const duplicity = actor("duplicity", "Duplicity", beguiler._id, {
+  details: { build: "character", level: 2, template: "summon", creatureType: "humanoid", blurb: "Beguiler: Beguiling Duplicity", biography: duplicityBio, summonRole: "Duplicity" },
+  abilities: Object.fromEntries(ABILITIES.map(k => [k, { value: 10 }])),
+  attributes: { ac: { calc: "flat", flat: 10, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false } },
+  hpMax: 1, cpMax: 0, diesAtZero: true
+}, duplicityItems, duplicityLinks, "icons/svg/mystery-man.svg");
+
+/* -------------------------------------------- */
+/*  Genjutsu Specialist: Phantasm (Illusionist) */
+/* -------------------------------------------- */
+// Ghastly Strike uses your Genjutsu attack bonus; abilities that need a save use your Genjutsu save
+// DC. Its own abilities are all +0, so each bonus is your number less its own proficiency.
+const phantasmLinks = {
+  "details.level": "@level",
+  "bonuses.attack.gen": "@attack.gen - @prof",
+  "bonuses.saveDC.gen": "@dc.gen - 8 - @prof",
+  "bonuses.save": "0 - floor(@prof / 2)",
+  ...Object.fromEntries(SENSES.map(k => [`traits.senses.${k}`, `@senses.${k}`]))
+};
+const phantasmBio = html(
+  "<p><em>Phantasm (Illusionist, 2nd level).</em> Your illusory ally. It begins Small and looks as you describe, always tinged black (a crow, a snake, a small version of yourself). Summon it as an Action and command it as a Bonus Action on your turn. One at a time (two from Phantasmic Double); summoning another dispels the previous one. More than 120 feet from you, it's dispelled. Abilities it uses that require a saving throw use your Genjutsu Save DC. Spending 1 Actualization Die recharges one of its Recharge abilities.</p>",
+  "<p><strong>Illusion.</strong> <strong>Armor Class</strong> 20 · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p>",
+  "<p><strong>Abilities</strong> STR, DEX, CON, INT, WIS, CHA: no modifier; saves +0. <strong>Damage Immunities</strong> all, except Psychic, Force and Necrotic. <strong>Condition Immunities</strong> all. <strong>Senses</strong> uses its summoner's senses.</p>",
+  "<p><strong>Linked to you when summoned:</strong> its level, Genjutsu attack bonus, Genjutsu save DC and senses are set from yours.</p>");
+const phantasmItems = id => [
+  item(id, "Incorporeal Movement", "npcTraits", html("The phantasm can move through other creatures and objects as if they were difficult terrain. It takes 5 damage if it ends its turn inside an object.")),
+  item(id, "Phantasmic Form", "npcTraits", html("This creature is a Visual illusory construct and cannot be detected with Tremor sense, Blindsight or any auditory senses.")),
+  item(id, "Ghastly Strike", "npcStrikes", html("<em>Melee Weapon Attack:</em> +(Genjutsu Attack Bonus) to hit, reach 5 ft., one creature. <em>Hit:</em> 1d6 + 4 Psychic damage. On a critical Hit, the target gains +1 rank of Demoralized or Shaken."),
+    [act("phantasm", "Ghastly Strike", "attack", { attack: { discipline: "gen", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d6 + 4", type: "psychic" }] } })]),
+  item(id, "Maddening Echo (Recharge 5-6 or Recharge 1 Minute)", "npcAbilities", html("The Phantasm opens its mouth revealing a twisted hole of incomprehensible darkness, fear and misery. All creatures of your choice in a 15 feet cone originating from the Phantasm that isn't Blinded must make a Wisdom saving throw. Once the Phantasm uses this ability, it dispels itself.",
+    "<strong>Success:</strong> Affected creature is able to resist this maddening effect. <strong>Failure:</strong> Affected creature suffers flashbacks to memories they never had taking 3d6 psychic damage and gaining 1 rank of Berserk. <strong>Critical Failure:</strong> Same a failure, but they take 4d6 psychic damage and gain 3 ranks of Berserk."),
+    [act("phantasm", "Maddening Echo", "save", { save: { abilities: ["wis"], dc: { source: "gen" }, onSuccess: "none", resave: false },
+      inflicts: [{ key: "berserk", kind: "condition", ranks: 1, label: "Berserk (3 on a critical failure)" }], text: "Failure: 3d6 psychic and 1 rank of Berserk. Critical failure: 4d6 and 3 ranks. The Phantasm then dispels itself." }),
+     act("phantasm", "Maddening Echo: failure", "damage", { damage: { parts: [{ formula: "3d6", type: "psychic" }] } }),
+     act("phantasm", "Maddening Echo: critical failure", "damage", { damage: { parts: [{ formula: "4d6", type: "psychic" }] } })])
+];
+const phantasm = actor("phantasm", "Phantasm", illusionist._id, {
+  details: { build: "character", level: 2, template: "summon", creatureType: "construct", blurb: "Illusionist: Phantasm", biography: phantasmBio, summonRole: "Phantasm" },
+  abilities: Object.fromEntries(ABILITIES.map(k => [k, { value: 10 }])),
+  attributes: { ac: { calc: "flat", flat: 20, formula: "" }, init: { bonus: "" } },
+  traits: { size: "small", immune: DAMAGE.filter(t => !["psychic", "force", "necrotic"].includes(t)), conditionImmune: CONDITIONS, stateImmune: STATES,
+    speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false } },
+  hpMax: 10, cpMax: 0, diesAtZero: true
+}, phantasmItems, phantasmLinks, "icons/svg/mystery-man-black.svg");
+
+/* -------------------------------------------- */
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -155,5 +229,10 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("scout-nin/void-heart-scout/_folder.json", voidHeart);
   write(`scout-nin/cloning-scout/bunshin-${bunshin._id}.json`, bunshin);
   write(`scout-nin/void-heart-scout/void-soul-${voidSoul._id}.json`, voidSoul);
-  console.log(`✓ summons: 2 NPCs (Bunshin ${bunshin._id}, Void Soul ${voidSoul._id}) in 3 folders`);
+  write("genjutsu-specialist/_folder.json", genjutsu);
+  write("genjutsu-specialist/beguiler/_folder.json", beguiler);
+  write("genjutsu-specialist/illusionist/_folder.json", illusionist);
+  write(`genjutsu-specialist/beguiler/duplicity-${duplicity._id}.json`, duplicity);
+  write(`genjutsu-specialist/illusionist/phantasm-${phantasm._id}.json`, phantasm);
+  console.log(`✓ summons: 4 NPCs (Bunshin ${bunshin._id}, Void Soul ${voidSoul._id}, Duplicity ${duplicity._id}, Phantasm ${phantasm._id}) in 6 folders`);
 }

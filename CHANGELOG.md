@@ -1,3 +1,15 @@
+## 0.78.0-alpha.1 — Genjutsu Specialist automation (the last class)
+
+King 2026-11-21: "Next batch."
+
+- **Genjutsu Specialist** (107 features): see `docs/classes/genjutsu-specialist-automation.md`.
+  - Actualization Dice with their cast dialog options and skill button; Genjutsu use Charisma when it's higher.
+  - Mirages that change a jutsu are cast dialog options on that jutsu (Piece of Mind: Mind Sliver as a Bonus Action; Misty Thoughts: Cajolery of Glamour at no cost on a non-hostile creature). Black Fangs: +1 critical range on Shadow Bite.
+  - Rending Thoughts by level; the Inceptions' buttons and 11th-level reactions; Rewind, Fast Forward, Words of Affirmation and Words of Detriment.
+- **New summons** (Class & Clan Summons, Genjutsu Specialist folder): the Duplicity (Beguiler) and the Phantasm (Illusionist), with summon buttons.
+- **New condition:** Mentally Compromised (Corrupt Thoughts).
+- Engine: rolls know which jutsu they're from (`jutsu:id:<identifier>`); a discipline can use another ability when it's higher (`n5e.keywordAbility.discipline:gen`).
+
 ## 0.77.1-alpha.1 — Lethal Attack as a damage toggle
 
 King 2026-11-21 (Q-D25): "Lethal attack should be a damage toggle in the Attack/Damage window when clicking an attack or Jutsu. Players can determine how it toggles on their own."

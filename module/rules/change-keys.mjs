@@ -15,6 +15,7 @@
  *   n5e.damage.<weapon|unarmed>   +damage on weapon or unarmed attacks
  *   n5e.disciplineAbility.<disc>  sets the discipline's ability (value: ability key)
  *   n5e.keywordAbility.<keyword>  jutsu with this keyword may use this ability when it is higher (STD6d;
+ *                                 "discipline:gen": every jutsu cast as Genjutsu, Actualization;
  *                                 Medical Release: medical = wis)
  *   n5e.saveTier.shift            moves four-tier results by N steps (+/-)
  *   n5e.concentration.max         +max concentration jutsu

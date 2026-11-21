@@ -33,13 +33,47 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eHJRPRcEnKH2Ip",
+        "type": "save",
+        "label": "Neurotoxic Feedback",
+        "save": {
+          "abilities": [
+            "con",
+            "wis"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction: a creature in your Phantom Cloud takes chakra damage, has a jutsu's cost raised by a hostile effect, or makes a Chakra Control check. Failure: the damage, and one effect until the end of your next turn: Blinded, half speed, or −2 to Constitution saves.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(6:4d6,10:5d6,14:6d6,18:7d6)",
+              "type": "psychic"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

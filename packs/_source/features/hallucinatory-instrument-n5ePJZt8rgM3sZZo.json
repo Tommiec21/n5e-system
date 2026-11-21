@@ -45,7 +45,22 @@
           "seconds": 60
         },
         "activation": "bonus",
-        "text": "Auditory Genjutsu without an attack: Self 20-ft cone or 10-ft radius. 10 minutes before retuning."
+        "text": "Bonus action, for 1 minute: auditory Genjutsu without an attack roll can be Self (20-foot cone) or Self (10-foot radius sphere), affecting creatures of your choice that aren't deafened. 10 minutes before retuning."
+      },
+      {
+        "id": "n5evtoscvduspcBB",
+        "type": "roll",
+        "label": "Force a remade save",
+        "roll": {
+          "formula": "",
+          "note": "11th level, Reaction: a hostile creature succeeds on a remade save. It remakes it with no bonuses and takes the new result."
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "minLevel": 11
       }
     ],
     "prerequisites": []
@@ -58,7 +73,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th: Words of Affirmation or Words of Detriment (level-up choice)."
+        }
+      ]
     }
   },
   "_stats": {

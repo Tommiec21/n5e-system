@@ -1,0 +1,2195 @@
+{
+  "class": "genjutsu-specialist",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "accelerate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUE6yFDkW7kClj",
+          "type": "effect",
+          "label": "Accelerate",
+          "effect": {
+            "name": "Accelerate",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action: up to 3 willing creatures within 20 feet. For 1 minute they can Dash as a bonus action; one making a Dexterity save can spend its reaction to end it and save with advantage. Once every 10 minutes per creature.",
+          "activation": "action"
+        }
+      ]
+    },
+    "actualization": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCRhLhI7C1Aheq",
+          "type": "roll",
+          "label": "Actualization Die: skill check",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Add it to a Deception, Insight, Perception or Persuasion check."
+          },
+          "text": "Add the die to a Deception, Insight, Perception or Persuasion check."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Actualization: +rank d6 damage (1 die)",
+          "appliesTo": {
+            "discipline": "gen",
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "damage": {
+            "formula": "(@rankValue)d6"
+          }
+        },
+        {
+          "label": "Actualization: −1 to targets' save per die",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "choose": true
+          },
+          "note": "Targets' saving throws −@amount."
+        }
+      ],
+      "effects": [
+        {
+          "name": "Actualization: Genjutsu with Charisma",
+          "changes": [
+            {
+              "key": "n5e.keywordAbility.discipline:gen",
+              "value": "cha",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Genjutsu you cast may use Charisma in place of Wisdom (its effect: Charisma when it's higher). Illusion checks may use Charisma too: pick it when you roll. Actualization Dice: 1 + proficiency bonus per Long Rest (the pool). The cast dialog's options spend them: +rank d6 damage, or −1 to the targets' save per die (subtract it from each save). Mastery in Illusions at 1st, 7th and 13th comes from leveling up."
+        }
+      ]
+    },
+    "agnostic-mind": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You understand and can communicate in any language or dialect, if the creature speaks a language."
+        }
+      ]
+    },
+    "alteration-of-reality": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3A57gFJyIhC29",
+          "type": "effect",
+          "label": "Enter Reality Shift",
+          "effect": {
+            "name": "Reality Shift",
+            "target": "self",
+            "amp": "reality-shift"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "text": "Bonus action, 1 Actualization Die: the Reality Shift Amp for 1 minute (+1 Genjutsu save DC). 10 minutes before reuse."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reality Shift: your Genjutsu save DC can be your AC, and your Genjutsu's saves can become Intelligence (at the table). It ends when you choose (no action) or are incapacitated."
+        }
+      ]
+    },
+    "armor-of-psychosis": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your AC uses your Genjutsu ability modifier in place of Dexterity (set your AC on the sheet)."
+        }
+      ]
+    },
+    "battle-ready-minds": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Battle Ready Minds: up to 4 willing creatures within 60 ft",
+          "appliesTo": {
+            "namePrefix": "Bless"
+          },
+          "note": "Bless targets up to 4 willing creatures up to 60 feet away."
+        }
+      ]
+    },
+    "beast-speech": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can cast Animal Companion as a Bonus Action at no cost."
+        }
+      ]
+    },
+    "beguiling-duplicity": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewBGeUnHnxLvLX",
+          "type": "summon",
+          "label": "Duplicity",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5egB7sv9510izFp",
+            "count": 1,
+            "template": ""
+          },
+          "activation": "bonus"
+        }
+      ],
+      "duration": {
+        "value": 1,
+        "unit": "minute",
+        "concentration": false
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: a Duplicity in an unoccupied space within 15 feet (the Class & Clan Summons NPC; its AC is your Genjutsu save DC). 1 minute, or until you dismiss it on your turn or are incapacitated. Up to 3, one commanded at a time. Displaced Genjutsu, Illusory Body, Illusory Distraction and Moving Illusion are on its sheet."
+        }
+      ]
+    },
+    "beguiling-force-beguiler": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures under a Genjutsu you cast or concentrate on take a 1d4 penalty to their attack rolls (subtract it in their dialog)."
+        }
+      ]
+    },
+    "beguiling-influence": {
+      "status": "automated",
+      "rules": []
+    },
+    "beguiling-presence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJHSqThPRLG8mh",
+          "type": "effect",
+          "label": "Beguiling Presence: Invisible",
+          "effect": {
+            "name": "Beguiling Presence",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Creatures that failed a save against your Genjutsu can't see you until the end of your next turn (you're Invisible to them only)."
+        }
+      ]
+    },
+    "beneath-the-boot": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Beneath the Boot: 2 more targets",
+          "appliesTo": {
+            "namePrefix": "Psionics: Crush"
+          },
+          "note": "Psionics: Crush! targets up to 2 more creatures."
+        }
+      ]
+    },
+    "berserk-thoughts": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Berserk Thoughts: 15-ft radius",
+          "appliesTo": {
+            "namePrefix": "Shadow Monsters"
+          },
+          "note": "Shadow Monsters affects every creature in a 15-foot radius on a point you can see in range."
+        }
+      ]
+    },
+    "betray-your-friend-beguiler": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emUBmDAFqgnhS2",
+          "type": "save",
+          "label": "Betray your Friend",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Your Duplicity wears a hostile creature's appearance. Targeted by an attack or jutsu within 5 feet of that creature: the attacker or caster saves; on a failure it targets its ally instead."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "With 2 or more hostile creatures in initiative, they no longer treat allies who share the Duplicity's appearance as allies until it's dismissed."
+        }
+      ]
+    },
+    "betray-yourself-beguiler": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyHvoCSpaOzAi1",
+          "type": "save",
+          "label": "Betray Yourself",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "identity-crisis",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Identity Crisis"
+            }
+          ],
+          "text": "3 Actualization Dice: a creature under your Genjutsu whose appearance your Duplicity matches (Betray Your Friend). Failure: an Identity Crisis for 1 minute; it remakes the save at the end of each of its turns.",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "bewitching-whispers": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Bewitching Whispers: you become the infatuation",
+          "appliesTo": {
+            "namePrefix": "Corruption: Charming Dissonance"
+          },
+          "note": "A Charmed hostile target: you can become the source of its infatuation, and its disposition toward you improves by 1 rank."
+        }
+      ]
+    },
+    "black-fangs": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "critRange",
+          "selector": "attack",
+          "predicate": "jutsu:id:shadow-bite",
+          "value": 1,
+          "label": "Black Fangs"
+        },
+        {
+          "key": "note",
+          "text": "Shadow Bite: +1 critical range (automatic). On a critical hit, the creature makes its save at disadvantage (roll it that way)."
+        }
+      ]
+    },
+    "blade-song": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Blade Song: concentration",
+          "appliesTo": {
+            "namePrefix": "Psionics: Weapons of Darkness"
+          },
+          "note": "Damage can't break your concentration on Weapons of Darkness, and it needs no chakra to concentrate on."
+        }
+      ]
+    },
+    "blinding-lights": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Blinding Lights: 10-ft cube within 60 ft",
+          "appliesTo": {
+            "namePrefix": "Psionics: Color Spray"
+          },
+          "note": "Color Spray affects a 10-foot cube on a point within 60 feet (+5 feet a rank above D-Rank); otherwise it upcasts as normal."
+        }
+      ]
+    },
+    "book-of-stolen-secrets": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5et9hXrLK9f6gD1",
+          "type": "save",
+          "label": "Book of Stolen Secrets",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "In conversation, with a scroll or book in hand, ask one question. An unwilling creature saves; on a failure (or a truthful answer), the most accurate answer it could give appears in the book. Once per creature per hour."
+        }
+      ]
+    },
+    "broken-reality-layered-reality": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Broken Reality: Wisdom save",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "note": "The saving throw is Wisdom.",
+          "requiresState": "realityShift"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In your Reality Shift, all your Genjutsu's saves can become Wisdom (the cast dialog option)."
+        }
+      ]
+    },
+    "chained-mind": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Chained Mind: target within 10 ft",
+          "appliesTo": {
+            "namePrefix": "Frenzy: Mind Burst"
+          },
+          "note": "Your attack has advantage (target within 10 feet). If it fails its save, you're Invisible to the Berserked creature."
+        }
+      ]
+    },
+    "chakra-disruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekP076gUtMYG37",
+          "type": "effect",
+          "label": "Chakra Disruption",
+          "effect": {
+            "name": "Chakra Disruption (+cost)",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.cost.all",
+                "value": "lvl(1:2,5:4,9:6,13:8,17:10)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn: creatures that must save against your Genjutsu, or that your Genjutsu attack hits. Their next jutsu costs more (+2, +4 at 5th, +6 at 9th, +8 at 13th, +10 at 17th) until the end of their next turn."
+        },
+        {
+          "id": "n5eKSComD4f0du8t",
+          "type": "roll",
+          "label": "Disrupt their concentration",
+          "roll": {
+            "formula": "",
+            "note": "9th level: a creature fails its save against your Genjutsu. It makes a Concentration check for the jutsu it concentrates on; if it already had to, it makes that check at disadvantage."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "minLevel": 9
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Remove the cost increase after its next jutsu (one jutsu only)."
+        }
+      ]
+    },
+    "chakra-stance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a Chakra Stance when you level up (Fighting Stances compendium)."
+        }
+      ]
+    },
+    "cloak-of-chains": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efrYlhbGNsvjCC",
+          "type": "effect",
+          "label": "Cloak of Chains",
+          "effect": {
+            "name": "Cloak of Chains",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "text": "Bonus action, 1 Actualization Die: a 5-foot aura for 1 minute (not through cover, walls or barriers). A rank of Mastery with Intimidation against non-hostile creatures in it."
+        },
+        {
+          "id": "n5e0gYByCwl9HAc7",
+          "type": "damage",
+          "label": "Cloak of Chains: 4 psychic",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "A hostile creature starting its turn in the aura."
+        }
+      ]
+    },
+    "collapsing-your-world": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGA0GiPq5PlnXf",
+          "type": "effect",
+          "label": "Mentally Compromised (1 minute)",
+          "effect": {
+            "name": "Mentally Compromised",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "condition": "mentally-compromised"
+          },
+          "text": "A creature that failed a save against your Genjutsu."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damage from a Genjutsu you cast or concentrate on: treat one of its damage dice as its highest value (set it on the damage card). Or, when a creature fails a save against your Genjutsu, it becomes Mentally Compromised for 1 minute (the button)."
+        }
+      ]
+    },
+    "concealed-unease-layered-reality": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A remade save to end a Genjutsu you concentrate on can't have advantage."
+        }
+      ]
+    },
+    "corrupt-influence-corrupt-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1EM8BkZ448NHi",
+          "type": "effect",
+          "label": "Corrupt Influence: Mentally Compromised",
+          "effect": {
+            "name": "Mentally Compromised",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "condition": "mentally-compromised"
+          },
+          "text": "A creature you touch.",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mentally Compromised creatures can't spend their Actions to end hostile effects (such as Burned, Corroded or Bruised)."
+        }
+      ]
+    },
+    "decelerate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGomh6ZV4bjf6g",
+          "type": "save",
+          "label": "Decelerate",
+          "activation": "action",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "Action: 1 creature within 60 feet. Failure: 1 rank of Slow; it spends its Reaction to remake the save, ending it on a success. Once per creature every 10 minutes."
+        }
+      ]
+    },
+    "demon-sight": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Darkvision 120 feet, also through chakra-based darkness (its effect)."
+        }
+      ]
+    },
+    "denial-is-a-river-corrupt-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eetZE5wpwhdqqA",
+          "type": "save",
+          "label": "Denial is a River (Touch)",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Rending Thoughts at Touch, outside combat. Success: it believes your next reasonably believable statement for 1 hour. Failure: it believes your next statement until challenged or 24 hours (challenged: it remakes the save, once per hour). Critical failure: permanently until challenged once by a new creature. Entering combat ends it.",
+          "activation": "action",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "devilish-recovery": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Devilish Recovery: hit points, not temporary (2 dice)",
+          "appliesTo": {
+            "namePrefix": "Mind-Body Recovery"
+          },
+          "note": "The temporary hit points become hit points regained. Once per creature per hour.",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "disruptive-psyche-corrupt-thoughts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mentally Compromised creatures suffer its enhanced effects (the 15-foot aura of madness on its condition card)."
+        }
+      ]
+    },
+    "distracting-phantasm-illusionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7neq9ujYjDHoS",
+          "type": "save",
+          "label": "Distracting Phantasm",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction: a creature within 30 feet of your Phantasm attacks. Failure: it must target the Phantasm.",
+          "activation": "reaction"
+        }
+      ]
+    },
+    "doubled-weapon": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A second Illusory Weapon (neither two-handed); summon both at once. Dual wielding them: their damage die is 1 step smaller, and your Attack action with them makes one more attack."
+        }
+      ]
+    },
+    "dreamscape": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "9th level. Action: a creature you've met within 100 miles (as casting a Genjutsu). You enter a trance as a messenger: aware but unable to act or move. If it's asleep, you appear in its dream, can converse and shape it; you can leave at any time. It recalls the dream on waking."
+        }
+      ]
+    },
+    "dulled-mind": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Dulled Mind: 20-ft cube",
+          "appliesTo": {
+            "namePrefix": "Slow"
+          },
+          "note": "Slow affects creatures of your choice in a 20-foot cube on a point in range."
+        }
+      ]
+    },
+    "evil-thoughts": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Evil Thoughts: crit on 10 over AC",
+          "appliesTo": {
+            "namePrefix": "Psionics: Mind Crunch"
+          },
+          "note": "An attack 10 or more over the target's AC is a critical hit (tick Critical on its damage)."
+        }
+      ]
+    },
+    "false-security": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Genjutsu of D-Rank or lower (C-Rank at 6th, B-Rank at 14th) can't be identified except by special senses such as Chakra Sight or Chakra Sensing; in your Reality Shift, not even by those."
+        }
+      ]
+    },
+    "fast-forward": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4uyYmMihY0QxC",
+          "type": "roll",
+          "label": "Fast Forward",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: an ally other than you gains an extra reaction. Not again for that creature until it finishes any rest."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "fighting-mirage": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a Fighting Style (Chapter 13); you can't take one more than once."
+        }
+      ]
+    },
+    "gaze-of-two-minds": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: touch a willing humanoid and perceive through its senses for 1 hour, within 1 mile; it ends if either of you takes damage. You use its special senses, and you're blinded and deafened to your own surroundings."
+        }
+      ]
+    },
+    "genjutsu-inception": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose your Genjutsu Inception when you level up (Hallucinatory Instrument, Illusory Weapon, Reality Marble or Temporal Stopwatch)."
+        }
+      ]
+    },
+    "genjutsu-pledge": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose your Genjutsu Pledge (subclass) when you level up: features at 2nd, 6th, 10th, 14th and 18th."
+        }
+      ]
+    },
+    "ghastly-mist": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Ghastly Mist: 40-ft radius",
+          "appliesTo": {
+            "namePrefix": "Fog of War"
+          },
+          "note": "Fog of War's radius is 40 feet."
+        }
+      ]
+    },
+    "grasp-of-courage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egNePyuoF15ewR",
+          "type": "roll",
+          "label": "Grasp of Courage",
+          "roll": {
+            "formula": "",
+            "note": "Once on each of your turns, a Genjutsu attack hits: the target moves up to 10 feet straight toward you."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "hallucinatory-instrument": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eahcEAEJGgOte2",
+          "type": "effect",
+          "label": "Tune the Instrument",
+          "effect": {
+            "name": "Hallucinatory Instrument (tuned)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "text": "Bonus action, for 1 minute: auditory Genjutsu without an attack roll can be Self (20-foot cone) or Self (10-foot radius sphere), affecting creatures of your choice that aren't deafened. 10 minutes before retuning."
+        },
+        {
+          "id": "n5evtoscvduspcBB",
+          "type": "roll",
+          "label": "Force a remade save",
+          "roll": {
+            "formula": "",
+            "note": "11th level, Reaction: a hostile creature succeeds on a remade save. It remakes it with no bonuses and takes the new result."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "minLevel": 11
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th: Words of Affirmation or Words of Detriment (level-up choice)."
+        }
+      ]
+    },
+    "haunting-melody": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Haunting Melody: Shaken on a failure (instrument's area)",
+          "appliesTo": {
+            "discipline": "gen",
+            "keywords": [
+              "auditory"
+            ],
+            "requiresDamage": true
+          },
+          "note": "Creatures that fail their save gain 1 rank of Shaken."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hallucinatory Instrument's area: auditory Genjutsu that deal damage give 1 rank of Shaken to creatures that fail (the cast dialog option)."
+        }
+      ]
+    },
+    "illusionary-awareness": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Passive Genjutsu detection: 10 + your Illusions skill. A creature under a Genjutsu with a lower DC: you learn of it and its rank (once per turn in initiative). You're always aware of Genjutsu with the Unaware keyword affecting you."
+        }
+      ]
+    },
+    "illusionary-brawler": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Illusionary Brawler: on yourself",
+          "appliesTo": {
+            "namePrefix": "Psionics: Strike"
+          },
+          "note": "Targeting yourself: no chakra to concentrate. While it lasts, your unarmed attacks can be melee Genjutsu attacks."
+        }
+      ]
+    },
+    "illusionary-fury-illusionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ellJn8OlJC99Es",
+          "type": "roll",
+          "label": "Illusionary Fury: +1 rank",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Genjutsu that inflicts a Mental Condition: +1 to the ranks it inflicts."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "illusionary-vigor": {
+      "status": "automated",
+      "rules": []
+    },
+    "illusory-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehmfonlQsoHVti",
+          "type": "attack",
+          "label": "Illusory Weapon (melee)",
+          "attack": {
+            "discipline": "gen",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8 + @disciplines.gen.mod",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Bonus action: summon it in your empty hand. Psychic damage, your Genjutsu attack bonus; always proficient."
+        },
+        {
+          "id": "n5ega5PnKbtpJKh8",
+          "type": "attack",
+          "label": "Illusory Weapon (ranged, 30 ft)",
+          "attack": {
+            "discipline": "gen",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6 + @disciplines.gen.mod",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Range 30 feet."
+        },
+        {
+          "id": "n5eBiQm4tHyGCxlK",
+          "type": "roll",
+          "label": "Strike back at a save",
+          "roll": {
+            "formula": "",
+            "note": "11th level, Reaction: a creature succeeds on a save against a jutsu you or an ally cast. Take the Attack action; if you hit at least once, it remakes the save and takes the new result."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "minLevel": 11
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dismissed at no action or when you're incapacitated. Counts as a weapon for class features, and as the W component of D-Rank Bukijutsu (C-Rank at 7th, B-Rank at 15th). At 7th, the Attack action with it attacks twice (Attack action count at the table)."
+        }
+      ]
+    },
+    "keen-awareness": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "skill:his",
+          "label": "Keen Awareness"
+        },
+        {
+          "key": "note",
+          "text": "Advantage on History checks (automatic). Creating or learning Genjutsu takes half the downtime."
+        }
+      ]
+    },
+    "layered-influence-layered-reality": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edBjmDMvo8mHip",
+          "type": "roll",
+          "label": "Layered Influence",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature under at least 1 of your Genjutsu takes an action you can see. End the Genjutsu you concentrate on to interrupt its action (an Elite Action: it loses only that)."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "maddening-pain": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Maddening Pain: allies trigger it",
+          "appliesTo": {
+            "namePrefix": "Doubled Pain"
+          },
+          "note": "Its bonus damage triggers from your allies' attacks too, once per turn per creature."
+        }
+      ]
+    },
+    "magnum-opus": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Magnum Opus: choose who it affects",
+          "appliesTo": {
+            "namePrefix": "Bringer of Darkness"
+          },
+          "note": "You choose which creatures are affected."
+        }
+      ]
+    },
+    "malleable-mirages": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Mirages at 2nd; one more at 4th, 8th, 12th, 16th and 20th (level-up choices). When you gain one, you can swap a known Mirage for another."
+        }
+      ]
+    },
+    "master-of-illusion": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One choice at 9th (Higher Understanding: creatures must beat your save DC by 8 to critically succeed; or Genjutsu Flow: +30 feet range, Touch and 5-foot Genjutsu reach 30 feet) and one at 15th (New Reality: saves against your Genjutsu can't have advantage; or Greater Mastery: a save 4 or more under your DC is a critical failure). Apply the degrees at the table."
+        }
+      ]
+    },
+    "master-of-reality-layered-reality": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ey8QEfO182mb8z",
+          "type": "roll",
+          "label": "Master of Reality: swap Genjutsu",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, in your Reality Shift: a creature failed the first save of a C-Rank or lower Genjutsu you concentrate on. Swap in another C-Rank or lower concentration Genjutsu you know: no save; its failure effects apply for the remaining duration, replacing any mental conditions with its own."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "mental-refocus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSQ5Wgi5cvhl26",
+          "type": "roll",
+          "label": "Regain 1 Actualization Die",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per round, on succeeding a save against a hostile creature."
+          },
+          "text": "Once per round (before your turn starts): you succeed on a save against a hostile creature."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "On a Short Rest you regain 2 Actualization Dice (3 at 11th, 4 at 17th): automatic."
+        }
+      ]
+    },
+    "miasmic-brand-misty-distortionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efVvbu3tyKDJW1",
+          "type": "damage",
+          "label": "Miasmic Brand: 2d6 poison",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          },
+          "text": "An ally branded by starting or entering your Phantom Cloud on its turn: its [Weapon Damage] and [Unarmed Damage] deal 2d6 more poison, up to twice per turn, until the end of its turn. Against a creature with Psychosis, it also suffers Neurotoxic Feedback."
+        }
+      ]
+    },
+    "mind-leech-corrupt-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9im4noWgAIJOo",
+          "type": "roll",
+          "label": "Rending Thoughts as a Bonus action",
+          "roll": {
+            "formula": "",
+            "note": "Use Rending Thoughts as a Bonus action (not also as an Action that turn)."
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eUSavnZIo6qiI4",
+          "type": "effect",
+          "label": "Mind Leech: target's saves",
+          "effect": {
+            "name": "Mind Leech",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.save.str",
+                "value": "lvl(6:-1,14:-2,18:-3)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.dex",
+                "value": "lvl(6:-1,14:-2,18:-3)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.con",
+                "value": "lvl(6:-1,14:-2,18:-3)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "1 Actualization Die with Rending Thoughts, on a failure or critical failure: −1 to its Strength, Dexterity and Constitution saves until the end of your next turn (−2 at 14th, −3 at 18th).",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eVojSa69ayN1DR",
+          "type": "effect",
+          "label": "Mind Leech: your saves (critical failure)",
+          "effect": {
+            "name": "Mind Leech (yours)",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.save.str",
+                "value": "lvl(6:1,14:2,18:3)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.dex",
+                "value": "lvl(6:1,14:2,18:3)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.con",
+                "value": "lvl(6:1,14:2,18:3)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "On its critical failure: you gain the same bonus to your Strength, Dexterity and Constitution saves."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Corrupt Thoughts' Mentally Compromised is in the Conditions compendium (Genjutsu Specialist)."
+        }
+      ]
+    },
+    "mind-over-matter": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Mind Over Matter (with Actualization)",
+          "appliesTo": {
+            "discipline": "gen",
+            "requiresDamage": true
+          },
+          "damage": {
+            "formula": "@disciplines.gen.mod",
+            "type": "psychic"
+          },
+          "note": "Only when you use an Actualization effect on this Genjutsu."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "With an Actualization effect on a Genjutsu that doesn't already add your Genjutsu modifier to its damage: + your Genjutsu modifier psychic damage (the cast dialog option)."
+        }
+      ]
+    },
+    "misty-thoughts": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Misty Thoughts: a non-hostile target (no chakra)",
+          "appliesTo": {
+            "namePrefix": "Cajolery of Glamour"
+          },
+          "note": "No Hand Sign component; on a non-hostile creature it costs no chakra (not on a hostile one).",
+          "costDelta": "zero"
+        }
+      ]
+    },
+    "misty-visions": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Misty Visions: only physical inspection",
+          "appliesTo": {
+            "namePrefix": "Innocuous Aspect"
+          },
+          "note": "It can only be dispelled by physical inspection."
+        }
+      ]
+    },
+    "muddled-movements": {
+      "status": "automated",
+      "activities": [
+        {
+          "id": "n5eHiLaDRtmZSd9D",
+          "type": "effect",
+          "label": "Muddled Movements",
+          "effect": {
+            "name": "Muddled Movements",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "-10",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "A Genjutsu attack hits: the target's speed is 10 feet lower until the end of your next turn."
+        }
+      ]
+    },
+    "myriad-forms": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Myriad Forms: an object",
+          "appliesTo": {
+            "namePrefix": "Transform"
+          },
+          "note": "Small, medium or large objects. Large: your weight and space don't change (you only look larger); an Investigation or Illusions check against your Genjutsu save DC reveals it. Small: you fit smaller spaces but can't move from where you transformed (a willing carrier can move you)."
+        }
+      ]
+    },
+    "neurotoxic-feedback-misty-distortionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHJRPRcEnKH2Ip",
+          "type": "save",
+          "label": "Neurotoxic Feedback",
+          "save": {
+            "abilities": [
+              "con",
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction: a creature in your Phantom Cloud takes chakra damage, has a jutsu's cost raised by a hostile effect, or makes a Chakra Control check. Failure: the damage, and one effect until the end of your next turn: Blinded, half speed, or −2 to Constitution saves.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(6:4d6,10:5d6,14:6d6,18:7d6)",
+                "type": "psychic"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "nightmare-incarnate-corrupt-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDuaNbN0ROTt3e",
+          "type": "effect",
+          "label": "Nightmare Incarnate",
+          "effect": {
+            "name": "Nightmare Incarnate",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0,
+            "rules": [
+              {
+                "key": "modifier",
+                "selector": "attack",
+                "direction": "against",
+                "value": 1,
+                "uses": 1,
+                "label": "Nightmare Incarnate"
+              },
+              {
+                "key": "critRange",
+                "selector": "attack",
+                "direction": "against",
+                "value": 1,
+                "uses": 1,
+                "label": "Nightmare Incarnate"
+              }
+            ]
+          },
+          "text": "Psychic damage from your Genjutsu: the next attack against it before the start of your next turn has +1 to hit and +1 critical range."
+        }
+      ]
+    },
+    "one-with-shadows": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eH4rajDQ3ysnO8",
+          "type": "roll",
+          "label": "One with Shadows",
+          "roll": {
+            "formula": "",
+            "note": "Action, in dim light or darkness: you become Invisible (turn on the status) and make no sound moving. It ends if you move more than half your speed in a round, attack or cast a jutsu."
+          },
+          "activation": "action"
+        }
+      ]
+    },
+    "phantasm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOz1P80ANcb01a",
+          "type": "summon",
+          "label": "Phantasm",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5e31g28SpVe9r9s",
+            "count": 1,
+            "template": ""
+          },
+          "activation": "action"
+        },
+        {
+          "id": "n5e7zeb3STXmoWbN",
+          "type": "roll",
+          "label": "Recharge a Phantasm ability",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "One of its Recharge abilities is ready again."
+          },
+          "text": "1 Actualization Die: one of its Recharge abilities is ready again."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: summon your Phantasm (the Class & Clan Summons NPC: AC 20, 10 HP; its attacks use your Genjutsu attack bonus and its saves your Genjutsu save DC). Command it as a Bonus action. One at a time (two from Phantasmic Double); it's dispelled more than 120 feet from you. Small, always tinged black."
+        }
+      ]
+    },
+    "phantasmic-bomb-illusionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeJxcTDdldXBVG",
+          "type": "save",
+          "label": "Thought Bomb",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Your Phantasm (Recharge 9-10 or 1 minute): creatures of your choice within 15 feet of a point it occupies, with the effects of the infused Genjutsu (C-Rank or lower, inflicting a Mental Condition; choose it after any rest)."
+        }
+      ]
+    },
+    "phantasmic-double-illusionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRXvQF91uArmwt",
+          "type": "summon",
+          "label": "Second Phantasm",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5e31g28SpVe9r9s",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A second Phantasm: summon both with the same action, and command both with one Bonus action."
+        }
+      ]
+    },
+    "phantasmic-evolution-illusionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elQc9ekoIpRLHB",
+          "type": "roll",
+          "label": "Swap with your Phantasm",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, taking damage: you and your Phantasm swap places (within 20 feet of each other)."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Phantasm can be Small or Medium and gains a fly speed equal to its speed. Once per turn it can cast one of your Genjutsu of D-Rank or lower (C-Rank at 10th, B-Rank at 14th) with your statistics at one creature only; you pay the chakra."
+        }
+      ]
+    },
+    "phantasmic-influence-illusionist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Phantasms act during your turn without a Bonus action command and can be up to 1 mile away; when one is dispelled, you gain what it saw and heard."
+        }
+      ]
+    },
+    "phantom-bloom-misty-distortionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e10jD61KOoVt62",
+          "type": "effect",
+          "label": "Phantom Bloom: −2 AC",
+          "effect": {
+            "name": "Phantom Bloom",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-2",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 12
+          },
+          "text": "Hostile creatures starting their turn in or first entering your Phantom Cloud: −2 AC until they end a turn outside it."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Phantom Clouds grow 5 feet in every direction at the start of each of your turns, up to a 40-foot cube."
+        }
+      ]
+    },
+    "phantom-vapors": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ5GpLeGbm8v4h",
+          "type": "roll",
+          "label": "Throw a Phantom Vapor vial",
+          "cost": {
+            "pool": "phantomVapors",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "A thin cloud at a point within 30 ft (see the text)."
+          },
+          "activation": "bonus",
+          "text": "Bonus action: a 10-foot cube within 30 feet for 1 minute (one cloud at a time). Your Genjutsu targeting a creature inside gain the Inhaled keyword. 10th: 1 more charge for a 20-foot cube; 18th: 2 more charges to heavily obscure it and block Chakra Sight and Chakra Sensing."
+        },
+        {
+          "id": "n5e4c9QiazJat4bP",
+          "type": "roll",
+          "label": "Recharge with 1 Actualization Die",
+          "cost": {
+            "pool": "phantomVapors",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Spend 1 Actualization Die (or 10 minutes) to regain a charge."
+          },
+          "text": "Spend 1 Actualization Die (or 10 minutes of work) to regain a charge."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Alchemist Kit proficiency (or a rank of Mastery if already proficient). After any rest, turn a Poison or Alchemist kit into your Phantom Vapors Kit: 1 + proficiency bonus charges (the pool, refilled on any rest)."
+        }
+      ]
+    },
+    "piece-of-mind": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Piece of Mind: as a Bonus Action (d8 damage)",
+          "appliesTo": {
+            "namePrefix": "Mind Sliver"
+          },
+          "note": "Cast as a Bonus Action; its damage die becomes a d8 (change it on the damage roll).",
+          "castAs": "bonus"
+        }
+      ]
+    },
+    "prolonged-songs": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Prolonged Songs: Self (40-ft cone)",
+          "appliesTo": {
+            "namePrefix": "Heavenly Worded Song"
+          },
+          "note": "Its range can be Self (40-foot cone)."
+        }
+      ]
+    },
+    "psyche-drinker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edHWiOUvyBLStK",
+          "type": "roll",
+          "label": "Psyche Drinker",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Gain the damage dealt as temporary HP until the end of your next turn (once per turn)."
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, dealing damage with a Genjutsu: gain the damage dealt as temporary hit points until the end of your next turn (add them on the sheet)."
+        }
+      ]
+    },
+    "question-everything-beguiler": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Genjutsu of D-Rank or lower (C-Rank at 10th, B-Rank at 14th) gain the Unaware keyword."
+        }
+      ]
+    },
+    "reality-marble": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKtgvm8W3jaOQx",
+          "type": "effect",
+          "label": "Awaken the Reality Marble",
+          "effect": {
+            "name": "Reality Marble (awakened)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "text": "Bonus action, for 1 minute: each Genjutsu you cast stores a Reality Mote. Spend one when casting to mark the target as a reality relay: Genjutsu targeting it can pick up to 2 more creatures within 30 feet of it, which save as if the target; the mark then ends; failing creatures share the worst result. Once per creature every 10 minutes; 10 minutes before reawakening."
+        },
+        {
+          "id": "n5eDgDK2sNb6ebx1",
+          "type": "roll",
+          "label": "Force a relay's remade save",
+          "roll": {
+            "formula": "",
+            "note": "11th level: a creature marked as your relay passes a save. It remakes it and takes the new result."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "minLevel": 11
+        }
+      ],
+      "effects": [
+        {
+          "name": "Reality Marble: concentration",
+          "levels": {
+            "min": 7
+          },
+          "changes": [
+            {
+              "key": "n5e.upkeep.gen",
+              "value": "-2",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th, Genjutsu you concentrate on cost 2 less to concentrate (minimum 1)."
+        }
+      ]
+    },
+    "relentless-pain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en5j1F5dVhoAJH",
+          "type": "roll",
+          "label": "Relentless Pain",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Deal psychic damage equal to the damage you took."
+          },
+          "activation": "reaction",
+          "text": "Reaction, taking damage within 60 feet of your Doubled Pain target, which can see you: deal it psychic damage equal to the damage you took."
+        }
+      ]
+    },
+    "rending-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJBqB9t5r40eeA",
+          "type": "save",
+          "label": "Rending Thoughts",
+          "activation": "action",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action: a creature you can see within 60 feet (a Genjutsu of your highest rank; Auditory or Visual, and Tactile). Success: the success damage. Failure: the failure damage and a penalty to its next attack roll before your next turn. Critical failure: the critical damage."
+        },
+        {
+          "id": "n5epmjPOw2x400VM",
+          "type": "damage",
+          "label": "Rending Thoughts: success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d6,6:2d6,10:3d6,14:4d6)",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ewdPhbb0I8tNuD",
+          "type": "damage",
+          "label": "Rending Thoughts: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:2d6,6:3d6,10:4d6,14:5d6)",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Also a 1d4 penalty to its next attack roll before your next turn."
+        },
+        {
+          "id": "n5eeTUpo0n35ZvjY",
+          "type": "damage",
+          "label": "Rending Thoughts: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:3d6,6:4d6,10:5d6,14:6d6)",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eNIJ9nlWQrzV2e",
+          "type": "roll",
+          "label": "Rending Thoughts: attack penalty",
+          "roll": {
+            "formula": "lvl(1:1d4,6:1d6,10:1d8,14:1d10)",
+            "note": "On a failure: subtract this from its next attack roll before the beginning of your next turn."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damage +1d6 at 6th, 10th and 14th; the penalty die grows a step at each (1d6, 1d8, 1d10)."
+        }
+      ]
+    },
+    "repelling-illusions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEJVIOttNtO3Su",
+          "type": "roll",
+          "label": "Repelling Illusions",
+          "roll": {
+            "formula": "",
+            "note": "A Genjutsu attack hits: push the target up to 10 feet away from you in a straight line."
+          }
+        }
+      ]
+    },
+    "rewind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eu0fEzLLfTIeUC",
+          "type": "roll",
+          "label": "Rewind",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction: you'd fail a Strength or Dexterity save or be hit by an attack. Remake the save, or the attacker rerolls, taking the second result."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "shroud-of-shadows": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When you cast the Darkness ninjutsu, it gains the Genjutsu and Visual keywords."
+        }
+      ]
+    },
+    "signature-work": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Signature Work: the illusion casts a Genjutsu",
+          "appliesTo": {
+            "namePrefix": "Programmed Illusions"
+          },
+          "note": "Choose a C-Rank or lower Genjutsu you know: the illusion can cast it once per minute (your Genjutsu attack and DC, your level). Damaged as if real, it's dispelled. Once per Long Rest."
+        }
+      ]
+    },
+    "split-focus-layered-reality": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Split Focus: concentration cost",
+          "changes": [
+            {
+              "key": "n5e.upkeep.gen",
+              "value": "lvl(6:-1,14:-2)",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In your Reality Shift: concentrate on up to 3 Genjutsu at a time (at the table)."
+        }
+      ]
+    },
+    "superior-thoughts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVUXVnaGbqhK2u",
+          "type": "roll",
+          "label": "Superior Thoughts",
+          "roll": {
+            "formula": "",
+            "note": "After casting: you gain 3 ranks of the Confused and Concussed conditions (add them)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "15th level. Once per Long Rest: an S-Rank Genjutsu you qualify for as a Full-Turn Action at no cost (pick zero cost in the cast dialog). After that, cast it for 4 Chakra Dice."
+        }
+      ]
+    },
+    "temporal-stopwatch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTk5vhnftoXEl8",
+          "type": "roll",
+          "label": "Shift initiative",
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Raise or lower one creature's initiative by the roll (once per initiative)."
+          },
+          "text": "Rolling initiative: one creature you can see; raise or lower its initiative by the roll (once per initiative)."
+        },
+        {
+          "id": "n5euSNCm4pgP46F2",
+          "type": "effect",
+          "label": "Wind the Stopwatch",
+          "effect": {
+            "name": "Temporal Stopwatch (wound)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "text": "Bonus action, for 1 minute: once per turn, a Genjutsu you cast also gives you the Dash or Disengage action after its effect."
+        },
+        {
+          "id": "n5eqhPUNis3NNgCt",
+          "type": "roll",
+          "label": "Lock their saves",
+          "roll": {
+            "formula": "",
+            "note": "11th level, Reaction: a hostile creature under a jutsu you or an ally cast attacks or casts. Until the start of its next turn, it can't remake saves at the end of its turn."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "minLevel": 11
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th: Rewind or Fast Forward (level-up choice)."
+        }
+      ]
+    },
+    "tentative-escape": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction, failing a save against a Genjutsu: cast Release."
+        }
+      ]
+    },
+    "the-first-second-and-third-layered-reality": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "The First, Second and Third: merge Genjutsu (1–2 dice)",
+          "appliesTo": {
+            "discipline": "gen",
+            "maxRank": "lvl(6:D,14:C)"
+          },
+          "note": "Merged with @amount more Genjutsu of the same rank that deal no damage: add their base costs; on a failed save the target also suffers them.",
+          "cost": {
+            "pool": "actualizationDice",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Merge Genjutsu: the cast dialog option spends 1 or 2 Actualization Dice; add the other Genjutsu's base cost and apply its effects on a failed save."
+        }
+      ]
+    },
+    "the-prestige": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoSI6rxbRrGGpH",
+          "type": "roll",
+          "label": "The Prestige",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Genjutsu forces saves: every affected creature's result is 1 step worse (critical success to success, failure to critical failure)."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 3
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Genjutsu can't be dispelled or Interrupted."
+        }
+      ]
+    },
+    "toxic-mastery-misty-distortionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGQXGKtCEB7kpr",
+          "type": "roll",
+          "label": "Toxic Mastery",
+          "roll": {
+            "formula": "",
+            "note": "A vial of basic poison becomes a poison of D-Rank or lower (C-Rank at 10th, B-Rank at 18th) from the Shinobi Handbook list, for 1 hour or until used."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "tree-binding-death": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Tree Binding Death: up to 3 targets",
+          "appliesTo": {
+            "namePrefix": "Effortless Paralysis"
+          },
+          "note": "Up to 3 targets. Then 10 minutes of rest before you use it again."
+        }
+      ]
+    },
+    "triplicity-beguiler": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeEr98seLSyMBz",
+          "type": "roll",
+          "label": "Triplicity",
+          "roll": {
+            "formula": "",
+            "note": "Action, 2 or more Duplicities: you vanish and occupy all their spaces until the end of the turn. Move As One (all your movement: move them all) and Act As One (Bonus action: each casts a Genjutsu of D-Rank or lower at a different creature; you pay only the highest cost). At the end of the turn, dismiss one and teleport to its space."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "action"
+        }
+      ]
+    },
+    "vampiric-pain": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Vampiric Pain: chakra damage too",
+          "appliesTo": {
+            "namePrefix": "Doubled Pain"
+          },
+          "note": "When the creature takes damage, it also takes chakra damage equal to the psychic damage Doubled Pain deals."
+        }
+      ]
+    },
+    "venom-strike-adept": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ethPGLcQZQpjDA",
+          "type": "roll",
+          "label": "Coat a weapon in poison",
+          "cost": {
+            "pool": "phantomVapors",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Its damage becomes poison; Phantom Weapon and Hallucinatory Flurry are available."
+          },
+          "text": "1 Phantom Vapor Charge: a simple weapon's damage becomes poison, and Phantom Weapon and Hallucinatory Flurry become available (each an Action; either removes the coat)."
+        },
+        {
+          "id": "n5eEpAyAe0EIUs0V",
+          "type": "roll",
+          "label": "Hallucinatory Flurry",
+          "roll": {
+            "formula": "",
+            "note": "Action, coated weapon: cast a Bukijutsu you know; it gains the Genjutsu and Inhaled keywords. Removes the coat."
+          },
+          "activation": "action"
+        },
+        {
+          "id": "n5eG3oL2mfHYUV86",
+          "type": "roll",
+          "label": "Phantom Weapon",
+          "roll": {
+            "formula": "",
+            "note": "Action, coated weapon: a Genjutsu of C-Rank or lower with a 1-Action casting time, as a melee or ranged Genjutsu attack with the weapon. Hit: [Weapons Damage] and the Genjutsu's effect on that creature only. Removes the coat."
+          },
+          "activation": "action"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Simple weapons with the Thrown property use your Genjutsu attack bonus and Genjutsu ability modifier for damage (at the table)."
+        }
+      ]
+    },
+    "venom-strike-expert-misty-distortionist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eW09DlhhLOsRU2",
+          "type": "roll",
+          "label": "Venom Chain",
+          "roll": {
+            "formula": "",
+            "note": "Action, coated weapon: two melee or ranged Genjutsu attacks (one ammunition die roll). Each deals [Weapons Damage]; one or more hits: Psychosis. Removes the coat."
+          },
+          "activation": "action"
+        },
+        {
+          "id": "n5eRZkLxak1sSMX2",
+          "type": "save",
+          "label": "Nightmare Rain",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "gen"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "psychosis",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Psychosis"
+            }
+          ],
+          "text": "Action, coated weapon: creatures of your choice in a Phantom Cloud within 90 feet. Failure: the chakra damage and Psychosis; success: half and no Psychosis. Removes the coat.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "These are Genjutsu of your highest rank with the Inhale keyword."
+        }
+      ]
+    },
+    "venom-strike-mastery-misty-distortionist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Coated weapons' damage die is 2 steps larger (up to d12). Phantom Weapon takes up to B-Rank Genjutsu and can repeat the attack on a second creature in range. Venom Chain and Nightmare Rain can be Bonus actions."
+        }
+      ]
+    },
+    "vindictive-thoughts-corrupt-thoughts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Rending Thoughts affects every creature of your choice in a 10-foot radius on a point in range."
+        }
+      ]
+    },
+    "voice-of-an-old-friend": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Telepathy with 2 willing creatures up to 1 mile away (3 at 7th, 4 at 18th); you must know their general location, and they can resist it."
+        }
+      ]
+    },
+    "who-are-you-fighting-beguiler": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6DlmuXBmZqV9l",
+          "type": "roll",
+          "label": "Who are you Fighting?",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an attack would damage you while your Duplicity is active: swap places with it; the attack hits the Duplicity."
+          },
+          "cost": {
+            "pool": "actualizationDice",
+            "amount": 1
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "words-of-affirmation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2OLq9bDQ1dXc6",
+          "type": "heal",
+          "label": "Words of Affirmation",
+          "heal": {
+            "formula": "2d4 + @level",
+            "pool": "tempHp"
+          },
+          "text": "Action: creatures of your choice within 10 feet gain these temporary hit points. Others can't gain them more than twice per initiative.",
+          "activation": "action"
+        }
+      ]
+    },
+    "words-of-detriment": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7OXC1D4uMrLpr",
+          "type": "effect",
+          "label": "Words of Detriment",
+          "effect": {
+            "name": "Words of Detriment",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 12
+          },
+          "text": "Action: creatures of your choice in a 20-foot cone remake saves to end effects at the end of their next turn at disadvantage.",
+          "activation": "action"
+        }
+      ]
+    }
+  }
+}

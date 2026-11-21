@@ -49,7 +49,8 @@
               "type": "psychic"
             }
           ]
-        }
+        },
+        "text": "Bonus action: summon it in your empty hand. Psychic damage, your Genjutsu attack bonus; always proficient."
       },
       {
         "id": "n5ega5PnKbtpJKh8",
@@ -67,7 +68,23 @@
               "type": "psychic"
             }
           ]
-        }
+        },
+        "text": "Range 30 feet."
+      },
+      {
+        "id": "n5eBiQm4tHyGCxlK",
+        "type": "roll",
+        "label": "Strike back at a save",
+        "roll": {
+          "formula": "",
+          "note": "11th level, Reaction: a creature succeeds on a save against a jutsu you or an ally cast. Take the Attack action; if you hit at least once, it remakes the save and takes the new result."
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "minLevel": 11
       }
     ],
     "prerequisites": []
@@ -80,7 +97,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dismissed at no action or when you're incapacitated. Counts as a weapon for class features, and as the W component of D-Rank Bukijutsu (C-Rank at 7th, B-Rank at 15th). At 7th, the Attack action with it attacks twice (Attack action count at the table)."
+        }
+      ]
     }
   },
   "_stats": {

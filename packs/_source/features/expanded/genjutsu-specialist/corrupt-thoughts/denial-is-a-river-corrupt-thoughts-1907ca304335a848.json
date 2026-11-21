@@ -33,13 +33,38 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eetZE5wpwhdqqA",
+        "type": "save",
+        "label": "Denial is a River (Touch)",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Rending Thoughts at Touch, outside combat. Success: it believes your next reasonably believable statement for 1 hour. Failure: it believes your next statement until challenged or 24 hours (challenged: it remakes the save, once per hour). Critical failure: permanently until challenged once by a new creature. Entering combat ends it.",
+        "activation": "action",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

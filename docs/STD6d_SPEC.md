@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1); Hunter-Nin built with the Class & Clan Limits menu (0.77.0-alpha.1). Next: Genjutsu Specialist.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1); Hunter-Nin built with the Class & Clan Limits menu (0.77.0-alpha.1); Genjutsu Specialist built (0.78.0-alpha.1). Every class has its table; next: STD6e (clans).**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -44,6 +44,9 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D24 | Summoner links | An Allied NPC template lists the numbers it takes from its summoner (`flags.n5e.fromSummoner`: system path → formula over the summoner, rules/summoner-links.mjs); placing it writes them into the token's actor delta, with `details.summoner`. A compendium template is imported once and reused. Table entries can set a feature's `duration` (how long its summons last). |
 | D25 | Option-gated effects | `flags.n5e.requiresOption: "<key>:<value>"` turns an effect on only while that class level-up option is chosen (Lethal Precision: `lethalPrecision:tai` or `:buki`; rules/features.mjs `optionChosen`). |
 | D26 | Class & Clan Limits | The world setting `limitRecovery` changes when a pool or Amp's uses come back, from the Class & Clan Limits menu (rules/recovery-overrides.mjs). |
+| D27 | Optional damage | A damage rule element with `optional: true` is an unticked row in the damage window, added only when ticked (King Q-D25: Lethal Attack). |
+| D28 | Jutsu identity fact | Rolls from a cast card also carry `jutsu:id:<identifier>`, so an element can name one jutsu (Black Fangs: +1 critical range on Shadow Bite). |
+| D29 | Discipline ability when higher | `n5e.keywordAbility.discipline:<d>`: every jutsu cast as that discipline may use the ability when it's higher (Actualization: Genjutsu with Charisma). |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -139,6 +142,19 @@ Highlights:
 - **Creeds:** Carnage, Posture, the Black Medicine Array, the Dread Arsenal, Void Anchors and Prosthetic Tools from their pools and buttons; Uncanny Dodge keeps its automatic halving reaction.
 - **At the table:** the conditions that let each Creed use Lethal Attack, Stalked's −2 to Perception and Insight, Defensive Tactics and the subclasses' passives.
 
+## Genjutsu Specialist (0.78.0-alpha.1)
+
+Review table: `docs/classes/genjutsu-specialist-automation.md` (107 features: 4 automated, 80 partly automated, 23 notes only).
+
+Highlights:
+- **Actualization:** the Actualization Dice pool with its cast dialog options (+rank d6 damage; −1 to saves per die) and skill-check button. Genjutsu use Charisma when it's higher (D29).
+- **Mirages:** each Mirage that changes a jutsu is a cast dialog option on that jutsu only (Piece of Mind casts Mind Sliver as a Bonus Action; Misty Thoughts casts Cajolery of Glamour at no cost on a non-hostile creature; the rest put their change on the cast card). Black Fangs' +1 critical range on Shadow Bite is automatic (D28).
+- **Rending Thoughts:** save with its success, failure and critical-failure damage by level, and the attack-penalty die.
+- **Inceptions:** Hallucinatory Instrument, Illusory Weapon, Reality Marble (−2 concentration cost at 7th) and Temporal Stopwatch buttons, with their 11th-level reactions; the 7th-level choices (Rewind, Fast Forward, Words of Affirmation, Words of Detriment) have buttons.
+- **Summons** (Class & Clan Summons): the **Duplicity** (Beguiler; AC your Genjutsu save DC, 1 HP, your speed) and the **Phantasm** (Illusionist; its stat block: AC 20, 10 HP, Ghastly Strike, Maddening Echo; your Genjutsu attack bonus, save DC and senses). Summon buttons on Beguiling Duplicity, Phantasm and Phantasmic Double.
+- **Mentally Compromised:** a new condition card (Conditions compendium, Genjutsu Specialist folder), applied by Collapsing your World and Corrupt Influence.
+- **At the table:** AC from your Genjutsu modifier (Armor of Psychosis, Reality Shift), area and target changes, identification blocking, the degree-of-success features (Master of Illusion, The Prestige) and the Pledges' passives.
+
 ## Class & Clan Limits (0.77.0-alpha.1)
 
 King 2026-11-21: "make this use limit variable in a new class & clan setting menu… list all classes and subclasses, and Clans under their own sections; each feature that has a limit that recharges on a rest should be changeable."
@@ -176,6 +192,11 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
 - **Q-D24 Skilled Exploits:** answered (King 2026-11-21): 1 + proficiency bonus per Long Rest, changeable in the Class & Clan Limits menu.
 - **Q-D25 Lethal Attack:** answered (King 2026-11-21): a damage toggle in the damage window of every attack and jutsu; players decide when to tick it, no further automation. Built in 0.77.1-alpha.1.
+- **Q-D26 Actualization's Charisma:** "may use Charisma instead of Wisdom" is built as "Charisma when it's higher" for every Genjutsu. Fine, or should it be a fixed choice?
+- **Q-D27 Duplicity:** it has no stat block; the NPC is built from its text (AC your Genjutsu save DC, 1 hit point, your speed, its four abilities as traits). Fine?
+- **Q-D28 Armor of Psychosis and Reality Shift's AC:** both are notes (set your AC on the sheet). Should the sheet work them out?
+- **Q-D29 Mind Over Matter:** it's its own cast dialog tick (tick it with an Actualization option). Should it tick itself whenever an Actualization option is ticked?
+- **Genjutsu Specialist text issues** (for the errata list): Venom Strike Adept (2nd) holds Venom Strike Expert's Psychosis box; Mind Leech holds the Mentally Compromised box; Who are you Fighting? holds Betray Yourself's Identity Crisis box; Phantasmic Influence holds the Phantasm stat block; "Rend Thoughts" for Rending Thoughts (Denial is a River, Vindictive Thoughts); "Inhale" for Inhaled (Venom Strike Expert); "you your" (Mind Over Matter); "They 5d6" (Nightmare Rain); Fighting Mirage's prerequisite "Illusionary Weapon" (Illusory Weapon); One with Shadows' prerequisite "Reality Marble Genjutsu pledge" (Reality Marble is an Inception).
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -192,3 +213,4 @@ King 2026-11-21: "make this use limit variable in a new class & clan setting men
 - 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.
 - 2026-11-21 King: "Next batch." and "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & class setting menu..." Claude: Hunter-Nin built (86 features), D25 option-gated effects, D26 Class & Clan Limits menu, published 0.77.0-alpha.1. Q-D25 asked; nothing waits on it.
 - 2026-11-21 King: "Qd25. Lethal attack should be a damage toggle in the Attack/Damage window..." Claude: optional damage elements; Lethal Attack as full and half rows, published 0.77.1-alpha.1.
+- 2026-11-21 King: "Next batch." Claude: Genjutsu Specialist built (107 features), D27–D29, Duplicity and Phantasm summons, Mentally Compromised; published 0.78.0-alpha.1. Q-D26–Q-D29 asked; nothing waits on them.

@@ -33,13 +33,41 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e10jD61KOoVt62",
+        "type": "effect",
+        "label": "Phantom Bloom: −2 AC",
+        "effect": {
+          "name": "Phantom Bloom",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-2",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 12
+        },
+        "text": "Hostile creatures starting their turn in or first entering your Phantom Cloud: −2 AC until they end a turn outside it."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Phantom Clouds grow 5 feet in every direction at the start of each of your turns, up to a 40-foot cube."
+        }
+      ]
     }
   },
   "ownership": {

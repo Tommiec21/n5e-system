@@ -33,13 +33,65 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eW09DlhhLOsRU2",
+        "type": "roll",
+        "label": "Venom Chain",
+        "roll": {
+          "formula": "",
+          "note": "Action, coated weapon: two melee or ranged Genjutsu attacks (one ammunition die roll). Each deals [Weapons Damage]; one or more hits: Psychosis. Removes the coat."
+        },
+        "activation": "action"
+      },
+      {
+        "id": "n5eRZkLxak1sSMX2",
+        "type": "save",
+        "label": "Nightmare Rain",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "psychosis",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Psychosis"
+          }
+        ],
+        "text": "Action, coated weapon: creatures of your choice in a Phantom Cloud within 90 feet. Failure: the chakra damage and Psychosis; success: half and no Psychosis. Removes the coat.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "These are Genjutsu of your highest rank with the Inhale keyword."
+        }
+      ]
     }
   },
   "ownership": {

@@ -46,7 +46,8 @@
           "onSuccess": "none",
           "resave": false
         },
-        "inflicts": []
+        "inflicts": [],
+        "text": "Action: a creature you can see within 60 feet (a Genjutsu of your highest rank; Auditory or Visual, and Tactile). Success: the success damage. Failure: the failure damage and a penalty to its next attack roll before your next turn. Critical failure: the critical damage."
       },
       {
         "id": "n5epmjPOw2x400VM",
@@ -55,7 +56,7 @@
         "damage": {
           "parts": [
             {
-              "formula": "1d6",
+              "formula": "lvl(1:1d6,6:2d6,10:3d6,14:4d6)",
               "type": "psychic"
             }
           ]
@@ -68,7 +69,7 @@
         "damage": {
           "parts": [
             {
-              "formula": "2d6",
+              "formula": "lvl(1:2d6,6:3d6,10:4d6,14:5d6)",
               "type": "psychic"
             }
           ]
@@ -82,10 +83,19 @@
         "damage": {
           "parts": [
             {
-              "formula": "3d6",
+              "formula": "lvl(1:3d6,6:4d6,10:5d6,14:6d6)",
               "type": "psychic"
             }
           ]
+        }
+      },
+      {
+        "id": "n5eNIJ9nlWQrzV2e",
+        "type": "roll",
+        "label": "Rending Thoughts: attack penalty",
+        "roll": {
+          "formula": "lvl(1:1d4,6:1d6,10:1d8,14:1d10)",
+          "note": "On a failure: subtract this from its next attack roll before the beginning of your next turn."
         }
       }
     ]
@@ -98,7 +108,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damage +1d6 at 6th, 10th and 14th; the penalty die grows a step at each (1d6, 1d8, 1d10)."
+        }
+      ]
     }
   },
   "_stats": {

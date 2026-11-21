@@ -1,0 +1,82 @@
+{
+  "_id": "n5eCondMntlCompr",
+  "name": "Mentally Compromised",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5ezvj26S3XfcXLQ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "mentally-compromised",
+    "description": "<p>Corrupt Thoughts – Mentally Compromised.</p><p>This special condition is treated as a Mental Condition.</p><p>A Mentally Compromised creature finds it difficult to shut out psychic intrusion. They treat a failure as a Critical failure vs Genjutsu with the Tactile keyword. The first time this effect occurs, this condition ends.</p><p>Additionally, once per turn, when a Mentally Compromised creature makes a Concentration check to maintain concentration on a jutsu, they must first spend 4 Chakra to make the check, if they choose not to, they immediately lose concentration as if they failed the check. This effect increases in strength at 6th level, becoming 6 Chakra. This boost occurs again at 10th (8), 14th (10) and 18th (12) levels.</p><p>Enhanced Effect (Lvl 10). A Mentally Compromised creature radiates a 15ft radius aura of madness. The first time each turn a creature allied to it within its madness aura casts a Jutsu, they must roll a DC 11 Flat Check. On a failure, the Genjutsu Specialist can cause the failing creatures Jutsu to be Interrupted as it falls into a short psychotic break. Once a creature is interrupted in this way, this condition ends.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "genjutsu-specialist",
+      "subclass": "corrupt-thoughts"
+    },
+    "summary": "A failed save against a Tactile Genjutsu is a critical failure (then it ends); Concentration checks first cost chakra (4, more by the Genjutsu Specialist's level); at 10th, an aura of madness.",
+    "tags": [
+      "mental"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 60,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "A failure against a Genjutsu with the Tactile keyword counts as a critical failure; the first time that happens, this condition ends."
+        },
+        {
+          "key": "note",
+          "text": "Once per turn, before a Concentration check: spend chakra to make it (4; 6 at the Genjutsu Specialist's 6th level, 8 at 10th, 10 at 14th, 12 at 18th) or lose concentration."
+        },
+        {
+          "key": "note",
+          "text": "Enhanced (Genjutsu Specialist 10th, Disruptive Psyche): a 15-foot aura of madness. An ally of it in the aura casting its first jutsu each turn rolls a DC 11 flat check; on a failure the Genjutsu Specialist can Interrupt the jutsu, and this condition ends."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.78.0"
+  },
+  "_key": "!items!n5eCondMntlCompr"
+}

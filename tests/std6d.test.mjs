@@ -167,3 +167,46 @@ test("Lethal Attack (King Q-D25): unticked full and half rows in the damage wind
   assert.deepEqual(composeDice(parts, {}).parts.map(p => p.formula), ["1d8"]);
   assert.deepEqual(composeDice(parts, { on: ["d1"] }).parts.map(p => p.formula), ["1d8", "3d8"]);
 });
+
+// ---------------------------------------------------------------- Genjutsu Specialist (STD6d)
+test("Genjutsu Specialist: every feature reviewed; Genjutsu use Charisma when it's higher (Actualization)", () => {
+  const table = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/genjutsu-specialist.json"), "utf8"));
+  assert.equal(Object.keys(table.features).length, 107);
+  const fx = load("features", "actualization").effects.find(e => e.name === "Actualization: Genjutsu with Charisma");
+  assert.deepEqual(fx.changes.map(c => [c.key, c.value]), [["n5e.keywordAbility.discipline:gen", "cha"]]);
+  const abilities = { abilities: { str: { value: 10 }, dex: { value: 10 }, con: { value: 12 }, int: { value: 10 }, wis: { value: 12 }, cha: { value: 18 } } };
+  const gen = load("jutsu", "shadow-bite");
+  const nin = load("jutsu", "medical-release-acid-armor");
+  const a = makeActor({ system: abilities, items: [taiSpec(1), gen, nin], n5eChanges: [{ key: "n5e.keywordAbility.discipline:gen", value: "cha" }] });
+  const [g, n] = ["shadow-bite", "medical-release-acid-armor"].map(id => a.items.find(i => i.system.identifier === id).system.live);
+  assert.equal(g.ability, "cha");
+  assert.notEqual(n.ability, "cha", "other disciplines keep theirs");
+});
+
+test("Genjutsu Specialist: Black Fangs on Shadow Bite (jutsu:id), Rending Thoughts by level, Mirage cast options", async () => {
+  const { jutsuFacts } = await import("../module/rules/jutsu-facts.mjs");
+  assert.ok(jutsuFacts(load("jutsu", "shadow-bite")).includes("jutsu:id:shadow-bite"));
+  const fangs = load("features", "black-fangs").flags.n5e.rules.find(r => r.key === "critRange");
+  assert.deepEqual([fangs.predicate, fangs.value], ["jutsu:id:shadow-bite", 1]);
+  const rend = load("features", "rending-thoughts").system.activities;
+  assert.deepEqual(rend.filter(x => x.type === "damage").map(x => x.damage.parts[0].formula),
+    ["lvl(1:1d6,6:2d6,10:3d6,14:4d6)", "lvl(1:2d6,6:3d6,10:4d6,14:5d6)", "lvl(1:3d6,6:4d6,10:5d6,14:6d6)"]);
+  const piece = load("features", "piece-of-mind").flags.n5e.castOption ?? load("features", "piece-of-mind").flags.n5e.castOptions[0];
+  assert.deepEqual([piece.appliesTo.namePrefix, piece.castAs], ["Mind Sliver", "bonus"]);
+  const misty = load("features", "misty-thoughts").flags.n5e.castOption ?? load("features", "misty-thoughts").flags.n5e.castOptions[0];
+  assert.equal(misty.costDelta, "zero");
+});
+
+test("Genjutsu Specialist: Duplicity and Phantasm summons, Mentally Compromised", () => {
+  const summon = id => load("features", id).system.activities.find(x => x.type === "summon").summon.uuid;
+  const dup = load("summons", "duplicity-"), ph = load("summons", "phantasm-");
+  assert.equal(summon("beguiling-duplicity"), `Compendium.n5e.summons.Actor.${dup._id}`);
+  assert.equal(summon("phantasm"), `Compendium.n5e.summons.Actor.${ph._id}`);
+  assert.deepEqual([dup.system.hpMax, dup.flags.n5e.fromSummoner["attributes.ac.flat"]], [1, "@dc.gen"]);
+  assert.deepEqual([ph.system.hpMax, ph.system.attributes.ac.flat, ph.system.traits.size], [10, 20, "small"]);
+  assert.ok(!ph.system.traits.immune.includes("psychic") && ph.system.traits.immune.includes("fire"));
+  assert.ok(load("conditions", "mentally-compromised"));
+  for ( const id of ["collapsing-your-world", "corrupt-influence-corrupt-thoughts"] ) {
+    assert.equal(load("features", id).system.activities.find(x => x.type === "effect").effect.condition, "mentally-compromised", id);
+  }
+});

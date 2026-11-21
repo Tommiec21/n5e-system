@@ -49,7 +49,21 @@
           "seconds": 0
         },
         "oncePerTurn": true,
-        "text": "Creatures affected by your Genjutsu: their next jutsu costs more."
+        "text": "Once per turn: creatures that must save against your Genjutsu, or that your Genjutsu attack hits. Their next jutsu costs more (+2, +4 at 5th, +6 at 9th, +8 at 13th, +10 at 17th) until the end of their next turn."
+      },
+      {
+        "id": "n5eKSComD4f0du8t",
+        "type": "roll",
+        "label": "Disrupt their concentration",
+        "roll": {
+          "formula": "",
+          "note": "9th level: a creature fails its save against your Genjutsu. It makes a Concentration check for the jutsu it concentrates on; if it already had to, it makes that check at disadvantage."
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        },
+        "minLevel": 9
       }
     ]
   },
@@ -61,7 +75,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Remove the cost increase after its next jutsu (one jutsu only)."
+        }
+      ]
     }
   },
   "_stats": {

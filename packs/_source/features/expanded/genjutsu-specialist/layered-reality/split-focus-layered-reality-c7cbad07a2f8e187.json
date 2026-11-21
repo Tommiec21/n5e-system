@@ -35,11 +35,51 @@
     "resourcePools": [],
     "advancement": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e5ptLvSHMZfSzc",
+      "name": "Split Focus: concentration cost",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.upkeep.gen",
+          "value": "lvl(6:-1,14:-2)",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!c7cbad07a2f8e187.n5e5ptLvSHMZfSzc"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In your Reality Shift: concentrate on up to 3 Genjutsu at a time (at the table)."
+        }
+      ]
     }
   },
   "ownership": {

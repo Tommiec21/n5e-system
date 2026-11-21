@@ -130,6 +130,10 @@ export function fieldInfo(key, N5E = {}) {
     return { name: `${discName[m[1]]} Ability`, category: "Saves & DCs", words: "ability modifier casting", what: `Your ${discName[m[1]]} use this ability for attacks and DCs.`,
       enter: "Pick an ability.", example: "wis", stacks: LARGEST };
   }
+  if ( (m = key.match(/^n5e\.keywordAbility\.discipline:(nin|tai|gen)$/)) ) {
+    return { name: `${discName[m[1]]} Ability (when higher)`, category: "Saves & DCs", words: "ability modifier casting higher", what: `Your ${discName[m[1]]} can use this ability when it's higher than their usual one.`,
+      enter: "Pick an ability.", example: "cha", stacks: LARGEST };
+  }
   if ( (m = key.match(/^n5e\.keywordAbility\.(.+)$/)) ) {
     const label = N5E.keywords?.[m[1]]?.label ?? cap(m[1]);
     return { name: `${label} Jutsu Ability`, category: "Saves & DCs", words: `keyword ability ${label}`, what: `Your ${label} jutsu can use this ability when it's higher than their usual one.`,

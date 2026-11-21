@@ -33,13 +33,40 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e1EM8BkZ448NHi",
+        "type": "effect",
+        "label": "Corrupt Influence: Mentally Compromised",
+        "effect": {
+          "name": "Mentally Compromised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "condition": "mentally-compromised"
+        },
+        "text": "A creature you touch.",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mentally Compromised creatures can't spend their Actions to end hostile effects (such as Burned, Corroded or Bruised)."
+        }
+      ]
     }
   },
   "ownership": {

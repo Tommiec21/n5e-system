@@ -33,13 +33,94 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e9im4noWgAIJOo",
+        "type": "roll",
+        "label": "Rending Thoughts as a Bonus action",
+        "roll": {
+          "formula": "",
+          "note": "Use Rending Thoughts as a Bonus action (not also as an Action that turn)."
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eUSavnZIo6qiI4",
+        "type": "effect",
+        "label": "Mind Leech: target's saves",
+        "effect": {
+          "name": "Mind Leech",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.save.str",
+              "value": "lvl(6:-1,14:-2,18:-3)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "lvl(6:-1,14:-2,18:-3)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.con",
+              "value": "lvl(6:-1,14:-2,18:-3)",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "1 Actualization Die with Rending Thoughts, on a failure or critical failure: −1 to its Strength, Dexterity and Constitution saves until the end of your next turn (−2 at 14th, −3 at 18th).",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eVojSa69ayN1DR",
+        "type": "effect",
+        "label": "Mind Leech: your saves (critical failure)",
+        "effect": {
+          "name": "Mind Leech (yours)",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.save.str",
+              "value": "lvl(6:1,14:2,18:3)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "lvl(6:1,14:2,18:3)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.con",
+              "value": "lvl(6:1,14:2,18:3)",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "On its critical failure: you gain the same bonus to your Strength, Dexterity and Constitution saves."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Corrupt Thoughts' Mentally Compromised is in the Conditions compendium (Genjutsu Specialist)."
+        }
+      ]
     }
   },
   "ownership": {

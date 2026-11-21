@@ -995,3 +995,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Optional damage elements (0.77.1-alpha.1)
 
 - Rule element `{key: "damage", selector, formula, optional: true, label}`: shown unticked in the damage roll window and added only when ticked. With no `damageType` it takes the roll's first damage type. Lethal Attack uses two (full and half).
+
+### Genjutsu Specialist additions (0.78.0-alpha.1)
+
+- Roll fact `jutsu:id:<identifier>`: on every roll from a jutsu's cast card (and `against:jutsu:id:<identifier>` on saves against it).
+- Change key `n5e.keywordAbility.discipline:<nin|tai|gen>`: every jutsu cast as that discipline may use this ability when it's higher.
+- Summons: Duplicity (`fromSummoner`: level, AC = `@dc.gen`, speed) and Phantasm (level, Genjutsu attack bonus and save DC, senses).

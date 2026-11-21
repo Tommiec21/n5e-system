@@ -85,13 +85,13 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
 | clans | 1712 | 17 | 0 | 0 | 0 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
-| conditions | 58 | 0 | 0 | 57 | 51 | 0 |
+| conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 64 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
-| features | 700 | 378 | 40 | 317 | 305 | 11 |
+| features | 700 | 411 | 43 | 372 | 360 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
-| summons | 2 | 0 | 0 | 0 | 0 | 0 |
+| summons | 4 | 0 | 0 | 0 | 0 | 0 |
 
 ## 4. Amps (AMP1b)
 
