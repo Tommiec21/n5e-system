@@ -32,14 +32,108 @@
       }
     },
     "tags": [],
-    "resourcePools": [],
-    "advancement": []
+    "resourcePools": [
+      {
+        "id": "chakraBarrier",
+        "label": "Chakra Barrier",
+        "value": 0,
+        "max": "2 * @level",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eISc1faMM6i2dz",
+        "type": "roll",
+        "label": "Barrier: transfer temporary hit points",
+        "cost": {
+          "pool": "chakraBarrier",
+          "choose": true,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "1 barrier hit point for each temporary hit point you transfer (enter the amount)."
+        }
+      },
+      {
+        "id": "n5ejp4LJMJR5ix03",
+        "type": "roll",
+        "label": "Barrier: sacrifice DR",
+        "cost": {
+          "pool": "chakraBarrier",
+          "choose": true,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "2 barrier hit points for each DR from a jutsu you give up (enter twice the DR)."
+        }
+      }
+    ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5egYeF4qm0d5Vqr",
+      "name": "Chakra Barrier: Mastery",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.mastery.skill.cha",
+          "value": "Chakra Barrier ×lvl(3:1,9:2,17:3)",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!945fa348762a36a8.n5egYeF4qm0d5Vqr"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Chakra Barrier pool is its hit points (twice your level), full after any rest. At the table: it intercepts damage before you, with your resistances and immunities; spend the pool for it. At 0 hit points you lose the Mastery (disable its effect)."
+        }
+      ]
     }
   },
   "ownership": {

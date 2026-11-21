@@ -36,13 +36,39 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e8MBNxBxTZ0uhu",
+        "type": "save",
+        "label": "Leaders Arbitration",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "action",
+        "save": {
+          "abilities": [
+            "wis",
+            "int"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Action: creatures of your choice within 30 feet (Wisdom or Intelligence, your pick). Failure, for 1 minute: no Disengage, and no lying to you or your allies."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

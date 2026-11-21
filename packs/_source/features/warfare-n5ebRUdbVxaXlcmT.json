@@ -37,24 +37,56 @@
         "id": "n5ev4P2Tk4HLy2M2",
         "type": "damage",
         "label": "Warfare: attack bonus",
-        "damage": {
-          "parts": [
-            {
-              "formula": "lvl(2:1d8,11:2d8,20:3d8)",
-              "type": ""
-            }
-          ]
-        },
         "cost": {
           "pool": "superiorityDice",
           "amount": 1
         },
         "oncePerTurn": true,
-        "text": "Unarmed or weapon attack (half the dice, rounded up)."
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(2:1d8,5:2d8,11:3d8,15:4d8,20:5d8)",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Once per turn, casting a jutsu or making an unarmed or weapon attack. Area jutsu, and unarmed or weapon attacks: half the dice, rounded up (minimum 1). With a Scouting Technique maneuver: one die fewer."
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eoolJ9aImZ16ey",
+      "name": "Warfare: Multiattack damage",
+      "type": "generic",
+      "img": "icons/svg/target.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "note",
+              "text": "While in Warfare: add your ability modifier to Multiattack damage with a Kunai, Shuriken or Senbon."
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ebRUdbVxaXlcmT.n5eoolJ9aImZ16ey"
+    }
+  ],
   "folder": "n5enyffNYh7xlyKw",
   "sort": 0,
   "ownership": {
@@ -78,7 +110,14 @@
           "formula": "lvl(2:1d8,5:2d8,11:3d8,15:4d8,20:5d8)",
           "halfForArea": true
         }
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Multiattack with a Kunai, Shuriken or Senbon adds your ability modifier to the damage."
+        }
+      ]
     }
   },
   "_stats": {

@@ -36,13 +36,42 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQeQC9rgDYlTnG",
+        "type": "effect",
+        "label": "Power Up: Charge",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Power Up: Charge",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 0,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "value": 2,
+              "label": "Power Up: Charge"
+            }
+          ]
+        },
+        "text": "Bonus action: your next attack this turn has +2 critical range (end the effect after it)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

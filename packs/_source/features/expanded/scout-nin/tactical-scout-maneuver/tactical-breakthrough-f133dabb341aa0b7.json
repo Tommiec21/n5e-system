@@ -36,13 +36,38 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e2zGmtWqXsDNuJ",
+        "type": "save",
+        "label": "Tactical Breakthrough",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Damage that DR or temporary hit points would reduce. Failure: they lose twice the die of DR or temporary hit points until the end of the turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

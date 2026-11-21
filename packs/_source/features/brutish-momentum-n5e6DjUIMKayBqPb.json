@@ -42,12 +42,20 @@
           "expires": "",
           "seconds": 3600,
           "state": "combatRival"
-        }
+        },
+        "text": "When initiative is rolled: one creature you can see, until combat ends or either of you drops to 0 hit points (then mark a new one)."
       },
       {
         "id": "n5eufAY2EwlFapzs",
         "type": "effect",
         "label": "Relentless Durability",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "reaction",
+        "oncePerTurn": true,
         "effect": {
           "name": "Relentless Durability",
           "target": "self",
@@ -56,14 +64,37 @@
           "seconds": 0,
           "tempHp": "@poolRoll * lvl(3:1,10:2,17:3)"
         },
+        "text": "Once per turn, when you take damage: temporary hit points equal to the die (twice at 10th, three times at 17th) until the end of the turn."
+      },
+      {
+        "id": "n5eGMOgxTbVnnw5Q",
+        "type": "roll",
+        "label": "Relentless Pursuit",
         "cost": {
           "pool": "superiorityDice",
           "amount": 1,
           "roll": true
         },
-        "oncePerTurn": true,
         "activation": "reaction",
-        "text": "When you take damage."
+        "roll": {
+          "formula": "",
+          "note": "Reaction: your Combat Rival ends its movement more than 5 feet away. Move up to your speed toward it; in range, an unarmed or weapon attack adding the die to its damage."
+        }
+      },
+      {
+        "id": "n5e8ZZEqDEtj0zcQ",
+        "type": "roll",
+        "label": "Relentless Progress: regain a die",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "gain": true
+        },
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "The first time each turn you beat your Combat Rival's AC by 5, or it fails your jutsu's save by 5."
+        }
       }
     ]
   },
@@ -75,7 +106,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Relentless Aggression: once per turn, hitting your Combat Rival with an Attack-action attack on your turn: Trip, Grapple, Shove or Disarm using the attack result."
+        }
+      ]
     }
   },
   "_stats": {

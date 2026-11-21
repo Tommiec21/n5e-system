@@ -33,13 +33,43 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eiTwUEYANtWVPG",
+        "type": "roll",
+        "label": "Hungry Phantom Flame",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to damage from an attack: spend Ghostfire too (the Ghostfire button); reduce the damage by 2d6 for each (2d8 against a Genjutsu attack or psychic damage). Reduced to 0: hostile creatures within 10 feet make a Wisdom save or take the reduced amount as chakra damage. You gain 1d6 temporary chakra per Ghostfire (1 minute)."
+        }
+      },
+      {
+        "id": "n5e9UWtswITEEXls",
+        "type": "roll",
+        "label": "Hungry Phantom Flame: Ghostfire",
+        "cost": {
+          "pool": "ghostfire",
+          "choose": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "The Ghostfire you spend with it."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

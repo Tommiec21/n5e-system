@@ -37,13 +37,53 @@
     "resourcePools": [],
     "advancement": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eku5qyTQtv2v3e",
+      "name": "Path of Awareness: blindsight",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.traits.senses.blindsight",
+          "value": "20",
+          "mode": 4,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!5009b4f2ba730dea.n5eku5qyTQtv2v3e"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
       "classExpansion": true,
       "requiresItems": [
         "path-of-awareness"
+      ],
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Attacks (and opportunity attacks) against you or allies within 10 feet are at disadvantage (at the table). 20 feet of blindsight is on its effect."
+        }
       ]
     }
   },

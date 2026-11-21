@@ -33,13 +33,60 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eIA9e3L8qt44NO",
+        "type": "effect",
+        "label": "Elemental Aura",
+        "effect": {
+          "name": "Elemental Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "aura": {
+            "radius": 10,
+            "who": "friendly",
+            "includeSelf": true,
+            "effect": {
+              "name": "Elemental Aura",
+              "rules": [
+                {
+                  "key": "modifier",
+                  "selector": "save",
+                  "predicate": {
+                    "any": [
+                      "against:jutsu:keyword:earthRelease",
+                      "against:jutsu:keyword:windRelease",
+                      "against:jutsu:keyword:fireRelease",
+                      "against:jutsu:keyword:waterRelease",
+                      "against:jutsu:keyword:lightningRelease"
+                    ]
+                  },
+                  "value": "floor(@abilities.con.mod / 2)",
+                  "label": "Elemental Aura"
+                }
+              ]
+            }
+          }
+        },
+        "text": "A passive 10-foot aura (20 at 14th: Primordial Flux, at the table) for creatures of your choice: + half your Constitution modifier to saves against nature release jutsu. Start it once; it stays."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A second nature release. In Flux: resistance to your Flux type's damage (on the Elemental Flux card from 6th)."
+        }
+      ]
     }
   },
   "ownership": {

@@ -102,3 +102,26 @@ test("Weapon Specialist: every feature reviewed; Critical Focus only with the ch
   assert.equal(ward.system.activities[0].cost.formula, "lvl(3:1d12,10:2d12,17:3d12)");
 });
 import { testPredicate as gatherTest } from "../module/rules/elements.mjs";
+
+// ---------------------------------------------------------------- Scout-Nin (STD6d)
+test("Scout-Nin: every feature reviewed; Superior Assault's critical range follows the Primary casting discipline", () => {
+  const table = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "..", "content/automation/scout-nin.json"), "utf8"));
+  assert.equal(Object.keys(table.features).length, 187);
+  const rule = load("features", "superior-assault").effects.find(e => e.flags.n5e.std6d).flags.n5e.rules[0];
+  const facts = (...f) => new Set(["self", "kind:attack", ...f]);
+  assert.ok(gatherTest(rule.predicate, facts("option:primaryDiscipline:nin", "jutsu:discipline:nin")));
+  assert.ok(!gatherTest(rule.predicate, facts("option:primaryDiscipline:nin", "jutsu:discipline:gen")));
+  assert.ok(gatherTest(rule.predicate, facts("option:primaryDiscipline:buki", "jutsu:discipline:tai", "jutsu:keyword:bukijutsu")));
+  assert.ok(!gatherTest(rule.predicate, facts("option:primaryDiscipline:tai", "jutsu:discipline:tai", "jutsu:keyword:bukijutsu")), "Bukijutsu isn't the Taijutsu Primary");
+  assert.equal(rule.value, "lvl(3:1,10:2)");
+  const pools = id => load("features", id).system.resourcePools.map(p => [p.id, p.max]);
+  assert.deepEqual(pools("phantoms-flame-phantom-scout"), [["ghostfire", "lvl(3:3,10:5)"]]);
+  assert.deepEqual(pools("chakra-barrier-barrier-scout"), [["chakraBarrier", "2 * @level"]]);
+  assert.deepEqual(pools("master-of-tactics-tactical-scout"), [["tacticalInsight", "4"]]);
+});
+
+test("a placed effect's value can name the caster's ability modifier or proficiency (validated, resolved on placement)", async () => {
+  const { validateConditionalRules } = await import("../module/rules/effect-authoring.mjs");
+  assert.doesNotThrow(() => validateConditionalRules([{ key: "modifier", selector: "save", value: "floor(@abilities.con.mod / 2)" }]));
+  assert.throws(() => validateConditionalRules([{ key: "modifier", selector: "save", value: "@something.else" }]));
+});

@@ -36,13 +36,39 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eiuAJimVpLvg6g",
+        "type": "effect",
+        "label": "Defensive Reassurance",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Defensive Reassurance",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "A willing ally within 60 feet that can see or hear you is attacked: +2 AC."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

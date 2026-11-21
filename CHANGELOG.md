@@ -1,3 +1,16 @@
+## 0.75.0-alpha.1 — STD6d: Scout-Nin automated
+
+King 2026-11-21: "Next batch." The fifth class in the class pass. Review table: `docs/classes/scout-nin-automation.md` (187 features: 1 automated, 148 partly automated, 36 notes only, 2 no mechanics).
+
+- **Every maneuver spends its Superiority Dice from a button.** When the maneuver uses the number, the die is rolled. The button also brings the save, effect or healing the maneuver calls for.
+- **Jack of All:** Warfare, Seize and Tactics are switchable states. Warfare's bonus damage now follows the text: 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th.
+- **Switch Hitter:** Follow Up and Set-Up mark creatures. Follow Up's +1 to hit (+2 at 11th, +3 at 19th) is automatic for jutsu attacks that aren't your Primary casting discipline.
+- **Superior Assault:** +1 critical range (+2 at 10th) with attacks of your Primary casting discipline.
+- **New resources:** Chakra Barrier (its hit points, twice your level, with Chakra Control Mastery by level), Ghostfire (3, then 5 at 10th) and Tactical Insight (4), each with the buttons that spend them.
+- **Subclass cores:** Squad-Mates and Command, Combat Rival, Flash, Elemental Flux, Chakra Sphere and Repelling Burst, Phantom's Flame, Elemental Aura for allies, Superego Manifestation's aura, Heavy Guard and Transverse Defense.
+- **Still at the table:** Bunshin and the Void Soul (make them as actors), the Chakra Barrier taking damage, the one-maneuver-per-turn limit, Signature Jutsu modifications and the Shinobi Paths.
+- **New for every class:** an effect placed by a button can use the caster's proficiency bonus or ability modifier, fixed when it's placed, auras included.
+
 ## 0.74.0-alpha.1 — STD6d: Weapon Specialist automated
 
 King 2026-11-21: "Then let's work on next Batch." The fourth class in the class pass. Review table: `docs/classes/weapon-specialist-automation.md` (101 features: 2 automated, 85 partly automated, 9 notes only, 5 no mechanics).

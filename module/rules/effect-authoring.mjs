@@ -100,6 +100,9 @@ export function validateConditionalRules(rules) {
       || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value)
       // CCOND1: so much per rank of the condition carrying it ("ranks(-2)").
       || /^ranks\(-?\d+\)$/.test(r.value)
+      // STD6d Scout-Nin: a value fixed from the caster when an activity places the effect (an aura's
+      // child effect: "floor(@abilities.con.mod / 2)", Elemental Aura); workflow/trackers.mjs resolves it.
+      || /^(?:[-+*/\d\s().]|floor|ceil|@prof\b|@abilities\.(str|dex|con|int|wis|cha)\.mod|@disciplines\.\w+\.mod)+$/.test(r.value) && /@/.test(r.value)
       // King 2026-11-16 (Bless): a modifier can be dice ("1d4", "-1d4").
       || (r.key === "modifier" && /^[+-]?\d*d\d+$/i.test(r.value.replace(/\s+/g, ""))));
     if ( NUMERIC.has(r.key) && !rankValued ) {

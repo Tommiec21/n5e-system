@@ -36,13 +36,33 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e01UnrUCWgmqvR",
+        "type": "effect",
+        "label": "Defensive Goading",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Goaded",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 12
+        },
+        "text": "Dealing damage: the target has disadvantage on attacks against anyone but you until the end of its next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

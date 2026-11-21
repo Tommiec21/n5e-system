@@ -36,13 +36,41 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZ8gcNc9SXXDMM",
+        "type": "effect",
+        "label": "Ramp Up: Swiftness",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Ramp Up: Swiftness",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "5 * @poolRoll",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 12
+        },
+        "text": "Bonus action: a willing ally within 30 feet gets 5 × the die speed and one more bonus action on its next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

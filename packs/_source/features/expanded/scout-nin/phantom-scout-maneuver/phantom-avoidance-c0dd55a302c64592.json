@@ -36,13 +36,30 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eR3VDhUogc9bEF",
+        "type": "roll",
+        "label": "Phantom Avoidance",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "roll": {
+          "formula": "5 * @pools.ghostfire.value",
+          "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: hit by an attack or saving against damage. Incorporeal: DR equal to 5 × your current Ghostfire."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

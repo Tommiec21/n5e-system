@@ -36,13 +36,42 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0pwg70TEaQJHh",
+        "type": "effect",
+        "label": "Ultimate: Revolution",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Ultimate: Revolution",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 12,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "value": 4,
+              "label": "Ultimate: Revolution"
+            }
+          ]
+        },
+        "text": "Bonus action: willing creatures within 60 feet get +4 critical range, and vulnerability to the next damage they take before the end of your next turn (at the table). Target them."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

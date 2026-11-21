@@ -541,3 +541,9 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - `content/automation/weapon-specialist.json` (101 features), applied by `tools/content/apply-automation.mjs`; review table `docs/classes/weapon-specialist-automation.md`.
 - Engine: class level-up options as roll facts (`option:<key>:<value>`, rules/elements.mjs rollOptions), activity cost `formula` (by level or rolled; workflow/resources.mjs), table `dropEffects`.
 - Codex's Journal Desk files untouched.
+
+## STD6d Scout-Nin — Claude, 2026-11-21 (0.75.0-alpha.1)
+- `content/automation/scout-nin.json` (187 features); review table `docs/classes/scout-nin-automation.md`. New feature pools: chakraBarrier, ghostfire, tacticalInsight.
+- Engine: placed effect values resolve the caster's `@prof` and `@abilities.<a>.mod` (workflow/trackers.mjs; aura child rules too); the rule validator accepts those forms.
+- Codex's Journal Desk files untouched.
+

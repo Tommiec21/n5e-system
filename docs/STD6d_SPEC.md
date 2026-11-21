@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1). Next: Scout-Nin, Hunter-Nin, Genjutsu Specialist.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1). Next: Hunter-Nin, Genjutsu Specialist.**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -40,6 +40,7 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D20 | Class option facts | A class's level-up options are roll facts: `option:<key>:<value>` (Weapon Focus: `option:weaponFocus:blade`; "Thrown/Ammunition" is `thrown-ammunition`). With a weapon's `weapon:group:<g>`, an element can name "your Weapon Focus". |
 | D21 | Pool cost formulas | An activity cost's `formula` replaces its amount: by level (`lvl(1:1,11:2,20:3)`) or rolled (`1d12`, posted to chat): the Obsidian Ward regains Flurry Dice. |
 | D22 | Replaced imported effects | A table entry's `dropEffects` removes the feature's imported effects of those names (Critical Focus's blanket +1 on all Bukijutsu). |
+| D23 | Caster values on placement | A placed effect's values (and an aura child's rules) can use the caster's `@prof` and `@abilities.<a>.mod`, fixed when placed (Squad-Mates up to your proficiency bonus; Elemental Aura's half Constitution modifier). The rule validator accepts those placement-time forms. |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -109,6 +110,21 @@ Highlights:
 
 - **Text issues** (for the errata list): Superior Discipline contains the class design note; Chained Cascade contains its Battle Amp box; Burst Echo deals damage with no save stated.
 
+## Scout-Nin (0.75.0-alpha.1)
+
+Review table: `docs/classes/scout-nin-automation.md` (187 features: 1 automated, 148 partly automated, 36 notes only, 2 no mechanics).
+
+Highlights:
+- **Superiority Dice** (the class pool, d8): every maneuver has a button that spends its dice, rolling the die when the maneuver uses the number, with the save, effect or healing it calls for.
+- **Jack of All:** Warfare, Seize and Tactics as switchable states; Warfare's bonus damage now grows at 5th and 15th as the text says (1d8 to 5d8).
+- **Switch Hitter:** Follow Up and Set-Up mark creatures; Follow Up's +1/+2/+3 to hit is automatic for jutsu attacks that aren't your Primary casting discipline (the level-up choice, D20).
+- **Superior Assault / Remarkable Aggression:** +1 critical range (+2 at 10th) with attacks of your Primary casting discipline.
+- **New pools:** Chakra Barrier (twice your level, its hit points, with its Chakra Control Mastery by level), Ghostfire (3, 5 at 10th), Tactical Insight (4), each with the buttons that spend them.
+- **Subclass cores:** Squad-Mates (up to your proficiency bonus) and Command; Combat Rival and the Relentless abilities; Flash and Elemental Flux (the AMP1d cards); Projected Barrier's Chakra Sphere and Repelling Burst; Phantom's Flame (Phantasm's Grip, Ghost Walk, Gravesight); Elemental Aura (+ half your Constitution modifier to allies' saves against nature release jutsu, D23); Superego Manifestation's aura; Heavy Guard; Transverse Defense.
+- **At the table:** Bunshin and the Void Soul (stat blocks to make as actors), the Chakra Barrier intercepting damage, the one-maneuver-per-turn limit, Signature Jutsu modifications, Shinobi Paths and most commands to allies.
+
+- **Text issues** (for the errata list): Jack of All repeats Warfare's text; Superior Riposte stops mid-sentence ("If the target"); Clones Support and Primal Storm contain design notes; Specialized Clones' Fire Release has "saving tactical, Phantom or hrow"; Speedy Recovery ends with "..".
+
 ## Questions for King (answer when convenient; nothing waits on them)
 
 - **Q-D1 Toxic Tongue:** "immunity to the Poisoned and Corroded conditions": N5e has no Poisoned condition. Is it Envenomed? (Only Corroded is automated.)
@@ -129,6 +145,11 @@ Highlights:
 - **Q-D16 Blitz:** Chakra Strike without the Discipline cost adds half the Flurry Dice: the button rounds up (1 at 9th, 2 at 11th and 15th, 3 at 20th). Round up or down?
 - **Q-D17 Burst Echo:** no saving throw is stated; the button applies the 2d12 to each creature within 5 feet of the point. Is a save missing?
 - **Q-D18 Dauntless and Titanic Wrath:** the −1 Discipline cost (all Katas at 20th; Savage Exploits at 17th) is built into the Savage Exploits buttons only; Katas at 20th are paid 1 less at the table. Should the Kata buttons cost 1 less from 20th too?
+- **Q-D19 Chakra Barrier:** it says "Unique Amp", but it behaves like a hit point pool. It's built as the Chakra Barrier pool plus its Mastery effect, not an Amp card. Should it be an Amp card too (counting toward Rule of 3's)?
+- **Q-D20 Tactical Insight and Ghostfire:** Ghostfire lasts 1 minute; Tactical Insight gives no ending. Should Tactical Insight empty when combat ends?
+- **Q-D21 Clones Everywhere:** the save is against your Stealth DC. Buttons can't use a skill DC yet, so it uses your Ninjutsu DC. Add a Stealth DC source, or keep it at the table?
+- **Q-D22 One maneuver per turn:** the limit isn't enforced (The Elite and Exceeding Expectations raise it). Enforce it on the maneuver buttons?
+- **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -141,3 +162,4 @@ Highlights:
 - 2026-11-15 King: "Lets move on to STD6d". Claude: engine D15–D19 and Taijutsu Specialist built, published 0.55.0-alpha.1. Suites 589 and 180 pass.
 - 2026-11-15 King: Q-D8 Bone Broken and Flow Broken are class conditions, to be built with the class and clan conditions system (`docs/CCOND1_SPEC.md`); Q-D9 yes; Q-D10 upcasting yes, a None-cost Taijutsu keeps None (fixed in code, ships with the next release); Q-D11 no (stance only); Q-D12 yes (3 ranks intended); Q-D13 yes.
 - 2026-11-21 King: "Then let's work on next Batch." Claude: engine D20–D22 and Weapon Specialist built (101 features), published 0.74.0-alpha.1. Q-D14–Q-D18 asked; nothing waits on them.
+- 2026-11-21 King: "Next batch." Claude: engine D23 and Scout-Nin built (187 features), published 0.75.0-alpha.1. Q-D19–Q-D23 asked; nothing waits on them.

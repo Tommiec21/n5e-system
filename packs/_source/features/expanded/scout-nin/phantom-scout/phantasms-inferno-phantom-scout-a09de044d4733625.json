@@ -33,13 +33,120 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eWiiCs7xxoupdQ",
+        "type": "roll",
+        "label": "Gain Ghostfire (Set-Up)",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "An ally benefits from your Set-Up."
+        }
+      },
+      {
+        "id": "n5e2mD8ilBg746PB",
+        "type": "effect",
+        "label": "Spectral Brand",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Spectral Brand",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "set-up"
+        },
+        "text": "Dealing psychic or chakra damage (also 1 Ghostfire): branded for 1 minute or until detonated; always under Set-Up (its benefit once per turn)."
+      },
+      {
+        "id": "n5eQGpv4lhBnFBHv",
+        "type": "save",
+        "label": "Detonate Spectral Brands",
+        "activation": "action",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Sealed"
+          },
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Action: every branded creature. Failure: 2 ranks of Sealed and Concussed."
+      },
+      {
+        "id": "n5exIln1AeyThTWs",
+        "type": "save",
+        "label": "Hollow Reflection",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction (also 1 Ghostfire): gaining a Mental or Sensory condition from a hostile jutsu of a creature you can see. Failure: your Mental and Sensory conditions drop to 0, and it gains 2 ranks of each."
+      },
+      {
+        "id": "n5e6WD8MWBj4a0bX",
+        "type": "roll",
+        "label": "Spend Ghostfire",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "The Ghostfire Spectral Brand and Hollow Reflection also cost."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ghostfire maximum 5 (on the pool)."
+        }
+      ]
     }
   },
   "ownership": {

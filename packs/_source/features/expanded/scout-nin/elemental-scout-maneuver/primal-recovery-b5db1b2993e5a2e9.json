@@ -36,13 +36,32 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ehp2oj1OnUa527",
+        "type": "heal",
+        "label": "Primal Recovery",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "bonus",
+        "heal": {
+          "formula": "2 * @poolRoll",
+          "pool": "tempCp"
+        },
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, Bonus action: temporary chakra equal to twice the die, and you can mold chakra again; your Flux ends. Recharges after 10 minutes of meditation; each use before that costs +1 die."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

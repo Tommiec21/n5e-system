@@ -975,3 +975,8 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Roll facts `option:<key>:<value>`: each class item's chosen level-up options (advancement type `option`), value slugged ("Thrown/Ammunition" → `thrown-ammunition`).
 - Activity `cost.formula`: replaces `amount`; `lvl(...)` by level, or dice rolled and posted to chat.
 - Automation table entry `dropEffects`: names of imported (non-`std6d`) effects on the feature to remove.
+
+### Fields added in STD6d Scout-Nin (0.75.0-alpha.1)
+
+- Feature pools `chakraBarrier` (max `2 * @level`, full on any rest), `ghostfire` (max `lvl(3:3,10:5)`), `tacticalInsight` (max 4).
+- Placed effect values (changes, limits, aura child rules): `@prof` and `@abilities.<a>.mod` resolve from the caster when placed; the rule validator accepts them (with `floor()`/`ceil()`).

@@ -36,13 +36,44 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqLAknrDrblYq5",
+        "type": "save",
+        "label": "Ghastly Wail",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In place of an attack of the Attack action: creatures of your choice in a 30-foot cone. Failure: 2 ranks of Dazzled."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

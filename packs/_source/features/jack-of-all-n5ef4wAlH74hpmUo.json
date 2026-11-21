@@ -29,7 +29,54 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eeePINQmze4aQo",
+        "type": "effect",
+        "label": "Generalization: Warfare",
+        "activation": "bonus",
+        "effect": {
+          "name": "Generalization: Warfare",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "generalization-warfare"
+        },
+        "text": "Switching is a Bonus action; end the other Generalization."
+      },
+      {
+        "id": "n5eEqTCpMXXG1ZBg",
+        "type": "effect",
+        "label": "Generalization: Seize",
+        "activation": "bonus",
+        "effect": {
+          "name": "Generalization: Seize",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "generalization-seize"
+        },
+        "text": "Switching is a Bonus action; end the other Generalization."
+      },
+      {
+        "id": "n5eYJa2TSoZMfPy1",
+        "type": "effect",
+        "label": "Generalization: Tactics",
+        "activation": "bonus",
+        "effect": {
+          "name": "Generalization: Tactics",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "generalization-tactics"
+        },
+        "text": "Switching is a Bonus action; end the other Generalization."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ehfgGuQzHIOKKd",
@@ -47,7 +94,14 @@
           "seize": "Seize",
           "tactics": "Tactics"
         }
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Generalization at a time; its buttons are on Warfare, Seize and Tactics."
+        }
+      ]
     }
   },
   "_stats": {

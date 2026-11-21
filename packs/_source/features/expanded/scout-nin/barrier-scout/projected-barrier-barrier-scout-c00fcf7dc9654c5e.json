@@ -33,13 +33,78 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ePwQJrPG9TxsZb",
+        "type": "effect",
+        "label": "Chakra Sphere",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "effect": {
+          "name": "Chakra Sphere",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "lvl(3:4,9:8,17:12)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: your Chakra Barrier as a 10-foot radius on a point until the start of your next turn; allies of your choice inside get 4 DR (8 at 9th, 12 at 17th). Target them."
+      },
+      {
+        "id": "n5evxDBbK3djuJlF",
+        "type": "save",
+        "label": "Repelling Burst",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "action",
+        "save": {
+          "abilities": [
+            "str",
+            "dex"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Action: a 10-foot radius on you, creatures of your choice (Strength or Dexterity, your pick). Failure: force damage, pushed 10 feet and Prone; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d6,9:4d6,17:6d6)",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

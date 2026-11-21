@@ -354,7 +354,11 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // AMP1f batch 4: "@disciplines.tai.mod" is the caster's discipline modifier when the effect is placed
   // (Supreme Violence: + half your Taijutsu modifier to AC, "floor(@disciplines.tai.mod / 2)").
   const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))
-    .replace(/@disciplines\.(\w+)\.mod/g, (m, d) => String(Number(actor?.system?.disciplines?.[d]?.mod) || 0))), actor);
+    .replace(/@disciplines\.(\w+)\.mod/g, (m, d) => String(Number(actor?.system?.disciplines?.[d]?.mod) || 0))
+    // STD6d Scout-Nin: the caster's proficiency bonus and ability modifiers (Squad-Mates: up to @prof;
+    // Elemental Aura: half the Constitution modifier).
+    .replace(/@prof\b/g, String(Number(actor?.system?.prof) || 0))
+    .replace(/@abilities\.(\w+)\.mod/g, (m, a) => String(Number(actor?.system?.abilities?.[a]?.mod) || 0))), actor);
   const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");
@@ -414,7 +418,7 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       ...(eff.limit ? { mark: { sourceUuid: actor.uuid, name: eff.name || label } } : {}),
       // ENG1d: an aura; its child effect's element fields keep the caster's numbers too.
       ...(eff.aura?.radius ? { aura: { ...eff.aura, effect: eff.aura.effect ? { ...eff.aura.effect, rules: (eff.aura.effect.rules ?? []).map(r => Object.fromEntries(Object.entries(r).map(([k, v]) =>
-        [k, typeof v === "string" && /@(scale|dc|level)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
+        [k, typeof v === "string" && /@(scale|dc|level|prof|abilities|disciplines)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
   if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid, outsideLimits: !!eff.outsideLimits } });

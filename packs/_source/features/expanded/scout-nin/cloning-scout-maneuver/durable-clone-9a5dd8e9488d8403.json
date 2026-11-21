@@ -36,13 +36,40 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eRkBaG3FhiF7mi",
+        "type": "effect",
+        "label": "Durable Clone",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "effect": {
+          "name": "Durable Clone",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "@poolRoll",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "You or one of your clones or Bunshin takes damage: DR equal to the die."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

@@ -33,13 +33,69 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elCHwgiTAekQYw",
+        "type": "effect",
+        "label": "Superego Manifestation",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Superego Manifestation",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "state": "superego",
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": [
+                "save:wis",
+                "save:cha",
+                "check:wis",
+                "check:cha"
+              ],
+              "label": "Superego's Will"
+            }
+          ],
+          "aura": {
+            "radius": 10,
+            "who": "friendly",
+            "includeSelf": false,
+            "effect": {
+              "name": "Superego's Influence",
+              "rules": [
+                {
+                  "key": "modifier",
+                  "selector": "attack",
+                  "value": 2,
+                  "label": "Superego's Influence"
+                },
+                {
+                  "key": "modifier",
+                  "selector": "damage",
+                  "value": 2,
+                  "label": "Superego's Influence"
+                }
+              ]
+            }
+          }
+        },
+        "text": "Bonus action, up to 1 minute (ends if you're unconscious): fused with your Void Soul; cast its jutsu; advantage on Wisdom and Charisma saves and checks; allies within 10 feet +2 to attack and damage."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

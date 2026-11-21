@@ -33,13 +33,36 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eseTDRqZ9e4Kgm",
+        "type": "effect",
+        "label": "Transverse Defense",
+        "activation": "reaction",
+        "effect": {
+          "name": "Transverse Defense",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "all",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 6
+        },
+        "text": "Reaction to damage from an attack or jutsu: resistance to its damage this turn (end it after that damage)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {
