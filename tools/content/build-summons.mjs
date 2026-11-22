@@ -340,8 +340,114 @@ const steamImp = actor("steam-imp", "Steam Imp", hozuki._id, {
      ...[["C-Rank", "6d6"], ["B-Rank", "7d6"], ["A-Rank", "8d6"], ["S-Rank", "9d6"]].map(([r, f]) => act("steam-imp", `Detonation: ${r}`, "damage", { damage: { parts: [{ formula: f, type: "cold" }] }, text: `Summoned at ${r}.` }))])
 ], { "details.level": "@level", "attributes.ac.flat": `14 + ${NIN_MOD}`, "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" }, "icons/svg/mystery-man-black.svg");
 
+// The three Doki (Kashu Conductors Throne; stat blocks printed under Demonic Instrument: Chains of Fantasia).
+const kashu = folder("Kashu", null, "kashu");
+const HIGH_ATK2 = "max(@attack.nin, @attack.tai, @attack.gen) - @prof", HIGH_DC2 = "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof";
+const DOKI_TRAITS = id => [
+  item(id, "Demonic Immunity", "npcTraits", html("Doki are immune to negative effects and damage inflicted by jutsu cast with the Auditory Ninja Tool.")),
+  item(id, "Shared Proficiency", "npcTraits", html("The Doki’s proficiency bonus is equal to yours and uses it calculate its saving throws and it uses its summoners highest jutsu attack bonus or save DC for its calculations."))];
+const revolt = (seed, id, dice) => item(id, "Revolt of the Demon World", "npcStrikes", html(`<em>Ranged Genjutsu Attack:</em> +Your attack bonus to hit, reach 30 ft., one target. <em>Hit:</em> ${dice} Psychic damage, and half as much chakra damage. This increases by +1d8 at 7th and 15th levels.`),
+  [act(seed, "Revolt of the Demon World", "attack", { attack: { discipline: "gen", range: "ranged", count: 1, bonus: "0" }, damage: { parts: [{ formula: dice, type: "psychic" }] }, text: "Half as much chakra damage too; +1d8 at your 7th and 15th levels." })]);
+const doki = (seed, name, ac, hp, hpLink, walk, abil, stats, items) => actor(seed, name, kashu._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "mutant", blurb: `Kashu: ${name}`, summonRole: name,
+    biography: html(`<p><em>Conductors Throne (Kashu, Harmonic Branch).</em> Your Doki act as a bonus action on your turn. They use your proficiency bonus and your highest jutsu attack bonus or save DC.</p>`, `<p><strong>Large Mutant.</strong> ${stats}</p>`,
+      "<p><strong>Linked to you when summoned:</strong> hit points, proficiency bonus, highest jutsu attack bonus and save DC, and your level. Add the AC increases at 7th and 15th by hand.</p>") },
+  abilities: Object.fromEntries(Object.entries(abil).map(([k, mod]) => [k, { value: 10 + 2 * mod }])),
+  attributes: { ac: { calc: "flat", flat: ac, formula: "" }, init: { bonus: "" } },
+  traits: { size: "large", conditionImmune: [...MENTAL_SENSORY.filter(c => !["blinded", "dazzled", "deafened"].includes(c)), "exhaustion"], speed: { walk, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { blindsight: 30 } },
+  hpMax: hp, cpMax: 0, diesAtZero: true
+}, id => [...DOKI_TRAITS(id), ...items(id)], { "details.level": "@level", hpMax: hpLink, "bonuses.attack.gen": HIGH_ATK2, "bonuses.attack.tai": HIGH_ATK2, "bonuses.saveDC.gen": HIGH_DC2 }, "icons/svg/mystery-man-black.svg");
+const dokiBandaged = doki("doki-bandaged", "Doki (Bandaged)", 16, 21, "20 + @level", 50, { str: 3, dex: 5, con: 4, int: -2, wis: 0, cha: 0 },
+  "<strong>Armor Class</strong> 16 + 1 at 7th and 15th levels · <strong>Hit Points</strong> 20 + (Your Level) · <strong>Speed</strong> 50 ft. STR +3, DEX +5, CON +4, INT −2, WIS +0, CHA +0. <strong>Condition Immunities</strong> All Mental, Exhaustion. <strong>Saving Throws</strong> Dex, Con. <strong>Skills</strong> Athletics, Acrobatics, Perception (Mastery 2). <strong>Senses</strong> Blindsight 30 ft.",
+  id => [revolt("doki-bandaged", id, "2d8"),
+    item(id, "Multiattack", "npcAbilities", html("Doki (Bandaged) can make 2 attacks with Revolt of the Demon World.")),
+    item(id, "Cursed Veil", "npcAbilities", html("The Bandaged Doki radiates a distorting aura of illusory chakra that warps the perceptions of nearby creatures. The first time a Hostile creatures moves or begins their turn within 10 feet of the Bandaged Doki, they must make a Wisdom saving throw. On a failure their AC and jutsu save DC is reduced by 2 and they cannot benefit from advantage on saving throws until the start of their next turn as the curse briefly unravels their mental defenses."),
+      [act("doki-bandaged", "Cursed Veil", "save", { save: { abilities: ["wis"], dc: { source: "gen" }, onSuccess: "none", resave: false }, text: "Failure: −2 AC and jutsu save DC, no advantage on saves until the start of its next turn." })])]);
+const dokiClub = doki("doki-club", "Doki (Club)", 16, 23, "20 + 3 * @level", 30, { str: 4, dex: 3, con: 5, int: -2, wis: 0, cha: 0 },
+  "<strong>Armor Class</strong> 16 + 3 at 7th and 15th levels · <strong>Hit Points</strong> 20 + (Three times your level) · <strong>Speed</strong> 30 ft. STR +4, DEX +3, CON +5, INT −2, WIS +0, CHA +0. <strong>Condition Immunities</strong> All Mental, Exhaustion. <strong>Saving Throws</strong> Str, Con. <strong>Skills</strong> Athletics (Mastery 2), Acrobatics, Perception. <strong>Senses</strong> Blindsight 30 ft.",
+  id => [revolt("doki-club", id, "1d8"),
+    item(id, "Stalwart Interception", "npcTraits", html("Whenever an allied creature within 10 feet of this Doki would take damage from an attack, it can spend its Reaction to interpose. The Doki (Club) becomes the new target and takes the full damage instead.")),
+    item(id, "Durable Demon", "npcTraits", html("The Doki (Club) reduces all damage it takes from area of effect attacks by an amount equal to its summoners level.")),
+    item(id, "Club", "npcStrikes", html("<em>Melee Weapon Attack:</em> Your attack bonus to hit, reach 5 ft., one target. <em>Hit:</em> 1d10+4 Bludgeoning damage."),
+      [act("doki-club", "Club", "attack", { attack: { discipline: "tai", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d10 + 4", type: "bludgeoning" }] } })]),
+    item(id, "Earthshaker Slam", "npcAbilities", html("<em>(Recharge 5-6).</em> The Doki slams their hammer into the ground, all hostile creatures within 10 feet of it, must make a Dexterity saving throw. On a failure, they take 2d8 + 4 bludgeoning damage (+1d8 at 7th and 15th levels.) and their speed is reduced by 20 feet until the end of their next turn and are knocked Prone. While their speed is reduced in this way, they cannot benefit from bonuses to movement."),
+      [act("doki-club", "Earthshaker Slam", "save", { save: { abilities: ["dex"], dc: { source: "gen" }, onSuccess: "none", resave: false }, damage: { parts: [{ formula: "2d8 + 4", type: "bludgeoning" }] }, inflicts: [{ key: "prone", kind: "state", ranks: 1, label: "Prone" }], text: "Failure: the damage (+1d8 at your 7th and 15th), −20 speed until the end of its next turn, Prone." })])]);
+const dokiClaw = doki("doki-claw", "Doki (Claw)", 16, 22, "20 + 2 * @level", 40, { str: 4, dex: 4, con: 3, int: -2, wis: 0, cha: 0 },
+  "<strong>Armor Class</strong> 16 + 2 at 7th and 15th levels · <strong>Hit Points</strong> 20 + (Twice your Level) · <strong>Speed</strong> 40 ft. STR +4, DEX +4, CON +3, INT −2, WIS +0, CHA +0. <strong>Condition Immunities</strong> All Mental, Exhaustion. <strong>Saving Throws</strong> Str, Dex. <strong>Skills</strong> Athletics, Acrobatics (Mastery 2), Perception. <strong>Senses</strong> Blindsight 30 ft.",
+  id => [revolt("doki-claw", id, "3d8"),
+    item(id, "Predatory Endurance", "npcTraits", html("At the start of its summoners turns, if an allied Doki creature within 30 feet took damage since the summoners previous turn, All Doki creatures gains 10 temporary hit points. This increases by +5 at 7th and 15th levels.")),
+    item(id, "Claw", "npcStrikes", html("<em>Multiattack.</em> Doki (Claw) can make 2 attacks with Claw. <em>Melee Weapon Attack:</em> +Your attack bonus to hit, reach 5 ft., one target. <em>Hit:</em> 1d6+4 Slashing damage. This attack scores a critical hit on a roll of 19-20. If you score at least one attack, you force the target to make a Constitution saving throw. On a failure, they gain 1 rank of Disorient."),
+      [act("doki-claw", "Claw", "attack", { attack: { discipline: "tai", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "1d6 + 4", type: "slashing" }] }, text: "Critical hit on 19–20." }),
+       act("doki-claw", "Claw: disorient", "save", { save: { abilities: ["con"], dc: { source: "gen" }, onSuccess: "none", resave: false }, inflicts: [{ key: "kashu-disoriented", kind: "condition", ranks: 1, label: "Disoriented" }], text: "At least one hit. Failure: 1 rank of Disoriented." })])]);
+
+// The Crystal Rabbit, Deer and Dragon (Shoton Hijutsu; stat blocks at the end of the clan): Earthen Artifacts that use your highest jutsu attack bonus or save DC.
+const shoton = folder("Shoton", null, "shoton");
+const crystal = (seed, name, size, ac, acLink, hp, hpLink, speed, abil, stats, items, dr = 0, drLink = "") => {
+  const a = actor(seed, name, shoton._id, {
+    details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: `Shoton: ${name}`, summonRole: name,
+      biography: html(`<p><em>Shoton Hijutsu (an Earthen Artifact).</em> It uses your highest jutsu attack bonus or Save DC when an effect calls for it. You command it as a Bonus action.</p>`, `<p>${stats}</p>`,
+        "<p><strong>Linked to you when summoned:</strong> AC, DR and hit points by the rank you cast the jutsu at, and your highest jutsu attack bonus and save DC.</p>") },
+    abilities: Object.fromEntries(Object.entries(abil).map(([k, mod]) => [k, { value: 10 + 2 * mod }])),
+    attributes: { ac: { calc: "flat", flat: ac, formula: "" }, init: { bonus: "" } },
+    traits: { size, conditionImmune: [...MENTAL_SENSORY, "petrified", "envenomed"], stateImmune: ["stunned"], speed },
+    hpMax: hp, cpMax: 0, diesAtZero: true
+  }, id => [item(id, "Abrasive", "npcTraits", html(`When a crystal ${name.split(" ")[1].toLowerCase()} takes damage from a melee attack, the attacking creature must make a Constitution saving throw, gaining a rank of Bleed on a failure.`),
+      [act(seed, "Abrasive", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "bleed", kind: "condition", ranks: 1, label: "Bleed" }], text: "A melee attacker that damaged it. Failure: a rank of Bleed." })]), ...items(id)],
+    { "details.level": "@level", "attributes.ac.flat": acLink, hpMax: hpLink, "bonuses.saveDC.nin": HIGH_DC2, "bonuses.attack.nin": HIGH_ATK2, ...(drLink ? { "traits.dr": drLink } : {}) }, "icons/svg/mystery-man-black.svg");
+  if ( dr ) a.system.traits.dr = dr;
+  return a;
+};
+const CRYST = n => [{ key: "shoton-crystallization", kind: "condition", ranks: n, label: "Crystallization" }];
+const crystalRabbit = crystal("crystal-rabbit", "Crystal Rabbit", "small", 10, "10 + 2 * max(0, @rankValue - 2)", 10, "10 + 10 * max(0, @rankValue - 2)", { walk: 40, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, { str: 1, dex: 4, con: 2, int: -5, wis: 0, cha: -5 },
+  "<strong>Small Construct, unaligned.</strong> <strong>Armor Class</strong> 10 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 10 + 10 for every rank above D-Rank · <strong>Speed</strong> 40 ft. STR +1 (save +3), DEX +4 (+7), CON +2 (+7), INT −5, WIS +0, CHA −5. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed.",
+  id => [item(id, "Team Effort", "npcTraits", html("If more than one Crystal Rabbit uses Bucktooth against the same creature on the same turn, that creature makes a single saving throw, but takes +1d6 damage for each Crystal Rabbit beyond the first on a failed save.")),
+    item(id, "Nibble", "npcStrikes", html("<em>Natural weapon Attack:</em> +X to hit, Reach 5ft., one target. <em>Hit:</em> 1d4+4 earth damage. On a roll of 4 of the damage die, the affected creature has its speed reduced by 5, until the beginning of the summoners next turn."),
+      [act("crystal-rabbit", "Nibble", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d4 + 4", type: "earth" }] } })]),
+    item(id, "Bucktooth", "npcAbilities", html("<em>(Recharge 5-6).</em> The crystal rabbit grows two crystal teeth and fires them like missiles at a target creature within 30 feet, forcing them to make a Dexterity saving throw. On a failure, they take 2d6 earth damage and they gain 1 rank of Crystallization."),
+      [act("crystal-rabbit", "Bucktooth", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, damage: { parts: [{ formula: "2d6", type: "earth" }] }, inflicts: CRYST(1) })])]);
+const crystalDeer = crystal("crystal-deer", "Crystal Deer", "medium", 16, "16 + 2 * max(0, @rankValue - 3)", 30, "30 + 15 * max(0, @rankValue - 3)", { walk: 40, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, { str: 4, dex: 2, con: 3, int: -5, wis: 0, cha: -5 },
+  "<strong>Medium Construct, unaligned.</strong> <strong>Armor Class</strong> 16 + 2 for every rank above C-Rank, <strong>DR</strong> 4 +1 for every rank above C-Rank · <strong>Hit Points</strong> 30 + 15 for every rank above C-Rank · <strong>Speed</strong> 40 ft. STR +4 (save +8), DEX +2 (+6), CON +3 (+8), INT −5, WIS +0, CHA −5. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed.",
+  id => [item(id, "Resonant Presence", "npcTraits", html("If an allied creature with ranks of a Physical or Elemental condition. Spends their Bonus action, they can touch the Crystal deer, transferring all ranks of a single condition to the Deer, except those the Deer is immune to.")),
+    item(id, "Horn", "npcStrikes", html("<em>Natural weapon Attack:</em> +X to hit, Reach 5ft., one target. <em>Hit:</em> 1d6+4 earth damage. The affected creature must make a Strength saving throw, being knocked Prone and gaining 1 rank of Crystallization on a failure."),
+      [act("crystal-deer", "Horn", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d6 + 4", type: "earth" }] } }),
+       act("crystal-deer", "Horn: on a hit", "save", { save: { abilities: ["str"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "prone", kind: "state", ranks: 1, label: "Prone" }, ...CRYST(1)] })]),
+    item(id, "Crystal Gore", "npcAbilities", html("<em>(Recharge 5-6).</em> The majestic Deer prepares to gore all enemies in its path. It runs 40feet in a straight line, forcing all creatures in range to make a Dexterity saving throw, taking twice the damage Horn would do, and inflicting 1 rank of Crystallization on all creatures that fail."),
+      [act("crystal-deer", "Crystal Gore", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, damage: { parts: [{ formula: "2d6 + 8", type: "earth" }] }, inflicts: CRYST(1), text: "Twice Horn's damage (roll 1d6 + 4 and double it)." })])], 4, "4 + max(0, @rankValue - 3)");
+const crystalDragon = crystal("crystal-dragon", "Crystal Dragon", "large", 22, "22 + 2 * max(0, @rankValue - 4)", 80, "80 + 20 * max(0, @rankValue - 4)", { walk: 0, climb: 0, swim: 0, fly: 40, burrow: 0, hover: false }, { str: 6, dex: 2, con: 9, int: -5, wis: 0, cha: 5 },
+  "<strong>Large Construct, unaligned.</strong> <strong>Armor Class</strong> 22 + 2 For every rank above A-Rank, <strong>DR</strong> 6 +2 for every rank above A-Rank · <strong>Hit Points</strong> 80 + 20 for every rank above A-Rank · <strong>Speed</strong> 40 ft fly. STR +6 (save +9), DEX +2 (+5), CON +9 (+9), INT −5, WIS +0, CHA +5 (−5). <strong>Damage Immunities</strong> Bludgeoning, Piercing and Slashing. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft.",
+  id => [item(id, "Crystalline Sovereignty", "npcTraits", html("All creatures that are summoned as a result of a Shoton Hijutsu, within 20 feet of the Crystal Dragon, except the Dragon itself, gains +2 DR")),
+    item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Crystal Dragon can attack 2 times. Once with its Bite and once with its tail sweep. <em>melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 4d6+6 Earth damage. Once per turn, a creature hit by this attack must make a Strength Saving throw. On a failed save they are Bruised."),
+      [act("crystal-dragon", "Bite", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "4d6 + 6", type: "earth" }] } }),
+       act("crystal-dragon", "Bite: bruise", "save", { save: { abilities: ["str"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "bruised", kind: "condition", ranks: 1, label: "Bruised" }], text: "Once per turn, on a hit." })]),
+    item(id, "Tail Sweep", "npcAbilities", html("The Crystal Dragon sweeps its tail in a 10-foot cone, in front of itself, forcing all creatures in range to make a Dexterity saving throw, taking 3d6+6 earth damage, and being knocked Prone on a failure, or half as much damage on a success."),
+      [act("crystal-dragon", "Tail Sweep", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "half", resave: false }, damage: { parts: [{ formula: "3d6 + 6", type: "earth" }] }, inflicts: [{ key: "prone", kind: "state", ranks: 1, label: "Prone" }] })]),
+    item(id, "Crystal Breath", "npcAbilities", html("<em>(Recharge 5-6):</em> The Crystal Dragon exhales a beam of crystalline energy, compressed into a 90-foot long, 5-foot-wide beam of earth chakra, forcing everyone in range to make a Dexterity saving throw. On a failure, they take 8d6 earth damage, and gain 2 ranks of Crystalize as their body is forcibly shifted into a crystalline molecular structure."),
+      [act("crystal-dragon", "Crystal Breath", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, damage: { parts: [{ formula: "8d6", type: "earth" }] }, inflicts: CRYST(2) })])], 6, "6 + 2 * max(0, @rankValue - 4)");
+crystalDragon.system.traits.immune = ["bludgeoning", "piercing", "slashing"];
+
+// The Brood Mother (Tsuchigumo King of the Brood; stat block printed under Master Silk Weaver): your highest jutsu attack bonus and save DC.
+const tsuchigumo = folder("Tsuchigumo", null, "tsuchigumo");
+const broodMother = actor("brood-mother", "Brood Mother", tsuchigumo._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "beast", blurb: "Tsuchigumo: Brood Mother", summonRole: "Brood Mother",
+    biography: html("<p><em>King of the Brood (Tsuchigumo).</em> You command it as a Bonus Action on your turns. It uses your highest Jutsu attack bonus and Save DC to calculate its attacks and ability save DCs.</p>",
+      "<p><strong>Large Creature, unaligned.</strong> <strong>Armor Class</strong> 20 · <strong>Hit Points</strong> 100 · <strong>Speed</strong> 60 ft. STR +4 (save +11), DEX +5 (+12), CON +2 (+5), INT +4 (+11), WIS +3 (+6), CHA +2 (+5). <strong>Damage Immunities</strong> Poison. <strong>Condition Immunities</strong> Charmed, Envenomed. <strong>Senses</strong> Darkvision 60ft, passive Perception 25.</p>") },
+  abilities: { str: { value: 18 }, dex: { value: 20 }, con: { value: 14 }, int: { value: 18 }, wis: { value: 16 }, cha: { value: 14 } },
+  attributes: { ac: { calc: "flat", flat: 20, formula: "" }, init: { bonus: "" } },
+  traits: { size: "large", immune: ["poison"], conditionImmune: ["charmed", "envenomed"], speed: { walk: 60, climb: 60, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 100, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Immutable Poison", "npcTraits", html("Poison damage this creature deals cannot be resisted and it treats immunity as resistance.")),
+  item(id, "Spider Climb", "npcTraits", html("The Brood Mother can climb or cross any surface suffering no movement speed penalties.")),
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Brood Mother Arachnid can attack 2 times with its Bite and once with its Web string or it can attack twice with its Web String. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 2d10 + 5 Poison damage and once per turn, force the target to make a Constitution saving throw, gaining a rank of Envenomed on a failure."),
+    [act("brood-mother", "Bite", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "2d10 + 5", type: "poison" }] } }),
+     act("brood-mother", "Bite: venom", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "envenomed", kind: "condition", ranks: 1, label: "Envenomed" }], text: "Once per turn, on a hit." })]),
+  item(id, "Web String", "npcAbilities", html("The Brood Mother shoots a string of thick webbing at a creature, forcing them to make a Dexterity saving throw. On a failure, the affected creature is Grappled and Restrained."),
+    [act("brood-mother", "Web String", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [{ key: "grappled", kind: "state", ranks: 1, label: "Grappled" }, { key: "restrained", kind: "state", ranks: 1, label: "Restrained" }] })]),
+  item(id, "Hatching Brood", "npcAbilities", html("The Brood Mother looks to your webbing as places to give new life. It summons a collection of Broodling’s, selecting a number of your Web Anchors currently active, dispelling up to 4, and summoning two Broodling’s per dispelled Web Anchor, each pair in the original spaces of the dispelled Web Anchors. The Broodling’s all follow a single directive. Consume the Brood Mothers prey, by any means. These creatures cannot be controlled by normal means, they simply take cues from their mother attacking whatever their Brood Mother last attacked. These Broodling’s also uses your highest jutsu attack bonus and save DC for abilities that call for it."))
+], { "details.level": "@level", "bonuses.saveDC.nin": HIGH_DC2, "bonuses.attack.nin": HIGH_ATK2 }, "icons/svg/mystery-man-black.svg");
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -366,5 +472,11 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write(`chinoike/blood-dragon-${bloodDragon._id}.json`, bloodDragon);
   write("hozuki/_folder.json", hozuki);
   write(`hozuki/steam-imp-${steamImp._id}.json`, steamImp);
-  console.log(`✓ summons: 10 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  write("kashu/_folder.json", kashu);
+  for ( const d of [dokiBandaged, dokiClub, dokiClaw] ) write(`kashu/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
+  write("shoton/_folder.json", shoton);
+  for ( const d of [crystalRabbit, crystalDeer, crystalDragon, broodMother] ) write(`shoton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
+  write("tsuchigumo/_folder.json", tsuchigumo);
+  write(`tsuchigumo/brood-mother-${broodMother._id}.json`, broodMother);
+  console.log(`✓ summons: 17 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

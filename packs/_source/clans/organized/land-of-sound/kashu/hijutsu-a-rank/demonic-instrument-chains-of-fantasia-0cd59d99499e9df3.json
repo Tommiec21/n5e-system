@@ -18,7 +18,14 @@
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Visual, Tactile)",
         "components": "CM, W (Shinobi Instrument)"
       },
-      "notAmp": "A genjutsu on foes, and a summon (King, AMP1f batch 4)."
+      "notAmp": "A genjutsu on foes, and a summon (King, AMP1f batch 4).",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its text also holds the three Doki stat blocks (now the Doki summons; a text issue)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,77 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebPEx1DpI5YIlL",
+        "type": "save",
+        "label": "Chains of Fantasia",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 10d8 psychic.",
+            "success": "Success: half of 10d8 psychic and Blinded until the end of its next turn.",
+            "failure": "Failure: 10d8 psychic at the start of its turns, Restrained and 3 ranks of Disoriented (resave at the end of its turns).",
+            "critFailure": "Critical Failure: as a failure, and roll 1d4 at the start of its turn (1 it spends its Action screaming, 2 a rank of Weakened, 3 chakra damage equal to the psychic, 4 a rank of Concussed)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "All creatures in a 60-foot radius on you.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eUiBR6tFg2d1Zv",
+        "type": "damage",
+        "label": "Chains of Fantasia: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d8",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5eGOcwlbDpKvUsI",
+        "type": "roll",
+        "label": "Critical failure d4",
+        "roll": {
+          "formula": "1d4",
+          "note": "1 Action lost, 2 Weakened, 3 chakra damage, 4 Concussed."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

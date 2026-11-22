@@ -17,7 +17,14 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Tactile), Mnemonic Branch, Efficient",
         "components": "CM, W (Shinobi Instrument)"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,21 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5efdUixSUPqb8au",
+        "type": "effect",
+        "label": "Always in Danger",
+        "effect": {
+          "name": "Always in Danger",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "For the duration, a detonated Bell Wire is replaced by one that's primed at the start of your next turn; a trigger can spend this jutsu's upkeep instead of your Reaction to cast a C-Rank or lower Kashu Hijutsu."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -18,7 +18,8 @@
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Efficient",
         "components": "CM"
       },
-      "notAmp": "It cocoons foes (King, AMP1f batch 3)."
+      "notAmp": "It cocoons foes (King, AMP1f batch 3).",
+      "reviewed": true
     }
   },
   "ownership": {
@@ -110,7 +111,65 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e0zmxFSpMQQGfR",
+        "type": "save",
+        "label": "Silk Burial",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Creatures standing on one Web Anchor. Failure: cocooned (Incapacitated, Blinded, Deafened; cocoon AC your jutsu save DC, 40 hit points +10 per rank, 10 DR (+4 at S), immune to bludgeoning, poison and psychic); an Action and a Strength save escapes.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "webAnchors",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eDCt7symnHAnHh",
+        "type": "damage",
+        "label": "Constrict",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Once per turn on your turn, to the encased creature."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

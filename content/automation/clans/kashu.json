@@ -1,0 +1,3004 @@
+{
+  "clan": "kashu",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "kashu-bell-witch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4s2vNlPA8cZQY",
+          "type": "roll",
+          "label": "Place a Bell Wire",
+          "roll": {
+            "formula": "",
+            "note": "In combat, once per turn at the start of your turn: an invisible 10-foot radius tripwire at a point within 30 feet; over 6 the oldest is dismissed (spend one first)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "bellWires",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5e51mKBVfvWoYYt",
+          "type": "roll",
+          "label": "Bell Wire triggered",
+          "roll": {
+            "formula": "",
+            "note": "A hostile creature moves through it (you always know): Reaction to cast an Auditory Kashu Hijutsu at it from there, no line of sight needed; the wire is dispelled."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "bellWires",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "bellWires",
+          "label": "Bell Wires",
+          "value": 0,
+          "max": "6",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch] Bell Wires: up to 6 (the pool); gone when combat ends."
+        }
+      ]
+    },
+    "kashu-conductors-throne": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNlUJkG22nl8R1",
+          "type": "summon",
+          "label": "Summon Doki (Bandaged)",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5egse2CKvWfq9kB",
+            "count": 1,
+            "template": ""
+          }
+        },
+        {
+          "id": "n5eKlQkGioKmwII2",
+          "type": "summon",
+          "label": "Summon Doki (Claw)",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5epYHEhmCuPnXGi",
+            "count": 1,
+            "template": ""
+          }
+        },
+        {
+          "id": "n5eniiIWdulPFUvV",
+          "type": "summon",
+          "label": "Summon Doki (Club)",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5ePeuZgE1uqKCUP",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch] One Doki (another at 7th and 15th): on initiative (rolled at disadvantage) all of them, or one per Bonus action, within 30 feet (Class & Clan Summons › Kashu). One Bonus action commands all; 11th: command one at no action cost (the rest only move). They last until dismissed, dropped to 0 or you're incapacitated; then 10 minutes of meditation out of combat before again."
+        }
+      ]
+    },
+    "kashu-demonic-instrument-acoustic-bully": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebWItHSmVndvnh",
+          "type": "attack",
+          "label": "Acoustic Bully",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Melee or ranged with your Shinobi Instrument's range: [Unarmed] or [Weapon Damage] + 3d8 psychic. +1 attack at C and again at A.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "psychic"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5erH3Af8nqfQO8z",
+          "type": "save",
+          "label": "Acoustic Bully: on a hit",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: 1 rank of Dazzled until the end of its next turn.",
+              "failure": "Failure: Deafened until the end of your next turn.",
+              "critFailure": "Critical Failure: Deafened for 1 minute (resave at the end of its turns)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ]
+    },
+    "kashu-demonic-instrument-always-in-danger": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efdUixSUPqb8au",
+          "type": "effect",
+          "label": "Always in Danger",
+          "effect": {
+            "name": "Always in Danger",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "For the duration, a detonated Bell Wire is replaced by one that's primed at the start of your next turn; a trigger can spend this jutsu's upkeep instead of your Reaction to cast a C-Rank or lower Kashu Hijutsu."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ]
+    },
+    "kashu-demonic-instrument-blessed-sonnet": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edviw4qIvNkdds",
+          "type": "roll",
+          "label": "Blessed Sonnet",
+          "roll": {
+            "formula": "1d4",
+            "note": "Bonus action, an ally within 60 feet (+1 per rank): remove 1 rank of a Mental or Sensory condition; add this to one non-d20 roll before the end of its next turn."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "kashu-demonic-instrument-chains-of-fantasia": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebPEx1DpI5YIlL",
+          "type": "save",
+          "label": "Chains of Fantasia",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 10d8 psychic.",
+              "success": "Success: half of 10d8 psychic and Blinded until the end of its next turn.",
+              "failure": "Failure: 10d8 psychic at the start of its turns, Restrained and 3 ranks of Disoriented (resave at the end of its turns).",
+              "critFailure": "Critical Failure: as a failure, and roll 1d4 at the start of its turn (1 it spends its Action screaming, 2 a rank of Weakened, 3 chakra damage equal to the psychic, 4 a rank of Concussed)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "All creatures in a 60-foot radius on you.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eUiBR6tFg2d1Zv",
+          "type": "damage",
+          "label": "Chains of Fantasia: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d8",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5eGOcwlbDpKvUsI",
+          "type": "roll",
+          "label": "Critical failure d4",
+          "roll": {
+            "formula": "1d4",
+            "note": "1 Action lost, 2 Weakened, 3 chakra damage, 4 Concussed."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its text also holds the three Doki stat blocks (now the Doki summons; a text issue)."
+        }
+      ]
+    },
+    "kashu-demonic-instrument-cursed-verse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFrWDdSRSBpumu",
+          "type": "attack",
+          "label": "Cursed Verse",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 2
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eEBgNA9pRNzF4p",
+          "type": "save",
+          "label": "Cursed Verse: on a hit",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: no effect.",
+              "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+              "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eFrWDdSRSBpumu",
+                "type": "attack",
+                "label": "Cursed Verse",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEBgNA9pRNzF4p",
+                "type": "save",
+                "label": "Cursed Verse: on a hit",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: no effect.",
+                    "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                    "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eFrWDdSRSBpumu",
+                "type": "attack",
+                "label": "Cursed Verse",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEBgNA9pRNzF4p",
+                "type": "save",
+                "label": "Cursed Verse: on a hit",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: no effect.",
+                    "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                    "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eFrWDdSRSBpumu",
+                "type": "attack",
+                "label": "Cursed Verse",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEBgNA9pRNzF4p",
+                "type": "save",
+                "label": "Cursed Verse: on a hit",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: no effect.",
+                    "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                    "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eFrWDdSRSBpumu",
+                "type": "attack",
+                "label": "Cursed Verse",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 2
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEBgNA9pRNzF4p",
+                "type": "save",
+                "label": "Cursed Verse: on a hit",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: no effect.",
+                    "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                    "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-doki-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8Im4YgnwyHrIH",
+          "type": "save",
+          "label": "Doki Bomb",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d12",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e8Im4YgnwyHrIH",
+                "type": "save",
+                "label": "Doki Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d12) + (1d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8Im4YgnwyHrIH",
+                "type": "save",
+                "label": "Doki Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d12) + (2d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8Im4YgnwyHrIH",
+                "type": "save",
+                "label": "Doki Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d12) + (3d12)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-forceful-interrogation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en1BCvydT0mv7v",
+          "type": "save",
+          "label": "Forceful Interrogation",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5en1BCvydT0mv7v",
+                "type": "save",
+                "label": "Forceful Interrogation",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5en1BCvydT0mv7v",
+                "type": "save",
+                "label": "Forceful Interrogation",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5en1BCvydT0mv7v",
+                "type": "save",
+                "label": "Forceful Interrogation",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-hypnotic-music": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ev66NQKgGZjzrT",
+          "type": "save",
+          "label": "Hypnotic Music",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: no effect; it ends on the creature.",
+              "failure": "Failure: Charmed and Restrained (resave at the end of its turns; damage or Prone ends it).",
+              "critFailure": "Critical Failure: as a failure, and Incapacitated."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "incapacitated",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Incapacitated"
+            }
+          ],
+          "text": "Creatures that hear it in a 20-foot radius within 90 feet; they hear only the music.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kashu-demonic-instrument-raging-demon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQoEqskCKfhXOP",
+          "type": "save",
+          "label": "Raging Demon",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Needs a Doki: creatures within 10 feet of it (two Doki at B, three at S; overlap: one save at disadvantage). Failure: Prone and the damage; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eQoEqskCKfhXOP",
+                "type": "save",
+                "label": "Raging Demon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Needs a Doki: creatures within 10 feet of it (two Doki at B, three at S; overlap: one save at disadvantage). Failure: Prone and the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eQoEqskCKfhXOP",
+                "type": "save",
+                "label": "Raging Demon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Needs a Doki: creatures within 10 feet of it (two Doki at B, three at S; overlap: one save at disadvantage). Failure: Prone and the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eQoEqskCKfhXOP",
+                "type": "save",
+                "label": "Raging Demon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Needs a Doki: creatures within 10 feet of it (two Doki at B, three at S; overlap: one save at disadvantage). Failure: Prone and the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eQoEqskCKfhXOP",
+                "type": "save",
+                "label": "Raging Demon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Needs a Doki: creatures within 10 feet of it (two Doki at B, three at S; overlap: one save at disadvantage). Failure: Prone and the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-sonic-interruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaVMWkodpH1vRC",
+          "type": "save",
+          "label": "Sonic Interruption",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: 1 rank of Disoriented.",
+              "failure": "Failure: 2 ranks of Disoriented and its jutsu fails.",
+              "critFailure": "Critical Failure: as a failure, and it can't cast that jutsu for 1 minute (an Action clears it)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Reaction, a creature casting with hand seals within 60 feet.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ]
+    },
+    "kashu-demonic-instrument-sonic-rupture": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eICmUbOUkSGmXY",
+          "type": "save",
+          "label": "Sonic Rupture",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: 1 rank of Dazzled.",
+              "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+              "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e9PHzWGJHV62wF",
+          "type": "damage",
+          "label": "Sonic Rupture: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eC0CNATxwocODe",
+          "type": "damage",
+          "label": "Sonic Rupture: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eICmUbOUkSGmXY",
+                "type": "save",
+                "label": "Sonic Rupture",
+                "save": {
+                  "abilities": [
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Dazzled.",
+                    "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                    "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9PHzWGJHV62wF",
+                "type": "damage",
+                "label": "Sonic Rupture: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eC0CNATxwocODe",
+                "type": "damage",
+                "label": "Sonic Rupture: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eICmUbOUkSGmXY",
+                "type": "save",
+                "label": "Sonic Rupture",
+                "save": {
+                  "abilities": [
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Dazzled.",
+                    "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                    "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9PHzWGJHV62wF",
+                "type": "damage",
+                "label": "Sonic Rupture: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eC0CNATxwocODe",
+                "type": "damage",
+                "label": "Sonic Rupture: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eICmUbOUkSGmXY",
+                "type": "save",
+                "label": "Sonic Rupture",
+                "save": {
+                  "abilities": [
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Dazzled.",
+                    "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                    "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9PHzWGJHV62wF",
+                "type": "damage",
+                "label": "Sonic Rupture: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eC0CNATxwocODe",
+                "type": "damage",
+                "label": "Sonic Rupture: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eICmUbOUkSGmXY",
+                "type": "save",
+                "label": "Sonic Rupture",
+                "save": {
+                  "abilities": [
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Dazzled.",
+                    "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                    "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e9PHzWGJHV62wF",
+                "type": "damage",
+                "label": "Sonic Rupture: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eC0CNATxwocODe",
+                "type": "damage",
+                "label": "Sonic Rupture: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (4d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-sound-of-doom": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elb73WMgLcIwfM",
+          "type": "save",
+          "label": "Sound of Doom",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: speed 0 until the end of its next turn.",
+              "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+              "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Creatures of your choice in a 60-foot radius on you.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5emZ3kuleE5ksKP",
+          "type": "damage",
+          "label": "Sound of Doom: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5elb73WMgLcIwfM",
+                "type": "save",
+                "label": "Sound of Doom",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: speed 0 until the end of its next turn.",
+                    "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+                    "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "Creatures of your choice in a 60-foot radius on you.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emZ3kuleE5ksKP",
+                "type": "damage",
+                "label": "Sound of Doom: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (1d10)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5elb73WMgLcIwfM",
+                "type": "save",
+                "label": "Sound of Doom",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: speed 0 until the end of its next turn.",
+                    "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+                    "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "Creatures of your choice in a 60-foot radius on you.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emZ3kuleE5ksKP",
+                "type": "damage",
+                "label": "Sound of Doom: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (2d10)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-trio-requiem": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRxauWzwMLoymw",
+          "type": "roll",
+          "label": "Trio Requiem",
+          "roll": {
+            "formula": "",
+            "note": "Every active Doki moves next to one creature and makes one melee attack (two at S); one save of your choice covers all hits. Bandaged: Revolt twice, Charisma save or chakra damage equal to all Doki damage. Claw: Claw twice, Constitution save or Bruised and Dazed. Club: Club twice, Strength save or Prone and speed 0 until the end of its next turn."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch]"
+        }
+      ]
+    },
+    "kashu-demonic-instrument-vibrational-barrier": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGyqgldyHb2ii6",
+          "type": "heal",
+          "label": "Vibrational Barrier",
+          "heal": {
+            "formula": "5d8 + 5",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5enDgmHoFDw4A5T",
+          "type": "save",
+          "label": "Vibrational Barrier: backlash",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eGyqgldyHb2ii6",
+                "type": "heal",
+                "label": "Vibrational Barrier",
+                "heal": {
+                  "formula": "5d8 + 5",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5enDgmHoFDw4A5T",
+                "type": "save",
+                "label": "Vibrational Barrier: backlash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eGyqgldyHb2ii6",
+                "type": "heal",
+                "label": "Vibrational Barrier",
+                "heal": {
+                  "formula": "5d8 + 5",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5enDgmHoFDw4A5T",
+                "type": "save",
+                "label": "Vibrational Barrier: backlash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-vibrational-delay": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2ybwrl1frtMIW",
+          "type": "save",
+          "label": "Vibrational Delay",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: 1 rank of Disoriented.",
+              "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+              "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Dealing [Unarmed] or [Weapon Damage].",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e5uSZvH1f6uViG",
+          "type": "damage",
+          "label": "Vibrational Delay: detonation",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "force"
+              }
+            ]
+          },
+          "text": "Force or psychic (your choice)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e2ybwrl1frtMIW",
+                "type": "save",
+                "label": "Vibrational Delay",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Disoriented.",
+                    "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                    "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "Dealing [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e5uSZvH1f6uViG",
+                "type": "damage",
+                "label": "Vibrational Delay: detonation",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "Force or psychic (your choice)."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e2ybwrl1frtMIW",
+                "type": "save",
+                "label": "Vibrational Delay",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Disoriented.",
+                    "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                    "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "Dealing [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e5uSZvH1f6uViG",
+                "type": "damage",
+                "label": "Vibrational Delay: detonation",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "Force or psychic (your choice)."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e2ybwrl1frtMIW",
+                "type": "save",
+                "label": "Vibrational Delay",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: 1 rank of Disoriented.",
+                    "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                    "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "Dealing [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5e5uSZvH1f6uViG",
+                "type": "damage",
+                "label": "Vibrational Delay: detonation",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "Force or psychic (your choice)."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-demonic-instrument-vulgar-mockery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVv6Kd1Ng4hwnk",
+          "type": "save",
+          "label": "Vulgar Mockery",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: half of 4d6 psychic.",
+              "failure": "Failure: 4d6 psychic and 1 rank of Disoriented (+1 at B, +1 more at S).",
+              "critFailure": "Critical Failure: as a failure, and disadvantage on its attacks until the end of its next turn."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "A creature that can hear you within 60 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5epzCUA6us2cQ1i",
+          "type": "damage",
+          "label": "Vulgar Mockery: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eVv6Kd1Ng4hwnk",
+                "type": "save",
+                "label": "Vulgar Mockery",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: half of 4d6 psychic.",
+                    "failure": "Failure: 4d6 psychic and 1 rank of Disoriented (+1 at B, +1 more at S).",
+                    "critFailure": "Critical Failure: as a failure, and disadvantage on its attacks until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "A creature that can hear you within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epzCUA6us2cQ1i",
+                "type": "damage",
+                "label": "Vulgar Mockery: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eVv6Kd1Ng4hwnk",
+                "type": "save",
+                "label": "Vulgar Mockery",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: half of 4d6 psychic.",
+                    "failure": "Failure: 4d6 psychic and 1 rank of Disoriented (+1 at B, +1 more at S).",
+                    "critFailure": "Critical Failure: as a failure, and disadvantage on its attacks until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "A creature that can hear you within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epzCUA6us2cQ1i",
+                "type": "damage",
+                "label": "Vulgar Mockery: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eVv6Kd1Ng4hwnk",
+                "type": "save",
+                "label": "Vulgar Mockery",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: half of 4d6 psychic.",
+                    "failure": "Failure: 4d6 psychic and 1 rank of Disoriented (+1 at B, +1 more at S).",
+                    "critFailure": "Critical Failure: as a failure, and disadvantage on its attacks until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "A creature that can hear you within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epzCUA6us2cQ1i",
+                "type": "damage",
+                "label": "Vulgar Mockery: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eVv6Kd1Ng4hwnk",
+                "type": "save",
+                "label": "Vulgar Mockery",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: no effect.",
+                    "success": "Success: half of 4d6 psychic.",
+                    "failure": "Failure: 4d6 psychic and 1 rank of Disoriented (+1 at B, +1 more at S).",
+                    "critFailure": "Critical Failure: as a failure, and disadvantage on its attacks until the end of its next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "kashu-disoriented",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Disoriented"
+                  }
+                ],
+                "text": "A creature that can hear you within 60 feet.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epzCUA6us2cQ1i",
+                "type": "damage",
+                "label": "Vulgar Mockery: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kashu-harmonic-songs": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elqWYGzwe27U7E",
+          "type": "save",
+          "label": "Binding Melody",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "A Doki's ability: hostile creatures within 10 feet. Failure: 1 rank of Sealed (2 at 7th, 3 at 15th) and it can only target that Doki until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5enxCfRAzC7lqRm",
+          "type": "damage",
+          "label": "Rhythmic Repeat",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Once per turn, a Disoriented creature takes damage from another source: 1d6 per rank (roll once per rank).",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5evyGVcs3Wt8JC2",
+          "type": "heal",
+          "label": "Underworlds Melody",
+          "heal": {
+            "formula": "lvl(3:4d6,7:6d6,15:8d6)",
+            "pool": "hp"
+          },
+          "text": "Action: every Doki within 15 feet (twice per combat per Doki).",
+          "activation": "action"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch] Prepare 2 Harmonies after a long rest (3 at 7th, 4 at 15th). Songs on a Kashu Hijutsu apply on a failed save; without a save, a Wisdom save against your highest jutsu save DC. Pull The Strings: once per turn, a Hijutsu on a creature with a Mental condition: on a failure it uses its reaction to move its speed toward you. Echo Chamber: Kashu Hijutsu can come from up to two Doki (one instance per creature). Aggressive Tempo: allies in a Kashu Hijutsu's range are immune and gain +10 speed (+20 at 7th, +30 at 15th) and +2 jutsu damage (+4, +6) until the end of their next turn. Demonic Chorus: Kashu Genjutsu +2 damage per active Doki. Harmonious Bridge: once per turn, a Doki's hit lets one use Revolt of the Demon World on it."
+        }
+      ]
+    },
+    "kashu-killing-frequency": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGITa6TQjbmlNH",
+          "type": "effect",
+          "label": "Killing Frequency",
+          "effect": {
+            "name": "Killing Frequency",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action, 1 minute, once per long rest: a 30-foot radius on you, 20 feet on a Doki (switch each turn), or 10 feet on every Bell Wire. Each effect once per creature's turn.",
+          "activation": "action"
+        },
+        {
+          "id": "n5eyTb9hFTIJxY6q",
+          "type": "save",
+          "label": "Embedded Frequency",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Twice per turn, an HS or M jutsu cast inside. Failure: a rank of Disoriented.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eRKNy5S4p7IkQw",
+          "type": "save",
+          "label": "Chakra Interference",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a CM jutsu cast inside. Failure: it costs 8 more.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eqXcNdj740gnsQ",
+          "type": "save",
+          "label": "Sonic Pulse",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a Disoriented creature moves more than 10 feet inside. Failure: 2d6 psychic per rank (roll once per rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5euif9NBPKeiJhc",
+          "type": "save",
+          "label": "Discordant Broadcast",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a creature starts its turn concentrating inside. Failure: triple its upkeep or lose concentration.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "kashu-mnemonic-songs": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch] Prepare 2 Mnemodies after a long rest (3 at 7th, 4 at 15th): the option items. Songs on a Kashu Hijutsu apply on a failed save; without a save, a Wisdom save against your highest jutsu save DC."
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-cruel-reverb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euZi7dUsBYiZQk",
+          "type": "save",
+          "label": "Cruel Reverb",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "berserk",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Berserk"
+            }
+          ],
+          "text": "A Bell Wire triggers (instead). Failure: Berserk for 1 minute, ending when it first damages a former ally.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-hair-trigger": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bell Wires trigger on any movement through them, forced too."
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-haunting-notes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMXPuQu3SchvGH",
+          "type": "attack",
+          "label": "Haunting Note",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "In place of Attack action attacks (two at 7th without Extra Attack), or free when a Bell Wire triggers: a creature within 30 feet of you or a Bell Wire.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eLvh95xQfkxnke",
+          "type": "save",
+          "label": "Haunting Note: Disoriented target",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "A hit on a Disoriented creature. Failure: ranks of Dazzled equal to its Disoriented.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-i-planned-for-this": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1kYEDifNIzLq6",
+          "type": "roll",
+          "label": "I Planned For This",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a melee attack damages you: dispel a Bell Wire and cast a D-Rank Kashu Hijutsu that forces a save at it, free (C-Rank at 7th, B-Rank at 15th)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "bellWires",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-lingering-bell": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGneLxCKUBucGa",
+          "type": "save",
+          "label": "Lingering Bell: detonate",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            },
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "A triggered wire marks it instead (1 minute); Bonus action or Reaction: creatures within 20 feet of it. Failure: Slowed and 1 rank of Concussed (+1 at 7th and 15th).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-multi-traps": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action on your turn: place 2 Bell Wires in different, non-overlapping places."
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-patient-trap": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bell Wires out of combat (up to 4, 24 hours): they alert you instead of triggering; a creature standing in one when combat starts rolls initiative at disadvantage and triggers it."
+        }
+      ]
+    },
+    "kashu-mnemonic-songs-taut-string": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eya1tlhe6xjB9Z",
+          "type": "save",
+          "label": "Taut String",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Once per turn, Reaction: a creature within 30 feet of a Bell Wire casts an HS jutsu; dispel the wire. Failure: Confused for 1 minute (resave at the end of its turns).",
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "bellWires",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kashu-opus": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick a sister branch: its 1st and 3rd-level features and its jutsu. Harmonic: one Doki (commanded once per turn at no action cost) and 2 always-prepared Harmonies. Symphonic: up to 2 Resonance and all three Melodies, and 2 Symphonies. Mnemonic: up to 3 Bell Wires, and 2 Mnemodies."
+        }
+      ]
+    },
+    "kashu-resonance-crown": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ej4wAwyEQu1VFX",
+          "type": "roll",
+          "label": "Gain Resonance",
+          "roll": {
+            "formula": "",
+            "note": "In combat, once per turn: an attack with your Shinobi Instrument, or a Taijutsu or Bukijutsu while wielding it."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "resonance",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eJsIzWgewf6znA",
+          "type": "save",
+          "label": "Vertigo Strike",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "kashu-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Once per turn, Shinobi Instrument damage. Failure: 1 rank of Disoriented.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "resonance",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eNtUb8BIMQVDdG",
+          "type": "save",
+          "label": "Frenetic Frequency",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Reaction, a melee attack damages you while you wield it. Failure: the damage and 2 ranks of Concussed.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:2d8,7:4d8,15:6d8)",
+                "type": "psychic"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "resonance",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e7JGoDO9fXuxpr",
+          "type": "roll",
+          "label": "Overtone Burst",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Taijutsu or Bukijutsu with it deals damage: −4 DR, or remove a resistance (bludgeoning, piercing, slashing, earth, lightning, psychic or force) until the end of your next turn."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "resonance",
+            "amount": 2
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "resonance",
+          "label": "Resonance",
+          "value": 0,
+          "max": "4",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch] Resonance: up to 4 (the pool; 8 with Overtuned Frequency); 0 at the start and end of combat; each lasts 1 minute."
+        }
+      ]
+    },
+    "kashu-sirens-voice": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes of performance: for 24 hours, the first social interaction with a listener by you or an ally gets +4 on Charisma checks; Charisma skill actions against them are resisted at disadvantage (once per listener per Full Rest). Indoors you learn the building's layout within 120 feet."
+        }
+      ]
+    },
+    "kashu-symphonic-songs": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch] Prepare 2 Symphonies after a long rest (3 at 7th, 4 at 15th): the option items. Songs on a Kashu Hijutsu apply on a failed save; without a save, a Wisdom save against your highest jutsu save DC."
+        }
+      ]
+    },
+    "kashu-symphonic-songs-dissonant-chord": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edaf37zABBImyq",
+          "type": "save",
+          "label": "Dissonant Chord",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a Shinobi Instrument hit with [Weapon] or [Unarmed Damage]. Failure: it loses concentration on 1 random jutsu.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "resonance",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kashu-symphonic-songs-piercing-tone": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "With 4+ Resonance: your Shinobi Instrument's [Weapon] or [Unarmed Damage] ignores resistance and treats immunity as resistance."
+        }
+      ]
+    },
+    "kashu-symphonic-songs-resonant-disruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKJRGT8nMfiPzD",
+          "type": "roll",
+          "label": "Resonant Disruption",
+          "roll": {
+            "formula": "",
+            "note": "Saving against an Auditory Genjutsu: advantage; a success counts as a critical success if possible."
+          },
+          "cost": {
+            "pool": "resonance",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kashu-symphonic-songs-sonic-cannon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efzsrnvfTV6rBD",
+          "type": "attack",
+          "label": "Sonic Cannon",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "In place of Attack action attacks (two at 7th without Extra Attack): a creature within 60 feet. A 10+ on the die: 1 rank of Disoriented. It counts as your Shinobi Instrument.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eUlJ5SUk96snit",
+          "type": "save",
+          "label": "Sonic Cannon Burst",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action, spending all Resonance: a 30-foot cone. 1d12 force per Resonance (roll once per point); half on a success.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "force"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "resonance",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "kashu-symphonic-songs-staccato-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewbrjYENODVs6N",
+          "type": "save",
+          "label": "Staccato Burst",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, spending Resonance: hostile creatures within 10 feet. Failure: 1d6 psychic per Resonance spent (roll once per point).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "kashu-symphonic-songs-subsonic-grip": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ew6Jiae1JQrxzy",
+          "type": "save",
+          "label": "Subsonic Grip",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Once per turn, Shinobi Instrument damage. Failure: Restrained until the end of its next turn.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "resonance",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kashu-symphonic-songs-subsonic-pressure": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEVICHxQk2ay1M",
+          "type": "effect",
+          "label": "Overtuned Frequency",
+          "effect": {
+            "name": "Overtuned Frequency",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action, concentration as an A-Rank Genjutsu: hold up to 8 Resonance and gain up to 2 per trigger (raise the pool by hand past 4).",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, Overtone Burst on a Disoriented target lasts until it has no Disoriented."
+        }
+      ]
+    }
+  }
+}

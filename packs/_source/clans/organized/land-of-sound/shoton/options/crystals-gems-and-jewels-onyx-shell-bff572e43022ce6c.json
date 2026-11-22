@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shoton",
       "sourceLine": 6987,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: the shell reaction (its button). Aura: Hardness you spend on an ally counts as +1 more (+2 at 11th)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,39 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eNYYwsBjPNVx38",
+        "type": "roll",
+        "label": "Onyx Shell",
+        "roll": {
+          "formula": "lvl(3:1d6,7:3d6,15:5d6)",
+          "note": "Weapon Dance, once per turn, Reaction to damage: reduce it by your [Weapons Damage] + this (+2d6 at 7th and 15th). Reduced to 0: hostile creatures within 10 feet save Dexterity or take that roll as earth (half on a success)."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eQt8gUKeDAHGkC",
+        "type": "save",
+        "label": "Onyx Shell: shards",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "The damage was reduced to 0: hostile creatures within 10 feet take the roll as earth; half on a success.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

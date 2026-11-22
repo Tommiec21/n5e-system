@@ -17,6 +17,18 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Amplify (2 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Hellfire Jets"
+        },
+        "note": "Then 1 Nature Energy at the start of each turn: +1 round.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 2
+        }
       }
     }
   },
@@ -108,7 +120,27 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZUAw9JP0tPnQB",
+        "type": "effect",
+        "label": "Hellfire Jets",
+        "effect": {
+          "name": "Hellfire Jets",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "As part of moving, until the start of your next turn: +20 speed, a fly speed equal to it, and you can float 1 foot up, immune to difficult and special terrain."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

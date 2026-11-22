@@ -17,6 +17,98 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "amp21992bc9f02d3",
+              "type": "effect",
+              "label": "Crystal Release: Crystal Wheel",
+              "effect": {
+                "name": "Crystal Release: Crystal Wheel",
+                "target": "self",
+                "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eDsqBBGgQ7YbTK",
+              "type": "damage",
+              "label": "Crystal Wheel: opportunity attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "A creature making an attack of opportunity against you."
+            }
+          ],
+          "A": [
+            {
+              "id": "amp21992bc9f02d3",
+              "type": "effect",
+              "label": "Crystal Release: Crystal Wheel",
+              "effect": {
+                "name": "Crystal Release: Crystal Wheel",
+                "target": "self",
+                "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eDsqBBGgQ7YbTK",
+              "type": "damage",
+              "label": "Crystal Wheel: opportunity attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "A creature making an attack of opportunity against you."
+            }
+          ],
+          "S": [
+            {
+              "id": "amp21992bc9f02d3",
+              "type": "effect",
+              "label": "Crystal Release: Crystal Wheel",
+              "effect": {
+                "name": "Crystal Release: Crystal Wheel",
+                "target": "self",
+                "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eDsqBBGgQ7YbTK",
+              "type": "damage",
+              "label": "Crystal Wheel: opportunity attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "A creature making an attack of opportunity against you."
+            }
+          ]
+        }
       }
     }
   },
@@ -120,6 +212,20 @@
           "amp": "jutsu-shoton-crystal-release-crystal-wheel"
         },
         "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eDsqBBGgQ7YbTK",
+        "type": "damage",
+        "label": "Crystal Wheel: opportunity attacker",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "earth"
+            }
+          ]
+        },
+        "text": "A creature making an attack of opportunity against you."
       }
     ],
     "featureType": "active",

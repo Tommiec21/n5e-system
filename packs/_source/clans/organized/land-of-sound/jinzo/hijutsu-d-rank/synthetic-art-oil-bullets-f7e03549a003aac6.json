@@ -17,6 +17,205 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Bio Amphibian",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5efajhKY2G8rClO",
+              "type": "attack",
+              "label": "Oil Bullets",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezHVq59pJ5rHLj",
+              "type": "save",
+              "label": "Oil Bullets: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Doused"
+                }
+              ],
+              "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5efajhKY2G8rClO",
+              "type": "attack",
+              "label": "Oil Bullets",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezHVq59pJ5rHLj",
+              "type": "save",
+              "label": "Oil Bullets: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Doused"
+                }
+              ],
+              "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5efajhKY2G8rClO",
+              "type": "attack",
+              "label": "Oil Bullets",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezHVq59pJ5rHLj",
+              "type": "save",
+              "label": "Oil Bullets: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Doused"
+                }
+              ],
+              "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5efajhKY2G8rClO",
+              "type": "attack",
+              "label": "Oil Bullets",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezHVq59pJ5rHLj",
+              "type": "save",
+              "label": "Oil Bullets: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Doused"
+                }
+              ],
+              "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +309,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5efajhKY2G8rClO",
+        "type": "attack",
+        "label": "Oil Bullets",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ezHVq59pJ5rHLj",
+        "type": "save",
+        "label": "Oil Bullets: save",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-doused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Doused"
+          }
+        ],
+        "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

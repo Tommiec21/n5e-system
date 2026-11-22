@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7221,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,64 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5edWimUOWYvcs5p",
+        "type": "save",
+        "label": "Bio-Matter: Doused",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-doused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Doused"
+          }
+        ],
+        "text": "Once per turn, [Unarmed Damage] in Soft Physique (pick this or the Constitution save). Failure: 1 rank of Doused (2 at 11th).",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e6HvwGodn590Sb",
+        "type": "save",
+        "label": "Bio-Matter: Stupor",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "Once per turn, [Unarmed Damage] in Soft Physique. Failure: Stupor (11th: a critical hit inflicts it without a save).",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

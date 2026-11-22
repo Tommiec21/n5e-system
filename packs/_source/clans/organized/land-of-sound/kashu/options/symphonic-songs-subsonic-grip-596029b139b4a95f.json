@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kashu",
       "sourceLine": 6593,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,40 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ew6Jiae1JQrxzy",
+        "type": "save",
+        "label": "Subsonic Grip",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Once per turn, Shinobi Instrument damage. Failure: Restrained until the end of its next turn.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "resonance",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

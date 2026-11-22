@@ -17,6 +17,223 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5etqJNbqSXoTm1y",
+              "type": "attack",
+              "label": "Bio-Electric Shock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eADdYskKGLQMgk",
+              "type": "save",
+              "label": "Bio-Electric Shock: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5etqJNbqSXoTm1y",
+              "type": "attack",
+              "label": "Bio-Electric Shock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eADdYskKGLQMgk",
+              "type": "save",
+              "label": "Bio-Electric Shock: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5etqJNbqSXoTm1y",
+              "type": "attack",
+              "label": "Bio-Electric Shock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eADdYskKGLQMgk",
+              "type": "save",
+              "label": "Bio-Electric Shock: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etqJNbqSXoTm1y",
+              "type": "attack",
+              "label": "Bio-Electric Shock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (4d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eADdYskKGLQMgk",
+              "type": "save",
+              "label": "Bio-Electric Shock: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +325,59 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5etqJNbqSXoTm1y",
+        "type": "attack",
+        "label": "Bio-Electric Shock",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eADdYskKGLQMgk",
+        "type": "save",
+        "label": "Bio-Electric Shock: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

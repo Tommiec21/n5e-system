@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shoton",
       "sourceLine": 6970,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,36 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqoGeOgQaTPaJ8",
+        "type": "effect",
+        "label": "Crystal Aura",
+        "effect": {
+          "name": "Crystal Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "A 10-foot aura on you (15 at 7th, 20 at 15th).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ephCegBUKYcFmU",
+        "type": "roll",
+        "label": "Crystal Aura: shield",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, creatures in your aura take damage: per Hardness on a creature (up to 2; 4 at 7th, 6 at 15th), remove its highest damage die."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "hardness",
+          "choose": true
+        }
+      }
+    ]
   }
 }

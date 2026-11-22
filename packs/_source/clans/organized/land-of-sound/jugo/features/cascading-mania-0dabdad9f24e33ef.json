@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6328
+      "sourceLine": 6328,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Becoming Manic, Reaction: up to two willing allies within 30 feet become Manic with your Priority Target (each takes a concentration slot as an A-Rank jutsu; ends if you lose it, the target drops to 0, or they're incapacitated)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -44,6 +51,22 @@
     "prerequisites": [
       "Once per turn, at the start of your turn, you can choose to become Manic voluntarily ignoring the Nature Energy requirements. Becoming Manic this way costs 2 Nature Energy at the beginning of each of your turns to maintain. If you cannot pay this cost, the condition ends and you become Dazed and Staggered as the sudden mental whiplash takes time to recover from."
     ],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSJ5BOhy7jG8Kb",
+        "type": "roll",
+        "label": "Voluntary Mania",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn at the start of your turn: become Manic without the requirement; 2 Nature Energy each turn start to keep it (can't pay: it ends, Dazed and Staggered)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

@@ -17,7 +17,8 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Unaware)",
         "components": "CM, W (Shinobi Instrument)"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -110,7 +111,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ev66NQKgGZjzrT",
+        "type": "save",
+        "label": "Hypnotic Music",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: no effect; it ends on the creature.",
+            "failure": "Failure: Charmed and Restrained (resave at the end of its turns; damage or Prone ends it).",
+            "critFailure": "Critical Failure: as a failure, and Incapacitated."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "charmed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Charmed"
+          },
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          }
+        ],
+        "text": "Creatures that hear it in a 20-foot radius within 90 feet; they hear only the music.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

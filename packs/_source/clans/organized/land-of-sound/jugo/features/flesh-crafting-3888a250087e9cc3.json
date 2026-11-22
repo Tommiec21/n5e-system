@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6259
+      "sourceLine": 6259,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "By your Nature Energy (NE): 2+ Nature Shell (DR half your level, min 1, without Medium or Heavy Armor); 4+ Predator's Grasp (unarmed Reach 1 and +2 damage); 6+ Natures Endurance (a rank of Mastery on two of Strength, Dexterity or Constitution saves; change on a long rest); 8+ Tyrants Presence; 10 King of Savagery. Reaching your maximum on your turn: Manic."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,38 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e6ERPbJYfuQLIT",
+        "type": "save",
+        "label": "Tyrants Presence (8+ NE)",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Hostile creatures starting their turn within 10 feet. Failure: no Reaction until the start of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eNzbqMJ218wnzf",
+        "type": "heal",
+        "label": "King of Savagery (10 NE)",
+        "heal": {
+          "formula": "@level",
+          "pool": "hp"
+        },
+        "text": "+1 size; at the start of each of your turns."
+      }
+    ]
   }
 }

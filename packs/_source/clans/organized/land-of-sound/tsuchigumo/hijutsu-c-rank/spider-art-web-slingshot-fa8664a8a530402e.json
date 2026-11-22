@@ -17,6 +17,113 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
         "components": "HS, CM, M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ezNvg8lE4SmulX",
+              "type": "save",
+              "label": "Web Slingshot",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ezNvg8lE4SmulX",
+              "type": "save",
+              "label": "Web Slingshot",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ezNvg8lE4SmulX",
+              "type": "save",
+              "label": "Web Slingshot",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +216,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezNvg8lE4SmulX",
+        "type": "save",
+        "label": "Web Slingshot",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

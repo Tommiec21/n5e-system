@@ -79,7 +79,7 @@ CARDS = [
          notes=["Formed over a long rest with a willing creature; both of you get this Amp. Ends when dismissed, on death, or when dispelled (B-Rank or lower)."]),
     dict(key="umbral-monarch", name="Umbral Monarch", box="Umbral Monarch", owner=("feat", "vesper-umbral-transmutation"), named="Battle", activation="bonus",
          seconds=60, uses=LR, summary="Fly speed, Echolocation and free Pinging. Unarmed +2 (+4 at 15th) in Claws of the Night; Sonic Lance and Umbral Shockwave actions.",
-         rules=[lvl_dmg("Umbral Monarch: Beast Claws", "lvl(1:2,15:4)", "self:stance:vesper-stance-claws-of-the-night", "damage:unarmed")],
+         rules=[lvl_dmg("Umbral Monarch: Beast Claws", "lvl(1:2,15:4)", "self:stance:vesper-stance-claws-of-night", "damage:unarmed")],
          notes=["Nocturnal Wings: fly speed equal to your speed (set at the table).", "Entering again before a long rest: 1 rank of exhaustion."]),
     dict(key="well-rested", name="Well Rested", box="Well Rested", owner=("feat", "kurama-deep-sleep"), named="Will", activation="",
          seconds=0, until="rest", giveable=True,

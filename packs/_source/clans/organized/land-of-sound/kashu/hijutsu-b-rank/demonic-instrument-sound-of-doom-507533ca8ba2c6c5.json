@@ -17,6 +17,109 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Visual, Tactile)",
         "components": "CM, W (Shinobi Instrument)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5elb73WMgLcIwfM",
+              "type": "save",
+              "label": "Sound of Doom",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: speed 0 until the end of its next turn.",
+                  "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+                  "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "text": "Creatures of your choice in a 60-foot radius on you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emZ3kuleE5ksKP",
+              "type": "damage",
+              "label": "Sound of Doom: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5elb73WMgLcIwfM",
+              "type": "save",
+              "label": "Sound of Doom",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: speed 0 until the end of its next turn.",
+                  "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+                  "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "text": "Creatures of your choice in a 60-foot radius on you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emZ3kuleE5ksKP",
+              "type": "damage",
+              "label": "Sound of Doom: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (2d10)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +214,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5elb73WMgLcIwfM",
+        "type": "save",
+        "label": "Sound of Doom",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: speed 0 until the end of its next turn.",
+            "failure": "Failure: 4d10 psychic, 2 ranks of Disoriented and it loses 1 Elite Action (a player character loses feature or jutsu Special Actions).",
+            "critFailure": "Critical Failure: as a failure, and it can't trade remaining Elite Actions for reactions."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Creatures of your choice in a 60-foot radius on you.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5emZ3kuleE5ksKP",
+        "type": "damage",
+        "label": "Sound of Doom: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

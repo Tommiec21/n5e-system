@@ -17,7 +17,8 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "M, W (Melee Weapons)"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,50 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eahq8AZgYR8sbD",
+        "type": "attack",
+        "label": "Golden Silk Strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "[Weapon Damage] (+1d6 each at C, +1d6 more at A).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5eieZhKHz1p0nVZ",
+        "type": "save",
+        "label": "Golden Silk Strike: webs",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At least one hit. Failure: you move it 10 feet and yourself up to 10 feet, without provoking.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

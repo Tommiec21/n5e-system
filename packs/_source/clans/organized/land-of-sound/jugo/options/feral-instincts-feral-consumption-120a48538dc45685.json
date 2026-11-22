@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jugo",
       "sourceLine": 6277,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,45 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elaZTaAXTlkHIl",
+        "type": "save",
+        "label": "Feral Consumption",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "Action (11th: a Bonus action for 4 Nature Energy): creatures you can see in a 15-foot cube within 30 feet. Failure: the damage and Sealed; success: half.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d6,7:4d6,15:6d6)",
+              "type": "chakra"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 3
+        }
+      }
+    ]
   }
 }

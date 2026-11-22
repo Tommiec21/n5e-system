@@ -17,6 +17,18 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu",
         "components": "M, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Amplify (2 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Misplaced Misfire"
+        },
+        "note": "It ignores jutsu bonuses to the target's AC or DR.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 2
+        }
       }
     }
   },
@@ -107,7 +119,30 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezjuOwWItcYGJE",
+        "type": "attack",
+        "label": "Misplaced Misfire",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "After missing an unarmed attack: one more against the same target (advantage with Feral Axe or Morningstar). Once per turn (+1 per rank).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

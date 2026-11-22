@@ -17,7 +17,14 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Barrier",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Light obscurement across it (heavy at A); S-Rank: 1 hour, no concentration."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +115,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5enf2N1aW1HfrCy",
+        "type": "save",
+        "label": "Spider Web Wall",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature passing through the wall (60 by 10 by 1 feet; AC your jutsu save DC; 20 hit points per 10 feet, +15 per rank; immune to bludgeoning, poison and psychic, vulnerable to fire). Failure: Restrained in it (an Action and a Strength save escapes).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

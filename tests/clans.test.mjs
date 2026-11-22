@@ -52,7 +52,9 @@ test("every source level-feature heading is present with the full body and the s
         for ( const p of paras ) assert.ok(norm(body).includes(p), `${doc.name}: ${p.slice(0, 40)}`);
         const ampName = norm(doc.flags.n5e.ampCopyRemoved.replace(/\s*\(.*$/, ""));
         assert.ok(!norm(doc.system.description).includes(`${ampName}${norm("Fortitude Amp")}`) && !norm(doc.system.description).includes(`${ampName}${norm("Battle Amp")}`), doc.name);
-        assert.ok(norm(body).length - paras.join("").length < 1600, `${doc.name}: only the Amp copy is gone`);
+        let rest = norm(body);
+        for ( const p of paras ) rest = rest.replace(p, "");
+        assert.ok(rest.startsWith(ampName) || rest.includes(`${ampName}${norm("Battle Amp")}`) || rest.includes(`${ampName}${norm("Fortitude Amp")}`) || rest.includes(`${ampName}${norm("Will Amp")}`), `${doc.name}: only the Amp copy is gone`);
       }
       else assert.equal(norm(doc.system.description), norm(body), doc.name);
       assert.ok(byName(clan.name).system.advancement.some(a => a.type === "feature" && a.level === Number(level[1]) && a.uuids.includes(doc.uuid)), doc.name);

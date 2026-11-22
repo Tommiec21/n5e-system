@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "tsuchigumo",
-      "sourceLine": 7618
+      "sourceLine": 7618,
+      "ampCopyRemoved": "Arachnid (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Arachnid's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "tsuchigumo-web-walker",
-    "description": "<p>11th Level Clan Feature</p>\n<p>Your body has reached a threshold that most of your clan never reach. Your silk glands beneath your skin multiply and grows. Your senses extend beyond what your eye and ears can provide.</p>\n<p>As a Bonus action, you awaken your Arachnid state for the next minute. Once you exit this state, you cannot enter it again until you complete a short rest.</p>\n<p>| #### Arachnid / Battle Amp / You become as close to an arachnid as you’ve ever been. For the duration you gain the following benefits; / Six Arms. Two additional sets of silk construct arms erupt from your torso. Once per turn, at no action cost to you, you can place one Web Anchor. Additionally, with your extra arms, you can wield up to two additional web weapons in your other arms, or cast jutsu with the Hand sign (HS) component even when your normal hands are occupied. The weapon in your normal arms are treated as your Primary Weapons. You can only benefit from the weapon seals found on your Primary Weapon. / Silk Domain. Select two Silk Weaves you don’t have prepared. You can use these weaves while in this state. / Spider Sense. Your perception of threats becomes almost instantaneous. Creatures cannot gain advantage on attacks against you as a result of them being hidden or unseen by you. Additionally, once per turn, if a creature 10 or more feet away from you would miss you with an attack while you have a ranged weapon equipped, you can make a single ranged weapon attack against them. This attack cannot be made at disadvantage |</p>",
+    "description": "<p>11th Level Clan Feature</p>\n<p>Your body has reached a threshold that most of your clan never reach. Your silk glands beneath your skin multiply and grows. Your senses extend beyond what your eye and ears can provide.</p>\n<p>As a Bonus action, you awaken your Arachnid state for the next minute. Once you exit this state, you cannot enter it again until you complete a short rest.</p>\n",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,45 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eODBYbsOu7Aquz",
+        "type": "effect",
+        "label": "Arachnid",
+        "effect": {
+          "name": "Arachnid",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "arachnid"
+        },
+        "text": "Bonus action, 1 minute; once per short rest.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ehnDyal3pCPcTK",
+        "type": "roll",
+        "label": "Six Arms: Web Anchor",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn at no action cost."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "webAnchors",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "sr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

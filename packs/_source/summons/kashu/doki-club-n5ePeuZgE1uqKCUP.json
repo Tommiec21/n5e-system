@@ -1,0 +1,429 @@
+{
+  "_id": "n5ePeuZgE1uqKCUP",
+  "_key": "!actors!n5ePeuZgE1uqKCUP",
+  "name": "Doki (Club)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "mutant",
+      "blurb": "Kashu: Doki (Club)",
+      "summonRole": "Doki (Club)",
+      "biography": "<p><em>Conductors Throne (Kashu, Harmonic Branch).</em> Your Doki act as a bonus action on your turn. They use your proficiency bonus and your highest jutsu attack bonus or save DC.</p><p><strong>Large Mutant.</strong> <strong>Armor Class</strong> 16 + 3 at 7th and 15th levels · <strong>Hit Points</strong> 20 + (Three times your level) · <strong>Speed</strong> 30 ft. STR +4, DEX +3, CON +5, INT −2, WIS +0, CHA +0. <strong>Condition Immunities</strong> All Mental, Exhaustion. <strong>Saving Throws</strong> Str, Con. <strong>Skills</strong> Athletics (Mastery 2), Acrobatics, Perception. <strong>Senses</strong> Blindsight 30 ft.</p><p><strong>Linked to you when summoned:</strong> hit points, proficiency bonus, highest jutsu attack bonus and save DC, and your level. Add the AC increases at 7th and 15th by hand.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 16
+      },
+      "con": {
+        "value": 20
+      },
+      "int": {
+        "value": 6
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 16,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "exhaustion"
+      ],
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "blindsight": 30
+      }
+    },
+    "hpMax": 23,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5evcPArlmSJLx1f",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5evcPArlmSJLx1f",
+      "name": "Demonic Immunity",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Doki are immune to negative effects and damage inflicted by jutsu cast with the Auditory Ninja Tool.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eSC75M3JqXCBlp",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eSC75M3JqXCBlp",
+      "name": "Shared Proficiency",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Doki’s proficiency bonus is equal to yours and uses it calculate its saving throws and it uses its summoners highest jutsu attack bonus or save DC for its calculations.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eLjiFvGtPH92Hs",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eLjiFvGtPH92Hs",
+      "name": "Revolt of the Demon World",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Ranged Genjutsu Attack:</em> +Your attack bonus to hit, reach 30 ft., one target. <em>Hit:</em> 1d8 Psychic damage, and half as much chakra damage. This increases by +1d8 at 7th and 15th levels.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eacQdQFBFNcZ3G",
+            "type": "attack",
+            "label": "Revolt of the Demon World",
+            "attack": {
+              "discipline": "gen",
+              "range": "ranged",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d8",
+                  "type": "psychic"
+                }
+              ]
+            },
+            "text": "Half as much chakra damage too; +1d8 at your 7th and 15th levels."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eHA43PgdlXSUUZ",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eHA43PgdlXSUUZ",
+      "name": "Stalwart Interception",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Whenever an allied creature within 10 feet of this Doki would take damage from an attack, it can spend its Reaction to interpose. The Doki (Club) becomes the new target and takes the full damage instead.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eGwXdxnNL1rt7A",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eGwXdxnNL1rt7A",
+      "name": "Durable Demon",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Doki (Club) reduces all damage it takes from area of effect attacks by an amount equal to its summoners level.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eDgQwwXuzjGAhC",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eDgQwwXuzjGAhC",
+      "name": "Club",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> Your attack bonus to hit, reach 5 ft., one target. <em>Hit:</em> 1d10+4 Bludgeoning damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eUV3kIyG8NVMZH",
+            "type": "attack",
+            "label": "Club",
+            "attack": {
+              "discipline": "tai",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d10 + 4",
+                  "type": "bludgeoning"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eitFFqOcvQ7wap",
+      "_key": "!actors.items!n5ePeuZgE1uqKCUP.n5eitFFqOcvQ7wap",
+      "name": "Earthshaker Slam",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>(Recharge 5-6).</em> The Doki slams their hammer into the ground, all hostile creatures within 10 feet of it, must make a Dexterity saving throw. On a failure, they take 2d8 + 4 bludgeoning damage (+1d8 at 7th and 15th levels.) and their speed is reduced by 20 feet until the end of their next turn and are knocked Prone. While their speed is reduced in this way, they cannot benefit from bonuses to movement.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eJ6EuactvbOVQ5",
+            "type": "save",
+            "label": "Earthshaker Slam",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "gen"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d8 + 4",
+                  "type": "bludgeoning"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              }
+            ],
+            "text": "Failure: the damage (+1d8 at your 7th and 15th), −20 speed until the end of its next turn, Prone."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYvQAP73QpC5QJ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "hpMax": "20 + 3 * @level",
+        "bonuses.attack.gen": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "bonuses.attack.tai": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "bonuses.saveDC.gen": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Doki (Club)",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.83.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

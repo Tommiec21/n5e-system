@@ -17,6 +17,105 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu, Bio Serpent.",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ezeHppRYL3HqGU",
+              "type": "save",
+              "label": "Thousand Snake Pile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Doused"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "piercing"
+                  },
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ezeHppRYL3HqGU",
+              "type": "save",
+              "label": "Thousand Snake Pile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "jinzo-doused",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Doused"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "piercing"
+                  },
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +209,50 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezeHppRYL3HqGU",
+        "type": "save",
+        "label": "Thousand Snake Pile",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-doused",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Doused"
+          },
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "piercing"
+            },
+            {
+              "formula": "2d12",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

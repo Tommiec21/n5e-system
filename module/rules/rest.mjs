@@ -163,9 +163,11 @@ export function restPlan(actor, type, { hdSpent = 0, cdSpent = 0, hdRoll = 0, cd
     // "formula": regain a set number (Mental Refocus: 2 Actualization Dice on a Short Rest, 3 at 11th...).
     else if ( r.amount === "formula" ) v = Math.min(max, v + (Number(resolveFormula(r.formula, actor)) || 0));
     else if ( r.amount === "half" ) v = Math.min(max, v + Math.floor(max / 2));
+    // STD6e E5: "empty" resets the pool to 0 (Jūgo's Nature Energy on a long rest).
+    else if ( r.amount === "empty" ) v = 0;
     else v = max;
     // A Short Rest only uses a pool's short-rest rule; longer rests use the strongest one.
-    if ( type !== "short" && list(pool.recovery).some(x => ["lr", "fr", "day"].includes(x.on) && recovers.has(x.on)) ) v = max;
+    if ( type !== "short" && r.amount !== "empty" && list(pool.recovery).some(x => ["lr", "fr", "day"].includes(x.on) && recovers.has(x.on) && x.amount !== "empty") ) v = max;
     if ( v !== pool.value ) {
       update[`system.resources.${id}.value`] = v;
       refreshed.push(pool.label || id);

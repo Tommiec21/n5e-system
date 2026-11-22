@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7225,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,18 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ejanDCFeORfoXH",
+        "type": "heal",
+        "label": "Regenerative Tissue",
+        "heal": {
+          "formula": "2d6 + floor(@level / 2)",
+          "pool": "hp"
+        },
+        "text": "Once per initiative, damage drops you below half your maximum hit points: at the end of that turn."
+      }
+    ]
   }
 }

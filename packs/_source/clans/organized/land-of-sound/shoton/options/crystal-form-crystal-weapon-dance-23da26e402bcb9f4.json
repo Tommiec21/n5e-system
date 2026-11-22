@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shoton",
       "sourceLine": 6966,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,72 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUL06ehd43lhiJ",
+        "type": "effect",
+        "label": "Crystal Weapon Dance",
+        "effect": {
+          "name": "Crystal Weapon Dance",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Your Crystal Weapon can deal earth (pick when you roll) and gains Prismatic Edge and Crystalline Structure.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eyJPtKH7DfoDD9",
+        "type": "save",
+        "label": "Prismatic Edge",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Once per turn per creature, your Crystal Weapon's damage. Failure: Bruised or Weakened (your choice).",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "hardness",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eeuZbQPf1lxPm5",
+        "type": "roll",
+        "label": "Crystalline Structure",
+        "roll": {
+          "formula": "floor(@level / 2)",
+          "note": "Casting a Shoton Hijutsu or Earth Ninjutsu that summons: infuse your weapon into it (DR half your level against its first damage each round; you can't use the weapon; take it back at the start of your turn)."
+        },
+        "cost": {
+          "pool": "hardness",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

@@ -180,3 +180,25 @@ test("STD6e E4 Land of Water: every Genwa, Hoshigaki, Hozuki, Kaguya, Vesper, Ya
   assert.match(item("hozuki", "hozuki-steaming-danger-tyranny").system.activities[0].summon.uuid, /n5eb2WwgDK4N1W25$/);
   assert.ok(item("hoshigaki", "hoshigaki-apex-berserker").system.activities.some(a => a.effect?.amp === "apex-predator-15"));
 });
+
+test("STD6e E5 Land of Sound: every Jinzo, Jūgo, Kashu, Shoton and Tsuchigumo item reviewed; Q-E17/Q-E18; rest and combat empty", async () => {
+  for ( const clan of ["jinzo", "jugo", "kashu", "shoton", "tsuchigumo"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("jugo", "jugo-nature-energy", "natureEnergy").recovery[0].amount, "empty");
+  assert.equal(pool("kashu", "kashu-resonance-crown", "resonance").lifetime, 60);
+  assert.equal(pool("shoton", "shoton-crystal-form", "hardness").max, "1 + @prof");
+  assert.match(item("kashu", "kashu-conductors-throne").system.activities[0].summon.uuid, /n5egse2CKvWfq9kB$/);
+  assert.match(item("shoton", "shoton-crystal-release-prismatic-dragon-of-heaven").system.activities[0].summon.uuid, /n5eNuujawHgtw3s6$/);
+  assert.match(item("tsuchigumo", "tsuchigumo-king-of-the-brood").system.activities[0].summon.uuid, /n5eJxCsMDaq3FJQl$/);
+  assert.doesNotMatch(item("tsuchigumo", "tsuchigumo-web-walker").system.description, /#### Arachnid/);
+  // King Q-E17 and Q-E18.
+  assert.equal(item("hozuki", "hozuki-hydration").system.activities[0].cost.amount, 1);
+  assert.ok(!clanItems("vesper").has("vesper-stance-claws-of-the-night"));
+  const { restUpdates } = await import("../module/rules/rest.mjs").catch(() => ({}));
+  const src = (await import("node:fs")).readFileSync(new URL("../module/rules/rest.mjs", import.meta.url), "utf8");
+  assert.match(src, /r\.amount === "empty" \) v = 0/);
+});

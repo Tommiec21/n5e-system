@@ -17,6 +17,79 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eomvmTEJ8cYLB3",
+              "type": "save",
+              "label": "Killing Thread",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eomvmTEJ8cYLB3",
+              "type": "save",
+              "label": "Killing Thread",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +181,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eomvmTEJ8cYLB3",
+        "type": "save",
+        "label": "Killing Thread",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

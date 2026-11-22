@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7261,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature can carry up to 5 of your Shin-Seals."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e9ZDk58gjFUb5m",
+        "type": "roll",
+        "label": "Layered Seal: dispel",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, a creature with your Shin-Seals casts a jutsu you can see: dispel them all; +6 to its cost per seal."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "shinSeals",
+          "choose": true
+        }
+      }
+    ]
   }
 }

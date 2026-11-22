@@ -17,6 +17,214 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu",
         "components": "CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZby9rLRm8wETr",
+              "type": "attack",
+              "label": "Lotus Cannon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (90 at B-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eF0POxScQkSLAa",
+              "type": "save",
+              "label": "Lotus Cannon: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZby9rLRm8wETr",
+              "type": "attack",
+              "label": "Lotus Cannon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (90 at B-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eF0POxScQkSLAa",
+              "type": "save",
+              "label": "Lotus Cannon: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZby9rLRm8wETr",
+              "type": "attack",
+              "label": "Lotus Cannon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (90 at B-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eF0POxScQkSLAa",
+              "type": "save",
+              "label": "Lotus Cannon: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZby9rLRm8wETr",
+              "type": "attack",
+              "label": "Lotus Cannon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (90 at B-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (4d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eF0POxScQkSLAa",
+              "type": "save",
+              "label": "Lotus Cannon: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Amplify (2 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Lotus Cannon"
+        },
+        "note": "A 30-foot cone (45 feet and 4 Nature Energy at B-Rank): one attack roll against each creature in it.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 2
+        }
       }
     }
   },
@@ -108,7 +316,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZby9rLRm8wETr",
+        "type": "attack",
+        "label": "Lotus Cannon",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet (90 at B-Rank).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eF0POxScQkSLAa",
+        "type": "save",
+        "label": "Lotus Cannon: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

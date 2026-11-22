@@ -61,6 +61,7 @@ Plus each clan's stances and (Q-E1) Hijutsu in the same batch.
 | E-D4 | Cast rank on summons | A summon from a cast card passes its rank; summoner links can use `@rankValue` (D 1 ... S 5): the Clay constructs' hit points. |
 | E-D6 | Pool unit lifetime | A pool's `lifetime` (seconds): each unit lasts that long unless spent (spending uses the oldest; the actor's `flags.n5e.poolStamps`); the active GM drops expired units as world time passes (King Q-E6: Primes, Pressure). |
 | E-D7 | Combat recovery amounts | A pool's turn, round and combat recovery uses its amount: `formula` regains that many (Jiton's 1 Magnetic Charge a turn; before this it refilled), `half` half the max, and the new `empty` drops it to 0 (Stellar Charges and Voltage start each combat at 0; Starlights end with it). `rules/recovery.mjs combatRecoveredValue`. |
+| E-D8 | Rest recovery "empty" | A long rest can empty a pool too (Jūgo's Nature Energy resets to 0). `rules/rest.mjs`. |
 | E-D5 | Item fields from tables | A table entry's `system` sets item fields (a stance's `unarmedDie` and `unarmedType`: Ballistic Knuckle). |
 
 ## E1 Land of Earth (0.79.0-alpha.1)
@@ -106,6 +107,18 @@ Review tables: `docs/clans/genwa-automation.md`, `hoshigaki-automation.md`, `hoz
 - **Past rulings applied, not asked again:** copied Amp text removed from Ravenous Chakra, Blood As Thick As Oil, Mirage Regent, Dread Weave and Network Integration (King Q-E12); the Vesper and Yamada stance items hold their stance's own text (King Q-E9).
 - **Fixed from E3:** Bloody Resilience's 15th-level clot rolled 1d8 once; it's 1d8 per rank removed.
 
+## E5 Land of Sound (0.83.0-alpha.1)
+
+Review tables: `docs/clans/jinzo-automation.md`, `jugo-automation.md`, `kashu-automation.md`, `shoton-automation.md`, `tsuchigumo-automation.md` (174 items: 124 partly automated, 50 notes only).
+
+- **Jinzo:** Shin-Pet and Shin-Seal focus buttons; Shin-Seals (pool, up to your proficiency bonus, each 1 minute) with each Hijutsu's Shin-Seal spend as a cast dialog option; Soft Physique; every Biovolution and Synthwakening; Synthetic Chakra Mode's Amps; every Hijutsu. The Bio-Pet stays a note (Q-E19).
+- **Jūgo:** Nature Energy (pool, 0 after a long rest) with Heal and every expenditure; each Hijutsu's Amplify as a cast dialog option; Flesh Crafting's Tyrants Presence and King of Savagery; every Feral Instinct; The Hunter; Cascading Mania; the four mutations as notes.
+- **Kashu:** the three Doki summons (Class & Clan Summons › Kashu; their stat blocks were printed under Chains of Fantasia); Resonance (pool, each 1 minute, 0 each combat) with every Melody and Symphony; Bell Wires (pool, gone after combat) with every Mnemody; the Harmonies; Killing Frequency; every Hijutsu.
+- **Shoton:** Hardness (pool, back on a long rest); Crystal Weapon Dance and Crystal Aura; every Crystal Type; Crystal Ascension; the Crystal Rabbit, Deer and Dragon summons (Class & Clan Summons › Shoton) with AC, DR and hit points by cast rank; every Hijutsu (Crystal Armor and Crystal Wheel keep their Amp buttons).
+- **Tsuchigumo:** Web Anchors (pool, each 1 minute) with every Silk Weave; Arachnid's Amp; the Brood Mother summon (Class & Clan Summons › Tsuchigumo; its Broodlings have no stat block: held, like Q-E14); every Hijutsu.
+- **Past rulings applied:** copied Amp text removed from Synthetic Battle Aura and Web Walker (Q-E12).
+- **King's Q-E17 and Q-E18 (in this release):** Hydration's other triggers regain 1; Vesper's duplicate "Claws of the Night" stance is deleted (its level-7 grant removed; Umbral Monarch's Beast Claws points at Claws of Night).
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -123,8 +136,9 @@ Review tables: `docs/clans/genwa-automation.md`, `hoshigaki-automation.md`, `hoz
 - **Q-E15 Plasma Release: Light Binding Step:** asked in error: King already answered this as Q-F14 (docs/AMP1F_SPEC.md, 2026-11-21): the reaction line is a mistake and isn't there. The note says so (0.81.1-alpha.1).
 - **Q-E16 Crimson Weaponry:** answered (King 2026-11-21): rolling a 1 or 2 doesn't reduce the ammunition die by one step (the note says so; 0.81.1-alpha.1).
 
-- **Q-E17 Hozuki Hydration:** "You regain spent Hydration when: you complete a long rest, take damage from a jutsu with the Water Release keyword, begin your turn with at least half your body submerged..., or when you cast a jutsu with the Water release keyword and gain the benefit of a sufficient source of water." How much do the non-rest triggers regain: all of it, or 1? (The button lets you pick for now.)
-- **Q-E18 Vesper's two stance items:** "Claws of Night" and "Claws of the Night" are both stance items (they held Nocturnal Supremacy's and Nocturnal Dominion's text; both now hold the Claws of Night stance). Delete "Claws of the Night"?
+- **Q-E17 Hozuki Hydration:** answered (King 2026-11-21): "1." Each non-rest trigger regains 1 Hydration (0.83.0-alpha.1).
+- **Q-E18 Vesper's two stance items:** answered (King 2026-11-21): "Yes." "Claws of the Night" is deleted (0.83.0-alpha.1).
+- **Q-E19 Jinzo Bio-Pet:** its stat blocks (Bio-Amphibian, Bio-Serpent, their traits and attacks) are filed as five option items under I've Become, Me, and the Bio-Serpent's Bite has no numbers. Build the Bio-Pets as summons (and what is the Bite), or hold them like the Storm Snakes?
 
 ## Text issues (for the errata list)
 
@@ -145,6 +159,11 @@ Review tables: `docs/clans/genwa-automation.md`, `hoshigaki-automation.md`, `hoz
 - Vesper: both stance items held other features' text (fixed, Q-E9 ruling; duplicate: Q-E18); Dread Weave held Umbral Monarch's Amp (removed).
 - Yamada: the stance item held Asaemon Disciplines' text (fixed, Q-E9 ruling); Single Swing's upcast says "above B-Rank" (it's A-Rank); Senta Piercing "laten Tao" and its upcast adds 1d12 to a jutsu with only [Weapons Damage]; Demon Rain "earth-bound strikes.."; Spring Garden "and for the affected creature".
 - Yuki: Ice Release Manifestation "change the damage type to Wind or Cold respectively" (swap); Ten Thousand Ice Petals "the increase the ranks of Frostbite inflicted to +2"; Frostbite "at the end of their for each rank".
+- Jinzo: I've Become, Me holds the Bio-Pet stat blocks and the Stupor and Doused condition text (Q-E19); Adaptive Biology's upcast says above D-Rank (it's C-Rank); Binding Serpent Curse's upcast adds Envenomed it never inflicts; Hidden Shadow Burial "saving th row"; Synthetic Battle Aura held Synthetic Chakra Mode's Amp (removed).
+- Jūgo: Nature Energy is spelled "Natural Energy" in Amplify lines; Feral Abandon ends "also count for Feral Mania and"; Natures Voice holds the Manic condition text; Cellular Regeneration "If this just is cast".
+- Kashu: the three Doki stat blocks sit in Chains of Fantasia's text; Doki AC "+1 at 7th and 15th levels" (+1 each, or once?); Resonance Crown calls a melody "Overturn Burst" in Subsonic Pressure; Harmonic Songs have no option items (all in the feature).
+- Shoton: Crystal Prison "encasing a creature you touch within" (leftover); Crystal Dragon CHA +5 with save −5; Gods Crossing upcast "If this jutsu is cast at B-Rank or higher, you can cross".
+- Tsuchigumo: Master Silk Weaver holds the Brood Mother's stat block; Broodlings have no stat block; Web Walker held Arachnid's Amp (removed); Spiders Thread "even though full cover, though attacks through full cover at made".
 
 ## Progress log
 
@@ -157,3 +176,4 @@ Review tables: `docs/clans/genwa-automation.md`, `hoshigaki-automation.md`, `hoz
 - 2026-11-21 King: "Next Batch." Claude: E3 Land of Lightning built (84 items), E-D7 combat recovery amounts (fixes Jiton refilling), the Blood Dragon summon; published 0.81.0-alpha.1. Q-E12–Q-E16 asked; nothing waits on them.
 - 2026-11-21 King: "Q12. Remove the copy. Q13. Post the full effect text. Q14. Hold off on this. Q15. post the full effect text. Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step." Claude: Amp copies removed, Crimson Weaponry note; full Aphelion and Light Binding Step text posted; published 0.81.1-alpha.1.
 - 2026-11-21 King: "Next batch." Claude: E4 Land of Water built (151 items), the Steam Imp summon; earlier rulings Q-E9 and Q-E12 applied without asking; published 0.82.0-alpha.1. Q-E17 and Q-E18 asked (checked earlier specs first); nothing waits on them.
+- 2026-11-21 King: "Q17. 1. Q18. Yes. Next batch." Claude: Hydration +1, duplicate Vesper stance deleted; E5 Land of Sound built (174 items), seven summons (Doki x3, Crystal Rabbit, Deer, Dragon, Brood Mother), rest "empty"; published 0.83.0-alpha.1. Q-E19 asked (checked earlier specs first).

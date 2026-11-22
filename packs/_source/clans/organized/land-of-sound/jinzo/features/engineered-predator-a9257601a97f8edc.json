@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jinzo",
-      "sourceLine": 7200
+      "sourceLine": 7200,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch] Latch (the Bio-Pet, unseen or Hidden): melee, Dex + Prof to hit; on a hit it's Latched (moves with it; you know where it is; your attacks against it ignore cover and invisibility but full cover, never at disadvantage; it's found by Chakra Sensing or Sight or Perception vs the pet's Stealth DC, then a Bonus action removes it)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,63 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eWCT8qnpgZra6g",
+        "type": "effect",
+        "label": "Shin-Pet focus",
+        "effect": {
+          "name": "Shin-Pet",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "On initiative until combat ends, or a Bonus action (swap as a Bonus action): your Bio-Pet can be up to 1 mile away (Move only past 120 feet), shares what it sees and hears within 60 feet telepathically, and gains Latch.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eEqOB2es003BGM",
+        "type": "effect",
+        "label": "Shin-Seal focus",
+        "effect": {
+          "name": "Shin-Seal",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "On initiative until combat ends, or a Bonus action (swap as a Bonus action): mark creatures with Shin-Seals.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eyYxrrdzwX4oSw",
+        "type": "roll",
+        "label": "Apply a Shin-Seal",
+        "roll": {
+          "formula": "",
+          "note": "A hit with your attack, or a Bonus action touching a structure or object; up to your proficiency bonus at once, 1 minute each or until a Hijutsu spends it (marks stay if you swap focus)."
+        },
+        "cost": {
+          "pool": "shinSeals",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "shinSeals",
+        "label": "Shin-Seals",
+        "value": 0,
+        "max": "@prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

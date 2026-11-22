@@ -17,7 +17,8 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -107,7 +108,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4eAhAg0ZdSdJv",
+        "type": "attack",
+        "label": "Web Flower",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 3
+        },
+        "text": "Up to three targets (+1 attack per rank): −10 speed per hit until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5edJtTZbuOQGZpk",
+        "type": "save",
+        "label": "Web Flower: 2+ hits",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "Failure: no HS jutsu until the end of your next turn; with 3 hits, also Blinded and Slowed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

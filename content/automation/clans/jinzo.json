@@ -1,0 +1,2758 @@
+{
+  "clan": "jinzo",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "jinzo-bio-bonded-pet": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Bio-Pet (Bio-Amphibian or Bio-Serpent, chosen at creation): within 120 feet, acting on your turn with its own reaction. Move (no action), Strike (with your Attack action or an attacking jutsu: its Bite or Tongue Lash), Synchronize (Bonus action: a special ability, Dash, Disengage, Hide, Help or a skill action out of combat). At 0 hit points it dies; a long rest ritual brings it back. It levels with you (+1 to two abilities and saves at 4, 8, 12, 16, 19, max +5). Its stat blocks sit in I've Become, Me's option items (Q-E19)."
+        }
+      ]
+    },
+    "jinzo-biological-evolution": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch] Two Biovolutions (more at 7th and 15th): the option items. Saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "jinzo-biological-evolution-bio-matter-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edWimUOWYvcs5p",
+          "type": "save",
+          "label": "Bio-Matter: Doused",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-doused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Doused"
+            }
+          ],
+          "text": "Once per turn, [Unarmed Damage] in Soft Physique (pick this or the Constitution save). Failure: 1 rank of Doused (2 at 11th).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e6HvwGodn590Sb",
+          "type": "save",
+          "label": "Bio-Matter: Stupor",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "Once per turn, [Unarmed Damage] in Soft Physique. Failure: Stupor (11th: a critical hit inflicts it without a save).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "jinzo-biological-evolution-biomass-augment": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eq2NWIE1flBuBV",
+          "type": "effect",
+          "label": "Biomass Augment",
+          "effect": {
+            "name": "Biomass Augment",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Bonus action, your Bio-Pet within 10 feet, until the end of your turn (7th: up to 1 minute, concentration as a B-Rank jutsu, temporary hit points equal to your level; 15th: two size stages, DR half your level): +1 size, +15 speed, a rank of Mastery to its attacks, Bite and Tongue Lash +1 die (+2 at 11th).",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "jinzo-biological-evolution-cellular-redistribution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWfSqxCOPo3AT6",
+          "type": "roll",
+          "label": "Cellular Redistribution",
+          "roll": {
+            "formula": "lvl(3:2d8,7:3d8,15:4d8)",
+            "note": "Reaction, taking damage: reduce it by this, then move 10 feet without provoking."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "jinzo-biological-evolution-constricting-coil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXaHnCtW7J6bH4",
+          "type": "roll",
+          "label": "Constricting Coil",
+          "roll": {
+            "formula": "",
+            "note": "A creature you grapple, at the start of each of its turns: your [Unarmed Damage] (twice at 7th, three times at 15th; roll it)."
+          }
+        },
+        {
+          "id": "n5eSigOwCBvp3n5C",
+          "type": "save",
+          "label": "Constricting Coil: crush",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Instead of the damage. Failure: 1 rank of Weakened (2 at 7th, 3 at 15th).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "jinzo-biological-evolution-dna-resonance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en6rEgkc0eNko5",
+          "type": "heal",
+          "label": "DNA Resonance",
+          "heal": {
+            "formula": "lvl(3:1d6,7:2d6) + @level",
+            "pool": "hp"
+          },
+          "text": "Bonus action, a willing creature in your reach, once per creature per rest (twice at 15th): it also loses 1 rank of a Physical or Sensory condition (7th: and a Mental one).",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "jinzo-biological-evolution-regenerative-tissue": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejanDCFeORfoXH",
+          "type": "heal",
+          "label": "Regenerative Tissue",
+          "heal": {
+            "formula": "2d6 + floor(@level / 2)",
+            "pool": "hp"
+          },
+          "text": "Once per initiative, damage drops you below half your maximum hit points: at the end of that turn."
+        }
+      ]
+    },
+    "jinzo-biological-evolution-suppressive-grip": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecZENvOEr9P2vG",
+          "type": "save",
+          "label": "Suppressive Grip",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "A creature you grapple, at the start of each of its turns (your choice). Failure: the damage and 1 rank of Sealed (2 at 11th) while grappled.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:3d6,7:4d6,15:5d6)",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "jinzo-biological-evolution-symbiotic-restorative": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Regaining hit points from an item, jutsu or feature: your Bio-Pet within 10 feet regains half as much."
+        }
+      ]
+    },
+    "jinzo-engineered-predator": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWCT8qnpgZra6g",
+          "type": "effect",
+          "label": "Shin-Pet focus",
+          "effect": {
+            "name": "Shin-Pet",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "On initiative until combat ends, or a Bonus action (swap as a Bonus action): your Bio-Pet can be up to 1 mile away (Move only past 120 feet), shares what it sees and hears within 60 feet telepathically, and gains Latch.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eEqOB2es003BGM",
+          "type": "effect",
+          "label": "Shin-Seal focus",
+          "effect": {
+            "name": "Shin-Seal",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "On initiative until combat ends, or a Bonus action (swap as a Bonus action): mark creatures with Shin-Seals.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eyYxrrdzwX4oSw",
+          "type": "roll",
+          "label": "Apply a Shin-Seal",
+          "roll": {
+            "formula": "",
+            "note": "A hit with your attack, or a Bonus action touching a structure or object; up to your proficiency bonus at once, 1 minute each or until a Hijutsu spends it (marks stay if you swap focus)."
+          },
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "shinSeals",
+          "label": "Shin-Seals",
+          "value": 0,
+          "max": "@prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch] Latch (the Bio-Pet, unseen or Hidden): melee, Dex + Prof to hit; on a hit it's Latched (moves with it; you know where it is; your attacks against it ignore cover and invisibility but full cover, never at disadvantage; it's found by Chakra Sensing or Sight or Perception vs the pet's Stealth DC, then a Bonus action removes it)."
+        }
+      ]
+    },
+    "jinzo-ghost-protocol": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes touching your Bio-Pet: for 24 hours it has +90 speed, telepathy, invisibility while hidden (not to Chakra Sight or Sensing), range 10 miles with shared sight and hearing, and Move and Latch only. Your first initiative within 24 hours in an area it explored is at advantage. 1 minute: it draws a seal and summons you and willing creatures touching you (once per Full Rest). Harmed: it ends and that pet dissolves."
+        }
+      ]
+    },
+    "jinzo-ive-become-me": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per combat, your Bio-Pet's Bite or Tongue Lash damages a non-construct hostile creature: until combat ends gain one of a random resistance it has, a random special sense, or a random save proficiency it has that you lack."
+        }
+      ]
+    },
+    "jinzo-ive-become-me-attacks": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Part of your Bio-Pet's stat block (Bio-Bonded Pet), filed under I've Become, Me (Q-E19). Build it at the table for now."
+        }
+      ]
+    },
+    "jinzo-ive-become-me-bio-amphibian": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Part of your Bio-Pet's stat block (Bio-Bonded Pet), filed under I've Become, Me (Q-E19). Build it at the table for now."
+        }
+      ]
+    },
+    "jinzo-ive-become-me-bio-amphibian-traits": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Part of your Bio-Pet's stat block (Bio-Bonded Pet), filed under I've Become, Me (Q-E19). Build it at the table for now."
+        }
+      ]
+    },
+    "jinzo-ive-become-me-bio-serpent": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Part of your Bio-Pet's stat block (Bio-Bonded Pet), filed under I've Become, Me (Q-E19). Build it at the table for now."
+        }
+      ]
+    },
+    "jinzo-ive-become-me-bio-serpent-traits": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Part of your Bio-Pet's stat block (Bio-Bonded Pet), filed under I've Become, Me (Q-E19). Build it at the table for now."
+        }
+      ]
+    },
+    "jinzo-soft-physique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEJEmXwe0KwDv5",
+          "type": "effect",
+          "label": "Soft Physique",
+          "effect": {
+            "name": "Soft Physique",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "On initiative until combat ends, or a Bonus action.",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch] Reach Extension: unarmed attacks Reach 1 (+1 at 7th and 15th; Taijutsu, Grapple and reaching too). Instinctual Coil: Grapple can use your Hijutsu Flexibility ability. Dragging Wrap: full speed while grappling; once per turn, 5 feet of movement moves the grappled creature within your reach. Coiling Pull: grapple or carry two creatures your size or smaller."
+        }
+      ]
+    },
+    "jinzo-synthetic-art-adaptive-biology": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampdffd99e02cc66",
+          "type": "effect",
+          "label": "Synthetic Art: Adaptive Biology",
+          "effect": {
+            "name": "Synthetic Art: Adaptive Biology",
+            "target": "self",
+            "amp": "jutsu-jinzo-synthetic-art-adaptive-biology"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays: resistance to one damage type or condition you've experienced this initiative (two at A-Rank). Its upcast says above D-Rank (it's C-Rank)."
+        }
+      ]
+    },
+    "jinzo-synthetic-art-armor-eater": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4H32lqGPXkVXT",
+          "type": "save",
+          "label": "Armor-Eater",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "A creature within 30 feet (+1 per rank). Failure: −20 speed; below half its speed, Stupor until the end of your next turn. C-Rank or higher: −2 AC and DR until the end of your next turn (−1 more per rank above C).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent]"
+        }
+      ]
+    },
+    "jinzo-synthetic-art-artificial-song": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekj0i3O8YI9Sxb",
+          "type": "save",
+          "label": "Artificial Song",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: it deafens itself and is immune.",
+              "success": "Success: Confused and Charmed (can't harm or target you) until the end of its next turn.",
+              "failure": "Failure: Blinded, Deafened to all but you, and Confused; resave once per turn when an ally shakes it (Bonus action) or it takes damage.",
+              "critFailure": "Critical Failure: as a failure, resaving only when it takes damage."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "Creatures of your choice that can hear you in a 20-foot radius.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ]
+    },
+    "jinzo-synthetic-art-binding-serpent-curse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8Bjn5OenUdGWa",
+          "type": "save",
+          "label": "Binding Serpent Curse",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "chakra"
+              },
+              {
+                "formula": "3d6",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eVCCLc1xXvJ72j",
+          "type": "damage",
+          "label": "Bite again (Bonus action)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "chakra"
+              },
+              {
+                "formula": "3d6",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent] Its upcast adds ranks of Envenomed it never inflicts."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e8Bjn5OenUdGWa",
+                "type": "save",
+                "label": "Binding Serpent Curse",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVCCLc1xXvJ72j",
+                "type": "damage",
+                "label": "Bite again (Bonus action)",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8Bjn5OenUdGWa",
+                "type": "save",
+                "label": "Binding Serpent Curse",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVCCLc1xXvJ72j",
+                "type": "damage",
+                "label": "Bite again (Bonus action)",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8Bjn5OenUdGWa",
+                "type": "save",
+                "label": "Binding Serpent Curse",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVCCLc1xXvJ72j",
+                "type": "damage",
+                "label": "Bite again (Bonus action)",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "chakra"
+                    },
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-bio-electric-shock": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etqJNbqSXoTm1y",
+          "type": "attack",
+          "label": "Bio-Electric Shock",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eADdYskKGLQMgk",
+          "type": "save",
+          "label": "Bio-Electric Shock: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5etqJNbqSXoTm1y",
+                "type": "attack",
+                "label": "Bio-Electric Shock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eADdYskKGLQMgk",
+                "type": "save",
+                "label": "Bio-Electric Shock: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5etqJNbqSXoTm1y",
+                "type": "attack",
+                "label": "Bio-Electric Shock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eADdYskKGLQMgk",
+                "type": "save",
+                "label": "Bio-Electric Shock: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5etqJNbqSXoTm1y",
+                "type": "attack",
+                "label": "Bio-Electric Shock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eADdYskKGLQMgk",
+                "type": "save",
+                "label": "Bio-Electric Shock: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5etqJNbqSXoTm1y",
+                "type": "attack",
+                "label": "Bio-Electric Shock",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (4d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eADdYskKGLQMgk",
+                "type": "save",
+                "label": "Bio-Electric Shock: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "−1 if it's Grappled or Chilled. Failure: Dazed (B-Rank: or Stupor, your choice).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-cart-destroyer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eywg9GqlkoQJP8",
+          "type": "save",
+          "label": "Cart Destroyer",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eywg9GqlkoQJP8",
+                "type": "save",
+                "label": "Cart Destroyer",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eywg9GqlkoQJP8",
+                "type": "save",
+                "label": "Cart Destroyer",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eywg9GqlkoQJP8",
+                "type": "save",
+                "label": "Cart Destroyer",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-elemental-pet": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eChltnw4iCHWfH",
+          "type": "effect",
+          "label": "Elemental Pet",
+          "effect": {
+            "name": "Elemental Pet",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, your Bio-Pet within 10 feet: +2 sizes; Bite or Tongue Lash +2d6 cold, earth, fire or lightning; it can cast your C-Rank or lower jutsu with these releases (Cast, spending a charge; your highest attack bonus and DC); immune to Elemental conditions; +1 charge to its abilities.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eq1iRe9jH4N6Aj",
+          "type": "damage",
+          "label": "Elemental Pet: extra damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Pick cold, earth, fire or lightning."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ]
+    },
+    "jinzo-synthetic-art-false-smog-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9zWsFyKrAI4Ej",
+          "type": "save",
+          "label": "False Smog",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: no effect.",
+              "success": "Success: Dazzled; the smoke is light obscurement this turn.",
+              "failure": "Failure: 2 ranks of Dazzled this turn; light obscurement while it lasts.",
+              "critFailure": "Critical Failure: as a failure, and Stupor while it lasts."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Reaction, a creature comes within 10 feet (+5 per rank): the cloud lasts until the end of your next turn.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Shin-Seal (dispel one)",
+          "appliesTo": {
+            "namePrefix": "Synthetic Art: False Smog Technique"
+          },
+          "note": "An affected creature with your Shin-Seal: on a failure, also Blinded until the end of its next turn.",
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "jinzo-synthetic-art-fire-of-the-flaming-mountain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emsDcrXEJENza7",
+          "type": "save",
+          "label": "Fire of the Flaming Mountain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Needs Synthetic Chakra Mode: dispel a Shin-Seal on a creature you can see within 90 feet; a 20-foot radius, 120-foot cylinder on it. Doused creatures count as 5 ranks.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5emsDcrXEJENza7",
+                "type": "save",
+                "label": "Fire of the Flaming Mountain",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Needs Synthetic Chakra Mode: dispel a Shin-Seal on a creature you can see within 90 feet; a 20-foot radius, 120-foot cylinder on it. Doused creatures count as 5 ranks.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "cost": {
+                  "pool": "shinSeals",
+                  "amount": 1
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-flaming-impact": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8xR3nHmwAstYF",
+          "type": "save",
+          "label": "Flaming Impact",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 15-foot cube from you. Failure: [Unarmed Damage] + 3d6 fire (B-Rank: Staggered). A creature grappled by you or an ally: one unarmed attack after.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e8xR3nHmwAstYF",
+                "type": "save",
+                "label": "Flaming Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 15-foot cube from you. Failure: [Unarmed Damage] + 3d6 fire (B-Rank: Staggered). A creature grappled by you or an ally: one unarmed attack after.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e8xR3nHmwAstYF",
+                "type": "save",
+                "label": "Flaming Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 15-foot cube from you. Failure: [Unarmed Damage] + 3d6 fire (B-Rank: Staggered). A creature grappled by you or an ally: one unarmed attack after.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8xR3nHmwAstYF",
+                "type": "save",
+                "label": "Flaming Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 15-foot cube from you. Failure: [Unarmed Damage] + 3d6 fire (B-Rank: Staggered). A creature grappled by you or an ally: one unarmed attack after.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8xR3nHmwAstYF",
+                "type": "save",
+                "label": "Flaming Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 15-foot cube from you. Failure: [Unarmed Damage] + 3d6 fire (B-Rank: Staggered). A creature grappled by you or an ally: one unarmed attack after.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-hidden-shadow-burial": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewxuucbRHCJpBW",
+          "type": "save",
+          "label": "Hidden Shadow Burial",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature within 30 feet (+5 per rank). Failure: Restrained until the end of its next turn (S-Rank: until it spends an Action); an ally (B-Rank: or you) can use its Reaction to attack it with an Action jutsu or the Attack action.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ]
+    },
+    "jinzo-synthetic-art-oil-bullets": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efajhKY2G8rClO",
+          "type": "attack",
+          "label": "Oil Bullets",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "cold"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ezHVq59pJ5rHLj",
+          "type": "save",
+          "label": "Oil Bullets: save",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-doused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Doused"
+            }
+          ],
+          "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5efajhKY2G8rClO",
+                "type": "attack",
+                "label": "Oil Bullets",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezHVq59pJ5rHLj",
+                "type": "save",
+                "label": "Oil Bullets: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Doused"
+                  }
+                ],
+                "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5efajhKY2G8rClO",
+                "type": "attack",
+                "label": "Oil Bullets",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezHVq59pJ5rHLj",
+                "type": "save",
+                "label": "Oil Bullets: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Doused"
+                  }
+                ],
+                "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5efajhKY2G8rClO",
+                "type": "attack",
+                "label": "Oil Bullets",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezHVq59pJ5rHLj",
+                "type": "save",
+                "label": "Oil Bullets: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Doused"
+                  }
+                ],
+                "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5efajhKY2G8rClO",
+                "type": "attack",
+                "label": "Oil Bullets",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezHVq59pJ5rHLj",
+                "type": "save",
+                "label": "Oil Bullets: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Doused"
+                  }
+                ],
+                "text": "Failure: 1 rank of Doused (+1 at C, +1 at A) and −10 speed until the end of its next turn. B-Rank: a 30-foot cone instead of the attack (the damage on a failure, half on a success).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-storm-of-the-sky-saint": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eY9QyqkLS9Pi22",
+          "type": "save",
+          "label": "Storm of the Sky Saint",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Needs Synthetic Chakra Mode and a creature you grapple.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d8",
+                "type": "lightning"
+              },
+              {
+                "formula": "8d8",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eY9QyqkLS9Pi22",
+                "type": "save",
+                "label": "Storm of the Sky Saint",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Needs Synthetic Chakra Mode and a creature you grapple.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d8) + (1d8)",
+                      "type": "lightning"
+                    },
+                    {
+                      "formula": "(8d8) + (1d8)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-suppression-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euhKjdcI0S0wHx",
+          "type": "save",
+          "label": "Suppression Seal",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ],
+          "text": "Creatures inside the pillars' enclosure (4 pillars, +2 at B and S; AC your Ninjutsu save DC, 25 hit points +10 per rank). Failure: no Chakra Molding (CM) jutsu of this rank or lower until the end of your next turn; resave at the end of each of your turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch] Two or fewer pillars: it ends."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Shin-Seal (dispel one)",
+          "appliesTo": {
+            "namePrefix": "Synthetic Art: Suppression Seal"
+          },
+          "note": "An affected creature with your Shin-Seal: it saves at −2; on a failure also Shocked.",
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "jinzo-synthetic-art-syphoning-biology": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNZNCqcaxYYBTr",
+          "type": "save",
+          "label": "Syphoning Biology",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eNZNCqcaxYYBTr",
+                "type": "save",
+                "label": "Syphoning Biology",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eNZNCqcaxYYBTr",
+                "type": "save",
+                "label": "Syphoning Biology",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eNZNCqcaxYYBTr",
+                "type": "save",
+                "label": "Syphoning Biology",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (3d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-thousand-snake-pile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezeHppRYL3HqGU",
+          "type": "save",
+          "label": "Thousand Snake Pile",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-doused",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Doused"
+            },
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "piercing"
+              },
+              {
+                "formula": "2d12",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ezeHppRYL3HqGU",
+                "type": "save",
+                "label": "Thousand Snake Pile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Doused"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "piercing"
+                    },
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ezeHppRYL3HqGU",
+                "type": "save",
+                "label": "Thousand Snake Pile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "jinzo-doused",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Doused"
+                  },
+                  {
+                    "key": "jinzo-stupor",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Stupor"
+                  }
+                ],
+                "text": "A 60-foot cone. Failure: the damage, 2 ranks of Doused and Stupor; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "piercing"
+                    },
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "jinzo-synthetic-art-wild-hair-mane": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDSXu9eW7Sa1hN",
+          "type": "attack",
+          "label": "Wild Hair Mane",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d10",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eQHBhfn2DWTCp9",
+          "type": "save",
+          "label": "Wild Hair Mane: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eDSXu9eW7Sa1hN",
+                "type": "attack",
+                "label": "Wild Hair Mane",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d10) + (1d10)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQHBhfn2DWTCp9",
+                "type": "save",
+                "label": "Wild Hair Mane: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDSXu9eW7Sa1hN",
+                "type": "attack",
+                "label": "Wild Hair Mane",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d10) + (2d10)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQHBhfn2DWTCp9",
+                "type": "save",
+                "label": "Wild Hair Mane: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Shin-Seal (dispel one)",
+          "appliesTo": {
+            "namePrefix": "Synthetic Art: Wild Hair Mane"
+          },
+          "note": "An affected creature with your Shin-Seal: 2 ranks of Doused.",
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch] Two Synthwakenings (more at 7th and 15th): the option items. Saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-chakra-conduit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Bio-Pet gets jutsu slots (its Constitution modifier + half your level; back on a short or long rest) and the Cast command (Bonus action). It picks 2 D-Rank nature release jutsu you have (no Fuinjutsu, Clone or Kinjutsu; 2 C-Rank at 7th, 2 B-Rank at 15th), using its abilities and your proficiency bonus."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-elemental-augmentations": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXpOQorX924zft",
+          "type": "save",
+          "label": "Water Augmentation",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-doused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Doused"
+            }
+          ],
+          "text": "Once per turn, a Water jutsu without an Elemental condition: affected creatures. Failure: Doused (1 rank; on a jutsu with a save, on its failure). 7th: Elemental-condition jutsu add 1 rank; 11th: +1 rank.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eKqNH4PMxJkwCk",
+          "type": "save",
+          "label": "Lightning Augmentation",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "jinzo-stupor",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stupor"
+            }
+          ],
+          "text": "Once per turn, a Lightning jutsu's Overcharge (or its own failed save): Stupor.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fire: a cube, sphere, cylinder or radius area +5 feet. One effect if the jutsu has several releases."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-installed-foresight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKCz5wrNaDnH5B",
+          "type": "roll",
+          "label": "Installed Foresight",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction: an attack on you by a creature you can see has disadvantage. 7th: a miss lets you cast a D-Rank Jinzo Hijutsu at it free in the same reaction (C-Rank at 15th)."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can't be Surprised."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-latched-seal": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Latched creature is also Shin-Sealed while latched. Latched and Shin-Sealed: its first save against your area Jinzo Hijutsu gets no advantage or jutsu bonuses."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-layered-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9ZDk58gjFUb5m",
+          "type": "roll",
+          "label": "Layered Seal: dispel",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a creature with your Shin-Seals casts a jutsu you can see: dispel them all; +6 to its cost per seal."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "shinSeals",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature can carry up to 5 of your Shin-Seals."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-predatory-instincts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Synchronize can use Multiattack (two of Tongue Lash, Oil Spit or Bite) or Camouflage (Invisible until it attacks, is touched or 1 minute; a rank of Mastery on Latch, Stealth DC +5; 11th: it stays invisible after a Latch)."
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-punishing-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8xF9rYDVWADhb",
+          "type": "save",
+          "label": "Punishing Seal: Doused",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A Shin-Sealed creature with Doused, starting its turn concentrating on a Chakra Molding (CM) jutsu. Failure: its upkeep +6 per rank of Doused.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eUFLuR8i8HBBkj",
+          "type": "save",
+          "label": "Punishing Seal: Stupor",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A Shin-Sealed creature in Stupor casting a Mobility (M) jutsu. Failure: half speed, and 5 feet of movement per attack this turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "jinzo-synthetic-awakening-synthetic-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebel8AEhjIhEfR",
+          "type": "roll",
+          "label": "Synthetic Seal",
+          "roll": {
+            "formula": "",
+            "note": "A Shin-Seal within 60 feet: dispel it as part of a Ninjutsu or Genjutsu with a sphere, cube, radius or cylinder: the area centers on the marked creature or object."
+          },
+          "cost": {
+            "pool": "shinSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "jinzo-synthetic-battle-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edfSSUHTG2J2hO",
+          "type": "effect",
+          "label": "Synthetic Chakra Mode",
+          "effect": {
+            "name": "Synthetic Chakra Mode",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "synthetic-chakra-mode"
+          },
+          "text": "Bonus action, 1 minute, once per long rest.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5endaVvJNSlV9mQ",
+          "type": "effect",
+          "label": "Synthetic Chakra Mode (15th)",
+          "effect": {
+            "name": "Synthetic Chakra Mode (15th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "synthetic-chakra-mode-15"
+          },
+          "text": "At 15th level.",
+          "activation": "bonus",
+          "minLevel": 15
+        },
+        {
+          "id": "n5eLJ3DNpYQVxJtO",
+          "type": "heal",
+          "label": "Shedding Response (Bio Branch)",
+          "heal": {
+            "formula": "6d6",
+            "pool": "hp"
+          },
+          "text": "Reaction, damage would drop you to 0: end the mode; you fall to 0 but stay conscious and regain this at the end of the turn.",
+          "activation": "reaction"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Synthetic Chakra Mode's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    }
+  }
+}

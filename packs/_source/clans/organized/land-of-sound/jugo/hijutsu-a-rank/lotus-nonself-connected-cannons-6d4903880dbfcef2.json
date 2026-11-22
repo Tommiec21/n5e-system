@@ -17,6 +17,60 @@
         "cost": "Special (21 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Clash",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eHywBDBUgbGmV3",
+              "type": "save",
+              "label": "Connected Cannons",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10 by 90-foot line (+10 feet per rank). Failure: temporary hit points to 0, −2 DR for 1 minute, then the damage; success: temporary hit points halved, half damage. Refire as an Action while you keep it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d10) + (1d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amp2a3ef2a6f1390",
+              "type": "effect",
+              "label": "Maintain the cannon",
+              "effect": {
+                "name": "Lotus Nonself Connected Cannons",
+                "target": "self",
+                "amp": "jutsu-jugo-lotus-nonself-connected-cannons"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Amplify (5 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Lotus Nonself Connected Cannons"
+        },
+        "note": "Range Self (60-foot cone).",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 5
+        }
       }
     }
   },
@@ -110,6 +164,31 @@
       "grantedBy": ""
     },
     "activities": [
+      {
+        "id": "n5eHywBDBUgbGmV3",
+        "type": "save",
+        "label": "Connected Cannons",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 10 by 90-foot line (+10 feet per rank). Failure: temporary hit points to 0, −2 DR for 1 minute, then the damage; success: temporary hit points halved, half damage. Refire as an Action while you keep it.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d10",
+              "type": "force"
+            }
+          ]
+        }
+      },
       {
         "id": "amp2a3ef2a6f1390",
         "type": "effect",

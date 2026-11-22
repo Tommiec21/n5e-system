@@ -1,3 +1,17 @@
+## 0.83.0-alpha.1 — Clans as data: E5 Land of Sound (Jinzo, Jūgo, Kashu, Shoton, Tsuchigumo)
+
+King 2026-11-21: "Q17. 1. Q18. Yes. Next batch."
+
+- **174 clan items reviewed:** see `docs/clans/`.
+- **Jinzo:** Shin-Pet and Shin-Seal focuses; Shin-Seals with each Hijutsu's Shin-Seal spend as a cast dialog option; Soft Physique; every Biovolution and Synthwakening; Synthetic Chakra Mode.
+- **Jūgo:** Nature Energy (0 after a long rest) with every expenditure; Amplify as a cast dialog option on each Hijutsu; Flesh Crafting; every Feral Instinct; The Hunter; Cascading Mania.
+- **Kashu:** the Doki (Bandaged), (Claw) and (Club) summons; Resonance and every Melody; Bell Wires and every Mnemody; the Harmonies; Killing Frequency.
+- **Shoton:** Hardness; Crystal Weapon Dance and Crystal Aura; every Crystal Type; Crystal Ascension; the Crystal Rabbit, Deer and Dragon summons with stats by cast rank.
+- **Tsuchigumo:** Web Anchors and every Silk Weave; Arachnid; the Brood Mother summon.
+- **Rest recovery "Empty":** a long rest can reset a pool to 0 (Nature Energy).
+- **King Q-E17:** Hozuki's Hydration triggers regain 1. **King Q-E18:** Vesper's duplicate "Claws of the Night" stance is deleted.
+- Question Q-E19 (Jinzo Bio-Pets) in `docs/STD6e_SPEC.md`; nothing waits on it.
+
 ## 0.82.0-alpha.1 — Clans as data: E4 Land of Water (Genwa, Hoshigaki, Hozuki, Kaguya, Vesper, Yamada, Yuki)
 
 King 2026-11-21: "Next batch."

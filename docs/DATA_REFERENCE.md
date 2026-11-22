@@ -1014,3 +1014,5 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Pool `lifetime` (seconds, 0.79.2-alpha.1): each unit lasts that long unless spent; gain times in the actor's `flags.n5e.poolStamps.<id>` (oldest first, spent first). Rules: `rules/pool-expiry.mjs`.
 
 - Pool recovery amounts in combat (0.81.0-alpha.1): turn, round and encounter recovery use the amount too (`formula` regains that many, `half` half the max, `all` refills); `empty` drops the pool to 0 (`rules/recovery.mjs combatRecoveredValue`).
+
+- Pool recovery `empty` on rests (0.83.0-alpha.1): a short or long rest recovery with amount `empty` resets the pool to 0 (`rules/rest.mjs`).

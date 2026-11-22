@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "tsuchigumo",
       "sourceLine": 7593,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,29 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezHkatMKQ0aoZs",
+        "type": "save",
+        "label": "Guiding Weave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a Web Weapon ranged attack at an anchor: a 60 by 5-foot line from it. Failure: [Weapons Damage] (twice at 11th); success: half.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

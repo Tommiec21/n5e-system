@@ -17,7 +17,14 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Tactile), Fuinjutsu, Bio Amphibian.",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -113,7 +120,60 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ekj0i3O8YI9Sxb",
+        "type": "save",
+        "label": "Artificial Song",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: it deafens itself and is immune.",
+            "success": "Success: Confused and Charmed (can't harm or target you) until the end of its next turn.",
+            "failure": "Failure: Blinded, Deafened to all but you, and Confused; resave once per turn when an ally shakes it (Bonus action) or it takes damage.",
+            "critFailure": "Critical Failure: as a failure, resaving only when it takes damage."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "charmed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Charmed"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Creatures of your choice that can hear you in a 20-foot radius.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

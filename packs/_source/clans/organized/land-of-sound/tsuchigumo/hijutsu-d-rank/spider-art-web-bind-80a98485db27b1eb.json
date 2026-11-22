@@ -17,7 +17,8 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eOck8A1Y7xwrot",
+        "type": "save",
+        "label": "Web Bind",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A 20-foot cone (+5 feet per rank). Failure: Restrained and no opportunity attacks until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -1,0 +1,366 @@
+{
+  "_id": "n5eWy26sqIfFAbcM",
+  "_key": "!actors!n5eWy26sqIfFAbcM",
+  "name": "Crystal Deer",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Shoton: Crystal Deer",
+      "summonRole": "Crystal Deer",
+      "biography": "<p><em>Shoton Hijutsu (an Earthen Artifact).</em> It uses your highest jutsu attack bonus or Save DC when an effect calls for it. You command it as a Bonus action.</p><p><strong>Medium Construct, unaligned.</strong> <strong>Armor Class</strong> 16 + 2 for every rank above C-Rank, <strong>DR</strong> 4 +1 for every rank above C-Rank · <strong>Hit Points</strong> 30 + 15 for every rank above C-Rank · <strong>Speed</strong> 40 ft. STR +4 (save +8), DEX +2 (+6), CON +3 (+8), INT −5, WIS +0, CHA −5. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed.</p><p><strong>Linked to you when summoned:</strong> AC, DR and hit points by the rank you cast the jutsu at, and your highest jutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 16,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "dr": 4
+    },
+    "hpMax": 30,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5etN20Q3Jip4uCt",
+      "_key": "!actors.items!n5eWy26sqIfFAbcM.n5etN20Q3Jip4uCt",
+      "name": "Abrasive",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When a crystal deer takes damage from a melee attack, the attacking creature must make a Constitution saving throw, gaining a rank of Bleed on a failure.</p>",
+        "category": "npcTraits",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eIhUnr3kSdcR48",
+            "type": "save",
+            "label": "Abrasive",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ],
+            "text": "A melee attacker that damaged it. Failure: a rank of Bleed."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ehJZg2GqdhJ0Mu",
+      "_key": "!actors.items!n5eWy26sqIfFAbcM.n5ehJZg2GqdhJ0Mu",
+      "name": "Resonant Presence",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If an allied creature with ranks of a Physical or Elemental condition. Spends their Bonus action, they can touch the Crystal deer, transferring all ranks of a single condition to the Deer, except those the Deer is immune to.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e4yFy56OXTvYgr",
+      "_key": "!actors.items!n5eWy26sqIfFAbcM.n5e4yFy56OXTvYgr",
+      "name": "Horn",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Natural weapon Attack:</em> +X to hit, Reach 5ft., one target. <em>Hit:</em> 1d6+4 earth damage. The affected creature must make a Strength saving throw, being knocked Prone and gaining 1 rank of Crystallization on a failure.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eEGHeMGbNCgM7D",
+            "type": "attack",
+            "label": "Horn",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6 + 4",
+                  "type": "earth"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eby8JfmmHCOaaX",
+            "type": "save",
+            "label": "Horn: on a hit",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              },
+              {
+                "key": "shoton-crystallization",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Crystallization"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e4fbvTKsxDU5U7",
+      "_key": "!actors.items!n5eWy26sqIfFAbcM.n5e4fbvTKsxDU5U7",
+      "name": "Crystal Gore",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>(Recharge 5-6).</em> The majestic Deer prepares to gore all enemies in its path. It runs 40feet in a straight line, forcing all creatures in range to make a Dexterity saving throw, taking twice the damage Horn would do, and inflicting 1 rank of Crystallization on all creatures that fail.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ecNnM6BWS2of8C",
+            "type": "save",
+            "label": "Crystal Gore",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6 + 8",
+                  "type": "earth"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "shoton-crystallization",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Crystallization"
+              }
+            ],
+            "text": "Twice Horn's damage (roll 1d6 + 4 and double it)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.83.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCbvy0rg2by1rM",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "16 + 2 * max(0, @rankValue - 3)",
+        "hpMax": "30 + 15 * max(0, @rankValue - 3)",
+        "bonuses.saveDC.nin": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof",
+        "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "traits.dr": "4 + max(0, @rankValue - 3)"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Crystal Deer",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.83.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

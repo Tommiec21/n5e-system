@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7218,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,44 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eXaHnCtW7J6bH4",
+        "type": "roll",
+        "label": "Constricting Coil",
+        "roll": {
+          "formula": "",
+          "note": "A creature you grapple, at the start of each of its turns: your [Unarmed Damage] (twice at 7th, three times at 15th; roll it)."
+        }
+      },
+      {
+        "id": "n5eSigOwCBvp3n5C",
+        "type": "save",
+        "label": "Constricting Coil: crush",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Instead of the damage. Failure: 1 rank of Weakened (2 at 7th, 3 at 15th).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

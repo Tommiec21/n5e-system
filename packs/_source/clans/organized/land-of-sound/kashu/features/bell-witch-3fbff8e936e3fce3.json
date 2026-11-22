@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kashu",
-      "sourceLine": 6543
+      "sourceLine": 6543,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch] Bell Wires: up to 6 (the pool); gone when combat ends."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,56 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e4s2vNlPA8cZQY",
+        "type": "roll",
+        "label": "Place a Bell Wire",
+        "roll": {
+          "formula": "",
+          "note": "In combat, once per turn at the start of your turn: an invisible 10-foot radius tripwire at a point within 30 feet; over 6 the oldest is dismissed (spend one first)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "bellWires",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5e51mKBVfvWoYYt",
+        "type": "roll",
+        "label": "Bell Wire triggered",
+        "roll": {
+          "formula": "",
+          "note": "A hostile creature moves through it (you always know): Reaction to cast an Auditory Kashu Hijutsu at it from there, no line of sight needed; the wire is dispelled."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "bellWires",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "bellWires",
+        "label": "Bell Wires",
+        "value": 0,
+        "max": "6",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

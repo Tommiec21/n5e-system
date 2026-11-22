@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "kashu",
-      "sourceLine": 6628
+      "sourceLine": 6628,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,121 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eGITa6TQjbmlNH",
+        "type": "effect",
+        "label": "Killing Frequency",
+        "effect": {
+          "name": "Killing Frequency",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Action, 1 minute, once per long rest: a 30-foot radius on you, 20 feet on a Doki (switch each turn), or 10 feet on every Bell Wire. Each effect once per creature's turn.",
+        "activation": "action"
+      },
+      {
+        "id": "n5eyTb9hFTIJxY6q",
+        "type": "save",
+        "label": "Embedded Frequency",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Twice per turn, an HS or M jutsu cast inside. Failure: a rank of Disoriented.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eRKNy5S4p7IkQw",
+        "type": "save",
+        "label": "Chakra Interference",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a CM jutsu cast inside. Failure: it costs 8 more.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eqXcNdj740gnsQ",
+        "type": "save",
+        "label": "Sonic Pulse",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a Disoriented creature moves more than 10 feet inside. Failure: 2d6 psychic per rank (roll once per rank).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5euif9NBPKeiJhc",
+        "type": "save",
+        "label": "Discordant Broadcast",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a creature starts its turn concentrating inside. Failure: triple its upkeep or lose concentration.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

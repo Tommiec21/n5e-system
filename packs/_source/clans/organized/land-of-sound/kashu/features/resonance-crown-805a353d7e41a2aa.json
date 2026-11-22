@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kashu",
-      "sourceLine": 6536
+      "sourceLine": 6536,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch] Resonance: up to 4 (the pool; 8 with Overtuned Frequency); 0 at the start and end of combat; each lasts 1 minute."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,126 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ej4wAwyEQu1VFX",
+        "type": "roll",
+        "label": "Gain Resonance",
+        "roll": {
+          "formula": "",
+          "note": "In combat, once per turn: an attack with your Shinobi Instrument, or a Taijutsu or Bukijutsu while wielding it."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "resonance",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eJsIzWgewf6znA",
+        "type": "save",
+        "label": "Vertigo Strike",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Once per turn, Shinobi Instrument damage. Failure: 1 rank of Disoriented.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "resonance",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eNtUb8BIMQVDdG",
+        "type": "save",
+        "label": "Frenetic Frequency",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Reaction, a melee attack damages you while you wield it. Failure: the damage and 2 ranks of Concussed.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:2d8,7:4d8,15:6d8)",
+              "type": "psychic"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "resonance",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e7JGoDO9fXuxpr",
+        "type": "roll",
+        "label": "Overtone Burst",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a Taijutsu or Bukijutsu with it deals damage: −4 DR, or remove a resistance (bludgeoning, piercing, slashing, earth, lightning, psychic or force) until the end of your next turn."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "resonance",
+          "amount": 2
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "resonance",
+        "label": "Resonance",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "lifetime": 60
+      }
+    ]
   }
 }

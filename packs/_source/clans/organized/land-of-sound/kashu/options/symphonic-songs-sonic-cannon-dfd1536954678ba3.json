@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kashu",
       "sourceLine": 6583,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,57 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efzsrnvfTV6rBD",
+        "type": "attack",
+        "label": "Sonic Cannon",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "In place of Attack action attacks (two at 7th without Extra Attack): a creature within 60 feet. A 10+ on the die: 1 rank of Disoriented. It counts as your Shinobi Instrument.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eUlJ5SUk96snit",
+        "type": "save",
+        "label": "Sonic Cannon Burst",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action, spending all Resonance: a 30-foot cone. 1d12 force per Resonance (roll once per point); half on a success.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "force"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "resonance",
+          "choose": true
+        }
+      }
+    ]
   }
 }

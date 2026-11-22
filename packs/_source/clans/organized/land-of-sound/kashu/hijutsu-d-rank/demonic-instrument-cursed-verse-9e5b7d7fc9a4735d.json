@@ -17,6 +17,223 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Unaware), Medical",
         "components": "HS, CM, W (Shinobi Instrument)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eFrWDdSRSBpumu",
+              "type": "attack",
+              "label": "Cursed Verse",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEBgNA9pRNzF4p",
+              "type": "save",
+              "label": "Cursed Verse: on a hit",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: no effect.",
+                  "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                  "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eFrWDdSRSBpumu",
+              "type": "attack",
+              "label": "Cursed Verse",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEBgNA9pRNzF4p",
+              "type": "save",
+              "label": "Cursed Verse: on a hit",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: no effect.",
+                  "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                  "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eFrWDdSRSBpumu",
+              "type": "attack",
+              "label": "Cursed Verse",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEBgNA9pRNzF4p",
+              "type": "save",
+              "label": "Cursed Verse: on a hit",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: no effect.",
+                  "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                  "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eFrWDdSRSBpumu",
+              "type": "attack",
+              "label": "Cursed Verse",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEBgNA9pRNzF4p",
+              "type": "save",
+              "label": "Cursed Verse: on a hit",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: no effect.",
+                  "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+                  "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +328,59 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFrWDdSRSBpumu",
+        "type": "attack",
+        "label": "Cursed Verse",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 2
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eEBgNA9pRNzF4p",
+        "type": "save",
+        "label": "Cursed Verse: on a hit",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: no effect.",
+            "failure": "Failure: 1 rank of Disoriented and a d4 penalty to its next non-d20 roll.",
+            "critFailure": "Critical Failure: as a failure, but 2 ranks of Disoriented."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

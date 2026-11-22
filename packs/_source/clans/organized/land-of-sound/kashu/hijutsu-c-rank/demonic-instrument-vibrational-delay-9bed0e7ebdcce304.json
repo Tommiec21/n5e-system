@@ -17,6 +17,167 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Genjutsu (Auditory), Symphonic Branch",
         "components": "CM, W (Auditory Ninja Tool)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e2ybwrl1frtMIW",
+              "type": "save",
+              "label": "Vibrational Delay",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Disoriented.",
+                  "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                  "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "text": "Dealing [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e5uSZvH1f6uViG",
+              "type": "damage",
+              "label": "Vibrational Delay: detonation",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Force or psychic (your choice)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e2ybwrl1frtMIW",
+              "type": "save",
+              "label": "Vibrational Delay",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Disoriented.",
+                  "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                  "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "text": "Dealing [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e5uSZvH1f6uViG",
+              "type": "damage",
+              "label": "Vibrational Delay: detonation",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Force or psychic (your choice)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2ybwrl1frtMIW",
+              "type": "save",
+              "label": "Vibrational Delay",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Disoriented.",
+                  "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+                  "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "kashu-disoriented",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Disoriented"
+                }
+              ],
+              "text": "Dealing [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e5uSZvH1f6uViG",
+              "type": "damage",
+              "label": "Vibrational Delay: detonation",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Force or psychic (your choice)."
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +272,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2ybwrl1frtMIW",
+        "type": "save",
+        "label": "Vibrational Delay",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: 1 rank of Disoriented.",
+            "failure": "Failure: 2 ranks of Disoriented; psychic or force damage before the end of your next turn detonates it.",
+            "critFailure": "Critical Failure: as a failure, and for 1 minute each concentration upkeep it pays deals the damage."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Dealing [Unarmed] or [Weapon Damage].",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e5uSZvH1f6uViG",
+        "type": "damage",
+        "label": "Vibrational Delay: detonation",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "force"
+            }
+          ]
+        },
+        "text": "Force or psychic (your choice)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai",

@@ -17,6 +17,48 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release, Bio Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eY9QyqkLS9Pi22",
+              "type": "save",
+              "label": "Storm of the Sky Saint",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Needs Synthetic Chakra Mode and a creature you grapple.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d8) + (1d8)",
+                    "type": "lightning"
+                  },
+                  {
+                    "formula": "(8d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +152,37 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eY9QyqkLS9Pi22",
+        "type": "save",
+        "label": "Storm of the Sky Saint",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Needs Synthetic Chakra Mode and a creature you grapple.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d8",
+              "type": "lightning"
+            },
+            {
+              "formula": "8d8",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

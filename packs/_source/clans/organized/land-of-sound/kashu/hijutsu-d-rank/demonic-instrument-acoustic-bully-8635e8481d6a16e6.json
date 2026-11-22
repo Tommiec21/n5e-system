@@ -17,7 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Genjutsu (Auditory, Tactile), Symphonic Branch",
         "components": "CM, W (Shinobi Instrument)"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,74 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebWItHSmVndvnh",
+        "type": "attack",
+        "label": "Acoustic Bully",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Melee or ranged with your Shinobi Instrument's range: [Unarmed] or [Weapon Damage] + 3d8 psychic. +1 attack at C and again at A.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5erH3Af8nqfQO8z",
+        "type": "save",
+        "label": "Acoustic Bully: on a hit",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: 1 rank of Dazzled until the end of its next turn.",
+            "failure": "Failure: Deafened until the end of your next turn.",
+            "critFailure": "Critical Failure: Deafened for 1 minute (resave at the end of its turns)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai",

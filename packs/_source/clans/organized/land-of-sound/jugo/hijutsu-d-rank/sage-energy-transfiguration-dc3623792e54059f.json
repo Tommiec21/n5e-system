@@ -17,6 +17,18 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Amplify (3 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Sage Energy Transfiguration"
+        },
+        "note": "Monstrous Arms: unarmed attacks gain Deadly 2. Jet Legs: your Taijutsu range +10 feet.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 3
+        }
       }
     }
   },
@@ -108,7 +120,48 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eViPGgogyk7avC",
+        "type": "effect",
+        "label": "Monstrous Arms",
+        "effect": {
+          "name": "Monstrous Arms",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.unarmed.dice",
+              "value": "1d8",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute: [Unarmed Damage] +1d8 force (B-Rank: both forms).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eQnM4rUUiDAhCa",
+        "type": "effect",
+        "label": "Jet Legs",
+        "effect": {
+          "name": "Jet Legs",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "15",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute: +15 speed, jump height +20 feet, attacks of opportunity against you at disadvantage.",
+        "activation": "bonus"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",
