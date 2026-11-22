@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "namikaze",
       "sourceLine": 1587,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,31 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0XJcEdNBuLRSo",
+        "type": "effect",
+        "label": "Speed Amplification",
+        "effect": {
+          "name": "Speed Amplification",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "lvl(1:10,7:20,15:30)",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Start of your turn: ignore difficult terrain until the end of your next turn.",
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

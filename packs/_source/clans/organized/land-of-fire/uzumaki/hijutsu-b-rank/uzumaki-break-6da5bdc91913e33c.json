@@ -17,7 +17,8 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Fuinjutsu, Ninjutsu",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,37 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9RvSqcCpRFjS6",
+        "type": "roll",
+        "label": "Uzumaki Break",
+        "roll": {
+          "formula": "",
+          "note": "A 5-foot radius within 60 feet: Ninshou against each jutsu effect's save DC. Success: learn them; up to 2 of lower rank are dispelled; then the save. Roll the check from the sheet."
+        }
+      },
+      {
+        "id": "n5evfBg0K4t9cJKd",
+        "type": "save",
+        "label": "Uzumaki Break: save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures in the area. Failure: no jutsu bonuses or healing until the start of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -15,7 +15,14 @@
           "Mutated Feature: Spiraling Chains"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Spiraling Chains."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eF2sPT0SnG5vn4",
+        "type": "roll",
+        "label": "Natural 20",
+        "roll": {
+          "formula": "",
+          "note": "In combat."
+        },
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5ewpyHU4rpGClnJ",
+        "type": "roll",
+        "label": "Remake a failed roll",
+        "roll": {
+          "formula": "",
+          "note": "A failed d20 roll: remake it with a rank of Mastery."
+        },
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

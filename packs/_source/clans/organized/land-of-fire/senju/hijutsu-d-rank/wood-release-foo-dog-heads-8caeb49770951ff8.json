@@ -17,6 +17,147 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Genjutsu (Tactile), Earth Release, Water Release",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5egAJz6nbYlj9Nh",
+              "type": "save",
+              "label": "Foo Dog aura",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "senju-drained",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Drained"
+                }
+              ],
+              "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5egAJz6nbYlj9Nh",
+              "type": "save",
+              "label": "Foo Dog aura",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "senju-drained",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Drained"
+                }
+              ],
+              "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5egAJz6nbYlj9Nh",
+              "type": "save",
+              "label": "Foo Dog aura",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "senju-drained",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Drained"
+                }
+              ],
+              "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5egAJz6nbYlj9Nh",
+              "type": "save",
+              "label": "Foo Dog aura",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "senju-drained",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Drained"
+                }
+              ],
+              "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (4d10)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +253,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5egAJz6nbYlj9Nh",
+        "type": "save",
+        "label": "Foo Dog aura",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "senju-drained",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Drained"
+          }
+        ],
+        "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

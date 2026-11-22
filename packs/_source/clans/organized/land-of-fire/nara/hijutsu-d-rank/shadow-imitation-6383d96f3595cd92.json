@@ -17,7 +17,26 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation",
+            "maxRank": "D"
+          },
+          "note": "Bright time of day (GM's call): range 60 feet."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation",
+            "maxRank": "D"
+          },
+          "note": "Dimly lit time of day (GM's call): +1 creature."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +128,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eA6aLusc17yfY2",
+        "type": "effect",
+        "label": "Shadow Imitation",
+        "effect": {
+          "name": "Shadow Imitation",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: a willing creature within 30 feet: +2 AC (+1 per rank) and advantage on Dexterity saves until the start of your next turn.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

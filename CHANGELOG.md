@@ -1,3 +1,17 @@
+## 0.85.0-alpha.1 — STD6e E7 Land of Fire II
+
+King 2026-11-22: "Next batch." 156 clan items reviewed (116 partly automated, 40 notes only). Spec: docs/STD6e_SPEC.md (E7).
+
+- **Namikaze:** Speed Seals (d8 pool) with every Blitz Art; Interdiction Seal; each Swift Release Hijutsu's Interdiction Seal effect as a cast dialog option; Trickster's Blink; Sovereign of Speed.
+- **Nara:** the Shadow Art stance and Shadow Possession; Bright and Dimly Lit as cast dialog options; Operational Contingencies; Mendokusē; every Hijutsu.
+- **Sarutobi:** Will (pool) with every Legacy Technique; the Cross-Style stance and Unified Form; Ember's Guardian; Rekindling Pulse; Will of Fire Incarnate (Blazing).
+- **Senju:** Senju Cells and +2 hit points per level; the Mokuton Infusion stance and Verdant Lash; New Growth; the mutations; every Hijutsu.
+- **Uchiha:** the Sharingan, Ocular Charges and every Ocular Evolution; the Agile Fist stance; every Adaptation; Fanning the Flame; Crimson Sovereign; the mutations; every Hijutsu.
+- **Uzumaki:** Spiral Cells and +2 chakra points per level; the Binding Chain stance; Seal Break as cast dialog options; every Spiral Tag; Warding Network; the mutations; every Hijutsu.
+- **Yamanaka:** the Mind Disruption stance (Beam, Pulse, Wave); Deep Disruption; the Recalibrations; every Hijutsu.
+- **Past rulings applied:** Amp copies removed from Interdiction Seal, Ember's Guardian and Sharingan (Q-E12); the Cross-Style, Mokuton Infusion and Agile Fist stance items hold their own text (Q-E9).
+- **Held:** the Wood Dragon (Senju) stat block, H9 (Intelligence and Wisdom saves blank).
+
 ## 0.84.1-alpha.1 — One roll, two damage types (Q-E20)
 
 King 2026-11-22: "It's 10d12 poison and 10d12 chakra. But the result should be the same. So if the result is 50 damage, it should be 50 chakra and 50 poison"

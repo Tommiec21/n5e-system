@@ -230,3 +230,32 @@ test("King Q-E20: one damage roll dealt as two types (alsoAs) survives the roll 
   const src = (await import("node:fs")).readFileSync(new URL("../module/workflow/activity-buttons.mjs", import.meta.url), "utf8");
   assert.match(src, /if \( p\.alsoAs \) instances\.push\(\{ amount: roll\.total \+ after, type: p\.alsoAs \}\)/);
 });
+
+test("STD6e E7 Land of Fire II: every Namikaze, Nara, Sarutobi, Senju, Uchiha, Uzumaki and Yamanaka item reviewed", () => {
+  for ( const clan of ["namikaze", "nara", "sarutobi", "senju", "uchiha", "uzumaki", "yamanaka"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("namikaze", "namikaze-blood-of-the-swift", "speedSeals").die, "d8");
+  assert.equal(pool("sarutobi", "sarutobi-the-legacy-of-the-past", "will").max, "1 + @prof");
+  assert.equal(pool("senju", "senju-built-different", "senjuCells").max, "lvl(1:2,7:4,15:6)");
+  assert.equal(pool("uchiha", "uchiha-sharingan", "ocularCharges").recovery[0].on, "rest");
+  assert.equal(pool("uzumaki", "uzumaki-wellspring-of-chakra", "spiralCells").max, "lvl(1:2,7:4,15:6)");
+  // Nara's Bright / Dimly Lit options: Shadow Imitation's stop at D-Rank so Shadow Imitation Field doesn't get them.
+  const bright = item("nara", "nara-shadow-imitation").flags.n5e.castOptions.find(o => o.label === "Bright");
+  assert.equal(bright.appliesTo.maxRank, "D");
+  assert.equal(item("yamanaka", "yamanaka-mental-recalibration-efficient-mind").flags.n5e.castOption.costDelta, "-rank");
+  const burial = item("senju", "senju-wood-release-tree-bind-flourishing-burial").system.activities.find(a => a.type === "damage");
+  assert.deepEqual(burial.damage.parts[0], { formula: "6d8", type: "earth", alsoAs: "chakra" });
+  assert.equal(item("uzumaki", "uzumaki-stance-binding-chain").flags.n5e.reviewed, true);
+  // King Q-E9 / Q-E12 applied.
+  assert.match(item("sarutobi", "sarutobi-stance-cross-style").system.description, /Unified Form/);
+  assert.match(item("senju", "senju-stance-mokuton-infusion").system.description, /Will of the Buddha/);
+  assert.match(item("uchiha", "uchiha-stance-agile-fist").system.description, /Great Assault/);
+  for ( const [clan, id, amp] of [["namikaze", "namikaze-interdiction-seal", "Speed Sovereign"], ["sarutobi", "sarutobi-embers-guardian", "Blazing"], ["uchiha", "uchiha-sharingan", "Sharingan"]] ) {
+    assert.doesNotMatch(item(clan, id).system.description, new RegExp(`#### ${amp} /`), id);
+  }
+  assert.match(item("senju", "senju-wood-release-wood-dragon-summoning").flags.n5e.rules[0].text, /H9/);
+});

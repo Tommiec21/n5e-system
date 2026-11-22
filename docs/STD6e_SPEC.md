@@ -133,6 +133,19 @@ Review tables: `docs/clans/aburame-automation.md`, `akimichi-automation.md`, `ha
 - **Kurama:** Oni-Coils (pool); every Onijutsu as a cast dialog option on your Genjutsu (The Pain Is Real on damaging Action Ninjutsu, Taijutsu and Bukijutsu); Illusion Made Manifest; Well Rested; Inner Self. The Dream Walker's stat block is held (H8).
 - **Past rulings applied:** copied Amp text removed from Caloric Arts, Last to Move Loses, Savage Attacker and Déjà vu (Q-E12); the Akimichi, Hyūga and Inuzuka stance items hold their stance's own text (Q-E9).
 
+## E7 Land of Fire II (0.85.0-alpha.1)
+
+Review tables: `docs/clans/namikaze-automation.md`, `nara-automation.md`, `sarutobi-automation.md`, `senju-automation.md`, `uchiha-automation.md`, `uzumaki-automation.md`, `yamanaka-automation.md` (156 items: 116 partly automated, 40 notes only).
+
+- **Namikaze:** Speed Seals (pool, d8s) with every Blitz Art; Interdiction Seal's mark and detonation; each Swift Release Hijutsu's Interdiction Seal effect as a cast dialog option; Trickster's Blink; Sovereign of Speed (Speed Sovereign Amp); every Hijutsu.
+- **Nara:** the Shadow Art stance with Shadow Possession (Shadow Bound); each Hijutsu's Bright and Dimly Lit effects as cast dialog options; Operational Contingencies; Team Coordination keeps its two buttons; Mendokusē's Bonus action Shadow Possession; every Hijutsu.
+- **Sarutobi:** Will (pool) with every Legacy Technique; the Cross-Style stance with Unified Form; Ember's Guardian; Rekindling Pulse; Will of Fire Incarnate (Blazing Amp, Kindling).
+- **Senju:** Senju Cells (pool) and +2 hit points per level; the Mokuton Infusion stance with Verdant Lash; New Growth; Wood Release's pull; the mutations; every Hijutsu (Tree Bind's damage is one roll as earth and chakra, as Q-E20). The Wood Dragon's stat block is held (H9).
+- **Uchiha:** the Sharingan (Sharingan Amps) with Ocular Charges (pool) and every Ocular Evolution; the Agile Fist stance and Great Assault; every Adaptation; Fanning the Flame; Crimson Sovereign; Divergent Techniques and Heightened Battle Sense; every Hijutsu.
+- **Uzumaki:** Spiral Cells (pool) and +2 chakra points per level; the Binding Chain stance with Binding and Striking Chain; each Hijutsu's Seal Break as a cast dialog option; every Spiral Tag; Warding Network; Spiraling Chains; the mutations (Spiral Power's choices as cast dialog options); every Hijutsu.
+- **Yamanaka:** the Mind Disruption stance with Beam, Pulse and Wave (Mental Overwrite); Deep Disruption; Efficient Mind as a cast dialog option and Migraine's damage; every Hijutsu.
+- **Past rulings applied:** copied Amp text removed from Interdiction Seal, Ember's Guardian and Sharingan (Q-E12); the Sarutobi, Senju and Uchiha stance items hold their stance's own text (Q-E9). Copies of condition text (Combat and Diplomatic Coordinated, Drained, 5-Pronged Seal, Dominated) stay: those aren't Amp cards.
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -170,8 +183,9 @@ Each is a note on its item until King gives its stat block; then it becomes a su
 | H6 | Nin-Dog | Inuzuka | Beast Master (and every Tag-Team Hijutsu) | A stat block in Savage Attacker's text, with blank save bonuses; breeds and traits in Beast Master and Nin-Dog Traits | 0.84.0 |
 | H7 | Two-Headed Wolf | Inuzuka | Two-Headed Wolf | A stat block in its text; Intelligence, Wisdom and Charisma blank (Shared Mind) | 0.84.0 |
 | H8 | Dream Walker | Kurama | Dream Walker (and Lucid Dreams, Inner Self) | A stat block in its text with five types; save bonuses blank | 0.84.0 |
+| H9 | Wood Dragon | Senju | Wood Release: Wood Dragon Summoning (B-Rank Hijutsu) | A stat block in the source book's box (missing from the item's text); Intelligence and Wisdom saves blank | 0.85.0 |
 
-Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Wood Dragon (Senju), Star Beast (Kujaku).
+Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Star Beast (Kujaku). Wood Clones (Senju) are clone rules in the Hijutsu's text, not a stat block.
 
 ## Text issues (for the errata list)
 
@@ -204,6 +218,13 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - Iburi: Smoke Style "impossible to impossible to"; Chimney Dance "of the same time"; Incinerating Burst has no cost increase; Smoke Dragon's range is a 90-foot line, its text 60; Orbital Drop "uch" and an unfinished last sentence; Body Oxidation "you entire their body".
 - Inuzuka: the stance item held Beast Human Clone's text (fixed, Q-E9 ruling); Savage Attacker held Feral's Amp (removed) and the Nin-Dog's stat block (H6).
 - Kurama: Déjà vu held Well Rested's Amp (removed); Lucid Dreams: Elemental's Lightning Rope has no rank; Dream Walker's text lists the stat block before the feature.
+- Namikaze: Interdiction Seal held Speed Sovereign's Amp (removed); Swift Release: Air Shattering Strike's Interdiction Seal line says "Air shattering Strike".
+- Nara: the Cause option holds Diplomatic Coordination's text; Shadow Neck Binding "on a failed save, they take half damage" (success?); Shadow Sewing Needle's upcast says above C-Rank (it's D-Rank) and Black Spider Lily's above C-Rank (it's B-Rank); Shadow Tendrils puts "or half as much on a success" after the resave; Shogi Board "two of your allied"; "Dimly Lit.." twice.
+- Sarutobi: the stance item held Advanced Release Manifestation's text (fixed, Q-E9 ruling); Ember's Guardian held Blazing's Amp (removed); Will of Fire Incarnate "you Will Blazes".
+- Senju: the stance item held Verdant Bloodline's text (fixed, Q-E9 ruling); the Wood Dragon's stat block is missing from its item (H9); Built Different "your half your level"; Verdant Lash's Drained has no save.
+- Uchiha: the stance item held Advanced Adaptation's text (fixed, Q-E9 ruling); Sharingan held its Amp (removed); Sharingan: Genjutsu! is printed inside Sharingan Copy; Surging Fire Flower Dance's upcast says above D-Rank (it's C-Rank); Blazing Rose Chariot has no success result; Amplified Flames "Uchiha hare"; Commanding Gaze "strength of dexterity".
+- Uzumaki: Adamantine Barrier holds the 5-Pronged Seal condition text; "Spiral Power0"; Binding Chains "you're your highest"; Rebuking Seal "on a failed save" twice; Red Hot-Blooded Vitality "wifely"; River Dam Seal's name has a double space.
+- Yamanaka: Mental Recalibration holds the Dominated status text; Mass Mind Body Disjunction's upcast says above C-Rank (it's B-Rank); Telepathic Comms "Proficienty"; Psionic Network "this send"; Mind Puppet Switch "is remains".
 
 ## Progress log
 
@@ -221,3 +242,4 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - 2026-11-22 Claude: published 0.83.1-alpha.1 (held notes point at H1–H5).
 - 2026-11-22 King: "Next batch" Claude: E6 Land of Fire I built (143 items); Nin-Dog, Two-Headed Wolf and Dream Walker added to the held stat blocks (H6–H8); Q-E9 and Q-E12 rulings applied; published 0.84.0-alpha.1. Q-E20 asked (checked earlier specs first).
 - 2026-11-22 King: Q-E20 "10d12 poison and 10d12 chakra ... the result should be the same." Claude: damage part alsoAs (E-D9); published 0.84.1-alpha.1.
+- 2026-11-22 King: "Next batch." Claude: E7 Land of Fire II built (156 items); Wood Dragon added to the held stat blocks (H9); Q-E9 and Q-E12 rulings applied; published 0.85.0-alpha.1. No new questions (checked earlier specs first).

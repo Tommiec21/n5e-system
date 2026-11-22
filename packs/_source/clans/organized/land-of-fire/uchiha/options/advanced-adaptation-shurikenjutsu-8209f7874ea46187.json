@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2169,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a jutsu with an Ammunition weapon doesn't roll its ammunition die."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,37 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eE04ajCIuJiMoq",
+        "type": "save",
+        "label": "Off-Guard",
+        "save": {
+          "abilities": [
+            "dex",
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "Once per turn, [Weapon Damage] with a Thrown or Ammunition weapon; until the end of your next turn.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

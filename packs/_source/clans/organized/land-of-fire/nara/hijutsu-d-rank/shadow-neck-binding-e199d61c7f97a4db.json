@@ -17,7 +17,136 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5emVQRkslIo1jQQ",
+              "type": "save",
+              "label": "Shadow Neck Binding",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "highest"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5emVQRkslIo1jQQ",
+              "type": "save",
+              "label": "Shadow Neck Binding",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "highest"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5emVQRkslIo1jQQ",
+              "type": "save",
+              "label": "Shadow Neck Binding",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "highest"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5emVQRkslIo1jQQ",
+              "type": "save",
+              "label": "Shadow Neck Binding",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "highest"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (4d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Neck Binding"
+          },
+          "note": "Bright time of day (GM's call): a creature that failed is knocked Prone."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Neck Binding"
+          },
+          "note": "Dimly lit time of day (GM's call): a creature that succeeded gains a rank of Demoralized or Shaken (pick)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +238,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emVQRkslIo1jQQ",
+        "type": "save",
+        "label": "Shadow Neck Binding",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

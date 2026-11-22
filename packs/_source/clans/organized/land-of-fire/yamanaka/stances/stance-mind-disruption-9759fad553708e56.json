@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "yamanaka",
-      "sourceLine": 2541
+      "sourceLine": 2541,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mental Overwrite is the condition item (Dominated by rank and creature type: its text)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,116 @@
     ],
     "clan": "yamanaka",
     "featureType": "passive",
-    "requirement": "Yamanaka clan"
+    "requirement": "Yamanaka clan",
+    "activities": [
+      {
+        "id": "n5eWtXxRZwvE1PGK",
+        "type": "effect",
+        "label": "Mind Disruption",
+        "effect": {
+          "name": "Mind Disruption",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the chakra stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ezaUvFpG99vdkl",
+        "type": "attack",
+        "label": "Beam",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Mind Body Transfer: a creature you see within 60 feet, as an Action or in place of an Attack action attack or a jutsu (constructs, objects, creatures not native to this world, and those immune to Compelled or Sealed are immune). On a hit: Mental Overwrite (2 ranks at 11th).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d6,11:2d6) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5emzhLVG3Su8ipT",
+        "type": "effect",
+        "label": "Beam: Mental Overwrite",
+        "effect": {
+          "name": "Mental Overwrite",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "yamanaka-mental-overwrite"
+        },
+        "text": "On a Beam hit: 1 rank (2 at 11th: apply twice)."
+      },
+      {
+        "id": "n5erLaqrSSjsERJ5",
+        "type": "save",
+        "label": "Pulse",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "7th: doesn't reveal you if hidden. Failure: 2 ranks of Mental Overwrite (3 at 15th).",
+        "damage": {
+          "parts": []
+        },
+        "minLevel": 7
+      },
+      {
+        "id": "n5elm806j9Amj961",
+        "type": "save",
+        "label": "Wave",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "15th: creatures you choose within 30 feet (half the range). Failure: 5d6 psychic and 1 rank of Mental Overwrite.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "minLevel": 15
+      }
+    ]
   }
 }

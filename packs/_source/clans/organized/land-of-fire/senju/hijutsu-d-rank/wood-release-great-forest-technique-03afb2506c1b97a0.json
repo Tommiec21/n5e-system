@@ -17,6 +17,203 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Earth Release,  Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eXkDdsV7ydhYcp",
+              "type": "attack",
+              "label": "Great Forest",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEHTH5I5cbXIkj",
+              "type": "save",
+              "label": "Great Forest: grapple",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eXkDdsV7ydhYcp",
+              "type": "attack",
+              "label": "Great Forest",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEHTH5I5cbXIkj",
+              "type": "save",
+              "label": "Great Forest: grapple",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eXkDdsV7ydhYcp",
+              "type": "attack",
+              "label": "Great Forest",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEHTH5I5cbXIkj",
+              "type": "save",
+              "label": "Great Forest: grapple",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eXkDdsV7ydhYcp",
+              "type": "attack",
+              "label": "Great Forest",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEHTH5I5cbXIkj",
+              "type": "save",
+              "label": "Great Forest: grapple",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +307,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eXkDdsV7ydhYcp",
+        "type": "attack",
+        "label": "Great Forest",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eEHTH5I5cbXIkj",
+        "type": "save",
+        "label": "Great Forest: grapple",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

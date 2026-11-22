@@ -17,6 +17,14 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Fuinjutsu, Ninjutsu",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Uzumaki Art: 5-Pronged Seal"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: cast another 1-Action jutsu at the same creature as a Bonus action."
       }
     }
   },
@@ -108,7 +116,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eO9SRvrEB1nhSA",
+        "type": "attack",
+        "label": "5-Pronged Seal",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "On a hit: the 5-Pronged Seal condition.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eM7ziKJ5cu7sid",
+        "type": "effect",
+        "label": "5-Pronged Seal: condition",
+        "effect": {
+          "name": "5-Pronged Seal",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600,
+          "condition": "uzumaki-5-pronged-seal"
+        },
+        "text": "On a hit: the condition for 1 hour."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

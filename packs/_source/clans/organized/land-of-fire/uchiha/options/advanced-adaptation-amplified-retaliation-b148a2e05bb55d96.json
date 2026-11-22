@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2158,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eR6dXCgfUKjJ24",
+        "type": "roll",
+        "label": "Amplified Retaliation",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, Reaction, a hostile creature within 15 feet attacks you or an ally: move up to half your speed into reach and make an opportunity attack."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eWSDskkXoaUwgC",
+        "type": "save",
+        "label": "Off-Guard",
+        "save": {
+          "abilities": [
+            "dex",
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "On a hit; until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

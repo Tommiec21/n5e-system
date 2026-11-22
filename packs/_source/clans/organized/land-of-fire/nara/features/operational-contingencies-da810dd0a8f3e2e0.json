@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "nara",
       "sourceLine": 1747,
-      "notAmp": "Its Combat and Diplomatic Coordinated boxes are the Coordinated conditions (King Q-E4)."
+      "notAmp": "Its Combat and Diplomatic Coordinated boxes are the Coordinated conditions (King Q-E4).",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Combat Coordinated is the condition item (Team Coordination applies it)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -43,6 +50,18 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e3AsAdWWRp8DmG",
+        "type": "roll",
+        "label": "Establish a Contingency",
+        "roll": {
+          "formula": "",
+          "note": "Start of your turn, Bonus action: one Cause + one Effect (the option items) until the start of your next turn (two at 11th); the Effect happens as the Cause does."
+        },
+        "activation": "bonus"
+      }
+    ]
   }
 }

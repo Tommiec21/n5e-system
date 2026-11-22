@@ -17,7 +17,24 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Sewing Needle"
+          },
+          "note": "Bright time of day (GM's call): remake a missed attack, once per casting."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Sewing Needle"
+          },
+          "note": "Dimly lit time of day (GM's call): two or more tendrils on a hit: pulled 10 feet closer per tendril."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +126,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eI2mEZoN3ZCQI4",
+        "type": "attack",
+        "label": "Shadow Sewing Needle",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "5 tendrils (+1 per rank): one attack per creature, up to 4 within 60 feet; +1d6 per extra tendril on the same creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ejMm2CfilJmZFA",
+        "type": "save",
+        "label": "Shadow Sewing Needle: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "Failure: Shadow Bound until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

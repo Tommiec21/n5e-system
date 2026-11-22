@@ -83,7 +83,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1714 | 586 | 6 | 477 | 477 | 0 |
+| clans | 1714 | 696 | 8 | 557 | 557 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
@@ -100,13 +100,13 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 33 | 57 | 0 | 25 |
+| clans | 0 | 0 | 36 | 54 | 0 | 25 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **105** | **82** | **0** | **49** |
+| **Total** | **124** | **158** | **108** | **79** | **0** | **49** |
 
-### clans: 57 candidates
+### clans: 54 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -119,7 +119,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Mistborn Infiltrator**: Lasting bonus: "…You gain an additional…"
 - **Catastrophic Vent**: Lasting bonus: "…you enter Torque, you gain the following additional benefits for the duration; You gain +4…"
 - **Steam Engine**: Its text names a Battle Amp.
-- **Ember’s Guardian**: Its text names a Battle Amp.
 - **The Legacy of The Past**: Lasting bonus: "…you gain an additional…"
 - **Alomancy**: Lasting bonus: "…You gain an additional…"
 - **Metallurgy**: Its text names a Battle Amp.
@@ -152,14 +151,12 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Tsuchigumo: Latent Exoskeleton I**: Lasting bonus: "…You gain 5 temporary hit points…"
 - **Tsuchigumo: Latent Exoskeleton II**: Lasting bonus: "…You must have Latent Exoskeleton I) Beginning at 15th level, the amount of temporary hit p…"
 - **Tsuchigumo: Latent Third Eye I**: Lasting bonus: "…you gain a +2…"
-- **Sharingan**: Its text names a Reflex Amp.
 - **Storm Incarnate**: Lasting bonus: "…you make as a result of Hijutsu you cast gain a +1…"
 - **Nindo**: Its text names a Fortitude Amp.
 - **Celestial Body**: Lasting bonus: "…You begin with resistance to…"
 - **Irradiated Apex**: Its text names a Fortitude Amp.
 - **Swirling Seals**: Lasting bonus: "…You gain an additional…"
 - **Blood of the Swift**: Lasting bonus: "…You gain an additional…"
-- **Interdiction Seal**: Its text names a Reflex Amp.
 - **Nindo: Always Go Beyond**: Its text names a Fortitude Amp.
 - **Dust Veil**: Lasting bonus: "…You gain an additional…"
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"

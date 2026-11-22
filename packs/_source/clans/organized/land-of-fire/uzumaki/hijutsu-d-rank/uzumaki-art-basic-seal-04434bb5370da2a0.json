@@ -17,6 +17,206 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu",
         "components": "CM, CS, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eT1rpr3nkZOBa5",
+              "type": "attack",
+              "label": "Basic Seal",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePiOv3HEoNT5Wq",
+              "type": "save",
+              "label": "Basic Seal: Sealed",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eT1rpr3nkZOBa5",
+              "type": "attack",
+              "label": "Basic Seal",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePiOv3HEoNT5Wq",
+              "type": "save",
+              "label": "Basic Seal: Sealed",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eT1rpr3nkZOBa5",
+              "type": "attack",
+              "label": "Basic Seal",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePiOv3HEoNT5Wq",
+              "type": "save",
+              "label": "Basic Seal: Sealed",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eT1rpr3nkZOBa5",
+              "type": "attack",
+              "label": "Basic Seal",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePiOv3HEoNT5Wq",
+              "type": "save",
+              "label": "Basic Seal: Sealed",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Uzumaki Art: Basic Seal"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: range Self (15-foot cube); the attack against every creature in it."
       }
     }
   },
@@ -109,7 +309,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eT1rpr3nkZOBa5",
+        "type": "attack",
+        "label": "Basic Seal",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePiOv3HEoNT5Wq",
+        "type": "save",
+        "label": "Basic Seal: Sealed",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

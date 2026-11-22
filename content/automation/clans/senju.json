@@ -1,0 +1,1516 @@
+{
+  "clan": "senju",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "senju-blood-of-the-leaf": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A non-allied creature in conversation makes a request of you: Intimidation in response gains 2 ranks of Mastery."
+        }
+      ]
+    },
+    "senju-built-different": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMnl6HE6qGq2UV",
+          "type": "heal",
+          "label": "Senju Cell: heal",
+          "heal": {
+            "formula": "max(1, 1d6 + floor(@level / 2))",
+            "pool": "hp"
+          },
+          "text": "Once per turn, start of your turn, not incapacitated.",
+          "cost": {
+            "pool": "senjuCells",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eJUO1iY9KjvORp",
+          "type": "roll",
+          "label": "Senju Cell: end a condition",
+          "roll": {
+            "formula": "",
+            "note": "7th, start of your turn: end one Physical or Elemental condition on you."
+          },
+          "cost": {
+            "pool": "senjuCells",
+            "amount": 1
+          },
+          "minLevel": 7
+        },
+        {
+          "id": "n5e3lpPWQUB44mKg",
+          "type": "roll",
+          "label": "Senju Cell: Hit Dice at 0",
+          "roll": {
+            "formula": "",
+            "note": "15th, starting your turn at 0 hit points: spend Hit Dice equal to the Cells spent and regain the result (roll them)."
+          },
+          "cost": {
+            "pool": "senjuCells",
+            "choose": true
+          },
+          "minLevel": 15
+        }
+      ],
+      "effects": [
+        {
+          "name": "Built Different",
+          "changes": [
+            {
+              "key": "system.bonuses.hpPerLevel",
+              "value": "2",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "pools": [
+        {
+          "id": "senjuCells",
+          "label": "Senju Cells",
+          "value": 0,
+          "max": "lvl(1:2,7:4,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hit points +2 per level (the effect). Senju Cells: 2 (4 at 7th, 6 at 15th; Elite Bloodline +2, +2 more at 11th: raise the pool's maximum by hand), back on a rest."
+        }
+      ]
+    },
+    "senju-mokuton-infusion": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: enter the Mokuton Infusion stance (the clan's stance item) in one of its variants."
+        }
+      ]
+    },
+    "senju-mutation-elite-bloodline": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Verdant Bloodline: resistance to Physical and Elemental conditions; +2 Senju Cells (+2 more at 11th; raise the pool's maximum by hand)."
+        }
+      ]
+    },
+    "senju-mutation-history-of-the-elite": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKXs0WiXe2FQAs",
+          "type": "heal",
+          "label": "Energizing: heal",
+          "heal": {
+            "formula": "lvl(1:1,7:2,15:3)d8",
+            "pool": "hp"
+          },
+          "text": "Once per turn, Bonus action, a willing creature you touch: its Hit Dice rolled without spending them + its Constitution modifier (use its die size; twice per rest per creature).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eaHSl4ZMrdUujo",
+          "type": "roll",
+          "label": "Energizing: cleanse",
+          "roll": {
+            "formula": "1d20 + @abilities.con.mod",
+            "note": "Bonus action: the condition's check (or DC 12 Constitution) ends 1 rank, +1 per 2 over (twice per rest per creature)."
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eLhhC6ULEUKMoN",
+          "type": "roll",
+          "label": "Rallying Figure",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, you or an ally you see fails a save: it remakes it; on a success you regain 1 Senju Cell."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "senjuCells",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Mokuton Infusion. Two Elite Tactics (+1 at 7th and 15th): Unbreakable (a rank of Mastery on one save; repeatable); Energizing; Unfaltering (resistance to two of Burned, Chilled, Corroded, Shocked, Envenomed, Bruised, Staggered, Bleed, Dazed, Shaken, Weakened, Concussed, Exhausted; repeatable); Rallying Figure; Legacy of the Second (Water jutsu; their conditions can be Drained ranks instead); Legacy of the Fifth (the same with Medical)."
+        }
+      ]
+    },
+    "senju-mutation-prime-nature-release": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Wood Release Affinity and Mokuton Release Techniques: one release of Earth, Wind, Fire, Water, Lightning or Medical (2 jutsu of it at 1st, 3rd, 7th, 11th and 15th). You must also take a 1st, 3rd, 11th and 15th level Senju mutation."
+        }
+      ]
+    },
+    "senju-mutation-quickened-regeneration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZiCALzHZXMHzR",
+          "type": "heal",
+          "label": "Quickened Regeneration",
+          "heal": {
+            "formula": "floor(@level / 2)",
+            "pool": "hp"
+          },
+          "text": "Once per turn in combat, a hostile creature's damage that doesn't drop you to 0."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Conditions with [Persist] end after 1 minute."
+        }
+      ]
+    },
+    "senju-mutation-the-strongest-bloodline": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Wood Release: add your highest jutsu ability modifier to jutsu damage if you don't already. Once per rest, name a Rival Clan: +1 to attacks and jutsu save DC against its members."
+        }
+      ]
+    },
+    "senju-stance-mokuton-infusion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evVUPejbGuvRCI",
+          "type": "effect",
+          "label": "Will of the Buddha",
+          "effect": {
+            "name": "Will of the Buddha",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: this variant.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eTzO2x93bNbKBj",
+          "type": "effect",
+          "label": "Fist of Hevajra",
+          "effect": {
+            "name": "Fist of Hevajra",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: this variant.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eI1QXGyS8gARei",
+          "type": "attack",
+          "label": "Verdant Lash (melee)",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "An 8+ on the damage die: Drained (2 ranks at 7th, 3 at 15th) and push or pull 10 feet (15 at 7th). 7th: counts as casting a D-Rank Hijutsu. Earth, cold or chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d10,11:2d10) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eIxmal2mNC6VhW",
+          "type": "attack",
+          "label": "Verdant Lash (ranged)",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "30 feet. An 8+ on the damage die: Drained (2 ranks at 7th, 3 at 15th) and push or pull 10 feet (15 at 7th). 7th: counts as casting a D-Rank Hijutsu. Earth, cold or chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d10,11:2d10)",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5egS0yBlR1dtyfI",
+          "type": "effect",
+          "label": "Drained",
+          "effect": {
+            "name": "Drained",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "senju-drained"
+          },
+          "text": "From Verdant Lash's 8+: 1 rank (2 at 7th, 3 at 15th: apply it again)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Mokuton Infusion chakra stance, usable with a Taijutsu or Bukijutsu stance (its text is Mokuton Infusion's, as King Q-E9). Bonus action to enter or swap variants. Will of the Buddha: with a Combat Scroll, the Attack action's attacks can be Verdant Lash. Fist of Hevajra: [Unarmed Damage] cold, earth or chakra (pick when you roll); unarmed attacks can use your Hijutsu Flexibility ability; Reach 1 (Reach 2 at 7th)."
+        }
+      ]
+    },
+    "senju-verdant-bloodline": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRvJLPG5a5UzN3",
+          "type": "roll",
+          "label": "New Growth",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, with an Attack action attack in your Mokuton Infusion stance or casting a Senju Hijutsu: a 10-foot radius within 60 feet; others spend 4 feet per foot moved; 1 minute or until damage crosses it."
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Drained is the condition item."
+        }
+      ]
+    },
+    "senju-verdant-domain": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hostile creatures you choose that are Grappled or Restrained by a Senju Hijutsu, or stand in New Growth, cast CM jutsu above their rank (Standard D, Elite C, Solo B) only by gaining a rank of Drained per rank above."
+        }
+      ]
+    },
+    "senju-wood-release": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5et4KAlu6ENzUzq",
+          "type": "save",
+          "label": "Wood Release: pull or push",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, Bonus action: a creature within 30 feet Grappled or Restrained by a Senju Hijutsu, or Drained. Failure: pulled or pushed 20 feet.",
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other Wood Release Affinity release (set it on the sheet); Earth jutsu can deal earth and Water jutsu cold instead."
+        }
+      ]
+    },
+    "senju-wood-release-foo-dog-heads": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egAJz6nbYlj9Nh",
+          "type": "save",
+          "label": "Foo Dog aura",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "senju-drained",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Drained"
+            }
+          ],
+          "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5egAJz6nbYlj9Nh",
+                "type": "save",
+                "label": "Foo Dog aura",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "senju-drained",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Drained"
+                  }
+                ],
+                "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5egAJz6nbYlj9Nh",
+                "type": "save",
+                "label": "Foo Dog aura",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "senju-drained",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Drained"
+                  }
+                ],
+                "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5egAJz6nbYlj9Nh",
+                "type": "save",
+                "label": "Foo Dog aura",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "senju-drained",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Drained"
+                  }
+                ],
+                "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (3d10)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5egAJz6nbYlj9Nh",
+                "type": "save",
+                "label": "Foo Dog aura",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "senju-drained",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Drained"
+                  }
+                ],
+                "text": "4 pillars within 30 feet (10 feet tall; AC your Ninjutsu save DC, 20 hit points; Earthen Artifacts; +1 at B-Rank). Creatures you choose starting a turn in or first entering a 10-foot radius of a pillar (one per turn). Failure: Drained; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (4d10)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "senju-wood-release-great-forest-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXkDdsV7ydhYcp",
+          "type": "attack",
+          "label": "Great Forest",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eEHTH5I5cbXIkj",
+          "type": "save",
+          "label": "Great Forest: grapple",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eXkDdsV7ydhYcp",
+                "type": "attack",
+                "label": "Great Forest",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEHTH5I5cbXIkj",
+                "type": "save",
+                "label": "Great Forest: grapple",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eXkDdsV7ydhYcp",
+                "type": "attack",
+                "label": "Great Forest",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEHTH5I5cbXIkj",
+                "type": "save",
+                "label": "Great Forest: grapple",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eXkDdsV7ydhYcp",
+                "type": "attack",
+                "label": "Great Forest",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEHTH5I5cbXIkj",
+                "type": "save",
+                "label": "Great Forest: grapple",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eXkDdsV7ydhYcp",
+                "type": "attack",
+                "label": "Great Forest",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reach 30 feet (+5 per rank); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEHTH5I5cbXIkj",
+                "type": "save",
+                "label": "Great Forest: grapple",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: grappled by you (a Bonus action pulls it 10 feet; its Action resaves).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "senju-wood-release-hobi-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewt9tG7AMzxzQd",
+          "type": "heal",
+          "label": "Hōbi domes",
+          "heal": {
+            "formula": "2d8 + 15",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ewt9tG7AMzxzQd",
+                "type": "heal",
+                "label": "Hōbi domes",
+                "heal": {
+                  "formula": "(2d8 + 15) + 4",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ewt9tG7AMzxzQd",
+                "type": "heal",
+                "label": "Hōbi domes",
+                "heal": {
+                  "formula": "(2d8 + 15) + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ewt9tG7AMzxzQd",
+                "type": "heal",
+                "label": "Hōbi domes",
+                "heal": {
+                  "formula": "(2d8 + 15) + 12",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d8 + 4 hit points and +2 DR per rank (the button adds the +4; roll +1d8 per rank by hand)."
+        }
+      ]
+    },
+    "senju-wood-release-hotei-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eplSGA7AAUJiCQ",
+          "type": "save",
+          "label": "Hotei",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "Up to two creatures within 60 feet (+1 per rank). Failure: grappled (pulled down if airborne); a 15-foot radius of difficult terrain (New Growth).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e2pfro0DvWVVJM",
+          "type": "damage",
+          "label": "Grappled: start of its turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "earth"
+              }
+            ]
+          },
+          "text": "Earth or cold; then a Strength save breaks free."
+        }
+      ]
+    },
+    "senju-wood-release-piercing-bark": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er7ZLHGM9vmAuc",
+          "type": "attack",
+          "label": "Piercing Bark",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eOmx9fzr4NAAN0",
+          "type": "save",
+          "label": "Piercing Bark: roots",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "",
+              "failure": "Grappled.",
+              "critFailure": "Restrained (failed by 5 or more)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5er7ZLHGM9vmAuc",
+                "type": "attack",
+                "label": "Piercing Bark",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eOmx9fzr4NAAN0",
+                "type": "save",
+                "label": "Piercing Bark: roots",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "",
+                    "failure": "Grappled.",
+                    "critFailure": "Restrained (failed by 5 or more)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5er7ZLHGM9vmAuc",
+                "type": "attack",
+                "label": "Piercing Bark",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eOmx9fzr4NAAN0",
+                "type": "save",
+                "label": "Piercing Bark: roots",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "",
+                    "failure": "Grappled.",
+                    "critFailure": "Restrained (failed by 5 or more)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5er7ZLHGM9vmAuc",
+                "type": "attack",
+                "label": "Piercing Bark",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eOmx9fzr4NAAN0",
+                "type": "save",
+                "label": "Piercing Bark: roots",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "",
+                    "failure": "Grappled.",
+                    "critFailure": "Restrained (failed by 5 or more)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5er7ZLHGM9vmAuc",
+                "type": "attack",
+                "label": "Piercing Bark",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eOmx9fzr4NAAN0",
+                "type": "save",
+                "label": "Piercing Bark: roots",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "",
+                    "failure": "Grappled.",
+                    "critFailure": "Restrained (failed by 5 or more)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "senju-wood-release-severe-thousand-hands": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elnXrqM4XWWTIf",
+          "type": "attack",
+          "label": "Severe Thousand Hands",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "With an Attack action attack or attack jutsu: every creature within 10 feet (+5 at B and S); earth, cold or chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eSZAI0lVnkKMvv",
+          "type": "save",
+          "label": "Severe Thousand Hands: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Failure: Concussed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5elnXrqM4XWWTIf",
+                "type": "attack",
+                "label": "Severe Thousand Hands",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With an Attack action attack or attack jutsu: every creature within 10 feet (+5 at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eSZAI0lVnkKMvv",
+                "type": "save",
+                "label": "Severe Thousand Hands: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5elnXrqM4XWWTIf",
+                "type": "attack",
+                "label": "Severe Thousand Hands",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With an Attack action attack or attack jutsu: every creature within 10 feet (+5 at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eSZAI0lVnkKMvv",
+                "type": "save",
+                "label": "Severe Thousand Hands: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5elnXrqM4XWWTIf",
+                "type": "attack",
+                "label": "Severe Thousand Hands",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With an Attack action attack or attack jutsu: every creature within 10 feet (+5 at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eSZAI0lVnkKMvv",
+                "type": "save",
+                "label": "Severe Thousand Hands: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5elnXrqM4XWWTIf",
+                "type": "attack",
+                "label": "Severe Thousand Hands",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With an Attack action attack or attack jutsu: every creature within 10 feet (+5 at B and S); earth, cold or chakra.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eSZAI0lVnkKMvv",
+                "type": "save",
+                "label": "Severe Thousand Hands: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "senju-wood-release-tree-bind-flourishing-burial": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eG9CK99FPbYZCw",
+          "type": "save",
+          "label": "Flourishing Burial",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "senju-drained",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Drained"
+            }
+          ],
+          "text": "A 90-foot tall, 30-foot wide tree within 90 feet (Earthen Artifact; 100 damage destroys it). Failure: Restrained inside, 3 ranks of Drained, total cover; two successes at the end of its turns escape. At 0 hit points it becomes part of the tree.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eI2qBhQmM4knrL",
+          "type": "damage",
+          "label": "Restrained: start of its turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "earth",
+                "alsoAs": "chakra"
+              }
+            ]
+          },
+          "text": "Earth and chakra (King Q-E20: the same result as both)."
+        }
+      ]
+    },
+    "senju-wood-release-wood-clone": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 6 Wood Clones (10 chakra, +8 per extra clone): 10 hit points, 10 temporary hit points, DR 10 against the first damage each turn; one shared command; help only you; Clone Strike makes 2 attacks; + your Ninjutsu modifier as earth damage; they can cast your C-Rank Senju Hijutsu."
+        }
+      ]
+    },
+    "senju-wood-release-wood-dragon-summoning": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A wooden dragon acting at the end of your turns, with your highest jutsu attack bonus or DC; a Bonus action or Reaction triggers its Detonation. Its stat block is in the source book's box (not this item's text) with Intelligence and Wisdom saves blank: held for King's stat block (H9)."
+        }
+      ]
+    },
+    "senju-wood-release-world-of-trees": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 30-foot cube on you (+5 feet per rank) for 1 minute: difficult terrain for others, New Growth; no Dash or Dodge in it. B-Rank+: your damaging Senju Hijutsu cast inside penetrate Barriers with half their damage."
+        }
+      ]
+    }
+  }
+}

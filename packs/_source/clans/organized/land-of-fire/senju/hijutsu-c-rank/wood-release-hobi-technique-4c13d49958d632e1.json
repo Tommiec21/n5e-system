@@ -17,6 +17,56 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Water Release, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d8 + 4 hit points and +2 DR per rank (the button adds the +4; roll +1d8 per rank by hand)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ewt9tG7AMzxzQd",
+              "type": "heal",
+              "label": "Hōbi domes",
+              "heal": {
+                "formula": "(2d8 + 15) + 4",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+              "activation": "reaction"
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ewt9tG7AMzxzQd",
+              "type": "heal",
+              "label": "Hōbi domes",
+              "heal": {
+                "formula": "(2d8 + 15) + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+              "activation": "reaction"
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ewt9tG7AMzxzQd",
+              "type": "heal",
+              "label": "Hōbi domes",
+              "heal": {
+                "formula": "(2d8 + 15) + 12",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+              "activation": "reaction"
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +160,19 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ewt9tG7AMzxzQd",
+        "type": "heal",
+        "label": "Hōbi domes",
+        "heal": {
+          "formula": "2d8 + 15",
+          "pool": "tempHp"
+        },
+        "text": "Reaction: you and creatures you choose within 10 feet, in domes (Barrier, DR 8, all but psychic; total cover) until the start of your next turn; leaving one, you can't reenter.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

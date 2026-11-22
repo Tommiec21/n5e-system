@@ -1,0 +1,331 @@
+{
+  "clan": "sarutobi",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "sarutobi-advanced-release-manifestation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqhiX1EjWcw16a",
+          "type": "roll",
+          "label": "Genjutsu: critical success to success",
+          "roll": {
+            "formula": "",
+            "note": "Option 3, in your Cross-Style stance: a creature critically succeeds its save against your Genjutsu; it gets a success's effects."
+          },
+          "cost": {
+            "pool": "will",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick one: a second Advanced Nature Affinity release (set it on the sheet); a Taijutsu or Bukijutsu Expert stance's benefits while in Cross-Style; or the Genjutsu button."
+        }
+      ]
+    },
+    "sarutobi-blessing-of-the-flame": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Long rest ritual: weapons of one Weapon Group or Property you wield are Flame Blessed until your next long rest: you can't be disarmed of them unless incapacitated; their attacks can use your Taijutsu, Ninjutsu or Genjutsu modifier; a rank of Mastery to their [Weapon Damage] ([Unarmed Damage] with the Unarmed property)."
+        }
+      ]
+    },
+    "sarutobi-cross-style": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: enter the Cross-Style stance (the clan's stance item)."
+        }
+      ]
+    },
+    "sarutobi-embers-guardian": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoD0Sgn0AAWjFa",
+          "type": "roll",
+          "label": "Guardians Will",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally within 10 feet takes an attack's damage: swap spaces; it hits you, less your [Unarmed Damage] or [Weapon Damage] (roll it, reduce by hand)."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5ec37hZDzGJ6NKj",
+          "type": "roll",
+          "label": "Bonded Resolve",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally within 10 feet would take damage: it takes half; you take the other half, same type."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Blazing's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "sarutobi-inspiring-presence": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures you choose starting their turn within 10 feet of you lose 1 rank of Demoralized and of Shaken."
+        }
+      ]
+    },
+    "sarutobi-rekindling-pulse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRgm7AMKC7G1Hm",
+          "type": "roll",
+          "label": "Rekindling Pulse",
+          "roll": {
+            "formula": "",
+            "note": "Action: allies you see within 20 feet who are Incapacitated, Stunned, Dying or Unconscious make a DC 20 Constitution save, +1 per Will spent (once per long rest per creature). At 0 hit points: spend all Hit Dice, regain the result, Exhaustion ranks equal to half the dice spent; with hit points: those conditions end and they stand up."
+          },
+          "cost": {
+            "pool": "will",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "sarutobi-stance-cross-style": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eN0ZteaNcq73XK",
+          "type": "effect",
+          "label": "Cross-Style",
+          "effect": {
+            "name": "Cross-Style",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the Cross-Style stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e75PLc60uoak0z",
+          "type": "roll",
+          "label": "Unified Form",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a jutsu as an Action: Will by its rank (D 1 ... S 5) casts a second jutsu of another discipline, same rank and casting time (neither concentration nor reduced cost), in the same action; no Bonus action jutsu until your next turn. Second jutsu: Ninjutsu −1 on saves for creatures with Physical, Elemental or Sensory ranks; Taijutsu: the first gains Combo, its damage pushes 10 feet; Bukijutsu: the first gains Chain, its damage gives −1 AC until your next turn; Genjutsu: swap places with a willing ally within half your speed."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "will",
+            "choose": true
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Cross-Style stance, a Chakra, Taijutsu and Bukijutsu stance at once (its text is Cross-Style's, as King Q-E9): [Unarmed Damage] d6; [Unarmed] and [Weapon Damage] take your Advanced Nature Affinity release's type (Medical: poison; pick when you roll); Unified Form."
+        }
+      ]
+    },
+    "sarutobi-the-legacy-of-the-past": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKOCnj313dfX3I",
+          "type": "roll",
+          "label": "Kindled Will",
+          "roll": {
+            "formula": "",
+            "note": "A rank of Mastery to your next d20 roll (7th: 3 Will for two ranks; 15th: 5 Will for three)."
+          },
+          "cost": {
+            "pool": "will",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5ePC0QJ6V0ycSOn",
+          "type": "roll",
+          "label": "Swift Reaction",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: an extra reaction, lost at the end of this turn (one per round). Each further use costs 1 more Will until a short rest (spend it by hand)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "will",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5efSV3KDYm9JPlk",
+          "type": "roll",
+          "label": "Aggressive Response",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: use your reaction to cast a jutsu or use a feature that costs 1 Action."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "will",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eL7CKGGPKGf7tR",
+          "type": "roll",
+          "label": "Determination",
+          "roll": {
+            "formula": "",
+            "note": "Start of a turn you make a Death save, before rolling: gain a success."
+          },
+          "cost": {
+            "pool": "will",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eWesq1QF2RjpAC",
+          "type": "roll",
+          "label": "Inspiring Will",
+          "roll": {
+            "formula": "",
+            "note": "Another creature's d20 roll: a rank of Mastery (7th: 4 Will for two; 15th: 6 Will for three)."
+          },
+          "cost": {
+            "pool": "will",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5eRRB8if9IDBtyi",
+          "type": "roll",
+          "label": "Enduring",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, you or an ally fails a save: remake it."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "will",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eDWkZAkJWqmgUx",
+          "type": "roll",
+          "label": "Limit Break",
+          "roll": {
+            "formula": "",
+            "note": "Casting a 1-Action jutsu: cast it again at a different creature in the same action, no chakra."
+          },
+          "cost": {
+            "pool": "will",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5e4RByA4VY4SvsN",
+          "type": "roll",
+          "label": "Second Wind",
+          "roll": {
+            "formula": "(@amount - 1)d6 + @abilities.con.mod",
+            "note": "Bonus action, in combat, once per 10 minutes: hit or chakra points. Roll your Hit or chakra die by hand and add it; this is the Constitution modifier + 1d6 per Will after the first."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "will",
+            "choose": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "will",
+          "label": "Will",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Will: 1 + proficiency bonus (the pool), back on a rest. Two Legacy Techniques (+1 at 7th and 15th): pick them; all are buttons here."
+        }
+      ]
+    },
+    "sarutobi-will-of-fire-incarnate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoVmNcDrcW1V85",
+          "type": "effect",
+          "label": "Blazing",
+          "effect": {
+            "name": "Blazing",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "blazing"
+          },
+          "text": "Bonus action, 1 minute, once per long rest.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5elqcfDXcUonThT",
+          "type": "roll",
+          "label": "Kindling",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns while Blazing."
+          },
+          "cost": {
+            "pool": "will",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    }
+  }
+}

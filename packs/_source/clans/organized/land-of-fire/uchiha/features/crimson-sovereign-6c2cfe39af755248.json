@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "uchiha",
-      "sourceLine": 2219
+      "sourceLine": 2219,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,52 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eE27H6hQCEbmlk",
+        "type": "effect",
+        "label": "Crimson Aura",
+        "effect": {
+          "name": "Crimson Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 20-foot radius, 1 minute, once per long rest. Attacks made in it provoke you (the first opportunity attack per creature each round needs no reaction); creatures starting or ending a turn in it show you their AC, one save bonus, or one unique ability.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5esBE4ebDUjpfuO",
+        "type": "save",
+        "label": "Redirection",
+        "save": {
+          "abilities": [
+            "str",
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, Reaction, a hostile creature you see declares an attack on you: another hostile creature in your aura. Failure: it interposes.",
+        "activation": "reaction",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

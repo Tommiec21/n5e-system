@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "namikaze",
-      "sourceLine": 1613
+      "sourceLine": 1613,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the release you didn't pick for Swift Release Affinity (set it on the sheet); Wind or Lightning jutsu can swap their damage between wind and lightning when you roll."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eFx2xZ0FDFTKop",
+        "type": "roll",
+        "label": "Teleport to a mark",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, at its start or end: teleport to a creature or object marked with your Speed Seal within 120 feet."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

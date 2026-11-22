@@ -15,7 +15,14 @@
           "Mutated Feature: Mokuton Infusion"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Mokuton Infusion. Two Elite Tactics (+1 at 7th and 15th): Unbreakable (a rank of Mastery on one save; repeatable); Energizing; Unfaltering (resistance to two of Burned, Chilled, Corroded, Shocked, Envenomed, Bruised, Staggered, Bleed, Dazed, Shaken, Weakened, Concussed, Exhausted; repeatable); Rallying Figure; Legacy of the Second (Water jutsu; their conditions can be Drained ranks instead); Legacy of the Fifth (the same with Medical)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,44 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eKXs0WiXe2FQAs",
+        "type": "heal",
+        "label": "Energizing: heal",
+        "heal": {
+          "formula": "lvl(1:1,7:2,15:3)d8",
+          "pool": "hp"
+        },
+        "text": "Once per turn, Bonus action, a willing creature you touch: its Hit Dice rolled without spending them + its Constitution modifier (use its die size; twice per rest per creature).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eaHSl4ZMrdUujo",
+        "type": "roll",
+        "label": "Energizing: cleanse",
+        "roll": {
+          "formula": "1d20 + @abilities.con.mod",
+          "note": "Bonus action: the condition's check (or DC 12 Constitution) ends 1 rank, +1 per 2 over (twice per rest per creature)."
+        },
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eLhhC6ULEUKMoN",
+        "type": "roll",
+        "label": "Rallying Figure",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, you or an ally you see fails a save: it remakes it; on a success you regain 1 Senju Cell."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "senjuCells",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ]
   }
 }

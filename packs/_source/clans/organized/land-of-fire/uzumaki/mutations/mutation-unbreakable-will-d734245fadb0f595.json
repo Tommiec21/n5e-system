@@ -15,7 +15,14 @@
           "Mutated Feature: Warding Network"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Warding Network."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,31 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eaRBjAMwoHpT2O",
+        "type": "roll",
+        "label": "Unbreakable Will (reaction)",
+        "roll": {
+          "formula": "",
+          "note": "You'd drop to 0 hit points: drop to 1 instead; gain 1 rank of Weakened."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eKtzSWFRLGOdGp",
+        "type": "roll",
+        "label": "Unbreakable Will (Spiral Cells)",
+        "roll": {
+          "formula": "",
+          "note": "As above, with 2 Spiral Cells instead of the reaction."
+        },
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

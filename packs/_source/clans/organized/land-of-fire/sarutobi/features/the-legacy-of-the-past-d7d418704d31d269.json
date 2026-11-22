@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "sarutobi",
-      "sourceLine": 1860
+      "sourceLine": 1860,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Will: 1 + proficiency bonus (the pool), back on a rest. Two Legacy Techniques (+1 at 7th and 15th): pick them; all are buttons here."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,136 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eKOCnj313dfX3I",
+        "type": "roll",
+        "label": "Kindled Will",
+        "roll": {
+          "formula": "",
+          "note": "A rank of Mastery to your next d20 roll (7th: 3 Will for two ranks; 15th: 5 Will for three)."
+        },
+        "cost": {
+          "pool": "will",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5ePC0QJ6V0ycSOn",
+        "type": "roll",
+        "label": "Swift Reaction",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: an extra reaction, lost at the end of this turn (one per round). Each further use costs 1 more Will until a short rest (spend it by hand)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "will",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5efSV3KDYm9JPlk",
+        "type": "roll",
+        "label": "Aggressive Response",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: use your reaction to cast a jutsu or use a feature that costs 1 Action."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "will",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eL7CKGGPKGf7tR",
+        "type": "roll",
+        "label": "Determination",
+        "roll": {
+          "formula": "",
+          "note": "Start of a turn you make a Death save, before rolling: gain a success."
+        },
+        "cost": {
+          "pool": "will",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eWesq1QF2RjpAC",
+        "type": "roll",
+        "label": "Inspiring Will",
+        "roll": {
+          "formula": "",
+          "note": "Another creature's d20 roll: a rank of Mastery (7th: 4 Will for two; 15th: 6 Will for three)."
+        },
+        "cost": {
+          "pool": "will",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5eRRB8if9IDBtyi",
+        "type": "roll",
+        "label": "Enduring",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, you or an ally fails a save: remake it."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "will",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eDWkZAkJWqmgUx",
+        "type": "roll",
+        "label": "Limit Break",
+        "roll": {
+          "formula": "",
+          "note": "Casting a 1-Action jutsu: cast it again at a different creature in the same action, no chakra."
+        },
+        "cost": {
+          "pool": "will",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5e4RByA4VY4SvsN",
+        "type": "roll",
+        "label": "Second Wind",
+        "roll": {
+          "formula": "(@amount - 1)d6 + @abilities.con.mod",
+          "note": "Bonus action, in combat, once per 10 minutes: hit or chakra points. Roll your Hit or chakra die by hand and add it; this is the Constitution modifier + 1d6 per Will after the first."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "will",
+          "choose": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "will",
+        "label": "Will",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

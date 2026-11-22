@@ -1,0 +1,2802 @@
+{
+  "clan": "uchiha",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "uchiha-advanced-adaptation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Adaptations (+1 at 7th and 15th): the option items. Agile Fist is the clan's stance item."
+        }
+      ]
+    },
+    "uchiha-advanced-adaptation-agile-fist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Agile Fist stance (the clan's stance item)."
+        }
+      ]
+    },
+    "uchiha-advanced-adaptation-amplified-defense": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIyL2wpNBHZgqF",
+          "type": "roll",
+          "label": "Bonus reaction",
+          "roll": {
+            "formula": "",
+            "note": "An additional reaction, once per 10 minutes (twice from 7th); never two against one trigger."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "uchiha-advanced-adaptation-amplified-flames": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Amplified Flames",
+          "appliesTo": {
+            "keywords": [
+              "fireRelease"
+            ]
+          },
+          "note": "Once per turn, an area Fire Release jutsu: its area +5 feet (+10 at 7th, +15 at 15th)."
+        }
+      ]
+    },
+    "uchiha-advanced-adaptation-amplified-retaliation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eR6dXCgfUKjJ24",
+          "type": "roll",
+          "label": "Amplified Retaliation",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction, a hostile creature within 15 feet attacks you or an ally: move up to half your speed into reach and make an opportunity attack."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eWSDskkXoaUwgC",
+          "type": "save",
+          "label": "Off-Guard",
+          "save": {
+            "abilities": [
+              "dex",
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "On a hit; until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "uchiha-advanced-adaptation-shurikenjutsu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eE04ajCIuJiMoq",
+          "type": "save",
+          "label": "Off-Guard",
+          "save": {
+            "abilities": [
+              "dex",
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "Once per turn, [Weapon Damage] with a Thrown or Ammunition weapon; until the end of your next turn.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a jutsu with an Ammunition weapon doesn't roll its ammunition die."
+        }
+      ]
+    },
+    "uchiha-barrier-pass-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCI83u2QEBHvHn",
+          "type": "roll",
+          "label": "Barrier Pass",
+          "roll": {
+            "formula": "",
+            "note": "With the action that meets a Barrier: Ninshou against its caster's save DC (no caster: a Standard Jutsu Ability Check); success passes it this turn. Roll the check from the sheet."
+          }
+        }
+      ]
+    },
+    "uchiha-blazing-rose-chariot": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0mwIoL56H3a7H",
+          "type": "save",
+          "label": "Blazing Rose Chariot",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Burned"
+            },
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "Up to 6 points within 60 feet, a 10-foot radius each. Failure: 2 ranks of Burned and Off-Guard (Off-Guard creatures can't react to it). No half damage is stated.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6+4",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "uchiha-blood-of-the-fan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5es246HrdCSgUEM",
+          "type": "roll",
+          "label": "Blood of the Fan",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a non-allied creature makes an Intimidation or Persuasion check against another creature: disadvantage. Again after 10 minutes, or a successful Intimidation check."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "uchiha-crimson-sovereign": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eE27H6hQCEbmlk",
+          "type": "effect",
+          "label": "Crimson Aura",
+          "effect": {
+            "name": "Crimson Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 20-foot radius, 1 minute, once per long rest. Attacks made in it provoke you (the first opportunity attack per creature each round needs no reaction); creatures starting or ending a turn in it show you their AC, one save bonus, or one unique ability.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5esBE4ebDUjpfuO",
+          "type": "save",
+          "label": "Redirection",
+          "save": {
+            "abilities": [
+              "str",
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, Reaction, a hostile creature you see declares an attack on you: another hostile creature in your aura. Failure: it interposes.",
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "uchiha-fanning-the-flame": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ettKy2sDEQUUHS",
+          "type": "damage",
+          "label": "Blazing Set Up: detonate",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Once per turn, your damage (an attack or a B-Rank or lower jutsu): 1 Ocular Charge or your Bonus action marks the creatures until the end of your next turn; the next damage to one from you or an ally you see detonates it.",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eBt62KL3aCkq7h",
+          "type": "save",
+          "label": "After-Image Assault",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, your damage (1 Charge or your reaction). Failure: its attacks on you have disadvantage until the start of your next turn; its damage through this lets you teleport 10 feet.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ewYQs4qLzAlkl3",
+          "type": "roll",
+          "label": "Ricochet Technique",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a ranged attack (1 Charge or a Bonus action): a second creature within 20 feet of the target; remake the attack: half damage and the original effects."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eUeHEHGHi8DNHS",
+          "type": "roll",
+          "label": "Critical Refocus",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: 1 Charge per creature that critically fails a save against your Genjutsu."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eptGClEuzANVo1",
+          "type": "save",
+          "label": "Commanding Gaze",
+          "save": {
+            "abilities": [
+              "wis",
+              "int"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, in place of an Attack action attack: a non-blinded enemy you see within 30 feet; again after the end of your next turn. Failure: a Command (Disarm: throws its weapon 30 + 5 × Str or Dex modifier feet; Retarget: must pick another target, even an ally; Telegraph: announces its next attack or jutsu (a successful Read the Enemy for you and allies); Taunt: disadvantage on attacks on others, others treat its DC as 2 lower).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Activating your Sharingan: pick two of these for this combat; one per trigger."
+        }
+      ]
+    },
+    "uchiha-genjutsu-deflect": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEp2srC3CXjFKD",
+          "type": "roll",
+          "label": "Deflect check",
+          "roll": {
+            "formula": "1d20 + @mod.gen",
+            "note": "Reaction, Sharingan active: a Standard Jutsu ability check against the triggering Genjutsu; success ends it."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eFOn4xxbDTa3Yx",
+          "type": "save",
+          "label": "Deflect: new target",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "It resists.",
+              "failure": "The Deflected Genjutsu's Failure effect, as if you cast it.",
+              "critFailure": "Its Critical Failure effect (none: Restrained for its duration, no hand signs, resave at the end of each turn)."
+            }
+          },
+          "inflicts": [],
+          "text": "Another creature within 30 feet you make eye contact with.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "uchiha-genjutsu-ephemera": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emQCDEpqe7hgma",
+          "type": "save",
+          "label": "Ephemera",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "It resists; the jutsu ends.",
+              "failure": "Confused; 5d10 psychic each turn it starts not obeying.",
+              "critFailure": "As failure, 5d12."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Sharingan active: a one-word command to a creature within 60 feet; obeying repeats it; a harmful command ends the jutsu. Resisting: the save; resave at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eTJCSf85SHaEYx",
+          "type": "damage",
+          "label": "Not obeying",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d10",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eV5mWRVlrgo5x4",
+          "type": "damage",
+          "label": "Not obeying (critical failure)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d12",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "uchiha-genjutsu-red-star": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2rwvtStsDCbGI",
+          "type": "save",
+          "label": "Red Star",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Off-Guard until the end of its next turn.",
+              "failure": "2 ranks of Shaken; it flees into darkness (reaction, movement, darkness jutsu); starting a turn in light: 5d6 psychic.",
+              "critFailure": "As failure, 6d6 psychic and −1 AC for the duration."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shaken"
+            }
+          ],
+          "text": "A 20-foot radius within 30 feet; resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e58rtOrx9cd2MK",
+          "type": "damage",
+          "label": "Starts its turn in light",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Critical failure: 6d6."
+        },
+        {
+          "id": "n5e2FDgPmuvru9u7",
+          "type": "damage",
+          "label": "Starts its turn in light (critical failure)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "uchiha-mirage-crow": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNhESBjtzfgYW9",
+          "type": "save",
+          "label": "Mirage Crow",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Off-Guard until the end of its next turn; the jutsu ends.",
+              "failure": "Off-Guard for the duration.",
+              "critFailure": "Off-Guard and 1 rank of Weakened for the duration."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "A creature within 30 feet (+1 per rank). Its Reaction on its turn ends it.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "uchiha-mutation-divergent-techniques": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ5RZycuf3cyCW",
+          "type": "effect",
+          "label": "Flaming Spark",
+          "effect": {
+            "name": "Flaming Spark",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the chakra stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5el1OoBRCDaLsmN",
+          "type": "attack",
+          "label": "Flame Flower",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Action, 60 feet (two at 7th without Extra Attack).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:2d6+2,7:3d6+3)",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eHIK5647KyKYMY",
+          "type": "save",
+          "label": "Flame Flower: Off-Guard",
+          "save": {
+            "abilities": [
+              "dex",
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "On a hit; until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eGjL77jGw6raE2",
+          "type": "effect",
+          "label": "Enflamed",
+          "effect": {
+            "name": "Enflamed",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Casting a Fire Release jutsu in Flaming Spark: fire attacks +1 critical range until the end of your next turn."
+        },
+        {
+          "id": "n5eYEo8vq2yJW5p7",
+          "type": "effect",
+          "label": "Blazing Fan",
+          "effect": {
+            "name": "Blazing Fan",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action, wielding a Gunbai Fan: the Bukijutsu stance (the fan gains Blocking 1; two attacks at 7th without Extra Attack).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e80bp1B2aDYnKH",
+          "type": "save",
+          "label": "Fanned Wind",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action: a 30-foot cone (7th: +10 feet or + one more [Weapon Damage]). Failure: [Weapon Damage] + [Weapon Damage] (roll it) and pushed 20 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eZW6kUEZRJNSlS",
+          "type": "roll",
+          "label": "Uchiha Return",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to Ninjutsu, Taijutsu or Bukijutsu damage: a Clash with your highest of Ninshou, Martial Arts or Chakra Control."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates the Sharingan: the Flaming Spark and Blazing Fan stances at once (Agile Fist with one of them, never all three) and a Gunbai Fan. You must also take Heightened Battle Sense."
+        }
+      ]
+    },
+    "uchiha-mutation-heightened-battle-sense": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJGcEgdaveKrmk",
+          "type": "save",
+          "label": "Flame Bloom",
+          "save": {
+            "abilities": [
+              "dex",
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            },
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "In Flaming Spark: a 20-foot radius within 60 feet. Failure: Off-Guard until the end of your next turn and 1 rank of Burned; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6+6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5esTgMeHzoRBsLu",
+          "type": "save",
+          "label": "Uchiha Swipe",
+          "save": {
+            "abilities": [
+              "str",
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "In Blazing Fan: a 60 by 5-foot line. Failure: three times your weapon damage (roll it), pushed 40 feet and Prone; success: half, pushed 5 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Fanning the Flame: in a clan combat stance, a rank of Mastery to AC and Dexterity saves."
+        }
+      ]
+    },
+    "uchiha-sharingan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYjRBdhloUQAaJ",
+          "type": "effect",
+          "label": "Sharingan",
+          "effect": {
+            "name": "Sharingan",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "sharingan"
+          },
+          "text": "Entering initiative: until combat ends (or a Bonus action: 1 minute)."
+        },
+        {
+          "id": "n5eCWmv0NHAWBTAh",
+          "type": "effect",
+          "label": "Sharingan (11th)",
+          "effect": {
+            "name": "Sharingan (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "sharingan-11"
+          },
+          "text": "At 11th level (Chakra Sight 60 feet).",
+          "minLevel": 11
+        }
+      ],
+      "pools": [
+        {
+          "id": "ocularCharges",
+          "label": "Ocular Charges",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ocular Charges: 1 + proficiency bonus (the pool), back on a rest. One Ocular Evolution (+1 at 7th, 11th and 15th): the option items, used while the Sharingan is active. (Its copy of Sharingan's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "uchiha-sharingan-genjutsu-counter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6pxXEGSC4rmaW",
+          "type": "roll",
+          "label": "Dispel Genjutsu (Action)",
+          "roll": {
+            "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+            "note": "You or an ally/willing creature under a Genjutsu: your highest jutsu ability check (Illusions if you're aware of it) against its DC; success dispels it."
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eFNmZGGH3IYZzs",
+          "type": "roll",
+          "label": "Dispel Genjutsu (Bonus action)",
+          "roll": {
+            "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+            "note": "As above, as a Bonus action."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You're aware of Genjutsu with a DC up to your passive Illusions or Genjutsu save DC (higher); they and their targets show a haze. A Bonus action: Identify Genjutsu on one."
+        }
+      ]
+    },
+    "uchiha-sharingan-hypnotic-eye": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFGbg9CjUlfKFB",
+          "type": "save",
+          "label": "Hypnotic Eye",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "berserk",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Berserk"
+            },
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Bonus action: a non-blinded creature you see within 30 feet. Failure: Berserk, Charmed or Confused (pick) for 1 minute, resave at the end of each of its turns; a success makes it immune for 10 minutes.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "uchiha-sharingan-ocular-jutsu-augmentation": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Ocular Jutsu Augmentation",
+          "appliesTo": {},
+          "note": "Sharingan active: cast without the HS or CM components.",
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "uchiha-sharingan-rewrite-history": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNv0Q2YzUp5nxA",
+          "type": "roll",
+          "label": "Rewrite History",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally fails a save: it rerolls. Failing again: 2 more Charges for another; then 1 more for a last one."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eW0WvUsdyRxo8U",
+          "type": "roll",
+          "label": "Rewrite History: second",
+          "roll": {
+            "formula": "",
+            "note": "It failed again."
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eiq8gZKL1kr8jK",
+          "type": "roll",
+          "label": "Rewrite History: third",
+          "roll": {
+            "formula": "",
+            "note": "It failed a third time."
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "uchiha-sharingan-sharingan-copy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0Hadr7BY2JY83",
+          "type": "roll",
+          "label": "Sharingan Copy",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a creature you see casts a non-Hijutsu HS or M jutsu up to your highest rank: add it to your Imprint List (2; 4 at 7th, 6 at 15th), cast only with the Sharingan active; without its release's affinity it costs more (D +4, C +6, B +8, A +10, S +12)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5eWUWapTLRn3vim",
+          "type": "roll",
+          "label": "Sharingan: Genjutsu!",
+          "roll": {
+            "formula": "",
+            "note": "Action: cast a Memorized Illusion (2 slots, +1 at 7th and 11th; 1-Action or Bonus action Genjutsu picked on each rest; a slot is spent until a rest); range 30 feet with eye contact; doesn't reveal you."
+          },
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Sharingan: Genjutsu! is printed inside this evolution's text (see the spec's text issues)."
+        }
+      ]
+    },
+    "uchiha-sharingan-sharingan-dodge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewY5ZTsxxEuxw4",
+          "type": "effect",
+          "label": "Sharingan Dodge",
+          "effect": {
+            "name": "Sharingan Dodge",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Once per turn, not grappled or prone, an attack's damage or a Dexterity or Constitution save: a rank of Mastery (2 at 7th) to AC or that save until the start of your next turn; doesn't stack.",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ej64GOGXHTHSsS",
+          "type": "roll",
+          "label": "Sharingan Dodge: miss or succeed",
+          "roll": {
+            "formula": "",
+            "note": "15th: the attack misses or the save succeeds."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "ocularCharges",
+            "amount": 3
+          },
+          "minLevel": 15
+        }
+      ]
+    },
+    "uchiha-stance-agile-fist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHdCpdIbkpjkt5",
+          "type": "effect",
+          "label": "Agile Fist",
+          "effect": {
+            "name": "Agile Fist",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eqii636Y6cb6iZ",
+          "type": "roll",
+          "label": "Agile Fist: DR",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to an attack's damage: half your AC as DR (reduce by hand)."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5e7qoJkY51mmPBL",
+          "type": "attack",
+          "label": "Great Assault",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Action, 60 feet: [Weapon Damage] + [Unarmed Damage] (roll it) (7th: as many attacks as your Attack action). Then the Off-Guard save.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eom8Por489rd1n",
+          "type": "save",
+          "label": "Great Assault: Off-Guard",
+          "save": {
+            "abilities": [
+              "dex",
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "On a hit; until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Agile Fist Taijutsu and Bukijutsu stance (its text is Advanced Adaptation: Agile Fist's, as King Q-E9): [Unarmed Damage] d6, smaller weapon dice become d6; Hijutsu Flexibility for Strength; reaction to an attack's damage: half your AC as DR (halving it or more: Great Assault in the same reaction); Great Assault as an Action. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    },
+    "uchiha-surging-fire-flower-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKjhXP2nistYpK",
+          "type": "attack",
+          "label": "Fire Flower Dance",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5eZAq0vMD3zbOVd",
+          "type": "save",
+          "label": "Chain 3 (one hit)",
+          "save": {
+            "abilities": [
+              "str",
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eKjhXP2nistYpK",
+                "type": "attack",
+                "label": "Fire Flower Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZAq0vMD3zbOVd",
+                "type": "save",
+                "label": "Chain 3 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eKjhXP2nistYpK",
+                "type": "attack",
+                "label": "Fire Flower Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZAq0vMD3zbOVd",
+                "type": "save",
+                "label": "Chain 3 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eKjhXP2nistYpK",
+                "type": "attack",
+                "label": "Fire Flower Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZAq0vMD3zbOVd",
+                "type": "save",
+                "label": "Chain 3 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "uchiha-uchiha-ember-bullet": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZobKIFZUIWIyD",
+          "type": "attack",
+          "label": "Ember Bullet",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6+4",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5exChByFif6wbh0",
+          "type": "save",
+          "label": "Ember Bullet: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Failure: Burned.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eUuGY2u4ovEAVg",
+          "type": "damage",
+          "label": "Off-Guard: flames",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "It moved more than 5 feet."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eZobKIFZUIWIyD",
+                "type": "attack",
+                "label": "Ember Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6+4) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exChByFif6wbh0",
+                "type": "save",
+                "label": "Ember Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eUuGY2u4ovEAVg",
+                "type": "damage",
+                "label": "Off-Guard: flames",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It moved more than 5 feet."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eZobKIFZUIWIyD",
+                "type": "attack",
+                "label": "Ember Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6+4) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exChByFif6wbh0",
+                "type": "save",
+                "label": "Ember Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eUuGY2u4ovEAVg",
+                "type": "damage",
+                "label": "Off-Guard: flames",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It moved more than 5 feet."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZobKIFZUIWIyD",
+                "type": "attack",
+                "label": "Ember Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6+4) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exChByFif6wbh0",
+                "type": "save",
+                "label": "Ember Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eUuGY2u4ovEAVg",
+                "type": "damage",
+                "label": "Off-Guard: flames",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It moved more than 5 feet."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZobKIFZUIWIyD",
+                "type": "attack",
+                "label": "Ember Bullet",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6+4) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exChByFif6wbh0",
+                "type": "save",
+                "label": "Ember Bullet: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eUuGY2u4ovEAVg",
+                "type": "damage",
+                "label": "Off-Guard: flames",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It moved more than 5 feet."
+              }
+            ]
+          }
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d6+1 per rank (the button adds the dice; add the +1 per rank)."
+        }
+      ]
+    },
+    "uchiha-uchiha-flame-ball": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHMqfmRajP6J7e",
+          "type": "save",
+          "label": "Flame Ball",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6+6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eHMqfmRajP6J7e",
+                "type": "save",
+                "label": "Flame Ball",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6+6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eHMqfmRajP6J7e",
+                "type": "save",
+                "label": "Flame Ball",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6+6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eHMqfmRajP6J7e",
+                "type": "save",
+                "label": "Flame Ball",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6+6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d6+1 per rank (the button adds the dice; add the +1 per rank)."
+        }
+      ]
+    },
+    "uchiha-uchiha-flame-spiral": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRUFCv3sCbTz7T",
+          "type": "save",
+          "label": "Flame Spiral",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Burned"
+            }
+          ],
+          "text": "Three 5-foot, 30-foot tall tornadoes within 120 feet; a Bonus action moves each 30 feet; once per turn per creature. Failure: 2 ranks of Burned, −15 speed until the end of its next turn; success: half. Off-Guard: disadvantage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d12+5",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5etSErbhOMaZ9Oj",
+          "type": "damage",
+          "label": "Tornado explodes",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d12+4",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "A tornado (40 hit points, AC 10) at 0: creatures within 10 feet."
+        }
+      ]
+    },
+    "uchiha-uchiha-moonlight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ7vYptkUbtnOR",
+          "type": "attack",
+          "label": "Moonlight: first strike",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Weapon Damage].",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eecGjrxRMvHiq7",
+          "type": "attack",
+          "label": "Moonlight: second strike",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "1d6",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e6ikDEALJ9NmGi",
+          "type": "save",
+          "label": "Chain 1 (both hit)",
+          "save": {
+            "abilities": [
+              "dex",
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "Failure: Off-Guard until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eOmv1eHrCEhNP5",
+          "type": "save",
+          "label": "Chain 2 (one hit)",
+          "save": {
+            "abilities": [
+              "str",
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "offGuard",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Off-Guard"
+            }
+          ],
+          "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eJ7vYptkUbtnOR",
+                "type": "attack",
+                "label": "Moonlight: first strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "() + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eecGjrxRMvHiq7",
+                "type": "attack",
+                "label": "Moonlight: second strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6ikDEALJ9NmGi",
+                "type": "save",
+                "label": "Chain 1 (both hit)",
+                "save": {
+                  "abilities": [
+                    "dex",
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eOmv1eHrCEhNP5",
+                "type": "save",
+                "label": "Chain 2 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eJ7vYptkUbtnOR",
+                "type": "attack",
+                "label": "Moonlight: first strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "() + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eecGjrxRMvHiq7",
+                "type": "attack",
+                "label": "Moonlight: second strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6ikDEALJ9NmGi",
+                "type": "save",
+                "label": "Chain 1 (both hit)",
+                "save": {
+                  "abilities": [
+                    "dex",
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eOmv1eHrCEhNP5",
+                "type": "save",
+                "label": "Chain 2 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eJ7vYptkUbtnOR",
+                "type": "attack",
+                "label": "Moonlight: first strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "() + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eecGjrxRMvHiq7",
+                "type": "attack",
+                "label": "Moonlight: second strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6ikDEALJ9NmGi",
+                "type": "save",
+                "label": "Chain 1 (both hit)",
+                "save": {
+                  "abilities": [
+                    "dex",
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eOmv1eHrCEhNP5",
+                "type": "save",
+                "label": "Chain 2 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eJ7vYptkUbtnOR",
+                "type": "attack",
+                "label": "Moonlight: first strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "() + (4d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eecGjrxRMvHiq7",
+                "type": "attack",
+                "label": "Moonlight: second strike",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(1d6) + (4d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6ikDEALJ9NmGi",
+                "type": "save",
+                "label": "Chain 1 (both hit)",
+                "save": {
+                  "abilities": [
+                    "dex",
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eOmv1eHrCEhNP5",
+                "type": "save",
+                "label": "Chain 2 (one hit)",
+                "save": {
+                  "abilities": [
+                    "str",
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "offGuard",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Off-Guard"
+                  }
+                ],
+                "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "uchiha-uchiha-scarlet-claw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9SsSzH5Z5bfFD",
+          "type": "attack",
+          "label": "Scarlet Claw",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet: [Weapon Damage] + 3d6 fire. Off-Guard: −10 speed (−15 at B) and 3d6 fire at the end of its next turn unless it moves.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eHIQvwHUu3yFGb",
+          "type": "save",
+          "label": "Scarlet Claw: Burned",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Failure: Burned.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5esftHsz1PoFW0G",
+          "type": "damage",
+          "label": "Off-Guard: didn't move",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e9SsSzH5Z5bfFD",
+                "type": "attack",
+                "label": "Scarlet Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet: [Weapon Damage] + 3d6 fire. Off-Guard: −10 speed (−15 at B) and 3d6 fire at the end of its next turn unless it moves.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHIQvwHUu3yFGb",
+                "type": "save",
+                "label": "Scarlet Claw: Burned",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5esftHsz1PoFW0G",
+                "type": "damage",
+                "label": "Off-Guard: didn't move",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e9SsSzH5Z5bfFD",
+                "type": "attack",
+                "label": "Scarlet Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet: [Weapon Damage] + 3d6 fire. Off-Guard: −10 speed (−15 at B) and 3d6 fire at the end of its next turn unless it moves.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHIQvwHUu3yFGb",
+                "type": "save",
+                "label": "Scarlet Claw: Burned",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5esftHsz1PoFW0G",
+                "type": "damage",
+                "label": "Off-Guard: didn't move",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e9SsSzH5Z5bfFD",
+                "type": "attack",
+                "label": "Scarlet Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet: [Weapon Damage] + 3d6 fire. Off-Guard: −10 speed (−15 at B) and 3d6 fire at the end of its next turn unless it moves.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHIQvwHUu3yFGb",
+                "type": "save",
+                "label": "Scarlet Claw: Burned",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5esftHsz1PoFW0G",
+                "type": "damage",
+                "label": "Off-Guard: didn't move",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e9SsSzH5Z5bfFD",
+                "type": "attack",
+                "label": "Scarlet Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet: [Weapon Damage] + 3d6 fire. Off-Guard: −10 speed (−15 at B) and 3d6 fire at the end of its next turn unless it moves.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eHIQvwHUu3yFGb",
+                "type": "save",
+                "label": "Scarlet Claw: Burned",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5esftHsz1PoFW0G",
+                "type": "damage",
+                "label": "Off-Guard: didn't move",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

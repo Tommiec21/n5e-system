@@ -17,7 +17,8 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -112,7 +113,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5etNdokjuXkBA5C",
+        "type": "save",
+        "label": "Psycho Mind Flux",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "No further effects.",
+            "success": "2d6 psychic.",
+            "failure": "It takes the Attack or Multiattack action against an ally in reach; 1 Mental Overwrite.",
+            "critFailure": "As failure, and it moves up to its speed to the closest ally first."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "A creature within 120 feet (+1 at B, +1 more at S).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eZRaxNcyKf1UaT",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

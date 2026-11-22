@@ -17,6 +17,119 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d6+1 per rank (the button adds the dice; add the +1 per rank)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eHMqfmRajP6J7e",
+              "type": "save",
+              "label": "Flame Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6+6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eHMqfmRajP6J7e",
+              "type": "save",
+              "label": "Flame Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6+6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eHMqfmRajP6J7e",
+              "type": "save",
+              "label": "Flame Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6+6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +222,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eHMqfmRajP6J7e",
+        "type": "save",
+        "label": "Flame Ball",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "A 60 by 5-foot beam and a 20-foot radius where it stops. Failure: Off-Guard until the end of your next turn; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6+6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -15,7 +15,14 @@
           "Mutated Feature: Swirling Seals"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Swirling Seals: +2 Spiral Cells (+4 at 11th; raise the pool's maximum by hand)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,37 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e8z4Qo3CrUaY8A",
+        "type": "roll",
+        "label": "Stubborn: end a condition",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a save or check to end a condition on you: a rank of Mastery."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5emGiMLir1KMM9i",
+        "type": "roll",
+        "label": "Stubborn: DR",
+        "roll": {
+          "formula": "@level",
+          "note": "Once per turn, Reaction to damage: DR equal to your level against that creature until the start of your next turn."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

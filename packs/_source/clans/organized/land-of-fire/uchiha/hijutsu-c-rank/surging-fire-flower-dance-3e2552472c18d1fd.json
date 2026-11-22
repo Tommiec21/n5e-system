@@ -17,6 +17,182 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Finisher, Chain",
         "components": "CM, M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eKjhXP2nistYpK",
+              "type": "attack",
+              "label": "Fire Flower Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eZAq0vMD3zbOVd",
+              "type": "save",
+              "label": "Chain 3 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eKjhXP2nistYpK",
+              "type": "attack",
+              "label": "Fire Flower Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eZAq0vMD3zbOVd",
+              "type": "save",
+              "label": "Chain 3 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKjhXP2nistYpK",
+              "type": "attack",
+              "label": "Fire Flower Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eZAq0vMD3zbOVd",
+              "type": "save",
+              "label": "Chain 3 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +286,63 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKjhXP2nistYpK",
+        "type": "attack",
+        "label": "Fire Flower Dance",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Two attacks against every creature you choose in reach: [Unarmed Damage] (or [Weapon Damage]) + 1d6 fire. Finisher: an affected creature attacking or casting in your reach takes a free opportunity attack (+1d6 fire), then you move without provoking. Off-Guard: an extra action to recast it (+1 critical range on it).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5eZAq0vMD3zbOVd",
+        "type": "save",
+        "label": "Chain 3 (one hit)",
+        "save": {
+          "abilities": [
+            "str",
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Your choice of save. Failure: Prone and half speed until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

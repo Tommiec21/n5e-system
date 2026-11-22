@@ -1,0 +1,1290 @@
+{
+  "clan": "uzumaki",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "uzumaki-adamantine-barrier": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGhbYWksK2yGMq",
+          "type": "save",
+          "label": "Adamantine Barrier",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 15-foot radius sphere within 60 feet, concentration up to 10 minutes. A hostile creature moving through or targeting inside without permission. Failure: it can't this turn and picks a new target. Area effects pass through.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The 5-Pronged Seal condition text printed here belongs to Uzumaki Art: 5-Pronged Seal (see the spec's text issues)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Adamantine Barrier"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: the barrier gains temporary hit points by its rank (D 10, C 16, B 22, A 28, S 34) and takes damage meant for those inside."
+        }
+      ]
+    },
+    "uzumaki-binding-chains": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: enter the Binding Chain stance (the clan's stance item) for 1 minute."
+        }
+      ]
+    },
+    "uzumaki-gut-feeling": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Conscious: hidden creatures can't surprise you; a rank of Mastery to initiative per surprised ally. Deception against you: your passive Insight counts 5 higher. See Through Lies uses Constitution or Charisma; beating it by 5 gains a Will of Fire (once per long rest)."
+        }
+      ]
+    },
+    "uzumaki-mutation-dattebayo": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eF2sPT0SnG5vn4",
+          "type": "roll",
+          "label": "Natural 20",
+          "roll": {
+            "formula": "",
+            "note": "In combat."
+          },
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5ewpyHU4rpGClnJ",
+          "type": "roll",
+          "label": "Remake a failed roll",
+          "roll": {
+            "formula": "",
+            "note": "A failed d20 roll: remake it with a rank of Mastery."
+          },
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Spiraling Chains."
+        }
+      ]
+    },
+    "uzumaki-mutation-fundamental-technique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Swirling Seals: a jutsu you know (not your Original Technique; without that mutation, a Hijutsu) is your Fundamental Technique (+1 at 7th and 15th); each casting gains one: Stable (if concentration), Efficient (if concentration), or the Hijutsu keyword."
+        }
+      ]
+    },
+    "uzumaki-mutation-original-technique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Uzumaki Sealing Techniques: one B-Rank or lower jutsu becomes your Original Technique: cost by rank (D 5, C 9, B 14, A 20, S 25), cast only at the highest rank you can, fewer damage dice until it reaches its own rank (C −2, B −4, half returned per rank), the Hijutsu keyword, 2 Jutsu Creation effects (+1 at 7th and 15th; not Lasting, Upcast, Damage, Empowered Damage, Multiple Strikes, Damage Reduction, Augmentation, Unavoidable or Mind Control). Edit the jutsu with your GM. You must also take a 1st, 3rd, 11th and 15th level Uzumaki mutation."
+        }
+      ]
+    },
+    "uzumaki-mutation-resilience": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ760yNQXOASpt",
+          "type": "roll",
+          "label": "Resilience",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction, you'd drop to 0: spend Chakra dice and regain the result as hit points (roll them); at 1 or more after the damage, you get the reaction back."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Spiraling Chains: immunity to the negative effects of losing a Clash."
+        }
+      ]
+    },
+    "uzumaki-mutation-spiral-power0": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Full Power",
+          "appliesTo": {
+            "inflictsCondition": true
+          },
+          "note": "Once per turn: +1 rank of the inflicted condition.",
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Controlled Power",
+          "appliesTo": {},
+          "note": "Once per turn, a concentration jutsu: it counts as two jutsu you concentrate on; once-per-casting class or clan triggers happen twice.",
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 2
+          }
+        },
+        {
+          "label": "Energizing Power",
+          "appliesTo": {},
+          "note": "Once per turn: a creature failing its save by 5 or more gives back 1 Spiral Cell (use the gain button)."
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5e4QvoUmuma8IXK",
+          "type": "roll",
+          "label": "Energizing Power: regain",
+          "roll": {
+            "formula": "",
+            "note": "A creature failed by 5 or more."
+          },
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Binding Chains. Once per turn, casting a jutsu: one benefit (two at 7th, all at 15th): cast dialog options."
+        }
+      ]
+    },
+    "uzumaki-mutation-stubborn": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8z4Qo3CrUaY8A",
+          "type": "roll",
+          "label": "Stubborn: end a condition",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a save or check to end a condition on you: a rank of Mastery."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5emGiMLir1KMM9i",
+          "type": "roll",
+          "label": "Stubborn: DR",
+          "roll": {
+            "formula": "@level",
+            "note": "Once per turn, Reaction to damage: DR equal to your level against that creature until the start of your next turn."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Swirling Seals: +2 Spiral Cells (+4 at 11th; raise the pool's maximum by hand)."
+        }
+      ]
+    },
+    "uzumaki-mutation-tenacious-chakra": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Warding Network: resistance to the Sealed and Compelled conditions and to chakra damage; effects raising your jutsu cost are halved."
+        }
+      ]
+    },
+    "uzumaki-mutation-unbreakable-will": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaRBjAMwoHpT2O",
+          "type": "roll",
+          "label": "Unbreakable Will (reaction)",
+          "roll": {
+            "formula": "",
+            "note": "You'd drop to 0 hit points: drop to 1 instead; gain 1 rank of Weakened."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eKtzSWFRLGOdGp",
+          "type": "roll",
+          "label": "Unbreakable Will (Spiral Cells)",
+          "roll": {
+            "formula": "",
+            "note": "As above, with 2 Spiral Cells instead of the reaction."
+          },
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Warding Network."
+        }
+      ]
+    },
+    "uzumaki-spiraling-chains": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8aMK95YDfLfiE",
+          "type": "effect",
+          "label": "Spiraling Chains",
+          "effect": {
+            "name": "Spiraling Chains",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute, once per long rest: a 120-foot radius sigil; Binding Chain and Fuinjutsu jutsu can target creatures you're aware of in it, unseen or behind full cover.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "uzumaki-stance-binding-chain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eALYnNORxlJE9r",
+          "type": "effect",
+          "label": "Binding Chain stance",
+          "effect": {
+            "name": "Binding Chain",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5exIxsr3pfxTAur",
+          "type": "attack",
+          "label": "Binding Chain (melee)",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Half the listed damage; bludgeoning, piercing or chakra. 2 creatures at 7th, 3 at 15th.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "floor((lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)) / 2)",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5epHZogwHJn4FIT",
+          "type": "attack",
+          "label": "Binding Chain (ranged)",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "30 feet; half the listed damage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "floor(lvl(1:1d8,11:2d8) / 2)",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eOuC961U9i6DA6",
+          "type": "save",
+          "label": "Binding Chain: Sealed",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "Once per turn, a creature it hit. Failure: Sealed.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eipASh5EjQovO8",
+          "type": "attack",
+          "label": "Striking Chain (melee)",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Bludgeoning, piercing or chakra. 7th: advantage against Grappled or Prone creatures. 15th: a physical type and chakra at once.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e5ij0CRqXvwo5R",
+          "type": "attack",
+          "label": "Striking Chain (ranged)",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "30 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d8,11:2d8)",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Binding Chain chakra stance for 1 minute, usable with a Taijutsu or Bukijutsu stance: your Uzumaki Hijutsu's Seal Break (cast dialog options); the Attack action can use Binding Chain or Striking Chain (up to two attacks), with your highest jutsu attack bonus."
+        }
+      ]
+    },
+    "uzumaki-swirling-seals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eW5m1fGt9lDY6o",
+          "type": "roll",
+          "label": "Bound Inscription",
+          "roll": {
+            "formula": "",
+            "note": "With damage or a failed save: a Spiral Tag on the creature for 1 minute (or a Bonus action: a willing creature, object or surface for 24 hours). Within 1 mile you sense creatures within 15 feet of it; Binding Chain and Uzumaki Hijutsu can come from it."
+          }
+        },
+        {
+          "id": "n5eGvp9a8JVqKSpC",
+          "type": "save",
+          "label": "Barrier Reverse Technique",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Binding Chain damage to a Sealed creature. Failure for 1 minute: −1 AC per Sealed rank, losing a rank at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eFgYSmTPoYA8mv",
+          "type": "save",
+          "label": "Sealing Cage",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Action: a creature you see. Failure: caged until the end of your next turn (total cover, Blinded, no hostile action, can't mold chakra; a Full-Turn Action extends it a turn); its Action and a Strength save shatters it.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ecNi5DP6KDTAeD",
+          "type": "save",
+          "label": "Draining Seals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Binding Chain or a damaging Uzumaki Hijutsu. Failure: Weakened (2 ranks at 11th).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e3DrjYtNY6xj5d",
+          "type": "effect",
+          "label": "Warding Seal",
+          "effect": {
+            "name": "Warding Seal",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.save",
+                "value": "1",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: a willing creature within 30 feet: a rank of Mastery to AC and +1 to saves (counts as concentrating on a C-Rank jutsu).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5esVejJTLXjU126",
+          "type": "save",
+          "label": "Rebuking Seal",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Binding Chain or a damaging Uzumaki Hijutsu. Failure: Concussed (2 ranks at 11th).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Spiral Tags known (+1 at 7th and 11th); one per turn. With a Hijutsu's own save, pick which save is rolled; both effects follow it."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-5-pronged-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eO9SRvrEB1nhSA",
+          "type": "attack",
+          "label": "5-Pronged Seal",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "On a hit: the 5-Pronged Seal condition.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eM7ziKJ5cu7sid",
+          "type": "effect",
+          "label": "5-Pronged Seal: condition",
+          "effect": {
+            "name": "5-Pronged Seal",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600,
+            "condition": "uzumaki-5-pronged-seal"
+          },
+          "text": "On a hit: the condition for 1 hour."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Uzumaki Art: 5-Pronged Seal"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: cast another 1-Action jutsu at the same creature as a Bonus action."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-ablative-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebRgrPAMiHX2y7",
+          "type": "heal",
+          "label": "Ablative Seal",
+          "heal": {
+            "formula": "4",
+            "pool": "tempHp"
+          },
+          "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+        },
+        {
+          "id": "n5eHTyj8MnAR1GZX",
+          "type": "heal",
+          "label": "Seal Break: temporary chakra",
+          "heal": {
+            "formula": "6",
+            "pool": "tempCp"
+          },
+          "text": "With Seal Break."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5ebRgrPAMiHX2y7",
+                "type": "heal",
+                "label": "Ablative Seal",
+                "heal": {
+                  "formula": "(4) + 2",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+              },
+              {
+                "id": "n5eHTyj8MnAR1GZX",
+                "type": "heal",
+                "label": "Seal Break: temporary chakra",
+                "heal": {
+                  "formula": "6",
+                  "pool": "tempCp"
+                },
+                "text": "With Seal Break."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5ebRgrPAMiHX2y7",
+                "type": "heal",
+                "label": "Ablative Seal",
+                "heal": {
+                  "formula": "(4) + 4",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+              },
+              {
+                "id": "n5eHTyj8MnAR1GZX",
+                "type": "heal",
+                "label": "Seal Break: temporary chakra",
+                "heal": {
+                  "formula": "6",
+                  "pool": "tempCp"
+                },
+                "text": "With Seal Break."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ebRgrPAMiHX2y7",
+                "type": "heal",
+                "label": "Ablative Seal",
+                "heal": {
+                  "formula": "(4) + 6",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+              },
+              {
+                "id": "n5eHTyj8MnAR1GZX",
+                "type": "heal",
+                "label": "Seal Break: temporary chakra",
+                "heal": {
+                  "formula": "6",
+                  "pool": "tempCp"
+                },
+                "text": "With Seal Break."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ebRgrPAMiHX2y7",
+                "type": "heal",
+                "label": "Ablative Seal",
+                "heal": {
+                  "formula": "(4) + 8",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+              },
+              {
+                "id": "n5eHTyj8MnAR1GZX",
+                "type": "heal",
+                "label": "Seal Break: temporary chakra",
+                "heal": {
+                  "formula": "6",
+                  "pool": "tempCp"
+                },
+                "text": "With Seal Break."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Uzumaki Art: Ablative Seal"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: the target also gains 6 temporary chakra points."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-basic-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eT1rpr3nkZOBa5",
+          "type": "attack",
+          "label": "Basic Seal",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ePiOv3HEoNT5Wq",
+          "type": "save",
+          "label": "Basic Seal: Sealed",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eT1rpr3nkZOBa5",
+                "type": "attack",
+                "label": "Basic Seal",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePiOv3HEoNT5Wq",
+                "type": "save",
+                "label": "Basic Seal: Sealed",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eT1rpr3nkZOBa5",
+                "type": "attack",
+                "label": "Basic Seal",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePiOv3HEoNT5Wq",
+                "type": "save",
+                "label": "Basic Seal: Sealed",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eT1rpr3nkZOBa5",
+                "type": "attack",
+                "label": "Basic Seal",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePiOv3HEoNT5Wq",
+                "type": "save",
+                "label": "Basic Seal: Sealed",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eT1rpr3nkZOBa5",
+                "type": "attack",
+                "label": "Basic Seal",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePiOv3HEoNT5Wq",
+                "type": "save",
+                "label": "Basic Seal: Sealed",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: a rank of Sealed (+1 at B, +2 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Uzumaki Art: Basic Seal"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: range Self (15-foot cube); the attack against every creature in it."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-chakra-suppression": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eb1l9Sc4viPkFt",
+          "type": "save",
+          "label": "Chakra Suppression",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 10-foot radius within 60 feet; creatures starting or ending a turn in it, or entering it. Failure: can't cast jutsu of this jutsu's cast rank.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Uzumaki Art: Chakra Suppression"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: (a Sealed hostile creature in the radius) +5-foot radius."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-flash-anchor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDhQZv7wDcfs56",
+          "type": "effect",
+          "label": "Flash Anchor",
+          "effect": {
+            "name": "Flash Anchor",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Reaction, until the end of the turn: a rank of Mastery (2 at B, 3 at S) to AC and saves against the trigger and later effects; can't be moved or teleported against your will.",
+          "activation": "reaction"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Seal Break",
+          "appliesTo": {
+            "namePrefix": "Uzumaki Art: Flash Anchor"
+          },
+          "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: it lasts until the start of your next turn."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-font-of-life": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ej72RTBBfZ45z7",
+          "type": "roll",
+          "label": "Font of Life",
+          "roll": {
+            "formula": "",
+            "note": "A willing creature bites you: spend Chakra dice; it regains the results as hit points (roll them, apply by hand)."
+          }
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-red-hot-blooded-vitality": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp515d66bc17ae9",
+          "type": "effect",
+          "label": "Uzumaki Art: Red Hot-Blooded Vitality",
+          "effect": {
+            "name": "Uzumaki Art: Red Hot-Blooded Vitality",
+            "target": "self",
+            "amp": "jutsu-uzumaki-uzumaki-art-red-hot-blooded-vitality"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-art-river-dam-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e472HcZkWYCNFC",
+          "type": "attack",
+          "label": "River Dam Seal",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A target with 5+ ranks of Sealed. On a hit: the River Dam Seal condition.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e0UlSHtOMapHiN",
+          "type": "effect",
+          "label": "River Dam Seal: condition",
+          "effect": {
+            "name": "River Dam Seal",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "uzumaki-river-dam-seal"
+          },
+          "text": "On a hit."
+        }
+      ]
+    },
+    "uzumaki-uzumaki-break": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9RvSqcCpRFjS6",
+          "type": "roll",
+          "label": "Uzumaki Break",
+          "roll": {
+            "formula": "",
+            "note": "A 5-foot radius within 60 feet: Ninshou against each jutsu effect's save DC. Success: learn them; up to 2 of lower rank are dispelled; then the save. Roll the check from the sheet."
+          }
+        },
+        {
+          "id": "n5evfBg0K4t9cJKd",
+          "type": "save",
+          "label": "Uzumaki Break: save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures in the area. Failure: no jutsu bonuses or healing until the start of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "uzumaki-warding-network": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euTDL6m0oTQYbW",
+          "type": "effect",
+          "label": "Spiral Ward: Aegis",
+          "effect": {
+            "name": "Aegis",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Once per turn, Bonus action or with a Fuinjutsu jutsu: a ward within 60 feet (up to 2; counts as concentrating on one B-Rank Ninjutsu); allies in 10 feet: a rank of Mastery to AC.",
+          "activation": "bonus",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eaLJyOr4hrNqGh",
+          "type": "effect",
+          "label": "Spiral Ward: Clarity",
+          "effect": {
+            "name": "Clarity",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Allies in 10 feet: a rank of Mastery to their first save each round.",
+          "activation": "bonus",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eZSEK8BUnmiHsL",
+          "type": "save",
+          "label": "Spiral Ward: Anchor",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hostile creature teleporting within 1 mile of it. Failure: it arrives in the ward's 10 feet instead.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "uzumaki-wellspring-of-chakra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVgJgiBEQ0HiKG",
+          "type": "heal",
+          "label": "Spiral Cell: temporary chakra",
+          "heal": {
+            "formula": "lvl(1:4,11:6)",
+            "pool": "tempCp"
+          },
+          "text": "Once per turn, start of your turn, not incapacitated or Sealed.",
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eESOaBt0fMOgWB",
+          "type": "roll",
+          "label": "Spiral Cell: ward",
+          "roll": {
+            "formula": "@level",
+            "note": "7th: chakra damage reduced by your level, or the ranks of a Mental or Sensory condition you'd gain reduced to 0."
+          },
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          },
+          "minLevel": 7
+        }
+      ],
+      "effects": [
+        {
+          "name": "Wellspring of Chakra",
+          "changes": [
+            {
+              "key": "system.bonuses.cpPerLevel",
+              "value": "2",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "pools": [
+        {
+          "id": "spiralCells",
+          "label": "Spiral Cells",
+          "value": 0,
+          "max": "lvl(1:2,7:4,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chakra points +2 per level (the effect). Spiral Cells: 2 (4 at 7th, 6 at 15th; Stubborn +2, +4 at 11th: raise the pool's maximum by hand), back on a rest."
+        }
+      ]
+    }
+  }
+}

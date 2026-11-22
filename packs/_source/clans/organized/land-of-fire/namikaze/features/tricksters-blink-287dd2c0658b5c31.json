@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "namikaze",
-      "sourceLine": 1617
+      "sourceLine": 1617,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,34 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5epQxO3Pi8wvXNH",
+        "type": "roll",
+        "label": "Redirecting Flashpoint",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, Reaction, one of two marked creatures attacks or casts: swap their places first (out of range: a new target, or it misses / is Interrupted); both seals are dispelled."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eJ64Xu2IReRlG8",
+        "type": "roll",
+        "label": "Blink Burst",
+        "roll": {
+          "formula": "1d20 + @abilities.dex.mod",
+          "note": "Once per turn, Reaction, a marked creature's attack or jutsu would damage you or inflict a Physical or Elemental condition: dispel its seal + 1 Speed Seal; a Dexterity save against its attack result or save DC; success avoids it, you teleport next to it and can cast a 1-Action attack jutsu at it."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

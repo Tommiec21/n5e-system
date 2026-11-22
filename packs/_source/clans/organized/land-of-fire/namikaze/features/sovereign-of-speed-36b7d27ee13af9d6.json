@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "namikaze",
-      "sourceLine": 1622
+      "sourceLine": 1622,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,44 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ekpGeC4RCNALlZ",
+        "type": "effect",
+        "label": "Speed Sovereign",
+        "effect": {
+          "name": "Speed Sovereign",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "speed-sovereign"
+        },
+        "text": "Bonus action, 1 minute, once per long rest.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eFUe7GujNwxfRC",
+        "type": "roll",
+        "label": "Seal Reproduction",
+        "roll": {
+          "formula": "",
+          "note": "Start of each of your turns."
+        },
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

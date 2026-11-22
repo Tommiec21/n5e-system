@@ -1,0 +1,1635 @@
+{
+  "clan": "namikaze",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "namikaze-blood-of-the-swift": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "speedSeals",
+          "label": "Speed Seals",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "d8",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Speed Seals: d8s equal to 1 + proficiency bonus (the pool), back on any rest. Two Blitz Arts (+1 at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-blink-of-an-eye": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyv0AZTLjeeObQ",
+          "type": "save",
+          "label": "Blink of an Eye",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Start of your turn: teleport within your speed; adjacent hostile creatures. Failure: −2 AC until the start of your next turn. Attacking one this turn: 1 more Speed Seal teleports you back.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-blitz-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6S3hbPFvyXb9O",
+          "type": "damage",
+          "label": "Blitz Assault",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:2d8,7:4d8,15:6d8)",
+                "type": ""
+              }
+            ]
+          },
+          "text": "Once per turn, attacking with a jutsu: one more attack of the same type; on a hit this, and the jutsu's non-damage effect again.",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-flash-dodge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJiC93PYnEUNO6",
+          "type": "effect",
+          "label": "Flash Dodge",
+          "effect": {
+            "name": "Flash Dodge",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction to damage, up to 2 Speed Seals: +2 AC each (also against the trigger) until the start of your next turn (one seal: the effect; two: raise it to +4).",
+          "activation": "reaction",
+          "cost": {
+            "pool": "speedSeals",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-flash-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYwjnyaNfGUVcq",
+          "type": "roll",
+          "label": "Flash Step",
+          "roll": {
+            "formula": "",
+            "note": "Start of your turn: the Dash action; hostile effects can't reduce your speed this turn."
+          },
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-like-the-wind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eT92nTcYRGpZuD",
+          "type": "roll",
+          "label": "Like the Wind",
+          "roll": {
+            "formula": "1d8",
+            "note": "Once per turn, dealing wind or lightning: teleport next to another creature within 30 feet and make one unarmed or weapon attack, + the seal's d8."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-phase-dodge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ7tvkbnd5f5dE",
+          "type": "roll",
+          "label": "Phase Dodge",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, making a Strength or Constitution save: make a Dexterity save instead."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-rushing-start": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eD9UjAnOH6GEIb",
+          "type": "roll",
+          "label": "Rushing Start",
+          "roll": {
+            "formula": "2 * 1d8",
+            "note": "Rolling initiative: add twice the result."
+          },
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-speed-amplification": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0XJcEdNBuLRSo",
+          "type": "effect",
+          "label": "Speed Amplification",
+          "effect": {
+            "name": "Speed Amplification",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "lvl(1:10,7:20,15:30)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Start of your turn: ignore difficult terrain until the end of your next turn.",
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-speed-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eovrG3heNvpT1H",
+          "type": "roll",
+          "label": "Speed Burst",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn on your turn: an extra Action this turn. Each use raises its cost by 1 until a long rest (spend the extra by hand)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "namikaze-blood-of-the-swift-speed-formula": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epHaNwzsBrgMsy",
+          "type": "roll",
+          "label": "Speed Formula: mark a weapon",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: mark a weapon you wield for 1 hour (no seal spent)."
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eiMdhtZDrFELFq",
+          "type": "roll",
+          "label": "Speed Formula: teleport",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: teleport to the marked weapon within 120 feet."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "namikaze-interdiction-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCjwAPlEzWW6oL",
+          "type": "roll",
+          "label": "Mark with a Speed Seal",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a weapon or melee attack's damage: the creature is marked for 1 minute (Marked: your Hijutsu's Interdiction Seal options; Triangulate: the first attack on it each turn +1 critical range)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ejiXnuW55NzYJj",
+          "type": "save",
+          "label": "Interdiction",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "Reaction, a marked creature you can see casts an HS jutsu: detonate the seal (it's no longer marked). Failure: its jutsu is Interrupted and 1 rank of Sealed (2 at 11th).",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Speed Sovereign's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "namikaze-sovereign-of-speed": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekpGeC4RCNALlZ",
+          "type": "effect",
+          "label": "Speed Sovereign",
+          "effect": {
+            "name": "Speed Sovereign",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "speed-sovereign"
+          },
+          "text": "Bonus action, 1 minute, once per long rest.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eFUe7GujNwxfRC",
+          "type": "roll",
+          "label": "Seal Reproduction",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns."
+          },
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "namikaze-swift-release-accelerate-decelerate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoVBNjQm63aA7L",
+          "type": "damage",
+          "label": "Accelerate",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "wind"
+              }
+            ]
+          },
+          "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+        },
+        {
+          "id": "n5e6AU7NCfr15ygX",
+          "type": "roll",
+          "label": "Decelerate",
+          "roll": {
+            "formula": "2d10",
+            "note": "Reaction: reduce the damage instance by this."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eoO4oqfyiySy68",
+          "type": "save",
+          "label": "Interdiction Seal: chains",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eoVBNjQm63aA7L",
+                "type": "damage",
+                "label": "Accelerate",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+              },
+              {
+                "id": "n5e6AU7NCfr15ygX",
+                "type": "roll",
+                "label": "Decelerate",
+                "roll": {
+                  "formula": "(2d10) + (1d10)",
+                  "note": "Reaction: reduce the damage instance by this."
+                },
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eoO4oqfyiySy68",
+                "type": "save",
+                "label": "Interdiction Seal: chains",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eoVBNjQm63aA7L",
+                "type": "damage",
+                "label": "Accelerate",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+              },
+              {
+                "id": "n5e6AU7NCfr15ygX",
+                "type": "roll",
+                "label": "Decelerate",
+                "roll": {
+                  "formula": "(2d10) + (2d10)",
+                  "note": "Reaction: reduce the damage instance by this."
+                },
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eoO4oqfyiySy68",
+                "type": "save",
+                "label": "Interdiction Seal: chains",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eoVBNjQm63aA7L",
+                "type": "damage",
+                "label": "Accelerate",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (3d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+              },
+              {
+                "id": "n5e6AU7NCfr15ygX",
+                "type": "roll",
+                "label": "Decelerate",
+                "roll": {
+                  "formula": "(2d10) + (3d10)",
+                  "note": "Reaction: reduce the damage instance by this."
+                },
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eoO4oqfyiySy68",
+                "type": "save",
+                "label": "Interdiction Seal: chains",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eoVBNjQm63aA7L",
+                "type": "damage",
+                "label": "Accelerate",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (4d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+              },
+              {
+                "id": "n5e6AU7NCfr15ygX",
+                "type": "roll",
+                "label": "Decelerate",
+                "roll": {
+                  "formula": "(2d10) + (4d10)",
+                  "note": "Reaction: reduce the damage instance by this."
+                },
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eoO4oqfyiySy68",
+                "type": "save",
+                "label": "Interdiction Seal: chains",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Interdiction Seal",
+          "appliesTo": {
+            "namePrefix": "Swift Release: Accelerate/Decelerate"
+          },
+          "note": "On a creature marked with your Speed Seal: the Charisma save: chains."
+        }
+      ]
+    },
+    "namikaze-swift-release-air-shattering-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaYLBbgR3VbCoE",
+          "type": "attack",
+          "label": "Air Shattering Strike (Ninjutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "wind"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9obBr3MN8Ik38",
+          "type": "attack",
+          "label": "Air Shattering Strike (Taijutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "wind"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eOmkaY6PcCQSO1",
+          "type": "save",
+          "label": "Interdiction Seal: detonation",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eaYLBbgR3VbCoE",
+                "type": "attack",
+                "label": "Air Shattering Strike (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (1d10)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9obBr3MN8Ik38",
+                "type": "attack",
+                "label": "Air Shattering Strike (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eOmkaY6PcCQSO1",
+                "type": "save",
+                "label": "Interdiction Seal: detonation",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eaYLBbgR3VbCoE",
+                "type": "attack",
+                "label": "Air Shattering Strike (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (2d10)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9obBr3MN8Ik38",
+                "type": "attack",
+                "label": "Air Shattering Strike (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eOmkaY6PcCQSO1",
+                "type": "save",
+                "label": "Interdiction Seal: detonation",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eaYLBbgR3VbCoE",
+                "type": "attack",
+                "label": "Air Shattering Strike (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (3d10)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9obBr3MN8Ik38",
+                "type": "attack",
+                "label": "Air Shattering Strike (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (3d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eOmkaY6PcCQSO1",
+                "type": "save",
+                "label": "Interdiction Seal: detonation",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eaYLBbgR3VbCoE",
+                "type": "attack",
+                "label": "Air Shattering Strike (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (4d10)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9obBr3MN8Ik38",
+                "type": "attack",
+                "label": "Air Shattering Strike (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (4d10)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eOmkaY6PcCQSO1",
+                "type": "save",
+                "label": "Interdiction Seal: detonation",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d10",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Interdiction Seal",
+          "appliesTo": {
+            "namePrefix": "Swift Release: Air shattering Strike"
+          },
+          "note": "On a creature marked with your Speed Seal: the primed detonation."
+        }
+      ]
+    },
+    "namikaze-swift-release-aura-of-quickness": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5FAowbzFtjZjU",
+          "type": "effect",
+          "label": "Aura of Quickness",
+          "effect": {
+            "name": "Aura of Quickness",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "10",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "In combat, concentration: creatures you choose starting their turn in your 15-foot radius gain +10 speed (+10 per rank) until the start of your next turn. Exploring: 1 hour, normal pace counts as fast."
+        }
+      ]
+    },
+    "namikaze-swift-release-flicker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebaimw2daZ5FEz",
+          "type": "roll",
+          "label": "Flicker",
+          "roll": {
+            "formula": "1d4",
+            "note": "Reaction, until the start of your next turn, the first damage each turn: 1 DR 4 on that instance; 2 DR 6 on each instance this turn; 3 resistance on each; 4 immunity to the trigger."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "namikaze-swift-release-manifestation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFx2xZ0FDFTKop",
+          "type": "roll",
+          "label": "Teleport to a mark",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, at its start or end: teleport to a creature or object marked with your Speed Seal within 120 feet."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the release you didn't pick for Swift Release Affinity (set it on the sheet); Wind or Lightning jutsu can swap their damage between wind and lightning when you roll."
+        }
+      ]
+    },
+    "namikaze-swift-release-mirror-image-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edbAVFgg4yJqUq",
+          "type": "effect",
+          "label": "Mirror Image",
+          "effect": {
+            "name": "Mirror Image",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Three duplicates (+1 at B, +2 at S) for 1 minute; a Bonus action dismisses them. Each attack on you: a d8 per duplicate; a 4+ (6+ against True Sight, Tremorsense or Chakra Sight) hits a duplicate instead."
+        },
+        {
+          "id": "n5eqe1umA98cJDdD",
+          "type": "roll",
+          "label": "Duplicate check",
+          "roll": {
+            "formula": "1d8",
+            "note": "One per remaining duplicate."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Interdiction Seal",
+          "appliesTo": {
+            "namePrefix": "Swift Release: Mirror Image Technique"
+          },
+          "note": "On a creature marked with your Speed Seal: dispel a clone for +1d4 to your attack on it; its attacks on you hit a duplicate on 2 less."
+        }
+      ]
+    },
+    "namikaze-swift-release-shadowless-flight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebOKAWqi6kh3Id",
+          "type": "attack",
+          "label": "Shadowless Flight (Ninjutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "wind"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ed32sDAW8bEzGC",
+          "type": "attack",
+          "label": "Shadowless Flight (Taijutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "wind"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eyAnbyxPNmwPTg",
+          "type": "save",
+          "label": "Shadowless Flight: save",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Each affected creature. Failure: Concussed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ebOKAWqi6kh3Id",
+                "type": "attack",
+                "label": "Shadowless Flight (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ed32sDAW8bEzGC",
+                "type": "attack",
+                "label": "Shadowless Flight (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eyAnbyxPNmwPTg",
+                "type": "save",
+                "label": "Shadowless Flight: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Each affected creature. Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ebOKAWqi6kh3Id",
+                "type": "attack",
+                "label": "Shadowless Flight (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ed32sDAW8bEzGC",
+                "type": "attack",
+                "label": "Shadowless Flight (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eyAnbyxPNmwPTg",
+                "type": "save",
+                "label": "Shadowless Flight: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Each affected creature. Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ebOKAWqi6kh3Id",
+                "type": "attack",
+                "label": "Shadowless Flight (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ed32sDAW8bEzGC",
+                "type": "attack",
+                "label": "Shadowless Flight (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eyAnbyxPNmwPTg",
+                "type": "save",
+                "label": "Shadowless Flight: save",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ],
+                "text": "Each affected creature. Failure: Concussed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "namikaze-swift-release-spatial-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7ZY9e18waZOxk",
+          "type": "roll",
+          "label": "Spatial Step",
+          "roll": {
+            "formula": "1d8",
+            "note": "Concentration: at the end of each of your turns, 5+ vanishes you into your pocket dimension until the start of your next turn (return within 10 feet)."
+          }
+        }
+      ]
+    },
+    "namikaze-swift-release-spatial-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecQwuiCBGfem6w",
+          "type": "effect",
+          "label": "Spatial Wall",
+          "effect": {
+            "name": "Spatial Wall",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "A wall within 60 feet (30 by 20 by 1 feet, or a 20-foot cylinder): repels creatures; ranged attacks and shaped Ninjutsu passing through or from inside turn back on their caster (not Genjutsu). Upkeep is its full cost."
+        }
+      ]
+    },
+    "namikaze-swift-release-speed-siphon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMxTHCfiYRx8DC",
+          "type": "save",
+          "label": "Speed Siphon",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "A creature you can see within 60 feet, at the start of each of its turns. Failure: Slowed and Dazed (they don't end early; disadvantage on its attacks); a success ends both until its next save.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Interdiction Seal",
+          "appliesTo": {
+            "namePrefix": "Swift Release: Speed Siphon"
+          },
+          "note": "On a creature marked with your Speed Seal: each success it makes gives −1 on its saves (stacks to −4)."
+        }
+      ]
+    },
+    "namikaze-swift-release-thunder-flash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7xpvv4tEoPFxO",
+          "type": "save",
+          "label": "Thunder Flash",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "wind"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e7xpvv4tEoPFxO",
+                "type": "save",
+                "label": "Thunder Flash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e7xpvv4tEoPFxO",
+                "type": "save",
+                "label": "Thunder Flash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e7xpvv4tEoPFxO",
+                "type": "save",
+                "label": "Thunder Flash",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (3d6)",
+                      "type": "wind"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Interdiction Seal",
+          "appliesTo": {
+            "namePrefix": "Swift Release: Thunder Flash"
+          },
+          "note": "On a creature marked with your Speed Seal: passing through it: +15 feet and you can change direction."
+        }
+      ]
+    },
+    "namikaze-tricksters-blink": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epQxO3Pi8wvXNH",
+          "type": "roll",
+          "label": "Redirecting Flashpoint",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction, one of two marked creatures attacks or casts: swap their places first (out of range: a new target, or it misses / is Interrupted); both seals are dispelled."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eJ64Xu2IReRlG8",
+          "type": "roll",
+          "label": "Blink Burst",
+          "roll": {
+            "formula": "1d20 + @abilities.dex.mod",
+            "note": "Once per turn, Reaction, a marked creature's attack or jutsu would damage you or inflict a Physical or Elemental condition: dispel its seal + 1 Speed Seal; a Dexterity save against its attack result or save DC; success avoids it, you teleport next to it and can cast a 1-Action attack jutsu at it."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "speedSeals",
+            "amount": 1
+          }
+        }
+      ]
+    }
+  }
+}

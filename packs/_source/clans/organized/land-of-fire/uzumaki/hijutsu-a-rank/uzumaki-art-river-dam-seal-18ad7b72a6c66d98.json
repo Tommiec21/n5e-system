@@ -17,7 +17,8 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e472HcZkWYCNFC",
+        "type": "attack",
+        "label": "River Dam Seal",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A target with 5+ ranks of Sealed. On a hit: the River Dam Seal condition.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e0UlSHtOMapHiN",
+        "type": "effect",
+        "label": "River Dam Seal: condition",
+        "effect": {
+          "name": "River Dam Seal",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "uzumaki-river-dam-seal"
+        },
+        "text": "On a hit."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

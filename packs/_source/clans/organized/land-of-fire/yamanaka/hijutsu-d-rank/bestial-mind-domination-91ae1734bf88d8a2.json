@@ -17,7 +17,8 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -112,7 +113,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eCYxjAmRJqrSBr",
+        "type": "save",
+        "label": "Bestial Mind Domination",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "No further effects.",
+            "success": "Indifferent until the end of its next turn (forgets meeting you).",
+            "failure": "Friendly for 1 minute until you or allies act hostile.",
+            "critFailure": "Helpful; it fights for you and takes commands; you read its mood."
+          }
+        },
+        "inflicts": [],
+        "text": "An animal or weak-minded creature within 60 feet.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

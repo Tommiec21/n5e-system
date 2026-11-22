@@ -17,6 +17,310 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu, Wind Release, Lightning Release.",
         "components": "CM, M, W (Any, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eaYLBbgR3VbCoE",
+              "type": "attack",
+              "label": "Air Shattering Strike (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9obBr3MN8Ik38",
+              "type": "attack",
+              "label": "Air Shattering Strike (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOmkaY6PcCQSO1",
+              "type": "save",
+              "label": "Interdiction Seal: detonation",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eaYLBbgR3VbCoE",
+              "type": "attack",
+              "label": "Air Shattering Strike (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (2d10)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9obBr3MN8Ik38",
+              "type": "attack",
+              "label": "Air Shattering Strike (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOmkaY6PcCQSO1",
+              "type": "save",
+              "label": "Interdiction Seal: detonation",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eaYLBbgR3VbCoE",
+              "type": "attack",
+              "label": "Air Shattering Strike (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (3d10)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9obBr3MN8Ik38",
+              "type": "attack",
+              "label": "Air Shattering Strike (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOmkaY6PcCQSO1",
+              "type": "save",
+              "label": "Interdiction Seal: detonation",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaYLBbgR3VbCoE",
+              "type": "attack",
+              "label": "Air Shattering Strike (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (4d10)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9obBr3MN8Ik38",
+              "type": "attack",
+              "label": "Air Shattering Strike (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (4d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOmkaY6PcCQSO1",
+              "type": "save",
+              "label": "Interdiction Seal: detonation",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Interdiction Seal",
+        "appliesTo": {
+          "namePrefix": "Swift Release: Air shattering Strike"
+        },
+        "note": "On a creature marked with your Speed Seal: the primed detonation."
       }
     }
   },
@@ -112,7 +416,79 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eaYLBbgR3VbCoE",
+        "type": "attack",
+        "label": "Air Shattering Strike (Ninjutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A target within 30 feet; wind or lightning. +1 attack on another creature per rank.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "wind"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9obBr3MN8Ik38",
+        "type": "attack",
+        "label": "Air Shattering Strike (Taijutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d10.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "wind"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eOmkaY6PcCQSO1",
+        "type": "save",
+        "label": "Interdiction Seal: detonation",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A hit primes it: if it willingly moves before your next turn, the force damage; failure: teleported next to another creature or object marked with your Speed Seal.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

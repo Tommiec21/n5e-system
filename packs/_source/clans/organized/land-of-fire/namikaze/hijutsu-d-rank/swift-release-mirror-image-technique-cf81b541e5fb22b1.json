@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual), Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Interdiction Seal",
+        "appliesTo": {
+          "namePrefix": "Swift Release: Mirror Image Technique"
+        },
+        "note": "On a creature marked with your Speed Seal: dispel a clone for +1d4 to your attack on it; its attacks on you hit a duplicate on 2 less."
       }
     }
   },
@@ -112,7 +120,30 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5edbAVFgg4yJqUq",
+        "type": "effect",
+        "label": "Mirror Image",
+        "effect": {
+          "name": "Mirror Image",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Three duplicates (+1 at B, +2 at S) for 1 minute; a Bonus action dismisses them. Each attack on you: a d8 per duplicate; a 4+ (6+ against True Sight, Tremorsense or Chakra Sight) hits a duplicate instead."
+      },
+      {
+        "id": "n5eqe1umA98cJDdD",
+        "type": "roll",
+        "label": "Duplicate check",
+        "roll": {
+          "formula": "1d8",
+          "note": "One per remaining duplicate."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

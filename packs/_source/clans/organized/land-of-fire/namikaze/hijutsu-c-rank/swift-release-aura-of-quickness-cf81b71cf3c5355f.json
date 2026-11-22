@@ -17,7 +17,8 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -110,7 +111,27 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e5FAowbzFtjZjU",
+        "type": "effect",
+        "label": "Aura of Quickness",
+        "effect": {
+          "name": "Aura of Quickness",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "In combat, concentration: creatures you choose starting their turn in your 15-foot radius gain +10 speed (+10 per rank) until the start of your next turn. Exploring: 1 hour, normal pace counts as fast."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

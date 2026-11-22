@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "senju",
-      "sourceLine": 1959
+      "sourceLine": 1959,
+      "textFrom": "senju-mokuton-infusion (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Mokuton Infusion chakra stance, usable with a Taijutsu or Bukijutsu stance (its text is Mokuton Infusion's, as King Q-E9). Bonus action to enter or swap variants. Will of the Buddha: with a Combat Scroll, the Attack action's attacks can be Verdant Lash. Fist of Hevajra: [Unarmed Damage] cold, earth or chakra (pick when you roll); unarmed attacks can use your Hijutsu Flexibility ability; Reach 1 (Reach 2 at 7th)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "senju-stance-mokuton-infusion",
-    "description": "<p>| Mokuton Infusion – Drained / Max Ranks: 5, [Physical], [Mental] / A Drained creature takes 1d8 chakra damage at the start of each of their turns for each rank it has. / A Drained creature increases the chakra damage they take from hostile creatures attacks or jutsu by +2. This increases to +4 at 7th level and +6 at 15th level. / A Drained creature can spend an Action to make a DC 15 Constitution ability check to end this condition. |</p>\n<p>3rd Level Clan Feature</p>\n<p>Your link to green isn’t an accident. Your chakra doesn’t just build, it grows, sprouts and reveals its beauty and strength. You can control wood and nature like its second nature. Once per turn as part of an attack made with the Attack action while in your Mokuton Infusion stance or when casting a Senju Hijutsu, you can use the New Growth ability.</p>\n<p>New Growth. Select a point you can see on the ground within 60 feet of you as you manifest a 10-foot radius patch of almost sentient foliage such as roots, trunks or brambles. Creatures other than you that move through this affected area spends 4 feet for movement for every 1 feet they move as they try to maneuver through this terrain. This special terrain is named New Growth and lasts for 1 minute or until cleared as a result of a damaging effect crossing affected spaces.</p>",
+    "description": "<p>1st Level Clan Feature</p>\n<p>While the blood of the Senju runs through you, the heritage of one burns brightest. You have access to the unique Mokuton Kekkei Genkai and it suffuses itself throughout your already varied forms of combat. This is represented by your Mokuton Infusion Chakra stance. Unlike other chakra stances, you can benefit from this Chakra stance and either a Taijutsu stance or a Bukijutsu stance, at the same time.</p>\n<p>You can enter the Mokuton Infusion stance as a bonus action, when you do, select one of its variants. You can swap between these variants by spending a bonus action on subsequent turns.</p>\n<p>Will of the Buddha. While in this variant stance, you gain the following benefits:</p>\n<p>When you take the attack action while you wield a Combat Scroll you can choose to instead make Verdant Lash attacks. You can replace each attack you would make as part of the Attack action with a Verdant Lash attack.</p>\n<p>Verdant Lash. Make melee or ranged Jutsu attack, using your highest jutsu attack bonus against a creature you can see, lashing out with bramble strikes. On a hit, you deal the listed melee or ranged damage. If you roll an 8 or higher on the damage die of this attack, you inflict 1 rank of Drained and push or pull them 10 feet closer or further from you. This increases to 15 feet, 2 ranks of Drained and this attack is treated as casting a D-Rank Hijutsu at 7th level. Increase the damage dealt by +1 damage die at 11th level. Starting at 15th level, increase the ranks of Drained inflicted to 3.</p>\n<p>Melee: 1d10 + your Jutsu ability modifier in Earth, Cold or Chakra damage.</p>\n<p>Ranged: 30 feet, 1d10 Earth, Cold or Chakra damage.</p>\n<p>Fist of Hevajra. While in this variant stance, you gain the following benefits:</p>\n<p>Your [Unarmed Damage] becomes Cold, Earth or Chakra which you choose when you roll damage.</p>\n<p>Your unarmed attacks can use your Hijutsu Flexibility trait to calculate its attack and damage rolls.</p>\n<p>Your unarmed attacks gain the Reach 1 weapon property as your strikes are followed by branching wood strikes. This increases to Reach 2 at 7th level.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +37,88 @@
     ],
     "clan": "senju",
     "featureType": "passive",
-    "requirement": "Senju clan"
+    "requirement": "Senju clan",
+    "activities": [
+      {
+        "id": "n5evVUPejbGuvRCI",
+        "type": "effect",
+        "label": "Will of the Buddha",
+        "effect": {
+          "name": "Will of the Buddha",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: this variant.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eTzO2x93bNbKBj",
+        "type": "effect",
+        "label": "Fist of Hevajra",
+        "effect": {
+          "name": "Fist of Hevajra",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: this variant.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eI1QXGyS8gARei",
+        "type": "attack",
+        "label": "Verdant Lash (melee)",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "An 8+ on the damage die: Drained (2 ranks at 7th, 3 at 15th) and push or pull 10 feet (15 at 7th). 7th: counts as casting a D-Rank Hijutsu. Earth, cold or chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d10,11:2d10) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIxmal2mNC6VhW",
+        "type": "attack",
+        "label": "Verdant Lash (ranged)",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "30 feet. An 8+ on the damage die: Drained (2 ranks at 7th, 3 at 15th) and push or pull 10 feet (15 at 7th). 7th: counts as casting a D-Rank Hijutsu. Earth, cold or chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d10,11:2d10)",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5egS0yBlR1dtyfI",
+        "type": "effect",
+        "label": "Drained",
+        "effect": {
+          "name": "Drained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "senju-drained"
+        },
+        "text": "From Verdant Lash's 8+: 1 rank (2 at 7th, 3 at 15th: apply it again)."
+      }
+    ]
   }
 }
