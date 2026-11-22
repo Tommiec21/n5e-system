@@ -94,8 +94,8 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
   weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
   if ( !parts?.length ) return "";
-  const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
-  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
+  const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "", ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) })));
+  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}${p.alsoAs ? ` and the same ${typeLabel([p.alsoAs])}` : ""}`).join(" + ");
   const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("crit-extra", critExtra)}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
@@ -430,6 +430,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           if ( after ) advNotes.push(`${shaped.sources.join(", ")}: +${after} (up to ${shaped.maximizeAfter} dice counted as their maximum)`);
         }
         instances.push({ amount: roll.total + after, type: p.type });
+        // King Q-E20: the same result again as a second type (Parasitic Giant Insect: 50 poison and 50 chakra).
+        if ( p.alsoAs ) instances.push({ amount: roll.total + after, type: p.alsoAs });
       }
       const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };
       const total = instances.reduce((t, i) => t + i.amount, 0);

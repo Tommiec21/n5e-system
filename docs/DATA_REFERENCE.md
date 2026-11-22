@@ -1016,3 +1016,5 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Pool recovery amounts in combat (0.81.0-alpha.1): turn, round and encounter recovery use the amount too (`formula` regains that many, `half` half the max, `all` refills); `empty` drops the pool to 0 (`rules/recovery.mjs combatRecoveredValue`).
 
 - Pool recovery `empty` on rests (0.83.0-alpha.1): a short or long rest recovery with amount `empty` resets the pool to 0 (`rules/rest.mjs`).
+
+- Damage part `alsoAs` (0.84.1-alpha.1): `{formula, type, alsoAs}` deals the rolled result as `type` and the same amount again as `alsoAs` (King Q-E20).

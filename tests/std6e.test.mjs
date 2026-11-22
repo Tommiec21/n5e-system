@@ -219,3 +219,14 @@ test("STD6e E6 Land of Fire I: every Aburame, Akimichi, Hatake, Hyūga, Iburi, I
   assert.match(item("inuzuka", "inuzuka-stance-four-legs").system.description, /drop down on all fours/);
   assert.doesNotMatch(item("hatake", "hatake-last-to-move-loses").system.description, /#### White Wolf/);
 });
+
+test("King Q-E20: one damage roll dealt as two types (alsoAs) survives the roll dialog", async () => {
+  const { diceParts, composeDice } = await import("../module/rules/roll-math.mjs");
+  const parts = diceParts([{ formula: "10d12", type: "poison", alsoAs: "chakra" }]);
+  assert.equal(parts[0].alsoAs, "chakra");
+  assert.equal(composeDice(parts).parts[0].alsoAs, "chakra");
+  const act = item("aburame", "aburame-parasitic-giant-insect").system.activities[0];
+  assert.deepEqual(act.damage.parts[0], { formula: "10d12", type: "poison", alsoAs: "chakra" });
+  const src = (await import("node:fs")).readFileSync(new URL("../module/workflow/activity-buttons.mjs", import.meta.url), "utf8");
+  assert.match(src, /if \( p\.alsoAs \) instances\.push\(\{ amount: roll\.total \+ after, type: p\.alsoAs \}\)/);
+});

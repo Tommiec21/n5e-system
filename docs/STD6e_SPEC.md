@@ -62,6 +62,7 @@ Plus each clan's stances and (Q-E1) Hijutsu in the same batch.
 | E-D6 | Pool unit lifetime | A pool's `lifetime` (seconds): each unit lasts that long unless spent (spending uses the oldest; the actor's `flags.n5e.poolStamps`); the active GM drops expired units as world time passes (King Q-E6: Primes, Pressure). |
 | E-D7 | Combat recovery amounts | A pool's turn, round and combat recovery uses its amount: `formula` regains that many (Jiton's 1 Magnetic Charge a turn; before this it refilled), `half` half the max, and the new `empty` drops it to 0 (Stellar Charges and Voltage start each combat at 0; Starlights end with it). `rules/recovery.mjs combatRecoveredValue`. |
 | E-D8 | Rest recovery "empty" | A long rest can empty a pool too (Jūgo's Nature Energy resets to 0). `rules/rest.mjs`. |
+| E-D9 | One roll, two damage types | A damage part's `alsoAs` deals the same rolled result again as a second type (King Q-E20: Parasitic Giant Insect's 10d12 is that many poison and that many chakra). It survives the roll dialog. `data/fields/shared.mjs`, `rules/roll-math.mjs`, `workflow/activity-buttons.mjs`. |
 | E-D5 | Item fields from tables | A table entry's `system` sets item fields (a stance's `unarmedDie` and `unarmedType`: Ballistic Knuckle). |
 
 ## E1 Land of Earth (0.79.0-alpha.1)
@@ -153,7 +154,7 @@ Review tables: `docs/clans/aburame-automation.md`, `akimichi-automation.md`, `ha
 - **Q-E18 Vesper's two stance items:** answered (King 2026-11-21): "Yes." "Claws of the Night" is deleted (0.83.0-alpha.1).
 - **Q-E19 Jinzo Bio-Pet:** answered (King 2026-11-22): "Hold them." Listed under Held stat blocks below.
 
-- **Q-E20 Aburame Parasitic Giant Insect:** "The affected creature takes 10d12 poison and chakra damage." Is that 10d12 poison plus 10d12 chakra, or one 10d12 roll dealt as both (or split)? The button rolls 10d12 poison for now.
+- **Q-E20 Aburame Parasitic Giant Insect:** answered (King 2026-11-22): "It's 10d12 poison and 10d12 chakra. But the result should be the same. So if the result is 50 damage, it should be 50 chakra and 50 poison." One roll, dealt as both (damage part `alsoAs`; 0.84.1-alpha.1).
 
 ## Held stat blocks (King 2026-11-22: "Hold them... I need to keep them together so I can give you the correct stat blocks.")
 
@@ -219,3 +220,4 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - 2026-11-22 King: "Hold them. Review the record to make sure all held stat blocks are there." Claude: Q-E19 held; scanned every clan item for stat block references; Held stat blocks table H1–H5 added.
 - 2026-11-22 Claude: published 0.83.1-alpha.1 (held notes point at H1–H5).
 - 2026-11-22 King: "Next batch" Claude: E6 Land of Fire I built (143 items); Nin-Dog, Two-Headed Wolf and Dream Walker added to the held stat blocks (H6–H8); Q-E9 and Q-E12 rulings applied; published 0.84.0-alpha.1. Q-E20 asked (checked earlier specs first).
+- 2026-11-22 King: Q-E20 "10d12 poison and 10d12 chakra ... the result should be the same." Claude: damage part alsoAs (E-D9); published 0.84.1-alpha.1.

@@ -211,7 +211,8 @@ export function riderFields() {
  * Unknown fields are dropped when the item is saved, so every field an activity needs must be here.
  */
 export function activityFields() {
-  const damageParts = () => arr(obj({ formula: formula(), type: str() }));
+  // alsoAs (King Q-E20): the same rolled result is dealt again as this second type (10d12 poison and chakra).
+  const damageParts = () => arr(obj({ formula: formula(), type: str(), alsoAs: str() }));
   return {
     id: str(),
     type: str({ initial: "utility", choices: Object.keys(activityKinds) }),

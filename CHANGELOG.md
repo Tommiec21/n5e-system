@@ -1,3 +1,10 @@
+## 0.84.1-alpha.1 — One roll, two damage types (Q-E20)
+
+King 2026-11-22: "It's 10d12 poison and 10d12 chakra. But the result should be the same. So if the result is 50 damage, it should be 50 chakra and 50 poison"
+
+- **Damage part `alsoAs`:** the same rolled result is dealt again as a second type. The roll dialog keeps it.
+- **Aburame Parasitic Giant Insect:** one 10d12 roll, dealt as poison and as chakra.
+
 ## 0.84.0-alpha.1 — Clans as data: E6 Land of Fire I (Aburame, Akimichi, Hatake, Hyūga, Iburi, Inuzuka, Kurama)
 
 King 2026-11-22: "Next batch"

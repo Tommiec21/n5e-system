@@ -22,7 +22,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "\"10d12 poison and chakra damage\": the button rolls it as poison; how the chakra part works is Q-E20."
+          "text": "One 10d12 roll dealt as both poison and chakra: 50 rolled is 50 poison and 50 chakra (King Q-E20)."
         }
       ],
       "jutsuBookImport": {
@@ -48,7 +48,8 @@
                 "parts": [
                   {
                     "formula": "(10d12) + (1d12)",
-                    "type": "poison"
+                    "type": "poison",
+                    "alsoAs": "chakra"
                   }
                 ]
               }
@@ -166,7 +167,8 @@
           "parts": [
             {
               "formula": "10d12",
-              "type": "poison"
+              "type": "poison",
+              "alsoAs": "chakra"
             }
           ]
         }

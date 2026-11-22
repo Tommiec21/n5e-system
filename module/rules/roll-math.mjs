@@ -110,7 +110,7 @@ export function choiceForMember(spec, groupRows, choice = {}) {
  */
 export function diceParts(parts = [], modifiers = []) {
   return [
-    ...parts.map((p, i) => ({ id: `d${i}`, label: p.label || p.formula, formula: String(p.formula), type: p.type ?? "", abilityMod: p.abilityMod, ...(p.optional ? { situational: true } : {}) })),
+    ...parts.map((p, i) => ({ id: `d${i}`, label: p.label || p.formula, formula: String(p.formula), type: p.type ?? "", abilityMod: p.abilityMod, ...(p.optional ? { situational: true } : {}), ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) })),
     ...modifiers.map((m, i) => (m.dice ? { id: `m${i}`, label: m.label, formula: m.dice.replace(/^\+/, ""), type: "" }
       : { id: `m${i}`, label: m.label, formula: String(m.value), type: "", flat: true }))
   ];
@@ -125,7 +125,7 @@ export function composeDice(parts, { off = [], on = [], added = [], crit = false
   const onSet = new Set(on);
   // Optional parts (situational: Lethal Attack) count only when ticked.
   const kept = parts.filter(p => (p.situational ? onSet.has(p.id) : !offSet.has(p.id)));
-  const rolled = kept.filter(p => !p.flat).map(p => ({ formula: p.formula, type: p.type, abilityMod: p.abilityMod }));
+  const rolled = kept.filter(p => !p.flat).map(p => ({ formula: p.formula, type: p.type, abilityMod: p.abilityMod, ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) }));
   const flat = kept.filter(p => p.flat).reduce((a, p) => a + (Number(p.formula) || 0), 0);
   for ( const a of added ) {
     const parsed = parseAdded(a.value);
