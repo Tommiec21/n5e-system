@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "chinoike",
       "sourceLine": 5569,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,37 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eLeqdRsKqtZvBh",
+        "type": "effect",
+        "label": "Circulatory Supercharge",
+        "effect": {
+          "name": "Circulatory Supercharge",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Action: willing allies of your choice in a 20-foot radius, until the start of your next turn: +1 AC, +20 speed and the Surge special action (Dash, Disengage, or one Unarmed or Weapon attack). 7th: a rank of Mastery to their attacks. 15th: Surge can fulfil an Action (2 ranks of Exhaustion).",
+        "activation": "action",
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

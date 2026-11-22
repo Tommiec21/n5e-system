@@ -17,6 +17,18 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile, Unaware), Water Release, Medical",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Genjutsu: Ketsuryūgan!"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. Two Blood Boons instead of one."
       }
     }
   },
@@ -112,7 +124,17 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFUWQhZ1ue7agS",
+        "type": "roll",
+        "label": "Blood Boon",
+        "roll": {
+          "formula": "",
+          "note": "Cast with a 1-Action Genjutsu (same rank or higher, Ketsuryugan active): Sharp Thoughts (a rank of Mastery to its attack, +1 critical range), Lethal Punishment (a critical success counts as a success, a success as a failure) or Delayed Assault (failing creatures make their next d20 at disadvantage)."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

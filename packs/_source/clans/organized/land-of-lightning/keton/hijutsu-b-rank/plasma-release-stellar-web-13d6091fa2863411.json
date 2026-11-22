@@ -17,6 +17,91 @@
         "cost": "14 chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eto1zKPBFPCwEG",
+              "type": "save",
+              "label": "Stellar Web",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eto1zKPBFPCwEG",
+              "type": "save",
+              "label": "Stellar Web",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +194,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eto1zKPBFPCwEG",
+        "type": "save",
+        "label": "Stellar Web",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "keton-convergence",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Convergence"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

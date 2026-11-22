@@ -17,6 +17,24 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Unaware), Water Release, Medical",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank."
+        }
+      ],
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Genjutsu: Ichorous Illusions"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. Creatures failing by 2 or more treat it as a Critical Failure."
       }
     }
   },
@@ -111,7 +129,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ep54REeME9JkdN",
+        "type": "save",
+        "label": "Ichorous Illusions",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: a headache; it resists, ending the jutsu.",
+            "failure": "Failure: it sees enemies as allies and allies as enemies, and can't omit creatures from its attacks or jutsu.",
+            "critFailure": "Critical Failure: as a failure, and it can only move, Attack or cast a C-Rank or lower jutsu."
+          }
+        },
+        "inflicts": [],
+        "text": "Needs your Ketsuryugan. Resave at the end of each of its turns and once per turn when it takes damage; resistant or immune to Demoralized: advantage.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

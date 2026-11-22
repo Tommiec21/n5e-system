@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6065,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One effect per turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,101 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eI8ZK9DhEN0vOI",
+        "type": "save",
+        "label": "Overload: 2+ hits",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Once per turn after your Action and Bonus action Laser Circus attacks, a creature hit twice or more. Failure: Dazed and Weakened.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eGapnM5venqekp",
+        "type": "save",
+        "label": "Overload: 3+ hits",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "A 20-foot radius, 30-foot cone or 60 by 5-foot line from it. Failure: Bruised and Slowed.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eSBpBQPpB87fIJ",
+        "type": "save",
+        "label": "Overload: 5+ hits",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Failure: Stunned.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

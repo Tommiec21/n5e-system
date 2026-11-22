@@ -1,0 +1,2356 @@
+{
+  "clan": "ranton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "ranton-eye-of-the-storm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edpjX7uVQbrXeK",
+          "type": "effect",
+          "label": "Eye of the Storm",
+          "effect": {
+            "name": "Eye of the Storm",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, once per long rest: a 60-foot radius on you for 1 minute (unseen without Chakra sense or sight). You know where every creature in it is; Laser Circus can target them, even behind Cover.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ejEdIovoc97kJw",
+          "type": "save",
+          "label": "Interference Field",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Hostile creatures in it, at the start of their turns. Failure: their Ninjutsu and Genjutsu without Lightning or Water Release cost 4 more until the start of their next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Grounded Surge: hostile creatures Shocked or Chilled on your turn save against your Ranton Hijutsu at −2."
+        }
+      ]
+    },
+    "ranton-gale-circuit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] Two Circuits (more at 7th and 15th): the option items. Refraction Point is the clan's condition."
+        }
+      ]
+    },
+    "ranton-gale-circuit-cascade": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMuCQVFL5Oo2Om",
+          "type": "damage",
+          "label": "Cascade",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "lightning"
+              }
+            ]
+          },
+          "text": "Once per turn, after you deal cold and lightning to it: until the end of your next turn, if it moves more than 5 feet willingly or casts a Mobility (M) jutsu, three times your Laser Circus damage.",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5e6hzrGBa8v0zAI",
+          "type": "save",
+          "label": "Cascade: stun",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "Failure: Stunned until the end of its current turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "ranton-gale-circuit-cold-snap": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, cold damage from your Water Release jutsu: water particles around the creature until the end of your next turn; your first missed Laser Circus against it can be rerolled. 7th: a Water jutsu that damages and can inflict an Elemental condition can mark it a Refraction Point for 1 minute instead, even on a success."
+        }
+      ]
+    },
+    "ranton-gale-circuit-prismatic-overloads": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eI8ZK9DhEN0vOI",
+          "type": "save",
+          "label": "Overload: 2+ hits",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Once per turn after your Action and Bonus action Laser Circus attacks, a creature hit twice or more. Failure: Dazed and Weakened.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eGapnM5venqekp",
+          "type": "save",
+          "label": "Overload: 3+ hits",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "A 20-foot radius, 30-foot cone or 60 by 5-foot line from it. Failure: Bruised and Slowed.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eSBpBQPpB87fIJ",
+          "type": "save",
+          "label": "Overload: 5+ hits",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "Failure: Stunned.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One effect per turn."
+        }
+      ]
+    },
+    "ranton-gale-circuit-prismatic-split": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Laser Circus hit on a Refraction Point: the creatures its chain damages become Refraction Points for 1 minute."
+        }
+      ]
+    },
+    "ranton-gale-circuit-rapid-fire": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGZUO7JQqAC37w",
+          "type": "attack",
+          "label": "Rapid Fire: Laser Circus",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Bonus action, after Laser Circus attacks with the Attack action: one more (two at 7th, three at 15th).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ranton-gale-circuit-static-arc": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCpujWwImtAvUx",
+          "type": "save",
+          "label": "Static Arc",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            },
+            {
+              "key": "ranton-refraction-point",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Refraction Point"
+            }
+          ],
+          "text": "Once per turn, Bonus action after you deal lightning damage: a creature you can see within 20 feet of the target. Failure: Shocked and a Refraction Point for 1 minute.",
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "ranton-gale-style": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] Enter the Laser Circus chakra stance as a Bonus action (the clan's stance item: Laser Circus is its attack button)."
+        }
+      ]
+    },
+    "ranton-stance-laser-circus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUjyc4N4XCf7Yh",
+          "type": "attack",
+          "label": "Laser Circus",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 60 feet. An 8 or higher on the die: it is marked as a Refraction Point.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] The Attack action, or a Ranton Hijutsu that attacks, can swap any of its attacks for Laser Circus. Without Extra Attack: two at 7th, three at 15th."
+        }
+      ]
+    },
+    "ranton-static-network": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest: you and up to 5 allies share a chakra network until your next long rest: talk within 1 mile; if one is Surprised, the others in the same initiative aren't."
+        }
+      ]
+    },
+    "ranton-storm-circuit": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Two Circuits (more at 7th and 15th): the option items, spending Voltage. Their saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "ranton-storm-circuit-beast-of-lightning": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eodPlC9fYObpck",
+          "type": "roll",
+          "label": "Beast of Lightning",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Lightning or Water jutsu that summons: the summons gain hit points equal to your level and +1 AC (7th: +2 AC, resistance to earth and fire; 15th: +3 AC, immunity to Elemental conditions)."
+          },
+          "cost": {
+            "pool": "voltage",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "ranton-storm-circuit-black-thunder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egvsjQhEzctFKk",
+          "type": "roll",
+          "label": "Black Thunder",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn on your turn: −10 remaining speed, teleport to a space you can see within 30 feet; the first attack on you from within 10 feet of it before your next turn has disadvantage. 7th: a melee attack right after has advantage."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "voltage",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "ranton-storm-circuit-grounded": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWFpEOs0FLphdr",
+          "type": "heal",
+          "label": "Grounded",
+          "heal": {
+            "formula": "4 * @amount",
+            "pool": "tempHp"
+          },
+          "text": "In Storm Force, up to 4 Voltage: until the end of the turn, lightning or cold ranged attacks at allies within 60 feet can target you instead; immunity to Shocked and Chilled.",
+          "cost": {
+            "pool": "voltage",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "ranton-storm-circuit-shield-of-thunder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSqboUGz9J5xCC",
+          "type": "heal",
+          "label": "Shield of Thunder",
+          "heal": {
+            "formula": "2d6 + @level",
+            "pool": "tempHp"
+          },
+          "text": "In Shield Form, once per turn, Reaction to damage from an attack: a lightning Barrier with these hit points until the end of the turn (11th: immune to bludgeoning, piercing and slashing).",
+          "activation": "reaction",
+          "cost": {
+            "pool": "voltage",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "ranton-storm-circuit-spear-of-heaven": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewbzObErccovDA",
+          "type": "save",
+          "label": "Spear of Heaven",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "In Spear Form, once per turn, a melee Ninjutsu or Taijutsu attack dealing lightning. Failure: the damage and Dazed (7th: Staggered too); success: half. 15th: this and the attack's lightning ignore resistance and treat immunity as resistance.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,7:4d6,15:6d6)",
+                "type": "lightning"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "voltage",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "ranton-storm-circuit-storm-drain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eehUrf9BL9G2Zk",
+          "type": "roll",
+          "label": "Storm Drain",
+          "roll": {
+            "formula": "1d4",
+            "note": "Bonus action: consume all Shocked from creatures within 30 feet; 1d4 temporary chakra per rank until the end of your next turn (roll them)."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "voltage",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5etXhe4GDqJxr7r",
+          "type": "save",
+          "label": "Storm Drain: dispel (7th)",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hostile creature in range with a beneficial Lightning Release jutsu (any nature release at 15th). Failure: it's dispelled.",
+          "damage": {
+            "parts": []
+          },
+          "minLevel": 7
+        }
+      ]
+    },
+    "ranton-storm-incarnate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0ZyhWPGg1CTdI",
+          "type": "roll",
+          "label": "Gain a Voltage",
+          "roll": {
+            "formula": "",
+            "note": "1 per trigger per turn: a hostile creature damages you, you deal lightning damage to a hostile creature, or you succeed on a save against a hostile effect."
+          },
+          "cost": {
+            "pool": "voltage",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "voltage",
+          "label": "Voltage",
+          "value": 0,
+          "max": "lvl(1:4,7:5,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Entering initiative: the Storm Force state in Spear or Shield form until combat ends (swap as a Bonus action; the two option items have the buttons). Voltage: up to 4 (5 at 7th, 6 at 15th), the pool; 0 at the start and end of combat."
+        }
+      ]
+    },
+    "ranton-storm-incarnate-shield-form": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eC07rZERJdEOmQ",
+          "type": "effect",
+          "label": "Shield Form",
+          "effect": {
+            "name": "Shield Form",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "lightning",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Until combat ends (or you swap): resistance to lightning."
+        },
+        {
+          "id": "n5eh5i9wJlxb3CEc",
+          "type": "heal",
+          "label": "Shield Form: start of turn",
+          "heal": {
+            "formula": "4 * @pools.voltage.value",
+            "pool": "tempHp"
+          },
+          "text": "At the start of each of your turns."
+        },
+        {
+          "id": "n5ebO1p5tce2uH0c",
+          "type": "heal",
+          "label": "Shield Form: Lightning or Water jutsu",
+          "heal": {
+            "formula": "@pools.voltage.value",
+            "pool": "tempHp"
+          },
+          "text": "Casting a Lightning or Water jutsu on a turn you gained them, up to twice a turn."
+        }
+      ]
+    },
+    "ranton-storm-incarnate-spear-form": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWov7OkpmwGaQz",
+          "type": "effect",
+          "label": "Spear Form",
+          "effect": {
+            "name": "Spear Form",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Until combat ends (or you swap): your unarmed and weapon attacks can deal lightning; melee attacks from your Hijutsu +1 to hit and +2 damage (7th: unarmed and weapon lightning attacks too; 15th: +2 and +4; add them)."
+        }
+      ]
+    },
+    "ranton-storm-release-black-lightning": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBTKpYXOTwyK11",
+          "type": "effect",
+          "label": "Black Lightning",
+          "effect": {
+            "name": "Black Lightning",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "For the duration your jutsu can't have their cost raised by hostile effects; concentration jutsu gain Stable or Efficient (pick); an Overcharge can cost 2 more instead of the Bonus action.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "ranton-storm-release-dance-of-mirrors-and-lights": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eotreHZz2P1Xs3",
+          "type": "attack",
+          "label": "Mirrors and Lights: first volley",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Needs 2+ Refraction Points: one attack roll against each one in range.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5etRXGDC2LQ33Qy",
+          "type": "attack",
+          "label": "Second volley (2+ hits)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eZXVmqOMVM8oeU",
+          "type": "attack",
+          "label": "Third volley (4+ hits)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ebqwFrijrtYoCV",
+          "type": "attack",
+          "label": "Fourth volley (8+ hits)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] The same creatures each volley."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eotreHZz2P1Xs3",
+                "type": "attack",
+                "label": "Mirrors and Lights: first volley",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Needs 2+ Refraction Points: one attack roll against each one in range.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (1d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5etRXGDC2LQ33Qy",
+                "type": "attack",
+                "label": "Second volley (2+ hits)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eZXVmqOMVM8oeU",
+                "type": "attack",
+                "label": "Third volley (4+ hits)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ebqwFrijrtYoCV",
+                "type": "attack",
+                "label": "Fourth volley (8+ hits)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (1d10)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-lariat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5esQWMbsnX4OozM",
+          "type": "attack",
+          "label": "Lariat",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d12",
+                "type": "lightning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ejVngkBICWUYE6",
+          "type": "save",
+          "label": "Lariat: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5esQWMbsnX4OozM",
+                "type": "attack",
+                "label": "Lariat",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (1d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejVngkBICWUYE6",
+                "type": "save",
+                "label": "Lariat: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5esQWMbsnX4OozM",
+                "type": "attack",
+                "label": "Lariat",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (2d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejVngkBICWUYE6",
+                "type": "save",
+                "label": "Lariat: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5esQWMbsnX4OozM",
+                "type": "attack",
+                "label": "Lariat",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (3d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejVngkBICWUYE6",
+                "type": "save",
+                "label": "Lariat: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-laser-beam": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eH54XWMVFzCT6t",
+          "type": "save",
+          "label": "Laser Beam",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 60 by 5-foot line from you that can turn corners.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eH54XWMVFzCT6t",
+                "type": "save",
+                "label": "Laser Beam",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 60 by 5-foot line from you that can turn corners.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eH54XWMVFzCT6t",
+                "type": "save",
+                "label": "Laser Beam",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 60 by 5-foot line from you that can turn corners.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eH54XWMVFzCT6t",
+                "type": "save",
+                "label": "Laser Beam",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 60 by 5-foot line from you that can turn corners.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eH54XWMVFzCT6t",
+                "type": "save",
+                "label": "Laser Beam",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 60 by 5-foot line from you that can turn corners.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-laser-dance-party": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ee2XfNRMjATazR",
+          "type": "attack",
+          "label": "Laser Dance Party",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 3
+          },
+          "text": "On casting and as a Bonus action each turn: up to 3 beams at creatures within 30 feet of the sphere (+1 per rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eXxKJHVOJqch5H",
+          "type": "save",
+          "label": "Laser Dance Party: two beams",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shocked"
+            }
+          ],
+          "text": "A creature hit by two or more. Failure: 2 ranks of Shocked.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch]"
+        }
+      ]
+    },
+    "ranton-storm-release-laser-sight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQTtz7HJYk5z7i",
+          "type": "save",
+          "label": "Laser Sight",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "ranton-refraction-point",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Refraction Point"
+            }
+          ],
+          "text": "Creatures you don't exclude in a 15-foot radius (around corners, unseen too) take the damage. Failure: a Refraction Point for 1 minute. Ones already marked: +1 round, and a 1d4 penalty to their next save.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] Upcast: +5 feet to the radius per rank; A-Rank or higher: +2d6 (add it)."
+        }
+      ]
+    },
+    "ranton-storm-release-liger-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTLLvSb3SZLHKE",
+          "type": "attack",
+          "label": "Liger Bomb",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In Spear Form, a creature you have Dazed, Stunned, Incapacitated, Staggered or Grappled: [Unarmed Damage] or [Weapon Damage] + 6d12 lightning.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d12",
+                "type": "lightning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Beating its AC by 10: a critical hit. Two or more of the conditions: it takes the damage as if vulnerable."
+        }
+      ]
+    },
+    "ranton-storm-release-lightning-splash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHLmeo9RgzzmtC",
+          "type": "save",
+          "label": "Lightning Splash",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eHLmeo9RgzzmtC",
+                "type": "save",
+                "label": "Lightning Splash",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eHLmeo9RgzzmtC",
+                "type": "save",
+                "label": "Lightning Splash",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eHLmeo9RgzzmtC",
+                "type": "save",
+                "label": "Lightning Splash",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (6d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-lightning-whip": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehNuVdmJ7c5P6f",
+          "type": "attack",
+          "label": "Lightning Whip",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eVJn8RYVZKlZbM",
+          "type": "save",
+          "label": "Lightning Whip: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: speed 0 until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank or higher: +1 target."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5ehNuVdmJ7c5P6f",
+                "type": "attack",
+                "label": "Lightning Whip",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVJn8RYVZKlZbM",
+                "type": "save",
+                "label": "Lightning Whip: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: speed 0 until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5ehNuVdmJ7c5P6f",
+                "type": "attack",
+                "label": "Lightning Whip",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVJn8RYVZKlZbM",
+                "type": "save",
+                "label": "Lightning Whip: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: speed 0 until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ehNuVdmJ7c5P6f",
+                "type": "attack",
+                "label": "Lightning Whip",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVJn8RYVZKlZbM",
+                "type": "save",
+                "label": "Lightning Whip: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: speed 0 until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ehNuVdmJ7c5P6f",
+                "type": "attack",
+                "label": "Lightning Whip",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eVJn8RYVZKlZbM",
+                "type": "save",
+                "label": "Lightning Whip: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: speed 0 until the end of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-manifestation-reezaa": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDRJBgbEaHfaw3",
+          "type": "effect",
+          "label": "Spear Form",
+          "effect": {
+            "name": "Spear Form",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Entering initiative: the Storm Force state, Spear Form only, without its 7th and 15th-level benefits: your unarmed and weapon attacks can deal lightning; melee attacks from your Hijutsu +1 to hit and +2 damage (add them)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] You gain the release you didn't pick for Storm Release Affinity (set it on the sheet); Water or Lightning jutsu can swap their damage between cold and lightning when you roll."
+        }
+      ]
+    },
+    "ranton-storm-release-manifestation-storm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eg8b5JtbWtKn4W",
+          "type": "attack",
+          "label": "Laser Circus",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 60 feet. An 8 or higher on the die: it is marked as a Refraction Point.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] You gain the release you didn't pick for Storm Release Affinity (set it on the sheet); Water or Lightning jutsu can swap their damage between cold and lightning when you roll. The Attack action, or a Ranton Hijutsu that attacks, can swap any of its attacks for Laser Circus."
+        }
+      ]
+    },
+    "ranton-storm-release-nukite-sword": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZv4xyLaJKA2x5",
+          "type": "attack",
+          "label": "Nukite Sword",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "lightning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eGbBRH0yIMaqxz",
+          "type": "damage",
+          "label": "Nukite Sword: through a reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "lightning"
+              }
+            ]
+          },
+          "text": "A target used its reaction for temporary hit points or AC and you still hit."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Upcast: +5 feet to the cone per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eZv4xyLaJKA2x5",
+                "type": "attack",
+                "label": "Nukite Sword",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGbBRH0yIMaqxz",
+                "type": "damage",
+                "label": "Nukite Sword: through a reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "A target used its reaction for temporary hit points or AC and you still hit."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eZv4xyLaJKA2x5",
+                "type": "attack",
+                "label": "Nukite Sword",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGbBRH0yIMaqxz",
+                "type": "damage",
+                "label": "Nukite Sword: through a reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "A target used its reaction for temporary hit points or AC and you still hit."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZv4xyLaJKA2x5",
+                "type": "attack",
+                "label": "Nukite Sword",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGbBRH0yIMaqxz",
+                "type": "damage",
+                "label": "Nukite Sword: through a reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "A target used its reaction for temporary hit points or AC and you still hit."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZv4xyLaJKA2x5",
+                "type": "attack",
+                "label": "Nukite Sword",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGbBRH0yIMaqxz",
+                "type": "damage",
+                "label": "Nukite Sword: through a reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "A target used its reaction for temporary hit points or AC and you still hit."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-reverse-beheading": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKYdyetlGCDAva",
+          "type": "save",
+          "label": "Reverse Beheading",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "All creatures in a 15-foot radius: [Unarmed Damage] or [Weapon Damage] + 4d12 lightning; half on a success. Failing by 5 or more: it takes the damage as if vulnerable.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d12",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Add your Unarmed or Weapon Damage."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eKYdyetlGCDAva",
+                "type": "save",
+                "label": "Reverse Beheading",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "All creatures in a 15-foot radius: [Unarmed Damage] or [Weapon Damage] + 4d12 lightning; half on a success. Failing by 5 or more: it takes the damage as if vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d12) + (1d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eKYdyetlGCDAva",
+                "type": "save",
+                "label": "Reverse Beheading",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "All creatures in a 15-foot radius: [Unarmed Damage] or [Weapon Damage] + 4d12 lightning; half on a success. Failing by 5 or more: it takes the damage as if vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d12) + (2d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ranton-storm-release-secondary-discharge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eM4LE10uR9tRQk",
+          "type": "roll",
+          "label": "Secondary Discharge",
+          "roll": {
+            "formula": "",
+            "note": "Cast with a Ranton Hijutsu, one: +1 to its first attack (beats AC by 5: +2 damage dice); +1 to its save DC (fails by 5: a Refraction Point for 1 minute); or its summons gain 15 hit points."
+          }
+        }
+      ]
+    },
+    "ranton-storm-release-snake-chains": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Storm Snakes beside a creature within 60 feet; command them as a Bonus action; they can take reactions; they use your Ninjutsu attack bonus and save DC. Their statistics aren't in the text (Q-E14)."
+        }
+      ]
+    },
+    "ranton-storm-release-thunder-cloud-inner-wave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLynv3QCYXa3Dy",
+          "type": "save",
+          "label": "Thunder Cloud Inner Wave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ],
+          "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "lightning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eLynv3QCYXa3Dy",
+                "type": "save",
+                "label": "Thunder Cloud Inner Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eLynv3QCYXa3Dy",
+                "type": "save",
+                "label": "Thunder Cloud Inner Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eLynv3QCYXa3Dy",
+                "type": "save",
+                "label": "Thunder Cloud Inner Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eLynv3QCYXa3Dy",
+                "type": "save",
+                "label": "Thunder Cloud Inner Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

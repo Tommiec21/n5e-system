@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "keton",
-      "sourceLine": 5838
+      "sourceLine": 5838,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Stellar Charges: 1 + proficiency bonus (the pool); 0 at the start and end of combat. Two Constellations (more at 7th and 15th); their saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
     }
   },
   "ownership": {
@@ -47,16 +54,35 @@
       {
         "id": "stellarCharges",
         "label": "Stellar Charges",
+        "value": 0,
         "max": "1 + @prof",
         "die": "",
+        "steps": [],
+        "step": 0,
         "recovery": [
           {
-            "on": "event",
-            "amount": "all",
+            "on": "encounter",
+            "amount": "empty",
             "formula": "",
             "requires": ""
           }
         ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5er8JFtRwDy4xkF",
+        "type": "roll",
+        "label": "Gain a Stellar Charge",
+        "roll": {
+          "formula": "",
+          "note": "In combat, 1 per trigger per turn: you damage a hostile creature, a hostile creature damages you, you start your turn concentrating on a Keton Hijutsu, or you give an ally a bonus to attack or damage."
+        },
+        "cost": {
+          "pool": "stellarCharges",
+          "amount": 1,
+          "gain": true
+        }
       }
     ]
   }

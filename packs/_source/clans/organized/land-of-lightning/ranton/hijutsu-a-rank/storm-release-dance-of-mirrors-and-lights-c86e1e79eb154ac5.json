@@ -17,6 +17,92 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release, Reezaa Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] The same creatures each volley."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eotreHZz2P1Xs3",
+              "type": "attack",
+              "label": "Mirrors and Lights: first volley",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Needs 2+ Refraction Points: one attack roll against each one in range.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etRXGDC2LQ33Qy",
+              "type": "attack",
+              "label": "Second volley (2+ hits)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eZXVmqOMVM8oeU",
+              "type": "attack",
+              "label": "Third volley (4+ hits)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ebqwFrijrtYoCV",
+              "type": "attack",
+              "label": "Fourth volley (8+ hits)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +196,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eotreHZz2P1Xs3",
+        "type": "attack",
+        "label": "Mirrors and Lights: first volley",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Needs 2+ Refraction Points: one attack roll against each one in range.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5etRXGDC2LQ33Qy",
+        "type": "attack",
+        "label": "Second volley (2+ hits)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eZXVmqOMVM8oeU",
+        "type": "attack",
+        "label": "Third volley (4+ hits)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ebqwFrijrtYoCV",
+        "type": "attack",
+        "label": "Fourth volley (8+ hits)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

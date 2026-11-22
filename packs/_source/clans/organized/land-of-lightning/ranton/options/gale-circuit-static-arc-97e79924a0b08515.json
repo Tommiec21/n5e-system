@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6061,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,43 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eCpujWwImtAvUx",
+        "type": "save",
+        "label": "Static Arc",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          },
+          {
+            "key": "ranton-refraction-point",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Refraction Point"
+          }
+        ],
+        "text": "Once per turn, Bonus action after you deal lightning damage: a creature you can see within 20 feet of the target. Failure: Shocked and a Refraction Point for 1 minute.",
+        "activation": "bonus",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -123,3 +123,34 @@ test("King Q-E8–Q-E11: Combo/Finisher Boon, Divine Wind's text, Blazing Aura's
   const src = (await import("node:fs")).readFileSync(new URL("../module/workflow/recovery.mjs", import.meta.url), "utf8");
   assert.match(src, /stampGain\(/, "turn-start gains are stamped");
 });
+
+test("STD6e E3 Land of Lightning: every Chinoike, Keton and Ranton item reviewed, with its pools, stances and Blood Detonation", () => {
+  for ( const clan of ["chinoike", "keton", "ranton"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("chinoike", "chinoike-ketsuryugan", "crimsonCharges").max, "1 + @prof");
+  assert.equal(pool("keton", "keton-stargazer", "starlights").lifetime, 60);
+  assert.equal(pool("keton", "keton-stellar-convergence", "stellarCharges").recovery[0].amount, "empty");
+  assert.equal(pool("ranton", "ranton-storm-incarnate", "voltage").max, "lvl(1:4,7:5,15:6)");
+  const sphere = item("chinoike", "chinoike-sanguine-sphere");
+  assert.equal(sphere.flags.n5e.castOption.cost.amount, 2);
+  assert.equal(sphere.flags.n5e.castOption.appliesTo.namePrefix, "Sanguine Sphere");
+  const solar = item("keton", "keton-stance-solar-flare").system.activities.map(a => a.label);
+  assert.deepEqual(solar, ["Stellar Knuckle", "Plasma Burst"]);
+  assert.equal(item("ranton", "ranton-stance-laser-circus").system.activities[0].attack.discipline, "highest");
+  assert.equal(item("chinoike", "chinoike-crimson-architect").system.uses.per, "lr");
+  assert.match(item("chinoike", "chinoike-blood-dragon-ascension").system.activities[0].summon.uuid, /n5e6xblImso76jRj$/);
+});
+
+test("STD6e E3: combat recovery honors the pool's amount (Jiton +1 a turn; Stellar Charges and Voltage empty each combat)", async () => {
+  const { combatRecoveryPlan } = await import("../module/rules/recovery.mjs");
+  const actor = { items: [], system: { resources: {
+    magnetic: { label: "Magnetic Charges", value: 1, maxValue: 4, recovery: [{ on: "turn", amount: "formula", formula: "1" }] },
+    stellar: { label: "Stellar Charges", value: 3, maxValue: 4, recovery: [{ on: "encounter", amount: "empty" }] },
+    martial: { label: "Martial Dice", value: 0, maxValue: 2, recovery: [{ on: "turn" }] } } } };
+  assert.deepEqual(combatRecoveryPlan(actor, ["turn"]).update, { "system.resources.magnetic.value": 2, "system.resources.martial.value": 2 });
+  assert.deepEqual(combatRecoveryPlan(actor, ["encounter"]).update, { "system.resources.stellar.value": 0 });
+});

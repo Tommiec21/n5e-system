@@ -17,6 +17,18 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Water Release, Medical",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Enhanced Circulation"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. You still take damage: a spear at the triggering creature (the spear button)."
       }
     }
   },
@@ -111,7 +123,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eVyEBaeKdA4BnC",
+        "type": "effect",
+        "label": "Enhanced Circulation",
+        "effect": {
+          "name": "Enhanced Circulation",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: +4 AC (against the trigger too) and advantage on Constitution saves until the start of your next turn.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5ezhG5JMhZF7v00",
+        "type": "attack",
+        "label": "Blood Detonation: spear",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "You still take damage: the triggering creature within 60 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

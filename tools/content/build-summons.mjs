@@ -289,8 +289,35 @@ const dragon = clay("clay-dragon", "Clay Dragon", "huge", 16, 60, { walk: 0, fly
   castBio("Explosion Release: Clay Dragon", clayStats(16, "60 + 25 for every rank above A-Rank", "40 ft. flying", "STR +5 (save +11), DEX +4 (+10), CON +5 (+11), INT −5, WIS +0, CHA −5", true, "All Mental, All Sensory, Stunned, Exhaustion") + "<p><strong>DR</strong> 6. <strong>Jutsu Slots</strong> 4.</p>"));
 dragon.system.traits.dr = 6;
 
+// The Blood Dragon (Chinoike Hijutsu Blood Dragon Ascension, A-Rank): it uses your highest jutsu attack bonus and save DC.
+const chinoike = folder("Chinoike", null, "chinoike");
+const HIGH_DC = "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof", HIGH_ATK = "max(@attack.nin, @attack.tai, @attack.gen) - @prof";
+const bloodDragon = actor("blood-dragon", "Blood Dragon", chinoike._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Chinoike: Blood Dragon", summonRole: "Blood Dragon",
+    biography: html("<p><em>Blood Dragon Ascension (Chinoike Hijutsu).</em> You command the Dragon, and it only listens to you (no action needed). It uses your highest jutsu attack bonus or Save DC. It takes its turn immediately after yours.</p>",
+      "<p><strong>Gargantuan Construct, Unaligned.</strong> <strong>Armor Class</strong> 21 · <strong>Hit Points</strong> 100 · <strong>Speed</strong> 40 ft.</p>",
+      "<p><strong>Abilities</strong> STR +6 (save +11), DEX +1 (+7), CON +6 (+11), INT −5, WIS +0, CHA −5 (−5). <strong>Damage Vulnerabilities</strong> Earth. <strong>Damage Resistances</strong> Bludgeoning, Piercing, Slashing. <strong>Damage Immunities</strong> Fire, Poison. <strong>Condition Immunities</strong> Bleeding, Bruised, All Mental and Sensory, Paralyzed, Petrified, Envenomed. <strong>Senses</strong> Blindsight 60 ft., Passive Perception 10.</p>",
+      "<p><strong>Linked to you when summoned:</strong> its attack bonus and save DC (your highest jutsu ones).</p>") },
+  abilities: { str: { value: 22 }, dex: { value: 12 }, con: { value: 22 }, int: { value: 1 }, wis: { value: 10 }, cha: { value: 1 } },
+  attributes: { ac: { calc: "flat", flat: 21, formula: "" }, init: { bonus: "" } },
+  traits: { size: "gargantuan", vuln: ["earth"], resist: ["bludgeoning", "piercing", "slashing"], immune: ["fire", "poison"],
+    conditionImmune: ["bleed", "bruised", "envenomed", "petrified", ...MENTAL_SENSORY], speed: { walk: 40, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false },
+    senses: { blindsight: 60 } },
+  hpMax: 100, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Ineffable Makeup", "npcTraits", html("The Blood Dragon cannot be dispelled by any jutsu of A-Rank or Lower.")),
+  item(id, "Liquid Body", "npcTraits", html("Creatures are able to pass through the body of the Blood Dragon at its summoner's discretion. If a creature ends their turn in your space, they are immediately ejected out of you in a space that can hold them.")),
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Blood Dragon can attack 2 times with its Bite or Hydra Bullet. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 3d10 + 6 Cold or Necrotic damage (pick one)."),
+    [act("blood-dragon", "Bite", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "3d10 + 6", type: "necrotic" }] }, text: "Cold or necrotic (pick one)." })]),
+  item(id, "Hydra Bullet", "npcStrikes", html("<em>Ranged Weapon Attack:</em> Range (60/120), one creature. <em>Hit:</em> 4d6+6 Cold or Necrotic damage (pick one)."),
+    [act("blood-dragon", "Hydra Bullet", "attack", { attack: { discipline: "nin", range: "ranged", count: 2, bonus: "0" }, damage: { parts: [{ formula: "4d6 + 6", type: "necrotic" }] }, text: "Cold or necrotic (pick one)." })]),
+  item(id, "Vicious Vortex", "npcAbilities", html("The heads of the dragon converge and form into a gargantuan torrent of water, ripping everything it touches to shreds. The dragon travels to a space within its movement speed, taking a specific path that you designate. Each creature within this path must make a Dexterity saving throw, taking 8d6 cold or necrotic damage (pick one) and having their movement speed reduced by half until the end of their next turn on a failure, or half as much damage and no further effects on a success."),
+    [act("blood-dragon", "Vicious Vortex", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "half", resave: false }, damage: { parts: [{ formula: "8d6", type: "necrotic" }] }, text: "Cold or necrotic (pick one). Failure: half speed until the end of its next turn." })]),
+  item(id, "Blood Ocean", "npcAbilities", html("<em>(Recharge 9-10).</em> The Blood Dragon casts Genjutsu: Numbing Blood Spear at B-Rank as if you had cast it twice, at two different locations. These castings cannot trigger their Blood Detonation, effects."), [], { uses: { max: "1", spent: 0, per: "", recharge: "9-10", staminaEligible: false } })
+], { "details.level": "@level", "bonuses.saveDC.nin": HIGH_DC, "bonuses.attack.nin": HIGH_ATK }, "icons/svg/mystery-man-black.svg");
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -311,5 +338,7 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write(`genjutsu-specialist/illusionist/phantasm-${phantasm._id}.json`, phantasm);
   write("bakuton/_folder.json", bakuton);
   for ( const d of [spider, bird, centipede, dragon] ) write(`bakuton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
-  console.log(`✓ summons: 8 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  write("chinoike/_folder.json", chinoike);
+  write(`chinoike/blood-dragon-${bloodDragon._id}.json`, bloodDragon);
+  console.log(`✓ summons: 9 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

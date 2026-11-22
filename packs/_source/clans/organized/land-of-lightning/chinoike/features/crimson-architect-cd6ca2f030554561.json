@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "chinoike",
-      "sourceLine": 5603
+      "sourceLine": 5603,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the domain: creatures with Bleed regain half the hit points they would (you gain the rest); a creature with Bleed starting its turn there moves 30 feet or loses its Reaction until its next turn; an ally gaining hit points or temporary hit points gives half to another ally; Reaction, a creature with 2+ ranks of Bleed leaving the domain: its speed drops to 0 and it moves 15 feet toward you. (Its item text also holds Crimson Pact's Amp: Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,29 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ep6wz22c3DECGb",
+        "type": "effect",
+        "label": "Crimson Domain",
+        "effect": {
+          "name": "Crimson Domain",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Action, with your Ketsuryugan active, once per long rest: a 40-foot radius on you for 1 minute.",
+        "activation": "action"
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

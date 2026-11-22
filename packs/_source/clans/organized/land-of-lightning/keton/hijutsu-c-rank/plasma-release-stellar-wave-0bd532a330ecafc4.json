@@ -17,6 +17,98 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 damage and +5 feet per rank (add them)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ez9ZRy9Sc2YSl7",
+              "type": "save",
+              "label": "Stellar Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d10)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ez9ZRy9Sc2YSl7",
+              "type": "save",
+              "label": "Stellar Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d10)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ez9ZRy9Sc2YSl7",
+              "type": "save",
+              "label": "Stellar Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d10)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +201,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ez9ZRy9Sc2YSl7",
+        "type": "save",
+        "label": "Stellar Wave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

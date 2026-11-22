@@ -17,6 +17,131 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eHLmeo9RgzzmtC",
+              "type": "save",
+              "label": "Lightning Splash",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eHLmeo9RgzzmtC",
+              "type": "save",
+              "label": "Lightning Splash",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eHLmeo9RgzzmtC",
+              "type": "save",
+              "label": "Lightning Splash",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (6d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +234,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eHLmeo9RgzzmtC",
+        "type": "save",
+        "label": "Lightning Splash",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "A 20-foot cube within 60 feet. Failure: the damage and Shocked (Dazed too on a Refraction Point); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

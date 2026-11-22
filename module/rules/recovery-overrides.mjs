@@ -40,6 +40,7 @@ export function recoveryText(recovery = []) {
     === JSON.stringify(list.map(r => [r.on, r.amount || "all"])));
   if ( preset ) return preset.label;
   return list.map(r => {
+    if ( r.amount === "empty" ) return `empty on ${ON_LABELS[r.on] ?? r.on}`;
     const amount = r.amount === "half" ? "half" : r.amount === "formula" ? `${r.formula || "some"}` : r.amount === "setHalf" ? "up to half" : "all";
     return `${amount} on ${ON_LABELS[r.on] ?? r.on}`;
   }).join(", ");

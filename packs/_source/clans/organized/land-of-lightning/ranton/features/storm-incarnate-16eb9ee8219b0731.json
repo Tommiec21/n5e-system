@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ranton",
-      "sourceLine": 6038
+      "sourceLine": 6038,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Entering initiative: the Storm Force state in Spear or Shield form until combat ends (swap as a Bonus action; the two option items have the buttons). Voltage: up to 4 (5 at 7th, 6 at 15th), the pool; 0 at the start and end of combat."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,41 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0ZyhWPGg1CTdI",
+        "type": "roll",
+        "label": "Gain a Voltage",
+        "roll": {
+          "formula": "",
+          "note": "1 per trigger per turn: a hostile creature damages you, you deal lightning damage to a hostile creature, or you succeed on a save against a hostile effect."
+        },
+        "cost": {
+          "pool": "voltage",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "voltage",
+        "label": "Voltage",
+        "value": 0,
+        "max": "lvl(1:4,7:5,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

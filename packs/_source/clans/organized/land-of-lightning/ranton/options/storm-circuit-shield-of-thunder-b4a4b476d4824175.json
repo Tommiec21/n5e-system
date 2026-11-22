@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6082,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,23 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSqboUGz9J5xCC",
+        "type": "heal",
+        "label": "Shield of Thunder",
+        "heal": {
+          "formula": "2d6 + @level",
+          "pool": "tempHp"
+        },
+        "text": "In Shield Form, once per turn, Reaction to damage from an attack: a lightning Barrier with these hit points until the end of the turn (11th: immune to bludgeoning, piercing and slashing).",
+        "activation": "reaction",
+        "cost": {
+          "pool": "voltage",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

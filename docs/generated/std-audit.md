@@ -83,7 +83,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1715 | 200 | 1 | 154 | 154 | 0 |
+| clans | 1715 | 273 | 1 | 200 | 200 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
@@ -91,7 +91,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | features | 700 | 411 | 43 | 372 | 360 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
-| summons | 8 | 0 | 0 | 0 | 0 | 0 |
+| summons | 9 | 0 | 0 | 0 | 0 | 0 |
 
 ## 4. Amps (AMP1b)
 
@@ -100,11 +100,11 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 16 | 71 | 0 | 26 |
+| clans | 0 | 0 | 18 | 71 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **88** | **96** | **0** | **50** |
+| **Total** | **124** | **158** | **90** | **96** | **0** | **50** |
 
 ### clans: 71 candidates
 
@@ -174,11 +174,11 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Interdiction Seal**: Its text names a Reflex Amp.
 - **Nindo: Always Go Beyond**: Its text names a Fortitude Amp.
 - **Crimson Architect**: Its text names a Fortitude Amp.
-- **Crimson Pact**: Its text names a Fortitude Amp.
 - **Dust Veil**: Lasting bonus: "…You gain an additional…"
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
 - **Wrath of the Dragon**: Its text names a Battle Amp.
+- B · **Plasma Release: Light Binding Step**: Lasting bonus: "…Your movement speed is increased…"
 
 ### features: 25 candidates
 

@@ -1012,3 +1012,5 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Summoner links: `@rankValue` (the summoning jutsu's cast rank, D 1 ... S 5; 0 otherwise).
 - Stance `system.unarmedNoMod` (0.79.1-alpha.1): its [Unarmed Damage] adds no ability modifier.
 - Pool `lifetime` (seconds, 0.79.2-alpha.1): each unit lasts that long unless spent; gain times in the actor's `flags.n5e.poolStamps.<id>` (oldest first, spent first). Rules: `rules/pool-expiry.mjs`.
+
+- Pool recovery amounts in combat (0.81.0-alpha.1): turn, round and encounter recovery use the amount too (`formula` regains that many, `half` half the max, `all` refills); `empty` drops the pool to 0 (`rules/recovery.mjs combatRecoveredValue`).

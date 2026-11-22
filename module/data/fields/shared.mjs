@@ -67,7 +67,7 @@ export const rank = (initial = "D", options = {}) => new (F().StringField)({
  *  - steps: die-step mode (ammo die: [8,6,4,1,0]); `step` is the current index
  *  - recovery: [{on, amount, formula, requires}]
  *      on: sr | lr | fr | rest (any rest) | rest10m (10 minutes of rest) | day | event | never
- *      amount: all | half (regain half the max) | setHalf (a Short Rest raises it to half)
+ *      amount: all | half (regain half the max) | setHalf (a Short Rest raises it to half) | formula | empty (drops to 0)
  *      requires: a feature identifier the owner must have (Focus on a Short Rest: tenketsu-refinement)
  *      (rest handling: rules/rest.mjs)
  *  - castsJutsu: can pay jutsu costs instead of chakra (clan resources)

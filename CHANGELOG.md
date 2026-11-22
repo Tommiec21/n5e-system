@@ -1,3 +1,14 @@
+## 0.81.0-alpha.1 — Clans as data: E3 Land of Lightning (Chinoike, Keton, Ranton)
+
+King 2026-11-21: "Next Batch."
+
+- **84 clan items reviewed:** see `docs/clans/`.
+- **Chinoike:** Ketsuryugan Amp; Crimson Charges with every Crimson Evocation; Blood Detonation as a cast dialog option on each Hijutsu; Crimson Pact; Crimson Domain; the Blood Dragon summon (Class & Clan Summons › Chinoike).
+- **Keton:** Starlights (each lasts 1 minute); the Solar Flare stance's Stellar Knuckle and Plasma Burst; Stellar Charges with every Constellation; Event Horizon.
+- **Ranton:** the Laser Circus stance and attack; Voltage with every Storm Circuit; Spear and Shield Forms; every Gale Circuit; Eye of the Storm.
+- **Combat recovery amounts:** a pool's turn, round and combat recovery now uses its amount. Jiton's Magnetic Charges gain 1 a turn (they refilled before: fixed). New amount "Empty": Stellar Charges and Voltage start each combat at 0.
+- Questions Q-E12–Q-E16 in `docs/STD6e_SPEC.md`; nothing waits on them.
+
 ## 0.80.1-alpha.1 — Clans as data: E2 follow-ups (Q-E8–Q-E11)
 
 King 2026-11-21: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration."

@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6063,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,50 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMuCQVFL5Oo2Om",
+        "type": "damage",
+        "label": "Cascade",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Once per turn, after you deal cold and lightning to it: until the end of your next turn, if it moves more than 5 feet willingly or casts a Mobility (M) jutsu, three times your Laser Circus damage.",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5e6hzrGBa8v0zAI",
+        "type": "save",
+        "label": "Cascade: stun",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Failure: Stunned until the end of its current turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -17,6 +17,232 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Water Release, Medical",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 rank of Exhaustion per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e4p9CFAvLCA7Nf",
+              "type": "save",
+              "label": "Blood Lake",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                  "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eE1Gkuv8kKlMzL",
+              "type": "damage",
+              "label": "Blood Lake: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5euKgg8NunHo35H",
+              "type": "damage",
+              "label": "Blood Lake: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e4p9CFAvLCA7Nf",
+              "type": "save",
+              "label": "Blood Lake",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                  "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eE1Gkuv8kKlMzL",
+              "type": "damage",
+              "label": "Blood Lake: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5euKgg8NunHo35H",
+              "type": "damage",
+              "label": "Blood Lake: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4p9CFAvLCA7Nf",
+              "type": "save",
+              "label": "Blood Lake",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                  "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eE1Gkuv8kKlMzL",
+              "type": "damage",
+              "label": "Blood Lake: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5euKgg8NunHo35H",
+              "type": "damage",
+              "label": "Blood Lake: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Genjutsu: Blood Lake"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. Up to two creatures."
       }
     }
   },
@@ -111,7 +337,74 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4p9CFAvLCA7Nf",
+        "type": "save",
+        "label": "Blood Lake",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+            "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eE1Gkuv8kKlMzL",
+        "type": "damage",
+        "label": "Blood Lake: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5euKgg8NunHo35H",
+        "type": "damage",
+        "label": "Blood Lake: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

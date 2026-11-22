@@ -60,6 +60,7 @@ Plus each clan's stances and (Q-E1) Hijutsu in the same batch.
 | E-D3 | Hijutsu upcasts | A Hijutsu's per-rank buttons (`flags.n5e.jutsuBookImport.activitiesByRank`) carry the extra dice of each higher rank, like the jutsu importer's. |
 | E-D4 | Cast rank on summons | A summon from a cast card passes its rank; summoner links can use `@rankValue` (D 1 ... S 5): the Clay constructs' hit points. |
 | E-D6 | Pool unit lifetime | A pool's `lifetime` (seconds): each unit lasts that long unless spent (spending uses the oldest; the actor's `flags.n5e.poolStamps`); the active GM drops expired units as world time passes (King Q-E6: Primes, Pressure). |
+| E-D7 | Combat recovery amounts | A pool's turn, round and combat recovery uses its amount: `formula` regains that many (Jiton's 1 Magnetic Charge a turn; before this it refilled), `half` half the max, and the new `empty` drops it to 0 (Stellar Charges and Voltage start each combat at 0; Starlights end with it). `rules/recovery.mjs combatRecoveredValue`. |
 | E-D5 | Item fields from tables | A table entry's `system` sets item fields (a stance's `unarmedDie` and `unarmedType`: Ballistic Knuckle). |
 
 ## E1 Land of Earth (0.79.0-alpha.1)
@@ -82,6 +83,15 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - **Konjiki:** Liquid Metal Ingots (pool, back on a short rest) with every Alomancy; Alomancy Infusions as cast dialog options on the Hijutsu; every Hijutsu.
 - **Shakuton:** Scorch Charges (pool, each lasts 1 minute) with every Desiccated Heat ability; each Hijutsu's Scorch effect as a cast dialog option that spends its charges.
 
+## E3 Land of Lightning (0.81.0-alpha.1)
+
+Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `ranton-automation.md` (84 items: 74 partly automated, 10 notes only).
+
+- **Chinoike:** the Ketsuryugan Amp (and its 11th-level card); Crimson Charges (pool, back on a short or long rest) with every Crimson Evocation; each Hijutsu's Blood Detonation as a cast dialog option for 2 Crimson Charges (Rivers of Blood: any number); Crimson Pact's Amp; Crimson Domain (once per long rest); every Hijutsu; the Blood Dragon summon (Class & Clan Summons › Chinoike), using your highest jutsu attack bonus and save DC.
+- **Keton:** Starlights (pool, each lasts 1 minute, gone when combat ends) with Manifest and Dismiss; the Solar Flare stance (Stellar Knuckle and Plasma Burst attacks); Stellar Charges (pool, 0 each combat) with every Constellation; Fission's saves; Event Horizon's Amp (once per long rest, 4 Stellar Charges); every Hijutsu (Light Binding Step keeps its Amp button).
+- **Ranton:** the Laser Circus stance and attack (also on Storm Release Manifestation - Storm); Voltage (pool, 0 each combat) with every Storm Circuit; Spear and Shield Form effects (Shield Form's temporary hit points from your Voltage); every Gale Circuit; Eye of the Storm (once per long rest); every Hijutsu.
+- **At the table:** Starlight and Refraction Point positions, damage-type swaps, the second nature release (set it on the sheet), branch-only items (their notes say the branch).
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -93,6 +103,12 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - **Q-E10 Blazing Aura:** answered (King 2026-11-21): "+1d6 bonus damage". 1d6 at 3rd, 2d6 at 7th, 3d6 at 15th, as a damage button (0.80.1-alpha.1).
 - **Q-E11 Jiton Magnetic Charges:** answered (King 2026-11-21): "Share duration". Units gained at the start of a turn (or any turn, round or combat recovery) carry the pool's lifetime too (0.80.1-alpha.1).
 
+- **Q-E12 Stray Amp text:** Crimson Architect's item text holds Crimson Pact's Amp, and Aphelion – The Mirror's (and Stellar Convergence's) holds Event Horizon's. Both Amp cards already exist. Remove the copies from those items?
+- **Q-E13 Aphelion – The Mirror:** its text gives no Stellar Charge cost (every other Constellation has one). What does it cost?
+- **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.)
+- **Q-E15 Plasma Release: Light Binding Step:** its A-Rank upcast names "the special reaction granted by this jutsu", but the jutsu grants no reaction. What is the reaction?
+- **Q-E16 Crimson Weaponry:** "If the weapon has the ammunition property, and it cannot be reduced in size, below a d8." What does this sentence mean?
+
 ## Text issues (for the errata list)
 
 - Bakuton: Absolute Death Bombing's text held two other Hijutsu (now split out, Q-E5); Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
@@ -102,6 +118,9 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - Hanami: "Marital Arts"; the Boosting Boon option holds the Combo/Finisher Boon (split out, Q-E8); Blazing Aura has no base damage (Shakuton, Q-E10).
 - Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
 - Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
+- Chinoike: Ketsuryugan "1o minutes"; Blood Drain "cat at B-Rank"/"cat at S-Rank"; Blood Missiles "cat at C-Rank" and "saving throw vs gaining"; Sanguine Sphere's upcast is split over three lines; Illusory Pain Receptor spends no Crimson Charges; Crimson Architect holds Crimson Pact's Amp (Q-E12).
+- Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (Q-E15); Event Horizon's Amp sits in Aphelion's text (Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
+- Ranton: Gale Style "unique for of combat"; Storm Release Manifestation - Reezaa "change the damage type to Water or Lightning" and both Manifestations "Cold or Lightning release keywords" (Water); Snake Chains has no stat block (Q-E14); Storm Drain "granting then"; Lariat "clothes line".
 
 ## Progress log
 
@@ -111,3 +130,4 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - 2026-11-21 King: "1 minute cleanse unless spent." Claude: pool unit lifetimes (E-D6); Primes and Pressure last 1 minute each; published 0.79.2-alpha.1.
 - 2026-11-21 King: "Next batch." Claude: E2 Land of Wind built (115 items); published 0.80.0-alpha.1. Q-E8–Q-E11 asked; nothing waits on them.
 - 2026-11-21 King: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration." Claude: Combo/Finisher Boon option, Divine Wind stance text, Blazing Aura damage, turn gains share the pool lifetime; published 0.80.1-alpha.1.
+- 2026-11-21 King: "Next Batch." Claude: E3 Land of Lightning built (84 items), E-D7 combat recovery amounts (fixes Jiton refilling), the Blood Dragon summon; published 0.81.0-alpha.1. Q-E12–Q-E16 asked; nothing waits on them.

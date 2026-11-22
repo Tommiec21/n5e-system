@@ -287,8 +287,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `proficiency.mjs` | 54 | Weapon proficiency by category + group pairs (pure; DATA1b, King 2026-11-13). | `WEAPON_GROUPS`, `WEAPON_CATEGORIES`, `UNIVERSAL_WEAPONS`, `baseWeaponKey`, `expandGrant`, `expandGrants`, `isProficientWith` |
 | `progression.mjs` | 123 | Level-based rules: proficiency, Mastery, ranks, HP/CP, inventory. | `band`, `abilityMod`, `proficiencyForLevel`, `SLOW_PROFICIENCY`, `proficiencyFor`, `freeFeatCount`, `masteryCap`, `masteryRank`, `masteryBonus`, `asiParts`, `asiCount`, `rankValue`, `stepRank`, `rankForLevel`, `maxRankForLevel`, `upcastRanks`, `poolMax`, `inventorySlots`, `abilityRequirement`, `isAbility` |
 | `reactions.mjs` | 18 | Reaction decisions only: accepting a window never applies an effect or spends a resource. | `reactionDeadline`, `reactionPhase`, `decideReaction` |
-| `recovery-overrides.mjs` | 91 | Class & Clan limits (King 2026-11-21): the GM can change when a class, subclass or clan feature's limit comes back. | `POOL_RECOVERY`, `AMP_RECOVERY`, `poolLimitKey`, `ampLimitKey`, `recoveryText`, `applyPoolOverride`, `ampPer`, `limitSections` |
-| `recovery.mjs` | 37 | Combat recovery periods (pure; dnd5e Combat5e._recoverUses pattern). | `COMBAT_PERIODS`, `combatRecoveryPlan` |
+| `recovery-overrides.mjs` | 92 | Class & Clan limits (King 2026-11-21): the GM can change when a class, subclass or clan feature's limit comes back. | `POOL_RECOVERY`, `AMP_RECOVERY`, `poolLimitKey`, `ampLimitKey`, `recoveryText`, `applyPoolOverride`, `ampPer`, `limitSections` |
+| `recovery.mjs` | 52 | Combat recovery periods (pure; dnd5e Combat5e._recoverUses pattern). | `combatRecoveredValue`, `COMBAT_PERIODS`, `combatRecoveryPlan` |
 | `resolution.mjs` | 63 | Per-target resolution (pure; RES1, KB 03 and 04). | `saveMode`, `targetOutcomes`, `pickLinkedRolls` |
 | `resource-cost.mjs` | 75 | What using a feature or option costs from the character's pools (pure). | `resourceCost`, `cannotPay` |
 | `resources.mjs` | 14 | Positive integer costs only; explicit zero is a free operation, never an implicit spend of one. | `resourceChange` |

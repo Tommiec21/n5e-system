@@ -17,6 +17,328 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Medical Stable",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank or higher: two targets per attack."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eyxTERC8bhESgS",
+              "type": "attack",
+              "label": "Blood Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Bonus action each turn, a creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNeSxjbZkqIXvb",
+              "type": "save",
+              "label": "Blood Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emsXKLZEI5Fvug",
+              "type": "save",
+              "label": "Blood Detonation: shrapnel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eyxTERC8bhESgS",
+              "type": "attack",
+              "label": "Blood Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Bonus action each turn, a creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNeSxjbZkqIXvb",
+              "type": "save",
+              "label": "Blood Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emsXKLZEI5Fvug",
+              "type": "save",
+              "label": "Blood Detonation: shrapnel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eyxTERC8bhESgS",
+              "type": "attack",
+              "label": "Blood Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Bonus action each turn, a creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNeSxjbZkqIXvb",
+              "type": "save",
+              "label": "Blood Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emsXKLZEI5Fvug",
+              "type": "save",
+              "label": "Blood Detonation: shrapnel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eyxTERC8bhESgS",
+              "type": "attack",
+              "label": "Blood Missiles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Bonus action each turn, a creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNeSxjbZkqIXvb",
+              "type": "save",
+              "label": "Blood Missiles: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emsXKLZEI5Fvug",
+              "type": "save",
+              "label": "Blood Detonation: shrapnel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Blood Missiles"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. On a hit, shrapnel: the Blood Detonation save button."
       }
     }
   },
@@ -110,7 +432,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eyxTERC8bhESgS",
+        "type": "attack",
+        "label": "Blood Missiles",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Bonus action each turn, a creature within 60 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eNeSxjbZkqIXvb",
+        "type": "save",
+        "label": "Blood Missiles: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5emsXKLZEI5Fvug",
+        "type": "save",
+        "label": "Blood Detonation: shrapnel",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

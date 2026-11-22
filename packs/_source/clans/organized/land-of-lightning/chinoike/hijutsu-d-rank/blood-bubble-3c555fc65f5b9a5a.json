@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Medical",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick one application. A-Rank or higher: one more target or point."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,112 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eb7p8jB7oKswq7",
+        "type": "save",
+        "label": "Blinding Bubble",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "A creature within 60 feet. Failure: Blinded until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eloHx0sFtMUl2I",
+        "type": "save",
+        "label": "Drowning Bubble",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A creature within 60 feet. Failure: Dazed and Prone.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eTBrbsD4dQbIIX",
+        "type": "save",
+        "label": "Slime Bubble",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures within 5 feet of a point within 60 feet. Failure: speed 0 until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e9DgQKQcNkfytB",
+        "type": "effect",
+        "label": "Drift Bubble (C-Rank+)",
+        "effect": {
+          "name": "Drift Bubble",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Fly 60 feet until the end of your next turn; damage pops it."
+      },
+      {
+        "id": "n5eSCBtVSSAWIuP6",
+        "type": "heal",
+        "label": "Shield Bubble (B-Rank+)",
+        "heal": {
+          "formula": "20 + 4d6",
+          "pool": "tempHp"
+        },
+        "text": "Reaction: you or an ally within 10 feet taking damage; until the start of your next turn.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -17,6 +17,177 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release.",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank or higher: +1 target."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ehNuVdmJ7c5P6f",
+              "type": "attack",
+              "label": "Lightning Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVJn8RYVZKlZbM",
+              "type": "save",
+              "label": "Lightning Whip: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: speed 0 until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ehNuVdmJ7c5P6f",
+              "type": "attack",
+              "label": "Lightning Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVJn8RYVZKlZbM",
+              "type": "save",
+              "label": "Lightning Whip: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: speed 0 until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ehNuVdmJ7c5P6f",
+              "type": "attack",
+              "label": "Lightning Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVJn8RYVZKlZbM",
+              "type": "save",
+              "label": "Lightning Whip: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: speed 0 until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ehNuVdmJ7c5P6f",
+              "type": "attack",
+              "label": "Lightning Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVJn8RYVZKlZbM",
+              "type": "save",
+              "label": "Lightning Whip: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: speed 0 until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +280,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ehNuVdmJ7c5P6f",
+        "type": "attack",
+        "label": "Lightning Whip",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eVJn8RYVZKlZbM",
+        "type": "save",
+        "label": "Lightning Whip: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: speed 0 until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"
