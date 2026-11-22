@@ -88,16 +88,20 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - **Q-E6 Primes and Pressure:** answered (King 2026-11-21, after reading the full features): "1 minute cleanse unless spent". Each Prime and each Pressure lasts 1 minute from when it's gained unless spent first (pool `lifetime: 60`; spending uses the oldest; 0.79.2-alpha.1).
 - **Q-E7 Ballistic Knuckle:** answered (King 2026-11-21): dropped automatically (stance field `unarmedNoMod`; 0.79.1-alpha.1).
 
-- **Q-E8 Hanami Combo/Finisher Boon:** it has no option item of its own: its text sits inside the Boosting Boon option. Make it its own option (as Q-E5)?
-- **Q-E9 Fūshin Divine Wind stance:** the stance item holds Wind Scythe's text; the stance's real benefits are in Divine Winds. Replace the stance's text with Divine Winds' stance part?
-- **Q-E10 Blazing Aura:** "increase the damage this aura deals by +1d6 at 7th and 15th" but no base damage is given. What is it?
-- **Q-E11 Jiton Magnetic Charges:** each lasts 1 minute; the ones from buttons carry the timer, but the one gained at the start of your turn doesn't (it's added by the turn). Fine, or should turn gains expire too?
+- **Q-E8 Hanami Combo/Finisher Boon:** answered (King 2026-11-21): yes. Its own option item (split out of Boosting Boon's text; 0.80.1-alpha.1).
+- **Q-E9 Fūshin Divine Wind stance:** answered (King 2026-11-21): yes. The stance's text is now Divine Winds' stance part (0.80.1-alpha.1).
+- **Q-E10 Blazing Aura:** answered (King 2026-11-21): "+1d6 bonus damage". 1d6 at 3rd, 2d6 at 7th, 3d6 at 15th, as a damage button (0.80.1-alpha.1).
+- **Q-E11 Jiton Magnetic Charges:** answered (King 2026-11-21): "Share duration". Units gained at the start of a turn (or any turn, round or combat recovery) carry the pool's lifetime too (0.80.1-alpha.1).
 
 ## Text issues (for the errata list)
 
 - Bakuton: Absolute Death Bombing's text held two other Hijutsu (now split out, Q-E5); Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
 - Futton: Steam Bullet and Hiding in Acid Rain say "Scaled" (Scald); Hiding in Acid Rain's upcast has no cost increase.
 - Yoton: Hijutsu Flexibility says "Futton Clan Hijutsu"; Lava Stream "chape"; Rubber "gin a range"; Quicklime Hardening has no success result.
+- Fūshin: Divine Wind stance holds Wind Scythe's text (fixed, Q-E9); "tuns"; Storm Bastion's upcast starts "above D-Rank" (it's C-Rank); Soaring Wind Veil, Storm Geyser, Vicious Vortex and Wind Serpent's Maw repeat their results above their tier list.
+- Hanami: "Marital Arts"; the Boosting Boon option holds the Combo/Finisher Boon (split out, Q-E8); Blazing Aura has no base damage (Shakuton, Q-E10).
+- Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
+- Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
 
 ## Progress log
 
@@ -105,8 +109,5 @@ Review tables: `docs/clans/fushin-automation.md`, `hanami-automation.md`, `jiton
 - 2026-11-21 King: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin." Claude: E1 Land of Earth built (117 items), engine E-D1–E-D5, Clay construct summons; published 0.79.0-alpha.1. Q-E5–Q-E7 asked; nothing waits on them.
 - 2026-11-21 King: "Q5. Make them as its own item. Q6. Populate the entire feature. Q7. Drop it automatically." Claude: Clay Centipede and Chain Reaction Blitz as their own Hijutsu; Ballistic Knuckle drops the ability modifier; published 0.79.1-alpha.1. Full Priming Cataclysm, Broiling Rampart and Steam Engine text posted for Q-E6.
 - 2026-11-21 King: "1 minute cleanse unless spent." Claude: pool unit lifetimes (E-D6); Primes and Pressure last 1 minute each; published 0.79.2-alpha.1.
-- Fūshin: Divine Wind stance holds Wind Scythe's text (Q-E9); "tuns"; Storm Bastion's upcast starts "above D-Rank" (it's C-Rank); Soaring Wind Veil, Storm Geyser, Vicious Vortex and Wind Serpent's Maw repeat their results above their tier list.
-- Hanami: "Marital Arts"; the Boosting Boon option holds the Combo/Finisher Boon (Q-E8); Blazing Aura has no base damage (Shakuton, Q-E10).
-- Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
-- Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
 - 2026-11-21 King: "Next batch." Claude: E2 Land of Wind built (115 items); published 0.80.0-alpha.1. Q-E8–Q-E11 asked; nothing waits on them.
+- 2026-11-21 King: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration." Claude: Combo/Finisher Boon option, Divine Wind stance text, Blazing Aura damage, turn gains share the pool lifetime; published 0.80.1-alpha.1.

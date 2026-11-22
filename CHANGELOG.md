@@ -1,3 +1,12 @@
+## 0.80.1-alpha.1 — Clans as data: E2 follow-ups (Q-E8–Q-E11)
+
+King 2026-11-21: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration."
+
+- **Hanami Combo/Finisher Boon:** its own option item (split out of Boosting Boon), with a button that spends a Boon/Bane.
+- **Fūshin Divine Wind stance:** the stance's text is now Divine Winds' stance part.
+- **Shakuton Blazing Aura:** damage button, 1d6 fire at 3rd level, 2d6 at 7th, 3d6 at 15th.
+- **Pool lifetimes:** units a pool gains at the start of a turn (or any turn, round or combat recovery) carry the pool's lifetime too: Jiton's turn-start Magnetic Charge lasts 1 minute.
+
 ## 0.80.0-alpha.1 — Clans as data: E2 Land of Wind (Fūshin, Hanami, Jiton, Konjiki, Shakuton)
 
 King 2026-11-21: "Next batch."

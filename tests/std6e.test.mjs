@@ -108,3 +108,18 @@ test("E2: Scorch options spend Scorch Charges on their own Hijutsu; clan pools",
   const drizzle = effectiveActivities(item("jiton", "jiton-magnet-release-dust-particle-drizzle"), { rank: "C" }).find(a => a.label === "Drizzle: damage").damage.parts.map(p => p.formula);
   assert.deepEqual(drizzle, ["(1d12) + (1d12)", "(1d12) + (1d12)"]);
 });
+
+test("King Q-E8–Q-E11: Combo/Finisher Boon, Divine Wind's text, Blazing Aura's damage, turn-start charges expire", async () => {
+  const combo = item("hanami", "hanami-hanami-boons-banes-combo-finisher-boon");
+  assert.match(combo.system.description, /gain the Combo keyword/);
+  assert.equal(combo.system.activities[0].cost.pool, "boonsBanes");
+  assert.doesNotMatch(item("hanami", "hanami-hanami-boons-banes-boosting-boon").system.description, /Combo\/Finisher/);
+  assert.ok(load("clans", "clan-98ed1c91b88a7e93").flags.n5e.referenceOptions.some(o => o.id === combo._id));
+  const stance = item("fushin", "fushin-stance-divine-wind").system.description;
+  assert.match(stance, /Divine Wind chakra stance as a bonus action/);
+  assert.doesNotMatch(stance, /Wind Scythe state/);
+  const aura = item("shakuton", "shakuton-desiccated-heat-blazing-aura").system.activities.find(a => a.type === "damage");
+  assert.equal(aura.damage.parts[0].formula, "lvl(3:1d6,7:2d6,15:3d6)");
+  const src = (await import("node:fs")).readFileSync(new URL("../module/workflow/recovery.mjs", import.meta.url), "utf8");
+  assert.match(src, /stampGain\(/, "turn-start gains are stamped");
+});

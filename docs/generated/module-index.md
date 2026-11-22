@@ -380,7 +380,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `reaction-chain.mjs` | 27 | Newest reactions resolve first. | `createReactionChain` |
 | `reaction-dispatch.mjs` | 85 | Trusted system/module adapters. | `createReactionDispatcher` |
 | `reactions.mjs` | 183 | Reaction prompts. | `openReactionWindow`, `retireReactionWindows`, `resolveReactionWindow`, `waitForReactionWindow`, `askReactionLocally`, `registerReactionWindows` |
-| `recovery.mjs` | 17 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
+| `recovery.mjs` | 25 | Apply combat recovery periods (active GM; plan in rules/recovery.mjs). | `recoverCombatUses`, `recoverForCombat` |
 | `resolution.mjs` | 66 | Per-target resolution on damage cards (RES1). | `linkedOutcomes`, `renderResolution`, `registerResolutionHooks` |
 | `resources.mjs` | 115 | Shared validated resource payment for activities and feature use. | `payPoolCost`, `choosePoolCost`, `expirePoolUnits` |
 | `rest.mjs` | 161 | Rest dialogs (Foundry side). | `spendRations`, `registerRestIntents`, `restDialog`, `takeRest` |

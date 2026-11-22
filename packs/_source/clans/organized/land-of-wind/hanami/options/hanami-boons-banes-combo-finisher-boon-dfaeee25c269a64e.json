@@ -1,0 +1,76 @@
+{
+  "_id": "dfaeee25c269a64e",
+  "_key": "!items!dfaeee25c269a64e",
+  "type": "feat",
+  "name": "Hanami Boons/Banes: Combo/Finisher Boon",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "e1e78470e905ae3f",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "hanami",
+      "splitFrom": "hanami-hanami-boons-banes-boosting-boon",
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Or: after it casts a Combo jutsu, its next Medical or Inhale jutsu also gains the Finisher keyword and +2 damage dice (add them)."
+        }
+      ]
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "hanami-hanami-boons-banes-combo-finisher-boon",
+    "description": "<p>By consuming this Boon, for the next minute when the affected creature casts Jutsu with the Medical or Inhale keyword, those jutsu gain the Combo keyword, as if they were a Taijutsu.</p>\n<p>Alternatively, when the affected creature casts a Jutsu with the Combo keyword, if the next jutsu they cast has the Medical or Inhale keyword, it also gains the Finisher keyword, and increases the damage dealt by +2 damage die.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Split from the Boosting Boon option's text (King Q-E8, 2026-11-21)."
+    },
+    "category": "clanFeatureOption",
+    "requirement": {
+      "level": 3,
+      "class": "",
+      "clan": "hanami"
+    },
+    "featureType": "passive",
+    "activation": {
+      "type": "none",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "tags": [
+      "clan-option"
+    ],
+    "prerequisites": [],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eKVkVGUugVOlj2",
+        "type": "effect",
+        "label": "Combo/Finisher Boon",
+        "effect": {
+          "name": "Combo/Finisher Boon",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "For 1 minute, its Medical or Inhale jutsu gain the Combo keyword, as if Taijutsu.",
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ]
+  }
+}
