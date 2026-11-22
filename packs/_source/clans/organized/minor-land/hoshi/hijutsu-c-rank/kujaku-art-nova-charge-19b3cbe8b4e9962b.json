@@ -17,7 +17,14 @@
         "cost": "Special",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu, Taijutsu, Bukijutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spend 2 to 10 Star Chakra, in twos; one benefit by the amount: 2/4/6/8/10 extra damage; 4 Weakened; 6 disadvantage to dispel or interrupt it; 8 Star Sickness; 10 two of them."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,88 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e45eD4G5wg25C2",
+        "type": "damage",
+        "label": "Nova Charge: +1d6 per 2",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Your next jutsu before your next turn: +1d6 per 2 Star Chakra (roll per 2).",
+        "cost": {
+          "pool": "starChakra",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5eh0D4Q4gp1eFyk",
+        "type": "save",
+        "label": "Nova Charge (4): Weakened",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Its targets (or on a failure of its save). Failure: 2 Weakened.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "starChakra",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5e5QFCivgtW8ehv",
+        "type": "save",
+        "label": "Nova Charge (8): Star Sickness",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hoshi-star-sickness",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Star Sickness"
+          }
+        ],
+        "text": "Its targets (or on a failure of its save). Failure: 2 Star Sickness.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "starChakra",
+          "amount": 8
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

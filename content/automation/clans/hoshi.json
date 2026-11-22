@@ -1,0 +1,1780 @@
+{
+  "clan": "hoshi",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hoshi-celestial-body": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Resistance to chakra damage; immune to effects raising your jutsu or concentration cost. One Celestial Trait (+1 at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "hoshi-celestial-body-celestial-pulse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFX9CkEqY081p6",
+          "type": "roll",
+          "label": "Celestial Pulse",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a save against a Genjutsu you're aware of: a rank of Mastery per 2 Star Chakra."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-cosmic-siphon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4qBXlsrJhyGx6",
+          "type": "roll",
+          "label": "Cosmic Siphon",
+          "roll": {
+            "formula": "1d6",
+            "note": "Reaction, a creature within 30 feet casts an HS and CM jutsu: per 2 Star Chakra, its cost +4 and you roll 1d6 for Temporary Star Chakra."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-irradiated-imprint": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ela4auxPoYD7KC",
+          "type": "damage",
+          "label": "Irradiated Imprint",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          },
+          "text": "Casting a Hoshi Hijutsu at hostile creatures: 2 Star Chakra per creature saving marks it until the end of your next turn; ending its next turn within 20 feet: 2d6 poison + 2d6 per other marked creature there.",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-meteoric-pressure": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQfdJbNEMlPgWB",
+          "type": "save",
+          "label": "Meteoric Pressure",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Reaction, a hostile creature moves within 20 feet: everyone within 20 feet. Failure: speed 0 until the end of the turn, 2 Weakened and Bruised.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "starChakra",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-meteoric-reflection": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKtmrWD525GNCM",
+          "type": "damage",
+          "label": "Meteoric Reflection",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "force"
+              }
+            ]
+          },
+          "text": "Reaction, Ninjutsu damage from within 30 feet: per 2 Star Chakra, remove its highest die from the damage and add it to this (add by hand).",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-radiation-barrier": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edb3Yv6ratC4AT",
+          "type": "save",
+          "label": "Radiation Barrier",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Reaction to melee damage. Failure: 2d6 poison and 1 Weakened per 2 Star Chakra (roll this once per 2).",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-celestial-body-star-threads": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egGVx4CtzIm9Wh",
+          "type": "effect",
+          "label": "Star Threads",
+          "effect": {
+            "name": "Star Threads",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "chakra",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action: one willing ally within 30 feet per 2 Star Chakra, 1 minute (ends beyond 60 feet or behind full cover): resistance to chakra damage, advantage on saves against raised jutsu cost.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hoshi-irradiated-apex": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etinME0iqFXH0k",
+          "type": "effect",
+          "label": "Kujaku Sanseijin",
+          "effect": {
+            "name": "Kujaku Sanseijin",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0,
+            "amp": "kujaku-sanseijin-11"
+          },
+          "text": "Spending 6+ Star Chakra between the start of your last turn and your next: until the end of your next turn (not extended)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Kujaku Sanseijin's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "hoshi-kujaku-art-comet-beam": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXNpZ6AZOOmijH",
+          "type": "attack",
+          "label": "Comet Beam",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet (+1 target at B, +1 more at S).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eUzHpSo1sj7G07",
+          "type": "save",
+          "label": "Comet Beam: Bruised",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "On a hit. Failure: Bruised.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eC0DSRDeyFeRT6",
+          "type": "effect",
+          "label": "Irradiated: Star Sickness",
+          "effect": {
+            "name": "Star Sickness",
+            "target": "targets",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0,
+            "condition": "hoshi-star-sickness"
+          },
+          "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eXNpZ6AZOOmijH",
+                "type": "attack",
+                "label": "Comet Beam",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (+1 target at B, +1 more at S).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eUzHpSo1sj7G07",
+                "type": "save",
+                "label": "Comet Beam: Bruised",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit. Failure: Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eC0DSRDeyFeRT6",
+                "type": "effect",
+                "label": "Irradiated: Star Sickness",
+                "effect": {
+                  "name": "Star Sickness",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "nextTurnEnd",
+                  "seconds": 0,
+                  "condition": "hoshi-star-sickness"
+                },
+                "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eXNpZ6AZOOmijH",
+                "type": "attack",
+                "label": "Comet Beam",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (+1 target at B, +1 more at S).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eUzHpSo1sj7G07",
+                "type": "save",
+                "label": "Comet Beam: Bruised",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit. Failure: Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eC0DSRDeyFeRT6",
+                "type": "effect",
+                "label": "Irradiated: Star Sickness",
+                "effect": {
+                  "name": "Star Sickness",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "nextTurnEnd",
+                  "seconds": 0,
+                  "condition": "hoshi-star-sickness"
+                },
+                "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eXNpZ6AZOOmijH",
+                "type": "attack",
+                "label": "Comet Beam",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (+1 target at B, +1 more at S).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eUzHpSo1sj7G07",
+                "type": "save",
+                "label": "Comet Beam: Bruised",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit. Failure: Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eC0DSRDeyFeRT6",
+                "type": "effect",
+                "label": "Irradiated: Star Sickness",
+                "effect": {
+                  "name": "Star Sickness",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "nextTurnEnd",
+                  "seconds": 0,
+                  "condition": "hoshi-star-sickness"
+                },
+                "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eXNpZ6AZOOmijH",
+                "type": "attack",
+                "label": "Comet Beam",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (+1 target at B, +1 more at S).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (4d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eUzHpSo1sj7G07",
+                "type": "save",
+                "label": "Comet Beam: Bruised",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit. Failure: Bruised.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eC0DSRDeyFeRT6",
+                "type": "effect",
+                "label": "Irradiated: Star Sickness",
+                "effect": {
+                  "name": "Star Sickness",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "nextTurnEnd",
+                  "seconds": 0,
+                  "condition": "hoshi-star-sickness"
+                },
+                "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Comet Beam"
+          },
+          "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): a failed save also gives 1 Star Sickness until the end of your next turn.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-cosmic-flare": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eD0bIUkqbqAAkK",
+          "type": "save",
+          "label": "Cosmic Flare",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hoshi-star-sickness",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Star Sickness"
+            },
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "Kujaku Mode active. A 40-foot radius within 120 feet (exclude creatures); starting a turn in it or first entering. Failure: 1 Star Sickness and 1 Sealed; 2nd failure: Blinded; 3rd: 2 Exhaustion; each later failure: 2 more Exhaustion.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Cosmic Flare"
+          },
+          "note": "Pay 8 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): each failure counts twice.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 8
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-cosmic-pressure": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eh6CD3zcuYnZA5",
+          "type": "save",
+          "label": "Cosmic Pressure",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A construct starting its (or its summoner's) turn in 20 feet (+5 per rank). Failure: Destabilized for 1 minute; already Destabilized: dispelled (resummon only 1 rank higher).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Cosmic Pressure"
+          },
+          "note": "Pay 6 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): a concentrated jutsu entering the area loses Stable and Efficient.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 6
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-feather-slice": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eI5GAZa9ZoHV4j",
+          "type": "save",
+          "label": "Feather Slice",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Everyone within 15 feet; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eI5GAZa9ZoHV4j",
+                "type": "save",
+                "label": "Feather Slice",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Everyone within 15 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eI5GAZa9ZoHV4j",
+                "type": "save",
+                "label": "Feather Slice",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Everyone within 15 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eI5GAZa9ZoHV4j",
+                "type": "save",
+                "label": "Feather Slice",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Everyone within 15 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eI5GAZa9ZoHV4j",
+                "type": "save",
+                "label": "Feather Slice",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Everyone within 15 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Feather Slice"
+          },
+          "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): those that fail can't regain hit points until the end of their next turn, and lose Invisibility.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-hypnotic-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKsGreDe07TBhH",
+          "type": "save",
+          "label": "Hypnotic Dance",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "1 Demoralized or Shaken until the start of your next turn.",
+              "failure": "1 Demoralized or Shaken (your choice).",
+              "critFailure": "As failure, and Dazed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Up to two creatures within 30 feet that see you; resave at the end of each turn. +1 rank per rank above C.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Hypnotic Dance"
+          },
+          "note": "Pay 4 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): range becomes Self (30-foot radius).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-irradiated-meteor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5esf2n0WddenLcE",
+          "type": "save",
+          "label": "Irradiated Meteor",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eeZk0HTQn0l1GP",
+          "type": "save",
+          "label": "Irradiated area",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5esf2n0WddenLcE",
+                "type": "save",
+                "label": "Irradiated Meteor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeZk0HTQn0l1GP",
+                "type": "save",
+                "label": "Irradiated area",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d8",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5esf2n0WddenLcE",
+                "type": "save",
+                "label": "Irradiated Meteor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeZk0HTQn0l1GP",
+                "type": "save",
+                "label": "Irradiated area",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d8",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5esf2n0WddenLcE",
+                "type": "save",
+                "label": "Irradiated Meteor",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeZk0HTQn0l1GP",
+                "type": "save",
+                "label": "Irradiated area",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4d8",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Irradiated Meteor"
+          },
+          "note": "Pay 4 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): the area is radioactive until the end of your next turn (the Irradiated area button).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-kujaku-beast": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCMWzAZgyED32P",
+          "type": "summon",
+          "label": "Kujaku Beast",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eUznLAdjVLA63C",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its stat block (complete in the source book's box) is the Kujaku Beast summon; AC and hit points follow the rank you cast it at."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Kujaku Beast"
+          },
+          "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): it gains its Radiation Aura.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-nova-charge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e45eD4G5wg25C2",
+          "type": "damage",
+          "label": "Nova Charge: +1d6 per 2",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": ""
+              }
+            ]
+          },
+          "text": "Your next jutsu before your next turn: +1d6 per 2 Star Chakra (roll per 2).",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5eh0D4Q4gp1eFyk",
+          "type": "save",
+          "label": "Nova Charge (4): Weakened",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Its targets (or on a failure of its save). Failure: 2 Weakened.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "starChakra",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5e5QFCivgtW8ehv",
+          "type": "save",
+          "label": "Nova Charge (8): Star Sickness",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hoshi-star-sickness",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Star Sickness"
+            }
+          ],
+          "text": "Its targets (or on a failure of its save). Failure: 2 Star Sickness.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "starChakra",
+            "amount": 8
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spend 2 to 10 Star Chakra, in twos; one benefit by the amount: 2/4/6/8/10 extra damage; 4 Weakened; 6 disadvantage to dispel or interrupt it; 8 Star Sickness; 10 two of them."
+        }
+      ]
+    },
+    "hoshi-kujaku-art-star-rope": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTgquHf72pM3Ev",
+          "type": "save",
+          "label": "Star Rope",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists being moved.",
+              "success": "Pulled 20 feet closer.",
+              "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+              "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A creature within 60 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eNYPjvbevFqCKl",
+          "type": "roll",
+          "label": "Temporary Star Chakra",
+          "roll": {
+            "formula": "1d10",
+            "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eTgquHf72pM3Ev",
+                "type": "save",
+                "label": "Star Rope",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists being moved.",
+                    "success": "Pulled 20 feet closer.",
+                    "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                    "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNYPjvbevFqCKl",
+                "type": "roll",
+                "label": "Temporary Star Chakra",
+                "roll": {
+                  "formula": "1d10",
+                  "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eTgquHf72pM3Ev",
+                "type": "save",
+                "label": "Star Rope",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists being moved.",
+                    "success": "Pulled 20 feet closer.",
+                    "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                    "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNYPjvbevFqCKl",
+                "type": "roll",
+                "label": "Temporary Star Chakra",
+                "roll": {
+                  "formula": "1d10",
+                  "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eTgquHf72pM3Ev",
+                "type": "save",
+                "label": "Star Rope",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists being moved.",
+                    "success": "Pulled 20 feet closer.",
+                    "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                    "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNYPjvbevFqCKl",
+                "type": "roll",
+                "label": "Temporary Star Chakra",
+                "roll": {
+                  "formula": "1d10",
+                  "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eTgquHf72pM3Ev",
+                "type": "save",
+                "label": "Star Rope",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists being moved.",
+                    "success": "Pulled 20 feet closer.",
+                    "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                    "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNYPjvbevFqCKl",
+                "type": "roll",
+                "label": "Temporary Star Chakra",
+                "roll": {
+                  "formula": "1d10",
+                  "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Star Rope"
+          },
+          "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): on a failure it's tethered (can't move farther from you) until the start of your next turn.",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-art-star-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5easmeueuLQmJA9",
+          "type": "save",
+          "label": "Star Wall",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hoshi-star-sickness",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Star Sickness"
+            }
+          ],
+          "text": "A 60-foot wall within 120 feet (10-foot segments: AC your Ninjutsu save DC, 40 hit points (+15 per rank), immune to force, chakra, poison and psychic). Starting a turn within 10 feet or passing through. Failure: 2 Star Sickness; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e7fCjUqagCgKUj",
+          "type": "save",
+          "label": "Irradiated: gravity",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Within 10 feet, moving away. Failure: speed 0 until the end of the turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Irradiated (Star Chakra)",
+          "appliesTo": {
+            "namePrefix": "Kujaku Art: Star Wall"
+          },
+          "note": "Pay 6 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): the wall pulls (the gravity button).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "starChakra",
+            "amount": 6
+          }
+        }
+      ]
+    },
+    "hoshi-kujaku-peacock-plume": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCxaSv2xCJVyIM",
+          "type": "effect",
+          "label": "Kujaku Mode",
+          "effect": {
+            "name": "Kujaku Mode",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "kujaku-mode"
+          },
+          "text": "Bonus action, 1 minute, once per short rest; Star Sickness's penalties are suppressed.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ek1WNmMOOXggd3",
+          "type": "effect",
+          "label": "Kujaku Mode (7th)",
+          "effect": {
+            "name": "Kujaku Mode (7th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "kujaku-mode-7"
+          },
+          "text": "From 7th level.",
+          "activation": "bonus",
+          "minLevel": 7
+        },
+        {
+          "id": "n5eFnsdoQiueFKSK",
+          "type": "effect",
+          "label": "Kujaku Mode (11th)",
+          "effect": {
+            "name": "Kujaku Mode (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "kujaku-mode-11"
+          },
+          "text": "From 11th level.",
+          "activation": "bonus",
+          "minLevel": 11
+        },
+        {
+          "id": "n5eggq3u9TkJSSvP",
+          "type": "effect",
+          "label": "Kujaku Mode (15th)",
+          "effect": {
+            "name": "Kujaku Mode (15th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "kujaku-mode-15"
+          },
+          "text": "From 15th level.",
+          "activation": "bonus",
+          "minLevel": 15
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recovery": []
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The clan item's copy of Kujaku Mode is the Amp card's text."
+        }
+      ]
+    },
+    "hoshi-meteoric-attunement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e41jLbAGiAlzSZ",
+          "type": "roll",
+          "label": "Sense Chakra",
+          "roll": {
+            "formula": "",
+            "note": "Perception with Intelligence against the Chakra Control DC of creatures within 30 feet: Chakra Sensing on a success. Roll it from the sheet."
+          }
+        },
+        {
+          "id": "n5ej6P4jqQr4fvHb",
+          "type": "roll",
+          "label": "Shed Star Sickness",
+          "roll": {
+            "formula": "",
+            "note": "Twice per full rest, finishing a short or long rest: −1 rank of Star Sickness."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Advantage on Identify Genjutsu; aware of creatures within 30 feet concentrating or casting CM jutsu (not through walls or barriers)."
+        }
+      ]
+    },
+    "hoshi-meteoric-dowsing": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes touching a Cursed creature or a Complex Seal: the DC to dispel it −5; 1 hour: dispel the Complex Seal, or suppress the Curse for 24 hours."
+        }
+      ]
+    },
+    "hoshi-star-chakra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eT0TykCWmYBb4X",
+          "type": "roll",
+          "label": "Draw out Star Chakra",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: regain any amount up to your maximum."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "starChakra",
+            "choose": true,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "starChakra",
+          "label": "Star Chakra",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Star Chakra: 1 + proficiency bonus (the pool), back on any rest. A jutsu cast with Star Chakra gains its Irradiated effect (cast dialog option). Temporary chakra you gain becomes Temporary Star Chakra (Hoshi uses only; stacks; lost at the end of your following turn). Starting your turn having spent or drawn 4+ Star Chakra since your last turn (5+ at 7th, 6+ at 15th): 1 rank of Star Sickness (the condition item)."
+        }
+      ]
+    }
+  }
+}

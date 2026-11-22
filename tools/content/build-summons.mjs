@@ -446,8 +446,37 @@ const broodMother = actor("brood-mother", "Brood Mother", tsuchigumo._id, {
   item(id, "Hatching Brood", "npcAbilities", html("The Brood Mother looks to your webbing as places to give new life. It summons a collection of Broodling’s, selecting a number of your Web Anchors currently active, dispelling up to 4, and summoning two Broodling’s per dispelled Web Anchor, each pair in the original spaces of the dispelled Web Anchors. The Broodling’s all follow a single directive. Consume the Brood Mothers prey, by any means. These creatures cannot be controlled by normal means, they simply take cues from their mother attacking whatever their Brood Mother last attacked. These Broodling’s also uses your highest jutsu attack bonus and save DC for abilities that call for it."))
 ], { "details.level": "@level", "bonuses.saveDC.nin": HIGH_DC2, "bonuses.attack.nin": HIGH_ATK2 }, "icons/svg/mystery-man-black.svg");
 
+// The Kujaku Beast (Hoshi Hijutsu Kujaku Art: Kujaku Beast, D-Rank): your Ninjutsu attack bonus and save DC; AC and hit points by rank.
+const hoshi = folder("Hoshi", null, "hoshi");
+const WEAK = [{ key: "weakened", kind: "condition", ranks: 1, label: "Weakened" }];
+const kujakuBeast = actor("kujaku-beast", "Kujaku Beast", hoshi._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Hoshi: Kujaku Beast", summonRole: "Kujaku Beast",
+    biography: html("<p><em>Kujaku Art: Kujaku Beast (Hoshi Hijutsu).</em> It uses your Ninjutsu attack bonus or save DC when an effect calls for it. You command it as a Bonus Action. Irradiated: it gains its Radiation Aura.</p>",
+      "<p><strong>Medium Construct</strong> (1 size larger at B-Rank and at S-Rank). <strong>Armor Class</strong> 12 + 2 for every rank beyond D-Rank · <strong>Hit Points</strong> 20 + 15 for every rank beyond D-Rank · <strong>Speed</strong> 30 ft. (at B-Rank, 40 ft. fly).</p>",
+      "<p><strong>Abilities</strong> STR +3 (save +6), DEX +2 (+5), CON +3 (+6), INT −5 (−5), WIS −5 (−5), CHA −5 (−5). <strong>Damage Resistances</strong> Force, Bludgeoning, Piercing, Slashing. <strong>Damage Immunities</strong> Chakra, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, Bleeding, Exhaustion, Poisoned. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>",
+      "<p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>") },
+  abilities: { str: { value: 16 }, dex: { value: 14 }, con: { value: 16 }, int: { value: 1 }, wis: { value: 1 }, cha: { value: 1 } },
+  attributes: { ac: { calc: "flat", flat: 12, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", resist: ["force", "bludgeoning", "piercing", "slashing"], immune: ["chakra", "poison", "psychic"],
+    conditionImmune: ["berserk", "charmed", "confused", "demoralized", "shaken", "bleed", "exhaustion", "envenomed"], speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false },
+    senses: { darkvision: 60 } },
+  hpMax: 20, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Boosted Strength", "npcTraits", html("The Kujaku Beast gains a +1 to all of its Modifiers and Saving throws when summoned at B-Rank or higher, and an additional +2 when summoned at S-Rank.")),
+  item(id, "Star Chakra Furnace", "npcTraits", html("When the Kujaku Beast makes an attack using its Bite or Meteor Breath attacks its summoner can spend multiples of 2 Star Chakra, to increase the damage dealt by 1d6, for every 2 Star Chakra spent.")),
+  item(id, "Radiation Aura (Irradiated)", "npcTraits", html("The Kujaku Beast radiates a sickening aura, in a 10-foot radius centered on it. The first time a creature enters the aura on a turn, or begins their turn in this aura, they must make a Constitution saving throw. On a failure, they gain 1 rank of Weakened and Envenomed, until the end of this creatures summoners next turn, unless they are still in the aura when these conditions would end, extending their duration for another round."),
+    [act("kujaku-beast", "Radiation Aura", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: [...WEAK, { key: "envenomed", kind: "condition", ranks: 1, label: "Envenomed" }], text: "Irradiated only. Entering or starting a turn in 10 feet." })]),
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack (Level 7+).</em> The Kujaku Beast makes one attack with its Bite and Claw, Or two attacks using either Bite or Claw. <em>Melee Weapon Attack,</em> reach 10 ft., one target. <em>Hit:</em> 2d6 + Str force damage. Beginning at 7th level, half of the result becomes chakra damage."),
+    [act("kujaku-beast", "Bite", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "2d6 + @abilities.str.mod", type: "force" }] }, text: "7th level: half the result is chakra damage." })]),
+  item(id, "Claw", "npcStrikes", html("<em>Melee Weapon Attack,</em> reach 10 ft., one target. <em>Hit:</em> 1d8 + Dex force damage. Beginning at 7th level, On a hit, force the affected creature to make a Constitution save, gaining a rank of Weakened on a failure."),
+    [act("kujaku-beast", "Claw", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d8 + @abilities.dex.mod", type: "force" }] } }),
+     act("kujaku-beast", "Claw: Weakened (7th)", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "none", resave: false }, inflicts: WEAK, text: "7th level, on a hit." })]),
+  item(id, "Meteor Breath (Level 15+)", "npcAbilities", html("The Kujaku Beast spews irradiated chakra in a 30-foot cone originating from it. Each creature in range must make a Constitution saving throw, taking 9d6 Force damage and 2 ranks of Weakened on a failed save, or half as much damage on a success. A creature that fails this save by 5 or more gains 1 rank of Star Sickness for the next minute as meteoric radiation bleeds through its skin."),
+    [act("kujaku-beast", "Meteor Breath", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "half", resave: false }, damage: { parts: [{ formula: "9d6", type: "force" }] }, inflicts: [{ key: "weakened", kind: "condition", ranks: 2, label: "Weakened" }], text: "15th level. Failing by 5 or more: 1 rank of Star Sickness for 1 minute." })])
+], { "details.level": "@level", "attributes.ac.flat": "12 + 2 * max(0, @rankValue - 1)", hpMax: "20 + 15 * max(0, @rankValue - 1)", "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" }, "icons/svg/mystery-man-black.svg");
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -478,5 +507,7 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   for ( const d of [crystalRabbit, crystalDeer, crystalDragon] ) write(`shoton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
   write("tsuchigumo/_folder.json", tsuchigumo);
   write(`tsuchigumo/brood-mother-${broodMother._id}.json`, broodMother);
-  console.log(`✓ summons: 17 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  write("hoshi/_folder.json", hoshi);
+  write(`hoshi/kujaku-beast-${kujakuBeast._id}.json`, kujakuBeast);
+  console.log(`✓ summons: 18 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

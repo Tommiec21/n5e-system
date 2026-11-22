@@ -17,7 +17,8 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Fuinjutsu, Yin Release",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5exWYvUVYGDXpCC",
+        "type": "save",
+        "label": "Thought Suppression",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "Confused.",
+            "failure": "Loses one weapon, save (not Charisma) or skill proficiency.",
+            "critFailure": "Loses two of different types."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A Yin-Sealed creature within 30 feet (+1 at S); resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

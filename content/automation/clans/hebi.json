@@ -1,0 +1,1533 @@
+{
+  "clan": "hebi",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hebi-basilisk-art-adaptive-camouflage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampbc3315d26aaa3",
+          "type": "effect",
+          "label": "Basilisk Art: Adaptive Camouflage",
+          "effect": {
+            "name": "Basilisk Art: Adaptive Camouflage",
+            "target": "self",
+            "amp": "jutsu-hebi-basilisk-art-adaptive-camouflage"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays. Serpent Coil: Hidden from a creature you deal [Weapon Damage] to, roll damage twice and keep the higher."
+        }
+      ]
+    },
+    "hebi-basilisk-art-dokufu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCBQ6nWpqxK055",
+          "type": "save",
+          "label": "Dokufu",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eCBQ6nWpqxK055",
+                "type": "save",
+                "label": "Dokufu",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eCBQ6nWpqxK055",
+                "type": "save",
+                "label": "Dokufu",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "hebi-basilisk-art-formation-of-one-thousand-snakes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eY7KZZHxWAmRwN",
+          "type": "save",
+          "label": "One Thousand Snakes",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Creatures you choose in a 15-foot cube from you: [Weapon Damage] (roll it; +1d6 per rank above D) and 1 Bleed; success: half.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Serpent Coil: cast as a Reaction to Ninjutsu, Taijutsu or Bukijutsu damage; it gains Clash."
+        }
+      ]
+    },
+    "hebi-basilisk-art-hardened-scales": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGOQHjbgIvTXRQ",
+          "type": "effect",
+          "label": "Hardened Scales",
+          "effect": {
+            "name": "Hardened Scales",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "6",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction, until the start of your next turn: +6 DR (+3 per rank above C: raise it by hand); advantage on saves against Physical or Elemental conditions.",
+          "activation": "reaction"
+        }
+      ]
+    },
+    "hebi-basilisk-art-mark-of-the-basilisk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euxPkMvEXvJfAm",
+          "type": "attack",
+          "label": "Mark of the Basilisk",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "On a hit, the save; pick Basilisks Edict (it can only target you; its areas only affect you) or Blood Override (no B-Rank+ Hijutsu; 3rd-level clan features or clan traits suppressed).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eaabF4zvwKMqgs",
+          "type": "save",
+          "label": "Mark: save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "The chosen effect until the start of your next turn.",
+              "failure": "The chosen effect for the duration; resave at the end of each turn.",
+              "critFailure": "Both effects."
+            }
+          },
+          "inflicts": [],
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hebi-basilisk-art-ouroboros-circle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egComRRqfpBJpk",
+          "type": "heal",
+          "label": "Ouroboros Circle",
+          "heal": {
+            "formula": "3d6",
+            "pool": "tempHp"
+          },
+          "text": "Allies in 15 feet without Viper Blood lose all Envenomed ranks and regain this + 1d6 per rank lost (roll the extra)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5egComRRqfpBJpk",
+                "type": "heal",
+                "label": "Ouroboros Circle",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "Allies in 15 feet without Viper Blood lose all Envenomed ranks and regain this + 1d6 per rank lost (roll the extra)."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5egComRRqfpBJpk",
+                "type": "heal",
+                "label": "Ouroboros Circle",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "Allies in 15 feet without Viper Blood lose all Envenomed ranks and regain this + 1d6 per rank lost (roll the extra)."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5egComRRqfpBJpk",
+                "type": "heal",
+                "label": "Ouroboros Circle",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "Allies in 15 feet without Viper Blood lose all Envenomed ranks and regain this + 1d6 per rank lost (roll the extra)."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "hebi-basilisk-art-poison-cobra-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eP8uAlqmtBgVaw",
+          "type": "attack",
+          "label": "Poison Cobra Dance",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "Serpent Coil: +1d8 per Chain rank of your last Bukijutsu. B-Rank +1 attack; S-Rank +1 more.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "1d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5ed4wRNCli8w9ed",
+          "type": "save",
+          "label": "Poison Cobra Dance: Prone",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "At least one hit. Failure: Prone.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hebi-basilisk-art-pythons-gaze": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampe4a19d2723d2f",
+          "type": "effect",
+          "label": "Basilisk Art: Pythons Gaze",
+          "effect": {
+            "name": "Basilisk Art: Pythons Gaze",
+            "target": "self",
+            "amp": "jutsu-hebi-basilisk-art-pythons-gaze"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ]
+    },
+    "hebi-basilisk-art-venomous-stinger": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyG7UANoWOZF0c",
+          "type": "save",
+          "label": "Venomous Stinger",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eyG7UANoWOZF0c",
+                "type": "save",
+                "label": "Venomous Stinger",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eyG7UANoWOZF0c",
+                "type": "save",
+                "label": "Venomous Stinger",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eyG7UANoWOZF0c",
+                "type": "save",
+                "label": "Venomous Stinger",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eyG7UANoWOZF0c",
+                "type": "save",
+                "label": "Venomous Stinger",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (4d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "hebi-basilisk-art-viper-leash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOCShcOWScuUBh",
+          "type": "attack",
+          "label": "Viper Leash",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "30 feet (+1 creature per rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5epkbhb9pZUOfdy",
+          "type": "save",
+          "label": "Viper Leash: Restrained",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "On a hit. Failure: Restrained; resave at the end of each of its turns (failing: the damage button and 1 Envenomed).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eXXMDFNjPUjti0",
+          "type": "damage",
+          "label": "Failed resave",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          },
+          "text": "And 1 rank of Envenomed."
+        }
+      ]
+    },
+    "hebi-blood-of-the-basilisk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efVe8INQ7DTGV6",
+          "type": "effect",
+          "label": "Basilisk's Blessing",
+          "effect": {
+            "name": "Basilisk's Blessing",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "basilisks-blessing"
+          },
+          "text": "Bonus action, 1 minute, once per short rest.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5evJpoRo8k2KT0Q",
+          "type": "roll",
+          "label": "Basilisk Blood",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns while Blessed."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recovery": []
+        }
+      }
+    },
+    "hebi-ouroboros": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elFkkHCbprSDRb",
+          "type": "roll",
+          "label": "Venom of Inevitability",
+          "roll": {
+            "formula": "",
+            "note": "A Virulent creature's d20 roll: dispel Virulent; its result is a 1."
+          }
+        },
+        {
+          "id": "n5eghz4aMIVEEPor",
+          "type": "roll",
+          "label": "Chain Breaker",
+          "roll": {
+            "formula": "",
+            "note": "Starting your turn with Physical, Mental, Elemental or Sensory conditions: 1 Viper Blood per condition drops it to 0 (not Grappled)."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5eW8pRrDUu4BeIV",
+          "type": "heal",
+          "label": "The Infinite Circle",
+          "heal": {
+            "formula": "2 * @level",
+            "pool": "hp"
+          },
+          "text": "Reaction, falling to 0: double your maximum Viper Blood until initiative ends (raise it by hand).",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eua0QnpmWwyIb3",
+          "type": "save",
+          "label": "Gaze of the Basilisk",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shaken"
+            },
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Demoralized"
+            }
+          ],
+          "text": "Entering Basilisk's Blessing: until the end of your next turn, the first creature each turn to target you gains 2 Shaken and 2 Demoralized (only against you) until the end of your following turn. No save is in the text: use the failure.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eCsk6HpLweMbBK",
+          "type": "save",
+          "label": "Basilisks Venom",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "petrified",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Petrified"
+            }
+          ],
+          "text": "Inflicting Virulent, 2 Viper Blood: at the end of its turn. Failure: Petrified for 48 hours; damage or a hostile effect ends it.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Rolling initiative: two of these, once per long rest."
+        }
+      ]
+    },
+    "hebi-serpents-blood": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejHGPxvVcEE3MR",
+          "type": "heal",
+          "label": "Regeneration",
+          "heal": {
+            "formula": "floor(@level / 2)",
+            "pool": "hp"
+          },
+          "text": "In combat, start of each of your turns with 1+ Viper Blood (off with 3+ combined Physical or Elemental ranks; at 0 hit points also a failed Death save). Virulent Blood at 11th: +2 per Envenomed rank."
+        },
+        {
+          "id": "n5exvAkZXYXoe5OF",
+          "type": "roll",
+          "label": "Poisoner's Kit",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Bonus action: consume a charge."
+          },
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eX9HxFgzzpknvx",
+          "type": "roll",
+          "label": "Melee damage to an Envenomed creature",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "viperBlood",
+          "label": "Viper Blood",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Viper Blood: 1 + proficiency bonus (the pool), back on any rest."
+        }
+      ]
+    },
+    "hebi-serpents-coil": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Serpent's Coil Bukijutsu stance (the clan's stance item; Blade weapons only). Virulent is the condition item."
+        }
+      ]
+    },
+    "hebi-serpents-guile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYEx6aNnOCksFK",
+          "type": "roll",
+          "label": "Sleeper Serpent",
+          "roll": {
+            "formula": "",
+            "note": "10-minute ritual, once per long rest: snakes within 1 mile share one rumor."
+          }
+        },
+        {
+          "id": "n5ezCoV4FUvTpid8",
+          "type": "roll",
+          "label": "Viper Form",
+          "roll": {
+            "formula": "",
+            "note": "10-minute ritual, once per long rest: a Tiny or Small snake up to 1 hour (60-foot swim, walls and ceilings, 10-foot Blindsight; no jutsu or weapon attacks; damage ends it unless you spend 1 Viper Blood)."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Basilisk's Blessing's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "hebi-stance-serpents-coil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ely1Vf6HoR67Ec",
+          "type": "effect",
+          "label": "Serpent's Coil",
+          "effect": {
+            "name": "Serpent's Coil",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Enter the stance (Blade weapons).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eBZ9XApsVkmm6M",
+          "type": "roll",
+          "label": "Venom infusion",
+          "roll": {
+            "formula": "",
+            "note": "Entering, or start of each of your turns: 1 minute: [Weapon Damage] becomes poison with a rank of Mastery to damage (2 at 11th)."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eus8zg4StsCCm1",
+          "type": "attack",
+          "label": "Viper Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack: ignores temporary hit points; +1d6 at 7th and 15th.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": "poison"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e1lWmp6AfKccHZ",
+          "type": "save",
+          "label": "Viper Strike: Virulent",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hebi-virulent",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Virulent"
+            }
+          ],
+          "text": "2 Viper Blood. Failure: Virulent until the start of your next turn (Envenomed: drop its ranks to 0 for 1 minute of Virulent).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eOn38Hrf7aOyqS",
+          "type": "attack",
+          "label": "Python Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack: +1 critical range against a Grappled or Restrained target, or one slowed by you or an ally.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eRAqW4oBn6Gy3d",
+          "type": "roll",
+          "label": "Python Strike: Deadly",
+          "roll": {
+            "formula": "",
+            "note": "A critical hit: Deadly 2 (3 at 7th, 4 at 15th)."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eOKtlaGk4rIxJt",
+          "type": "roll",
+          "label": "Strike in a Hijutsu",
+          "roll": {
+            "formula": "",
+            "note": "Use a Strike ability as part of a Hebi Clan Hijutsu (its save on a hit or failed save)."
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The stance item now holds only Serpent's Coil; its duplicate holding Venomous Technique's text is deleted (as King Q-E18). Hebi Hijutsu gain their Serpent Coil effects. 7th: two attacks without Extra Attack."
+        }
+      ]
+    },
+    "hebi-venomous-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epvYIObdF8YXm2",
+          "type": "save",
+          "label": "Suppress a condition",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "End of your turn with Physical or Elemental ranks: DC 15 + 1 per such rank; success removes 1 rank. Roll your Constitution save from the sheet against it.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Venom Art (+1 at 7th and 15th): the option items. Venom Art Virulent lasts until the start of your next turn (Envenomed: drop its ranks to 0 for 1 minute)."
+        }
+      ]
+    },
+    "hebi-venomous-technique-coiling-black-mamba": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9rZBnwABvBzPo",
+          "type": "attack",
+          "label": "Mamba Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In the stance, once per turn, Reaction to damage from a creature in reach: the damage roll reduces the trigger, then deals it to the creature.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eWJ2Jkw2CJHUpp",
+          "type": "save",
+          "label": "Mamba: push",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: pushed 20 feet.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5euQ8GgWus578He",
+          "type": "attack",
+          "label": "Mamba: follow-up",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "1 Viper Blood: move half your speed; in reach, one more attack that inflicts Virulent (the effect button).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e1X3gY8nLC4odD",
+          "type": "effect",
+          "label": "Virulent",
+          "effect": {
+            "name": "Virulent",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "hebi-virulent"
+          },
+          "text": "From the follow-up's hit.",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-coiling-emerald-basilisk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eedKm7I5yYQ1dt",
+          "type": "attack",
+          "label": "Basilisk Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In the stance, once per turn, in place of an attack: every creature you choose in reach; Envenomed or Virulent ones count as 2 lower AC.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-coiling-silver-cobra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euIHmWlg8qBaL7",
+          "type": "attack",
+          "label": "Cobra Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In the stance, once per turn, in place of an attack: then move 10 feet and repeat against a new creature, until your movement runs out.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-serpents-bite": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAGw5KMykASJ65",
+          "type": "effect",
+          "label": "Serpents Bite",
+          "effect": {
+            "name": "Serpents Bite",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Bonus action, until the start of your next turn.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eOpMSndL0E2j8C",
+          "type": "attack",
+          "label": "Serpent Bite",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In place of an attack (Attack action, opportunity attack or a Hijutsu).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:3d6,7:4d6,15:5d6) + max(@abilities.str.mod, @abilities.con.mod)",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ezimC5ifafDPr3",
+          "type": "save",
+          "label": "Serpent Bite: Envenomed",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "On a hit. Failure: Envenomed (2 at 7th, 3 at 15th).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-serpents-cloud": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egsFFGVtpyAOUF",
+          "type": "save",
+          "label": "Serpents Cloud",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hebi-virulent",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Virulent"
+            }
+          ],
+          "text": "Action: a 20-foot radius on you or a 30-foot cone. Failure: Virulent; success: half. 11th: −1 per Bleed rank on the save.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:3d6,7:5d6,15:7d6)",
+                "type": "poison"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-venomous-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUJoqfKhrULFLT",
+          "type": "effect",
+          "label": "Venomous Augmentation",
+          "effect": {
+            "name": "Venomous Augmentation",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "lvl(1:10,7:20,15:30)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Bonus action, until the end of your next turn: Strength and Dexterity checks gain a rank of Mastery (2 at 7th); Physical conditions suppressed.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-venomous-refresh": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euv2AtpgRVJ3jf",
+          "type": "roll",
+          "label": "Venomous Refresh",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Bonus action: one Mental or Sensory condition −2 ranks (not Sealed)."
+          },
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-venomous-regeneration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evTBlUbgs2dUE5",
+          "type": "roll",
+          "label": "Venomous Regeneration",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Bonus action: 2 to 10 Viper Blood, in twos; roll a Hit Die per 2 (not spent) and regain the result."
+          },
+          "activation": "bonus",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "viperBlood",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hebi-venomous-technique-virulent-blood": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeKlF5K4tEDzEk",
+          "type": "roll",
+          "label": "Virulent Blood",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, starting your turn Envenomed: −1 Envenomed rank, +2 Viper Blood."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 2,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "11th: Envenomed doesn't stop your healing or count against Serpents Blood's regeneration; regeneration +2 per Envenomed rank."
+        }
+      ]
+    },
+    "hebi-venomous-technique-virulent-infusion": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Virulent Infusion",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "note": "On a failed save, Virulent in place of one condition (none: one creature saves Constitution or becomes Virulent).",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Virulent Infusion (3)",
+          "appliesTo": {
+            "discipline": "nin"
+          },
+          "note": "Virulent and the jutsu's condition (none: every affected creature saves).",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 3
+          }
+        },
+        {
+          "label": "Virulent Infusion (Blade)",
+          "appliesTo": {
+            "discipline": "buki"
+          },
+          "note": "Blade weapon: as above.",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Virulent Infusion (Blade, 3)",
+          "appliesTo": {
+            "discipline": "buki"
+          },
+          "note": "Blade weapon: as above.",
+          "cost": {
+            "pool": "viperBlood",
+            "amount": 3
+          }
+        }
+      ]
+    }
+  }
+}

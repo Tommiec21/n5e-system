@@ -1,0 +1,2360 @@
+{
+  "clan": "kuru",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "kuru-black-art-broken-clock": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOXNXac0bvrKwi",
+          "type": "save",
+          "label": "Broken Clock",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Resists.",
+              "failure": "It moves back to its last space and repeats last turn's Bonus action.",
+              "critFailure": "As failure, and repeats its Action."
+            }
+          },
+          "inflicts": [],
+          "text": "A creature within 60 feet (+1 per rank); resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-black-art-dark-displacement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRXJCjG2lCGOwK",
+          "type": "attack",
+          "label": "Dark Displacement",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Miraigan active. 5 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d10",
+                "type": "necrotic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e3N8sSViBDxVLp",
+          "type": "save",
+          "label": "Dark Displacement: save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "No hit points regained until the end of its next turn.",
+              "failure": "No hit or chakra points regained until the end of your next turn.",
+              "critFailure": "As failure; no concentration until the end of your next turn."
+            }
+          },
+          "inflicts": [],
+          "text": "On a hit.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eRXJCjG2lCGOwK",
+                "type": "attack",
+                "label": "Dark Displacement",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Miraigan active. 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d10) + (1d10)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e3N8sSViBDxVLp",
+                "type": "save",
+                "label": "Dark Displacement: save",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists.",
+                    "success": "No hit points regained until the end of its next turn.",
+                    "failure": "No hit or chakra points regained until the end of your next turn.",
+                    "critFailure": "As failure; no concentration until the end of your next turn."
+                  }
+                },
+                "inflicts": [],
+                "text": "On a hit.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRXJCjG2lCGOwK",
+                "type": "attack",
+                "label": "Dark Displacement",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Miraigan active. 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d10) + (2d10)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e3N8sSViBDxVLp",
+                "type": "save",
+                "label": "Dark Displacement: save",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists.",
+                    "success": "No hit points regained until the end of its next turn.",
+                    "failure": "No hit or chakra points regained until the end of your next turn.",
+                    "critFailure": "As failure; no concentration until the end of your next turn."
+                  }
+                },
+                "inflicts": [],
+                "text": "On a hit.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-dark-divergence-wave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQPSm3grLF06op",
+          "type": "save",
+          "label": "Dark Divergence Wave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Half damage.",
+              "failure": "4d8 necrotic; Berserk.",
+              "critFailure": "As failure; it can't see anyone but its original allies."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "berserk",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Berserk"
+            }
+          ],
+          "text": "A 60 by 5-foot beam.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "necrotic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eQPSm3grLF06op",
+                "type": "save",
+                "label": "Dark Divergence Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "4d8 necrotic; Berserk.",
+                    "critFailure": "As failure; it can't see anyone but its original allies."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "berserk",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Berserk"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eQPSm3grLF06op",
+                "type": "save",
+                "label": "Dark Divergence Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "4d8 necrotic; Berserk.",
+                    "critFailure": "As failure; it can't see anyone but its original allies."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "berserk",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Berserk"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eQPSm3grLF06op",
+                "type": "save",
+                "label": "Dark Divergence Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "4d8 necrotic; Berserk.",
+                    "critFailure": "As failure; it can't see anyone but its original allies."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "berserk",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Berserk"
+                  }
+                ],
+                "text": "A 60 by 5-foot beam.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-dark-drain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZ3rRSYX4Eru23",
+          "type": "attack",
+          "label": "Dark Drain",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d10",
+                "type": "necrotic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eQIWYndhZaGiN6",
+          "type": "save",
+          "label": "Dark Drain: save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "2d6 chakra if Yin-Sealed.",
+              "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+              "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+            }
+          },
+          "inflicts": [],
+          "text": "Sealed or Yin-Sealed targets.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ebNBfDx1cO46Yp",
+          "type": "damage",
+          "label": "Yin-Sealed",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eev0VRiUWldk08",
+          "type": "damage",
+          "label": "Per Sealed rank",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Roll once per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eZ3rRSYX4Eru23",
+                "type": "attack",
+                "label": "Dark Drain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (1d10)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQIWYndhZaGiN6",
+                "type": "save",
+                "label": "Dark Drain: save",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists.",
+                    "success": "2d6 chakra if Yin-Sealed.",
+                    "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                    "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                  }
+                },
+                "inflicts": [],
+                "text": "Sealed or Yin-Sealed targets.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ebNBfDx1cO46Yp",
+                "type": "damage",
+                "label": "Yin-Sealed",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eev0VRiUWldk08",
+                "type": "damage",
+                "label": "Per Sealed rank",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d6",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Roll once per rank."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZ3rRSYX4Eru23",
+                "type": "attack",
+                "label": "Dark Drain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (2d10)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQIWYndhZaGiN6",
+                "type": "save",
+                "label": "Dark Drain: save",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists.",
+                    "success": "2d6 chakra if Yin-Sealed.",
+                    "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                    "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                  }
+                },
+                "inflicts": [],
+                "text": "Sealed or Yin-Sealed targets.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ebNBfDx1cO46Yp",
+                "type": "damage",
+                "label": "Yin-Sealed",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eev0VRiUWldk08",
+                "type": "damage",
+                "label": "Per Sealed rank",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d6",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Roll once per rank."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZ3rRSYX4Eru23",
+                "type": "attack",
+                "label": "Dark Drain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d10) + (3d10)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQIWYndhZaGiN6",
+                "type": "save",
+                "label": "Dark Drain: save",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Resists.",
+                    "success": "2d6 chakra if Yin-Sealed.",
+                    "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                    "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                  }
+                },
+                "inflicts": [],
+                "text": "Sealed or Yin-Sealed targets.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ebNBfDx1cO46Yp",
+                "type": "damage",
+                "label": "Yin-Sealed",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d6",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eev0VRiUWldk08",
+                "type": "damage",
+                "label": "Per Sealed rank",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d6",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Roll once per rank."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-devotion-fist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eW8ZEGQtZosFdq",
+          "type": "attack",
+          "label": "Devotion Fist",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Touch. Pick a release you have, or Yin.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5emunWE2R2xV04D",
+          "type": "save",
+          "label": "Devotion Fist: effect",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "On a hit. Yin: its next jutsu +6 cost (+6 at B, +6 at S); Earth: Prone; Wind: pushed 20 feet, Dazed; Fire: 1 Concussed; Water: Dazzled; Lightning: your next damage this turn gains Pierce 4.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eW8ZEGQtZosFdq",
+                "type": "attack",
+                "label": "Devotion Fist",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Pick a release you have, or Yin.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "() + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5emunWE2R2xV04D",
+                "type": "save",
+                "label": "Devotion Fist: effect",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "On a hit. Yin: its next jutsu +6 cost (+6 at B, +6 at S); Earth: Prone; Wind: pushed 20 feet, Dazed; Fire: 1 Concussed; Water: Dazzled; Lightning: your next damage this turn gains Pierce 4.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eW8ZEGQtZosFdq",
+                "type": "attack",
+                "label": "Devotion Fist",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Pick a release you have, or Yin.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "() + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5emunWE2R2xV04D",
+                "type": "save",
+                "label": "Devotion Fist: effect",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "On a hit. Yin: its next jutsu +6 cost (+6 at B, +6 at S); Earth: Prone; Wind: pushed 20 feet, Dazed; Fire: 1 Concussed; Water: Dazzled; Lightning: your next damage this turn gains Pierce 4.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eW8ZEGQtZosFdq",
+                "type": "attack",
+                "label": "Devotion Fist",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Pick a release you have, or Yin.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "() + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5emunWE2R2xV04D",
+                "type": "save",
+                "label": "Devotion Fist: effect",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "On a hit. Yin: its next jutsu +6 cost (+6 at B, +6 at S); Earth: Prone; Wind: pushed 20 feet, Dazed; Fire: 1 Concussed; Water: Dazzled; Lightning: your next damage this turn gains Pierce 4.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eW8ZEGQtZosFdq",
+                "type": "attack",
+                "label": "Devotion Fist",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Touch. Pick a release you have, or Yin.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "() + (4d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5emunWE2R2xV04D",
+                "type": "save",
+                "label": "Devotion Fist: effect",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "On a hit. Yin: its next jutsu +6 cost (+6 at B, +6 at S); Earth: Prone; Wind: pushed 20 feet, Dazed; Fire: 1 Concussed; Water: Dazzled; Lightning: your next damage this turn gains Pierce 4.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-false-release": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEcygstjgqXJWm",
+          "type": "save",
+          "label": "False Release",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Half damage.",
+              "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+              "critFailure": "As failure, 5d6 necrotic."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            },
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            },
+            {
+              "key": "chilled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Chilled"
+            },
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ],
+          "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "necrotic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eW01X5jTcmI4s9",
+          "type": "damage",
+          "label": "Critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "necrotic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eEcygstjgqXJWm",
+                "type": "save",
+                "label": "False Release",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                    "critFailure": "As failure, 5d6 necrotic."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eW01X5jTcmI4s9",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eEcygstjgqXJWm",
+                "type": "save",
+                "label": "False Release",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                    "critFailure": "As failure, 5d6 necrotic."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eW01X5jTcmI4s9",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eEcygstjgqXJWm",
+                "type": "save",
+                "label": "False Release",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                    "critFailure": "As failure, 5d6 necrotic."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eW01X5jTcmI4s9",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEcygstjgqXJWm",
+                "type": "save",
+                "label": "False Release",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "",
+                    "success": "Half damage.",
+                    "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                    "critFailure": "As failure, 5d6 necrotic."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eW01X5jTcmI4s9",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-spiraling-dark-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRfp5uZqqGQiO3",
+          "type": "effect",
+          "label": "Spiraling Dark Wall",
+          "effect": {
+            "name": "Spiraling Dark Wall",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "3",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5et8Mig9sRYF1kM",
+          "type": "heal",
+          "label": "Barrier hit points",
+          "heal": {
+            "formula": "1d6 + 8",
+            "pool": "tempHp"
+          },
+          "text": "An area or save trigger: the Barrier's hit points against it."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eRfp5uZqqGQiO3",
+                "type": "effect",
+                "label": "Spiraling Dark Wall",
+                "effect": {
+                  "name": "Spiraling Dark Wall",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "3",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5et8Mig9sRYF1kM",
+                "type": "heal",
+                "label": "Barrier hit points",
+                "heal": {
+                  "formula": "1d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "An area or save trigger: the Barrier's hit points against it."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eRfp5uZqqGQiO3",
+                "type": "effect",
+                "label": "Spiraling Dark Wall",
+                "effect": {
+                  "name": "Spiraling Dark Wall",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "3",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5et8Mig9sRYF1kM",
+                "type": "heal",
+                "label": "Barrier hit points",
+                "heal": {
+                  "formula": "1d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "An area or save trigger: the Barrier's hit points against it."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eRfp5uZqqGQiO3",
+                "type": "effect",
+                "label": "Spiraling Dark Wall",
+                "effect": {
+                  "name": "Spiraling Dark Wall",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "3",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5et8Mig9sRYF1kM",
+                "type": "heal",
+                "label": "Barrier hit points",
+                "heal": {
+                  "formula": "1d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "An area or save trigger: the Barrier's hit points against it."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRfp5uZqqGQiO3",
+                "type": "effect",
+                "label": "Spiraling Dark Wall",
+                "effect": {
+                  "name": "Spiraling Dark Wall",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "3",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5et8Mig9sRYF1kM",
+                "type": "heal",
+                "label": "Barrier hit points",
+                "heal": {
+                  "formula": "1d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "An area or save trigger: the Barrier's hit points against it."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kuru-black-art-thought-suppression": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exWYvUVYGDXpCC",
+          "type": "save",
+          "label": "Thought Suppression",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "Confused.",
+              "failure": "Loses one weapon, save (not Charisma) or skill proficiency.",
+              "critFailure": "Loses two of different types."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A Yin-Sealed creature within 30 feet (+1 at S); resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-black-art-thousand-futures-on-borrowed-time": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRP8BlfVALpa6x",
+          "type": "save",
+          "label": "Thousand Futures",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "Confused.",
+              "failure": "Confused and Staggered.",
+              "critFailure": "As failure, and Dazed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Miraigan active. Hostile creatures within 60 feet; resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-black-art-umbral-theft": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eITTwqWmtaLMLo",
+          "type": "save",
+          "label": "Umbral Theft",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction, Miraigan active: a Ninjutsu or Genjutsu within 30 feet (one needing a feature or special resource auto-passes; a higher rank: disadvantage on your check). Failure: you take it over while you concentrate on this.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-black-fang": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Black Fang Taijutsu stance (the clan's stance item). Yin-Seal is the condition item."
+        }
+      ]
+    },
+    "kuru-eye-of-prophecy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewWEREJJGio32e",
+          "type": "roll",
+          "label": "Prophetic Pool",
+          "roll": {
+            "formula": "1d20 + 1d12 + 1d8 + 1d6 + 1d4",
+            "note": "Rolling initiative with the Miraigan: record each die. Replace a seen creature's die of the same size (each size once per combat; 1 Foresight per extra die of that size in one roll)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Read each die of the roll separately."
+        }
+      ]
+    },
+    "kuru-miraigan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en2BZuluNZ29xK",
+          "type": "effect",
+          "label": "Miraigan",
+          "effect": {
+            "name": "Miraigan",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "miraigan"
+          },
+          "text": "Entering initiative: until combat ends (or a Bonus action: 10 minutes, then 10 minutes of rest)."
+        },
+        {
+          "id": "n5eJhSGTWNgTiwKm",
+          "type": "effect",
+          "label": "Miraigan (7th)",
+          "effect": {
+            "name": "Miraigan (7th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "miraigan-7"
+          },
+          "text": "From 7th level.",
+          "minLevel": 7
+        },
+        {
+          "id": "n5eglrGsW89pTMBm",
+          "type": "effect",
+          "label": "Miraigan (15th)",
+          "effect": {
+            "name": "Miraigan (15th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "miraigan-15"
+          },
+          "text": "From 15th level.",
+          "minLevel": 15
+        },
+        {
+          "id": "n5eOgveDSZVNmCRd",
+          "type": "roll",
+          "label": "Prophesize",
+          "roll": {
+            "formula": "1d4",
+            "note": "Once per turn, in combat on your turn: a willing ally within 60 feet (or you) gains a Fortune until the start of your next turn (yours lasts until spent). Spent for Foretold Circumstance (+1d4 to a d20 roll) or Foretold Event (an extra reaction for a damage trigger)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "foresight",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "foresight",
+          "label": "Foresight",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Foresight: 1 + proficiency bonus (the pool), back on a rest. The clan item's copy of Miraigan is the Amp card's text."
+        }
+      ]
+    },
+    "kuru-okami-of-midnight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elYOaEHlmfsEJF",
+          "type": "effect",
+          "label": "Black Okami Form",
+          "effect": {
+            "name": "Black Okami",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "black-okami"
+          },
+          "text": "Bonus action, Miraigan active and in Black Fang: up to 1 minute, once per long rest.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "foresight",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5eAJBjX8HYyAoTi",
+          "type": "save",
+          "label": "Fang of Kuroi",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "In the form, [Unarmed Damage] to a Yin-Sealed creature: dispel its Yin-Seal. Failure: Stunned until the end of its next turn (once per rest per creature).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "kuru-stance-black-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emNGGnTS936eXv",
+          "type": "effect",
+          "label": "Black Fang",
+          "effect": {
+            "name": "Black Fang",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Enter the stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5emN2NAYEo9BCGK",
+          "type": "attack",
+          "label": "Past Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack; bludgeoning, necrotic or psychic.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eGbaaqVkZ5OsRm",
+          "type": "save",
+          "label": "Past Strike: Confused",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "On a hit. Failure: Confused.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eg2xfXbJD63llx",
+          "type": "attack",
+          "label": "Future Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5elUVHKSZGI8SOT",
+          "type": "save",
+          "label": "Future Strike: Sealed",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "On a hit. Failure: 1 Sealed at the start of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The stance item now holds Black Fang's text (as King Q-E9). [Unarmed Damage] d6, bludgeoning, necrotic or psychic, with your Hijutsu Flexibility ability. 7th: two attacks without Extra Attack."
+        }
+      ]
+    },
+    "kuru-visions-of-what-will-be": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUrg4mpCE5AezT",
+          "type": "roll",
+          "label": "Glimpse",
+          "roll": {
+            "formula": "",
+            "note": "Miraigan active outside combat: per Foresight, the GM gives a 1-to-2-word warning."
+          },
+          "cost": {
+            "pool": "foresight",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Black Okami's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "kuru-yin-release-adept": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNok6aIFXgMDzQ",
+          "type": "save",
+          "label": "Yin Release: Yin-Seal",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "kuru-yin-seal",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Yin-Seal"
+            }
+          ],
+          "text": "A Yin Release jutsu with no save: one affected creature. Failure: Yin-Seal until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Yin Release",
+          "appliesTo": {},
+          "note": "Damage becomes necrotic or psychic; the release's secondary effect becomes a Yin-Seal on a failed save (no save: the Yin-Seal button)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a jutsu: it can swap a Nature Release keyword for Yin Release, or gain Yin Release (cast dialog option): its damage is necrotic or psychic, and a listed release effect becomes a Yin-Seal on a failed save until the end of your next turn. One Yin Art (+1 at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "kuru-yin-release-adept-black-fang-future-denial": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVwF0lyEHB8aSj",
+          "type": "attack",
+          "label": "Denial Palm Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eI6g5nNwtLyVtP",
+          "type": "save",
+          "label": "Denial Palm: save",
+          "save": {
+            "abilities": [
+              "str",
+              "dex",
+              "con",
+              "int",
+              "wis",
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Its save uses the chosen discipline's jutsu modifier (pick its ability). Failure: for 1 minute it can't cast jutsu of one discipline and rank (E to A) you pick; resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-black-fang-theft-of-time": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoHawjJyzz0NEy",
+          "type": "attack",
+          "label": "Time Theft Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an opportunity attack.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eQQAxn507tIvGO",
+          "type": "save",
+          "label": "Time Theft: swap",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: swap initiative places at the end of its current or next turn (see the text for missed and extra turns).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-black-fang-yin-palm-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eppysvtyLu0BdS",
+          "type": "attack",
+          "label": "Yin Palm Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eZx6KhEP8apFiR",
+          "type": "save",
+          "label": "Yin Palm: Yin-Seal",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "kuru-yin-seal",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Yin-Seal"
+            }
+          ],
+          "text": "On a hit. Failure: Yin-Seal.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-dual-sight": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Miraigan active: Prophesize grants Fortune to two creatures, but only every other turn."
+        }
+      ]
+    },
+    "kuru-yin-release-adept-prophetic-counter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elal4n8G2yAftr",
+          "type": "roll",
+          "label": "Prophetic Counter",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction, an attack would hit you: it remakes the attack; a miss lets you take the Attack action against it in the same reaction."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "foresight",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-prophetic-teamwork": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eq3sEMsj2zJG0P",
+          "type": "roll",
+          "label": "Prophetic Teamwork",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally within 30 feet damages a hostile creature: another ally within 30 feet gets the Prophetic Teamwork special action (an Action feature, jutsu or attack at that creature, off its turn) until the start of its next turn."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "foresight",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-prophetic-weakness": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHgKPEYCUOYpkt",
+          "type": "roll",
+          "label": "Prophetic Weakness",
+          "roll": {
+            "formula": "lvl(1:2,7:4,15:6)",
+            "note": "Bonus action, a creature you see: until the start of your next turn it takes this much more damage from every source."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "foresight",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-yin-release-chains-of-causality": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Yin-Sealed creature: −1 AC against your attacks each time it makes a weapon attack or casts a jutsu. 11th: beating its AC by 10 or more is a critical hit."
+        }
+      ]
+    },
+    "kuru-yin-release-adept-yin-release-uncertain-future": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eV5BoPvEwpitA8",
+          "type": "save",
+          "label": "Uncertain Future",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction, a Yin-Sealed creature within 60 feet casts or uses an Action, Bonus Action or Reaction. Failure: it picks another of the same casting time, or loses it.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "foresight",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kuru-yin-release-adept-yin-release-veil-of-mystery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDy31A02jqXcOR",
+          "type": "roll",
+          "label": "Misfortune",
+          "roll": {
+            "formula": "1d4",
+            "note": "A Yin-Sealed creature, once before the end of your next turn (one at a time): Foretold Despair (−1d4 on its d20 roll) or Foretold Failure (nullify one jutsu bonus on it)."
+          },
+          "cost": {
+            "pool": "foresight",
+            "amount": 1
+          }
+        }
+      ]
+    }
+  }
+}

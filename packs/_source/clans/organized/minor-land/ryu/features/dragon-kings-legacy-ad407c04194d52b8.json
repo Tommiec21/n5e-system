@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ryu",
-      "sourceLine": 8701
+      "sourceLine": 8701,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Resistance to your release's condition. Concentration Ryu Hijutsu gain Stable."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,36 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eYwdv7HnmeBgDp",
+        "type": "roll",
+        "label": "Lineage of Survival",
+        "roll": {
+          "formula": "",
+          "note": "Starting your turn Envenomed: −1 rank."
+        },
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ehDGwOROeAZcI2",
+        "type": "roll",
+        "label": "Bloodline of Violence",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a Ryu Hijutsu with its Dragon Rage effect."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ]
   }
 }

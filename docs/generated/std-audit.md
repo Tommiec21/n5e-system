@@ -83,7 +83,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1714 | 696 | 8 | 557 | 557 | 0 |
+| clans | 1713 | 797 | 8 | 603 | 603 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
@@ -91,7 +91,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | features | 700 | 411 | 43 | 372 | 360 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
-| summons | 17 | 0 | 0 | 0 | 0 | 0 |
+| summons | 18 | 0 | 0 | 0 | 0 | 0 |
 
 ## 4. Amps (AMP1b)
 
@@ -100,13 +100,13 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 36 | 54 | 0 | 25 |
+| clans | 0 | 0 | 44 | 50 | 0 | 24 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **108** | **79** | **0** | **49** |
+| **Total** | **124** | **158** | **116** | **75** | **0** | **48** |
 
-### clans: 54 candidates
+### clans: 50 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -128,17 +128,15 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Steam Engine: Horse Power**: Its text names a Battle Amp.
 - **The Hunter**: Lasting bonus: "…you do, you gain an additional…"
 - **Ouroboros**: Lasting bonus: "…you fall to 0 hit points, you can spend your reaction to force your body to refuel, granti…"
-- **Serpents Guile**: Its text names a Fortitude Amp.
+- **Serpents Guile**: Lasting bonus: "…you gain a 60-foot swim speed, can move across walls and ceilings freely, gain 10 feet…"
 - **Stellar Convergence**: Lasting bonus: "…You provide a bonus to…"
 - **Controlled Demolition**: Its text names a Battle Amp.
 - **Explosive Art!**: Its text names a Battle Amp.
 - **Blank Canvas**: Lasting bonus: "…You gain an additional…"
-- **Secret Pages**: Its text names a Battle Amp.
 - **Blood of the Swift: Speed Burst**: Lasting bonus: "…your turn, you can spend 3 Speed Seals to gain an additional…"
 - **Synthetic Awakening**: Lasting bonus: "…your proficiency bonus to…"
 - **Nocturnal Dominion**: Its text names a Battle Amp.
 - **Heavenly Technique**: Lasting bonus: "…you would deal Force damage as a result of the target having 0 chakra, you instead simply …"
-- **Visions of what will be**: Its text names a Battle Amp.
 - **The Looking Glass**: Lasting bonus: "…you have immunity to…"
 - **Akimichi: Latent Food Pill I**: Lasting bonus: "…you do, you lose 2 calories and gain a +4…"
 - **Chinoike: Latent Ketsuryūgan**: Lasting bonus: "…you have advantage on…"
@@ -154,14 +152,12 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Storm Incarnate**: Lasting bonus: "…you make as a result of Hijutsu you cast gain a +1…"
 - **Nindo**: Its text names a Fortitude Amp.
 - **Celestial Body**: Lasting bonus: "…You begin with resistance to…"
-- **Irradiated Apex**: Its text names a Fortitude Amp.
 - **Swirling Seals**: Lasting bonus: "…You gain an additional…"
 - **Blood of the Swift**: Lasting bonus: "…You gain an additional…"
 - **Nindo: Always Go Beyond**: Its text names a Fortitude Amp.
 - **Dust Veil**: Lasting bonus: "…You gain an additional…"
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
-- **Wrath of the Dragon**: Its text names a Battle Amp.
 
 ### features: 25 candidates
 

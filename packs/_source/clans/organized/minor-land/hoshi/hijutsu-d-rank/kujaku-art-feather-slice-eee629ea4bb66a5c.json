@@ -17,6 +17,131 @@
         "cost": "5 Chakra (or 2 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eI5GAZa9ZoHV4j",
+              "type": "save",
+              "label": "Feather Slice",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Everyone within 15 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eI5GAZa9ZoHV4j",
+              "type": "save",
+              "label": "Feather Slice",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Everyone within 15 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eI5GAZa9ZoHV4j",
+              "type": "save",
+              "label": "Feather Slice",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Everyone within 15 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eI5GAZa9ZoHV4j",
+              "type": "save",
+              "label": "Feather Slice",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Everyone within 15 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Feather Slice"
+        },
+        "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): those that fail can't regain hit points until the end of their next turn, and lose Invisibility.",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 2
+        }
       }
     }
   },
@@ -109,7 +234,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eI5GAZa9ZoHV4j",
+        "type": "save",
+        "label": "Feather Slice",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Everyone within 15 feet; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

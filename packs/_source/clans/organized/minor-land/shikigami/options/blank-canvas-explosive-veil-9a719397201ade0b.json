@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shikigami",
       "sourceLine": 8097,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,101 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEk1WorZU874iN",
+        "type": "save",
+        "label": "Detonate on Arrival",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action: a 10-foot cube within 60 feet. Craft II: 2 Burned.",
+        "activation": "bonus",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:3d6,7:5d6,15:7d6)",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIGc97NzJPSD5Z",
+        "type": "save",
+        "label": "Set Trap",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Until combat ends; a hostile creature entering: it and everyone within 15 feet. Craft II: 3 Burned.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:4d6,7:6d6,15:8d6)",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eVpsrDAlqcP09w",
+        "type": "save",
+        "label": "Craft I: residual tags",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Reaction before your next turn: tagged creatures resave. Failure: Staggered.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eEL5BOv3K2Ehmy",
+        "type": "effect",
+        "label": "Craft II: Burned",
+        "effect": {
+          "name": "Burned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "burned"
+        },
+        "text": "Failed creatures: 2 ranks (arrival) or 3 (trap): apply again."
+      }
+    ]
   }
 }

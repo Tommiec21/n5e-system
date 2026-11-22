@@ -17,6 +17,134 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Yin Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eQPSm3grLF06op",
+              "type": "save",
+              "label": "Dark Divergence Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "4d8 necrotic; Berserk.",
+                  "critFailure": "As failure; it can't see anyone but its original allies."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "A 60 by 5-foot beam.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eQPSm3grLF06op",
+              "type": "save",
+              "label": "Dark Divergence Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "4d8 necrotic; Berserk.",
+                  "critFailure": "As failure; it can't see anyone but its original allies."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "A 60 by 5-foot beam.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eQPSm3grLF06op",
+              "type": "save",
+              "label": "Dark Divergence Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "4d8 necrotic; Berserk.",
+                  "critFailure": "As failure; it can't see anyone but its original allies."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "A 60 by 5-foot beam.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +238,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQPSm3grLF06op",
+        "type": "save",
+        "label": "Dark Divergence Wave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "Half damage.",
+            "failure": "4d8 necrotic; Berserk.",
+            "critFailure": "As failure; it can't see anyone but its original allies."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "berserk",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Berserk"
+          }
+        ],
+        "text": "A 60 by 5-foot beam.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

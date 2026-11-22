@@ -17,6 +17,219 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "HS, CS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: on a failure, teleport into the area and make one unarmed attack (+1 at A)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eKdBzgcASEapRw",
+              "type": "save",
+              "label": "Paper Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEGcrPpsCSb0Q1",
+              "type": "save",
+              "label": "Explosive: detonation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hostile creature moving in it before your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d10",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eKdBzgcASEapRw",
+              "type": "save",
+              "label": "Paper Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEGcrPpsCSb0Q1",
+              "type": "save",
+              "label": "Explosive: detonation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hostile creature moving in it before your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d10",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKdBzgcASEapRw",
+              "type": "save",
+              "label": "Paper Drizzle",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEGcrPpsCSb0Q1",
+              "type": "save",
+              "label": "Explosive: detonation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A hostile creature moving in it before your next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d10",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Paper Veil",
+        "appliesTo": {
+          "namePrefix": "Origami Technique: Paper Drizzle"
+        },
+        "note": "Paper Veil active, your first Canvas Type's effect: Serrated, Binding, Explosive or Weaving effect."
       }
     }
   },
@@ -108,7 +321,71 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKdBzgcASEapRw",
+        "type": "save",
+        "label": "Paper Drizzle",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eEGcrPpsCSb0Q1",
+        "type": "save",
+        "label": "Explosive: detonation",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A hostile creature moving in it before your next turn; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,7 +17,8 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile, Unaware), Yin Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eOXNXac0bvrKwi",
+        "type": "save",
+        "label": "Broken Clock",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "Resists.",
+            "failure": "It moves back to its last space and repeats last turn's Bonus action.",
+            "critFailure": "As failure, and repeats its Action."
+          }
+        },
+        "inflicts": [],
+        "text": "A creature within 60 feet (+1 per rank); resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

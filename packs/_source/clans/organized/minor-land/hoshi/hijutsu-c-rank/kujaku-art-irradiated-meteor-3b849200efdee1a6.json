@@ -17,6 +17,200 @@
         "cost": "9 Chakra (or 4 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5esf2n0WddenLcE",
+              "type": "save",
+              "label": "Irradiated Meteor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeZk0HTQn0l1GP",
+              "type": "save",
+              "label": "Irradiated area",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esf2n0WddenLcE",
+              "type": "save",
+              "label": "Irradiated Meteor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeZk0HTQn0l1GP",
+              "type": "save",
+              "label": "Irradiated area",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esf2n0WddenLcE",
+              "type": "save",
+              "label": "Irradiated Meteor",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeZk0HTQn0l1GP",
+              "type": "save",
+              "label": "Irradiated area",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Irradiated Meteor"
+        },
+        "note": "Pay 4 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): the area is radioactive until the end of your next turn (the Irradiated area button).",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 4
+        }
       }
     }
   },
@@ -108,7 +302,65 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5esf2n0WddenLcE",
+        "type": "save",
+        "label": "Irradiated Meteor",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 20-foot radius within 60 feet (+5 feet per rank). Failure: Prone. No half damage is stated.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eeZk0HTQn0l1GP",
+        "type": "save",
+        "label": "Irradiated area",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Irradiated, until the end of your next turn: first entering on a turn. Failure: the chakra damage, and its next jutsu within 1 minute costs that much more.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

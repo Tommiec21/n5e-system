@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hoshi",
       "sourceLine": 7881,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,26 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ela4auxPoYD7KC",
+        "type": "damage",
+        "label": "Irradiated Imprint",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
+        },
+        "text": "Casting a Hoshi Hijutsu at hostile creatures: 2 Star Chakra per creature saving marks it until the end of your next turn; ending its next turn within 20 feet: 2d6 poison + 2d6 per other marked creature there.",
+        "cost": {
+          "pool": "starChakra",
+          "choose": true
+        }
+      }
+    ]
   }
 }

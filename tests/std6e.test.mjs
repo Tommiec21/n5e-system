@@ -259,3 +259,42 @@ test("STD6e E7 Land of Fire II: every Namikaze, Nara, Sarutobi, Senju, Uchiha, U
   }
   assert.match(item("senju", "senju-wood-release-wood-dragon-summoning").flags.n5e.rules[0].text, /H9/);
 });
+
+test("STD6e E8 Minor Lands: every Hebi, Hoshi, Kuru, Ryu and Shikigami item reviewed", async () => {
+  for ( const clan of ["hebi", "hoshi", "kuru", "ryu", "shikigami"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("hebi", "hebi-serpents-blood", "viperBlood").max, "1 + @prof");
+  assert.equal(pool("hoshi", "hoshi-star-chakra", "starChakra").max, "1 + @prof");
+  assert.equal(pool("kuru", "kuru-miraigan", "foresight").recovery[0].on, "rest");
+  assert.equal(pool("ryu", "ryu-wrath-of-the-dragon", "draconicChakra").max, "1 + @prof");
+  const rei = pool("shikigami", "shikigami-origami", "rei");
+  assert.equal(rei.max, "4");
+  assert.deepEqual(rei.recovery.map(r => [r.on, r.amount]), [["turn", "formula"], ["encounter", "empty"]]);
+  // Hoshi's Irradiated version: no chakra, spends Star Chakra.
+  const irr = item("hoshi", "hoshi-kujaku-art-comet-beam").flags.n5e.castOption;
+  assert.equal(irr.costDelta, "zero");
+  assert.deepEqual(irr.cost, { pool: "starChakra", amount: 2 });
+  // The Kujaku Beast summon: AC and hit points by rank.
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const beast = SUMMONS.kujakuBeast;
+  assert.equal(beast._id, "n5eUznLAdjVLA63C");
+  assert.equal(beast.flags.n5e.fromSummoner["attributes.ac.flat"], "12 + 2 * max(0, @rankValue - 1)");
+  const sum = item("hoshi", "hoshi-kujaku-art-kujaku-beast").system.activities.find(a => a.type === "summon");
+  assert.equal(sum.summon.uuid, "Compendium.n5e.summons.Actor.n5eUznLAdjVLA63C");
+  // Hebi's duplicate stance is gone (as King Q-E18); one stance item, holding Serpent's Coil.
+  const fs = await import("node:fs");
+  const dir = new URL("../packs/_source/clans/organized/minor-land/hebi/stances/", import.meta.url);
+  const stances = fs.readdirSync(dir).filter(f => !f.startsWith("_"));
+  assert.equal(stances.length, 1);
+  assert.match(JSON.parse(fs.readFileSync(new URL(stances[0], dir), "utf8")).system.description, /Viper Strike/);
+  // King Q-E9 / Q-E12 applied.
+  assert.match(item("kuru", "kuru-stance-black-fang").system.description, /Past Strike/);
+  assert.match(item("shikigami", "shikigami-stance-muscle-weave").system.description, /Muscle Weave/);
+  for ( const [clan, id, amp] of [["hebi", "hebi-serpents-guile", "Basilisk’s Blessing"], ["hoshi", "hoshi-irradiated-apex", "Kujaku Sanseijin"], ["kuru", "kuru-visions-of-what-will-be", "Black Okami"], ["ryu", "ryu-wrath-of-the-dragon", "Dragons Rage"], ["shikigami", "shikigami-secret-pages", "Origami Angel/Demon"]] ) {
+    assert.doesNotMatch(item(clan, id).system.description, new RegExp(`#### ${amp} /`), id);
+  }
+});

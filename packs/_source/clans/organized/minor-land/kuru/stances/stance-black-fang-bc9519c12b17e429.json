@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "kuru",
-      "sourceLine": 8504
+      "sourceLine": 8504,
+      "textFrom": "kuru-black-fang (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The stance item now holds Black Fang's text (as King Q-E9). [Unarmed Damage] d6, bludgeoning, necrotic or psychic, with your Hijutsu Flexibility ability. 7th: two attacks without Extra Attack."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "kuru-stance-black-fang",
-    "description": "<p>11th Level Clan Feature</p>\n<p>The clan of Monks, warriors and revolutionaries all exist at the same time within the past of the Kuru, but what is lost is the blessings of Kuroi, the first Alpha. You hope to embody their blessings, their pride and their forgotten memory, by inheriting his will, learning the Black Okami Form.</p>\n<p>As a Bonus action, while you have both the Miraigan active and are in the Black Fang stance, you can spend 4 Foresight, to enter the Black Okami Form. Entering this form causes your Yin Chakra to tattoo itself across your skin, in tribalistic patterns as your eyes gain black markings around them, making your gaze more intense, like that of a wolf. You can remain in this form for up to 1 minute, you become incapacitated or you are no longer in your Black Fang stance or your Miraigan isn’t active. Once you use this form, you cannot use it again until you complete a long rest.</p>",
+    "description": "<p>| Yin-Seal / [Mental], [Sensory] / You have been marked with a special sealing mark created by the Kuru. Kuru refers to the clan of the creature that inflicted this seal. / Once per turn, If a Kuru deals damage to a Yin-Sealed creature, the Kuru regains 1 Foresight. / Attacks a Yin-Sealed creature makes against a Kuru suffer a -2 penalty to their result. / Saving throws a Yin-Sealed creature forces a Kuru to make are treated as if they have a -1 penalty, only for the Kuru. / A creature immune to the Sealed condition is immune to this condition. / A creature can spend its action to make a DC 20 Ninshou check to remove this condition. |</p>\n<p>1st Level Clan Feature</p>\n<p>The Miraigan is but one trick the Kuru are capable of using. They are also able to utilize the Black Fang stance, a stance that blends their unique fighting style with their affinity for Yin Release. You learn the Black Fang Taijutsu stance, which uses your Clans Hijutsu ability modifier as defined by Hijutsu Flexibility to make unarmed attacks and calculate [Unarmed Damage]. While in this stance, you gain the following benefits;</p>\n<p>Your [Unarmed Damage] die becomes a d6 and can deal either Bludgeoning, Necrotic or Psychic as you weave martial arts with illusions and sealing into each strike.</p>\n<p>In place of an attack made as part of your Attack action, you can instead make a Past Strike or Future Strike. You can only use Past Strike or Future Strike once per turn each.</p>\n<p>Beginning at 7th level, if you do not have the Extra Attack class feature, you can attack twice while in this stance when you take the Attack action.</p>\n<p>Past Strike. Make an unarmed attack, dealing your [Unarmed Damage] on a hit, and forcing the affected creature to make a Wisdom saving throw vs your highest jutsu save DC. On a failure, visions of past combats overlap with this one, causing them to be Confused.</p>\n<p>Future Strike. Make an unarmed attack, dealing your [Unarmed Damage] on a hit, and forcing the affected creature to make a Charisma saving throw vs your highest jutsu save DC. On a failure, at the beginning of their next turn, they are confronted with visions of future attacks from you that bind their chakra, inflicting 1 rank of Sealed.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +37,121 @@
     ],
     "clan": "kuru",
     "featureType": "passive",
-    "requirement": "Kuru clan"
+    "requirement": "Kuru clan",
+    "activities": [
+      {
+        "id": "n5emNGGnTS936eXv",
+        "type": "effect",
+        "label": "Black Fang",
+        "effect": {
+          "name": "Black Fang",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Enter the stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5emN2NAYEo9BCGK",
+        "type": "attack",
+        "label": "Past Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack; bludgeoning, necrotic or psychic.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eGbaaqVkZ5OsRm",
+        "type": "save",
+        "label": "Past Strike: Confused",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "On a hit. Failure: Confused.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eg2xfXbJD63llx",
+        "type": "attack",
+        "label": "Future Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5elUVHKSZGI8SOT",
+        "type": "save",
+        "label": "Future Strike: Sealed",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Sealed at the start of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "unarmedDie": "1d6"
   }
 }

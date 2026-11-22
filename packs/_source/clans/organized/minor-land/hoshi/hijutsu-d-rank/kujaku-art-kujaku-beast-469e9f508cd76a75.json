@@ -17,6 +17,25 @@
         "cost": "Special (5 Chakra, or 2 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Stable",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its stat block (complete in the source book's box) is the Kujaku Beast summon; AC and hit points follow the rank you cast it at."
+        }
+      ],
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Kujaku Beast"
+        },
+        "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): it gains its Radiation Aura.",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 2
+        }
       }
     }
   },
@@ -109,7 +128,18 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eCMWzAZgyED32P",
+        "type": "summon",
+        "label": "Kujaku Beast",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eUznLAdjVLA63C",
+          "count": 1,
+          "template": ""
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

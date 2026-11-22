@@ -17,6 +17,19 @@
         "cost": "8 Chakra (or 4 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual)",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Hypnotic Dance"
+        },
+        "note": "Pay 4 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): range becomes Self (30-foot radius).",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 4
+        }
       }
     }
   },
@@ -109,7 +122,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eKsGreDe07TBhH",
+        "type": "save",
+        "label": "Hypnotic Dance",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "1 Demoralized or Shaken until the start of your next turn.",
+            "failure": "1 Demoralized or Shaken (your choice).",
+            "critFailure": "As failure, and Dazed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          },
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Up to two creatures within 30 feet that see you; resave at the end of each turn. +1 rank per rank above C.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

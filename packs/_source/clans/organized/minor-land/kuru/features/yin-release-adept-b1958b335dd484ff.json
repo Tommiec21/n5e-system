@@ -9,7 +9,19 @@
   "flags": {
     "n5e": {
       "clanPackage": "kuru",
-      "sourceLine": 8457
+      "sourceLine": 8457,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a jutsu: it can swap a Nature Release keyword for Yin Release, or gain Yin Release (cast dialog option): its damage is necrotic or psychic, and a listed release effect becomes a Yin-Seal on a failed save until the end of your next turn. One Yin Art (+1 at 7th and 15th): the option items."
+        }
+      ],
+      "castOption": {
+        "label": "Yin Release",
+        "appliesTo": {},
+        "note": "Damage becomes necrotic or psychic; the release's secondary effect becomes a Yin-Seal on a failed save (no save: the Yin-Seal button)."
+      }
     }
   },
   "ownership": {
@@ -42,6 +54,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eNok6aIFXgMDzQ",
+        "type": "save",
+        "label": "Yin Release: Yin-Seal",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "kuru-yin-seal",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Yin-Seal"
+          }
+        ],
+        "text": "A Yin Release jutsu with no save: one affected creature. Failure: Yin-Seal until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

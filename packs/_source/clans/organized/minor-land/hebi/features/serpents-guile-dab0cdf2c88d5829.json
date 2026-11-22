@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8333
+      "sourceLine": 8333,
+      "ampCopyRemoved": "Basilisk’s Blessing (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Basilisk's Blessing's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "hebi-serpents-guile",
-    "description": "<p>| #### Basilisk’s Blessing / Fortitude Amp / You have been blessed by the Basilisk, your clans divine figure, gaining the following benefits; / Basilisk Blood. At the beginning of each of your turns, you regain 1 Viper Blood and Hebi Clan features and effects that cost 2 or more Viper Blood, cost one less. / Basilisk’s Health. When you regain hit points as a result of the Serpent Blood clan feature, you instead regain hit points equal to your level and When you spend Viper Blood to attempt to remove ranks of a Physical or Elemental conditions through the Venomous Technique clan feature, you make that saving throw at advantage. / Basilisk’s Coil. Once per turn, it costs 0 Viper Blood to use a Strike ability as part of a Hebi Clan Hijutsu you cast. |</p>\n<p>7th Level Clan Feature</p>\n<p>The Hebi Clan are known for their intelligence networks throughout the shinobi world, having released specially trained snakes of different breeds across the land. Their ability to communicate with them, allows them to collect information from these snakes, without ever having to interact with another human once.</p>\n<p>By spending 10 minutes performing a sleeper serpent ritual, you release a guiding pulse, calling on snakes within a 1-mile radius to you. These snakes share with you one piece of information or rumors or hint about the area, that the snakes collected during their time here. If the terrain or area is void of snakes, none heed your call. Once you call upon serpents in this way, they cannot be called upon again, until you complete a long rest.</p>\n<p>Alternatively, you can spend 10 minutes performing the Viper Form ritual, spending 2 Viper Blood, to perform a special transformation, temporarily shapeshifting your biology, into that of a Tiny or Small sized snake for up to 1 hour or dismissed. While transformed in this way, you’re clothing and carrying containers melds onto you with a similar, but smaller design as what you had in your humanoid state, but for a snake, and you drop all weapons and things not sealed inside of scrolls. you gain a 60-foot swim speed, can move across walls and ceilings freely, gain 10 feet of Blind Sight, and cannot be identified by creatures as being anything other than a snake. You cannot cast Jutsu or make weapon attacks. Taking damage, immediately dispels this form, unless you spend 1 Viper Blood to resist and sustain the form. Once you transform in this way you cannot do so again, until you complete a long rest.</p>",
+    "description": "<p>7th Level Clan Feature</p>\n<p>The Hebi Clan are known for their intelligence networks throughout the shinobi world, having released specially trained snakes of different breeds across the land. Their ability to communicate with them, allows them to collect information from these snakes, without ever having to interact with another human once.</p>\n<p>By spending 10 minutes performing a sleeper serpent ritual, you release a guiding pulse, calling on snakes within a 1-mile radius to you. These snakes share with you one piece of information or rumors or hint about the area, that the snakes collected during their time here. If the terrain or area is void of snakes, none heed your call. Once you call upon serpents in this way, they cannot be called upon again, until you complete a long rest.</p>\n<p>Alternatively, you can spend 10 minutes performing the Viper Form ritual, spending 2 Viper Blood, to perform a special transformation, temporarily shapeshifting your biology, into that of a Tiny or Small sized snake for up to 1 hour or dismissed. While transformed in this way, you’re clothing and carrying containers melds onto you with a similar, but smaller design as what you had in your humanoid state, but for a snake, and you drop all weapons and things not sealed inside of scrolls. you gain a 60-foot swim speed, can move across walls and ceilings freely, gain 10 feet of Blind Sight, and cannot be identified by creatures as being anything other than a snake. You cannot cast Jutsu or make weapon attacks. Taking damage, immediately dispels this form, unless you spend 1 Viper Blood to resist and sustain the form. Once you transform in this way you cannot do so again, until you complete a long rest.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,30 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eYEx6aNnOCksFK",
+        "type": "roll",
+        "label": "Sleeper Serpent",
+        "roll": {
+          "formula": "",
+          "note": "10-minute ritual, once per long rest: snakes within 1 mile share one rumor."
+        }
+      },
+      {
+        "id": "n5ezCoV4FUvTpid8",
+        "type": "roll",
+        "label": "Viper Form",
+        "roll": {
+          "formula": "",
+          "note": "10-minute ritual, once per long rest: a Tiny or Small snake up to 1 hour (60-foot swim, walls and ceilings, 10-foot Blindsight; no jutsu or weapon attacks; damage ends it unless you spend 1 Viper Blood)."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shikigami",
       "sourceLine": 8103,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Craft I: Shikigami Hijutsu dealing piercing or slashing +4 damage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,46 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eTWvwNZkzKf3eo",
+        "type": "save",
+        "label": "Serrated aura",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          },
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "First time on a turn a chosen hostile creature is within 10 feet, or starts its turn within 5 feet (10 with Craft I). Failure: Bleed (2 at 7th, 3 at 15th); Craft II: also Slowed.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

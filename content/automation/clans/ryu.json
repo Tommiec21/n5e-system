@@ -1,0 +1,1876 @@
+{
+  "clan": "ryu",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "ryu-conquerors-art-dragon-aegis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEEoi7BQXJQhkj",
+          "type": "heal",
+          "label": "Dragon Aegis",
+          "heal": {
+            "formula": "2d8 + 4",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: a barrier until the end of the turn (stacks with other Ryu Hijutsu temporary hit points).",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eEEoi7BQXJQhkj",
+                "type": "heal",
+                "label": "Dragon Aegis",
+                "heal": {
+                  "formula": "2d8 + 4",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a barrier until the end of the turn (stacks with other Ryu Hijutsu temporary hit points).",
+                "activation": "reaction"
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eEEoi7BQXJQhkj",
+                "type": "heal",
+                "label": "Dragon Aegis",
+                "heal": {
+                  "formula": "2d8 + 4",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a barrier until the end of the turn (stacks with other Ryu Hijutsu temporary hit points).",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eEEoi7BQXJQhkj",
+                "type": "heal",
+                "label": "Dragon Aegis",
+                "heal": {
+                  "formula": "2d8 + 4",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a barrier until the end of the turn (stacks with other Ryu Hijutsu temporary hit points).",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEEoi7BQXJQhkj",
+                "type": "heal",
+                "label": "Dragon Aegis",
+                "heal": {
+                  "formula": "2d8 + 4",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a barrier until the end of the turn (stacks with other Ryu Hijutsu temporary hit points).",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Dragon Aegis"
+          },
+          "note": "In your Dragon's Rage: resistance to your release's inferior damage type (Earth > Water > Fire > Wind > Lightning > Earth)."
+        }
+      ]
+    },
+    "ryu-conquerors-art-dragon-cloak": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp91ec0c58299ae",
+          "type": "effect",
+          "label": "Conqueror’s Art: Dragon Cloak",
+          "effect": {
+            "name": "Conqueror’s Art: Dragon Cloak",
+            "target": "self",
+            "amp": "jutsu-ryu-conquerors-art-dragon-cloak"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Dragon Cloak"
+          },
+          "note": "In your Dragon's Rage: starting your turn below 5 temporary hit points, regain 2d12."
+        }
+      ]
+    },
+    "ryu-conquerors-art-emperors-claw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRApU8dExd4D6h",
+          "type": "attack",
+          "label": "Emperors Claw",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eG6WPtLQ083lC9",
+          "type": "save",
+          "label": "Guard shattered",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eRApU8dExd4D6h",
+                "type": "attack",
+                "label": "Emperors Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eG6WPtLQ083lC9",
+                "type": "save",
+                "label": "Guard shattered",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eRApU8dExd4D6h",
+                "type": "attack",
+                "label": "Emperors Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eG6WPtLQ083lC9",
+                "type": "save",
+                "label": "Guard shattered",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eRApU8dExd4D6h",
+                "type": "attack",
+                "label": "Emperors Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eG6WPtLQ083lC9",
+                "type": "save",
+                "label": "Guard shattered",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRApU8dExd4D6h",
+                "type": "attack",
+                "label": "Emperors Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (4d8)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eG6WPtLQ083lC9",
+                "type": "save",
+                "label": "Guard shattered",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Emperors Claw"
+          },
+          "note": "In your Dragon's Rage: Barrier jutsu an affected creature casts have half their hit points, DR or AC bonus."
+        }
+      ]
+    },
+    "ryu-conquerors-art-fang-of-ruin": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMPV31VdoKa5kv",
+          "type": "attack",
+          "label": "Fang of Ruin",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "5 feet, one creature (B-Rank: 2 more at another).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5eIMZeptrlrPhgL",
+          "type": "save",
+          "label": "Fang of Ruin (Dragon Rage)",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "In Dragon's Rage instead: a 15-foot cone (+15 at B, +30 at S). Failure: [Unarmed] or [Weapon Damage] (roll it) + the chakra damage; it takes +2 damage from other sources (+4 at B, +6 at S) until the start of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eMPV31VdoKa5kv",
+                "type": "attack",
+                "label": "Fang of Ruin",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "5 feet, one creature (B-Rank: 2 more at another).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eIMZeptrlrPhgL",
+                "type": "save",
+                "label": "Fang of Ruin (Dragon Rage)",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "In Dragon's Rage instead: a 15-foot cone (+15 at B, +30 at S). Failure: [Unarmed] or [Weapon Damage] (roll it) + the chakra damage; it takes +2 damage from other sources (+4 at B, +6 at S) until the start of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eMPV31VdoKa5kv",
+                "type": "attack",
+                "label": "Fang of Ruin",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "5 feet, one creature (B-Rank: 2 more at another).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eIMZeptrlrPhgL",
+                "type": "save",
+                "label": "Fang of Ruin (Dragon Rage)",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "In Dragon's Rage instead: a 15-foot cone (+15 at B, +30 at S). Failure: [Unarmed] or [Weapon Damage] (roll it) + the chakra damage; it takes +2 damage from other sources (+4 at B, +6 at S) until the start of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eMPV31VdoKa5kv",
+                "type": "attack",
+                "label": "Fang of Ruin",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "5 feet, one creature (B-Rank: 2 more at another).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eIMZeptrlrPhgL",
+                "type": "save",
+                "label": "Fang of Ruin (Dragon Rage)",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "In Dragon's Rage instead: a 15-foot cone (+15 at B, +30 at S). Failure: [Unarmed] or [Weapon Damage] (roll it) + the chakra damage; it takes +2 damage from other sources (+4 at B, +6 at S) until the start of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eMPV31VdoKa5kv",
+                "type": "attack",
+                "label": "Fang of Ruin",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "5 feet, one creature (B-Rank: 2 more at another).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eIMZeptrlrPhgL",
+                "type": "save",
+                "label": "Fang of Ruin (Dragon Rage)",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "In Dragon's Rage instead: a 15-foot cone (+15 at B, +30 at S). Failure: [Unarmed] or [Weapon Damage] (roll it) + the chakra damage; it takes +2 damage from other sources (+4 at B, +6 at S) until the start of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "chakra"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ryu-conquerors-art-fanged-interjection": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoBIyVTxoXYNCD",
+          "type": "attack",
+          "label": "Fanged Interjection",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e6m69wRbhuLCzI",
+          "type": "save",
+          "label": "Interrupt",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eoBIyVTxoXYNCD",
+                "type": "attack",
+                "label": "Fanged Interjection",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6m69wRbhuLCzI",
+                "type": "save",
+                "label": "Interrupt",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eoBIyVTxoXYNCD",
+                "type": "attack",
+                "label": "Fanged Interjection",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e6m69wRbhuLCzI",
+                "type": "save",
+                "label": "Interrupt",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Fanged Interjection"
+          },
+          "note": "In your Dragon's Rage: a failed save also gives 2 ranks of your chosen release's condition (Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked)."
+        }
+      ]
+    },
+    "ryu-conquerors-art-monarchs-roar": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efEHPfMHMQRtiJ",
+          "type": "save",
+          "label": "Monarchs Roar",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "",
+              "success": "Resists.",
+              "failure": "1 Demoralized and 1 Shaken.",
+              "critFailure": "2 of each."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Hostile creatures within 20 feet (+5 feet per rank). Ranks +1 at B, +1 more at S.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Monarchs Roar"
+          },
+          "note": "In your Dragon's Rage: allies in range +1 on their next die roll before your next turn (+1 at B, +1 more at S)."
+        }
+      ]
+    },
+    "ryu-conquerors-art-sovereign-verdict": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eskOlOGf50ZUFn",
+          "type": "attack",
+          "label": "Sovereign Verdict",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Every hostile creature within 20 feet; [Unarmed] or [Weapon Damage].",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eSNKN1bwAXnjNN",
+          "type": "save",
+          "label": "Verdict",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Damaged creatures. Failure: can't cast jutsu with one keyword you pick (a release, Medical, Fuinjutsu); resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eskOlOGf50ZUFn",
+                "type": "attack",
+                "label": "Sovereign Verdict",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Every hostile creature within 20 feet; [Unarmed] or [Weapon Damage].",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eSNKN1bwAXnjNN",
+                "type": "save",
+                "label": "Verdict",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Damaged creatures. Failure: can't cast jutsu with one keyword you pick (a release, Medical, Fuinjutsu); resave at the end of each turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Sovereign Verdict"
+          },
+          "note": "In your Dragon's Rage: 3 Draconic Chakra: one creature you hit saves at disadvantage."
+        }
+      ]
+    },
+    "ryu-conquerors-art-tyrants-impact": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9n73AXsD6r3Lh",
+          "type": "save",
+          "label": "Tyrants Impact",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eRlQs5SHSltjLr",
+          "type": "damage",
+          "label": "Dragon Rage: failed by 5+",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d10",
+                "type": ""
+              }
+            ]
+          },
+          "text": "In place of the 3d10."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e9n73AXsD6r3Lh",
+                "type": "save",
+                "label": "Tyrants Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eRlQs5SHSltjLr",
+                "type": "damage",
+                "label": "Dragon Rage: failed by 5+",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d10) + (1d10)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "text": "In place of the 3d10."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e9n73AXsD6r3Lh",
+                "type": "save",
+                "label": "Tyrants Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eRlQs5SHSltjLr",
+                "type": "damage",
+                "label": "Dragon Rage: failed by 5+",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d10) + (2d10)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "text": "In place of the 3d10."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e9n73AXsD6r3Lh",
+                "type": "save",
+                "label": "Tyrants Impact",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eRlQs5SHSltjLr",
+                "type": "damage",
+                "label": "Dragon Rage: failed by 5+",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d10) + (3d10)",
+                      "type": ""
+                    }
+                  ]
+                },
+                "text": "In place of the 3d10."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ryu-conquerors-art-tyrants-warcry": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ5sJPKqFe2g2Q",
+          "type": "effect",
+          "label": "Emboldened",
+          "effect": {
+            "name": "Emboldened",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Creatures you choose within 20 feet: +1d6 damage; once per turn, move 10 feet on a hit without provoking; resistance to Demoralized, Dazed and Shaken."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Tyrant’s Warcry"
+          },
+          "note": "In your Dragon's Rage: cast it as a Bonus action."
+        }
+      ]
+    },
+    "ryu-conquerors-art-wyrmcallers-pulse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp3589d821ab591",
+          "type": "effect",
+          "label": "Conqueror’s Art: Wyrmcaller’s Pulse",
+          "effect": {
+            "name": "Conqueror’s Art: Wyrmcaller’s Pulse",
+            "target": "targets",
+            "amp": "jutsu-ryu-conquerors-art-wyrmcallers-pulse"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at. Target the creatures first."
+        },
+        {
+          "id": "n5eZ1HOIioIdzc5I",
+          "type": "save",
+          "label": "Prey",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Resists.",
+              "success": "Disadvantage on its next attack on others before the end of its next turn.",
+              "failure": "Disadvantage on attacks on others for the duration.",
+              "critFailure": "As failure, and 2 ranks of your chosen release's condition (Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked)."
+            }
+          },
+          "inflicts": [],
+          "text": "Hostile creatures you choose within 30 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays (Wyrmlings: +1 AC, 14 temporary hit points, +4 per rank)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Dragon Rage",
+          "appliesTo": {
+            "namePrefix": "Conqueror’s Art: Wyrmcaller’s Pulse"
+          },
+          "note": "In your Dragon's Rage: you gain 4 temporary hit points per affected creature."
+        }
+      ]
+    },
+    "ryu-defiance-of-fate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezlCrf04Ka2YkM",
+          "type": "roll",
+          "label": "Dragon Kings Decree",
+          "roll": {
+            "formula": "",
+            "note": "Rolling initiative, per 5 Draconic Chakra, one decree for the combat: your attacks and damage can't be intercepted by Barriers or creatures; once, at 0 hit points stay at 1 and enter Awakened Dragon's Rage free, ending all conditions; effects that change your die results let you reroll and keep the higher."
+          },
+          "cost": {
+            "pool": "draconicChakra",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Untamable: Dragon's Rage ends only at 5 ranks of Sealed."
+        }
+      ]
+    },
+    "ryu-dragon-kings-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYwdv7HnmeBgDp",
+          "type": "roll",
+          "label": "Lineage of Survival",
+          "roll": {
+            "formula": "",
+            "note": "Starting your turn Envenomed: −1 rank."
+          },
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ehDGwOROeAZcI2",
+          "type": "roll",
+          "label": "Bloodline of Violence",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Ryu Hijutsu with its Dragon Rage effect."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Resistance to your release's condition. Concentration Ryu Hijutsu gain Stable."
+        }
+      ]
+    },
+    "ryu-ryuken": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Ryūken Taijutsu stance (the clan's stance item)."
+        }
+      ]
+    },
+    "ryu-stance-ryuken": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezlY5cSIYy6rwx",
+          "type": "effect",
+          "label": "Ryūken",
+          "effect": {
+            "name": "Ryūken",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Enter the stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eaU5ydfXzCueuZ",
+          "type": "attack",
+          "label": "Rending Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In place of an attack; slashing or piercing.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e8M39t7zCcGPKr",
+          "type": "save",
+          "label": "Rending Strike: AC",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: −1 AC (−2 at 7th, −3 at 15th) until the start of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eGDp3w2Bj1IX8M",
+          "type": "attack",
+          "label": "Starving Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In place of an attack: the [Unarmed Damage] is chakra damage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": "chakra"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eHd22MO2pzeIKa",
+          "type": "save",
+          "label": "Starving Strike: drain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: you gain 2 temporary chakra (4 at 7th, 6 at 15th) until the end of the turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5elPo5FXNWt6Skl",
+          "type": "heal",
+          "label": "Starving Strike: temporary chakra",
+          "heal": {
+            "formula": "lvl(1:2,7:4,15:6)",
+            "pool": "tempCp"
+          },
+          "text": "It failed."
+        },
+        {
+          "id": "n5esFCXti8qvKAx8",
+          "type": "roll",
+          "label": "Strike in a Hijutsu",
+          "roll": {
+            "formula": "",
+            "note": "Use a Strike ability as part of a Ryu Clan Hijutsu."
+          },
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Unarmed Damage] d6, slashing or piercing, with your Hijutsu Flexibility ability. 7th: two attacks without Extra Attack."
+        }
+      ]
+    },
+    "ryu-tyrants-dominion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efNglDPkN5zwBj",
+          "type": "effect",
+          "label": "Sovereigns Ascent",
+          "effect": {
+            "name": "Sovereigns Ascent",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Bonus action, on the ground: a fly speed equal to your speed until the end of your next turn.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5etqVbE35EKXuey",
+          "type": "roll",
+          "label": "Sovereigns Coil",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to Ninjutsu, Taijutsu or Bukijutsu damage: a Clash with Chakra Control."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e8nQxYzBMwEdej",
+          "type": "attack",
+          "label": "Sovereigns Momentum",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Action: a 30-foot line through creatures; one attack against each hostile one passed (it can be a Strike).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ez7BF0ARflHpFq",
+          "type": "attack",
+          "label": "Cleaving Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ebNoddrtTZcJN7",
+          "type": "save",
+          "label": "Cleaving Strike: DR",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: −4 DR (−6 at 7th, −8 at 15th) until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eNkNAJxICux7q6",
+          "type": "attack",
+          "label": "Consuming Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Once per turn, in place of an attack.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eMLEe3S7snbJu2",
+          "type": "save",
+          "label": "Consuming Strike: dispel",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit. Failure: one jutsu effect on it of D-Rank or lower (C at 7th, B at 15th) is dispelled.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eA0QavuSv5ChQB",
+          "type": "attack",
+          "label": "Rebelling Strike",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "Once per turn, Reaction to damage from a creature in reach: two attacks.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:0,7:1d6,15:2d6)",
+                "type": ""
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5ekTefnm85whizg",
+          "type": "save",
+          "label": "Rebelling Strike: push",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "At least one hit. Failure: pushed 20 feet, Prone and Bruised.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eKlyjdknsEVltt",
+          "type": "roll",
+          "label": "Tyrants Hunger",
+          "roll": {
+            "formula": "",
+            "note": "In Dragon's Rage, Reaction to damage from a jutsu of your release: −1 damage die (+1 at 7th and 15th); regain Draconic Chakra by its rank (D/C 2, B/A 4, S 6; gain by hand)."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Wyrm Arts (+1 at 7th and 15th): pick them; all are buttons here. Sovereigns Brutality: having taken damage since your last turn, attacks against creatures with Elemental or Physical ranks +1 critical range (+1 at 7th and 15th). Tyrants Focus: in Dragon's Rage, immune to being made to treat or target allies as hostile; can't be Charmed by hostile creatures in combat. Tyrants Ferocity: in Dragon's Rage, a jutsu critical hit allows one Strike at the same creature."
+        }
+      ]
+    },
+    "ryu-wrath-of-the-dragon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ex5nZFZ2eHwXqg",
+          "type": "effect",
+          "label": "Dragon's Rage",
+          "effect": {
+            "name": "Dragon's Rage",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "dragons-rage"
+          },
+          "text": "Bonus action, 1 minute; 3+ Sealed ends it.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5es34aoFwzbDEms",
+          "type": "effect",
+          "label": "Dragon's Rage: Ascended",
+          "effect": {
+            "name": "Dragon's Rage (Ascended)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "dragons-rage"
+          },
+          "text": "7th: 4 Draconic Chakra (or 2 more while in Dragon's Rage).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 4
+          },
+          "minLevel": 7
+        },
+        {
+          "id": "n5eDRWYwV85EhBnz",
+          "type": "effect",
+          "label": "Dragon's Rage: Awakened",
+          "effect": {
+            "name": "Dragon's Rage (Awakened)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "dragons-rage-15"
+          },
+          "text": "15th: 6 Draconic Chakra (or 2 more while Ascended).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 6
+          },
+          "minLevel": 15
+        },
+        {
+          "id": "n5eOJB0uGbAnHj1h",
+          "type": "roll",
+          "label": "Inflict your release's condition",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "draconicChakra",
+          "label": "Draconic Chakra",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick Earth, Wind, Fire, Water or Lightning Release: you can learn and cast it; Ryu Hijutsu gain its keyword and damage type. Draconic Chakra: 1 + proficiency bonus (the pool), back on any rest. (Its copy of Dragons Rage's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "ryu-wyrm-lords-ambition": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epabmECkB3mZKf",
+          "type": "effect",
+          "label": "Draconic Wings",
+          "effect": {
+            "name": "Draconic Wings",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.traits.speed.fly",
+                "value": "30",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "1 minute of focus: willing allies within 10 feet, 30-foot fly for 10 minutes; once per rest. In initiative they keep it by concentrating as if on an A-Rank jutsu.",
+          "cost": {
+            "pool": "draconicChakra",
+            "amount": 2
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recovery": []
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Revealing your clan to a non-combatant: one minor request without a check."
+        }
+      ]
+    }
+  }
+}

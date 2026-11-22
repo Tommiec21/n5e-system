@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shikigami",
-      "sourceLine": 8143
+      "sourceLine": 8143,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per long rest: a 60-foot radius on you or within 120 feet, 1 minute, your first Canvas Type. Crushed Page (Weaving): [Unarmed Damage] rolled twice keeping the higher, a rank of Mastery to the attacks; two hits in one Action: Prone."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,88 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eytHpBQflE56RE",
+        "type": "save",
+        "label": "Scorched Page",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Explosive: hostile creatures starting their turn in it. Failure: Staggered.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ey7cm99dQIQbNx",
+        "type": "effect",
+        "label": "Bleeding Edge: Bleed",
+        "effect": {
+          "name": "Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "bleed"
+        },
+        "text": "Serrated: a hostile creature moving 10+ feet in it gains 1 Bleed."
+      },
+      {
+        "id": "n5eem5PF2xlhaAtz",
+        "type": "damage",
+        "label": "Bleeding Edge: didn't move",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9Kn5WKnwAAjp2",
+        "type": "effect",
+        "label": "Sealed Page",
+        "effect": {
+          "name": "Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "sealed"
+        },
+        "text": "Binding: starting its turn concentrating: 1 Sealed."
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

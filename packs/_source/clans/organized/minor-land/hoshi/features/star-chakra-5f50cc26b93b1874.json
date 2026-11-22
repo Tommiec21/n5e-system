@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshi",
-      "sourceLine": 7854
+      "sourceLine": 7854,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Star Chakra: 1 + proficiency bonus (the pool), back on any rest. A jutsu cast with Star Chakra gains its Irradiated effect (cast dialog option). Temporary chakra you gain becomes Temporary Star Chakra (Hoshi uses only; stacks; lost at the end of your following turn). Starting your turn having spent or drawn 4+ Star Chakra since your last turn (5+ at 7th, 6+ at 15th): 1 rank of Star Sickness (the condition item)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,42 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eT0TykCWmYBb4X",
+        "type": "roll",
+        "label": "Draw out Star Chakra",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action: regain any amount up to your maximum."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "starChakra",
+          "choose": true,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "starChakra",
+        "label": "Star Chakra",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

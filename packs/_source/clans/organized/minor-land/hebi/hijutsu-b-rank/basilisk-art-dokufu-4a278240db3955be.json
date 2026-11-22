@@ -17,6 +17,79 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Medical",
         "components": "CM, M, W (Any Blade)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eCBQ6nWpqxK055",
+              "type": "save",
+              "label": "Dokufu",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eCBQ6nWpqxK055",
+              "type": "save",
+              "label": "Dokufu",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +182,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eCBQ6nWpqxK055",
+        "type": "save",
+        "label": "Dokufu",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "A 30-foot cone: [Weapon Damage] (roll it) + 2d10 poison and 2 Envenomed; success: half. Serpent Coil, with a Strike ability: those that fail are also Virulent until the end of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

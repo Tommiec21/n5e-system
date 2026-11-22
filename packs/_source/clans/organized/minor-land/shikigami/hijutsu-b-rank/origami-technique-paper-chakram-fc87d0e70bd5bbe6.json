@@ -17,6 +17,88 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "HS, CS"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eEgIg2CVdnOdDC",
+              "type": "attack",
+              "label": "Paper Chakram",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQbu5aMynx9V9N",
+              "type": "effect",
+              "label": "Critical hit: Bleed",
+              "effect": {
+                "name": "Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "condition": "bleed"
+              },
+              "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEgIg2CVdnOdDC",
+              "type": "attack",
+              "label": "Paper Chakram",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQbu5aMynx9V9N",
+              "type": "effect",
+              "label": "Critical hit: Bleed",
+              "effect": {
+                "name": "Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "condition": "bleed"
+              },
+              "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Paper Veil",
+        "appliesTo": {
+          "namePrefix": "Origami Technique: Paper Chakram"
+        },
+        "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated, Binding or Weaving effect."
       }
     }
   },
@@ -108,7 +190,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEgIg2CVdnOdDC",
+        "type": "attack",
+        "label": "Paper Chakram",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQbu5aMynx9V9N",
+        "type": "effect",
+        "label": "Critical hit: Bleed",
+        "effect": {
+          "name": "Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "bleed"
+        },
+        "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

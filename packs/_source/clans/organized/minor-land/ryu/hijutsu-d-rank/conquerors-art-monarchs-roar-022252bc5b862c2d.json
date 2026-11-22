@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Dragon Rage",
+        "appliesTo": {
+          "namePrefix": "Conqueror’s Art: Monarchs Roar"
+        },
+        "note": "In your Dragon's Rage: allies in range +1 on their next die roll before your next turn (+1 at B, +1 more at S)."
       }
     }
   },
@@ -108,7 +116,48 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5efEHPfMHMQRtiJ",
+        "type": "save",
+        "label": "Monarchs Roar",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "Resists.",
+            "failure": "1 Demoralized and 1 Shaken.",
+            "critFailure": "2 of each."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          },
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Hostile creatures within 20 feet (+5 feet per rank). Ranks +1 at B, +1 more at S.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

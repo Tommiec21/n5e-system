@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kuru",
       "sourceLine": 8491,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,55 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eVwF0lyEHB8aSj",
+        "type": "attack",
+        "label": "Denial Palm Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eI6g5nNwtLyVtP",
+        "type": "save",
+        "label": "Denial Palm: save",
+        "save": {
+          "abilities": [
+            "str",
+            "dex",
+            "con",
+            "int",
+            "wis",
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Its save uses the chosen discipline's jutsu modifier (pick its ability). Failure: for 1 minute it can't cast jutsu of one discipline and rank (E to A) you pick; resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

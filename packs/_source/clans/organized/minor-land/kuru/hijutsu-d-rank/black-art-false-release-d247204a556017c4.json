@@ -17,6 +17,323 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Yin Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eEcygstjgqXJWm",
+              "type": "save",
+              "label": "False Release",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                  "critFailure": "As failure, 5d6 necrotic."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                },
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eW01X5jTcmI4s9",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eEcygstjgqXJWm",
+              "type": "save",
+              "label": "False Release",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                  "critFailure": "As failure, 5d6 necrotic."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                },
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eW01X5jTcmI4s9",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEcygstjgqXJWm",
+              "type": "save",
+              "label": "False Release",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                  "critFailure": "As failure, 5d6 necrotic."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                },
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eW01X5jTcmI4s9",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEcygstjgqXJWm",
+              "type": "save",
+              "label": "False Release",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "Half damage.",
+                  "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+                  "critFailure": "As failure, 5d6 necrotic."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                },
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eW01X5jTcmI4s9",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +427,84 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEcygstjgqXJWm",
+        "type": "save",
+        "label": "False Release",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "Half damage.",
+            "failure": "3d6 necrotic; 1 rank: Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked.",
+            "critFailure": "As failure, 5d6 necrotic."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          },
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          },
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          },
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          },
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "text": "A 15-foot radius within 60 feet; pick a release. Condition +1 at B, +1 more at S.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eW01X5jTcmI4s9",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

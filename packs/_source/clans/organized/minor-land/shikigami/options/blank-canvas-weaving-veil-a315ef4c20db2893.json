@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shikigami",
       "sourceLine": 8111,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Paper Veil active: the Muscle Weave chakra stance (the clan's stance item)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,92 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ebXRuAGWwWXGLm",
+        "type": "attack",
+        "label": "Spiral Weave",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Craft I, once per turn (not with Execution Weave), an Action or in place of an unarmed attack: 15 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epzpj8v4ecB44h",
+        "type": "save",
+        "label": "Spiral Weave: Staggered",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "On a hit. Failure: Staggered.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eTK2csHrhC5oUX",
+        "type": "save",
+        "label": "Execution Weave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Craft II, once per turn (not with Spiral Weave): a 30 by 5-foot line. Failure: Staggered and Dazed; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

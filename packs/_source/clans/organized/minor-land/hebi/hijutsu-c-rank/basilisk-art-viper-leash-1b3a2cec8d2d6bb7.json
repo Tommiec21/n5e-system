@@ -17,7 +17,8 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -107,7 +108,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eOCShcOWScuUBh",
+        "type": "attack",
+        "label": "Viper Leash",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "30 feet (+1 creature per rank).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "poison"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epkbhb9pZUOfdy",
+        "type": "save",
+        "label": "Viper Leash: Restrained",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "On a hit. Failure: Restrained; resave at the end of each of its turns (failing: the damage button and 1 Envenomed).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eXXMDFNjPUjti0",
+        "type": "damage",
+        "label": "Failed resave",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
+        },
+        "text": "And 1 rank of Envenomed."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

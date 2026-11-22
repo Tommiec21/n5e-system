@@ -1,3 +1,15 @@
+## 0.86.0-alpha.1 — STD6e E8 Minor Lands
+
+King 2026-11-22: "Next Batch". 114 clan items reviewed (106 partly automated, 8 notes only). Spec: docs/STD6e_SPEC.md (E8). Every clan in STD6e is now done (Clan Feats, Latents and Non-Clan wait for King's overhaul).
+
+- **Hebi:** Viper Blood (pool) and regeneration; the Serpent's Coil stance (Viper and Python Strike); every Venom Art; Basilisk's Blessing; Ouroboros; every Hijutsu.
+- **Hoshi:** Star Chakra (pool); each Hijutsu's Irradiated version as a cast dialog option; Kujaku Mode by level; every Celestial Trait; Kujaku Sanseijin; every Hijutsu.
+- **Kujaku Beast summon:** built from its complete stat block (AC and hit points by rank).
+- **Kuru:** the Miraigan and Foresight (pool); the Black Fang stance; Yin Release as a cast dialog option; every Yin Art; Black Okami Form; the Prophetic Pool; every Hijutsu.
+- **Ryu:** Draconic Chakra (pool); Dragon's Rage, Ascended and Awakened; the Ryūken stance; every Wyrm Art; Dragon Rage effects as cast dialog options; every Hijutsu.
+- **Shikigami:** Paper Veil and every Canvas Type; the Muscle Weave stance; Rei (pool) and every Origami; Origami Angel/Demon; The Final Page; Paper Veil and Angel/Demon effects as cast dialog options; every Hijutsu.
+- **Past rulings applied:** Amp copies removed from Serpents Guile, Irradiated Apex, Visions of what will be, Wrath of the Dragon and Secret Pages (Q-E12); the Black Fang and Muscle Weave stance items hold their own text (Q-E9); Hebi's duplicate stance item deleted (as Q-E18).
+
 ## 0.85.0-alpha.1 — STD6e E7 Land of Fire II
 
 King 2026-11-22: "Next batch." 156 clan items reviewed (116 partly automated, 40 notes only). Spec: docs/STD6e_SPEC.md (E7).

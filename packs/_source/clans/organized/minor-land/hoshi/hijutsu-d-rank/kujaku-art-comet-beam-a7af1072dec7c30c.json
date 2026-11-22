@@ -17,6 +17,271 @@
         "cost": "4 Chakra (or 2 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eXNpZ6AZOOmijH",
+              "type": "attack",
+              "label": "Comet Beam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (+1 target at B, +1 more at S).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eUzHpSo1sj7G07",
+              "type": "save",
+              "label": "Comet Beam: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eC0DSRDeyFeRT6",
+              "type": "effect",
+              "label": "Irradiated: Star Sickness",
+              "effect": {
+                "name": "Star Sickness",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0,
+                "condition": "hoshi-star-sickness"
+              },
+              "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eXNpZ6AZOOmijH",
+              "type": "attack",
+              "label": "Comet Beam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (+1 target at B, +1 more at S).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eUzHpSo1sj7G07",
+              "type": "save",
+              "label": "Comet Beam: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eC0DSRDeyFeRT6",
+              "type": "effect",
+              "label": "Irradiated: Star Sickness",
+              "effect": {
+                "name": "Star Sickness",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0,
+                "condition": "hoshi-star-sickness"
+              },
+              "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eXNpZ6AZOOmijH",
+              "type": "attack",
+              "label": "Comet Beam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (+1 target at B, +1 more at S).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eUzHpSo1sj7G07",
+              "type": "save",
+              "label": "Comet Beam: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eC0DSRDeyFeRT6",
+              "type": "effect",
+              "label": "Irradiated: Star Sickness",
+              "effect": {
+                "name": "Star Sickness",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0,
+                "condition": "hoshi-star-sickness"
+              },
+              "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eXNpZ6AZOOmijH",
+              "type": "attack",
+              "label": "Comet Beam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (+1 target at B, +1 more at S).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (4d10)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eUzHpSo1sj7G07",
+              "type": "save",
+              "label": "Comet Beam: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eC0DSRDeyFeRT6",
+              "type": "effect",
+              "label": "Irradiated: Star Sickness",
+              "effect": {
+                "name": "Star Sickness",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0,
+                "condition": "hoshi-star-sickness"
+              },
+              "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Comet Beam"
+        },
+        "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): a failed save also gives 1 Star Sickness until the end of your next turn.",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 2
+        }
       }
     }
   },
@@ -110,7 +375,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eXNpZ6AZOOmijH",
+        "type": "attack",
+        "label": "Comet Beam",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet (+1 target at B, +1 more at S).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eUzHpSo1sj7G07",
+        "type": "save",
+        "label": "Comet Beam: Bruised",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "On a hit. Failure: Bruised.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eC0DSRDeyFeRT6",
+        "type": "effect",
+        "label": "Irradiated: Star Sickness",
+        "effect": {
+          "name": "Star Sickness",
+          "target": "targets",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "condition": "hoshi-star-sickness"
+        },
+        "text": "Irradiated, on a failed save: 1 rank (+1 per rank above D) until the end of your next turn."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

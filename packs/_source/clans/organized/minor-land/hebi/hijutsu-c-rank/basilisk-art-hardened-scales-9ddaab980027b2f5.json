@@ -17,7 +17,8 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGOQHjbgIvTXRQ",
+        "type": "effect",
+        "label": "Hardened Scales",
+        "effect": {
+          "name": "Hardened Scales",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "6",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction, until the start of your next turn: +6 DR (+3 per rank above C: raise it by hand); advantage on saves against Physical or Elemental conditions.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

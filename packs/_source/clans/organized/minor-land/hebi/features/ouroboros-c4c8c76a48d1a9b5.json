@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8345
+      "sourceLine": 8345,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Rolling initiative: two of these, once per long rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,112 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elFkkHCbprSDRb",
+        "type": "roll",
+        "label": "Venom of Inevitability",
+        "roll": {
+          "formula": "",
+          "note": "A Virulent creature's d20 roll: dispel Virulent; its result is a 1."
+        }
+      },
+      {
+        "id": "n5eghz4aMIVEEPor",
+        "type": "roll",
+        "label": "Chain Breaker",
+        "roll": {
+          "formula": "",
+          "note": "Starting your turn with Physical, Mental, Elemental or Sensory conditions: 1 Viper Blood per condition drops it to 0 (not Grappled)."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5eW8pRrDUu4BeIV",
+        "type": "heal",
+        "label": "The Infinite Circle",
+        "heal": {
+          "formula": "2 * @level",
+          "pool": "hp"
+        },
+        "text": "Reaction, falling to 0: double your maximum Viper Blood until initiative ends (raise it by hand).",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eua0QnpmWwyIb3",
+        "type": "save",
+        "label": "Gaze of the Basilisk",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Shaken"
+          },
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Entering Basilisk's Blessing: until the end of your next turn, the first creature each turn to target you gains 2 Shaken and 2 Demoralized (only against you) until the end of your following turn. No save is in the text: use the failure.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eCsk6HpLweMbBK",
+        "type": "save",
+        "label": "Basilisks Venom",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "petrified",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Petrified"
+          }
+        ],
+        "text": "Inflicting Virulent, 2 Viper Blood: at the end of its turn. Failure: Petrified for 48 hours; damage or a hostile effect ends it.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 2
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

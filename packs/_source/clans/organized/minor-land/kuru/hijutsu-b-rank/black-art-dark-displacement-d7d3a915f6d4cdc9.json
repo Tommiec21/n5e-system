@@ -17,6 +17,107 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Genjutsu (Tactile), Fuinjutsu, Yin Release",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eRXJCjG2lCGOwK",
+              "type": "attack",
+              "label": "Dark Displacement",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Miraigan active. 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d10) + (1d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e3N8sSViBDxVLp",
+              "type": "save",
+              "label": "Dark Displacement: save",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists.",
+                  "success": "No hit points regained until the end of its next turn.",
+                  "failure": "No hit or chakra points regained until the end of your next turn.",
+                  "critFailure": "As failure; no concentration until the end of your next turn."
+                }
+              },
+              "inflicts": [],
+              "text": "On a hit.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRXJCjG2lCGOwK",
+              "type": "attack",
+              "label": "Dark Displacement",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Miraigan active. 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d10) + (2d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e3N8sSViBDxVLp",
+              "type": "save",
+              "label": "Dark Displacement: save",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists.",
+                  "success": "No hit points regained until the end of its next turn.",
+                  "failure": "No hit or chakra points regained until the end of your next turn.",
+                  "critFailure": "As failure; no concentration until the end of your next turn."
+                }
+              },
+              "inflicts": [],
+              "text": "On a hit.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +213,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRXJCjG2lCGOwK",
+        "type": "attack",
+        "label": "Dark Displacement",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Miraigan active. 5 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e3N8sSViBDxVLp",
+        "type": "save",
+        "label": "Dark Displacement: save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "No hit points regained until the end of its next turn.",
+            "failure": "No hit or chakra points regained until the end of your next turn.",
+            "critFailure": "As failure; no concentration until the end of your next turn."
+          }
+        },
+        "inflicts": [],
+        "text": "On a hit.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

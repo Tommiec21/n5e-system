@@ -146,6 +146,17 @@ Review tables: `docs/clans/namikaze-automation.md`, `nara-automation.md`, `sarut
 - **Yamanaka:** the Mind Disruption stance with Beam, Pulse and Wave (Mental Overwrite); Deep Disruption; Efficient Mind as a cast dialog option and Migraine's damage; every Hijutsu.
 - **Past rulings applied:** copied Amp text removed from Interdiction Seal, Ember's Guardian and Sharingan (Q-E12); the Sarutobi, Senju and Uchiha stance items hold their stance's own text (Q-E9). Copies of condition text (Combat and Diplomatic Coordinated, Drained, 5-Pronged Seal, Dominated) stay: those aren't Amp cards.
 
+## E8 Minor Lands (0.86.0-alpha.1)
+
+Review tables: `docs/clans/hebi-automation.md`, `hoshi-automation.md`, `kuru-automation.md`, `ryu-automation.md`, `shikigami-automation.md` (114 items: 106 partly automated, 8 notes only). Non-Clan isn't done (King Q-E3).
+
+- **Hebi:** Viper Blood (pool) with its regeneration and refills; the Serpent's Coil stance with Viper and Python Strike; every Venom Art (Virulent Infusion as cast dialog options); Serpents Guile; Basilisk's Blessing (Amp); Ouroboros; every Hijutsu.
+- **Hoshi:** Star Chakra (pool); each Hijutsu's Irradiated version as a cast dialog option (cost zero, spends Star Chakra); Kujaku Mode (Amps by level); every Celestial Trait; Meteoric Attunement; Kujaku Sanseijin; every Hijutsu. The Kujaku Beast is a summon (its stat block is complete in the source book's box).
+- **Kuru:** the Miraigan (Amps by level) with Foresight (pool) and Prophesize; the Black Fang stance with Past and Future Strike; Yin Release as a cast dialog option; every Yin Art; Black Okami Form; the Prophetic Pool; every Hijutsu.
+- **Ryu:** Draconic Chakra (pool); Dragon's Rage, Ascended and Awakened (Amps); the Ryūken stance with Rending and Starving Strike; every Wyrm Art; each Hijutsu's Dragon Rage effect as a cast dialog option; Draconic Wings; every Hijutsu.
+- **Shikigami:** Paper Veil and every Canvas Type with its Crafts; the Muscle Weave stance; Rei (pool: 1 a turn, gone after combat) with every Origami; Origami Angel/Demon (Amp); The Final Page; each Hijutsu's Paper Veil and Angel/Demon effects as cast dialog options; every Hijutsu.
+- **Past rulings applied:** copied Amp text removed from Serpents Guile, Irradiated Apex, Visions of what will be, Wrath of the Dragon and Secret Pages (Q-E12); the Kuru and Shikigami stance items hold their stance's own text (Q-E9); Hebi's duplicate stance item (it held Venomous Technique's text) is deleted with its 3rd-level advancement (as Q-E18). The Hoshi and Kuru clan items keep their Amp copies (clan traits text, not a feature).
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -185,7 +196,7 @@ Each is a note on its item until King gives its stat block; then it becomes a su
 | H8 | Dream Walker | Kurama | Dream Walker (and Lucid Dreams, Inner Self) | A stat block in its text with five types; save bonuses blank | 0.84.0 |
 | H9 | Wood Dragon | Senju | Wood Release: Wood Dragon Summoning (B-Rank Hijutsu) | A stat block in the source book's box (missing from the item's text); Intelligence and Wisdom saves blank | 0.85.0 |
 
-Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Star Beast (Kujaku). Wood Clones (Senju) are clone rules in the Hijutsu's text, not a stat block.
+Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo); Kujaku Beast (Hoshi). Wood Clones (Senju) and Paper Clones (Shikigami) are clone rules in the Hijutsu's text, not stat blocks. Every clan batch is now checked.
 
 ## Text issues (for the errata list)
 
@@ -225,6 +236,11 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - Uchiha: the stance item held Advanced Adaptation's text (fixed, Q-E9 ruling); Sharingan held its Amp (removed); Sharingan: Genjutsu! is printed inside Sharingan Copy; Surging Fire Flower Dance's upcast says above D-Rank (it's C-Rank); Blazing Rose Chariot has no success result; Amplified Flames "Uchiha hare"; Commanding Gaze "strength of dexterity".
 - Uzumaki: Adamantine Barrier holds the 5-Pronged Seal condition text; "Spiral Power0"; Binding Chains "you're your highest"; Rebuking Seal "on a failed save" twice; Red Hot-Blooded Vitality "wifely"; River Dam Seal's name has a double space.
 - Yamanaka: Mental Recalibration holds the Dominated status text; Mass Mind Body Disjunction's upcast says above C-Rank (it's B-Rank); Telepathic Comms "Proficienty"; Psionic Network "this send"; Mind Puppet Switch "is remains".
+- Hebi: a duplicate Serpents Coil stance held Venomous Technique's text (deleted, as Q-E18); Serpents Guile held Basilisk's Blessing's Amp (removed); the stance item holds the Virulent condition text; "Hijutsu you cast., applying"; Gaze of the Basilisk "2 rank ... or affects you would apply"; Virulent Blood names a "Viper Blood clan feature" (Serpents Blood); "brining".
+- Hoshi: the clan item holds Kujaku Mode's Amp; Irradiated Apex held Kujaku Sanseijin's Amp (removed) and spells it "Sanseiijin"; the Kujaku Beast's stat block was missing from the item and lists Condition Immunities twice; Star Sickness "damage rolls they for each"; Cosmic Pressure holds an "Art Link / Pinterest Link" line; Irradiated Meteor has no success result; Nova Charge "+1d6 for 2 Star chakra spent".
+- Kuru: the clan item holds Miraigan's Amp; the stance item held Okami of Midnight's text (fixed, Q-E9 ruling); Visions of what will be held Black Okami's Amp (removed); Eye of Prophecy holds an "Art Link / Pinterest Link" line; Devotion Fist "saving throw based"; Dark Drain's duration is "1 Action"; Umbral Theft says "you make your ability check at disadvantage" (it's a save); Dark Displacement and Thousand Futures have a double space in their names.
+- Ryu: Wrath of the Dragon held Dragons Rage's Amp (removed); "Hijutsu you cast., applying"; Emperors Claw's upcast runs into its Dragon Rage line; Wyrmcaller's Pulse "hit points..".
+- Shikigami: the stance item held Blank Canvas's text (fixed, Q-E9 ruling); Secret Pages held Origami Angel/Demon's Amp (removed), which says "Extinction Weave" (Execution Weave); Serrated Veil's damage stays 3d6 at 7th and 15th ("3d6 and 2 ranks"); "Paper Stich" (Stitch) and "Sucher"; Paper Mask "It lasts for 8 hours; the creature takes damage"; Paper Coffin has no upcast.
 
 ## Progress log
 
@@ -243,3 +259,4 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - 2026-11-22 King: "Next batch" Claude: E6 Land of Fire I built (143 items); Nin-Dog, Two-Headed Wolf and Dream Walker added to the held stat blocks (H6–H8); Q-E9 and Q-E12 rulings applied; published 0.84.0-alpha.1. Q-E20 asked (checked earlier specs first).
 - 2026-11-22 King: Q-E20 "10d12 poison and 10d12 chakra ... the result should be the same." Claude: damage part alsoAs (E-D9); published 0.84.1-alpha.1.
 - 2026-11-22 King: "Next batch." Claude: E7 Land of Fire II built (156 items); Wood Dragon added to the held stat blocks (H9); Q-E9 and Q-E12 rulings applied; published 0.85.0-alpha.1. No new questions (checked earlier specs first).
+- 2026-11-22 King: "Next Batch" Claude: E8 Minor Lands built (114 items), the Kujaku Beast summon; Hebi's duplicate stance deleted (Q-E18 ruling); Q-E9 and Q-E12 rulings applied; published 0.86.0-alpha.1. Every clan batch is done. No new questions (checked earlier specs first).

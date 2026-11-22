@@ -17,6 +17,139 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Fuinjutsu, Yin Release, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eRfp5uZqqGQiO3",
+              "type": "effect",
+              "label": "Spiraling Dark Wall",
+              "effect": {
+                "name": "Spiraling Dark Wall",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5et8Mig9sRYF1kM",
+              "type": "heal",
+              "label": "Barrier hit points",
+              "heal": {
+                "formula": "1d6 + 8",
+                "pool": "tempHp"
+              },
+              "text": "An area or save trigger: the Barrier's hit points against it."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eRfp5uZqqGQiO3",
+              "type": "effect",
+              "label": "Spiraling Dark Wall",
+              "effect": {
+                "name": "Spiraling Dark Wall",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5et8Mig9sRYF1kM",
+              "type": "heal",
+              "label": "Barrier hit points",
+              "heal": {
+                "formula": "1d6 + 8",
+                "pool": "tempHp"
+              },
+              "text": "An area or save trigger: the Barrier's hit points against it."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRfp5uZqqGQiO3",
+              "type": "effect",
+              "label": "Spiraling Dark Wall",
+              "effect": {
+                "name": "Spiraling Dark Wall",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5et8Mig9sRYF1kM",
+              "type": "heal",
+              "label": "Barrier hit points",
+              "heal": {
+                "formula": "1d6 + 8",
+                "pool": "tempHp"
+              },
+              "text": "An area or save trigger: the Barrier's hit points against it."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRfp5uZqqGQiO3",
+              "type": "effect",
+              "label": "Spiraling Dark Wall",
+              "effect": {
+                "name": "Spiraling Dark Wall",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5et8Mig9sRYF1kM",
+              "type": "heal",
+              "label": "Barrier hit points",
+              "heal": {
+                "formula": "1d6 + 8",
+                "pool": "tempHp"
+              },
+              "text": "An area or save trigger: the Barrier's hit points against it."
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +245,38 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRfp5uZqqGQiO3",
+        "type": "effect",
+        "label": "Spiraling Dark Wall",
+        "effect": {
+          "name": "Spiraling Dark Wall",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "3",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction, until the start of your next turn: +3 AC against ranged attacks (+1 at A). B-Rank: a 10-foot radius, also when an ally takes damage.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5et8Mig9sRYF1kM",
+        "type": "heal",
+        "label": "Barrier hit points",
+        "heal": {
+          "formula": "1d6 + 8",
+          "pool": "tempHp"
+        },
+        "text": "An area or save trigger: the Barrier's hit points against it."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

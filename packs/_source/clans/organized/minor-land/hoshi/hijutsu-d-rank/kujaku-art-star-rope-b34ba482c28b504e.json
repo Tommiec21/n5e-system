@@ -17,6 +17,223 @@
         "cost": "4 Chakra (or 2 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Genjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eTgquHf72pM3Ev",
+              "type": "save",
+              "label": "Star Rope",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists being moved.",
+                  "success": "Pulled 20 feet closer.",
+                  "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                  "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNYPjvbevFqCKl",
+              "type": "roll",
+              "label": "Temporary Star Chakra",
+              "roll": {
+                "formula": "1d10",
+                "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eTgquHf72pM3Ev",
+              "type": "save",
+              "label": "Star Rope",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists being moved.",
+                  "success": "Pulled 20 feet closer.",
+                  "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                  "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNYPjvbevFqCKl",
+              "type": "roll",
+              "label": "Temporary Star Chakra",
+              "roll": {
+                "formula": "1d10",
+                "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eTgquHf72pM3Ev",
+              "type": "save",
+              "label": "Star Rope",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists being moved.",
+                  "success": "Pulled 20 feet closer.",
+                  "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                  "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNYPjvbevFqCKl",
+              "type": "roll",
+              "label": "Temporary Star Chakra",
+              "roll": {
+                "formula": "1d10",
+                "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eTgquHf72pM3Ev",
+              "type": "save",
+              "label": "Star Rope",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists being moved.",
+                  "success": "Pulled 20 feet closer.",
+                  "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+                  "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature within 60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNYPjvbevFqCKl",
+              "type": "roll",
+              "label": "Temporary Star Chakra",
+              "roll": {
+                "formula": "1d10",
+                "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Star Rope"
+        },
+        "note": "Pay 2 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): on a failure it's tethered (can't move farther from you) until the start of your next turn.",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 2
+        }
       }
     }
   },
@@ -109,7 +326,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eTgquHf72pM3Ev",
+        "type": "save",
+        "label": "Star Rope",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists being moved.",
+            "success": "Pulled 20 feet closer.",
+            "failure": "Pulled 20 feet, Prone, 3d8 chakra.",
+            "critFailure": "As failure; you gain 1d10 Temporary Star Chakra (+1d10 at B and at S)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A creature within 60 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eNYPjvbevFqCKl",
+        "type": "roll",
+        "label": "Temporary Star Chakra",
+        "roll": {
+          "formula": "1d10",
+          "note": "Critical failure, or (Irradiated) the tethered creature casts a jutsu."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",
