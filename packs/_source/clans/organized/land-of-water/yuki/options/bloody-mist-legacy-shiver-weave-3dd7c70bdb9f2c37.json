@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yuki",
       "sourceLine": 4740,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hail Burst: a rank of Mastery on Stealth (two at 11th); casting a Yuki Hijutsu, a 15-foot cube of hail from you totally obscures until your next turn. Frost Splinter: Reaction, a mirror is destroyed: teleport to another (you still take the damage)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eL6CucbawqGzGF",
+        "type": "attack",
+        "label": "Invisible Threads",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Reaction, a hostile creature crosses your line: teleport to a previous mirror and attack once per active mirror.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6 + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5edvYNG5U1k1xhC",
+        "type": "save",
+        "label": "Invisible Threads: speed",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: speed 0 until the end of the turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

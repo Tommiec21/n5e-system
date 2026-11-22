@@ -162,3 +162,21 @@ test("King Q-E12 and Q-E16: copied Amp text removed; Crimson Weaponry's ammuniti
   assert.match(item("chinoike", "chinoike-crimson-pact").system.description, /#### Crimson Pact/, "the Pact keeps its own");
   assert.match(item("chinoike", "chinoike-crimson-weaponry").flags.n5e.automation?.rules?.[0]?.text ?? JSON.stringify(item("chinoike", "chinoike-crimson-weaponry").flags), /doesn't drop a step on a 1 or 2/);
 });
+
+test("STD6e E4 Land of Water: every Genwa, Hoshigaki, Hozuki, Kaguya, Vesper, Yamada and Yuki item reviewed", () => {
+  for ( const clan of ["genwa", "hoshigaki", "hozuki", "kaguya", "vesper", "yamada", "yuki"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("hozuki", "hozuki-hydration", "hydration").recovery[0].on, "lr");
+  assert.equal(pool("kaguya", "kaguya-shikotsumyaku-stance", "battleLust").max, "5");
+  assert.equal(pool("yuki", "yuki-the-looking-glass", "iceMirrors").lifetime, 60);
+  assert.equal(item("hozuki", "hozuki-water-blob").flags.n5e.castOption.cost.pool, "hydration");
+  assert.equal(item("vesper", "vesper-stance-claws-of-night").system.unarmedDie, "1d8");
+  assert.match(item("yamada", "yamada-stance-tameshi-itto-ryu").system.description, /Executioners Instrument/);
+  assert.doesNotMatch(item("hoshigaki", "hoshigaki-ravenous-chakra").system.description, /#### Apex Predator/);
+  assert.match(item("hozuki", "hozuki-steaming-danger-tyranny").system.activities[0].summon.uuid, /n5eb2WwgDK4N1W25$/);
+  assert.ok(item("hoshigaki", "hoshigaki-apex-berserker").system.activities.some(a => a.effect?.amp === "apex-predator-15"));
+});

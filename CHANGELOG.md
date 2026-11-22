@@ -1,3 +1,19 @@
+## 0.82.0-alpha.1 — Clans as data: E4 Land of Water (Genwa, Hoshigaki, Hozuki, Kaguya, Vesper, Yamada, Yuki)
+
+King 2026-11-21: "Next batch."
+
+- **151 clan items reviewed:** see `docs/clans/`.
+- **Genwa:** Uplink and Downlink, Radiant Beam and Saber, Signal Boosted; Angel Link and Demon Link as cast dialog options on each Hijutsu; Data Leak; every Data Channel.
+- **Hoshigaki:** Apex Predator's Amp cards by level; Ravenous Chakra; the Bite; Shark Skinned's DR; King of the Deep; every Predator Trait and Surge.
+- **Hozuki:** Hydration with every Liquification Technique; Hydrofication as a cast dialog option on each Hijutsu; Mirage Regent and Tidal Gains; the Steam Imp summon (Class & Clan Summons › Hozuki).
+- **Kaguya:** Battle Lust (up to 5) with its Amp cards; Battle Lust spends as cast dialog options on each Hijutsu; every Defining Anatomy.
+- **Vesper:** the Claws of Night stance; Echolocation and Pinging; Hypnotic Voice and Gaze; Umbral Monarch with Sonic Lance and Umbral Shockwave; every Nocturnal option.
+- **Yamada:** the Tameshi Itto-ryu stance and Empty Blade; Ideal Cut and Tao as cast dialog options on each Hijutsu; every Discipline and Tao Attunement.
+- **Yuki:** Ice Mirrors (each lasts 1 minute); every Bloody Mist Legacy path; Sanctum of Ice; Demonic Ice Prism.
+- **Earlier rulings applied (not asked again):** copied Amp text removed (Q-E12); stance items hold their stance's own text (Q-E9).
+- **Fixed:** Chinoike's Bloody Resilience clot rolls 1d8 per rank removed (it rolled one die).
+- Questions Q-E17 (Hydration) and Q-E18 (Vesper's duplicate stance) in `docs/STD6e_SPEC.md`; nothing waits on them.
+
 ## 0.81.1-alpha.1 — Clans as data: E3 follow-ups (Q-E12, Q-E16)
 
 King 2026-11-21: "Q12. Remove the copy. ... Q14. Hold off on this. ... Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step."

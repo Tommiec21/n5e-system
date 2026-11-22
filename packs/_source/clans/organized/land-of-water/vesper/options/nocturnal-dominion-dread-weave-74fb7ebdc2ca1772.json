@@ -10,7 +10,15 @@
     "n5e": {
       "clanPackage": "vesper",
       "sourceLine": 4424,
-      "repeatable": false
+      "repeatable": false,
+      "ampCopyRemoved": "Umbral Monarch (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Umbral Monarch's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -18,7 +26,7 @@
   },
   "system": {
     "identifier": "vesper-nocturnal-dominion-dread-weave",
-    "description": "<p>Once per turn, when you cast a Genjutsu with the Visual or Auditory keywords, you can layer abject terror into it. A creature that fails their saving throw, gains 1 rank of Shaken. Creatures that critically fail their saving throw gains 1 rank of Shaken and become Berserked.</p>\n<p>| #### Umbral Monarch / Battle Amp / You become a shadow wreathed beast of the night. / Nocturnal Wings. You gain a fly speed equal to your movement speed, with wings attached to your arms / Sonar. You always have the benefit of Echolocation, and can use Pinging once per turn, on your turn at no action cost. / Beast Claws. Your [Unarmed Damage], while in your Claws of the Night stance, increases by +2. This increases to +4 at 15th level. / Fearless. If you begin your turn with 1 rank of Demoralized or Shaken, you reduce the ranks of said conditions to 0. / Crimson Feast. Once per turn, when you deal [Unarmed Damage] or [Weapon Damage] to a creature with ranks of Crimson Hemorrhage, you can reduce their ranks of said condition to 0. If you do, you regain 1d10 hit points for each rank removed. / Sonic Lance. As an Action, you can fire a 60-foot long, 5-foot-wide beam of destructive sound force. All creatures in the affected area must make a Constitution saving throw vs your highest jutsu save DC. On a failure, they take 6d6 force damage and are Deafened until the end of their next turn, or half as much damage on a success. / Umbral Shockwave. As an Action, you release a Pulse of darkness centered on you, filling a 20-foot radius. Creatures in range must make a Wisdom saving throw vs your highest jutsu save DC. This counts as a Genjutsu, with the Visual, Auditory and Tactile keywords. / Success: Affected creature are Dazzled until the end of their next turn. / Failure: Affected creature are Blinded, until the end of their next turn. / Critical Failure: Same as failure, but are also Confused for the same duration. |</p>\n<p>Additionally, if the creature that failed or critically failed their saving throw has 2 or more ranks of Demoralized, increase the ranks of Shaken inflicted by this effect by +1.</p>",
+    "description": "<p>Once per turn, when you cast a Genjutsu with the Visual or Auditory keywords, you can layer abject terror into it. A creature that fails their saving throw, gains 1 rank of Shaken. Creatures that critically fail their saving throw gains 1 rank of Shaken and become Berserked.</p>\n<p>Additionally, if the creature that failed or critically failed their saving throw has 2 or more ranks of Demoralized, increase the ranks of Shaken inflicted by this effect by +1.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -45,6 +53,42 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSQNSdYJownqD8",
+        "type": "save",
+        "label": "Dread Weave",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          },
+          {
+            "key": "berserk",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Berserk"
+          }
+        ],
+        "text": "Once per turn, layered onto a Visual or Auditory Genjutsu: on its failed save, 1 rank of Shaken; critical failure, Shaken and Berserk (+1 rank of Shaken with 2+ ranks of Demoralized). Use the Genjutsu's own save.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

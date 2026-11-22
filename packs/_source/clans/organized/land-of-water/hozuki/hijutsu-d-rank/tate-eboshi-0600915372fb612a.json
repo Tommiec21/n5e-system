@@ -17,6 +17,130 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Barrier",
         "components": "CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ercdlmdTFT47oU",
+              "type": "heal",
+              "label": "Tate Eboshi",
+              "heal": {
+                "formula": "2d8 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eHCK8yS8Y4Jmml",
+              "type": "damage",
+              "label": "Hydrofication: counter",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8 + 8) + (1d8)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ercdlmdTFT47oU",
+              "type": "heal",
+              "label": "Tate Eboshi",
+              "heal": {
+                "formula": "2d8 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eHCK8yS8Y4Jmml",
+              "type": "damage",
+              "label": "Hydrofication: counter",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8 + 8) + (2d8)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ercdlmdTFT47oU",
+              "type": "heal",
+              "label": "Tate Eboshi",
+              "heal": {
+                "formula": "2d8 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eHCK8yS8Y4Jmml",
+              "type": "damage",
+              "label": "Hydrofication: counter",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8 + 8) + (3d8)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ercdlmdTFT47oU",
+              "type": "heal",
+              "label": "Tate Eboshi",
+              "heal": {
+                "formula": "2d8 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eHCK8yS8Y4Jmml",
+              "type": "damage",
+              "label": "Hydrofication: counter",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8 + 8) + (4d8)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Tate Eboshi"
+        },
+        "note": "It gains Clash; reducing the damage to 0, the triggering creature within 10 feet takes the counter damage.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -109,7 +233,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ercdlmdTFT47oU",
+        "type": "heal",
+        "label": "Tate Eboshi",
+        "heal": {
+          "formula": "2d8 + 8",
+          "pool": "tempHp"
+        },
+        "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eHCK8yS8Y4Jmml",
+        "type": "damage",
+        "label": "Hydrofication: counter",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8 + 8",
+              "type": "cold"
+            }
+          ]
+        },
+        "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

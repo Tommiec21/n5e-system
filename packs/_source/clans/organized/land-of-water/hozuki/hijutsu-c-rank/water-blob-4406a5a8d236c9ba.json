@@ -17,6 +17,18 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Water Blob"
+        },
+        "note": "Range 30 feet.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -108,7 +120,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9xGHqT0hsWkHt",
+        "type": "save",
+        "label": "Water Blob",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "suffocating",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Suffocating"
+          }
+        ],
+        "text": "A creature within 5 feet (30 with Hydrofication). Failure: its head is in water: Suffocating; keeping concentration costs a jutsu's full cost; resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5etf86pL24NVycc",
+        "type": "damage",
+        "label": "Water Blob: end of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "While suffocating; it can't be reduced or ignored."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

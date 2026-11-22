@@ -1,0 +1,1422 @@
+{
+  "clan": "kaguya",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "kaguya-calcified-structure": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Defining Anatomy (more at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-femur-springs": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Femur Springs",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Jump distance +10 feet and height +5 feet."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-lamellar-lattice": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on saves against Bruised, Staggered or Shaken (add it when you roll)."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-marrow-overflow": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7N9ovUurHcup8",
+          "type": "heal",
+          "label": "Marrow Overflow: short rest",
+          "heal": {
+            "formula": "@level",
+            "pool": "hp"
+          },
+          "text": "At the end of a short rest, in addition to what you regain."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on Athletics or Acrobatics checks (pick one; set it on the sheet)."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-ossuary-crown": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on saves against Concussed, Confused or Dazed (add it when you roll)."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-skeletal-reinforcement": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The first time each turn a jutsu restores your hit points: + your level (add it)."
+        }
+      ]
+    },
+    "kaguya-calcified-structure-ulna-aegis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elI9Kx10ceNMGu",
+          "type": "roll",
+          "label": "Ulna Aegis: crit to normal",
+          "roll": {
+            "formula": "",
+            "note": "Once per long rest, a critical hit on you becomes a normal hit."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "+2 DR against an attacker you can see (+4 at 7th, +6 at 15th; add it)."
+        }
+      ]
+    },
+    "kaguya-dance-of-bullet-seedlings": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ec9mj80CS3ePmJ",
+          "type": "attack",
+          "label": "Bullet Seedlings",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "One attack roll against up to three creatures you can see within 40 feet (+1 per rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ehzITJe90uV0vL",
+          "type": "attack",
+          "label": "Battle Lust: one target",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 2
+          },
+          "text": "One creature: attacks equal to the targets you could have minus 1.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Battle Lust (1)",
+          "appliesTo": {
+            "namePrefix": "Dance of Bullet Seedlings"
+          },
+          "note": "One target: attacks equal to your targets minus 1, 2d6 piercing each.",
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kaguya-dance-of-clematis-stem-thorn-and-flower": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehtpdNOY7Nr0p7",
+          "type": "attack",
+          "label": "Clematis Vine",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Whip: Reach 4, Trip, Finesse, Grapple (Flail).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8 + @str",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eViGE2vQYYnDTa",
+          "type": "save",
+          "label": "Clematis Vine: restrain",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Once per turn, its [Weapon Damage]. Failure: Restrained (a Strength save at the end of its turns ends it).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5epn9mwgGbFyisU",
+          "type": "attack",
+          "label": "Clematis Thorn",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Critical 2, Deadly 4, Reach 1 (Power). At disadvantage, but advantage against a grappled creature; can't be disarmed or used in area jutsu.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6 + @str",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Finesse: use Dexterity in place of Strength when higher (adjust the roll)."
+        }
+      ]
+    },
+    "kaguya-dance-of-the-katsura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekA5I6beRz5hrl",
+          "type": "attack",
+          "label": "Katsura",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "[Weapons Damage] or [Unarmed Damage].",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5eeJ29WQ6uTMepi",
+          "type": "save",
+          "label": "Katsura: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Failure by your damage type: bludgeoning Bruised, piercing +1 rank of Weakened, slashing +1 rank of Bleed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 damage per rank (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Battle Lust (2)",
+          "appliesTo": {
+            "namePrefix": "Dance of the Katsura"
+          },
+          "note": "It saves twice; any listed condition on a failure, whatever the damage type.",
+          "cost": {
+            "pool": "battleLust",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "kaguya-dance-of-the-larch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAk0cyluCET3BK",
+          "type": "heal",
+          "label": "Larch",
+          "heal": {
+            "formula": "12",
+            "pool": "tempHp"
+          },
+          "text": "Bonus action, 1 minute.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eVHgrM6LXj1AIE",
+          "type": "damage",
+          "label": "Larch: melee retaliation",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8",
+                "type": "piercing"
+              }
+            ]
+          },
+          "text": "A creature hits you in melee while you have them; it ignores DR."
+        },
+        {
+          "id": "n5e5OzvmSIcOQrBt",
+          "type": "save",
+          "label": "Battle Lust: bleed",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Failure: a rank of Bleed.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +8 temporary hit points and +4 piercing per rank (add them)."
+        }
+      ]
+    },
+    "kaguya-dance-of-the-pale-tyrant": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEL4ahOdXW99NT",
+          "type": "effect",
+          "label": "Dance of the Pale Tyrant",
+          "effect": {
+            "name": "Dance of the Pale Tyrant",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "1 minute, then a rest before again (its action isn't stated)."
+        },
+        {
+          "id": "n5ekwtOeVzJy8qdo",
+          "type": "roll",
+          "label": "Tyrants Lust",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: you take damage, or deal damage with a Bone Weapon to a creature with a Physical condition."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ivory Judgement: the Attack action or an attack of opportunity with a Bone Weapon gets +1 attack. Counter Dance: Mobility (M) jutsu cast in your reach provoke attacks of opportunity."
+        }
+      ]
+    },
+    "kaguya-dance-of-the-seedling-fern": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eePtyoZM3vaZm3",
+          "type": "save",
+          "label": "Seedling Fern",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures other than you in a 45-foot radius (its range line says 40). Failure: the damage, after first losing temporary hit points or DR from their own jutsu; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d8",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ewoGatDKdAy8ni",
+          "type": "roll",
+          "label": "Bone pillar interpose",
+          "roll": {
+            "formula": "",
+            "note": "For 1 minute, Reaction: a pillar (30 hit points) takes damage from a creature in the area for you."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eqjJS1x2ZKGES2",
+          "type": "roll",
+          "label": "Battle Lust: teleport",
+          "roll": {
+            "formula": "",
+            "note": "On your turn in the area: teleport within it; creatures within 5 feet save at −2 against your Hijutsu this turn."
+          },
+          "cost": {
+            "pool": "battleLust",
+            "amount": 3
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The forest stays: difficult terrain (2 feet per foot) for others."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eePtyoZM3vaZm3",
+                "type": "save",
+                "label": "Seedling Fern",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Creatures other than you in a 45-foot radius (its range line says 40). Failure: the damage, after first losing temporary hit points or DR from their own jutsu; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d8) + (1d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ewoGatDKdAy8ni",
+                "type": "roll",
+                "label": "Bone pillar interpose",
+                "roll": {
+                  "formula": "",
+                  "note": "For 1 minute, Reaction: a pillar (30 hit points) takes damage from a creature in the area for you."
+                },
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eqjJS1x2ZKGES2",
+                "type": "roll",
+                "label": "Battle Lust: teleport",
+                "roll": {
+                  "formula": "",
+                  "note": "On your turn in the area: teleport within it; creatures within 5 feet save at −2 against your Hijutsu this turn."
+                },
+                "cost": {
+                  "pool": "battleLust",
+                  "amount": 3
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "kaguya-dance-of-the-setsugekka": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBXjkwH9N36UpT",
+          "type": "save",
+          "label": "Setsugekka",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "With a damaging Kaguya Hijutsu, or [Weapon]/[Unarmed Damage] with a Bone Weapon. Failure: the fragment and the damage (it ignores DR and can't be resisted). One at a time.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ed7qIQFgDusMJL",
+          "type": "save",
+          "label": "Setsugekka: start of its turn",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "For 1 minute. Failure: the damage. An Action and a Strength (Medicine) check vs the save DC digs it out.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "necrotic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eHEBBiwTH74Eoi",
+          "type": "save",
+          "label": "Battle Lust: bleed",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "A failed start-of-turn save: also 1 rank of Bleed.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "battleLust",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: +1d8 (add it)."
+        }
+      ]
+    },
+    "kaguya-dance-of-the-willow": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0YIm2uGOJCbxp",
+          "type": "attack",
+          "label": "Willow",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "piercing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e0YIm2uGOJCbxp",
+                "type": "attack",
+                "label": "Willow",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e0YIm2uGOJCbxp",
+                "type": "attack",
+                "label": "Willow",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e0YIm2uGOJCbxp",
+                "type": "attack",
+                "label": "Willow",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Battle Lust (1)",
+          "appliesTo": {
+            "namePrefix": "Dance of the Willow"
+          },
+          "note": "It counts as an Opportunity attack.",
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kaguya-dance-of-the-yuzu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e67gpmYBbG4KJL",
+          "type": "attack",
+          "label": "Yuzu",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "piercing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5e9f012qWLJXCmA",
+          "type": "save",
+          "label": "Yuzu: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: it can be a Reaction to a creature triggering your attack of opportunity."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e67gpmYBbG4KJL",
+                "type": "attack",
+                "label": "Yuzu",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (1d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5e9f012qWLJXCmA",
+                "type": "save",
+                "label": "Yuzu: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e67gpmYBbG4KJL",
+                "type": "attack",
+                "label": "Yuzu",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (2d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5e9f012qWLJXCmA",
+                "type": "save",
+                "label": "Yuzu: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e67gpmYBbG4KJL",
+                "type": "attack",
+                "label": "Yuzu",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (3d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5e9f012qWLJXCmA",
+                "type": "save",
+                "label": "Yuzu: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e67gpmYBbG4KJL",
+                "type": "attack",
+                "label": "Yuzu",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d6) + (4d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5e9f012qWLJXCmA",
+                "type": "save",
+                "label": "Yuzu: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Battle Lust (1)",
+          "appliesTo": {
+            "namePrefix": "Dance of the Yuzu"
+          },
+          "note": "The attacks are compared to every creature of your choice in your reach.",
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kaguya-desire-for-battle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e076oBie46eiWz",
+          "type": "roll",
+          "label": "Desire for Battle: initiative",
+          "roll": {
+            "formula": "1d4",
+            "note": "When you roll initiative: gain this many ranks of Battle Lust."
+          },
+          "cost": {
+            "pool": "battleLust",
+            "choose": true,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature that damages you is Battle Marked until the end of your next turn: your attacks against it can't be at disadvantage."
+        }
+      ]
+    },
+    "kaguya-ivory-fragments": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXjnLM505FZ3uf",
+          "type": "roll",
+          "label": "Bone slivers",
+          "roll": {
+            "formula": "@abilities.con.mod",
+            "note": "Once per rest: up to your Constitution modifier slivers on creatures, objects or surfaces; each works as Sealing Art: Chakra Mark (D-Rank) for 10 minutes."
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Traveling: your caltrop trail (trackers succeed but go at half speed). A climbing speed equal to your speed; allies using your holds suffer no penalties."
+        }
+      ]
+    },
+    "kaguya-shikotsumyaku-stance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFYdKxzWKc1cba",
+          "type": "effect",
+          "label": "Shikotsumyaku Stance",
+          "effect": {
+            "name": "Shikotsumyaku Stance",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "The Bukijutsu stance (entering it isn't stated: as any stance)."
+        },
+        {
+          "id": "n5eaLSWqyFUAhJo9",
+          "type": "roll",
+          "label": "Gain Battle Lust (beat AC by 5 / natural 20)",
+          "roll": {
+            "formula": "",
+            "note": "A weapon or Taijutsu attack with a Bone Weapon beats the target's AC by 5 or more, or rolls a natural 20."
+          },
+          "cost": {
+            "pool": "battleLust",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5e0NPHHDLdD0Jck",
+          "type": "effect",
+          "label": "Battle Lust",
+          "effect": {
+            "name": "Battle Lust",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "battle-lust"
+          },
+          "text": "The Battle Lust Amp (max rank 5, until combat ends); the Battle Lust pool counts its ranks."
+        },
+        {
+          "id": "n5eeBQuFES4r2dzC",
+          "type": "effect",
+          "label": "Battle Lust (11th)",
+          "effect": {
+            "name": "Battle Lust (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "battle-lust-11"
+          },
+          "text": "At 11th level (Violent Desire +4).",
+          "minLevel": 11
+        }
+      ],
+      "pools": [
+        {
+          "id": "battleLust",
+          "label": "Battle Lust",
+          "value": 0,
+          "max": "5",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the stance: Bone Weapon attacks can use your Hijutsu Flexibility ability for Strength; a hostile creature casting a Hand Sign (HS) jutsu in your weapon's reach provokes an attack of opportunity; at 7th, without Extra Attack, the Attack action attacks twice. Battle Lust: up to 5 ranks (the pool), spent on Kaguya Hijutsu (cast dialog options); you lose a rank if you neither dealt nor took damage by the end of your turn; all end with combat."
+        }
+      ]
+    },
+    "kaguya-ten-finger-drilling-bullets": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBDm2Y9FoNssHX",
+          "type": "save",
+          "label": "Ten-Finger Drilling Bullets",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eBDm2Y9FoNssHX",
+                "type": "save",
+                "label": "Ten-Finger Drilling Bullets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eBDm2Y9FoNssHX",
+                "type": "save",
+                "label": "Ten-Finger Drilling Bullets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eBDm2Y9FoNssHX",
+                "type": "save",
+                "label": "Ten-Finger Drilling Bullets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Battle Lust (2)",
+          "appliesTo": {
+            "namePrefix": "Ten-Finger Drilling Bullets"
+          },
+          "note": "Range Self (60-foot line); failures are also Staggered.",
+          "cost": {
+            "pool": "battleLust",
+            "amount": 2
+          }
+        }
+      ]
+    }
+  }
+}

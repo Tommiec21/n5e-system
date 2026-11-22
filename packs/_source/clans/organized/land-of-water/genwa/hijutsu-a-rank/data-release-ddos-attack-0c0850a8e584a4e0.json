@@ -17,7 +17,118 @@
         "cost": "22 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile) Lightning Release, Clash",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eq9lgmZyR46BNv",
+              "type": "save",
+              "label": "DDoS Attack",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d12 lightning.",
+                  "success": "Success: half of 5d12 lightning and Shocked until the end of its next turn.",
+                  "failure": "Failure: 5d12 lightning; Shocked, Firewalled, Blinded and Deafened for 1 minute.",
+                  "critFailure": "Critical Failure: as a failure, but 6d12 lightning."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                }
+              ],
+              "text": "A 90-foot cone. Each end of its turns it saves (1d4: Con, Int, Wis, Cha; you pick on a critical failure) to end one condition.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eM2eoIURbuixjU",
+              "type": "damage",
+              "label": "DDoS Attack: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e8LnPy3EXB5ILk",
+              "type": "damage",
+              "label": "DDoS Attack: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJBocBJiVZdcf1",
+              "type": "roll",
+              "label": "DDoS Attack: which save",
+              "roll": {
+                "formula": "1d4",
+                "note": "1 Constitution, 2 Intelligence, 3 Wisdom, 4 Charisma."
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: DDos Attack"
+          },
+          "note": "In your Uplink stance: it can't affect allies."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: DDos Attack"
+          },
+          "note": "In your Downlink stance: failing creatures lose any jutsu they concentrate on."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +223,96 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eq9lgmZyR46BNv",
+        "type": "save",
+        "label": "DDoS Attack",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 5d12 lightning.",
+            "success": "Success: half of 5d12 lightning and Shocked until the end of its next turn.",
+            "failure": "Failure: 5d12 lightning; Shocked, Firewalled, Blinded and Deafened for 1 minute.",
+            "critFailure": "Critical Failure: as a failure, but 6d12 lightning."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          },
+          {
+            "key": "genwa-firewalled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Firewalled"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "A 90-foot cone. Each end of its turns it saves (1d4: Con, Int, Wis, Cha; you pick on a critical failure) to end one condition.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eM2eoIURbuixjU",
+        "type": "damage",
+        "label": "DDoS Attack: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5e8LnPy3EXB5ILk",
+        "type": "damage",
+        "label": "DDoS Attack: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJBocBJiVZdcf1",
+        "type": "roll",
+        "label": "DDoS Attack: which save",
+        "roll": {
+          "formula": "1d4",
+          "note": "1 Constitution, 2 Intelligence, 3 Wisdom, 4 Charisma."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

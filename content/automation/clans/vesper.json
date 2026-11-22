@@ -1,0 +1,594 @@
+{
+  "clan": "vesper",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "vesper-claws-of-night": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat, enter the Claws of Night Taijutsu stance (the clan's stance item)."
+        }
+      ]
+    },
+    "vesper-echo-of-night": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0VacSN2W6VqBS",
+          "type": "effect",
+          "label": "Echolocation",
+          "effect": {
+            "name": "Echolocation",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: blindsight 30 feet while you can hear (not while Deafened or muffled); a rank of Mastery on sound-based Perception.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eHTJIgNS4ZEa3Z",
+          "type": "effect",
+          "label": "Pinging",
+          "effect": {
+            "name": "Pinged",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Bonus action: creatures within 10 feet of a point within 30 feet (45 at 7th, 60 at 15th) until the start of your next turn: your attacks against them can't be at disadvantage; allies they can't see get attacks of opportunity on them.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "vesper-mesmeric-sonance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUnyI9FTyHmECG",
+          "type": "save",
+          "label": "Hypnotic Voice",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Confused until the end of its next turn.",
+              "failure": "Failure: Confused and Dazed.",
+              "critFailure": "Critical Failure: as a failure, and Slowed."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "Action: creatures of your choice in a 20-foot cone (40 at 11th). A Genjutsu of your highest rank.",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e3SPxZGfCH8G2C",
+          "type": "save",
+          "label": "Hypnotic Gaze",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Charmed until the end of its next turn.",
+              "failure": "Failure: Charmed, and for 1 minute it spends its Movement and Actions obeying one command.",
+              "critFailure": "Critical Failure: as a failure, obeying new orders you give as a Bonus action for 1 minute; damage lets it resave once per turn."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            }
+          ],
+          "text": "Action, concentration: a creature you can see within 30 feet. A Genjutsu of your highest rank; a failure or worse can't recur on it until you rest.",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One at 3rd, the other at 11th."
+        }
+      ]
+    },
+    "vesper-nocturnal-discussions": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Entering a social encounter: Patient (no jutsu or feature bonuses this encounter; gain a Will of Night, one at a time: two ranks of Mastery on Wisdom and Charisma skill checks for 1 minute), Impatient (a rank of Mastery on one skill this encounter; fail 2+ checks and the attitude drops 2 ranks), or neither."
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a rest pick two abilities until your next rest (the option items). They use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion-dread-weave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSQNSdYJownqD8",
+          "type": "save",
+          "label": "Dread Weave",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "berserk",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Berserk"
+            }
+          ],
+          "text": "Once per turn, layered onto a Visual or Auditory Genjutsu: on its failed save, 1 rank of Shaken; critical failure, Shaken and Berserk (+1 rank of Shaken with 2+ ranks of Demoralized). Use the Genjutsu's own save.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Umbral Monarch's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion-mist-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eV3nOm80NBcids",
+          "type": "roll",
+          "label": "Mist Step",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, not in direct sunlight: teleport up to 40 feet (60 at 11th) to a space you can see. Then not again until you cast a C-Rank or higher Ninjutsu or Genjutsu that costs chakra."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion-terror-borne-constructs": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures your Genjutsu summon, or with the Illusory Construct trait: +5 + your level hit points; their first damage each turn +2 (+4 at 11th)."
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion-umbral-domain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSyz5d68frEkgn",
+          "type": "save",
+          "label": "Umbral Domain",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: half of 4d8 psychic.",
+              "failure": "Failure: 4d8 psychic and 1 rank of Demoralized.",
+              "critFailure": "Critical Failure: 6d8 psychic and 2 ranks of Demoralized."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            }
+          ],
+          "text": "Action: a 30-foot radius within 60 feet for 1 minute (chakra darkness and difficult terrain, not for you). A hostile creature starting its turn there. A C-Rank Visual, Tactile Genjutsu.",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5egFslB9pMLHawZ",
+          "type": "damage",
+          "label": "Umbral Domain: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(7:4d8,11:5d8,15:6d8)",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5eiobLooJTlydlO",
+          "type": "damage",
+          "label": "Umbral Domain: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(7:6d8,11:7d8,15:8d8)",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vesper-nocturnal-dominion-vapor-reprieve": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFjauLFv3xmFVO",
+          "type": "roll",
+          "label": "Vapor Reprieve",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, taking damage: it loses 2 of its damage dice (3 at 15th). Then not again until you cast a C-Rank or higher Taijutsu or Bukijutsu that costs chakra."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "vesper-nocturnal-supremacy": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose Dominion or Requiem (the option items); changing takes a ritual during a Full Rest."
+        }
+      ]
+    },
+    "vesper-nocturnal-supremacy-dominion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSl40WdT9y94it",
+          "type": "save",
+          "label": "Dominion: compel",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Teleporting into dim light or darkness next to a Berserk, Charmed, Confused, Demoralized or Shaken creature. Failure: it spends its movement, action and bonus action harming a creature you pick until it has damaged it 3 times. Passing by 5: immune until you rest.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative: Echolocation's blindsight becomes 40 feet."
+        }
+      ]
+    },
+    "vesper-nocturnal-supremacy-requiem": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQWHrExBrT7H0r",
+          "type": "heal",
+          "label": "Requiem: siphon",
+          "heal": {
+            "formula": "1d6",
+            "pool": "hp"
+          },
+          "text": "Bonus action: creatures within 30 feet lose all Bleed and Crimson Hemorrhage; per rank, regain 1d6 or gain 6 temporary hit points (pick; roll once per rank).",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative: in Claws of Night or Umbral Monarch, +15 speed and +1 attack with the Attack action. Creatures with Bleed or Crimson Hemorrhage: +1 critical range for your unarmed and weapon attacks against them."
+        }
+      ]
+    },
+    "vesper-stance-claws-of-night": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAMVCpshpKfYLB",
+          "type": "save",
+          "label": "Crimson Hemorrhage",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "vesper-claws-of-night",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Crimson Hemorrhage"
+            }
+          ],
+          "text": "Once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]. Failure: a rank of Crimson Hemorrhage.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d8",
+        "unarmedType": "slashing"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Claws of Night Taijutsu stance (its text is Claws of Night's stance part, as King Q-E9): [Unarmed Damage] 1d8 slashing; once per turn a Bruised you inflict can be 1 rank of Bleed instead; once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]: the save for Crimson Hemorrhage. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    },
+    "vesper-stance-claws-of-the-night": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeX2GtdE8ts9wv",
+          "type": "save",
+          "label": "Crimson Hemorrhage",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "vesper-claws-of-night",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Crimson Hemorrhage"
+            }
+          ],
+          "text": "Once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]. Failure: a rank of Crimson Hemorrhage.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d8",
+        "unarmedType": "slashing"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Claws of Night Taijutsu stance (its text is Claws of Night's stance part, as King Q-E9): [Unarmed Damage] 1d8 slashing; once per turn a Bruised you inflict can be 1 rank of Bleed instead; once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]: the save for Crimson Hemorrhage. At 7th, without Extra Attack, the Attack action attacks twice. (This item duplicates the other Claws of Night stance: Q-E18.)"
+        }
+      ]
+    },
+    "vesper-umbral-transmutation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebCbNvQb4lfDy4",
+          "type": "effect",
+          "label": "Umbral Monarch",
+          "effect": {
+            "name": "Umbral Monarch",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "umbral-monarch"
+          },
+          "text": "Bonus action, 1 minute. Again before a long rest: 1 rank of Exhaustion.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e8mzigtflkPcYk",
+          "type": "effect",
+          "label": "Umbral Monarch (15th)",
+          "effect": {
+            "name": "Umbral Monarch (15th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "umbral-monarch-15"
+          },
+          "text": "At 15th level (Beast Claws +4).",
+          "activation": "bonus",
+          "minLevel": 15
+        },
+        {
+          "id": "n5eKike9GCf8Rxo5",
+          "type": "save",
+          "label": "Sonic Lance",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "Action, in Umbral Monarch: a 60 by 5-foot line. Failure: the damage and Deafened until the end of its next turn; success: half.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eGS5AzV7cB6MeC",
+          "type": "save",
+          "label": "Umbral Shockwave",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Dazzled until the end of its next turn.",
+              "failure": "Failure: Blinded until the end of its next turn.",
+              "critFailure": "Critical Failure: as a failure, and Confused."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Action, in Umbral Monarch: a 20-foot radius on you (a Visual, Auditory, Tactile Genjutsu).",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eb3KwqCETWdXe5",
+          "type": "heal",
+          "label": "Crimson Feast",
+          "heal": {
+            "formula": "1d10",
+            "pool": "hp"
+          },
+          "text": "Once per turn, your [Unarmed]/[Weapon Damage] to a creature with Crimson Hemorrhage: its ranks drop to 0; regain 1d10 per rank (roll once per rank)."
+        }
+      ]
+    },
+    "vesper-vampyric-physique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two options (more at 7th and 15th). Anchored Steps: forced movement checks against you at disadvantage; your saves and checks against it at advantage. Dominating Stability: a rank of Mastery on Strength saves. Dinner Bell: on initiative, your Reaction gives a rank of Mastery on d20 rolls until the end of your next turn. Gravestone Dragging: Bulk +5; moving while grappling isn't difficult terrain. Inhuman Stamina: advantage against Exhaustion; after an Action Dash, a Bonus action Dash. Launching Throw: thrown range +20 feet; Mastery on Shove (two at 7th, three at 15th). Vaulted Limbs: climbing speed equal to your speed; fall damage dice reduced by half your level."
+        }
+      ]
+    }
+  }
+}

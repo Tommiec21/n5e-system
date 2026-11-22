@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "genwa",
-      "sourceLine": 3825
+      "sourceLine": 3825,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqLPQS4dpq6uJX",
+        "type": "save",
+        "label": "Data Leak",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "genwa-data-leak",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Data Leak"
+          }
+        ],
+        "text": "A creature fails a save against your Hijutsu that inflicts Firewalled: Data Leak instead (once per long rest per creature): vulnerability to a type you pick, jutsu cost 8 more; taking that type, it saves Constitution to end it.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

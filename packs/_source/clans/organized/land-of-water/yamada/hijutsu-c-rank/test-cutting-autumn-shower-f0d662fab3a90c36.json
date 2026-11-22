@@ -17,7 +17,130 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5emhimHEmkAQbg9",
+              "type": "save",
+              "label": "Autumn Shower",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5emhimHEmkAQbg9",
+              "type": "save",
+              "label": "Autumn Shower",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5emhimHEmkAQbg9",
+              "type": "save",
+              "label": "Autumn Shower",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Autumn Shower"
+          },
+          "note": "With your Executioners Instrument: Empty Blade as if forgoing 2 attacks against one creature; both d6s trigger: Severed."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Autumn Shower"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): Self (20-foot radius), not affecting allies."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +231,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emhimHEmkAQbg9",
+        "type": "save",
+        "label": "Autumn Shower",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

@@ -316,8 +316,32 @@ const bloodDragon = actor("blood-dragon", "Blood Dragon", chinoike._id, {
   item(id, "Blood Ocean", "npcAbilities", html("<em>(Recharge 9-10).</em> The Blood Dragon casts Genjutsu: Numbing Blood Spear at B-Rank as if you had cast it twice, at two different locations. These castings cannot trigger their Blood Detonation, effects."), [], { uses: { max: "1", spent: 0, per: "", recharge: "9-10", staminaEligible: false } })
 ], { "details.level": "@level", "bonuses.saveDC.nin": HIGH_DC, "bonuses.attack.nin": HIGH_ATK }, "icons/svg/mystery-man-black.svg");
 
+// The Steam Imp (Hozuki Hijutsu Steaming Danger: Tyranny, C-Rank): your Ninjutsu attack bonus and save DC.
+const hozuki = folder("Hozuki", null, "hozuki");
+const steamImp = actor("steam-imp", "Steam Imp", hozuki._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Hozuki: Steam Imp", summonRole: "Steam Imp",
+    biography: html("<p><em>Steaming Danger: Tyranny (Hozuki Hijutsu).</em> You can command the imp as a bonus action on your turns. It uses your Ninjutsu attack bonus and Save DC for effects that require an attack or saving throw. Strength, Dexterity and Constitution saving throws this creature makes use your Ninjutsu ability modifier as its proficiency bonus.</p>",
+      "<p><strong>Medium Construct, unaligned.</strong> <strong>Armor Class</strong> 14 + Your Ninjutsu Ability Modifier · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p>",
+      "<p><strong>Abilities</strong> STR +7, DEX +3, CON +4, INT −5, WIS +0, CHA −5. <strong>Damage Immunities</strong> Cold, Fire. <strong>Condition Immunities</strong> All Mental, All Sensory, Chilled, Bleed, Envenomed. <strong>Senses</strong> passive Perception 10.</p>",
+      "<p><strong>Linked to you when summoned:</strong> its AC (14 + your Ninjutsu ability modifier), Ninjutsu attack bonus and save DC.</p>") },
+  abilities: { str: { value: 24 }, dex: { value: 16 }, con: { value: 18 }, int: { value: 1 }, wis: { value: 10 }, cha: { value: 1 } },
+  attributes: { ac: { calc: "flat", flat: 14, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", immune: ["cold", "fire"], conditionImmune: ["chilled", "bleed", "envenomed", ...MENTAL_SENSORY], speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false } },
+  hpMax: 10, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Mists Tyranny", "npcTraits", html("When the Steam Imp is reduced to 0 Hit points, it uses its Detonation ability.")),
+  item(id, "Looping Destruction (B-Rank)", "npcTraits", html("At the beginning of your following turn, if the Steam Imp has detonated since the beginning of your last turn and you are concentrating on the jutsu used to summon the Steam Imp and either the Misty Hallucination, Water Balloon, or Demonic Illusion: Steaming Mirage Hijutsu, the Steam Imp is summoned again at no additional cost.")),
+  item(id, "Growing Pains", "npcTraits", html("At the end of each of your turns, following the turn used to summon this Steam Imp, the Steam Imp grows in size by 1 stage. If the Steam Imp grows to be Huge, it uses the Detonation ability.")),
+  item(id, "Arm Blade", "npcStrikes", html("<em>Multiattack (B-Rank).</em> The Steam can attack 2 times with its Arm Blade. <em>Melee Weapon Attack:</em> reach 5 ft., one creature. <em>Hit:</em> 1d12 + 7 Slashing damage. Beginning at A-Rank, this attack deals an additional +1d12 cold damage."),
+    [act("steam-imp", "Arm Blade", "attack", { attack: { discipline: "nin", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d12 + 7", type: "slashing" }] }, text: "Two attacks at B-Rank or higher." }),
+     act("steam-imp", "Arm Blade: A-Rank cold", "damage", { damage: { parts: [{ formula: "1d12", type: "cold" }] }, text: "Summoned at A-Rank or higher." })]),
+  item(id, "Detonation", "npcAbilities", html("The Steam Imp cannot spend an action to use this ability. When the Steam Imp Detonates, its hit points are reduced to 0 and all creatures within 15 feet of it must make a Dexterity saving throw. On a failure, they take 6d6 cold damage and constructs and structures treat damage from this effect as if they are vulnerable. This increases by +1d6 for every rank beyond C-Rank."),
+    [act("steam-imp", "Detonation", "save", { save: { abilities: ["dex"], dc: { source: "nin" }, onSuccess: "none", resave: false }, text: "Creatures within 15 feet. Failure: cold damage by rank (constructs and structures as if vulnerable)." }),
+     ...[["C-Rank", "6d6"], ["B-Rank", "7d6"], ["A-Rank", "8d6"], ["S-Rank", "9d6"]].map(([r, f]) => act("steam-imp", `Detonation: ${r}`, "damage", { damage: { parts: [{ formula: f, type: "cold" }] }, text: `Summoned at ${r}.` }))])
+], { "details.level": "@level", "attributes.ac.flat": `14 + ${NIN_MOD}`, "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" }, "icons/svg/mystery-man-black.svg");
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -340,5 +364,7 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   for ( const d of [spider, bird, centipede, dragon] ) write(`bakuton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
   write("chinoike/_folder.json", chinoike);
   write(`chinoike/blood-dragon-${bloodDragon._id}.json`, bloodDragon);
-  console.log(`✓ summons: 9 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  write("hozuki/_folder.json", hozuki);
+  write(`hozuki/steam-imp-${steamImp._id}.json`, steamImp);
+  console.log(`✓ summons: 10 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

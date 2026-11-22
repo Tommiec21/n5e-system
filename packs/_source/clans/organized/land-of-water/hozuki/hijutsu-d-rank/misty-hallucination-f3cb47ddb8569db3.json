@@ -18,7 +18,19 @@
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Water Release, Unaware",
         "components": "HS, CM"
       },
-      "notAmp": "An area attack; allies being immune only excludes them (King, AMP1f batch 1)."
+      "notAmp": "An area attack; allies being immune only excludes them (King, AMP1f batch 1).",
+      "reviewed": true,
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Misty Hallucination"
+        },
+        "note": "Your allies are immune.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
+      }
     }
   },
   "ownership": {
@@ -112,7 +124,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5exu5NRrgpcOLCU",
+        "type": "save",
+        "label": "Misty Hallucination",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: a rank of Dazzled.",
+            "failure": "Failure: its next Action attack targets the closest creature, then it ends.",
+            "critFailure": "Critical Failure: its first Action attack each turn targets the closest creature for the duration (resave at the end of each of its turns)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "A 10-foot radius within 30 feet (+10 feet range and +5 radius per rank).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

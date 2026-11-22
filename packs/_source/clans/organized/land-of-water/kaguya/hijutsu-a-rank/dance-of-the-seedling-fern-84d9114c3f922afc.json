@@ -17,6 +17,67 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Bukijutsu",
         "components": "CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The forest stays: difficult terrain (2 feet per foot) for others."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eePtyoZM3vaZm3",
+              "type": "save",
+              "label": "Seedling Fern",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures other than you in a 45-foot radius (its range line says 40). Failure: the damage, after first losing temporary hit points or DR from their own jutsu; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d8) + (1d8)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ewoGatDKdAy8ni",
+              "type": "roll",
+              "label": "Bone pillar interpose",
+              "roll": {
+                "formula": "",
+                "note": "For 1 minute, Reaction: a pillar (30 hit points) takes damage from a creature in the area for you."
+              },
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eqjJS1x2ZKGES2",
+              "type": "roll",
+              "label": "Battle Lust: teleport",
+              "roll": {
+                "formula": "",
+                "note": "On your turn in the area: teleport within it; creatures within 5 feet save at −2 against your Hijutsu this turn."
+              },
+              "cost": {
+                "pool": "battleLust",
+                "amount": 3
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -107,7 +168,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eePtyoZM3vaZm3",
+        "type": "save",
+        "label": "Seedling Fern",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures other than you in a 45-foot radius (its range line says 40). Failure: the damage, after first losing temporary hit points or DR from their own jutsu; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ewoGatDKdAy8ni",
+        "type": "roll",
+        "label": "Bone pillar interpose",
+        "roll": {
+          "formula": "",
+          "note": "For 1 minute, Reaction: a pillar (30 hit points) takes damage from a creature in the area for you."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eqjJS1x2ZKGES2",
+        "type": "roll",
+        "label": "Battle Lust: teleport",
+        "roll": {
+          "formula": "",
+          "note": "On your turn in the area: teleport within it; creatures within 5 feet save at −2 against your Hijutsu this turn."
+        },
+        "cost": {
+          "pool": "battleLust",
+          "amount": 3
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

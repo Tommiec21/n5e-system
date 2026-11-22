@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "vesper",
       "sourceLine": 4458,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative: in Claws of Night or Umbral Monarch, +15 speed and +1 attack with the Attack action. Creatures with Bleed or Crimson Hemorrhage: +1 critical range for your unarmed and weapon attacks against them."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,19 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQWHrExBrT7H0r",
+        "type": "heal",
+        "label": "Requiem: siphon",
+        "heal": {
+          "formula": "1d6",
+          "pool": "hp"
+        },
+        "text": "Bonus action: creatures within 30 feet lose all Bleed and Crimson Hemorrhage; per rank, regain 1d6 or gain 6 temporary hit points (pick; roll once per rank).",
+        "activation": "bonus"
+      }
+    ]
   }
 }

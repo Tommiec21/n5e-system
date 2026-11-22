@@ -1,0 +1,1291 @@
+{
+  "clan": "yuki",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "yuki-bloody-mist-legacy": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One path (the option items); switch as a Bonus action, but not back to a path already used until 10 minutes out of combat. Saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-black-ice-mirror": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erD9t4qYnZzXA6",
+          "type": "save",
+          "label": "Black Frost",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "A hostile creature destroys a mirror you occupy. Failure: Frostbite.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Black Iron Reflection: mirrors gain 5 DR against damage they aren't immune, resistant or vulnerable to. Frost Courier: a rank of Mastery on Athletics (two at 11th); an ally damaged within 10 feet of a mirror can use its reaction to exit within 5 feet of another."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-frost-bound-shield": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bulwark: mirrors gain hit points equal to your level. Stalwart: in a mirror, a rank of Mastery on Strength and Dexterity saves (two at 11th); mirrors resist area damage. Black Frost: inflicting Frostbite heals all your mirrors 5."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-glacial-movement": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Glacial Jump: once per turn, Reflective Movement costs no movement; Mirrored Strike works with melee attacks against creatures within 15 feet of your mirror. Hostile Terrain: a rank of Mastery on initiative (two at 11th); your Hijutsu or feature difficult terrain deals 5 cold per space to hostile creatures and spares allies. Rime Line: you leave rime where you move until your next turn."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-hoarfrost": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Frosted Glass: while you're in a mirror, all mirrors emit a 10-foot mist; allies in it gain Mirrors Protection. Ominous Reflections: a rank of Mastery on Chakra Control (two at 11th); Suppress Chakra can make a mirror seem to hold you. Brine Prison: inflicting Frostbite turns a 10-foot radius on the creature into difficult terrain for 1 minute (not for you; fire dispels it)."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-refraction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5endNFqLa2qVGHL",
+          "type": "save",
+          "label": "Frostbane",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Inflicting Frostbite on a creature within 10 feet of a mirror. Failure: it's dragged in and expelled Prone within 5 feet of another mirror.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Double Pane: each Ice Mirror makes 2 (gain 2), immune to poison. Truth in Passing: a rank of Mastery on Investigation (two at 11th); Study takes an Action."
+        }
+      ]
+    },
+    "yuki-bloody-mist-legacy-shiver-weave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eL6CucbawqGzGF",
+          "type": "attack",
+          "label": "Invisible Threads",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Reaction, a hostile creature crosses your line: teleport to a previous mirror and attack once per active mirror.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6 + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "cold"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5edvYNG5U1k1xhC",
+          "type": "save",
+          "label": "Invisible Threads: speed",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: speed 0 until the end of the turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hail Burst: a rank of Mastery on Stealth (two at 11th); casting a Yuki Hijutsu, a 15-foot cube of hail from you totally obscures until your next turn. Frost Splinter: Reaction, a mirror is destroyed: teleport to another (you still take the damage)."
+        }
+      ]
+    },
+    "yuki-demonic-mirror-master": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOBy57WnvFaubG",
+          "type": "effect",
+          "label": "Demonic Ice Prism",
+          "effect": {
+            "name": "Demonic Ice Prism",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action on your turn, 1 minute, once per rest: up to 8 mirrors in unoccupied spaces within 60 feet (outside your limit); you teleport into the closest.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn at the start of your turn, switch Bloody Mist Legacy paths freely. Ice Daggers: one attack roll against all creatures of your choice within 15 feet of a mirror."
+        }
+      ]
+    },
+    "yuki-ice-release-certain-kill-ice-spears": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezJimpuKEH685s",
+          "type": "save",
+          "label": "Certain-Kill Ice Spears",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "chilled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Chilled"
+            },
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "cold"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ezJimpuKEH685s",
+                "type": "save",
+                "label": "Certain-Kill Ice Spears",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ezJimpuKEH685s",
+                "type": "save",
+                "label": "Certain-Kill Ice Spears",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ezJimpuKEH685s",
+                "type": "save",
+                "label": "Certain-Kill Ice Spears",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "chilled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Chilled"
+                  },
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yuki-ice-release-fierce-tiger": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6pFB7jwBIEL5L",
+          "type": "save",
+          "label": "Fierce Tiger: freeze",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ezimQ6YKRcHN7O",
+          "type": "save",
+          "label": "Fierce Tiger: explosion",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 15-foot radius on the target within 90 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "cold"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5e6pFB7jwBIEL5L",
+                "type": "save",
+                "label": "Fierce Tiger: freeze",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ezimQ6YKRcHN7O",
+                "type": "save",
+                "label": "Fierce Tiger: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 15-foot radius on the target within 90 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e6pFB7jwBIEL5L",
+                "type": "save",
+                "label": "Fierce Tiger: freeze",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5ezimQ6YKRcHN7O",
+                "type": "save",
+                "label": "Fierce Tiger: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 15-foot radius on the target within 90 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (2d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yuki-ice-release-frozen-capturing-field": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4v3cYZCxjRrly",
+          "type": "save",
+          "label": "Frozen Capturing Field",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "A 30-foot cube from you (+10 feet per rank). Failure: −20 speed and a rank of Frostbite (a Strength save as an Action escapes).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ebjBJEHyooiqCM",
+          "type": "save",
+          "label": "Frozen field: entering",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Difficult terrain for the duration; a creature entering it. Failure: Prone.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Cast from a mirror: conjure up to 3 mirrors in range (extras past your limit melt at the end of the turn)."
+        }
+      ]
+    },
+    "yuki-ice-release-ice-daggers": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRBrQFZnFws1Ez",
+          "type": "attack",
+          "label": "Ice Daggers",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "cold"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eZQKnj7SZW3mPC",
+          "type": "save",
+          "label": "Ice Daggers: from a mirror",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eRBrQFZnFws1Ez",
+                "type": "attack",
+                "label": "Ice Daggers",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eZQKnj7SZW3mPC",
+                "type": "save",
+                "label": "Ice Daggers: from a mirror",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eRBrQFZnFws1Ez",
+                "type": "attack",
+                "label": "Ice Daggers",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eZQKnj7SZW3mPC",
+                "type": "save",
+                "label": "Ice Daggers: from a mirror",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eRBrQFZnFws1Ez",
+                "type": "attack",
+                "label": "Ice Daggers",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eZQKnj7SZW3mPC",
+                "type": "save",
+                "label": "Ice Daggers: from a mirror",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRBrQFZnFws1Ez",
+                "type": "attack",
+                "label": "Ice Daggers",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eZQKnj7SZW3mPC",
+                "type": "save",
+                "label": "Ice Daggers: from a mirror",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yuki-frostbite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Frostbite"
+                  }
+                ],
+                "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yuki-ice-release-ice-mirror-shield": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLQguF2SDflYGt",
+          "type": "heal",
+          "label": "Ice Mirror Shield",
+          "heal": {
+            "formula": "1d10 + 10",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: a Barrier on you or an ally within 30 feet (cast from a mirror: the mirror's DR, resistances, immunities and vulnerabilities). Not destroyed: at the start of your next turn it becomes an ice structure for 1 minute, usable as an Ice Mirror.",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eLQguF2SDflYGt",
+                "type": "heal",
+                "label": "Ice Mirror Shield",
+                "heal": {
+                  "formula": "1d10 + 10",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier on you or an ally within 30 feet (cast from a mirror: the mirror's DR, resistances, immunities and vulnerabilities). Not destroyed: at the start of your next turn it becomes an ice structure for 1 minute, usable as an Ice Mirror.",
+                "activation": "reaction"
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eLQguF2SDflYGt",
+                "type": "heal",
+                "label": "Ice Mirror Shield",
+                "heal": {
+                  "formula": "1d10 + 10",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier on you or an ally within 30 feet (cast from a mirror: the mirror's DR, resistances, immunities and vulnerabilities). Not destroyed: at the start of your next turn it becomes an ice structure for 1 minute, usable as an Ice Mirror.",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eLQguF2SDflYGt",
+                "type": "heal",
+                "label": "Ice Mirror Shield",
+                "heal": {
+                  "formula": "1d10 + 10",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier on you or an ally within 30 feet (cast from a mirror: the mirror's DR, resistances, immunities and vulnerabilities). Not destroyed: at the start of your next turn it becomes an ice structure for 1 minute, usable as an Ice Mirror.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eLQguF2SDflYGt",
+                "type": "heal",
+                "label": "Ice Mirror Shield",
+                "heal": {
+                  "formula": "1d10 + 10",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a Barrier on you or an ally within 30 feet (cast from a mirror: the mirror's DR, resistances, immunities and vulnerabilities). Not destroyed: at the start of your next turn it becomes an ice structure for 1 minute, usable as an Ice Mirror.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yuki-ice-release-ice-needle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2n6Cb0Tze4CT0",
+          "type": "effect",
+          "label": "Ice Needle",
+          "effect": {
+            "name": "Ice Needle",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, concentration: a water weapon (any simple weapon, chosen each turn) dealing cold; the Attack action with it can use your Ninjutsu or Taijutsu attack bonus and your highest jutsu modifier; it counts for Bukijutsu. From a mirror: +1 attack. B-Rank, without Extra Attack: two attacks.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "yuki-ice-release-ice-prison": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVdEEK4UeZkswB",
+          "type": "save",
+          "label": "Ice Prison",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            },
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "A creature you can see within 60 feet. Failure: Restrained in ice (Deafened) and a rank of Frostbite; a Strength save at the end of each of its turns breaks out. The ice is an Ice Mirror (20 AC, 10 hit points +10 per rank).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yuki-ice-release-manifestation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the release you didn't pick for Ice Release Affinity (set it on the sheet); Wind or Water jutsu can swap their damage between wind and cold when you roll. A mirror you occupy uses its AC or yours, whichever is higher; out of combat allies can teleport between mirrors; mirrors can float up to 10 feet up."
+        }
+      ]
+    },
+    "yuki-ice-release-needle-storm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eY1Mv73G3Y3ohi",
+          "type": "save",
+          "label": "Needle Storm",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8",
+                "type": "cold"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eY1Mv73G3Y3ohi",
+                "type": "save",
+                "label": "Needle Storm",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (1d8)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eY1Mv73G3Y3ohi",
+                "type": "save",
+                "label": "Needle Storm",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (2d8)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eY1Mv73G3Y3ohi",
+                "type": "save",
+                "label": "Needle Storm",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (3d8)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eY1Mv73G3Y3ohi",
+                "type": "save",
+                "label": "Needle Storm",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d8) + (4d8)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yuki-ice-release-ten-thousand-ice-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSIyVRtfN1oCyS",
+          "type": "save",
+          "label": "Ten Thousand Ice Petals",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Frostbite"
+            }
+          ],
+          "text": "A 40-foot cone (+5 feet per rank). Failure: 2 ranks of Frostbite (4 at A) and speed 0 until the end of its next turn; success: half the ranks. Constructs, structures and objects failing: vulnerable to the next two damage before your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yuki-ice-release-twin-dragon-whirlwind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eURUO4hxCwUyOv",
+          "type": "save",
+          "label": "Twin Dragon Whirlwind",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yuki-frostbite",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Frostbite"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Once per turn, a creature entering the 20-foot radius. Failure: 2 ranks of Frostbite and Blinded while inside.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can't be targeted by ranged attacks or line-of-sight effects for the duration."
+        }
+      ]
+    },
+    "yuki-sanctum-of-ice": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZJZvHnW34rQ2O",
+          "type": "heal",
+          "label": "Sanctum of Ice: heal",
+          "heal": {
+            "formula": "10",
+            "pool": "hp"
+          },
+          "text": "Starting your turn within 30 feet of a creature with Chilled or Frostbite: remove up to 5 of its ranks; regain 10 per rank removed (multiply it in the roll dialog)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Or ending your turn with an Elemental condition while another creature has Chilled or Frostbite: remove up to 5 of its ranks and that many of yours. Either one, then not again until the end of your next turn."
+        }
+      ]
+    },
+    "yuki-the-looking-glass": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTHNFrZxLsIbt0",
+          "type": "roll",
+          "label": "Ice Mirror",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: a mirror (6 by 3 feet, 2 inches thick) on the ground in an unoccupied space within 30 feet for up to 1 minute; 10 hit points, 20 AC, resistance to piercing, slashing, cold and wind, vulnerable to fire. Over your maximum the oldest melts (spend one first)."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "iceMirrors",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eaeqwl1dyDSduh",
+          "type": "roll",
+          "label": "Mirror destroyed",
+          "roll": {
+            "formula": "",
+            "note": "A mirror melts or drops to 0 hit points (damage past it reaches you if you're in it)."
+          },
+          "cost": {
+            "pool": "iceMirrors",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "iceMirrors",
+          "label": "Ice Mirrors",
+          "value": 0,
+          "max": "lvl(1:2,7:3,11:4,15:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ice Mirrors: up to 2 (3 at 7th, 4 at 11th, 5 at 15th), the pool; each lasts 1 minute. With one active: Join Reflection (5 feet of movement to enter one adjacent, or leave it); Attacking Reflections (entering with another active: Stealth with a rank of Mastery to Hide among them); Mirrors Protection (in one, attacks on you target it; immune to Grappled, Restrained and Prone; only teleportation moves you); Reflective Movement (10 feet: teleport to another within 30 feet); Mirrored Strike (ranged attacks from one keep your stealth)."
+        }
+      ]
+    }
+  }
+}

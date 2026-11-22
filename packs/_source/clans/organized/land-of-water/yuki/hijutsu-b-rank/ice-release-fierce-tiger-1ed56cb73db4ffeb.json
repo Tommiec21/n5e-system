@@ -17,6 +17,119 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e6pFB7jwBIEL5L",
+              "type": "save",
+              "label": "Fierce Tiger: freeze",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ezimQ6YKRcHN7O",
+              "type": "save",
+              "label": "Fierce Tiger: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot radius on the target within 90 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e6pFB7jwBIEL5L",
+              "type": "save",
+              "label": "Fierce Tiger: freeze",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ezimQ6YKRcHN7O",
+              "type": "save",
+              "label": "Fierce Tiger: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot radius on the target within 90 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +223,60 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e6pFB7jwBIEL5L",
+        "type": "save",
+        "label": "Fierce Tiger: freeze",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "Creatures submerged or under a Self-range Water jutsu. Failure: 2 ranks of Frostbite. Water between you and the target freezes (Water jutsu dispelled; a Clash with a Water jutsu dispels it).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ezimQ6YKRcHN7O",
+        "type": "save",
+        "label": "Fierce Tiger: explosion",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 15-foot radius on the target within 90 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

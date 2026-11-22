@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yamada",
       "sourceLine": 4510,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Investigation: a rank of Mastery (two at 7th, three at 15th; set it on the sheet)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,36 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eopocKQgNILMBn",
+        "type": "save",
+        "label": "Sever",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamada-asaemon-discipline",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Severed"
+          }
+        ],
+        "text": "Once per turn, damage with your Executioners Instrument to a creature with Confused or Dazed. Failure: it loses that condition and is Severed instead.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

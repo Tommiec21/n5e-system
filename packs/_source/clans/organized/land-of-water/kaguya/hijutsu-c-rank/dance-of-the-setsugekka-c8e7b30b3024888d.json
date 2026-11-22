@@ -17,7 +17,14 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Chain",
         "components": "M, W (Any Melee Weapon)"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: +1d8 (add it)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,89 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eBXjkwH9N36UpT",
+        "type": "save",
+        "label": "Setsugekka",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "With a damaging Kaguya Hijutsu, or [Weapon]/[Unarmed Damage] with a Bone Weapon. Failure: the fragment and the damage (it ignores DR and can't be resisted). One at a time.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ed7qIQFgDusMJL",
+        "type": "save",
+        "label": "Setsugekka: start of its turn",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "For 1 minute. Failure: the damage. An Action and a Strength (Medicine) check vs the save DC digs it out.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHEBBiwTH74Eoi",
+        "type": "save",
+        "label": "Battle Lust: bleed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "A failed start-of-turn save: also 1 rank of Bleed.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "battleLust",
+          "amount": 2
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

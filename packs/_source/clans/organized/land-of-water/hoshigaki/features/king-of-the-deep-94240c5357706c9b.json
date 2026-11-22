@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshigaki",
-      "sourceLine": 4025
+      "sourceLine": 4025,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside: submerged; difficult terrain for enemies; allies swim freely; enemies' ranged attacks into or through it have disadvantage; your melee attacks have Reach 2 and pull 5 feet; Fire jutsu lose 4 fire damage dice; hostile jutsu cost 8 more and lose 2 damage dice, and you gain temporary chakra by its rank (D 2 ... S 6)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,43 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5emyYQmGDKyx1a3",
+        "type": "effect",
+        "label": "King of the Deep",
+        "effect": {
+          "name": "King of the Deep",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Action, once per long rest: water within 120 feet becomes a 30-foot radius maelstrom on you for 1 minute.",
+        "activation": "action"
+      },
+      {
+        "id": "n5evTJivsahsopGS",
+        "type": "damage",
+        "label": "Maelstrom: end of turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "cold"
+            }
+          ]
+        },
+        "text": "A hostile creature ending its turn inside (as your Water Release Ninjutsu)."
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

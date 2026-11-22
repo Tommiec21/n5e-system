@@ -92,6 +92,20 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - **Ranton:** the Laser Circus stance and attack (also on Storm Release Manifestation - Storm); Voltage (pool, 0 each combat) with every Storm Circuit; Spear and Shield Form effects (Shield Form's temporary hit points from your Voltage); every Gale Circuit; Eye of the Storm (once per long rest); every Hijutsu.
 - **At the table:** Starlight and Refraction Point positions, damage-type swaps, the second nature release (set it on the sheet), branch-only items (their notes say the branch).
 
+## E4 Land of Water (0.82.0-alpha.1)
+
+Review tables: `docs/clans/genwa-automation.md`, `hoshigaki-automation.md`, `hozuki-automation.md`, `kaguya-automation.md`, `vesper-automation.md`, `yamada-automation.md`, `yuki-automation.md` (151 items: 99 partly automated, 52 notes only).
+
+- **Genwa:** Uplink and Downlink stance buttons, Radiant Beam and Radiant Saber attacks, Signal Boosted's Amp; each Hijutsu's Angel Link and Demon Link as cast dialog options; Data Leak; every Data Channel; every Hijutsu (the Neon Antivirus has no stat block: held, like Q-E14).
+- **Hoshigaki:** Apex Predator's four Amp cards (1st, 7th, 11th, 15th); Ravenous Chakra by rank; the Tiger Shark's Maw bite; Shark Skinned's DR; Abyssal Bulwark's resistances; King of the Deep (once per long rest); every Predator Trait and Surge.
+- **Hozuki:** Hydration (pool, back on a long rest) with every Liquification Technique and the Water Bullet attack; each Hijutsu's Hydrofication as a cast dialog option for 1 Hydration; Mirage Regent and Tidal Gains Amps (4 Hydration); the Steam Imp summon (Class & Clan Summons › Hozuki); every Hijutsu.
+- **Kaguya:** Battle Lust (pool, up to 5, gone after combat) and its Amp cards; each Hijutsu's Battle Lust spend as a cast dialog option; Desire for Battle; every Defining Anatomy; every Hijutsu.
+- **Vesper:** the Claws of Night stance (d8 slashing, Crimson Hemorrhage save); Echolocation and Pinging; Hypnotic Voice and Gaze; Umbral Monarch's Amps with Sonic Lance and Umbral Shockwave; every Nocturnal Dominion and Supremacy option.
+- **Yamada:** the Tameshi Itto-ryu stance with Empty Blade; each Hijutsu's Ideal Cut and Tao as cast dialog options; the Sever saves; every Asaemon Discipline and Tao Attunement; every Hijutsu.
+- **Yuki:** Ice Mirrors (pool, each lasts 1 minute); every Bloody Mist Legacy path; Sanctum of Ice; Demonic Ice Prism (once per rest); every Hijutsu.
+- **Past rulings applied, not asked again:** copied Amp text removed from Ravenous Chakra, Blood As Thick As Oil, Mirage Regent, Dread Weave and Network Integration (King Q-E12); the Vesper and Yamada stance items hold their stance's own text (King Q-E9).
+- **Fixed from E3:** Bloody Resilience's 15th-level clot rolled 1d8 once; it's 1d8 per rank removed.
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -109,6 +123,9 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - **Q-E15 Plasma Release: Light Binding Step:** asked in error: King already answered this as Q-F14 (docs/AMP1F_SPEC.md, 2026-11-21): the reaction line is a mistake and isn't there. The note says so (0.81.1-alpha.1).
 - **Q-E16 Crimson Weaponry:** answered (King 2026-11-21): rolling a 1 or 2 doesn't reduce the ammunition die by one step (the note says so; 0.81.1-alpha.1).
 
+- **Q-E17 Hozuki Hydration:** "You regain spent Hydration when: you complete a long rest, take damage from a jutsu with the Water Release keyword, begin your turn with at least half your body submerged..., or when you cast a jutsu with the Water release keyword and gain the benefit of a sufficient source of water." How much do the non-rest triggers regain: all of it, or 1? (The button lets you pick for now.)
+- **Q-E18 Vesper's two stance items:** "Claws of Night" and "Claws of the Night" are both stance items (they held Nocturnal Supremacy's and Nocturnal Dominion's text; both now hold the Claws of Night stance). Delete "Claws of the Night"?
+
 ## Text issues (for the errata list)
 
 - Bakuton: Absolute Death Bombing's text held two other Hijutsu (now split out, Q-E5); Clay Dragon says "two centipedes"; Clay Spiders' upcast starts "above C-Rank" (it's D-Rank); Chain Reaction Blitz's upcast grows "the size of the cone"; Volatile Movement says "half as much on a failure"; Artistic Cataclysm "unique for of combat".
@@ -121,6 +138,13 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - Chinoike: Ketsuryugan "1o minutes"; Blood Drain "cat at B-Rank"/"cat at S-Rank"; Blood Missiles "cat at C-Rank" and "saving throw vs gaining"; Sanguine Sphere's upcast is split over three lines; Illusory Pain Receptor spends no Crimson Charges; Crimson Architect held Crimson Pact's Amp (removed, Q-E12); Crimson Weaponry's ammunition sentence is garbled (Q-E16).
 - Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (King Q-F14: a mistake); Event Horizon's Amp sat in Aphelion's and Stellar Convergence's text (removed, Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
 - Ranton: Gale Style "unique for of combat"; Storm Release Manifestation - Reezaa "change the damage type to Water or Lightning" and both Manifestations "Cold or Lightning release keywords" (Water); Snake Chains has no stat block (Q-E14); Storm Drain "granting then"; Lariat "clothes line".
+- Genwa: Data Crash has both a failure paragraph and a tier list; Neon Antivirus (Antivirus) and its Link effects have no stat block; Data Break, Network Integration and Ice Release Manifestation (Yuki) hold copies of their clan's condition text.
+- Hoshigaki: Apex Berserker "wing link fins"; Ravenous Chakra held Apex Predator's Amp (removed).
+- Hozuki: Mirage Regent's option held Tidal Gains' Amp and Blood As Thick As Oil held Mirage Regent's (removed); Tidal Gains "exist this state" and "until you complete a short rest" vs Heir of the Mist's "a rest"; Great Water Arm's damage has no type; Rain Dance range "Instance"; Steam Imp "The Steam can attack"; Hydration's triggers don't say how much (Q-E17).
+- Kaguya: Shikotsumyaku Stance and Dance of the Pale Tyrant don't say what action enters them; Dance of the Seedling Fern's range says 40 feet, its text 45; Dance of the Katsura and Ten-Finger "Bleeding" (Bleed).
+- Vesper: both stance items held other features' text (fixed, Q-E9 ruling; duplicate: Q-E18); Dread Weave held Umbral Monarch's Amp (removed).
+- Yamada: the stance item held Asaemon Disciplines' text (fixed, Q-E9 ruling); Single Swing's upcast says "above B-Rank" (it's A-Rank); Senta Piercing "laten Tao" and its upcast adds 1d12 to a jutsu with only [Weapons Damage]; Demon Rain "earth-bound strikes.."; Spring Garden "and for the affected creature".
+- Yuki: Ice Release Manifestation "change the damage type to Wind or Cold respectively" (swap); Ten Thousand Ice Petals "the increase the ranks of Frostbite inflicted to +2"; Frostbite "at the end of their for each rank".
 
 ## Progress log
 
@@ -132,3 +156,4 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - 2026-11-21 King: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration." Claude: Combo/Finisher Boon option, Divine Wind stance text, Blazing Aura damage, turn gains share the pool lifetime; published 0.80.1-alpha.1.
 - 2026-11-21 King: "Next Batch." Claude: E3 Land of Lightning built (84 items), E-D7 combat recovery amounts (fixes Jiton refilling), the Blood Dragon summon; published 0.81.0-alpha.1. Q-E12–Q-E16 asked; nothing waits on them.
 - 2026-11-21 King: "Q12. Remove the copy. Q13. Post the full effect text. Q14. Hold off on this. Q15. post the full effect text. Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step." Claude: Amp copies removed, Crimson Weaponry note; full Aphelion and Light Binding Step text posted; published 0.81.1-alpha.1.
+- 2026-11-21 King: "Next batch." Claude: E4 Land of Water built (151 items), the Steam Imp summon; earlier rulings Q-E9 and Q-E12 applied without asking; published 0.82.0-alpha.1. Q-E17 and Q-E18 asked (checked earlier specs first); nothing waits on them.

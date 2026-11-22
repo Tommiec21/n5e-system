@@ -17,6 +17,294 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release",
         "components": "W (Any Melee), CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e9GbitygHKsDNS",
+              "type": "attack",
+              "label": "Great Water Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejJg0KICrF4LAx",
+              "type": "save",
+              "label": "Great Water Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e9GbitygHKsDNS",
+              "type": "attack",
+              "label": "Great Water Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejJg0KICrF4LAx",
+              "type": "save",
+              "label": "Great Water Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e9GbitygHKsDNS",
+              "type": "attack",
+              "label": "Great Water Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejJg0KICrF4LAx",
+              "type": "save",
+              "label": "Great Water Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e9GbitygHKsDNS",
+              "type": "attack",
+              "label": "Great Water Arm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejJg0KICrF4LAx",
+              "type": "save",
+              "label": "Great Water Arm: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Great Water Arm"
+        },
+        "note": "Range Self (15-foot cone): one attack roll against each creature in it.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -109,7 +397,74 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9GbitygHKsDNS",
+        "type": "attack",
+        "label": "Great Water Arm",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ejJg0KICrF4LAx",
+        "type": "save",
+        "label": "Great Water Arm: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

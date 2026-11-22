@@ -1,0 +1,544 @@
+{
+  "clan": "hoshigaki",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hoshigaki-abyssal-bulwark": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Abyssal Bulwark",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "chakra",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "cold",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A critical hit on you grants a Will of Fire. In Apex Predator: immunity to cold, and advantage on saves against Bleed, Dazed and Stunned."
+        }
+      ]
+    },
+    "hoshigaki-abyssal-wayfinder": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Nature check vs DC 5 to predict a body of water's weather, tides and visibility. Swimming, allies within 20 feet can spend their Action to follow your trail. 10 minutes submerged: remove 1 rank of Exhaustion (once per rest)."
+        }
+      ]
+    },
+    "hoshigaki-apex-berserker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eelKTvU1YCKLx4",
+          "type": "effect",
+          "label": "Apex Predator",
+          "effect": {
+            "name": "Apex Predator",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "apex-predator"
+          },
+          "text": "Bonus action, 1 minute. Again before a long rest (before a rest at 11th): 1 rank of Exhaustion.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eCyBgOzvHH7hC8",
+          "type": "effect",
+          "label": "Apex Predator (7th)",
+          "effect": {
+            "name": "Apex Predator (7th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "apex-predator-7"
+          },
+          "text": "At 7th level.",
+          "activation": "bonus",
+          "minLevel": 7
+        },
+        {
+          "id": "n5eh7mpnDpKn0Q8H",
+          "type": "effect",
+          "label": "Apex Predator (11th)",
+          "effect": {
+            "name": "Apex Predator (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "apex-predator-11"
+          },
+          "text": "At 11th level.",
+          "activation": "bonus",
+          "minLevel": 11
+        },
+        {
+          "id": "n5e1zz5QJNHBEmz8",
+          "type": "effect",
+          "label": "Apex Predator (15th)",
+          "effect": {
+            "name": "Apex Predator (15th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "apex-predator-15"
+          },
+          "text": "At 15th level.",
+          "activation": "bonus",
+          "minLevel": 15
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use the card for your level (its Cold Blooded and Efficient Recovery numbers grow)."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Predator Traits (more at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-apex-gaze": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Demoralize skill action as a Bonus action, any number of times (not once an hour). 7th: +1 rank of Demoralized. 15th: all creatures you can see within 20 feet."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-beast-of-the-sea": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your hit points and chakra points increase by your level (add them on the sheet)."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-commander-of-the-deep": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Summoning Technique contract with the Shark tribe; your sharks arrive in a water bubble and move on land at half their swimming speed."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-prey-sense": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blindsight 10 feet (20 at 7th, doubled while submerged; 30 at 15th). Set it on the sheet."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-shark-skinned": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5em5wG1IeFaBL2C",
+          "type": "damage",
+          "label": "Shark Skinned: melee retaliation (11th)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "@con",
+                "type": "slashing"
+              }
+            ]
+          },
+          "text": "11th: a creature damaging you with a melee attack."
+        }
+      ],
+      "effects": [
+        {
+          "name": "Shark Skinned: DR",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "@abilities.con.mod",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus DR equal to your Constitution modifier while not in Heavy Armor (turn the effect off in Heavy Armor)."
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-tide-locked": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEl1ouLsYzYpDL",
+          "type": "save",
+          "label": "Tide Locked",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, cold damage from your Water Release jutsu: one affected creature. Failure: −10 speed until the end of its next turn (20 at 7th, 30 at 15th), or +2 chakra damage taken until the start of your next turn (+4 at 7th, +6 at 15th).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hoshigaki-deep-sea-predator-tiger-sharks-maw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edEoMMw2gcR6QJ",
+          "type": "attack",
+          "label": "Bite",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In place of an Attack action attack; +1 critical range.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8 + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ea9tP2J9vWLq76",
+          "type": "save",
+          "label": "Bite: grapple (7th)",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "A damaged creature. Failure: Grappled (15th: and 1 rank of Bleed).",
+          "damage": {
+            "parts": []
+          },
+          "minLevel": 7
+        }
+      ]
+    },
+    "hoshigaki-ichthyic-armorer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e54YJob11TC6DI",
+          "type": "save",
+          "label": "Angler Lure",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "Bonus action, a creature in range. Failure: 1 rank of Shaken, and disadvantage on attacks against others than you until the end of its next turn.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eNCA2IV3mTVi04",
+          "type": "roll",
+          "label": "Wing Guard: parry",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage: reduce it by your [Weapon Damage] (roll your weapon's damage)."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 Downtime: two grafts on one weapon (new ones replace them). Raking Dermis: Pierce 2, slashing or piercing. Wing Guard: Blocking 1 and the parry. Sawtooth: once per turn your [Weapon Damage] first drops temporary hit points or chakra to 0. Scale Plate: Fortified. Tiger Pattern: hit two or more creatures on your turn: +2 DR each until your next turn. Marlin Imprint: 2 ranks of Mastery underwater. Angler Lure: the save button. Set the weapon's properties on the item."
+        }
+      ]
+    },
+    "hoshigaki-king-of-the-deep": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emyYQmGDKyx1a3",
+          "type": "effect",
+          "label": "King of the Deep",
+          "effect": {
+            "name": "King of the Deep",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action, once per long rest: water within 120 feet becomes a 30-foot radius maelstrom on you for 1 minute.",
+          "activation": "action"
+        },
+        {
+          "id": "n5evTJivsahsopGS",
+          "type": "damage",
+          "label": "Maelstrom: end of turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "cold"
+              }
+            ]
+          },
+          "text": "A hostile creature ending its turn inside (as your Water Release Ninjutsu)."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside: submerged; difficult terrain for enemies; allies swim freely; enemies' ranged attacks into or through it have disadvantage; your melee attacks have Reach 2 and pull 5 feet; Fire jutsu lose 4 fire damage dice; hostile jutsu cost 8 more and lose 2 damage dice, and you gain temporary chakra by its rank (D 2 ... S 6)."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest pick two Predator Surges (the option items); one surge per trigger. Their saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-clarity": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Taking damage from a creature: mark it until the end of your next turn; you know where it is even if invisible or hidden."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-crash": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a Water Release jutsu on a creature behind a Barrier: half the damage also reaches creatures the Barrier protects."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-drag": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A melee hit: Grappled (no reactions), you move up to twice your speed dragging it, then the grapple ends."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-feeding": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction, a creature damages you with a melee attack: take the Attack action against it."
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-rend": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eS9feQalILc4GE",
+          "type": "save",
+          "label": "Predators Rend",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A melee attack's damage. Failure: its DR is 2 lower for 1 minute (stacks up to 3 times).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hoshigaki-predatory-surges-predators-terrain": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting an area Water Release jutsu: the area is difficult terrain for 1 minute for all but you and up to 3 creatures; a creature can spend 10 chakra to ignore it until the end of its turn."
+        }
+      ]
+    },
+    "hoshigaki-ravenous-chakra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeBW47X77JdJCF",
+          "type": "damage",
+          "label": "Ravenous Chakra (D-Rank)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5e6oCDgiLdDbTUU",
+          "type": "damage",
+          "label": "Ravenous Chakra (C-Rank)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eS5HLbsjFjufBL",
+          "type": "damage",
+          "label": "Ravenous Chakra (B-Rank)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5emvAwAdHN6pacH",
+          "type": "damage",
+          "label": "Ravenous Chakra (A-Rank)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eqGWKq4bZzuyYp",
+          "type": "damage",
+          "label": "Ravenous Chakra (S-Rank)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "15th: in a Clash, the opposing jutsu counts one rank lower; win and the chakra dice double. (Its copy of Apex Predator's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    }
+  }
+}

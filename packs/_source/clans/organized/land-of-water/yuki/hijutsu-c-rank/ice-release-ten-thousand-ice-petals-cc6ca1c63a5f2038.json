@@ -17,7 +17,8 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eSIyVRtfN1oCyS",
+        "type": "save",
+        "label": "Ten Thousand Ice Petals",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "A 40-foot cone (+5 feet per rank). Failure: 2 ranks of Frostbite (4 at A) and speed 0 until the end of its next turn; success: half the ranks. Constructs, structures and objects failing: vulnerable to the next two damage before your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

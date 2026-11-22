@@ -17,7 +17,172 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Lightning Release, Barrier",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eQUAOzhEVfiEd4",
+              "type": "heal",
+              "label": "Firewall: barrier",
+              "heal": {
+                "formula": "2d10 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction, you take damage: a Barrier against it.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5erGvD1vFLzhMcO",
+              "type": "roll",
+              "label": "Firewall: shield",
+              "roll": {
+                "formula": "(2d10) + (1d10)",
+                "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+              }
+            },
+            {
+              "id": "n5ekHgDLBiDqeTIp",
+              "type": "effect",
+              "label": "Signal Boosted (Angel Link)",
+              "effect": {
+                "name": "Signal Boosted",
+                "target": "targets",
+                "changes": [],
+                "expires": "turnEnd",
+                "seconds": 0,
+                "amp": "signal-boosted"
+              },
+              "text": "Angel Link: the protected ally."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eQUAOzhEVfiEd4",
+              "type": "heal",
+              "label": "Firewall: barrier",
+              "heal": {
+                "formula": "2d10 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction, you take damage: a Barrier against it.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5erGvD1vFLzhMcO",
+              "type": "roll",
+              "label": "Firewall: shield",
+              "roll": {
+                "formula": "(2d10) + (2d10)",
+                "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+              }
+            },
+            {
+              "id": "n5ekHgDLBiDqeTIp",
+              "type": "effect",
+              "label": "Signal Boosted (Angel Link)",
+              "effect": {
+                "name": "Signal Boosted",
+                "target": "targets",
+                "changes": [],
+                "expires": "turnEnd",
+                "seconds": 0,
+                "amp": "signal-boosted"
+              },
+              "text": "Angel Link: the protected ally."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eQUAOzhEVfiEd4",
+              "type": "heal",
+              "label": "Firewall: barrier",
+              "heal": {
+                "formula": "2d10 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction, you take damage: a Barrier against it.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5erGvD1vFLzhMcO",
+              "type": "roll",
+              "label": "Firewall: shield",
+              "roll": {
+                "formula": "(2d10) + (3d10)",
+                "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+              }
+            },
+            {
+              "id": "n5ekHgDLBiDqeTIp",
+              "type": "effect",
+              "label": "Signal Boosted (Angel Link)",
+              "effect": {
+                "name": "Signal Boosted",
+                "target": "targets",
+                "changes": [],
+                "expires": "turnEnd",
+                "seconds": 0,
+                "amp": "signal-boosted"
+              },
+              "text": "Angel Link: the protected ally."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eQUAOzhEVfiEd4",
+              "type": "heal",
+              "label": "Firewall: barrier",
+              "heal": {
+                "formula": "2d10 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Reaction, you take damage: a Barrier against it.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5erGvD1vFLzhMcO",
+              "type": "roll",
+              "label": "Firewall: shield",
+              "roll": {
+                "formula": "(2d10) + (4d10)",
+                "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+              }
+            },
+            {
+              "id": "n5ekHgDLBiDqeTIp",
+              "type": "effect",
+              "label": "Signal Boosted (Angel Link)",
+              "effect": {
+                "name": "Signal Boosted",
+                "target": "targets",
+                "changes": [],
+                "expires": "turnEnd",
+                "seconds": 0,
+                "amp": "signal-boosted"
+              },
+              "text": "Angel Link: the protected ally."
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Firewall"
+          },
+          "note": "In your Uplink stance: it can also trigger when an ally within 30 feet takes damage; the ally gets it and is Signal Boosted."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Firewall"
+          },
+          "note": "In your Downlink stance: each shield reduction also deals that much lightning to a creature within 30 feet."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +274,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQUAOzhEVfiEd4",
+        "type": "heal",
+        "label": "Firewall: barrier",
+        "heal": {
+          "formula": "2d10 + 8",
+          "pool": "tempHp"
+        },
+        "text": "Reaction, you take damage: a Barrier against it.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5erGvD1vFLzhMcO",
+        "type": "roll",
+        "label": "Firewall: shield",
+        "roll": {
+          "formula": "2d10",
+          "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+        }
+      },
+      {
+        "id": "n5ekHgDLBiDqeTIp",
+        "type": "effect",
+        "label": "Signal Boosted (Angel Link)",
+        "effect": {
+          "name": "Signal Boosted",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 0,
+          "amp": "signal-boosted"
+        },
+        "text": "Angel Link: the protected ally."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "hozuki",
       "sourceLine": 4093,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its text says once you exit it you can't enter again until a short rest; Heir of the Mist says until a rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,68 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egNa0d2uM8KtZF",
+        "type": "effect",
+        "label": "Tidal Gains",
+        "effect": {
+          "name": "Tidal Gains",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "tidal-gains"
+        },
+        "text": "Bonus action, 1 minute, once per rest.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "hydration",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5ewJj1kukmEvdnt",
+        "type": "save",
+        "label": "Water Pressure",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Once per turn, [Weapon Damage] or [Unarmed Damage] to a Large or smaller creature. Failure: 2 ranks of Weakened and Prone.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

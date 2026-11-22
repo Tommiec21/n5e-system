@@ -17,6 +17,18 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Battle Lust (1)",
+        "appliesTo": {
+          "namePrefix": "Dance of Bullet Seedlings"
+        },
+        "note": "One target: attacks equal to your targets minus 1, 2d6 piercing each.",
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1
+        }
       }
     }
   },
@@ -109,7 +121,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ec9mj80CS3ePmJ",
+        "type": "attack",
+        "label": "Bullet Seedlings",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "One attack roll against up to three creatures you can see within 40 feet (+1 per rank).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ehzITJe90uV0vL",
+        "type": "attack",
+        "label": "Battle Lust: one target",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 2
+        },
+        "text": "One creature: attacks equal to the targets you could have minus 1.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

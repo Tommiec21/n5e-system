@@ -17,7 +17,8 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eVdEEK4UeZkswB",
+        "type": "save",
+        "label": "Ice Prison",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          },
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "A creature you can see within 60 feet. Failure: Restrained in ice (Deafened) and a rank of Frostbite; a Strength save at the end of each of its turns breaks out. The ice is an Ice Mirror (20 AC, 10 hit points +10 per rank).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

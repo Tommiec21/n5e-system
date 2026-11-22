@@ -17,6 +17,199 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release, Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eRBrQFZnFws1Ez",
+              "type": "attack",
+              "label": "Ice Daggers",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eZQKnj7SZW3mPC",
+              "type": "save",
+              "label": "Ice Daggers: from a mirror",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eRBrQFZnFws1Ez",
+              "type": "attack",
+              "label": "Ice Daggers",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eZQKnj7SZW3mPC",
+              "type": "save",
+              "label": "Ice Daggers: from a mirror",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRBrQFZnFws1Ez",
+              "type": "attack",
+              "label": "Ice Daggers",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eZQKnj7SZW3mPC",
+              "type": "save",
+              "label": "Ice Daggers: from a mirror",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRBrQFZnFws1Ez",
+              "type": "attack",
+              "label": "Ice Daggers",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eZQKnj7SZW3mPC",
+              "type": "save",
+              "label": "Ice Daggers: from a mirror",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +303,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRBrQFZnFws1Ez",
+        "type": "attack",
+        "label": "Ice Daggers",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eZQKnj7SZW3mPC",
+        "type": "save",
+        "label": "Ice Daggers: from a mirror",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "Cast while in an Ice Mirror, on a hit. Failure: a rank of Frostbite (+1 at B, +1 more at S).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

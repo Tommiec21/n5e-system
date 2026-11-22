@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kaguya",
-      "sourceLine": 4268
+      "sourceLine": 4268,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature that damages you is Battle Marked until the end of your next turn: your attacks against it can't be at disadvantage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e076oBie46eiWz",
+        "type": "roll",
+        "label": "Desire for Battle: initiative",
+        "roll": {
+          "formula": "1d4",
+          "note": "When you roll initiative: gain this many ranks of Battle Lust."
+        },
+        "cost": {
+          "pool": "battleLust",
+          "choose": true,
+          "gain": true
+        }
+      }
+    ]
   }
 }

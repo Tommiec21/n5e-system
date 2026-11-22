@@ -83,7 +83,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1715 | 273 | 1 | 200 | 200 | 0 |
+| clans | 1715 | 370 | 4 | 303 | 303 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
@@ -91,7 +91,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | features | 700 | 411 | 43 | 372 | 360 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
-| summons | 9 | 0 | 0 | 0 | 0 | 0 |
+| summons | 10 | 0 | 0 | 0 | 0 | 0 |
 
 ## 4. Amps (AMP1b)
 
@@ -100,33 +100,29 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 19 | 68 | 0 | 26 |
+| clans | 0 | 0 | 26 | 63 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **91** | **93** | **0** | **50** |
+| **Total** | **124** | **158** | **98** | **88** | **0** | **50** |
 
-### clans: 68 candidates
+### clans: 63 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
 - **Sirens Voice**: Lasting bonus: "…your song, the initiating creature gains a +4…"
-- **Heir of the Mist: Mirage Regent**: Its text names a Battle Amp.
 - **Advanced Transformations**: Its text names a Battle Amp.
-- **Ravenous Chakra**: Its text names a Battle Amp.
 - **Magma Domain**: Lasting bonus: "…you gain resistance…"
 - **Scorched Foundation**: Its text names a Battle Amp.
 - **Déjà vu**: Its text names a Will Amp.
 - **Savage Attacker**: Its text names a Battle Amp.
 - **Two-Headed Wolf**: Lasting bonus: "…you gain an additional…"
-- **Blood As Thick As Oil**: Its text names a Battle Amp.
 - **Heir of the Mist**: Its text names a Battle Amp.
 - **Mistborn Infiltrator**: Lasting bonus: "…You gain an additional…"
 - **Catastrophic Vent**: Lasting bonus: "…you enter Torque, you gain the following additional benefits for the duration; You gain +4…"
 - **Steam Engine**: Its text names a Battle Amp.
 - **Ember’s Guardian**: Its text names a Battle Amp.
 - **The Legacy of The Past**: Lasting bonus: "…you gain an additional…"
-- **Nocturnal Dominion: Dread Weave**: Its text names a Battle Amp.
 - **Alomancy**: Lasting bonus: "…You gain an additional…"
 - **Metallurgy**: Its text names a Battle Amp.
 - **Assessment of Tao**: Lasting bonus: "…your sensory range and granting you immunity to…"
@@ -134,7 +130,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Scorched Foundation: Rubbery**: Its text names a Battle Amp.
 - **Steam Engine: Horse Power**: Its text names a Battle Amp.
 - **The Hunter**: Lasting bonus: "…you do, you gain an additional…"
-- **Network Integration**: Its text names a Will Amp.
 - **Ouroboros**: Lasting bonus: "…you fall to 0 hit points, you can spend your reaction to force your body to refuel, granti…"
 - **Serpents Guile**: Its text names a Fortitude Amp.
 - **Stellar Convergence**: Lasting bonus: "…You provide a bonus to…"

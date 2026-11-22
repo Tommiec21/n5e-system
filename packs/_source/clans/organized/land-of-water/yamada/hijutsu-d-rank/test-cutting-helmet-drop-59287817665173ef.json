@@ -17,7 +17,220 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZF2l7PyIaDXXC",
+              "type": "attack",
+              "label": "Helmet Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evNZAnC06kq59H",
+              "type": "save",
+              "label": "Helmet Drop: Ideal Cut or Tao",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZF2l7PyIaDXXC",
+              "type": "attack",
+              "label": "Helmet Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evNZAnC06kq59H",
+              "type": "save",
+              "label": "Helmet Drop: Ideal Cut or Tao",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZF2l7PyIaDXXC",
+              "type": "attack",
+              "label": "Helmet Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evNZAnC06kq59H",
+              "type": "save",
+              "label": "Helmet Drop: Ideal Cut or Tao",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZF2l7PyIaDXXC",
+              "type": "attack",
+              "label": "Helmet Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evNZAnC06kq59H",
+              "type": "save",
+              "label": "Helmet Drop: Ideal Cut or Tao",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Helmet Drop"
+          },
+          "note": "With your Executioners Instrument: it saves Constitution or −2 AC until the start of your next turn."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Helmet Drop"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): it saves Constitution or −2 on its next save before then."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +321,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZF2l7PyIaDXXC",
+        "type": "attack",
+        "label": "Helmet Drop",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "slashing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5evNZAnC06kq59H",
+        "type": "save",
+        "label": "Helmet Drop: Ideal Cut or Tao",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

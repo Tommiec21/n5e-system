@@ -10,7 +10,15 @@
     "n5e": {
       "clanPackage": "hozuki",
       "sourceLine": 4095,
-      "repeatable": false
+      "repeatable": false,
+      "ampCopyRemoved": "Tidal Gains (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Tidal Gains' Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -18,7 +26,7 @@
   },
   "system": {
     "identifier": "hozuki-heir-of-the-mist-mirage-regent",
-    "description": "<p>You enter your Mirage Regent state, allowing you to spread the water your body is formed from into a large are, creating a mist of your design.</p>\n<p>| #### Tidal Gains / Battle Amp / You embolden your physical strength to new heights, enlarging your muscles and reinforcing your brutal physique. / Colossus. Your size increases to Lear, melee weapon and unarmed attacks you make gain the Reach 1 Property, if they didn’t already. You make Athletics checks at advantage. / Muscular Overdrive. You gain the benefits of the Water Muscles Liquification techniques for the duration, at no Hydration cost. / Water Canons. Increase Cold damage you deal as a result of casting a jutsu with the Water Release keyword by +1 die. / Hydro Armor. You gain resistance to bludgeoning, piercing. Slashing, cold and fire damage. / Water Pressure. Once per turn, when you deal [Weapon Damage] or [Unarmed Damage] to a large or smaller creature, you can force them to make a Strength saving throw vs your highest jutsu save DC. On a failure, they gain 2 ranks of Weakened and are knocked Prone |</p>",
+    "description": "<p>You enter your Mirage Regent state, allowing you to spread the water your body is formed from into a large are, creating a mist of your design.</p>\n",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -45,6 +53,43 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eL4Bh7aPbXYHe6",
+        "type": "effect",
+        "label": "Mirage Regent",
+        "effect": {
+          "name": "Mirage Regent",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "mirage-regent"
+        },
+        "text": "Bonus action, 1 minute, once per rest.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "hydration",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5e9oqN5NSnc6K1C",
+        "type": "roll",
+        "label": "Where are You Looking?",
+        "roll": {
+          "formula": "1d12",
+          "note": "First attack on you each turn: at or under the target it misses (11, then 1 lower after each miss)."
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

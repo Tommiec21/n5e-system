@@ -1,0 +1,2046 @@
+{
+  "clan": "yamada",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "yamada-asaemon-disciplines": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two disciplines (more at 7th and 15th): the option items. Their saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-anatomist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekr6f9yyI7mRU8",
+          "type": "save",
+          "label": "Sever",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Once per turn, damage with your Executioners Instrument to a creature with Bruised. Failure: it loses that condition and is Severed instead.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Survival: a rank of Mastery (two at 7th, three at 15th; set it on the sheet)."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-blind-blade": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While you can hear and mold chakra: blindsight 10 feet (15 at 7th, 20 at 15th); your attacks within it can't be at disadvantage."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-carpenter": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crafting: a rank of Mastery (two at 7th, three at 15th; set it on the sheet). Once per turn, Empty Blade damage to a construct or structure rolls 2 more d6."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-edge-sharpening": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Over a short rest, sharpen your Executioners Instrument and one weapon per willing ally; the first initiative after, they gain a rank of Mastery to [Weapon Damage] until that combat ends (two at 11th). Once per rest."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-interrogator": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Intimidation: a rank of Mastery (two at 7th, three at 15th; set it on the sheet). Demoralize is your check against its Wisdom DC; beat it by 10 and a Standard or Minion adversary drops its weapons and flees until the end of its next turn."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-judge": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on saves against Charmed, Confused, Demoralized and Dazed (two at 11th)."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-lawyer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eopocKQgNILMBn",
+          "type": "save",
+          "label": "Sever",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Once per turn, damage with your Executioners Instrument to a creature with Confused or Dazed. Failure: it loses that condition and is Severed instead.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Investigation: a rank of Mastery (two at 7th, three at 15th; set it on the sheet)."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-politician": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deception: a rank of Mastery (two at 7th, three at 15th; set it on the sheet). Create Diversion includes one weapon attack against a creature you can reach (two on a success)."
+        }
+      ]
+    },
+    "yamada-asaemon-disciplines-surgeon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ek4NQnSNJI4sHD",
+          "type": "save",
+          "label": "Sever",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Once per turn, damage with your Executioners Instrument to a creature with Bleed. Failure: it loses that condition and is Severed instead.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Medicine: a rank of Mastery (two at 7th, three at 15th; set it on the sheet)."
+        }
+      ]
+    },
+    "yamada-assessment-of-tao": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efkVBPRDnUkXIn",
+          "type": "effect",
+          "label": "Assessment of Tao",
+          "effect": {
+            "name": "Assessment of Tao",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "1 minute of focus, once per rest: for 10 minutes you sense creatures of your level or lower within 120 feet that mold chakra (not where); you can't be Surprised, and hidden creatures don't attack you at advantage."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "yamada-stance-tameshi-itto-ryu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e51Md2ySWvUrhr",
+          "type": "roll",
+          "label": "Empty Blade",
+          "roll": {
+            "formula": "1d6",
+            "note": "Forgo the Attack action's other attacks: one d6 per forgone attack (+1 if the target is Severed); each 5 or 6 adds your [Weapon Damage] (not doubled on a critical hit). Roll one per die."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Tameshi Itto-ryu Bukijutsu stance (its text is Tameshi Itto-ryu's, as King Q-E9): a weapon from your Weapon Proficiency trait is your Executioners Instrument; it can use your Hijutsu Flexibility ability for Strength; Yamada Hijutsu with it can use Ideal Cut (or Tao from 7th; cast dialog options); the Attack action can use Empty Blade. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    },
+    "yamada-tameshi-itto-ryu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter the Tameshi Itto-ryu Bukijutsu stance (the clan's stance item)."
+        }
+      ]
+    },
+    "yamada-tao-attunement": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Tao attribute (the option items); switch on a short rest."
+        }
+      ]
+    },
+    "yamada-tao-attunement-earth": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Advantage against being moved or knocked Prone. Once per turn, forgo an Attack action attack: the next damage before your next turn is reduced by your [Weapon Damage]."
+        }
+      ]
+    },
+    "yamada-tao-attunement-fire": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two ranks of Mastery on initiative. Once per turn, Dash or Disengage includes an Empty Blade as if forgoing 2 attacks."
+        }
+      ]
+    },
+    "yamada-tao-attunement-metal": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Empty Blade triggers on 4, 5 or 6. A missed Empty Blade can be remade with your Bonus action."
+        }
+      ]
+    },
+    "yamada-tao-attunement-water": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXuBuWetmAJmPc",
+          "type": "roll",
+          "label": "Water: parry",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, Reaction: an attack on an ally within 30 feet by a creature within 30 feet: move up to your speed next to the ally, add half this roll (your [Weapon Damage] die) to its AC; on a miss deal your [Weapon Damage] to the attacker."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature in your Instrument's reach trying to dash, disengage, grapple, disarm, shove or move you: one weapon attack against it."
+        }
+      ]
+    },
+    "yamada-tao-attunement-wood": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Healing: + half your level, once per creature per rest. Two or more hostile creatures in reach: Empty Blade compares to up to 2 of their ACs."
+        }
+      ]
+    },
+    "yamada-test-cutting-armor-splitter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0UigNkqC6Iswr",
+          "type": "attack",
+          "label": "Armor Splitter",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eFLgqZDszv4ZCa",
+          "type": "save",
+          "label": "Armor Splitter: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Failure: Severed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e0UigNkqC6Iswr",
+                "type": "attack",
+                "label": "Armor Splitter",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFLgqZDszv4ZCa",
+                "type": "save",
+                "label": "Armor Splitter: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e0UigNkqC6Iswr",
+                "type": "attack",
+                "label": "Armor Splitter",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFLgqZDszv4ZCa",
+                "type": "save",
+                "label": "Armor Splitter: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e0UigNkqC6Iswr",
+                "type": "attack",
+                "label": "Armor Splitter",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFLgqZDszv4ZCa",
+                "type": "save",
+                "label": "Armor Splitter: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e0UigNkqC6Iswr",
+                "type": "attack",
+                "label": "Armor Splitter",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFLgqZDszv4ZCa",
+                "type": "save",
+                "label": "Armor Splitter: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Armor Splitter"
+          },
+          "note": "With your Executioners Instrument: Empty Blade as if forgoing 2 attacks (its d6s decide)."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Armor Splitter"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): +1 critical range; a critical hit refunds your Reaction to cast it again at the same creature for free."
+        }
+      ]
+    },
+    "yamada-test-cutting-autumn-shower": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emhimHEmkAQbg9",
+          "type": "save",
+          "label": "Autumn Shower",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ],
+          "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5emhimHEmkAQbg9",
+                "type": "save",
+                "label": "Autumn Shower",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5emhimHEmkAQbg9",
+                "type": "save",
+                "label": "Autumn Shower",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5emhimHEmkAQbg9",
+                "type": "save",
+                "label": "Autumn Shower",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ],
+                "text": "A 15-foot cone (Tao: a 20-foot radius sparing allies). Failure: [Weapons Damage] + 2d8 and a rank of Shaken; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Autumn Shower"
+          },
+          "note": "With your Executioners Instrument: Empty Blade as if forgoing 2 attacks against one creature; both d6s trigger: Severed."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Autumn Shower"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): Self (20-foot radius), not affecting allies."
+        }
+      ]
+    },
+    "yamada-test-cutting-demon-rain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejWVSDWGtAYr3N",
+          "type": "save",
+          "label": "Demon Rain",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half damage.",
+              "success": "Success: half of [Weapons Damage] + 2d12.",
+              "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+              "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ejWVSDWGtAYr3N",
+                "type": "save",
+                "label": "Demon Rain",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half damage.",
+                    "success": "Success: half of [Weapons Damage] + 2d12.",
+                    "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+                    "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ejWVSDWGtAYr3N",
+                "type": "save",
+                "label": "Demon Rain",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half damage.",
+                    "success": "Success: half of [Weapons Damage] + 2d12.",
+                    "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+                    "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Demon Rain"
+          },
+          "note": "With your Executioners Instrument: one failing creature: Empty Blade as if forgoing 3 attacks."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Demon Rain"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): up to two failing creatures: roll Severed's d6 for each (no repeat effects)."
+        }
+      ]
+    },
+    "yamada-test-cutting-harvest-grip": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUdFiQG2ALUo8K",
+          "type": "effect",
+          "label": "Harvest Grip",
+          "effect": {
+            "name": "Harvest Grip",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, concentration: reroll up to two Empty Blade d6s (four at A-Rank), taking the second; B-Rank: +1 d6.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "yamada-test-cutting-helmet-drop": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZF2l7PyIaDXXC",
+          "type": "attack",
+          "label": "Helmet Drop",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5evNZAnC06kq59H",
+          "type": "save",
+          "label": "Helmet Drop: Ideal Cut or Tao",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eZF2l7PyIaDXXC",
+                "type": "attack",
+                "label": "Helmet Drop",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5evNZAnC06kq59H",
+                "type": "save",
+                "label": "Helmet Drop: Ideal Cut or Tao",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eZF2l7PyIaDXXC",
+                "type": "attack",
+                "label": "Helmet Drop",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5evNZAnC06kq59H",
+                "type": "save",
+                "label": "Helmet Drop: Ideal Cut or Tao",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZF2l7PyIaDXXC",
+                "type": "attack",
+                "label": "Helmet Drop",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5evNZAnC06kq59H",
+                "type": "save",
+                "label": "Helmet Drop: Ideal Cut or Tao",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZF2l7PyIaDXXC",
+                "type": "attack",
+                "label": "Helmet Drop",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5evNZAnC06kq59H",
+                "type": "save",
+                "label": "Helmet Drop: Ideal Cut or Tao",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Ideal Cut: −2 AC until the start of your next turn. Tao: −2 on its next save before then.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Helmet Drop"
+          },
+          "note": "With your Executioners Instrument: it saves Constitution or −2 AC until the start of your next turn."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Helmet Drop"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): it saves Constitution or −2 on its next save before then."
+        }
+      ]
+    },
+    "yamada-test-cutting-roaring-rain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enGFbu5ypSNHGM",
+          "type": "attack",
+          "label": "Roaring Rain",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One attack roll against up to 3 creatures within your speed: [Weapons Damage]. Their reaction jutsu cost 4 more (+4 per rank); a reaction without a cost costs 12 chakra.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eIkwmLh6vCsQDx",
+          "type": "roll",
+          "label": "Ideal Cut: damage",
+          "roll": {
+            "formula": "1d6",
+            "note": "+1d6 per creature targeted."
+          }
+        },
+        {
+          "id": "n5eJikiO7FLaiJhB",
+          "type": "save",
+          "label": "Tao: sever",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Each affected creature. Failure: Severed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 damage per rank (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Roaring Rain"
+          },
+          "note": "With your Executioners Instrument: +1d6 damage per creature targeted."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Roaring Rain"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): each affected creature saves Constitution or is Severed."
+        }
+      ]
+    },
+    "yamada-test-cutting-senta-piercing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFeKO5FWgvEMUN",
+          "type": "save",
+          "label": "Senta Piercing",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "A 30-foot line. Failure: [Weapons Damage] and Severed.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e8WLaSnCe1ZQ9F",
+          "type": "heal",
+          "label": "Tao: drain",
+          "heal": {
+            "formula": "1d6",
+            "pool": "tempHp"
+          },
+          "text": "Per failing creature: temporary hit points and chakra for 1 minute (roll once per creature)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d12 per rank (add it). Roll your [Weapons Damage] for the damage."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Senta Piercing"
+          },
+          "note": "With your Executioners Instrument: roll Severed's d6 twice and pick; an already Severed creature can take the rolled result too, instead of Shaken."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Senta Piercing"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): temporary hit points and chakra, 1d6 per failing creature, for 1 minute."
+        }
+      ]
+    },
+    "yamada-test-cutting-single-swing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDUH7ym2VIDiHK",
+          "type": "attack",
+          "label": "Single Swing",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A Grappled, Prone and Severed creature. Reroll 1s and 2s once.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d6r<2",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above B-Rank (it's A-Rank)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eDUH7ym2VIDiHK",
+                "type": "attack",
+                "label": "Single Swing",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "A Grappled, Prone and Severed creature. Reroll 1s and 2s once.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d6r<2) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Single Swing"
+          },
+          "note": "With your Executioners Instrument: each 4, 5 or 6 on its damage dice: −1 AC and saves until the start of your next turn."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Single Swing"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): beating its AC by 10: a critical hit and all six Severed effects."
+        }
+      ]
+    },
+    "yamada-test-cutting-spring-garden": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eprEW8VAwfpNHN",
+          "type": "attack",
+          "label": "Spring Garden",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Reaction: move within your speed, then attack.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eGQFp765HwnLT2",
+          "type": "save",
+          "label": "Spring Garden: on a hit",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Dazzled.",
+              "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+              "critFailure": "Critical Failure: as a failure, and it loses its Action."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eAg9vBWPZb9lAY",
+          "type": "roll",
+          "label": "Ideal Cut / Tao d6",
+          "roll": {
+            "formula": "1d6",
+            "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eprEW8VAwfpNHN",
+                "type": "attack",
+                "label": "Spring Garden",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move within your speed, then attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGQFp765HwnLT2",
+                "type": "save",
+                "label": "Spring Garden: on a hit",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: Dazzled.",
+                    "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                    "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eAg9vBWPZb9lAY",
+                "type": "roll",
+                "label": "Ideal Cut / Tao d6",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eprEW8VAwfpNHN",
+                "type": "attack",
+                "label": "Spring Garden",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move within your speed, then attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGQFp765HwnLT2",
+                "type": "save",
+                "label": "Spring Garden: on a hit",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: Dazzled.",
+                    "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                    "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eAg9vBWPZb9lAY",
+                "type": "roll",
+                "label": "Ideal Cut / Tao d6",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eprEW8VAwfpNHN",
+                "type": "attack",
+                "label": "Spring Garden",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move within your speed, then attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGQFp765HwnLT2",
+                "type": "save",
+                "label": "Spring Garden: on a hit",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: Dazzled.",
+                    "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                    "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eAg9vBWPZb9lAY",
+                "type": "roll",
+                "label": "Ideal Cut / Tao d6",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eprEW8VAwfpNHN",
+                "type": "attack",
+                "label": "Spring Garden",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Reaction: move within your speed, then attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eGQFp765HwnLT2",
+                "type": "save",
+                "label": "Spring Garden: on a hit",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: Dazzled.",
+                    "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                    "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eAg9vBWPZb9lAY",
+                "type": "roll",
+                "label": "Ideal Cut / Tao d6",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Spring Garden"
+          },
+          "note": "With your Executioners Instrument: roll 1d6: 5–6 regains your Reaction."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Spring Garden"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): roll 1d6: 5–6, an extra Bonus action on your first turn in combat."
+        }
+      ]
+    },
+    "yamada-test-cutting-two-wheeled-moon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEIc2NjTI1pYwt",
+          "type": "attack",
+          "label": "Two-Wheeled Moon",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One attack roll against creatures of your choice in a 10-foot radius within 60 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eWe22rfbpvzEKW",
+          "type": "save",
+          "label": "Two-Wheeled Moon: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "yamada-asaemon-discipline",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Severed"
+            }
+          ],
+          "text": "Failure: Staggered and Severed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eEIc2NjTI1pYwt",
+                "type": "attack",
+                "label": "Two-Wheeled Moon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against creatures of your choice in a 10-foot radius within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eWe22rfbpvzEKW",
+                "type": "save",
+                "label": "Two-Wheeled Moon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Staggered and Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEIc2NjTI1pYwt",
+                "type": "attack",
+                "label": "Two-Wheeled Moon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against creatures of your choice in a 10-foot radius within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eWe22rfbpvzEKW",
+                "type": "save",
+                "label": "Two-Wheeled Moon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  },
+                  {
+                    "key": "yamada-asaemon-discipline",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Severed"
+                  }
+                ],
+                "text": "Failure: Staggered and Severed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Two-Wheeled Moon"
+          },
+          "note": "With your Executioners Instrument: one creature saves at disadvantage."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Two-Wheeled Moon"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): +2 critical range; a critical hit adds Empty Blade as if forgoing 2 attacks against all of them."
+        }
+      ]
+    },
+    "yamada-the-middle-path": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Bonus action while casting a Hijutsu: both Ideal Cut and Tao. Once per turn, Empty Blade triggers on 1 less."
+        }
+      ]
+    }
+  }
+}

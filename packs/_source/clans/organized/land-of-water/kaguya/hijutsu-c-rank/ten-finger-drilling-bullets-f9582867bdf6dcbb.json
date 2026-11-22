@@ -17,6 +17,142 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eBDm2Y9FoNssHX",
+              "type": "save",
+              "label": "Ten-Finger Drilling Bullets",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eBDm2Y9FoNssHX",
+              "type": "save",
+              "label": "Ten-Finger Drilling Bullets",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBDm2Y9FoNssHX",
+              "type": "save",
+              "label": "Ten-Finger Drilling Bullets",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Battle Lust (2)",
+        "appliesTo": {
+          "namePrefix": "Ten-Finger Drilling Bullets"
+        },
+        "note": "Range Self (60-foot line); failures are also Staggered.",
+        "cost": {
+          "pool": "battleLust",
+          "amount": 2
+        }
       }
     }
   },
@@ -109,7 +245,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eBDm2Y9FoNssHX",
+        "type": "save",
+        "label": "Ten-Finger Drilling Bullets",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 30-foot cone (a 60-foot line with Battle Lust: failures also Staggered). Failure: the damage and 2 ranks of Bleed; success: half. Barriers are vulnerable to it.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

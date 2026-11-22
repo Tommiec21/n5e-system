@@ -17,7 +17,63 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above B-Rank (it's A-Rank)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eDUH7ym2VIDiHK",
+              "type": "attack",
+              "label": "Single Swing",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A Grappled, Prone and Severed creature. Reroll 1s and 2s once.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d6r<2) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Single Swing"
+          },
+          "note": "With your Executioners Instrument: each 4, 5 or 6 on its damage dice: −1 AC and saves until the start of your next turn."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Single Swing"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): beating its AC by 10: a critical hit and all six Severed effects."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +164,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDUH7ym2VIDiHK",
+        "type": "attack",
+        "label": "Single Swing",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A Grappled, Prone and Severed creature. Reroll 1s and 2s once.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6r<2",
+              "type": "slashing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

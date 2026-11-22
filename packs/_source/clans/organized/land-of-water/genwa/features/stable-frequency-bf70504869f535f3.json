@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "genwa",
-      "sourceLine": 3748
+      "sourceLine": 3748,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Attack action can use Radiant Beam (Uplink) or Radiant Saber (Downlink) in place of its attacks (two at 7th without Extra Attack). Radiant Beam and Saber add your highest jutsu ability modifier."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,91 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e8BQAOAr7C2Qvq",
+        "type": "effect",
+        "label": "Uplink",
+        "effect": {
+          "name": "Uplink",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the Uplink chakra stance (ends Downlink). Angel Link on your Hijutsu; your Genwa Hijutsu can come from a Signal Boosted space or creature.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ek0Q4ylcIdZoWk",
+        "type": "effect",
+        "label": "Downlink",
+        "effect": {
+          "name": "Downlink",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the Downlink Bukijutsu stance (ends Uplink). Demon Link on your Hijutsu; a Genwa Hijutsu on a Shocked creature turns 1 rank of Shocked into Firewalled.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eDX18P3R9F5DJa",
+        "type": "attack",
+        "label": "Radiant Beam (Uplink)",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 30 feet (60 at 7th). An 8 on the damage die: you or an ally within 30 feet of it is Signal Boosted until the end of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d8,15:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ez1MrqLBpGKmMt",
+        "type": "effect",
+        "label": "Signal Boosted",
+        "effect": {
+          "name": "Signal Boosted",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 0,
+          "amp": "signal-boosted"
+        },
+        "text": "From a Radiant Beam's 8: you or an ally within 30 feet of the target, until the end of your next turn."
+      },
+      {
+        "id": "n5ezu1eFRUksZYtL",
+        "type": "attack",
+        "label": "Radiant Saber (Downlink)",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A creature within 5 feet: your [Weapon Damage] as lightning. On a hit, Firewalled until the end of your next turn. 15th: +1 critical range.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ]
   }
 }

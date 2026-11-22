@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yuki",
       "sourceLine": 4736,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Black Iron Reflection: mirrors gain 5 DR against damage they aren't immune, resistant or vulnerable to. Frost Courier: a rank of Mastery on Athletics (two at 11th); an ally damaged within 10 feet of a mirror can use its reaction to exit within 5 feet of another."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5erD9t4qYnZzXA6",
+        "type": "save",
+        "label": "Black Frost",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "A hostile creature destroys a mirror you occupy. Failure: Frostbite.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

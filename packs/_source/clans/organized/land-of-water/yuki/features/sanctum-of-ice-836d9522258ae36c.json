@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "yuki",
-      "sourceLine": 4758
+      "sourceLine": 4758,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Or ending your turn with an Elemental condition while another creature has Chilled or Frostbite: remove up to 5 of its ranks and that many of yours. Either one, then not again until the end of your next turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,18 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZJZvHnW34rQ2O",
+        "type": "heal",
+        "label": "Sanctum of Ice: heal",
+        "heal": {
+          "formula": "10",
+          "pool": "hp"
+        },
+        "text": "Starting your turn within 30 feet of a creature with Chilled or Frostbite: remove up to 5 of its ranks; regain 10 per rank removed (multiply it in the roll dialog)."
+      }
+    ]
   }
 }
