@@ -475,7 +475,7 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("kashu/_folder.json", kashu);
   for ( const d of [dokiBandaged, dokiClub, dokiClaw] ) write(`kashu/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
   write("shoton/_folder.json", shoton);
-  for ( const d of [crystalRabbit, crystalDeer, crystalDragon, broodMother] ) write(`shoton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
+  for ( const d of [crystalRabbit, crystalDeer, crystalDragon] ) write(`shoton/${d.name.toLowerCase().replace(/\s+/g, "-")}-${d._id}.json`, d);
   write("tsuchigumo/_folder.json", tsuchigumo);
   write(`tsuchigumo/brood-mother-${broodMother._id}.json`, broodMother);
   console.log(`✓ summons: 17 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother].map(d => `${d.name} ${d._id}`).join(", ")})`);

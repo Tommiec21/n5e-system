@@ -198,7 +198,6 @@ test("STD6e E5 Land of Sound: every Jinzo, Jūgo, Kashu, Shoton and Tsuchigumo i
   // King Q-E17 and Q-E18.
   assert.equal(item("hozuki", "hozuki-hydration").system.activities[0].cost.amount, 1);
   assert.ok(!clanItems("vesper").has("vesper-stance-claws-of-the-night"));
-  const { restUpdates } = await import("../module/rules/rest.mjs").catch(() => ({}));
   const src = (await import("node:fs")).readFileSync(new URL("../module/rules/rest.mjs", import.meta.url), "utf8");
   assert.match(src, /r\.amount === "empty" \) v = 0/);
 });
