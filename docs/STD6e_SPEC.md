@@ -106,7 +106,7 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - **Q-E12 Stray Amp text:** answered (King 2026-11-21): "Remove the copy." Crimson Architect no longer holds Crimson Pact's Amp; Aphelion – The Mirror and Stellar Convergence no longer hold Event Horizon's (0.81.1-alpha.1).
 - **Q-E13 Aphelion – The Mirror:** its text gives no Stellar Charge cost (every other Constellation has one). What does it cost? King asked for the full text (posted 2026-11-21); waiting on his answer.
 - **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.) King 2026-11-21: "Hold off on this."
-- **Q-E15 Plasma Release: Light Binding Step:** its A-Rank upcast names "the special reaction granted by this jutsu", but the jutsu grants no reaction. What is the reaction? King asked for the full text (posted 2026-11-21); waiting on his answer.
+- **Q-E15 Plasma Release: Light Binding Step:** asked in error: King already answered this as Q-F14 (docs/AMP1F_SPEC.md, 2026-11-21): the reaction line is a mistake and isn't there. The note says so (0.81.1-alpha.1).
 - **Q-E16 Crimson Weaponry:** answered (King 2026-11-21): rolling a 1 or 2 doesn't reduce the ammunition die by one step (the note says so; 0.81.1-alpha.1).
 
 ## Text issues (for the errata list)
@@ -119,7 +119,7 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
 - Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
 - Chinoike: Ketsuryugan "1o minutes"; Blood Drain "cat at B-Rank"/"cat at S-Rank"; Blood Missiles "cat at C-Rank" and "saving throw vs gaining"; Sanguine Sphere's upcast is split over three lines; Illusory Pain Receptor spends no Crimson Charges; Crimson Architect held Crimson Pact's Amp (removed, Q-E12); Crimson Weaponry's ammunition sentence is garbled (Q-E16).
-- Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (Q-E15); Event Horizon's Amp sat in Aphelion's and Stellar Convergence's text (removed, Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
+- Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (King Q-F14: a mistake); Event Horizon's Amp sat in Aphelion's and Stellar Convergence's text (removed, Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
 - Ranton: Gale Style "unique for of combat"; Storm Release Manifestation - Reezaa "change the damage type to Water or Lightning" and both Manifestations "Cold or Lightning release keywords" (Water); Snake Chains has no stat block (Q-E14); Storm Drain "granting then"; Lariat "clothes line".
 
 ## Progress log
