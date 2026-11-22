@@ -1,3 +1,11 @@
+## 0.81.1-alpha.1 — Clans as data: E3 follow-ups (Q-E12, Q-E16)
+
+King 2026-11-21: "Q12. Remove the copy. ... Q14. Hold off on this. ... Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step."
+
+- **Copied Amp text removed:** Crimson Architect no longer holds Crimson Pact's Amp; Aphelion – The Mirror and Stellar Convergence no longer hold Event Horizon's.
+- **Crimson Weaponry:** its note says the ammunition die doesn't drop a step on a 1 or 2.
+- Q-E13 and Q-E15 wait on King (full text posted); Q-E14 (Storm Snakes) is on hold.
+
 ## 0.81.0-alpha.1 — Clans as data: E3 Land of Lightning (Chinoike, Keton, Ranton)
 
 King 2026-11-21: "Next Batch."

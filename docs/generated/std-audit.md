@@ -100,13 +100,13 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 18 | 71 | 0 | 26 |
+| clans | 0 | 0 | 19 | 68 | 0 | 26 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **90** | **96** | **0** | **50** |
+| **Total** | **124** | **158** | **91** | **93** | **0** | **50** |
 
-### clans: 71 candidates
+### clans: 68 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -137,7 +137,7 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Network Integration**: Its text names a Will Amp.
 - **Ouroboros**: Lasting bonus: "…you fall to 0 hit points, you can spend your reaction to force your body to refuel, granti…"
 - **Serpents Guile**: Its text names a Fortitude Amp.
-- **Stellar Convergence**: Its text names a Battle Amp.
+- **Stellar Convergence**: Lasting bonus: "…You provide a bonus to…"
 - **Controlled Demolition**: Its text names a Battle Amp.
 - **Explosive Art!**: Its text names a Battle Amp.
 - **Last to Move, loses**: Its text names a Battle Amp.
@@ -148,7 +148,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Synthetic Battle Aura**: Its text names a Battle Amp.
 - **Web Walker**: Its text names a Battle Amp.
 - **Nocturnal Dominion**: Its text names a Battle Amp.
-- **Stellar Convergence: Aphelion – The Mirror**: Its text names a Battle Amp.
 - **Heavenly Technique**: Lasting bonus: "…you would deal Force damage as a result of the target having 0 chakra, you instead simply …"
 - **Visions of what will be**: Its text names a Battle Amp.
 - **Caloric Arts**: Its text names a Battle Amp.
@@ -173,12 +172,10 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Blood of the Swift**: Lasting bonus: "…You gain an additional…"
 - **Interdiction Seal**: Its text names a Reflex Amp.
 - **Nindo: Always Go Beyond**: Its text names a Fortitude Amp.
-- **Crimson Architect**: Its text names a Fortitude Amp.
 - **Dust Veil**: Lasting bonus: "…You gain an additional…"
 - **Swirling Currents**: Lasting bonus: "…you complete a short or long rest, you grant yourself resistance to…"
 - **Dragon Kings Legacy**: Lasting bonus: "…You gain resistance…"
 - **Wrath of the Dragon**: Its text names a Battle Amp.
-- B · **Plasma Release: Light Binding Step**: Lasting bonus: "…Your movement speed is increased…"
 
 ### features: 25 candidates
 

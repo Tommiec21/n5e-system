@@ -103,11 +103,11 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - **Q-E10 Blazing Aura:** answered (King 2026-11-21): "+1d6 bonus damage". 1d6 at 3rd, 2d6 at 7th, 3d6 at 15th, as a damage button (0.80.1-alpha.1).
 - **Q-E11 Jiton Magnetic Charges:** answered (King 2026-11-21): "Share duration". Units gained at the start of a turn (or any turn, round or combat recovery) carry the pool's lifetime too (0.80.1-alpha.1).
 
-- **Q-E12 Stray Amp text:** Crimson Architect's item text holds Crimson Pact's Amp, and Aphelion – The Mirror's (and Stellar Convergence's) holds Event Horizon's. Both Amp cards already exist. Remove the copies from those items?
-- **Q-E13 Aphelion – The Mirror:** its text gives no Stellar Charge cost (every other Constellation has one). What does it cost?
-- **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.)
-- **Q-E15 Plasma Release: Light Binding Step:** its A-Rank upcast names "the special reaction granted by this jutsu", but the jutsu grants no reaction. What is the reaction?
-- **Q-E16 Crimson Weaponry:** "If the weapon has the ammunition property, and it cannot be reduced in size, below a d8." What does this sentence mean?
+- **Q-E12 Stray Amp text:** answered (King 2026-11-21): "Remove the copy." Crimson Architect no longer holds Crimson Pact's Amp; Aphelion – The Mirror and Stellar Convergence no longer hold Event Horizon's (0.81.1-alpha.1).
+- **Q-E13 Aphelion – The Mirror:** its text gives no Stellar Charge cost (every other Constellation has one). What does it cost? King asked for the full text (posted 2026-11-21); waiting on his answer.
+- **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.) King 2026-11-21: "Hold off on this."
+- **Q-E15 Plasma Release: Light Binding Step:** its A-Rank upcast names "the special reaction granted by this jutsu", but the jutsu grants no reaction. What is the reaction? King asked for the full text (posted 2026-11-21); waiting on his answer.
+- **Q-E16 Crimson Weaponry:** answered (King 2026-11-21): rolling a 1 or 2 doesn't reduce the ammunition die by one step (the note says so; 0.81.1-alpha.1).
 
 ## Text issues (for the errata list)
 
@@ -118,8 +118,8 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - Hanami: "Marital Arts"; the Boosting Boon option holds the Combo/Finisher Boon (split out, Q-E8); Blazing Aura has no base damage (Shakuton, Q-E10).
 - Konjiki: Storm of Steel "1 rank of Ble"; Steel Rain and Steel Telekinesis "For each rank for each rank".
 - Shakuton: Hellfire Murder "30-foor", "taking On a failed save"; Immolation "An Immolated created".
-- Chinoike: Ketsuryugan "1o minutes"; Blood Drain "cat at B-Rank"/"cat at S-Rank"; Blood Missiles "cat at C-Rank" and "saving throw vs gaining"; Sanguine Sphere's upcast is split over three lines; Illusory Pain Receptor spends no Crimson Charges; Crimson Architect holds Crimson Pact's Amp (Q-E12).
-- Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (Q-E15); Event Horizon's Amp sits in Aphelion's text (Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
+- Chinoike: Ketsuryugan "1o minutes"; Blood Drain "cat at B-Rank"/"cat at S-Rank"; Blood Missiles "cat at C-Rank" and "saving throw vs gaining"; Sanguine Sphere's upcast is split over three lines; Illusory Pain Receptor spends no Crimson Charges; Crimson Architect held Crimson Pact's Amp (removed, Q-E12); Crimson Weaponry's ammunition sentence is garbled (Q-E16).
+- Keton: Plasma Release Manifestation "change the damage type to Fire or Lightning respectively" (swap); Plasma Beam's upcast has no cost increase; Light Binding Step names a reaction it doesn't grant (Q-E15); Event Horizon's Amp sat in Aphelion's and Stellar Convergence's text (removed, Q-E12); Kagayaki "on a failure ... on a failure"; Nova Ascension and Fission "Either form" (unfinished); Solar Prominence "Fusion of Fission".
 - Ranton: Gale Style "unique for of combat"; Storm Release Manifestation - Reezaa "change the damage type to Water or Lightning" and both Manifestations "Cold or Lightning release keywords" (Water); Snake Chains has no stat block (Q-E14); Storm Drain "granting then"; Lariat "clothes line".
 
 ## Progress log
@@ -131,3 +131,4 @@ Review tables: `docs/clans/chinoike-automation.md`, `keton-automation.md`, `rant
 - 2026-11-21 King: "Next batch." Claude: E2 Land of Wind built (115 items); published 0.80.0-alpha.1. Q-E8–Q-E11 asked; nothing waits on them.
 - 2026-11-21 King: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration." Claude: Combo/Finisher Boon option, Divine Wind stance text, Blazing Aura damage, turn gains share the pool lifetime; published 0.80.1-alpha.1.
 - 2026-11-21 King: "Next Batch." Claude: E3 Land of Lightning built (84 items), E-D7 combat recovery amounts (fixes Jiton refilling), the Blood Dragon summon; published 0.81.0-alpha.1. Q-E12–Q-E16 asked; nothing waits on them.
+- 2026-11-21 King: "Q12. Remove the copy. Q13. Post the full effect text. Q14. Hold off on this. Q15. post the full effect text. Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step." Claude: Amp copies removed, Crimson Weaponry note; full Aphelion and Light Binding Step text posted; published 0.81.1-alpha.1.
